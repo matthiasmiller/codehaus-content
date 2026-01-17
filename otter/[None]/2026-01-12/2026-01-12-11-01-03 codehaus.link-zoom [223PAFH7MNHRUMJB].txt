@@ -1,0 +1,713 @@
+Unknown Speaker  00:16
+Yo yo may ask you a quick question, yep, start of week.
+
+Speaker 1  00:26
+If I wanted to specify as a default start of week, not the start, if I'm in today, I want the start of last week.
+
+Matthias Miller  00:36
+Just do minus today, minus seven. Start a week today, minus seven, or start a week today minus seven, either one.
+
+Unknown Speaker  00:47
+That's the that's the easiest way to do it.
+
+Unknown Speaker  00:49
+Yeah, okay. Do
+
+Unknown Speaker  01:04
+All right, let's do this thing.
+
+Matthias Miller  01:08
+All right, hey, people use makers for, or did you respond to that? Do people use makers for, for book depreciation?
+
+Speaker 1  01:22
+Oh, I didn't respond. I mean, we are using it for for book depreciation, for one company, but they really are using it for tax depreciation, so I don't know that it does it matter whether they use it for Booker tax? Do we want to restrict them on use of Booker tax? I
+
+Matthias Miller  01:45
+um, well, let's do this, how much work to support for a book. I mean tax depreciation would be typically, typically be by tax year, right? Not broken down into monthly payments, does it?
+
+Speaker 1  02:02
+You're saying you would run depreciation once in the year, potentially.
+
+Unknown Speaker  02:12
+I mean, why not? Why not?
+
+Speaker 1  02:15
+Why not use the same whatever to calculate both book in, why not do both book in tax on a monthly basis, and they tie out to whatever account they tie out to, and then,
+
+Matthias Miller  02:27
+well, tax doesn't tie out to any account, but, yeah, you just run reports.
+
+Speaker 1  02:32
+The tax would be just a would just be running reports, okay? But I mean, why wouldn't you just do it on a monthly increment, just like book? I um,
+
+Unknown Speaker  02:53
+is there, is there a
+
+Unknown Speaker  02:54
+law amongst the
+
+Unknown Speaker  02:57
+appreciation gods that says You can't
+
+Matthias Miller  03:20
+little worried about what we don't know here.
+
+Matthias Miller  03:33
+Hang on, let me check something here.
+
+Speaker 1  03:37
+Well, okay, here's the here's the kick. It down the kick the can down the road. Answer, okay, cricket Valley is the only one who used makers, and they do their own depreciation by Jonathan Stiles. So it we could, they're going to want to see some type they like the depreciation reporting coming to them. But ultimately, Jonathan Stiles disregards it and go does his own thing. Everybody else is straight line. So we could kick this can down the road, okay, but I mean that being said, if we said that book depreciation calculates on a monthly basis and tax depreciation calculates on a yearly basis, then do we care whether somebody went and put makers into their book depreciation.
+
+Matthias Miller  04:27
+I mean, we still have to translate it into a monthly amount. I don't know if we care. You.
+
+Speaker 1  04:35
+You makers depreciation does what the like the what's the first year? Like 30 333, or something like that in the first year, something.
+
+Matthias Miller  04:44
+I don't know what it is like. Well, it's it depends on it, but like you could, you could appreciate half the first year and 25% the next 25 I don't
+
+Matthias Miller  04:57
+know what it is the there are conventions as well. Well, if, if, if you bought more than 40% of your assets in the fourth quarter, then you have to use mid quarter convention
+
+Unknown Speaker  05:17
+and, uh, uh,
+
+Matthias Miller  05:27
+there's also happier convention. So, you know, I don't know.
+
+Matthias Miller  05:35
+I think hunting it is. I
+
+Speaker 1  05:44
+But don't we? We still have to, we still have to figure this out in order to support makers right?
+
+Unknown Speaker  05:51
+Whether it's book or tax
+
+Matthias Miller  05:58
+book is pretty simple. I assume it's weird, but I would assume you would just run makers for a fixed percentage of time, starting on the month that the asset goes live, and then on the anniversary of the purchase it the depreciation drops substantially. Now why does somebody want to run makers on on book? I don't know.
+
+Speaker 1  06:26
+Well, the the only reason that you would right now, that you would run makers on book is because that's what they had set up in RTO pro before, and we're not gonna be able to match up with the depreciation numbers that they currently have in there, whether they're using it in in the former fashion that they should be using it really like we Okay, we have to remember that depreciation being calculated in RTO Pro was being fed to an accountant, and they were probably using that. Either they were using it or they were doing their own thing. A lot of accountants just went off and did their own thing. And so the question is, how much do we care about matching up with what accountants had done before, or matching up with RTO Pro? That's going to be the bigger question, because the likelihood is that a company comes to us and says, Okay, well, we get a match depreciation in the books? Well, then probably what we do is we don't pipe in depreciation into the books until whatever the cutoff point is, and we just match accumulated depreciation in the GL accounts from history. But I don't even know how would you i
+
+Unknown Speaker  07:43
+I don't know. I don't know. I don't know.
+
+Matthias Miller  07:52
+Well, we should be able to get, we should be able to get, get or match historical depreciation on a per asset basis from RTO pro correct
+
+Speaker 1  08:03
+should but then you have something, somebody like cricket Valley, who's using makers in their book depreciation.
+
+Matthias Miller  08:13
+So I think what you do is you say, Look, we're going to calculate depreciation up until the 31st or whatever the cutoff point is, and you make a journal entry that gets your I mean, I guess if you've been filing taxes with makers,
+
+Speaker 1  08:32
+well, I know they I know cricket Valley hasn't because, like I said, Jonathan stops has been doing their taxes for quite a number of years, and he has his own method of calculating depreciation.
+
+Speaker 1  08:49
+I really want to say the answer today is we, we punt this down the street until, until we get to the point where we want to try To try to match up depreciation.
+
+Matthias Miller  09:11
+Fine by me. I
+
+Speaker 1  09:23
+But to circle back around, if you're using makers in tax depreciation, and you're only calculating at one time a year, the calculations are significantly more simple than if you're trying to break it down to a monthly rate. That's what you're trying to get. That's what
+
+Matthias Miller  09:36
+you're trying to say, Yeah, well, and you think about it completely differently. I mean, because you might not you don't know if you buy an asset in January. You might not actually know how that thing gets depreciated until you get to December, like, if you, if you, if you, if you buy a bunch of assets in December. Or, I mean, it all, it all feeds backwards.
+
+Speaker 1  10:07
+So, okay, let's say I buy an asset in July, and on December the 31st I decide to put it in maker's depreciation. How does it depreciate the six months?
+
+Matthias Miller  10:23
+Uh, from a tax standpoint, yeah, well, you don't have to decide. Do you file your taxes? That's really not relevant.
+
+Matthias Miller  10:38
+I would assume tax depreciation actually works more like a okay, it's the end of the how do I want to depreciate to maximize my tax value? And you run a bunch of reports that say, Well, this category, this category, this category, all right, we're happy. Now freeze that and all those assets.
+
+Speaker 1  10:57
+But if, again, if I bought in asset in July, and I'm ready to set depreciation on it. How does makers run the first six months of that asset? Or is it? Does it consider the that entire year? Like, how does makers work when? When you're calculating for that, for that asset you bought mid year.
+
+Matthias Miller  11:23
+I think there, I think, I think the short answer is, it depends.
+
+Matthias Miller  11:33
+Let's see what it says. I've not gotten deep into tax types of stuff
+
+Speaker 1  11:41
+well, and we don't have, we have, we have 45 minutes to get back on these imports. We don't have to solve it today. It is something I think we should probably visit fairly soon, because it
+
+Unknown Speaker  11:54
+well, not necessarily fairly soon.
+
+Matthias Miller  11:57
+Well, I think if using again, this is where there's different conventions. If you're using the half year convention, then you would do half a year in year one and then year two.
+
+Speaker 1  12:25
+So we would, we would have to, we would have to just auto account for that inside of the calculation macro, we look at when, when the date that it came on to the books, and we decide whether it's a half year or or do I date
+
+Matthias Miller  12:40
+doesn't matter. Doesn't matter if you get it in December, January or July. So what?
+
+Speaker 1  12:49
+So essentially, what you're saying is you would sit down with your accountant at the end of the year and you would have a couple different options for for makers depreciation, if you're using that for your tax depreciation, you know your makers, 150 your maker is 200 plus, multi, you know, partial year conventions. And you just go down through it and your tax account and says, Okay, I want all of those in this set them all I want, all right, is that set them all run your tax decrease like that? Yeah, okay.
+
+Matthias Miller  13:19
+And then, potentially first, before they do that, they say, Okay, did you go on a buying stream? Q4 yes or no? And oh yes. Okay, well, we're actually going to use mid quarter convention.
+
+Speaker 1  13:32
+So we'll need to, we'll need to expand the depreciation set up on the rental company record to account for those types of conventions, so that we can so those can all be options that can be selectable as you go down through.
+
+Matthias Miller  13:48
+Yeah, yeah, okay. I can
+
+Unknown Speaker  13:52
+tell you one thing ain't no RTO company, RTO software out there doing
+
+Unknown Speaker  13:56
+that. Yeah, I can tell you that,
+
+Speaker 1  14:00
+which I mean, your accountant is going to smile real big when you go, sit down and go, Okay, we need to calculate depreciation for the year. And go, Oh, you got all these assets that came on the books. What do you want to set them at? Oh, we get to choose. We could. So essentially, we're just, we're building exactly what these guys go off and do in spreadsheets and special tools that they've built themselves,
+
+Matthias Miller  14:24
+pretty much. Yeah, look at that. We're taking we're taking work away from the accountant. Yeah, I can't remember where these things were at. Oh, great. Oh, I know where this was at. Okay, let's go do let's go see what broke.
+
+Matthias Miller  14:57
+That one's happy that one. It's happy. It's happy. Oh, it's not in these though.
+
+Matthias Miller  15:12
+Actually, this will wait, wait.
+
+Matthias Miller  15:32
+Thanks for exporting for me, so I don't know where you're at. Here we go. Okay, what don't you like about me?
+
+Matthias Miller  16:09
+Okay, So we got that. I'm
+
+Unknown Speaker  16:26
+word account.
+
+Matthias Miller  16:42
+Okay,
+
+Unknown Speaker  17:15
+conscious primary I
+
+Unknown Speaker  17:48
+really.
+
+Matthias Miller  17:56
+Okay, so We got primary contracts working now I'm
+
+Matthias Miller  18:58
+what we needed to.
+
+Matthias Miller  20:47
+Or is four?
+
+Matthias Miller  20:54
+Why is it not?
+
+Matthias Miller  21:07
+I'm so confused, 5479, because this guy never made it into, never
+
+Unknown Speaker  21:20
+made it into what
+
+Matthias Miller  21:24
+we need to re import customers. But let's do this. Let's only import new people. So slow, let's only import new people. How do you do that? Source data matched. Record skip. That's how you do it.
+
+Unknown Speaker  21:45
+Ah, well, that goes a whole lot Faster. Should be
+
+Matthias Miller  22:32
+Wait a minute. I
+
+Unknown Speaker  22:43
+what just happened?
+
+Unknown Speaker  22:58
+Why are you? Okay,
+
+Unknown Speaker  23:11
+let's go find this guy.
+
+Matthias Miller  23:20
+5479, sublime ID I,
+
+Speaker 2  23:22
+Sky, what's your problem? Audrey?
+
+Matthias Miller  23:39
+Because there were no records that match the subset match records we skip. Okay, well, Audrey Fox, where are you actually? Let's go see if this guy
+
+Matthias Miller  24:25
+right. Tell you update.
+
+Matthias Miller  24:31
+So where is she? She's coming
+
+Speaker 1  24:38
+up with a previous account of 5479, 479, wait, 71 Oh, wait. You said 7107 didn't you? 5479 is your, is your? Is your? Silver lime? ID.
+
+Matthias Miller  25:00
+479 is a silver limb. ID,
+
+Matthias Miller  25:10
+previous account number is not correct,
+
+Speaker 1  25:12
+yeah, but you're searching, you're searching your 5479, in your in your previous account number, or what is your symbol of ID the left
+
+Speaker 2  25:23
+hand, left and John Neil, but that's truth. Tabernacle. Yeah. Okay, church,
+
+Matthias Miller  25:37
+so we're parsing out the
+
+Unknown Speaker  25:45
+Okay,
+
+Matthias Miller  25:57
+there is no last name.
+
+Unknown Speaker  26:00
+So, so here's a question of
+
+Speaker 1  26:05
+I wonder, in the case of something like this, do we want to set the alternate name column to be the Oh, but see, it's not, it's not consistent. Because you got, I was going to say override, but that's huh.
+
+Matthias Miller  26:26
+Okay, so on the record is stored as truth tabernacle. Let's go back to this guy,
+
+Unknown Speaker  26:42
+Jimmy, want me to update this thing and push it back up?
+
+Matthias Miller  26:45
+No, with the world. With the world.
+
+Matthias Miller  27:09
+What do you think you're smoking?
+
+Speaker 2  27:11
+What are you smoking? What are you smoking now?
+
+Matthias Miller  27:22
+Steph, step that's not working. Okay, let's just go back to here then, and let's do i
+
+Matthias Miller  27:47
+So if we go here The split name, okay, so we start with last name.
+
+Matthias Miller  28:04
+So there is no last name.
+
+Matthias Miller  28:18
+Well, one option would just be if there is no comma,
+
+Unknown Speaker  28:28
+then throw one in somewhere.
+
+Unknown Speaker  28:32
+Throw one in before the last word.
+
+Matthias Miller  28:38
+Either parse it differently or
+
+Unknown Speaker  28:46
+or just say this, oh,
+
+Matthias Miller  28:54
+call them an organization.
+
+Speaker 1  28:57
+That's not a bad idea. If there's no comma, call it an organization. I like that idea, a
+
+Matthias Miller  29:02
+contact lesson, alt, name i
+
+Matthias Miller  29:40
+Okay, and then I'm.
+
+Matthias Miller  30:04
+We then have,
+
+Matthias Miller  30:16
+this guy Is
+
+Matthias Miller  30:28
+contact name is contact Name.
+
+Matthias Miller  31:01
+Buy me the tabernacle. Look
+
+Unknown Speaker  31:05
+at that fixed Full Gospel tabernacle too.
+
+Matthias Miller  31:07
+This time we got full gospel. Name cannot be empty, but I am trying to set the name.
+
+Unknown Speaker  31:44
+Because why would you ever name a church half gospel Tabernacle?
+
+Matthias Miller  31:49
+The names that don't make sense,
+
+Speaker 1  31:52
+one and a quarter gospel tabernacle. I
+
+Matthias Miller  32:08
+think that's the right I think it's I
+
+Unknown Speaker  32:43
+let's try this.
+
+Matthias Miller  33:11
+There we go. How you like me?
+
+Unknown Speaker  33:17
+Now? How do you like me? Now,
+
+Matthias Miller  33:21
+let's do skip.
+
+Matthias Miller  35:07
+All right, created 135 new ones. Who
+
+Speaker 1  35:15
+then, what were the ones that failed? I um, what can you? Can you find what that one is so I can go figure it out and fix it?
+
+Unknown Speaker  35:30
+Eru, an Eru state?
+
+Unknown Speaker  35:41
+What?
+
+Unknown Speaker  35:46
+Do we have? A count, number, yeah,
+
+Speaker 2  35:58
+46234, Huh, look at that. Wait, what? What in the world is going on here? No nothing.
+
+Matthias Miller  36:18
+What? Jermaine RTO pro
+
+Unknown Speaker  36:21
+this thing didn't even have an Can we just, can we? Can we just
+
+Unknown Speaker  36:24
+ignore it? There was never anything attached to it.
+
+Unknown Speaker  36:29
+I don't even, I don't even know what this is.
+
+Unknown Speaker  36:37
+There was no there's no history. There's no
+
+Unknown Speaker  36:42
+Oh. Wait, there was a, I don't,
+
+Speaker 1  36:45
+I don't know what this is, but it needs to just be ignored. It's an RTO test. Can we just, can we ignore it?
+
+Matthias Miller  36:56
+I mean, currently we're just not doing anything with it. I don't know.
+
+Unknown Speaker  36:59
+We gotta go. Got a couple more here.
+
+Matthias Miller  37:04
+We got a few who put the zip code in the address of the zip code just seems
+
+Speaker 1  37:11
+Give me, give me an account number. Let me see if I can fix it.
+
+Matthias Miller  37:16
+Wait. Zip code, no, it's missing.
+
+Unknown Speaker  37:20
+What's Missing the zip code, 44249, yeah.
+
+Unknown Speaker  37:42
+Okay. Guess I gotta go look it
+
+Matthias Miller  37:49
+up. Also, too few others that one,
+
+Speaker 2  37:54
+I need a Pick Road, great place to live.
+
+Unknown Speaker  38:14
+Name, copy, empty,
+
+Matthias Miller  39:06
+1856, to eight.
+
+Unknown Speaker  39:24
+What
+
+Matthias Miller  39:32
+It's always encouraging customers own bankruptcy.
+
+Matthias Miller  39:41
+Oh, all right, so if I do that now, we should be.
+
+Unknown Speaker  40:38
+All, but you need to re import that. Assets, I,
+
+Unknown Speaker  42:58
+oh, goodness. 185 keep throwing them at me. Well, what in the world?
+
+Speaker 1  43:15
+It's like a record, but no information. Don't you love it? Well, that's love it. 1856, completely blank. Nothing in it, anywhere.
+
+Unknown Speaker  43:26
+2887, well, okay, can Is there a way to get rid of these? I
+
+Speaker 2  43:40
+it. Same thing with that one, literally nothing in them. There's gotta be a way. 3452,
+
+Speaker 1  44:17
+yeah, 1856288734523459, are literally just blank records, like I don't even there's nothing in them at all,
+
+Unknown Speaker  44:28
+forever and Amen, and I
+
+Unknown Speaker  44:31
+don't know how to delete them, so
+
+Speaker 2  44:36
+I guess we ignore them.
+
+Unknown Speaker  44:40
+Unless you want me to throw information into them, just to
+
+Unknown Speaker  44:48
+make them something know how much it matters.
+
+Matthias Miller  44:56
+Do we got? We got the non contract stuff in? I got more products in now.
+
+Unknown Speaker  45:06
+There's missing products,
+
+Unknown Speaker  45:10
+yeah, but
+
+Matthias Miller  45:18
+these guys still are frogs problems.
+
+Speaker 1  45:30
+Okay, what? What am I missing with I was talking to Benita today about Bill and dial and accidentally spoonerized, not recommended. What on I am still clueless.
+
+Matthias Miller  45:39
+It's just weird that you could take two names. And end up with two random words and I don't know, just suddenly spewing bile out in the middle of a sentence. Just sounded weird.
+
+Unknown Speaker  45:50
+What is spoonerized?
+
+Matthias Miller  45:52
+Spooner eyes is the term for switching the first words of a sentence like the gotcha, the professor who sat down with his sat down with his sat down with his student and and was trying to tell him what a horrible schlep he's been. He said, You've almost tasted two worms, and when he wanted to say he wasted two terms anyway,
+
+Speaker 1  46:17
+Ah, okay, I should have Googled, I should have Googled spinner eyes, and they would have made sense to me. You were talking about dill and bio. Why were you talking about Bill and dial in the same Dylan bio in the same sentence,
+
+Matthias Miller  46:31
+Bill and dial are two guys are just talking about, I don't know. They made their way to the same sentence. I
+
+Matthias Miller  46:48
+The real baffling thing is, why do I, why do I connect? I mean, they're, they're two of the old guys at church. I just made, I was telling her, I connect with these two old guys and, like, nobody, like most of the other people, like, I don't know whatever. Like, what does it say about me when it's just the old guys that I connect with? Not just the old guys, but
+
+Speaker 1  47:10
+one might. One might hypothesize that they have they're more interesting because they've lived more life. Others might say that you're just old and boring.
+
+Matthias Miller  47:22
+Well, I think both statements could be true at the same time. I think I am kind of boring actually, but anyway, I think boring is the new
+
+Speaker 1  47:36
+whatever it does. It does seem like the smarter an individual is, the more socially boring they become.
+
+Matthias Miller  47:46
+I mean, there's so much stuff where it's just like, what's the point? Like, I don't know why I hate it. One of my goals for 2026 if you have great advice, is continuing to cultivate, okay, asset IDs required. Why is this not contract? We don't have an asset for Richard Posey. Richard Posey, where's your asset?
+
+Unknown Speaker  48:11
+Richard Posey, where's your asset? What's his account number? Trying to find it. It's here, P, O, z, z, I, 72387238, indeed,
+
+Matthias Miller  48:33
+this is the prize. This is the contract.
+
+Unknown Speaker  48:40
+He should have had a serial number of 10840
+
+Matthias Miller  48:45
+Well, I'm seeing a serial number of, Am I in the right place? Oh, sorry, what's the number?
+
+Speaker 1  48:57
+It should hit the asset that he was tied to was a serial number 10810840840
+
+Matthias Miller  49:08
+garden shed,
+
+Unknown Speaker  49:11
+SD, one,
+
+Matthias Miller  49:13
+okay, 10840, let's go into The Product import.
+
+Matthias Miller  49:36
+Um, okay, that one's there. So then, why are we not on the contract?
+
+Matthias Miller  49:55
+Okay, we'll be getting the asset. I'm. Inventory. Wait a minute,
+
+Matthias Miller  50:17
+it'd be store, store model and cereal.
+
+Unknown Speaker  50:25
+What were we matching up on?
+
+Matthias Miller  50:27
+Well, we are on store and contract, which is just or store an account, yeah. Oh, storing contract. Well, probably hope, if I put the right contract number in there, you can't fix
+
+Matthias Miller  50:49
+How you doing it. This guy, okay,
+
+Matthias Miller  50:57
+now you want to know where else I screwed that up. I
+
+Unknown Speaker  51:06
+There we Go. Run that back.
+
+Unknown Speaker  51:36
+Well,
+
+Unknown Speaker  51:42
+got a little closer. Oh my gosh. It's
+
+Matthias Miller  51:52
+kind of weird that it's not giving me better errors as far as where this problem actually occurs,
+
+Matthias Miller  52:10
+here's a missing asset. Michael Steele Jr,
+
+Matthias Miller  52:27
+me make sure
+
+Unknown Speaker  52:31
+he's had three assets.
+
+Matthias Miller  52:38
+Let me just make sure all of these are coming. I can't remember
+
+Matthias Miller  52:47
+six, seven, most of them are
+
+Unknown Speaker  53:02
+okay. Well, what?
+
+Matthias Miller  53:12
+Contract ID, 1352, 1351,
+
+Unknown Speaker  54:01
+seeking account.
+
+Matthias Miller  54:22
+Is such a maze,
+
+Unknown Speaker  54:27
+seriously Chrome, you need to up your game.
+
+Matthias Miller  54:33
+Do you have the what contract numbers on the on the asset?
+
+Speaker 2  54:39
+Which one, which asset I don't know so I have, let's see
+
+Unknown Speaker  54:48
+I have three contract numbers, 7263, 1351, and 1352
+
+Matthias Miller  54:55
+what are the assets on 1351, and 13 5230
+
+Unknown Speaker  55:00
+1351 is serial number 10712107 sorry.
+
+Speaker 2  55:05
+10712 Yep, and tell me when you're ready for the next one.
+
+Matthias Miller  55:12
+Well, let me just give me a minute on this one. I
+
+Matthias Miller  55:20
+it's on a different contract, huh? Contract Number is not 1352 on that serial number.
+
+Unknown Speaker  55:44
+That's a weird number.
+
+Speaker 1  55:50
+Go back. Go back to what? Go back. And let's find this again, just to make sure we're on the same store, number, store, four or four, yes.
+
+Unknown Speaker  56:04
+Okay, that's a
+
+Matthias Miller  56:07
+odd 12 by 20 garage, quicker T inside 12 roof, dark brown
+
+Unknown Speaker  56:11
+inside, yeah,
+
+Matthias Miller  56:14
+why is it? Here's the here's the contract, here's the contract that it's linked to. If I could find the link to open it. I love how the link's always in the wrong place. It's tied to account 4822 okay, hold on. 4822 Yeah, I'm gonna guess it's some kind of repo. Kind of repo or resell or some kind of other weird situation
+
+Unknown Speaker  56:51
+that's interesting, because that account, oh,
+
+Unknown Speaker  56:58
+that's a cash sale. Okay, hold on a second. So what
+
+Speaker 1  57:03
+I What's cash sale? Yeah, 10712, is repoed from, I guess, from that guy and sold out to
+
+Unknown Speaker  57:10
+this other guy, I'm presuming.
+
+Matthias Miller  57:14
+Well, so we can't use, I mean, the asset, the contract on the asset, is the latest contract. It's not contract history. So we need a different way to find to tie out assets, contracts.
+
+Speaker 1  57:28
+Okay? So right now we are doing contract Okay. Do we have a, do we have a count number on the Hold on a second on the asset, we need to be able to identify it. So, I
+
+Matthias Miller  57:46
+mean, the model and serial is probably the store model and serial is probably the most reliable, isn't it?
+
+Speaker 1  57:53
+Yeah, but store model and serial, how you link at the contract then, or how you link it to account. Do we have account number for it,
+
+Matthias Miller  58:07
+typically model one and serial one on the contract.
+
+Speaker 1  58:13
+Yeah, but how does that get you to the How does that get you the con to the contract? The correct
+
+Matthias Miller  58:17
+contract has a model one and serial one contract, contracts and look up.
+
+Unknown Speaker  58:23
+Yeah, okay.
+
+Matthias Miller  58:27
+Okay, I got a Well, we both got
+
+Unknown Speaker  58:30
+a drop. Yeah, we do. Okay.
+
+Matthias Miller  58:33
+Here, I'm gonna shoot a quick signal message to us next time where we're at, and we'll pick it up.
+
+Unknown Speaker  58:42
+Good point. Okay, thank you, sir. Thank you.
+
+
+Transcribed by https://otter.ai

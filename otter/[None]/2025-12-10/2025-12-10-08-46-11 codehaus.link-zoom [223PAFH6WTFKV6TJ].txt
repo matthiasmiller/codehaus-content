@@ -1,0 +1,485 @@
+Unknown Speaker  02:36
+Recording in progress. Flip the mic.
+
+Matthias Miller  02:41
+Flip the mic, I usually open my mouth. I don't know why
+
+Speaker 1  02:52
+that correct me up, but it really did. Zfp switched to using payment types. We shipped one or 2 million or two adjustment types like forgiveness or bad debt and the user customized more. What
+
+Unknown Speaker  03:16
+do you mean? Zfp switched to using payment types.
+
+Matthias Miller  03:19
+Sorry, I meant they used to use write offs.
+
+Unknown Speaker  03:30
+No, i
+
+Matthias Miller  03:38
+This is for No,
+
+Speaker 1  03:40
+yeah, I get that, but I mean, why? Okay, tell me I'm stupid, whatever, if you try to close an EPO, if you, if you select the, if you go to close a contract as early payoff, early cash payoff, or early payoff option, and you input $1 amount less than the EPO then, either through confirmation or just straight up, automatically writing the difference into discounts given, I mean, if That's where else, where else would you put it? Um,
+
+Matthias Miller  04:27
+well, that's fair.
+
+Speaker 1  04:33
+I mean, okay, so play devil's advocate. Play devil's advocate for a minute. I'm a rent to own company, and I'm like, that just sounds dumb. I want to I don't know what else like. I don't know accounting well enough to say I would prefer to just ignore it. Well, you can't just ignore it, can you? I mean, it's dollar values that are owed to you from a from an accrual. Accounting standpoint, you have to balance the book so you got to put it somewhere.
+
+Matthias Miller  05:04
+Well, except, are we right? Yeah, you do have to put it somewhere. I mean, you could take it out of revenue. Just say you never got the revenue
+
+Speaker 1  05:19
+book it in revenue as a Delta transaction, I guess. Why would so you would book the full EPO and then do a Delta transaction against it. No, I don't
+
+Matthias Miller  05:32
+know why, but yeah, you could AR and and and revenue, not for the full transaction, you would do the you would record the EPO and then reverse the the revenue and AR transaction. That doesn't really make sense, but there's a world,
+
+Speaker 1  05:59
+okay, is there. I guess if we're going to say we're going to give some configurability to someone to do something different, we would have to know what the something different is. And I don't even know, like, how would you even? I don't even where you would I don't I don't know where you would go with it. Discounts, given, makes a ton of sense.
+
+Matthias Miller  06:19
+So and So, could we just call everything a like? How is fee forgiveness, not just a bold discount?
+
+Speaker 1  06:36
+The difference is, I mean, some may argue that it is a discount given as well.
+
+Speaker 1  06:53
+I guess in my brain, I want to say it's a little bit different, in that a fee is an arbitrary number that you agreed that you would pay me if you don't meet certain terms. A building is an actual hard asset that you're actually buying out at the point. Maybe I'm, I don't know, you can also sell stuff in business
+
+Matthias Miller  07:13
+at a loss. You had an agreement that you're going to buy this building for an EPO at this price. I again, I don't, I don't care. I'm probably pushing too hard. It sounds like, it seems to me, like
+
+Speaker 1  07:29
+when we get to a point where we push where you feel like you're pushing too hard, I feel like this is where I want to go with flexibility of Configure. The flexibility through configuration. Can we? Can we build configuration that allows someone to say, Oh, if I forgive something, I don't, you know, I want to forgive it as a discount. Or, like, Can Can we build this with configurable flexibility?
+
+Matthias Miller  07:55
+Yeah, we need, we need to know what's going to be coming out of the box. And so in my mind, the only difference between a discount, well, the only difference between a discount forgiveness is whether it can be applied to the rent or to the fees, and potentially which GL account it hits.
+
+Speaker 1  08:13
+So this is where it gets a little bit interesting, because in in conversation with Chase at JMAG, he wants to book EPOS into a separate GL account, revenue, revenue GL account. In talking with Philip, he he realizes it all as rent, even the EPO, which I think we've already accounted for based on how we how we realize this now, where the question comes down to, I think, if we're going to pipe off at the point of EPO, if we're going to pipe off and just hard, say from the ship, point of the software, say it goes discounts, you got to have a discounts GL account in order to pipe closing out EPOS with not as full EPO. That makes sense to me. The question about fees, I guess, do we want to ship with our best guess and say we'll build configurability in the future? Because, as of right now, how are you, how are you classifying forgiveness?
+
+Matthias Miller  09:19
+There's, there's a setting that determines what expense account it goes to.
+
+Unknown Speaker  09:29
+And we were going to initially assign it to what
+
+Matthias Miller  09:35
+I think you said, just to reduce the well, let me, let me see.
+
+Speaker 1  09:41
+So then it Yeah, it should be. It should be, we would reduce AR, right?
+
+Matthias Miller  09:48
+Reduce our AR. And, I mean, yeah, reduce AR and either increase in expense or decrease your revenue account, depending how you want to. Yeah. Whether you want to report
+
+Unknown Speaker  10:02
+on it in
+
+Speaker 1  10:09
+can we can it be? Can we build the flexibility to say, No, I would prefer to just dump all forgiveness into discounts given. And this is where I get a little bit. This is why RTO Pro has 1000 settings. And how do we avoid that?
+
+Matthias Miller  10:33
+Well, if there's a single universal term, okay, we always ship with, I mean, I don't know how to get away from the 1000 settings. I really don't. I mean custom software that only has what people need. That's the only real answer to my knowledge.
+
+Speaker 1  10:58
+Yeah. But even with custom software that it's like, it's something you come along and go, Yeah, that was dumb. Let's go a different way, yeah. And then it's like you do development to do so, so let's do the development on the front, just to allow for
+
+Matthias Miller  11:11
+the flexibility. So the the alright. So then ignoring your question, how do you avoid it? The question is, what do you ship with? Do you allow restrictions? So basically, let's see if there's any
+
+Speaker 1  11:29
+as of right now, I think when you when, when you remove late fees, I don't think RTO pro tracks it at all.
+
+Matthias Miller  11:41
+Oh, gracious, that's scary.
+
+Speaker 1  11:48
+Maybe in their free money thing, maybe, I don't know, not 100%
+
+Matthias Miller  11:52
+certain on that, somewhere in their audit stuff, I would my thought was that you turn the adjustment type into a detail screen and you have either forgiven or discounted that you ship with,
+
+Speaker 1  12:16
+okay, forgiven would go the route that we were planning to go, Where it deducts off AR and the revenue account and discount either shove it into the discount account.
+
+Matthias Miller  12:26
+Either way, that's going to be configurable, because you're going to have to create the GL account and link it out. Currently, the way it is that discount can only apply be applied to rent and forgiveness can only be applied to a fee.
+
+Matthias Miller  12:58
+The other option,
+
+Unknown Speaker  13:00
+I agree. I agree to that statement.
+
+Matthias Miller  13:05
+Okay, keep going. So then the question is, how to uh?
+
+Speaker 1  13:26
+I you know, the the other, the other way to go about this Matthias is to say we're going to ship with our with our plan, which is forgiveness of fees, exactly the the way that you described it, adjusting AR and what was the secondary piece revenue.
+
+Matthias Miller  13:48
+I mean, it's basically just, well, actually what I would do, my thought is, okay, this is maybe too much configurability, but I would let them create, I would, I would let them configure, add another RG to configure.
+
+Speaker 1  14:04
+I'm actually thinking to say, No, we're going, okay. Part of our job, Matthias, that I think, that we forget, is to say this is the best way to do this. You and I have argued about this up and down, and we have agreed the best way to do this is x, if you want to, if you want to say we're wrong, then come convince us, and we will. We will bake some more flexibility into the software.
+
+Matthias Miller  14:31
+So then what we're basically saying is we're going to add a discount, or discounted adjustment type that can be applied. So we need to work through the details of that. Then you tie the discount and the the discount and the forgiveness to a specific expense account. That
+
+Speaker 1  14:55
+is not what I was thinking. You were going to say what I was thinking. For us, so we already have a working concept for forgiveness, correct as it stands today.
+
+Matthias Miller  15:05
+Yeah, I'm not completely sure if I believe in it, but we did. We just did forgiveness to the revenue account so that we wouldn't have to explain it in the demo. I think.
+
+Unknown Speaker  15:16
+Okay, then
+
+Speaker 1  15:29
+yeah, well, unless, unless, we literally did two different GL accounts, and you did one for fee forgiveness and one for for discounts, given they would somewhat be functionally the same, but it would allow you to separate them from a navigate from a from a GL Account standpoint, so that you can report on them separately. Because I would want to report on them separately, I would want to, like I fundamentally, in my head, view these as different types of functions. One function is we booked you a fee, and in order to I know they're not they're not separate, they're the same.
+
+Matthias Miller  16:04
+Okay, hang on in the real world, though, I care a lot if somebody just threw Five $500 off a building, or if they threw through $500 off fees. Mm,
+
+Speaker 1  16:24
+so you are advocating that they would be separate. GL accounts,
+
+Matthias Miller  16:29
+again, this comes down to a management standpoint, but from a management standpoint, it seems useful to distinguish those.
+
+Speaker 1  16:39
+I feel like it does. I mean, from a if you, if you boil it down at the at the at the very bottom of the of the of the line, the functionality is very similar. They're very almost identical in their functionality, whether you're forgiving a fee, or whether you're or whether you're discounting the amount of the payoff, both of them is a marketing tool in order to get the customer to pay right? That's literally it all it is. And so treating them very similarly, where they show up in the on the income statement, makes a whole lot of sense. I mean, if it was, if it was me, discounts given and fee forgiveness would show up, right, you know, right underneath each other and and there they would be. And it's like, well, if, if you don't like that, then I guess you could have it as there's two settings on the on the accounting impact configuration, one for fee forgiveness and one for EPO discounts, and if you don't, if you want them all in the same then, then assign the same GL
+
+Matthias Miller  17:46
+account, right? Exactly. I like that.
+
+Speaker 1  17:53
+I can, I can, I can defend that, because they are functionally the same. They are both discounts in order to get the customer to pay.
+
+Matthias Miller  18:04
+Okay, so, okay, so then that okay, but then what about the process of applying discounts? Because aren't, are there
+
+Unknown Speaker  18:16
+you're speaking of at the point of payoff. At the point
+
+Matthias Miller  18:19
+of payoff, do you always apply discounts in order first to first to late, you know, unpaid periods and then any
+
+Speaker 1  18:29
+additional it would only be remaining cash value of the building. So you pay the outstanding rent and fees need to be booked accordingly. If you want to forgive fees before you run the EPO, go forgive them first.
+
+Matthias Miller  18:46
+And if somebody owes $500 or
+
+Speaker 1  18:53
+because at the at the end of the day, rent incurred is rent incurred if you didn't pay it, then it's still incurred if you don't, if you disagree with that, or for whatever, however you want to, as a customer service rep, if you want to argue something differently, if there are fees, late fees, NSF fees, you name the fee, if they're there and you don't want to book them as like, if you don't want them to show up as part of the of the EPO, or You don't want to pay them as part of the them as part of the EPO, then fine, go forgive them before you run the EPO. And if the rent it like the rent should be paid as rent, and the if there's a discount going to be given, it would be on the remaining cash price of the building.
+
+Unknown Speaker  19:42
+If you feel like I'm wrong, I
+
+Matthias Miller  19:44
+don't think so. There's a hypothetical scenario in which you could give somebody something for say, Look, your EPO is only 200 bucks. You got 600 bucks in late fees. Go. Go pay 300 yours. Yeah, but
+
+Speaker 1  20:03
+what's going to impact that calculation, then, is a due date change. If, if you say, Okay, fine, you just go like you shove the due date forward, and suddenly what was a Past Due month of rent is no longer a Past Due month of rent, forgive the late fee of shove the due date forward. Now, run your EPO. Your EPO should be lower. Fine, crafty. Oh, trust me, I have done the every single one of the things I just said in RTO Pro, but it's like you have to know that process in order to get to the number that you want. And but we want to shove them into a restrict process in order to get there, in order to get the accounting impact to reflect according to what you were trying to do.
+
+Matthias Miller  20:45
+Okay, but this is then only we could literally call this an EPO discount, because that's all it is. That's all it
+
+Speaker 1  20:59
+is. Now there is a world where I could see us saying, Okay, here's the, here's the here's the scenario I would love to figure out that's going to come up next. So Let's hypothetically say we closed an account and we reap we closed an account as damage, waiver fee write off, or just charge off, or we wrote the building off. The remaining balance of the contract. It stays on the contract as an amount that still is there. If the customer ever shows up one day and wants to pay, hypothetically, the customer shows up one day and says, Look, I'd like to get another building. You say, Well, yeah, you had an account with us. There's a 1200 bucks here that you owe it on that other account. If you're willing to take care of that, we'll rent you another building. Customer says, Well, can you give me a break on it? Okay, so how do you forgive that? What is it at the point that we close out a building and there's an amount that remains on there, I'm assuming it stays in accounts receivable?
+
+Matthias Miller  21:58
+No, if you close out a building, it does it you write it off as bad debt. And I mean, genuinely, you don't want, you don't want you know over, over the years, you're going to collect 1000s of dollars of AR. That's really not true.
+
+Speaker 1  22:16
+AR should initially, it should initially go into accounts receivable, and it should sit there until at some point you decide to write it over into bad debt. There really should be a secondary that should be a two step process, because it there are going to be times where an RTO company is going to look we're closing this building out. We're not going to keep invoicing customer. But hey, accounts receivable over here work or, you know, a collections over here, I want you to pound away on this customer for a while. Call them email the
+
+Matthias Miller  22:43
+contract isn't closed. Why would you close out the contract if collections are still chasing
+
+Speaker 1  22:58
+it? I thought I had a really good point here. He just left the air out of my wind, out of my sail.
+
+Matthias Miller  23:06
+Sorry, I thought it was an obvious question.
+
+Speaker 1  23:15
+Probably the reason that this would come up is like, we don't want to keep incurring late fees. We don't want to keep incurring things on this account, let's close it, turn it into a fixed amount,
+
+Matthias Miller  23:27
+so it's it's basically, but that's a different thing, that's pause late fees.
+
+Unknown Speaker  23:32
+How do we put we don't have a way to pause late fees currently. Do we?
+
+Matthias Miller  23:38
+Not yet we might, I mean, tell me, I'm wrong. It's an open contract, if you're trying to collect on
+
+Speaker 1  23:54
+it, yeah, but there are going to be times that we repo a building and we close the account, and there's going to be, there's going to be money left in there that we're going to keep there for some time, and that should be a function. In other words, we repo the building, but you still had $1,200 we're going to keep that $1,200 on your account if you ever show up on a random the building. So at that point, it should sit in AR until you decide to write it over into bad debt, but
+
+Matthias Miller  24:19
+only as long as you're trying to collect on it, actively trying to collect on it.
+
+Speaker 1  24:22
+Mm, on it, sure, but you repo the building, so you got to have some sort of like, I guess at that point the accounts, the contract stays open, but it disconnects from the building. How does that work? That wouldn't That wouldn't be right? No,
+
+Speaker 1  24:38
+we wouldn't want to disconnect. What will be the state and some of this, okay, I don't, I don't know that we don't have to solve this one today. It is something that we need to kind of argue through and figure out before we go to market. Because there are going to be states of closure, of a if you want to say closure or there are going to be states of. Accounts where they are. The building is reposed, but there's still money left on the account. The account is closed, but there's still money left on the account. I don't think it's right to immediately write it all over to bad debt.
+
+Matthias Miller  25:11
+Okay, so I propose a two step process. There's there's the end the rental. Like the rentals done, and then it's like, which would be in the case of a retrieval, and then it's like, we're closing out the contract, like,
+
+Speaker 1  25:29
+and so we would have another status for the for the rental contract. It's not open, it's like, semi closed.
+
+Matthias Miller  25:38
+I don't know Well, I mean, it's, it's, it's retrieved. I mean, you have a contract resolution, maybe in a status. I mean, contract resolution potentially would be, would be a retrieval, payout, etc, but then you have a separate contract closure, so you're probably right. That's, like, the, it's the final write off of, like, yeah, yep, we're writing this off, and then if they come back, I think the question, this is an accounting question that I don't have the answer to, if they come back, I'm assuming that how to
+
+Speaker 1  26:09
+bring it back out of bad debt, if a customer ever shows back up again,
+
+Matthias Miller  26:13
+I would assume you would use some kind of other income account or or something recovered, you know, bad recovered bad debt or something like that. Just posted in there. I
+
+Speaker 1  26:56
+i Oh, that would be cool. That would be really interesting to have a revenue account on your P L that is recovered bad debt that whenever you have a customer like this shows up, it's like you you want to talk about something cool to measure for your collection departments, like, hey, the more money that that, that that GL account goes in there, we give you x bonus on that per month, recovered bad debt.
+
+Matthias Miller  27:34
+You could even, I mean this, this is more a reporting piece. But what's really more interesting is you have to be careful, because I don't know, like, there's this, this missing match, you want them to collect as soon as possible. So you want to incentivize that, like, we'll give you X dollars if you, if you, you know, X bonus if you click within 30, this much in 6090, because we want you to collect quickly. But there's also this sense in which, if you, if you incentivize that, you could incentivize them not to collect so that they can wait a year, they'll tell the customer, hey, customer, if you pay an option here, I give you a really good deal, and then come back a year later and get their bonus. Now most, most reps aren't going to be that forward thinking. Most are probably too hand to mouth to to think about that, but
+
+Speaker 1  28:21
+yeah, but I'm I don't specifically know this, but if I was running a rent to own company that had 12 to 20,000 RTO contracts, I would have a bad debt department. I would have an individual or two on staff who it's like once it moves out of regular collections, regular rental collections. It goes into, you know, more it would, you would have a classification of an account for more aggressive rental collections, and then eventually it has to close out of that and go over to bad debt category. And that would be when you actually close out the building, and then you literally have people on staff who try to recover this stuff. I mean, there's, like, there's literally whole companies that go into that go into business to collect bad debt,
+
+Matthias Miller  29:05
+they basically buy the debt and make money off it. Okay, but why wouldn't you also as business management brainstorming? But why wouldn't you alternatively, just be like, April is bad debt months? All right, guys, this plan, we're gonna roll up our sleeves all this old stuff, like, man, if you guys can can hit 1000 you get this much. If you can hit 5000 you get this much. If you hit 10 that, or whatever the numbers are, and you're like, we're gonna do a 30 day sprint. We're gonna get all this stuff taken care of, anything that's that's a good, good month to collect, and a slow month, I don't know if there's a slow month otherwise
+
+Speaker 1  29:38
+this, this is what I would do. I'd go like, hey people listen, April is bad debt month. No, May is bad debt month. I don't know why, but may is bad debt month. Here's the deal. We booked this as revenue we're never going to receive. So I'll split it 5050, if you, if you get it back, you want to talk, you talk about people wanting to get aggressive by getting money back,
+
+Matthias Miller  29:57
+like, or do it in November. Number Be like,
+
+Unknown Speaker  30:02
+bad debt November,
+
+Speaker 2  30:05
+here's your Christmas bonus. That's funny. Yeah, okay.
+
+Speaker 1  30:10
+Are we good? Are we clear on this now? Are we, do we have a good, good direction?
+
+Matthias Miller  30:15
+Yes, I think, I think this nails it. You happy? Yeah?
+
+Unknown Speaker  30:21
+Happy. Ringing my doorbell.
+
+Unknown Speaker  30:29
+Hold on one second, yep,
+
+Unknown Speaker  30:31
+let me see what
+
+Unknown Speaker  30:35
+I got, a package one second. Hi, sure. Thing just okay.
+
+Speaker 1  30:45
+Thank you so much. Addison keeps buying gun parts, and it keeps showing up as signature items. This child, he got, he got this bee in his bonnet. He went shooting with some friends and and he shot this one friend's ar 10 platform with six five creed more. And he got all geeked out about this. So he starts building his own six five creed mark. I was like, Dude, you are such a dingy cat. Like, goodness. It's like, you don't just go build an AR 15 platform. You don't go build an AR 10 platform. You have
+
+Speaker 3  31:26
+to go build it in six, five. Creedmoor, oh, boy, that's funny. He's, he is we he is such a middle class kid.
+
+Matthias Miller  31:34
+We won't. We will. I will avoid making any comments about him being his father's
+
+Speaker 3  31:40
+How dare you. Dare you.
+
+Speaker 1  31:44
+Has he showed has he showed up while he's out there? Has he so? Yeah, he
+
+Matthias Miller  31:47
+came by to say hi the other day. Yeah, good. Got to chat a little bit. All right, yeah,
+
+Speaker 1  31:55
+okay, contract closure. Is there anything more that we need to like? Do we need to talk through write offs?
+
+Matthias Miller  32:03
+Or, okay, how do you handle things like, I don't know, rent is $301 and 00, cents and the or 08 cents, and the person's handwriting was so sketchy, the bank ran it for 00, and they underpaid by eight cents. But really you want us to collect on that?
+
+Unknown Speaker  32:26
+Okay, are you speaking like on an EPO,
+
+Matthias Miller  32:29
+just regular rent payment? Does this happen?
+
+Speaker 1  32:35
+Sure it has. So what you're saying is that you go to reconcile your bank account, and you find out your your your deposits don't match up with your rent collected or well,
+
+Matthias Miller  32:47
+or you, or you go to enter it in, and you enter it in for you realize the check was for not the rent amount is off by a couple cents or something.
+
+Speaker 1  32:56
+So this would be going back and fixing a historical payment
+
+Matthias Miller  33:00
+Well, or when you're entering into payment most times, probably, I guess, you could potentially consider fixing it, but I was thinking more in the context of historical payment, or every not a historical pay. I was thinking more about when you enter it in, somebody writes in check. I'm paying my monthly rent. Their check is off by a certain amount. It's just a few cents. You just forward.
+
+Speaker 1  33:26
+So in the case of fixed due dates, then you're saying it wouldn't move the due date forward. So you just literally go move the due date forward,
+
+Matthias Miller  33:38
+and be like, then at the end of the contract, they'll have eight cents to pay.
+
+Unknown Speaker  33:42
+Yeah, it's part of the EPO at that point. Sure.
+
+Matthias Miller  33:52
+Okay, fine. And then they ask you, why did my due date move on floating due dates? Like, well, you missed eight cents. Gonna pay eight cents? Move it forward again?
+
+Speaker 1  34:01
+Well, yes. But on floating due dates, like, come on customer service rep, you should see that that it didn't quite go, you know, the full ways forward, and you just go fix it,
+
+Matthias Miller  34:11
+override it by day. Yeah, go over, write it.
+
+Speaker 1  34:16
+I don't, I really don't want to get into the conversation about trying to encapsulate due date moves based on missing it by a couple cents. Put that on the people to go handle.
+
+Speaker 1  34:35
+We have, we have more complex things to figure out, like screen pops with the phone calls, which don't look forward to figuring out.
+
+Matthias Miller  34:59
+Okay. Trying to Seth sent me a message on EPO, and I'm trying to see here, if I should,
+
+Matthias Miller  35:16
+what do you want to show in the EPO calculation when EPO already happened? What if, if you already did an EPO,
+
+Speaker 1  35:34
+where are you talking about? Where? What calculation like are you talking about, like on tool tips or in your tool tips or accounts or I mean, if the contract resolution is is EPO, we shouldn't be showing anything in there.
+
+Matthias Miller  35:51
+But don't we need a way to present after you make the payment? Don't we want to present this to the customer
+
+Speaker 1  35:57
+in some way, not the EPO calculations. If you if your EPO is EPO. It's EPO. It's done, it's closed. There is no EPO anymore.
+
+Matthias Miller  36:06
+So literally, you can see this up until the time you do the EPO, and then once you do it, it's done. You can't see this information
+
+Speaker 1  36:16
+anymore. The only place that it probably would be valuable is in some type of receipt function,
+
+Unknown Speaker  36:23
+but hold on
+
+Speaker 1  36:36
+a second. Let me see what Leanne says. Do you have an opinion we're talking about EPO calculation visibility if the account has already if the EPO transaction has taken place. Do you still want to show EPO calculations like you could still see it on the account, what it what it would have been, or was, or
+
+Unknown Speaker  37:03
+that's what I said. Why would you do that? It's closed.
+
+Unknown Speaker  37:08
+That's kind of what I want to say. It's why would we do that? It's closed.
+
+Unknown Speaker  37:14
+Do you dislike that answer? Matthias,
+
+Speaker 1  37:23
+but I mean, after, after it's closed, you would have to have froze those amounts. Because the once you do the EPO like the contract, like you, you would have to have frozen the amount somehow.
+
+Matthias Miller  37:36
+Well, it seems to me like we should theoretically be able to calculate it, minus the EPO payment, minus EPO itself, if somebody
+
+Speaker 1  37:49
+comes, if somebody starts bugging this knot out of me to go for that in
+
+Unknown Speaker  37:56
+we'll go write some custom report to do it,
+
+Speaker 1  38:00
+I'd say on tool tips and on information boxes on the contract, it should say conflict. What I want to say in those boxes is contract closed, or just reflect the contract resolution. Okay?
+
+Unknown Speaker  38:24
+All right, you're you're not, no, that's fine.
+
+Matthias Miller  38:27
+I don't care. That's fine to defer it. The the part of me that makes everything want to tie out, goes crazy over that, but I'm fine. I'm fine with that. Like, the pragmatic part of me of like, let's just do what needs to be done. Like, needs to be done. It's fine with that. I don't follow the part of me that wants to tie, tie these things out and be able to show history so that we have evidence when somebody comes, like, listen, we ran this EPO. Why did you run it for this amount? That's not what the EPO was. All right. Well, here, here's a breakout. You like it? No, okay. Well, if we, if
+
+Speaker 1  39:07
+we're going to do that, I don't think it makes sense to be in the tool tips or in the information box. I think it would be some type of report linked report like, Well, I
+
+Matthias Miller  39:19
+mean, we still need the capacity to generate that information regardless if we want to do this, but we can either
+
+Speaker 1  39:24
+understood but, but I don't think, I don't think your original question was, what do you want to show in these particular information boxes? And I don't think that's the correct place to show it. I don't disagree with you that it might be nice to have a sensible report for it, but I don't think those are the right places to put the information.
+
+Matthias Miller  39:39
+So when we put, when we build a report that has this memo in it to show the breakdown anyway. The pragmatic side of me is like, if you don't need it, let's not build it. So fine. Like, I don't care.
+
+Speaker 1  39:50
+I want to go. I want to go with the we don't need it, so let's not build it. But in the future, if, like, in the future, if we're going to do this, we'll. We'll build some user report and say, Here, Mr. RTO company, here you go. Now you can calculate, like, put in your contract, your contract value, and you can calculate this now, hallelujah, clap, clap, clap. You got your thing. And then all
+
+Matthias Miller  40:15
+kinds of values, but sure
+
+Speaker 1  40:16
+if a whole bunch of people start asking for it, well then we'll eventually just put it on the
+
+Matthias Miller  40:32
+account. There's something for this.
+
+Unknown Speaker  40:43
+Let's do this now you argued with me over long enough now you have me thinking,
+
+Matthias Miller  40:52
+sorry, like I said, I'm happy to move on.
+
+Speaker 1  40:55
+Well, okay, here's, here's the, here's exactly what I would do in RTO Pro. In that scenario, more than likely we would go reverse the the EPO transaction, so you can go see what it was, and then redo the EPO which would cause accounting havoc, or it would cause a lot of accounting transactions, which seems ridiculous, so maybe we want to minimize that. So maybe we should give them a defensible report.
+
+Matthias Miller  41:33
+I'm fine with that. The one, one warning is, if I end up being right, I don't know if I have the humility not to say I told you so I
+
+Speaker 3  41:46
+I don't think it requires humility. I think you would be entitled to say I told you, so, okay, fine.
+
+Speaker 1  41:59
+I mean, the other option is we just go build a go build a report and stick it, I don't know, make a standard report that actually does this. And somebody says, Hey, how do we how do we figure this out? Just like, Okay, go look this thing up and then assign it to your favorites. I don't know. Maybe, maybe there's value here. Maybe I should listen to you.
+
+Matthias Miller  42:17
+Okay, in my head, and I suspect my head is wrong. In my head, it's as simple as well. Just calculate EPO without the actual EPO transaction, right? But my head might be wrong.
+
+Speaker 1  42:31
+No, your head's not wrong. The only difference, the only difference is that time will would theoretically change that, not necessarily, I guess at the point that you actually close the account, the EPO happens. No more, no more months of rent would be incurred.
+
+Matthias Miller  42:50
+What we don't know is that your EPO could actually have partially been from prior paid payments and fees, which we don't we would have to look at the the payment ID of the EPO payment, and exclude anything tied to that, and then we could so,
+
+Speaker 1  43:08
+so, so just, just to clarify, if you're going to do this concept, that means that what you're actually trying to recreate is a snapshot in time in history, at the point of the payoff. If you can accurately represent that snapshot in time. It's valuable.
+
+Matthias Miller  43:24
+Can you The other option is we create a note that says the EPO. We applied an EPO with these calculations, and you freeze it as a note,
+
+Speaker 1  43:38
+because that would give you, that would give you the breakdown at the point that would that would freeze the snapshot. Yeah, that's not a bad idea, because that's really what you would want to know. What happened. Oh, what time?
+
+Speaker 4  43:53
+Yeah, it really is. Oh, boy, we got to jump over. Yeah, I was gonna say, what time is that thing? 930 1130
+
+Unknown Speaker  44:01
+so we need to jump over.
+
+Matthias Miller  44:03
+Yep, awesome.
+
+
+Transcribed by https://otter.ai

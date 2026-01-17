@@ -1,0 +1,950 @@
+Speaker 1  00:55
+Howdy. Howdy. Flip. Yeah, the mic flip. I am so sick and tired of looking at this stupid dashboard and can't figure out how to rearrange my information to actually appease my my feelings.
+
+Matthias Miller  01:20
+Yeah, yeah. Man, hey, when that happens,
+
+Speaker 1  01:27
+yeah, me too. I'm trying to squish too much on, and I can't quite figure out if I want to eliminate something. But it's like, if everybody worked on a 50 inch TV, this would be so simple, I'd put more information in.
+
+Matthias Miller  01:39
+Well, you have, you could have a compact and a comprehensive view.
+
+Unknown Speaker  01:56
+Is there no way
+
+Unknown Speaker  01:59
+to activate buttons
+
+Unknown Speaker  02:05
+on a detail screen when you put them inside of a dashboard.
+
+Speaker 2  02:09
+Like, what do you mean? Okay, so child windows, yeah, nope.
+
+Unknown Speaker  02:16
+This is not good.
+
+Unknown Speaker  02:25
+I guess it is what it is
+
+Matthias Miller  02:30
+anyway. Talk to Josh about it.
+
+Speaker 2  02:39
+Yeah, I might, I might. I don't know. I don't know. Anyway, I don't know. I don't know.
+
+Speaker 1  02:52
+I'm trying to figure I'm trying to build a kind of a one stop shop, customer dash, customer account, dashboard type thing where it's like you can see everything. You can see the Contact Detail screen. See the contract detail screen. You can see concatenated notes. You can see contract information, payment information. And I decided to try and stuff in the Make a Payment window. Why not?
+
+Speaker 1  03:21
+So? I want, I want everything in one place. It's like, you open it up and it's all just glorious in front of you. Anyway, that's not what we're here to talk about.
+
+Matthias Miller  03:35
+All right, I believe I did not. I kind of pleasantly ignored some of your conversation yesterday with Seth, because
+
+Unknown Speaker  03:45
+implicitly ignored it.
+
+Speaker 1  03:48
+Seth, you can't activate my designer brain, or otherwise, I just start going off, and then it's like, well, wait a minute, why
+
+Unknown Speaker  03:54
+don't you guys go design this thing? Yeah, go figure it out. That's fair.
+
+Speaker 1  04:09
+Okay, here's my, here's my, yeah, let's open up, open up that URL thingy. I
+
+Unknown Speaker  04:28
+Okay, all right. Hope you feel better.
+
+Speaker 1  04:36
+Okay, the main, the biggest thing that I'm I would love to figure out is under the Okay. Seriously, I'm trying to have a conversation here. How could we do this? I don't like the Okay, forgive payment section. I don't like the whole drop down period, fee drop down. Like can. We turn this into some sort of virtual RG of items to forgive
+
+Speaker 1  05:10
+something or other like that creates a lot of visibility around you know what, like the items that can be done
+
+Matthias Miller  05:19
+and what the fees are, right?
+
+Matthias Miller  05:32
+Okay, so let me think options virtual RG still need a place to store it. I guess we could store it in the detail variable. That would work, kind of weird it would work that would push it off into an X 30, presumably I,
+
+Matthias Miller  06:03
+what about due date stuff?
+
+Speaker 1  06:08
+Um, I guess I don't quite understand what is the period drop down on dude on Edit due date. And I questioned Seth on this, and he said, Well, would you want to shit create a new date, a new due date, for a period in the future. I guess I'm not quite understanding.
+
+Matthias Miller  06:29
+Well, we could technically say that, look, the next two due dates are going to be in a normal time, and then come January. You know, normally your due date would be December 28
+
+Unknown Speaker  06:38
+No, that seems no.
+
+Speaker 1  06:46
+I mean, at that point like, okay, that maybe I'm passing up an opportunity for some really cool flexibility. But that seems overly complex. Essentially, that was what I was proposing to Seth is to say current due date auto calculate. I'm not sure what the difference between current due date and auto calculated due date is, but basically, what is the current due date showing? Next due date showing, and then you can make a new one. Well, I mean,
+
+Matthias Miller  07:14
+if you had an override previously, who cares? Well, you can't go backwards before that. If they paid 12 months worth, you can't shift their due date back to 11 and a half months, right? So you
+
+Matthias Miller  07:39
+just don't want to show it and just give an error.
+
+Speaker 1  07:42
+Well, I guess, I guess. What I'm not under quite understanding is,
+
+Speaker 1  07:54
+what's the current due date? What the current due date currently is, right? Yeah. And so the auto calculated would be based on what from the start point of the contract and all money that has been paid. And is that what you would be auto calculating
+
+Matthias Miller  08:13
+with the fixed due date? It would be, what would the due date be? How many complaints? Completely, completely full month have been paid, and what's the due date based off of that. So if you pay three and a half months, then your current due date would be month three, or whatever that comes out to it
+
+Speaker 1  08:41
+sounds like. It sounds like what you're saying is you have the auto calculated is essentially the floating number.
+
+Matthias Miller  08:48
+What's the minimum due date? No, it's not, well, it's not floating.
+
+Speaker 1  08:51
+But yeah. So basically, what you're saying is you could back date up until November the 26 if the current due dates 1128, and the auto calculate is 1126 the furthest you could go back is 1126
+
+Unknown Speaker  09:04
+right, backwards, right.
+
+Speaker 1  09:08
+So you couldn't go back beyond that. I'm just a little bit worried about, Okay, this looks like a setting the calculation number, or whatever you want to call it, that somebody's going to call me up and go look, what is this minimum due date I don't understand. Like, can we get it?
+
+Matthias Miller  09:30
+Does this make sense?
+
+Speaker 1  09:33
+Yeah, but anytime you say minimum due date based on what and maybe it is, but just document it and explain it, understand where you're going. Now, I just not sure how to make it WYSIWYG
+
+Matthias Miller  09:54
+it's not quite that.
+
+Matthias Miller  10:12
+Mean you could make this be the lot the prior period. So you can make it say 1026, 2025, i i and just let people in for it. I mean, is the question whether it should be visible at all, or do we just tell them, Look, you can't backdate it prior to 1126,
+
+Speaker 1  10:31
+okay, if you're, if you're coming from RTO pro world, all we would have there is current due date and the override field. That's all we
+
+Matthias Miller  10:40
+would show it. Is that what you want? Well,
+
+Speaker 1  10:42
+okay, the question then becomes, if someone goes backwards, and we say, well, I guess if you decide to go backwards beyond a certain point, we could just throw up a warning that says, hey, this customer has paid through this date. You can't go back further than that.
+
+Matthias Miller  10:57
+Well, with floating due dates, you really can't, like you can't do that. You just can't,
+
+Unknown Speaker  11:04
+right, because the date floats with whatever was paid.
+
+Matthias Miller  11:09
+I mean, why would you have a payment due in your current I mean, that's just, I guess maybe that's not it. No, I don't know. I guess you could listen, this is your call. We're trying to make it sane and sensible in the back end. But if you want want to let people do weird funky stuff, that's fine.
+
+Speaker 1  11:32
+I don't know. I know. I'm not nuts, not that I want to let people do weird funky stuff. I'm a little bit a little bit worried about people not understanding what they're looking at. That's my main concern.
+
+Matthias Miller  11:42
+So then, what are other ways that we can describe what this number is?
+
+Speaker 1  11:45
+Well, I do. I did kind of like your rent value paid, like rent paid through whatever. And then the next due date, which would be the, I guess the current due date is, yeah, so, so, in other words, you couldn't go back further than 10. Okay, what I'm saying is, could you go back to 1026 for? What would you do that for? I'm not sure.
+
+Matthias Miller  12:13
+No, they paid through that. It would be 1126 you can't go before 1126. You have to give them a month. I mean, again, unless you want them to do stupid stuff, like, like, they want to shorten their like, like, shouldn't they make Shouldn't you move it out to 1220, and collect the difference? I don't know. Maybe you do What? What? If
+
+Speaker 1  12:40
+it's probably a little bit too wordy? I was gonna say minimum due date based on like, that's so wordy. It's gonna Okay. Minimum due date based on amount paid is really what we're saying. The 1126, is the number. But how do you say that? In a very concise way? For a field name,
+
+Matthias Miller  12:59
+you make the due due date be the default. Say again, you do this. You
+
+Matthias Miller  13:36
+You defaulted to the, to the, to what it should have been current schedule. Yeah,
+
+Speaker 1  13:43
+so, so literally, if they, if they, if they went and clicked edit due date, and they hit confirm, it would back it to 26
+
+Matthias Miller  13:49
+Yeah. I mean, that's probably not a good thing. But
+
+Matthias Miller  14:00
+is there a problem? Is there legitimately a problem with them shortening? Well, yeah, there is, because
+
+Unknown Speaker  14:15
+you're gonna throw up counting wacky doodles.
+
+Matthias Miller  14:22
+Well, no, but you could say, no, no, you can. You can't. The paid through is the minimum. You can't make it do on the 28th but you could make it do on the on 1027, and they'd have to pay $1 right? You so why not just, I don't know
+
+Speaker 1  14:45
+why you would want to go back to that, but yeah, so I mean, actually, I like this. If we just say current due date and we say what they've been paid through. And there you go. If we let them go back to 1027 you couldn't do 1026 you'd do 1027 not sure why you would do that. But what? What would happen if, I mean, what would come do on 1027 another full month
+
+Matthias Miller  15:24
+well, I guess that is the question. Then, when you're using full month periods, what does become do?
+
+Speaker 1  15:38
+Okay, no, no, that's not fair. If they've paid through 1026
+
+Unknown Speaker  15:43
+then their next Wait a minute. Wait a minute.
+
+Speaker 1  15:49
+Okay, you always are paying for the month that you're about to use. So to say, someone's paid through 1026 six.
+
+Matthias Miller  16:04
+Well, I mean, again, here's where partial months gets you in trouble, because if they paid three and a half months their due date, you can't shift it back to the beginning of that month. You
+
+Matthias Miller  16:37
+so in some ways, you want this to be the period end date, not the period start date,
+
+Speaker 1  16:45
+okay, so if on on January the 26th I rented that building, okay? And I paid that first month. My next month is due February 26 and so on and so forth. Okay
+
+Unknown Speaker  17:10
+to say, I'm paid through a certain portion. It really should be,
+
+Speaker 2  17:21
+if my depth, that's
+
+Matthias Miller  17:25
+almost where you went, floating due date logic, like you say, if you pay month one, you pay for a month well, except barring down payments,
+
+Speaker 1  17:38
+unless we went, unless we made this like stupid, idiotically simple, and we said, Get rid of your rent paid through. Just put current due date, new due date, with a warning right below it that says, you cannot go back. You cannot go back. You can only go forward. I don't know
+
+Matthias Miller  17:56
+well, except you can. You have to be able to undo your going forward. At some point. Why you give them two extra days and you okay? So if you give them two extra days, you can't take those two extra days
+
+Speaker 1  18:18
+away. Oh, you're looking at it that way. I Okay. So then, really the calculated, the calculated thing he had there was basically calculating from the very beginning of the contract, if at some point you moved it, okay, okay,
+
+Speaker 2  18:40
+um, is
+
+Speaker 1  18:58
+one of those things that's really could be really cool, but it could be really hard to understand for most people, because most people coming from RTO world don't think in periods. They just think it's very much like, well, due date, like, there's always been a mental disconnection between due date and values paid because right,
+
+Speaker 1  19:22
+because we always said, okay, whatever, like the contract balance minus what's paid is what is, is basically what's left to pay on the contract. The due date is whatever you make it. You can go forwards. You can go backwards. Nobody cares, right? But we care now,
+
+Matthias Miller  19:45
+right? Well, I mean, that's the idea now, another way is to visibly surface the plus or minus number of days, like the freak. Idea number of free days
+
+Matthias Miller  20:18
+Dave's grace is wrong.
+
+Speaker 1  20:32
+Long, well, unless, unless you would just write below, unless we just said current due date, new due date. And then if this thing was ever moved forward, then it would show up as a number of days below. And we just due date was moved on such and such a date by No, no, not, no, that's not, that's not do that due date was moved, or due date was moved by X number of days is and then that would be kind of like like. So if someone says, Well, I want to go backwards, then, well, you can only go backwards by X number of days.
+
+Speaker 1  21:28
+But the only time you could go backwards is if you at some point in the past you had moved it forwards. Otherwise you can't go backwards like you. If this thing was never moved the current due date. You can't go back further than 1128, it's not possible.
+
+Matthias Miller  21:49
+I don't know. Contra What about contract due date? What do you mean it is a due date according to the contract? No, okay, what if? What about a notice like this? This will be the due date forward or back X days from the original contract. Or I
+
+Matthias Miller  22:53
+Okay, functionally, go ahead.
+
+Speaker 1  22:55
+What I really want to say is, there is just the current due date and the new due date field, and if someone tries to go backwards, we're just, I don't, but I don't know what we would say at that point. It's like, to tell them they can't do that is where, again, we get into the confusion territory. It's like, well,
+
+Matthias Miller  23:14
+you could say, okay, technically, there's no reason why we can't move. We can't, literally have a full month of rent due the day after you just paid a month of rent.
+
+Speaker 1  23:31
+So what you're saying then is, if you decide, we just give them full freedom, if you decide to go forward or backwards, the next time that date comes up, we're going to incur a new month of rent.
+
+Matthias Miller  23:40
+Yep, and it's basically warning. And then you have a your deferred rent would? It would be negative, basically, if, from an accounting perspective, it's an accelerated payment,
+
+Speaker 1  23:58
+unless we just straight up never allowed someone to go backwards, like, once you moved it forward, you can only go forward. That's the only way you can ever go is forward. We never allow you to go backwards. Well, who's going
+
+Matthias Miller  24:15
+to answer this question? This? This is a how do you want to run the business and how do you run the software question?
+
+Speaker 1  24:19
+Well, the problem is, I'm going to get 10 different answers from from 10 different people. No, no, it's more like this. I'm going to get 10 different answers from five different people, right? Each one of them is going to have two different answers to this question. And I don't. I want to. Right now, I feel like going the most simplistic route and says, you can never go backwards. You can only go forwards. And then when people holler and scream about this, like we want to go backwards, then I can say, why? And say, Why do you want to go backwards? And at that point, we might have good information to say, Oh, well, that actually makes a lot of sense. Why you would want to back date a due date,
+
+Unknown Speaker  24:52
+right? Let's do that.
+
+Speaker 1  24:54
+Let's not allow anybody to ever go forward. So if you try to put a date in the past automatically, of just. The little warning box starts up. It says a date must be in the future. I mean,
+
+Matthias Miller  25:05
+it has to be on or after the current due date. Yeah, let's
+
+Unknown Speaker  25:08
+do that. Let's make our life simple.
+
+Speaker 1  25:17
+And if you gave it to him, too bad you can't go back and take it away. It is what it is. I mean, I have this feeling I'm probably being too narrow minded on this, but at the point we have more information that makes sense, why we would be more broadly minded than when we broadly minded
+
+Unknown Speaker  25:36
+that fair or that,
+
+Unknown Speaker  25:41
+as you would say, Yeah, happy now.
+
+Matthias Miller  25:43
+You're happy now. Okay, so Seth, okay, so then you're happy with this design. Do what you're happy with this design.
+
+Speaker 1  25:56
+Then prefer due dates, yes, if we could figure out I kind of like the virtual RG thing to be honest
+
+Matthias Miller  26:05
+with due dates or forgiveness, forgiveness, payments, forgiveness. So this one can just be an Ask, ask prom with a due date and default to the current due date. You're 100% right. Okay, Seth, which, which.
+
+Speaker 1  26:18
+Now we're back to the the other idea I had, which is, let's make it one button and put it all together with the forgiveness. With the forgiveness, forgive and edit due dates. No for, I don't know. Maybe that's, well,
+
+Matthias Miller  26:28
+let's, let's wait for that edit due date. We will simply not allow you to go backwards from the current due date. Can only add days this me also can't extend it. Can you extend it more by more than one period?
+
+Speaker 1  26:53
+Sure you can go as far into the future as you so feel like giving as far as you want To forget with it?
+
+Matthias Miller  27:09
+Dirty button, altitude, ask, prompt. I
+
+Unknown Speaker  27:33
+Okay, now,
+
+Matthias Miller  27:41
+this buddy, so we have period fee balance.
+
+Matthias Miller  28:01
+Okay? To get Sean on this call, just So you can run this stuff.
+
+Matthias Miller  28:26
+Sure Bob,
+
+Speaker 1  29:21
+okay, one thing we did not discuss on the Edit due date thing, what happens if someone's past due and you want to edit the due date? Which one are you editing?
+
+Matthias Miller  29:32
+You have to you have to list. You can't edit the past due. You can go waive the fee. Their current due date is, is the okay? I mean, go forgive the fee and adjust your new due date. It's already past due. You can't go back and say, Huh? That was then. This is now, do. You just said it going forward and forgive the late fee. They were late.
+
+Speaker 1  30:06
+Okay, well, how? Okay, talk me through what happens. Okay, customer makes one, I forgive one, which in RTO pro land that was, you made a payment. I just moved your due date forward. There was no actual money function to it. What it sounds like? It sounds like you're saying there's a money function to this. I don't understand you.
+
+Matthias Miller  30:36
+Which part so they're late. You forgive their late fee.
+
+Speaker 1  30:43
+What are you calling a late fee, the five or $7 or whatever, yeah, or the rent, yeah. What happens to the incurred rent?
+
+Matthias Miller  30:52
+They still have to pay it. It gets paid.
+
+Speaker 1  30:56
+We have it again. But what I'm saying is like you have one of the strategies that we often use is you, and I know some other companies, they will they will do this by paying a rent only payment. We haven't even talked about that yet. That's a fun one. We're going to figure out in the future. But for in the case of us, let's say you're three months past due, and you say, Hey, Mr. Customer, if, if you make one payment, I'll defer one payment. Okay, which what we what we call deferring is simply, if they're due on June the first and they paid, and that they paid the June payment, they're now juked on July the first. We just go move the due date to August the first.
+
+Matthias Miller  31:47
+So you are moving dates with late fees attached to it.
+
+Unknown Speaker  31:53
+The late fees stay. They don't go anywhere.
+
+Matthias Miller  31:57
+You're just moving it. You're just moving it, yeah. So the next due date should be the earliest unpaid due date.
+
+Speaker 1  32:05
+So if we said the earliest due date, the due date you would move would be the earliest unpaid due date. Would every due date after that shift, and what if there's Yeah. So what happens if there is, what if you had, in if you shifted two payments, and it was already incurred, but now that incurred, one's out in the future, and it just sits there until the till that date comes up.
+
+Matthias Miller  32:31
+Yes, okay, I like that. And if you have a, if you have a late fee, and you bump it out into the future, the late fees still apply. I suppose. I don't know, yeah,
+
+Speaker 1  32:41
+I mean, ideally the late fee would track with whatever period you moved right it would,
+
+Matthias Miller  33:00
+yeah. Be the release on pay period. Okay? So if you paid half a month and you move the due date, you would move the due date for that half month. If you had, if you're two months late and you had late fees on both of them, or you had three months and they pay one, move the next two into the future, you still have to pay a late fee in January, or whenever you get around to it.
+
+Speaker 1  33:22
+Yeah, the late fees would still be there. Yeah, good, I think. So I'm curious to see what that's going to functionally work like, because that's, I mean,
+
+Matthias Miller  33:35
+we're just shifting all due dates, recalculating All due dates after that, just go to this period, shift to due date and move everything else forward accordingly. Yeah, which is why it's nice to use an X 30, because it makes it really easy to make these changes. Okay, so it's something like this, if you can avoid, I mean, if you can get past my obnoxious he
+
+Speaker 1  34:07
+I want to forgive for the for the period of 1025, on the Damage Waiver fee, I want to forgive $5 please, and thank you. Yeah, I only owed four, but I want to forgive five. Can that make me a negative credit value? Wouldn't that be cool? No, you can't do that.
+
+Matthias Miller  34:28
+No, you Uber. And I want to do $5 here. And I would do
+
+Speaker 1  34:36
+well, we couldn't forgive Damage Waiver fee. That's not like rent, so it'd be late fees, process other fee, late fees and other fees,
+
+Matthias Miller  34:49
+you know, something like this, right, right? And then you'd have something like, let's move this guy down. I.
+
+Matthias Miller  35:09
+This is like,
+
+Speaker 1  35:38
+oh, you know what we have to stick on our our our thing, oh, this, that has to be designed very, very sometime in the future, soon, is handling NSF checks. We didn't, we have not thought through that.
+
+Matthias Miller  36:00
+Now let's be confused with NSFW worker checks, huh? Not to be confused with NSFW checks.
+
+Unknown Speaker  36:07
+NSFW I'm confused that
+
+Matthias Miller  36:15
+work not safe for work. We would periodically get some that were close. All right, cool.
+
+Matthias Miller  36:34
+I mean, it's something kind of like that. What do you think of that?
+
+Unknown Speaker  36:40
+Me, likes,
+
+Speaker 1  36:43
+and it's a, would it be? Would it be an RG or an MRG? So you would click the row and the date the details would be, believe
+
+Matthias Miller  36:49
+you would just edit, or you just edit straight in here. Okay,
+
+Speaker 1  36:53
+Seth didn't seem to want that, but I'm good with it. I mean, that's what I was originally thinking. I
+
+Matthias Miller  37:39
+Hell, he gets terrible.
+
+Speaker 1  37:41
+I read. I read, use a virtual RG that drives off a list of periods plus a string table stored in a derailed variable.
+
+Matthias Miller  37:48
+Derailed variable, I've had some of those detail variable, derailed variable, deranged,
+
+Speaker 1  37:57
+pushed in next 30 via S Pro happy to have you jump on to shoot it down, or you we can chat later. Come on Seth, come in here and shoot it down. I
+
+Matthias Miller  38:33
+of There you go. You answer. I
+
+Unknown Speaker  38:42
+just said Shooting is more fun.
+
+Matthias Miller  38:47
+It would be until four CT,
+
+Matthias Miller  39:01
+this is just, let's go back to your screenshots, because those could be useful.
+
+Speaker 1  39:18
+So just to clarify, there is no functionality where there's sub pane or dashboard or any type thing like that, where you could simultaneously view more than one detail screen and have child screen buttons available, correct.
+
+Matthias Miller  39:39
+No, no magic if you want them, if you want them to be editable, no if you can have one of them be read only, we can throw a child screen into a child
+
+Matthias Miller  39:56
+I mean, we can give you read only child screen. I. The main,
+
+Speaker 1  40:05
+the biggest one that I'm running up against is auto pay. Is, if you are in a beautiful customer dashboard, and the customer is like, all right, I want to set up auto pay. It's like, you're gonna have to pop out the contract detail screen in order to get to it, that's the big deal.
+
+Matthias Miller  40:27
+Well, I mean, the alternative is having something on the detailed screen that's like a like, do it like a child detail screen, but Have it actually, ah,
+
+Unknown Speaker  40:48
+uh, this guy,
+
+Matthias Miller  40:59
+where you like, this would just pop something open on this screen itself. You just basically have a toggle.
+
+Unknown Speaker  41:15
+I'm not sure I understand what you're saying. Trying to
+
+Matthias Miller  41:19
+think if you have a client's instead of a pop up, we would literally have this be, like this part here, be, I don't know, in here, and it's In a toggle to show or hide it.
+
+Unknown Speaker  41:39
+Gotcha. I don't know.
+
+Unknown Speaker  41:46
+I think we're gonna leave it alone for the time being.
+
+Matthias Miller  41:51
+Okay? Well, we have an option.
+
+Speaker 1  41:56
+So basically it's like, it would be like, unhiding a big card. Yeah,
+
+Matthias Miller  42:05
+you might even show the card here and that, I mean, like, I mean this, this button could be a if this thing, this section here, would be fully wide, would be the full width, then this could be something like show schedules with the right like, something like
+
+Unknown Speaker  42:21
+show schedules.
+
+Matthias Miller  42:27
+And then a hide schedules, it just pops it open and shut. I
+
+Speaker 1  42:40
+uh, like I said, let's leave it alone for the moment.
+
+Matthias Miller  42:57
+Look, here's this
+
+Speaker 1  43:00
+is there, is there? Is there a way through a link action to launch the detail screen with the schedules already open? You know,
+
+Matthias Miller  43:12
+you can do it with it already open, but there's no way to get back to the parent detail screen. Then if you do, I
+
+Unknown Speaker  43:28
+Okay,
+
+Matthias Miller  43:34
+like, here's here's an example, here's this one, and then here it is as a main screen, and you can edit it, or shrinking boxes, and you can
+
+Speaker 1  43:49
+so what you're saying is you could, you could launch, you could launch the detail screen of this of the auto Pay schedules, stuff as like a standalone open screen, right? You'd have, you'd have to do that while holding down your control key into a new tab so that you still have your other one.
+
+Matthias Miller  44:11
+Yeah, and when you save, you'll have to reload the first one, currently, until we get our collision stuff in working again. Collision stuff in Josh had temporary changes that would actually let you open detail screens in two windows and be able to save gotcha in both places.
+
+Speaker 1  44:34
+Gotcha, I have been known to have multiple detail screens open and and and then wonder why one of them looks wonky when I come back to it. Yeah, I think I've actually had, like, two and two open in Edit status. And I'm like, Wait, that's not right. And go back and fix something and overwrite the first one. I've done stuff like that. It's like, when you get 100 windows on. And it's like, you do dumb
+
+Unknown Speaker  45:01
+stuff. You
+
+Unknown Speaker  45:02
+do dumb stuff. Okay,
+
+Unknown Speaker  45:05
+are we? Are we enough to bed with that?
+
+Matthias Miller  45:09
+Yeah, I mean, Seth will hop on you. Want
+
+Unknown Speaker  45:18
+to, you want to yak about contract closure until he gets here.
+
+Matthias Miller  45:21
+Yeah, what do you want to do with contract closure? Be
+
+Unknown Speaker  45:25
+able to close them.
+
+Unknown Speaker  45:36
+This is just
+
+Matthias Miller  45:42
+what should the closure process be? I think that maybe that's my head just hurts. I don't know why it's so complicated. I
+
+Speaker 1  46:15
+I'm thinking, I'm trying to think of a of a I'm
+
+Speaker 1  46:35
+trying to think of if we've done anything like this in anything else I thought we had at one point, didn't we? At one point say in the payment whiskey, we would have, you could take a payment and call it closure. Oh, um, oh, man, this is, this is a this is a bottomless pit of of accounting drudgery. Is what I this is going to end up being, because in the world of RTO Pro, you can literally close a contract. You could do an EPO for any dollar value. You so jolly well, please, and call it an EPO and call it done. Or close out the contract for any dollar value, like when you close a contract in, when you close something in RTO pro, you hit contract close, you select what type of closure that you're doing, and you can process $1 value, or process $1 value or not process $1 value. If you process it, if you process it as I think, if you process it as close it with no dollar value, whatever's left.
+
+Speaker 1  48:02
+Let me think. I think RTO pro like will like if there's, if there's a contract value left on, like the the remaining, hold on, bless you if you close a contract with not paying the contract in full. Okay, it closes out and leaves the remaining contract balance as a value on the contract to be paid. But the contract is considered closed. In other words, if the customer ever comes back and says, Hey, I want to run on the building and you open up their con, you open up their con, you open up that customer like, Oh, I see you had a former contract that there's still values outstanding on that you never paid for, but it doesn't we don't keep billing for it. We don't keep trying to collect on it.
+
+Matthias Miller  48:52
+Okay, make sense? So you'll collect, but you would never actually, literally reopen the contract. You would collect a payment on a closed contract.
+
+Unknown Speaker  49:04
+Correct. That is correct.
+
+Speaker 1  49:11
+EPOS, if you were to try to close a I know that you can close a contract as an early payoff, and you can adjust the value of the EPO. The question is, if, if, in the accounting world, if you said the EPO is $5,000 and you said, I am feeling really nice today, because I am just a really nice person, I'm going to close it for $4,500 what are you going to do with that other $500 show it as a loss.
+
+Matthias Miller  49:46
+First of all, we are not accounting for contract cloture for I mean, that's essentially rent forgiveness, which you said we don't support. I.
+
+Matthias Miller  50:20
+So I think what you're saying is we need a way to adjust the contract value well in all your seems like a rent write off, really, rent forgiveness really is the way to handle that.
+
+Speaker 1  50:48
+Well, unless we said, unless we said, you can close, okay, literally closing a contract where there's a contract balance still on the like that part, I don't think has any you or I don't have any problem understanding that correct, right? Closing is damaged, waiver, free write off, or closing as as a write off, all of those are very easy to understand from a an accounting perspective, correct?
+
+Matthias Miller  51:17
+Yeah, you just write it off as a loss, right? Well, I mean, who knows how to write it off? However people want to write it off, but effectively it is a loss on the sale of an asset. Well, it
+
+Unknown Speaker  51:32
+wouldn't it become bad debt.
+
+Matthias Miller  51:34
+Bad debt, right? Well, that's where you have to Yeah, it would be
+
+Speaker 1  51:40
+so in the event, why wouldn't we say, in the event that you decided to be kind and close out a contract by early cash payoff for less than the early cash payoff amount, why wouldn't we just throw the rest of it in bad debt, And if
+
+Matthias Miller  52:01
+you don't like it there, then make a journal entry explain why you're moving it right?
+
+Speaker 1  52:05
+I don't know where you'd move it to ask my accountant, maybe
+
+Matthias Miller  52:09
+charitable contributions.
+
+Unknown Speaker  52:13
+I mean, that would be one way to handle it.
+
+Matthias Miller  52:18
+So that means that we need to.
+
+Speaker 1  52:23
+I mean, if you, if you okay, if there was a button on the contract that said close contract, when you pushed it, you were presented with a list of options on the ways to close the contract. And you selected EPO as the early cash payoff, and it would present you with the early cash payoff, dollar value and the calculations as such, and it says $4,500 and I say, No, thank you. I'm gonna, I'm gonna override it to 4000 then we would simply warn you and say, the remaining X dollar value, whatever the dollar value would be, the remaining $500 is going to be applied to bad debt. Yes. Okay, okay.
+
+Matthias Miller  52:59
+Does this actually happen a lot?
+
+Speaker 1  53:05
+It happens. I don't know how much about a lot, but I've done it in the past where it's like, Hey, Mr. Customer. Well, it usually goes something like this. I have an EPO plus, you know, a bunch of past due rent is usually what it comes down to. And you say, Hey, Mr. Customer, listen, if you pay off today, I will just forget about that extra $500 of payments that are due, and we'll close it for $4,000 today. You good with that? Oh, man, yeah, I'll do that. And signs, you know, sends me a check or give me a credit card. You close the account for a $4,000 EPO and but then you have to figure out what to do with the rest of that money that was technically owed.
+
+Matthias Miller  53:56
+Can anybody do this? Can anybody do this? Anybody close, close, a do an EPO for any amount. I
+
+Speaker 1  54:15
+don't know. We'll have to figure that out in the future. I think it probably, it probably should have a check. It should probably be a a component in the restrictions that we would apply into restrict into a user level at some point, it probably should be there.
+
+Matthias Miller  54:33
+Does it? Does it show up in the future when they want to start a new contract? Oh, you still have two months payment. Yeah.
+
+Matthias Miller  54:45
+I'm assuming not you made a deal with them.
+
+Unknown Speaker  54:53
+I mean, the other option to be would
+
+Matthias Miller  54:55
+let them forgive rent, huh? Just let them forgive rent. Only at the point of payoff.
+
+Unknown Speaker  55:05
+Or are you saying let them forgive rent anywhere?
+
+Matthias Miller  55:08
+I don't know that's to be an admin anyway. Say, Oh, let me call my supervisor over here. I'll bet you they'll, they'll forgive this rent. Just let them forgive it anytime. We just write it off.
+
+Speaker 1  55:19
+Forgiving rent should only take place at the point of payoff any other time in between there you should move a due date, or, you know, something like that. And you don't technically forgive rent, but
+
+Matthias Miller  55:33
+can we record it as forgiveness at the end or as a bad debt?
+
+Speaker 1  55:36
+Well, yeah, I think, I think okay, whether you record as forgiveness or bad debt. I think that's where, if you want to call it forgiveness, on the Okay, what would be kind of cool. This is what would be interesting, is if you kept the dollar value on the contract somewhere, as a forgiven amount, wrote it off as bad debt. The problem is that if we keep it around, then somebody would want to reverse it. At some point, we'd have to reverse it at some point, we'd have to figure out how to reverse it and actually have a customer pay it before you open up another contract. But Seth is here now, so we can, we can continue to beat this horse. He is here to poke holes.
+
+Matthias Miller  56:13
+Okay, so my very simplistic thought, you have a virtual RG that finds all periods and fee combinations with a balance. You turn it into a string table that looks something like,
+
+Matthias Miller  56:37
+something like that. You key, off of this to a have a editable macro that updates string table figure out some kind of way to encode it and push it into the x 30 as an Ask prompt, I guess, ask pro prompt goes into a report. The report turns it into repeat for list, split columns X 30 drives off an input file.
+
+Unknown Speaker  57:19
+Okay, details, detailed variable where you cash this,
+
+Matthias Miller  57:27
+yeah, it'd be something like this
+
+Unknown Speaker  57:31
+is what's called a complex forgiveness event.
+
+Unknown Speaker  57:34
+Oh, it is
+
+Speaker 1  57:41
+not to be confused with human emotion, human forgiveness at all, which is also a very complex
+
+Speaker 3  57:49
+forgiveness event, yeah, what's complex here is there's a lot of logic involved. Yeah,
+
+Matthias Miller  57:57
+first emotion, yeah, this
+
+Speaker 3  58:01
+is easier to rationalize period, fee and amount. They've got to have some sort of validation that amounts, not more than balance. That amounts, not negative. The reason has to come through,
+
+Matthias Miller  58:24
+yeah, we'd have to have a way to put a Serializable struct might actually almost be easier, I mean, or just Yeah,
+
+Matthias Miller  58:42
+an i An ini config,
+
+Unknown Speaker  58:45
+and then you would just the confirm button doesn't show unless the variables different than the, Oh, would you do the validation here?
+
+Matthias Miller  59:01
+I guess I don't care. I mean, presumably you could have the validation and a helper macro and do it in both places, if you use the same format for the string, table everywhere.
+
+Matthias Miller  59:15
+Yeah, the CONFER button. Presumably, if there's nothing to do, you could validate the forgiveness is greater than zero, unless and less than or equal To the balance.
+
+Matthias Miller  59:32
+Your balance here zero using the Python zero is less than the balance. Amount is less than or equal sorry, zero is less than the amount. Amount is less than or equal to balance.
+
+Speaker 3  59:51
+Are we wanting defaulting for forgiveness? Amount stuff,
+
+Matthias Miller  59:56
+I would assume that not. But Dwayne, i.
+
+Speaker 1  1:00:00
+I'm sorry I had checked out for a minute and was thinking about our forgiveness of rent. What service question
+
+Matthias Miller  1:00:08
+do we want to default the forgiveness amount, or just let them just leave it zero blanks and let them fill it in? What they want
+
+Unknown Speaker  1:00:16
+to forgive? Yeah, yeah. That's not default anything.
+
+Speaker 3  1:00:20
+Should we have another column? Just a macro, I mean, just for display, that would be new balance. It's balance minus amount you do
+
+Matthias Miller  1:00:30
+that doesn't matter what kind of shoes I wear,
+
+Speaker 1  1:00:35
+yes, for people who wear single toed shoes, you do not get a new balance column Exactly. Call it the Nike column. Everybody's gonna scratch their head. Why'd you call it the Nike calm? Because we didn't want to call it New Balance
+
+Matthias Miller  1:01:04
+Oh, my word.
+
+Unknown Speaker  1:01:11
+How to put a graphic inside of a button.
+
+Matthias Miller  1:01:14
+This be a zero this would be $5 this be $0
+
+Unknown Speaker  1:01:19
+that should be 15, but
+
+Matthias Miller  1:01:22
+15, thank you. I'll work my math later. Sounds good.
+
+Unknown Speaker  1:01:26
+That happens. If I put $41 in,
+
+Matthias Miller  1:01:32
+it'll go the confirmed button will disappear and it'll say you can't make the record crash. Yeah, we'll kick you in the sheds, only during demos, only during demos.
+
+Speaker 3  1:01:46
+It just crashes. It will have some sort of error. I mean, I think, can you use your standpoint? I like this. From a coding standpoint, it's going to be a fair bit of work. There's just inherent complexity in trying to do multiple at once in this sort of you, I think,
+
+Matthias Miller  1:02:15
+yeah, here's my unabashed optimism. Okay, the the reason does kind of throw a wrench in the gears.
+
+Unknown Speaker  1:02:22
+Admittedly, not sure. It's that much worse than amount
+
+Matthias Miller  1:02:30
+simpler to only have one setting to mess with, sure, but it's effectively a effectively you need two helper macros. One, go look up a value for a row, right, and to go update the string table with a new value for this key, or however you want to, whatever you want to call it.
+
+Matthias Miller  1:03:01
+So, yeah, it is. It's not the Okay. Let's look at the grand scheme of things. Timing. Okay, the other thing would be okay. Here's another idea, Dwayne. We give you a report for forgiveness, and you can highlight a row and hit forgive fee. You can't do all at one time, but you can highlight a row, click forgive fee pops open and says, How much do you want to forgive? And then, boom, forgives it. And then it shows you the updated balance. It says, Ah, I want to do that one. Or we could also do something similar to this, which would be
+
+Matthias Miller  1:03:51
+like, Seth, I guess you were talking about maybe having an MRG or something, but we can't really have an MRG, can we have an MRG? Okay, but we could give you something like this, where you can check off a box, this is really weird, and run it for that one, and then it would just, it would just be, wait.
+
+Speaker 1  1:04:18
+That's what I suggested in my conversation with Seth, and he didn't like that
+
+Speaker 3  1:04:30
+idea. So you're saying there, if you check the box and you get prompts,
+
+Matthias Miller  1:04:37
+then you get ask prompts. You just prompt in the x 30
+
+Speaker 1  1:04:44
+what's the what is the drop dead simple way to do this?
+
+Matthias Miller  1:04:55
+Simplest way is probably popping open a report with an X 30 button. No, I. Yeah, I think so, a report that looks kind of like this,
+
+Speaker 3  1:05:04
+and you forgive one row at a time, and we require amount and reason.
+
+Speaker 1  1:05:10
+Okay, but where's, where do you get the like it? Where's the when you, when you hit the X 30 button? That's when you get the prompt on how much? Yep. And so, if you want to do multiples, you have to go through that you have to go around that ring a couple times, because as soon as you run the x 30, it closes the report,
+
+Matthias Miller  1:05:32
+no, no, it just refreshes. Oh, well, then it pops open in a new tab and you just go, just like
+
+Speaker 3  1:05:41
+he says, Yeah, and just be like a link action and report
+
+Matthias Miller  1:05:46
+you have a link. Pops open a new tab, shows you all the fees you can forgive. Right here you select one. I know this is you have to really use your imagination, select one and hit forgive. Well, we actually have two buttons. Then you could have a forgive partial and forgive or forgive partial amount and forgive full amount. Forgive full amount could handle multiple rows.
+
+Speaker 1  1:06:09
+So, so this is similar to the wholesale dealer portal make a payments thing, thing that you built Seth, in some in some form or fashion.
+
+Unknown Speaker  1:06:21
+I'm not opposed to that.
+
+Speaker 1  1:06:26
+I'm not opposed to forgive. And it pops open a report, and you select the one you want to forgive. You hit the forgive button up the top, and it goes it gives you an Ask prompt. I mean, for that matter, in the preface of the report, you could say exactly what's going to happen when you hit the forgive button, that you'll be asked for the that you'll be asked for the dollar value you want to forgive, just so you can kind of mentally prompt people. But I'm not actually opposed to this.
+
+Speaker 3  1:06:49
+I mean, that's, that's way easier than any of these other options. I like easy.
+
+Matthias Miller  1:06:55
+Same day. Let's go happy.
+
+Speaker 1  1:07:00
+Let's, let's do it that route. Let's, let's go that route first. So forgive payment. Would actually pop open the report.
+
+Matthias Miller  1:07:07
+This would be, it would look like this, right, right, right, right, right. Okay, Steph, while you have while we have you here. How mad sad would you be about having an adjustment tight for rent called bad debt, in terms of all your calculations, and it would just basically reduce the balance like forgiveness. It's basically forgiveness for rent.
+
+Unknown Speaker  1:07:41
+I think what that would take, I think
+
+Speaker 1  1:07:43
+there is really only one time in the history of a contract that it's used and it's at the contract closure, okay,
+
+Speaker 3  1:07:49
+I think it would be fairly simple, actually, with the structure we've got in place, presumably we'd want validation that you only have that bad debt on a rent and then I just have a macro that says this adjustment type is a credit, and I would say, if it's bad debt, then it's a credit, and then all our summing macros will just work. I think it's pretty easy, okay,
+
+Matthias Miller  1:08:17
+I think, I think it solves the problem. And I think what it would let us do is do an EPO entry for the full amount, and then do a bad debt row for the balance that they're not paying. Okay? And then everything just magically. I mean, it has to be good.
+
+Unknown Speaker  1:08:41
+Is that actually bad debt?
+
+Speaker 1  1:08:44
+Yeah, so here's, here's the, here's the functionality of it. So let's say, for example, I've got three months that are past due, and I get my, my my tax return, and I've got a chunk of cash, and I call up and I say, Look, I have $5,000 due, of which is, you know, $1,000 is past due rent. If I pay off today, will you, will you forgive some of the parcel of rent, and because, because the guy shows up with a chunk of money, and I'm willing to, I'm willing to say, Yeah, to get this guy done and cleaned out and gone, I'll forgive X amount of money, but we need to, in some form of fact, you need to be able to track that as a it's really just, it's bad debt, it's it's money that you owed that you're not going to pay, that we're not going to collect on. And so it needs to go somewhere.
+
+Speaker 3  1:09:34
+Okay, so that is, it is specifically for past due rent that we are choosing to waive because he's coming in.
+
+Matthias Miller  1:09:40
+Well, isn't it possible that somebody's current, yeah, and they're like, I just got my tax refund, but it's $300 short. Hey, dude, just give me the money. We'll write off, and the $300 becomes bad debt because you negotiated that away.
+
+Unknown Speaker  1:09:56
+Yeah, precisely, yeah.
+
+Speaker 3  1:10:00
+So they would, they would be, potentially be paying less than the remaining cash price correct, and you're forgiving that remainder too.
+
+Matthias Miller  1:10:17
+Yes, I think what you would do is you would just record the arbitrary amount of bad debt at the end. And the payment that you make would be for all the periods. So you would pay for the you would pay for the late period, the late fee, the the EPO amount, and for and then the payment would include the bad debt bad debt. Well, so are you going? I guess it wouldn't need to. How are you
+
+Speaker 3  1:10:53
+how will the events are G look? Are you adding? Are you incurring the rows, or do you incur the cash price row a rent road that's essentially the cash price amount, and then immediately pay it. Oh, because,
+
+Matthias Miller  1:11:15
+yeah, well, you can't. You can't ever. Duane, is it fair to say you can never forgive more than the cash price, the remaining cash price?
+
+Speaker 3  1:11:38
+Why would you ever forgive more than the remaining cash price. I guess maybe you're getting really close to the end or something, because the
+
+Speaker 1  1:11:45
+customer was a terrible customer, and I just want to get rid of him. I'm tired of working with him, and just, I'll do whatever it takes to get rid
+
+Matthias Miller  1:11:51
+of it. Then it's not an EPO. Maybe it is. I guess it could be so. I mean, I guess what I'm saying at this point then is you really do need a way when we record the payment, we need to, we need to know where to apply that bad debt. And presumably, presumably, we would just start with all unpaid fees and move on through in order of history. I was hoping to avoid that, but I don't know that we can, but, but,
+
+Speaker 1  1:12:27
+okay, EPO is a remaining cash price value of the building, right? So essentially, we're, we are, we are forgiving bad debting, whatever you want to call it, a portion of the cash price of the building. So why wouldn't you just pay out of bad debt GL Account against that amount, and that becomes recorded as, you know, a bad debt value.
+
+Matthias Miller  1:12:52
+Well, it does mean that if, if, I mean, so the bad debt is always on the EPO. Is that what you're saying? So when you say, Hey, if you give me $4,000 today, you're actually paying for those, those items, those late fees and past due rent and reducing the EPO amount.
+
+Speaker 1  1:13:22
+Oh, I see what you're saying. Um, I Okay. I think so. I think if we said, okay, okay, from a from a conversation standpoint with the customer, we're saying we're going to forgive that, but what you're really actually doing is you're paying that, that rent, that late fee, all of all of that stuff, and otherwise, go forgive some of that stuff before, like, go forgive your late fees, etc, before you actually try to process this EPO. But if you're saying, Okay, I'm just going to close out the EPO, and I'm going to then you should pay those items because they were due, and you're essentially taking a short on the remaining cash price of the building.
+
+Matthias Miller  1:14:11
+And we hope to chase thinks about it like this.
+
+Speaker 1  1:14:15
+Nobody thinks about it like nobody's actually, I promise you, nobody's thought about this. I'm mean, if you want, it would be interesting. Let's do this. How about this? Let me get some perspectives on this. How about that.
+
+Matthias Miller  1:14:35
+I like it. I think, I think matter of principle, it's good if we can keep it simple to something like, I mean, we might end up needing to say, Forgive. And I guess that's where I'm a little hesitant to say, if we would, if you wouldn't enforce it to happen on the EPO, then they could just go in and forgive bad like, forgive old rent and get. Ready to run EPO and like, Yeah, you should normally do this, but blood be on your own hands if you want to be dumb.
+
+Unknown Speaker  1:15:13
+Okay, let's do this.
+
+Unknown Speaker  1:15:16
+You get perspective. I
+
+Speaker 1  1:15:18
+would like to propose I drop off now and I'm going to make a phone call. I want to get perspective on this. I like it. I want to see, I want to see how some other people think about this, because I don't think anybody's ever thought about this.
+
+Unknown Speaker  1:15:31
+Yeah, that'd be surprised. Because
+
+Speaker 1  1:15:34
+essentially what what ends up happening right now is over here in in RTO land, we closed out the contract for $1 value. We report that as rent, we report that as income on the accounting side, and we never even think about the fact that we just took a loss.
+
+Unknown Speaker  1:15:50
+Yeah, now you will.
+
+Speaker 1  1:15:52
+Now you will. All right, I want to make a phone call. I want to see where this goes.
+
+Speaker 3  1:16:00
+Sounds good. Wait, guys, do you want to look at something mentioned once, unless Dwayne wants to also look at EPO tax stuff? But got the feeling he probably is happy not to share screen
+
+Matthias Miller  1:16:14
+if it's five minutes or less.
+
+Speaker 3  1:16:16
+I mean, I think I just want to get a sanity check on what I'm doing. Here's my words. Okay, so what I'm essentially doing now, and we can change wording or something, this stuff all stayed the same, yep, EPO, amount without tax, then I add the CRA. I'm calling that the initial subtotal without tax, initial subtotal with tax, which is then which is EPO amount plus CRA taxed, then adding the rent balance and fee balance with tax, which this is zero here, to get the final subtotal with tax. And then we subtract CRA without tax, and then that's what we get
+
+Matthias Miller  1:17:00
+in the pup amount. And then we add the current tax rate on top of payoff amount. Well, well, is actually
+
+Unknown Speaker  1:17:09
+this guy here, is actually I should make sure this guy's calculating correctly. The I need to clarify this one,
+
+Speaker 3  1:17:26
+and I need to look into this one. This is right, but this, this, yes, Yep, yeah, I think I might be, I might have a hole here,
+
+Matthias Miller  1:17:41
+but I'll, I'll work on that. But conceptually, yes,
+
+Unknown Speaker  1:17:46
+okay, it's, yeah, anyway,
+
+Matthias Miller  1:17:50
+it is sort of dude accounting, accounting, we had you missed this, but obviously, because you weren't there, but on the debt priorities call, we were talking about how much Mark mentioned, how much effort we're putting into the accounting stuff. And I just raised the question, May May, I don't think just establish our own value, but anyway, I think partially that and partially curiosity, but we're pitching our own value. But basically asked the question, how much of how much of this is because we did our own accounting system, and how much is because we just didn't have good numbers. He's like, wow, it's actually a really good question, because we used to look at our monthly reports and they'd be like, that's weird. Well, that'll probably fix itself next month. That's terrible. It is terrifying. And so there's a little bit of stuff that's extra work because we're cross referencing customer deposit reports with accounting impact, and we're doing double the work. So you could argue that's necessary. You can also argue it's a form of double checking, yeah, but I also think it's a level. And he agreed that it's, I don't, I forget what number you gave, but maybe 90% of it is, is just the discipline of getting good accounting numbers that we never, that they've never were able to get. And I think the same thing is here, like to Dwayne's point, nobody's ever thought about this stuff. Yeah.
+
+Speaker 3  1:19:16
+So anyway, yeah. So due date stuff is soon. When is the once you get the forgiveness stuff built? Is that December?
+
+Matthias Miller  1:19:28
+I would think forgiveness or not, I would think it's I mean to me, it's early January. Probably okay. But, but we need to start now. Now we're blocking the pipeline again. Yeah, exactly. Contract closures on our radar.
+
+Speaker 3  1:19:52
+That's going to take a lot of work. I'm guessing.
+
+Matthias Miller  1:19:55
+I'm going to guess, well, it's going to take a lot of figuring out, and it's not sure how. Much work. It actually is.
+
+Speaker 3  1:20:02
+It depends how much it plays with the events. RG, I think,
+
+Matthias Miller  1:20:07
+well, I don't think, I mean EPO, I don't think much of it plays with the events. RG, I think it's okay. It's like, may give you a little rundown. It's a few, it's only a few scenarios. So, okay, you have a payout. So you pay through the end of term, nothing, nothing needs to happen. You see it, close out the contract. I mean, do do whatever, send a certificate, whatever needs to happen. But that's it. EPO, that's that is tricky, especially when we introduce, if we introduce bad debt into that retrieval, we don't have any transit tasks. But that's basically saying, keep the contract balance. We we're going to for things like a retrieval or, I guess it's just retrievals, or just, or at some point we throw up our hands, and we're just say, We're never getting money from this guy again. We're just, we're going to leave a balance on the contract, but close out the contract with so that when they show up again, we'll be like, Oh, you have a contract here, yeah, or a balance you need to pay up so you can start your contract.
+
+Speaker 3  1:21:14
+And that that balance is would be incurred, not the contract wide balance, necessarily,
+
+Matthias Miller  1:21:24
+right, correct. Now there's the other thing, the one thing I didn't think about this, but the one thing that could potentially affect the events Archie is a voluntary return, which we I would actually guess, well, I don't even know how that would handle. Oh, that would work at this point, so I shouldn't even guess. So anyway, okay,
+
+Speaker 3  1:21:55
+and one thing I was just realizing for EPO, do we need to worry at all about if rent rows that are incurred but not yet due, and rates changing they're currently handling overdue, I'm inclined to say that's an edge Enough, enough of an edge case that we can at least ignore it for now.
+
+Matthias Miller  1:22:18
+So if there's incurred rows that are not yet due. I would assume, as part of the EPO process, we should effectively nuke those Okay, and the EPO will cover that, because if it's not that makes sense, you should be paying cash price for those periods if you're not in that period yet.
+
+Speaker 2  1:22:34
+Yep. Perfect. Good. Okay. Thank you. Yep. Back.
+
+
+Transcribed by https://otter.ai

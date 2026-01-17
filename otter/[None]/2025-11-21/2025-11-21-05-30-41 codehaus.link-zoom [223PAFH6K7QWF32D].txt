@@ -1,0 +1,3161 @@
+Unknown Speaker  00:04
+And stuff.
+
+Matthias Miller  00:12
+So what I would like, what I would envision with this thing as well, is for those variables like frequency and order size, if we could have a report that shows when that behavior changes, like, are we still in the ballpark? And have more of a think of pricing more as a management role, not a one time thing, like, yeah, every month, every quarter, or whatever it is, we should be reviewing, yeah, pricing
+
+Speaker 1  00:50
+well or but, but reviewing it. So the review would be what to catch changes
+
+Matthias Miller  01:06
+in customer
+
+Unknown Speaker  01:07
+behavior. So so that I mean
+
+Matthias Miller  01:11
+more changes in in production behavior. Go ahead. Well, we
+
+Speaker 1  01:15
+the changes in, okay, so we'll have that information, right? That'll be, that'll be cold, hard information,
+
+Unknown Speaker  01:25
+yeah, yeah, yeah.
+
+Speaker 1  01:30
+If those things can be built in, obviously, when we change it, if we change a price, it has to be hand delivered and communicated. So we're not going to go to that degree, but this, the pricing module, is going to be the tool and the reference point where we look at when a new order comes in,
+
+Unknown Speaker  02:03
+and when they're
+
+Speaker 1  02:08
+or a new like a new design, and also when, yeah, what customer behavior changes, which will be quantity. Order quantity changes, order frequency changes. Is there any other ones on the customer side? I don't think so. Order quantity changes or order frequency changes.
+
+Speaker 2  02:42
+I design
+
+Speaker 1  02:47
+changes can, can happen every once it happens um,
+
+Matthias Miller  02:53
+although at some point, if it's substantial enough to merit repricing, there's, there should be some consideration of creating it, obsoleting the old item code and creating
+
+Speaker 1  03:03
+a new one, yeah? Or leaving, yeah, definitely. New Product design changes dictates a new item, dictates New Item ID, yeah, I agree,
+
+Speaker 1  03:21
+yeah. And then on the you said production, and
+
+Matthias Miller  03:33
+that's basically time spent per item, which there's so much variability in that right now. I mean, it sounds to me like there's two parts to that. One, not being sure if we're getting accurate information from the shop floor. But second of all, even, from the stuff that we saw, it seemed like, like, listen, when the guys are having a good day, they go 30% faster, and when they're having a bad day, they might be 50% slower. Yeah.
+
+Unknown Speaker  04:09
+Well, so
+
+Speaker 1  04:13
+to that point, we're not going to price anything based on one run in the shop, unless we only have one run that's historically happened but but even to that point, I'd rather
+
+Unknown Speaker  04:30
+price it. That's where
+
+Speaker 1  04:33
+we're pulling all the data points on fasteners. So that includes all the products we're using, all the data on on lumber, and that's broad, that's very and then it's, you know, it's the steps we have to add, but what? But when it comes to all the variables of the different of the additional cuts, or. Where the assembly process becomes more complicated, we still have a broad range of data points that we are entering into your module that should give us. So then, then it's not based on one item, it's based on it's based on all the data.
+
+Matthias Miller  05:26
+Yeah, it's this number of steps, okay, but so and largely what I did, okay, here we Have
+
+Matthias Miller  05:42
+sawing per saw,
+
+Matthias Miller  05:55
+and on assembly. It was just taking the taking the data that we do have, and finding the right factors to multiply everything by to get to come up with something that generally works across the board, but it's still not it's anything. It's far from, it's far from perfect, but I'm not sure that we're going to get it better at this point, unless I'm missing something obvious, I don't think we're going to get anything better based on on what we know.
+
+Speaker 1  06:40
+Again, just repeat that. What you the the the formula that you just refer to, yeah.
+
+Matthias Miller  06:50
+So basically, what I did on the on the assembly stuff, was I took all of the factors that I could think of that could be relevant, and for each of them, I tried three variations, one direct correlation, inverse correlation, and also a logarithm, a logarithm, which is like a tapering off and ran for each of those, came up with quotients against whole data set and did to find out what is the what are the factors that matter the most, or that based on those factors, what gets us the closest? So if you go into you can actually see it if you if you go into advanced on the left, you go into silver loom. Hey, before,
+
+Unknown Speaker  07:54
+never mind. Never mind silver loom up here,
+
+Matthias Miller  07:58
+no silver loom settings, admin, in the middle, yeah, silver loom settings down at the bottom, oh, yeah, and you scroll down to hit the assembly time coefficients button. And this is the so the intercept is the baseline assembly quantity. I uh, like, these are the these are effectively the factors that we're using based on historical data that gets us within but it's still only within about 50% accuracy. That's the closest that I was able to
+
+Speaker 1  08:39
+get to historical data. I'm not understanding the whole. I'm not understanding it. What you're describing fully. Can you elaborate a little bit more on the accuracy?
+
+Unknown Speaker  08:52
+So this
+
+Matthias Miller  08:56
+based on these numbers and these this based on this stuff. We put together a formula, yep, based on faster category, okay. We have Assembly quantity, board feet, number of parts, Max lumber length, number of cubes, Max lumber thickness, yep, and then also assembly method, faster quality. Category, yeah. Based on based on categories of fasteners, based on assembly methods,
+
+Speaker 1  09:33
+okay. And then are each one of these a data point? Yeah, okay, why? Why are these at different Are they from top to bottom here?
+
+Matthias Miller  09:52
+It's all, everything ends up getting added together. It's just, it's the way to because I had different lists of I wanted to pull in the list. Assembly methods and faster categories. It's basically just how it's stored. If you could,
+
+Speaker 1  10:07
+well, assembly, I think assembly method, sure.
+
+Speaker 3  10:14
+No, we can't just, I
+
+Speaker 1  10:24
+Yeah, well, assembly method we need, I'm thinking we need, like, for pricing. We're never going to say, Oh, we get to build that on a machine so we don't have to charge you as much like we're really not going to ever say that. I think we probably could throw that out, because that's where the the fastener cost. I want the fastener cost and type
+
+Unknown Speaker  11:07
+to to dictate
+
+Speaker 1  11:10
+that difficulty and when we say the difference between a machine nail and a hand nail, um, is that, can we go there? Can we try that?
+
+Matthias Miller  11:26
+We we can. I don't think we're going to get more. I think we're going to, I mean, I'm pretty confident we're going to lose accuracy. It's not a good it's it's a less accurate prediction of how much time it takes. But if you want to say we're not actually looking based on what time it takes for the sake of pricing. Okay? Well, there's a few things. One is, if assembly method is something that's our internal limitation that we're not willing to pass on to the customer, then is it fair to the shop guys to penalize them because of that, or am I? Am I overthinking that?
+
+Unknown Speaker  12:13
+Hold on, how are we penalizing them?
+
+Matthias Miller  12:16
+Because if you price it for, I mean, if you price it for a for a if you price it for a machine, the the the assembly time is going to be going to be different.
+
+Unknown Speaker  12:37
+Well,
+
+Speaker 1  12:40
+so what's the difference right now in machine nail and Hand Nail?
+
+Unknown Speaker  12:52
+Where do I go for that? Ooh,
+
+Matthias Miller  12:59
+go into configure fasteners. Okay,
+
+Unknown Speaker  13:07
+well, the price difference is double. Sorry.
+
+Matthias Miller  13:14
+I mean, is that your question? The price difference or the difference of impact,
+
+Speaker 1  13:20
+the difference of impact, which was your other, which was here, what was that other report that you did?
+
+Matthias Miller  13:32
+Go to folders. Go to items for pricing analysis, I think
+
+Unknown Speaker  13:46
+fast and categories
+
+Unknown Speaker  13:51
+should I set up time?
+
+Matthias Miller  13:54
+I don't know if this is what you're thinking or not. These are the inputs,
+
+Speaker 1  13:59
+the time. Well, how much? No, the time I'm time for fastener time. Professor, Yeah, where's that?
+
+Unknown Speaker  14:12
+Is that in here? That?
+
+Matthias Miller  14:15
+Well, can you get that by the Yeah, you could get that on the assembly, the assembly analysis, if you would do potentially, no, you can't. Yeah, show faster. Do it by, I don't know what you want to group it by, group it by year, maybe, and show the fastener breakdown. Yeah.
+
+Speaker 1  14:51
+Assembly, what do you say? Primary grouping is year, and that's it. Show
+
+Unknown Speaker  14:58
+faster. Yeah. Yep, okay.
+
+Unknown Speaker  15:20
+Well, just on a on a
+
+Speaker 1  15:23
+straight up cost basis, Matt, if we it's going to cost the company more to run a machine to build a pallet, but, but what we get in return is many more pallets per hour, right? If we have to build it by hand, because if we build a 48 by 40 on a machine, the price is the price. If we build a 48 by 40 by hand, we can't change the price because we build it by hand. So right? The Assembly I still think anyway, so here,
+
+Matthias Miller  15:57
+assembly method is irrelevant for the sake of pricing. That's fair.
+
+Unknown Speaker  16:01
+So yeah. So here's
+
+Speaker 3  16:06
+Hand Nail machine, mill, bulk. What are
+
+Speaker 1  16:12
+we saying? Where's the Oh, yeah, each Right, yeah. Okay, here we go. So we're averaging point nine, eight. This is interesting. It's taking us longer. In 25
+
+Unknown Speaker  16:26
+what? Though? All right, heads are gonna roll, that.
+
+Speaker 1  16:33
+That's a big difference. Man, that's, that's 7%
+
+Unknown Speaker  16:39
+Yeah, from last year? Yeah.
+
+Speaker 1  16:46
+Well, we got in hand two and three. I mean, we got the longer ones here, but that's slower this year too. Less volume, man, I'm telling you now I need to do by month. Is that? Is that an easy report? Yep, yeah, just, just flip it over primary grouping
+
+Unknown Speaker  17:05
+month, Yep, I got this problem down here again.
+
+Speaker 1  17:14
+Where I go with this thing? There it goes. Wait so fast. Yeah, it's in there. Oh, brother. Well, the way, I gotta pee. I'll be right back.
+
+Unknown Speaker  17:27
+Thanks, Yep, sorry, Oh, good. I
+
+Unknown Speaker  19:06
+me, yeah. Um,
+
+Speaker 1  19:07
+I that's working on pricing stuff with you. And if he has any questions, he said no, but he said, If you do so, okay, what it's worth? Um, here we go. So put this guy.
+
+Unknown Speaker  19:35
+December.
+
+Speaker 2  19:44
+A 2.7 Wow, man, we're up and down. What is that
+
+Matthias Miller  19:54
+those quantities have any Oh, okay, but go up one, there's six minutes each. For the one right above you, that's painful, 1000 count,
+
+Unknown Speaker  20:06
+and that's November. Wow, how?
+
+Matthias Miller  20:12
+But if you go down, I mean, even here, that's, that's a 25 to 30% variation, depending how you calculate.
+
+Speaker 1  20:26
+I mean, what is this last month? That's November, October. What's interesting? These guys did incentive in October
+
+Matthias Miller  20:36
+at no but this is last year. Isn't this last year?
+
+Unknown Speaker  20:39
+Oh, wait, am I gonna No,
+
+Matthias Miller  20:43
+November of last year. What's that November of last year that you're on?
+
+Speaker 1  20:49
+Oh, the blue one. No, I'm looking down at the bottom here. Okay. Oh, got it, yeah. What point seven? Hand nails.
+
+Unknown Speaker  20:59
+Wait a minute hand
+
+Unknown Speaker  21:02
+nail tree floor,
+
+Unknown Speaker  21:10
+right here,
+
+Speaker 1  21:13
+the Hand Nail, the bigger the lower hand nails are taking less time than the short ones. How is
+
+Unknown Speaker  21:27
+I mean, but there's
+
+Matthias Miller  21:29
+all kinds of factors that could be related. It could be it could be longer ones have different order sizes,
+
+Unknown Speaker  21:38
+I don't know. Yeah,
+
+Unknown Speaker  21:46
+that is fascinating. We
+
+Speaker 1  21:51
+October and November. We've been we're above average. And look at that. So last year we were mostly in the three range, and this year, we're mostly in the four.
+
+Unknown Speaker  22:05
+Wow, that is,
+
+Unknown Speaker  22:11
+and then machine nails
+
+Unknown Speaker  22:14
+minutes each we're point nine, eight
+
+Matthias Miller  22:18
+machines good the last few months. I mean, it's under average. That's
+
+Unknown Speaker  22:23
+the That's what's that's what that's the difference.
+
+Unknown Speaker  22:27
+That's how they're making incentive right there.
+
+Unknown Speaker  22:32
+That's how they're doing it.
+
+Matthias Miller  22:38
+So, I mean, does that match what you see on the floor like that. That's Wow, pushing or not. Sorry,
+
+Speaker 1  22:47
+man, I don't have enough of I'm not paying enough of attention. I don't have the capacity to I need a supervisor in that area that's on board. Man, with this stuff,
+
+Unknown Speaker  22:59
+yeah, I'm
+
+Speaker 1  23:01
+too I'm scrambling. I have all this clean up for data yet I want to go back. Let me just open another page here.
+
+Unknown Speaker  23:10
+I'll show you here.
+
+Unknown Speaker  23:16
+You just show you this one. Um,
+
+Unknown Speaker  23:28
+some of these well here absolute discrepancies,
+
+Unknown Speaker  23:31
+so
+
+Unknown Speaker  23:39
+I'll just do it this way
+
+Unknown Speaker  23:44
+I have to get down to have to get down the line. What is it?
+
+Unknown Speaker  23:54
+Right here? I'm at 219 out of 1000 till I get to 10%
+
+Speaker 1  24:02
+roughly 20% of these items are 10% or worse. So from the mirror up, I'm looking at absolute discrepancy. And I wrote down like FAO, three, seven, anything over 1000 down, I want to start with that, but the way I'm going to have to do that is I the way I'm going to
+
+Unknown Speaker  24:24
+do that, man is the piles
+
+Speaker 1  24:28
+of papers right there, those three stacks. Is everything up to I don't know. I have to go through it. I have to go through 18 months of entries, and, you know, I have to go through there to clean up the discrepancies. So then I'm just like, What am I going to do? Go I don't want to leaf through every. Age. I just did it on a on a job. So I went through, forget which job it was anyway, and I picked out, and I went through assembly tracker, and I, you know, found the dates. And so then I went and I found the paper appropriate. So I went through all the months, pulling out just the ones, and then I find that paper and that entry and clean it up. It was the whole process took me over an hour just to do that one, probably two hours, because I was fun. And anyway, to go through, I wrote down, like 10 or 12 of these that are over 1000 absolute discrepancy in there. I mean, like, so that's going to take time, and I think I'm just going to have
+
+Unknown Speaker  25:52
+to cram it. I mean,
+
+Speaker 1  25:56
+I don't much. I don't know how else to do it. I talked to a man about it. I'm picturing myself sitting here working some combination of two people going through and one person's reading the things that need cleaned up, the other person's doing it on the on the
+
+Unknown Speaker  26:14
+computer. Because these are
+
+Speaker 1  26:19
+these data points are way off. I mean, like this, right? This wave 20. I mean, 26 2900 assembled, and we invoice 1000 like, that's a it's out of whack. It's screwing up our numbers. 18. There's another like, it's way out. It's and it's because sides and ends and some of the stuff. But like, I it, it has to be cleaned up. We're, I just think it does. It's, it's screwing up the numbers. And so
+
+Speaker 1  26:53
+I was sitting with with John in that the other, well, sorry, that's going to be a bunny trail. Never mind. I won't go there. Anyways, back to that other page, Matt, if we look at, if we look at average, on hand, mill minutes, 3.26
+
+Speaker 3  27:20
+machine mill minutes, little under one.
+
+Speaker 1  27:25
+So can we justify three times? Three times we're already if we would just go straight up by our time estimate is based on machine versus hand. It's going to take three times as long if we have to do it by hand, and we're going to pass that cost to the customer well.
+
+Matthias Miller  28:00
+And then the question is, that's that is fair? What's the asset cost of of the machine that gets passed on and out of the keeping in mind that labor still is only 12% of the overall price is the what is the actual difference? Okay, so here's a proposal. I don't know if you like it or not. Are you well,
+
+Speaker 1  28:27
+are you saying the Okay, could I'm not. I'm not very versed in overhead, okay, but should that machine cost be adjust? Should that be an overhead adjustment on that machine nail, like, should there be a different overhead adjustment if it's a machine nail versus a Hand Nail?
+
+Matthias Miller  28:52
+Well, and, and I think this just depends on how I think most in most places, they don't bother getting getting that specific, just because I don't know, maybe they do. It's just, it's far easier from
+
+Speaker 1  29:08
+a specific about their over which,
+
+Matthias Miller  29:11
+which machine, yeah, like they just, well, what was it? What was
+
+Speaker 1  29:15
+your question? Sorry, go ahead. It.
+
+Matthias Miller  29:23
+I mean, I think that in my mind, the big question, okay, the big question is we need, we need an objective pricing structure that we believe in. Yeah, and so does, does Rick's finance background lend it well enough that it would make sense to for me to work with him and say Rick walk me through step by step. How did you come up with every last one of these numbers? It does look to me like he has a. He's at least intending for there to be 28 cents. I kind of think there is some intent for there to be different pricing and different potentially overhead, even based on which machine and method?
+
+Unknown Speaker  30:21
+Well, he has two different, two different points.
+
+Unknown Speaker  30:26
+Right machine in hand.
+
+Matthias Miller  30:29
+He's got the eight on the on the Burke birth deck that he sent over. He has an A and A, B and a hand.
+
+Speaker 1  30:40
+Well, but the price, the A and B are not, I mean, I don't know how you separate that
+
+Matthias Miller  30:49
+he's got the B is, like, 10% more expensive. That's no, the three cents.
+
+Unknown Speaker  30:59
+Not sure why.
+
+Matthias Miller  31:03
+So is it useful to you in any way? I mean, my question being, is it useful for anyway? Could we? Could we start by extracting how he thinks about it, or is that completely a fool's errand? And do you just want to start completely fresh? Yeah,
+
+Speaker 1  31:29
+um, what, what is okay? What is there to gain by extracting
+
+Matthias Miller  31:37
+what I
+
+Matthias Miller  31:45
+I don't know yet. I mean, we get his opinion on some of these questions that we're asking now, whether it's right or wrong, we get his opinion on them.
+
+Unknown Speaker  31:55
+Okay, yeah, no. I mean, I could.
+
+Matthias Miller  32:02
+But but if you don't think there's anything to gain, I mean, I again the question, the question comes back to, how do you, I mean, it answers the question in terms of machine overhead, how does he, how does he determine?
+
+Speaker 1  32:17
+Oh, no, I'm sure I could. I could have him, ask him to join us. I'm
+
+Matthias Miller  32:25
+not quite sure how to do it without painstaking walking through his spreadsheet and painstaking detail and saying, Well, how did you come up with this particular number, that number?
+
+Speaker 1  32:35
+Well, I just, I'd want to do it from a place of, I don't want to do it from a place of scrutinizing his spreadsheet or questioning his spreadsheet, but just as a place of, hey, we're trying to we're trying To get the correct what data points. It's the
+
+Matthias Miller  33:03
+understanding his process and how he's Yeah,
+
+Speaker 1  33:09
+no, we can do that Absolutely. Are we? Are we ready to do that now?
+
+Matthias Miller  33:16
+I mean, I would be. I think, I think, in my mind, it makes a lot more sense to let's look at what's already in place, even if, even if there are gaps in it, okay, and then let's, let's improve from there.
+
+Unknown Speaker  33:34
+Do you disagree? Yeah, no. We definitely, definitely
+
+Unknown Speaker  33:44
+when you say things what's already in place,
+
+Matthias Miller  33:48
+like, I mean, what's what? What is his process? That's the only thing I'm concerned about is, what is this process currently, and, and, and again, if you want to, if you want to play it up, well, it's we want to use his, his financial background and experience in how he thinks about it, and how he approaches it, and how he would and invite his input into it, but how it works down how he's thinking about it, how he's coming up with overhead numbers, all of the all of that stuff that's useful information for for for you to know, as well as an owner of, how is he thinking of overhead.
+
+Speaker 1  34:21
+Yes, right. So, so what are the currently our pricing module, what have what have we? Are we agreeing on it?
+
+Matthias Miller  34:38
+I, yeah, well, okay, there's, there's two questions, two disconnected questions. I think that I don't care how we come up with pricing, we just need to come up with pricing that makes sense. And so I understand where you're coming from, from the perspective of hand versus machine. Yeah. Now how does that actually. Layout in reality, do you end up like, if, if it has to be hand like, are we going to be losing money on a high volume of of of hand assembly if we're pricing it that way? Are we just going to come on, come up, come out, higher on certain items?
+
+Unknown Speaker  35:35
+Well, the only way to find out is if run some comps, agreed,
+
+Matthias Miller  35:46
+and the only way to run, to run some comps is to have a model by which we can run some numbers. And the only way to do that is to know, well, not the only way, but the the shortest path to that is figure out how it's working right now. So we're back, right back where we were a minute ago.
+
+Unknown Speaker  36:03
+Yeah, which we have,
+
+Unknown Speaker  36:06
+yeah, which we have those.
+
+Matthias Miller  36:14
+Okay, so we have the I have the bird tech, the Burke tech here, yeah, yep, yep. So do you want me to share?
+
+Unknown Speaker  36:25
+Yeah? No, I think great. Sounds great.
+
+Matthias Miller  36:28
+So I mean, we're starting with, we're starting with board feet. Yeah, times times the lumber at 58 cents, no, times lumber times 58 cents times seven plus 7%
+
+Speaker 2  36:49
+what is the 7% times 58 plus seven?
+
+Speaker 1  36:56
+That would be 7% that's his sewing. Probably a selling cost, okay,
+
+Matthias Miller  37:03
+but the seven, 7% is that curve or something, or what is? What is the maybe? So that would be, that would be a question, yeah.
+
+Speaker 1  37:16
+Well, we again with, with the price on lumber, Mat, on items. It has to be at that. It has to be at the actual it has to include curve for pricing, right, right.
+
+Matthias Miller  37:30
+So one of the questions is, from the item data standpoint, do we want to take the yield and add on the curve to get the raw material, kerf and waste. Or do we want to have a field for the raw material so that we can actually look at the raw material going into
+
+Speaker 1  37:53
+it? I don't need, no, we need to just add the
+
+Unknown Speaker  37:57
+curve. Okay?
+
+Speaker 1  38:02
+Because that the curve, the curve, the curve used. The curve includes all raw material,
+
+Unknown Speaker  38:11
+right, if we did it right.
+
+Matthias Miller  38:14
+Okay, so then we have quantity, we have number of fats, we have the fasteners and the price of the fasteners, right? Which is, he's just using a penny, and these are just a penny a nail. So I don't, and I guess these, I don't know if these products just use,
+
+Unknown Speaker  38:38
+are they all using a penny a nail? That's at point 01
+
+Matthias Miller  38:42
+Yeah, that's the point 01 so that guy, this guy, this guy, this guy. He's not using this formula. He's, anyway, it's
+
+Unknown Speaker  38:51
+he's doing half. Wait, these are all machine these are all machine pallets.
+
+Matthias Miller  39:00
+So then he's got pricing on the good,
+
+Speaker 1  39:04
+the 48 by 48 GP. Does he have a can you tell if he's a machine or hand?
+
+Matthias Miller  39:14
+He's pricing it on the B,
+
+Unknown Speaker  39:17
+everything I
+
+Matthias Miller  39:27
+that looks like it did. I miss any no hang on. So this one's this one here. Let's do this. This one's hand. I
+
+Matthias Miller  39:50
+This one's the A, this one's the B, B and B. There's no one. Or these, these, this, these formulas are so hard to get right the way it's set up. Okay, that's how it's set up, man.
+
+Unknown Speaker  40:14
+So, so the the 4842
+
+Unknown Speaker  40:18
+the net, the nail price is the same as the others.
+
+Matthias Miller  40:25
+153 times, yeah. I mean, I guess so.
+
+Speaker 1  40:27
+So he's not, he's not adjusting for hand nails. No. So what? Okay, so what's the difference in what's got to be in his overhead, right?
+
+Matthias Miller  40:40
+Okay, so let's, well, let's keep walking through one at a time. So on the B, we're taking s3 which is the setup time divided by the quantity times 28 cents. So that's the minutes set up, minutes per item, no plus 28 cents.
+
+Matthias Miller  41:11
+I don't know how he's coming up with that number,
+
+Unknown Speaker  41:15
+so it's a
+
+Unknown Speaker  41:23
+a 21 is the setup time.
+
+Unknown Speaker  41:29
+Is that? What does in a setup? It's, it's, yeah, that's minutes.
+
+Matthias Miller  41:37
+So that would be minutes per item.
+
+Unknown Speaker  41:42
+Hand is less. That's crazy.
+
+Matthias Miller  41:48
+So, but I don't know. I don't know. Well, okay, so the a here, let's do this the set of time. Okay, so on the A equals A, set up time plus divided by quantity plus 25 cents, the B is the setup time and quantity plus 28 cents, the hand is set up time divided by quantity plus plus 0.8 plus the fasteners times point 005, he's accounting for the price change.
+
+Matthias Miller  42:48
+He's adding a half half a percent in half a cent in the hand price, in the in this hand column for hand fasteners or hand nails, okay, but the question still is, how does he? How's he coming out with the plus point eight plus point two, five plus whatever. Okay, so that gets that delivery, then, is just 175 divided by quantity, over overhead,
+
+Speaker 1  43:23
+that's crazy, man. So if they order 10, well, he he's baking delivery price into every each one, right, yeah. So hopefully they order a truckload. Is that same formula for each one, right?
+
+Matthias Miller  43:40
+Yeah, so the overhead, then is, overhead equals, overhead equals here. This should say assembly method. Assembly method equals assembly method times four. I don't know where that you know, where does the four come from? I
+
+Speaker 3  44:03
+He that's, I don't know where the four comes from, but that's what he's,
+
+Speaker 1  44:15
+assembly method times four. Wait, where's the dollar?
+
+Unknown Speaker  44:21
+Where's the 3.8 what's 3.8
+
+Matthias Miller  44:24
+that's, I'm assuming that's his calculation for overhead, and he rounded it up to four.
+
+Speaker 1  44:31
+Okay, so where's the dollar $40.40? Is, is a, is a, it's a total of
+
+Matthias Miller  44:38
+what it's a total overhead. I'm not sure how it's used, yet. We'll get to that. So then we have go ahead,
+
+Unknown Speaker  44:45
+come up with the dollar $40. $68.40
+
+Matthias Miller  44:49
+it's it's the it's the assembly method times four. It's 35 times $4.66. Times 435. Times 432, times 478. Times four.
+
+Unknown Speaker  44:58
+That's not a 70. Method. Is it this?
+
+Matthias Miller  45:02
+Yeah, yeah. I mean A, B or hand, yeah.
+
+Unknown Speaker  45:08
+But the prices are varying in every one of them.
+
+Matthias Miller  45:13
+It's quantity time. It's it's some weird, no, it's not that. What is it? It's a it. I don't know what it's the setup time plus,
+
+Unknown Speaker  45:27
+hang on, what? Let's figure it out. Or three, it's setup time
+
+Unknown Speaker  45:35
+divided by quantity
+
+Unknown Speaker  45:40
+plus 25
+
+Matthias Miller  45:52
+So it's basically $60 an hour, plus 25 cents each, that'd be another way to say it.
+
+Speaker 1  46:04
+So he's faking it. What? $30 an hour, as is labor cost, I don't know, per guy, or something like that.
+
+Matthias Miller  46:15
+Maybe, well, a little bit. This is setup time. So maybe, maybe, maybe it's something like that. But where does it 25 cents?
+
+Speaker 1  46:29
+I think he, I think he uses $30 an hour per guy as his baseline for pricing.
+
+Matthias Miller  46:41
+Okay? So then we have heat treating, which is just 97 cents each. Total cost. Then is the lumber plus the nail plus B plus the assembly stuff, whatever that is, plus delivery, plus the overhead, plus
+
+Speaker 1  47:05
+this is assembly cost. The yellow ones is assembly cost. That's what that is. That's your that's the cost of assembly.
+
+Unknown Speaker  47:17
+Okay, the lumber is the the lay.
+
+Speaker 1  47:22
+Labor supposedly baked into the lumber cost sawing labor baked in there assembly cost is here, is the yellow ones, and then so again your your say that again, total is lumber
+
+Matthias Miller  47:41
+costs plus fasteners plus assembly costs, plus delivery plus overhead, plus heat treating, And then the and then you add 10%
+
+Matthias Miller  48:01
+for profit, which is actually comes out to 15.9
+
+Speaker 1  48:08
+Well, he was saying, he likes to get six to 8% profit on machine work and
+
+Unknown Speaker  48:19
+1210, to 12,
+
+Unknown Speaker  48:21
+on hand, I think is what he was saying.
+
+Matthias Miller  48:27
+Sorry, how much on machine?
+
+Speaker 1  48:30
+Think he's like six to 8% now. But I think he shifted like I think he just shifted the other year when I came back in the picture, 22
+
+Matthias Miller  48:44
+Okay, so the new price, okay. So then here's, it's times 1.1% which is actually less than 10% Yeah, yeah. Then we have the new price. We have the current price, and then here we have setup times.
+
+Speaker 1  49:08
+So this here overhead number is some kind of a total of these other numbers. So you have your lumber cost, your fasteners and your assembly cost, and the lit and deliver, I think it's the total of those, isn't it? This dollar 40. Can you do
+
+Matthias Miller  49:32
+that? No, the dollar 40 is just based on assembly times four, really. And I'm assuming he went to the income statement and did, did some kind of Total Expense divided by assembly labor, I don't know, something like that, and came up with, I don't know what,
+
+Unknown Speaker  49:58
+where, how are we getting to 14? 46 though
+
+Matthias Miller  50:02
+we're just at, we're adding together these guys lumber, nail assembly, or lumber faster assembly, delivery and ever head and heat
+
+Speaker 1  50:13
+treating, yeah, but there's a multiplier there somewhere, because he we're going from all the lumber cost is 1025,
+
+Unknown Speaker  50:27
+right lumber cost is 10. Yeah,
+
+Unknown Speaker  50:33
+nails, 90 cents. Assembly, 35 cents.
+
+Unknown Speaker  50:41
+Delivery, 58 overhead dollar 40,
+
+Unknown Speaker  50:49
+heat treating, 97 that's the total plus 10% plus 10% so, so Okay, so then his
+
+Speaker 1  51:03
+assembly cost is, what percentage of weight assembly method is, where is that factored in? Right? What's right here? But what are the difference
+
+Matthias Miller  51:16
+you're in here? Well, it's, it's ultimately here. I mean, there's this. There's a quantity divided by setup time, plus 28 per item on the beat was 28 cents. Eight cents,
+
+Unknown Speaker  51:37
+which is a way it's
+
+Matthias Miller  51:42
+so 28 cents.
+
+Matthias Miller  51:51
+Sorry. Why am I flipping right now, if You have a
+
+Unknown Speaker  52:02
+lost a pen.
+
+Unknown Speaker  52:11
+So
+
+Matthias Miller  52:28
+so times 60.28 times 60 divided by 30. Half? Is it half a minute doing that right? Per man hour.
+
+Speaker 3  52:45
+I think he, I think he doesn't make sense. I think
+
+Speaker 1  52:48
+he has, I think he factors in their quantity per hour that he I think there's like a quantity per hour factor here somewhere that he bakes into it.
+
+Matthias Miller  53:06
+I mean, that's, wouldn't that be the 28 cents here?
+
+Speaker 1  53:10
+I guess. Yeah. So, in other words, take what's 60 divided by 28 or 28 divided by $60 I um,
+
+Matthias Miller  53:26
+point Four, 7.28,
+
+Unknown Speaker  53:30
+divided by 60.
+
+Unknown Speaker  53:39
+What is so 100 and the feet is 140 per hour divided by 62
+
+Speaker 1  53:56
+3233 uh, 233, I don't know we can. We can Matt that we can, if we need to, we can ask him about all these things and help us to
+
+Unknown Speaker  54:15
+right for sure.
+
+Speaker 1  54:17
+Um, I need to, I need to take a step back from our like, in other words, let's step off to the side here for a second. And I just need to say this. Okay, yep, I've been around his formulas and things, and I know that my sense is that it's very good in some instances, but then there's, there's gaps in other instances, yep. And so I, I don't have. Have a very deep appreciation for the whole package. Yep, so I just want to have my heart in a in a right
+
+Unknown Speaker  55:16
+in a right posture. I
+
+Unknown Speaker  55:23
+Before we have that conversation,
+
+Matthias Miller  55:28
+that's fair. This is, this is just very functionally. I think there's, there's a big question between whether you build a formula and optimize a formula to get it right overall, which is where a lot of these numbers are coming from. So on a per item basis, you're losing lots of money on some items, you're making a lot of money, but overall, in the grand scheme of things, it all comes out versus getting more. You know, how deep in the weeds, how? How specific Do you want your pricing to be on a per item basis?
+
+Speaker 1  56:07
+Well, Matt, I don't think we're making a ton of extra money anywhere. I mean, there may be a few well, exclusively. What are your thoughts?
+
+Matthias Miller  56:20
+Well, with this pricing structure, it seems to me like you have a number of you, by definition, almost have to have a number of highly profitable items. And by definition, you almost have to have some items that you're that you're losing a ton of money for, like, in the grand scheme of things, if you're using overhead numbers like this, then then you're distributing the gains and losses across your entire I mean, you're splitting it by A's B's in hand, but you're, you're distributing your gains and losses across the whole group.
+
+Speaker 1  56:58
+What is, what is the discrepancies that you're seeing in the overhead formula.
+
+Matthias Miller  57:03
+Okay, what I'm saying is we are throwing all the A's into a bucket, and we're saying, what's the price each per a? Okay, A's and B's probably really doesn't matter all that much does? Well, I don't know if it does or not. I'm not close enough to it
+
+Speaker 1  57:21
+so, so we've upgraded both machines in the last four years, and they're both designed to make, they can both make four to five truckloads of pallets a day, and they have the same functions. It was the same upgrade. They're different machines, and they're they're slightly different, but it's the same. It's the same company, same a lot of the same parts, same design, same function, for the most part, same design. They both put the upgrades for both of them were like between 140 and 200,000 ish, well, it's the same price. We did the same upgrade on both machines. And so it's, it's, it was a whole new electronics, all new computer systems, setups, more automated, better, better system with the hydraulics and the nailing and all of that. And they both, I mean, I a lot of the difference between them is the one is set up to run four stringer pallets, the other one primarily three stringer or two stringer and and the they could both be set up for Stringer, but if you do that, then you have a hard time on some of the smaller pallets to crank your runners and all the things together, and then you're limited there. So we are better off leaving the one set up as a three stringer. And so that's what the B is. The B is three Stringer, that A is more of a four stringer model, and it works great. Now you can do three stringers on the A as well, and we do at times. And so yeah, the that, that difference in price is going to be in the in the amount of lumber per and all of that. But as far as the functionality, they can both make pallets at the same speed.
+
+Matthias Miller  59:28
+So then the variability comes in.
+
+Speaker 1  59:31
+And if you look at and here's one more thing, Matt, if you look at historical production on the B versus the A, the difference is primarily, there's more bigger truckloads ran on the A and and 90% of that is because we run Armstrong Marietta on the A, and that's our that's our bread and butter cheese at least a little day. So that's the difference. They're not there should be no difference in the over.
+
+Matthias Miller  1:00:00
+Head. Okay, so the place where you're hiding problems is in sawing, where you have the same yield, but wildly different amount of effort required. So so I don't have any good examples, but
+
+Speaker 1  1:00:25
+then we're not, we're not, are we? We're not catching, we're not catching bevel cuts and all the things, are we right?
+
+Matthias Miller  1:00:33
+Exactly that, that's an example. So, so then also on the hand assembly, we know that by very definition, one certain type of palette, there's a lot of variability in that. Like just because it's a per piece quantity does not make sense there. If you now, you can argue that you don't want to use hand, that you don't want to set pricing based on hand assembly, I don't know, but Well, hold on,
+
+Speaker 1  1:01:08
+what is the, what is the formula come up with the hand the price again?
+
+Matthias Miller  1:01:16
+Well, the price, the cost, is based on, if it's hand assembly, it's using a higher, higher assembly cost.
+
+Unknown Speaker  1:01:23
+Fine, but what is that? What is that?
+
+Matthias Miller  1:01:27
+Well, that's, it's based on factors that we don't understand. It's, it's the plus 80 cents we're assuming
+
+Unknown Speaker  1:01:35
+on t4 divided by e4, so it's set up time divided by
+
+Speaker 1  1:01:45
+quantity, but it's the same on every palette, right? It's not going to change,
+
+Matthias Miller  1:01:58
+okay? And that's my point. Is that we're saying that each palette takes exactly the same amount of time in terms of pricing, which means, if you look at the overall, it all overall comes out right. But it also means that we're losing our shirt on some pallets. If you look at it at a per if you look at it overall, we're fine, because we're using big the whole numbers, by the way, this comes out to saying that, I don't know how overhead comes into this and all of this, but that we can assemble hand assemble one in 48 seconds. I don't know if that's if my math is ready
+
+Unknown Speaker  1:02:45
+on on this on hand,
+
+Matthias Miller  1:02:48
+no, yeah, no, is that right?
+
+Unknown Speaker  1:02:53
+What are you saying? Dollar,
+
+Matthias Miller  1:03:00
+Yeah, funny, isn't 80 cents, if it's $1 a minute to you guys in 48 seconds.
+
+Matthias Miller  1:03:18
+Okay, I don't know anyway, so that's what I'm saying. Here is that the pricing works, if you're looking at the big picture, lump sum, which is not entirely uncommon to do, just to keep things drop dead simple. But the problem then is somebody comes to you with a simpler than average hand assembled pallet, and you're priced way out of their ballpark because it or or somebody comes to you with a really complicated hand assembled Padlet palette, and, and, and you win them over because you're pricing it lower, because your average across all pallets is, is this number right here? Right and so that's where I'm saying between, between bubble cuts as an example, and between the fundamental disagreement that I would see, between how you want to do pricing and how Rick's doing pricing now is that he's doing lump sum, big picture, big bucket pricing, and at the end of the day, it should be profitable, whereas you're wanting to drill down into more specifics and say no, on a per item basis, are we making or even per customer? Are we making money on this, on this item, or customer or not. Is that? Is that a fair, accurate statement?
+
+Speaker 1  1:04:46
+Well, yeah, I mean, we can't, I, I don't. It needs to. I want all the factors considered in every price. Yeah, a. Going to drive me nuts. I'm not going to sleep good at night if we're going to keep pricing things in a bucket.
+
+Speaker 1  1:05:13
+I mean, it's 2025 man. We have the technology to do it.
+
+Unknown Speaker  1:05:23
+Yeah, and we've,
+
+Speaker 1  1:05:29
+yeah, we lost some accounts this year. I mean, so if you got to get competitive, and let's be competitive, like if you got to sharpen your pencil because the buyer is pushing you. Um,
+
+Speaker 1  1:05:48
+so, okay, how do you going to how you going to do, how you going to do a KPI for your pricing? Guy, if you don't know what the price should be like, Okay, maybe he's giving discounts to this guy and that guy and the other thing, and it's working out. And you know, at the end of the day, you're winning, but when you're losing business, and some people are going to other vendors, because I don't know why, and then you're looking at, well, how are we doing on pricing? Well, we're using the formula well, but did we give them the best price? Well, best I could do. But if the pricing module wasn't on compassing, then you don't know if it was your best number, right?
+
+Matthias Miller  1:06:37
+So, but you can't just, you can't just switch over to that pricing, because you have to switch everybody over, which means you have to be willing to start losing
+
+Speaker 1  1:06:48
+so no, like, it's my point. No, okay, so my view on that is that we build out a new pricing module as a reference point. Yep, we're not going to stick it in the sage. We're not going to transfer every, not every price right to Sage. But we're going to have, we're going to start to look at it. We have now we have a, I mean, Tina does some pricing, and Rick will do the same thing. So there's a lot of things. Best I can tell, she does a price, he does a price. Now we're going to have a third one, and so then me from the owner's seat, I'm going to look at the third one, and I'm going to see what that's saying it should be, and then I'm going to look at actual and I'm going to expect whoever is overseeing the price application to, if need be, make an adjustment, have a hard conversation with A customer, or drift in that direction when possible.
+
+Unknown Speaker  1:08:01
+Yep,
+
+Unknown Speaker  1:08:06
+that's how I want this to play out.
+
+Matthias Miller  1:08:10
+Okay, so how do we come okay? So it makes sense to me that well predicting assembly time only really matters for hand assembly, right?
+
+Speaker 1  1:08:27
+What we're what are we? What are we saying by predicting assembly time? I mean, I guess what? Well, hang on, why just for hand
+
+Matthias Miller  1:08:37
+can't you, don't you have an anticipated throughput for the for machine assembly.
+
+Unknown Speaker  1:08:44
+Well, I mean, yeah, why?
+
+Speaker 1  1:08:50
+Why do you ask? I mean, in my mind, in my mind, I don't know if this formula does, I
+
+Matthias Miller  1:08:58
+don't know if this formula does, but, but if, if the machine has, I mean, there's so little variability, okay, this is, this is the outside looking in, from what you shared, there's so little variability in in the throughput of the of the machine that we can just come up with a number of what Its capacity is, times number of pallets plus setup time, and it should be
+
+Speaker 1  1:09:24
+pretty consistent. Sorry, sorry, you're I can't, I'm not keeping up. Okay, there's so little variability.
+
+Matthias Miller  1:09:31
+And is there you can do? Sorry, how many loads Did you say you can do? Four to five truckloads a day? Is that true for all pallets you're assembling on there,
+
+Speaker 1  1:09:47
+for the most part, if, if, if, on a straight run, it is, yeah, if you don't have the bunch, if you don't change over,
+
+Matthias Miller  1:09:56
+okay, so you need to have changeover cost, which is set up to. I'm Yeah and like, but what I'm saying is the human factor does not come into play. You can just figure out what the capacity is and how long should it take to set to do setup for this particular one. Setup is the only variability whatsoever on on the machine pricing?
+
+Speaker 1  1:10:19
+Well, sure, now, now, the more board footage in that palette, Matt, the more, the more difficult it's going to be to build it.
+
+Unknown Speaker  1:10:31
+Okay, right? Yep,
+
+Speaker 1  1:10:34
+so there's still, like in it. There's still and for, for the most part, the fastener cost and fastener times is going to be a good indicator of the difficulty of one versus the other. More fasteners probably going to take longer bottom line, more board footage, it's going to be a little harder, like it's more you're handling more material, so that that's a factor. But we're, we're getting that on a lumber cost. But do we also, anyway? Does that make sense?
+
+Unknown Speaker  1:11:17
+Yeah. Yeah.
+
+Unknown Speaker  1:11:25
+I'm sorry if I'm going backwards with your I don't want to stop you from
+
+Matthias Miller  1:11:32
+well, where, where do you want to go with this
+
+Unknown Speaker  1:11:38
+thing? Shoot man, what aspect?
+
+Matthias Miller  1:11:41
+Okay, lumber cost is easy. We can calculate that faster cost is easy. We calculate that
+
+Speaker 1  1:11:48
+lumber cost, fastener cost, I'm just making faster cost, yep, go ahead,
+
+Matthias Miller  1:11:57
+hang on, take a step back. Lumber cost. We have material and sawing, if you want to break apart, sawing as part of that,
+
+Speaker 1  1:12:09
+well, that sawing is, is based on cuts, because we have, we have the cost of the 3d the three dimensional piece. We have that cost which, which we produce. It's, it's the both sides. In the end it's creating that. It's taking a bigger square piece and putting it down to a smaller square cube, cube, right? So that, so we have the lumber cost, which is the material, which is, which is, it's word feet times price, word feet times price. But then you also have those additional things, like drill, hole, chamfer, like, yeah, so that's it. I mean, so you have, and it's a small amount, but you got it. We got it. I wanted it. It needs to be in there. So you have, you have board feet times price, plus so on, on the three dimensional piece. You got board feet times the price of the lumber, plus a percentage for labor, right?
+
+Unknown Speaker  1:13:18
+Yep, plus labor
+
+Speaker 1  1:13:22
+plus labor percentage, that's it. And then now we know our lumber costs. Are we on the same page with that?
+
+Matthias Miller  1:13:29
+And you're and you're including so is the labor on top of the board footage? And yes, yes. So you do board footage, times, okay, and then the drill, the the the drilling holes and stuff that is, is that added on top of that? Is that a
+
+Speaker 1  1:13:57
+So, so labor could be calculated separately, because the lumber price goes up and down the Do we care about that when the lumber price goes up and down? Do we care about that? Do we want to do? Are we okay attaching the labor percentage to the lumber price that goes up and
+
+Matthias Miller  1:14:16
+down? Well, I mean, okay, you also have inflation. I mean, you also Right, right, but, but you could say, if you wanted to, you could say, here is my labor price, here is my average wage, and assign $1 per board foot labor cost to thawing. Yeah.
+
+Speaker 1  1:14:43
+Yeah, which is basically the the board fee you're you're adding, we're adding a labor percentage to the board foot price.
+
+Matthias Miller  1:14:55
+So you want it as a percentage. Well,
+
+Speaker 1  1:14:59
+well, how? What options do we have? Another option,
+
+Matthias Miller  1:15:03
+yeah, well, I mean, it doesn't have to be a percentage. You could do a just a separate labor price of, if you know how many board feet, yeah, you process in a day, you could, you can translate it to $1 per board foot.
+
+Speaker 1  1:15:16
+So it'd be separate, so we'd have the labor price, which is board feet times yeah, dollar board feet times board feet times labor per board
+
+Matthias Miller  1:15:33
+whatever, yeah, yeah, labor, dollars per board foot
+
+Unknown Speaker  1:15:37
+labor.
+
+Speaker 1  1:15:40
+So that would be board feet times labor dollars per board Yeah, word feet times labor per board foot, labor dollars per board foot. And then you also have board feet times the current price,
+
+Matthias Miller  1:16:02
+which is the actual cost of 55 cents, or whatever it is,
+
+Speaker 1  1:16:06
+yeah, because that went up to 90 some cents in 2022
+
+Unknown Speaker  1:16:12
+Yep, end of 21 crazy.
+
+Unknown Speaker  1:16:15
+So, so we have two factors,
+
+Matthias Miller  1:16:19
+okay, but then the whole of the chamfer is, is a separate add on, based on,
+
+Speaker 1  1:16:25
+yes, then you have, then you have the what do we call them? What do we say we call those specialty cuts?
+
+Speaker 2  1:16:31
+Or what do we call, I don't
+
+Unknown Speaker  1:16:35
+shoot, where's that? Oh, here. I'm looking at it. I'm sorry. I
+
+Matthias Miller  1:16:40
+didn't think we came up with anything
+
+Unknown Speaker  1:16:44
+you were in that we were looking into items,
+
+Matthias Miller  1:16:46
+yeah, especially cuts, yeah. We were calling it number of specialty
+
+Unknown Speaker  1:16:49
+cuts, yeah. So then it's
+
+Speaker 1  1:16:54
+specialty cuts times labor, price per cut, right?
+
+Matthias Miller  1:17:02
+And is that going to be different per per type of cut? Um,
+
+Speaker 1  1:17:14
+well, we, we kind of should look at that a little closer before we decide that All right,
+
+Matthias Miller  1:17:20
+I'll just note that it might depend on cut. Okay, so then that gives us the thawing price, right?
+
+Speaker 1  1:17:24
+Well, we, actually, we had, we had three different ones. We said
+
+Speaker 3  1:17:31
+it was boring machine, bevel and chop saw.
+
+Matthias Miller  1:17:40
+Need to be right. There's some, some by con, per cut, and some per board let's just do specialty cut cost. And it's either here
+
+Unknown Speaker  1:17:55
+times however many cuts, times
+
+Matthias Miller  1:17:57
+times quantity, or board feet. It depends, because some of them are by byboard foot, right?
+
+Speaker 1  1:18:08
+Yeah. So your specialty cuts is, it's, it's, it's a price times however many cuts when, and what is that price? It's special. It's the amount of cuts times the times the price of one specialty cuts times specialty cut price, right? Which we have to figure out in our, in our, in our trade. So then, so then that's the that's boring machine bevel and chop saw.
+
+Speaker 3  1:18:56
+That's boring machine bevel and chop saw is specialty. Boring bevel and chop
+
+Unknown Speaker  1:19:10
+angle cuts,
+
+Speaker 1  1:19:13
+and it's then the other additional one is the other specialty cuts are chamfering, pointing, chamfering and pointing, which is the chamfer, it's the
+
+Unknown Speaker  1:19:36
+it's, it's per piece,
+
+Matthias Miller  1:19:38
+Right?
+
+Speaker 1  1:19:40
+Whereas the boring balance out we're going per cut, when it's chamfer and pointer, we're going board feet. We're going to say board feet times
+
+Unknown Speaker  1:19:56
+price of a.
+
+Speaker 1  1:20:00
+Me say board feet times labor cost per board feet. Yep, it's just like lumber cost, but it's an additional lumber cost. Yep, so that's chamfer and point. They're just different chamfer and point. This is different method, boring, bubble, chop, angle, this is chamfer and point is board feet times. So these are additional lumber costs.
+
+Speaker 1  1:20:41
+Making a spreadsheet with my pen and paper, four feet times labor
+
+Unknown Speaker  1:20:47
+dollars per board foot.
+
+Speaker 1  1:20:51
+And then the the other one is notching, which, again, is board feet times labor dollars for board feet, so that actually fits in the same category as chamfer and point
+
+Unknown Speaker  1:21:07
+is notching, Notch, chamfer, point, so,
+
+Speaker 1  1:21:18
+so, but it's an additional so we have to extrapolate that data and then decide the number, yep, which You have the measurables in place as,
+
+Matthias Miller  1:21:42
+yeah, theoretically, we'll need to think through how to get to that specifically, but,
+
+Speaker 1  1:21:47
+but I'm saying like you're we're measuring everything that we talked about in tracking gets us to data for this. Like, I don't, I think we're
+
+Matthias Miller  1:21:59
+well, but do we know? Do we really know how much more champering and pointing actually?
+
+Matthias Miller  1:22:12
+I don't know if we have a clear enough, okay, if you had one, if you had one identical item versus another identical item, with or without champering. Like, yeah, you could. But like, how do you I think we have to have some baseline where we say that, that, that each cut, like, we're gonna have to figure out how to get to that number. That's the bottom line. It's not just maybe I'm missing something. It's not just super obvious how we'll get to that cost.
+
+Speaker 1  1:22:50
+You mean how to get that chamfer cost? Yeah, which is four feet times labor dollars, which we're going to calculate, the calculations. It's going to be the board fee times the price that we think we should charge for a board foot that gets Champlain.
+
+Matthias Miller  1:23:12
+So are you coming up with the price we think we should charge? Or
+
+Unknown Speaker  1:23:16
+how do we go ahead? We're tracking
+
+Speaker 1  1:23:18
+that. I mean, we just need, we just need to get an idea of how many we can average. We chamfer per hour and then
+
+Matthias Miller  1:23:30
+and versus not per hour. What's that? Versus not per hour? How many Compare? Compare what we do? Yeah, I get it. I mean,
+
+Speaker 1  1:23:44
+yeah, we'll cut, we'll have, we'll know. We'll know what the output is after. If we do a couple jobs and the guys can say, I mean, I can, I can pull that. We can just say, hey, typically we should be able to chamfer 200 pieces per hour, or whatever it is, one person, typically, it costs us this much per hour. And this is a, yeah, this is what it would typically should cost per board foot to chamfer and then add, do we want to, I don't know, bake in the overhead cost into that for the machine. Or do we do that? Or we just
+
+Unknown Speaker  1:24:27
+do that later? Should
+
+Unknown Speaker  1:24:31
+be a little bit of overhead. They're not,
+
+Unknown Speaker  1:24:35
+I don't know. Do you do overhead on
+
+Speaker 1  1:24:40
+a sawing overhead, a specialty cut overhead, notching overhead. I mean, the purest way to do it would be to apply it in each scenario, rather than to. The bucket at the end. But I guess
+
+Matthias Miller  1:25:09
+I don't disagree, by the way, on these specialty cuts, it would be easier to calculate it if, if we had, if we could either do a quantity per hour or a board foot per hour, it seems like it'd be easier to input it that way, and then it's easier to adjust for labor down the road, because you can just adjust your labor costs accordingly. Yeah. When
+
+Unknown Speaker  1:25:44
+you say quantity per hour, can you,
+
+Matthias Miller  1:25:51
+oh, you're like in the chop saw, instead of saying, this is, it's this, it costs this much this, this made dollars per cut just from making it manageable on the pricing, it'd be easier to say we could do this many cuts per hour, which translates into this dollar per cut, yeah, so that you can change labor costs and have it. But yeah, yeah,
+
+Unknown Speaker  1:26:11
+sure, yep.
+
+Matthias Miller  1:26:15
+So then you have, so you then you have, okay, so, so where do you want to apply? On which do you want to apply? Machine saw specific overhead on everything?
+
+Unknown Speaker  1:26:28
+I mean, I think gang saws and,
+
+Speaker 1  1:26:31
+well, there, there's, there's a cost. There's a cost to making the piece the size that it is, right? Yeah. And so and but then there's an additional cost when you run it through in another machine. Granted, those machines are smaller and, you know, I don't know, do you make that up on just your labor and, like, add a little bit on your labor costs,
+
+Unknown Speaker  1:27:10
+because it's, it's special, whatever.
+
+Unknown Speaker  1:27:15
+You fudge it a little bit and say, Oh, that covers the overhead you
+
+Unknown Speaker  1:27:24
+Well,
+
+Matthias Miller  1:27:31
+I mean, it's not, it's not, it doesn't correlate the labor, or, if anything, it's an it's an inverse correlation. You have less overhead. The more labor you have, the less overhead you have. Generally,
+
+Unknown Speaker  1:27:47
+the more labor you have, the less overhead you have,
+
+Matthias Miller  1:27:52
+the more manual anything is. Oh, the less overhead. Yeah. Like again, I mean, you know, yeah, but,
+
+Speaker 1  1:28:03
+but Right, right, exactly. But, so do we apply it? I mean, do you care? Do you care how nuanced it gets? So do we want to keep that separate and just say, I don't,
+
+Matthias Miller  1:28:17
+I don't care how nuanced it gets. I think cool. If you wanted to, you could say, for each saw, this is the overhead per board foot, absolutely.
+
+Speaker 1  1:28:38
+But again, we can, we can capture that entirely on the lumber cost with our original board fee times current price
+
+Unknown Speaker  1:28:49
+times.
+
+Unknown Speaker  1:28:55
+Sorry, there's board feet times current price plus. Wait four feet times current price. Start with that. That's
+
+Speaker 1  1:29:14
+our little more cost, which which is variable number two is board fee times labor cost per board foot,
+
+Unknown Speaker  1:29:26
+plus overhead. Number two, that
+
+Speaker 1  1:29:34
+makes sense. That covers that overhead for all the gang saws and the sizers and all the things that make the three dimensional piece a smaller three dimensional piece.
+
+Matthias Miller  1:29:52
+I have lumber costs in here twice. What was that? Labor cost, lumber cost, i.
+
+Unknown Speaker  1:30:06
+Lumber cost is okay, variable so
+
+Unknown Speaker  1:30:22
+$30 an hour isn't enough anymore,
+
+Unknown Speaker  1:30:25
+but
+
+Matthias Miller  1:30:28
+agree understood
+
+Unknown Speaker  1:30:30
+labor cost. So the lumber cost is, I would say first.
+
+Speaker 1  1:30:41
+Lumber cost is the board fee times the price of the lumber.
+
+Matthias Miller  1:30:48
+Yeah, in some ways it's probably easier for you to come on. This thing has got messed up when I copied it in. I'll put this at the bottom, because it's really not that relevant. This is more like, yeah. That's more for my purposes than anything else. So I know what, what we need to track. Okay? So we have raw material equals,
+
+Unknown Speaker  1:31:22
+yeah. It's the
+
+Unknown Speaker  1:31:25
+board feet times
+
+Unknown Speaker  1:31:30
+the lumber price.
+
+Unknown Speaker  1:31:33
+Board feet times board feet price. So
+
+Matthias Miller  1:32:11
+and then we have the over i
+
+Matthias Miller  1:32:45
+i don't know if that makes sense, but
+
+Speaker 1  1:32:46
+so so let, can we start at the top again? Yeah, raw material. Board feet is the lumber price. Lumber prices. Lumber is the board foot price times the board feet for the item, right?
+
+Matthias Miller  1:33:08
+Yeah, yes. What if we would?
+
+Speaker 1  1:33:16
+Well, it's not item. It's lumber board feet times the price per board fee. Lumber, board feet times price. Lumber price per board foot, yeah.
+
+Matthias Miller  1:33:38
+Okay, then we have
+
+Unknown Speaker  1:33:40
+neighbor price is the labor.
+
+Unknown Speaker  1:33:52
+Now labor price is the
+
+Matthias Miller  1:33:55
+well, technically, this would be the lumber
+
+Speaker 1  1:33:58
+board feet times labor price per board foot? Yep, now we have to add overhead on, I think on raw material,
+
+Matthias Miller  1:34:17
+you wouldn't have overall overhead all the way at the end for everything, or what overhead Are you adding?
+
+Speaker 1  1:34:23
+I guess we could. Shall we do it that way? I mean, I think that's the easiest way to do it, because it counts, because we're catching the lumber cost, we're catching the labor cost, and we're catching the additional labor cost. So yes, that makes sense, right?
+
+Matthias Miller  1:34:44
+Yeah. So, I mean, the main thing is needs to,
+
+Matthias Miller  1:34:52
+if you're if you're attributing stall overhead on a per item basis, then you need to calculate a. Overhead that excludes the sawing overhead, because it's already accounted for here.
+
+Unknown Speaker  1:35:06
+Can you say that one more time? I'm sorry,
+
+Matthias Miller  1:35:08
+yeah, if you so, I mean, if we're doing a overhead by saw, yeah, no, we don't need to do that, okay,
+
+Speaker 1  1:35:20
+right? Because we're, we're, it's going to be a percentage at the end.
+
+Matthias Miller  1:35:26
+Well, okay, so do you want, I thought just a little bit ago you were saying you would rather attribute machine cost on a per job basis.
+
+Unknown Speaker  1:35:41
+True, true.
+
+Matthias Miller  1:35:45
+So production overhead is what I'm talking about, versus
+
+Speaker 1  1:35:50
+but, but overhead, if we do it at the end, it's a percentage of lumber and labor, right? If it's multiple solves, the labor number goes up.
+
+Unknown Speaker  1:36:07
+Is that enough?
+
+Matthias Miller  1:36:16
+I mean, I don't know that's, that's, that's probably,
+
+Unknown Speaker  1:36:21
+I think so.
+
+Unknown Speaker  1:36:23
+I think so,
+
+Matthias Miller  1:36:25
+okay, hang on. Okay, if you think it is I have no objection. I have no reason to argue against it.
+
+Speaker 1  1:36:35
+It makes it way more simple. But we could, we could. Okay, so specialty cuts,
+
+Matthias Miller  1:36:43
+yep, then we have
+
+Speaker 1  1:36:44
+murder item, yep, it's the number of specialty cuts times the cost of one specialty cut times price of one specialty cut,
+
+Unknown Speaker  1:37:08
+Yep, and
+
+Unknown Speaker  1:37:13
+that boring bevel chop, angle and then I
+
+Speaker 1  1:37:29
+and then chamfering. This is also Yeah, chamfering, pointing, notching is the board feet times labor dollars per board foot, yep,
+
+Matthias Miller  1:37:52
+so theoretically, we'll leave this at the end. So this is actually
+
+Speaker 1  1:38:00
+it could be the same as the labor price. Matt. It could. We could just say, take that labor price. Oh, chamfer and point notching, okay, same price. Add it again. We could,
+
+Matthias Miller  1:38:16
+well, we would have,
+
+Speaker 1  1:38:21
+I mean, we can look at that and try to figure out, you know, is it cheaper to chant for a point notch than to 3d a piece? We could say that, but probably not, because it's more specialized and it takes more time per piece, whereas the 3d the 3d process, is a much more of a bulk, high volume process,
+
+Matthias Miller  1:38:54
+all about what you want, man, I mean, it's, if we have, I mean, this formula isn't exactly right. It'd be the number of cuts
+
+Speaker 1  1:39:16
+right, which is we have to apply that price based on right?
+
+Matthias Miller  1:39:27
+So, okay, but the question is, do you just want to use a simple method like that? You just want to double the labor price, and is that once per specially? I mean, is it times?
+
+Speaker 1  1:39:37
+No, I'm just talking about the bottom line, not the boring bevel. I'm saying the champion pointing not
+
+Unknown Speaker  1:39:42
+you got it. You're saying because
+
+Speaker 1  1:39:45
+it's the same formula lumber, board feet times labor dollars per board feet. It's the same formula as labor price.
+
+Matthias Miller  1:39:55
+Well, it's okay. But is that? Is that the okay if we were to actually do. An accurate formula, it would be so, so is, is the throughput of this the same as it is on on other song?
+
+Unknown Speaker  1:40:11
+I don't know. So
+
+Matthias Miller  1:40:13
+that's where I was. I'm not sure that I would think this is a we don't know what the throughput is. Perhaps we can simplify it down to that, but don't we need to determine what the what the throughput per hour is on that?
+
+Speaker 1  1:40:35
+Yeah, yeah, sure. No, to be I'm not sorry. I'm maybe I'm taking shortcuts here. But I'm not
+
+Matthias Miller  1:40:41
+trying. I'm not saying you shouldn't take a shortcut, right, right, right, right, right.
+
+Unknown Speaker  1:40:46
+So it's lumber board feet. Times the lumber board feet. I
+
+Unknown Speaker  1:41:03
+What's your formula? There
+
+Matthias Miller  1:41:05
+you take the lumber board feet divided by the board feet per hour on the machine.
+
+Speaker 1  1:41:10
+Okay, hang on, let me. Let me do that math in my head. You understand, yeah, lumber board feet divided by the board feet
+
+Unknown Speaker  1:41:22
+per hour.
+
+Unknown Speaker  1:41:24
+You're saying historically,
+
+Matthias Miller  1:41:28
+we come up with some kind of either historically or, Listen, guys, you should be able to, yeah, run this much through
+
+Speaker 1  1:41:34
+right times, labor per hour, yeah, yeah. Well, then, then, then elaborate on your on our labor price, right? Because that's the same, that formula is incomplete too, right?
+
+Matthias Miller  1:41:50
+This guy, yeah. So really, what we want is, we probably, actually, and this probably be easier to figure is to have a sawing, a total sawing, board feet per hour.
+
+Matthias Miller  1:42:08
+Times, sorry, it's not times. It's divided
+
+Matthias Miller  1:42:19
+by like that,
+
+Unknown Speaker  1:42:20
+right, yeah, yeah, yeah.
+
+Matthias Miller  1:42:24
+So then theoretically, this gets, gets us selling cost,
+
+Unknown Speaker  1:42:27
+right? Well, we overhead,
+
+Matthias Miller  1:42:33
+which we said is going to be, well, yeah, I mean, this is, this is the production. It'll be overhead will be, I'm
+
+Matthias Miller  1:42:47
+not sure exactly how we'll figure that. Do you want a separate selling overhead?
+
+Unknown Speaker  1:42:58
+Yeah, I think we need to.
+
+Matthias Miller  1:43:02
+And so this is the this is, effectively comes down to, if we're
+
+Unknown Speaker  1:43:08
+going to catch variables, we need to,
+
+Matthias Miller  1:43:18
+how do we so? So you're going to for the sawing overhead. You have board feet
+
+Unknown Speaker  1:43:31
+per saw.
+
+Matthias Miller  1:43:38
+Do you want to
+
+Matthias Miller  1:43:48
+do you want to how do you how do you want to input overhead? Is that a annual, annual overhead divided with an annual volume?
+
+Speaker 1  1:44:01
+I've never made this decision, Matt, we've never so, I mean, we sure could we, could we, could we could look at, I mean, I mean, do we look at asset? Asset, turnover ratio. Do we look at and sowing labor costs historically?
+
+Unknown Speaker  1:44:34
+I don't know. What do we all look at?
+
+Matthias Miller  1:44:37
+Well, I think it's as simple as
+
+Matthias Miller  1:44:51
+let's give a very simple asset.
+
+Matthias Miller  1:44:58
+I mean, if you're just looking at. Asset. It's something like, Yeah,
+
+Matthias Miller  1:45:11
+something like that. What's the asset? What's the asset value divided by useful life, which is basically just depreciation, although you want to, you're going to want to include additional, if there's additional maintenance costs. On top of that, there is, I think it's something it's something like, it's something like annual cost, annual saw cost, which includes depreciation plus maintenance,
+
+Matthias Miller  1:45:53
+divided by board feet per year. Um, yeah, equals dollars per board feet, and then this becomes lumber BF, divided by dollar per no times
+
+Unknown Speaker  1:46:22
+like. That, yeah,
+
+Unknown Speaker  1:46:26
+right, yeah,
+
+Speaker 1  1:46:29
+that's basically one line there, correct, am I like?
+
+Unknown Speaker  1:46:33
+Right? Yeah.
+
+Matthias Miller  1:46:44
+We could say this.
+
+Unknown Speaker  1:46:51
+That was perfect, yeah, yep, yep, yep, yep, yep,
+
+Speaker 3  1:46:57
+that's a note, yep. Does that make sense? Makes sense, times overhead dollars for board fee, yeah, overhead algorithms, annual saw cost appreciation was meetings.
+
+Speaker 2  1:47:20
+Yeah, that makes a lot of sense. So then we're not over here, so then we're not, we're not, we're not adjust.
+
+Speaker 1  1:47:32
+We're not making any extra adjustment for those additional cuts, other than
+
+Matthias Miller  1:47:42
+Well, no, your breakdown, you're going to measure board feet process per saw. So if you have, if you have a yield of, I don't know, 15 board feet, and it goes through two saws, each of them, get that 15 board feet and use that to distribute it.
+
+Speaker 1  1:48:02
+So you're not Yeah. Okay, so then you're sawing overhead. Is not your same lumber board feet quantity, as in raw material, or as in
+
+Matthias Miller  1:48:14
+that that's fair. We should, we should clarify that that's No, it's the Yeah, it's the saw yield.
+
+Unknown Speaker  1:48:23
+Yeah, the the total
+
+Unknown Speaker  1:48:28
+processed lumber, board feet,
+
+Unknown Speaker  1:48:33
+something like that.
+
+Matthias Miller  1:48:37
+I like that broken down by saw. I
+
+Speaker 1  1:48:43
+Well, or do you want it? No, because, because we're throwing a lot of souls in the same category like we're not, we're not adjusting for L and M or edger or Keystone or Brewer. We're just allotting. We're not factoring in those processes individually. We're just saying those are all part of producing the the three dimensional piece, and we're throwing those all into the
+
+Unknown Speaker  1:49:31
+raw material number.
+
+Speaker 2  1:49:35
+Well, with the raw material price, no, no, the labor price.
+
+Matthias Miller  1:49:42
+Wait a minute, no. Should labor price be using lumber board foot? Should it be using the total process board foot, like if you run it through three saws?
+
+Speaker 1  1:49:58
+Well, that. Know, we don't. We don't run it through three saws the only time we run. I mean, okay, so our process of gang saw, gang saw produce does all three sides of a three dimensional piece. Yep, we can choose to run it through the gang saw, or we can choose to run it on the L and M, cut it to length and run it through the edger, edge it and split it Sure. Or we can run it through a band saw, and so we can do it in a couple steps, or we can do it in a one pass through a gang saw now, I don't think we should charge differently. Those are just ways that we can use get it done lumber, use old lumber, or we pay more for a brand new can't from the saw mill. So the brand new camp from the soil mill is, is a better yield because you get more volume. You run much more volume that way. But you can get cheaper lumber, like random and things like that, but then you have to process it differently. I don't if we can save money on other processes, then I will. I don't want, like, then, great, we save some money, but yeah, again, the three dimensional aspect should get charged at one rate, and that's
+
+Unknown Speaker  1:51:36
+labor, patients.
+
+Speaker 1  1:51:38
+Lumber board fee is total sawing board feet per hour. So total sawing is everything except for the specialty cuts.
+
+Matthias Miller  1:51:52
+So that's where you were saying that the sawing overhead could be put into the labor price. Yeah.
+
+Matthias Miller  1:52:12
+Okay, can you can you distinguish between, I feel like I'm missing something, this lumber board foot versus this lumber board foot.
+
+Speaker 1  1:52:24
+Okay, yeah, so when I said total process lumber board feet, I was thinking of it total sawing board feet as being the process of making the piece three dimensional. That's one pass, even if we use L and M and versus gang saw, it's, it's basically one pass. It's a three dimensional thing. It's, it's a, it's a one time process. It's a, it's, it's one process. Now, when we have to go to specialty cuts, now we process it the same volume twice. So now, instead of, if it's 15 board feet up here, now a sudden, we process it twice. Now it's 30 board feet processed.
+
+Matthias Miller  1:53:25
+Does it make sense to put sawing overhead that? I mean, it makes sense. It can, can we? Does this make sense to do it like this?
+
+Speaker 2  1:53:34
+Yeah? Single pass, yeah.
+
+Matthias Miller  1:53:39
+Single pass, slash, three. You know, 3d, yep, and then, and then
+
+Unknown Speaker  1:53:49
+this guy, that's his, yep, yep, yep, second pass,
+
+Matthias Miller  1:53:54
+slash, second specialty cuts, yep. Now that's making sense. I'm wrapping my head around where you're going.
+
+Speaker 1  1:54:01
+So then you have again, you're doing, you're again, you're adding overhead on the bottom of that too,
+
+Matthias Miller  1:54:08
+right? Specialty overhead. Yeah. Okay, so this is total, yeah, this we can just call lumber board foot, but this is annual, non specialty saw cost. Specialty overhead is times. Overhead equals annual specialty saw cost by four feet per year. And I'm assuming you're just going to throw all specialty in the same bucket. Yep.
+
+Unknown Speaker  1:54:39
+Look at that. That's beautiful. Are you
+
+Unknown Speaker  1:54:45
+happy? Hey, I have to get a I need a just need a CFO to adapt to this thinking,
+
+Matthias Miller  1:54:56
+well, you're genuine, genuinely. You should do is you should, once we're done with this, you should take that to that guy you're talking to and and ask him for input and see what he says, see if there's something. Here's a fun little I've okay with this caveat. I'm far better at systems and math and numbers and formulas than I am with people, but one of the interesting advice I've heard around hiring is never hire somebody that that you can't learn something from in the interview process.
+
+Speaker 1  1:55:28
+So, so in the conversation, he's he's like I said, what are goals? And first thing he said was, KPIs. I And he's a problem solver. It make things better. Mercy. Doesn't really like conflict, but can willing to handle, willing to deal with conflict if he has to. Christian ways to Yeah, others like, he's talking, I mean, right away, KPIs like, and he's like, you know, make it attainable. Get buy in. They in. Make sure that they're excited they want to do it. Get their get their get their suggestion, maybe things like that. Just learning things from sure makes sense. Yeah, I just liked. I just liked, anyway, but I'm not now. Let's come back to current day, so now I can. So I'm not, I think there's a point here where we need to pull Rick in the conversation and work through but again, I'm not saying right this second on pricing or on sewing. I'm just saying right in this process, yep, because, because my heart is, my heart is i Yes, I if I had to say, what is the acceptable? How many mistakes are acceptable going forward. I'm I'm resting at zero right now. Yeah, and, and, so does that mean? No, I've extended grace, and with that, grace is opportunity to
+
+Speaker 2  1:57:40
+come alongside, be a builder, move the process forward. That's where I'm at, yep.
+
+Unknown Speaker  1:57:51
+So okay, where we at on this thing?
+
+Matthias Miller  1:57:54
+That's okay. So that gives us selling numbers that I think we're pretty happy with, right?
+
+Unknown Speaker  1:57:58
+How much time do you have? I have,
+
+Matthias Miller  1:58:04
+I mean, I'm pretty wide open for the next couple hours. Perfect.
+
+Speaker 1  1:58:10
+I am too I think I'm being blissfully ignorant. If I'm not,
+
+Matthias Miller  1:58:15
+okay, I could use a quick I could use a quick bathroom break, and we could same.
+
+Unknown Speaker  1:58:20
+Let's, can we do like, 10 minutes?
+
+Unknown Speaker  1:58:24
+Let's do 15 Perfect. Thanks, Matt, all right.
+
+Matthias Miller  1:58:41
+Yeah. I have fallen prey to overthinking. That's, that's a strength overextended,
+
+Speaker 1  1:58:48
+which becomes, but that's not, well, okay, it's not a
+
+Matthias Miller  1:58:51
+curse. It's just, it's a strength overextended. I need other people around me. I have a great friend in my corner who does not overthink, and he helps me. Okay, so, so the from a goal perspective, if it makes sense that you want to, that you want to eventually run everything through the machine, that's great. The question that I would dive into, as far as specifics is, why don't we right now? So that's thought number one. Thought number two is, if you price it for machine, but you don't somehow incentivize your team to get away from hand work, then you're going to they're just going to lose you money on autopilot.
+
+Speaker 1  1:59:40
+No, we run everything that we can run on a machine. We run on a machine. The things we don't run on a machine is very low, quantity and sizes and and designs that cannot be either the. Can't fit through the machine, or they're the assembly process cannot be done on our on the machines that we currently have. Okay? So it's either volume, low volume or design.
+
+Matthias Miller  2:00:27
+I mean, you have, I mean crates would, would be an example. Or how did crates,
+
+Unknown Speaker  2:00:32
+right, right? Jeff,
+
+Matthias Miller  2:00:37
+okay, for all of those parts, there is a defensible reason to go to the Okay. On the volume side, the customers, like you can include this in the pricing. Say, this is the low volume pricing. Look, we can give you a massive price break if you can just bump up the volume. That's very explainable. It's like, like, we just have, that's just a thing. Are there, whether it makes sense to do it or not, which it probably doesn't. But are there? Are there machines in the market yet that do crates,
+
+Unknown Speaker  2:01:21
+not that I'm aware of.
+
+Matthias Miller  2:01:24
+Okay, so that's very defensible. You're Go ahead.
+
+Speaker 1  2:01:27
+Are there people out there that may be doing sections of a crate on a machine, possibly, but, okay, yeah.
+
+Matthias Miller  2:01:39
+Okay, so possibly sections, definitely not the whole thing, which that would be an interesting engineering challenge. The so that also seems like largely defensible. It's hard to tell without knowing what other people charge for their crates? The one that's not is, well, I mean, how much? Okay, no, here's, here's the next question. This is the question I'm really after. How much of the stuff are you doing by hand that where there's a shop within, you know, an hour of your or whatever the number should be, that could reasonably do it on a machine? They've got a machine that would do it.
+
+Unknown Speaker  2:02:39
+There are,
+
+Speaker 1  2:02:42
+there's, there's a few items that we do of the bigger pallets that can be made on a machine. But we don't current, we currently, we do not have the space on our floor for a larger machine, A, B, we long answer, sorry. B, that's fine. We had a machine like that in the past. It's called a Reiko. They talked about it, and I don't I'm not sure why they got rid of it again, just based on my experience here, I think it was probably a combination of nobody was maybe trained properly. Maybe they didn't have the correct volume to do it. Maybe it was a lack of supervision. Maybe they weren't incentivized properly. Maybe there was a lack of of maintenance or operational like troubleshooting. Maybe there was, like, I'm guessing was a combination all those things, why that machine's not sitting here anymore and and also throw on top of that, probably didn't fit the floor very well, probably didn't have a proper space for it. So should we go buy a machine that can make 10 foot by four foot pallets? Yeah? Probably 12 foot by four Yeah. Maybe Should we do that? Yeah? Probably should. We need a spot for it. I love to get there, but because I'm almost sure that what's I mean, of course it would, my goodness, man, anyway, sorry about the long answer. Is there somebody close by that would have a machine like that within an hour? I'm guessing there is, I don't know of one, probably, yeah, rather, but okay, so rather than give than go after them to do that business when our volume's down, I'd rather keep doing it here and figure out how to make that a better part of our process. Because when you start, I. Don't know. Just always feels like in the palette world, when other people, when you farm things out, or give other people some of your work, next thing you know, you don't have it anymore, and it's just don't,
+
+Matthias Miller  2:05:16
+don't farm it out. I'm definitely not saying that. In fact, it might be better. It might be better to keep it at some level of a loss, right? So understood, that was what I'm after, so that. So the big palettes, to me, the big pallets, are the ones where, I guess the I don't know, this is kind of a fancy word, I don't mean it, it's anything technical, but your competitive vulnerability is around the big pallets. It's not around low volume stuff. Nobody. I mean, who else is really going to unless there's some guy working just out of his shop doing doing it, self employed? Where else are you going to get nobody else is going to offer low volume, great low volume deals, unless they're looking to win business over, right, right? Same with design and crates, nobody else is really. So the size is really the only place where you have any level of vulnerability, in my opinion. Is that a an appropriate
+
+Unknown Speaker  2:06:18
+statement? Potentially?
+
+Unknown Speaker  2:06:22
+I probably, I'm trying to, yeah, I'm processing that. So yeah, so potentially,
+
+Unknown Speaker  2:06:36
+some, yeah, some of what we do is is priced by other
+
+Speaker 1  2:06:46
+other companies, or I'm sorry, but well, by Remy, like Remy, the Remy items, they price some of that stuff, and then the high some of the stuff, like High Steel Remy prices almost all their stuff, not everything the High Steel. There's some, there's some customers that we have that Bill Schneider, who works for Remy, he works only for us, and that would be high steel. And some of these high steel burger are the two biggest ones time at Japan. There's a couple other ones. Um, he sets the price. Where are we at with that compared to our pricing? I don't, I don't know. I don't know, Matt, I, I mean, I have a vague idea, but I'm sitting here four years into this pricing stuff, and
+
+Unknown Speaker  2:07:46
+I still don't know.
+
+Unknown Speaker  2:07:49
+I still don't know the answer to is everything priced where it should be.
+
+Speaker 1  2:07:58
+I could've went in in 2022 with Steven's program, and with a little help from Rick just Firo, an overhead number on top of it and come up with numbers for everything. But how would I apply it? A and B, it was Rick wasn't interested in it. C, I'd have like, well, he, I remember he would ask, are you trying to take over pricing? And I mean, I've set it up front. I'm not trying. I'm just trying to look where we're at with our costs and take a look at where we should be. It seems to me like some of the things are a little harder, a little more involved than what maybe like. And so we just kind of started having these conversations and and I kind of came in the back door, you know, I was looking at song numbers I want, I wanted to look at what, how much time does it take on each item and some of that? And he said, Yeah, somebody should look at that stuff, so that it kind of started there, and then it kind of evolved. And anyway, I sit here today not knowing all these answers, because I landed on the fact that
+
+Unknown Speaker  2:09:23
+in order
+
+Speaker 1  2:09:25
+to know what everything should be, I have to take in all of the data first, and that's where today. That's where we're at today. Yeah, and it took a long time, but we're that's okay. That's all right, okay, God's not upset about that, nope,
+
+Matthias Miller  2:09:46
+not in a hurry. So, so, so then the pros, the pros of you setting your pricing based on what it costs you, is that. You know you're making money on it. If they say yes, the no is, or the con is, well, you might. I mean, in these cases, most people, if they can get, from what I'm observing, if they can get good prices across the board, they're not going to be too worried. And so if you, if you scare them off right out of the gate with a high price on something, you might lose their entire book of business that they want to bring in,
+
+Speaker 1  2:10:31
+right, right? And there can be some favorable pricing along with some anyway you can Yeah, that per customer. I think there can be allowance for, yeah, I don't know. There can be some variables in there. Some things aren't profitable. There's things, you know, we throw em some throw em some cookies in this, on this aspect, and because the relationship and the business, yeah, whatever goodwill, whatever that can be. Oh, banding. You want banding on? Sure, we'll put banding on that for you, whatever stuff like that. But, oh, you want a small order? Oh, you have an emergency run. You know what? You guys are a great customer. We're not charging anything extra. We can actually make it happen, whatever. But back to the thing of hand versus machine.
+
+Unknown Speaker  2:11:28
+I think Matt that
+
+Unknown Speaker  2:11:35
+going forward, I don't, I don't want us to be key
+
+Speaker 1  2:11:45
+hold into a process that works for some but you know what? We just, we just not very good at the other when you're like, wait a minute, we can cut the lumber, we can get the materials, we can get the orders. We have, the trucking we have everything else, but we're just not good at, you know, putting that stick out the side. Or we just haven't figured out a way how to get an eight inch board. Or, like, you're saying, We can't drill a hole in that member. Like, wait a minute, that's crazy. We can do that. We just have to figure it into the price, right? So let's do that now, if you're saying, if we're saying, well, our pricing for hand work is not making us money, but nobody wants to pay that like this is, I mean, I don't know what. I don't know what everybody in the market is on that stuff. Um, I could try to get more information from Bill Schneider. He would be, probably would be helpful. He has been in the past. Um, I've never heard him. I'll have to find out next time I get a chance. I've never heard him weigh hand versus machine. At the end of the day, I would like for us to continue to pursue better processes as much as we can, in our in our operation, to speed up any part of it, whether it's big pallets or whatever it is, okay?
+
+Matthias Miller  2:13:23
+So there's a solution to this. There's the very obvious distinction, pallet pricing versus crate pricing needs to be different, right?
+
+Speaker 1  2:13:29
+And they are, and it is different. And I think Matt, I think we're actually doing really well on crate pricing. Okay, so it is a different formula, and I it's a, it's a, if we have aggressive formula anywhere, it's probably
+
+Matthias Miller  2:13:45
+there, okay, and then the and then pallet pricing, and then the other, the two things that it doesn't that, I mean low volume we have to handle in some capacity Anyway, even with, even with creating pallet pricing, right? Yeah, and so then the only other consideration is oversized, yeah. And so do you? Are you willing? Well, are you saying oversized? Well, not oversized,
+
+Speaker 1  2:14:18
+oversized and and complicated designs, or are you saying just oversize?
+
+Matthias Miller  2:14:27
+Well, I mean, in my mind, you can come up with a with some kind of standard thing for how complicated it is that can be standardized. But the real but the oversize, is that you know the 10 by four, the 12 by four that you're talking about that those are the ones where, theoretically, it's a process in a in an equipment problem of why it's costing what it's costing you.
+
+Matthias Miller  2:15:02
+Yeah, that's really the only stray little thing that's hanging out, right?
+
+Speaker 1  2:15:11
+But hold on, because we don't know what it should cost, we're trying to figure out what it should cost, but you're saying it it costs, what it costs because of,
+
+Matthias Miller  2:15:24
+well, right? We are trying to say so if, if, the only way to say what it should cost is, how much? How much does a reco cost and what's a racose throughput?
+
+Unknown Speaker  2:15:40
+Right? Yeah,
+
+Matthias Miller  2:15:43
+and then you price these pallets based on running them through a reco. But I'm gonna
+
+Speaker 1  2:15:53
+Yes, but I'm gonna back up from that. I'm gonna say making a big pallet on a machine when it has top and bottom boards, can be a little clumsy, especially getting the runners into that machine. The machine can push and pull them, but if they're bowed or things like that. It can get a little weird. So the bigger they are, the harder they are to run through a machine. So, so, yeah, so at a there, because, yeah, because it's green lumber and so then I've seen guys in the mountains, Amish guys, Nebraska's, you name it, I've seen guys, I mean, two guys working as a well oiled machine, making them things faster, probably than a machine
+
+Unknown Speaker  2:16:53
+would. Yeah.
+
+Matthias Miller  2:16:56
+Okay, so, so then we're no longer down to this is an equipment problem. This is, if the big thing I'm looking for here, more than anything else, is, is there any part of this that reasonably, 10 to 20% of the market that there's, there's a market leader directly in your Okay? Is there anybody that your customers could buy from who solved this problem substantially better enough that they could give a good enough price break that they would win the business over? And if, if you think reasonably hand assembly, on, over, on, on large pallets, can outperform machine pricing, or can meet machine pricing, then it's a moot point.
+
+Speaker 1  2:17:52
+If I think what was can beat, what did you say? If Emily Can,
+
+Matthias Miller  2:17:58
+can match, if you can match pricing between, between a Reiko as an example, and just guys throwing it together.
+
+Unknown Speaker  2:18:09
+Then who cares, right,
+
+Speaker 1  2:18:14
+right. I think I would love to see us. I would love to see us start without the nuance of assembly method. Okay.
+
+Matthias Miller  2:18:36
+So then do you want to dive into. Okay, so then fasteners are the Oh, wow. I mean, I'm really in the wrong place. Here. Am I not?
+
+Speaker 1  2:18:49
+Sorry, Matt, I need to back away. No, I don't know. I don't.
+
+Matthias Miller  2:18:55
+No, what are you thinking?
+
+Speaker 1  2:18:57
+Never mind. I don't. It's not even worth it. No, I just had a let's think about five stringer pallets, which also can't be built on a machine. But it doesn't matter, same, same difference.
+
+Matthias Miller  2:19:14
+So where do you want to where do you want to draw? Want to drill down
+
+Unknown Speaker  2:19:23
+into? I
+
+Unknown Speaker  2:19:28
+take it from the top. We have.
+
+Matthias Miller  2:19:39
+I mean, isn't this? Is this? This this is not as simple as just set up time and throughput. Is it?
+
+Unknown Speaker  2:19:55
+Maybe? You're saying two formulas.
+
+Matthias Miller  2:20:08
+Okay, here, here's where my headspace is at. And I don't know if this is right or not, but where my headspace is at is you have when you take, when you take setup time times labor plus machine time and overhead. That equals $1 value.
+
+Unknown Speaker  2:20:34
+Set Hold on setup time plus labor
+
+Matthias Miller  2:20:45
+say it again. So when you take this the setup time, well, here's what we're saying, that when you sorry, let me, let me, let me. Break it down, step by step, when you take the set of time and the machine cost, including, including, including machine overhead, including labor to run it, when you take the all in cost on a machine, and you take you compare it to set up time for for for hand, plus labor for hand. What we're effectively saying is that we believe in most cases, well, it's not even that. Well, no, we're saying in most cases, because of the low volume. Okay, you should be able to, if you take the assembly cost, you should be able to divide it by your manual rate or your machine rate to figure out how long it should take if we're saying that they're basically equivalent, if I'm making sense, maybe it doesn't even matter.
+
+Unknown Speaker  2:22:09
+Yeah, right.
+
+Speaker 1  2:22:15
+Setup time is just it's like, yeah, it's just an addition. It's an additional price point. So we need setup time. We start with setup time.
+
+Matthias Miller  2:22:33
+Dollars per each right, equals total setup time divided by average order, quantity, times, labor cost per hour.
+
+Unknown Speaker  2:22:54
+Setup time
+
+Matthias Miller  2:23:01
+is the setup time the same on I mean, we would have a machine setup time, right?
+
+Unknown Speaker  2:23:06
+Yeah, machine in hand. I mean,
+
+Unknown Speaker  2:23:19
+I think it
+
+Matthias Miller  2:23:23
+could be. We can look at how these come out.
+
+Speaker 1  2:23:33
+I don't know we could. We could probably base it. We could probably base the setup time cost on the on the price, or something like that.
+
+Matthias Miller  2:23:51
+I mean, wouldn't that be, wouldn't you, wouldn't you, effectively, isn't that basically your volume setup time is your volume adjuster? Right? Yeah.
+
+Speaker 1  2:24:06
+Oh, explain a little more volume adjustment.
+
+Matthias Miller  2:24:10
+Well, okay, on a machine, okay, if you're doing hand assembly, you get one's really bad, because you're trying to figure out what to do on the first 110s not as bad, but not good, because you're still figuring it out by palette 10, but 50 or 100 you get, you get scale. But on a machine that doesn't matter, the only thing on the machine is the changeover cost, and so the the low volume. The reason low volume. The reason low volume is more expensive is because your setup time gets divided out across. That's all, right, right, yeah, so this handles machine. And then here it's, it's, you have the the the on the assembly. Do you? Do you? Calculate it based on Well, is it then just a matter of throughput per board, feet per Hour? I
+
+Matthias Miller  2:25:23
+like this, plus, plus overhead,
+
+Unknown Speaker  2:25:35
+yeah, pretty much.
+
+Matthias Miller  2:26:07
+Isn't probably a technical term anyway.
+
+Matthias Miller  2:26:19
+And then hand you have this.
+
+Unknown Speaker  2:26:29
+I don't think we need to deviate, Matt, I don't think we need
+
+Matthias Miller  2:26:33
+to you just literally run it on these numbers.
+
+Speaker 1  2:26:38
+But I'm I still need to. I'm still not clear on how the formula is working on the setup labor,
+
+Matthias Miller  2:26:47
+okay, so wait seven time. Sorry, this is wrong.
+
+Matthias Miller  2:26:58
+No setup time. Yeah, the per item dollar value is how many hours, which is like 20 minutes. So it's point three, or whatever it is, 15 minutes, point two, five divided by the average order quantity times, okay, so if you okay, this is not account for man hours. That's probably the biggest flaw in all of this stuff. Is we need to consider whether it takes one to two guys on which part of this but right if it takes 15 minutes at $30
+
+Speaker 1  2:27:41
+an hour or on sewing, on sewing. We're gonna, on sewing, we're gonna, we're gonna, we're gonna catch that on the labor cost. We're gonna catch that on labor cost. Because in sewing, we're looking at annual specialty, saw cost. Well, that's gonna if there's one or two guys, we're gonna catch that on annual whatever. We're gonna catch that. We're gonna catch we even when there's one guy, two guys, whatever, that's a management problem, if it's too high. But, yeah, we're gonna catch it because we're catching all the labor.
+
+Matthias Miller  2:28:40
+Yeah, okay, so
+
+Speaker 1  2:28:53
+now, now on the machine, excuse me, on the machine like there's times where they'll have three guys up there, there's times where they have two guys up there. Three should make it go faster, but for the most part, three doesn't make it 50% faster than two,
+
+Unknown Speaker  2:29:18
+right? So
+
+Speaker 1  2:29:23
+yeah, we'll let that one lay. We'll let that lay anyways, set up. So
+
+Matthias Miller  2:29:27
+in my mind, it's simply, if, okay, so if it takes 15 minutes to set up, and we're just picking a random, let's, let's pick $60 an hour. Is the,
+
+Unknown Speaker  2:29:36
+is the, let's 3030,
+
+Matthias Miller  2:29:39
+okay, 30. So that's $7.50 that it cost to set up in labor. If it's one guy, if it's one guy, if it's two guys, it's $15 so let's say two guys at $15 right now, if the average order quantity is the average order quantity is 25 i. Because it's super low volume, then that's 60 cents a pallet. If the average volume is 100 it's 15 divided by 100 that's 15 cents a pallet. If they order 1015 divided by 1000 that's a penny and a half a palette. Right. Now, the other way to do this, and that's assuming, well, I think that's the only fair, I mean, that is the only fair way to do, to do Does
+
+Matthias Miller  2:30:37
+that make sense? Do you agree?
+
+Unknown Speaker  2:30:39
+Yes,
+
+Speaker 3  2:30:40
+spreading it out on the order, yes, yeah, absolutely. Okay. Does that answer your question?
+
+Speaker 1  2:30:49
+Well, I'm just trying to read. I don't I'm not reading the formula like I'm not absorbing in the sewing ones I've I just want to make sure I'm understanding it. Set up time,
+
+Matthias Miller  2:31:02
+the dollars per per pallet you take. How many? How many hours does it take? Well, this might be easier here. Let's break it let's break it apart. Even further, set up. Total cost equals.
+
+Matthias Miller  2:31:30
+Does this make sense?
+
+Speaker 1  2:31:34
+Setup, total cost equals, machine, setup, time, hours
+
+Unknown Speaker  2:31:44
+times? Yeah, it does
+
+Unknown Speaker  2:31:54
+set up for pound is set up, is set up.
+
+Unknown Speaker  2:32:02
+Yep, total cost
+
+Speaker 1  2:32:05
+divided by order quantity or average order quantity, sure, whatever.
+
+Matthias Miller  2:32:10
+I mean, we have to for pricing. We have to say you're generally going to order right 100 and we have to price it accordingly, right?
+
+Unknown Speaker  2:32:24
+Yeah, yep, yep.
+
+Speaker 1  2:32:27
+You need to build in some, some, I don't know, build in some flags or whatever when, you know, or we just, or we just say, hey, all of our pricing is based on 100 or more or whatever we do, you know, I don't know. We have to, let's talk about that a little farther down the road.
+
+Matthias Miller  2:32:47
+I think, right. I think, I think, I think we want to establish an average order quantity Well, I mean whether, whether we do this through order quantity shifts, or whether we just do in pricing drifting, price drifting, or price comparisons, I think, I think we do want to account for this. Back to customer behavior changes. They went from ordering 100 at a time to 300 at a time. Well, do we want to start giving them a little bit of a discount? Or they, they went from from 1000 to 500 do we want to, you know, at what point do we want to have that conversation? So, right? So then the machine labor is the lumber board foot divided by the board put board foot per hour times the labor dollar per hour. I'm not.
+
+Unknown Speaker  2:33:42
+I'm no, we're not done on the setup, though, but just
+
+Matthias Miller  2:33:45
+go, go, go for it. What's in the setup?
+
+Speaker 1  2:33:49
+We're we're no, we're saying machine setup, time, hours. How? How are we going to know what that is or what that should be.
+
+Matthias Miller  2:34:02
+Well, historically, we've just said it's X amount of time per whatever, right? So, how, how? What is it?
+
+Speaker 1  2:34:15
+And that's, yeah, no, oh, man. So we have to for we have to say
+
+Speaker 1  2:34:32
+there's, there's an, there's a every time you set up, change over, however, whatever you want to call it, there's a cost. There's a window of time where you're ending a job, you're cleaning up whatever you're doing, you're resetting, if you have a clean shop, you're going to set up now you have, there's always a setup cost. So. Yep, we could start with a base number, and I think it would be good if we could start with a base number and then add to that number based on a measurable i
+
+Matthias Miller  2:35:27
+Okay, here we think about this in terms of minutes. So let's do minutes. And we could do minutes divided by 60. So what is that measurable and on the shop floor, real life scenario? What? What determines? Straight up, sorry, I'm repeating myself. Real World English shop talk. What determines how long it takes to do step, to set up, to do a changeover?
+
+Speaker 1  2:36:10
+I don't know, but I think 15 minutes is a good starting point.
+
+Matthias Miller  2:36:22
+By the way, could we, could we build an incentive program around I know this is crazy, this is probably too deep in the weeds, but can we, can we give something every time setup time is 15 minutes or less? Yeah, good. Doesn't that make a big difference? I mean, that makes a huge doesn't that make a huge difference on, on overhead, in output? Well, we're not necessarily. Is it not that big of a deal,
+
+Speaker 1  2:36:56
+I guess. But we're not. We're not we. Could. It's a small part of it, but if the guys, the guys are they're getting see right now, they're basically getting credit for setup time, or basically we're saying, even if you don't have to be slow, and even, even if it only takes you five minutes to set up, we're going to allot 15 minutes of your time to set up. But if they're making pallets for 10 of those 15 minutes at the end of the day, they're still going to get credit for that,
+
+Matthias Miller  2:37:41
+aren't they? Yeah, they are okay. Forget my squirrel brain. So do you want to talk about what gets added on that base or not?
+
+Speaker 1  2:37:55
+Yeah, I wanted to say how like, most of the time, every process is two guys. Sometimes it's only one, but one, it's only one, it's going to take the guy longer, just is. So the other variable, so two is fair in that, in that, in that conversation, two guys based, based on two guys 15 minutes. Okay, what if we have a third guy on a machine? If he's busy and helping, realistically, maybe they should get it done in 10 minutes. Probably they should get it done in 10 minutes, like as a base start off. So I would say we our base is. Our base is 30 minutes of labor.
+
+Unknown Speaker  2:38:57
+Is the setup time.
+
+Speaker 1  2:39:02
+30 minutes of shop labor should equate to base setup time.
+
+Matthias Miller  2:39:15
+And the reason for them to work together, then is if you guys work together, and your machine can run for an extra 20 minutes, you can get that much more production through and bump up your
+
+Unknown Speaker  2:39:26
+incentive Absolutely. Well,
+
+Matthias Miller  2:39:30
+that needs to be explained anyway. That needs to be explained to them, and probably explained to them more than once.
+
+Speaker 1  2:39:36
+Man, you got that right. So that's gotta be sold. That is like, well, hold on, well, we're paying them no because we're dividing their output. Current law, current incentive program, doesn't. Food setup time,
+
+Matthias Miller  2:40:03
+well, but we're looking at total, total output, right, right? And so if they, if they can get 20 minutes on the clock of the machine running, whatever that machine can produce in 20 minutes is getting added over to the over on their production board, absolutely, which grows are sorry I have this throwback moment. No, I don't think Go ahead. No, go ahead. Finish. It's a little bit of a rabbit trail. The way to get my kids to fight, get our kids to fight, is to go have them rake leaves. It's the it is the I don't know why all their personality differences come out. 90% of my job is just like, Guys, can you just move the bag close to where you're picking up leaves? Because good for you guys to put some muscle into it. Yeah. Anyway, it's not that different in the shop. It's like guys, if you just, like, just stop and think about what you're doing for a minute. You wouldn't have to go run, do this. You could save this much time if you just anyway. Somehow, it seems very similar,
+
+Speaker 1  2:41:08
+but it's true. It is. I mean, it's like, you, yeah, no, really, you're set up the time that it takes to change over. Man, they should think about it. They should realize, I mean, the reality is, do they think about it? I don't know. Probably not. I think a lot of them are probably like, get to the end of the job, and it gives them like, it's, it's a break for them, you know, yeah, great breath. Kind of reset your mind. Which I get to reset your mind? Thing you need to do that? I It's like, when I was in construction, you'd be finishing, finish a task, finish the floor. Now what's next? Okay, now we got to start building walls. And you get this kind of, like, all right, you know, you kind of have to, like, check your motivation or whatever. And so I get that, but, man, like,
+
+Unknown Speaker  2:42:06
+but it's that.
+
+Speaker 1  2:42:09
+It's that, yeah, man, you could be very productive in that time.
+
+Matthias Miller  2:42:15
+Boy, you'd be even better off taking a five minute intentional break. Go, run around. Go, grab a coffee. Go, use bathroom, go, go, do push ups. Go, go, tell a joke, and then, and then get three guys on it. And maybe you don't win 20 minutes, but maybe you win 15 minutes of time and you feel better, right? Anyway, we don't have to solve that. So set up time, 30 minutes of shop labor, no matter how many guys, that's what we think. Is that right? Yep. Are you happy with this
+
+Speaker 1  2:42:43
+base setup time? Yes. How do we nuance setup
+
+Matthias Miller  2:42:47
+time? Well, how does it, how does it get nuanced in real life, it gets
+
+Speaker 1  2:42:51
+nuanced. It gets nuanced when there is more complicated applications and when the applications are larger, size and nuance again, so if we I mean, there's going to be more setup time for our crate,
+
+Matthias Miller  2:43:22
+we're in rates right now.
+
+Speaker 1  2:43:24
+No, but are you? Are we, or aren't we? Are we
+
+Matthias Miller  2:43:31
+doing that separately? I'm proposing we do it separately.
+
+Speaker 1  2:43:36
+That's fine. But again, whether it's a some of our complicated stuff is more setup time. Like when you have to some of the stuff we do for New Holland, for example, it's got stuff attached and this and that and the other thing. And like when there's multiple, multiple fastener types and all of that, it's more setup time. Well, that would be one that would be one aspect, additional fasteners could add to, should add to setup time, additional fastener type, right, like multiple fastener type, I guess would be the,
+
+Unknown Speaker  2:44:26
+yep, yep, um,
+
+Speaker 1  2:44:32
+that's not a that's not a times two, like we did with the specialty cuts. That's more of a whatever, ad five or add 10.
+
+Matthias Miller  2:44:43
+What do you think of saying that normally it's 30 and the most complicated stuff is pick a top number, 45 and then there's a sliding scale that gets us a percentage of the way between 30 to 45 Yeah.
+
+Speaker 1  2:44:59
+Yeah. Yeah, yeah, but, but how well we still have to what are the Yeah, what are those factors? So number of faster types is an indicator.
+
+Speaker 2  2:45:20
+Well, the number of parts is another one,
+
+Speaker 1  2:45:28
+because we have that, right, yeah. Now is that based on, if you look in the items data there? Well, no, that's true when we do so, some of the an items data, some of the line items are repeated same exact size, but it's in two different lines, because we're now separating it if it gets chamfered, if it's the same size. But some of those boards, some of those number 16, five and a half 30s get chamfered. Some of the 1116, 530s do not get chamfered. So it's a separate line item, which also means it's a separate tile. It's okay. Which concept
+
+Matthias Miller  2:46:13
+when? When are When? When? When do we have identical items on separate literally identical items and
+
+Speaker 1  2:46:22
+separate. For example, we just looked at George, just did it,
+
+Unknown Speaker  2:46:32
+crackers, pen,
+
+Unknown Speaker  2:46:36
+pen, stainless panel, second
+
+Speaker 1  2:46:53
+George Murph, hey, that item the other day where we were saying, some of them get slotted and some don't Same, same size.
+
+Unknown Speaker  2:47:01
+What was that item?
+
+Unknown Speaker  2:47:07
+I just need one example.
+
+Unknown Speaker  2:47:10
+Fairway five. Thank you, sir.
+
+Unknown Speaker  2:47:15
+Okay, fairway five, Matt,
+
+Speaker 1  2:47:18
+so there you go. We just changed it. Do you see you got two love 16 five and a 46 is, if you scroll to the right, you'll see that some of those get well down there. Sure,
+
+Matthias Miller  2:47:27
+water soft.
+
+Speaker 1  2:47:30
+What's that slide? Yeah, exactly. And then down there you have one love 16 five and a half at the down low, these guys. And that does not get slotted, right? It comes down to how many line items are in the lumber data,
+
+Matthias Miller  2:47:48
+okay, but why do we have, right? I mean it maybe it's not because we had, we had said unique dimensions, but, but can we just make parts be the number of line items? Yeah.
+
+Speaker 1  2:48:00
+Okay. Absolutely, because that's no absolutely, we need to do it that way,
+
+Unknown Speaker  2:48:08
+yep, instead of parts, yep,
+
+Speaker 1  2:48:12
+okay, because that is a it, technically it is another part,
+
+Matthias Miller  2:48:17
+yeah, well, and if it'd be the same part, then you would just put in the same line. I mean, it's
+
+Unknown Speaker  2:48:21
+dimensions. Doesn't capture exactly.
+
+Unknown Speaker  2:48:27
+It's parts, right?
+
+Speaker 1  2:48:30
+So, so it's based on number of fastener types, and it's based on number of parts.
+
+Speaker 2  2:48:39
+Um, is that enough? Because if, if something has
+
+Speaker 1  2:48:51
+two parts and it's really big, or something has two parts and it's really small, does it matter me for the most part, no, like, I mean, I'd say, I'd say, probably, like anything. I mean, we could say, we could maybe two categories, like anything under eight feet or anything under 10 feet.
+
+Matthias Miller  2:49:21
+Well, we, I did see a significant correlation, a meaningful correlation, at least in the length of the longest board.
+
+Speaker 1  2:49:29
+Yeah, sure, yep. So if so, let's go. Let's hit a number there. Let's say yeah. I'd say eight feet. Is eight feet. The guys can anything under eight feet, pretty it kind of fits the station and all of that. But for our, most of our setups, and probably anybody else's setups, now you have to, if you have inventory sitting around the. Area. Eight feet, basically is two piles of material. Now, now you're telling me I have to move a row with my stuff that's over here to set up this 12 Foot pallet. So anyway, eight feet is a good so if it's under eight feet, boom. If it's how
+
+Matthias Miller  2:50:20
+many minutes over eight feet?
+
+Speaker 1  2:50:23
+Well, we're now, we're got three data points going already. Matt, I don't know, over eight feet is another five minutes over 12 feet is 10 minutes over 16 feet is 20 minutes additional.
+
+Speaker 1  2:50:53
+There you go. Now we do some stuff like pen stainless. It's not the longest member. It's the because there we have. We're making it. We're making a 264 what is that? 24 foot? We do a 24 foot job. 284 whatever it is, we're seeing that, and we're and we're using, we're laminating sixteens and eighths or something like that. It's RW pen,
+
+Matthias Miller  2:51:33
+something that's not a hyphen. Let's go RW pen. Yeah. Well here, let's just do, sorry, RW, go down.
+
+Speaker 1  2:51:44
+They should be 264, right there, here, down. RW, pen, 992,
+
+Unknown Speaker  2:51:51
+this guy, yeah, it's the longest. I mean,
+
+Matthias Miller  2:51:55
+this is based on outside dimension, so, outside length, yeah, well, I mean, either way, outside length. It's, if we just look at outside length, right
+
+Speaker 1  2:52:03
+outside length or outside width, it can be width too,
+
+Unknown Speaker  2:52:06
+right? That's, that's fine. It can be width or length.
+
+Unknown Speaker  2:52:13
+Yep, Yep,
+
+Matthias Miller  2:52:15
+perfect. And isn't it nice to have that now, anyway, keep going. No. Is. What's that? It's great to have that number of parts. Then what are you referring to? To have the width and length so that we can
+
+Speaker 1  2:52:30
+absolutely, absolutely, man, all right. I mean, if we're going to add nuance on top of this yet, well, there has to be a number of parts that fits under the 30 minutes, right? Yeah. Or do we say width and length additions, Trump parts editions and fastener types and all that? Good job. I
+
+Unknown Speaker  2:52:56
+don't know. Oh well,
+
+Unknown Speaker  2:53:00
+we're gonna have to do something like that,
+
+Matthias Miller  2:53:02
+otherwise, it's just gonna go out of control, right?
+
+Unknown Speaker  2:53:06
+We can't add multipliers here.
+
+Speaker 1  2:53:15
+Well, okay, so it's 30 minutes, unless it's eight feet, then it's 35 minutes. It's 30 minutes, it's under eight feet. But there's okay, what's the, what's the, what's the 35 minute parts number, right? So, or 30 minutes. So, if it's I'd say, Oh, I'd say one, two, I'd say three. Three is three is 30 minutes. Three is 30 minutes. Four is 35 minutes. And I'd say that is man. Four to four to what are we going to do here? Four is 35 five to six is 40? I don't know. I'm probably it's probably magnifying these numbers a little um.
+
+Matthias Miller  2:54:27
+And would it help to look at some examples, like if we said, or
+
+Unknown Speaker  2:54:33
+look at machine. For starters.
+
+Matthias Miller  2:54:36
+Here, let's do this. So let's do let's look at the uh,
+
+Matthias Miller  2:54:45
+well, I don't have a good way to do this. What? Here's what I was thinking. Were you thinking the assembly analysis? Were you thinking the I was thinking the
+
+Unknown Speaker  2:54:53
+no for i.
+
+Matthias Miller  2:55:05
+Okay, so here are the here's one part here. Let's add it as a column so you can see we're at as well.
+
+Matthias Miller  2:55:20
+Two, three. So we said, we get down into the four.
+
+Speaker 1  2:55:35
+Yeah, yeah, hold on. Let me scoop a little bit here. Yeah, High Steel. I mean, yeah, um, go to fives. Okay, is there any high steals in the fives?
+
+Matthias Miller  2:55:53
+GH, no,
+
+Unknown Speaker  2:55:56
+really high steals.
+
+Unknown Speaker  2:56:01
+There's more high stills than that
+
+Matthias Miller  2:56:02
+here, let's go, let's, let's just do, let's do that, yeah, bunch of ones, threes and fours, okay?
+
+Unknown Speaker  2:56:12
+And we said four is a difference in three, right?
+
+Matthias Miller  2:56:16
+Yeah, we said four, yes. We said four is a different see, four gets is, gets you to the top fifth. What is that? 15%
+
+Unknown Speaker  2:56:30
+and three gets you to what?
+
+Matthias Miller  2:56:33
+Well, I mean three is 80, 85% of the Oh, when the three starts,
+
+Unknown Speaker  2:56:37
+yeah, yeah, sure. I mean, like
+
+Matthias Miller  2:56:43
+seven, like two thirds of them are one or one or two. Well, okay, hang on, we should do we should do this though we should do some. No, not you. I have a good way to do this. I mean, this includes a bunch of of the just supply, like non material and lumber and stuff, but anyway, or at least some of that. So then fives you get into here.
+
+Speaker 1  2:57:21
+But no, I'm still on a high steel kick, because I know what that is. So the reason some are four, let's open up one of those high steel fours.
+
+Unknown Speaker  2:57:29
+Okay, all right, we got
+
+Speaker 1  2:57:36
+inch and seven by three and a half by 47
+
+Unknown Speaker  2:57:45
+it
+
+Speaker 1  2:57:57
+must be fastened on the bottom. What is the part? What is the ID? Item ID? High serve 21
+
+Speaker 1  2:58:09
+No, it's definitely more complicated. Look at the faster now, fasteners, Yep, see there's, there's a longer hand nails on that because the inch and seven probably gets nailed on the bottom. So we got so that's number of fasteners, number of parts and number of fasteners went up at the same time in that example. I
+
+Speaker 1  2:58:46
+Okay, well, number of fasteners is a definitely a factor, because now you have to, you have to get more tools. You have to get, you know, so back on this thing of what were we talking about? We're at the parts. We're talking about parts right now. I guess I'm just trying to think of, okay, let's look at that again. Number of parts now we're down, three, four. You went to five.
+
+Matthias Miller  2:59:17
+I mean, once you get to once you get to sixes, it's like, not many left, not many sixes, sevens, eight, nines. The craziest one is, is, is,
+
+Speaker 1  2:59:30
+that's the one we just did. I just, I designed that thing the other week, couple weeks ago. Probably never do it again.
+
+Matthias Miller  2:59:38
+Yeah, that's crazy. Yeah.
+
+Speaker 1  2:59:42
+It ended up, but as a little yeah, anyways, um, yep, I shouldn't have done that. I should have been working on this stuff.
+
+Unknown Speaker  2:59:51
+But, yeah, it was, it was good.
+
+Matthias Miller  2:59:55
+Um, 15. Well. And the other thing too is once we start getting into These part numbers, we're getting into crates, which is a different animal.
+
+Speaker 1  3:00:09
+True, they're not all crates, not all. Some of them are basically kits, or whatever they are, but I I mean, what did we say three, then fours? I said five and six. Five and six would be the next layer, and then seven and up. Maybe that would be the way to do it. Yeah. I
+
+Unknown Speaker  3:00:43
+Oh, wait, yeah, right,
+
+Speaker 1  3:00:55
+five and six is plus 10 and seven plus is I
+
+Speaker 1  3:01:05
+20, yeah, I don't know if you need to add in there, because I have a theory here. Let's just do. Let's just do. And then fastener types. You could have different faster types with a small so I'd say two fastener types is five minutes. Three fastener types is 10 and four plus is 20 mm.
+
+Speaker 2  3:01:43
+Now I am almost
+
+Unknown Speaker  3:01:50
+I am thinking,
+
+Speaker 1  3:01:53
+if any one of these three factors say it's five minutes, then it doesn't matter if the other ones also say five minutes, we just add five minutes.
+
+Matthias Miller  3:02:06
+So why would we just use the biggest factor for many right? If, if based on the bathroom types, it's, yeah, yeah, exactly, yeah.
+
+Unknown Speaker  3:02:23
+Yep, beautiful. I like it. I like it a lot.
+
+Matthias Miller  3:02:33
+All right, so we got set up. Labor. Are you happy with setup time?
+
+Unknown Speaker  3:02:39
+Yeah, baby, let's go. Yeah, baby, we got it. Oh, my word. Sit here like,
+
+Unknown Speaker  3:02:48
+gorgeous man. I feel like we're solving a business or something like that.
+
+Matthias Miller  3:02:53
+Well, I hope so. I hope it's I hope. I hope we're moving stuff in the right direction, easy.
+
+Unknown Speaker  3:02:59
+No, it's I love it, I love it, but it's just, I don't know, but what like I feel like
+
+Speaker 1  3:03:09
+Lewis and Clark, and I'm not sure if, I'm not sure if anybody's gonna bring their wagons and pitch their tents here, but I'm
+
+Matthias Miller  3:03:20
+it's funny. Man, I don't know either.
+
+Speaker 1  3:03:24
+Oh, my word no, it's, it's, it's great. No, we're gonna, no, this is, this is awesome.
+
+Matthias Miller  3:03:33
+Man, well, we can. The fun thing is, we could rerun assembly tracking. I don't know what this gives us, but we could rerun assembly tracking with these calculations, these setup calculations, yeah, yeah.
+
+Speaker 1  3:03:48
+I mean, what with these four once we have these formulas, how long does it take you to do your thing?
+
+Matthias Miller  3:03:54
+Oh, the pricing thing, yeah. I mean, it's, I don't know. I think it's a couple. I don't I mean, once we have the formulas and the input values. It's, it's a week of calendar time. Probably, I don't know,
+
+Unknown Speaker  3:04:07
+week of calendar time, but not that much labor.
+
+Matthias Miller  3:04:10
+No, it's a day or two. No, yeah, I think or the day or three. I don't know what it is,
+
+Unknown Speaker  3:04:15
+but, but,
+
+Speaker 1  3:04:18
+um, this is a side. I'm starting to think that as we solve this, there's going to be less and less need for me to go back and correct historical right. I mean, I think we can probably go back and look at look at the discrepancies, either the discrepancy volume or the percentage, and we can probably, sort of, I don't know, we'll go back right,
+
+Unknown Speaker  3:04:46
+yeah, all right,
+
+Matthias Miller  3:04:49
+I suspect you're right time, if we can get something that,
+
+Speaker 3  3:04:55
+oh, well, yeah, hang on. Hang on. Yeah, I'm hanging you.
+
+Speaker 1  3:05:00
+The only reason, the only reason we would correct work order entries is if we need to go back and and change compensation to the guys right. In other words, in other words, if we, if we looked at historical input based on invoicing, boom, we got it right.
+
+Unknown Speaker  3:05:34
+Yeah, we got it yeah.
+
+Speaker 1  3:05:38
+If I only need historical we can just use invoicing, I agree.
+
+Matthias Miller  3:05:48
+And then plus plus payroll hours based on department production,
+
+Unknown Speaker  3:05:54
+Exactly, yep, exactly. Boom, we're going to save
+
+Matthias Miller  3:05:59
+you time. We're gonna save you time. We're gonna get your time back.
+
+Unknown Speaker  3:06:04
+I didn't go too far down that bunny trail.
+
+Matthias Miller  3:06:06
+Okay. Well, I do man, man.
+
+Speaker 1  3:06:13
+Okay, I'm just I have done stuff. I've gone back and fixed stuff that never mattered, other than the peace of my mind, and so we're gonna have to talk about that.
+
+Unknown Speaker  3:06:26
+Maybe. Yep, that's worth talking about it. Have you ever done that?
+
+Matthias Miller  3:06:34
+Done what? Clean stuff up for peace of mind? Yeah. So
+
+Speaker 1  3:06:38
+that doesn't even matter like instead of, instead of just writing what the bank statement says in your checkbook, you go back and add the number and change it a penny and whatever I
+
+Matthias Miller  3:06:57
+I'm not quite built the same, The same. I'm not quite built the same way. I mean, if I had to make guesses, well, that's a much lengthier conversation to explore
+
+Speaker 1  3:07:15
+well, and so I wanted to make sure I didn't want a compounding effect. But at this point in my life, I think I have a much better perspective of what has the ability to have a bad compound effect and not have a bad compound effect. So there's that.
+
+Unknown Speaker  3:07:38
+All right, Professor, let's go any
+
+Matthias Miller  3:07:41
+given point, there's always one disproportionately bad problem to solve. And if you just focus on that one disproportionately bad problem, let the rest of it fall by the wayside. And whenever you get that one solved, you go find the next disproportionately bad problem, and you solve that one, yeah, yeah, yeah. It's partially a sanity management problem,
+
+Speaker 1  3:08:06
+well, but it's also a good approach to manufacturing, right? Oh,
+
+Matthias Miller  3:08:11
+yeah. I mean, it's all all theory of constraint, kind of thinking, Yeah,
+
+Speaker 1  3:08:19
+I got a P, may I go pee. Yep, sounds good. How much time you have?
+
+Matthias Miller  3:08:24
+I should probably, man, it would be so much fun to get through this thing.
+
+Unknown Speaker  3:08:28
+I would love to get through this thing. Man,
+
+Matthias Miller  3:08:33
+let me. Let me think through I have a hard stop at one Eastern. Oh, that's just an hour. I got Max an hour, yeah, or hour and 10 minutes? You have an hour, yeah,
+
+Speaker 1  3:08:59
+we might. We're gonna do some damage in an hour. I'll be right back. Okay.
+
+Unknown Speaker  3:09:13
+What's this about?
+
+Unknown Speaker  3:09:16
+And why does this.
+
+Speaker 1  3:11:07
+Of it, yo, still around here, sorry. Oh, good. Um, yeah, I can pull Rick over whenever here to if we want to talk about that overhead at some time, but okay, back, I don't
+
+Matthias Miller  3:13:03
+think it's necessary yet. Um, yep. Okay, so then, are you happy with these numbers,
+
+Speaker 2  3:13:09
+the setup formulas? Yeah, yeah.
+
+Matthias Miller  3:13:14
+So are you Yep. Are you happy with labor, machine labor and overhead? Well,
+
+Unknown Speaker  3:13:20
+set up, total cost is, we did change that, right? There's a big no.
+
+Matthias Miller  3:13:31
+It's minutes divided by 60 times labor dollars per hour. Oh, yeah. And then the setup dollar per pallet is just divided by average order quantity,
+
+Unknown Speaker  3:13:44
+right, right, right, right, yep,
+
+Unknown Speaker  3:13:48
+yep, okay, and then hand is
+
+Matthias Miller  3:13:53
+irrelevant. Well, is it irrelevant?
+
+Unknown Speaker  3:13:57
+Yeah, yeah. At this point so far,
+
+Matthias Miller  3:14:05
+okay, but then the machine labor is all it is the total.
+
+Matthias Miller  3:14:22
+This would be a B and woodpecker, right? You mean machine or machine, or what is that? Yes,
+
+Unknown Speaker  3:14:33
+a B, woodpecker and champion. Yeah,
+
+Matthias Miller  3:14:35
+right. That's right. But
+
+Unknown Speaker  3:14:41
+what about we're not.
+
+Unknown Speaker  3:14:47
+We don't care about that. Do we well, we
+
+Matthias Miller  3:14:49
+need, we need it in some capacity, determine, to determine throughput and overhead, right? We're, we're looking at. It.
+
+Unknown Speaker  3:15:06
+Are we talking? What are we?
+
+Unknown Speaker  3:15:07
+Well, how do we labor?
+
+Unknown Speaker  3:15:14
+Are we just? Are we past setup
+
+Matthias Miller  3:15:18
+we're path set up on the labor you you need to know how much, what is your throughput? That is the that is the next thing. Is your throughput? The same for all all machines, all pallets,
+
+Unknown Speaker  3:15:41
+the library, elaborate on throughput?
+
+Matthias Miller  3:15:45
+Can you can no matter which machine you use, can you produce the same number of pallets per hour when you're in motion, or same board Feet per hour when you're in motion,
+
+Unknown Speaker  3:16:08
+no,
+
+Unknown Speaker  3:16:15
+no,
+
+Speaker 1  3:16:21
+but But aren't we going to use that fastener average time per fastener,
+
+Matthias Miller  3:16:37
+or well, we can come up with a oops, I'm in the wrong place. We can come up with a complicated formula that predicts the assembly time per item, but that's just historically what it was, and that's not what we think it should be. And it's really not very easy to wrap your head around for the sake of pricing.
+
+Unknown Speaker  3:16:59
+Well, yeah, and
+
+Matthias Miller  3:17:05
+we don't even know if it's accurate. Well,
+
+Speaker 1  3:17:14
+it would be, it would be accurate historically, if we go by invoice number, right?
+
+Matthias Miller  3:17:26
+But you don't know the you don't know the machine,
+
+Matthias Miller  3:17:34
+lumber board, feet per hour. But you don't know you Okay, so to get that number, you would have to recalculate setup time on a per order basis, determine your actual production hours. Take that out. That gives you total machine, runtime,
+
+Unknown Speaker  3:18:06
+total, anything runtime,
+
+Matthias Miller  3:18:12
+well, total, anything runtime, total, right?
+
+Unknown Speaker  3:18:15
+Total production time. Well,
+
+Matthias Miller  3:18:20
+do you have total production time for a year?
+
+Speaker 1  3:18:28
+I mean, like, historically. I mean, yeah, Rick, he Yeah, I have so he gave me, well, what is that? I don't know if it's ours, but it's
+
+Unknown Speaker  3:18:43
+it can be dollars, it's dollars.
+
+Speaker 1  3:18:52
+So we only have last year and this year. Otherwise, as far as as far as actual sales, we only have last year and this year. So we last year's and this year's assembly cost and selling cost.
+
+Matthias Miller  3:19:14
+I mean, can't we just take, can we get an approximate hours based on, Oh, these are, no, this is board foot per we're doing per shop hour, right? Sure it is, so you look at
+
+Unknown Speaker  3:19:41
+but what are you trying to solve? What are we trying to solve?
+
+Matthias Miller  3:19:43
+Okay, machine labor. We have the lumber, the board feet, but what's the cost per board foot for assembly? That's the That's the issue. That's the fundamental issue.
+
+Speaker 1  3:19:58
+So we take a. Historical. We take our labor costs historically and our assembly hours historically and
+
+Matthias Miller  3:20:26
+does? Does he have that those hours? Are we using hours from our work orders?
+
+Speaker 1  3:20:31
+No, I would get those from. Oh my Well, then I'm gonna have to go clean up stuff again. So
+
+Matthias Miller  3:20:42
+that's what we want to avoid. So production labor, so we have total production labor,
+
+Unknown Speaker  3:20:53
+and we have total production time.
+
+Matthias Miller  3:20:59
+Do we have that? You
+
+Speaker 1  3:21:00
+have to forgive me on this, but production is sawing and assembly, so sure we're talking about assembly now,
+
+Matthias Miller  3:21:16
+well, but you can look at, you can't run payroll by the guys who normally work in the rate and respected. No,
+
+Speaker 1  3:21:25
+no, he has Rick has that. Okay, yeah, Rick has that assembly versus sawing, yeah, he has it.
+
+Matthias Miller  3:21:34
+And does he have the total assembly time?
+
+Unknown Speaker  3:21:39
+I think so.
+
+Matthias Miller  3:21:42
+And does this is this? Does this only include shop time? Not, not anytime?
+
+Speaker 1  3:21:50
+Yeah, there's going to be a little bit of company time mixed in there, but not much. Not worth sneezing.
+
+Matthias Miller  3:21:56
+Okay. Okay, so this gives us and then we have the and then we have the invoiced board feet.
+
+Speaker 3  3:22:16
+Okay, nothing crazy. I just want to ask you the question,
+
+Speaker 1  3:22:19
+sure, yeah, the guys are leaving now, aren't they? Yes, they are. Yeah,
+
+Unknown Speaker  3:22:27
+for sure you got it, yeah.
+
+Speaker 3  3:22:31
+Alright, yeah. So Tina wants something sometime, okay, so
+
+Matthias Miller  3:22:41
+at some point, however we combine these numbers we need, or however we want to represent it, we need these three numbers, the invoice board feet, the total labor, total assembly dollars, and total assembly time and and are you thinking we use a okay,
+
+Matthias Miller  3:23:08
+but this is a man hour, right?
+
+Speaker 1  3:23:16
+Hey, I said these guys are leaving for the weekend. Matt, yeah, I should take five minutes.
+
+Matthias Miller  3:23:21
+Okay, sounds good. Okay, yep, good. You.
+
+Unknown Speaker  3:27:01
+Me, you? Oh, yeah,
+
+Unknown Speaker  3:27:26
+oh man, when you when you holler, buddy.
+
+Matthias Miller  3:27:35
+So we're looking at
+
+Unknown Speaker  3:27:43
+so we're looking at labor, which you're calling it machine labor, but we're,
+
+Matthias Miller  3:27:54
+well, it is labor. I mean, it's, it's not, it's assembly labor
+
+Unknown Speaker  3:27:57
+we want to assign, or it's good.
+
+Unknown Speaker  3:28:00
+Well,
+
+Unknown Speaker  3:28:02
+for pricing, we're getting a labor price
+
+Unknown Speaker  3:28:07
+for each item, right?
+
+Matthias Miller  3:28:10
+Why wouldn't we do a why wouldn't we use this to calculate assembly time?
+
+Matthias Miller  3:28:22
+Yeah, so assembly time equals
+
+Matthias Miller  3:28:39
+which We get which we get by the
+
+Matthias Miller  3:29:13
+so you calculate the setup time for all the invoices, and you take that out to calculate the board foot per shop hour. You Well,
+
+Unknown Speaker  3:29:23
+I guess, yeah,
+
+Unknown Speaker  3:29:32
+you guess what? Well,
+
+Speaker 1  3:29:35
+basically, we're now just going to say that we're going to divide our historical cost
+
+Unknown Speaker  3:29:43
+by board footage
+
+Unknown Speaker  3:29:47
+effectively, yeah, by board footage only, which is not a not accurate measurement. It's.
+
+Matthias Miller  3:30:00
+Right, because we need to distribute it.
+
+Unknown Speaker  3:30:06
+The accurate measurement would be if Rick's total
+
+Speaker 2  3:30:11
+hours would match total hours
+
+Speaker 1  3:30:21
+based on invoicing, or be very close, then we could say here's what it's been per fastener. And so assembly time is historical. Fastener time divided by fastener or divided by hours, hours,
+
+Matthias Miller  3:30:54
+right? But it's not just by I mean, fastener is not the only factor, and I don't know that fastener is a close enough factor to get it accurate, is it?
+
+Unknown Speaker  3:31:05
+I don't know, but it's what it's a really good one.
+
+Matthias Miller  3:31:11
+Okay, here's another, another way to do this. Can we come up with a simple difficulty score
+
+Unknown Speaker  3:31:24
+that we use
+
+Matthias Miller  3:31:26
+to distribute the hours, to calculate and distribute the hours, yeah,
+
+Speaker 3  3:31:40
+so that would be back to the original. It's board feet,
+
+Unknown Speaker  3:31:49
+it's fasteners and it's parts.
+
+Matthias Miller  3:31:59
+But then how do we get the baby see that's, that's where we this, this, this really, this assembly time is really where we get hung up. Because on the surface, it seems simple, but we don't have any point of Reference, like the well,
+
+Unknown Speaker  3:32:31
+what if? What if we I?
+
+Speaker 1  3:32:43
+We're trying to come up with what it what the number should be, the end the
+
+Unknown Speaker  3:32:49
+end number
+
+Speaker 1  3:32:52
+the is the price that we think that it should be based on as many proper formulas as we can extrapolate from the data points that we have, which is a very broad and all encompassing way to do it. So it's the difference between what it what we think it should be, is could be, we could be almost spot on, if we had a true reference point. What would it be? So? What it like? What is the true I hear you there, but oh man, I wish I had more historical data.
+
+Speaker 1  3:34:02
+We shouldn't map. We can't We can't use current pricing as a reference point, right? We know that, right? We don't have accurate historical assembly time, so we can't use that as a reference point.
+
+Matthias Miller  3:34:23
+What we we can use, okay, but we can use basically all that we're trying to do is, can we get it back at the napkin? Way to say, this thing takes twice as long as that thing to assemble.
+
+Matthias Miller  3:34:49
+And I mean, but given the inaccurate data, I mean, if you really want to take it to the good
+
+Speaker 1  3:34:55
+Matt, the data is good if you apply. By, we know, we know the hours in the huh,
+
+Matthias Miller  3:35:08
+if, if you ignore the quantity that was assembled, and you take the total assembly divided by the total the assembly time divided by, okay, this recalculate numbers. Numbers based on total assembly time, yeah, divided by no here, total assembly time minus recalculated setup time from invoices divided by invoice quantity, slash or or divided by Sure, sure quantity. That's the per piece. That's, that is the per piece, yep. So the question then is,
+
+Speaker 1  3:36:00
+I think I'm with you. So it's the total assembly time for each item with a recalculated setup time. And your factor is the you're using the total invoice quantity. So you have total hours, total invoice quantity, recalculated setup time.
+
+Matthias Miller  3:36:36
+That gives us the time each now the question is, do we want to try to use that to come up with factors based on the three factors that we talked about?
+
+Speaker 1  3:36:46
+Yeah, use that. Use that new time to figure out time for fasting. Use that new now you have the now you know the new time per item, and so we can have more, very accurate. We have accurate time per fastener across the board
+
+Unknown Speaker  3:37:21
+for the last two years, which
+
+Unknown Speaker  3:37:28
+I'm gonna once. When you're done with that, I want to say something, right?
+
+Matthias Miller  3:37:35
+I still it doesn't. It doesn't. We still need to account for if we're using these three variables. We still need to run some scenarios to figure out how much of what,
+
+Speaker 1  3:37:46
+but, but that's fine, but, but the are we on the same page with this? With the
+
+Matthias Miller  3:37:50
+Yes, yes,
+
+Speaker 1  3:37:52
+time per fastener, yep. We use Yeah, go ahead. Invoice quantities, work order time recalculated. Setup time. And we have accurate last two years time per fastener. We would then, if we would then take that and apply it for pricing.
+
+Speaker 1  3:38:35
+What would be, excuse me, because now you now we know like we're trying to find, we're trying to come up with labor time, labor costs, and that's based on time per item, right, right? Well, the fasteners captures all of the time. And if we throw in another variable, how can we add a variable to this equation?
+
+Matthias Miller  3:39:10
+So you think you can literally determine, is it by the number of types of fasteners?
+
+Speaker 1  3:39:21
+Yeah, no, no, no, what? Sorry, say it again.
+
+Matthias Miller  3:39:26
+Is it the time per fast per individual fastener? Is the time,
+
+Speaker 1  3:39:30
+the time per fastener type, time per
+
+Matthias Miller  3:39:33
+faster type? Right, right? And then, okay, I think we're gonna have to run this and see how good it actually is. I
+
+Speaker 1  3:39:47
+agree. But then, but then I'm just, I want to take it farther, just to so let's play it out. If, if you now know that you. Time that it takes us per fastener type to assemble a product. It's fastener type which is calculated by how many it takes to build that product.
+
+Speaker 2  3:40:20
+We
+
+Speaker 1  3:40:28
+we can, well, any product with that fastener type, historically, is going to have the same number. We have an average. So going forward, we're saying, Okay, if it has 100 hand nails, here's how long it should take, and here's how long it took historically. But we're saying, Hold on historically. We don't believe that 100 hand nails into this item versus 100 into that wider item is always the same, which is true, and so the way to get more accurate would be to divide up fastener times by the other factors, which Is parts and board feet and just make different categories.
+
+Speaker 1  3:41:42
+So if you have the times per fastener historically,
+
+Speaker 1  3:42:02
+and you say, Okay, it's for hand nails, it's for machine. It's one minute hand nails, it's two minutes and two whatever screws is three minutes, so each fastener type, but what, whatever it is, is what it's been historically. So now historically it's been machine one, hand two and screws three. But when the machine fastener process is also four parts instead of three parts, it's historically taken a little bit more than a minute. So now we have the machine time one's based on three or less parts, the other one, or whatever, two parts, three parts, four parts. So we break that into three different categories, but you'd have to extrapolate that data. So we could break it apart by parts, just like we did the setup time, and we could break it apart by
+
+Unknown Speaker  3:43:38
+board feet. And
+
+Unknown Speaker  3:43:48
+yeah, way down.
+
+Matthias Miller  3:43:51
+I feel like the net result, if we want something that's relatively accurate, is we're going to end up, we're still going to end up with a with a formula that looks something like this, that has all these different factors that gets us reasonably close to what we think it should have been, historically, and, and, and it's still going to be within you know, 50% accuracy.
+
+Unknown Speaker  3:44:16
+Why only 50% Yeah,
+
+Matthias Miller  3:44:23
+it well, maybe it's off because of I
+
+Unknown Speaker  3:44:26
+don't know. I don't
+
+Speaker 1  3:44:28
+Well, I don't know all the things that I don't. I don't understand your spreadsheet well enough to know what it's I
+
+Unknown Speaker  3:44:34
+don't. I just don't think
+
+Matthias Miller  3:44:38
+I could be wrong. Um, I don't think we're going to be able to mirror historic okay, even with our numbers that we come up with, we think it's accurate, shouldn't we? Also, isn't there a world in which we should potentially time adjust that based on you? Like if all our total work orders came out at maybe this doesn't even matter. I remain less convinced that there's a direct one to one correlation, and that we'll be able to that. I think some of the time we'll be close, and some of the time will be wildly off, but maybe I'm in calculating us, in calculating assembly time, even if we come up with multipliers or things like that,
+
+Unknown Speaker  3:45:31
+why would we be wildly off?
+
+Matthias Miller  3:45:38
+There's too much variability in how things get assembled and and just because one item has these board feet and these parts and these fasteners, and even though they're exact between the two, doesn't mean that it takes the same amount of time to assemble for whatever reason. And maybe it's just because you've got guys who are a lot faster than, okay, let me ask you this question. Maybe this doesn't matter, but when you compare the fastest guy and the slowest guy, how much differences are between between them?
+
+Unknown Speaker  3:46:20
+I mean, it could be double,
+
+Matthias Miller  3:46:22
+okay, so right, there is an explanation for 50% variance, yeah, but
+
+Unknown Speaker  3:46:31
+historically, I mean, what?
+
+Speaker 1  3:46:37
+What's different? 50% like it, yeah, hit that when this guy did the job, it took twice as long as when that guy did the job. But historically,
+
+Unknown Speaker  3:46:49
+it's flushed out.
+
+Matthias Miller  3:46:54
+What I'm saying is, when you get down into per item pricing, right?
+
+Speaker 1  3:46:59
+Well, okay, but remember, Matt, most of the price, right off the bat, is the is the lumber cost. We're just talking about us a small percentage of the actual price. When we talk
+
+Matthias Miller  3:47:15
+Are you sure you don't want to Well, okay, so our overall target is is 12% in a way that they can beat so realistically, historical performance, based on what they've been doing, we think it's probably closer to 10 to 11% that's fair. Okay, fine. So how in your mind, what's the outcome that you're after? Do you want a board? Feet, times you want assembly? Hours per item equals some starting number. Actually starting number shouldn't be relevant. It's board feet times the number plus parts times the number plus fasteners, specific fasteners broken down by type times a number. Is that what you're looking for
+
+Unknown Speaker  3:48:21
+to determine what, to
+
+Matthias Miller  3:48:22
+determine the assembly time
+
+Speaker 1  3:48:30
+as what it should be, yeah, yeah. I think so I don't know what else. I don't know what else better to use. I mean, I think it's very good measurables. I
+
+Unknown Speaker  3:49:09
+sure.
+
+Matthias Miller  3:49:15
+Okay, well, here's, here's kind of how I feel about where we're at. No, that's it
+
+Unknown Speaker  3:49:20
+right there. That's it, right there.
+
+Speaker 1  3:49:23
+Right What do you think about that? Just that right there. What you just typed up there, assembly top.
+
+Matthias Miller  3:49:29
+I mean, I It's with, with the caveat that this is going to be wildly inaccurate on a per item basis, or not wildly but not terribly accurate on a per item basis, but accurate overall.
+
+Unknown Speaker  3:49:42
+Great. I have a problem with that. Hold it. You're saying.
+
+Matthias Miller  3:49:50
+I don't actually believe that this is going to get a high level of accuracy on a per item basis, that it's going to actually accurate, fully accurately represent reality. Does it matter? In the grand scheme of things, probably not. Can we actually get it? Sorry, go ahead. No, go ahead.
+
+Matthias Miller  3:50:11
+But I think it's very likely a good enough certainly to get started, and maybe even long term, a good enough approach.
+
+Unknown Speaker  3:50:24
+Well, but we got to go back like,
+
+Speaker 1  3:50:29
+yes, board feet per hour is a factor, fasteners per hour is a factor, and parts per hour is a factor, but these are all running simultaneously. So you can't add them up.
+
+Matthias Miller  3:50:47
+Well, it's not, I don't know what the exact formula looks like, but it's, it's more like I mean, and is it multiplied? Is it? What is the relationship? Is it added? Is it multiplied? Is it? It's either
+
+Speaker 1  3:51:12
+it's you could compare them. You could say, based on historical board feet per hour. Here's how long this should take based on historical fasteners, specific fasteners per hour. Here's how long it should take, and based on historical parts, here's how long it should take.
+
+Unknown Speaker  3:51:40
+And then just, well,
+
+Speaker 1  3:51:44
+it'd be a it'd be a starting point. Wouldn't be the answer
+
+Matthias Miller  3:51:47
+you could average. And again, it might not be accurate, but it could be, it'd be a starting point
+
+Unknown Speaker  3:51:53
+you could average, or you could weight it right.
+
+Unknown Speaker  3:52:10
+Does that connect with for you or um?
+
+Matthias Miller  3:52:42
+It's close, it's it's closer. I'm still,
+
+Matthias Miller  3:52:51
+I'm happy to try it. I'm again, I'm, I'm skeptical that we'll be able to replicate historical data very well. But I also don't know that we have to solve all of that
+
+Speaker 1  3:53:08
+that will be able to replicate historical data.
+
+Matthias Miller  3:53:12
+That will be, yeah, that will, that will be able to map that this formula, again, I'm fine trying it, if the goal is getting something that's in the ballpark great, and how big is the ballpark that I don't have an answer to no, but
+
+Speaker 1  3:53:32
+no, but Matt, you're, you're saying you, but you can get accurate historical, Right?
+
+Matthias Miller  3:53:38
+Okay, but you can't. You can get accurate historical. You can put together a formula that gets you the best possible result against all historical and then when you're done, you're going to have some items that are great and some items that are wildly off. I don't think there's any way around that.
+
+Speaker 1  3:54:00
+Okay, but yeah, well, I mean, I don't, I haven't seen great and wildly off, so I'm sorry I can't picture that.
+
+Matthias Miller  3:54:07
+Okay. Well, we can, we can. We can run, we can run this as a scenario and take a look at the numbers that come back.
+
+Speaker 1  3:54:16
+You can get, you have, you can get accurate historical data, right? Based on invoicing,
+
+Matthias Miller  3:54:22
+sure, yep. So then
+
+Speaker 1  3:54:28
+we're trying to figure out assembly time. So based on invoicing, we'll know how many board feet per hour, we'll know how many of each fastener type per hour, and we'll know how many parts per hour.
+
+Matthias Miller  3:54:46
+Okay, all, all I'm trying, well, I'm happy to put, put this together and run the numbers for you. All I'm saying is, if you have a something, an item, that you only run a couple times. A year, or, you know, every other month, or something, and the guys happen to be particularly slow, that's going to throw your numbers off. And when, when you put together this formula, and you come back and you say, Okay, are we coming up with the right number of assembly hours? Maybe it's right. Maybe it's not, I don't know. We can dig into the specifics. Go ahead,
+
+Unknown Speaker  3:55:20
+how is one small sample size going to throw off our formula
+
+Matthias Miller  3:55:25
+over that's what I'm saying. Overall, it's going to be correct, right, but, but you're going to have items, specific items, that it's very likely to be wildly off, but I'm happy to
+
+Speaker 1  3:55:37
+but Matt, what is wildly off in that point? At that point,
+
+Matthias Miller  3:55:42
+it takes twice as long to assemble as what we thought it what we said it should, or it takes half as long as we said it should.
+
+Speaker 1  3:55:52
+Yeah, but how is that possible? Because we we already taken all these factors into consideration.
+
+Unknown Speaker  3:56:00
+We've already a lot of assembly because
+
+Matthias Miller  3:56:02
+we're dealing with people No,
+
+Speaker 1  3:56:04
+but no, but that you're talking about in actual when we get the order and we send it out there, it may take them longer because they only do it three times a year. But based on historical, if it takes screws or lags or whatever, we know what that takes historically, and so this is what it should take. So now, if we do one pallet three times a year and it takes us twice as long as it should, that's not really the customer's fault or the Price's fault. That's just because the guys, for whatever reason, were messing around, and we gave them plenty of setup time. We gave them a time for every fastener. How long it typically takes to put in that carriage boat. But they were screwing around. Well, guess what? I'm Yeah, so they didn't whatever. They didn't make incentive. Or we might have lost money on that job. But you know, like, overall, it shouldn't. It's not a what me and you are trying to figure out, Does, does, doesn't that doesn't really matter, does it in what we're trying to accomplish? Okay?
+
+Matthias Miller  3:57:09
+I think the only way to answer this argument is not to deal in hypotheticals. But let's go run these numbers, and let's compare what these numbers tell us about historical time, and let's compare it with actual items, and for items that are wildly off, let's look at the top 10 worst ones, and let's look at the story behind them and see if the guys are genuinely slow and and or whether we're just happy with What we have. Are you?
+
+Speaker 1  3:57:40
+Are you concerned, Matt, with there being bad data because of some guys being slower than others,
+
+Matthias Miller  3:57:57
+I remain unconvinced that fastener types maybe again, call me the skeptic, and I'm not the guy with the experience. I remain unconvinced that these three factors, by themselves, truly account for, with with, truly account for all of the complexity well enough that you can fully accurately predict assembly time. Now, I'm not saying it's not good enough.
+
+Matthias Miller  3:58:34
+I just don't think, I think it's highly unlikely that everything is cut and dried well enough to be captured in these factors. But I'm happy to be proven wrong, and I also don't know that it's in the grand scheme of things, it's a hill worth dying on. We got to get a number as a basis.
+
+Speaker 1  3:58:57
+I mean, we could add in some lesser data points, which would be the overall size of the product. That would be one like, like we did the setup thing with eight feet 12 feet 16 and up. That would be the additional that would be the additional factor. But
+
+Matthias Miller  3:59:36
+I mean the other way to do this, which I think is goes very much. Back to pricing philosophy is if our labor target or target labor percentage is 12% well it doesn't account for complexity variations. That's that's the fundamental issue.
+
+Unknown Speaker  3:59:54
+Yeah.
+
+Unknown Speaker  3:59:58
+Okay, that's why we can't. Just
+
+Unknown Speaker  4:00:01
+priced by tractor trailer.
+
+Unknown Speaker  4:00:05
+Well, that's fair.
+
+Matthias Miller  4:00:09
+Well, I am. I feel like I'm running out of steam here.
+
+Unknown Speaker  4:00:13
+That's fine, nope.
+
+Unknown Speaker  4:00:22
+Well, let's just, let's just
+
+Unknown Speaker  4:00:23
+process for a minute.
+
+Matthias Miller  4:00:31
+Makes sense? You mean, let it sit over the weekend?
+
+Speaker 1  4:00:36
+Well, we're just 60 seconds of our time right now. Yep, let's do it. Let me Just think for a Second. Yep,
+
+Unknown Speaker  4:01:20
+Name is
+
+Unknown Speaker  4:01:58
+item the yeah,
+
+Matthias Miller  4:02:05
+here I'm gonna, I'm gonna jump on my phone. I gotta get some fresh air, and we can Keep
+
+Unknown Speaker  4:02:11
+talking. Sounds fun,
+
+Speaker 3  4:02:16
+full time. Um, um.
+
+Unknown Speaker  4:02:41
+Stewart cool,
+
+Unknown Speaker  4:02:48
+no feet.
+
+Unknown Speaker  4:02:59
+Well, Matt, Matt, are you good? You
+
+Unknown Speaker  4:03:59
+Forget he's there.
+
+Unknown Speaker  4:04:05
+I can't hear you. Matt,
+
+Unknown Speaker  4:04:19
+still there. We go. Try that. Gotcha?
+
+Matthias Miller  4:04:22
+I'm gonna try switch it back to my headphones.
+
+Speaker 1  4:04:28
+Well, Matt, if you were to take that formula that you already ran when you said it was only 50% accurate. What did you see that was way off?
+
+Matthias Miller  4:04:53
+I don't have I didn't drill down specifically into specific items. I.
+
+Matthias Miller  4:05:04
+Yeah, I just know, taking a lot more factors than this into consideration, I was only able to get 50 up to 50%
+
+Speaker 1  4:05:12
+can you? I can't, I can't, I don't know, 50% of what?
+
+Matthias Miller  4:05:16
+50% that, where the Okay, when you take, okay, this is still running off of bad old data, yeah. You take the old data, you turn it into a formula that works across the entire set of items, yeah, and then you rerun it on a per item basis, on average. Average accuracy is about 50% accurate,
+
+Speaker 1  4:05:39
+yeah, but of what the price or the assembly time?
+
+Unknown Speaker  4:05:45
+So okay, so
+
+Matthias Miller  4:05:47
+again this, I feel like I'm Yeah, repeating myself, but if that's an acceptable measure of No, we're looking at half, half of labor, perhaps, or whatever that is. So we're only looking at a few percentage points of variability across the entire price, right?
+
+Speaker 1  4:06:07
+Understand, understand, but basically, what, what you the formula that you put in there. I mean, not to be skeptical, but I'm, I'm, I mean, I don't know what the formula exactly what it was and how you did it, but in other words, you're saying some of the items it said they should take X amount of time, but they took a lot longer, or not near as long, correct based on that formula. Well, can we please try? Try again. I mean, I don't, yeah,
+
+Unknown Speaker  4:06:43
+so if you would,
+
+Speaker 1  4:06:48
+I really the first, the first step would be to apply invoicing to the historical numbers and then
+
+Unknown Speaker  4:07:01
+run some comps.
+
+Matthias Miller  4:07:02
+Yep, agreed,
+
+Speaker 1  4:07:05
+how hard, how, how much work is it for you to do? Do that with shoot, just try with your old formula.
+
+Matthias Miller  4:07:14
+First, it's probably been hour or two, something like that.
+
+Unknown Speaker  4:07:19
+Yeah, yeah, yep,
+
+Speaker 1  4:07:25
+that, I mean, that's going to be big time. And then I'm thinking of, I'm thinking of three columns, just for, like it would be, if you could show the item ID. It's five columns. Here's the item ID. Then you show historical time per item, and then you show historical time per fastener based on the fasteners in that item, historical time per board foot based on board feet in that item. Historical time per parts based on parts in that item. And I mean, if you're okay with all this work, man, I mean, that's another I'm not. I don't want to be ignorant of your time.
+
+Matthias Miller  4:08:26
+I I don't mind.
+
+Matthias Miller  4:08:33
+I'm going to expect some level of this is going to be necessary to come up with a number that you're happy with, and I, I think it's just part of the process. And I'm not, I'm not opposed, I'm not opposed to that. And don't, don't take my Don't, don't take my disagreement as a I don't know it's not, it's not personal, and I'm not mad. I'm just it's my opinion, but I'm willing to investigate and be proven right or wrong.
+
+Speaker 1  4:09:10
+So, yeah, do you have a Do you have a fast track, like, thought, right? That's like saying, well, we just need to do it This way and good enough.
+
+Matthias Miller  4:09:34
+It seems to me that we could probably come up with a calculation method that's maybe not as good as running it through all the paces, but it's still good enough just. By,
+
+Matthias Miller  4:10:05
+just by some back of the napkin, types of things like, can we come up with a I don't know though. Let me think about give me my brain's fried at this point. Let me, let me, let me do on it over the weekend and see if I come up with any. I mean, the super fast track is just running the 12% and saying that we're going to do 12% now, but in January. But, but because, because two by four pricing as an example, is a much bigger deal than labor costs at the moment. So we're going to, we're going to, we're going to get one version out first, and then drill down into the weeds on this particular piece of it. That's probably the only shortcut I can think of.
+
+Speaker 1  4:11:07
+But, but 12% is, is going to be way off on high volume stuff. Yeah, it will be like machine versus hand, like the
+
+Unknown Speaker  4:11:19
+Yeah, yep,
+
+Speaker 1  4:11:23
+that's fair. No, I think I think we're gonna have it. I think I think, Matt, if you do, man, take a snapshot. Cell phone on my little thing I put here, yep, um, exactly, well, man, just if you can pull historical
+
+Unknown Speaker  4:11:49
+based on,
+
+Unknown Speaker  4:11:55
+based on the hours that We said we spent on each item. And then, based on the quantity that we invoiced on those items, run that historically and then, and then
+
+Unknown Speaker  4:12:17
+historical time, and then,
+
+Speaker 1  4:12:20
+and then look at, again, the fasteners across all of our products, board feet, across all products, and parts across all products, and then apply that to each item. So I've, I think we're getting really, really close to having a really good formula on assembly time.
+
+Matthias Miller  4:12:45
+Am I right that just at one point of clarification, we're using the new set of time calculations. And so really, all that we're actually calculating on is time spent. I mean, we're taking that out before we look at the time for part the part time, etc, right?
+
+Speaker 1  4:13:09
+Yeah, I think so, because they, the guys, the guys time is based on when they end one job and start the next one and and then we're subtracting setup time from that. And so if you subtract the setup time a little differently,
+
+Unknown Speaker  4:13:32
+it's going to are you going to stick that right into John's system right away, across the board, I could, that'd be fine.
+
+Matthias Miller  4:13:46
+Okay, so I'll probably, I'll probably come up with a, yeah, I'll figure high how exactly that's
+
+Speaker 1  4:13:53
+great, Matt, if you can do that, that's great, yep. Um, I believe, I believe in this process. And, I mean, we're building something that can
+
+Unknown Speaker  4:14:05
+shoot last,
+
+Matthias Miller  4:14:08
+Yep, I agree. So
+
+Speaker 1  4:14:14
+I love, I love it for the setup that's more accurate. I was never it was never at it was never completely accurate.
+
+Unknown Speaker  4:14:25
+And, and then, yeah, and then you'll have, and then,
+
+Speaker 1  4:14:35
+I guess, what you have to build a separate, a separate spreadsheet, I guess, to apply invoice quantities
+
+Unknown Speaker  4:14:45
+versus quantities is
+
+Matthias Miller  4:14:47
+that I'll pull together a report to get it all Yeah, bring it all together, yeah,
+
+Unknown Speaker  4:14:54
+well, and then I mean. It's,
+
+Speaker 1  4:15:03
+yeah, I mean, we solved a lot of it. Of course, we didn't, we didn't because after assembly time, and it's, I mean, it's just overhead, what Rick said, what Rick said a little bit ago was when we took our five minute break, was that, typically, he adds up lumber, fasteners, assembly.
+
+Unknown Speaker  4:15:43
+And what was the other one?
+
+Unknown Speaker  4:15:52
+What was the other one in that Burt tech before?
+
+Matthias Miller  4:15:58
+I mean, there was heat treating, there was shipping. Shipping. There was overhead,
+
+Speaker 1  4:16:04
+yeah, it was lumber, lumber. It was lumber, fasteners, assembly and shipping times four is usually close, is what he said. Yeah, it's a broad
+
+Unknown Speaker  4:16:29
+brush. It is a broad brush.
+
+Unknown Speaker  4:16:34
+Sorry to fry your brain with this stuff. Oh, it's
+
+Matthias Miller  4:16:39
+all good, man, it's all good. Genuinely. Did you want to? Did you want to? Do we want to give any time on Monday that you want to dig into this? Or do you want to get to it when you
+
+Speaker 1  4:16:53
+get back? No, back. You mean from, from Thanksgiving? Oh, so I can Maurice have a surgery, Tuesday, hysterectomy. So Monday's Monday's good, if
+
+Unknown Speaker  4:17:09
+what's that?
+
+Matthias Miller  4:17:11
+I mean, I yeah, I would do, I would do a little later I got a I'm going to have to draw a 2pm Eastern is what I have to drop on Monday. But I wonder, I wonder if we could do like all,
+
+Matthias Miller  4:17:29
+depending on when I wrap things up. But up, you know, 10 or 11 or 11 or 12 Eastern, give me some time to pull some time to pull some of this stuff together, and we can take
+
+Speaker 1  4:17:43
+a look. Yeah, I'm looking at Hang on. My calendar is being weird right now? Yeah, I'm flexible Monday. Matt, flexible Monday. Okay,
+
+Matthias Miller  4:17:53
+I'll shoot you a tentative. And we might have to, we might just have to play it, play it by ear based on what how things go.
+
+Speaker 1  4:18:03
+That's fine, yup, hey, let me pray for us, man, thank you, Lord, thank you God for this process that. Yeah, I don't want it just to seem right, but it I believe it is good, and I believe it is right, Lord. And thank you for Matt skills, his abilities, his insight, his wisdom, his partnership with this endeavor and going forward, Lord and just help us to right size things, right size our thoughts, God and guide us for truth, truth for freedom, truth for clarity, truth for valuations and
+
+Unknown Speaker  4:18:47
+truth for Yeah, truth for all the
+
+Speaker 1  4:18:53
+right reasons. And for everybody, just ask your blessings and peace on, on our process and the people that are involved and yeah, give man an awesome weekend and his family and all the things Lord just thank you lord in Jesus name,
+
+Speaker 3  4:19:09
+amen, amen. Yeah, bro, thank you, sir. Yes, sir, thank you.
+
+Speaker 2  4:19:14
+You bet See ya. Yep, see ya.
+
+
+Transcribed by https://otter.ai

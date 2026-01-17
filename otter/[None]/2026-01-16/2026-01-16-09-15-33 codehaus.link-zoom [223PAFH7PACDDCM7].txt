@@ -1,0 +1,446 @@
+Matthias Miller  00:04
+That um, well, it's kind of here. I'm even stripped outside.
+
+Matthias Miller  00:39
+Well, it's, it's a substantial the most painful thing is the large amount of rework required to do this. That's a lot. Yeah, what do you think it is two weeks?
+
+Speaker 1  00:56
+So it's shifting. It's making so payments would no longer link to contracts, and it's reworking how we incur stuff.
+
+Matthias Miller  01:11
+What else is it? All your balance reporting? Oh, yeah,
+
+Unknown Speaker  01:20
+that now needs to go look at all LinkedIn voices.
+
+Matthias Miller  01:25
+I would wonder if, but you could, you could circumvent this very I
+
+Speaker 1  01:54
+see how do due dates and stuff work. Then, then you have to go hit another record to change. You have to go hit a ton of records to change due dates. Don't you? Like just our simple override due date? I mean, if you could go get every single future invoice,
+
+Matthias Miller  02:13
+it's NBX. Man, yeah, and we have record troubles if we need it, yeah.
+
+Speaker 1  02:28
+I mean, I like it absurdly big. How slow are they? I mean, how slow is that something we're starting to feel on clients go because, yeah, our big, our big record totals lead to a bunch of trans contention, because, depending what list you modify, then boom, it takes quite a while. This seems like a place where you're gonna, you're gonna get to those sorts of numbers potentially. I don't know for sure.
+
+Matthias Miller  03:04
+Well, I didn't even think about these are list records, aren't they? Look at records?
+
+Speaker 1  03:10
+Does the invoices, sales forms? Yeah. Probably don't even know for sure. I would think it's likely most of our early records were, it's
+
+Matthias Miller  03:24
+pretty painful. Yes, you're gonna have 2000 a month. I mean, I say 10,001
+
+Speaker 1  03:41
+not, yeah, if you're one of the only contracts to the big companies have,
+
+Matthias Miller  03:48
+I forget the numbers,
+
+Unknown Speaker  03:51
+but it's multiple 1000.
+
+Matthias Miller  03:53
+Well, yeah, I mean it is, it is 10,000 a month, yeah, exactly, larger ones, yeah, seven degree a year. Yeah. Painful. We can't do that. No, I don't think so. I think if we need something like that down the road, we'll create we'll end up just creating mirror records or something that basically just pull data off or replicate data, yeah, or have a mean, there's a world in which you could have a background X 30, like, have it store at the version like, just store values and version matches. Like, have cash and validation on the record and look up from the source record if it's out of sync and have a background next 30 to gas or something. I don't know.
+
+Speaker 1  04:51
+How do we keep these how do we keep these separate in people's minds? Or maybe we should. We're just
+
+Matthias Miller  04:57
+thinking if there's a difference between a. Central invoice in a
+
+Speaker 1  05:06
+something else. I mean, we have customized sales for made before, so, I mean, it should be too hard to do if we want to.
+
+Matthias Miller  05:22
+Yeah, that's I think we support for it, yeah, maybe,
+
+Unknown Speaker  05:33
+yeah, I thought we did. I don't know.
+
+Matthias Miller  05:49
+Your various slides. I don't know how much
+
+Matthias Miller  06:01
+there any advantage that we get by doing that, by customizing it? No button. Any advantage. There's no, no clear advantage to actually using invoice records to check the payments being applied.
+
+Speaker 1  06:19
+Yeah, but I think I prefer it being centralized on contracts, yeah, but yeah, the two benefits are probably payments being applied in one place and not having these two different kinds of invoices. I mean, then you could just put a type on the invoice, maybe something.
+
+Unknown Speaker  06:40
+But I don't think it's worth it. The cost is pretty high. I
+
+Matthias Miller  07:05
+Right? Because the issue is that we want to look at these sets of invoices in a single, very culturally a batch of invoices tied to the contract, and you want to look them lump sum, which is why structuring them as an RG makes a whole lot of sense from the efficiency standpoint.
+
+Unknown Speaker  07:36
+Think you're right?
+
+Matthias Miller  07:44
+Yeah, all
+
+Matthias Miller  07:51
+right, anything else?
+
+Speaker 1  07:56
+I mean, should we just start? I think we're good to just move ahead with this.
+
+Matthias Miller  08:00
+Yeah, let me know as soon as you have invoices you have the core fields rest put in, because I'm glad we didn't go further than payment history, because I think it's gonna make the lives a lot easier.
+
+Speaker 1  08:13
+Yeah, so we're gonna How much do we need to migrate existing data? It probably be ideal. That shouldn't be that hard. We just create, and I'm pretty sure I can create. We can create next 30 once we have the new RG
+
+Matthias Miller  08:33
+that should be populated, create one invoice. Create one invoice per date, or something for date plus payment, or, I don't know date, it'd be fine, right?
+
+Unknown Speaker  08:47
+Oh, are we gonna consolidate payment rows?
+
+Matthias Miller  08:53
+The only thing you're adding, you're assigning, you're only assigning an invoice ID to event surgery, right?
+
+Speaker 1  09:04
+Yeah, and I think changing some of the fielding there, aren't we, because you're no longer a payments, no longer going to be linked to a certain fee. It should become a lump sum,
+
+Matthias Miller  09:21
+right? I,
+
+Speaker 1  09:27
+but those could happen in two different passes. Probably we could first just link to an invoice.
+
+Matthias Miller  09:36
+Well, if you, if you group by sales, you gonna break your payments out into a separate RG, was that gonna be the invoices are?
+
+Speaker 1  09:50
+G, I was thinking it was also in the child. RG, but maybe that's not right.
+
+Speaker 1  10:05
+Or do you have you can't link multiple RGS to one RG can you do? You do even want to do that?
+
+Matthias Miller  10:24
+Invoice links to
+
+Speaker 1  10:27
+link to itemization, to payment, and then we also have like forgiveness and bad debt. Let me figure out how those all work. I
+
+Matthias Miller  10:48
+It's absolutely effective, resilient items.
+
+Speaker 1  11:02
+What? If we I mean, if we had this on an invoice record, we would have one RG for itemization, we'd have one for payments. I don't know how we'd handle forgiveness.
+
+Speaker 1  11:29
+Yeah, if you're What about that debt? Write offs invoice.
+
+Matthias Miller  11:35
+RG, well, I mean, you could do if you have multiple actor, have multiple types, a separate urging of the invoice, but it's types of the invoice. You're saying multiple types. Yeah, well, actually,
+
+Speaker 1  11:49
+write off would already have bad debt. Are you writing off a specific fee, or are you writing off just how does that work? I don't
+
+Matthias Miller  12:02
+think it matters. If it matters for the sake of accounting, then we infer what fees are. Bad debt, whatever is left over is back there. I mean, it's true. I don't think I have to specify Yeah, even on rounding fees or like, yeah. I do wonder. So
+
+Unknown Speaker  12:28
+do you think we want payments separate? I almost wonder.
+
+Matthias Miller  12:38
+And then your your lighter calculations. Do that
+
+Speaker 1  12:44
+calculates your how much you owe, or how much they owe, just the sum of the sum of itemization minus any forgiveness which is tied to a specific row and bad debt. You say that would be in the same art, also in the atomization? No, it's its own.
+
+Matthias Miller  13:05
+It's effectively a woman. Well, payment,
+
+Speaker 1  13:10
+sure, yeah, that's fair. That's how, that's how we modeled it in zfp. Do we like that? I think it's fair. That's just lowering the amount due, right, exactly. But it is different from forgiveness, because forgiveness is saying we're we're just no longer going to charge this, whereas, so that makes sense as an itemization we're essentially just reversing, or partially reversing an itemization route, whereas bad debt is saying, we still want this money, but we're we don't think we're going to be able to collect it. So that's why that makes that makes sense, why it'd be, why bad debt would be in payments.
+
+Matthias Miller  13:55
+And also, you can't forgive rent. Write it off. It's bad job, but you can't forget it. Items.
+
+Unknown Speaker  14:07
+So then our current defense, RG becomes very simple.
+
+Speaker 1  14:12
+It's, I mean, it's more an invoice, contract or rental invoice, itemization with the fee type and adjustment type is just going to be incurred or, Oh, how do we
+
+Matthias Miller  14:27
+earn deposits? Yeah, security deposit. CRA, stay in there. Stay in there. Okay, well, hang
+
+Unknown Speaker  14:36
+on, but what if you want to pay
+
+Matthias Miller  14:42
+you can make an argument. Should
+
+Unknown Speaker  14:49
+they be their whole own thing? No.
+
+Speaker 1  15:00
+No because you well your first, your first rental invoice, though you owe the security deposit, right?
+
+Speaker 1  15:18
+What happens if you want to pay into security deposit? Part with the contract is that, do we just Add a new invoice? Essentially, I
+
+Matthias Miller  15:54
+little
+
+Matthias Miller  16:01
+think My
+
+Matthias Miller  16:20
+instinct is to put it in the itemization.
+
+Speaker 1  16:30
+And that's what you're thinking for incurring it, and for like, if you want, what, if you want to pay from then doesn't it go into or is it still an itemization? It's sort of like a forgiveness.
+
+Matthias Miller  16:43
+It's, it's just, you're just adjusting
+
+Unknown Speaker  16:46
+the liability, yeah,
+
+Matthias Miller  16:49
+the invoice total, basically, no, that's fair. I mean, I think there is an argument to be made in which there is an argument that could be made that should be modeled as a payment, Because realistically, you can't use it for anything except payments.
+
+Matthias Miller  17:24
+Um, then the way dislike about it is, what were you gonna do? I don't
+
+Speaker 1  17:42
+I don't, I don't think I mind having in the itemization. Actually, it might be worth getting Dwayne's input, but it seems pretty sane to me. It
+
+Unknown Speaker  18:01
+is different than a normal payment.
+
+Speaker 1  18:19
+And you could, I guess you could do, would you want to link it to a payment ID at all? No, it's, I don't know. Isn't this something that is here, like a client service rep just comes in and it's a button to pay part of it with security deposit? Or are we supporting from the whiskey that they can commercially pay by security positive?
+
+Matthias Miller  18:57
+Well,
+
+Matthias Miller  19:10
+you could also make a fairly good argument that collecting it would be a line item, and that really, genuinely don't care, I believe how it gets used, and it's just when it comes to I think
+
+Matthias Miller  19:36
+spending is a form of payments. And you have payment from bad debt, from CRA, from security deposit and from another payment method. In the event of a CRA conversion, you would have a line item for the security deposit. CRA amounts. And create an automatic payment from the CRA for that amount.
+
+Unknown Speaker  20:15
+So you're thinking, when they pay into it, and we either
+
+Matthias Miller  20:29
+that or we need to, we need to change how we output this left, I don't know it could be, I think, on a winner, showing
+
+Speaker 1  20:48
+it, I think it makes more sense now, because currently we have some, like, special types, just for security deposit like to pay into. So, like, it's never incurred at the beginning. It's just you pay into it and boom, there it is. Right now, doesn't it make more sense that we add it to the invoice itemization? So you incur, like at the beginning, you incur 400 to your security deposit, and then when you pay your initial 550 or 400 for security deposit, 150 for monthly payment. Then we just say, Okay, there's now 400 in the security deposit. And if you ever want to add to your security deposit, then you go to, I mean, a CRM would have to do it, and customer rep someone. And then Jonathan would just know that if it's happening from the whiskey, then, oh, you need to add this itemization, add a new invoice, one of the two. I think, I think that
+
+Matthias Miller  21:51
+makes sense. It makes sense because you need to invoice for that initial amount. The next question would would then be, what about using it?
+
+Speaker 1  22:00
+I think it, it's a form of payment, like you're saying that, that you can use up to however much is in your security deposit balance, more
+
+Matthias Miller  22:13
+than that, and then to get the CRA balance, it's just some of the increments paid less.
+
+Unknown Speaker  22:22
+Yeah, yeah.
+
+Matthias Miller  22:25
+And this always gets paid at the end of everything else. Well, I'm assuming, I don't know how this like, if you pay a partial invoice, here's where you have to have the waterfall needs. Does need to specify anything as a side note, I don't know if you want to do this, but I think we want the line item, RG, sorted by, by that sort expression. And then, I don't know exactly, it would probably put CRA
+
+Speaker 1  22:51
+or shouldn't it be, it'd be invoice plus than the sort,
+
+Matthias Miller  22:57
+yeah, invoice plus the sword. But presumably invoice name plus invoice number or something like that, but, but then so you would have dwf, rent, late fee, figure out how to do each of the other fees in their order might need to be assigned or fielded, and then probably CRA and then probably security deposit. And then we need to tweak a little bit how CRA conversion works, but Syria conversion basically just does a $0 well, anyway, however, that ends up working. But yeah, I like it. I mean, I think it's, I think it's correct. And so there would then be one to one correlation between a payment record and the RG row in the contract? Well, not a one to one. There really be Never mind.
+
+Speaker 1  23:57
+Payment record could have multiple RG rows,
+
+Matthias Miller  24:05
+but only one per one RG row per contract within the written record,
+
+Speaker 1  24:15
+a payment record, one payment record could have three on the same contract if it pays three periods or three invoices.
+
+Matthias Miller  24:25
+Payments are tight. Invoices Correct? Yeah,
+
+Speaker 1  24:29
+that's kind of Yeah. Security calculating security deposit balance is a little weird. You just say, How is it like if, if they've incurred their initial balance but they haven't paid it off, is it negative, or is it, does it just stay zero?
+
+Matthias Miller  24:53
+No, it's just it's zero.
+
+Speaker 1  24:55
+Okay, it's zero until they pay so it's just anything that. Anytime it's paid, so it's the amount that's paid, minus any that's been paid out of it to make it
+
+Unknown Speaker  25:09
+pay. That's right. Okay.
+
+Unknown Speaker  25:17
+Okay.
+
+Speaker 1  25:23
+Good, I think so. We now have three RGS, and we want to get that structure in place soon. That's probably the next thing I work on.
+
+Matthias Miller  25:36
+Yeah, and I don't know how much of this stuff can be delegated, maybe not much, but if there is, yeah, I want to keep your eye open for exactly, does my document make sense? I mean, obviously, let's have a
+
+Speaker 1  25:49
+date now with the Yeah, I, I was editing it a bit already, but I'll, I'll go update with this new design. It's, it's not wildly different than it was
+
+Matthias Miller  26:01
+the but then, what I love about this, slightly redundant, but still, then we Have
+
+Matthias Miller  26:19
+adjustment types, he's now going to be incurred, forgiven,
+
+Matthias Miller  26:29
+refunded, because we need to refund specific.
+
+Speaker 1  26:35
+Wait, do we refund specific? No, we don't. No, that's just a payment. It's just a refund. See, refunds are simpler now,
+
+Matthias Miller  26:46
+yeah, especially, look, a lot of
+
+Speaker 1  26:48
+things are simpler. I mean, getting there is going to take a fair bit of work, but a lot of things are simpler now, yeah, I think it confirms that this is the right model.
+
+Matthias Miller  26:59
+Yeah, I agree. Use was used for CRA and security deposit paid is not relevant. In this case, refunding is not relevant NSF, that's a fee.
+
+Speaker 1  27:17
+What was, oh, what we did was, we if, if their payment bounced, then we had, we had already recorded payment rows for each of them, and then we need to go record NSF rows for each of them to get the balance back up. So now we just record that on the payment and boom, it all
+
+Matthias Miller  27:41
+is effectively voided,
+
+Unknown Speaker  27:43
+yeah, yeah. And
+
+Matthias Miller  27:48
+then we have event type, or this is gonna, yeah, we're gonna
+
+Speaker 1  27:53
+have to change just about everything, but, yeah,
+
+Matthias Miller  28:00
+rent, Security Security Deposit material go away. All the fees stay. Yeah. I mean, it's just the event types. Basically don't change it. Basically get positive materials.
+
+Unknown Speaker  28:10
+Yeah. And migration for all this stuff is going
+
+Matthias Miller  28:16
+to be the I don't, I don't know if I think there's a world in which we could, if we're looking to pull in RTO predict data, I wonder if we can just Nix migration.
+
+Unknown Speaker  28:29
+Maybe we need something for our dev systems. That's my main trouble.
+
+Matthias Miller  28:38
+Gonna we do an RTO program, wait until the RTO pro import and then anonymize data wildly. I mean, just stomp over. It's basically name, email, phone,
+
+Speaker 1  28:49
+address, maybe address. I don't know if we care about address, though, for you, well,
+
+Matthias Miller  28:57
+yeah, I mean, I don't know. I So, yeah, I think it'd be nice for joining them, something like that, for the demo purposes. Yeah, well, at
+
+Speaker 1  29:09
+that point you probably really want address changed if you're actually gonna do that.
+
+Matthias Miller  29:16
+Mean how much? I don't know, maybe not even payments don't seem like it seems like migration is a day of work.
+
+Matthias Miller  29:34
+If you would keep this might make your life simpler. You would keep the current event surgery around. Oh.
+
+Unknown Speaker  29:40
+Oh, yeah, that
+
+Matthias Miller  29:46
+would and then just gradually move stuff over and of
+
+Speaker 1  29:49
+course, of course, someone paid to be smart. Yeah, I like that.
+
+Matthias Miller  29:59
+I. Hate to be lazy and make lots of mistakes. What it is, okay? Well, then that solves that problem, and then we can import fresh into, yeah, geez. And we're just, yeah. I mean, you can do matching stuff. It's slow. But that's fine. Okay, good,
+
+Unknown Speaker  30:28
+yeah, happy.
+
+Matthias Miller  30:30
+I would love to get a little bit sense of scope. Yeah, if it's a week or four, I
+
+Speaker 1  30:37
+don't think it's four. I don't it's at least a week. Well, are you thinking like a week? As in what all of us, one guy, because that's wildly different.
+
+Matthias Miller  30:55
+Well, it's not so gracious. I
+
+Matthias Miller  31:03
+It touches. I mean, it's you and Jonathan, primarily, except for stuff that you can hand off. So which
+
+Speaker 1  31:09
+if, if we're doing this thing of, if we're not trying to migrate as we go, like, we first just build out a structure that migrated over it, right? And it's much more hand like, I can, I can work on one RG, the other guys can work on energy, and we can whack that out and then start linking
+
+Matthias Miller  31:25
+it together. Yeah, so that'll help a lot. I think, I think my question is, if you were doing all of this stuff yourself,
+
+Speaker 1  31:36
+uh huh, like 40 hour weeks or 20 hour weeks,
+
+Matthias Miller  31:46
+30 hours, I mean 30 hours.
+
+Speaker 1  31:52
+So creating the new RGS and structure, that's probably two days, not even that to create it. I mean, well, once you have all the behaviors and stuff, right, and then migration and then updating all the macros and reports, that's see, it's that sort of stuff where it's going to start really adding up. Yeah. I mean, I'm gonna say two
+
+Unknown Speaker  32:24
+ish weeks, because
+
+Speaker 1  32:28
+it's not, it's not a week. There's no way you get all the references updated. But it's not a month either,
+
+Matthias Miller  32:40
+right? It's expensive. It is I don't know how we would have caught it before. Now, though,
+
+Unknown Speaker  32:53
+I don't think you really, I mean, can you?
+
+Matthias Miller  32:57
+No, I also, we didn't catch this six months from now.
+
+Speaker 1  33:06
+Yeah, that would be awful. It'd be terrible. To this point we're still, I mean, we can, it hurts, but we can do it six months from now, would be just the worst. I cool.
+
+Matthias Miller  33:23
+All right. Okay, good. So will that keep you guys busy through the end of No? Keep you guys busy through the end of next week or the week after? Ready?
+
+Speaker 1  33:33
+Yeah, okay, so you all can crank on your design and then, yeah,
+
+Matthias Miller  33:41
+okay, that's good,
+
+Speaker 1  33:46
+depending what point we get to then. I mean, there's going to come a point where it won't be keeping for sure. Sean probably maybe not. Nick busy, but I'll be often. Jonathan will have plenty to do, but I have, we have some other work for them as well, but not tons. Okay.
+
+Matthias Miller  34:09
+Well, I mean, if we could get lower level, yeah, they're like other work for them to Okay, yeah, good.
+
+Unknown Speaker  34:19
+Okay, I'll add a few notes, and then we'll get
+
+Matthias Miller  34:22
+drinking shoot Dwayne, a message. Awesome. Thanks, Jeff, thank you. Bye.
+
+
+Transcribed by https://otter.ai

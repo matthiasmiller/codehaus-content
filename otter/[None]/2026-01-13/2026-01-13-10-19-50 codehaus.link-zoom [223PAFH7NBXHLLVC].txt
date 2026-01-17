@@ -1,0 +1,137 @@
+Unknown Speaker  00:12
+Hey, Jonathan,
+
+Matthias Miller  00:32
+can You guys?
+
+Speaker 1  00:42
+Jonathan has a is trying out different is currently a cow, so you're missing out by not seeing video. But Well, I can turn on the
+
+Matthias Miller  00:54
+scene that's anyway.
+
+Unknown Speaker  01:02
+Yeah, Jonathan, you to just explain what we're trying to
+
+Speaker 2  01:06
+figure out. Yeah, so I had the whole, you know, payment flow working through the, you know, through the internal payment portal. But what I was doing there for allocation was only supporting payments on to already incurred rows, and my allocation logic was as simple as the report that bed the page, sorting by priority and due date, and then the JavaScript was like, well, just gonna put money in the earliest date and most important fee first, and then I take the state object, the allocation object, and pass that into the x 30 to apply the payment. So that's what I had. Minnesota. I have but when we do auto pay, it breaks down in a few places, because we are paying a set amount of money, and we need to sort of auto allocate it, and we presumably also need to sometimes pay things that aren't incurred yet, because auto pay is just a set amount, and we are not sure what the best way to do this is. We threw out a few ideas such as when we make the payment, so we have the run external web API, and then we're done, and then I every 10th of a second, I run another clearance payment, keep running payments until we're done, and I take all the results, and I need to go save payment records. That's straightforward so far. But then when I need to go apply these payments, so enter rows into the contract events, RG with the the amount, you know, and the the link back to the payment. We threw around different ideas, such as adding an X 30 to incur those future dates. This is only if they if we're auto paying more than than what's currently incurred and unpaid. So we could run an X 30 with an ask prompt for how much we're wanting to pay under this contract. And then we kind of duplicate our logic from the on Save trigger to go and add those future events. And then after we've added those, then we then we call a report that figures out what our allocation should be, now that we know that there's space for all the money that we want to pay. And then once we've run that report and merge those results into the payment results from clear it, then we can run a big X 30 to go and update all the contracts. So that's one idea we tried, sort of warning our existing on Save trigger X 30. But the killer was that triggered reports can't use ask prompts because we were considering running that feed the helper report for the trigger and saving it as a flat file, like whiskey side, and then using that as the input for the same x 30, but that isn't going to work. Do you have any ideas? Is there something that we're doing that we don't need to do? What do you think?
+
+Matthias Miller  05:01
+Okay, so the the on save X 30 always ensures that we have one open payment. Is that what that is?
+
+Speaker 2  05:13
+Or the on save X 30 only runs for things in the past, right? So if, or does it do a month in advance? Remember, Seth, it's like a month in advance. Okay, so month in advance, it logs, it incurs fees that, yeah,
+
+Matthias Miller  05:35
+why wouldn't so one way around the Ask from is to have something like have a hidden field that basically says, How much future incurred, how much payment do I do I want to have available.
+
+Speaker 1  06:00
+The only concern we had with that was, how do we make sure? How do we know priority of the trigger like we go set that? But then, is there a way? How do we make sure that happens before we try to go allocate? Guess we could look at the safe field.
+
+Matthias Miller  06:20
+Okay, here's another question, as far as overall process, this ties that into general payment processing. For the sake of handling air conditions, we need to handle situations where, where, I mean, we can't process. We want to reduce the likelihood of issues when somebody tries to run a payment while we're doing a rebuild, and so general payment processing. And this is back to a signal thread I was going to just going through it was doing another catching up on code reviews, and it's going to leave a comment, but it's relevant here. If we would first input a shell pending payment that basically says, I am committing to make this payment. Here's the allocation, here's all that stuff. That way we can if there is something that goes sideways, we have some record that says we were trying to make this payment, it makes recovery. And I mean, if, if somebody kicks off the payment or the rebuild, literally right as we right after we process the current transaction, we can go back in and say, Oh, here's the clearing ID. Let's stomp it in, and we can just keep rolling and clean up. Could we do something similar for auto pay? Where we say, before we run auto pay, we have an our 20x or x 30 or 20 pair that creates all the payment records and all the and all the allocations, and then the process basically says is something along the lines of, I'm getting ready to make this payment, and then once the payment is done, I have made this payment. Does that maybe I'm not wrapping my head fully around all the issues that you guys running into. Does that help in any way?
+
+Speaker 1  08:28
+Wouldn't we just want to store the payment amount, not the whole allocation? Because right now, we're not trying to be smart in calculating allocation before we know what. Because we don't we may need to incur rows yet, right?
+
+Matthias Miller  08:47
+But why not have a it's slightly complicated or 20, but why not have a somewhat complicated or 20 that says like an X 30 list of some kind or something, where it's it says, I want to, I want to pay this much. So first of all, go ahead, go in, incur rows first, and then come back and add the row allocations for it, and it's basically how many Go ahead.
+
+Speaker 1  09:25
+I think that's the route I was wondering about. And Jonathan wasn't sure that would work very well for batch, doing a batch, it's right. Is that? What is that right?
+
+Speaker 2  09:35
+Jonathan, I'm having trouble tying that to like you were saying earlier. Yeah.
+
+Speaker 1  09:42
+I Yeah, where you'd have you take the contract ID and the amount you're going to pay, and then you have an X 30 to incur rows if needed, like if the amount you're taking is more than the contract. Balance, or the upcoming balance, then you incur rows that'll makes it the balance upcoming balances greater than or equal to how much you're going to pay. And then from there, you then allocate, well, yeah, I don't know where the creative payment happens in there, but i right?
+
+Speaker 2  10:23
+So the process would be, if we would make the shell payment record, you're thinking, that's a record in the database, right, intent to pay.
+
+Matthias Miller  10:36
+It's either that or sub something. I think it's, I think it's that with a pending with a pending status, the main thing with auto pay, because we will, we're looping through records. We need to be very careful that we if something goes sideways and we fail to record that we attempted payment, that we don't do it a second time. Yeah, yes.
+
+Speaker 2  11:04
+So if we store the intent to pay, and we would say how much we're going to pay, and also which contract, because auto pay is is only to one contract, and the and also interactive payments kicked off by the customer in their portal are also to one contract. The only time that a payment could apply to multiple is if a rep does it. But this would handle that well, because you would have an amount and contract, and then we can have an on Save trigger for this, these types of records that goes and encourage those rows that we were thinking, if need be incurring rows on the contract,
+
+Matthias Miller  11:58
+yeah, something like that, or, yeah, something like that. You might need something slightly different for auto pay so that you can confirm that these rows were that the X already completed in some way, so you know when you can keep rolling. Or potentially, I suppose you could just, there's also world in which you could, well, yeah, or I kind of think for the auto pay, you would kick off an X 30 that Oof. I don't even know.
+
+Speaker 2  12:43
+Is it the the x 30, an X 30 to create all of these intent payment intent records, which I assume is just a payment record that doesn't need very much information, makes all the intent records, and then another x 30 that runs right after to add rows incurred rows if need be. And then we run the payments. Or we could run the payments before this. I'm not sure what would be better. And then when it comes back, then we go and allocate it, and we know there's room. We don't know exactly how. I would love to do that right in the x 30, but I guess we could run a report for every single payment. I don't love that, but there's a better way to get our allocation.
+
+Matthias Miller  13:45
+I would think you'd be able to do a you should be able to do a report on incurred, unpaid, incurred rows, with the balance, with a sort, probably with the model to go ahead.
+
+Speaker 1  13:59
+Can an X 30 list have imports that take JSON, a JSON input file and an import that takes a report? Yeah? Oh, that that still doesn't help us, though, because we still need to know the no doesn't do it because your x 30 list, the first x 30 takes a JSON file, which is the contract IDs and the amounts that we want to pay, and that creates a payment, those pending payment records. And then the next one, the next x 30 takes the same file and and does the automatic incurring stuff on contracts? No, the next x 30 just looks at those pending payments as a report that looks at pending payments, and does the automatic incurment from those because we store the contract ID and the amount on those pending payments. Yep, and then the last X 30, then allocates from there, which allocation is a pretty simple part.
+
+Matthias Miller  15:12
+So we have three scenarios, multi contract, payments, I think the payments, payments record does have to have an RG of payment intent, this contract, this amount, um, so, so you would have, so you have, you have three extra Well, so, so when you do it through the admin portal, you would take Jason and say this much to this contract, and push that up that would create the payment record, and then the the other R 20, the other 2x 30s, would create the incurred rows, and then do the allocation on auto pay. I think you could just have a single have a separate X 30 list that goes and creates payment records for all auto payments, and then uses the other 2x 30s to create the increments and charges, and then run off of that. Once that's complete, then you would start processing those transactions. And you have some kind of way, some kind of way to make sure that you don't attempt twice in auto pay. So that's a little caveat there. Um, and then, similarly, for the customer portal, if you make a payment, that's just, I mean, that's, that's the same thing as the admin portal is just, you only have one contract ID and one amount.
+
+Speaker 2  16:45
+Yeah, I think I like that, doing a lot of the legwork before, before we before we actually run the payment. And then if the payment would fail, you know, we just flag it as, oh, this payment failed, but it's already been there. Already have been allocated, and we just need to flag it and say, Hey, you should make this succeed or remove it, remove its impact from all these contracts, because it didn't actually go through.
+
+Matthias Miller  17:24
+Yeah, we need to think through. What do we want to have
+
+Unknown Speaker  17:38
+happen on failure?
+
+Speaker 1  17:40
+I mean the balance, you could have a status on the payment. The balance macros could automatically calculate based on if the payment succeeded or not.
+
+Matthias Miller  17:56
+But wouldn't it make sense to just remove the linked increment rows or attempt to your mentor paid, I'm sorry, payment rose, I think so. I think you could, I mean,
+
+Speaker 1  18:08
+don't you probably give a report of failed payments, and then, then you have a it'd be super easy to have a x 30 that looks at the payment and deletes any, I mean, well, an X 30 list to delete payment, delete failed payment. Or do you want to just delete the incurred Monroe's, I'm going to keep track of the failed. You might want to keep that just what? It's almost a void payment, or something like that.
+
+Matthias Miller  18:38
+It really is of some kind of some sort,
+
+Unknown Speaker  18:42
+and that's easy. That's easy to do. Yeah, I'm a
+
+Matthias Miller  18:48
+little worried what's going to happen if we have it could make sense to keep a $0 payment on the earliest incurred row, or that greatest priority incurred row, if you want to link it out to the contract.
+
+Speaker 1  19:01
+But, that way, but you could also zero out all the rows.
+
+Matthias Miller  19:11
+I don't know how useful that is.
+
+Speaker 1  19:15
+You can just see when, how often people fit, how often payments fail. Oh, um,
+
+Matthias Miller  19:28
+I mean, realistically, all you're going to do is
+
+Speaker 1  19:32
+we already have plenty of clutter. So I think that's probably not the right option.
+
+Matthias Miller  19:37
+I would just, I want to keep the payment record that there was an attempted payment. It would be ideal to link it in the to the contract somehow, so that you know what contract they were attempting
+
+Speaker 2  19:48
+to pay. I like BRG of intent and contracting amount, because from the admin side, from the admin side, you can specify exactly how you want to. Allocate it, but I'm not going to worry about that right now.
+
+Matthias Miller  20:08
+I think it's very unlikely that you want to go back. And I mean, if you're running it from the admin side, you're going to run it and know whether it succeeded or failed, and you're going to try to get a different card, and then, you know you have to come back later and set it up again. However, it was like, I'm not worried about that. So I think having having payment intent answers most of that issue. We remove the payment rows because the payment didn't succeed. We do need some kind of way. If you feel very strongly about I don't know quite yet how we're going to do this, but I think something along the lines of an X 30 that says, Okay, I'm getting ready to process an auto payment. And then, okay, I did process it, so that we know that we never attempt to process process an auto payment unless we know for sure whether it succeeded or failed.
+
+Speaker 2  21:08
+That makes sense. Yes, yeah, I'm going to be what I can pass into clearance if I can ask, like, the payment auto ID number, just, just to keep from needing to add a like, an RG of attempts to the payment, Which I don't love, I sure, yeah, I
+
+Unknown Speaker  21:42
+don't know. It's just so annoying because, like, all of the complexity comes from corner cases.
+
+Speaker 2  21:52
+Yeah, okay, thanks. I think, I think I've got what I need to keep pushing. I'm not positive all my answers are filled, but I know which way to go now.
+
+Matthias Miller  22:01
+So, okay, yeah, I'm sure there are edge cases here that aren't addressed, but I'm very happy with this approach, and I think it really improves fail safety across the board. So good. All right. Awesome. Thank you guys. Thank you. Yep, goodbye.
+
+
+Transcribed by https://otter.ai
