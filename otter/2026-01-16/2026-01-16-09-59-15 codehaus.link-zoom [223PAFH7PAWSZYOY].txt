@@ -1,0 +1,200 @@
+Unknown Speaker  00:11
+Energy Efficiency.
+
+Speaker 1  00:40
+Why is it? What is going on? Can you hear me? I could hear you loud. Okay, it was weird. It was like everything came up muted.
+
+Matthias Miller  00:55
+All right. Do you want to understand what we're going to first and then maybe fill in any color on how we got there. Or where do you want to
+
+Speaker 1  01:19
+start? Yeah, tell me where you're going. I mean, yeah, tell me where you're going first. Then we'll the
+
+Matthias Miller  01:25
+proposal is that we have an invoices RG, create one per month for rent and and then, you know, if you do one off fees, or anything like that, NSF, late fees, anything like that,
+
+Speaker 2  01:39
+due date we can get signed to that they would have an invoice late, and paying the security deposit would also be its voice. Then, like, if that happens randomly mid contract,
+
+Matthias Miller  01:50
+like, if they show up in the middle of whatever and say when it's paying the security deposit for whatever reason, because there's just it's not tied to, well, no, regardless, like they would, let's say they have a they owe $200 of rent, and they want to pay 200 into the security deposit for whatever reason, then you would pay $200 towards the rent invoice and then create a new one for The security deposit and pay that one.
+
+Speaker 1  02:21
+So the impact is pretty heavy on redoing the structure. I presume that the impact is pretty heavy on Jonathan's work as well. Is that right?
+
+Speaker 2  02:34
+I think it'll make his work a lot easier, but it will, it. Will it. Will impact it. So he's going to, while we rework structure, he's going to be shifting to Customer Portal, because there's a fair bit he can do there yet.
+
+Unknown Speaker  02:48
+So tell me, explain to me, walk me through the simplification.
+
+Matthias Miller  02:57
+So yeah, the simplification is that currently, as it stands now, we are calculating tax, sales tax and payments on a per fee basis. And fundamentally, that's incorrect, like, that's not how it works, and it's creating all kinds of trouble in calculating sales tax and and so, so then we would, we would have the atomization RG. Would then have the atomization RG would then just be incurred fees, including if you're paying into security deposit or CRA and a simple is it taxable? Yes or no. And then we would have calculations, and it would be sorted in payment priority. And then we would have calculations on the organization to calculate what is our rounded sales tax number for cash sales tax reporting. I mean, it's basically apply the waterfall to that. So you find, you can find per fee balances and sales tax liability for cash filing, cash basis filing, plus available security deposit balances, because you could invoice for, you know, issue invoice for the, you know, initial CRA and they only pay half the invoice. You don't actually get the CRA
+
+Speaker 1  04:25
+so my, my, my instinct is to jump for this because it makes more sense in my head.
+
+Matthias Miller  04:34
+I don't disagree. It's the only, the only downside I can see. Okay, here's the good news. Good news is we're not six months down the road with 30 clients. That's the and the bad and the good news is it's simpler. It's better model of reality. All of that stuff. There is this weird thing, Seth. It comes to accounting impact, if we're incurring these on the security incurring fees for security deposits, I don't think it makes sense to post it to the security deposit about with an offset to AR, so we just need to take that into account for security deposit.
+
+Speaker 2  05:19
+Okay, they're weird anyway. We can always it makes sense to have a bit of handling for that. Yeah, they're not weird, but it's just not, it's not the same as the rest of things, right?
+
+Speaker 1  05:30
+So the only thing that didn't make sense to me was around the comments you made, around other fees. It would make a whole lot of sense to me that everything would be embodied in that RG row, the invoice RG row, like, if it has fees, what fees are there? Like it sounded like you said that we would do a separate, almost like invoice for some of those things.
+
+Speaker 2  05:55
+If you say, what if you heard that at the same time as rent and damage waiver?
+
+Speaker 1  06:02
+Okay, let's pretend, for example, this customer is three or four months past due, and we send a driver out, and the customer pays the driver, we generally charge a dry run fee. And so how would that dry run fee get applied? Is it? Is it? Is that a standalone invoice item? Does it go into the invoice for does it go into one of those invoices? So if you're, if you're saying that it's a standalone invoice item, then it's essentially which I want to tend to agree with you. That everything, everything is thought of either as a combined invoice or a standalone invoice item.
+
+Speaker 2  06:46
+I mean, we'd create an invoice and then you'd in the linked RG, there'd be, it just be one item that's linked to that invoice.
+
+Matthias Miller  06:52
+I think a good argument could be made that LinkedIn should be added to the original invoice, not as a separate invoice.
+
+Speaker 1  06:59
+I would, I would think so. If it's incurred at the at the point of the No, no, it's obviously late fees are insured at a separate time from the incurring of the invoice. But it would make sense for but you would amend the invoice, right?
+
+Unknown Speaker  07:15
+That's fair. Then, how does your date work?
+
+Matthias Miller  07:19
+You only apply, only apply that when it's past due, so the invoice, the late fee immediately becomes past due. Okay, but, but on the dry run example, it's like that's unless it's specifically tied to a period toward grant or anything like that, it makes sense to invoice it immediately, and maybe they have 30 days to pay it or whatever. I don't know what the what the thing is, but, yeah, that's those are the types of things that we were thinking of with separate
+
+Matthias Miller  07:52
+invoices for original, the invoice that was attempted to be paid to have been paid. Yeah, it.
+
+Speaker 1  08:03
+So are these? Are these? Is this embodied strictly inside of an RG, or is it a, is it an actual invoice record that's linked into that?
+
+Matthias Miller  08:12
+RG, okay, we talked, we talked about an invoice record, but the volume currently the biggest challenge we have. At this point. There's two big challenges. Number one, our invoices currently are look up records, which means there's tied to the list. And creating 10, 10,000 of these a month or more, could be disastrous, and that seems to bite off more than we can chew. Also, having it all in the same record makes caching and calculations weights. It makes it way easier for us to get good and fast calculations and cash. And we're running into we have a feature for record totals. We are running into issues with client scope, around the cost of updating those, and the basic argument is because they're really looking at a subset of invoices. It's an ecosystem of invoices, all within the contract ecosystem. And so it's a single unit that's, I mean, it's slightly, it's, it's partially, I think it's, it is definitely defined by, you know, potentially, the limitations in the in the platform. But if you look at the amount of caching that RTO Pro does on totals, you understand that we're not the only ones who've it's very likely they've done some of that for the sake of performance.
+
+Speaker 1  09:35
+So So I guess what I'm trying to wrap my head around, and maybe it is that we change up the contract definitions as well to embody fees that can be incurred as part of it of an invoice versus fees that that get applied to their own invoice, because things like NSF fee becomes its own invoice. Dry run fee becomes its own invoice. But yeah. Damage very fee at late fees, damage very fee. And late fees are fees that get that would be incurred as part of in of an invoice of a of like a rent invoice. And maybe I'm overthinking this is
+
+Matthias Miller  10:18
+it basically a checkbox that says whether it can be applied to the rental invoice, or maybe it's two. Can it be a rental? Can it be standalone?
+
+Speaker 1  10:34
+So Okay, walk me through. Then I what will be the generation of a, of a, let's take an NSV, NSF fee, or a dry run fee. How do you generate that?
+
+Matthias Miller  10:49
+Then, okay, well, for it, so an NSF, NSF, I think you can make an argument that you pick the earliest period that it applied to,
+
+Speaker 1  10:59
+disregard NSF. That's a sort of a different conversation its own. Let's take a dry run fee.
+
+Matthias Miller  11:05
+Dry run, you would say, add a one time fee, or, you know, or something like that, and put in a date, I think, or just create the invoice for you as of that, you know, an invoice date, defaulting to the day.
+
+Speaker 1  11:25
+Most of those that sounds like you would, you're you're trying to say that would be done through, like the Make a Payment portal. But the problem, I'm sorry, x 30
+
+Matthias Miller  11:33
+button. Oh,
+
+Speaker 1  11:34
+okay, got it. That's so that would be done on the contract record, and you would be adding it to the contract.
+
+Matthias Miller  11:42
+And then, presumably, if it's a depending on the fee, like, if you want to add, add an NSF. NSF is unique. Forgiveness is unique.
+
+Speaker 1  11:57
+So would it be, would it be an X 30 with selectable fee that you're actually applying, yeah, okay, that makes sense.
+
+Matthias Miller  12:05
+Or something, something very close to that you would select which of which of the one off fees you're applying. Okay, it does. Does mean that when we configure fees, we need to provide a unique sort order so that we know how the waterfall applies. And so, and I'm proposing that that you have dwf, rent, late fee. Can you order all the other fees, and then you do CRA and security deposit. So for some reason, somebody, I know this is nonsensical, it doesn't happen. But if somebody were to pay into a CRA and security deposits, they would pay into the CRA first, and at the point that they pay off the CRA, then they would pay into the security deposit.
+
+Speaker 1  12:47
+You can't in post creation the contract, you can't increase the CRA, but you can't increase your security deposits.
+
+Matthias Miller  12:55
+So, I mean, it's basically irrelevant, but,
+
+Speaker 1  12:58
+but I mean, yeah, the waterfall of which fees get paid first is important.
+
+Speaker 2  13:14
+What I like about moving to this invoice model, instead of just the period model that we had before, is earlier, we had to add it to an existing period, like even things like a redelivery fee or a dry run fee, whatever. Now just say, Oh, we're going to add a fee. It gets its own invoice, and it just works.
+
+Speaker 1  13:31
+Essentially, what you're saying, You're you're saying, We're replacing periods with invoices. Invoice has a period, yeah, I
+
+Matthias Miller  13:39
+mean, there's a one to one. You always invoice for every period. Sure
+
+Speaker 1  13:46
+put $1 value on this change. Just in, like, pull the trigger and make sure you just landed in the set in the ballpark. I mean, you got, you got first to third base. So just give me a concept of this,
+
+Unknown Speaker  14:08
+five to 10. All
+
+Unknown Speaker  14:11
+right, let's do it. I think it makes sense.
+
+Matthias Miller  14:15
+We'll try not to put too many nuts.
+
+Speaker 1  14:19
+It's it makes more sense in my head. I also think it makes, I think it makes building user reporting somewhat simpler as well. It's going to make it easier to understand how to query the querying the invoice RG, versus querying the events. RG, the events RG, makes my head hurt.
+
+Speaker 2  14:46
+Yeah, whereas this, if it's just the invoices, RG, like they shouldn't be touching the other RGS for reporting, but we can give them a whole bunch of macros to run from the events. RG, that will give you all the should give you all the numbers you need. It.
+
+Matthias Miller  15:01
+Oh, and our proposal, by the way, is to keep the event searching untouched. For the moment, add the new RGS, and that'll let us start gradually pushing, pushing data across. We can start importing into the new ones right away, switching calculations.
+
+Speaker 1  15:18
+How do you how do you handle payment against the invoice.
+
+Matthias Miller  15:21
+So we have a payments RG that has four, basically four different types of rows. You have a literal payment, you have a use of CRA and use of security deposit. And then I don't know whether this actually ends up being a payment row, or exactly how this works, or if it's an automatic thing, but a bad debt write off, actually, we might want to have multiple, no, we need multiple bad red, wow. Bad Debt write off rows. So at the point of contract closure will probably automatically add, or require you to add or click a button that I don't know what that process is, but add a bad debt right off row. And if you receive a payment post, post that, then we'll create a reversal of bad debt to pay tax on, on what they paid in. So if you okay, you have a you have a contract. You retrieve the buildings. You've got $2,000 left on the building. You you leave it open for 60 days, and finally you close it out. And then point to closure, you write off $2,000 and you deduct that from your sales tax liability when you go to pay so you get, I think my question,
+
+Speaker 1  16:33
+I think my question is more simple than that. I think it's more for every invoice. RG, row, I'm presuming that's a one to many of the payments. RG, so like, so you can have, you could have five different payments that pay that particular invoice, right?
+
+Unknown Speaker  16:50
+Okay, one, but it could be multiple. Sure.
+
+Speaker 1  16:54
+How does the like, how do you link that then, like, I presume there's going to be a link in there to the payment. Like, it in the in the invoice, RG, will we, can you link from a particular invoice row out to those payments?
+
+Speaker 2  17:10
+It'll be a report link. I mean, under the hood, yes, there is linking going on. We think the best way to show it in the interface is just a link to report, right?
+
+Speaker 1  17:22
+And that looks for, that looks for all payment records that are tied to that, that it'd be idea that
+
+Speaker 2  17:28
+payment RG rose. So there's, there's a difference in that there's, there's a payments RG, which there can be multiple rows for, for an invoice, and then each payment, our G row is also linked to a literal payment record,
+
+Unknown Speaker  17:48
+because you can pay, you sure that's, are
+
+Matthias Miller  17:54
+you sure that's not redundant one payment
+
+Speaker 2  17:59
+you could You can theoretically paid to multiple contracts. And so that has to be its own record. You paid, you came in, you handed us $500 you're doing, 150 to this contract, 350 to this to the other contract. The other contract is split between two periods,
+
+Speaker 1  18:15
+so and so record, payment record is, is one to many of payment, RG rose, or one to many of contracts, and then the payments, one to many of the invoice of the invoice, okay, I'm sorry. The other way around, one invoice to many payment. RGS, okay, right? The other, the
+
+Matthias Miller  18:41
+other the other good news is, I think this is going to make migration a lot safer. Like your your history table, history table comes in as an invoice. Comes in as a payment. We do, we add breakdown rows for, you know, I don't know, you know, for what's in there. And, like, literally, there you go, yeah,
+
+Speaker 1  19:05
+like I said, it makes more sense in my head. And actually, like I like I said yesterday, we're kind of, we're now, we're now mirroring, very similar to what NetSuite does on this. Okay. Well, I prefer to get the structure right and spend the extra money than to do it down the road.
+
+Speaker 2  19:26
+Yeah, earlier. But I'm not, I'm not quite sure how we would have it's you, you start on it, and then, yeah, as you get into it's like, oh, this just isn't, it's not quite right.
+
+Matthias Miller  19:42
+There. Right, thanks. Appreciate it. Thanks.
+
+
+Transcribed by https://otter.ai

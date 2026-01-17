@@ -1,0 +1,431 @@
+Speaker 1  00:35
+Okay, so I'm trying to remember where. So we decided that we can cash liabilities in the event surgery. Yep, where I so I'm trying to figure out what that framework looks like. Especially, I mean, I think the main place I have I get confused is what, what it should look like for payments,
+
+Speaker 1  01:10
+payments trying to break down, break it down Roughly to like, if you have a damage waiver and no, how would it be? Would you create a paid sales tax liability row
+
+Matthias Miller  01:30
+wait for sale you're asking for?
+
+Speaker 1  01:37
+I didn't think about that. That's where I'm getting hung up,
+
+Matthias Miller  01:43
+I would have assumed.
+
+Matthias Miller  01:51
+I assume I think we
+
+Unknown Speaker  01:56
+good. I think we probably can. I don't know.
+
+Speaker 1  02:18
+Because if we're going with the idea of an int, like a period, is roughly an invoice. Then it makes sense and and sales tax is one of the itemization lines, then it makes sense that as you pay it, we also we break down as we're having sales tax. It doesn't, I don't think it makes sense if you pay a partial payment to just pay towards rent and leave sales tax alone, right? Don't you have to? I mean, then you come back to the whole I think we're still in a better place than we were, then you have to probably essentially figure out how much of your taxable subtotal you're paying this time and calculate a percent of your tax amount to pay.
+
+Matthias Miller  03:10
+So what if we would, what if we would store this information on the sales tax liability row, and then we would have expressions to put breakdowns on the incurred event rows. Is that too bizarre?
+
+Unknown Speaker  03:37
+You're at this point, you're talking about how we incur it. That, right?
+
+Matthias Miller  03:45
+No, when? Well, yes, how you incur it? So, you would, you would, you would basically incur the full amount. Or you, okay, you would incur all the fees. You would add a sales tax row, and then the fees would then, no, it's easier than this. When you incur you stomp into each of the rows, what the adjusted, what this, what the basic adjusted tax amount is, and those have to you have validation that those match on Save
+
+Unknown Speaker  04:27
+the base, sorry, what's the base amount?
+
+Matthias Miller  04:29
+I mean, the like the sorry, the taxable subtotal, the non taxable subtotal, the tax Well, I mean, we have that you cash the tax amount on each individual fee with the rounding shenanigans to make it come out right, and when you validate that they match,
+
+Speaker 1  04:51
+and we never recalculate, what happens if someone goes and tries to change jurisdiction on an existing row?
+
+Matthias Miller  04:58
+Do. They'll get a validation error, and they'll have to calculate tax on the right or the right thing, like you're historically changing.
+
+Unknown Speaker  05:09
+So okay, so tax, okay, that makes sense. And then as we pay it off, then we can still do roughly what we were doing, where you
+
+Speaker 1  05:28
+pay a percent, and then what you just look see is this, you can't pay more tax than we have recorded, but if you're paying part of something, then you you just calculate from there, how much of it's tax, how much of it's not right, right? I mean, something like that, yeah, yeah. I mean, I think it should work out.
+
+Matthias Miller  05:50
+It's a little weird. Because, okay, again, the weirdness is, then, is that, when you're making payments against it, against that fee, okay, like, if you stop a penny short,
+
+Matthias Miller  06:08
+the Penny has to come out of the we don't really give you a choice on whether or not to pay A whole or partial. I mean, we don't you enter in what subtotal you're paying, right? And so we decide on the payment row that gets. The tricky thing, you got to do some more rounding magic to make sure that when you get pay off the subtotal, that you've also paid off exactly the tax amount. Mm, hmm. Gonna be an absolute nightmare if somebody wants to change jurisdiction or historical Oh, it'll be terrible.
+
+Speaker 1  06:57
+That had. Is there a way to get around it or not? You well, okay, changing jurisdiction is not a problem if the rates stay the same, but if the rates which change jurisdiction, then there's a solid chance rates change, correct,
+
+Matthias Miller  07:15
+which means that your allocation, by definition, is also going to have to change, like your whole payment allocation is likely going to have a change, right?
+
+Matthias Miller  07:28
+Do we have to? I don't know if you have to deal with it at this point. That's only fair. The alternative is to require people to input the taxable the full amount that they're paying.
+
+Speaker 1  07:51
+Well, isn't that what we or is that what we do? I think that's what we do. I don't think we say that what the taxable amount is. I think they just say how much? Well,
+
+Speaker 1  08:09
+I think right now, ooh, bother. I think our No, that'll be fine, was gonna say. I think that allocation in the whiskey is gonna have trouble, like the internal side,
+
+Matthias Miller  08:23
+okay, if I didn't care about the whiskey, then I would say that the only thing you can control is how much money goes to each period. That's it. Then this whole mess goes away. Mm, hmm. Which is effectively how it works anyway. But then you don't know how much late fees you have left. All you know is your your period balance. I mean, you can infer how much you have left based on the order in which payments get applied. Wait, that's pretty simple.
+
+Matthias Miller  09:17
+Okay, let me Okay, fine. Great question. Let's roll this back. Play by play. Reality says it's like an invoice. Payments are payments, and you always have to pay things in the same order. You don't get to choose to pay late fee, but not dwf. You have to pay, or, you know, or whichever way it is, you have to pay everything on a period in order, right? So, because you have to pay everything in order, like there's no point designating where the payment goes to. You say, I make I'm paying this much towards this period balance. And I'm paying this much towards this period balance, ie, I want to pay this much of this invoice and that much of that invoice. That's all you have to know. Now, if we want to know how much late fee is left on this period, you say, well, they paid 150 and 100 went to rent, or 125 went to rent, and five went to dwf and and then there was a $50 delivery fee. Ah, we didn't cover the delivery fee. Okay, that's and we didn't even get to the dwf yet. That full balance dwf, or, sorry, whatever it was, late fee, I don't know that's still unpaid. So because fees get paid in a definitive order. If fees get paid in a definitive order, then you don't have to apply payments to individual types. You just apply it to the invoice, and you just use a running, running sum to figure out what the balances are of each of the fees.
+
+Speaker 1  11:01
+But didn't Dwayne want that CRMs to or whatever his service reps are called? Didn't he want them to be able to go on their internal portal and be able to pick and choose,
+
+Matthias Miller  11:13
+pick and choose what exactly though,
+
+Speaker 1  11:17
+like being they should be able to pay the next I guess it's next period before late fee was one of the things.
+
+Matthias Miller  11:23
+Yeah, exactly. So if, if you have, if you have a you've got two, two periods that are past due, and I have, I only have 200 bucks, but, man, can I just pay? Can I pay this month's rent and next month's in part of next month's rent. Can I wait to pay the late fee? Okay, sure. We'll put 100 and whatever the number is towards period one, and the balance towards period two. And now I can't say that I want to pay. I like, Isn't there an enforced order in which you have to pay fees? Or, am I? Am I mistaken on that
+
+Unknown Speaker  12:14
+there is right now? Yeah, right now we have a field on
+
+Speaker 1  12:27
+the event type like for its priority, and if, if we're wanting this to really be a source of truth, we'll probably need to add validation and sure people don't figure things up weird, right? Right by adding their own fees with weird priorities.
+
+Unknown Speaker  12:51
+But, I mean, I think, yeah, it is basically an enforced order.
+
+Matthias Miller  13:00
+Yeah. Order the office.
+
+Speaker 1  13:21
+So your thought is that really they're not paying an itemization of like you don't pay this much to rent and this much to damage waiver you're paying you're paying to be invoiced.
+
+Matthias Miller  13:44
+Exactly which is what's that's reality, that is literally what's happening. And the balance, how much late fee Do you owe is really how far down the invoice line items have you gotten with the money that you've spent, and what's left in some form or fashion, and that's all kind of made up numbers that we get to calculate however we want to, and it's just for reporting and display purposes, frozen and we're and we're calculating those somewhat arbitrary line Item tax amounts. So it all comes out, right.
+
+Speaker 1  14:26
+So what happens if you, when you, like, at a late fee? Do we have to go make sure we rejigger all the tax amounts for the period?
+
+Matthias Miller  14:38
+Yeah, yeah. If you, I mean, if you, anytime you update the Yes you do, you'll have to update the tax.
+
+Speaker 1  14:45
+Bro, well, I don't know. Are we doing it? Well, I thought you're saying we don't. I thought you're saying we just put it
+
+Matthias Miller  14:52
+I still would. Oh,
+
+Speaker 1  14:57
+so you're just having you're making sure the total lines up with.
+
+Matthias Miller  15:00
+Is the components Correct? I would, I would include
+
+Unknown Speaker  15:04
+it for sure. That makes sense. Force
+
+Matthias Miller  15:07
+visibility. I think it's, I think that's good, sure, yeah. Otherwise, you have some kind of internal ID that groups them together and you don't know what or how, or yeah, that seems safe. Okay, I have a question for you. There's only one correct answer, if, and that's that you like the idea if not. Okay, sorry, sales tax is going to take a lot longer. Here's, am I right that anytime you make a payment, you first pay, I forget the order. But can we say that? But every, every. It always gets paid in the same sequence. For partial payments, rent first, then this. And if there's multiple fees, we can say, this fee, next, that fee, next, that fee, next, and then Damage Waiver rent, Damage Waiver rent, and then late fee, and then, or, I don't know whichever, but that there's always a defined we can always define a defined order to pay fees. Yes, okay, so when, when you make a cut on the on the on the portal, the only thing you can say when you're making a multi, multiple payments is, I want this much money to go to this contract and this much money to go to that contract, and there's little tools that you can edit, okay, when you're
+
+Unknown Speaker  16:31
+other fees and late fees would be the only other thing that
+
+Matthias Miller  16:34
+you would want to edit, right, which? But all that that does is reduces the total payment, so that the waterfall of your payment, the way, I think, I mean, you have a waterfall on your invoice, and it just changes where the waterfall comes to so what that means then is, when you make a payment and we record a payment, it literally is the payment is not for a fee. The payment is for the quote, quote invoice. And we just infer, if we want to know what your late fee balance is on a period, we just go run some funny numbers and calculate how far, how far down the waterfall it came.
+
+Speaker 2  17:11
+Can we? Can we document it that way in the wiki? We go run some funny numbers, run some funny numbers and have a waterfall. Okay, we are still talking about software, right? We haven't watered it some of the subject, right?
+
+Matthias Miller  17:25
+We're thinking about wakeboarding next, but I'm not sure
+
+Speaker 2  17:29
+funny numbers and waterfalls generally have to do with hallucinogenic somewhere you're
+
+Speaker 1  17:37
+not foraging for mushrooms. And found some good ones. Yeah,
+
+Speaker 2  17:42
+it's funny, those funny numbers, man, you got to be careful. Yeah, I think you're right.
+
+Matthias Miller  17:47
+Okay, I think that's all I need. Seth, is there anything else we need from drain? I told him there's only one right answer, and he listened, relented and listened.
+
+Speaker 1  17:58
+I think that's it. It just means that instead of storing, like right now in the events. RG, when you make a payment, we store an itemization. If you pay $200 or we're saying it's this much to rent and this much to damage waiver, and now we're just going to say, No, you paid this much to the period, and that's it. Which how will that work for? Want to think through how that works for floating due dates. It might
+
+Matthias Miller  18:29
+we'll still be able to do hand wavy math to figure out. I mean, the beauty of it is to figure out how much rent you paid, and still just hand wavy math. But this hand wavy? Well, it's not hand wavy, but it's not, it is not set in stone. There is nothing that says you paid $100 and you paid four, 400 or $4.20 in tact, whatever, in tax, yeah, yeah. Therefore, like, it's all calculated, yeah.
+
+Speaker 2  18:59
+The only thing don't mess up. Don't mess up his visionary moment. He's whenever, whenever, whenever, Matthias is in in Big Idea mode. It starts becoming funny numbers and fuzzy math and hand wavy. This
+
+Unknown Speaker  19:15
+scared of hand wavy, funny numbers.
+
+Matthias Miller  19:18
+It's not hand wavy. It's just not written in stone. We can go calculate it, get a calculated number, but we're not It's not binding. Yeah, it's like, baked in flexibility.
+
+Speaker 2  19:38
+Are we selling this to the Amish? I mean, that's like, that's like, their key. That's the key component to zfp. It's like, baked in flexibility. You're not wrong.
+
+Matthias Miller  19:50
+Okay, so, so here's the idea. You will take it from the top. You every month incur fees. Incur fees, anchor fees for January, anchor fees for February, anchor fees for March. And with that, you have a like a basically a sales tax row that gets included in that that says, here's the subtotal, and here's the taxable and the top taxable amount, here's the exact tax that we have to pay for this period to this jurisdiction, boom, this block, these things. And then you have a payment, and you apply the payment, and you say, I'm paying $50 towards this period, and $10 to this period, and $20 to that period, and we don't and then, and then that's, that's what's in the RG, then we come along and say,
+
+Speaker 2  20:31
+you know, you are reverse engineering exactly the way that NetSuite currently handles their leasing side. Kyle has explained this to me over and over again with we are, we have just, you have just come up with exact they handle it like an invoice, because you are essentially, you are essentially generating a monthly invoice, quote, monthly invoice, by incurring the fees and all of those, and then you're paying against that invoice is really what's happening every single month, exactly. So so it makes me wonder, do you want to just formalize it and call it as such? Well? I don't know that it really makes a difference. It really comes down to semantics at this point, but it's the mechanics of what you're doing. Is exactly what NetSuite is doing, right? They their process on this is exactly what we're doing. It's like you are, you are essentially invoicing each month. You're essentially it generating an invoice where you incur all of these things they are now due, and any money you'd pay becomes like payment line items on that invoice. Right?
+
+Matthias Miller  21:42
+Exactly. I mean, so we could call it an invoice, yeah, but this is what puts sales tax on, all on everything, really, ultimately. I mean, it's not that weird to have a I don't know that I feel strongly. I maybe should feel more strongly than I do. The only weird
+
+Speaker 1  22:04
+thing is we're going to, potentially, like, add a late fee to an invoice.
+
+Matthias Miller  22:08
+But then you, I mean, if you add a late fee, the only thing that has to happen is that you have to rejigger tax. Rejigger the waterfall, basically through tax, the taxable amounts. I out,
+
+Matthias Miller  22:26
+which is same as amending an invoice. I mean, I don't know which might mean that how your payment, it's going to change your potentially. I mean, it's good potential. I mean, it will change your balances. Sure. Well, I mean, why wouldn't it? It feels
+
+Speaker 1  22:39
+I mean, I wonder if, depending how far you take the invoice route, then it would seem sane for a late fee to actually be its own.
+
+Matthias Miller  22:48
+I would agree late fee should, well,
+
+Speaker 1  22:52
+I don't know it's still tied to a period, but it you incurred a different time. So yes, you pay yes, if it's taxable, you pay tax on the exact late fee amount, which, again, this is coming down the center too.
+
+Matthias Miller  23:04
+But Duane, would you agree? Yeah, and I would say same way of processing fees and other fees. You could still link it to a period, but it's still the date that it was incurred
+
+Speaker 1  23:19
+that ties it all together. The period can be the same, but we're our we haven't. I don't know if it's like an entry date or what on the RG right now that has essentially no meaning other than that. It's a, it's logging when we entered it. But that's gonna, I think it's gonna take a lot more meaning. Suddenly, if you
+
+Speaker 2  23:38
+did end up formalizing this, it does. It does. There is a, there's a total side benefit to ever, if you're ever audited from a, if a state ever comes in and says, Okay, proof does that you're actually operating as a rent to own company, the fact that we are invoicing, we are treating it like an invoice. We're treating it like an actual leasing function, versus kind of like this, like, if you're not careful the way that you're you're running your books, you quasi make it look like a credit sale. This actually formalizing this way into an invoice actually formalizes the process of a true lease, right? I
+
+Unknown Speaker  24:28
+what I wasn't I was thinking out loud,
+
+Matthias Miller  24:37
+yeah, I mean, I agree with you, and RTO is really hard to defend. RTO Pro, the fact that you can just scroll away like,
+
+Speaker 2  24:46
+yeah, it is really hard to defend your 100% right?
+
+Speaker 1  24:54
+How much kicking and screaming is there going to be when people step into a much more rigid world?
+
+Speaker 2  25:01
+I'll get used to it. I think, yes, it is. I mean, especially when, okay, it it's incumbent upon the person doing the sales side to really defend the process, because, like, and I think this is what's going to this is what's going to set us apart from the RTO smart and the RTO suite. And, you know, it's like, yeah, you guys went and and created a RTO management software a lot like RTO Pro. We are, we are fundamentally a very different product, and that is, you know, we are formulated for true rent to own or true rental. And, I mean, we're the funny thing is, the longer we design and build, the closer it comes to everything. I hear J Meg talking about with with NetSuite, except that we're going to do it, right? We're going to could not come with all the problems, right? Right. So one day you could say, we built the we built, we built NetSuite without the problems. Yeah,
+
+Matthias Miller  26:16
+yeah. Okay, good. I like it. Thank you, sir. All right. Bye. Okay, so Seth, I think the biggest question then remains, you know, do you, do you auto assign some kind of unique invoice number, or something like internal invoice, or, you know, contract invoice, or something like that, or some kind of, I don't know.
+
+Speaker 1  26:40
+I Good. I think if that's how we're thinking about it, we might as well. There's just no reason not to. Yeah, right. I mean, you could literally do contract ID and increment. Contract ID, hyphen, 001, and increment. Like, yeah, you literally good. Why not? And if you incur late fees, and you have a 48 month contract, you have three late fees. Well, your last invoice is 51 instead of 48 like, Yeah, makes sense. Oh, like,
+
+Matthias Miller  27:13
+oh, makes sense to me. This just plus due date floating. Due Date, just, I think, falls into place with this. I think, I mean, even from a it does raise the question with floating due dates, are you at an audit risk? Because some of the proof has to be some level of enforceability. Well, I don't know about rent to own, but so my business loan to and from shareholder as an example, the only reason you can loan to a shareholder at a reduced interest rate, wherever even at all, is if you have sufficient proof that there's viability of return of money back to the business. Otherwise it's a distribution that alone and it's and there's something very similar here, where if you just keep deferring, deferring, deferring, deferring, deferring, waiving late fees and never retrieving the building. The same burden of proof is on you that there's no you know what is, yeah, you're operating without any viability of return of funds.
+
+Speaker 1  28:32
+So you're saying if, but that's not if. That's different than a floating due date. A floating due date is moves as you pay it out,
+
+Matthias Miller  28:40
+but a floating due date runs that
+
+Speaker 1  28:44
+because it's, it's not like you can move it three months out, or you can't be behind, really, can you?
+
+Matthias Miller  28:52
+No, you're right. The biggest issue with the floating due date is that you're not recognized revenue in the period that it was right, that it occurred, right? Yeah, that's fair. You're right.
+
+Speaker 1  29:02
+I mean, fine, it's not ideal, but, and right now, with our due date override, then I guess you do have that where, if someone the capability, you do have the capability to do that, but that, I mean, that's built for edge cases. That's not built for you to go do that, and you're not going to stay in business if that's what you're doing on Hacker contracts. It's gonna solve its own problem. It will solve its own problem. Okay, good. Okay, so this is going to throw wrenches in a lot of gears, but I think it's the right way to go.
+
+Matthias Miller  29:41
+It is gonna throw wrenches in a lot of gears. Stuff is just
+
+Unknown Speaker  29:43
+going to break everywhere, I think. But, I mean, I think it's the right thing to do.
+
+Matthias Miller  29:53
+Well, you're Dwayne it more closely models, he would agree more closely models, reality, I would agree that it does.
+
+Speaker 1  29:59
+Yeah. Feels, I mean, it feels, it's not quite this level, but reminds me of what Ellis has said that I forget. Is it Dan or think me Dan was saying that, like you have a platform, you need to rewrite it three times until you're actually at a good place. And I think we're getting a bit of this as we go along with this project. That's I don't think it's, it's to the quite the same level, but
+
+Matthias Miller  30:26
+Well, we did it once with, we did we wrote it once with, with zfp. We rewrote half of the things the second time with CFP. The other half, we didn't. We coded the first time with that, with them. And I think some of this is getting to the third point. Well, I mean, okay, like, we haven't done leases in rentals now, so
+
+Speaker 1  30:46
+that's what I feel like we're already on, like, how we're modeling it in the event surgery. I think we're on by now. We're at least at second edition, yeah, compared to where we started at.
+
+Matthias Miller  30:59
+Oh, for sure, I think I'm trying to think through implications for my great implications for migration. This might actually be a really good argument. I mean, I just think this is going to be so beautiful for migration, really. I think this is going to make my life easy. Let's go. Let's go.
+
+Unknown Speaker  31:17
+At least if it makes my life hard, it makes your life easy. Are you somewhere?
+
+Matthias Miller  31:24
+How do you set? Are you sure we have to store? Are we sure? Why can't we just infer tax amounts and have a complicated macro that just gets it right?
+
+Unknown Speaker  31:36
+What do you mean in for tax like,
+
+Matthias Miller  31:38
+like on the payment rows to figure out, like the wonderful balance method, for lack of a better term.
+
+Speaker 1  31:45
+So if you have an invoice, we have we store the tax on, well, we just, where do we store the tax rate? We should sort of the tax rate once per invoice. Yeah.
+
+Matthias Miller  32:00
+So could we just have a complicated macro? Well, maybe it's too slow. And if it's too slow, can we just add caching that's auto updated. There's that okay, when I import here's what I'm thinking of when I'm importing payments. It would be really nice if I wouldn't have to Oh, dude,
+
+Unknown Speaker  32:23
+jigger the numbers around.
+
+Matthias Miller  32:25
+Jigger the tax. Tax jiggers
+
+Speaker 1  32:30
+sounds like checkers and that sounds about right, itchy and annoying.
+
+Matthias Miller  32:36
+The first year we were married, I went to men's camp. Got sugars all grabbed what I thought was like a, like a, like a, itch, anti itch cream, and grabbed icy, hot, not my finest moment. So, so tax jiggers. The the Okay, I can't do it. It's not that bad to write. But if it's all the same to have some kind of field change or something even, even if it's like I
+
+Unknown Speaker  33:23
+I do, yeah, do we need to? Are we wanting the tax broken down, line by line,
+
+Matthias Miller  33:33
+you need to, if you need, if you want to show if you want to do the waterfall,
+
+Speaker 1  33:37
+if you want to do the waterfall, you have to, yeah, right.
+
+Matthias Miller  33:44
+But the waterfall is, again, the waterfall is only for reporting purposes of of partially unpaid periods, right? So if we wanted to, here's, here's my, here's what I would advocate for. Argue with me. What I would advocate for is start by auto calculating the waterfall if it gets too slow. Then we add a hidden Boolean field on the on the invoice of sales tax row that says, recalculate waterfall with the field change expression that checks for that, or that basically goes, it does a repeat RG, recalculates the tax amount, a cash tax amount for every row, and then clears the thing and we we cash it. We don't do it for first iteration.
+
+Speaker 1  34:47
+How do you How does forgiveness and stuff work?
+
+Matthias Miller  34:51
+Forgiveness reduces the I mean, it just reduces the it reduces the i. It reduces the total taxable, red, taxable or non taxable revenue, the total revenue on the on the on the sales tax row,
+
+Speaker 1  35:10
+our entire balance calculation is going to get dog slow.
+
+Matthias Miller  35:16
+Contract balance,
+
+Unknown Speaker  35:19
+oh no, like rent balance.
+
+Matthias Miller  35:24
+Not not it Well, not if you cash, not if you cash it well, maybe you just have to.
+
+Speaker 1  35:36
+You might be right, because with this, if you're not actually itemizing how the payment is split out. Then, then it, then you, when you're calculating your balance, you have to go rip through the RG for every single rental row to say, was I fully paid? Was I fully paid? Was I fully paid. And so by the time you get to the end of a 60 month contract, you have what?
+
+Matthias Miller  36:11
+No, you don't. All you have to do to find the rental balance is look at the sales tax rose minus payments. Do
+
+Unknown Speaker  36:28
+I'm not tracking
+
+Matthias Miller  36:30
+your sales tax row will have a taxable total and a non taxable total that has to match each of its line items, the sum of each of its line items, sum of each of its line items. If you want to know what your contract balance is, just ignore everything except the sales tax lines and the payments or the invoice lines if you want to call them that, and that's your contract No, that's the What about feedback and stuff?
+
+Speaker 1  37:02
+Right balance. That's See, that's what we're going to lose now, is to be able to report on that really easily. It was just a rip through the RG once. Now we're going to be at like, rip through the RG 100 times.
+
+Matthias Miller  37:19
+Okay, well,
+
+Unknown Speaker  37:22
+which makes me wonder if it's right or not.
+
+Matthias Miller  37:31
+Okay, but it's either that or anytime you add a fee, you have to rejigger the payment, the payment breakdown, I
+
+Matthias Miller  37:57
+right? I think if speed of reporting is an issue, then it means, I mean, it's basically the waterfall break, update the waterfall breakdown, which now becomes three steps. Step one, recalculate the tax. Step two, calculate the balance off the waterfall based on existing payments. Step three, clear the checkbox and checking the box on any payment or Well, however you want to do it, but editing the the invoice or sales tax row, or editing the payment, or adding or deleting a payment, all would have to trigger that. I
+
+Matthias Miller  39:16
+Okay, you're gonna hate this idea. He said, optimistically, the alternative is having a separate RG that you use for reporting these balances that is a mirror. It's keyed off of of invoice plus fee type. It has the taxable and the non taxable value. It has the made up calculated tax value. It has the made up total value. It has the made up. Well, it has the actual applied payment value. It has the made up taxable amount. No, it doesn't have that. It just has a it has the made up. Oh, it just. It has the made up, how much was applied to this value and
+
+Matthias Miller  40:12
+and then has balanced.
+
+Unknown Speaker  40:14
+So it's essentially what we have right now,
+
+Matthias Miller  40:20
+roughly, what was that the sales tax, or to link them all together? Well, it is essentially what we have now. What's the advantage? Great question.
+
+Speaker 1  40:36
+I'm just trying to think it through. I guess that what it's giving us is one framework where it's the it's that invoice by invoice structure, right? And our whole nice itemization structure that we have right now that's just a b by fee.
+
+Matthias Miller  41:11
+Here's another way to make it more understandable. If
+
+Matthias Miller  41:31
+for lack of a better term, you have a set of fields for taxable, well taxable, non taxable, and a set of real world written in stone values. It's the
+
+Matthias Miller  42:06
+on the line items. That's the actual amount that's charged on the sales tax line or invoice line. It's the jurisdiction rate and percentage, and then off to the right, you have the fully populated list of all these values with their calculations. So for the sales tax row, you would sum the subtotals and the and the taxable. You send a taxable and non taxable portion you would add in the you calculate the tax rate. You would freeze the tax amount for each of the line items. You would freeze in the tax amount for that, and then you would freeze in, I don't know what you would have in the payments, but then you would also show the balances for you would you would calculate the balances for each of those, but it draws a clear line in the sand of what is the definitive truth and what is the caching that we use for reporting?
+
+Speaker 1  43:10
+I just had probably an awful idea, okay, but what it's some what it's suddenly starting to feel like to me is that we have an RG of quote, unquote invoices, and then that is almost linked RG of itemization, right?
+
+Matthias Miller  43:34
+You're not wrong. And in fact, RTO pro actually models it very similarly, except you just lump all the other fees. You don't have an RG because you don't have other types of fees.
+
+Matthias Miller  43:49
+Is that so bad? I don't know.
+
+Speaker 1  44:00
+No, it terrifies me a little bit is that linked or G's are sort of edge fairly supported.
+
+Matthias Miller  44:14
+Well, I mean, it
+
+Speaker 1  44:16
+feels problematic to have the core of the system potentially relying on that.
+
+Matthias Miller  44:24
+Well, okay, so here's the consulate, here's the constellation. What's the word? This is never used interactively. So the worst thing that happens is that we have two separate RGS living separately. Make sure that they're in sync, and there is no fancy click through button to pop the other one open. And even with a linked RG, you still have to do a look up into the parent RG if you want to grab a parent RG value, right? You. So I feel like linked or not really is low consequence.
+
+Speaker 1  45:05
+Okay, my hunch is that we should probably sleep on this and come back. I mean, we can keep bouncing around a bit yet, but I'm sure feels like a big enough design thing that we should be coming back tomorrow.
+
+Matthias Miller  45:19
+Okay, if we, if we want it, let's say we want to, okay, let's, let's state of the affairs where we're at, yeah, invoice RG, but the invoice date, invoice ID and jurisdiction and subtotal and taxable, non taxable and tax. That's all auto calculated. And then you have event rows that tie out to invoices. Must tie out to invoices, absolutely must. Yes. You have line items, incurred fees and credit and incurred fees, forgiveness and payments, yes. And then also, for the sake of reporting, you have fancy logic that helps you figure out, basically fancy waterfall logic so that you can get per fee balances, including tax.
+
+Speaker 1  46:23
+Which I'm guessing we're going to end up wanting to cash just for speed purposes,
+
+Matthias Miller  46:29
+likely, likely true. But if you do it like this, it's actually really simple. All we're doing is we're adding a separate RG for invoices. Well, it's not all we're doing. Definitely not all good. And if we were doing this in a SQL database, we would have three tables, one for the contract, one for the invoice. Well actually we probably have one for the Yeah, one for the invoice, which might actually have multiple statements in it. So it was, you know, in the same invoice, well, multiple contracts in the same invoice. But I like this better.
+
+Speaker 1  47:14
+No, yeah, exactly. I think I need to have this can't be bridging well, with how we're working with it. Can't be bridging contracts.
+
+Matthias Miller  47:23
+Okay, I like it. Do you want to sit on and see what we think tomorrow?
+
+Speaker 1  47:29
+Yeah, good, awesome. You want to pull the summary from your AI?
+
+Matthias Miller  47:37
+Yeah, recording. I'll see how good it is. I'll give it a shot. It'll take a minute. We can run Yeah, exactly, yep,
+
+Unknown Speaker  47:47
+okay, yep, yes.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,182 @@
+Unknown Speaker  00:17
+And we're back. Hey, Matthias, Hi, there.
+
+Speaker 1  00:25
+Just sitting at the back of your office or what? Yep, all right, nice. It looks different from this angle.
+
+Matthias Miller  00:32
+If I want to get really fancy, then I move over a little bit. I turn the lights on and, you know, oh, there you go. Smart and important, Dwayne
+
+Unknown Speaker  00:50
+just likes to have a big cardboard box in his background.
+
+Speaker 2  00:56
+Yeah, every time I get in a zoom call, I look and I see that thing, and I'm like, why is it still there? Haven't figured out why it hasn't moved I appreciate the solidarity.
+
+Matthias Miller  01:09
+I try to do what I can,
+
+Matthias Miller  01:16
+all right, well, jumping in on our end, I had this brilliant idea of trying to spec out something simple, like CRA conversions. And anyway, nothing is as simple as it appears, unfortunately, at this phase of the project. And then Seth and I spent some time digging into sales tax, which also, I think we're getting to a point where it's simple. But goodness gracious the if we could just live in a world where we have full floating points on sales tax, then, you know, part of our lives would be easier.
+
+Speaker 2  02:03
+Would help just, just, you know, apply some 32 bit floating point math, and it'll be good.
+
+Matthias Miller  02:09
+It'll be good, exactly.
+
+Speaker 2  02:12
+I don't think that applies to this nature, but, you know, it sounded cool. It sounded cool.
+
+Matthias Miller  02:20
+And then Dwayne and I have our heads down on imports and finding all kinds of interesting
+
+Speaker 2  02:25
+things, really, both, both Matthias and I's heads are kind of flattened on the top because we keep running
+
+Matthias Miller  02:31
+them into a wall. Yeah, I think that the big question we're wrestling with is, do we want to literally import all payments? Do you want to draw a line in the sand and figure out how to disentangle current contracts from or, you know, recent contracts from everything else? Or do you just want to go full, full on, import everything so, but we have, we have a lot of everything imported, and so we're working on importing, event the actual transactions, which I think we're going to be looking at probably a million. I don't know, well, I don't know exactly what it is. Maybe it's not quite a million, but, you know, hundreds of 1000s of record of RG lines that we're importing. So it'll be fun to see how, how well the x 30s hold up to that
+
+Speaker 2  03:21
+you should, you should say, you should, you should say the same comment you made to me in our call about our friends in Kansas and the same not, was it not Kansas, our competitors, and this is the very thing that they're, they're bottleneck.
+
+Matthias Miller  03:39
+Yeah, Seth. Seth asked messaged me recently. He's like, Hey, do you know such and such? Like, yeah, actually had a conversation with them, and they told me what their biggest bottleneck was, and I shut my mouth, and that's exactly what we're solving right now. So, yeah. And then on top of that, Dwayne's coming out to Colorado. And current plans, I think, are to just try to spec out as much stuff as humanly possible to stop you guys from complaining about not having work to do, terrible, terrible, I know.
+
+Unknown Speaker  04:19
+I mean, we have work for the next week yet, probably maybe, okay.
+
+Matthias Miller  04:24
+Well, by, by, by Tuesday evening, you should have more.
+
+Speaker 2  04:26
+So Matthias comment was, we're gonna work on on design stuff until we get tired, and then we'll go work on imports that just about fell out of my chair. Laughs and said that's the dumbest idea ever. Sounded good, at least
+
+Unknown Speaker  04:46
+it's a different wall to flatten your head on.
+
+Speaker 2  04:49
+Yeah, yeah, this, this is, this is the grunt work,
+
+Matthias Miller  04:55
+yes, the grunt work, yeah. I mean, we're definitely. In the messy, difficult middle, and there's there's no turning back, and there's only trudging forward at whatever pace we can muster. So we're trudging forward.
+
+Speaker 1  05:15
+Awesome. Take away our side now go for it. Yeah, we have been going about all guns a blazing the last week. We had think between Jasper's not tracking time yet, but between the other four of us, we worked over 100 hours on project in the last week since we last called. So we've been going hard. The biggest piece for me has been sales tax liability. I've got a framework that I like. It's the calculation side is so far like a bit simpler than zfp, but, but we're Matthias and I have been dealing with some issues and trying to figure out how to actually calculate everything. I think we're getting close. Other than that, I also spent a fair bit of time on design and checks and deposits, figuring out how we're refactoring that from CFP and making so they work. Well, that's taking a fair bit of my time. We have not started on development on deposits yet, but checks are getting pretty close done, I think, pretty happy with that. And I felt Jonathan think through some auto pay things, it's, there's a lot going on, but he's got some updates there, I think. So that's my side.
+
+Speaker 3  06:36
+Yeah, like that said, we, we've been reworking the sort of the data flow for payments to do as much as we can in the database. In the last step, be running the payment so see, I've been working on that, learning quite a bit about how, how input files, different types, work together with X 30 and X 30 lists and trying to design it in a way that is compatible well with both web services and, you know, scheduled tasks, though. So I feel like I've this morning. I feel like I finally got on a good path where I'm very confident in what I'm doing, but just a lot of things to think through. But the nice thing now is that everything will happen on the TV side. We'll have it all allocated out. It'll be linked to all the contracts, all the events, and then at the very end, we run the payment with clearance. And so there's not really any such thing as, like, a stranded payment that happened, but we don't have record of it. We've got the ID flown through the whole way. So, yeah, that's what I've been working on.
+
+Speaker 1  07:55
+Yeah, that way we avoid some of zfp Strike problems, hopefully,
+
+Speaker 2  08:03
+well, you said, you said stranded payments. And I immediately thought of strength Josh's stranded buildings, and what happens to those things every once in a while, that one always is a fun little thing when someone accidentally disconnects a sales order without turning it into a lot building, and then their building disappears. So as long as we don't have that ever happen with a payment record, yeah, that's probably a good thing. I like that idea.
+
+Speaker 3  08:28
+And there are things that we can do if we if we want, you know, I'm thinking a year in the future, if we want to, we could have some sort of process that runs daily and says, Hey, Claire, what are all the payments you have on record? And says, Okay, let's see what we have in the database. And just, you know, kind of does a check that would catch any of the sheep that get lost? But, you know, that's something we could easily implement. But later,
+
+Speaker 2  08:54
+I have a better idea. Let's not lose the sheep. I think
+
+Unknown Speaker  09:01
+Jonathan's getting pretty close to not lose to not losing she
+
+Speaker 4  09:09
+okay, I actually spent a decent bit of time working on zrt stuff this week, which is great. After being out for like two weeks, I got straight line book depreciation calcs working, which that is by far the easiest part of depreciation. The rest of it, as I learned, is very confusing. I spent way more time learning about makers depreciation from IRS documents than I ever wanted to. And thankfully, I got my wish for the week, and that was kicked down the road this spring. So that was great. I've been working on checks, genericizing that the checks we have in zfp to be a generic accounting thing, a framework for check refunds and linking checks to bills, and also supported paying invoices with payments.
+
+Speaker 2  09:58
+Now that you understand. And depreciation. Nick, can you come explain it to
+
+Speaker 5  10:12
+my accountant? Updates from my side include a lot of small jobs, such as, now it create, you can automatically create a note when you override the due date on contracts. So that's been added. We now allow duplicate IDs for different rental companies on contracts as well. I did some updates to Macros and contract definitions, just to simplify the logic a bit. And also adding imports and reports and fields all related to them, as well as linking RTO PRO data to records in only going forward I Seth has more, yeah, smaller type jobs for me to go through just stuff, stuff that needs to be done as we go along, including adding support for manual payments and bills and adding links to rental companies instead of accounting companies, so that we can support a new accounting version of only. So that's what I'm working on. Yeah,
+
+Speaker 6  11:25
+I've been working on some small stuff as well, like adding a sales tax vendor's reports, some attachments and bills, bit of detail work and clean up in other areas, I think Seth and Nick might have some other jobs to kick my way later, some small stuff. Awesome,
+
+Matthias Miller  11:54
+wonderful. Dwayne. Any thoughts to close us out?
+
+Speaker 2  12:02
+I sat down last night with the individual I spoke of last week, and I have a I have a affirmative yes from him on coming on board. So nothing and nothing's on paper yet. So not as as I made a comment to someone else, nothing's final until you either, either till it's on paper, or you exchanged money, one of the two. So really, really, really, really excited. I was also explaining to him last night, Sean, talking about all the work that you've been, you've done to model up the RTO PRO data. On only side, I was explaining how that works, and the linking out and linking to all of the the source records, and his eyes about fell out of his head, and he's like, You're kidding me. You brought the entire database over from RTO Pro. I was like, Yeah, because we want to tie the whole thing out, it's gonna, like, we're gonna tie out the entire history, and then I spend the rest of today with Matthias trying to figure out how to tie out the rest of the history. Well, okay, actually, to clarify that Matthias has been trying to figure out how to tie up a history. I just basically sit here and wonder, what am I doing? Let me scroll social media for a little bit
+
+Matthias Miller  13:28
+I'm using and then looking at random like, what is this Catherine doing with her money?
+
+Speaker 2  13:33
+Yeah, we come over the we came up with a really interesting one today that we're still not sure how we're going to solve. We have customers, customer records in one store, and their contract in another store, and RTO Pro has no way to change that. At this point, I'm going to have to find I'm reaching out to RTO Pro to find out if they can help us figure out how to, I guess, either through SQL string or something, try to update the database, the Firebird database, because you can't do it through the interface, but we literally have customer in one store and a contract in a different store. How that works? I don't know. I don't know how that works,
+
+Unknown Speaker  14:15
+but it gets the money.
+
+Speaker 2  14:18
+Good question. That's a very good question, but ran into that one today, so we got, and we've got a few of those that we've got to figure out how to switch the store on, on certain things. It's no easy matter, because RTO pro apparently just says, Oh, we don't care if you're if your customers in one and the stores and the contracts in another, and, oh, we've just been just wave our hands and magic happens. But that doesn't really work for us. So yeah, we've got some some crazy things to figure out, like that. I But anyway, I was, I was explaining to him how all of the the source records link out to the the actual records, how the common. Contract links out, you'll be able to, you know, to in only you'll be if you ever question the data, you can go to the source record to go and verify the data. And if we didn't bring it in, you didn't need it. Wink, wink. So it's good we keep coming back to things that we send over to Sean to say, Can you please model this up, because we need to bring in deleted inventory tables anyway, so, but no, but I super excited. I told, I told Matthias earlier this week who it was, and I wish I had his reaction on on video, because it was, it was worth watching
+
+Unknown Speaker  15:39
+very you didn't get it recorded.
+
+Matthias Miller  15:43
+Matthias, this conversation was that conversation was not being recorded.
+
+Unknown Speaker  15:49
+That makes sense, that
+
+Speaker 2  15:52
+as soon as I can say who it is, I will gladly tell you who it is. But, yeah, I I've been waiting for an actual, you know, yes, that he wants to move forward and timeline. And the timeline for him is going to be second court, beginning of second quarter. And right now, we are playing a stalling game with RTO Pro. They keep bugging us, and we keep asking silly questions to try to stall them actually converting our credit card processor. I don't I think if I told Francine today, I said, you buy me 30 days, I think we're ready. I think we're going to be ready to actually process transactions. And only so there's your timeline. Jonathan, you got 30 days.
+
+Speaker 3  16:44
+Is this the is this include customers processing transactions on their portal side, or is this just the internal side?
+
+Speaker 2  16:53
+I'm going to make it really uncomfortable and say, Yeah, it really should include customers. Okay, do so, but no if, if, if they, if they force us and say, your drop dead date is this date, and we can only process internally, then 100% we're doing that, I can, we can figure out how to bridge that if you're not done with the portal. But they are. They are pushing really, really hard. They they want. They want to get everybody switched over. And I just want to stall them. I want to stall them to the very last second and hopefully not have to make the switch Exactly. Our life gets infinitely easier if we don't have to make that switch.
+
+Matthias Miller  17:47
+Is there anything we should good? I was
+
+Speaker 1  17:51
+just thinking we should triage a little bit to make sure we're for sure getting everything that's needed for that specifically, at some point healthy has to be with everyone, but it'd be worth I mean, is that basically what's happened with the early January jobs like,
+
+Matthias Miller  18:13
+Well, I mean, early January, early January was the intent of early January was, was read only right, February process or mid, mid to late January processing. I think Jonathan and I are really the ones taking the, well, Seth, you as sales tax, but I think Jonathan and I are taking the big beating on this one. Me for imports, him for parents. I think there's a lot of the other stuff. There might be small stuff elsewhere.
+
+Speaker 2  18:42
+To be clear, I never expected that we would actually hit the timeline where we could actually do it without a switch. It feels like we're close enough that, if I stall them long enough, we might be able to that canoe might be close enough to jump from the dock. I mean, we're not, we're not going to, we're not going to pull out some hairy deals in order to get that done. If we're not close enough with the canoe, that's I want to, yeah, clear about that, yeah. But if we can get the canoe close enough to jump, by all means, let's, let's do that, because it does make life significantly easier if we don't have to deal with trying to pull tokens in from a separate credit card processor back over again.
+
+Speaker 1  19:23
+Yeah, yeah. Well, we'll do our best. We'll see. The last week has just been fun that we have been working hard, and it's fun to see pushing through complexity. I'm seeing that with Jonathan on auto pay and then some of our sales tax stuff and checks record as well. It's taken a fair bit of work and thought, but I like where it's going, so it's fun.
+
+Speaker 2  19:49
+Well, you have a reputation to keep Seth, if you like it, then it's going to be right.
+
+Unknown Speaker  19:54
+So, decent chance.
+
+Unknown Speaker  19:59
+Yep. In other words, don't fail me now.
+
+Matthias Miller  20:09
+Way to hold excellent historical work, Uber heads, don't screw it up.
+
+Speaker 1  20:17
+I mean, I think we're getting it better than we've gotten some things we've done for CIP, for insight.
+
+Speaker 2  20:24
+So my story of choice is the moment we questioned your payroll calculations. So that was that was funny. When was that? Oh, this goes back, I don't know, a couple years, but I think Mark questioned your payroll calculations, and you basically said, No, I'm confident in my payroll calculations.
+
+Matthias Miller  20:42
+I I don't remember
+
+Unknown Speaker  20:45
+that, but I don't doubt it either. We
+
+Speaker 2  20:47
+have laughed about that so many times, so you set the bar high.
+
+Matthias Miller  20:56
+All right. Good stuff. Thank you. Thanks everybody.
+
+Unknown Speaker  21:01
+Thanks guys, yep, bye.
+
+
+Transcribed by https://otter.ai

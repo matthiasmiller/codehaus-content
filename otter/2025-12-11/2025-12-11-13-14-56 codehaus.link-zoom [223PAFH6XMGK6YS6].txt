@@ -1,0 +1,224 @@
+Speaker 1  00:26
+Hello, hello, still no Hello, hello, hey, there's the Hello, here's the Hello. After these guys are done, do you mind hanging around it for a few minutes? I want to talk through this Vulcan bird thing this
+
+Matthias Miller  00:47
+I do not have bummer. I have a hard stop at the bottom of the hour. But if you want, How late are you working?
+
+Unknown Speaker  00:58
+Hey, we could do it. Just got on, right?
+
+Speaker 1  01:04
+We could do it tomorrow or something. It's that. It's that one where they had to dispute in it, and there's, like, 1000 transactions with 1000 refunds and then a dispute. And I don't even know what I'm doing with this thing, and like, the payouts doesn't even capture the disputes, because it doesn't bring disputes in. And so I was contemplating, like, putting the RG, putting the line item in the RG with a dispute code, and I don't know. I'm afraid I'm just gonna
+
+Matthias Miller  01:37
+that stuff up. I don't know.
+
+Unknown Speaker  01:40
+So, okay, well,
+
+Matthias Miller  01:48
+so I'm just
+
+Speaker 1  01:50
+gonna go ahead. Let's play. Let's play. Guess where Nick is right now. Looks
+
+Speaker 1  02:02
+like he's like, you know, in a foggy environment, either that or needs to clean his camera.
+
+Speaker 2  02:10
+He's always in a foggy environment, either that or my laptop webcam is just not that great.
+
+Matthias Miller  02:19
+Well, the good news is, it's not covid, so you can actually buy them.
+
+Unknown Speaker  02:26
+All right. I feel like I have covid.
+
+Matthias Miller  02:29
+Well, that sucks. All right. Well, I'm gonna, I'm just gonna go ahead and brag up Sean for a little bit. So thanks to his as I should thanks to his hard work and dedication, I want you guys to take a look at this. Do you guys know what this is?
+
+Speaker 2  02:57
+A black screen. It's your screen trying to share.
+
+Matthias Miller  03:00
+It is, my screen, trying to share. Check this out.
+
+Unknown Speaker  03:04
+Let's go.
+
+Speaker 1  03:11
+Matthias. Matthias made a very interesting observation that integrity rental solutions, we get to manage the IRS. Nice. Yeah. Less.
+
+Matthias Miller  03:26
+So it's, there's really not that, I mean, this is like, this is it. So it's, you know, kind of anti climatic, but really cool to be getting it in there. So there you go.
+
+Speaker 1  03:42
+This stuff. Start of real data.
+
+Matthias Miller  03:45
+Start of real data. This is the easiest. We start with the easiest stuff.
+
+Unknown Speaker  03:49
+So anyway, all
+
+Speaker 1  03:52
+right, so we can, we can officially say we're in data migration.
+
+Matthias Miller  03:56
+We are in data migration early stages. We are, think about it. Think about where we started, and then to be able to be pulling data out of out of RTO Pro and being moving in this direction, that's pretty
+
+Unknown Speaker  04:08
+incredible. July the 10th data migration.
+
+Speaker 2  04:15
+All right, so things sort of kicked off. What you're saying? Well, somebody
+
+Speaker 1  04:20
+said the first something was done in July the 10th. I thought wasn't it July the 10th?
+
+Speaker 2  04:24
+That sounds about right for when development would have started? Yeah, I think that's when development that's right at five months. I mean, that's not bad.
+
+Matthias Miller  04:35
+In five months, we've done we've done a demo, you've done that, or you've done the expo, you've had client conversations. We've started pulling data in so and
+
+Speaker 1  04:47
+it's still not fast enough. Somebody should talk to that somebody should talk to that guy about being patient. It's funny, Hey, you tell me. You tell me another software, this manual. Two that's at this point in five months.
+
+Matthias Miller  05:05
+Yeah, there's a lot that doesn't happen. The other thing I got to show you guys. Let me see if I can pull the screenshot you guys. I'll have some. One other thing to show you, but we need to keep moving. I got to drop at the bottom of the hour. Why don't you guys give updates and let us know what you're what we're working on? And I we'll go from there.
+
+Speaker 1  05:27
+Okay, before these guys give updates, Jonathan Matthias And I spared you a awkward, painful call, you're welcome
+
+Matthias Miller  05:37
+with who all of these people. That's how many people it takes to make sure we get our credit card implementation done right. Notice that only two of the two of the 24687, people are ours, including
+
+Speaker 3  05:56
+this, also a bunch of people there with like, the only two people that actually talked and had their cameras on were gene and then their implementations dev guy, and there were a bunch of NPCs in there with their cameras off too. But
+
+Speaker 1  06:17
+that's great. It's like they actually looked genuinely crestfallen at the idea that we did not need help.
+
+Speaker 3  06:26
+Well, I mean, we could eventually, that's the thing, but for now, like, it's just a lot of, I mean, like when you if, for example, in the checkout screen, when you want to make the payment, we do six things sequentially, like six API calls, some on their end, then some on our end. And like, there's just so many things to think through, and very little that has to do with complex stuff on their side. So yeah, if we don't need help yet,
+
+Matthias Miller  07:00
+somebody on our side was was snarky enough to make a comment about us not building rockets here, and we think it's going quite well, so,
+
+Unknown Speaker  07:07
+yeah, rocket in their logo.
+
+Speaker 1  07:14
+Well, Matthias is like, we're not building a rocket here. It was, it
+
+Matthias Miller  07:26
+was what I wanted to show. So now we can really get into updates.
+
+Speaker 3  07:32
+When you said you spared me from a call, I was worried. I was like, Did I do something wrong? No, you did something right. I did one time charge ACH for more than $25 and it declined. They said, don't do more than 25 is that what happened?
+
+Speaker 2  07:51
+Okay? Updates, so for myself, for the past week, I've been doing a lot of stuff with calculations. I think my favorite thing is I have a like, what 16 ish usable macros for just normal users. I think things like contract rent balance due with and without tax, upcoming balance, and then for fees as well, and CRA and security deposit balance. You should probably document a list of these somewhere, but that's fun. Make quick, share my screen for a little bit.
+
+Speaker 1  08:28
+You definitely need to document this somewhere. Yeah,
+
+Speaker 2  08:31
+I have lived in this RG for the past while. Between figuring out how we deal with sales tax and then balances have been the big thing. What the breakthrough was was eventually realizing we need to fully calculate balance as for each incurred row and not on paid rows that gets tied into the incurred row. And we have to do that because of tax the possibility of tax rate changes. But so these three columns here are what makes that our balance calculations can work. So it was really fun to get to place where that's working and where, if a rate changes, our balances will still come out right. And also just put together a simple little due date change thing. We'll polish it up then, but we can now update a due date and it'll should bump them forward here. Yeah, the bumps forward the current due date, and then any upcoming ones are bumping forward. The same amount is that? Does that sound right? As far as the upcoming ones?
+
+Unknown Speaker  09:40
+Okay? Are we logging? Are we logging any event for that,
+
+Speaker 2  09:47
+not outside of activity history? At this point, we could, we
+
+Matthias Miller  09:51
+talked about recording a note for this.
+
+Speaker 2  09:55
+That'd be easy to do. I. So anyway, that's most of what I've done. And the exciting thing is, we are basically done with December development. There's one or two pieces to wrap up and calculations, bit of tuning yet, but we are really close, so I'm excited to be pushing forward on January stuff that's really, really exciting.
+
+Speaker 3  10:28
+I've been working on getting the application, payment application, to work after all of the changes that we did to the to the events RG, and to have it working for all all saved payment methods. And I'm almost there with when you add a new payment method, the whole process of like you put in your details, and it goes and tokenizes the method, which takes two separate calls to clear it, and then saving the new method to our database, saving a payment, and then going and applying all that. And I'm almost there. I haven't worked on it quite that much this week, doing some other stuff, but we're very close there, and very excited to see what Justin comes up with the design next week as well.
+
+Speaker 1  11:19
+Okay, I have a question. I'm not doubting your work one bit, but Matthias has now said this, and you use the same language, and I want to confirm that we're we're correct when you say you're storing the method, you are storing the token, not the not the payment, but not the credit card number, right?
+
+Speaker 3  11:36
+Yeah. We, yeah, we don't when we Yes, that's correct. When we had our call with them, I thought, I thought that we could have, I thought that we could, I thought we could make the HTML form and as long as it never went into our server anywhere, it would be fine. And they're like, Nope, we literally have to provide the HTML so there's no way for us to ever know what the thing is. The caveat is that if they are not wanting to save this payment method so that we can charge them again, then what we do is clear it still knows. Obviously they, because they're the ones that clear it, and they, when they come back to us and tell us the payment went through. They give us, like, the last four of a credit card number, or, if it's a Ach, they give us the full routing and the last four of the account number, and then we just plop that onto the payment record so that we know, you know what they used, but, but we can't run again with that. You know, it's not actually sensitive.
+
+Speaker 1  12:39
+So I just when someone says they're saving a payment method, it usually implies they're saving a credit card number. And I want to make sure that we work. We do not want to get into that land. So perfect.
+
+Unknown Speaker  12:51
+Yeah, yeah, no, definitely not.
+
+Speaker 3  13:01
+I'm sure, given that I have a few horror stories that I could tell businesses slash people. I know that store credit cards sometimes on sticky notes, and I'm sure everyone else probably knows a few as well. I think we're well past that.
+
+Matthias Miller  13:19
+Yeah, there's a situation, I won't name what system or what party, but there was a situation in which someone paste the credit card number into a memo which goes into activity history, which means, meant we actually had to write an X 20 to get it out of there. So, and then they were instructed not to do that. Again, small details. It's probably gonna back up somewhere. I don't know anyway.
+
+Speaker 1  13:45
+You know, it would not be stupid to go find that x 20 and have it around for because there is going to come a day somebody's gonna be like, we have a credit card number in modification history. How do we get rid of it? It's like, that'll cost you $5,000 you on
+
+Matthias Miller  14:05
+your accent, oh, Sean or Nick Do you guys have anything to Sean, you you've been doing a bunch of work.
+
+Speaker 2  14:14
+Give me 15 seconds. I knocked out a couple things with auto pay that were broken, not because they were originally broken, but we kept updating how auto pay works, allowing no end date, or that sort of thing. So tweaking those, I did a little bit of work with products depreciation framework. Some of that needs to be cleared up a little bit, because I didn't interpret, didn't know, whatever. I'll keep working on product depreciation framework and a couple of other small pieces.
+
+Speaker 4  14:46
+Sweet, yeah, biggest thing for me has been getting the imports done for the data migration. So that was, that's done now, as far as I know, I mean, to be determined, I guess. But yeah, no, so that's, that's good. Next thing I've. Been working on recently is getting the linking fields to then move that data into the records in only so that job is also almost done. Now it needs to be reviewed, but, yeah, it's going well. Aside from that, I also added the bills option to the menu under products, so you can get to that easier than having to find it in the standard report. Aside from that, also been doing a lot of miscellaneous, miscellaneous CRT jobs, stuff behind the scenes, macros, that type of thing. Just a lot of cleanup stuff to make things work better. As far as future stuff goes, I don't know of any major stuff yet. I'm sure it'll be more miscellaneous, miscellaneous work, as I said, Yeah, adding macros, fixing small stuff, small detail, screen items. Yeah, I'll let Seth tell me if there's any any more major projects ahead. But yeah, that's my plan. Cool.
+
+Matthias Miller  16:03
+A little update from our end. As Jonathan mentioned, we're doing a design walk through with Justin Reese on the customer portal. So that'll be exciting. That'll happen before our next call. Dwayne and I are both, well, Dwayne in particular, but Dwayne and I are both have some kind of under the gun with some end of year stuff. And so there's not a ton of things to specifically prioritize. We're moving on to the January editable system stuff. I'm probably going to just because of the data wrangling and linking and stuff. And what does this mean? Probably going to handle most of the imports at this point. So that's the other major project, so we can get read only data in the system, but hopefully by but Dwayne and I have a bunch of time blocks. Actually, we're talking daily, every day next week except Friday. So we're going to work on getting, probably my vote is to split January into two pieces, early January, late January, and start pushing on highest priority stuff that we can, that we've got designed and can, can walk through. We've been making good progress. Oh, other fun thing, I wrote a nine page with, with the help of Claude and a bunch of research and other types of stuff, a nine page article that explains exactly how CRA works when you have a down payment that's bigger than your CRA. And it actually makes sense. And there's actually a very simple formula to get to the CRA amount, the monthly payment and CRA amount. So I am slightly geeky and proud of that, but waiting on feedback from other people to see if it actually makes as much sense to them as it did to me. But that felt like a fairly major breakthrough in understanding calculations and what's going on. It's always been a
+
+Speaker 1  17:53
+black box. Yeah. Best moment this morning on the assist call was Matthias being like, yeah. I don't know how the how the assist one works, but it just works. And I said, Well, seeing that the same guy wrote both of these, common denominator is that guy, he doesn't even know how his own work. It's actually working. So that's kind of funny. Yeah, fair enough.
+
+Unknown Speaker  18:20
+Good. Anything else.
+
+Speaker 1  18:25
+So I have a little piece potentially that there's a pretty big potential here, of a the individual I would love for to come be the sales rep, to actually go and actually contact RTO companies and sell this thing. Reached out, okay, he's, he's the individual. I was like, Yeah, right. I would never, ever be able to have this individual, it would be amazing. It randomly reaches out. Last night, he said, what would it look like if we started working together? And I'm like, wait, what? So if that, if this individual comes on board one, I don't know how we're going to make this work yet, but oh well, it's fun to it's to it's we're going to we're going to explore it until we say it's a yes or no. But if this individual comes on board, we're going to have a hard time staying in front of onboarding. Really hard time.
+
+Speaker 2  19:37
+So I that's the kind of problem we like. I
+
+Matthias Miller  19:48
+Okay, you got muted again unless you're talking not to us. Okay, you're not talking to us.
+
+Unknown Speaker  19:55
+I think he's trying to talk to us.
+
+Matthias Miller  19:57
+Hey, we can't hear you. You flip your mic.
+
+Speaker 1  20:07
+Not now, okay, now you can hear me, yeah, for some reason if my headphones, when, if I pull one ear off, it like disconnects I need, I need Matthias mic flip thing.
+
+Matthias Miller  20:18
+Yep, you might flip anyway.
+
+Speaker 1  20:23
+We'll see super would be super awesome, something that God only God could put together so but if that happens, we're gonna have an onboarding problem.
+
+Matthias Miller  20:36
+Well, good news is we know how to streamline this stuff. Yeah, as long as there's Yeah, that was exciting. Good news. Glad to hear that. Just alright. So if you, if you thought Dwayne was a bad driver, I've got a I got a friend of mine who recruits salespeople, does and he always says, most people are not prepared for what happens when a really good salesperson shows up and everything like everything breaks loose, and they're pushing everywhere, and it creates problems, and you should be grateful, but you're probably going to have to there's a bunch of problems in your business if you've been ignoring you're going to have to go fix them, because
+
+Speaker 1  21:18
+they're going to push on it and it's going to break so There you go. It'll be painful, but it would be the thing that needs to happen. Yeah, it would be amazing. It would be a be, I'd be super stoked and excited because it would, it would, it's, I kind of, I kind of really kind of get the the willies that had to try to do all the sales work for this, and all the onboarding and doing the whole nine yards. And so having individual like this would be, yeah, it's gonna, it would cause a lot of problems, but it, it would definitely be the kind of problems that are growth problems, not, not, not tear you apart. Problems, yep, awesome.
+
+Matthias Miller  22:06
+Well, I like that. I got my version of a pep talk. Wayne's got his version. We'll see who's got a version. Next week.
+
+Speaker 1  22:13
+Next week, it's on you Seth next week. The rest
+
+Matthias Miller  22:18
+of you guys are coming next week. Thank you guys, yep, bye.
+
+
+Transcribed by https://otter.ai

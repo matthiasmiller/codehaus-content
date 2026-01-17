@@ -1,0 +1,1181 @@
+Unknown Speaker  01:41
+Hello, well, that's strange. Hold on a second. Say something again. Hello, hey, that's
+
+Matthias Miller  01:51
+better. Okay, something, something,
+
+Unknown Speaker  01:55
+let's, let's. Let's deal with this question I have first. I'm going to walk you through
+
+Speaker 1  02:04
+the issue. First and foremost, let me get Drew's email and forwards it to you. Ignore everything he says except for the two links in it. Wow. Wow, because I don't think he's his methodology is correct, per se.
+
+Matthias Miller  02:31
+I love ignoring people. It's my favorite thing in the world. You like what? I love ignoring people. It's my favorite thing in the world. I know.
+
+Unknown Speaker  02:41
+Okay, so let me get this open. What? Okay, whatever.
+
+Speaker 1  02:51
+Okay, it's this guy right here. But what is this other thing he gives me? I think this other part is useless. I don't that's useless. Drew, okay, now po can win C make it a stripe. Okay, okay, okay.
+
+Matthias Miller  03:13
+Dougie, okay, so we have a Hangout. I'm going
+
+Unknown Speaker  03:16
+to share my screen. Okay? Apple, your new updates, annoying me, fun.
+
+Unknown Speaker  03:37
+This guy right here. Okay,
+
+Speaker 1  03:40
+so here's the deal is that the story is, here's the kind of the transaction log for that payout. The story is, they wanted to cancel a sale, or sorry, the dealer contacted me and said, cancel this sale, refund the money. So I canceled the sale, refunded the money. Jimmy calls me and says, Hey, hold on. Don't cancel that sale yet. Well, guess what? That was at it doesn't times in here, it was like 10 minutes apart. Sorry, I already did it. Oh, man, oh, man, oh, man, oh, man. Okay, let me see if I can cancel a refund. Well, guess what? You can cancel a refund, but it gives you so it gives you this funny refund failure. So here's the refund, here's the failure, which is basically, I canceled the refund. The problem is the stripe payout gives us just the doesn't give us the other one. So I was contemplating just going in and adding a new row, adding them to the 2000 back in. I don't know what transaction IDs and PIs I might add to it, but I'm a little afraid that's that could cause all kinds of fun.
+
+Matthias Miller  04:55
+So I think it's Josh question. Or do I
+
+Speaker 1  04:58
+just, do we want to just straight up? Yeah, what happens if I straight up just delete this transaction row the negative is it will it overwrite it back in again?
+
+Matthias Miller  05:08
+I don't know. I'm not responsible for integrating straight payouts. Josh is,
+
+Unknown Speaker  05:13
+Oh, bummer. Why did I think you did this?
+
+Matthias Miller  05:17
+I mean, I but Josh question, okay, very well, but yeah, the right thing is we should either not import this, or, if we can do a one time delete, or we should import the 2000 as well. So something,
+
+Speaker 1  05:35
+all right, I'll talk to him then, I guess, and see where we goes from here. Okay, since you're not helpful,
+
+Matthias Miller  05:48
+okay, um on the on the CRA conversion.
+
+Speaker 1  05:53
+I'm sorry I have been talking about people ignoring people. I've been ignoring you because I have been heads down, dude, I don't know what I did before AI. I really don't I don't even know how I would accomplish some of the things I have accomplished in documentation in the last while. I I gotta tell you a funny story. So one of the things that has gotten a lot of scrutiny in our industry, and I think it's largely, I think a lot of Mennonite businesses are kind of getting this, some of this scrutiny, especially in larger Mennonite businesses, who have been, have been facing some scrutiny from the SEC, and a lot of it, I think, has to do with some of the crazy fraud that has taken place amongst Mennonite communities and and they're in people investing money into companies, and they're not doing it legally. And so we're working with a potential client to start up a rent to own company. And one of the questions that came up was private money, and one of the things that smart pay has worked really, really hard on is developing proper legal pathways for exemptions for issuing of securities using something called a private placement memorandum or a PPM. And it's a it falls underneath. I forget what what the legislation is, but there's, there's a whole legal code for it, and so on and so forth. And so I've known a number of people that have done it now. And so I reached out to a friend here in town and said, Hey, can you share with me a generic ppm, I'm working with a client that potentially wants to do this. Yeah, yeah. I think I can anyway. In the meantime, he's like, I couldn't find a generic one. Blah blah blah. I said, Well, who did you use? He said, Well, we use some Mennonite attorney in Pennsylvania to do it. I said, Were you happy with it? Yep, he was happy with it. Blah blah blah. So in the meantime, of him hunting down a PPM, I went to chat GPT. And I said, Okay, chat GPT, explain the whole process. Explained out what we're doing, what what's happening. Here's why I need it, here's here's the parameters of the company, and so on and so forth. Basically built a fake scenario to really engage with chat GPT, about ppms, right? Yeah, went through a long conversation. I know now. I know now more about ppms and accredited investors and unaccredited investors. I like, understand a lot of the legislation now, like I feel like a giant education on this whole entire process. Wrote up documentation on this, cross referenced it with Claude. Cross referenced it with with grok. Have really good stuff. And about that time spending an entire morning working on this. My friend says, Hey, I thought a generic ppm. Here it is. So I'm chattering away with grok. And I was like, oh, here, by the way, a friend of mine just sent me a generic ppm. Here it is. What are your thoughts on it? Oh, my goodness. I was like, Have you ever, have you ever been working with an AI where it's like, nearly crawled through and slapped you in the face and said, This is the dumbest thing ever. Why would you ever use this? It was that kind of a moment that's hilarious, a document from an actual attorney. Oh, man, I just about split up laughing. Claude was just like, this is I would never use this. This. Here's the problems wrong with it. Don't ever use this documentation. They used it as a a it looks like they started out with a collateralized methodology and converted over to an unsecured loan. And on and on and on. Why would you ever do it this way? The poor investors who who would use this like, they're completely subservient to the bank in this, and that's involved in here, which is, like, basically, if this company defaults, they get nothing like this is like, I hope, literally claudes, like, I hope they're paying 10 and 12% on the money here, because if they're. Not, you're getting a really bad deal. And I'm like, he, I know he's not big 10 and 12%
+
+Unknown Speaker  10:07
+I know what the deals are. And I was just like, wow.
+
+Matthias Miller  10:13
+So, so, I mean, the short answer is, you can use the rock to short to create a good looking legal document that's screwed the other person over too. Go ahead
+
+Speaker 1  10:30
+the this is what I told the end. I said, My dear friend and his business partner who runs the company flew on their private jet to Pennsylvania, sat down with smart pay, understood ppms, used their attorney. I say, I would say, between the two of them, the jet flight, the cost they spent, they're probably 100 grand in all for something that I learned way more about than they probably even know now, for what 30 bucks in my time, dude, this is, this is
+
+Matthias Miller  11:06
+getting insane. The I think,
+
+Matthias Miller  11:14
+I think the people who are getting, who are writing on the coattails, okay, the people who I'm gonna say this, there's a great parable called the billionaire and the scrub lady, called the billionaire and the what the millionaire and the scrub lady, okay? And it's this high and mighty banker who walks, is walking down the steps, never minding the scrub lady scrubbing the steps. Nose in the air. All of a sudden, he lands on the bar of soap, and his one leg goes flying one way, and the other leg goes the other way, and he tumbles down to the bottom and is thoroughly humbled. But it's the cleaning lady that he didn't have the time to pay attention to the problem with these types of maybe I'm just being critical and ignorant, but the problem with these types of lifestyles is that you can very easily drink your own own Kool Aid and be so enamored with what you've done that you completely missed. I mean, I don't know. Like is it inherent that as as people become more successful in scale, that they become less become more casual with cost control?
+
+Speaker 1  12:41
+I think it's more a and I could see this happening to myself if I grow to the level where he is at. It's like your time becomes more important than than learning. It's a danger. It's a huge danger because it was easier and felt like, well, in some of it's an argument of an appeal to authority on on a subject, and anymore it's that fallacy is going to be disproved over and over and over again by AI. Because it's like, not only can ai do this faster. It can do it at such multiples of lesser cost, that's crazy, but it's like it felt more secure for him and his business partner to fly on their private jet up to someone who knows who's done this before, sit down with the attorney that he recommended and and all he would have had to do, all he would have to do is say, to sit down with that document in an AI and say, here's what I'm doing, here's what I'm trying to accomplish, here's here's some details about my business. What do you think of this document? And it would be eye opening, right the work I did yesterday morning. I could charge like like right now, I can go right with the with the information that grok and Claude and chat GPT that we've done, we could write an effective ppm, walk into an attorney's office that we know and say, Hey, review this documentation for me. Let me know where the where the weaknesses are, or do we need to fill anything else probably spend, I don't know, less than 1500 bucks for him to review it and put his stamp on it, turn around and charge the client 30 grand for
+
+Matthias Miller  14:30
+That's insanity.
+
+Speaker 1  14:32
+That's like, I feel like, if the biggest thing that I would love to be able to teach business owners and young people now is like, look, learn how to talk with an AI, because if you do, they're not, there's their capability to build this kind of information and interact with you. Like, okay, so what am I doing this morning? I'm working on a documentation for internally for our business on business valuation and. Whole bunch of things. Like, it's like, if, if you can treat it like a, like a very, very smart, educated authority type individual, and interact with it in such a way, it's like, here's what I'm doing, here's what I'm trying to accomplish. Here's the details. Here's what I want to know, here's my concerns. Like, really, just walk through it, and it will come back and ask you unbelievable questions, that stuff that you never thought about, yeah. And it's like, yeah. I mean, it's, I don't know, man, I think there's a this is going to be, there is a revolution coming in business, and for those that know how to leverage this, it will it will greatly increase your scalability, speed and scalability. For those that do not adapt, they're going to end up hiring people that can do this for them in order to keep up and the cost factor is higher. Yes, it's a key component to business. Now, I mean, you still, like, you still have to be knowledgeable. You can't be an idiot. You can't just go, Hey, Chachi, tell me about ppms. Or can you write one for me? Like, no, you're going to get stupid, bogus answers.
+
+Matthias Miller  16:15
+Well, so, I mean, I think one of the phrases I've heard a lot is that AI is not going to beat people. People plus AI are going to beat people without AI. That's the fundamental thing. The other thing is that that the better you can become at communicating, the better you become a critical thinking, the better you you come at all of being human, relational, community, like all these things, are the key components. And I am shocked at some of the stupid AI training that goes out. I mean, so I bought a course. I've not done any business courses in eons. I bought a branding and messaging course, transcribed it, fed it into Claude, and was like, walk me through the exercise, step by step. I hate this. I don't like that. That doesn't land. Do this, do that. It's like, that's how you that's how you use AI. And I put together, and then build the landing page. And I look at the landing page and I'm like, boy, this thing, actually, I still feel a little unclear about some stuff, but this thing's way better than anything else I've ever had.
+
+Speaker 1  17:14
+Dude I showed you, did I show you the the RTO pages that I built using bolt for for our web companies, or for our RTO companies, I
+
+Matthias Miller  17:24
+think you might have, but I'm not sure, go to cricket Valley or rent
+
+Speaker 1  17:27
+a shed.com I think, yeah, like I spent, like, the amount of time that I spent on these. I'm sorry, no web developer can build something this, that good, that fast, as fast as I did. I don't do any web development.
+
+Matthias Miller  17:45
+What are you hosting it on Netlify,
+
+Unknown Speaker  17:49
+no
+
+Matthias Miller  17:51
+hostinger. Hostinger. There was,
+
+Speaker 1  17:53
+it was pre existing hosting. And I just, we just, I just basically threw it on there, yeah, just threw it on I dumped the files and re uploaded the files and boom,
+
+Matthias Miller  18:04
+boom, boom.
+
+Speaker 1  18:07
+Hey, there's a word for this. Now that I've recently come across. It's called vibe coding. Like, What in the World Series? Oh, yeah. Like, can you? Can you come up with a better word for it? Vibe coding?
+
+Matthias Miller  18:17
+The one thing about vibe coding websites I care less about. But even with websites I don't know, like the amount of complete crap that gets written as code like anyway, there's one guy talking about a 20,000 line file in his source code that's that's ridiculously huge, unmanageable, like, how are you going to organize your project? Well, I mean, efficiency. The problem isn't inefficient. The problem is, the problem is from an organizational standpoint, how do you organize your code in a way to think about it properly that you could wrap your head around it like, it's just, it sounds like a maintainability nightmare. So anyway,
+
+Speaker 1  19:01
+no, I think the thing that you said is extremely key, and I think it's the one of the biggest things that I have learned in my in my journey with AI. One, learning how to communicate. That is huge. How you say things, how you frame thoughts, how you like, how you communicate your thought process to another individual, and that and like, when that individual is a, you know, like you get to like when you're communicating with another human being, there's a lot of that that sort of just gets glossed over, that really starts to glare when you're when you're communicating with a non human being who Actually, like, is very linear in its thought process. It's like suddenly you learn to communicate better and formulate your thoughts better and Okay, biggest thing, communication. Second thing, formulation of thought like that is just which brings right back,
+
+Matthias Miller  19:57
+which comes every down to communication. And I will. Add that there's a lot of humans that will take whatever you say and make their own inferences and run with it, and this is the chance to refine that. And I find that I hope I'm getting better, but it was very eye opening. How many hand wavy comments I think the worst thing for me has been the constant urgency and the constant rush to go faster and do more. It's like, I'm realizing I'm shooting off paragraphs that don't make any sense. Like, that's just like, Oh crap. Like, I have to slow down. I have to think, I have to give myself the time my best work isn't shooting off like, three sentences with big gaps between each one. Like, anyway, fun. Well, go charge your 30 grand.
+
+Speaker 1  20:48
+Yeah, I think one of the I didn't, I didn't quite get this copied out of my document, but end of yesterday, I said to I asked Claude. I said, Okay, I think the most valuable thing I need you to generate a worksheet for me that I can as a part of my documentation I can hand to a individual because, like, there are a lot of decisions you have to make that go inside of a PPM on how you are structuring your offering. How like, is it secured? Is it unsecured? Is it you know? How is it secured? Are you? Are you working with a creditor or non credit investors? Like, there's a whole lot of questions that you need to address, along with like, the most fun I think I had out of yesterday was educating grok on how RTO works and helping understand, you know, in the event of a fire sale where you were liquidating a company, like, what actually happens? And, you know, real world scenarios of of companies that have been sold, and how, and what that looks like. And so, I mean, it asks some it asks some hard questions that I don't even have the answer to yet, because it really requires the owner to say, if I if, if, if I go a pathway of I want to go work with a bank and a a line of credit, and I want to do private money at the exact same time. How did like in the event of it defaulting as a company? How the priority of that actually works if I start with private money and then end up with a bank? Well, the bank's going to review, review those ppms, and it may actually preclude you from allowing to get a you. Allowing to get a a line of credit, because the bank's gonna want, it's gonna want first rights. And yet, if you're, if your private money is also carrying first rights, well, you've got a problem. And it's, it's, it's a piece of work. I mean, it's, it's like, you don't just sit down and go, oh, I need ppms for my people to protect me from the SEC Well, yeah, you do need that. But at the same time, like, you got to think through this. If you're starting a company from the ground up, you got to think through about the fact that, you know, there may become a time where private money there is all like, private money is not infinite, like, it's very finite in the amount that you can actually attract, you know, particularly amongst, you know, conservative circles and and that private money is expensive, and so eventually, if, as your RTO company grows, you end up wanting to go to a bank. Well, you got to think through that, right, right? But I know 10 times now more about that subject, then I set out to even learn,
+
+Matthias Miller  23:25
+isn't it? But it's so powerful to be armed with that there's just so many stories we go, yeah, because
+
+Speaker 1  23:32
+I can go sit down with Dave Miller now and probably talk coherently on the same level, probably even potentially deeper than what his knowledge is about this whole side of things. And the problem is like, what did I do? I spend time. That's all I spent. I just spent time learning.
+
+Matthias Miller  23:52
+Yep, and you ask good questions, and I
+
+Unknown Speaker  23:55
+look really, really stinking smart.
+
+Speaker 1  23:59
+Yeah, it anyway. Oh, man, okay, you wrote some notes because we needed to come back around to this.
+
+Matthias Miller  24:13
+So one question I had on CRA, what do you think about having a CRA conversion event that basically is a catching up of of the rent to the current balance.
+
+Speaker 1  24:32
+I understood everything you said, and I liked it up until you said, catching up the rent balance.
+
+Matthias Miller  24:38
+I mean converting to convert the contract from a CRA monthly, you know, monthly rent to,
+
+Speaker 1  24:46
+I would think a CRA conversion event is the right thing to do. You are not necessarily suggesting a conversion event. Event has to take place in order to do an EPO.
+
+Matthias Miller  24:57
+No, because CRA doesn't get converted. EPO, CRA stays EPO and gets applied to the EPO.
+
+Speaker 1  25:04
+You mean, CRA stays CRA and gets applied to the EPO.
+
+Matthias Miller  25:08
+I mean, sorry, yeah, CRA stays CRA and gets applied to the EPO. Got it
+
+Speaker 1  25:14
+so a conversion event that gets logged in the history and moves it, moves the money out of the CRA account into the security deposit account, and rejiggers the rent to come back up to normal value, yep.
+
+Matthias Miller  25:33
+Which means that immediately, boom, you have a Past Due balance. Probably, well, it depends, depends where you're at with your CRA how big your security if
+
+Unknown Speaker  25:40
+you're doing a conversion event, you already have a Past Due balance.
+
+Matthias Miller  25:46
+Well, I mean, yeah, you have a Past Due balance, but the past due balance might exceed what's in your security deposit at that point.
+
+Speaker 1  25:51
+It most Yes, absolutely, most times does. Now, I do think one of the things that we need to think through is you cannot, you cannot retrieve, write off any kind of closure event of a contract with a CRA. The only way that you can can close that contract is by EPO. Otherwise you have to resolve the the CRA,
+
+Matthias Miller  26:20
+which you could resolve, I mean, which ultimately you have to refund the money if they don't use it, right?
+
+Speaker 1  26:25
+Well, what I'm saying is, let's say, let's say the customer returned the building and they are current. Okay, let's use a really good case scenario customer is current. Says, hey, no longer need this building. I'm moving away from this property, whatever, whatever. Please, pick this thing up and close my account. And they forget there's a CRA on there on their account. So what would need to take place? Then you're closing the account, it's current. You wouldn't want to, you wouldn't want to produce any past due event or past due situation in that event. Okay? Because that, like, from incurred rent standpoint, there is no current outstanding incurred rent, right?
+
+Matthias Miller  27:10
+I mean, because it's the only thing that happens is that when you when they return the building, you actually owe them their CRA back, correct, right? And you still wouldn't convert, convert?
+
+Speaker 1  27:24
+Well, you would, you would, I think you would still convert it into the security deposit, because that's where you would pay it out of, back to the customer. Why? Where else would you pay it out of the CRA?
+
+Matthias Miller  27:39
+CRA, yeah.
+
+Speaker 1  27:47
+Beings that we are directly tied to accounting, we probably can do that the way that RTO Pro has always treated this is that CRA is locked money unless it's EPO. So if, I mean, I think this is really just a conceptual understanding of how this would take place, like you can, there's only two then what we're saying is that there's only two ways that you can, you can use CRA money, EPO, or pay it back to the customer.
+
+Matthias Miller  28:25
+Okay, is there a legal or technical reason why you have to, why you'd want to convert it to security deposit before you pay
+
+Unknown Speaker  28:32
+it back? Not that I'm aware of, okay. I mean, it
+
+Matthias Miller  28:35
+seems to me like, basically, you're saying customer, put it in the in the in the, I mean, it's cost reduction account, like I don't want to use it. I don't want to keep renting. Okay, fine, no problem. You don't know any of us anything, and I don't want to use this money. Okay, fine, no problem. We'll write a check back and so on. That type of a somebody could conceivably, why would they do this? But people can, if somebody knows I want to, I want to rent it for 18 months, and they're willing to put two grand in your pocket for those 18 months, they can get reduced rent during that time period.
+
+Speaker 1  29:11
+Well, I think, no, I think that the more likely scenario is I was living at a house, and a year into my contract, I sold the house. I'm moving to another state. I don't feel like trying to negotiate with the new buyer to include this building or buy the building out, so I'm just gonna return it, give me my CRA back.
+
+Matthias Miller  29:28
+Isn't there an argument to be made, though, that it's not you were
+
+Speaker 1  29:38
+gonna say there's an argument to be made that we really keep some of that CRA to account for the fact that you're returning early. Great.
+
+Matthias Miller  29:47
+You got reduced rent. I mean, that could theoretically be a, I don't know how the contracts are written. That's the, probably the biggest contingency.
+
+Speaker 1  29:57
+But okay, so let's. Let's, let's chase that rabbit for just a smidge. So let's say, for example, a rent to own company has the policy. Look, if you're going to return early, then we are going to keep some percentage of the CRA why? How would we accommodate that? Well, I
+
+Matthias Miller  30:20
+don't really know how to accommodate it in any any way besides a conversion. I mean that to me, it doesn't make sense. It makes sense to me somebody would either say, you get all the CRA back, or we do a conversion. It doesn't make sense to me that somebody says, well, there's a middle ground.
+
+Speaker 1  30:36
+So would you, would you convert it and then charge some sort of other fee?
+
+Matthias Miller  30:40
+You would convert it and refund any any balance in the security deposit.
+
+Speaker 1  30:47
+So if, if the account is current and there is no rent that's owed,
+
+Matthias Miller  30:54
+the moment you would do the conversion, they now owe back rent for what they would have paid for full price.
+
+Speaker 1  30:59
+That wouldn't be correct theoretically. Because if, if, no, if you're going to, if you're going to rejigger back through all rent, I don't think that would be correct,
+
+Speaker 1  31:18
+because my understanding of of history is history. So if you at the point of conversion, well, if that customer were to continue renting, they would be paying rent.
+
+Matthias Miller  31:31
+No, but see, that's where, that's where it seems wrong. I mean, the reason you're getting a CRA is because you're, you're going to pay us an EPO at the end, we know there's an EPO coming. You said there's not an EPO coming. So, so you should have paid full price. Let's say you're at their at your house for six months. You should have paid full price for those six months. So we're going to convert the CRA and we're going to use that whatever part of that security deposit to pay for what the rest of what you should have paid for that six months, and if there's money left over, then we get you a check.
+
+Unknown Speaker  32:06
+Nobody's got mechanics in their contract for this event.
+
+Matthias Miller  32:10
+So can I go exploit a whole bunch of low, low monthly I mean, I have to tie up cash. But besides tying up cash, can I go exploit, exploit? I mean, it's kind of like Steve Jobs renting, leasing his new cars for a month, or whatever it is, a year. Once a year, I clean out my building and say, Oh, pick it up. Let me I want a new one.
+
+Speaker 1  32:49
+I think there's a to do in here for me to go do some research on what truly happens in RTO pro when you convert a conversion event, not a spiritual conversion event,
+
+Matthias Miller  33:10
+not to be confused. I mean, it might be a come to Jesus moment,
+
+Unknown Speaker  33:16
+but, yeah, I think there is, there's a to do in here for me.
+
+Matthias Miller  33:20
+I mean, here's what it says, that RTO Pro does that the payments go back to what the normal amount would have been, and the money goes into the security deposit.
+
+Speaker 1  33:28
+But we never addressed is when the payments go back to the normal amount? Does that normal amount from the beginning of the contract? Is that normal amount from the point of conversion? That's a key distinction. That says, if we go and if we go and rejigger rent from the beginning of the contract, then you end up with past due balances.
+
+Matthias Miller  33:48
+So basically, with our I'm going to guess what RTO Pro does is your terms. Extend your money bought you extended terms. You
+
+Speaker 1  34:06
+I gotta go figure it out. I don't know. I've never been, I've never been this critical of a thought process behind what actually happens on a conversion event.
+
+Matthias Miller  34:17
+I was also playing around with the ideas of what actually is the CRA discount, is it? I mean, it's but it's not deferred rent. I mean, anyway, what happens? That is a question, and it has a fairly significant impact. If it's simply extension of, anyway,
+
+Speaker 1  34:37
+yeah, it's a large, significant impact, because what it means is that if you said, Okay, customers current, and we want to convert the CRA for whatever reason at that point, and we rejiggered all rent from the beginning of the contract, and we said, Okay, those are the incurred months. Here's the values that were paid. If we. Spread that back out again, you're going to come up short every single time, no matter what. So we gotta figure.
+
+Matthias Miller  35:08
+Well, I mean, but sometimes the security deposit, and I haven't run the math and thought through exactly what they said, sometimes the security deposit will cover the shortfall. There's a probably something like 40% if you're under 40% of your contract length, or 60% or 60% or whatever the number is, then your your security deposit will cover it. And if it's past that point, then you're going to have to, like, either extend the terms, either extend the length of the contract, or or catch up on money. Yeah.
+
+Speaker 1  35:37
+I mean, the the only, the only scenario, is that that, that, I think the only scenario that we're trying to make sure that we're correct on is the fact that if a company decides that customer returns the building, we're keeping part of the CRA because it was you gave us money with the intent to actually EPO this building, which means that we took a reduced amount with the intent to actually make that up when The EPO is, is actualized. So therefore we need to rejigger all rent and then stand this money against that in order to cover the that shortfall for the for the months that were actually paid, which I suspect is the right way to do it.
+
+Matthias Miller  36:13
+But the fun thing is, actually here's the partial amount, because there's three ways to do it. We write we give you all the CRA back, we make up the full difference on the rent. But the the the third way to do this is, let's cash catch you up on the cash price of the building. So you paid your cash price percentage was in a normal payment schedule. This is the cash price that you would have paid towards in this reduced cash price percentage. This is what you actually paid. Now, let's take that cash price difference out of the CRA, because that's the portion. I mean, it's effectively prorating the CRA.
+
+Speaker 1  36:50
+So what you So, wait, wait, wait, wait, wait, you're saying, you're saying, you're saying, if you, if you ran two columns and you said $100 to the building, sorry, $60 to the building, $40 we're gonna say, we're gonna say, on a 36 month contract, we're gonna do this real simple math, right? $60 to the building, $40 for rental fees. Okay? And you did that for 36 months, when you with the CRA we might be taking $30 on the building and still $40 on the rent, and then we're expecting to capitalize that at the point of the EPO with with the rest of the building, right, right? That's what you're saying, correct, and that's how we're doing the reduced rent.
+
+Matthias Miller  37:38
+We're not modeling, we're not modeling the numbers like that. No, I know that. But yeah, that's the idea.
+
+Unknown Speaker  38:00
+Yeah. But it's
+
+Speaker 1  38:09
+tricky math. We'd have to run that thing out. I want to go find out what RTO pro actually is doing, and then we can engage in this.
+
+Matthias Miller  38:15
+Because, I mean, I'll let you go give back the CRA minus the
+
+Matthias Miller  38:35
+I love how you're looking at what They do, because I bet you a nice steak dinner that they have not thought this through
+
+Speaker 1  38:44
+well, and maybe not, but it's like, it is the frame of reference where people are coming from. So if I understand the frame of reference, and we come up with a better methodology, well at least I can explain where it came from and why we're doing what we're doing, versus just being like, I don't know, but we, we're doing it this way.
+
+Matthias Miller  39:04
+Yeah, exactly, exactly.
+
+Matthias Miller  39:15
+Well, I did that because Seth was asking for easy work. And you can see where that got me. Man, oh, man. Okay, so here's where.
+
+Speaker 1  39:33
+So next week, you and I, well, I don't know what you want. Oh, yeah, but I'll tell you what I really want to talk about, because it's at the forefront of my mind, because this potential client coming on board is having a hang up because we don't have a contract generation. We won't have contract generation, probably for a bit of time. So I'm thinking about accelerating dealer contract generation. Hello,
+
+Speaker 1  40:05
+so, but that's what I want to work on. I don't know what you want to work on, because what like, because we really want to onboard this guy and but the big like I said, the big hang up is they're moving away from a RTO company that has a way to generate contracts. The dealer generates the contract as part of, like, they don't have a point of sale software where they're generating both the sale and the contract inside of, like a shed app or the shed suite. And so they've been using some sort of external contract generation. But I don't, know who
+
+Matthias Miller  40:41
+well, so how janky Do you want it to be? Um,
+
+Speaker 1  40:53
+not janky. It's going to need to be whiskey. Because one of the one of the key requirements, as I've thought a lot about this, is that, going forward, this is going to be a component that a lot of companies are going to use, and I really want to do this as whiskey, so that we can use the dealership record, rather than a user profile record, to actually authenticate an outside dealer, so You don't have to pay for the extra
+
+Matthias Miller  41:18
+users. Do it
+
+Speaker 1  41:25
+agreed. But what would, what would be really, really helpful is if you and I whiz banged this thing to actually put together how this thing would actually work, and we could start building the infrastructure for it. We could put a timeline on it, and I could be able to tell this client. Look, here's the timeline on this. Because what, because what I'm going to end up doing is I'm going to, if we're going to say we're going to continue to punt this more towards the end, then I got to go find some other way to generate contracts well.
+
+Matthias Miller  41:53
+And I guess that's a little bit where I was saying, like, if, literally, all you want is contact generation, we could give them a portal, we could give them a a template, merge a word, merge PDF, merge that with ask prompts for all the information. And you'd have to pay a user fee, and it's a restricted user license, and they have to upload the PDF, and you have to re enter everything, but at least they can generate the contract.
+
+Unknown Speaker  42:31
+I prefer to do it right. There are ways to get around this,
+
+Speaker 1  42:37
+but what do you got? What is that? What you put through cookie dough into a bowl and threw it in the microwave. Did you really hold on a second? Matthias, I think I taste Addison, no, you're such a turkey that's actually good.
+
+Matthias Miller  42:57
+All right. Back on fire. Okay, so,
+
+Unknown Speaker  43:02
+but we can pound on that on next week. But you want to
+
+Matthias Miller  43:07
+do that next you want to work on that next week again. I don't
+
+Speaker 1  43:11
+actually think it's going to take us a ton of time to like to spec it out. Yeah, it's just know that it's something I want to, I want to. I'm going to chase that rabbit for a little bit.
+
+Matthias Miller  43:21
+Yep, have you bring any sales the rest
+
+Speaker 1  43:25
+of the time I'm leaning on you for what really needs to be done. Like, what do we got? What do we need to hammer hard on?
+
+Matthias Miller  43:33
+Yeah, I think once again, I should sit down and try to i i try to get as much as we can. Are you bringing anybody along?
+
+Speaker 1  43:46
+No, no, okay, I'm not. High slow decision making on time frame and getting it sorted out is precludes bringing Kyle along.
+
+Matthias Miller  44:01
+Yep. All right, so I still think time
+
+Unknown Speaker  44:11
+was but one moment before we leave the that Kyle's actually in North Carolina today and tomorrow, meeting him tonight,
+
+Speaker 1  44:22
+I think I have a quasi commitment for him, from him to be on board by beginning of second quarter.
+
+Matthias Miller  44:36
+Well, I have a client who's been threatening to reduce hours in q1 so anyway,
+
+Speaker 1  44:55
+which means, which means, which means we could ramp up even harder.
+
+Matthias Miller  45:00
+Well, I would just probably go back to him and say, yeah, you've been kind of talking about pulling back hours. Let's go ahead and do that. Maybe not give too much of a choice, and, yeah,
+
+Speaker 1  45:18
+it would be a little bit more expensive. Well, I think one of the things that you and I should talk about while out there next week is to say, Okay, what would it look like from an expense standpoint? If, if, because I know that the speed that we will ramp with you actually putting more hours to this, we get a huge speed bump. Yep, speed increase. Not bump, speed bump. We get a huge speed increase. Cost wise, what I want
+
+Matthias Miller  45:53
+to here's, here's what I would be open to doing, because this other guy's talking to me about getting more of my time at a lower rate, and I'm always more interested in having more than one person with wanting to have that conversation than two. I would be open to, I don't know what this actually looks like, but I would be open to doing a lower rate and a over and longer hours, and I don't know what the I mean. I want to make sure my bills are covered and paid.
+
+Speaker 1  46:31
+And, well, I'm not necessarily asking for that. Matthias, I'm just, I know you're
+
+Matthias Miller  46:35
+not asking for it. I'm saying I think that there is a world in which that could make sense as well,
+
+Speaker 1  46:42
+because the faster that we get this done now, the sooner I can bring on clients, which means that the sooner that we can get through a couple onboardings and learn all the hiccups there, which means that we're better set up for the latter half of the year, or going into 2027 because I have no doubt that Kyle's going to make more work than I know what to do with from onboarding software standpoint,
+
+Matthias Miller  47:14
+maybe this is a conversation for next week. But what should my long term expectation be like? In my mind, unrealistically, I've been like, well, I'm going to keep putting about the same amount of time in through middle of the year, and it's going to open up after that. Theoretically, now it's like, yeah, this is going to probably most of this year is going to be approximately where we've been at, not precisely. Do you have any sense?
+
+Speaker 1  47:48
+Well, I guess it depends on, here's what it depends on. We the moment that we actually start to like, the moment we actually go to market, we're going to be at a point where we should be able to scale back operations, development operations, like we should be, like, we should be at the point where we've actually launched software. Yes, there's going to be still things that we need to do. And yes, there's going to be still things that we need to accomplish. But the question is, like, I expect, I expect that by the time reach that point, the heavy use of junior developers should be able to scale back, yeah, for sure, because at that point it's like, it's not just grunt work anymore. There's a lot of there's a lot of mental load. So I would expect that, I would expect the budget to scale back. I don't know that it's going to scale back for you.
+
+Matthias Miller  48:37
+That would make sense. I think it probably will for me somewhat, potentially. I mean, it's a little bit what it's like with assist. I mean, all the easy stuff has been done, and everything else requires Seth and I to bang our heads against the wall and figure out what's going on.
+
+Speaker 1  48:52
+Like, yeah, we'll have, we're gonna, we're gonna have some of that. Yeah. And frankly, the moment we're generating revenue, and we're generating good revenue, revenue enough to support ongoing development. We're not done
+
+Matthias Miller  49:08
+good, yeah, no, I agree.
+
+Speaker 1  49:10
+There's a lot of blue sky stuff that we have just tossed in blue sky category. And it's like, yeah, yeah, yep. So it's it is reasonable to think that the level we need from you through the end of the year is through the I mean, I would not be surprised to see that for your at least for your workload through the end of the year.
+
+Matthias Miller  49:35
+That makes sense. I mean, it's helpful for context and yeah.
+
+Unknown Speaker  49:40
+I mean, tell me I'm wrong if you think I'm wrong.
+
+Matthias Miller  49:43
+Yep, I don't. I don't think you're wrong. Okay, it's kind of my instinct, but it's good,
+
+Speaker 1  49:54
+not please. If we could, if you continue at the current burn rate without onboarding clients, then the. But then we're
+
+Matthias Miller  50:00
+gonna have a problem. We're gonna have a problem. Well, I am slightly mindful, and a little bit, I mean, it's not my checkbook writing checks, but
+
+Speaker 1  50:15
+let me share this with you, this, this will, this will help you understand a little bit the mind shift that took place over the end of the year, and that is that up until the end of the year, the mindset was that we need to get the software developed, because it is the it's the bridge to get us away from heavy, reliable reliance on insight.
+
+Unknown Speaker  50:45
+Yes, it's no longer Yes,
+
+Speaker 1  50:50
+we have the huge mental shift. Is, if I'm going to bring on individuals like Kyle and Craig, software becomes a it becomes the tool in the bag. It does not become the bag
+
+Matthias Miller  51:01
+the bag. Yeah, right.
+
+Speaker 1  51:05
+And so we're gonna go, we're gonna go scale management and building out our own rent to own company, which will, which will provide us with a lot more play money to continue to get.
+
+Matthias Miller  51:17
+Yeah, and then hopefully, so it's kind of like, the real money can be made. Oh, I don't know. It doesn't have to be there's real money to be made everywhere, for sure, right? But, okay, I remember this is this consultation years and years ago where this guy came to me, and he's like, I have a business that's completely just like, I can't make any money on I'm like, I look at his books, and I'm like, You're squeezing pennies out of like, everywhere. I don't know what the what do you do here? And we get in a conversation. He's like, Oh, yeah. And I have this other business over here and this other business over here. And I'm like, Well, the obvious answer is that these businesses feed each other, and this business serves these clients that this this business generates, and it's like a network of businesses, and that's how you deal with the low profit margins. And he's like, oh. And then he disappears for years, and he comes back, and he actually builds the thing. He's got, like, five different local businesses that all feed into each other, yeah. And it's doing quite well. And so, I mean, it's the same kind of thing, like nobody's carrying the full burdened of everything.
+
+Speaker 1  52:17
+So only is the is the conversation conversation starter and the pathway to get us to management, clients, management so, so
+
+Unknown Speaker  52:33
+Pause the recording for a minute.
+
+Matthias Miller  52:35
+Yes. Where is it
+
+Matthias Miller  52:47
+all right? Um, you ready to dive into imports? Yeah, hey,
+
+Unknown Speaker  52:53
+there's more fun talking this other stuff.
+
+Matthias Miller  52:55
+It is more fun, but this is what gets the stuff done. Um, this is the our entire podcast conversation this morning was around the boring life. So how's that for teaser, boring
+
+Speaker 1  53:10
+life is actually it generates a lot of revenue.
+
+Matthias Miller  53:13
+It I generally think, I mean, it's, it's so true, your ability to tolerate boring is, is what makes money. I mean, it's just there you go. Okay, so boring
+
+Unknown Speaker  53:24
+business, lot of money.
+
+Matthias Miller  53:27
+Rent down is one of them. Okay, so the customers. Can we? Can we delete this import with only previous account number? I feel like if we want to only delete the previous account number, then we should do it
+
+Speaker 1  53:42
+differently with it. Okay, maybe we get an answer. Why not really archived it? You didn't delete it anyway. So it's good, exactly.
+
+Matthias Miller  53:51
+Okay. So what I want to do, here's, here's what I want to do, let's do the ask new contacts only, checkbox, new contacts Only, and then if where or not or contact by
+
+Matthias Miller  54:26
+or customers by RP, by
+
+Matthias Miller  54:44
+so if we have this should be the same matching field, customers by RP, cus, SL, ID, where, or.
+
+Matthias Miller  55:02
+We do not have a customer with this source ID, okay, this should show a bajillion, and this should show less than a bajillion. Okay, so good. And then here we're going to do ask prompts, checkbox.
+
+Matthias Miller  55:40
+All right now we can say I thought this is one of my middle of the night thoughts.
+
+Matthias Miller  56:00
+You contact something, okay. Name cannot be empty. How do we want to handle these guys?
+
+Unknown Speaker  56:11
+1856 what is it? We don't know,
+
+Matthias Miller  56:18
+because 1856 is one. Hang on.
+
+Unknown Speaker  56:20
+Let me get let me get let me get in here to we have a weird,
+
+Matthias Miller  56:34
+oh, that was just,
+
+Speaker 1  56:36
+you know, I'm a really smart guy. How about I restart my phone and update my OS, and then go to try to log into LastPass and need a Google
+
+Unknown Speaker  56:45
+Authenticator. What a dummy. Okay.
+
+Matthias Miller  56:49
+Well, let's leave these for now. I mean, there are some, there are some cleanups that we need to do, and maybe we should make a list of some of the cleanups, but
+
+Unknown Speaker  56:57
+so they literally do not have a name.
+
+Matthias Miller  57:00
+Literally do not have a name. Do not have a name customer previous, let's, let's go over here. Let's go find him. Let's go
+
+Matthias Miller  57:13
+cricket Valley, cricket Valley. Cricket Valley. Okay, so we have this guy. Oh, yeah.
+
+Speaker 1  57:17
+I mean, it's just wait. These were the ones. I didn't look these up and they were just literally blank accounts, right?
+
+Matthias Miller  57:24
+Yeah. I mean, is there a way we want to account for
+
+Unknown Speaker  57:30
+it? Is there contracts tied to it? Oh, there was blank. I think there was blank contracts tied to him as well. Wasn't there?
+
+Matthias Miller  57:38
+I don't remember. I mean, we can leave it for now.
+
+Speaker 1  57:47
+Oh, there's a bunch of these, those test ones. Um, can we? Can we? Oh, except for the alt, the one in the alternate name that one, I think we should be able to handle, shouldn't we?
+
+Matthias Miller  57:59
+Well, this, this is, this is the one. This is the weird testing one that that has like a,
+
+Unknown Speaker  58:03
+yeah, but the Eric Holland state isn't that, oh no.
+
+Matthias Miller  58:07
+It's a state problem. It's the that stupid state problem. And these just haven't been imported yet. So I think, I think the main thing is, do we want to, I mean, there's no harm just letting these sit here. I don't think,
+
+Speaker 1  58:27
+okay, hold on a second. I want to look up that one the rest of them. I think we are already done, and I know what the deal is. Alright?
+
+Matthias Miller  58:36
+So let's while you're doing that, I
+
+Unknown Speaker  58:44
+hmm.
+
+Unknown Speaker  58:57
+Okay, that Eric Holland, one, can I have the account number 46234,
+
+Speaker 1  59:30
+yeah, it's just, we're just gonna ignore that one and all those other blank ones we're gonna ignore we're just gonna ignore them for right now. There's nothing really to do with them. They're just, I don't know what they are, they're like, there's Sure.
+
+Matthias Miller  59:45
+We're gonna import new contracts, and we should grab, like, two new records, Premier records, okay, alt name. We're not doing anything with alt name. Do you care?
+
+Speaker 1  59:59
+I. Um, okay, this was a question that came up in my brain the other day. I want to go look at a contact record, because I don't remember what we did on this alternate name. What we're going to do about references. Do we have a thing for references?
+
+Matthias Miller  1:00:15
+Is it in the source data? I don't remember?
+
+Speaker 1  1:00:18
+No, no, no, this would be, hang on, just, I'm just, I'm going to stop talking for a minute. Do we have anything on the contact we do not have anything on the contact record for for references, that's something we're going to address, which is we're going to have a, basically an RG of of information for references, alternate name.
+
+Speaker 1  1:00:53
+Huh? How would we even go about doing an alternate name?
+
+Matthias Miller  1:00:58
+Well, I think you should have ended notes or something, or, I don't know where's there is a references. This is, this is in the complete section. Let's go Seth, Sethi boy,
+
+Speaker 1  1:01:18
+documentation section. Documentation section. What's the documentation section? Is it? Is it the
+
+Speaker 1  1:01:30
+Oh, it's on the contract. Okay, you're happy? Yeah. There is reference, landlord, reference, name, email, phone. Well, how about that? I do kind of wonder about that. Being on the contract, definite on the contract record, would almost stand to reason to put it on the contact record, because it's references for the individual, not for the contract. Argue with me if you think I'm incorrect.
+
+Matthias Miller  1:02:04
+Oh, it is on the contract. Do you check references after with every contract? Does it get supplied on every contract? I think the argument would be, if anything, that, I mean, if it's normally tied to the contract, then if anything, it should be, well, maybe we should have a read only list from the or a virtual orgy on the contact that shows you references from all the contracts.
+
+Speaker 1  1:02:36
+I like the way you think. I like the way you think, unless you're gonna, unless you're gonna, unless we do it the other way around. We put it on the contact record, and we give a virtual RG on the contract.
+
+Matthias Miller  1:02:45
+The nice thing about this is that then, you know that he gave Tom Smith in 2021, for this contract, and
+
+Speaker 1  1:02:53
+then, then. But here's the only thing that concerns me, contracts do move between customers, and if that means the references that were originally on the contract, which, okay, it goes with the documentation. I don't know. I could be argued either way. Let's leave it alone for right now. I do like your idea of a virtual RG on the contact record, but I mean that could be at some point in the future. Put it in the future timeframe some Well, if they need something to do, that would take them about
+
+Matthias Miller  1:03:19
+five and go to market. Well, let's not just do it for the sake of doing it, please. Unscheduled feature enhancements, I'm
+
+Matthias Miller  1:03:31
+going to start taking coffee breaks.
+
+Unknown Speaker  1:03:38
+Because people who smoke get a smoke break. You want your person who drinks.
+
+Matthias Miller  1:03:43
+Did I tell you my joke about the smoke breaks and sardine breaks? No, well, there's just right behind us, there's a hearing aid place, lady who works there, who who's always out there for a smoke break. I occasionally eat sardines, but I don't eat them inside, because they smell awful, and if you spill, it's really disgusting. And so I make, I made jokes to my friends about me and her hanging out during her smoke break. I have, I have my she has her cigarette. I've got my sardines,
+
+Unknown Speaker  1:04:15
+sardines with coarse ground mustard on crackers.
+
+Matthias Miller  1:04:20
+Oh, it's really great. Okay, so then what I'm after here, though, okay, so we got the customers updated, okay, the alt name. I mean, we could push the alt name into the contact summary, like we do for the directions. No, I don't like that. Um, an organization for them, but it's not guaranteed to be an organization. Sometimes it's the opposite.
+
+Matthias Miller  1:04:57
+We could create an alt name field and.
+
+Matthias Miller  1:05:09
+You create two contact records, one for the primary name, one for the secondary name.
+
+Unknown Speaker  1:05:12
+Do you have a secondary on the contract? We don't do a secondary on the contract anymore.
+
+Matthias Miller  1:05:18
+Do we secondary customer? Yeah, we do, but I don't know that proper
+
+Speaker 1  1:05:21
+way you create a contact, because it's the alternate name is actually the ultimate customer. It's, it's really should be the secondary customer. That it really should be. The only problem with this is that it would be kind of nice that if there's a primary and a second, like the two of them tied together, should somehow, if you're on the no, well, you can have
+
+Matthias Miller  1:05:42
+a previous account number of 9765, dash ALT or something to show it as an alternate customer
+
+Speaker 1  1:05:49
+alt name should generate a secondary contact record and be applied into the secondary customer field of the contract. Is what should really happen?
+
+Matthias Miller  1:06:02
+Can we can't have duplicate account numbers, though. I mean, what format do you want for the account? Number, 9765, alt, sure, or B, alt,
+
+Unknown Speaker  1:06:12
+B or alt is fine. Which one? Dash,
+
+Matthias Miller  1:06:15
+dash, alt, dash, alt, I
+
+Unknown Speaker  1:06:53
+did you you can't put in the social security number? No.
+
+Matthias Miller  1:06:57
+I mean, is that what you want? Dash Holt, sorry, I thought. I said, Yes, oh, you, you might have, you might have, I don't know, you might have walked away too far. I don't know, yes, yes, so good. But now we need, oh, it doesn't necessarily
+
+Speaker 1  1:07:11
+have to have a dash, and I don't care if it's just 9765, old,
+
+Matthias Miller  1:07:16
+but now we need to have two silver customer silver room IDs. That stinks. What do you mean? We're assuming a one to one relation between the silver lid and and the primary it okay, it's one record, a one to one link between the RTO pro customer record and the contact record. And now there's, it's, it's, it breaks down.
+
+Unknown Speaker  1:07:53
+If you're putting in the secondary we
+
+Matthias Miller  1:07:55
+need to create a new contact record, and that new contact record needs to be pulled from somewhere, and we're currently linking it based off of the underlying ID. So I think what we need is a, I don't,
+
+Unknown Speaker  1:08:10
+I don't understand, but that's okay.
+
+Matthias Miller  1:08:12
+We need to create to contact if a RTO, pro,
+
+Speaker 2  1:08:19
+okay, hold on, before you before you go too far. Yeah, before you go too far.
+
+Speaker 1  1:08:30
+This is only an import problem, correct? This is not a problem correct. In the future, you would create two contact records, and one would go into the primary, one would go in the secondary. And you're saying you can't do that from an endpoint import standpoint.
+
+Matthias Miller  1:08:48
+Well, I mean, you you have to make changes to do it, yes, and, and you're basically going to duplicate all the information between them anyway. Okay, so, so
+
+Speaker 1  1:08:56
+in that case, if it's only an import problem, then let's figure out where we could stuff it on the contact record for Imports, on the primary contact record.
+
+Matthias Miller  1:09:07
+I mean, we could just shove something in here as an alternate name that's only visible if it's set where in where on the contact record.
+
+Unknown Speaker  1:09:20
+You mean, add a field for it. Add a field for it.
+
+Unknown Speaker  1:09:23
+I mean, we got all that real estate right underneath the address.
+
+Matthias Miller  1:09:33
+Well, arguably, we should revamp. What really should happen is that these should be separate cards, probably,
+
+Speaker 1  1:09:44
+well, frankly, the email I was looking at this the other day. Can, can the email and the the phone RGS go up underneath the address? Or this is, this is a standard record, though, isn't it?
+
+Matthias Miller  1:09:55
+Yeah, it is standard. Would be better it would be to have two columns, one column. In column B drop vendor.
+
+Unknown Speaker  1:10:01
+Are we sure we don't want to just stuff it as a note?
+
+Matthias Miller  1:10:07
+I mean, I was proposing putting it in here where it's like, Yeah, but
+
+Unknown Speaker  1:10:10
+what happens if you have an alternate name and you have a and you have directions,
+
+Matthias Miller  1:10:17
+you do this?
+
+Unknown Speaker  1:10:21
+Oh, well, let's do that. I agree do that. Thank you. I can get along with that.
+
+Matthias Miller  1:10:28
+I needed my ego. My ego needed a boost today. He said sarcastically. I
+
+Matthias Miller  1:10:43
+Okay, and then let's get rid of the stinker,
+
+Speaker 1  1:10:47
+because we don't have an alternate address, do we? No, we don't have an alternate address. It's just one address.
+
+Matthias Miller  1:10:51
+No, it's just a name. It's like, literally, the name, alternate name.
+
+Unknown Speaker  1:10:57
+Yeah, that's fine. Let's do that.
+
+Matthias Miller  1:11:01
+So then we have, then this guy, oh,
+
+Speaker 1  1:11:05
+and by the way, we really should the other one. That's that we have that you may want to stuff in along there too is the comments. I don't know if there's anything ever in comments, but the potential exists in the future to have something like that. But some of the comments at some point, some of this should just be stuffed in a note.
+
+Unknown Speaker  1:11:29
+Anyway. Continue on.
+
+Matthias Miller  1:11:33
+Well, I think comments are completely separate, customer comments. We're not pulling in customer comments. You want to pull it in? I thought we pulled in.
+
+Speaker 1  1:11:43
+We probably ought to in the future. We probably really ought to in the future, because I could see some companies using that. But then again, we can, when we get into onboarding other companies, we'll probably have to look at some of this a bit again. Okay, right now, let's not, let's not waste time on it.
+
+Matthias Miller  1:12:07
+Jimmy, have John out of the field or Jasper.
+
+Speaker 1  1:12:12
+The other one that I don't know, that we ever did anything with is the are we bringing in commitments?
+
+Unknown Speaker  1:12:24
+Broken commitments.
+
+Matthias Miller  1:12:26
+Customer commitment timestamp is that just a date. Here's a projected, projected commitment.
+
+Unknown Speaker  1:12:44
+Uh, hold on a second. Let me see here.
+
+Speaker 1  1:12:57
+What is the other thing? There's this whole uh, not right now, at some point in the future, I think we're going to need to bring this in. I don't I know that some companies were using this commitment thing. It's not something that we were doing, and we don't need to think about it. At the moment.
+
+Matthias Miller  1:13:15
+You ever seen somebody married to their friends? What?
+
+Unknown Speaker  1:13:20
+What cell is his wife that's funny. So is his wife
+
+Speaker 1  1:13:35
+That's funny? That's so funny married? Well, yes, I've seen some young people that are married to their phones.
+
+Matthias Miller  1:13:43
+I had a fascinating we had a men's breakfast the other morning. They asked one of the young guys to, like, talk about how social media is affecting its peers. And he didn't have great he's not very articulate, but he you know, the short answer is, like, it's making them stupid. And I'm like, okay, like, you're not that smart as a 15 year old, it's hard to become more stupid when you're but it is possible you should have said you
+
+Unknown Speaker  1:14:17
+would have had To been smart in order to be less smart.
+
+Matthias Miller  1:14:23
+Well, it was more like, man, that's, I don't know I was just, it was just depressing. Okay, so we add so we have the rental companies next. We get into rental reps.
+
+Matthias Miller  1:14:44
+After we have rental reps, we would get the dealers, probably,
+
+Matthias Miller  1:14:55
+and then after the dealers, rental companies, rental reps, it. We have the primary, no, we'd have the products. So we need those next. We're not doing depreciation. I would do customers down here, products. And then we need contracts, primary contracts. And then we need non security.
+
+Matthias Miller  1:15:39
+We'll have this pull in everything. That's what that thing should look like. Okay, so then, so that gives us customers. We're happy with that. Now we're looking at primary contracts, so let's go do the same thing here.
+
+Matthias Miller  1:15:59
+Let's put an R in there and call it good, and then We do. I
+
+Matthias Miller  1:16:22
+contracts by
+
+Matthias Miller  1:16:43
+Okay, so if we don't want just new contracts or it doesn't exist, contracts by RP, contracts, silver limb ID, index, plan field contract, silver lid, Okay, now let's see what it failed To pull in. Okay.
+
+Matthias Miller  1:17:04
+181 okay, this is fun. I
+
+Matthias Miller  1:17:26
+Okay, let's go here
+
+Matthias Miller  1:17:36
+and see what it hates. Why do you hate me? Oh, let's go run it one. It once. Well, maybe let's go down the list and find the first one it fails at no that one cities are required, that one works might be a new contract, I don't know, or something else. Okay, so we don't have Yes, this is what I wanted to talk to you about. Finally, rate changes. How do we import contracts when the tax zone rate has changed, and how do we do that breakdown? Because we only have the grand total tax rate
+
+Matthias Miller  1:18:40
+in the the old grand total, in the new grand total.
+
+Speaker 1  1:18:44
+First question I'm going to try to we're going to try to determine, is it an active or is the status complete? If the status is complete, then we do not really care. We can say, give me the state and something in the final rate and be done. If it's active.
+
+Matthias Miller  1:19:07
+Well, here's one that's directly active,
+
+Matthias Miller  1:19:15
+or this guy or this guy. Yeah, here's two, here's two that are active.
+
+Matthias Miller  1:19:40
+There's nothing anywhere that talks anything about tax rate history.
+
+Unknown Speaker  1:19:46
+No, there's not. There's no tax rate history. I.
+
+Matthias Miller  1:20:01
+I mean, you could theoretically look it up.
+
+Speaker 1  1:20:06
+We're not zones, but we're not carrying a tax rate history, either.
+
+Matthias Miller  1:20:15
+Are We? We? Yeah, in some some sense we will Okay. Um,
+
+Matthias Miller  1:20:26
+yeah, we're screwed. Why? Well, I mean, there's no record of what the tax actually was in this case.
+
+Unknown Speaker  1:20:36
+Okay, I'm failing to see the problem yet. Can you just, can you, can you demonstrate the problem? Are you saying we don't have a tax rate on some contracts? Or, I don't understand.
+
+Matthias Miller  1:20:52
+Do you want if the tax rate changes, if the contracts tax rate is different than the current tax rate? I guess what we should do is we should just import the latest tax rate.
+
+Unknown Speaker  1:21:05
+Yeah, but how would you know if there was a difference?
+
+Matthias Miller  1:21:09
+Because the contract stores a tax rate.
+
+Speaker 2  1:21:13
+They did, or we do, they do. They store tax they store a what
+
+Matthias Miller  1:21:22
+they store a tax rate,
+
+Unknown Speaker  1:21:24
+yeah, but I mean, how would you know if it was differing from the original contract
+
+Matthias Miller  1:21:29
+they stored on the contract so they have a history, yeah? Well, they store the they store the full tax rate on the contract, and oh,
+
+Speaker 1  1:21:46
+and you're saying the current information that's assigned to them. May there's a mismatch, yeah, versus what's showing on the Okay. Show me on the tax zone example. Show me example.
+
+Matthias Miller  1:22:01
+Kathleen, here, okay, her tax rate is 6%
+
+Matthias Miller  1:22:12
+the zone is Michigan. Maybe that's the issue. We go to tax zones, go to Michigan. Oh, there is no Michigan taxon. Well, that's part of the issue. That's her problem. Okay, fine. Johnson taxon, Tennessee, 4000 it's at a 9.25% tax rate. Wow. And this one's 9.75 so how do we break down the state, county and city rates? Because we don't know. We could prorate the 9.25 across the two. We could say, well, forget the original tax rate.
+
+Speaker 1  1:23:12
+Hold on a second. Give me the give me the contract account number 515199,
+
+Matthias Miller  1:23:21
+no, I'm sorry, wrong. 135045, sorry that account. Number 936909369093690,
+
+Speaker 1  1:23:35
+and this is an active, contracted, look, no, it's charged off. Barry Johnson, is that
+
+Matthias Miller  1:23:41
+right? Yeah, that's right.
+
+Speaker 1  1:23:46
+Inquiry are, and he has, I'm showing a tax rate of point 0925,
+
+Speaker 1  1:24:00
+okay, this is what I would like to say. And you're saying, okay, tax zone, tn 40,000 and if I go look up and tn 40,000 pull up the tax zone for me, I want
+
+Matthias Miller  1:24:20
+to say it went up to from 9.25 to 9.75
+
+Unknown Speaker  1:24:24
+got it.
+
+Speaker 1  1:24:32
+Okay, everything in RTO Pro is driven off of the tax zone. So I'm presume that if a contract is closed, he no longer updates the record. So we should just divorce to the zone, okay? And use that as the as the source of truth, and disregard what the contract. Record actually shows,
+
+Matthias Miller  1:25:03
+yeah, okay, so I think this, this guy. We don't need the default expression anymore. Well, I don't.
+
+Matthias Miller  1:25:24
+Would we I don't think we do. I
+
+Matthias Miller  1:25:43
+i We do need to. Still don't need the default,
+
+Matthias Miller  1:25:52
+still no default, still no default. Okay, what's your problem? Okay, fine. Fix yourself contracts.
+
+Matthias Miller  1:26:16
+Okay, Barry Barry Barry I
+
+Matthias Miller  1:26:24
+Johnson. Johnson Johnson, Mary Johnson,
+
+Matthias Miller  1:26:35
+state contract, sales tax rate, okay, and then the other thing that we need to do, rate, state state, rate,
+
+Matthias Miller  1:27:45
+okay, create 71 and now, if we go to new contracts only, let's go back to this Guy preview new contracts. All right, what's blowing up now?
+
+Matthias Miller  1:28:04
+Genie, contract definition ID. We do not have a contract definition for Montana, for cricket Valley, really.
+
+Speaker 1  1:28:18
+Well, this is not good. Hold on. Problem. This is the problem. Settings, contract definitions for cricket Valley. We do not have a Montana, no kidding, we do not do we have any Montana's at all. Let's go see
+
+Matthias Miller  1:28:44
+new kid. We also don't Okay do
+
+Unknown Speaker  1:29:11
+okay, you now have a Montana.
+
+Matthias Miller  1:29:13
+Okay, so let's go.
+
+Unknown Speaker  1:29:16
+I'm not even proclaimed to say it's correct, but we're just you have one,
+
+Matthias Miller  1:29:21
+you have one. All right, I was bugging,
+
+Matthias Miller  1:29:36
+okay, that gives gives us five out of the way. But this guy, is this one? A CRA, any of the.
+
+Matthias Miller  1:30:10
+City, all right, so now, okay, what do we do with this Montana, one that doesn't have a tax code, Tax zone. Kathleen Johnson,
+
+Unknown Speaker  1:30:24
+give me the account number 519951995,
+
+Unknown Speaker  1:30:46
+wait, Kathleen Johnson has a tax.
+
+Matthias Miller  1:30:50
+It's not defined. It's Michigan, right?
+
+Speaker 1  1:30:54
+Can I just, can I go? Just update the Michigan record? Probably. Folders. We're going to go to shared source data. Cockpit leave. What's it? What's the table? Attack zones. Oh,
+
+Matthias Miller  1:31:26
+okay for Ronnie Brown, oh, but he's exempt.
+
+Speaker 1  1:31:33
+So Michigan is what oh. Michigan Is 6% state rate only one
+
+Unknown Speaker  1:32:10
+I'm not even finding this tax zone. No,
+
+Matthias Miller  1:32:13
+it doesn't exist. Oh, there is no tax in Oh,
+
+Speaker 1  1:32:21
+well, then, then, okay, this was, this was contracts, and we want to say what was, what was, what was the contract number? Again, sorry, oh, hang on, I have it. 5199, I got it. I got it.
+
+Matthias Miller  1:32:54
+Is this? Are you? Are you the one? Are you the one? Are you?
+
+Speaker 1  1:33:00
+Divine? Okay, so literally, I could overwrite the contract record to give me whatever state rate I want to attack zone. I want to give it right? Michigan? No, I want that one that I have a Michigan. I know I do. Where is it? Where are you? That's the exempt you dummy. Don't need that one
+
+Speaker 1  1:33:32
+zone, H, I, J, K, L, Michigan. Here's a Michigan. We have a non textural one?
+
+Unknown Speaker  1:34:17
+Angry. I
+
+Matthias Miller  1:34:51
+is the y do not have an acid ID for a woman bottle.
+
+Matthias Miller  1:35:02
+A bottle and cereal store except
+
+Unknown Speaker  1:35:36
+do? Can we do? Can we get contract maintenance, change it. Let
+
+Matthias Miller  1:35:52
+me know when you got a minute. Hold on a second. Where do I see like this should not be. How do
+
+Speaker 1  1:36:10
+you like? Seriously, if you have to look for the save button and you cannot find it, there's something wrong in life
+
+Unknown Speaker  1:36:21
+with your stupid software,
+
+Speaker 1  1:36:29
+whoa, wait, this is an active contract. How is this not updated? Well, guess what? It's updated now, if you if you were to re push your okay, if you re push your stuff,
+
+Matthias Miller  1:36:51
+you got to re push your stuff on your end. Oh, duh.
+
+Unknown Speaker  1:36:56
+Okay, I gotta think about that for a second.
+
+Matthias Miller  1:36:59
+Run the schedule task again.
+
+Speaker 1  1:37:00
+Hold on, I'm gonna get brain small. I'm going to look
+
+Unknown Speaker  1:37:11
+Task Scheduler. And this thing is called, what did we call this thing,
+
+Matthias Miller  1:37:24
+push these guys.
+
+Speaker 1  1:37:25
+Okay, so run. It is running, okay. If this is running, it should update the tax table and it should update the customer or the contract.
+
+Matthias Miller  1:37:47
+Sorry, we need a Tennessee contract for cricket Valley and a Kentucky contract. Definition, valley, definition Kentucky and Tennessee for cricket Valley? Yes. Why? Okay, Hawaii,
+
+Matthias Miller  1:38:09
+yeah, that's a lot of the issue here. Let me know when that's done. I'm gonna run it again.
+
+Unknown Speaker  1:38:18
+A Tennessee and a Kentucky. You said, Yeah,
+
+Unknown Speaker  1:38:33
+okay, okay,
+
+Unknown Speaker  1:38:42
+let's set that.
+
+Speaker 1  1:38:48
+I think, I think, if I'm not mistaken, TJ, 0365, you're updated now,
+
+Matthias Miller  1:38:56
+so I need to,
+
+Speaker 1  1:38:58
+TJ, oh no, it's Oh 600 I don't know that it really matters. The next update will fix it. So, yes, you can, you can shove, I think running. Okay, I
+
+Speaker 1  1:39:19
+don't know how long it takes to run that thing to completion, so, okay, but when it, when it, when it kicks off, when it kicks that off, does it automatically kick off? The imports on the silver limb side, too
+
+Matthias Miller  1:39:40
+numb, it will just the RP source records, not the other syncing stuff. Okay, that's what, that's what I meant. Yep, that should, oh, that's all of them. It's not do all of them, silly goose. I.
+
+Matthias Miller  1:40:07
+County now we're not have now we don't have County. No
+
+Matthias Miller  1:40:23
+If state is blank, can we assume it's the same as the contract state, or is that a bad assumption? Hold on. Give me the contract number nine, account number 93746, I mean, it looks like anecdotally, the answer is yes, but
+
+Speaker 1  1:40:51
+this doesn't even have a contract assigned to it. No history, no nothing you can disregard that. Wait a minute.
+
+Matthias Miller  1:41:01
+Kimberly dunaman, no, we're looking at, we are looking at contracts. Harry picker, all, I'm sorry, give you the wrong number. Gracious, 3770 I can't, yeah, I gave you the wrong one. Okay? Inquiry, no, I did give you. She doesn't have a contract. Nope. I mean, she EPODE.
+
+Speaker 1  1:41:32
+Hold on a second, one thing at a time, Harry pickerel. What don't you like about him?
+
+Matthias Miller  1:41:37
+I picked the wrong line. I love the guy. He's awesome.
+
+Speaker 2  1:41:40
+Okay, so which, who do you want me to look up? Actually, no, are you
+
+Matthias Miller  1:41:44
+still in Harry? No, okay, give me a number. Just give me a number. Man. Okay, let's, let's start at the top 3174 Where is her building?
+
+Unknown Speaker  1:42:06
+Montana, three buildings, actually,
+
+Matthias Miller  1:42:10
+okay. 70, 4b,
+
+Speaker 1  1:42:15
+k, b, no tax jar, Nexus, two, TJ, zero, why? Why?
+
+Matthias Miller  1:42:22
+Why? Where's your building? What's her building?
+
+Speaker 1  1:42:25
+Cricket Valley has texture and Nix is what she What's he talking about? Hold on, let me try something. No, open contract for this. Yes, I know that. But I want, I want this guy. I want him to
+
+Unknown Speaker  1:42:45
+contract maintenance. I don't understand. Why are you being ridiculously, ridiculously ridiculous.
+
+Matthias Miller  1:42:53
+Hear what happened whenever Bush closed out, closed off all his out of state operations, all my, all my, all my Nexus is in Texas.
+
+Matthias Miller  1:43:10
+So dumb. It is so dumb. Thank you. I'm not finding our building. That's that's my that's the problem I'm facing. But I
+
+Unknown Speaker  1:43:20
+don't know if I'm down okay, that one's Montana, sales tax exempt. You're not finding a building
+
+Speaker 1  1:43:32
+for for 3170 4b, B, and probably the reason is because it was no records match in database. Oh, my, 2617, yeah, that's cool. That's really cool. Okay, so let's go back and let's look at, whoops, what was this person's three 174,
+
+Matthias Miller  1:44:03
+Gd, Walter, 3174
+
+Speaker 1  1:44:06
+Okay, so let's look at history. B. Looks like B came in and then was returned, all back out again. And I don't know if it went to a or 3174
+
+Unknown Speaker  1:44:21
+interesting.
+
+Speaker 2  1:44:29
+Everything to do with B was refunded,
+
+Speaker 1  1:44:35
+and don't know what happened to it probably was a wrong building on a wrong customer in a wrong kind of company of some sort, you can do whatever you so wish.
+
+Matthias Miller  1:44:50
+Okay, now, account number 936, probably
+
+Speaker 1  1:44:57
+ought to just we ought to probably have a dummy. Building that we can attach up to something of this, so that we can model the the ins and outs from a payment standpoint.
+
+Matthias Miller  1:45:06
+Seems like that would be useful. Yeah, I wonder
+
+Unknown Speaker  1:45:09
+if we ought to do something like that, because you do have, you do have the ID
+
+Speaker 1  1:45:15
+numbers, so you could spin up a building underneath the ID numbers and and it just notate that it's a defunct bill.
+
+Matthias Miller  1:45:25
+You want to we look at the contracts, and if there's no building for it, we create one,
+
+Speaker 1  1:45:36
+yeah, with a $0 because what's going to happen on in this regard, is the money's going to come in and it's going to get all returned back out again.
+
+Matthias Miller  1:45:46
+Well, except we're getting grabbing the asset value off the contract,
+
+Speaker 1  1:45:51
+yeah, but then the asset value becomes, like it's it has the potential to hit the books and become, I don't know, right? I
+
+Matthias Miller  1:46:04
+Oh, this is a and that's better than creating a building in the on the RTO pro side.
+
+Unknown Speaker  1:46:20
+I gotta do something with it. Okay?
+
+Matthias Miller  1:46:27
+Let me make a note. I don't want to chase it right now, but let me make a note.
+
+Unknown Speaker  1:46:32
+How many more? How many more of these do we have to figure out?
+
+Matthias Miller  1:46:36
+Well, a bunch Do you want to break? Until you want to break for 30 to 60? Let's do
+
+Unknown Speaker  1:46:44
+okay, 30 minutes, sure.
+
+Unknown Speaker  1:46:47
+Hallelujah, alright, okay.
+
+
+Transcribed by https://otter.ai

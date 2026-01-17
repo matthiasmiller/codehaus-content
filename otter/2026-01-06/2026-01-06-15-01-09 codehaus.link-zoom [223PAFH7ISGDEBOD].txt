@@ -1,0 +1,554 @@
+Speaker 1  07:13
+Hey, Matthias, hey, sorry I was I was getting distracted. Shawn is helping Jasper work on some reports behind me, and so I was listening in and giving a bit of input. Anyway, good times. We now have five guys in the main office area out here, Nick and Jonathan, Sean and Jasper and myself. So we're, we're filming this up.
+
+Matthias Miller  07:42
+Yeah, you're not kidding.
+
+Unknown Speaker  07:47
+My, how's your holidays?
+
+Matthias Miller  07:51
+It's good. It's good to be back. Had a good time.
+
+Speaker 1  07:54
+Yeah, you but good, good. Had a great trip. Would you hear we went to Mexico? I had heard Yeah. It did, yeah. That was a fun time. Ate lots of good tacos and had spicy salsa and hot sauce and lots of good coke. It was as in,
+
+Matthias Miller  08:14
+yeah, exactly to clarify, just to clarify, bonita and I used to be first, year we were married, we would drapes down to city market and get ourselves, like they used to sell the like grocery store, like, literally two blocks away. Drapes down and get our our cane sugar, cokes and nice go down back in the days when movie rentals were a thing. Go pick out a movie and anyway,
+
+Unknown Speaker  08:41
+oh, that's crazy. Where were you all the first year
+
+Matthias Miller  08:44
+we were out here, yeah, smack dab in the middle of, I mean, not close to one of the little shopping districts.
+
+Speaker 1  08:53
+Yeah, nice. I've got a number of different questions for only so one of the things we're working on is checks right now. And with that, I'm wondering what, what building do we need on bills related to payment? Are we needing, like, payment, date, status of any sort, or do we? Do we just look that up off the check?
+
+Matthias Miller  09:27
+Well, how do bills get paid? I suppose, is the question. And is it always by check? I'm going to guess the answer, technically, is no, but for all intents and purposes. Now,
+
+Matthias Miller  09:51
+okay, what I would expect to have happen is that i.
+
+Matthias Miller  10:00
+Check, does the check tie out to the bill?
+
+Speaker 1  10:04
+That's how I was planning to do that. Go ahead and just mirror what we have in your ncfp. And I can't make sense from a from a model of reality that the check has the atomization, not the bill itself.
+
+Matthias Miller  10:26
+Check bills and and it doesn't necessarily even pay the whole bill. I mean, probably, most probably should. You could overpay it. You could do any number of things. Right? I think my instinct is to do something like have a manual payments RG on the bill itself, with things like payment date, payment amount, payment account, and possibly, like, maybe a reference number and notes. If you really, are you saying on the check of the bill, if you do a manual payment on a bill, let's say yeah, online or something, yeah. And then on the check, you would just sorry. What was your original question? I lost track of that.
+
+Speaker 1  11:25
+Well, my original question was sparked by how we do stuff on vendor invoices, they have a payment date and a payment status. I was wondering if we needed anything like that.
+
+Matthias Miller  11:41
+I think we need to I think we need to know a balance.
+
+Matthias Miller  11:51
+I would assume that the bill from accounting, I would payment date could be useful from a I would just from a reporting standpoint, but it's not necessary for from an accounting standpoint, because you're that will be tied. So what I'm assuming is that
+
+Speaker 1  12:21
+it's you'd either have it from the manual payment RG or from the check. Yep. Okay, so manual payment RG would be payment, date, amount, account, anything else,
+
+Matthias Miller  12:36
+reference, number and description. I Okay, oh, I think we don't really have a way to throw that onto the we don't really have a way to throw I would just note notes, just the notes. We would throw that into the transaction,
+
+Speaker 1  12:56
+okay, and then we'll have a build balance, which is total minus sum of manual payments, minus sum of check payments, yep. We can always add more ways to pay later if we want to Yep.
+
+Matthias Miller  13:12
+And then you could do a bill record. You could also do a latest were you planning to do a latest payment date or
+
+Unknown Speaker  13:20
+not? It's easy enough to do, it seems.
+
+Matthias Miller  13:23
+It seems like it could be useful for reporting purposes.
+
+Speaker 1  13:29
+Yeah, no, that seems same. Okay, good.
+
+Speaker 1  13:39
+Oh, and what's our workflow for adding a bill to a check? Then I think in CFE we have a report where you can pay vendor invoices by Nacho or by check. That sound right?
+
+Matthias Miller  14:00
+I think, I mean, we don't care about dacha now I know that we have to think about it. Now, why wouldn't you do just you're not going to have that many unpaid bills. Why wouldn't you just have a helper list filter down by the payee, with with on the check, on the check that you're going to have to do.
+
+Speaker 1  14:25
+But then how do we feels like a report would be pretty sane, just a report of unpaid bills, additionally filtered by payee. It would group by pay you wouldn't allow you to add them to different checks. It sounds like, I mean, don't we want something, pretty much like what zfp has just for bills instead of, yeah, it's just a bills needing payment, pretty much like this, and you just pay by checking. Remove from check,
+
+Matthias Miller  15:01
+yeah, I think you're right with an unprinted check support that you can
+
+Speaker 1  15:07
+Yeah, which some of that I think we have already, just because the FP hadn't
+
+Unknown Speaker  15:19
+of bills.
+
+Unknown Speaker  15:27
+Cdfp, see the check record who can be a payee. DFP, we only have vendors do there's,
+
+Matthias Miller  15:47
+well, you have to be a little careful with customers, but technically, I don't know. I mean, does have to be locked down. Can it be any contact?
+
+Unknown Speaker  16:03
+I mean, I don't care. That's what we have it right now.
+
+Matthias Miller  16:10
+I would. I mean,
+
+Unknown Speaker  16:13
+I'm, I'm good with that.
+
+Matthias Miller  16:16
+You could write, well, I don't know. I don't know I would just for now
+
+Unknown Speaker  16:23
+we could do we can always lock it down later. Yeah, exactly, yep.
+
+Speaker 1  16:32
+And then what I'm thinking on the RG then is just a simple bill payment section at an RG with just a drop dead simpler G that has one column for the bill ID and a column for payment, amount and a link to it, and that's it.
+
+Matthias Miller  16:50
+Do you want the like a new balance or something on the for the bit from the bill,
+
+Unknown Speaker  17:02
+which would just be what
+
+Matthias Miller  17:06
+Bill balance minus, minus saved bill payment amount, plus current record bill payment amount, or whatever you want to call it
+
+Speaker 1  17:13
+or but we're not going to manually enter them. Never mind. Fine. So I think it's fine. Yeah, that's fine, okay.
+
+Unknown Speaker  17:30
+I need to make sure this part all gets into a PC
+
+Speaker 1  17:41
+I have most of the work we need for early January and PCs. There's a couple small exceptions, but basically, awesome. We are gonna, I don't know we'll have, yeah, it's there's a lot to do, but we're making progress.
+
+Matthias Miller  17:59
+Yeah, there's a lot to do on the import side too. So yeah, and we're not making progress right now, maybe tomorrow.
+
+Speaker 1  18:06
+Yeah, sometimes cash and check refunds, you said in mid December. You said to discuss in early January. So yeah, what should this look like?
+
+Matthias Miller  18:33
+Well, what do you think of my proposal on 12? Just a bill.
+
+Speaker 1  18:41
+All right, refund, adjustment type, negative payment record.
+
+Matthias Miller  18:53
+I don't like it. It gives me Bill to get there. That's really an action. I
+
+Speaker 1  19:03
+How else do you have unpaid refunds? Is it if there's a refund row that's not tied to negative payment? I mean, that's actually pretty sane, right? Like it's just the event rose. Yes, so
+
+Matthias Miller  19:33
+what does the workflow look like? I guess short term. It doesn't really matter, but slightly longer term. If you have an unissued refund, or, like, you know, a refund that's not tied out to payment record or whatever, how do you go on a credit card? That's pretty straightforward. Yeah.
+
+Unknown Speaker  20:01
+I generally run a reverse charge. Or how does that work?
+
+Matthias Miller  20:06
+Yeah, you can go back to the original charge and say, I want to refund all or part of this charge. Okay, is
+
+Speaker 1  20:14
+that something? Jonathan would be doing it from the portal, yeah. Is that okay? Then you're thinking, how does it work for like, checks? Yes, correct. And that's why you were thinking a bill,
+
+Matthias Miller  20:32
+because you need to write, because you need to issue a check, which we link to bills, which we link the bills? But I mean the issue so what you could do, the advantage of tying it to a bill is that immediately, then it shows up in the accounts payable, saying, Oh, I gotta cut this person a check for a refund. Right in one workflow,
+
+Unknown Speaker  21:05
+which is very valuable.
+
+Speaker 1  21:13
+I'm assuming. What are the odds someone creates a bill and it's actually already tied to a like they already refunded the credit card, but people don't realize an accidentally refund by check too.
+
+Matthias Miller  21:29
+Well, you wouldn't be able to, I think what you would do is, Okay, what about this? What if each refund row Well, I mean, you wouldn't be able to create a bill for create a bill for for something that's been refunded by credit card, or you wouldn't be able to over refund or whatever, I mean, match the amount.
+
+Matthias Miller  21:57
+So I don't really, I
+
+Matthias Miller  22:04
+if you issue a refund, you issue a refund. If it's my credit card, you issue it, it's too late. You're gonna have to go ask it for more money, not a check. You can say, Ah, not gonna mail it, right? And you need to be able to roll it back. I could we say that an event row can be tied either to a bill or to a payment, but not both, and so check refunds would be tied to a bill and you wouldn't have a payment record for that. Or is that going to mess up the wisdom again, that refund rose can either be tied to a bill or a payment record, but not both. And so if you issue a check refund, it would be tied to a bill. Otherwise, like a record refund, would be tied to a payment whether it's the original one or a new one. However, that needs to happen. And that way you don't have a an extraneous payment record floating around somewhere. It's yet another thing. And so you so if somebody doesn't write the check and they cancel the bill, then the refund, presumably you couldn't cancel, presumably you would have to have a cancel refund or something where, if the refund wasn't paid, you can get rid of it in both places or something. I don't know.
+
+Unknown Speaker  23:33
+That's obnoxious. It's an SD i
+
+Matthias Miller  23:46
+Okay, absolute minimum viable product. We need a refund. Adjustment, type, okay, so
+
+Matthias Miller  24:07
+So if we want to go minimum, we would need a way to say, I am refunding this. And by the way, this is a manual refund, and it's not tied out anywhere, and I'm a big boy and I know what I'm doing.
+
+Speaker 1  24:38
+Sorry my wife is trying to call me. I think it's just about what rots we I wanted her to buy, so I'll let it go, unless she calls again.
+
+Unknown Speaker  24:51
+Okay, so you said we need just the adjustment type, and then what was the next?
+
+Matthias Miller  24:59
+I. Mean, and then basically a don't tamper with this. This is a manual refund, kind of a flag. I don't know how it hits accounting. I don't know how we handle it long term, but if we desperately need a short term solution, there you have it. It just reverses the price and now it shows up as well that period has an open balance. And yes, things might be wildly sideways, but there you go. Yeah, alternatively, I
+
+Speaker 1  25:44
+well. So what do I mean? Do we go with just that super drop, dead simple one and then know that we need to come back to it later.
+
+Matthias Miller  26:00
+We can't, unless you're terrified of painting ourselves into a corner, although it's a limited data set, and we can all go, we can go spelunking in there and see what, see what's there. If we need to clean it up. It doesn't handle but, but then what's going to handle with then we're going to have weird credit card reconciliation issues. If we do a refund that way, we're Mm, hmm, what if we just said,
+
+Matthias Miller  26:37
+Okay, how much work to have Jonathan do the workflow on the 16th
+
+Speaker 1  26:47
+opens a payment, enter amount to be refunded, creates a payment ratio transaction as a credit card to a partial refund bill that would be tying the bill to the payment record.
+
+Matthias Miller  27:07
+Well, maybe you don't tie the bill to the payment record. Maybe you tie the bill and the payment record back to the event row.
+
+Unknown Speaker  27:16
+Oh, that way. I don't know.
+
+Speaker 1  27:26
+I don't know. Let me just pull him on for a little bit. See what he thinks that sound good. Yeah. Jonathan, hop on for a second. I
+
+Matthias Miller  28:05
+you. Jonathan, hello. All right, so we're talking about how to do refunds. I think probably this most streamlined way to do this is through the as far as far as user interfaces, do the whiskey. I don't know exactly we've done mostly hand wavy specking, but I think basically what we would what you would do is you would prompt for an amount to refund, and potentially adjust how the payment gets applied. I'm not sure about that. Well, you have to do something, somehow, figure out exactly which rows get refunded, which fees get refunded, and issue you go, go to clearance and issue a refund on the original charge, if it's a credit card, otherwise, go create a bill so we can issue a refund by check
+
+Speaker 2  29:21
+or by. Ach, I think clearance has a method to refund.
+
+Matthias Miller  29:25
+Ach, okay, so we So, so that gives us three, then, three methods we still need to handle, theoretically, cash and or check payments.
+
+Matthias Miller  29:46
+The question, I think one of the questions is, how do you feel about creating that workflow? And I mean, what do you do? You have any reactions to that workflow, and also. So do you? Do you have thoughts about whether we create a payment record for refunds by check? Do
+
+Speaker 2  30:38
+I mean partial partial refunds are just kind of nasty, inherently I think
+
+Matthias Miller  30:45
+I'm sorry, sorry I had to drop for a minute.
+
+Unknown Speaker  30:50
+Probably I was thinking, so, okay,
+
+Speaker 2  30:54
+at least nothing audible, if it's, if you think it's better to do it for the whiskey side, I can code it. I, I mean, I think it's just nasty, doing partial refunds Anyway, anyway you look at it and or checks, I think it makes sense to make a payment record for it and just have it be a negative amount for existing payments. Do we just adjust those, or do we make a second one? Do
+
+Matthias Miller  31:43
+well, because it's tied to the same transaction ID, there is a world in which it could make sense to tie them out to the same payment record. You need separate, you need, you will need to store secondary authorization tokens. So I Yeah,
+
+Speaker 2  32:12
+yeah, that sounds good. I
+
+Speaker 2  32:25
+I think I will be able to use the existing structure pretty well and to remember how things are sourced. But I think it should, I think it should be fairly straightforward.
+
+Matthias Miller  32:38
+I think the way I would do it, conceptually from the interface is basically, it's almost like an edit payment action. And the only thing is you could reduce the payment so you still go through and say, This is how the payment gets applied. And when you push into database, the obnoxious thing is, you're not pushing a new payment record. You're pushing deltas for all the existing rows, to get them to tie out to what the new total is, and then issuing a refund for the balance through whatever means necessary.
+
+Speaker 2  33:11
+Yeah, I think what I would do is, I would probably, I mean, it might be an X 30 list where I first rip out all payment impacts for this payment, and then I just go and apply it again. Conceptually, that's what I'll be doing. I'm not sure if it's an actual x 30 list or if I just put that logic in a single x 30 to go and readjust it, but I think it's pretty straightforward with how my components work together.
+
+Matthias Miller  33:43
+Well, we're going to need refund rows, adjustment types tied to the, Oh, I see, I see funding. So, yeah, sure. I think that
+
+Speaker 2  33:57
+makes it, yeah. I think that makes it maybe easier, but I'm not, I'm not too worried about it. It'll be a fair amount of work, but I think it fits alongside what we already have.
+
+Matthias Miller  34:10
+Okay, I would potentially make an argument that because it's a single transaction, we should consider having separate we should have separate payment records, otherwise. Because you could issue three refunds, you could refund 50 bucks and come back and issue a or you could issue 200 bucks and come back and issue another 100 and another $50 and each of those would have separate authorization codes from clear end. And you're going to have a way. You have to have a way to tie out. Or I'm going to assume you want a way to tie out. The event rose to which specific credit card event got triggered,
+
+Speaker 2  34:58
+or no. But do. Mean credit card event got triggered.
+
+Matthias Miller  35:02
+Well, okay, so you, if you okay, somebody pays today, we issue a reef or yes paid yesterday. We issue a refund for $200 at nine o'clock this morning and $100 at noon. So now we have three different events, for lack of a better term, clearance gives us an authorization code for some kind of code, confirmation code for the for the charge, gives us a code for copy, for refund. Number one, give us a code for refund. Number two, if you put it all in the refund. RG, are you start? Are you storing a confirmation code of any kind on the in the events?
+
+Speaker 2  35:38
+RG, no, we're storing the auto number of the payment ID or the payment record,
+
+Matthias Miller  35:47
+so we don't have so then there is no way to know on the refund rows, on the events RG, was this refund one or refund two?
+
+Speaker 2  35:58
+Unless we create so it's not being stored statically, but I think we could pretty easily write macros to figure that out, because if, if we have a refund from clearance. I mean, I haven't ran one yet, but I assume that there would be IDs coming back that we can link it to previous ones, and we can field that and have macros so that the payments know what they are relative to others. You know if they're refunds.
+
+Matthias Miller  36:24
+Okay, I would, I mean, if we're going to do that, I don't feel strong. I don't feel strongly. I don't feel super strongly between single I think it can make sense to have a payment and refunds on a single payment record, I would probably make an argument. If that's the case, let's create put the authorization codes into a refund RG row ID, and stores that can RG row ID in the payment record, rather than relying on external IDs. It protects us from what I don't know, makes it simpler. If we ever have to swap out processors or anything like that, insulates it's a little bit but I don't know.
+
+Speaker 2  37:16
+Thoughts, is it standard to do partial payments? Like, wouldn't it be just a lot simpler, if we would just refund the whole payment and then run a new one for them?
+
+Matthias Miller  37:30
+It's, I don't know if it's standard, but I do think we need to support it. Their argument against it is, if somebody uses the debit card, they might not get their funds back for two days, or whatever the timeframe is. It's not like, it's not like the funds become immediately available for credit to rerun the charge immediately.
+
+Unknown Speaker  37:52
+Yeah, I guess that makes sense.
+
+Matthias Miller  37:55
+I mean, we could. I don't think this is correct. I'm also open to entertaining the idea of conceptually doing a full refund and reissuing a New you
+
+Matthias Miller  38:19
+have a proposal how we might do that?
+
+Speaker 2  38:23
+Um, yeah, I, like I said, I haven't done any refunds yet with clearance, so I'm not sure how they handle them. I think I would only want to go down that route if that's like, how clear and thinks about them. But I kind of doubt, doubt that they do.
+
+Matthias Miller  38:38
+Yeah, I'd be, yeah, I'd be surprised. But you can, you can chase that and find out and holler if you depending what you find.
+
+Matthias Miller  38:53
+So then with,
+
+Matthias Miller  39:00
+so then it seems like okay, then the plan would be still to probably generate a bill that's tied out to the payment to the original payment record with the refund amount. So
+
+Speaker 2  39:23
+I don't know anything about bills unless you're talking to who
+
+Matthias Miller  39:27
+I'm talking to, I guess. I mean, it'd be nice if we could use similar logic.
+
+Speaker 1  39:37
+And what, how does it work? If it's a check, amen, I and it doesn't link to a payment record.
+
+Matthias Miller  39:46
+Oh, we don't have payment records for checks. Oh, we do,
+
+Speaker 1  39:51
+okay, but I'm saying if they paid by check, and then we're refunding by check, we have our own checks, and. Linked to bills. You create a negative payment that's linked to a bill that's linked to a check.
+
+Unknown Speaker  40:16
+Well, or
+
+Matthias Miller  40:20
+you record it on the you record you note. Okay, here's a simpler idea. Seth, tell me if you like this. Okay, have the, have the, the AP, report, whatever that thing ends up being. Look at bills and at payments. And I mean, maybe it's a multi pain, or maybe it's just a preface on one, on each of them, or a preface on the bills report that says, look, you've got payments needing a refund. And you go, hop over to that report to go, and you have your own report on payments where the customer overpaid, and then you can tie out checks to those payments as well. So
+
+Unknown Speaker  41:26
+that's simple.
+
+Speaker 1  41:35
+Ah, if so, then would you still be creating a bill for card refunds. No, never.
+
+Matthias Miller  41:43
+You would never create a bills anymore.
+
+Unknown Speaker  41:45
+Okay, so bills are out of the question for refunds.
+
+Matthias Miller  41:50
+So on, on a credit card, you would create the refund adjustment types. You tied it out to the payment ID, maybe to an RG row ID. Make sure to tie it to the refund event you would, you would have an RG on the payments with a list of the refunds that were issued, tie it out to the refund rows that all should reconcile there that handles credit cards and for checks, you would go back to the check record and well, you would create the refund rows, which would create a Delta on your payment record so there's a non zero balance on your on your on your payment, you would have a big, scary alert when you're paying bills that says, hey, you got customer refunds, you got to pay. And you go over, oh, let's pull up customer refunds. It shows a list and add to Bill, add to check, add to check, add to check. And then you've got an RG on checks for reef, for refunded payments, and you just tie it out to that and pay it that way.
+
+Speaker 1  42:42
+So payments will have an RG for refund. Well, says that RG for refund only for card. You would have it for or for both.
+
+Matthias Miller  42:53
+Well, you only really need it for you need it for card to get a virtual RG for checks.
+
+Unknown Speaker  42:59
+Right, right,
+
+Unknown Speaker  43:08
+go, payment, RT of refunds, card, card and ACH payments. What about cash? Is that a check refund as well? Do we ever just give them cash?
+
+Speaker 2  43:43
+Why would you get a refund on cash 500 and you come back and you're like, No, I want 200 of that back.
+
+Matthias Miller  43:57
+There's the world, I think so there's two ways we could handle it. One, we can throw up our hands and say, um, that's kind of why you have journal entries. Go write a check and document it well, and then create a journal entry from your checking account to petty cash, or vice versa. And I don't know, like created $0 or, you know, put in zero as the check number. I don't know what like feels to me like, if it's from the checking account. Yeah, it's weird, but it feels like there's a workaround. I
+
+Speaker 1  44:54
+Okay, so we have refund adjustment type we do. On the payment record, we have an RG of refunds, if it's Carter Ach, and then if it's a if they paid by checking or we want to refund, then you add your refund adjustments, and then you create a check to pay refund amount. So when you report a a
+
+Matthias Miller  45:38
+bills would have a preference preface, if they're unpaid, customer refunds, and then you have a customer refunds, an unpaid or customer refunds being payment report that would push these out to checks to the customer. So
+
+Speaker 1  46:07
+this is essentially any non card, ACH payment where the payment total is greater than link, then the sum of linked await of linked event rows of Link, non refund event rows, no where, no where of refund event rose, where some of refund event rose isn't covered by checks, right?
+
+Matthias Miller  46:51
+Okay, you would take, you would some payments received minus existing refunds issued, and compare that against the applied balance. Or, okay, here's another way to say it. We're as long as, as long as we're assuming that the original payment amount is right, you would just sum the refund adjustment types minus checks issued right.
+
+Unknown Speaker  47:25
+That's what I was, right there.
+
+Matthias Miller  47:29
+Okay, I'm thinking it through independently, like a trying to sound smart, good, so I, I do think, I hope I'm not getting myself into I'm really nervous about manually entering in credit card refunds. We've had so much trouble with tie outs in zfp that, yeah, we kind of feel like, if we don't run it through the whiskey, we're going to be in a world of hurt for checks. All we really need is the fields for now and we can a lot of this stuff can be punted check, and maybe, yeah, maybe in virtual RG, probably would make sense. But even that could be a report, if you really I mean virtual RG, you should just do,
+
+Unknown Speaker  48:27
+yeah, report, fair.
+
+Matthias Miller  48:31
+Okay, Jonathan, sounds good. I was just
+
+Speaker 1  48:39
+trying to think of your workflow for a check refund. Do we need to get that working? We don't have, we don't have.
+
+Matthias Miller  48:46
+You can just manually do it for now. I mean,
+
+Speaker 1  48:50
+manually add a refund row. The refund rows you need,
+
+Matthias Miller  48:53
+well, you're, I mean, it's going to be basically identical to bills need payment. You just click, Add to check, remove from check. Add to check, remove from check, show it on the right, and then you'll have unprinted checks in a separate window. You'll go print your checks and mark them printed with check number.
+
+Unknown Speaker  49:11
+What does the workflow look like? To get the refund event rows,
+
+Matthias Miller  49:18
+you go into the whiskey. Okay, that also goes through the whiskey. It's just Jonathan doesn't run anything with clearance, perfect.
+
+Speaker 1  49:29
+I think that gives me what I need for now, on this part, yeah, okay.
+
+Speaker 2  49:35
+Matthias, I have a question. I don't know if you asked him get set about my questions about the allocation. So you know the page I've worked on a lot the like allocator for money when you want to go make a payment, where we show you all your contracts, and you can choose how much you want to put contract. And then internal reps can be more granular and put towards specific period. It's Justin's mock ups have us paying contracts, like making payments in the context of a specific contract. And right? You're talking, you know, you and Dwayne and Justin were talking about having the buttons for pay one month, you know, pay EPO, having those buttons and stuff. Am I right in thinking that the allocator that I built is only for customer reps now only internal use? Okay, sounds good. Your your audio cut out, but I heard the beginning of a yes,
+
+Matthias Miller  50:36
+yes, I I think so. I think there had been talk early on about, well, you could do it, but not forgive but I would operate on the assumption, on a on a simple assumption. I just think, if you want to pay two contracts at once, I don't know. I mean, just go run your card in both places.
+
+Speaker 1  51:00
+Like, will there be a way for a customer to pay a certain like a 1.5 months or something? Or does that require them to contact support?
+
+Matthias Miller  51:15
+I forgot where I forget where we landed. Do you remember, Jonathan,
+
+Unknown Speaker  51:19
+if they can pay more than
+
+Speaker 1  51:21
+pay into the future. So, yes, well, like a 1.5 months, or something like a non standard, like they got their paycheck, they want to pay $500 on their $350
+
+Speaker 2  51:34
+and you're asking from the customer portal, or from, yeah, um, I think we have buttons for that kind of stuff on the customer portal. But I was just asking, because I am going to start soon on adjusting payments and, like, refunds and stuff, and I was wondering if I needed to, you know, be thinking about along the way, both internal and external customers, but knowing that it's internal only, I can internal only, I can simplify a few things and have a bit more speed and confidence.
+
+Speaker 1  52:07
+So yep, pretty sure I like it better, because it feels like an internal tool, like it's,
+
+Speaker 2  52:14
+yeah, pretty Yeah, and it's and it's complicated enough, it won't ever look good on mobile or work well on mobile. And so and really put it in the Customer Portal just due to that, just because there's too many things on there. Okay, sounds good. All right, anything else, or should I leave you to
+
+Matthias Miller  52:38
+I think that's,
+
+Speaker 1  52:40
+think that's all for now. Thank you. Okay, so I have more specking to do here, sales tax.
+
+Speaker 1  52:59
+What do we need for January on sales tax. We need to the liability. RG needs to actually be working as presumably,
+
+Matthias Miller  53:16
+yeah, I mean, we're in. We have to have, probably soon, reporting and filing stuff. We're gonna need most of everything but go calculate the
+
+Unknown Speaker  53:31
+polling from tagster. Yeah.
+
+Speaker 1  53:40
+Okay, and are we thinking essentially the same as we have for zfp?
+
+Matthias Miller  53:46
+I think so we have a spec somewhere I know, or I thought we had a spec that was
+
+Speaker 1  53:56
+pretty I didn't think we really talked about the reporting side.
+
+Matthias Miller  54:01
+Oh, okay, but what's this? What's the storage? I mean, what's the Do you have something for the liability?
+
+Speaker 1  54:12
+Yeah, yeah. I mean, we're just gonna, it's very simple, just net, something like this. RG, but it's pulling from here. I mean, the reporting are incurred grows.
+
+Matthias Miller  54:28
+So if the liability rose populated true, a report is just
+
+Speaker 1  54:32
+running on that, then our liability was a little more. We didn't have this sort of source of truth right, is our liability is just going to be a net of this. RG, essentially,
+
+Matthias Miller  54:48
+yes, it's a net of that. Igrg, which pushes the liability, and then your filing report is just go Filter by that, that date, like, that's drop dead simple. Yeah.
+
+Speaker 1  54:59
+Okay. Do. And so and how do they pay? What did we do for zfb?
+
+Matthias Miller  55:06
+So we're planning to create a sales tax liability bill.
+
+Speaker 1  55:11
+Oh, we have that. Yeah. I mean, it's not very filled out, but we have it. I gotta say we shouldn't be able to manually select it. I selected that sound right? Shouldn't this all happen? Just grab it. But No, you shouldn't be
+
+Matthias Miller  55:31
+able to have a period, end
+
+Speaker 1  55:32
+Period, end date, and then all of these details, which is essentially a duplicate.
+
+Matthias Miller  55:39
+RG, but it's just recently, well,
+
+Speaker 1  55:48
+okay, I don't think we actually, we actually want, it doesn't make sense to be linking to an event ID at this point. I
+
+Matthias Miller  56:03
+that's it now, unless we're using that to tie out the
+
+Matthias Miller  56:16
+Okay, the liability is strictly a liability. It doesn't include, I mean, an accruing liability, it doesn't include payments. Is that correct?
+
+Unknown Speaker  56:26
+I think so. So are we trying to
+
+Speaker 1  56:40
+couldn't William's dead. No, yeah, couldn't we? Shouldn't we actually be linking to this? RG, I
+
+Matthias Miller  57:03
+Okay, so this central adjustment, text, amount, okay, so this is the the other option is to have the liabilities are G. I don't know what you think of that. You might hate this, but the liabilities are G, link out to the bill.
+
+Speaker 1  57:30
+That's what I was wondering. I think that makes more sense.
+
+Matthias Miller  57:33
+And then you would create negative rows. You know, effectively stump in Bill date and create negative rows. And so
+
+Speaker 1  57:43
+if you want to wait that way, you're saying, create a new row, yeah,
+
+Matthias Miller  57:52
+everything that you're paying, and you tie it out to the bill, and that gives you the bill total. And then you know, the literal liability on a per contract basis of what is actually, what you're actually liable for. I see,
+
+Speaker 1  58:12
+I see. And then when you go to create new rows, you're, you ignore Bill rows, payment rows,
+
+Matthias Miller  58:22
+yeah, when you're when you're calculating incurred liability, you would ignore payment, yeah,
+
+Speaker 1  58:27
+but then when you're saying, what tax do we owe on this contract, and you just do a Summary, right? I don't hate that. I like it. And then the bill record, instead of having an RG, we we could theoretically show virtual RG if we wanted to. I don't know if we want to or not. Maybe get too slow. Maybe just a report. I would do a report and then the total would just be auto calculated. Or would the total be stored in it? Grumps at you if it's wrong,
+
+Matthias Miller  59:04
+yeah, something like that stored, stored Grump. I think it would make sense. Okay,
+
+Matthias Miller  59:15
+so I need to drop I have another commitment that's fine. Do you want to I've got some time tomorrow at one or at four. I don't
+
+Unknown Speaker  59:32
+think I have anything on the calendar for tomorrow, so either one works.
+
+Matthias Miller  59:36
+How much time do you think you'll need?
+
+Speaker 1  59:40
+Um, three, five minutes. Okay, let's, let's,
+
+Matthias Miller  59:45
+let's do four. Ish, probably a little bit of flex, but I'll send it out now and I will talk to you then. Okay, good. Awesome. Thanks. Yeah.
+
+
+Transcribed by https://otter.ai

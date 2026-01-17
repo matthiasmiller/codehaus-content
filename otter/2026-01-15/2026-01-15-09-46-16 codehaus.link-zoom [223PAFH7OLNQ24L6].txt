@@ -1,0 +1,1064 @@
+Speaker 1  00:50
+Hello, good if you is my little little rabbit trail website development.
+
+Matthias Miller  01:03
+Just got insanely inexpensive, and if you would want to make some good side cash, finding companies, small businesses that are doing doing well, that have an outdated, bogus website, go like, literally, there's static website hosting tools that you can get for re hosting, basically, and you just use AI to, like, build the website. And, you know, I've been telling it to go straight to go scrape the website, go rebuild it. Go eliminate code duplication, until I do it about three times and it cleans up the code and like, I don't know why I would pay for word. Main reason you pay for WordPress is for people who, if you have people who don't know anything about computers, need to edit the website. But most of these people don't get the website anyway, and exactly. It probably barely would even if it was on WordPress, exactly, yeah, exactly, and so. And then you can charge, you know, I mean, you can charge hosting fees. There's no problem doing that. Charge $1,500 for something that takes you several hours to do, and charge an annual hosting fee, and I don't know, some free cash anyway, but I'm doing it for myself, and it's just, it's insane. I'm nice. Other big thing is I have a 40 page, 40 to 50 page kind of brand. Who am I? Kind of document right now that I've been working on, and then you have that as the foundation for all of your content, for all of your like, everything, it's like, everything just fits, like it makes sense. I had Claude go through and evaluate blog posts from the last two years, and it got rid of like two thirds of them because they're just random, like shotgun stuff, anyway. So nice. It's fun anyway, but we're here to talk about Phil facts.
+
+Unknown Speaker  03:14
+Yeah, yeah. Let me share my screen
+
+Speaker 2  03:20
+and get my things back up. I was working on reviews and stuff, which I'm really liking. Our structure for checks. I think it was the right thing to do good. It's definitely taking some work, but it's got about done. Okay, tax liability stuff. So I had a super simple model, and I'm deciding that it was too simple.
+
+Unknown Speaker  03:46
+Now this is CFP,
+
+Speaker 2  03:49
+but what I was doing is I just went over my event searching, and I summed everything with a key based on the jurisdiction, essentially jurisdiction and rates. And I just feel I also just now was adding through or yesterday, the vendor and the Filing Basis, nice, but getting the total your taxable and your non taxable subtotals, summing those up, and then doing the exact same thing with the same key on stinky structure on this RG, and then doing a net sum of the two Yep, and just adding any rows you need to add, yes. And then I started thinking
+
+Unknown Speaker  04:36
+about different things
+
+Speaker 2  04:41
+that make life less simple and easy. So if wonder which one's the first to dig into, I don't know, um, but one of them is we do have the paid tax amount. So. On a row by row basis.
+
+Unknown Speaker  05:05
+How does
+
+Speaker 2  05:06
+doesn't that need to play in? Because what I had been doing is I sum the taxable subtotal, and once I have the summed rows, I go calculate what the tax amount should be based on the rate.
+
+Matthias Miller  05:22
+But, and I think the way that I think it should work is if, if the total tax paid exceeds the tax owed. I mean honestly, unless, I mean in 99.9 scenarios, which I don't know why this would be any different, like you should just remit the additional tax collected from the customer, so you take the greater of you sum the subtotal times tax, and take the greater of That versus the tax the customers actually pay, actually been paid, right?
+
+Speaker 2  06:05
+Yeah, see as I start explaining it, then it actually makes sense what we should do. But what last night my brain was thoroughly, thoroughly detail, logged
+
+Matthias Miller  06:18
+so much complexity and nuance,
+
+Speaker 2  06:21
+the pay tax, add a repeat list item, or a an
+
+Unknown Speaker  06:28
+item in the repeat list or a tax amount,
+
+Speaker 2  06:37
+use it if it's greater than the counter. Okay, is there any difference for those two, whether it's cash versus accrual, or is it exactly the same? No, would just be exactly the same. It's either way. If it's greater than what we calculated, it to be perfect. Yeah. Okay, so I know how to move forward on that one. Next question, what do we do if the Filing Basis changes and we have liability rows recorded? I was thinking about that like, I mean, it's super unlikely. I assume that most likely scenario is probably someone sets it up, and then they go file, or they at least calculate liabilities, and they're like, some of these numbers are off, and they eventually dig down to the sales tax matters, like, oh, this should be accrual, not cash. Yeah.
+
+Matthias Miller  07:39
+I mean, it's probably that somebody set it up wrong the other I mean, and typically for at least with the IRS, if I am okay, not a tax lawyer, but I'm pretty sure you can only go from cash to accrual, and you can never go from accrual back to cash. Okay? And so what that means the then is that typically, if you make the switch, in most cases, if you make the switch, you would suddenly be liable for a whole bunch more more tax,
+
+Speaker 2  08:17
+which, that's fine. That's, I mean, that'll just be handled just in a way.
+
+Matthias Miller  08:22
+I kind of think we can just do that. And if you switch from accrual to cash, you're gonna have to figure out how to deal with it from a state level that all of a sudden you're reporting lots of sales.
+
+Unknown Speaker  08:36
+Yeah, go ahead. But then,
+
+Speaker 2  08:39
+right now, what it would do is it would create a whole bunch of reversals for all your paid rows and then re add them with a different Filing Basis. Do I need to keep once you've actually paid sales tax? But isn't it just locked in?
+
+Matthias Miller  08:58
+Probably, yeah, I don't know that your RG needs to know. Filing Basis, Filing Basis. I think only matters when you're calculating what is currently what are you currently liable for?
+
+Speaker 2  09:16
+Okay, okay, it's like saying I won't even store, I won't store Filing Basis in the liabilities. RG, okay, yeah, I think you're right. And then sales tax vendor is the only part of the key, and then it's just when we sum the events. RG, that we say, What is my liability based on filing basis, right?
+
+Matthias Miller  09:40
+Okay. And so if you get a bunch of reversals because you switch to cash basis, that's your problem, and you're gonna have to figure out explain
+
+Speaker 2  09:47
+that, right? Should we add a warning? If someone probably add a just add a warning on change. Well. You want it on change if it is the first time they're setting up the record Matthias doesn't hurt.
+
+Matthias Miller  10:07
+I mean, you could, you could do a warning on change if the existing value, if the safe value, is not blank,
+
+Unknown Speaker  10:14
+yeah, that seems fair. Yeah, proceed with caution. Yeah.
+
+Matthias Miller  10:21
+Basically like, yeah. You know this will affect your
+
+Unknown Speaker  10:29
+this will affect tax liability. I don't know.
+
+Speaker 2  10:36
+Yeah, exactly. It's good enough for now, as long as we just let them know. I mean, they should know that.
+
+Unknown Speaker  10:42
+But hey, yeah,
+
+Speaker 2  10:47
+don't Okay, so answer to the Filing Basis stuff. Don't store the Filing Basis in the liabilities. RG, we just need to know it when we are summing the events. Archie, so that I like that. I just, I mean, now I have to go and pull it back out of my repeat list, but it's not that hard. And then back. What happens with bad debt? Do we have a bad debt adjustment type and a bad debt subtotal adjustment in our liabilities. Okay,
+
+Matthias Miller  11:40
+okay, run this. Maybe you can Okay. How do we okay? Let me think we intend to report bad debt upon contract closure, but we don't intend to close out the balance.
+
+Unknown Speaker  12:05
+So I think
+
+Matthias Miller  12:12
+you need in your delta calculation. Well, I
+
+Matthias Miller  12:24
+I'm sorry, ask your question again. I'm
+
+Speaker 2  12:27
+trying to figure out how we factor bad debt in. And my thought was we can create a bad debt adjustment type and store a bad debt sub total adjustment in the liabilities. RG, the adjustment type, meaning, like an event, RG adjustment type. If we don't want that to affect the actual balance and stuff, I have macros, I can just say it's impact zero. But I don't know if that's actually a good idea or not. It could be a bad debt for tax
+
+Unknown Speaker  13:03
+adjustment type or something,
+
+Speaker 2  13:06
+and maybe not, but I would just love if our calculation, if I can keep just running off these two RGS, and that's it. It's so nice, so much nicer than our stuff in zfp.
+
+Matthias Miller  13:22
+Okay, so Well, let's run, I mean, we could have a so the type would be, I mean,
+
+Matthias Miller  13:36
+you could keep a current bad debt row and never include it or show it in the contract balances. So you show that you just have one.
+
+Unknown Speaker  13:50
+Well, you might that,
+
+Matthias Miller  13:53
+I don't think you can just have one. I mean, you can't just have one because if, now, if you you might have a bad debt as of amount of x as of as of a certain date, and then I can make a payment. Well, now you have less bad debt, and you need to report that revenue,
+
+Unknown Speaker  14:09
+right? Wait, so your bad debt,
+
+Matthias Miller  14:15
+basically, if you record,
+
+Speaker 2  14:18
+if you have jurisdiction and stuff on bad debt as well. Yes, we do, like, it's really a period by period thing
+
+Unknown Speaker  14:27
+that's that's fair. So the
+
+Matthias Miller  14:32
+first step, when you close the contract, we will basically get back $500 of, you know, 10% times 10% $50 of tax because it was bad debt. They come back, they pay $50 we get $5 so now we pay in $5 and the bad debt also,
+
+Speaker 2  14:57
+and maybe I'm wrong to want to keep it in there. But if we don't, if we don't, I don't know how we know jurisdiction and stuff.
+
+Matthias Miller  15:06
+Yeah, actually, that's an excellent point. Okay, so then, but I want to think through the scenario. So then you, yeah, you reverse a little bit of bad debt, which means that your tax goes up and you incur a fee, which means your tax goes up again. How do you not know you didn't incur anything? They made a payment, because the bad debt goes up. That's that. That is the equivalent of an increment. You incurred the tax back three years ago, but you finally collected the bad debt adjustment makes you pay.
+
+Unknown Speaker  15:41
+So a negative bad debt adjustment, you're saying, right?
+
+Matthias Miller  15:44
+A negative bad debt adjustment. But then we ignore bad debt adjustments for the purposes of of contract balances, because we want to see it as carrying, yeah, a balance.
+
+Unknown Speaker  16:01
+We may want to
+
+Matthias Miller  16:05
+have it counting. That would be the beautiful thing. Go ahead,
+
+Speaker 2  16:10
+I have it. It's like a sub contract event, sub total impact or something, right? Yeah. Okay, so I have a adjustment, credit, multiple, yep. And I could just have a make this an if statement, and if it's bad debt, then the multiple is zero, and boom, all my balances calculate correctly. Your balance is calculated correctly. Okay, I am a little bit proud of this whole event, so g, you should be, it's kind of slick.
+
+Matthias Miller  16:45
+Okay, then, then the question is, you create bad debt entries. The My only question, my only hesitation is, I am not a huge fan. Okay. When
+
+Matthias Miller  17:07
+nzfp, if you have $1,000 and you write off 10% $10 is bad debt, do you still report $1,000 and $10 a bad debt? But then you subtract the $10 on which you actually pay them. I remember,
+
+Unknown Speaker  17:41
+um, I wonder June to see if or you're pulling it up.
+
+Matthias Miller  17:58
+Add an adjustment.
+
+Speaker 2  18:01
+I think we just record a separate what is this? One cent bad debt, 841,
+
+Matthias Miller  18:09
+20 and a bad debt one,
+
+Unknown Speaker  18:12
+I don't know.
+
+Speaker 2  18:17
+Oh, the payment is 44 839, and this is 4408 40, yeah. Do you
+
+Matthias Miller  18:30
+have one with a bigger discrepancy, probably, but I don't
+
+Speaker 2  18:42
+know. Let's just go to the live system. There's probably better data. Yeah.
+
+Speaker 1  18:45
+Do you like probably most Ohio? Yeah, I
+
+Speaker 2  18:53
+don't know what month to go with, but we'll try October.
+
+Matthias Miller  18:59
+Maybe they consolidate bad debt, though, that makes a difference. Oh, forget which one's the Indiana and West Virginia. Let's see Indiana.
+
+Speaker 2  19:18
+I had Jasper created a sales tax vendor's report for us in zrt, pretty much by himself. It's just fun to see him start doing some things. That's awesome. I think he's coded like 30 jobs in the last week and a half. A lot of them are just tiny little things, but still fun. Yep.
+
+Speaker 1  19:41
+Hey, where do where's the bad debt?
+
+Unknown Speaker  19:48
+Are we just doing a are we just
+
+Speaker 2  19:55
+doing if it's bad debt, then subtract it. So I need to be looking for a. Negative in a tax Yeah, whoo, here we go.
+
+Matthias Miller  20:10
+Well, they switched it to be, no, there was a net. This
+
+Unknown Speaker  20:14
+is just a reversal, not bad debt. It's, oh, it is tax exempt.
+
+Unknown Speaker  20:25
+This one bad that maybe that looks a little more like it. No, that's also a tax exempt.
+
+Matthias Miller  20:32
+One tax exempt one, it looks like you almost had to run it on the sales tax history. Or, G,
+
+Speaker 1  20:40
+yeah, probably, wow, I think I can do this episode, sales, taxes, i Hey, I There we go. There we go. I keep cooking the wrong thing.
+
+Unknown Speaker  21:15
+57 right? Unless,
+
+Unknown Speaker  21:25
+there you go.
+
+Matthias Miller  21:37
+There we go. There are groups. Oh, there's literally a grouping. So we do so we group it separately and reduce the gross sales, yeah, into taxable sales. So it needs to be filed separately, apparently,
+
+Speaker 2  21:54
+oh, well, duh. Isn't that literally what the settings about that?
+
+Matthias Miller  21:59
+It's what as well. Okay,
+
+Unknown Speaker  22:06
+so do we need a setting like that? Probably
+
+Unknown Speaker  22:10
+most likely.
+
+Matthias Miller  22:14
+Most likely. Okay, so then the question actually is, maybe RGS do actually make the most sense. I just, I hate it. It's just, but it's just another key. Then right, like, Sorry, what I hate having another I mean, it just seems weird to have I feel like bad debt is always confusing to us. Yeah, it is, do
+
+Speaker 2  22:43
+you need to go spend two hours with your AI assistant and write an article to explain bad debt to us?
+
+Matthias Miller  22:55
+I wonder if Here's an idea. What if? Okay, this is the idea I've been playing around with. And I don't know if this know if this actually makes sense in light of what we're trying to do, but, but what if the row would actually have the taxable total and the bad debt write off? And I don't care whether
+
+Speaker 2  23:17
+that the liabilities are G, the liabilities are G. I don't mind. That's roughly what I was thinking
+
+Matthias Miller  23:26
+anyway, okay, you weren't thinking of having, like, a one row for gross tax and one for, okay, good, okay, good, well, I'm happy if that works. Well, let's do that, because that's way simpler. In my opinion.
+
+Unknown Speaker  23:37
+I make Where does where do we have problems, then I guess it's
+
+Matthias Miller  23:43
+in reporting. You're going to have to do a repeat for list or something, yeah, to like a repeat for list, break break it apart. But in my mind, maybe I'm simplistic in my thinking, but in my mind, that's way easier to deal with than constantly having multiple rows you're reporting in one place, you're absolutely having multiple rows that you might be matched with and not know. And if you do this, then you can have a gross, a gross, a bad debt adjustment and a net, and see it's obvious what's going on and how they connect with each other anyway. I can't see any other place where it's going to get the trouble, can you?
+
+Speaker 2  24:25
+I mean, it does make our filing report just a little more complicated. So I guess it's it's just a choice whether we want the complexity there or if we want it. But I think that's fair. I I wish you could do a repeat list on the repeater G,
+
+Unknown Speaker  24:53
+oh, that's why, right.
+
+Matthias Miller  24:57
+But you could also have a model that. Does the repeat RG, and then just make it the whole thing be a repeat for list and repeat off the repeat list items, because isn't your filing report going to be driven off of
+
+Unknown Speaker  25:09
+the same keys,
+
+Matthias Miller  25:13
+similar thing? I mean, I would think so. I mean, it's vendor plus jurisdiction, jurisdiction, and if you group by that, I don't know if we can get the report fast enough, but if your model groups by that, and optionally by bad debt versus otherwise gross, then you can then your repeat for list is these groups, or you just
+
+Speaker 2  25:42
+have a repeat list, is the groups, and then you just, then, we don't have any itemization.
+
+Matthias Miller  25:49
+Do you want itemization? Yeah, we probably do. I mean,
+
+Speaker 2  25:56
+you're gonna need to be able to link out the contract, at least, don't you?
+
+Matthias Miller  26:00
+Yeah, you do. You're gonna want to see that fine, like
+
+Speaker 2  26:03
+you file for October. Well, you want to see which contracts are we filing for. That's essentially what this thing is here, what we have in zfp. It's just that it's going to get more complicated because we need to. We can't just rip through the OG if we if bad debt rows are separate. So maybe we do want to add a type like we have in CFP, I don't know.
+
+Speaker 1  26:31
+Oh, it's so complicated. It's like that only
+
+Speaker 2  26:34
+I literally just add it to the key and boom,
+
+Matthias Miller  26:42
+is it? Here's the part that I find confusing is, is it feels to me like we've always gotten confused between how I mean, just between how these numbers connect with each other like you have. You take the gross tax plus that tax rate liable for that you take, and you subtract off the bad debt. And the way that you calculate the bad debt rate and the bad debt amount is you take like, although that gets calculated the events
+
+Speaker 2  27:30
+RG, does it help if we're writing off a bad debt subtotal instead of total, like we're doing in zfp, because that's Where we have we're reverse engineering rates and stuff. Wasn't that some of our confusion, if we can just say, Oh, we're writing off
+
+Unknown Speaker  27:49
+this subtotal and this, this tax amount,
+
+Unknown Speaker  27:53
+yeah, this subtotal at this rate,
+
+Matthias Miller  27:57
+well, and this tax amount, I think you do need, Oh,
+
+Unknown Speaker  28:02
+you want to cash that,
+
+Matthias Miller  28:07
+yeah, yeah, just because of rounding, yeah, probably.
+
+Unknown Speaker  28:17
+So, what is it?
+
+Speaker 2  28:18
+What are you thinking? It buys us if the bad debt amount is on the same row,
+
+Matthias Miller  28:23
+I think it makes the I think it makes the I think the liabilities are liability RG is simpler to Understand. But if you call the rose gross tax in bad debt write offs or something like that, it helps. I think
+
+Speaker 2  28:54
+I mean an argument for going throughout your saying is that currently I'm keeping taxable and non taxable on the same row. So it would make sense to also do the same with bad debt.
+
+Matthias Miller  29:10
+Well, what that allows you to do then is to have a gross tax, a non taxable and a bad debt, and then end up with a net now the argument, of course, you can make the argument then that we should put sub, non taxable
+
+Matthias Miller  29:32
+in the as a tag, as a type. Let's go into this. What is my real beef with how in how zfp does? It's bad the tax write offs. Do you want to go into the tax history or? G Yeah.
+
+Unknown Speaker  29:54
+Oh, let me find one that had.
+
+Unknown Speaker  29:57
+There you go. Use tax,
+
+Matthias Miller  30:03
+use taxable materials, subfill adjustment, taxable, subfilt adjustment, non taxable, and bad debt. No, we actually do have them in the same row.
+
+Speaker 2  30:12
+We have taxable and non taxable. It's use tax that's separate. It's used which we don't have to deal with use tax, at least at this point. Yeah.
+
+Matthias Miller  30:23
+I mean, typically, if you do use tax, you can't do rent to own. I mean, that's just, yeah, exactly.
+
+Matthias Miller  30:35
+See the bad debt tax adjustment. Okay, This is something that would make sense.
+
+Matthias Miller  31:04
+What if, if you have two columns,
+
+Matthias Miller  31:15
+okay, you have a, I don't know what the field is called. You have a type which is something like gross tax, and then you have a type that's called bad debt, and each one has a subtotal adjustment, and each one has a as a tax adjustment. And when you incur then the gross tax is typically positive, bad debt is typically negative. When you pay gross tax is typically negative, bad debt is typically positive.
+
+Matthias Miller  32:00
+And so I think it's slightly complicated. It is still slightly convoluted, but I think it's still generally sane.
+
+Matthias Miller  32:21
+In the grand scheme of things, what you owe is gross tax minus bad, no, the sum of and I guess here's the question I would if you call it a bad debt, I don't know. Like, this is the weird thing. The weird thing is that you're writing off bad debt, but it's a negative amount, whatever. I mean, it's, it's, it's a well,
+
+Speaker 2  32:56
+so you don't like in zfp that it's a positive amount with A negative tax. You
+
+Unknown Speaker  33:06
+not particularly
+
+Matthias Miller  33:09
+it's always been confusing.
+
+Speaker 2  33:32
+So it would feel clear if we tap it on one row and you have your taxable subtotal of 600 and your bad debt right off of 3925 and then you just know that, oh, my tax amount is actually 3925 because that's funny. Anyway, it's 3925 because 600 minus 3925 times your rate is 3925
+
+Matthias Miller  34:02
+well, except you still have to freeze the I think you still have to freeze subtitles and tax amounts. But yes, well, yeah, but I, I don't feel strongly. I think Do you want to? Do you want to, do you want to jot down notes of what this will look like if we had separate rows, types and the plus and minuses and or do you? Do you have your, your head wrapped around it? I mean,
+
+Speaker 2  34:24
+I think so. I think if, well, okay, let me actually look at it and see if I still believe so. Filing Basis goes, we would have a, I don't know what we call it, if we have a liability type already,
+
+Unknown Speaker  34:42
+but we would have taxable.
+
+Speaker 2  34:46
+You have your gross tax, like you're saying, then you taxable, non taxable, subtotals possibly filled in. Then you have your tax amount that's simple enough on an incurred row so. Then on a bad debt row, you'd have a bad debt subtotal adjustment. I I guess I'm, I'm still thinking pretty much like zfp, but I'm not sure that
+
+Matthias Miller  35:22
+maybe I'm right. I don't know. The question is, what balance are you tracking? Are you are you tracking liability? Are you tracking two different totals? In my mind, what makes the most sense is, I want, at any given point to know what is my liability, and there's four ways that gets adjusted. One, I I incur gross tax. I incur tax. Two, I reduce it by by writing off bad debt. Three, I increase it again by filing the bad debt
+
+Unknown Speaker  35:57
+effectively. Or, oh, or, Oh,
+
+Matthias Miller  36:03
+well, I don't know that's weird, but you still have to record that you've filed no never mind. It's that. And then there's a question, what do you owe? Which is just the difference between your liability minus your payments. And so in my mind, go ahead.
+
+Unknown Speaker  36:22
+What if we would have,
+
+Speaker 2  36:26
+what if you would have four columns here, essentially, but you have your taxable subtotal, non taxable subtotal, bad debt, write off and then tax liability.
+
+Speaker 1  36:41
+You adjustment,
+
+Speaker 2  36:44
+oh, yeah, something like that, which for an incurred, for normally incurred. Row, it's, it just be a, it'd be your 3226 here for a bad debt row, it'd be a negative of the bad debt adjustment, yep, unless you're quote, unquote, paying a bad debt row, in which case it'd be, would it
+
+Unknown Speaker  37:11
+be, well, I don't know that
+
+Matthias Miller  37:13
+you have to be worried about. I mean, do we actually have to worry about paying, like, what if we have three row type? Okay, I'm still stuck on row types. You can tell me to stop, but there's, there's. Row one is
+
+Speaker 1  37:32
+gross, I don't know. I mean, like
+
+Matthias Miller  37:36
+gross tax. Row two is bad debt. Row three is payment okay? And if you want to add we may, we may have to if, if we need to file exempt and report on exempt, tax exempt separately, that's where we might want another type of tax exempt.
+
+Speaker 2  38:09
+How is that different than I mean we have that tracked already in the non taxable subtotal? I
+
+Unknown Speaker  38:25
+Right, okay, well,
+
+Unknown Speaker  38:30
+I mean, what we had in zfp was simply a, where is it? We just we showed gross sales and taxable versus non taxable breakdown.
+
+Speaker 2  38:42
+And bad debts the exact same way. It's just that, I guess you could write off bad debt like I think I don't know.
+
+Matthias Miller  39:09
+Yeah, so you like, I mean, what you're proposing is very similar to zfp, no, you're proposing putting it okay,
+
+Unknown Speaker  39:19
+hey, maybe we did it, right?
+
+Speaker 2  39:23
+I think it might make it more clear if we do have, like, a fourth column that's essentially so that your fourth column, you literally just is just multiply. I mean, it's stored, but it's multiplied by the tax rate, essentially.
+
+Matthias Miller  39:44
+I think the other thing that would help me substantially is,
+
+Matthias Miller  39:56
+wait we got rid of the bad debt column. Versus only, I also think getting rid of the bad debt column.
+
+Speaker 2  40:11
+Why? So you would, oh, if you have a type of you just put it in taxable or non taxable subtitle
+
+Unknown Speaker  40:17
+adjustment, yeah, with the tax amount,
+
+Matthias Miller  40:22
+you would reverse. You would subtract from the non taxable.
+
+Speaker 2  40:26
+So why did we in CFP? Why did we have used to, okay, I'm I think I'm starting to track your confusion is that in zfp, we have three types, then we also have four columns, when, why didn't we just do two types with the three, I mean two fields, like taxable, non taxable, sub drill, adjustment, with the, with the, with your types. Then, yeah, right, exactly. Okay, I'm starting to track. I'm not sure
+
+Matthias Miller  41:01
+if I would have been able to articulate that way. I'm confused, but I
+
+Speaker 2  41:05
+think that's what it is, is that we've got the three dimensions up and down and the four dimensions left and right, when it could just be three and two.
+
+Matthias Miller  41:17
+And then my thought is, rightly or wrongly, if you think of these as liability adjustments, then you have to, you can eliminate the macros as well that flip it for in certain cases now. But if that's I opposed to go ahead.
+
+Speaker 2  41:33
+So then the field the liability type is bad debt is that a liability type?
+
+Matthias Miller  41:39
+It's an adjustment type,
+
+Speaker 2  41:43
+adjustment type, and then the field is your tax liability,
+
+Unknown Speaker  41:51
+sub total adjustment Yep.
+
+Matthias Miller  41:53
+And then the Yes, correct. And then
+
+Speaker 2  41:56
+if it's bad debt, it comes in as a negative. It's just stored as a negative that is correct. Okay, okay, I can get behind that. And then you have a payment because you don't care
+
+Matthias Miller  42:09
+for filing purposes. You need to know what you're filing for. Actually, hang right. No, but you do need to record then you
+
+Speaker 2  42:23
+Yeah, don't you want each row to have a payment row? Yeah, it's a lot easier to try out, which that makes me wonder if we should go back to having two, well, I don't know, having a type of too, too tight, too too tight columns, essentially. Maybe that's dumb that grows tax and bad debt and then incurred versus payment. Maybe that should all be in one dimension.
+
+Speaker 2  43:02
+Or can you just have one type of payment and then
+
+Matthias Miller  43:07
+track the source row?
+
+Speaker 2  43:22
+Okay, so what happens, but if you have a bad debt row, what is the if you're paying a bad debt row, is that
+
+Speaker 2  43:42
+that doesn't feel right. It doesn't feel right that the because if you're paying an incurred row, yes, the signs just flip
+
+Unknown Speaker  43:53
+right, or you're not.
+
+Matthias Miller  43:57
+You're filing, I mean, you for bad debt,
+
+Speaker 2  44:04
+no, if you're, if you're paying gross tax, like you collected $5,000 and you're paying your 350 Okay, don't you, then, doesn't your liability subtotal just you just flip the sign compared to the source row. So the source row was at a 3200 or whatever. I don't remember what number I said, but going off this record, like if you would just pay this row right here, and that was it isn't your liability subtotal at a isn't just negative 3200
+
+Unknown Speaker  44:56
+I'm sorry. We. Which were, if you
+
+Speaker 2  45:02
+this guy, or do you just still say it's, I guess it doesn't matter if they have a different type for payment.
+
+Matthias Miller  45:11
+I think you have to, okay, here's another way to say this, and this might be simpler. Where is this liability coming from? Or why is this where is this adjustment coming from? Is it coming from the contract, or is it coming from the bill, or whatever we're using, using a bill.
+
+Unknown Speaker  45:35
+Hey, sorry to Yeah. File it. I don't know.
+
+Matthias Miller  45:40
+It's, I mean, like, would it make more sense to use that as a
+
+Speaker 1  45:56
+wait? Why do we need payment rose? Because, go ahead, go ahead,
+
+Unknown Speaker  46:11
+don't we just stomp the bill ID in. I mean, that's, I guess that's what we do for zfp,
+
+Matthias Miller  46:19
+oh, because you're never going to pay a partial,
+
+Unknown Speaker  46:23
+no, you're just going to do the whole thing. And then our types are down to just gross tax and bad debt.
+
+Matthias Miller  46:37
+That's way simpler. Why not? Goodness gracious,
+
+Speaker 2  46:41
+like, there's, there's just no reason. And if they go and they would just say, if you're linked to Bill, you can't edit the amount, like, No, you just
+
+Matthias Miller  46:49
+can't. You can't edit any, I mean, well, I
+
+Unknown Speaker  46:53
+mean you really shouldn't ever add it to anything other than,
+
+Matthias Miller  46:55
+really should never add anything. Yes, 100% okay, that was easy. That was took us ridiculously long to get there. Well, that's usually how easy is. It's true. You get to easy the hard way.
+
+Speaker 2  47:14
+Okay, are we good with gross tax and bad debt as the terms like, what we're calling it is a bad debt write off.
+
+Matthias Miller  47:28
+I don't really care. I kind of feel like with the four columns, if you do it like, Is it four or Well, I mean, if you do it as a write off, where bad debt comes on as a negative, and if you call it a liability adjustment, and tie it out to a bill, like, I just don't, I have a hard time carrying.
+
+Speaker 2  47:49
+So you're thinking, we have taxable subtotal, non taxable subtotal, and then a bad debt write off, and then a liability, like a tax liability, which is,
+
+Matthias Miller  48:06
+sorry, run that by me again.
+
+Speaker 2  48:08
+Are you thinking we have taxable, non taxable, like we have right now and then, also about a column for bad debt? Why Can't We?
+
+Matthias Miller  48:16
+No, I'm not, okay.
+
+Speaker 2  48:19
+Okay. Can't it if it's a bad if the liability type is a bad debt, write off. Can't it just come in as a negative taxable subtotal?
+
+Matthias Miller  48:27
+Yes, okay, yeah. So we have, we have a column called, I don't know what. Maybe it's just straight up sales.
+
+Unknown Speaker  48:40
+I don't know what you call it.
+
+Matthias Miller  48:43
+The other one's bad debt sales comes in positive, generally, except for refunds, bad debt comes in negative. Both have a taxable have a both have a gross amount of Yeah, okay, but why would we do?
+
+Speaker 2  49:06
+I What? Why we literally just throw it straight into the taxable versus non taxable subtotal adjustment? Yeah, you would have that it's negative and it's a tax amount. I don't think I care. We have a type. That's what the type is for. Maybe I should care. I don't know.
+
+Matthias Miller  49:33
+Yeah, exactly, I would agree. So I
+
+Speaker 2  49:36
+thought that was your I thought that was some of your beef with zfb that we have different fields we use and different columns, and there's just no reason for it. I think you do one or the other, and I think we want the different rows like so that filing is easier, and so then we don't need the different fields. You just have taxable and non taxable. And if it's bad debt, it comes in as a negative,
+
+Matthias Miller  50:02
+taxable, non taxable, in a tax amount, right? Yeah. I mean, those are stored, but that's it. Here's my only question, and I don't know if I should be asking this or not, how is tax exempt? If at any point you want to file tax exempt, you need to file tax exempt reasons? I don't know if you do or not. Maybe it's not. It's a non issue. Why? I guess the non taxable thing would always be read only for or always zero or NA for bad debt, like it's just not.
+
+Unknown Speaker  50:42
+I don't know why you never fill it in.
+
+Matthias Miller  50:47
+I mean, theoretically, if you,
+
+Speaker 2  50:52
+I mean, you could, you could. I mean, right now, if we're adding bad debt rose, then you would, then we would, I don't think there's any reason not to. I mean, say you're in a state where the damage waiver is not taxable, and you the customer faults on their contract, then, well, you just say, Oh, fine. And you add your damn your you add your bad debt rose one per period plus type. You know, I can imagine a world you have 25 in five months, at $5 of damage waiver. You have $25 of non taxable bad debt. Right off.
+
+Matthias Miller  51:39
+I can imagine a world in which the the vendor will have a setting to say, what does, what happens with taxable bad debt, and what happens with non taxable bad debt, yeah, and then, and then you just, you just incur differently on the on the contract effectively, I think.
+
+Speaker 2  51:56
+But yeah, I don't think there's any reason to not log it. It's easy enough to do, and we might want it down the road, but it's gonna be easier to do than not to do, actually.
+
+Unknown Speaker  52:09
+Yeah, exactly. Well, you have, okay, I think
+
+Speaker 2  52:17
+so we, and so we've decided we're gonna, we are going to have bad debt rows right in the event, yes. Events are G, Yeah, not bad debt columns. Which, yep, which, that would be, oh, yes, please. No, that would be part of closure. Contract, closure, yeah. When? When does that happen?
+
+Matthias Miller  52:37
+You have to wait until, typically, they leave the contract open for 30 to 90 days, or something like that. Try to collect some stuff, and, yeah, it is on closure. Plus it has to be updated on all payments post closure somehow, like if you, if you collect a payment, if you have a bad debt row and collect a payment, you're gonna have to Come up with a
+
+Unknown Speaker  53:11
+way to, I don't know.
+
+Speaker 2  53:21
+Yeah, I mean, that's probably a question for another day. I just, all I'll do is just add a bad debt event and I'll manually add one to my contract just to test that things are right. But I think it's we'll have to think through. I mean, it's clearly something to think through at some point. Um, my only other concern is that, theoretically, our tax totals are going to end up being off at the end of a contract because, because we collect tax on a payment by payment basis, but then we're calculating liabilities on the sum up to up to the current date. And so if it's if your tax is coming out to like 660, 5.4 if you are like $6.05 5.4 cents, it's going to end up being if, I mean, it's going to end up being
+
+Unknown Speaker  54:29
+different by the end of the contract.
+
+Matthias Miller  54:32
+Is it right to do it as a sum? I
+
+Speaker 2  54:44
+so what I'm thinking of right now, should we instead be this is weird, but should we instead? Should the key also include the key on the i? Maybe in both RGS include the payment ID you're collecting tax on a payment by payment basis, and that'll keep your numbers lined up.
+
+Matthias Miller  55:14
+Yeah, but I mean, but then do you prorate the
+
+Unknown Speaker  55:25
+oh, just think, if you're doing accrual, how does it work? Is that?
+
+Matthias Miller  55:33
+Oh, no, it's still payment by payment within a within each
+
+Speaker 2  55:41
+because it's not, it's not period by period. It is payment by payment. If they pay multiple periods at once, then we're, we're going to collect Tax.
+
+Matthias Miller  56:01
+See, I this is what I hate about x.
+
+Speaker 2  56:28
+Like, Nick and I ran some there. I mean, it's not very substantial, but Nick and I ran some quick math yesterday. So if you'd have, like, a 195, 68 payment per month at 7% tax, it comes out to 1370, per payment at 48 payments at 657, 60 whereas, if you get the subtotal, which is that payment times the months, times the tax, and it's 657, 48 So it's 12 cents different after 48 months, which isn't a ton, but it's also it is a difference. It could go either way. So your your net across contracts will likely be zero or
+
+Matthias Miller  57:16
+close to it. If you're making if it's point 5% that's it will net close to zero, exactly everything, if everything goes this way off of a 28.5 divided by point divided by 20, like, you know, there's, that's two and a half percent of your profit on that payment.
+
+Speaker 1  57:40
+I So,
+
+Matthias Miller  57:49
+okay, here's the question, I guess. Well, I
+
+Matthias Miller  58:06
+we have to start, in my mind, from the very foundational piece of what unit is tax calculated upon in a if it's on a liability basis,
+
+Unknown Speaker  58:29
+then it is based on
+
+Matthias Miller  58:32
+point of increment, your, oh, but
+
+Speaker 2  58:36
+isn't it? I'm sorry if it's, it's based on your, well, what? It depends whether you're in cash or accrual, but it's based on your revenue, right
+
+Unknown Speaker  58:47
+or not? Yeah.
+
+Matthias Miller  58:51
+I mean, here's what I think could make a lot of sense,
+
+Speaker 1  58:58
+is, well,
+
+Matthias Miller  59:07
+is that okay? Do we ping the contract to figure out what is owed for taxes? What do you mean when we make a payment? How do we calculate tax amount?
+
+Unknown Speaker  59:20
+Let me ask Jonathan, I don't know. We calculated tax amount on payments, contract for the current rate. Are we
+
+Unknown Speaker  59:32
+summing making a payment? All
+
+Unknown Speaker  59:52
+right, just the customer just says they want to pay $50
+
+Unknown Speaker  1:00:12
+Based on what tax rates. So
+
+Unknown Speaker  1:00:21
+it's looking at the incurred tax rate.
+
+Unknown Speaker  1:00:26
+Okay, yeah, yeah, okay, okay, perfect.
+
+Speaker 2  1:00:33
+So I said what it's doing is that when we go to allocate it, then we're we're just using the rates from the incurred row. Okay?
+
+Matthias Miller  1:00:42
+We're going to end up with rounding issues if we do that with partial payments,
+
+Unknown Speaker  1:00:50
+which is why we start pay tax enough so, or should we instead be okay, here's rounding attacks. You.
+
+Matthias Miller  1:01:02
+Here's what makes sense to me in Okay, I think I have a I think I think I have a logical, a logical, defensible approach. And tell me if you love it or hate it. Tax always has to be be applied on a discrete unit, typically when you're at a grocery store, you you get your you get your your groceries, your cigarettes and your beer, and you the discrete units are, subtitle one, subtitle two, subtitle Three, and then you're rafting ticket, because why not. And that's subtotal, four and and the discrete unit is that subtotal. My proposal here would be, well, we could go one of two ways. The simplistic way is that the discrete amount is always
+
+Unknown Speaker  1:02:05
+period plus payment.
+
+Matthias Miller  1:02:12
+So if you're if you're paying four periods, you do period one, round period two, round period three, round period four, round, if period four gets split into two payments, you do part one of period four, round part two of payment four round. And it's very simplistic way to go about
+
+Speaker 1  1:02:39
+it. The you
+
+Matthias Miller  1:02:46
+could there's, I don't know, but then here's where I start losing myself. There's different ways you could do this. You could also do jurisdiction plus payment, which also makes a lot of sense. Go find everything within jurisdiction. Jurisdiction and rate for payment. Well, contract plus jurisdiction and rate plus payment. Okay, so get your payment, go find everything in the same jurisdiction, in the same contract. That's your subtotal, one, subtitle, two, subset of three, like tax, tax, tax, that's the total tax that you pay. Also, I think, very defensible with accrual, though, there is a different way that you can think about it, which is, when you when you're making a payment towards something, we basically say, like, how much are you paying? And, I mean, that's where you do the net payment and what tax you need to catch up. And as you make more payments, you're going to get closer and closer to paying the full amount of what we accrued and what you owed. You can even make an argument on a tax basis, if that makes sense, but
+
+Unknown Speaker  1:03:59
+then you're doing this. Okay?
+
+Matthias Miller  1:04:06
+Which goes back to the simplest way to do this is to make the discrete unit be the
+
+Unknown Speaker  1:04:20
+incurred fee for the payment.
+
+Speaker 2  1:04:29
+And you're talking about when we're file, when it's live on liability calculations, right?
+
+Matthias Miller  1:04:35
+Tax payments, when you're when you're okay, when you're asking, when you're asking, What? What is this payment amount? When you're asking, what do we owe? Anything? Okay, when you're paying, when you're paying, when you make a payment for contract, we'll go break it down and say, whether it's cash or or I. Accrual basis, we will always look at the incurred fee and say, what is the what is the amount? What is the taxable subtotal? What is and what is the tax amount? That's the truth of what we're trying to pay for that fee. And anytime you make partial payments, we apply progressively. We use the sum Delta, thing that we do to always use current, you know, what we've paid plus this payment, what is taxed on that, and less what tax that has been paid, recorded on other payment rows, so that when we get to making the full payment, everything zeros out. And if you do that, then how do I determine what my liability is for jurisdiction? Go look at the fees, sum all the subtotal, sum all the taxable amounts. That's not going to come out perfectly. That's fine. We don't expect it to, because this the discrete units are actually smaller than what's showing up in the liability RG,
+
+Matthias Miller  1:06:21
+make sense? Or no, barely,
+
+Unknown Speaker  1:06:34
+okay, go ahead.
+
+Speaker 2  1:06:38
+So okay, we do. We have a problem when we're making payments? I think probably we do right now, yes, we have
+
+Matthias Miller  1:06:45
+a problem making when we're making payments.
+
+Unknown Speaker  1:06:49
+And what you're suggesting is that when you go to allocate your payment, you need to say,
+
+Speaker 2  1:06:57
+we already paid 100 of this, $150 for rent. For this month, and we pay this much tax on it, there's and when we calculate tax, we should calculate off the whole we should calculate tax off the 150 and Well, assuming we're paying the remainder, calculate tax off the 150 and subtract what we've already paid.
+
+Matthias Miller  1:07:23
+Yeah, effectively keeping in mind that you might still not be paying off the balance. You
+
+Matthias Miller  1:07:35
+paid $100 okay? Like you make three payments, 150 and 50. You've paid 100 you pay five, $5 on that. Now you're getting ready to pay another 50. I mean, this is, this doesn't show the rounding problem, but I'm not gonna do rounding problems in my in my head, total payments, 200 we should be paying. We should be paying 10 bucks, 10 bucks, no, 200 Yeah, should be paying 10 bucks, 50. So we so now we're getting, we're getting ready to pay 50. We say, Okay, we we are now liable for 150 of the $200 that's $7.50 we already paid $5 we this payment is going to get $2.50 of tax. Okay. Now the The weird thing is, if you change the tax jurisdiction on a payment on an incurred row, if an incurred row appeared was if an incurred row was marked as non taxable, you marked it as taxable. What this is going to result in doing is that you're going to make a payment and all of a sudden you're going to be paying for this tax in the prior prior period.
+
+Unknown Speaker  1:08:54
+Tax, the prior tax, the tax wrong,
+
+Speaker 2  1:09:00
+don't we. Are we allowed to charge? At that point,
+
+Unknown Speaker  1:09:08
+I was shot.
+
+Speaker 2  1:09:11
+I would have thought you can't, like if you if you marked it as non taxable, and the customer makes a payment, I would have thought that, well, that that's too bad for you. You're just going to have to cover the difference. I wouldn't have thought you could go back in the neck if they make a payment on the same the same period and fee later that you could collect the tax
+
+Matthias Miller  1:09:35
+that you well, we don't expect people to be changing jurisdiction like that, but fair. Okay, so then that that's not sure it's ethically defensible or legally defensible, that's probably true. Okay, so then
+
+Unknown Speaker  1:09:50
+you're making you're making them pay for your mistake.
+
+Unknown Speaker  1:09:54
+So then you.
+
+Speaker 2  1:10:05
+But I'm not if we don't do that, I'm not sure how you get the numbers to line up. I'm not sure you can.
+
+Matthias Miller  1:10:13
+Well, you can still calculate, okay, well, how terrible is it? The answer is probably awful. I mean, how do you account for rounding differences? Then, if you don't do that,
+
+Speaker 2  1:10:31
+would have just thought that the customer, every time they go to make a payment, you get their subtotal, you calculate the tax amount, and that's just, that's what it is for that payment. And then when we're filing, then we do all the things of, oh, well, they paid this amount, which is actually we over collected by two cents. Well, we're going to have to give that to the government, or we under collected by two cents. Fine, we'll eat the difference. So
+
+Matthias Miller  1:11:08
+position of always, of always losing right, because you can never use I
+
+Speaker 2  1:11:23
+maybe because my, my way, I unders I was, I'm understanding sales tax is that you charge the percent at the time they pay. And that just is what it is.
+
+Unknown Speaker  1:11:44
+Then, I don't know, yeah,
+
+Speaker 1  1:11:52
+hang on. I
+
+Unknown Speaker  1:14:02
+doing Dwayne has input on this.
+
+Matthias Miller  1:14:06
+He might I'm checking into some stuff here. So tax cash versus accrual determines when you pay. The question is,
+
+Matthias Miller  1:14:34
+do you calculate taxed on a per line item basis or not? I
+
+Unknown Speaker  1:14:53
+wait a minute.
+
+Speaker 2  1:15:37
+Couldn't you argue that you collect it or you liable for it on a payment plus jurisdiction level? Let's say you get the subtotal payment plus jurisdiction what jurisdiction rates, whatever,
+
+Matthias Miller  1:15:58
+not based on a crew. I mean not based on accrual, because you accrue it all right? I think the most defensible thing is to say what I'm not sure about is whether you should, you should do by dates, merge by dates, or just do individual rows separately. I'm going to assume you need to do it together, because you're going to incur dwf and monthly rent on the same day. So I'm going to assume it's jurisdiction plus date. So you do a daily sum. It seems to me, why do we calculate and show tax on payments?
+
+Unknown Speaker  1:16:41
+What do you mean
+
+Matthias Miller  1:16:47
+payments? Tax does not make sense. I don't.
+
+Speaker 2  1:16:54
+I don't think we really show it on the payment. Do we I think we just have a few total, and then it goes and gets broken down
+
+Unknown Speaker  1:17:05
+by our allocation. So this whole thing is moot.
+
+Speaker 2  1:17:15
+No, I think, I think where we're still going to end up with differences is the we're going to be recording wildly lower tax towards the end of contracts, if jurisdiction stays the same.
+
+Matthias Miller  1:17:39
+That the issue is that we should not be summing contract value and applying tax. We should be looking at the sum of whatever this piece is. Okay. You look at to calculate what your liability is. You should look at date plus jurisdiction and rates. Okay?
+
+Speaker 2  1:18:05
+I think so. Do I do I add keys in my I think? Don't I add keys to my items, to my key that's currently vendor plus rate or jurisdiction rates, whatever, don't I add a isn't it a period, a date?
+
+Matthias Miller  1:18:27
+Because, because they have a late fee outside of a period,
+
+Unknown Speaker  1:18:35
+and the date is the date it was, it's just the entry date, the effective date.
+
+Matthias Miller  1:18:42
+So either payment or incurred increment date, depending on the basis
+
+Speaker 2  1:18:50
+I see, okay, well, then I'm going to need to rework my model, or the way I'm currently, I'm just running off incurred rows, but for cash message, then I have a, I just have a macro that's doing, that's looking up to see what value
+
+Matthias Miller  1:19:07
+you can have a macro, I mean, you need to call it something different
+
+Unknown Speaker  1:19:12
+payment, payments
+
+Matthias Miller  1:19:15
+on different dates for cash, okay, but that's my point, payments, okay, if we change how payments are represented, even if you're paying on a cash basis, your tax gets calculated on the date that the fees are incurred. So February 1, you have $100 104 50 $100 rent, 450 dwf, we calculate tax on that. When you pay five bucks, you still calculate you do maybe magic to figure out how much has been paid. Paid, but the customer isn't technically paying. The customer is technically paying against that invoice for the total, 104, 50, and there is no tax rounding that happens. They make a tuna dollar payment.
+
+Speaker 2  1:20:16
+See invoice. So this is some of the difference between just a I'm going to go buy something and rent to own.
+
+Matthias Miller  1:20:32
+Well, the difference between going and buying something, it's really not that different. Imagine, imagine that you go over to to
+
+Speaker 2  1:20:39
+to Glen, smoke, fruit, whatever. Yeah, I think I'm saying
+
+Matthias Miller  1:20:43
+I want $100 of groceries. Yeah, okay, they run it up. Here's your your receipt. I have a copy. You have a copy. And you're like, I have a 20. Can I come back tonight with with more money? Sure. Okay, $20 received. You come back? 2020, 2020, those $20 bills are not taxable. It's going towards a taxable amount because you received an invoice, revenue, you received it. And our problem is that we're trying to create tax. Tax calculate, assign tax to payments. You don't you assign tax to the incurred row in whatever, whether it's grouped by day or whether it's grouped by event. I think it has to be by day in some, some form or fashion, but maybe not, and that probably depends a little bit on how the contracting calculations are written. And then payments just go towards that. When you're calculating liabilities, you look at the increment row and you say, how much has been paid towards that? Well that's my current liability for this row, times the tax rate. And at whatever point that they pay the full amount. Well, there you go. It matches. It matches it comes out cleanly.
+
+Speaker 2  1:21:55
+What are your thoughts? So we calculate, so it's tax on a period by period basis, like it's when you incur, you're saying, If you incur both rent and dwf,
+
+Unknown Speaker  1:22:16
+well, I think
+
+Matthias Miller  1:22:17
+it's logical that you're taxed,
+
+Speaker 2  1:22:19
+or are you taxed on rent? You're taxed on damage waiver, and that's fine.
+
+Matthias Miller  1:22:23
+I, as I'm assuming, way easier. It is going to be way easier. Let's ask Dwayne if it matters.
+
+Speaker 1  1:22:33
+Dwayne Dwayne, Dwayne, Dwayne, Dwayne, Dwayne.
+
+Matthias Miller  1:22:40
+Does it matter between doing tax like The rent plus BW?
+
+Unknown Speaker  1:23:24
+That that she's, I,
+
+Matthias Miller  1:24:05
+what do we how do we calculate the monthly payment? Currently,
+
+Unknown Speaker  1:24:11
+it's combining the two and then tax.
+
+Matthias Miller  1:24:15
+My instinct is, that's what they're going to want to do.
+
+Unknown Speaker  1:24:20
+Yeah, that just makes it. This
+
+Matthias Miller  1:24:38
+is the one piece where we're breaking down. Is that, yeah, these are basically, like mini invoices, if you want to think of them like that,
+
+Speaker 2  1:24:53
+a month by month. Thing is a mini invoice, right? Essentially, what's essentially period, but the. Late Fee is separate,
+
+Unknown Speaker  1:25:03
+right? Well,
+
+Matthias Miller  1:25:10
+I mean, I don't know, leafy would necessarily have to be forgiveness, isn't you could do it by period, if you always have a rent fee for periods, why wouldn't you always calculate the tax off the period row, the rent row,
+
+Speaker 2  1:25:39
+that is the 85 things. I think that is the anchor, yeah.
+
+Unknown Speaker  1:25:50
+Where would that have trouble?
+
+Speaker 2  1:25:55
+Are there any times they're somehow going to have a redelivery fee or something, but it's not in a period, I guess we just say then that it has to be in a period. I don't know.
+
+Matthias Miller  1:26:12
+I'm not sure about that. I'm not sure what to do.
+
+Speaker 2  1:26:28
+Mean, I guess at that point, what you need to do is essentially have a macro that says this row is the tax is, I don't know tax key for period or something
+
+Matthias Miller  1:26:42
+is right.
+
+Unknown Speaker  1:26:45
+And then for pretty
+
+Speaker 2  1:26:47
+much everywhere, if there is a rental row in the period, then it's that. Otherwise, if there isn't, then fine. It's, it's whatever your row is probably right.
+
+Unknown Speaker  1:27:17
+Then Jonathan needs to if we get that in place, how does it work from allocating payment side of things?
+
+Matthias Miller  1:27:30
+Yeah, that's the weird thing, because today it's really kind of a funky thing to say, I'm paying $10
+
+Unknown Speaker  1:27:40
+of a late fee, I mean.
+
+Matthias Miller  1:27:51
+But basically what you're doing is, for this period, you're doing the fancy sales tax calculation based off of the period. Is the is what I've been calling the discrete unit. I'm sure there's some other, better, fancier term, and you're saying, take whatever has this doesn't handle jurisdiction changes, okay, but on a jurisdiction change, this is where it's defensible. If you go back, if I make $100 payment against $125 against $125 $110 invoice, and the invoice gets amended to $120 I have $20 that's due now, not 10. It's nothing to do about fraud or covering mistakes. What what I owe is different.
+
+Speaker 2  1:28:36
+Go ahead. Can we just only store in like we change this to very much be we don't show a tax amount on Damage Waiver rows. We only show it on whatever the quote, unquote key tax discrete unit, whatever right tax key is correct. So that's where we store our rates, and that's where that's where we record, or that's where we have a tax total for the period.
+
+Matthias Miller  1:29:12
+Okay, I think I hate this, but this is an idea. We could have another row type for sales tax liability, honestly,
+
+Speaker 2  1:29:30
+because we're breaking down because we're trying to get too granular, and that's not how you calculate sales
+
+Matthias Miller  1:29:35
+tax. No, it's not.
+
+Speaker 2  1:29:38
+And so I think that's our fundamental problem, yes, and then we no longer have you keep your subtotal, you keep your tax exempt check box or taxable whatever, on every row, but you don't have a total on every row. Or, I mean, you.
+
+Unknown Speaker  1:30:00
+Right, yeah,
+
+Matthias Miller  1:30:05
+and, and you never show when you're making payments. All that you're saying is, I'm paying for this fee, this fee, this fee, what's the tax? And you show the grand total tax. I also think my argument about amending an invoice is, I think it's a legitimate argument that the next time they come back to pay, they should be $20 instead of 10. Would the
+
+Unknown Speaker  1:30:35
+would the tax row have a stored up total, like the tax liability,
+
+Unknown Speaker  1:30:44
+or would that be? How does that work? I would think,
+
+Matthias Miller  1:30:57
+well, and then here's the other question. It's a side note, if somebody comes in and adds a fee exactly to a historical date or for okay on forgiveness, what happens if somebody forgives? I mean, if somebody forgives, then you need to issue a refund against the payment to get it back down to or you need to reallocate the payment for part of that payment to go to a different period,
+
+Unknown Speaker  1:31:33
+because of tax,
+
+Matthias Miller  1:31:35
+because of tax. And we also just need to, need to know, go ahead, do good.
+
+Unknown Speaker  1:31:43
+When would that happen
+
+Unknown Speaker  1:31:45
+if you're doing if you're forgiving, it'd be if there's a tax is it a taxable late fee?
+
+Matthias Miller  1:31:53
+Yeah, sure, if you're forgiving a taxable fee, for example, and the customer's already paid it,
+
+Unknown Speaker  1:31:59
+why would you forget something they already paid.
+
+Matthias Miller  1:32:03
+I don't know, does that happen? It's an edge case. It's not. I don't care deeply about it. I think it's fine in the weird event, if
+
+Speaker 2  1:32:14
+it would, yeah, I'm not too worried about it.
+
+Matthias Miller  1:32:17
+There was something I was thinking about with this, but, but fun, okay, we need to. We need to. We do need to store on a payment what we told the customer we collected as tax.
+
+Unknown Speaker  1:32:41
+Okay? Do we show them that breakdown? I thought we don't even,
+
+Matthias Miller  1:32:48
+we don't show any breakdown.
+
+Matthias Miller  1:32:54
+I guess it's fair
+
+Speaker 2  1:32:56
+in the way if we isn't it literally just like, pay one month, pay two months, pay balance. So on the re
+
+Matthias Miller  1:33:06
+so on the receipt. Well, I mean, if the receipt only shows that you're making a payment of 125 61, and we don't explicitly state that that's tax, we do have to think through though, if a customer overpays for a period, For whatever reason, what happens With those additional funds? So
+
+Unknown Speaker  1:33:49
+Oh,
+
+Unknown Speaker  1:34:03
+messy.
+
+Matthias Miller  1:34:10
+Okay, let's try taking this from the well, let's take a I need a five minute break here, or maybe even you want to just break for lunch. Then just ping me. I'll be back in maybe 30 minutes or so. Yeah, sounds good. Okay, thanks. Hey.
+
+
+Transcribed by https://otter.ai

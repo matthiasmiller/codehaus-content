@@ -1,0 +1,371 @@
+Matthias Miller  00:20
+Hello, hello. All right, let's go.
+
+Speaker 1  00:29
+I just sent you an email with some stuff that I found on it. We have some sales, order payments, Stripe payments, that are linked to old, old sales or payouts. So like, back in 23 so they're not on, they're not on this report, and then they're also creating a difference. Because, yeah, your report, the reports, only payout is based on payouts happening during this period, so the wrong one issues.
+
+Matthias Miller  01:09
+So we might, we might actually, as much as we love new reconciliation reports, we might actually need to create a two way two way Reconciliation Report?
+
+Speaker 1  01:24
+Well, yeah, would there be a way to make the same thing as this payout report that is based on payments? You know? Right? The same thing the payments in the period instead of payouts in the period.
+
+Matthias Miller  01:47
+Yeah, some of it
+
+Speaker 1  01:48
+definitely matches. Like there are days where it it's definitely the ones that are on the report that matches it so good.
+
+Matthias Miller  02:00
+Well, so what's the most useful time of the 25 minutes that we have? Is it putting together that report to give you the opposite thing, or is it looking into some of these?
+
+Speaker 1  02:18
+Probably that report would allow us to find out if there's anything else going well. I mean, on the on the times when the other for the so the payout report did not come up with my difference. What I found was the complete difference for that those instances. So I kind of doubt there's anything else going on. But you never know.
+
+Matthias Miller  02:46
+Okay, and are we only looking at? Do we need to look at all credit card transactions, whether they're linked out or only credit card transactions going to stripe? Not sure. We might not know.
+
+Unknown Speaker  03:03
+I think so. Wait, figure in the line item somehow. Okay, these guys, these also do not have fee,
+
+Matthias Miller  03:19
+and then we need.
+
+Matthias Miller  03:28
+I'm assuming you want to start date and end date. Probably
+
+Matthias Miller  03:42
+right. So let's do one, one through today. Let's do so payment.
+
+Unknown Speaker  03:58
+Date I'm
+
+Matthias Miller  04:05
+Um, all right, so then let's do And
+
+Matthias Miller  04:18
+we should group by that and also i A
+
+Matthias Miller  04:58
+so then we had reversed. That. Okay? So that gives us the we got payments without a date. That's fun. No, we don't so payments that weren't deposited. Sure?
+
+Speaker 1  05:25
+Would they have had to be deposited within the time frame that you have in order to show that's
+
+Unknown Speaker  05:31
+fair, we should show anyway. Do you
+
+Matthias Miller  05:35
+want to show undeposited, undeposited ones as well?
+
+Unknown Speaker  05:43
+Yeah, I mean, yeah, because that'd be a problem too.
+
+Matthias Miller  05:54
+Wait, what did I just do? What did you do? Oh, the payment date is okay. But, I
+
+Speaker 1  06:10
+mean, the payment date needs to be in there. It would just, oh, no, it should just show the payout date, whenever that be, and if it's not, it just doesn't have one.
+
+Matthias Miller  06:27
+We do payment day. Payment date is easier. It means there's some a few days, potential days of discrepancy at you know, December 28 might still come in on the first why are these not? Okay? I thought stripe deposit date here, hang on, that is, that is literally the
+
+Matthias Miller  06:53
+so payment. Well, then let's do this.
+
+Unknown Speaker  07:18
+This should be this should this should be this.
+
+Matthias Miller  07:34
+Okay, so then we need the so payment, amount, which should be a sum.
+
+Matthias Miller  07:50
+And then we need this guy should be an expression.
+
+Matthias Miller  08:47
+And this is the sales order, amount, payout, amount. This is the difference.
+
+Matthias Miller  09:23
+All payment, amount, great. I'm
+
+Matthias Miller  09:51
+all payment. Okay, so?
+
+Matthias Miller  10:15
+Okay, we
+
+Matthias Miller  10:20
+wanted to be fancy. We could do zero to an A, okay,
+
+Matthias Miller  10:34
+so and then we can have this.
+
+Matthias Miller  11:10
+This should be actually we want the well, I don't know exactly what we want here. I
+
+Unknown Speaker  11:44
+so let's go.
+
+Matthias Miller  11:53
+All right, we should have an So, payment date,
+
+Matthias Miller  12:09
+okay, so These are just made. That makes sense.
+
+Unknown Speaker  12:18
+Oops. I i
+
+Matthias Miller  12:43
+It's the does
+
+Matthias Miller  12:54
+this look great?
+
+Speaker 1  12:59
+Okay, um, would this be for all all companies, or is it for
+
+Unknown Speaker  13:06
+affordable? I
+
+Matthias Miller  13:43
+so let's do joint that should be on the top.
+
+Matthias Miller  13:54
+Okay, this is affordable now. Okay, like this is obviously missing a fee. This is missing a fee. This is missing a fee. We should show in So, payment date, payment method.
+
+Matthias Miller  14:19
+I insurance right transaction ID would actually make sense after more like that, or, yeah, okay, so
+
+Speaker 1  14:35
+the beginning of September, Shay do
+
+Matthias Miller  14:49
+the interesting. There's another, okay,
+
+Speaker 1  14:54
+yeah, okay, 70 so that's the 7230 77 those. Are on the other report go up to the fifth, September, 5. It
+
+Speaker 1  15:17
+was on the fifth I should be showing. $427.75 is a payment that's linked to a 2023 transit payout transaction.
+
+Matthias Miller  15:34
+Oh, but because we're doing let's do this. We have to get smarter with their logic, so
+
+Unknown Speaker  15:48
+I can show you that item. If that helps.
+
+Matthias Miller  15:51
+No, I know what's wrong. I mean, if the payout date, we don't have a payout date, Then we include it. If let's just do this. I'm
+
+Matthias Miller  16:48
+that's gonna have September 5. Oh, it's leaked to 2023 so really, what we want to do is, actually, let's do this. Yeah,
+
+Matthias Miller  17:13
+there we go. If the payout date or payment date is in the range, let's include it. So now if we go down to September 5,
+
+Matthias Miller  17:29
+no, because it's here, it's here.
+
+Matthias Miller  17:41
+Oh, we're grouping by payout, there's a whole
+
+Unknown Speaker  17:44
+bunch that are linked to that thing,
+
+Matthias Miller  17:49
+ow, yeah, just Ow. So we go to the payout,
+
+Speaker 1  17:54
+well, yeah, there's about number six from the bottom. Is the one that happened on that day. Yeah?
+
+Matthias Miller  18:03
+Okay, ideas. One
+
+Matthias Miller  18:10
+thing that, how did they get there? Okay, well, let's find out how they got there. So the one that should be on there is, I mean, it's, I shouldn't it's not on this list, so Let's go here. Modification history.
+
+Matthias Miller  18:37
+Let's do this. So payment,
+
+Matthias Miller  18:49
+this transaction. Wait a minute. How? It
+
+Matthias Miller  19:11
+has a blank it has a blank transaction ID. Never should stop the videos again.
+
+Matthias Miller  19:27
+Oh, here. So these, these don't have any transaction IDs on them, so it's tying out to this transaction ID, which doesn't have any transaction ID, they're both blank.
+
+Unknown Speaker  19:47
+The same, since they're all blank, it should fit exactly
+
+Unknown Speaker  19:56
+one blank means all i. Yeah, so then what?
+
+Matthias Miller  20:04
+Well, we need to code a fix before the weekend, so that we stop. Do we stop? And that'll, that should clean those up.
+
+Matthias Miller  20:22
+It'll, it'll avoid the avoid all those 330, almost $34,000 worth of
+
+Unknown Speaker  20:37
+Yeah.
+
+Unknown Speaker  20:44
+No strip ID, yeah, this payout number one.
+
+Speaker 1  20:53
+So what? What's going to happen if we just give that old payout a number, just, you know, call it x, then what would happen?
+
+Matthias Miller  21:02
+We just need it. We just needed what we need to do is we just need to not match on blanks, and then these transactions will just get voided because they're pre accounting impact date.
+
+Speaker 1  21:22
+Well, yeah, okay, but then, would that allow them to then reconnect to what's correct?
+
+Matthias Miller  21:29
+Well, they're still going to be in they are still going to be incorrect. We're not going to know where they're paid out to. So the question then becomes,
+
+Speaker 1  21:39
+so, yeah,
+
+Matthias Miller  21:45
+I mean, it's a refund. That
+
+Speaker 1  21:46
+one there. The payout is number 935, but that one's supposed to be and if you go, I'm sure, can you get so that's that old link, but if you go to the payments in that old blank.
+
+Matthias Miller  22:06
+Oh, the right, the payments on this old link is completely irrelevant. Yeah, right, yeah, yeah, okay, here's the payout then, which has the transaction ID? Is this transaction ID show up here? Let's do this.
+
+Matthias Miller  22:45
+That transaction ID doesn't we need a search by stripe. Transaction ID is what we need. But anyway, I
+
+Matthias Miller  23:21
+on great payout,
+
+Matthias Miller  23:39
+it's only the refund. I mean, the reason refunds don't really work well is because typically, the original charge shares the same transaction ID.
+
+Matthias Miller  23:58
+It's not true in this case, but we might have,
+
+Matthias Miller  24:06
+You might have other instances of it.
+
+Matthias Miller  24:13
+Save This. I'm
+
+Matthias Miller  24:26
+happen with this guy, 18 and
+
+Matthias Miller  24:45
+yeah, there's the original charge.
+
+Matthias Miller  24:53
+Well, I think, I think we're going to have trouble. With all of the
+
+Matthias Miller  25:11
+with all refunds, or almost all refunds,
+
+Matthias Miller  25:22
+I'll bet you this is all the refunds for the year, or maybe it's not all the refunds For the year, but,
+
+Matthias Miller  25:38
+well, I'll email you this report. What?
+
+Unknown Speaker  25:48
+Just put it in the incident.
+
+Matthias Miller  25:50
+Thank you. Good point. Yep,
+
+Matthias Miller  26:28
+there you go.
+
+Matthias Miller  26:40
+Are we? I think it begs the question whether, whether we're going to be able to get anywhere without solving the refund ID issue.
+
+Matthias Miller  26:56
+Well, Drew you're heading out early today. You said,
+
+Unknown Speaker  27:03
+Yeah, I mean, that's another hour, but
+
+Matthias Miller  27:08
+okay, well, I won't be available. Then I guess. Let me know if you want to, if you guys want to meet up tomorrow to work through.
+
+Speaker 1  27:20
+Do we need to be bringing Josh on for about this refund ID situation or,
+
+Speaker 2  27:29
+well, what's your thought? Matthias, I mean is, is that the only way we'll get it completely fixed?
+
+Matthias Miller  27:40
+It's probably the correct long term fix. I just don't know. I
+
+Matthias Miller  27:48
+just don't know if there's another, if there might be an elegant or a simple, short term thing that we could do to get unstuck.
+
+Speaker 2  28:03
+So would it be helpful to have Josh on the call as well? And the four of us better figure out what works on or figure out a path forward with refunds.
+
+Matthias Miller  28:18
+Let me shoot him an email and let's see if this, if he can respond by email and get, get a good
+
+Matthias Miller  28:28
+Josh refund IDs.
+
+Speaker 2  28:35
+I mean, is big picture. What what we're dealing with is when we do ACH is or checks, we know what happens with the payments here. We're giving information to stripe, and we're trying to translate back into our system what they're actually doing
+
+Matthias Miller  28:54
+correct, and we're not this is this is my this. Is my commentary to Dwayne after the call. But I think the fundamental answer is that Josh's gifting and skill set is not accounting level due diligence to dot i's and cross T's. And I think to get all the information, there's just a bunch of stuff on the stripe side that we haven't thought about, like, how do we get unique IDs for refunds, etc, etc, so we just need to. It's not an inherent problem with stripe. I don't believe it's just there's a bunch of this stuff we never had to worry about before.
+
+Speaker 2  29:41
+And is also how much of it is allowing users too much flexibility on doing like just refunds and and basically editing payments to where it's not linking out properly. But do we need to tighten that up as well?
+
+Matthias Miller  30:00
+It's partially that, but we don't handle but, but there's an underlying problem with stripe not handling straight refunds at all or not like that is potentially the case you shouldn't be.
+
+Speaker 2  30:17
+Yes, so you're emailing Josh. We'll see what he comes back with, and then try to regroup tomorrow. If, yeah, should we set a time? I mean, how's your day look tomorrow?
+
+Speaker 1  30:34
+I have something in the morning, but after like 11 I shouldn't be able to do something. Where else are we? But,
+
+Unknown Speaker  30:50
+like, how early? Well,
+
+Matthias Miller  30:52
+I guess Matthias is we've got priorities. Do we still have debt priorities in the morning? Yeah, I'm not. I'm not doing it earlier than that,
+
+Speaker 1  31:03
+I would say after 11 onward, I could do something.
+
+Unknown Speaker  31:11
+What should be planned for 11.
+
+Matthias Miller  31:15
+I could do I could do 11. I could do 11. I think, Let me confirm with, Let me confirm with Seth, and move him so I would move him to
+
+Unknown Speaker  31:34
+I could in the meantime.
+
+Unknown Speaker  31:35
+Wow, meantime, but we
+
+Speaker 1  31:38
+can go ahead and do a starting journal entry, because I'm pretty confident that we know what the issue is in the report. And so whatever we're off at the beginning of the year, it's going to be journaled. And then these, these issues are just going to be, you know, taken care of by fixing things within 25 then that should all match. So,
+
+Unknown Speaker  32:07
+you know, so for like affordable, that's 71 760, or whatever it was,
+
+Matthias Miller  32:14
+I got a drop, but we can. I'll send an invite. I'll confirm with let's plan on 11 tomorrow. I'll confirm with Seth that we can move his stuff around and we can reconvene from there. All right. Awesome. Sounds good.
+
+Unknown Speaker  32:33
+Thanks. Yep, bye, bye.
+
+
+Transcribed by https://otter.ai

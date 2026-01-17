@@ -1,0 +1,296 @@
+Matthias Miller  00:19
+Hello, hello, do
+
+Unknown Speaker  00:28
+you want to drive?
+
+Matthias Miller  00:31
+Yeah, sorry, give me I'm happy to let me get caught up on what my life has been like.
+
+Unknown Speaker  00:41
+Sounds good, you laugh. It sounds familiar.
+
+Matthias Miller  00:50
+Okay, so
+
+Matthias Miller  00:59
+it's just a clicker report, right? There's nothing else we're
+
+Speaker 1  01:02
+trying to do now. That's all for now. I feel so happy with our calculations or ending up
+
+Matthias Miller  01:08
+I like our stuff. So
+
+Unknown Speaker  01:12
+that's my work high for the past
+
+Matthias Miller  01:15
+last day or two. That's awesome. All right, so we start with transaction mismatches. I think, yeah,
+
+Unknown Speaker  01:29
+remember if I have notes anywhere for
+
+Matthias Miller  01:34
+and I think the basic idea would be,
+
+Speaker 1  01:38
+we want net include anything where net impact per account across multiple transactions is zero. Yeah, I think it's only stuff from 25 I think
+
+Matthias Miller  01:51
+level and record ID. So we don't care about transaction IDs for This. I
+
+Matthias Miller  02:07
+um, and then the list filter is
+
+Matthias Miller  02:30
+it's a new macro.
+
+Matthias Miller  02:39
+So then this guy, this event type,
+
+Matthias Miller  02:55
+so we are going to look for, Look list substitute
+
+Matthias Miller  03:12
+for level. We have this event type,
+
+Matthias Miller  03:24
+this is the record ID,
+
+Matthias Miller  03:41
+and this is if account accounting, transaction date out Transaction Date. Because why would we?
+
+Speaker 1  03:52
+We like having as many different prefixes as possible? It just it keeps. It keeps and keeps us on our toes. Yeah, exactly like a ballet dancer.
+
+Matthias Miller  04:07
+Yeah, I
+
+Matthias Miller  04:25
+A countered net.
+
+Matthias Miller  04:34
+Well, actually, though this isn't quite right, because we want to know if it had per transaction differences.
+
+Speaker 1  04:52
+But then if the sum of those differences is a net zero, right?
+
+Matthias Miller  04:58
+But if all the differences are net. Zero, yeah, so maybe that's actually not the best way to do this. Maybe we should. Okay, let's try this again. Kill
+
+Matthias Miller  05:18
+the draft.
+
+Matthias Miller  05:35
+We get the transaction IDs. I'm
+
+Matthias Miller  05:48
+it. How would we do? Okay, let's, let's figure out how this works before we try to build it. I Okay, my first macro can tell us which ones to potentially include. This would be, what this could give us is a master list of all records to effectively subset the other report by that'd be one way to do it.
+
+Unknown Speaker  06:42
+Well, you have one like, go
+
+Matthias Miller  06:46
+ahead, yeah, this is easy. I
+
+Matthias Miller  07:03
+it's net zero, if,
+
+Matthias Miller  07:10
+yeah, yeah, piggy, piggy. Pasty. Pasty, all right, so So if it's basically like this, look at back for model, building in the X fine look cache key. Cache keys. Oh,
+
+Matthias Miller  07:44
+we should do that. Let's do it here. If LOC is net,
+
+Matthias Miller  08:09
+we wouldn't actually need this. Let's just
+
+Matthias Miller  08:28
+so we get the events. Find all events for this record, regardless of sub IDs, and if it's Net Zero, pre 2025, 2025,
+
+Matthias Miller  08:51
+sure B, Level B, record ID, the account.
+
+Matthias Miller  09:01
+Impact, oh, well, fine, be that way. Then.
+
+Matthias Miller  09:11
+You happy now, there we go. All right, so this is The
+
+Matthias Miller  09:21
+save this guy. I
+
+Unknown Speaker  09:43
+Okay, so working rows are there in the mismatch report,
+
+Matthias Miller  09:47
+I don't know. Oh, here's what we could do to make this faster. No, we can't find.
+
+Unknown Speaker  10:22
+Wow, let slow. It's a lot slower than the mismatch report. Does that have the respect? Report loaded already,
+
+Matthias Miller  10:36
+but are we? We're hitting the transactions twice.
+
+Matthias Miller  10:52
+And we were looking at all transactions for that record, not just,
+
+Matthias Miller  11:02
+come on, little buddy, you can do it. I believe in you, it looks like it's stuck. Or something does look like it's stuck, like it's been on this track the whole time.
+
+Matthias Miller  11:23
+Let's just do, let's do like building positive checks. Oh no, because buildings are we don't expect anything.
+
+Unknown Speaker  11:33
+Building is where the problem is. Roy, Kim, Roy.
+
+Matthias Miller  11:42
+Roy, what are you doing? Just building sales, order, vendor invoice. Building sales, order, vendor invoice, I don't know. Okay, well, it didn't crash. That's good news. Run out of memory. Okay, be great. All right, so theoretically, i
+
+Speaker 1  12:24
+the whole mismatch report has 5112 the
+
+Matthias Miller  12:43
+accounting impact
+
+Matthias Miller  12:51
+reduction.
+
+Unknown Speaker  13:07
+That's not a net zero,
+
+Matthias Miller  13:10
+isn't it? It's not a net zero. What am I missing? I
+
+Matthias Miller  13:21
+don't know. Well,
+
+Unknown Speaker  13:25
+unless the net account impact thing is wrong,
+
+Matthias Miller  13:30
+see how we come up with that net account impact. Look, correction string table, which you pass in here.
+
+Matthias Miller  13:44
+Well, it could be okay. This is 1031, row, 1223, we're going to ignore doing 24 we mean, ignore 2024
+
+Speaker 1  14:05
+or was it for some reason, I'm thinking we wanted them to go through 25 Well,
+
+Matthias Miller  14:12
+25 will automatically apply. That's true.
+
+Speaker 1  14:17
+Oh yeah. My note says, exclude everything from 2025
+
+Matthias Miller  14:23
+yep, I think the issue is that record IDs aren't sorted. I mean, it's grouped by the transaction itself. And so here we have a
+
+Matthias Miller  14:45
+7760 8745 I see, and then here we should have the opposite. I mean, if I did my logic right for. Would be good to sanity check it Okay, so I have 4554 in the report,
+
+Unknown Speaker  15:11
+and there's that leaves like 600 ish.
+
+Matthias Miller  15:14
+But weren't sales orders also an issue?
+
+Unknown Speaker  15:19
+Maybe think buildings were definitely the main one, but
+
+Matthias Miller  15:25
+it wouldn't shock me if there's some it's like sales tax or something,
+
+Unknown Speaker  15:32
+AR and sales tax, maybe,
+
+Matthias Miller  15:36
+no, well, let's do this. Wouldn't take much, just do everything but buildings.
+
+Matthias Miller  15:57
+Well, that's interesting. What I mean? I don't know. Just just interesting.
+
+Unknown Speaker  16:05
+What is I wasn't I was looking at my own, oh,
+
+Matthias Miller  16:08
+I'm sorry, like, there's nothing but building showing up. And so we have 600 not accounted for, but it still seems sane to get rid of these 600 and I I
+
+Speaker 1  16:23
+mean, it's a lot easier to work with 600 than 5100, and maybe we'll find there's a whole nother batch of things we can just,
+
+Unknown Speaker  16:33
+oh no, 2025, mismatches, just push across. So it's not that, right?
+
+Matthias Miller  16:43
+It might be date boundaries, where we move some amounts across date boundaries.
+
+Speaker 1  16:52
+Some of it was 24 and some 25
+
+Matthias Miller  17:02
+I guess we could expand it to ignore the transaction dates. How would that work? You would look at all,
+
+Matthias Miller  17:41
+it would be Something like this. Oh,
+
+Matthias Miller  18:01
+this isn't quite right, because we're not Ooh, yikes.
+
+Matthias Miller  18:29
+Yeah, I should put that in a macro, after all, so we could also do it like this, where you have the transaction IDs,
+
+Matthias Miller  18:47
+and then you have.
+
+Matthias Miller  21:50
+No, that's not it either, because then you have To do that for I
+
+Matthias Miller  22:10
+almost be easier to
+
+Matthias Miller  22:25
+do this.
+
+Matthias Miller  22:32
+Do this and
+
+Matthias Miller  24:46
+Okay, so we filter for everything, all transaction, all everything, all accounting impact that we wanted to see in 2024 Well, it does now. I.
+
+Matthias Miller  25:10
+Um, and then we sum all the needed corrections. And if the all the needed corrections for that period is zero, net zero across all of them, then we run it so
+
+Matthias Miller  25:51
+gonna have to drop in few minutes here. All right, see, how do you like me? Now? I still
+
+Speaker 1  26:10
+want to report done that's just a hard coded that just takes the IDs from here and has The
+
+Matthias Miller  26:17
+has the date filter and the ID filter. I
+
+Matthias Miller  26:47
+Okay, and then technically we should, it would make a lot of sense to change this. I
+
+Matthias Miller  27:04
+We don't do repeaters. Okay, fine. I
+
+Matthias Miller  27:47
+six, yeah, I mean, everything should now. The logic seems pretty robust.
+
+Matthias Miller  28:02
+That'd be nice, if we would,
+
+Speaker 1  28:08
+that one, the one there is not quite doesn't look like it quite checks out,
+
+Matthias Miller  28:13
+as we have. Well, this, this would help.
+
+Matthias Miller  28:29
+Reverse falls. Falls just, it shouldn't have duplicates, but just, Okay, I gotta drop it sorting. It's gonna help eyeball those, yeah, we can. I should be available later this afternoon. Okay, you want to get your work on it, then sure that sounds good. Awesome. Let me know when.
+
+
+Transcribed by https://otter.ai

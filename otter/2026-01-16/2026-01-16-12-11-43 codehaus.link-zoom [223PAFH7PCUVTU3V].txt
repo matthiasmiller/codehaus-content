@@ -1,0 +1,248 @@
+Speaker 1  00:17
+Hey, hey, run through it,
+
+Unknown Speaker  00:23
+roughly tracking. But,
+
+Matthias Miller  00:26
+okay, let's, let's start with, let's start with this. In my mind, one of the questions is, what are the, what are the fake numbers that we want to know? The fake numbers we want to know is, what is the sum of payments? It's really, it's really the cash waterfall numbers, right?
+
+Unknown Speaker  00:44
+I think so
+
+Matthias Miller  00:47
+and so. How is this any different than the current events? RG, but just frozen and auto generated? I
+
+Speaker 2  01:06
+sure, wow. I guess we have what the itemization is, payments.
+
+Matthias Miller  01:15
+So in my mind, what it would have is you would have it as of date, for an effective date, as in, this is when this event happened. You have this fee, and presumably you would have a, I guess you would have a period. I don't know if you actually need a period at that point. You have a linking back to wherever this information came from, which is either a payment row or an itemization row. And then this particular fee went up by this amount. And here is the, here is the here's the non, the taxable, non taxable, and the tax adjustment for it. And then here's how much was paid, quote, quote paid. Here's how much the balance went down on that fee in whatever capacity.
+
+Matthias Miller  02:19
+Yes, you catch the period so that you can get quick period calced off of it.
+
+Speaker 2  02:37
+How is this different from the liabilities? RG, where you but it's not essentially what it is
+
+Unknown Speaker  02:44
+a net difference. Well, my,
+
+Matthias Miller  02:55
+my thought, your
+
+Speaker 2  02:56
+problem is that if it's if you incur and pay at the same time that that would it wouldn't record anything which is wrong.
+
+Matthias Miller  03:04
+Wouldn't record anything. I feel like you're going to get yourself in trouble, because that's how actually what we're looking for more granularity than that, right? But the beauty, I think, what we just got done saying fell swoop, is that the events RG actually does make a reasonable amount of sense for certain types of reporting, not everything, but certain types of reporting, or at least caching. But the data input and how to suck data out might not actually be
+
+Speaker 1  03:38
+it might tell me I'm crazy. I we
+
+Matthias Miller  03:46
+have to flesh it out. So what would it have? It would have a ineffective date. It would have an invoice ID, slash payment ID. It would have a
+
+Unknown Speaker  03:57
+period, well, it would always have an invoice ID,
+
+Matthias Miller  04:01
+matter what, sure always have an invoice ID, sometimes a payment ID. It would have a type, which would be, does it need a type? Can it just be a plus or minus?
+
+Matthias Miller  04:19
+And is it plus or minus, cash in or cash out, or is it that do you need it for? And is it just for fees, or is it for security deposits as well? I
+
+Speaker 2  04:45
+now security deposit isn't going to happen as much. It's going to be a lot easier, I mean, and it's
+
+Matthias Miller  04:53
+not a taxable event, right?
+
+Speaker 2  04:58
+So we. Calculate sales tax off this. RG, then and have a separate liabilities. RG, yet that cascades off that.
+
+Unknown Speaker  05:08
+I think it cascades off of this. Well, wait,
+
+Matthias Miller  05:18
+you could almost just, I mean, this is cashed. You could probably calculate sales tax off of this if you want. Okay, let's, let's keep going. Just a little
+
+Speaker 2  05:34
+bit. Are we gonna? Are we gonna record some like, if someone
+
+Unknown Speaker  05:39
+creates a a event like
+
+Speaker 2  05:46
+they create their period with the tax rate, and they come back in and change it.
+
+Matthias Miller  05:51
+What gets pushed across to this RG, and then we look at what we what we pay for.
+
+Unknown Speaker  06:17
+So we're not quite
+
+Speaker 2  06:20
+what is it is creating? It's sort of a hybrid between the events RG and the liabilities, in a sense. Well, how are you going to do paying sales tax?
+
+Speaker 1  06:38
+Then separate RG that you compare the sums of the two
+
+Matthias Miller  06:55
+we had said we were doing for sales tax liability is we're going to calculate the I mean, I think effectively you key off of this one to find the balance of what you owe, taking into account bad debt, which is a whole other thing that's a little bit of a scary wild card, then You compare it against what you need to pay. I still kind
+
+Matthias Miller  07:29
+of think you want the liability RG because you need to know,
+
+Matthias Miller  07:37
+because this RG, the liability RG is fixed. It's non changing this. It's a source of truth. Kind of record exactly, and so you can't depend on that for sales tax. So you then have to go from this guy to push it Over to sales tax liability. You
+
+Unknown Speaker  08:16
+Does that make sense? Of.
+
+Matthias Miller  08:42
+Okay, so what
+
+Speaker 2  08:57
+do you think of this, this other RG, yeah, it's making me just mildly doubt our design. If we're ending up trying to create a product similar to what we have.
+
+Matthias Miller  09:14
+No I'll make the argument. I might be completely delusional, but I think we developed this RG for reporting, and I think it's perfect for reporting. I just think it's completely impossible from the recording standpoint. And so I feel like, I feel like what we just came up with makes perfect sense for inputting. Like, this is the event that actually happens in real life, this reality, but then we need to transform that into something that is cost effective to report on. So my argument would be that, from the very beginning, we were thinking for about tell me if I'm right or wrong, question my delusional confirmational we're designing for reporting. Yeah, and that's that's why. We built it this way,
+
+Speaker 2  10:03
+which makes sense that we did that because we a key part of what the platform provides is,
+
+Matthias Miller  10:11
+is reporting. That's a key part of what we wanted to demo
+
+Unknown Speaker  10:15
+Exactly. And so that's how we were thinking about it.
+
+Matthias Miller  10:21
+I mean, I think the way I would think about it is, think about it like this. What options do we have to make reporting simple and fast? Well, how do we make it simple? We pull tease it apart from where the information is actually entered. So it's its own logical thing. It's separate from everything else. How do we make it fast? We store it on the record? Yeah, and you end up, I mean, like, I think for all of those reasons, it does mean you probably need to calculate it through a field change expression so it's always current.
+
+Unknown Speaker  11:04
+That sense, scary. It's not that bad. You just cache it in a
+
+Unknown Speaker  11:17
+field as a string table and
+
+Matthias Miller  11:21
+and then market rows need to be updated or something. I mean, it is that bad. Actually, it's pretty bad.
+
+Unknown Speaker  11:28
+Is that going to get slow
+
+Speaker 2  11:34
+saving contracts? Well, I think you make sure you have a certain flag, like a Boolean or something that gets set depending what you edit.
+
+Matthias Miller  11:49
+I think you're right. In my mind, it's something like Step one, find missing rows that are keyed in whatever way you're going to key them, add them in, go, flag everything that needs to be updated, if updated, and go update them. So 90% of the time, 95% of the time, or whatever, it's going to be super fast, nothing to do. And then, and then you
+
+Matthias Miller  12:24
+we just need to very carefully document and think through how this stuff works. And almost, I almost think we'll end up needing a temporary string field to put a string table into it, because for the waterfall, you have to calculate all rows. I think you almost have to calculate the waterfall across all payment by invoice number.
+
+Matthias Miller  12:59
+So you look at the invoice and at the payments and the Waterfall has to go that whole way through there. And so what you basically, what you end up doing then, is saying, what are the invoices that are out of sync? Grab all of those. Calculate each individual in each individual into the waterfall for each one into a string table, shove it into a string field, and then rip through and update records. I think if you do any other way, you're going to get completely well, you can really run into issues if you do it differently, just from performance reasons, because you'll have to calculate water for Every chance. Yeah.
+
+Speaker 2  14:01
+What does do you think your list is comprehensive for the new RG? Are
+
+Speaker 2  14:20
+we trying to track due date changes and stuff, or is this just for balances?
+
+Matthias Miller  14:28
+Why would we need due date changes?
+
+Speaker 2  14:31
+I don't think we necessarily do is just came to mind. Want to make sure we
+
+Unknown Speaker  14:36
+I don't think we need to.
+
+Matthias Miller  14:40
+I don't think we do either. I can't think I mean, due date has no accounting impact until the fee gets applied. You look at due date based on the earliest upcoming invoice due date, I guess. So you might have to, you might have to differentiate between the rental due date and and another due date that could be.
+
+Unknown Speaker  15:13
+How How bad are floating due date calc is going to be, you think it's pretty straightforward? Yeah, the invoice.
+
+Matthias Miller  15:35
+When, after you do all of this stuff, you'll have an on change that rips through. You have a hidden floating, floating days field. And after you update this, RG, it'll be very easy to say how much of this invoice was paid divided by the fancy date math, and add a number of floating days in and save for caching purposes, and it just bumps the visible the declared due date forward. I think
+
+Unknown Speaker  16:19
+I still have to figure out how wish,
+
+Speaker 2  16:22
+I think you mentioned that, but non rental invoice due dates, how those factor in?
+
+Matthias Miller  16:28
+Well, do you want floating due dates on that? No, you don't. I mean, like, I don't think so. I mean, so I think that's irrelevant. You'd never float them. I
+
+Matthias Miller  16:43
+really, it's a even on the invoice, you could theoretically float them. You need a payment site, a payment length. That's actually kind of cool. You could issue a payment, you know, and so you have to repay in 180 days, as long as your per day rate. We don't care what that how that gets repaid, as long as you're you stay ahead of that prorated balance.
+
+Unknown Speaker  17:16
+Yeah, if we want to,
+
+Matthias Miller  17:20
+no, I agree we don't, but I have to drop does this? I mean anything else in the events or G that's not in here,
+
+Speaker 2  17:42
+both at me, my local system is not I'm happy on the contract on the test system, but it's fine.
+
+Matthias Miller  17:51
+If I can look, I need to drop you can check I think this, I I'm like, 70% sure this covers everything, but I have Dwayne's my you know this is going to work mode is fairly high right now, so I'm not engaging in my deepest pessimism, but I think it's, I think it's the right general direction.
+
+Speaker 2  18:14
+But you're not, like with that Archer, you're not thinking you store any sort of type like forgiven or refunded, or paid or anything. It's just how the subtotal moved,
+
+Matthias Miller  18:27
+forgiven, and refund is just reverse, reversal.
+
+Speaker 2  18:31
+I mean, so it's just adds a row that's a negative.
+
+Matthias Miller  18:34
+Well, I mean, refund actually puts it back on. Right?
+
+Speaker 2  18:43
+So this RG is essentially a cash balance calculation.
+
+Matthias Miller  18:47
+It is a cash balance calculation RG, but it doesn't tell you why their balance changed. Because if people
+
+Speaker 2  18:57
+want to look at something like that, well, then you just go look at the payments. Well, it depends what if you're looking at refunds, you're looking the payments. RG, I mean, I
+
+Matthias Miller  19:08
+think down the road, if we really need to, we can tie it out too sure. We could tie it out more closely to the increment row ID, but we don't have to at this point. It makes it easier. We could
+
+Speaker 2  19:26
+sure and would you should we store an itemization ID as well? Like it always has invoice ID, and it has either itemization or payment or not. It's not, or is it not necessarily,
+
+Matthias Miller  19:40
+not necessarily one to one, isn't it? Though it is. I would, I like that. I would,
+
+Unknown Speaker  19:48
+okay, that sounds good,
+
+Matthias Miller  19:52
+until it's proven, proven unnecessary. Yeah, yeah, dude, but this could actually if we legitimately believe that this. Is an appropriate way to do reporting.
+
+Speaker 2  20:02
+I mean, this would be what most of our reports run off of, and balances and everything,
+
+Matthias Miller  20:09
+which means there might actually be very little that needs to change. You could do this in a couple days, theoretically, three days. Yes, well, we can see we can give Dwayne a happy surprise.
+
+Speaker 2  20:25
+Yeah, I vote. We don't tell him anything. Then, if it ends up like that, then we just make him happy.
+
+Matthias Miller  20:30
+Oh, I get, man, I like it. Okay, random. I know I got, I still have drop. He hasn't called yet, so I'm pretty good. But I have, I have code that takes my Jonathan, John Allen's John Allen's designer, puts it down into a markdown document that's the same format as client proposals. Now I have it auto committing into a GitHub repository, which I have tied into Claude, so literally, right now, let me show you. I'm chatting with Claude about,
+
+Matthias Miller  21:11
+like, yanking stuff out of the proposal and, like, chatting about it. It's awesome. Crazy is awesome. So if we could, it'd be very, very simple to integrate. I mean, I think there's ways, once we get the spec cleaned up, or not even before, then you don't even need to, like, even if we could. I mean, I think the ideal thing would let's would be to create a rag connector that it directs, directly connects to the wiki and the client proposals and potentially incidents. But even without that, pushing this in, into GitHub repository, and you want to look at these, this stuff, and like, okay, let's chat about it. Dude, it's really sick. It's nice. Anyway, nice. That's very cool. I don't think I quite grasp the whole what all that can do, but I get a sense, at least I'd have to, I should, probably, I probably, I probably have to walk you through more specifically problem that I'm working through. But anyway, yeah, awesome. Talk later. Yep, yep. Next.
+
+
+Transcribed by https://otter.ai
