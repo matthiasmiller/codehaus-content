@@ -1,0 +1,1307 @@
+Unknown Speaker  00:55
+All right. Good morning.
+
+Speaker 1  00:59
+I'm gonna I'm gonna forewarn you if I'm slow today just please forgive me. I don't know what in the world I walked into the office like literally, I feel like I, I It's like, there's stuff on the other side of whatever wall I'm looking at right now, but I don't I don't know. It's just over there. How do I get something to work? I think it should. I don't know. I'm looking I'm looking at subsets going I don't know my brain I want to compute this morning and I'm getting irritated with it. So
+
+Unknown Speaker  01:34
+this is you know, what do I need
+
+Matthias Miller  01:39
+to do the rest of the day off? Yeah, probably.
+
+Speaker 1  01:40
+Yesterday was 2023 planning and then that phone call this morning and I think I've had enough brain work for one week.
+
+Unknown Speaker  01:49
+Sounds like so
+
+Speaker 1  01:52
+I'm gonna lean on you to help solve my problem because I can't seem to solve it and it seems so stupid like I like you would think me but by now I feel like I should be able to build a report that can tell me all buildings that match that were delivered that match a ask prom date, but for some reason the stupid repeating group subset thing is kicking my butt and I don't know my brain just does not want to work I need I need a report that tells me all the buildings that were delivered to match a date range that had that had a scheduled date and had a hall or in it I don't care about I don't care whether it was district x I don't care I don't care what district is if it had a hauler assign it it had a scheduled date assigned and the delivery date the completed date matches my date range I want to thank you very much filter by district and for some reason I'm an idiot apparently I'm a total idiots
+
+Matthias Miller  02:55
+probably thanks bro. Thank you
+
+Speaker 1  03:02
+like literally just put one column and I'll put whatever information I want into it like the building Stan
+
+Unknown Speaker  03:09
+There you go oh yeah probably help if
+
+Matthias Miller  03:12
+I make it a building level report
+
+Unknown Speaker  03:16
+okie dokie and then
+
+Unknown Speaker  03:32
+vs Oh, you do have yes district numbers. Where do you want this? Put it logistics and put it in testing for now.
+
+Unknown Speaker  03:44
+And what is this thing?
+
+Speaker 1  03:47
+Let's call it just call it delivery for now. Just call it I'll rename it. I don't know what I want to call it. That's That's my how my brain is today.
+
+Matthias Miller  04:01
+Okay, so I'm gonna go ahead run this report.
+
+Unknown Speaker  04:03
+So I get these things. So this is 11
+
+Speaker 1  04:09
+Do you want I want one slash six is 23 Because that's the information I can't seem to find.
+
+Speaker 2  04:20
+Okay, now, okay. Sure. Sure. Well, so
+
+Speaker 1  04:27
+go back and refund your like both both your start and end date need to be 1601
+
+Matthias Miller  04:30
+or both of them. Oh, are you are picky?
+
+Unknown Speaker  04:36
+I am because because just because I am
+
+Matthias Miller  04:40
+just because there's no reason. It's just the way we've always done it justice the
+
+Unknown Speaker  04:45
+way it is.
+
+Matthias Miller  04:51
+Do you have a district index
+
+Unknown Speaker  04:53
+building builder districts
+
+Unknown Speaker  05:03
+Okay, and we have
+
+Matthias Miller  05:07
+the group name, building load scheduled date.
+
+Unknown Speaker  05:12
+And not
+
+Speaker 1  05:21
+what check date and range there's a new one I haven't seen.
+
+Matthias Miller  05:26
+Yeah, it's like the end range except it allows you to
+
+Unknown Speaker  05:34
+do some special stuff with
+
+Matthias Miller  05:38
+blanks or something. Or it doesn't allow blanks or something. I don't know what it is isn't a word. No, is no no, it does allow that
+
+Unknown Speaker  05:47
+doesn't what happens if you do?
+
+Speaker 2  06:03
+What does this actually do differently? I've wondered this for a long time. Isn't a start date
+
+Matthias Miller  06:22
+I don't even know why this is necessary. If it's blank, or blank.
+
+Unknown Speaker  06:29
+But we don't do in range
+
+Matthias Miller  06:38
+doesn't even anyway,
+
+Speaker 1  06:40
+so so many of my my date parameter reports. Like it's done manually in the subset in the general subset, like, isn't a or you know, is greater than or equal to kind of a conversation. Why? Why are a lot of them done that way? Versus oh, here's other things.
+
+Speaker 2  07:01
+Because if both are blank okay, if use the N range. No. I have no idea.
+
+Matthias Miller  07:10
+All right. Well, that's not what we were here to solve. Okay, and not is in a building low color. And what was the other thing
+
+Unknown Speaker  07:20
+and building low? Scheduled eight?
+
+Speaker 1  07:29
+You're mad. You're Maxine Waters. You're matching on the completion date, right?
+
+Unknown Speaker  07:33
+Oh, I will. Oh, that might
+
+Matthias Miller  07:41
+be the difference. No, that's not
+
+Unknown Speaker  07:54
+like that.
+
+Matthias Miller  07:57
+Got a holler. It's scheduled and it's been completed.
+
+Unknown Speaker  07:59
+Sure.
+
+Unknown Speaker  08:06
+How many do you have? How many how many items are there?
+
+Unknown Speaker  08:11
+1010 items.
+
+Speaker 1  08:14
+Okay. Oh, it's good random game. Okay, so this is interesting. Give me Okay, well, okay, so fine. I don't care what you throw in your I'll go do the groupings and so forth that I need. But give me give me building cap description
+
+Speaker 1  08:38
+interesting, alright, save it. So okay, so let me see your general subset.
+
+Unknown Speaker  08:46
+So you did all of
+
+Unknown Speaker  08:47
+that in there. That was my problems. I'm just
+
+Matthias Miller  08:51
+basically what you want to do is anything that is not RG specific. Okay, you could have done this two ways. You're gonna have this just as regular report and you could have done a
+
+Unknown Speaker  09:05
+has our G here.
+
+Speaker 1  09:07
+Okay, but that was it like the has our G thing was not working for
+
+Unknown Speaker  09:11
+me. And
+
+Matthias Miller  09:14
+well, but then if you do have our G then you can't reference the RG field values in your columns
+
+Speaker 1  09:23
+okay, this is okay, secondary second. Secondary training session two to our Insert Record Navigation is our G net RG RG navigation that's going to be the next one I would like this is where I get I get confused between like when I have to when I have to evaluate an RG G on a record to match information is when I get goofed up.
+
+Unknown Speaker  09:57
+Okay, let's do this.
+
+Speaker 2  10:07
+We're going to edit this thing so I know where it is
+
+Speaker 2  10:15
+and we're going to do this over here okay so it was
+
+Speaker 1  10:25
+like here's the big thing that I that I don't always know when do you evaluate in the general subject set and when are you required to evaluate in the in the repeating group subset?
+
+Unknown Speaker  11:47
+This what you were looking for
+
+Unknown Speaker  12:05
+yeah
+
+Speaker 1  12:10
+yeah to see to be to yeah should be yeah
+
+Unknown Speaker  12:18
+yeah expressing next is one of the texts
+
+Speaker 1  12:36
+so the entire record thing one of the one of the big key pieces like there's a there's okay I'm going to use I'm going to use was my most recent IMS there's a lot of times where Josh had like there's there's records that are talking based on certain fields and then but knowing how to like let's say for example I have a I have a SKU lot location and I want to know its district many times like many times records like that you got to go through three different levels to get back to the company level in order to define something like that how to how to like when you get into situations like that the best the best ways to do that now the nested the nested lookups was was like my mind wanders it to explode a little bit because I didn't realize you could do nested lookups
+
+Unknown Speaker  13:35
+right well if if there's
+
+Matthias Miller  13:46
+maybe I should just
+
+Speaker 2  13:50
+take a few minutes here since you care about this as well
+
+Matthias Miller  14:05
+goodness what all is there there's a lot of
+
+Unknown Speaker  14:12
+let's see let's do this. It's n dx
+
+Unknown Speaker  14:37
+Oh wow.
+
+Speaker 1  14:39
+And DX last field and dx. What is the what what is the what is the what is the understanding of N dx? What is its
+
+Unknown Speaker  14:51
+index index
+
+Unknown Speaker  14:59
+now When you just say that
+
+Speaker 1  15:04
+like MDX What is it MDX index Oh
+
+Matthias Miller  15:13
+we got this subset specific
+
+Unknown Speaker  15:21
+functions we got
+
+Matthias Miller  15:26
+okay so what are the
+
+Speaker 1  15:27
+you had something in here I thought I saw a little yeah what Ben string is and does and how that works in conjunction with NB X sometimes
+
+Speaker 1  15:51
+this is this is probably where it'd be super helpful to understand database structures
+
+Unknown Speaker  15:58
+that would probably be.
+
+Matthias Miller  16:42
+The X is not an index I want to see if we can find a nun and
+
+Unknown Speaker  16:44
+dx
+
+Matthias Miller  16:47
+to be of any some fields that are not MDX and fields
+
+Unknown Speaker  16:50
+maybe this is Cat lookups
+
+Unknown Speaker  17:16
+see
+
+Speaker 1  17:22
+is there is there a functional difference between our G's and Mr. G's or is it just it's just a visualization
+
+Unknown Speaker  17:31
+strictly visual okay
+
+Matthias Miller  17:49
+oh now we get into
+
+Unknown Speaker  17:56
+our G functions
+
+Unknown Speaker  18:38
+default row would be your top row sometimes
+
+Unknown Speaker  18:43
+don't don't do that to me.
+
+Matthias Miller  18:48
+I mean we call it the context row
+
+Speaker 1  19:07
+feel like I've been on a two year education course. I think I've got my Associates in this by now I don't I usually come
+
+Matthias Miller  19:19
+Come work for investor tools for a year. And you'll learn all kinds of stuff.
+
+Speaker 1  19:24
+I imagine I would. Would that would that would that qualified me to have access to build my own components then? Ah, no, it's not. It's not that so much that I want to build my own components. I just want to make some of my report standard without without having to ordinate or make changes to standard reports but
+
+Unknown Speaker  20:15
+How's that?
+
+Speaker 1  20:19
+That you're going to cram that all into what? 90 minutes?
+
+Matthias Miller  20:23
+Yeah man. Okay, you're gonna record the seat belt and you got to see seatbelt and airbags, seatbelts airbags and please record the call. So we'll be recording it trust me
+
+Unknown Speaker  20:36
+you better believe it
+
+Speaker 1  20:40
+did okay when you first okay you remember a long long time ago when you did a training that I was on on report building?
+
+Unknown Speaker  20:48
+Yeah, was that recorded? Yeah
+
+Speaker 1  20:53
+I'd love to have I'd love to go back and rewatch that sometimes we need a we need a wiki document tied out to like where these are LinkedIn to find it
+
+Unknown Speaker  21:27
+well I think it was recorded
+
+Unknown Speaker  21:39
+expressions
+
+Unknown Speaker  22:00
+Hello there let's blurry Oh, that's terrible. Alert comes.
+
+Unknown Speaker  22:32
+You know,
+
+Matthias Miller  22:32
+I'm watching this thing. There are a lot of people who are better teachers than I am. That is pretty close to the bottom of my skill set.
+
+Speaker 1  22:45
+All right, you ready to dive into verification report? Oh, yeah. So the verification report, it's a user report. Verify it's under.
+
+Unknown Speaker  22:58
+You say this thing? No, I'm just gonna throw it away. Yeah.
+
+Matthias Miller  23:04
+Sorry, Friday morning. Sorry. Okay.
+
+Speaker 1  23:07
+All right. It's a user report. It's called verification, basic review. Legit accounts payable. Three, verification report dash three really need to rename this thing someday. Okay, so the way Seth built this thing is through a complex use of groupings. And so right now, we haven't really had two different categories of statuses. And we're, we're fixing to implement two categories of statuses. One is unpaid statuses. One is prepaid statuses. And Mark wants to have the prepaid like the unpaid at the top of the report, and the prepaids at the bottom. But when I started digging into the groupings on this, my brain just fell apart because I had like, I he is doing some complex stuff that I don't know. It's beyond me. It's not a simplistic report.
+
+Unknown Speaker  24:08
+Sure. Let me sorry,
+
+Speaker 1  24:12
+because he's doing like column group level stuff. And I don't Yeah.
+
+Matthias Miller  24:21
+You don't know what's going on?
+
+Speaker 1  24:23
+Well, when I went and did it, then then some other weird things happen in it, put question marks behind all of his column groups and on so I was like, I better back out of here real fast because
+
+Matthias Miller  24:34
+so you want one group at the very top that splits between okay, what determines whether something's prepaid or paid? This
+
+Speaker 1  24:41
+is the VI invoice status. I think it's called
+
+Unknown Speaker  24:51
+All right. I think
+
+Speaker 3  24:53
+though, well, yeah, yeah, that's probably you're probably right. Yeah. Yeah,
+
+Matthias Miller  24:58
+prepaid, too.
+
+Speaker 1  24:59
+Those two prepaid approved or Yeah or are prepaid. unverified Yes,
+
+Unknown Speaker  25:06
+correct. Prepaid and unpaid. A reverse it all
+
+Matthias Miller  25:19
+group level. Okay, well, let's find out what choral group level is.
+
+Unknown Speaker  25:23
+Yeah, that's exactly what happened to me. And then I was like,
+
+Unknown Speaker  25:28
+I don't know.
+
+Unknown Speaker  25:30
+Oh,
+
+Matthias Miller  25:33
+okay. Well call group level should be four.
+
+Unknown Speaker  25:38
+Group level should be four.
+
+Unknown Speaker  25:40
+Okay, tell me what is what is
+
+Speaker 2  25:46
+what is called group level. What it means is for
+
+Matthias Miller  25:52
+this is for the fourth grouping, I don't know why but it's for the fourth grouping and have been grouping three but we added one at the top so that's gonna be good. Whatever was three is going to be four.
+
+Unknown Speaker  25:59
+You're kidding me. It was that easy. Let's see. It's
+
+Matthias Miller  26:06
+you gotta keep scrolling. There's more, don't you like Oh, come on. There's more. Oh, you're so friendly.
+
+Matthias Miller  26:17
+mean that's my job. My job basically, I'm gonna go work and my kids are like, Hey, Dad, would you do work today? Well, I deleted question marks and I change threes to force
+
+Speaker 1  26:31
+one Wow, dad? Can I get a job there? Unpaid? Well, there's not any prepaids at this point. So
+
+Matthias Miller  26:42
+would this be actually be after the
+
+Unknown Speaker  26:46
+payee?
+
+Speaker 1  26:49
+No. It should be it should have it. They literally want to split all the unpaid at the top all the prepaids at the bottom.
+
+Matthias Miller  26:56
+Let's
+
+Unknown Speaker  27:01
+knock yourself out. out it's not that big.
+
+Matthias Miller  27:05
+What is this one? This 116? Okay, fine.
+
+Unknown Speaker  27:17
+I can't believe
+
+Speaker 1  27:18
+it was that easy. Okay, you know what? Okay, so tell me explain, explain how he was like, the column group thing helped me. Show me make me.
+
+Matthias Miller  27:35
+So I think basically what he was wanting to do. What he wanted to do was oh, he's only wanting to show the date entered.
+
+Unknown Speaker  27:52
+For this grouping. Yep.
+
+Matthias Miller  27:55
+And hide it for everything else.
+
+Unknown Speaker  27:57
+Yep. Why did he do that?
+
+Matthias Miller  28:04
+And not just high
+
+Unknown Speaker  28:05
+total rows for the other groupings? Total suppressed or suppressed? Tilsit? Bottom? Group total?
+
+Matthias Miller  28:21
+I don't really understand why he did that instead of like, I mean, why does he even need to do that?
+
+Unknown Speaker  28:25
+Well, we can find out
+
+Unknown Speaker  28:32
+see what breaks? Like oh, shows up in the grand total?
+
+Unknown Speaker  28:47
+Why would we want a grand total of dates?
+
+Matthias Miller  28:52
+Do you do you use grand totals at all? Why would we just suppress grand totals?
+
+Speaker 1  28:57
+But well, no, but but is there a grand total on any on the other invoice totals? No. So why would we have a grand total on a date? I don't want a grand total.
+
+Matthias Miller  29:09
+Most suppress the grand totals who happens? Oh, and the other thing we would do then is grouping here we would
+
+Unknown Speaker  29:18
+suppress these totals. Okay. Now I think
+
+Matthias Miller  29:27
+that if we do that we don't need the call Level Check. We just suppressed totals on the other rows. It means best I can tell he was using this to hide these values for instead of suppressing the total rows.
+
+Unknown Speaker  29:54
+So let's do this. Here's an easy way
+
+Speaker 1  29:58
+well save This didn't save this and do a save as
+
+Speaker 2  30:04
+right as a guess what we're for
+
+Unknown Speaker  30:10
+ah I
+
+Speaker 1  30:11
+really I really need to change the name of this thing and go back and whatever really honestly this thing needs to go standard needs to be updated in the standard again but
+
+Unknown Speaker  30:27
+like a brain surgeon
+
+Unknown Speaker  30:47
+Oh That's why no that's not why well I almost had me
+
+Unknown Speaker  31:12
+but why is the date entered
+
+Unknown Speaker  31:15
+seems silly
+
+Speaker 1  31:16
+we put the date entered at the bottom label at the bottom but whatever I don't really want to change this thing tremendously if
+
+Unknown Speaker  31:27
+I mean it's not seeing any changes yet
+
+Matthias Miller  31:51
+so previously would have had extra blank lines down at the bottom with blank grand total rows because the version three actually would have been
+
+Unknown Speaker  32:07
+granted totals were actually you're like this
+
+Speaker 2  32:20
+instead we don't we just end the report
+
+Unknown Speaker  32:25
+Yeah, cuz I don't need grand totals
+
+Unknown Speaker  32:31
+we just made your life easier.
+
+Speaker 1  32:33
+Alright, how long how long are we spec for this call? 10 To 11
+
+Matthias Miller  32:37
+Yeah, I got more time to burn if you want to, but well, because
+
+Speaker 1  32:40
+one of the things that came out of my 2023 planning yesterday for our company is I want to build some metrics on on accounts payable stuff and since we're already here I gotta let me walk over to Leanne one real quick and see I need the picture from yesterday's whiteboard for the metrics I want to track on this hold on one second All right.
+
+Speaker 1  33:52
+I had to laugh at mark this morning. I didn't say anything but I really wanted to laugh. So you want to do you want to do you want to build out documentation on one module and see if we actually like it to to decide whether we want to move forward on this project or not. As opposed to not documenting at all Mark
+
+Unknown Speaker  34:18
+Okay,
+
+Speaker 1  34:19
+so like, to me it was it pretty straightforward conversation. Do you want to document your software? Yes or No? Will you? Like who would say no to that? We prefer not to document anything that we're doing. Thank you very much. I don't know. I just the conversation struck me really, really funny. What will this do for the builders? Well, it'll document your software like I don't know what to tell you.
+
+Matthias Miller  34:51
+I would sometimes love to once we have this thing done, get a self published copy of the book. And you know, have it something like Like
+
+Unknown Speaker  35:04
+I don't know what you would call it
+
+Matthias Miller  35:09
+probably something like assisted sleeping or something
+
+Unknown Speaker  35:12
+and send it over them.
+
+Matthias Miller  35:17
+Mark in particular, so that you can read through it and enjoy
+
+Speaker 1  35:27
+I mean, I sort of understand what he was trying to get at. But the other part of me is like, you know, if you want me to play the opposite side of that conversation, because that's gonna get real awkward and really funny really fast. Yeah. Is this something we want to pursue now? No, we prefer to go on living without documentation. Thank you very much. Worse,
+
+Matthias Miller  35:52
+prospect coming coming to reach out to us, they shared a bid that they got from another company, their bids there. The other company's ongoing cost for this is 50 bucks a year for the software. He just kind of snickered. Like, well, you really want to know what this is gonna cost you you're not gonna be happy and blissfully oblivious. Okay. All right. All right. What's the number
+
+Speaker 1  36:21
+I wanted to we want to do a report. It's these are these are essentially metrics on accounts payable, so numbers, number of POS per week. So in their, in their total and their dollar value. That's one metric number of vendor invoices per week. And number of discounts hit that had been hit or miss. And this is where it's gonna get a little bit we'll have to talk about how to qualify for discounts hit or missed. But all of this, all of this is the first two are fairly simple. The discount one is going to, we got to think through that one just a smidge.
+
+Matthias Miller  37:06
+All right, where's the let's go dig into that one first because that's going to determine the rest of the stuff. Where's the discount? Is that on the PIO or the vendor invoice
+
+Speaker 1  37:12
+vendor invoice. Okay. So it would be number of and so I guess it would do we want to say in a week's time, the timeframe on the hit or miss one's a little bit sketchy to me. So it would be it would be looking at when a vendor invoice was marked paid and whether it falls inside of the discount date range
+
+Speaker 2  37:53
+going to expiration day. Okay, so
+
+Matthias Miller  37:57
+Alright, so we're gonna start with vendor invoices. So we have vendor invoice. This is based on the payment date.
+
+Unknown Speaker  38:04
+We don't track payment date was it based on the date? Due Date? Well,
+
+Speaker 1  38:14
+probably probably the only way you're going to know when it was actually paid is when it was marked paid but based on a modification history
+
+Unknown Speaker  38:22
+oh well thanks.
+
+Speaker 1  38:24
+I know because we don't we don't currently feel the date the payment date which is something we're going to have to do that's that's going to have to come
+
+Matthias Miller  38:37
+okay well first of all we only want ones that are paid
+
+Unknown Speaker  38:40
+and then
+
+Unknown Speaker  38:47
+that's probably not what we actually want
+
+Matthias Miller  38:48
+but anyway alright so we do
+
+Unknown Speaker  38:53
+activity
+
+Unknown Speaker  39:05
+on it should probably do it audit
+
+Unknown Speaker  39:44
+Why don't you use
+
+Unknown Speaker  40:25
+We can't
+
+Matthias Miller  40:26
+figure out whether we want to use auditor activity on these things it's really anxious
+
+Unknown Speaker  41:01
+Hey then
+
+Unknown Speaker  41:35
+do your genius
+
+Speaker 1  41:48
+and when when you get to this but you can for for the for this we probably can exclude any that do not have a discount date assigned to it
+
+Unknown Speaker  42:01
+what are we
+
+Matthias Miller  42:05
+I think we went all the vendor invoice totals in this okay right but the ones that are missed right so
+
+Speaker 1  42:11
+or you can just group them or we can say well I want to group by the hits and the misses
+
+Matthias Miller  42:42
+you can even let's even do I don't know if you want this or not but
+
+Unknown Speaker  42:51
+about seeing the dollar amount yes
+
+Unknown Speaker  42:56
+oh for the discount
+
+Matthias Miller  42:58
+yeah oh yes indeed some pain to this
+
+Unknown Speaker  43:04
+oh yes indeed.
+
+Matthias Miller  43:07
+Okay so then we also need a
+
+Unknown Speaker  43:13
+oh this is actually backwards
+
+Unknown Speaker  43:37
+are live
+
+Matthias Miller  43:53
+a number of vendor invoices
+
+Unknown Speaker  44:03
+this date we don't need anymore
+
+Unknown Speaker  44:14
+oops
+
+Unknown Speaker  44:20
+then we would do a or dude you're
+
+Speaker 1  44:24
+you're building you are building magic right now. I mark when I tell him I'm gonna have this he's gonna be like oh my god
+
+Matthias Miller  44:38
+you missed 85 bucks to discounts and you hit that we should do the decimals here just well
+
+Unknown Speaker  44:43
+can we have $1 value on the missus?
+
+Unknown Speaker  44:47
+Yeah
+
+Matthias Miller  44:49
+8477
+
+Speaker 1  44:50
+Okay, got a number of misses one number of number of hits for for a discount of 275. Can we can we filter this based on can we Group is based on district so this would be the PE this the builder the PE district or not that's not the PE district but it's the district of the PE company or whatever
+
+Unknown Speaker  45:27
+Oh yeah, go ahead and just make those into totals.
+
+Unknown Speaker  45:32
+No Where do you want this?
+
+Matthias Miller  45:33
+shared accounts payable here
+
+Unknown Speaker  45:37
+make a new folder inside of accounts people called netwrix
+
+Unknown Speaker  45:46
+Oh hot
+
+Unknown Speaker  45:50
+diggity dog
+
+Unknown Speaker  45:55
+look at that. Look at that
+
+Speaker 1  45:59
+all right next one number of purchase orders inside of a number of purchase orders created any weeks timeframe a number of purchases of vendor invoices created in a week's time frame
+
+Matthias Miller  46:11
+what have to create it here are this is paid you want creation yes
+
+Unknown Speaker  46:20
+you can you can
+
+Unknown Speaker  46:21
+stack it in the same report somehow that would be even better.
+
+Speaker 2  46:24
+This report I don't know can you do that? Yep what? Well
+
+Speaker 1  46:34
+okay. Well those are two different timeframes though the paid versus the paid versus the created
+
+Unknown Speaker  46:44
+are two different times a week
+
+Speaker 1  46:48
+oh, nevermind your marker and you can default the date range for for the past week we're going to run these on the it's gonna get run on Mondays probably yes so it'd be the prior week
+
+Unknown Speaker  47:24
+Monday to Saturday
+
+Speaker 2  47:55
+let's first run this like editing it silly thing you're on your button Save as shared accounts payable metrics
+
+Speaker 2  48:12
+Alright, so you want POS create created the week model this is a purchase order some
+
+Unknown Speaker  48:40
+you have a po do Id have that? Oh, what?
+
+Matthias Miller  48:47
+A date. What date is
+
+Unknown Speaker  48:48
+it? Yeah. Entered off. Yeah, I think he's brilliant. Yep. Yep. Do enter dates
+
+Unknown Speaker  49:04
+just make sure you exclude for canceled
+
+Unknown Speaker  49:11
+No, PIO, I think it's canceled. Yeah.
+
+Matthias Miller  49:22
+Is it Pio vendor? No PIO, Bill to
+
+Unknown Speaker  49:32
+we get the district office. Yep. Hey, you gotta use you got
+
+Unknown Speaker  49:41
+two hands in that. Thanks. Hey,
+
+Speaker 1  50:00
+Number of created and their dollar values. Well I guess it'd be total total values
+
+Unknown Speaker  50:31
+po
+
+Unknown Speaker  50:38
+YouTube, thanks so much
+
+Speaker 3  50:57
+Oh, I know that I have another thing I want to ask you for in this
+
+Speaker 1  51:08
+so can you do it? Can you give a conditional grouping for who the what Pio requests are some who requested it?
+
+Unknown Speaker  51:27
+Looks like your face is really?
+
+Unknown Speaker  51:31
+What about ah
+
+Matthias Miller  51:38
+Can we just bury whether it shows by district or by requester? here
+
+Unknown Speaker  51:52
+cuz you're doing
+
+Matthias Miller  51:53
+all of this, doing models for all of this? I don't think there's an easy I mean, is it doable? Yes. introduces a bit of complexity with it. I'm trying to think if there's a good way to Well, yeah, we can't actually
+
+Unknown Speaker  52:09
+see that. So it's because you're using models. It's not a simple grouping. If,
+
+Matthias Miller  52:16
+if everything is, if the core report is based on who requested it, can we do that on all of these invoices?
+
+Unknown Speaker  52:25
+What do you mean? Can we choose to be grouped
+
+Matthias Miller  52:29
+based on okay here?
+
+Speaker 1  52:31
+Yeah, yeah, no, no. Okay. I want to back up on this.
+
+Matthias Miller  52:44
+Because if we can tie this, if we can tie the requester back to a district, then we can change the report.
+
+Speaker 1  52:53
+Now leave it leave it leave it alone, leave it alone. Leave it alone, I thought this was going to be a simple grouping the inside of the district. So nevermind.
+
+Matthias Miller  53:01
+Okay, well, it can be if you know how to get a district from a user profile.
+
+Unknown Speaker  53:09
+Or
+
+Matthias Miller  53:11
+what would be the other way to do it? The other way to do it would be to
+
+Speaker 1  53:14
+we don't currently source? Well, okay. Company participation, theoretically, you probably could map it back out of company participation to based off of a user profile in order to extract this.
+
+Unknown Speaker  53:26
+We could do we could
+
+Matthias Miller  53:33
+we could do District PLUS user plus all user profiles.
+
+Unknown Speaker  53:44
+I don't know. Is it worth spending 10 minutes on it?
+
+Unknown Speaker  53:47
+No, no, it's not.
+
+Matthias Miller  53:51
+Pos created.
+
+Speaker 1  53:52
+Let me just let me just asked you a different way to look at this. Currently, you're looking at at this from a a week's time frame. Would it be would it be worth to say if you actually extended, like if you overrode the timeframe and said, I want to look at this in a month that you group it by week, like there will be week like, like you could give me a month worth of information and grouped by by weeks.
+
+Unknown Speaker  54:19
+You know, you see what I'm saying.
+
+Speaker 1  54:29
+Or maybe it always should be grouping that way and we only we always just limit it to you know, a week but if you expand it like let's say you let's say you could you wanted to say how many how many per year and break it out by weeks.
+
+Unknown Speaker  54:48
+You're tracking with what I'm saying?
+
+Matthias Miller  54:51
+Give me one second.
+
+Unknown Speaker  56:24
+You ready
+
+Unknown Speaker  56:56
+hey if we did this the way I'm proposing we could actually
+
+Matthias Miller  57:11
+we're gonna do this by started we might as well do by requestor as well if you want to, but except it doesn't translate well to vendor invoices unless you look at the PIO and getting requested of this source to
+
+Unknown Speaker  57:20
+request a thing.
+
+Unknown Speaker  58:19
+Okay Why is that
+
+Unknown Speaker  59:03
+hey
+
+Unknown Speaker  59:08
+what is it still showing
+
+Unknown Speaker  59:16
+and started weak that was my default sir weeks are wrong it wasn't let's do
+
+Unknown Speaker  1:00:36
+Hey let me know
+
+Speaker 1  1:00:37
+what why does Why does the first line item one 123 14 pos Korea with no dollar value I'm
+
+Unknown Speaker  1:00:52
+picky
+
+Unknown Speaker  1:00:53
+I'm just like
+
+Matthias Miller  1:00:54
+you actually want your software done right like come on
+
+Unknown Speaker  1:01:05
+so okay so now
+
+Unknown Speaker  1:01:10
+let me do vendor invoices
+
+Speaker 1  1:01:12
+no so if you if you expect like due 20 like January 1 to 2022 to December 31 on that I want to see what how that looks
+
+Unknown Speaker  1:01:34
+Oh beautiful beautiful
+
+Unknown Speaker  1:01:44
+okay
+
+Speaker 1  1:01:45
+is how hard okay I know you really roll your eyes at me how hard is the week number columns
+
+Speaker 1  1:01:57
+based on based on your your your first line item date or your first column date
+
+Unknown Speaker  1:02:24
+Why aren't you showing up
+
+Unknown Speaker  1:02:36
+early Arden I thought
+
+Unknown Speaker  1:02:48
+well maybe it would help okay fine
+
+Unknown Speaker  1:03:37
+good your genius
+
+Unknown Speaker  1:03:41
+genius boy Hey
+
+Unknown Speaker  1:03:56
+Alright, so when we have here
+
+Speaker 1  1:04:05
+you're gonna, you're gonna see what I see what's happening here. This is why you went the model route rather than doing a straight subset. So that you can look both these models into the into columns. Yep. Okay, smarty pants.
+
+Unknown Speaker  1:04:24
+Someday I want to be as smart as you
+
+Matthias Miller  1:04:27
+are, if you were to spend your life, whittling away your hours unguided potentially doing other useful things
+
+Unknown Speaker  1:04:53
+don't take a quick run to the bathroom.
+
+Unknown Speaker  1:07:56
+paid Wait Do you want to the number entered repeat
+
+Unknown Speaker  1:08:03
+enter then page
+
+Speaker 3  1:08:10
+Wait are you going to you're not also thinking Oh wait wait wait we will Oh why not enter then page up to you?
+
+Unknown Speaker  1:08:49
+What are you
+
+Speaker 1  1:08:55
+wait, where are you using in conjunction vendor invoice and Pio entry date
+
+Unknown Speaker  1:09:04
+do I get the entry date for the vendor invoice for
+
+Unknown Speaker  1:09:09
+pop vendor invoices looking at ones
+
+Unknown Speaker  1:09:19
+just the date Yeah, that'd be bad. Yep, there you go
+
+Unknown Speaker  1:09:37
+wow, that's cranking
+
+Unknown Speaker  1:09:43
+so the blanks would be zero repaid that week.
+
+Unknown Speaker  1:09:49
+Right. was gonna be a dark slow report. She didn't pay
+
+Unknown Speaker  1:09:57
+any in those times frame Oh
+
+Speaker 1  1:10:05
+are you sorting are we you're not you're not filtering for this report are you wait you're not you're not filtering for district in other words you it's it's all districts are being combined in here right okay so scroll go minimize your okay okay Ohio scroll down Ohio oh wait this is 2022 right Indiana? Oh of course not because if he had it was Nevermind, I just it dawned on me it's uh nevermind this is this is beautiful information okay is it can you make can you make it if there's if there's nothing there to have zeros instead of just blank because what's going to end up happening and I'm going to end up dumping this into an Excel spreadsheet and start graphing off of it
+
+Speaker 1  1:11:56
+are you are you summing 3/4 column yeah you are okay perfect yeah actually you're something all of them up perfect. Beautiful. Holy cow this
+
+Unknown Speaker  1:12:09
+is awesome
+
+Unknown Speaker  1:12:26
+be great if I wanted to get
+
+Unknown Speaker  1:12:53
+Wait
+
+Speaker 1  1:12:54
+Can you can you model the other one so that you can put all of this into one the missed watch McCall it
+
+Unknown Speaker  1:13:06
+does counting is it worth doing that yeah watch me well I'm trying to decide
+
+Unknown Speaker  1:13:27
+it's worth putting into two.
+
+Unknown Speaker  1:14:15
+Actually
+
+Unknown Speaker  1:14:38
+come on so
+
+Speaker 1  1:14:42
+you know you know what you just systematically built. You just systematically built the the accounts payable scorecard for me
+
+Unknown Speaker  1:14:58
+makes me happy But.
+
+Unknown Speaker  1:17:14
+we ever have personal discounts experience
+
+Unknown Speaker  1:17:25
+dude
+
+Speaker 1  1:18:24
+when I know you can tell your kids that you did more than just you know change the three to a four
+
+Unknown Speaker  1:18:33
+Oh bother explaining this all right
+
+Unknown Speaker  1:18:43
+well how do you like that
+
+Unknown Speaker  1:18:50
+Whoa that's pretty interesting yeah.
+
+Speaker 1  1:18:58
+Oh, trust me okay now can you on the default dating for the Ask prompt I have this idea that I want to default it always to the beginning of the current year but then the end date would always default to last Saturday so that every time you run it you're always adding a week throughout the year does that make sense?
+
+Unknown Speaker  1:19:44
+Boom
+
+Matthias Miller  1:19:46
+got to be able to filter by district
+
+Unknown Speaker  1:19:54
+How hard is it? It's hard
+
+Unknown Speaker  1:20:13
+What did you just do
+
+Unknown Speaker  1:20:27
+now keep in mind
+
+Unknown Speaker  1:20:37
+all right well Solahart
+
+Unknown Speaker  1:20:41
+still a Harley says
+
+Unknown Speaker  1:21:06
+alright filter for Ohio
+
+Matthias Miller  1:21:13
+here let's let's clear that let's see if the default bass crops work
+
+Unknown Speaker  1:21:21
+and that's where this year and then last year
+
+Unknown Speaker  1:21:34
+Dude
+
+Matthias Miller  1:21:35
+You know what's crazy that's insane I just wrote a report that can help them save $40,000 over the
+
+Unknown Speaker  1:21:43
+course of a year for
+
+Matthias Miller  1:21:48
+me you came up with the metric but we just found 40 grand
+
+Unknown Speaker  1:21:53
+the loss last year
+
+Matthias Miller  1:21:59
+did oh that is painful
+
+Unknown Speaker  1:22:01
+did okay let me see Indiana
+
+Unknown Speaker  1:22:14
+grant
+
+Speaker 1  1:22:18
+now now the question becomes okay this this is the pain part is if you really wanted to make this thing really really awesome you would be able to break it out and I could I could see each individual purchase ordered I could go evaluate well
+
+Unknown Speaker  1:22:45
+are you ready for this?
+
+Matthias Miller  1:22:46
+Are you sitting down? You mean vendor invoices, right? Yes,
+
+Speaker 1  1:22:52
+I met vendor invoices. Sure. Yeah. So it would be it'd be a checkbox to always always be grouping except for if you uncheck it then it's going to break it out and you can go you can go evaluate which one was because I promise you the moment i The moment I put this the moment I put this out there they're gonna say well what what were those
+
+Speaker 2  1:24:08
+I can't give you quite that. I can give you something that's pretty stinking close
+
+Unknown Speaker  1:24:19
+I know exactly where you're going with this. I'll take that to where you go with that. Indeed, and oh, because you already created the other one.
+
+Matthias Miller  1:24:29
+I recruited the other way.
+
+Unknown Speaker  1:24:33
+Yeah, that makes total
+
+Unknown Speaker  1:24:36
+now there's a way to do
+
+Unknown Speaker  1:24:41
+that will allow you to ungroup them. Yeah, the reason we put we had two of these.
+
+Speaker 2  1:24:50
+So open reporter draft for selected values. Like good values expression is This would be
+
+Unknown Speaker  1:25:10
+oh dude
+
+Unknown Speaker  1:25:13
+I'm afraid I'm afraid to know what this tool does cost me
+
+Unknown Speaker  1:25:19
+zero free tool
+
+Unknown Speaker  1:25:33
+buloke
+
+Unknown Speaker  1:25:40
+Look repeat no it's just date sorts
+
+Matthias Miller  1:25:49
+so that gives you all the dates that you have selected ask date equals
+
+Unknown Speaker  1:26:44
+you must reference
+
+Unknown Speaker  1:26:52
+then pipe lists
+
+Matthias Miller  1:26:53
+the value must be a string that
+
+Unknown Speaker  1:26:55
+numeric
+
+Unknown Speaker  1:27:08
+right well then let's do this
+
+Unknown Speaker  1:28:06
+so scroll
+
+Speaker 1  1:28:07
+down to some of the misses okay like the $3,000 one there are $7,000 versus of worth of misses and
+
+Matthias Miller  1:28:18
+things definitely not clearly not adding up let's add a
+
+Unknown Speaker  1:28:31
+let's not make this let's always show detail okay see what my next appointment is I might need to get about 10 minutes before I got around
+
+Unknown Speaker  1:28:48
+no
+
+Unknown Speaker  1:29:25
+let's do one so here for example we should be seeing
+
+Unknown Speaker  1:29:41
+should be seeing
+
+Matthias Miller  1:29:42
+seven paid Why is it showing seven paid?
+
+Speaker 2  1:29:47
+eight count. Check data in range
+
+Unknown Speaker  1:29:58
+should make a difference
+
+Speaker 2  1:30:10
+paid company district started week event date okay let's try this actually let's start with the logical thing
+
+Speaker 2  1:31:07
+make sure these numbers or props are getting passed in right time 157 Why is it showing district start a week vendor invoice payment date it's paid
+
+Unknown Speaker  1:31:39
+What's up
+
+Unknown Speaker  1:32:58
+that's stupid we might have just
+
+Matthias Miller  1:33:01
+completely I might have been giving you completely giving you wildly bogus numbers and it might not be anywhere close to that bad
+
+Unknown Speaker  1:33:10
+that's kind of embarrassing
+
+Unknown Speaker  1:33:31
+sorry
+
+Matthias Miller  1:33:32
+it's nowhere near this severe
+
+Speaker 1  1:33:35
+go go back to Ohio though. Change your tenure district back to Ohio
+
+Unknown Speaker  1:33:44
+okay good to have a history experience
+
+Unknown Speaker  1:33:50
+Alright, so let's let's evaluate like
+
+Unknown Speaker  1:33:55
+to present ado
+
+Matthias Miller  1:33:58
+we're including all invoices.
+
+Unknown Speaker  1:34:01
+Find your missed and you can pop it open and look at it. Yeah.
+
+Unknown Speaker  1:34:05
+Yeah, beautiful.
+
+Matthias Miller  1:34:09
+So theoretically if we do this, we should see grand totals match the whole thing
+
+Unknown Speaker  1:34:21
+72 Yes. Something's off don't know where
+
+Unknown Speaker  1:34:39
+I don't know.
+
+Matthias Miller  1:34:40
+I don't have time to troubleshoot it
+
+Unknown Speaker  1:34:47
+I don't think I do. Well,
+
+Unknown Speaker  1:34:51
+save it on seven. Oh, well, here's
+
+Speaker 2  1:34:56
+1228 Oh it's because I know what it is
+
+Unknown Speaker  1:35:50
+it's actually good
+
+Unknown Speaker  1:36:08
+still not
+
+Unknown Speaker  1:36:14
+112
+
+Unknown Speaker  1:36:27
+one This one didn't negative discount
+
+Unknown Speaker  1:36:41
+fascinating it's not showing up in here I'm
+
+Matthias Miller  1:36:46
+not sure why oh,
+
+Speaker 1  1:36:47
+I betcha negative. I don't know what it was used for but may have been used for some type of credit
+
+Speaker 1  1:36:58
+All right, well, let's just do you do you? Do you need more? We probably need a little bit more time to evaluate. You don't have time right now so let's just
+
+Unknown Speaker  1:37:05
+drop. Yeah, let's go next week or something? Yeah,
+
+Unknown Speaker  1:37:09
+look at your schedule and shoot me a recommendation. Okay, thanks. You did save Yes.
+
+Matthias Miller  1:37:15
+Yep, also already for you. Thank you, sir.
+
+
+Transcribed by https://otter.ai

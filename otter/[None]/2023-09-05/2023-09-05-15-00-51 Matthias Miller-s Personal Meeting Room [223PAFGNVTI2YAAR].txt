@@ -1,0 +1,578 @@
+Unknown Speaker  00:37
+Okay guys, hello Americans Joe
+
+Unknown Speaker  00:47
+Tillman Toki
+
+Matthias Miller  00:59
+well I think I was I was talking to Josh yesterday and I don't feel like I have my head wrapped around everything right now. I haven't really had a chance to I don't know there's been a lot of changes last week. Oh can you I hear you
+
+Unknown Speaker  01:30
+okay Josh
+
+Unknown Speaker  01:34
+Can you hear me Joel it's it's usual we all hear each other Josh you can hear everyone
+
+Unknown Speaker  01:56
+up Josh no oh well we can't hear Josh
+
+Matthias Miller  02:00
+okay yeah well now we got Joel Josh
+
+Unknown Speaker  02:22
+we go back to RingCentral
+
+Speaker 1  02:32
+Well, I was thinking hey the good news is it's apparently not my USB my Thunderbolt dock at work that is causing my sound drop outs but I guess we'll see
+
+Unknown Speaker  02:57
+I guess oh, here we go
+
+Unknown Speaker  03:05
+hey, no, I'm gonna echo I'm aware about that. Yeah, there you go. That's lovely. I
+
+Unknown Speaker  03:16
+can turn it back on if you want
+
+Matthias Miller  03:20
+love the AGCO cool what do you guys have any place to dive in besides just take a look at where we're at with this stuff no payroll module we've put on just a you know bumped back a few weeks to say we really got to double down on keeping accounting busy so that's kind of where that's at. And speed of reconcile with accounting actually is no longer an issue I don't believe or not much of an issue because of how we're reworking things. So we will revisit that when necessary. So this means this is all payroll stuff. And I think this can go as well. We do have new Okay, here's probably one of the biggest changes in terms of AR and conversations with Larry first of all, he's like sorry salespeople you did not make a sale you made an order. And can we please call the sale date the order date? Josh, is there any painful whiskey transitions that need to happen if we rename so sale date so order date
+
+Unknown Speaker  04:39
+I mean of course
+
+Matthias Miller  04:45
+I'm not entirely opposed to having SOCl date still persist as a as an editable macro? It's technical debt but So it's
+
+Unknown Speaker  05:02
+just terminology, right? Like, if we just said, Sure we'll fix that next month, like it's okay.
+
+Matthias Miller  05:08
+It's just terminology. We can we can say we'll fix Well, yes, but then it's the, but then you need to know which sale that you're talking. Okay, so So let's, so why does it matter? Well, it matters from an accounting perspective, because at the point that when somebody says, Yes, I'm going to buy it, that's an order, they're committed to, to take it, but any money that they pay is unearned income. And at the point that the building is delivered, that is the accounting sale event at which that money is now earned income. And any any money that they have not paid is now accounts receivable. And so, you know, at a minimum, I mean, what we can do in the short term is have an so accounting sale date, or so sale date for accounting. And also clean that up when we do that, which I'm fine with.
+
+Speaker 2  05:58
+What I think you just rename it and when it when it breaks, I'll fix it. I think that's fine. All right. That's pretty much how I live my life
+
+Matthias Miller  06:14
+okay, so that is, so that's, that's a fairly major change, there are some changes to the sales order template where they want sales orders to be generated to indicate to distinguish between a sales order and an invoice which basically just means adding a new prefix the letter N. And I'm not sure what all the implications are of this Josh, showing estimated tax on the sales order until the sale is actually finalized.
+
+Unknown Speaker  06:42
+Wait, changing the end to our
+
+Matthias Miller  06:47
+sheet before? While it's an order, you use our
+
+Unknown Speaker  06:57
+instead of cute
+
+Matthias Miller  06:58
+and then No, instead of well, you have killed during the quote. And then the customer says, oh, I want that and I make a down payment, then it's an R for sales order. And then at the point that it's delivered, then that's the point at which it gets invoiced. ie a has has is an accounting sale, and then they want it to turn into an admin. Now if we say that yeah, yeah, yeah, but we have to get back to that that's more complicated than we thought we're gonna keep showing these numbers up until then. I mean, it's just gonna say sales order n until until whatever point we can fix it. I mean, I don't see why we have to wait as to matter but
+
+Speaker 2  07:48
+I mean, I guess the like if literally you're only putting it on that template, that's fine but like it's sort of a database with an end. And like we we make assumptions about that all over the place. We can't just add an RN hope everything will be okay. But if it's just on a template then no worries we can do whatever we want
+
+Matthias Miller  08:19
+we will show taxes estimated sales tax prior to the order date nothing much needs to change except we need a way to Josh when we actually purchase a you know when you deliver the building, they want to ping tax jar again and get the final rates for that invoice as of the date of delivery
+
+Matthias Miller  08:50
+now yeah what happens if it's a pre pay in full and you owe a customer credit? For do we do we just want to have that? Well, I don't know.
+
+Speaker 2  09:15
+So are they actually worried about that in practice is just like a persnickety thing? I don't know. Mark, I think this is where I would ask Mark like Hey, no problem would you like to spend a week on this? And he would say Oh, nevermind because like it is long as a bag for stuff that you do on the delivery portal. We can we can tie it in. But if they just do in the detail screen, which I think they do, sometimes, like we have no no hooks in at that point.
+
+Matthias Miller  09:49
+Well, we're gonna have to have a hook in at some point on the sales order, because if you somebody walks in and buys a ramp Oh or a hauler, or repair guy throws a ramp on the back of his truck and goes and delivers it to a customer. That's not going to portal and we're going to be we're going to need to be able to, to account for sales tax in that case.
+
+Unknown Speaker  10:13
+How to do that right now?
+
+Matthias Miller  10:19
+I kind of think they're not
+
+Matthias Miller  10:25
+punching in a number. hoping it's right, I think same issue with handwritten invoices. I'm not sure how it's working on the sales liability side of things.
+
+Speaker 2  10:42
+This feels to me like it feels tax version of the conversation that Dwayne and Ellis had last year priorities meeting. What are we going to do? Are we going to have it right? Or we're gonna guess we're gonna have it right. How are you gonna do? I mean, we're gonna guess, are we gonna, but I was just gonna work.
+
+Speaker 2  11:04
+I mean, we can make so that, like, we can hook up some sort of database trigger calling out to a texture API. But like, we can't do that. And I mean, that's like a week or two at work. So it will be hard to hit a September 1 deadline on it.
+
+Speaker 3  11:32
+I mean, we could presumably, make them if they create an invoice, I presume we could create a button that they can click on the portal or a background process or some well, they don't want a background process though.
+
+Speaker 3  11:56
+We could collect give them a link to click to fill it to me to fill in sales tax with an exit detail screen or something. Exit Edit mode.
+
+Matthias Miller  12:08
+So you click a link, run the text or do your redirect with the initial values. Thing pockley 320, that would just require them to hit save.
+
+Speaker 3  12:20
+No more that? Well, I don't know for sure. Something like that. It if it's an entry point into the, into the front end or whatever, you just click a link that says, Please do tax on the invoice and something and they click Confirm. And it could either redirect them back to the invoice or they find a manual or whatever.
+
+Speaker 2  12:45
+But it's still it's still whiskey work, right? Oh, wow.
+
+Speaker 3  12:48
+I think it is still whiskey work. Yes. And I don't mind deferring it. But I'm just saying there'll be you could, it feels like it feels like an edge case. And if a few extra clicks would be easier than triggers and whatnot.
+
+Matthias Miller  13:11
+Just how much of the work is triggers? And how much of the work is the actual text or calculation? Whatever needs to happen?
+
+Unknown Speaker  13:22
+Oh, I don't know. It's
+
+Speaker 2  13:29
+I would guess it 80% They invest integration? I mean, I'm happy to do it. Like I don't know that the redirect is actually that much work. I mean, it'd be simple, I think it is. But it just, we got to do it.
+
+Speaker 3  13:47
+So maybe we just say ask them what 40 Where they want this part of it? Because what are their alternatives right now? Are we using tax jar for filing purposes or not?
+
+Speaker 2  13:58
+No. I mean, literally, there's a sales tax rate on the thing, like all they'd have to do is go look it up on a county website or something and manually punch it in if they wanted to.
+
+Speaker 3  14:11
+Oh, I think we just give them a price tag, save temporary solutions manually punch it in. And and here's what we could do to make that more homey to give them a few more clicks or feel the fear or clicks or whatever. Sure.
+
+Matthias Miller  14:31
+All right. Then there's a whole bunch of stuff that I need to spec out into a recode regarding accounting impact for AR which I don't think it's very interesting to anybody else. I don't mind FTA allocation, there testing actually need to make some changes to FDI allocation as well. It's not completely accurate. So I need to make that make those changes so that they can test I'm Josh, how late would you be able to push an update? Well, I can push these as are 20 changes if I need to. Let's do that. They are testing accounting, manually testing AP, including generic GL accounts manually entering month expenses, Asset Management depreciation schedules in their court.
+
+Unknown Speaker  15:28
+So has that gone through formal testing?
+
+Matthias Miller  15:33
+I don't know where that's at.
+
+Speaker 3  15:36
+I mean, I think we've coded a job, but it's on testing. I don't think I mean, it's right. Me has just been pushed to testing.
+
+Speaker 1  15:44
+It has. I think everything has testing. Check.
+
+Unknown Speaker  15:52
+Our reviews done.
+
+Unknown Speaker  15:54
+Yes, except that I just submitted a change that I'm gonna share on one. One thing that I'm wanting him to review. Yeah, that one.
+
+Matthias Miller  16:09
+I mean, so there are jobs here that are not assigned to Austin for testing yet, but it's in. So it's in QA.
+
+Speaker 3  16:24
+Are we planning to have Austin testing tested before they jump in on it or? Certainly?
+
+Unknown Speaker  16:31
+Man? I don't know. I mean, I don't care. I don't stop them.
+
+Speaker 1  16:40
+Fair every viewed. So I have not my review. I mean, on this or anything, generally doesn't include live running unless I unless I need it to understand something that's happening is Does that sound right to you?
+
+Matthias Miller  17:05
+Is what I would expect? I mean, I'm pretty cavalier about timing of testing here. Maybe I should care more. I mean, they know that we're busting our gut. That is my thought. But yeah, I'm fine. Okay. Cool. All right. Moving accounting
+
+Speaker 3  17:36
+stuff. Can we delete those rows? Or what's up with August 18 and August 31. We can
+
+Speaker 1  17:52
+Okay, move accounting settings. Repeated misunderstandings, I think cleared up in a conversation last evening. Wait. Whatever it was yesterday, but then today's a Bangladesh holiday so I always Yeah, but wait, Tomorrow is Wednesday. Thanks. Thank you. You're right. Yep. Yep.
+
+Speaker 3  18:23
+Okay, so that should yeah. There's just some records that had been on our posting settings that we're needing to migrate over to the company record it's been surprisingly hard so
+
+Matthias Miller  18:39
+awkward or whatever. So not too worried about it, but it's still on the edge. Don't worry about it. Okay, then there's a whole bunch of stuff that's needing design right now and I don't really know what to say it's a bunch of stuff is in my court. So check printing requires design and what we're going to do with check records how that's going to integrate into AP Yes,
+
+Speaker 1  19:12
+cash flows or you're moving on to cash flow statement. The so I did finally today get several of the base. Base just structure jobs set for ready to code. And the actual production of the report is the the last that I'm still working on design on
+
+Speaker 2  20:04
+I think this one is being done and waiting for them to test. So I think my mind this is in police court. Yes.
+
+Speaker 3  20:16
+Show me that up to now, implementation deployment 585. So he's way well, the slower G updates.
+
+Matthias Miller  20:25
+That's by the way, literally how slow the RGS AR, this is largely duplicate. And it just needs to be cleaned up, I don't really see a point in cleaning it up now, but payroll module will need to create vendor invoices for plenty? Well, it's not actually, we will end up doing but we need to think through payroll module, just gonna rename this accounting impact. Better sections on income statement
+
+Speaker 1  21:10
+it's getting some benefit from some of the cash flow work, trying to take some of it into account that I am focusing on cash flow before we get there.
+
+Matthias Miller  21:23
+Make sense? As you should, transaction verification report just needs to be done. It's not complicated and not worried about it being a lot of work and you're pulling up much in the process, it's just a matter of filling out some verification fields. Basically, we need a report on anything that does not have a special transaction type well, does not have is not an automatically generated transaction. When we see that and then push that out and have a field to check off to say yes, we like this transaction, kind of like the the vendor invoice Requirements Report.
+
+Unknown Speaker  22:09
+So
+
+Matthias Miller  22:15
+while there's all kinds of reasons to still freak out before the end of the month, we're shockingly far along.
+
+Speaker 3  22:24
+How do you how what kind of progress are you seeing on their implementation slash deployment? Are you pleased with the progress? They
+
+Matthias Miller  22:31
+are? Should you wait flags, they're they're about paced with us. So they're waiting on some FDA stuff for me to be able to keep testing. And so I don't, but I don't feel like I've got a good enough. I mean, if everybody's always nervous about how everybody else is gonna show up, and whether they're gonna do what they're supposed to do. And perhaps there's some instinctive fear, because it's one variable that we can't control. But well, it's a
+
+Speaker 3  23:05
+variable that has with some regularity been a painful variable.
+
+Speaker 3  23:18
+So that's the main reason I was raising the question. Well, so
+
+Speaker 2  23:23
+the pain you're you're referring to as payroll stuff, which in my mind was kind of in Dwayne scored for six months. So I think if Mark is focused on this step, I'm not too worried about them.
+
+Speaker 3  23:34
+So that fear so so the difference between this and many other experiences we've had is that you'll see that it's different if Mark is managing and then if Dwayne is
+
+Unknown Speaker  23:47
+marking it is good. And it is their, their company priority they're getting, they're putting a lot of focus into it. Perfect. Cool.
+
+Speaker 1  23:58
+I've got two questions. specifically relating to the asset management stuff. Is this a good time or, okay? One is an embarrassing oversight. We didn't add a an asset manage and report to actually look at scan for your assets or present them that is coded in dev. So by might be an argument to get delivery of that sometime soon.
+
+Unknown Speaker  24:39
+When was it coded in this?
+
+Unknown Speaker  24:41
+This afternoon? Okay,
+
+Matthias Miller  24:44
+is this the thing that adds a new button as well for new
+
+Unknown Speaker  24:48
+for a new asset? Yeah.
+
+Unknown Speaker  24:51
+Okay, got it. Awesome.
+
+Unknown Speaker  24:55
+Sure, we support asset
+
+Unknown Speaker  25:00
+tell you how to create.
+
+Speaker 2  25:04
+I will, there's a good chance I'll be taking an update. Hopefully tonight. We broke stuff in the platform that's over the weekend has ruined their life. And so if I have time to chase down a C++ bug, I will.
+
+Speaker 1  25:21
+All right, cool. The other thing is there's that. Oh, what is it something to do with invoices or sales orders? And linkage to assets?
+
+Unknown Speaker  25:40
+Shoot. Let me see if I can find that. Oh, yeah, that one. So I'm not sure who owns this, Josh sent a response.
+
+Speaker 1  26:06
+I don't know. What do we do to actually what is the definition of done on this thing?
+
+Speaker 2  26:14
+So my question here is we've got a GL account on the line item, but there's no asset ID field anywhere I don't like does this mean you add a field and start requiring it? The line that I can show you? Yeah,
+
+Speaker 1  26:27
+is in transaction line item or invoice line item. Invoice. line item? Okay.
+
+Unknown Speaker  26:39
+If Yeah.
+
+Unknown Speaker  26:47
+Okay, so are we saying we want to tag invoice lines with with an asset ID basically?
+
+Matthias Miller  26:59
+Look, let me jump into that Josh question. I think I mean, the basic idea is that, why are you creating an account for a fixed asset account, but not tying it out to an actual asset. And so, logically, one logical way to approach it in my mind is on the vendor invoice, if you select it, if you have a SKU that is linked to a fixed asset, or you override it with a GL account for a fixed asset, then we require you to also specify what asset it actually is, so that we can track expenses against we can track it against that asset.
+
+Speaker 2  27:36
+So this is presumably not raw materials. This is like, I don't know, my building or something. My office building,
+
+Matthias Miller  27:45
+we bought an electric forklift, that is green. And well, hang on, though, why? Why is this one? Good?
+
+Speaker 2  27:56
+So how does that flow through? Does that mean the the other job that just said was finished, it's not finished? And we need to like somehow start tracking assets through the the transaction creation process?
+
+Unknown Speaker  28:09
+That's just what I'm wondering.
+
+Matthias Miller  28:13
+I think so I'm trying to remember how we said we're gonna track
+
+Speaker 1  28:21
+Oh, we've got creation from the asset record itself, which incidentally, has a bug, but
+
+Matthias Miller  28:35
+but we're sorry. Sorry, go ahead.
+
+Unknown Speaker  28:38
+Oh, we have transaction creation, I meant to say from the asset record itself.
+
+Matthias Miller  28:51
+Which in a stock system makes sense. But in this system, if you're buying a forklift, you've got a vendor invoice for it, and you want to tie the vendor invoice. And, Josh, I think the short answer is yes, we need to pass it through. But it may be that asset purchases happens so rarely that they can I don't know what shove it into a temporary holding account and use the GL entry to fix it up.
+
+Speaker 3  29:31
+And the edit the transaction from the vendor invoice created because don't we have an asset? Don't we have an asset drop list on the transaction record itself?
+
+Unknown Speaker  29:43
+Yeah.
+
+Matthias Miller  29:45
+And then this would just be an alert if you've got a report alert that they would go back and update and if for some reason you modify the vendor invoice and we recreate the RG row you would see the alert again and say go for the Listen,
+
+Unknown Speaker  30:01
+I guess.
+
+Speaker 2  30:02
+Yeah, I mean, we're good enough that we like. When would you? Like, we'll adjust the date, we'll I mean, we're pretty good about picking up and modifying old transactions, instead of looking at retreating, avoid them out if we don't think they're there. And then if we decide what they're supposed to be there, after all, we'll just bring them back. So, I don't feel like that, like, I do kind of report or anytime you have a transaction for a fixed asset account that does not have an asset ID and you just, like instill it in.
+
+Matthias Miller  30:51
+Who codes that report alert?
+
+Unknown Speaker  30:56
+I think we can. What does it do?
+
+Matthias Miller  31:01
+In duck design? Sir, we're actually let's actually change this thing. This is a this is nothing to do with vendor invoice, missing asset, create a report create a report alert for all transactions that are tied out to a GL account, but do not have a asset specified to sorry, tied to a fixed asset GL account does not have an asset specified.
+
+Speaker 1  31:40
+And in this case, when we say GL account, are we referring to CCI accounting account? Yes, or Okay.
+
+Matthias Miller  31:52
+Okay. This is this then becomes strictly accounting? Yeah.
+
+Speaker 3  32:00
+So and is, is this a standard feature? Or is Do you Assistant switch to turn it on? So I guess
+
+Unknown Speaker  32:14
+Go ahead, Josh.
+
+Speaker 2  32:16
+The simple thing to do would be just stick it in their system, and then they get it and we can worry about making a generic later.
+
+Unknown Speaker  32:22
+I hear it's fair.
+
+Speaker 1  32:24
+Is it dismissively or always on
+
+Unknown Speaker  32:27
+always on? Okay.
+
+Matthias Miller  32:30
+But is there? It seems? It doesn't seem completely unreasonable to me. Okay. Yes. But there may be times when you want to say no is the fixed asset, but I don't want to, I don't know, where I want to start tracking assets as of a specific date. So I want to ignore anything prior to this date.
+
+Speaker 2  32:52
+I mean, I think if you make it generic, you also need to add a permission, or some sort of setting that, like you don't want to hold for a portable barn, we can let everyone see the alert and get annoyed by it. But most systems, you wouldn't want that.
+
+Matthias Miller  33:07
+You could still, if you have permission to edit accounting. You could do that? I don't know. I don't necessarily see it is my opinion. If somebody wants asset management, I don't particularly see this as a bad thing. Most likely, unless it means they have an annoying warning, they're gonna start ignoring but you asked to manage assets? Like Isn't that what you want to do?
+
+Speaker 3  33:37
+Well, that is assuming that I don't know that they don't have a fixed asset account where they're not really I mean, I don't know where they're just lumping stuff in or something. They're not really doing fixed asset management. So maybe at that point, they've chosen their own category for their GL account.
+
+Matthias Miller  33:58
+Okay, fine.
+
+Unknown Speaker  34:00
+I don't know if y'all can look into it and make a decision.
+
+Matthias Miller  34:03
+So don't feel strongly okay. So, but I do think the biggest downside is that their verification reports are not going to show the any asset what asset is this for? Like the vendor invoice verification won't have them fill in anything regarding an asset.
+
+Matthias Miller  34:58
+Might be fine, but It is always something to be aware of
+
+Matthias Miller  35:18
+is there anything that we should be doing from a project management project management perspective to get better visibility in how far they actually are in testing and how much they've got left and what the blockers might be?
+
+Matthias Miller  35:38
+Can we just let it roll?
+
+Unknown Speaker  35:54
+I can check with him. Hopefully Thursday morning. I don't know what
+
+Speaker 3  36:04
+the comment about Mark being involved does bring me some ease. I mean, and isn't this Friday that we've got the deformities? Or is that next week? Yes. Yeah.
+
+Matthias Miller  36:21
+Ellis, I think I think a fair comparison would be it's about the equivalent of working with Tim on a project, which is, yes, he's going to, he has a propensity for tying up loose ends and pushing things forward. But he's also simultaneously balancing the fact that he's majorly overloaded. And so he's going to give his absolute best effort, but there are the pros and the cons. But again, to Josh's point, it is a priority. And I think Mark has been doing a fantastic job from what I've seen of staving off competing priorities and staying single mindedly focused on moving this stuff forward. So
+
+Speaker 2  37:06
+is there what can I be working on here? I feel like it wrapped up the AP stuff. Or the pieces that can can steal to make stuff move faster?
+
+Matthias Miller  37:23
+Well, you know, I kind of talked about accounting impact and agreed, but that's not it. If Do you want to chase Check, check payments stuff? In the process recruiting checks, or does that need to need better business process define?
+
+Unknown Speaker  37:40
+I'm happy to learn to one condition to have is I will not do anything that involves creating an RT 21 template.
+
+Matthias Miller  37:48
+That's done. Jonathan did that. So most of that
+
+Matthias Miller  37:58
+drive a hard bargain, Josh?
+
+Speaker 2  38:02
+Yeah, I have no idea what's going on? Like, do I talk to you to figure out to islands I talked to Mark? Who knows about Cheque Printing?
+
+Matthias Miller  38:12
+It's gonna be marker Dwayne, or mud Drew, or? I don't know what I don't. Again, I don't really mind having those conversations, if it's difficult for you to coordinate. I don't really have much else to add. I mean, I don't really know what else I would throw at you. I mean, there's a little bit of payroll spinach, but at the time, we delegate that and it seems like about the same place as other accounting impact. To get the payroll module itself wrapped up. I think that actually moves us into things like oh,
+
+Speaker 2  38:50
+well, there was that one thing that I said would take two weeks. That was not two weeks, it's
+
+Unknown Speaker  38:56
+texture heavy.
+
+Speaker 2  38:59
+Yes, it is that we actually didn't get to necessary enough that we should just do it.
+
+Matthias Miller  39:11
+When he's asked for it, I don't know if he took into consideration that it would be a week but
+
+Unknown Speaker  39:17
+who asked for Mark or Dwayne, Mark, Mark, it
+
+Speaker 3  39:23
+might be worth you just calling him up and say, Hey, Mark, I have some potential I potentially have some capacity. This is how expensive it is. Do you want us to pursue it?
+
+Speaker 2  39:45
+Question for you, Ellis. So we've got technical debt on their side. As I start talking about this. They have not switched over to the new new style organizations. I think it is great and We have been holding off doing more stuff at the organization level because of that. So the first step is to convert them over to the new set organizations. The question is who pays for it? Their pre maintenance package, but they, you know, five years ago got the fancy gold plated premium subscription, whatever. Does that mean that that we pay for it? Does that mean they, they still pay for it? They pay for it? They, I mean, on a
+
+Speaker 3  40:32
+$500,000 system, we should be charging them $75,000 A year in maintenance fees, and we're not? And who so no, I, I don't do anything without billing them. They pay for absolutely everything. Okay, so sorry, you going to do work on that?
+
+Speaker 2  40:59
+Well, I'm thinking about that as was sounding the alarm of like, we're gonna get booked for the next year on on accounting stuff. And that's one of the things and I think he might be right, but I'm not sure that I need to be booked on accounting for next year. Sure. I'm really trying to stave off the Josh can't do anything. So we need to go get third party visualizers and whatever. Narrative. So I'd love to say, October, November, December while you guys are working out, you're counting stuff and finding glitches that I'm going to do all the IOUs we know until January 1, when we get when you guys are are now using the new accounting system and scrambling with that also are working on capacity to do visualize your stuff. That's why I'm trying to spend
+
+Speaker 3  41:50
+Isn't it ironic how much the conversations with them are like the conversations with Paul Daniels and sales from 20 years or 15 years ago and investor tools? Surely we can just do this?
+
+Matthias Miller  42:09
+You care to expand expand?
+
+Speaker 3  42:11
+Yeah, the just this has been a perennial, I don't I think we've run into it less than we used to at Messer tools. But this has just been a perennial thing for decades, that developments booked out, oh, let's just surely then we can hire someone else to get a third party software to do this or hire someone else to do to do that. Or, you know, this is just bond math, it shouldn't be that hard to integrate a third party library, that kind of thing. And we have rarely been satisfied with anything that we've that happened like that. And the integration cost is always so much higher than you would wish it to be. So I mean, it's it's the dilemma of having cash in hand or, or feeling like you've got cash in hand to throw at something but then not being able to throw it.
+
+Speaker 2  43:09
+Yeah, I just like people fundamentally, really, really don't like being told. We can't get to it. And there's nothing you can do about it. Just like this panic.
+
+Matthias Miller  43:24
+Well, I mean, just pull out the baby analogy. I mean, how much money do you have to pay to have a baby grow faster? There's only a certain level biological growth that's healthy. Do you actually want your digital infrastructure growing at a genetically unhealthy biologically detrimental rate? Sorry, that's
+
+Unknown Speaker  43:50
+because I'm growing at a biologically unhealthy rate. I could synthesize
+
+Matthias Miller  43:57
+Do you throw money at it?
+
+Unknown Speaker  44:00
+I mean, takeout I do kinda I don't know. The other direction I guess I don't know anyway. Yeah, I mean, I Okay. Here's what I think I think Mark understand to engage doesn't and I don't know that game necessarily wants to understand it. That's fair. That's fair.
+
+Unknown Speaker  44:28
+That's good. It's a dilemma of being a very wealthy Irishman. You have lots of money and you there's some things you just can't do anyway.
+
+Speaker 2  44:47
+Are we good? So you, like again, I'll just reiterate if there's anything I can do that you think is actually useful for me to I can actually speed things up where the communication or coordination and effort whatever I'm, I've got capacity over there. Next couple weeks, otherwise, I will probably go work on technical debt.
+
+Matthias Miller  45:05
+I would be giddy with excitement. If you said that you're going to disappear for the next week or two, unless I've got stuff that I need you to do but disagree with the next week or two and fix the organization, the legacy organization problem.
+
+Speaker 2  45:19
+Okay, is there anything I should know, like problems you've encountered with other clients or otherwise, I'll just go look at the records and try to migrate and cause chaos.
+
+Matthias Miller  45:28
+There's a job written up about all the places that we need to consider and it's a partial list. So nobody really knows is my understanding. But Jordan Ellison, you guys can correct me if I'm wrong.
+
+Speaker 3  45:39
+Well, I mean, there's an organization, like there's an organization lookup type. So basically tracing through to where the those things are being referenced.
+
+Speaker 2  45:56
+What you want to do is create a contact with an organization type. Is that the idea?
+
+Speaker 3  45:59
+Yeah, that's right. Migrate that thing over the site and then relink everything to point to that contact. So the
+
+Matthias Miller  46:04
+organization
+
+Speaker 2  46:06
+and if you have organization like subtypes, is there like a, a way to have this is an organization of type X?
+
+Speaker 3  46:14
+Yeah. The if you into a contact type record, then you can choose whether or not you can say this contact type can be an individual, it can be a org, it can be an organization.
+
+Matthias Miller  46:31
+It could be a good example. Well, Oh, this one who has new it's got new as this one still running old, that's embarrassing. Who loves the
+
+Speaker 3  46:47
+test? Fe FB? Yeah.
+
+Matthias Miller  47:03
+So supports individuals, you can have ones that support either or both. So if we go to contacts, and we go to other imported contacts and see if we're using that, here's one that supports both. And then you get a checkbox that says which is which?
+
+Unknown Speaker  47:25
+Well, yes, okay.
+
+Matthias Miller  47:27
+And if it's marginally more work, to make this be some kind of like, there's a bigger conversation, but cch for example, demo system, for example. GCH is probably the biggest system that we have that doesn't use new contacts. I don't know about the billing system or anything else, but is kind of something that I'm blindly ignoring. But if we ever want to get rid of legacy organizations, we are going to have to switch the switch over so I don't know if there are I don't know if it makes sense if there are X 30s that you can use to do the migration to commit those somewhere under a migration subfolder or something, but alright, at least keeping track of a track of what you're doing would certainly be
+
+Speaker 3  48:18
+would be the least. Okay, great. So are there minor accounting niggles and stuff that need to happen? Or not? Really?
+
+Matthias Miller  48:33
+Well, I mean, they haven't gotten that deep into it yet. I don't think
+
+Unknown Speaker  48:39
+I thought there had been minor maybe it's in
+
+Unknown Speaker  48:44
+this one
+
+Matthias Miller  48:52
+this one isn't under
+
+Speaker 3  49:06
+so, yeah, so maybe it is likely everything is in change requests that are isn't somewhere else. Is that right?
+
+Matthias Miller  49:14
+It should be. In fact, these are supposed to be the GFS chelsfield that's actually done Account import networking. It's probably done GL accounts and associating no idea what this is. This is we should just close that let's fix this is resolved. I think this is gonna let me do that but I'm not sure if it's gonna bounce back or not.
+
+Matthias Miller  49:53
+I don't know this needs cleanup. But I'm not aware of anything besides that filter balance sheet that
+
+Speaker 3  49:56
+and what kind of priority do you have on that one? I mean, so here's the deal. I am the guy's not him was slightly giddy that he's done with accounting thing but, and he can now turn his attention to other important jobs for other clients for bid before the next thing hits him and I think cashflow has just officially hit him as of Thursday morning. Joel does that sound right?
+
+Speaker 1  50:21
+At least the first parts of it?
+
+Speaker 3  50:25
+And cashflow was more complex and asset management. Is that right? Or as complex at least?
+
+Unknown Speaker  50:34
+roughly
+
+Unknown Speaker  50:36
+similar hash.
+
+Speaker 1  50:39
+Maybe, I mean, the reporting, I think the there are fewer structures to deal with. And reporting is more complex. So
+
+Speaker 3  50:50
+yeah. So what's happened is I've stolen Isla he full time for merit. And so now he has down to three people having two of those people pair program for. For, for affordable barns. Now he's down to one person himself, which I'm not opposed to having him co jobs. But I may need to be telling him hey, you've got to, we've got to delegate things to Jonathan Bergen, which is probably somewhat of a loss of control, but probably not maybe a necessary one. So well, either either and I need to code it or, or needs to go to Jonathan I think so. Does that sound Rachel?
+
+Speaker 1  51:36
+Okay. You're referring specifically to well,
+
+Unknown Speaker  51:41
+any non zfp stuff?
+
+Unknown Speaker  51:43
+Gotcha. Gotcha. Yeah, probably a decent chance actually. Yeah. Okay.
+
+Unknown Speaker  51:50
+Great. Good. Praise God for Jonathan.
+
+Speaker 4  52:05
+Good thank you. Awesome.
+
+Unknown Speaker  52:14
+All right. Have a great one.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,1637 @@
+Speaker 1  00:50
+Oh, come on headset. Yeah, come on headset. Talk to me. Yo, hello, hey. There we are in my head. It's perfect. Rookie, rookie. Perfect. Perfect. I like to make fun of people who don't can't figure out the technology, but lately, my technology has been giving me the fit. My stupid doc decided to go on like doesn't want to connect anymore. Had it working all week, and then today, of all days, it decides to not work again.
+
+Matthias Miller  01:31
+Yes, all right, well,
+
+Speaker 1  01:38
+all right, let's, let's. Let's start with, I I was spending some time last night looking at the contract configuration record, and I'm not happy with it. Predominantly, I don't like the workflow where we have a a record for every type that we're going to do. What's what I'm afraid of is if we have a contract for, well, okay, how about this? Go to go to the either go to my notes the very, very bottom, or go to row 290 order 290 and read my note rather than.
+
+Unknown Speaker  02:32
+Where is it at hello? What the world? It's
+
+Matthias Miller  02:37
+not here.
+
+Unknown Speaker  02:38
+Go to my notes. Then I
+
+Speaker 1  02:44
+uh, did I not? Oh, good lord, I didn't save it. Okay? So the main issue that I'm concerned about is on a per state basis, one RTO contract is going to handle every one of these settings, CRA standard, 90 day, same as cash. And so if you make it, if we have a record for every single one of these, and we want to make a major contract language change, you're going to have to go through and re template every single one of those. Is there not a way we can come up with that we can handle like the defining factor would be the state and the RTO company, and then you would be able to define the types that are available in there. We could handle all the CRA stuff, the security deposit stuff, all the stuff inside of one record, so that you're only templating it once. Yeah,
+
+Matthias Miller  03:43
+is this just for the template
+
+Speaker 1  03:47
+it would it's only that's the only thing I've written. Enough of these things that when you have to make language changes, it takes a while, because RTO contracts have gotten longer and longer and longer, like we just, we just reworked them, and it's almost easier at that point just to start over and rewrite the whole entire thing. But if you're doing that, I mean, yes, theoretically you can copy and paste, you know, from one to the other, but it's like, you got to make sure that everything then holds out and works right, and so on and so forth. And give me your thoughts.
+
+Matthias Miller  04:24
+Well, I mean, couldn't we? I mean, we could say that the template lives on the RTO company. I thought there was going to be language changes between states, but you would just do if else for that,
+
+Speaker 1  04:40
+there will be language changes between states. So every state is going to have their own RTO contract. But what I like in our current model, you're going to have three or four different Ohio contracts, as you can see if you go back to the report
+
+Matthias Miller  04:57
+one for the. Yeah, I get it,
+
+Matthias Miller  05:12
+because you'll have a because you
+
+Speaker 1  05:15
+have one for the CRA one for the standard one for the, you know, same as cash and so on and so forth. Well, you
+
+Matthias Miller  05:23
+won't actually have a separate definition, though,
+
+Speaker 1  05:26
+that's the way they currently have it. I mean, if you go go back out to the report, he they have three of right there for Ohio,
+
+Matthias Miller  05:35
+right? Can we just remove the description and then we come up with our own, like these should, should just be named as cricket Valley shadow like, I mean, it doesn't even really need a name.
+
+Speaker 1  05:58
+So probably, if, if I so, I wrote down some initial thoughts, but I didn't really think through how we would handle. Like, the little caveat to this thing is the whole 90 days same as cash, or the 60 days same as cash. 120 is like, I'm not sure how you're gonna unless you're going to do like, an RG of of, you know, same as cash days, now the other option is we discard defining same as cash and let the contract define that like the actual paper contract, because that's kind of how we're I don't know how other companies are doing this. I know how we're doing it. I know how JMAG is doing it. I know how JCM is doing it like and most of most of us, have gone to this idea where the language is baked into the contract and every customer, irregardless of their choosing a same as cash has the same as cash, cash option, so it's baked right into the language. And if you pay off in 90 days, there's no x, there's no extra language or no extra definition for it. It just is what it is. Now, there may be other companies out there that are saying, you know, they're assigning a separate addendum. I don't know. So part of me wants to dump the same as cash thing and go back to only CRAs and standards, and at that point, we could simplify the definition record some.
+
+Matthias Miller  07:38
+Well, here's okay, do contracts requirements change based on the contract, or is it just the features? It's just the features. Like, why wouldn't we have take the definition name away have an RG of of contract types? I know that's wrong, but whatever. No, it's
+
+Speaker 1  08:03
+not wrong. I think it's, it's the two, it's two current types of our standard and CRA.
+
+Matthias Miller  08:12
+And then the question is,
+
+Speaker 1  08:18
+I think, I think, I think, okay, instinctively, what I want to say is, I want to say that we turn we put an RG of types. The types are a list that you can add, that you can add to. And if someone says, No, I really want some type of addendum as part of my template. Well, then we'll, I'll go right, include if language based on if a contract is selected as a same as cash type of thing, but for the most part, will that will ship with CRA and standard, and then we handle all of those features inside of the definition record.
+
+Matthias Miller  08:57
+Okay? So let me make sure, I mean, I think I'm with you, so the contract features this way.
+
+Speaker 1  09:03
+Feel free to tell me I'm wrong. Like, like this, this is a better data model. I'm just, I'm concerned about maintenance,
+
+Matthias Miller  09:12
+okay, but do they? Are we sure we don't want to mix and match?
+
+Unknown Speaker  09:18
+Explain,
+
+Matthias Miller  09:19
+like, we basically have state settings.
+
+Speaker 1  09:25
+So I do expect, okay. So if you are if you have more than one rent to own company, then I do expect a ratio between RTO company, a one to one ratio between RTO company and state. So you will have an Ohio cricket Valley or an Ohio ABC rentals, and those will be different. The definitions will be almost the same, but a lot of the templating will be different, you know, because that particular RTO company may have, you know, their contract structured slightly different in their formatting, but for the feature set, will be pretty much. Same and function pretty much the same, maybe with some differences, but there should be a one to one ratio between a state and an RTO company, right? But I mean, again, I'm willing to be argued with on this. I just felt like when I was kind of going through the definition record after a conversation yesterday, it's like, this gets pretty cumbersome. If I got to go make language changes to my contracts,
+
+Matthias Miller  10:26
+it does it really prop and but, and it's not even the right way to go about it, because you're not saying this is CRA. You're saying this allows CRA. I don't know what I mean, security deposit, presumably,
+
+Matthias Miller  10:47
+may potentially be in allow because, yeah, I mean, I guess it would be, is it a CRA is IT security deposit? You can always put in zero.
+
+Speaker 1  10:56
+I think some of the like, some of like, some of that's going to have to be wired under the hood, as far as you know, one being mutually exclusive to the other in regards to a CRA and a standard, but it would, sorry,
+
+Matthias Miller  11:14
+go ahead. No, go ahead. So we have a contract type, we have a we have a down payment type, CRA. And this is not the right you have better wording. But Why could we make this be CRA versus security deposit. We have
+
+Speaker 1  11:52
+a and the only thing on here that we don't currently, we're going to have to handle the zero down thing. There are two companies that want to do zero down, so we we probably need to allow for zero down.
+
+Matthias Miller  12:03
+So would that be a basically allow?
+
+Speaker 1  12:07
+Yeah, I think it just, it's allow CRA,
+
+Matthias Miller  12:14
+well, but it's not allow CRA. You're saying it is a CRA. I
+
+Matthias Miller  12:25
+what you're saying. I mean CRA and security pods, it's mutually exclusive. But a zero down is as Can you can't have a zero down on a CRA. Can you Can
+
+Speaker 1  12:36
+we govern? Could we govern the whole CRA conversation based on the type. So if you, if you assign the CRA type into the RG, then it allows CRA, rather than do an allow check or like an allow field, like so you're saying this contract definition says it allows for standards. And obviously, security deposits go along with standard. We'll have to say, allow or disallow increased security deposits, and allow or disallow zero down. And if you put in the CRA type, then you have the features of the CRA and there's not really, it's not really a feature set. It's just a, does this contract that you know, does this state allow this definition allow for a CRA which, why couldn't that be handled with
+
+Matthias Miller  13:39
+the type, right? That's what I'm saying. Like you're going to have a type that is a CRA type, or, no, I feel like I'm missing something. Previously, we said, Can the contract be CRA? Well, yeah, if you choose to now here, here we're saying, Well, if you select the CRA contract type, then it is CRA. It's not that you can do CRA. It is that it is, or if you put any money down, it is cra,
+
+Speaker 1  14:08
+okay, let me. Let me attempt another explanation. I'm envisioning a RG on the definition record that of the allowable types, yep, standard
+
+Matthias Miller  14:22
+type, a separate record, or is it defined on here?
+
+Speaker 1  14:28
+Type I was, I won't think it's a I don't think it's a record. I think it's just a list of of types that you allow.
+
+Matthias Miller  14:36
+Ship list, standard CRA,
+
+Speaker 1  14:39
+yeah, I think, and I think the ship list, it ships with just two standard and CRA if, if you're doing something different in regards to other things, well, then you know, we have to talk through on on the additions to that. I think we should be able to add types to the. Definition or to that list for the most part, I think it's rent to own. So standard and CRA are the really only two options. The variations off of that are things like 90 days same as cash. And if somebody wants to fake that as a different addendum as part of the contract, we'll do it. We'll do it as include, included language. We'll go add it 90 days same as cash, or same as cash option to the list and write include if language for it.
+
+Matthias Miller  15:25
+Okay, let's, let's see if I can. Let's mark this up a little bit. Type. Why the down arrow doesn't work. I
+
+Matthias Miller  15:52
+then we have I'm
+
+Matthias Miller  16:16
+okay, so CRA is handled security deposit is implicit here. We need a allow increased security deposit.
+
+Unknown Speaker  16:33
+No, it would be disallow increased security deposit,
+
+Matthias Miller  16:36
+disallow or standard contracts only, right? Because CRA, you could put
+
+Speaker 1  16:44
+CRA there's it's not. It's a moot point, right?
+
+Matthias Miller  16:49
+Allow dwf, Dallas, Fort Worth money, Damage Waiver fee, same as cash, same as cash. Days, I fees.
+
+Speaker 1  17:04
+Do you want the Damage Waiver fee as a checkbox or as a or just put the amount in,
+
+Matthias Miller  17:15
+just completely, just leave it. So if you
+
+Speaker 1  17:19
+if, if there's $1 value, I would just combine that into one. Into one field. If you put it's just Damage Waiver fee, dollar value, and if there's something in there, then you're, you can do the damage to your fee. If it's blank, then so you're not giving is that intuitive
+
+Matthias Miller  17:35
+enough for your I think so. Okay. I
+
+Speaker 1  17:43
+or if it's not intuitive, it's easily explained. It's like, well, I want to do a damage review. Okay, go put it in.
+
+Matthias Miller  17:51
+Okay, and then it ships with a and it would ship with this.
+
+Unknown Speaker  17:59
+What's the allowed dollar down. Oh, allow $0 down. Okay.
+
+Matthias Miller  18:11
+So then,
+
+Matthias Miller  18:20
+I mean, obviously we're not going to, it's all made up of what it could be. But you would just ship it with two rows. They can just be blank.
+
+Speaker 1  18:36
+Well, I mean, is there? There isn't really any other two rows. I mean, if you're gonna, if you're going to do the same as cash, option thing right there as well.
+
+Matthias Miller  18:46
+Well, the only thing would be, if somebody wants to, if somebody wants to, doesn't offer same as cash, except in very specific situations, like if, like, Oh, you're not going to get it unless we told you, then you would need one. But
+
+Speaker 1  19:18
+I'm fine with this. So if this was an RG, and you could add another row, then theoretically, you could do a standard. And you could make a you could have a 90 and a 60 day, same as cash.
+
+Matthias Miller  19:33
+What would you call it? Would you call it like a would you have like a standard 660, standard 60? Standard, standard 90, like you would add custom options,
+
+Speaker 1  19:47
+yeah, probably, and the the type, but that those would be drop lists in the RG row, and with the option to add an. Other one to it, yes, yeah. Do
+
+Matthias Miller  20:03
+you see that down arrow there?
+
+Unknown Speaker  20:07
+Can I see that down arrow? A
+
+Matthias Miller  20:11
+little button to click right here to pop up? Okay, no, I do agree with you? I think this makes sense. Max price still remains on a per state level, late fee, TBD, definition, name, then, should we come up with something like a? Would you be fine with a, oh, I don't know. We turned this one into like, we just call it Oh 108, or something.
+
+Unknown Speaker  20:43
+Just put an ID number on it,
+
+Matthias Miller  20:45
+yeah, oh,
+
+Unknown Speaker  20:49
+I don't care
+
+Speaker 1  20:56
+why we even Yeah, just, just some sort of Yeah. That's fine. Oh one, oh to
+
+Matthias Miller  21:08
+be. Let's change this to be to do Seth. We could either make this read only and turn this into an ID using the RTO RTO company, company list them, ie, oh, one dash, why wouldn't you
+
+Speaker 1  21:33
+concatenate an incrementing number, The State and the RTO company as the ID? I
+
+Speaker 1  21:45
+so like oh, 1o h, Dash o1 dash over o1 dash, O H, dash cricket Valley, and that becomes its ID number. The
+
+Matthias Miller  21:56
+main issue with putting the company name in here is because you rename the RTO company, fair. It's either this or just a straight up auto number. I'm not quite sure why we would just do a straight up auto number.
+
+Speaker 1  22:16
+Like I said, I don't have a strong opinion. I
+
+Unknown Speaker  22:32
+Okay,
+
+Speaker 1  22:34
+now second thing I have in here, Nick had a question somewhere in here regarding terms term record. And I'm I don't quite understand why we're turning why, why we're using a term record instead of just a list. You'd have to go look at the term
+
+Matthias Miller  22:52
+because we wanted people to be able to add terms. And in order to do that, I mean, we could just require it to be a number and validate that you only had valid I
+
+Speaker 1  23:04
+just, I just wanted an explanation. I don't know. I don't care.
+
+Matthias Miller  23:09
+That's the explanation. Now,
+
+Unknown Speaker  23:12
+that makes sense. I forgot about the odd terms thing.
+
+Matthias Miller  23:16
+Okay, so I How did you want to do the number of payments the customer has to pay, and is that still in your court? Does that? Does that? Is that going to be down here on the on the contract features,
+
+Speaker 1  23:34
+how many payments does the customer have to pay? Is this under the balloon payment? Okay, this is the balloon payment. I thought we answered this. I was sure we answered this in regards to the calculation for the balloon payment.
+
+Matthias Miller  23:51
+This not the balloon I mean, is this for the balloon payment? Do we? Yeah, okay, it's a balloon payment
+
+Speaker 1  23:57
+setting. But I thought we were going to have that as part of the contract definition record to say has balloon payment, and what's the calculation for it? Okay, and then that calculate, that calculation rounds to the up to the nearest number of months, and then subtracts that off the total number of payments. I
+
+Matthias Miller  24:27
+all right, but then the balloon payment would be state specific, right? Yes, okay, so contract,
+
+Matthias Miller  24:42
+um, does RTR get handled? Do you need anything in this features for RTR? I.
+
+Speaker 1  25:08
+Now that would make sense to be a separate record definition, record
+
+Matthias Miller  25:15
+for the RTR,
+
+Speaker 1  25:18
+yeah, oh, that's fine. And then I'd have to think through exactly, we'd have to think through exactly what that is,
+
+Matthias Miller  25:36
+so that so really there's one per RTO company state in RTR versus RTO, yeah. Okay, so where do we talk about RTR? I don't
+
+Unknown Speaker  25:50
+know that we did a whole lot talking about RTR.
+
+Matthias Miller  25:53
+We have a contract type, then we Have an RTO, okay, this is a I'm
+
+Matthias Miller  26:35
+okay, so then Here on the contract definition, though contract definition, we need a RTO. It is a rental contract type. If we're
+
+Speaker 1  26:53
+going to call that a type, then we need to go back down to your your that we can't have two different types of types on the same records.
+
+Matthias Miller  27:08
+Okay, now we need to think through I don't
+
+Matthias Miller  27:22
+know what makes the most sense, okay, but then should be required default to RTO,
+
+Matthias Miller  27:39
+okay, so then terms doesn't apply, right, right.
+
+Matthias Miller  27:52
+Late Fee does apply.
+
+Unknown Speaker  27:55
+Late Fee will apply, yes,
+
+Matthias Miller  27:58
+contract requirements, Min price. This applies, yeah, I think that applies. Okay, here is the billing payment stuff like, right, literally, right here. Minimum down payment would apply.
+
+Unknown Speaker  28:20
+No, no, it would be it minimum down payment, yeah, I mean, yes, okay, I think I
+
+Matthias Miller  28:43
+I think we want to rearrange this so that you have, like, basically rental stuff, maybe at the top, and RTO stuff the bottom.
+
+Unknown Speaker  28:53
+So, so based on the type, we would rearrange the fields.
+
+Matthias Miller  29:00
+Well, it's, I mean, let's, let's have a, let's have it in a way that makes sense. Like, like, would it make sense to have late fee?
+
+Matthias Miller  29:21
+Like, if we would do even the contract financials, if we would start with late fee, we would have minimum down payment down here, and then here we would have a balloon payment, balloon payment settings.
+
+Speaker 1  29:47
+Oh, you're thinking. So in other words, the type is just going to hide certain sections.
+
+Matthias Miller  29:50
+It's going to hide certain sections. But let's make it be somewhat logical, because, I mean, it makes more sense, but these side by side or something, I. These look good both and it makes it nicer, if basically the stuff that's visible for both lives together.
+
+Matthias Miller  30:19
+I Okay, so then we have subcontract features, though this only applies to RTO, right? Yes. So what if we had just I,
+
+Matthias Miller  30:43
+RTO,
+
+Matthias Miller  30:54
+is there a section? Can we just
+
+Unknown Speaker  31:02
+sorry? I'm gonna I'm gonna check out for a second. I'm gonna ask grock about some things I need to think about, For settings, for rent, internet,
+
+Speaker 1  32:17
+because that, I mean, I think we're going to need features Like, I mean, I think the predominant use case for this will be things very similar to, like, storage units, right? And so, like, I don't do they bake in, like, time frames for increases. I'm sure they have security deposit calculations. I just want to, I want to see what key elements may come back here.
+
+Matthias Miller  32:53
+Does RTR have it? Go, chase that. Yeah. Keep talking. Does RTR have a does it have a dwf? Yeah. Dwf?
+
+Speaker 1  33:10
+Why would you want to damage waiver? I mean, yeah, yeah. I mean, they do it with rental cars. So sure. Why not?
+
+Matthias Miller  33:26
+Will people offer dwf one standard, but not CRA?
+
+Unknown Speaker  33:33
+You're saying for a red zone contract record,
+
+Matthias Miller  33:35
+yeah. Like, why did you do that? Sorry, when you're CRA, you don't get
+
+Speaker 1  33:42
+a dwf or maybe it is they want to charge, if the state allows it, maybe they want to charge more for that damage waiver fee than, or less than damage, I don't know. I kind of like the idea of of you could do a different Damage Waiver fee based on your contract. I kind of like it. Otherwise you just, you know, just fill it back in, down through, make a mental note for yourself. One thing that we have to handle on the contact record is landlord information.
+
+Matthias Miller  34:18
+Okay, so, but then, wouldn't it make more sense? Because this also applies to rentals to have a allowed Damage Waiver fee,
+
+Unknown Speaker  34:26
+yes. And do
+
+Matthias Miller  34:30
+you want this to be a yes, no list that they have to choose one, or do you just want to
+
+Speaker 1  34:39
+default it to for Well, I think again, I just think we fill in a field. If there's, if there's, there's a damage waiver fee setting for and if it's empty, it's no and if it's in, if there's $1 value, then it's, it's,
+
+Matthias Miller  34:54
+then you need to rent, to rent, to rent. Dwf, yeah, I think so. Yeah.
+
+Matthias Miller  36:55
+it's probably good enough for now. I. Come on, crop go faster. You Okay, okay. Unity okay term, Okay, that's. s an early termination fees but we would need to have for rent to rent, that would be something we need to account for. Obviously, you know, is it? And I don't know if this goes in the contract record or definition record, but basically renewal timeframe, so Is it monthly? Is it weekly? Is it etc? I think that's probably on the contract record, not necessarily on the contract definition. We'd have to annual or handle for increases, like some kind of setting for, you know, increase in price over time frame, obviously, security positive. Ignore that already late fees. We already have that. I We haven't talked about NSF yet. I don't know if we're going to treat as a separate record, or if that goes in, I don't think that necessarily goes into a it could. That could be something we handle in a contract record or contract definition. What are your NSF fees? And that's not specific to a company that might be state, state specific. It is state specific. And that's, I mean, that can just be an NSF fee, unless somebody has an obscene check, in which case it's an NSFW fee. NSFW that's safer word. Sorry, that's a dumb joke. I I mean, a lot of the things that Brock's coming back with is handled more in the contract than it is necessarily on recording. But okay, what did, what did I say? Handling increases, handling security deposits, yeah, early termination. That was the other one. Like early termination fees. I think I want to strike All right, do you want to look over and see if you're happy sending this over to them? So we're thinking, you now have an RTO company estate and a rental contract type, RTO versus RTR.
+
+Speaker 1  40:19
+So if so, if it's RTR, the contract definition, are we just going to make? Like, when the contract definition creates the contract record, how do we handle the payment creation? Like, what the payment amount is? Are we because, yeah, because on RTO, we have all of these divisors and so on and so forth. Do all this calculation stuff. Do we is it just literally, like you just punch in the field, then when you're doing creating an RTR?
+
+Matthias Miller  40:53
+I don't know. How does it normally work? I
+
+Matthias Miller  41:18
+Okay, stop it. I'm switching to graph three. You go fastest or to produce something.
+
+Unknown Speaker  41:25
+I have never used it. I
+
+Speaker 1  41:45
+I think we just, I think when, when the contract definition creates the contract record. I think it's on an RTR. I think it's just, you fill in whatever dollar value you're going to charge for the rent. We just leave it up to the whoever's creating the contract. Yep, and so it's just a fillable field. But I mean as far as late fees, I think you know late fees are going to follow a lot of the same things as RTO now the so you already have early termination dollar fee. Yep, you already have that.
+
+Matthias Miller  42:22
+Do you uh, do you, do you So this still remains to be seen? Or do you want to talk about this now?
+
+Speaker 1  42:31
+No, we want to talk about we want to do some detail screens. I have, I have a document that I was going to, I was going to copy the URL and from Google Docs into the spec here, where I have a bunch of screenshots and thoughts from on. Late Fee calculation, the amount of settings in RTO Pro is dizzying, and we've gotta, we've gotta get it down to something that makes some sense, but I don't, unless you're dying to go deal with late fees, I thought we were going to work on some detail screens.
+
+Matthias Miller  43:08
+Well, I mean, that's fine. So, so this is still in your court, yes, and let's leave it
+
+Speaker 1  43:15
+there. And just just put a, just put a something there. It says Dwayne's gonna put a Google doc in URL.
+
+Matthias Miller  43:30
+Okay, then we have RTR settings, dwf early termination fee, which are both RTR specific. Dwayne's gonna figure out price increases. We have terms. And I mean, that's fine. I mean, are you fine if we don't allow adding to the list here, you have to go somewhere else to add a new term. The other option would be to literally have the term length be a drop list of just a number and completely ditch the record. It just says 36
+
+Speaker 1  44:01
+okay, what are we calling term? I thought that was a record. It is. And so you can make a new record, and I think you're defining the name and the number of months for it, right?
+
+Matthias Miller  44:14
+So as long as you're happy with them, you need to pop out of the screen to create a new term.
+
+Unknown Speaker  44:20
+Yeah, I'm sorry that okay? I mean terms, for the most part, should be static,
+
+Matthias Miller  44:29
+right? It's not like you're adding one every month, I hope not, cash price, percentage, rental fee, divisor, and are all these single decimal I assume? Yeah,
+
+Speaker 1  44:48
+at, sorry, what are we? Where are we at here, what is cash price, percentage? Oh,
+
+Matthias Miller  44:55
+terms. I.
+
+Unknown Speaker  45:07
+Let's make it two decimal points. Just to be safe, I'm
+
+Speaker 1  45:24
+and right now in the contract definition, so we have a cash price percentage, and we have rental fee that should be a percentage. Yes, that should be a percentage.
+
+Matthias Miller  45:39
+It's not. It needs to have it. It needs to show two rows.
+
+Unknown Speaker  45:45
+It needs to show two rows,
+
+Matthias Miller  45:46
+two Heading rows. It's just too, too short. I
+
+Matthias Miller  46:25
+Okay, blend time.
+
+Speaker 1  46:31
+Yeah, okay, I don't rental fee and pay off rental fee. That's confusing. Shouldn't it just be payoff percentage? Is
+
+Matthias Miller  46:43
+that what you want? Yeah,
+
+Speaker 1  46:45
+let's just do so. Is it cash price percentage? Yeah, cash price percentage and payoff percentage, that should be the header name, and then the the field should be a percentage field.
+
+Matthias Miller  47:02
+Um, uh, I mean, add a percentage on the back end. How are they doing? This is that? Oh, okay.
+
+Unknown Speaker  47:16
+And then the divisor should definitely be, yeah, the divisor should be two decimal points as well.
+
+Matthias Miller  47:25
+Okay, so then we have balloon payment. Is this a is that actually a native setting? I know you could do that.
+
+Matthias Miller  47:42
+Apparently, that's awesome. I'm behind the times
+
+Speaker 1  47:47
+where it adds a percentage time. Yeah,
+
+Matthias Miller  47:54
+it evaluates as 12. Okay, so product percentage, percentage, two decimals,
+
+Unknown Speaker  48:05
+Product Price, percentage, what it would balloon payment.
+
+Speaker 1  48:17
+Product Price, yeah, okay, yeah, okay. Slow day. Slow, Slow being slow.
+
+Matthias Miller  48:25
+Yeah, what if we just call this price percentage? Just have 1% of product price, and
+
+Speaker 1  48:36
+then, and then, what you did? You have a switch that flips between product or like product or or contract. Percentage of,
+
+Matthias Miller  48:54
+we just call it percentage of price. You select product price, you select between product price percentage of product price percentage of contract. Percentage of contract price and but then you just have a single percentage
+
+Speaker 1  49:05
+Price field. So that would be, like a drop list. This would be drop list, yeah, I'm fine with that. Yep, yep, yep. I like that. That's, that's very, that's very Wizzy week. I like that.
+
+Matthias Miller  49:19
+Okay, and then this is a the down payment. On the down payment, this one's for the down payment. Is there? Is there a, okay, no balloon payments are handled elsewhere, right?
+
+Speaker 1  49:34
+Yeah, Bloom has nothing to do is down payment. It's covered elsewhere. Yeah, it's so that's the end of the contract. Yeah. Okay, so we're gonna, I gotta take, I gotta click a bathroom break, all right, before my bladder explodes.
+
+Matthias Miller  49:53
+Break. I'll throw this in the contact record as well. I.
+
+Speaker 1  51:40
+You want to make software building a whole lot easier what everybody just did it my way. I mean, this
+
+Matthias Miller  52:01
+is fundamentally the difference between retail and, I mean, in some sense, you actually got a good taste for retail software working through three districts who all want to do things differently, yeah. Yeah. Okay. So then we have RTO, okay. So we have sections, just the sections, the contract definition,
+
+Speaker 1  52:27
+no art and no RTR check just hides based on the type,
+
+Matthias Miller  52:32
+yes. So then we have, now we have the rental finances, which has the shared art, maybe we could just say,
+
+Matthias Miller  52:50
+stop it.
+
+Speaker 1  53:00
+Oh, and let's, let's Max price, and let's add message, error message,
+
+Matthias Miller  53:20
+okay, then we have RTR. Do you want to call this rent to rent financials, then rent to own financials? I
+
+Matthias Miller  53:45
+and then we have rent to own contract types and
+
+Matthias Miller  54:09
+Okay, allows your dollar down checkbox, dwf amount. Do you want dwf amount or dwf dollars? Dollar sign,
+
+Unknown Speaker  54:20
+dwf double sign. Do
+
+Matthias Miller  54:27
+you want to do the same thing with the same as cash, with no checkbox?
+
+Unknown Speaker  54:37
+Do what the same as cash?
+
+Matthias Miller  54:39
+Do you want to skip the same as cash checkbox
+
+Unknown Speaker  54:43
+and just put the days in? Yeah,
+
+Matthias Miller  54:46
+I like it. So we could call it number, number of days same as cash. Is that fine? Hmm.
+
+Matthias Miller  55:14
+Okay, allow, oh, we also have a disallow, allows, zeros, down.
+
+Speaker 1  55:21
+Can we can we ship with?
+
+Matthias Miller  55:25
+We can populate when you create the record. We can autofill the RG with two rows. Is that what you're asking?
+
+Speaker 1  55:37
+Well, the only thing that you would have to really do anything with Yeah, we're gonna pop you into it. I was thinking maybe filling some of the fields, but there's no sense
+
+Matthias Miller  55:58
+in that. Okay, slow,
+
+Matthias Miller  56:06
+actually, this is hidden for CRA, okay? If somebody adds a another Hang on, another type, how do we know whether it's standard, whether it's CRA versus standard?
+
+Matthias Miller  56:22
+I should we have a contract type with a CRA checkbox and it has to be unchecked for standard. Has to be checked for CRA,
+
+Speaker 1  56:47
+right, yeah. What other kind of CRA would you want to do? But, I mean, somebody's going to come up with something. I want to do two different types of CRA accounts. Okay,
+
+Matthias Miller  57:02
+okay. So then here,
+
+Matthias Miller  57:10
+checkbox unchecked and read only for standard checked and read only for CRA, editable, all others. Dun. Dun. Dun. Dun allows your dollar down to slightly increase dwf dollars.
+
+Speaker 1  57:31
+So the two items that we're going to populate, can you remove one of them or both of them?
+
+Matthias Miller  57:36
+Yeah, okay. And if you
+
+Speaker 1  57:39
+decide to go put the CRA back, then, obviously you have to check the CRA box. Check the CRA
+
+Matthias Miller  57:43
+box. It'll, it'll do it automatically. I mean, it'll, it'll do it automatically. We'll make it read only for these two items, because that makes sense. We have a standard CRA contract. Okay.
+
+Unknown Speaker  58:00
+Yeah, you're right.
+
+Matthias Miller  58:04
+Okay, delegates to read these values on the contract. Well, I
+
+Matthias Miller  58:29
+Okay, are we done with the with the monthly payment late fee Cook, we need the like late fee calculations, which we already have a to do. So we're going to do done, okay? And then late fee is going to be per state.
+
+Speaker 1  58:44
+Late fee is per state. And I like that. We're centralizing it on the the contract record.
+
+Matthias Miller  58:56
+Definitely sorry, this, this will be the security, the exact amount will be entered on the contract. And I'm going to leave it as the amount, because I'm dutchy, the exact amount.
+
+Unknown Speaker  59:16
+That's your favorite word,
+
+Matthias Miller  59:18
+yeah, a month. Um,
+
+Matthias Miller  59:25
+sweet. All right, I'm going to shoot off a message saying that to the team we have an update on contract definitions, Seth, you and I plus members plus Nick. Nick.
+
+Matthias Miller  1:00:00
+Call this morning to review. Okay, all right, so now contract record
+
+Speaker 1  1:00:07
+one thing, one thing we could slap in here before we jump off of here. One of the things that I came across that is in RTO settings regarding late fees, is that, and this will be just as simply a checkbox on each row in the RG, I think, is late fees plus tax. Or late fees include tax, so depending which way you check the box, so if you say you charge a $10 late fee, and the state charges sales tax on late fees, then you you have only collected $9 in whatever sense, okay? But if you say no, no, no, I want to say, I want my full $10 you can check the box and it'll do whatever the tax rate, it'll increase the the payment amount by the tax rate,
+
+Matthias Miller  1:00:59
+tax so remove from late fee and add to late fee, right? Do you want an option? Is it, can it be blank for non taxable, or just non taxable?
+
+Speaker 1  1:01:16
+Ah, that's a totally different thing. We're gonna have to get into that. When we get around sales tax, we're going to figure out the whole late fee, how we're going to how we're going to calculate sales tax on some of this stuff and so and probably at it probably, we probably ought to just go ahead and add a checkbox for taxable or not taxable in the contract definition. I don't know if is that the right place for it to live when it comes to late fees.
+
+Matthias Miller  1:01:40
+Well, I mean, what if we would do? I mean, if we would do something like this, we could say it's non taxable, and then remove from late fee,
+
+Speaker 1  1:01:50
+add to late fee. Just make yourself a note, let's not, let's not get
+
+Matthias Miller  1:01:55
+that's not fault. Let's do this to do dB. Make sure you believe in this and tell us what to do.
+
+Speaker 1  1:02:08
+Okay, yes, let's get off let's get off this record. Otherwise we're never going to get
+
+Matthias Miller  1:02:13
+off of it. We did an hour so far. Yeah, I know. Well, an hour of design saves a day in development. Very true. All right, so contract, this is the one. This is what the team was saying. I mean, contrary definition, obviously, but this is what the team was saying is going to help them the most.
+
+Speaker 1  1:02:42
+Contract So, but in order to get the contract record right, we had to get the definition right. So this was actually good, a good thing to deal with. Okay, what are the questions on the contract record,
+
+Matthias Miller  1:02:56
+contract status? What do we need? I don't know what Sean needs.
+
+Matthias Miller  1:03:13
+Do we have the contract statuses? Yes, we do. I
+
+Matthias Miller  1:03:27
+way to be built, the building. If the building, do we have? What do we have in the building? Record product. Stop it. I We have a purchase date, the build date.
+
+Unknown Speaker  1:03:51
+What? What
+
+Matthias Miller  1:03:56
+if it's other
+
+Unknown Speaker  1:04:00
+do we really want to handle feet and inches? That's obnoxious. We got to think about that. Do
+
+Matthias Miller  1:04:09
+people really sell? I mean, I'm assuming people do sell in inches, for some reason. No, I
+
+Speaker 1  1:04:17
+don't know. That's not, that's not what we're working on. Currently.
+
+Matthias Miller  1:04:22
+Waiting to be delivered. How are we going to track delivery on, let's just do this.
+
+Matthias Miller  1:04:38
+Active would be based on,
+
+Matthias Miller  1:04:46
+delivery i.
+
+Matthias Miller  1:05:00
+No, not necessarily,
+
+Speaker 1  1:05:08
+contracts, contracts, contracts, contracts, Contract Number
+
+Speaker 1  1:05:22
+one is the is this? I don't what is, what is okay, what is driving the status and and how is it read only? I mean, it's auto calculated. I mean, based on,
+
+Matthias Miller  1:05:40
+well, is the building built that's been delivered? Do you need to retrieve it? Is contract complete? Does it have a retrieval contract transit task? Kind of thing
+
+Unknown Speaker  1:06:00
+that doesn't feel intuitive to me, but I guess we can talk kind of through this.
+
+Matthias Miller  1:06:06
+Do we need the contract status?
+
+Speaker 1  1:06:09
+Yes, because I mean, well, unless we're going to, unless we're going to come up with other ways to say, to define what it is, do we have canceled on there, on this
+
+Matthias Miller  1:06:26
+inactive slash, complete, yeah,
+
+Speaker 1  1:06:28
+but I mean the we probably should have a canceled. I
+
+Speaker 1  1:06:48
+Okay, here's, here's my hang up. I don't like the product record driving the contract. Why don't I like that? I
+
+Speaker 1  1:07:03
+I guess some of this comes down to workflow, like, what so you enter a contract. The building's not been delivered yet. Okay, how do you market delivered? How, like, what is going to be? How are we going to make some of these things work? I
+
+Matthias Miller  1:07:24
+well, I guess we could say, I mean, it would make sense on the contract, the contract is the thing the building is the thing that's moved, but the contract is the thing that triggers the move. Right. Yeah. So here, I mean, you could make it as simple as having a delivery date or a scheduled delivery date and a completed delivery date and then a scheduled retrieval or needs retrieval, an optional retrieval date, or requested or scheduled retrieval date, and then a completed retrieval date, i
+
+Matthias Miller  1:08:20
+What are You thinking?
+
+Speaker 1  1:08:40
+This feels a bit like a big pond of water that I have to try to make sense out of. In
+
+Speaker 1  1:08:58
+we're adding features and functionality that people are not currently used to, but will learn to use. And how do we make that process as easy as possible?
+
+Speaker 1  1:09:13
+Because essentially what we're saying is that either we entered in or we got through an API, a building that has been written up on an RTO contract, that has not been delivered yet, or has not been built yet, or any number of those things. But here's the question, we don't know how that stuff gets communicated then, like, if, okay, here's a here's a classic example right now, heritage in New York. We buy RTO contracts from them through cricket Valley, and they come through the shed app the moment that the customer signs that thing, it's in our. Shut up RTO portal, and they want us to go ahead and enter that thing and pay them for it and and, like, even before it's built and moved forward. So like, in scenarios like this, what's the workflow to make some of this, to handle some of this? Like, we got to define, we got to design the workflow to get some of this right. I'm
+
+Matthias Miller  1:10:51
+thoughts. Well, I mean, okay, part of the workflow is contract entry. I mean, Billy and another way to think about this is, what is this? You know, I use story questions to extract stuff all the time. What is the story? What is the story of a contract? Well, first we hear about it is, and maybe this is a section be really useful. I
+
+Matthias Miller  1:11:26
+Oh, now I have a record. Let me see if chat GPT will.
+
+Matthias Miller  1:11:39
+Okay, I'm going to try the chat GPT thing, see if I can record this and have it, put it things together. Okay, so let's, let's talk about the story of the contract. The story of the contract is basically first we find out about it is when the manufacturer submits it to us in some form or fashion. Yep. All right. Now, what are the questions we have a whole bunch of questions we need to know. Well, what did the customer pay? Has been has it been delivered or not? Those are probably the key, probably the key, and do we need to pay them? So if we need to pay them right away, we need to issue a payment if it hasn't been delivered. Do we? Of course, there's all kinds of contract details and stuff like that, but if it hasn't been delivered yet, then if we need to, we may pay them before or after delivery. Correct, correct. And so we figure out if we need to pay them, and we need to figure out and then, as far as hasn't been delivered, well, then we also need to know, when do we start the contract because, or when do we start collecting payments from the customer? Is it Do we wait until it's delivered? Or do we do it right
+
+Speaker 1  1:12:58
+away? Right? Usually, that is in some way defined in the contract. And so oftentimes it could be within 30 days of the contracting. It could be further out than that. So there needs to be some flexibility on the start date we
+
+Matthias Miller  1:13:23
+but we need to know when the contract was signed. Right, yes, yes, and the contract will determine then when we start collecting payments. Right? Yes, that's right. And okay, so, so now we know. So
+
+Speaker 1  1:13:39
+before, before I go, before I go too far, and say that some states require you to define when the first payment, like when, when the first payment is due, and some states do not. And so for the states that do, obviously we're going to use the date that is defined in the contract. For states that don't, then we define it based on 30 days from delivery.
+
+Matthias Miller  1:14:03
+Okay, so on the contract definition, we need a when is the first payment due? Right, right? And it can be based on contract date, or it can be based on on delivery
+
+Speaker 1  1:14:23
+date, a do we want to calculate it, or do we want to just say free form field or fillable field?
+
+Matthias Miller  1:14:31
+I don't know how people calculate it. I don't know how this gets done, so I Well,
+
+Speaker 1  1:14:35
+that's what I'm saying. I'm saying there's, there's enough, there's enough nuances and flexibility around this, this question that sometimes you could calculate it, other times you could not. Now we could say, from the contract definition, we auto calculate like you can give it, auto calculate parameters as long as you can change them.
+
+Matthias Miller  1:14:57
+Yeah, I think that's right. I mean, we do default. Then people can override it on the contract, okay, so now we know when payment happens. Now there's three processes in play that actually are disconnected from each other, and they're not sequential. That's part of the issue, and that's part of the problem with the status the non sequential items are delivered the building, pay the manufacturer, get money from the customer. Those can happen in any order, yep. So status really needs to be a, almost like a multi thing. I mean, maybe we just need multiple we need, we need, like a manufacturer status,
+
+Unknown Speaker  1:15:38
+manufacturer status,
+
+Matthias Miller  1:15:41
+like a or a manufacturer payment status, we owe money or not. I don't know if we need that. We need a customer payment status, which we're going to want anyway. Are they current? Are they overdue? How far overdue? And then we need a building status. Is it? Is it waiting to be built? Has been built, has been delivered. Is it waiting for retrieval?
+
+Speaker 1  1:16:16
+So, okay, here's, here's a bit of a guiding principle. And I guess if we design for the most details, then we just need to be able to have a way to say, like, there's, there's two different ends of this spectrum. One ends of this spectrum is that I want to track it from the time it comes to me. I want to track it when it was built. I want to track it when it's delivered, and all of those I want to set, as you know, on the building record. And we want to use that for functionality on the contract side, great. The other side of the other end of the spectrum is I got the contract today. They mailed it to me from the Amish manufacturer, and they only mail me contracts once they're delivered. So we got to go from zero to start now, right?
+
+Matthias Miller  1:17:09
+Well, in which case
+
+Matthias Miller  1:17:15
+you might not actually have a delivery date. You just know that it was delivered.
+
+Speaker 1  1:17:21
+I mean, most of the time we do have a delivery date, they will send something along. Most of the time on on situations like this, whenever we get the contract, I'd have to ask Francine on how they handle some of these from more space, because that's, that's the situational, more spaces that we get the contract once all it's all done, it's at the customer, and it's ready to be entered in and go, okay.
+
+Speaker 1  1:17:56
+But I do think they send along something that says when it was delivered, which would then govern, you know, if you have information that says when was delivered, they will then, you know, 30 days from that is your, is your you know, Standard calculation, point right.
+
+Matthias Miller  1:18:21
+The main thing you need, though, is, I mean, the whole point of the status, part of the part of the point of the status is, I want to know, does this thing need my attention?
+
+Speaker 1  1:18:31
+Okay, it's simpler than this. One or the other needs to have, needs to control the status stuff, either, either the contract record controls everything, or the building record or the product record does. So we need to pick first and foremost. You know
+
+Matthias Miller  1:18:49
+what the contract
+
+Speaker 1  1:18:50
+does? I tend to agree,
+
+Matthias Miller  1:18:53
+because the contract is going to determine other status, things like, are you up to date on your payments? I uh,
+
+Speaker 1  1:19:05
+yeah, but I mean, most of that's like, I don't, I don't foresee us statusing A contract, okay, based on their past due step, like, where they are past due that that ends up being in reporting and, you know, but I don't, I don't foresee us, you know, doing something on the record itself, if they're past due, like that, aside from leaving notes that were not, you know, when we talk to them, etc.
+
+Matthias Miller  1:19:40
+So what's your proposal on the statuses?
+
+Speaker 1  1:19:56
+Instinctively, the statuses are going to control things. Is like, start of depreciation, start of contract. Like, when does this thing go on to the books and things like that? Because there are situations where we're going to want to load that contract in, but it doesn't technically hit the books. Yeah. Yeah.
+
+Matthias Miller  1:20:24
+Okay, so, I mean, okay, so, but there are two different you could technically have a contract in play, and because you don't, and if you as a manufacturer, want to hit your bets on I'm going to assume, generally speaking, delivery date is when it hits the books, either to you or to the to the customer. But it might also, I suppose, happen that you take ownership of it and you say, I'm just leaving it on the manufacturer lot. It's mine now, I'm just it's on that set that location. I'm
+
+Speaker 1  1:21:29
+I guess we don't need to figure out some of those trigger points to date. What we do need to figure out is, I do think statuses on the contract record need to be. This is where we edit the statuses on the contract record. It should not be. That should not be a read only field,
+
+Matthias Miller  1:21:52
+okay. What do you want it to be? And then, based on the status you require, like build dates and stuff. I
+
+Unknown Speaker  1:22:26
+Why do I want to check build date on the product record?
+
+Matthias Miller  1:22:40
+That's a fair question. Do you even care? I mean, if
+
+Matthias Miller  1:22:49
+you're responsible for delivery, no, you don't care.
+
+Unknown Speaker  1:22:53
+I
+
+Speaker 1  1:23:02
+I just this point i i think we can keep the field there. I don't think it has a, I don't know that we validate for it, for anything on it, like, if you want to fill it in, like, obviously the product record has an entry date if you want to have, if you want to fill in a build it. I can see in the future where someone may want to use that in order, like if they do some of the deliveries, like if there's some combination of RTO company, delivery company and blah, blah, blah, I could see somebody wanting to use that. But I don't think we validate for it the status. I don't care on statuses. We can we what we have right now. Where was our statuses are waiting to be built, waiting on delivery. Active, I'm assuming, is okay, pending retrieval.
+
+Matthias Miller  1:23:46
+But then waiting to be built doesn't matter. We can take it out, right? If we're not requiring the build,
+
+Speaker 1  1:23:57
+I would leave it there as long as we like. It's there, it's, it's, it's a, it's a status we can report on. But it's not like we're not going to validate on anything for it. Okay? But then every
+
+Matthias Miller  1:24:12
+building, if you're not tracking Bill dates, every building is going to say waiting to be built. Why not just say waiting to be built, slash delivered? Well, I guess you don't know that. I don't know fine. I'm overthinking it, but or not or not, but,
+
+Speaker 1  1:24:25
+well, I mean, so some of these things are like, Okay, you could say, okay. We could say waiting, if we wanted to do this and do this right then, then, really, if it's waiting to be built, then there. Then we could validate that the build date on the on the product record is blank, if we're waiting to be delivered, then we could validate that it's actually been filled for the most part. Then it's going to be like, I
+
+Matthias Miller  1:24:58
+forgot this is editable. Yeah. Fine.
+
+Unknown Speaker  1:25:03
+What is editable?
+
+Matthias Miller  1:25:04
+The contract status,
+
+Unknown Speaker  1:25:06
+so we can add more.
+
+Matthias Miller  1:25:07
+No, I mean, like, it doesn't auto calculate, right? We're
+
+Speaker 1  1:25:11
+not going to auto calculate. Actually, we don't validate on any of this stuff with the product record, okay? So if somebody says, I really want that in the future, we can come back and do it
+
+Matthias Miller  1:25:27
+so, but then we might validate certain fields, like waiting, you know, active. Do you need a I
+
+Matthias Miller  1:25:44
+pending retrieval.
+
+Matthias Miller  1:25:52
+Active will require a bunch of the okay Hang on, should this be contract? Should this date be contract date? What are you looking at? Effective under contacts
+
+Matthias Miller  1:26:14
+or sign date?
+
+Speaker 1  1:26:17
+What do we have? Why do we have an effective date for a primary and secondary customer,
+
+Matthias Miller  1:26:25
+because you can Have Wait a minute.
+
+Matthias Miller  1:26:41
+This was intended to be a wait a minute. I'm confused. Just
+
+Matthias Miller  1:27:03
+I'm really confused.
+
+Speaker 1  1:27:05
+Okay, if you want my opinion, do away with the effective date. We add two date fields onto the contract record. One is the entry date that when you entered in, automatically fills, and when you change your status to active, it requires you to fill in this the the start date. Contract, start date,
+
+Matthias Miller  1:27:32
+do you want the entry date to be editable? Why
+
+Unknown Speaker  1:27:41
+would you want the entry date to be editable?
+
+Matthias Miller  1:27:44
+That's good. That's all I was asking.
+
+Unknown Speaker  1:27:50
+Well, I mean, is there a reason? No. I mean, what you want to fake when you entered it?
+
+Matthias Miller  1:27:58
+Yeah, I do.
+
+Matthias Miller  1:28:09
+Okay. So,
+
+Matthias Miller  1:28:19
+all right, so then, so, then, really, though,
+
+Speaker 1  1:28:23
+so it, do we need inactive complete, or can we just do complete? Like, do if we have a cancel, do we need an active? What's inactive? Yeah, there you go. I like that.
+
+Matthias Miller  1:28:41
+Okay, so then the on the contact section, I mean, this is just a primary and secondary customer, and I think what this was intended for, I'm really confused. Shouldn't
+
+Matthias Miller  1:29:01
+this just be two fields, primary and second? And secondary customer? Yes, so you can transfer, because the contract, if you transfer the contract, you're gonna have a new
+
+Speaker 1  1:29:13
+contract record, right? The contract could transfer to a new person. That is possible. Okay, that's what this is for. But I don't, you don't need email and call and mailing a physical address on the contract record. You
+
+Matthias Miller  1:29:26
+don't want to be able to just to see, oh, hey, let me click to Jeffrey.
+
+Speaker 1  1:29:42
+I part of me, in order to save space, was to say it is primary customer and then a link and the secondary customer and then a link. If you want to go see that information, jump over there to that record. Okay, that's instinctively, that's what I want to say, because that allows us to clean. Up this a little bit. I don't know that there's because if you remember, we're making the contact record, our primary record, you're not going to spend a lot of time over here on the contract record
+
+Matthias Miller  1:30:12
+anymore. So okay, here's one other thing that we should note. Is it not going to be confusing, like, I don't know how we want to do this, but shouldn't we have a primary and secondary customer drop down on the main screen with a transfer contract button that pops open all these details? 99% of the time you don't care about this. Do you
+
+Unknown Speaker  1:30:40
+not here.
+
+Matthias Miller  1:30:43
+Does it make sense to you to hide it under button? Put,
+
+Speaker 1  1:30:51
+put, just put a blue customer button. And if you want to, if you want to see who's there, you click it. Is that what you're thinking, or what are you
+
+Matthias Miller  1:30:59
+thinking? Customer? Hit. I mean, it's really a transfer, slash, transfer contract slash,
+
+Matthias Miller  1:31:10
+I'm just worried this is confusing right out of, like, if you don't know what's going on, it's, you're, you're not going into a contract right off the bat and thinking, oh yeah, course, you can have multiple like, that's how you do transfer. Like, you're just thinking who is the customer and who's the primary and who's the secondary customer, that's all that's on your mind. So to have all this transfer in customer history stuff is a little confusing.
+
+Speaker 1  1:31:34
+Okay, I think I know what I'm saying here, but correct me if I'm wrong. This feels to me a little bit like this. Should not like assigning. We should be assigning contracts to contacts instead of assigning contacts to contracts, because right now we're assigning we're assigning contacts to contracts, and I think we should be assigning contracts to contacts. So we should have the contract record and say on the contact record we should have an RG of contracts that are assigned to it. So this section right here should just be a simple Read Only if at all information, like, actually, I think it really is, is just a a customer Link button, or no account number, the account number, customer account number, you could have a link customer name and account number that you just jump over there to the contact record,
+
+Matthias Miller  1:32:33
+okay, but that's confusing, because you can now get stranded contact contracts. Or how do you do you do contract transfers, then you delete it off the one contact and put it on the other contact.
+
+Speaker 1  1:32:50
+I'm thinking about this the same way that we think about a sales order and a building record right now. Because on the sales order, we have an RG of buildings that are tied to it, and it's simply a link on this, like there's, it's simply a link on the on this, on the building record. That's kind of the way I'm thinking about this process right now. Tell me I'm wrong. I'm willing to be told I'm wrong, but it makes sense in my brain.
+
+Matthias Miller  1:33:24
+Well, I think, I think the solution is,
+
+Matthias Miller  1:33:34
+we need a manual process to transfer a contract. Then, in that case, transfer customer, I don't know it feels I'm just gonna tell you, I think you're wrong. How's that? Does that make you better?
+
+Unknown Speaker  1:33:49
+No, not really. But tell me why, because you have to.
+
+Matthias Miller  1:33:57
+You have to link it to both the primary and the secondary customer. And so that means, I mean, you could transfer to a different secondary customer. You could, like, why wouldn't we just have this contact? Why would we just have a primary and secondary customer? RG, and when you change it, it just logs history of what the value used to be, so that on these contact records, you can see it was effective from this guy, was effective from this date to this date. And just make it be automatic. And so if you want to do, if you want to transfer contact contract, just get the new contract holders, throw them in there, and you've got the RG history. And this RG Can, can can be visible anytime.
+
+Speaker 1  1:34:49
+So then we do want the effective date there. So it this contract has an effective date for this customer from 725, forward, until you would, until you would, you. Uh, well,
+
+Matthias Miller  1:35:04
+but then, then it's just a customer history button that pops it open and it's this. RG is not editable. You edit it by selecting a different customer. When you select a different customer, like if you modify this, it makes sure you have a row for the current date and modifies the current row.
+
+Speaker 1  1:35:20
+Okay, so are you saying that we would store like, if this contract was changed from one customer to another, we would store that history somehow? Yes, okay, I'm convinced. Okay, you're making sense. Thank you. You're making sense. I thought so. So then and I just drank a big pile of protein Chicken now go to the Bathroom again. All Right? You
+
+Speaker 1  1:37:08
+okay, one thing we do need to handle then, if you change contact on the contract record from the original we need to have some method where we require an addendum documentation
+
+Matthias Miller  1:37:30
+if you change it after.
+
+Speaker 1  1:37:40
+And I'm not sure how we want to do that, because obviously, if you linked up the wrong customer, if, if, for whatever reason, you were contract entering, and you entered the wrong person for the wrong contract, you going back to fix it, like we need to have a way to say, I'm just fixing this contract. It's not a customer change. But it may be, it is, I don't know, maybe, at maybe it is after the status goes to active. If you make any, you know, any changes to the customer it requires, requires something. I
+
+Speaker 1  1:38:35
+i See this is why you guys are the software designers I like to work with, because I could come up with some idea which I was convinced on, you can tell me wrong, which
+
+Speaker 1  1:38:48
+would probably not be the case if I just hired some developer from India. Don't
+
+Matthias Miller  1:38:53
+get me started.
+
+Speaker 1  1:38:58
+And then you have just this grotesque pieces of software that then end up like RTO Pro or compass,
+
+Matthias Miller  1:39:06
+exactly.
+
+Matthias Miller  1:39:15
+Okay?
+
+Matthias Miller  1:39:36
+Primary customer required if status is active, pending retrieval or complete,
+
+Matthias Miller  1:39:56
+or if secondary customer is specified. Just do that well, or we just say, Yeah, that's fine. Okay, so then we have,
+
+Matthias Miller  1:40:19
+I mean, no, it doesn't need to be Sean. No, it doesn't need to be. Well, it's just,
+
+Matthias Miller  1:40:37
+I drive people crazy with my history usage. Okay, so then this goes away, goes away, goes away. That makes me happy. Okay, and then, can you change the secondary customer or both names on the contract, yeah. Do we need an addendum? Like, how do you want to handle the addendum
+
+Speaker 1  1:41:15
+in order to change a contract? Yeah, the way that we handle it now is, is through a letter in RTO Pro that we just send out to the customer they sent back to us, and that's when we make the change, and then we we store that letter. And so I'm I'm thinking that we'll have, we should have a way from either, probably both from the contact record and the customer and the contract record, to be able to generate that addendum document, and you know, either mail it or email it to them.
+
+Matthias Miller  1:41:54
+Is it just generation? But what? What in terms of validation? Do you want?
+
+Speaker 1  1:42:02
+I Okay, I could go either way. On the validation piece. I could say, if you change the customer, hey, art, Mr. RTO company, if you change the customer and you don't document it, that's kind of on you. I have an idea. Yeah,
+
+Matthias Miller  1:42:15
+if you if it's active, Penny retrieval or complete. Then you have to check a box to to edit it a transfer contract, check box, and you check your trance, to edit the contacts. RG, yes, well, no, to edit the primary and secondary customer.
+
+Unknown Speaker  1:42:44
+That's what I meant, yeah. And then that checking of that box does what it
+
+Matthias Miller  1:42:51
+just makes, makes that you can edit it. There's really nothing. It's just like, Oh, I am transferring it, am I not?
+
+Speaker 1  1:43:01
+So after initial creation, we would call that checkbox,
+
+Speaker 1  1:43:11
+change the customer, transfer the customer, something like that, something it, edit. No, not, edit. I And if you put the Transfer to Customer button then, or transfer contract button, I don't know, we have to figure out the verbiage on it. Then the RG becomes editable. And do we make some Do we have some sort of message that says, we strongly suggest you document an addendum. I don't
+
+Matthias Miller  1:43:46
+know. Well, I wonder so primary customer should be required when you set it up, right? That's right. Okay, so
+
+Matthias Miller  1:44:02
+I'm mean, I would think this, maybe I'm too simplistic. You have a primary and secondary customer required on entry. After you save, if you want to edit it, you have to click transfer contract and you you can, you can. And
+
+Speaker 1  1:44:19
+then it's up to you whether you're you, you duck you, you started an addendum on the district
+
+Matthias Miller  1:44:24
+record you're doing something. You're like, oh, this is a transfer. It's not like a
+
+Unknown Speaker  1:44:28
+I agree. I like it. I like that. Um,
+
+Matthias Miller  1:44:39
+the only question I have?
+
+Matthias Miller  1:44:47
+Is it okay? Okay, sorry, this is slightly complicated, but let me walk you through it. What if primary and secondary customer are editable anytime? If the effective date is today,
+
+Matthias Miller  1:45:07
+so on the day of entry, you can fix up the customer, then the transfer contract just takes that and copies it onto a new row. Do we
+
+Speaker 1  1:45:23
+want to give them any more like do we want to say to equals to today and plus five days like today? Or, you know, do we want to give them five days of leeway, or to go back and fix a mistake
+
+Matthias Miller  1:45:41
+well? Or we could have a well,
+
+Speaker 1  1:45:43
+I guess at that point, if you fixing a mistake, after that, you deal with it as a transfer. And because that history gets logged, then anybody can see it, I'm okay with that. What today? Yes, you can, you, can you get, you get the today to fix a screw up.
+
+Matthias Miller  1:46:02
+Editable? If transfer contract is checked or effective date equals today, or it's a new record,
+
+Matthias Miller  1:46:19
+I think I
+
+Speaker 1  1:46:24
+an effective date gets automatically written during contract entry, and it's not editable at all ever. Correct? Or is effective date editable on today as well
+
+Matthias Miller  1:46:39
+contract start date editable and date
+
+Speaker 1  1:46:50
+of entry actually, actually, actually that RG, Oh, I like this better, that RG and effective date is all editable as long as it's before or equal to contract. Start date after start date, it becomes a transfer, okay? Because there will be times when a start date may be in the future. And so then, if that's the case, you can edit the you can edit all this stuff until and you Yeah, I like that effective date is written at the point of contract entry as today, and if it's, you know, if it's needs to be different than that, you know, you can make it the same as the contract start date if you want to, but the RG is editable up until that point after start date. Yeah, that
+
+Matthias Miller  1:47:42
+makes sense. See, I don't think, I don't think people, I
+
+Matthias Miller  1:48:00
+don't think people think of, I still think that the RG is going to be confusing for people. I wonder if we should have a contract. Okay, let's, let's try this one, one different way, so we have a primary customer. This is a field, okay, that makes it better. Editable
+
+Unknown Speaker  1:48:24
+a droplet field, yes.
+
+Matthias Miller  1:48:27
+Drop list of active customers. Drop list of active customers. Editable on slash before contract, start date, right. Yep, or if transfer contract is checked, yep, okay,
+
+Unknown Speaker  1:48:56
+same thing with secondary
+
+Matthias Miller  1:49:00
+Yes, when, when editing,
+
+Speaker 1  1:49:07
+you're right, there's no reason for it to be an RG, because you're not going to, you're not going to have a list of primary and secondary customers. And so any changes to that gets logged into some sort of history button under some sort of history, something earlier,
+
+Matthias Miller  1:49:22
+yeah, I think the transfer contract actually stores, potentially stores, yes, yes, yeah, because it's history, yeah,
+
+Unknown Speaker  1:49:33
+customer history,
+
+Matthias Miller  1:49:35
+drop list of okay, so then This is a drop list of active customers, editable, same editability. Oops, this is not optional.
+
+Matthias Miller  1:49:52
+Okay, then we have customer history, and that
+
+Speaker 1  1:49:58
+should just be under some button. In, yes, I agree. Okay,
+
+Matthias Miller  1:50:03
+so then customer history is like, it's not effective date. It's actually, it's actually the end date. You
+
+Speaker 1  1:50:13
+don't, you don't need an effective date, because we're going to use start date, and we're going to use contract start date, that's its effective date. So you're right, you're right.
+
+Matthias Miller  1:50:30
+I think we want to transfer date. That'd be the simplest
+
+Speaker 1  1:50:36
+a transfer date. So then you would have so in the I guess, are you going to log, okay, on contract creation, does it log the initial customer in history? Why wouldn't it? And if you change it, then it just it logs the date of change. I was
+
+Matthias Miller  1:50:57
+thinking it would be simpler if history is literally history,
+
+Speaker 1  1:51:01
+okay, so if any change takes place, then it, it logs the change date,
+
+Matthias Miller  1:51:08
+yeah, the transfer date, okay. And then you have a transfer chance for contract checkbox which adds a new okay, this is visible and editable after a contract start date adds a new row to customer history date here, this is on,
+
+Speaker 1  1:51:32
+wait, wait, wait, wait, wait, wait, there's no reason to show the history button unless you create a history So it would never show up unless
+
+Matthias Miller  1:51:41
+in heroes, yes, yes, yes, yes. As hero saves primary and secondary customer on the in the RG and blanks out the fields on the on the main screen.
+
+Speaker 1  1:51:59
+Boom. Why do you want to Why do you want to blank out the fields in the main screen
+
+Matthias Miller  1:52:04
+transferring it anyway. You do a transfer, you got to select who it's being transferred to.
+
+Speaker 1  1:52:09
+Yeah. But I mean, why would you like, like? It like, what's the new customer? Like? Okay, so you're transferring, you're going to select the new customer that's going to be on the main screen, then Right,
+
+Matthias Miller  1:52:21
+right? So you click the transfer, okay, you have here. You have primary customer and secondary customer. You click transfer, and boom, your customer history shows up and you you now have to,
+
+Speaker 1  1:52:35
+Oh, gotcha, okay, maybe the transfer checkbox, oh, I was not. So you're saying when you click transfer, a macro runs and blanks out what's currently there and writes it over into the history, and now you have to select the new person,
+
+Matthias Miller  1:52:49
+yes. And wouldn't that make more sense to have a transfer contract checkbox at the above the primary and secondary customer? Yeah? Dun, dun, dun, dun. This just makes me happy. I like it. That is elegant. I like it. And then, and then, here we have a i
+
+Matthias Miller  1:53:20
+Now we're just gonna throw this there, because, okay, now, oh, that's just that. It's so just
+
+Speaker 1  1:53:34
+It cleans it up. What is
+
+Matthias Miller  1:53:37
+ID as a side note, it's a text field
+
+Speaker 1  1:53:41
+ID. This would, yeah, this would be contract ID. Contract it really should be contract number, not ID. Actually, I'm fine if you want to call it contract ID. No, it is, it is, I don't care what we so on most RTO paper contracts, there is some kind of ID that identifies it in the top right hand corner. And it can be incrementing number. It can be numbers plus suffix of letters or prefixes it. I've seen all kinds of different things, so it needs to be a string field you probably rather than ID. Is fine. I don't know you want to say contract ID, probably, I'll be a little bit more explanatory than just ID.
+
+Matthias Miller  1:54:40
+Okay, sweet, all right, products, so you have the product pull in the manufacturer, primary and secondary, ID, subtotal, you put in customer. Down payment. You put in the RTO. Many down payment you put in manufacture premium you put in balance owed to manufacture
+
+Speaker 1  1:55:07
+is RTO. What is RTO company down payment?
+
+Matthias Miller  1:55:14
+I think we nixed it. Maybe i
+
+Matthias Miller  1:55:23
+Oh, my goodness. Customer down payment. We have customer down payment, down payment collected by and who it's collected by,
+
+Matthias Miller  1:55:35
+manufacturer, RTO, company. I don't even want to, so we can't look at this right screen. So we have the product, we have the product,
+
+Speaker 1  1:55:51
+but down payment should not be in conjunction with product
+
+Matthias Miller  1:55:58
+that's down to, okay? Well, what do you want additional, right? That's not, that's nothing to do with that, right?
+
+Speaker 1  1:56:12
+Okay, so frankly, and frankly, I don't think we should log anything about down payment, like down payment goes into the payments RG, and I think there it would make sense to identify it as down payment, yeah.
+
+Matthias Miller  1:56:24
+But what about down payments collected from by the manufacturer? You want those the payments? RG, as well.
+
+Speaker 1  1:56:30
+Yeah, it all goes like it's all going into the payments. RG, okay. And honestly, who collected it is really unimportant. It's important for what do we pay the manufacturer? But do I know?
+
+Matthias Miller  1:56:57
+I mean, it could be, we could have a Manu down payment that manufacturer.
+
+Speaker 1  1:57:06
+No, why? Why are we going to field this on the contract record, the manufacturer payment amount, the manufacturer payment date, the down payment, like a bunch of this stuff, that's really product information, and we should report on it as such. And so
+
+Matthias Miller  1:57:24
+do you want the on the product? Do you want us to basically say, copy that? Like if the manufacturer collected a down payment, we would say we would put that on the product information and just duplicate it in both places from via the contract entry field
+
+Speaker 1  1:57:44
+or duplicate. What are we? What are we duplicated?
+
+Matthias Miller  1:57:47
+Down Payment collected for me by by manufacturer? No,
+
+Unknown Speaker  1:57:54
+I think it's useless information. You
+
+Matthias Miller  1:57:57
+need to know what to pay him. You
+
+Matthias Miller  1:58:07
+so, I mean, besides that, besides paying them the right amount, it's useless,
+
+Unknown Speaker  1:58:11
+okay, fair, fair, but it goes on the product record.
+
+Matthias Miller  1:58:15
+Okay, so we're saying that
+
+Speaker 1  1:58:17
+what I think, I think in the product section, what I want, is the product description, the manufacturer, primary, secondary, ID and subtotal. I
+
+Matthias Miller  1:58:29
+mean, is it the product? It's the it's the product, it's the product subtotal. Yeah,
+
+Unknown Speaker  1:58:38
+probably ought to call it the cash price,
+
+Matthias Miller  1:58:40
+cash price, cash price,
+
+Speaker 1  1:58:49
+or cost. Or Hang on a second, let me go look what. What does, what does? What are people used to seeing, let's go find out.
+
+Matthias Miller  1:59:10
+Let's go find out. So then we have
+
+Matthias Miller  1:59:19
+the purchase price. Purchase Date, I'm
+
+Speaker 1  2:00:04
+Cost is what people are used to being. So let's call
+
+Matthias Miller  2:00:09
+it cost. So you have the you have the so the cost is the, is the, is the gross value, right, that's right. So you would have the cost purchase date on the product, yeah, purchase date, well, and I don't know where you want to do this, but you have the cost down payment collected by manufacturer, which is to be determined. How we handle that. Do you have the manufacturer commission?
+
+Speaker 1  2:00:37
+So, are you on, are you on the contract?
+
+Matthias Miller  2:00:41
+Are you? This will go on to the product.
+
+Unknown Speaker  2:00:45
+Are you? Are you talking product right now?
+
+Matthias Miller  2:00:47
+Yes, I'm talking product right now. Okay,
+
+Matthias Miller  2:00:56
+which is cost, minus down payment collected, minus commission dollars. Now, is commission dollars the premium, or is there something else
+
+Speaker 1  2:01:06
+that is commission? Commission dollars is a total separate thing.
+
+Matthias Miller  2:01:12
+Okay, so then you need a manufacturer
+
+Speaker 1  2:01:15
+premium. Premiums. Are you commissions or premiums? Whatever you want to call them, are usually paid on a monthly basis, and buildings are usually paid on a like it's paid at a different time. So we do need to have a and I'm assuming that what's going to happen is we're going to if, if we're paying a premium on a particular building, that's going to get pushed over into accounting, into an account, a liability account, and then eventually, like you will zero that account by paying those premiums. It's probably how we're going to handle this correct,
+
+Matthias Miller  2:01:52
+right?
+
+Speaker 1  2:01:55
+So I think on the manufacturer record we should have, I think we talked about having a premium setting, and that would automatically fill premium amounts onto the premium field, or commission field, whatever you want to call it, on the product record. And that product record is what pushes over then into accounting. Yeah,
+
+Matthias Miller  2:02:28
+okay, well, let's, let's do we're just, I'm just going to stay lazy,
+
+Matthias Miller  2:02:36
+and we're going to go down to so on the contact record. Premium is that $1 amount? Is it a percentage?
+
+Speaker 1  2:02:44
+Percentage, I think. And, but I mean, oh, commission percentage, is it on a resale?
+
+Speaker 1  2:03:00
+Yeah, there you go. Premium, percentage resale commission, yep, this is on, are we on the manufacturer record?
+
+Matthias Miller  2:03:05
+Okay, this will be on the manufacturer record. Yep. Two decimals. Percent. It percentage. Okay. And then we
+
+Speaker 1  2:03:18
+have Riddle me this. Do we want to store on the I don't know that. I want to store on the product record the premium amount that should be, Shouldn't that be like, Shouldn't that be a process based on in accounting, whereby you run, where you run, and calculate premiums, and then that pushes into the GL account, rather than storing that on the building record or the or the product record, because here's, here's the thing, a little bit of the thing I'm a little bit worried about. And we could, we could handle this with permissions, I understand. But do we want a regular individual knowing what we're paying premiums to a manufacturer, what the premium value is? How
+
+Matthias Miller  2:04:10
+frequently are premiums? Premiums are based on what are those monthly payments?
+
+Speaker 1  2:04:16
+Premiums are based on the price of the of the product,
+
+Matthias Miller  2:04:19
+on the time of sale, right at time of sale, I think we need to, from an accounting perspective, I much prefer having it tied to the building, because that's what triggers the event. You need to freeze what the premium percentage was at the time of sale. And
+
+Speaker 1  2:04:33
+fine, I agree. I like that. It's clean. Thank you.
+
+Matthias Miller  2:04:39
+Well, you're really letting have my way this today.
+
+Speaker 1  2:04:42
+But when does that get calculated? Does that get does that get calculated and stored on the building at the point of building entry? Does it gets? Does it get like, is there a another process whereby you calculate and store those on the building as an accounting process? Like, does that get? Does that happen to the point of entry or at a later date? I know we're wandering over into accounting now, and I don't know that we have to decide
+
+Matthias Miller  2:05:09
+that it's more like a process issue. When you change the premium percentage, do you want it to apply to any outstanding buildings, or is it just new going forward, anything we haven't found out about? Yeah,
+
+Unknown Speaker  2:05:24
+up, oh, that's a, that's a tricky question.
+
+Matthias Miller  2:05:28
+But if we give, if we let people,
+
+Speaker 1  2:05:30
+I will say the manufacturer, okay, in that question, then the manufacturer. It should be an RG on the manufacturer record with a date,
+
+Speaker 1  2:05:47
+and the same thing with commission or resale commission, those should be RGS with dates so that you can update them and automatically anything In the pipeline that would fit that date range
+
+Matthias Miller  2:06:04
+on, on when, when the purchase is finalized, or whatever. Yeah, okay, so then on the product, we have purchase date, we have a cost. We have somehow we still need to manage down payment collected by manufacturer. And I don't know how to do that. Do you know how to do that?
+
+Speaker 1  2:06:27
+Could we handle that? Could we handle that with a checkbox on the product record that when you go to pay buildings? No, no,
+
+Speaker 1  2:06:50
+no, we just, I think it's when, when you are entering a building, if you there should be a question at some point that says, Who collected this. Did? Did we collect it? Or did it like there needs to be a dialog about how that happens. And if we say the manufacturer collected it, then that gets we store the amount of the down payment on the product, Rick,
+
+Matthias Miller  2:07:15
+and then, but then we also store the same amount. I think it's just two fields. I
+
+Speaker 1  2:07:20
+don't think we need to store it on the contract record. It on the contract
+
+Matthias Miller  2:07:24
+record as a payment. Yes, right, exactly. So, I mean, this could just be amount collected by manufacturer and balance, balance owed, owned. Yeah. Yeah, um.
+
+Speaker 1  2:07:46
+So if the if the manufacturer did not collect the down payment, then the balancer would be the full, the full value of the building. And if they did collect the down payment and did not pass it to us, then we subtract it from that. And so then it would be reduced by the amount the manufacturer collected. I like it.
+
+Matthias Miller  2:08:04
+Okay, so now we have this. We have the product purchase, right then we have the manufacturer. Oh, well, we have premium in commissions. So,
+
+Speaker 1  2:08:39
+Oh, dude, I like, I like, I like, I like, so we are going to store a date and depreciation reduction amount, I'm assuming. So, yeah, in tax depreciation. So what month it ran in, um,
+
+Matthias Miller  2:08:59
+like, here it's maybe something like 731 and then 145
+
+Speaker 1  2:09:08
+oh, you make me feel happy. I like it.
+
+Speaker 1  2:09:19
+And then, based on, based on the method, I'm assuming we're going to have a depreciation method record that will define exactly how that works. Is that right?
+
+Matthias Miller  2:09:29
+Yeah, or it's, I mean, it might just be hard coded, but boy, would it be nice to see
+
+Speaker 1  2:09:34
+preview that there is so many different depreciation methods. Oh,
+
+Matthias Miller  2:09:39
+there are, you just do a formula that takes the you could,
+
+Speaker 1  2:09:46
+I don't know that's, that's a that's a conversation for a different time frame, but I like this. I like this a lot.
+
+Matthias Miller  2:09:55
+Okay, so then premiums and commissions will have to here. Let's do this to do IDD. We need to handle this. How exactly so
+
+Speaker 1  2:10:03
+switch, switch this, switch this product record over just a product, what are we? What are we changing? Then
+
+Matthias Miller  2:10:09
+we're losing the just the description. We're losing all this descriptive stuff. Probably need. Well, we still,
+
+Speaker 1  2:10:25
+if we're going to a simple description field, how can we, how can we make that like, if somebody types a whole mess of stuff in there, like on the other if you type a whole mess of stuff in there, how do we represent that, well, so that you can see it because you, the potential exists that you, you type some long string in there.
+
+Matthias Miller  2:10:45
+Shouldn't you have put it? Put that in the notes? If it's that long?
+
+Speaker 1  2:10:51
+No, because you want to, like, you're going to report on that description. You can't. Can that be multi line? It can be multi line. So how does multi line work? Where you get to the end of the box just goes down?
+
+Matthias Miller  2:11:06
+No, it's just, it's just taller. It's like, you know, however tall you want it, it's tall.
+
+Speaker 1  2:11:16
+Yes, let's do that. I like that. Let's just make that multi line.
+
+Matthias Miller  2:11:33
+Okay, now it's my turn. Sorry, I can't think anymore. I'll be right back. I
+
+Matthias Miller  2:13:21
+All Right, fun times. Okay,
+
+Matthias Miller  2:13:29
+so I'm going to move this.
+
+Matthias Miller  2:13:37
+So this is but we call this cost, so we should just call this Can we just call this cost? It should be cost on here as well product section.
+
+Speaker 1  2:13:54
+Okay, so let me move this product section of the contract record. Yeah, agreed.
+
+Matthias Miller  2:14:02
+Okay.
+
+Matthias Miller  2:14:10
+Are you fine? In the you're fine if we add the internal ID here on the description right. Why it makes it easier for when you have a drop list, so that you know exactly which product you're
+
+Speaker 1  2:14:38
+selecting. Let's get back to where would you be selecting it on the contract
+
+Matthias Miller  2:14:43
+director? I mean, yeah.
+
+Speaker 1  2:14:45
+I mean, probably, I almost want to say that we can, rather than that ID, can we concatenate the primary ID?
+
+Matthias Miller  2:14:56
+Well, we're going to need, we're going to need, we're. We're still going to need it because you can have multiple you could have multiple entries with the primary ID, but it should be more like something like description should be something more like this, right?
+
+Unknown Speaker  2:15:27
+Sure I'm okay with that. Okay,
+
+Matthias Miller  2:15:31
+this is fine, but we should include the primary ID before the
+
+Speaker 1  2:15:39
+internal ID. I mean, if, if I was to have my, my, my, my, I probably would concatenate the primary ID, then the description, and then your, your numb ID, like this. Yeah, that's what I would do.
+
+Speaker 1  2:16:12
+And those primary IDs and secondary IDs are string fields Correct, yes, okay,
+
+Matthias Miller  2:16:20
+okay, so now going back to the contract so that's the product section.
+
+Speaker 1  2:16:29
+So let's go back to the product section, the contract record for one second. We are trimming off all the contract record
+
+Matthias Miller  2:16:38
+here. We're This is going down to,
+
+Speaker 1  2:16:41
+well, this is this? All that goes away. Yep, all that goes away. Perfect, perfect.
+
+Matthias Miller  2:16:47
+Exactly what it is. But okay, then we have a purchase section. Purchase section. We have a or a, I don't know what it is, no a, initial, I don't know what you call it.
+
+Unknown Speaker  2:17:00
+What are you? What are you going after? Tell me, well,
+
+Matthias Miller  2:17:02
+we need something like contract.
+
+Speaker 1  2:17:08
+Oh, contract, contract, yep, contract amount,
+
+Matthias Miller  2:17:16
+okay, so subtotal, down, payment collected by manufacturer commission. This needs to be. This needs to go. Can we? Can the hauling calculation go into Dwayne's notes? For now, sure, I I
+
+Unknown Speaker  2:17:44
+just define what it was mean. So this hauling calculation, what's it in reference to,
+
+Matthias Miller  2:17:53
+I don't know, what we pay the manufacturer for hauling? Yeah,
+
+Speaker 1  2:18:01
+didn't I say something about that? Okay, I think I never mind moving on. Good enough in my notes.
+
+Matthias Miller  2:18:08
+Oh, here on the, on the, on the product record we need,
+
+Matthias Miller  2:18:19
+presumably,
+
+Unknown Speaker  2:18:23
+so this would be for accounting to know when we paid them,
+
+Matthias Miller  2:18:25
+yes, and for us, I mean, yeah, us to know did we pay them and when and how? Okay.
+
+Speaker 1  2:18:34
+There's one other thing that needs to go on the product record, I guess this comes into the question of sold amount when we sell this building, whether it's a buyback or whether it's sold out to a customer that needs to get stored on the on there. I
+
+Unknown Speaker  2:19:04
+Yeah, there you go. I don't Oh, yep. I
+
+Speaker 1  2:19:20
+I probably need a way to is if it's froze. The only thing about freezing it is that, if this was some kind of direct sale where there is no commission, or there needs to be a way to negate this.
+
+Matthias Miller  2:19:55
+Okay, so I am violently chasing this thing down. I. Um,
+
+Matthias Miller  2:20:05
+so this is to Sean see detail screen and test section and update to match what we did. The guys are loving having their own bubble assistant with Sean doing all these little giggling updates and stuff. Okay, so we have contract amount.
+
+Unknown Speaker  2:20:37
+This would be contract details, wouldn't it?
+
+Matthias Miller  2:20:40
+Yeah, contract details. So the
+
+Speaker 1  2:20:45
+total, yeah, contract amount, yep, and contract
+
+Matthias Miller  2:20:53
+we have. Shouldn't the state be up here,
+
+Speaker 1  2:21:00
+up in right at the very, very top, with the RTO company status, ID and date and state, yes, I
+
+Matthias Miller  2:21:31
+This is definitely required, definitely required. Un edit, O, you mean cannot add to list, okay? So, so we have the state now which and so then we have the contract, okay, so for RTR, we're going to have something, and for RTO, we're going to have something.
+
+Speaker 1  2:22:05
+So let's do with RTO contract amount and contract length in months.
+
+Matthias Miller  2:22:17
+Contract, term, sure, contract, payment terms. I'm
+
+Matthias Miller  2:22:44
+we should go back to our let's do this. I'm
+
+Matthias Miller  2:23:05
+so you have the minimum down payment. Okay, terms, um,
+
+Matthias Miller  2:23:34
+well, actually, it's, it's like most of this stuff.
+
+Matthias Miller  2:23:56
+Okay, let's do this. Okay, so now we're getting closer contract definition. We don't actually need a contract definition, do we? We just copy the fields over. Okay, so so on. So we have term length. I
+
+Matthias Miller  2:24:24
+so actually,
+
+Unknown Speaker  2:24:41
+no download value, not percentage.
+
+Matthias Miller  2:24:44
+Thank you. We have contract term, term length. You got
+
+Unknown Speaker  2:24:52
+damage by your feet, twice,
+
+Matthias Miller  2:24:56
+yeah, I think these. Yeah. Dwf payment terms, contract term, okay, it requires balloon payment. Balloon payment. I
+
+Unknown Speaker  2:25:20
+The balloon payment month does not need to be there.
+
+Matthias Miller  2:25:36
+Bloom payment dollars, yeah, and would that be auto calculated? Would that be frozen? Mm, hmm,
+
+Matthias Miller  2:26:05
+don't you need to know the CRA slash down payment amount for the CRA slash security deposit, yes,
+
+Unknown Speaker  2:26:18
+yeah, and security deposit, yep. I Hmm.
+
+Matthias Miller  2:26:42
+Everyone, moving, shipping out? Okay, this is actually to do Dwayne, right? I'm supposed to
+
+Speaker 1  2:26:51
+some of this. I really want to just store underneath some sort of, for the sake of cleanliness, is like, stored, or some button, like, like, the whole thing of like, late fee, calculate, like late fee, information security deposit, like, a whole bunch of that information could, why wouldn't we store that under some sort of button?
+
+Matthias Miller  2:27:19
+Oh, I mean, you know, like additional details button,
+
+Speaker 1  2:27:25
+yeah, like the main things I want to see out on the contract detail screen are, how long is the contract? What is the total contract value, what has been paid, and what is that payment amount in months early, cash pay off, you know, is like, whether it's a if it's a rental, what type it is rent or RTR, you know, what's the, what's the repayment terms of monthly or, like, all of that can be under more details. The key information is total value of the contract, and the months, what's been paid, and the months, what's still due, and the months and the early cash payout. That's the valuable information.
+
+Speaker 1  2:28:18
+Through a lot of this calculation details under a more details button, just to clean things up.
+
+Matthias Miller  2:28:29
+Okay, so that takes care of I
+
+Matthias Miller  2:28:48
+okay, I'm
+
+Matthias Miller  2:29:09
+okay, so this stuff is all covered. So now we have so here's the contract details. Now you want, do you want the payment information under contract details? I I'm fine with that. So you have the contract total, the payment, payment amount, remaining months, early, payoff, amount, and then do you want to separate rental fees? I
+
+Speaker 1  2:29:48
+Why we do a separate What's difference between rental fees and payments? I.
+
+Matthias Miller  2:30:07
+This is the rental, so I would view this more as the overall contract.
+
+Matthias Miller  2:30:20
+And this is like,
+
+Matthias Miller  2:30:27
+what's due?
+
+Speaker 1  2:30:38
+Dude, I need a brain break. My brain is is ran out of juice. Okay, do you want to pick this up again in a bit? Or,
+
+Matthias Miller  2:30:48
+yeah, how much? How much time do you want?
+
+Unknown Speaker  2:30:52
+I mean, 2030, minutes. Just to
+
+Matthias Miller  2:30:55
+yeah, that's, that's good. Let's do, let's do 30 minutes, and we'll pick up at 11, if and then if we can, if we can, it was hoping at 12 year time to be able to hand this off to the guys, if we can take over. So all right, see
+
+Speaker 1  2:31:13
+you. I need to walk around the block for a minute. All right, sounds good? Talk.
+
+
+Transcribed by https://otter.ai

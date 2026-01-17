@@ -1,0 +1,1361 @@
+Speaker 1  00:00
+You know, my deepest apologies. I might take two minutes to cool down before I before we jump in with the guys. Do
+
+Matthias Miller  00:36
+you know what the oldest ship manufacturer is in the industry? Tough shit started in 1981 or
+
+Speaker 1  00:43
+so, Graceland, heartland. No, not heartland. Graceland, maybe it's one of the ones in Kentucky and Paducah, Kentucky area. I
+
+Speaker 1  01:12
+you. So once, once everybody's on here, Matthias, I'll, I'll start with my apology, because this is going to be rather funny, because this, this is going to be, this is, I'm going to leave out the part I told you, and tell you what's actually causing the problem. And this is, this is one of these. Yeah, anyway, anyway, it has nothing to do with the human fact. Well, it does have to do with the human factor. It has, it has to do with somebody's grand idea on how to calculate price on buildings, and it's it is causing a nightmare of a problem right now. Were you? Yeah, we're missing. Seth, yet.
+
+Speaker 2  01:55
+Seth, his webcam is dying. All of our webcams died over the course of yesterday and today, all of our spare ones. So he is logging in via
+
+Speaker 1  02:05
+laptop. Wait, how does your How does a webcam die? I
+
+Speaker 2  02:10
+don't know. Ellis's laptop was killing them. He would plug one in, and then it wouldn't work. And so, yeah,
+
+Speaker 1  02:17
+sounds like you might have a USB port that's kicking out too much, Too much voltage, or something could be
+
+Unknown Speaker  02:42
+Matthias, I think Seth in the waiting room something,
+
+Matthias Miller  02:44
+I'm sorry. There you. I'm sorry. There we go.
+
+Speaker 1  02:58
+Hey guys, welcome back. All right, so I get, I get to start with an apology for making everybody late. And thankfully, Matthias is conscious enough of my my wallet that he didn't just keep you guys on here. Seth, you're, I don't know how much, how much did you do with this whole rounding table pricing thing and assist the the macros for Did you? Did you have anything to do that? Was that all completely Josh,
+
+Speaker 3  03:22
+rounding table pricing thing. It's not ringing any bells, but
+
+Speaker 1  03:25
+Okay, so then it's completely Josh. But anyway, this thing, I have literally spent the entire morning trying to field issues. So we broke we broke district level pricing.
+
+Unknown Speaker  03:38
+And, oh, that's not fun. No,
+
+Speaker 1  03:42
+no. So okay, the short story is this for the for the sake of this, and I don't mind paying for this, for this story, because it's fun. So that the story is North Carolina and Indiana wanted to go and do a price increase, and North Carolina doesn't. And so we they originally went and upped all their prices, and then went round and round and round about how we're doing this thing, and eventually went back around and started using the dealer level district, the dealer level surcharge, which then turned into this whole entire conversation about when you do A A A surcharge and rounding. And it's this whole rounding conundrum and making numbers look mark and company have this thing where they want their the numbers on a per individual itemization to look like whole numbers and not ending on funny little numbers, like one, two or three and so anyway, which back up to the whole entire thing. The issue is we broke district level pricing, which all the buildings are giving off. They're putting stomping weird numbers onto the the building record and and now we're also trying to simultaneously figure out how to price some new buildings, because they're not coming out for the Indiana district correctly. And. And I got into a rather long conversation with my 20 year old on trying to go have this conversation, to go fix the issue, and anyway, that's why
+
+Speaker 3  05:12
+we're late. I'm sorry, my condolences and my joy that I'm not culpable for any of this.
+
+Speaker 1  05:20
+You are not culpable for any of this. And frankly, at some point, at some point, well, it would have been, it would have done my heart good. Seth, for you to hear, overhear the conversation that on Wednesday morning between Mark, Josh and myself. And so because we're because we're slowly rolling out the UI changes to the whole entire platform. Josh wants to go to working out of, out of out of staging, instead of, instead of working out of Dev and and Mark's comment was, Well, how long will this be until we can go back to working out
+
+Unknown Speaker  05:54
+of Dev
+
+Speaker 1  05:57
+and staging, please. This is this, when it goes wrong, it goes epically wrong, and it just anyway. So all of that to say, Guys, I'm sorry that I was late. I didn't held you guys all up.
+
+Unknown Speaker  06:21
+All right, I
+
+Matthias Miller  06:23
+have to throw this in. Here's a mantra for you guys to remember, simplicity scales and complexity creates constraint.
+
+Unknown Speaker  06:36
+So
+
+Matthias Miller  06:38
+most of what Dwayne and I have been working on, has been working on, well, mostly it's been Dwayne and me finessing it, working on things like late fee calculations, which should be the most complicated question on that one is, okay, you can have two kinds of due dates always it's always doing the first or always in the 15th, or every Monday or Whatever. Fine. I mean, that actually has its weird complexities, because whatever, like, if you sign it on Friday is your first payment, or whatever, doesn't really matter, but that has but then there's also floating due dates, where it's like you you your due date is based on what you paid on the contract. So you take for each month, what's the daily, daily due amount, based on 28 days or 31 days, or anything in between, and how much have you paid? So where are you what's the due date? Now, which knows that's relatively sane. You can wrap your head around it, but then the question is, you can only charge. Technically, you're only supposed to charge if you have a like a 36 month contract, you're only supposed to charge 36 late fees, no more. But how do you limit late fees? And so what we're doing is saying one per period. But what's the period? Is it the calendar month? Is it the or do you base it actually, it's not that it is based, we are basing it off of calendar month and calendar week. But then do you base it based on when the due date, based on the due date, the month of the due date, or is it based on the month of the the late fee was assessed? So because technically, with the floating due date, you can probably have scenarios where you get different late fees slapped on you if you might be overdue. If you charge you based on due date, you might be overdue in the last last day of the month, and then overdue again two days later, and you get two late fees assessed in the same month. The customer's like, you're not supposed to charge me two late fees, and we need a speaking of simplicity scales. We need a lizard brain explanation that people don't have to think about, oh, it's because it was doing this month and that month. That's what you got tube.
+
+Speaker 1  08:55
+Well, it's a little bit more critical in that most of the time, customers are not going to really think this one through, where it gets really, really critical is there are some states that actually require you to go through an audit every so often, and they ought. One of the things that they audit is how many due dates you or how many late fees you charge that customer. Indiana is one that every two years we go through an audit. And if you think lizard brain is a thing with customers, you should try it with people who are auditors for this the Indiana Department of Finance. Oh, my goodness, I kid you not. One of the audits took six months to get through. Six months. I went round and round with this person, and I was, I was, for the most part, explaining to her how RTO works. For the most part, it was mind bendingly, yes. So clarity, transparency on late fees is a critical matter
+
+Matthias Miller  09:53
+in addition to that, well, actually, Dwayne, there actually is a scenario, if we're doing my calendar month is. Scenario in which we could charge 37 late fees, 4436 month period.
+
+Speaker 4  10:07
+Okay, how would that be? So if you're if you have zero,
+
+Matthias Miller  10:14
+if you're zero down, and you have a mid month contract start date, and you're late every single
+
+Unknown Speaker  10:21
+month, but you still only have 36
+
+Matthias Miller  10:24
+No, you would have, let's say, a three month contract. You have January, February, March, April, four calendar months start middle of January. I know I'm simplifying this down, late fee in January because you don't, because 00, down, you don't pay. Zero down, floating contract, you don't pay, or you pay just a little bit, but not enough, to get through the end of the month. You're late again in February. You're late again in March. Finishes in mid April. Anyway, we can solve it later. Well, the other thing,
+
+Speaker 1  10:58
+okay, actually, okay, I think your statement's a little bit wrong in the event that it's not a matter of if you have a if you have a 36 month term, it's not that we can't charge them more than 36 months or 36 late fees. It is that you can't charge more than one inside of the same calendar month. Okay, so because there are going to be customers, there are going to be customers that go 40 months in order to pay that thing off, and if they're late on every single one of those months, well then we're going to end up charging 40 late fees. And there's nothing wrong with that, as long as we don't end up charging more than one inside of whatever period we are you set the account up for. In other words, if you are, if you're validating on when it's assessed, then, then, as long as we don't charge more than the assessment timeframe, or if you're validating based on when the it was incurred, then you know, as long as, as long as you could always say that late fee was for what was for that month, and there was not another one charged in that timeframe.
+
+Matthias Miller  11:55
+The other observation I'm going to make is that if you're in whatever percent of intelligence you are, if you're a software engineer, by definition, you're in a higher percentile of higher than average percentile of intelligence. And it means that the rest of the world, most of the rest of the majority of the rest of the world, is not as intelligent as you are. This is just facts and logic. It's not whatever. And for all the people who think that being intelligent is always easy, it's not always because you have to translate your intelligence into something that is accessible for the normal human being, so more
+
+Speaker 1  12:23
+intelligence to figure out the problem or being able to translate it to people who
+
+Matthias Miller  12:27
+don't have intelligence. Sometimes, I think the problem, the difficulty, is actually in the translation, translating, solving the problem. So that's a useful thing to put in your back pocket and think about periodically in your life, we're gonna be working on payments detail screen. We're making a bunch of changes to that. We're trying to decide the approach on that. It's payments and product determining direction on the payments detail screen, working on the product detail screen markups anything. So we don't really have a ton to be pushing your way, besides just a whole bunch of cleanup and spinach eating, I think on what we've done. But anything from you guys that you want to know, that there's much to show off,
+
+Speaker 3  13:16
+I don't think there's a whole lot. We had a much slower week. I we all were well, we had cut over so that always cramps things up, and then most of us had other projects coming up that we had to wrap up from other projects that was pretty critical to get done. So capacity was way down compared to prior weeks. I think we should be able to amp it up again this week. I think I probably will still be lower, because I have two other fairly big projects that I'm trying to wrap up. But I think we'll be able to make project progress if I can speak.
+
+Unknown Speaker  13:56
+One of the things, well, you all have
+
+Speaker 3  13:59
+Go ahead. Seth, go ahead. I was just wondering if you all will have the payments detail screen ready to be working on soon.
+
+Matthias Miller  14:09
+Yeah, hopefully by today.
+
+Speaker 1  14:12
+Okay, wanna had a conversation with Josh, and he asked me, you know how things are going. And I It feels to me, I might, there might be some huge blind spot. One of the things I want to work through Matthias, and I want to work through today, is just going back and saying, Okay, what are, you know, making sure we don't have a huge blind spot somewhere. But it feels like a lot of the big chunks are kind of chunked and and we're it's gonna there's a lot of details and refinement coming around these big chunks that now we need to start filling in. But it does. It does feel to me like we've, like a lot of the big stuff is is starting to be out of the way. And yeah, it, we're moving at it. We're moving at a rate that I never expected.
+
+Unknown Speaker  14:57
+So
+
+Speaker 3  14:59
+I think that's fair. The big chunks out of the way, but there's going to be a lot of cleanup and refining around the edges.
+
+Matthias Miller  15:11
+Favorite,
+
+Matthias Miller  15:18
+all right, that's good. Well, hopefully we'll have a lot more clinic saying stuff for
+
+Speaker 1  15:27
+you. Well, I do one of the things I think Matthias, you and I should probably talk about is we are now sitting at the 14th of August. We're we're running up real fast on 30 days till the nbsra show. And I think one of the things that we need to start really talking through is what is important for demoing and what can just be duct taped on the backside somewhere. One of the things I talked through with, what that I just sort of thought out loud this morning, was when it comes to, like, integration with payment processors, I think we all just fake a lot of that stuff until after the show. And so we build some whiskey portals that fake credit card and ACH processing and make it look like it's happening. But, you know, it's, it's, it's pretty much fake. And then, because there's a lot of questions around credit card and ACH processors that I just really want to talk to people at the nbsra show to see what the feeling is going to be, because there's, there's a lot of opinions around processors and who they like and who they don't like and and how some of that works, that I really don't want to be locked in with a processor at that point. And but yet, I want to fake acting like we're taking credit card transactions.
+
+Matthias Miller  16:43
+We get the random, you know, payment decline, then for you and stuff like that, insufficient funds, yeah, sweet.
+
+Speaker 3  16:57
+Good. I guess we'll drop. Unless you have anything else
+
+Matthias Miller  17:00
+for us, I don't
+
+Unknown Speaker  17:02
+do Nope. Good here.
+
+Matthias Miller  17:05
+Thanks. Random comment over, over, holding sons was founded in 1982 in Kentucky, which old in in Russellville, Kentucky,
+
+Unknown Speaker  17:20
+in what year, 1982
+
+Unknown Speaker  17:23
+you know, I do his RTO, right?
+
+Matthias Miller  17:26
+I did not, yeah.
+
+Speaker 1  17:29
+So he sold the manufacturing to his brother a year or two ago, and, and he's had an RTO company. And, oh my goodness, Matthias, the they were doing when they came to us to start managing the rent to own. They were doing it on paper, on paper, and they had never taken any depreciation ever. I literally told Leanne. I said, go back to Wayne and say, Can I have the money I'm gonna you just cut me a check for what I'm gonna save you in depreciation in the first year, just cut me a check 25 grand to 30 grand or whatever. Just whatever you save in taxes because of depreciation in that year, just send me the difference, please. Never had done any depreciation. And it's like, when it comes to rent to own company, depreciation is where you like, this is where you make money, right? Big time. But, I mean, he was always really, really small, yes, and from a rent to own company standpoint, so it's, yeah, we, we do. We do his rent to own nice
+
+Matthias Miller  18:47
+that's awesome. All right, so we mock up is ready? We can. Did you talk to Ellis or Josh about the
+
+Speaker 1  18:56
+I talked to Josh this morning, and I, I am not even going to attempt to try and tell you what he's suggesting. I said, Look, please just write an email to Matthias and the two of you get on the technical same page because he wants to. He's not nearly as scared of running things in whiskey as as I or you probably am. It was interesting. He He revealed the fact that I had no idea, and the reason that we have had such reliability issues with with the whiskey servers on on assist, is solely due to renderings of builder diagrams. And so he said, I have literally almost gotten to the point of going out and creating another whiskey server just to render builder diagrams, because apparently he's doing some fancy magic in order to make those things work. And those things are like all the time, day in and day out. And it's he said our reliability issues are 100% because of builder diagrams good to know well as. And I said, Well, I mean, you can't fault me for for feeling scared of whiskey. That's my only experiences over there. And so he's, like all other whiskey servers have been pretty much bulletproof So, but he just talked to him, um, there's, there's like, two different pathways that he's he's proposing, um, okay? And one of them is, is literally running a whiskey server inside of a multi pain dashboard type of thing.
+
+Matthias Miller  20:30
+So I don't wait to hear from
+
+Speaker 1  20:32
+him. Yeah, he said, he said he wouldn't be able to get an email off until tonight. To you.
+
+Matthias Miller  20:38
+Yes, that's good. I'll wait to hear from that. Hear from him on that. So where do you want to go? We can go on the product screen, because that's fun and easy and needs to be done.
+
+Speaker 1  20:47
+Okay, so let's, yeah, let's, let's, let's look at that. Let's look at that. And then,
+
+Matthias Miller  20:54
+all right, look at this. Boom, boom, boom, boom. Okay, the Where did a purchase? Day, purchase amount, where's the cost, product, purchase, wait, this does not belong here, right? Where it should be. Read Only. This needs to go right. Purchase date, we have it. Well, no, you drive. You tell me what you see. You tell me what you want to
+
+Unknown Speaker  21:19
+change. Okay, hold on a second. Let me get let's put let me get
+
+Matthias Miller  21:25
+here. Let's, I can make this bigger for you too.
+
+Unknown Speaker  21:29
+No, well,
+
+Unknown Speaker  21:31
+let me just Yeah, make it bigger. Okay,
+
+Unknown Speaker  21:37
+dude, seriously, like
+
+Speaker 1  21:41
+his ability to mock stuff up is unbelievably realistic. I'm just every time he does one of these, I'm astounded. I'm serious. It's like, okay, so, okay, rental company, manufacturer, dealer, salesperson, tags. Do we want to represent the tags?
+
+Speaker 1  22:10
+Explain to me what I'm looking like, the drop down. What's the drop down? Let's
+
+Matthias Miller  22:17
+just pull this up here and it'll make it'll make sense in a heartbeat.
+
+Speaker 4  22:21
+Dump, dump. So
+
+Matthias Miller  22:27
+drop down is a okay. What are tags that you might use in the RTO company?
+
+Speaker 1  22:38
+Well, just, I'm gonna, let's use zone one, Zone Two, zone three, zone four.
+
+Matthias Miller  22:42
+Okay, so we have zone one, but then, okay, in addition to zones you might have, I don't, let's do tax exempt. That's kind of done. Okay, fine, whatever, sure. Or what do you have a
+
+Unknown Speaker  22:59
+better idea? No,
+
+Speaker 1  23:03
+so, okay, so which, which tag is on this? Which one's on here? Right now?
+
+Matthias Miller  23:08
+Okay, so right now it's from your customer. But now you can say, but you can also select, it's droplets, we can select multiple. Or you can open the tag saying, if you want to like, what do you want to like, if you have a big fat list and you want to, want to make it easier, you drop in here and change it to zone two,
+
+Speaker 4  23:27
+okay. But why have both the Why have both both? We don't have to, we don't
+
+Matthias Miller  23:37
+have to show you. I mean, it's stored in an underlying RG, but we don't have to show it to you, like that. You just show it to you, like, drop list. Well, what?
+
+Unknown Speaker  23:47
+Okay, um,
+
+Matthias Miller  23:49
+I don't know why. I think probably just expose this to people, like, if you want to, like, do a control, a delete, or something, or delete all rows, I don't know, but, I mean,
+
+Speaker 1  23:59
+but in that regard, it's just literally going on check, right? You right?
+
+Matthias Miller  24:03
+Yeah, or Julie, Select All, or delete, or, you know, I don't know why I don't, I don't know that there's functional
+
+Unknown Speaker  24:14
+reason. Okay, let's pick, let's pick a method
+
+Matthias Miller  24:17
+that's you want the checkbox that's what's going to make sense to people, right?
+
+Matthias Miller  24:30
+That's way more intuitive than okay,
+
+Speaker 1  24:35
+yes, so Can, can we? Can we hide the other Yeah, all right, like I said, let's pick a method. Let's, let's do the drop down.
+
+Unknown Speaker  24:51
+Okay, type, we got Okay, got
+
+Speaker 1  24:56
+it. So, yeah, pick, pick a what? Let's re purchase date should really not be up underneath financials, or should it
+
+Matthias Miller  25:06
+be well, technically, this product for I mean, wouldn't product purchase make more sense up here?
+
+Unknown Speaker  25:19
+I don't know what makes more sense.
+
+Unknown Speaker  25:21
+Just make it all one financial section.
+
+Speaker 4  25:26
+Wait, this looks, this looks,
+
+Speaker 1  25:31
+well, it's like financials, product, purchase and resale. I feel like we could, we could combine a lot of this into, like something.
+
+Matthias Miller  25:40
+Okay, let's, let's try this, and it's going to be horribly obnoxious, and then we'll see if we like it. So you would have an order, date, purchase, date, purchase, amount, manufacturer, balance owed to manufacturer. So then will the the manufacturer Do you want to do you prefer? Which of these terms you prefer? Manufacturer down payment collected, or amount collected or amount collected by
+
+Unknown Speaker  26:12
+manufacturer. Write it. I want to see the two.
+
+Unknown Speaker  26:22
+Let's do this.
+
+Unknown Speaker  26:24
+I liked, I liked, what you had,
+
+Matthias Miller  26:29
+which of these? Second
+
+Unknown Speaker  26:34
+amount collected by manufacturer.
+
+Matthias Miller  26:41
+Okay, so then we have balance owed to manufacture. That makes sense, purchase, date and cost already exist. You have the
+
+Unknown Speaker  26:59
+what's the what's the balance owed, then
+
+Unknown Speaker  27:03
+exactly,
+
+Matthias Miller  27:13
+but then this should actually
+
+Speaker 1  27:15
+be, do we need? Does, does, does manufacture payment date and payment amount does that need to be stored on here? Isn't that financial transactions?
+
+Matthias Miller  27:28
+Would you we haven't talked about exactly how we do outbound payments, but presumably this would be tied. There'd be there'd be some kind of way you would tie this out. I Yes.
+
+Speaker 1  27:44
+I mean, part of me wants to say that once that's paid a payment, URL wording shows up and that would link you to the actual payment that happened. I don't know. I feel like this is, this is a little obnoxious to have all that information there.
+
+Speaker 1  28:12
+I mean, tell me I'm wrong and that would that would only show up once. What if you would do what
+
+Matthias Miller  28:20
+If you would do this? I
+
+Unknown Speaker  28:58
+it's the 3000 that you'd actually want to put there.
+
+Unknown Speaker  29:03
+Yeah,
+
+Speaker 1  29:05
+just for, just for the sake of this visualization, okay, and the amount paid, and that would be completely blank, until you actually have a financial transaction that's tied out to
+
+Matthias Miller  29:16
+that, yeah? And you can even have a view slash new payment appropriately, or maybe you would have a, I don't know. So then the payment, amount, payment, what would be the point of the new payment? So you can make a payment right from here? Or would you not do that ever? I don't
+
+Unknown Speaker  29:38
+I mean, that's all gonna be handling over, in accounting, I think it's just, it's a view only thing.
+
+Matthias Miller  29:46
+Okay, so then what if we call this the purchase financials, and what if we call this the resell financials? I.
+
+Speaker 1  30:01
+Depreciation start date probably needs to go no depreciation start date needs to be in depreciation section.
+
+Matthias Miller  30:16
+You know better. Please don't merge these. It makes my life horribly difficult.
+
+Unknown Speaker  30:23
+You should know this.
+
+Speaker 1  30:33
+And premiums and commissions that should really be up with your with your other part of what's owed to the manufacturer and
+
+Matthias Miller  30:42
+so forth. The Commission after the commission is resell. It is
+
+Speaker 1  30:46
+resale, but the premium should really be up there with purchase financials. It is, oh, well, then what's it doing down the bottom left?
+
+Matthias Miller  30:59
+You know, it's just hanging out where it don't belong. It's a big premium. Okay, so let's do sorry, Give me. Give me one moment I'm getting lost. Sorry. Okay, and again, why did you do that? That's new at Mindy,
+
+Speaker 1  31:21
+because he has cool little full, full rows and half rows, and it's in order to make the whole thing just work,
+
+Matthias Miller  31:29
+but then I can't move stuff.
+
+Unknown Speaker  31:33
+It was not designed for your ease of moving.
+
+Matthias Miller  31:37
+Where is the double row at?
+
+Speaker 4  31:40
+So funny. I Oh, there too.
+
+Matthias Miller  31:47
+Oh, you little goober. Okay, well, let's try this then.
+
+Unknown Speaker  31:54
+Okay. Why are these? I
+
+Unknown Speaker  32:04
+you need to go away. Okay,
+
+Matthias Miller  32:09
+so we're just going to leave a blank space. Somebody else can fix it. So here what we want is the depreciation start date. Well, we'll get to that. So then we have a resale date,
+
+Matthias Miller  32:29
+and then I'm
+
+Matthias Miller  32:45
+do we need to say manufacturer, commission on everything, or just payment?
+
+Speaker 1  33:00
+Where does the manufacture? Where is that? Where is that? Field set up the manufacturer commission
+
+Matthias Miller  33:04
+on the manufacturing.
+
+Unknown Speaker  33:07
+So do we need to field the percentage?
+
+Matthias Miller  33:11
+If it is one,
+
+Speaker 1  33:14
+is it overridable? No. Do we not currently have it overridable? Well, should it be? Well, let's, let's, let's get the esthetics out of the way, and then we'll get into the details.
+
+Matthias Miller  33:29
+All right, so let's do okay. So do you like this better? I do, 123456781234567, hey, look at that. It is a perfect floppy, swappy,
+
+Unknown Speaker  33:46
+boom. This guy, wait for it, wait for it, wait for it, boom.
+
+Unknown Speaker  33:59
+Wait for it, wait for it.
+
+Speaker 1  34:05
+Okay, so then let's move the structure section up where that was. It's two.
+
+Unknown Speaker  34:14
+Okay, we gotta,
+
+Unknown Speaker  34:16
+we gotta. What's this other product description do? Is that needed? Do we need that
+
+Unknown Speaker  34:23
+bottom right?
+
+Matthias Miller  34:27
+Wow, that's really. Hang on, let me, let me first, let me get this cleaned up, because this is gonna drag me crazy if I don't. Hey, look, nothing disappeared because we got
+
+Unknown Speaker  34:40
+the half lines in the right place.
+
+Matthias Miller  34:42
+Okay, so now we do the other product description. It should be something more like,
+
+Speaker 1  34:50
+Oh, is that? Is that, if you changed out the drop down for, yeah, okay, got it.
+
+Matthias Miller  34:57
+So we need to, we need to do this.
+
+Matthias Miller  35:08
+So this guy,
+
+Matthias Miller  35:16
+okay, so now we got okay. Do you like structure?
+
+Speaker 1  35:30
+I know this is really picky, but my brain doesn't work with feet and inches on top of each other.
+
+Matthias Miller  35:38
+Well, we can feet
+
+Speaker 1  35:39
+and inches goes side by side. I know, I know I'm being really
+
+Matthias Miller  35:45
+10, but you do width first,
+
+Unknown Speaker  35:50
+10 by 12, right? Yeah, width first, I
+
+Matthias Miller  36:08
+Okay, remember ID second ID, where would model and style go side by side? I don't know what you do with invoice number, but doesn't that make more sense?
+
+Speaker 1  36:19
+Model and well, they should be on, yes, model and style should be side by side, but it, but I would shift the whole thing down invoice number,
+
+Matthias Miller  36:30
+just put it by itself. Well, it,
+
+Speaker 1  36:33
+so it should. You should start, okay, top left of structure section should be primary ID and secondary ID should be to its to its right, okay?
+
+Matthias Miller  36:59
+And then model and style, yep, width, length, yep, sighting.
+
+Unknown Speaker  37:09
+Move, move, roof back over to the left. Okay,
+
+Matthias Miller  37:15
+roof color. Make sure people know it's not a yes or no checkbox,
+
+Speaker 1  37:23
+wait, roof style, and then roof color style,
+
+Matthias Miller  37:32
+roof style, fast and
+
+Unknown Speaker  37:36
+then roof Color, yeah, bingo. Now the
+
+Matthias Miller  37:42
+build date up here. Do we want
+
+Speaker 1  37:44
+to say siding type and siding color is that obnoxious? Not
+
+Matthias Miller  37:51
+for people who want to track citing type,
+
+Speaker 1  37:54
+yeah, signing, type, signing color. I don't think trim. Trim is just color. We don't care about what the trim was. Maybe somebody might, but I don't know that I want to care. Could
+
+Matthias Miller  38:08
+you want to build data by invoice number? Do it down at the bottom right? Do
+
+Speaker 1  38:12
+you want the build date up by the invoice number? Oh, yeah. Like that, yeah. Primary ID, secondary ID, invoice number, build date, model style, with feet and inches, length, feet and inches, roof style, roof color, roof siding style, siding color, trim color. What am I missing? Jump, jump over to assist for a second I
+
+Unknown Speaker  38:43
+go to a building record
+
+Matthias Miller  38:48
+roof style dimensions, I
+
+Unknown Speaker  38:51
+wonder if we ought to just go with the dimensions.
+
+Matthias Miller  38:59
+Why do we need in like, do we really need inches? Do people build 12 Foot, four inch?
+
+Speaker 1  39:08
+You know, I nobody in the shed industry refers to feet and inches. Let's go. Let's do, let's do dimensions, width and length. I kind of like the way that was there, that that that cleans up, that gets us rid of it, yeah, like,
+
+Matthias Miller  39:22
+like this,
+
+Unknown Speaker  39:26
+which times, yeah, with width and length. Or, do
+
+Matthias Miller  39:29
+you want it like?
+
+Speaker 1  39:35
+Do you want it like this? Can you can you can? Can you do? Does the platform allow you to put text in that gets overwritten?
+
+Speaker 4  39:45
+Like, yeah, text so you could literally do, oh no, darn it.
+
+Matthias Miller  39:57
+Well, I suppose you technically could. You. It's a little weird. Who's not going to know what x by y is.
+
+Unknown Speaker  40:09
+I agree.
+
+Unknown Speaker  40:14
+Okay, so then
+
+Speaker 1  40:19
+model and style is kind of redundant with roof style. Then,
+
+Matthias Miller  40:32
+if you did this, then you could do, you killed roof style. And do you do have a frame barn shed, single slope. You do have wall texture, trim texture.
+
+Speaker 1  40:43
+So basically we would be, we would be almost mirroring what we're doing in assist. But instead of like, model would be like base definition. So you would, you know, model would be, you know, your whatever series, and then style would be your roof. So let's combine up roof style and style straight up. Straight up. Get rid of style. Do I want to hold on then? One second, one second. Look at let me go look at something. Let me go look at that. RTO, pro and see what are they all doing here. I want to mirror what they're doing, because people are used to that.
+
+Speaker 1  41:33
+Some days, two factor authentication is obnoxious. I
+
+Unknown Speaker  41:56
+come on and turn your radio.
+
+Unknown Speaker  42:00
+Oh, okay, let's go look at this right here.
+
+Speaker 1  42:15
+Yeah, let's get rid of it. It's, it's, that's redundant. I
+
+Matthias Miller  42:21
+think, can we move dimensions? Modeling dimensions? Yes,
+
+Speaker 1  42:24
+indeed, yes, indeed, you got it.
+
+Unknown Speaker  42:31
+Bingo. Oh, that looks
+
+Matthias Miller  42:33
+pretty. Look at that.
+
+Speaker 1  42:36
+Now, I mean, if we wanted to, okay, for the sake of fun, let's just, in order to round that section out, make a trim style, trim color.
+
+Matthias Miller  42:55
+Now your sighting is in the citing style,
+
+Speaker 1  42:57
+and let's, let's, let's ship some some some things in the drop list. So signing style is going to be, what if
+
+Matthias Miller  43:16
+We, what if we, if
+
+Unknown Speaker  43:19
+we did this. I'm
+
+Matthias Miller  43:43
+we're gonna have roof roof styles, siding types
+
+Unknown Speaker  43:48
+and, okay, let's go ahead and break those down, one of each one of those. So roof styles, barn, a frame barn, single slope. Okay. Siding types, LP, smart side, dura, temp,
+
+Unknown Speaker  44:11
+vinyl, metal,
+
+Speaker 1  44:17
+look at that. Trim styles duplicate your your siding stuff, your sighting types.
+
+Matthias Miller  44:36
+Join these in alphabetical
+
+Speaker 4  44:42
+order, uh, actually do I? I mean, sure that would make sense. I.
+
+Unknown Speaker  45:01
+Okay, good.
+
+Unknown Speaker  45:07
+And wait a minute. Wait a minute. Okay, models should ship. We should not ship with anything in it. Okay,
+
+Speaker 1  45:26
+do we call it model or series? How about model slash series? Is that? Is that obnoxious? Oh, I like that. Model slash series. That way, that way somebody's not like, it's pretty clear what, what we're chasing. Yeah, the rooster. Okay, yep. Roof color siding coach. I sent trim stuff. Okay, good, good, good. I like it a lot. We have, okay, all
+
+Speaker 1  45:57
+right, that's clean up the depreciation section. You like contracts? Do I like contracts? Contract ID, contract status, contract start date, rent collected, damage fee collected, late fee collected, other collected. We need some total lines? Do we need some total lines? Do we need some total loans? Hold on, rental income, other income, sale price? No, okay, no, okay,
+
+Matthias Miller  46:32
+can't you drill into the contract if you need
+
+Unknown Speaker  46:34
+anything? No, no, we're good. I think we're good. Okay, now
+
+Unknown Speaker  46:45
+only the only,
+
+Speaker 1  46:48
+the only other thing I probably would put in
+
+Unknown Speaker  46:53
+here is, is the
+
+Unknown Speaker  46:57
+the contact record that's tied to the contract.
+
+Unknown Speaker  47:01
+And
+
+Unknown Speaker  47:07
+so that it would reflect the customer's name,
+
+Speaker 1  47:20
+and then probably both view cut. Do we want to say? Do want to say View contract or view cut? And do we want a secondary one for view customer? I don't know, but I mean, we definitely want to reflect the customer's name. Do
+
+Unknown Speaker  47:46
+and that would be the primary customer, the primary customer display name,
+
+Matthias Miller  47:52
+the right of contract status. Where do you want
+
+Speaker 1  47:58
+it contract, I guess, to the right of contract ID.
+
+Matthias Miller  48:05
+Okay, so then we have, I'm not 100%
+
+Speaker 1  48:10
+solid on, do we want them to link across to a contract or to a contact record, which is going to make more sense, contract record? No, because we're identifying the contract record. Do we want it all to have that customer name to be a link to the contact record? Why not? Why wouldn't we do that
+
+Matthias Miller  48:29
+another column to view customer well, do we
+
+Speaker 1  48:32
+want to can we? Can we do it? Can the customer's name be the link? No, no. I
+
+Speaker 1  48:43
+yeah, for the sake of, let's, let's do a view contract view customer, or view view contract view account, that's what, how it will refer to it.
+
+Speaker 1  48:58
+And both of those views can be side by side. That doesn't have to be right by the customer. Oh, no, that would actually make a lot of sense, wouldn't it?
+
+Matthias Miller  49:08
+View customer right beside the customer. Yeah, let's do that. Yeah.
+
+Matthias Miller  49:20
+Could even put a view contract set, the contract ID, all this,
+
+Speaker 1  49:29
+all this premiums and commission and buyback amount and buyback deposit date. I don't know about that, but that all needs to go up in resale financials.
+
+Matthias Miller  49:37
+Hang on. Do you care about putting view contract counter duty. View contract primary customer.
+
+Speaker 1  49:44
+Do you like that? I like that, yeah, yeah, that makes a lot of sense. Okay, yeah.
+
+Unknown Speaker  50:00
+Yeah, okay.
+
+Matthias Miller  50:02
+Buyback amount,
+
+Speaker 1  50:04
+this, this whole premiums and commission section needs to hit like that. All needs to be in their corresponding either purchase financials or resale financials.
+
+Unknown Speaker  50:16
+What is,
+
+Matthias Miller  50:20
+what's the difference? Okay, the difference between the buyback, buyback,
+
+Speaker 1  50:26
+buyback is really a resale. It is, it is technically a resale.
+
+Matthias Miller  50:32
+Can we just call this resale, slash buyback date, or can we just get rid of it? Or what makes it clear?
+
+Speaker 1  50:40
+Um, okay, but type, we do need a buyback amount, because that is like we're going to whatever the method is, and this may be, do we want to ever set this up on the contract record? I'm sorry, on the, on the manufacturer record buyback terms that would automatically fill buyback amounts based on whatever the terms are. Is that too? Is that too automaticy? What's your thoughts?
+
+Matthias Miller  51:18
+Howard buyback terms is typically
+
+Speaker 1  51:21
+set, generally, if the if the con, like most of the buyback terms I've seen, if it's if it's out for a certain amount of time, it's one percentage. If it's out for a longer period of time, it's another percentage. I wonder if we have a a manufacturer buyback section, manufacturer record buyback section that it was an RG of of trigger points and percentages. This is tricky, because this is very tricky. Are you pretty
+
+Matthias Miller  52:01
+confident you'll be able to nail this consistently?
+
+Speaker 1  52:03
+No, I'm not confident at all, because that those buyback terms could be all over the map. So that's not trying to embody this, that this gets dangerous. I do think maybe we ought to have on the product record a checkbox that says, Okay, let's, let me think through this. Let's, let's, let's, before we go any further, let's, let's think through the process. And let's say building was retreat. How does the customer rep say, okay, that building was returned and it's, it is eligible for buyback. Okay? No, no, no, no, no, no. Let me think. I do think we have a setting on the on the RTO, sorry, on the manufacturer settings that defines whether this manufacturer does buybacks or not. That definition would trigger at the point of retrieval. Would trigger something on the building record, on the product record that puts it on a list somewhere, that says this building needs to be defined for the dollar value to be bought back.
+
+Unknown Speaker  53:17
+Right? Is that fair? Yeah.
+
+Matthias Miller  53:23
+And if it's, if it, if the manufacturer doesn't do buybacks,
+
+Speaker 1  53:28
+then, then it wouldn't be checked, and it would automatically be, it would be be retained as the RTO company. And then we would need to set a resale price so that I
+
+Matthias Miller  53:53
+so it's something like, I'm
+
+Matthias Miller  54:07
+Why would we just have a report of non rented buildings?
+
+Unknown Speaker  54:10
+Well, we're going to have a stock report,
+
+Matthias Miller  54:14
+and then you'd have have a flag that says needs, needs a buyback,
+
+Speaker 1  54:20
+so a yes, no checkbox so that you would check those yes, no, inside of the inside of that user editable report, and if you checked it, then it you would be prompted to fill in the dollar value,
+
+Unknown Speaker  54:35
+No, because, well, maybe
+
+Matthias Miller  54:39
+you're gonna have to either way. You need $1 value we can infer from the Okay, could we do something like a resell type that we default, which is like or a, I don't know what the i. I don't know what the right thing is here, but buyback versus resell you choose.
+
+Speaker 1  55:07
+No, let's back up even further. Let me ask this question, reselling of buildings, whether it is a buyback or whether it is to a customer upon retrieval, resale amount is all over the map. Do we want to even try to define this from an auto calculation standpoint? RTO Pro does not they simply ask you to punch in a number when that building is retrieved, do we want to get fancy and try to embody this? No part of me does. Because part of me says, if we went round and round long enough, it's not that difficult, because it's always based on percentages.
+
+Matthias Miller  55:59
+Is it time based, time plus percentages, or is it time and condition and percentages?
+
+Speaker 1  56:07
+Um, ooh, time plus condition plus percentages. We already have it, don't we had talked about putting a condition on here. Yeah, we had, I don't see one. Where do we want it?
+
+Matthias Miller  56:23
+We had talked about putting it on the transit task so that when you actually, when you actually retrieve the building, you have to upload photos and say, Oh, this thing's beat up.
+
+Speaker 1  56:35
+And it would have, we would have a preset list of conditions, yes, everything from pristine to total junk
+
+Matthias Miller  56:45
+fell apart in the way here, gapes, toothpick shirts on the
+
+Speaker 1  56:49
+product record. Where are we going to put this thing in the structure section? Yes, structure section. I
+
+Matthias Miller  56:56
+mean, it would be a last known condition, right?
+
+Unknown Speaker  57:00
+Last, that's a lot of words. Why not just last condition? Condition,
+
+Matthias Miller  57:07
+last condition. Here's what I'm thinking,
+
+Matthias Miller  57:15
+dilapidated. It would pull from the
+
+Speaker 1  57:21
+okay the list that is an RTO pro right now is as follows, excellent, good, fair, poor, new, so it'd be new, excellent, good, fair and poor. That seems a bit overly simplistic of language. New is good, excellent, good at good condition, good, fair, good,
+
+Speaker 1  57:52
+well, that's not actually bad, bad language. Excellent, good, fair, poor, new, excellent, good, fair and poor. Okay, put this thing into put this thing into chat. GPT. Let's give it that 12345, names, and let's see if it can do better in the language
+
+Unknown Speaker  58:18
+we're looking for Thursday terms you were Doing Wednesday opinions.
+
+Matthias Miller  58:39
+Hopefully it actually takes me
+
+Speaker 1  58:45
+seriously. Oh, brand new, like new, very good. Serviceable. Needs work. That's not bad. Fresh, cosmetic
+
+Matthias Miller  58:54
+versus structural. Could also speak,
+
+Unknown Speaker  58:58
+I like the salvage only.
+
+Unknown Speaker  59:02
+What if we did? What if we did
+
+Speaker 1  59:07
+brand new? Like New? Very good, serviceable, needs, work, salvage only. I like that. Actually, the great A, B, C, D and F, E and F, we went to e and f, i, like A, B, C, D, E and F, that would be A, B, C, D, E, F, yeah, brand new. Like New. Very good, serviceable. Needs, work, salvage.
+
+Unknown Speaker  59:38
+Only, uh huh,
+
+Unknown Speaker  59:45
+Ray, C,
+
+Unknown Speaker  59:58
+like that.
+
+Unknown Speaker  59:59
+I. Right, see what, see what it thinks of
+
+Speaker 1  1:00:17
+that. Oh, I kind of like the fair slash usable. I do like that I don't like it's project ready, or that I like the needs work,
+
+Speaker 4  1:00:25
+me to be honest. Yeah,
+
+Speaker 1  1:00:29
+I like, I like all of that, except for E, let's go back to the needs work, and then I like that list. I do like giving it a grade that is kind of
+
+Matthias Miller  1:00:41
+cool. Project ready, serviceable. You
+
+Matthias Miller  1:01:00
+missed the conversation, but John Bergen said that. So his dad in law runs, Josh's dad runs, you could do function, them, stuff somewhere, but anyway, has a software that runs in a single, whatever, single pane, but they do have a SAS version, where they give you a remote desktop connection. There's a server, and they call it SAS.
+
+Unknown Speaker  1:01:36
+They call it the sassy version.
+
+Matthias Miller  1:01:39
+Definitely sassy. Great product conditions list.
+
+Speaker 1  1:01:55
+You go, I like it. I like that a lot. So thereby we can so then, so then, in that regard, we could go to, we could go to the manufacturer record and give us three. Okay,
+
+Matthias Miller  1:02:23
+would you, okay, I
+
+Speaker 1  1:02:27
+mean, we it's, actually, it's four, it's, it's, it's four columns on the RG, first column is point of retrieval, or point of issue, and then amount of time out.
+
+Speaker 1  1:02:50
+It's not four things, it's three things. It's three things. Sorry, point of issue, point of retrieval, amount of time out, and percentage, a discount. Call it discount percentage. Those would be the three things, and at that point, you literally can auto calculate the amount, as long as the amount is overridable on the building record, voila,
+
+Unknown Speaker  1:03:10
+yeah, okay,
+
+Matthias Miller  1:03:14
+let's try this. So you say you would have the,
+
+Speaker 1  1:03:22
+and maybe, we call it a buyback and resale section, maybe. And that depends on whether it depends on whether a a you would check the manufacturer for buyback or resell only, and then resale only, you would say you could define the exact same things from the point of issue, from the point of terms and amount of time out and the percentage, and it's always a discount percentage. And so it works that the same, the same three columns work exactly the same. One is a buyback, and one is a resale. Tell me I'm crazy. You're
+
+Unknown Speaker  1:04:02
+You're crazy. Okay,
+
+Matthias Miller  1:04:04
+I don't think you are, but had to say it.
+
+Matthias Miller  1:04:12
+Okay, so we have the condition.
+
+Unknown Speaker  1:04:16
+Oh, I did forget about the condition part. So it is
+
+Matthias Miller  1:04:22
+for I don't know what the right order is for this.
+
+Speaker 1  1:04:25
+No, the first one is trigger point. I don't What do you want to call it? Trigger point? No, that sounds dumb. I don't
+
+Matthias Miller  1:04:32
+understand the trigger point. It's the point of issue or the point of
+
+Speaker 1  1:04:35
+Okay, so, so there is always a conversation back and forth between manufacturers and RTO companies, if I issue it for repo. From the RTO company standpoint, this is now in in pickup status, and so therefore I want to count the time that it's out based on the time that I issued it for pickup. So start date to issue date is a different timeframe from when they picked it up, because it may go. 234568, 10, weeks until they pick the thing up, so that you just increased. You have a point. You have a potential for, if you don't define those two, you have a point where it could be like it could be out longer, increasing the discount that the buyback becomes. You tracking with me now,
+
+Matthias Miller  1:05:29
+so isn't it the
+
+Matthias Miller  1:05:36
+isn't it basically a isn't it basically a retrieval quested slash, retrieval completed.
+
+Speaker 4  1:05:55
+Sure. I'm fine with that. Retrieval, retrieval, you still don't have it. It quite
+
+Unknown Speaker  1:06:04
+right? You're missing an eye.
+
+Matthias Miller  1:06:08
+Okay? We have the effective date. Then we have the Do you have the condition? No, you have the
+
+Unknown Speaker  1:06:16
+Yeah. Conditions, fine,
+
+Matthias Miller  1:06:19
+condition. So drop
+
+Unknown Speaker  1:06:22
+list of conditions
+
+Matthias Miller  1:06:24
+we'll do. We'll just do fair slash usable. And then we have the, this is the discount percentage, and this is the i
+
+Speaker 1  1:06:42
+Uh, yeah, number of number of
+
+Unknown Speaker  1:06:47
+days or months, months, number of months, yeah.
+
+Matthias Miller  1:06:55
+So you could do something then, so,
+
+Speaker 1  1:07:00
+um, well, okay, if you wanted to make this a little bit more fun, the condition drop list, list could be multi selectable, so that you could say for buildings A, B and C, at the point of this
+
+Matthias Miller  1:07:15
+minimum, we could do a condition range, minimum condition,
+
+Speaker 1  1:07:21
+maximum condition. Otherwise, you're going to set all you're going to set a whole bunch of RG lines for every single grade. Does
+
+Unknown Speaker  1:07:35
+it work to do multi select inside of an RG?
+
+Matthias Miller  1:07:39
+No, because it uses an RG under the hood. So you, I mean, this is the weird thing, because you kind of want a matrix in some ways, like, I mean, we could actually set it up of like, what are your what we could set it up as a if you would put in your month tiers, where are your tiers? And we could give you basically a grid, a matrix that you could fill in for this condition, this percent, this condition that for this condition, for this condition, these months this much, this condition, these months that much, this condition this month, these months that much.
+
+Matthias Miller  1:08:32
+Does that make sense?
+
+Unknown Speaker  1:08:33
+Yeah,
+
+Matthias Miller  1:08:37
+then you'd have to limit the number of well, I guess if you would do the other way, you could do conditions along the top. Then
+
+Speaker 1  1:08:44
+you can have, if we, if we said, minimum condition, then if you set the it at D, A, B, C and D all fit in that, in that R, G, right?
+
+Matthias Miller  1:08:53
+Yeah, it'd be something like, Oh, you mean, like, here, Why would we do this? Why Wouldn't we do I
+
+Unknown Speaker  1:09:31
+away. I'm that's. Zero You
+
+Matthias Miller  1:10:46
+are you being so absolutely obnoxious? There we go. So you do something like and of course, it would continue on. I
+
+Matthias Miller  1:11:07
+uh, maybe you would do something like,
+
+Speaker 1  1:11:22
+but, I mean E and F really should be There. Okay, yeah, you're adding E and F, okay, yeah,
+
+Matthias Miller  1:11:40
+I mean, however they want to define it, but I
+
+Matthias Miller  1:12:00
+but it'd always be same. The manufacturer's not gonna say, Oh, well, if it's as many months, we can do it off of whatever.
+
+Speaker 1  1:12:15
+And so how would you define, how would you define the the effective date? Then it'd be a separate field that applies to all, which is a drop list. You don't have to have that in the row, right? But, I mean, so you would have a drop list above this perspective date,
+
+Matthias Miller  1:12:29
+right? I would.
+
+Unknown Speaker  1:12:32
+I mean, I don't hate this.
+
+Matthias Miller  1:12:34
+You don't love it either. Well,
+
+Unknown Speaker  1:12:37
+it, it.
+
+Speaker 1  1:12:40
+It causes my eyes to want to glaze over, because a lot of words, can we? Can we? Can we get rid of just discount, get rid of discount percent, just say percentage. And maybe we give a maybe we give an explanation above what you know, just a quick little something or other. I don't know.
+
+Speaker 1  1:13:08
+I mean, I guess if we put it in a header section and we call it the the resale, okay, how are we defining the whether it's resale or buyback? Would that be another droplet right above it?
+
+Matthias Miller  1:13:22
+I because your reselling buyback percentages are going to be
+
+Speaker 1  1:13:27
+different. Well, because you don't, it's either or this will be exactly the RG will work. Oh,
+
+Matthias Miller  1:13:33
+right. I mean, it would be a this is horrible, because I'm not creative, but, yeah, you could just do buyback or resell. Building
+
+Speaker 1  1:13:55
+no method. We're gonna put it. We're gonna put this in under a header section. So so method is fine. Let's make the header section and we'll call it
+
+Matthias Miller  1:14:07
+built, building, building, buyback and resale matrix,
+
+Unknown Speaker  1:14:14
+discounts, discount matrix.
+
+Matthias Miller  1:14:20
+Do you need a red pill? Blue pill? Jump. You want
+
+Matthias Miller  1:14:34
+control? Oh, we have you
+
+Speaker 1  1:14:36
+control. We want to call it a building, because it could be any product. So let's go. Let's just call it buyback and resale discount matrix. Just Yep, drop that part bingo. And that goes, that goes on the RT, that goes on the manufacturer record, yep. Okay, all right. And so then that. It should on the buyback resale section of the product record that it should the resale amount or the buyback amount that that text should be should be conditional based on how the manufacturer is set up. So if they're a buyback, it should say buyback amount and buyback date and what's the resale type.
+
+Matthias Miller  1:15:31
+Well, this is if we do the method. I mean, we could do method, which would be
+
+Speaker 1  1:15:38
+okay. So if you do that, okay, then then get just call it date and amount.
+
+Matthias Miller  1:15:44
+What's the amount? Bingo in the amount would be,
+
+Unknown Speaker  1:15:51
+could we you want
+
+Matthias Miller  1:15:59
+to auto calculated. But they need a way to, well, it's, it needs to be overridable, but that's, that'll be, that'll that'll be in the Won't that be? That's the calculated amount,
+
+Speaker 1  1:16:12
+yeah, but if that may be true, but if, for whatever reason, you and the manufacturer degree agree on something different, you want to be able just type it
+
+Matthias Miller  1:16:21
+in, then you make a payment of a different amount,
+
+Speaker 1  1:16:25
+yeah, but then you're gonna have to field, then you're gonna have to put the payment amount, what you actually paid. Why would you just let them override it?
+
+Matthias Miller  1:16:34
+Can we have an override checkbox?
+
+Speaker 4  1:16:38
+Sure. I grab my checkbox if you prefer that.
+
+Unknown Speaker  1:16:55
+Ballot box i
+
+Speaker 1  1:17:12
+Yes, and then that exposes a different amount, somewhere in a box, somewhere to punch that in. Well, I mean, it makes it just makes this one editable. Ah, gotcha fine by me. I like that manufacturer commission perspective. Other thing
+
+Matthias Miller  1:17:28
+that could be useful is basically when you
+
+Speaker 1  1:17:35
+so almost good if a manuf, if a manufacturer is set up for buyback, then the whole commission dollars and so on, and percentage that just needs to be. Do we want to field? Do we just want to say commission in dollars? No, no, no, no. That needs to be disappear if it's their own buyback, because now and it should and then.
+
+Speaker 1  1:18:15
+So now let's go back to another manufacturer setting, and if they're on resale, then we do need to have some more. We need to have some more fields to define, and that is what their resale commission percentage is.
+
+Unknown Speaker  1:18:40
+Okay, but what's the effective date? So you
+
+Matthias Miller  1:18:43
+can change your commission? Oh,
+
+Speaker 1  1:18:45
+duh, duh, duh, duh, duh, duh. So then effective premium, okay, so we already have that. Got it
+
+Matthias Miller  1:18:57
+dinged you. You'll
+
+Speaker 1  1:18:58
+All right, so we already do have that. Okay, so then we don't need that. But if it's, if it's a, if they're set up for resale, then we should field that information. And
+
+Speaker 1  1:19:16
+so the question then is, if that amount is, if we say the calculated amount to resell this building is 1300 and they sell it for something different, do we just override it? Then I guess that's exactly what happens. You override it, and then that
+
+Matthias Miller  1:19:36
+do we need a way to override the method? What if they normally do buybacks? They're like, You kidding me? I don't want
+
+Unknown Speaker  1:19:41
+that. No,
+
+Unknown Speaker  1:19:44
+oh, oh,
+
+Unknown Speaker  1:19:49
+I see what you're saying. How would we override the method?
+
+Unknown Speaker  1:19:58
+Well, I.
+
+Matthias Miller  1:20:02
+Yeah, that's kind of where it's would be kind of nice to say, almost like a method, like, all right? Like, it's like sucking the data, like, calculate.
+
+Speaker 1  1:20:13
+No, no. This is, this is this is easy. This is easy. We don't override the method. It's still a resale. We just resell it back to the manufacturer. We just don't define it as a buyback. Leave a note that it was a buyback instead of a resale. Whatever, you override the commission, yeah, well, you over No. You override the you override the dollar amount for whatever. You sold it back to the manufacturer, and then they Oh, then they would get no commission. I see what you're saying.
+
+Matthias Miller  1:20:44
+Presumably you need a way to override the commission too, don't you? Yeah, like, why would we do we should Just basically do
+
+Unknown Speaker  1:20:58
+this. I
+
+Matthias Miller  1:21:21
+And This guy,
+
+Matthias Miller  1:21:37
+it feels like I'm
+
+Matthias Miller  1:21:57
+don't You want to date after the amount
+
+Speaker 1  1:22:07
+this would be the date of what, what would be the date reseller buyback. So the point that it happens, yeah, I think so. I'm almost wonder, okay, riddle me this. Some way we Okay, we have the amount that it needs to be, and we can override that. But are we should have an amount that we received, or is that going to be in the form of some sort of commission, or some sort of payment, or, like we gotta, we gotta have some. We gotta have, we got a field somehow that what we received on it, because that needs to go towards the total amount received of this building. And that is another thing that we really need to probably have somewhere, is probably some sort of, I don't know, is it some sort of like link to a URL to see exactly what's all been received on this building? I don't what if
+
+Matthias Miller  1:23:03
+we would, we probably don't want it like a building buyback. Here do we? What is resell? I mean building resell, ooh,
+
+Speaker 1  1:23:14
+so we treat that as a payment. But then, okay, but then who's the customer, or are we going to do some sort of like,
+
+Matthias Miller  1:23:25
+I mean, how does the resale work? Explain that to me. I mean, is it is literally the okay on a resell, I want to buy that repo building. Do I write the check to you, RTO company,
+
+Speaker 1  1:23:40
+in a resale Yes, well, okay, no, no, okay. Pause, okay, let's, let's step through this step by step. Building gets retrieved, sits down. We're going to define a resale scenario. Okay, so building gets retrieved, sets down on the manufacturer's sales lot or the dealer. Sales Letter, whatever you want to call it. The moment they sell that thing, they collect the money, and they send in paperwork to the RTO company. Says, Here's a check from the manufacturer or the dealer, and we sold it for this. Here's the paperwork on it, and then we process that as a cash sale.
+
+Unknown Speaker  1:24:24
+So it is always the okay. So in the in
+
+Speaker 1  1:24:28
+the event that a the dealer sold it to a customer, we would, we would establish a contact record, and we would sell it to that contact record. I Well,
+
+Matthias Miller  1:24:44
+if, but if the manufacturer is collecting payment, the manufacturer is basically taking payment from the customer and then paying you for
+
+Unknown Speaker  1:24:53
+the building, correct? So
+
+Matthias Miller  1:24:57
+either way, you're taking payment from the manufacturer. Extra,
+
+Speaker 1  1:25:01
+yeah, but I want the option to take like it's because there have been times where customer calls up and says, I'm standing here at this person's sales lot or or the story the dealer is lazy, and they just want us to deal directly with the customer. So we do need to have a way that we can sell a building cash to a customer.
+
+Matthias Miller  1:25:24
+Okay, we could have a payment type, rental payment and a product payment. On a rental payment, you select Customer, on a product payment, you select the customer or manufacturer, and you select a building, building our buildings,
+
+Speaker 4  1:25:45
+and then it shows you the I can't think of it anymore. I gotta pee.
+
+Matthias Miller  1:25:50
+I'll break as well. See You soon. You
+
+Speaker 4  1:27:54
+all right, thank The
+
+Speaker 1  1:28:02
+my daughter every once, and she'll do this, we're we're playing a game or watching a movie, or we're doing something, and I'm like, Hey, can you just do something? And she'll just, like, fly off the chair that got through.
+
+Matthias Miller  1:28:14
+Yeah, yeah. Kids. Like, we, can we can? We can hold her pee when we're in the middle of, like, I don't know, fill in some fascinating thing, but the moment we get interrupted, all of a sudden, like, body alerts us, and all hell breaks loose.
+
+Speaker 1  1:28:34
+Okay, so what you we're going to need to be able to generate some sort of invoice for a customer, because a customer is going to ask for that at times where it's like, okay, I want to buy this building, but can you send me an invoice to pay?
+
+Matthias Miller  1:28:51
+Okay, well, couldn't we? Couldn't we effectively? I really don't want to think about this. Well, I think here's basically what happens. We have a method, we have a we have a we have a customer you selected from a drop list and and generate invoice, which is just a template that gets generated with, potentially with with a one time payment link, or with a with a unique code in there that they can click a link to pay through the portal without logging in.
+
+Speaker 1  1:29:31
+I do wonder, I do wonder if, okay, when I was in the bathroom, I was thinking, Okay, why wouldn't we treat this as some type of contract definition so maybe there's a third option on on the contract definition for ways to handle a cash sale and everything is generating of a contract type thing, because you that was an I don't know. I don't I'm stuck.
+
+Matthias Miller  1:29:59
+Okay, here. Just part of the problem, conceptually, in the process, it is a way of ending a contract, really, right? Like, what is your plan? The contract has ended. Where do we go from here? There's three options. We are going to, well, we are going to resell it, because the manufacturer will resell
+
+Unknown Speaker  1:30:31
+it. The
+
+Matthias Miller  1:30:34
+manufacturer will buy it back, or when. And I mean, there's kind of a third option, which is, I mean, they plan to resell it, but it might hang hang around for a long time. So basically, stays open in the system. If they resell it for cash. Then we go back to the that's the weird thing. You resell it as cash. It goes back to this contract.
+
+Unknown Speaker  1:31:02
+No, what
+
+Matthias Miller  1:31:04
+that would be, the weird thing. So you're saying almost like a contract entry, where you say, this is not a rental, this is a purchase contract.
+
+Speaker 1  1:31:13
+Yeah, so, so here's what I'm wondering, because I want that, I want that line item to show up in the line items of contracts. So you would be able to see, in the RG of contracts, you would see all rent collected, damage, bigger fees collected, like, basically you can get a whole entire history, totaling history of this building contracts and cash sales. Okay, so, so maybe it is that we give, we say, maybe we give a contract, another, another type of contract that's, that's a cash sale contract, and it's, and maybe it is that we cash sale, that to them as a buyback. We cash sale, it as a customer purchase. Or maybe it is, everything gets run through that contract type record,
+
+Matthias Miller  1:32:05
+and then you and then two payments get tied up very easily, right? And there are no rentals. It's all other I don't know what you call it then, so we
+
+Speaker 1  1:32:14
+haven't really got into contract entry yet, but I could see where on the product record you say, generate cash sale, and that generates a contract record, and starts looking for a customer. And if there is not a customer, then, well, then you may need to, you know, say, new customer, fill that in. And then, then, you know, you keep working, kind of through it, record by record. But
+
+Matthias Miller  1:32:37
+I kind of like it. The only part that makes me nervous is that we are going to be
+
+Speaker 1  1:32:43
+thinking about see what you did there. The only part that makes you
+
+Matthias Miller  1:32:48
+nervous, part that makes you nervous, I actually wasn't trying that, but you're welcome, is that anytime we report on contracts, we have to think through, like, there's just a lot more like contracts can can now just become so much more stuff. Like, okay, salesperson and dealer could be visible for a resell, but for cash sale of resale, but doesn't really make sense that buyback condition transferring doesn't I mean, does transferring really make sense? Why not just cancel the cash sale product applies? Yeah.
+
+Speaker 1  1:33:32
+So, I mean, I think that, okay, instinctively, I want to say that we go back to the contract definition and we add a third type of cash sale. It becomes very simplistic. It's basically, you know, sucks in the building details of and sucks in what, what do we want to charge for this thing? And then, so when you go do generate cash sale, it grabs that definition, and that writes a contract record, which is now very simplistic, because we only have certain information on a cash sale side that we need, making a payment against that contract now becomes very easy and
+
+Matthias Miller  1:34:17
+Okay, so, but In this case, though, you don't actually have state your your contract type is going to be RTO, RTR or cash, basically, okay, what's
+
+Unknown Speaker  1:34:33
+wrong with what's wrong with the state?
+
+Matthias Miller  1:34:37
+You want to duplicate the definitions for every single state. No discounts. No because the discounts are,
+
+Unknown Speaker  1:34:46
+oh, contract
+
+Speaker 1  1:34:51
+definition for cash. I see what you're saying. I see what you're saying that we don't want, we don't want three different contract definitions, one for one. One for RTO, RTR and cash to be in in the list of contract definitions, I wasn't thinking that far.
+
+Matthias Miller  1:35:06
+I don't think you need a contract definition.
+
+Speaker 1  1:35:09
+Okay, you have, so what? So basically, it generates a contract record from something else.
+
+Matthias Miller  1:35:16
+There's a contract tight. I don't know where this what this contract type is supposed
+
+Unknown Speaker  1:35:19
+to be here. I contract
+
+Speaker 1  1:35:21
+type would be, wouldn't that be our rent owner? RTR, yeah, yeah,
+
+Matthias Miller  1:35:29
+I don't know why the list doesn't show anything. Oh, I don't have a state in it. Okay, Dwayne's awesome, North Carolina. Okay, so, so then, really, we need contract type first, then you have the state. We need to redo a bunch of this stuff and go walk through the contract and figure out what's going to be visible.
+
+Matthias Miller  1:35:54
+When let me see if Seth wants to
+
+Speaker 1  1:35:57
+to weigh into this. Yeah, I got 10 more nine more minutes.
+
+Matthias Miller  1:36:05
+You have nine minutes to weigh in on active sign.
+
+Speaker 1  1:36:20
+I get, I get nervous about creating a whole nother record type for a cash sale. Can we? Can we funnel this through existing records? Would be the would be The simplistic approach? Yeah. I
+
+Matthias Miller  1:37:20
+Hey, Seth, I'll see if I can get you how fast I can get you up to speed so you get maximum time for input. So problem we're wrestling with is, how do we handle building after the contract terminates? So there's basically three things that can happen. We can have an agreement with manufacturer that says I will always buy the building back from you and then do with it what I will or it says I want the building on my lot and I will pay you when I get paid. Or there might be a case in which a customer comes directly to the RTO company and says, Can I just write you a check for this? And so, and the question is, how do you handle it? How do you show it, etc. The idea we're playing around with is adding a new contract type of cash. And so when you want to do either of these events, you would create a new contract of type cash. You could generate invoices over that. You could apply payments to that. The nice thing about it is it just shows up everywhere you can go to the building, you can see it there, all that stuff. The downside is that now there's all kinds of like you got to filter the payments list to make sure you only have rental contracts or not the payments list. But you're gonna have to think through in more places. Well, you're gonna have a whole bunch of visibility conditions on the detail screen first. Yeah, a lot. Now, I guess the other option would be to make it a record type of rental versus cash purchase, and you just have a completely separate detail layout.
+
+Speaker 3  1:39:13
+Yeah, that would almost make sense. I'm trying to ID contracts are, yeah, they're level, a custom level. So we could,
+
+Matthias Miller  1:39:27
+so Dwayne, we'd still have to think through how we differentiate reports, but basically we would just, instead of having visibility conditions and stuff like that, we basically have a completely slow, okay, yeah, it's a contract. But
+
+Speaker 1  1:39:42
+so unless we, unless we went and created an invoice record, an invoice record, we would then use for for all three options, we would use it to sell it to a customer. We use it to sell it as a buyback, and we'd use it as part of a resale option, like, however, however you want to cash out this bill. Building as a cash sale, it would run through an invoice record,
+
+Matthias Miller  1:40:06
+and then payments could get tied to an invoice record, presumably,
+
+Speaker 1  1:40:12
+yeah, okay, this is, this is where I, I completely get lost. Go back to the to the to the to the product record, because instinctively, I'm going to want to tie it into the contracts. RG, then as so that you can see a total list out of all monies collected for that building. I don't know. I don't
+
+Matthias Miller  1:40:38
+know under other fees collected, no, no, it's not rent. You got another column, cash sale.
+
+Speaker 1  1:40:48
+Well, hence the reason I'm, I'm, I'm, I don't know where to go with this, because I've why
+
+Matthias Miller  1:40:56
+not make the contracts? I mean, the contracts is a virtual RG, we could change it to basically a cash flow where you just have different rows, like, here's the manufacturer, here's how much we paid. And then if there's a sale event, include that row.
+
+Matthias Miller  1:41:21
+Are there other types of invoices that we'll want to
+
+Unknown Speaker  1:41:23
+issue?
+
+Speaker 1  1:41:26
+No, those are the three options, sell it to a customer. Sell it to a manufacturer as a resale, or sell it to them as buyback. Those are the three options that you end up, that you end up doing. I mean, okay, theoretically, you could say, sell it to a dealer, like, sell it to some entity, and whether that's and because we're using contact records for all this stuff, I'm assuming we could open this thing up pretty wide to say, any type of contact record I can go sell it To, whether it's dealer, salesperson, customer, RTO company, like, I don't know anyway, but
+
+Matthias Miller  1:42:06
+I like the invoice, because it creates an event, and then you have a basis from which you say, No, we're not going to do a resell. This is actually a buyback, or, like, you can cut, or we're selling it directly to the salesperson. We're just going to sell it less Commission, or, I don't know what like, and then you have an actual event of, this is the buyback or resell invoice.
+
+Speaker 1  1:42:30
+So then, do we do? Do we turn the contracts into some sort of virtual RG that? That is that we can bring all of those events into all contract and and invoice events.
+
+Matthias Miller  1:42:44
+I think this is a closer probably. I think it's a closer modeling to reality. These aren't literally contracts. You're not saying contract scene, but buy it Seth, do you have a
+
+Unknown Speaker  1:43:00
+Oh, think I like that better than having it be a contract.
+
+Matthias Miller  1:43:06
+And I think here then this could be as simple as it
+
+Speaker 1  1:43:13
+looks very much if we do a contract or invoice record, it looks very similar to in, you know, it's basically a sales order. Probably can end up using some type of standard sales order record that you guys already have.
+
+Matthias Miller  1:43:27
+But couldn't you just basically have a new invoice? Yeah, and that invoice has all the calculations, yeah. All right, are you out for the rest of the
+
+Speaker 1  1:43:39
+day? Me? Yeah, no, I could let me just look my calendar
+
+Unknown Speaker  1:43:48
+real quick. I have a I
+
+Matthias Miller  1:43:54
+could do three if you want.
+
+Speaker 1  1:43:59
+Yeah, I could do three as well. Okay? I mean, I might vote for 315 just to give me a half hour between my next one,
+
+Matthias Miller  1:44:08
+I have
+
+Speaker 1  1:44:09
+stopped at 430 So, yeah, that's fine.
+
+Unknown Speaker  1:44:14
+315 to 434
+
+Unknown Speaker  1:44:17
+30 Eastern, you have a stop.
+
+Unknown Speaker  1:44:18
+Yeah, yeah, let's do that.
+
+Speaker 3  1:44:21
+Okay, sweet, thanks. Seth, thank you, Dwayne, thank you.
+
+
+Transcribed by https://otter.ai

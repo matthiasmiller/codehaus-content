@@ -1,0 +1,2420 @@
+Matthias Miller  00:48
+Howdy, sir, Howdy. Howdy, all right, I
+
+Speaker 1  00:58
+hope I can be of use by using my imagination and my mouth,
+
+Matthias Miller  01:04
+usually when I was a kid, that would get me in trouble. All right, so here's, here's the question, okay, well, let's start with with First things first, my understanding is that moving due dates when you want to do if you want to fake due dates, you have to go to the contract record to do that. Is that right? Yes. Okay. Next question, can you adjust you I'm assuming you cannot adjust due dates for something that's been completely paid off. Correct? Or can you
+
+Unknown Speaker  01:45
+what would be the due date? It was completely paid off?
+
+Matthias Miller  01:48
+Well, I don't, I mean just the historical due date.
+
+Speaker 1  01:52
+No, once it's paid off, it's it's paid off.
+
+Matthias Miller  01:56
+But if somebody pays the rent, but not the late fees, can
+
+Speaker 1  02:01
+you that's just that's never reflected as a due date, that's always just reflected as $1 value? Otherwise, there's no, there's no if you close a contract with remaining rent or fees, those are just amounts that are due. There's no due date. No,
+
+Matthias Miller  02:15
+I'm talking on an open contract, and you're moving around due dates,
+
+Speaker 1  02:19
+right? But you said, Can you said, Can you move the due date after the contract is closed? I'm
+
+Matthias Miller  02:23
+sorry, after the rent, if the rent for a period is at, what point can you no longer move the due date? Is it after you pay the dwf? I mean, do you have to pay the fees before you move the due date? Do you or is it as soon as you pay the rent, the due date locks down as soon as you
+
+Unknown Speaker  02:46
+start paying. I don't, I don't know that the due date should ever be locked down.
+
+Matthias Miller  02:50
+Okay, so you can, I know, okay, I see where this
+
+Speaker 1  02:52
+is getting us in trouble. And this is the concept that, okay, we just found the giant hole to the weakness of our period. Concept having, having a having everything as a period, makes it really, really difficult to move a due date. Because if you're if we're paying periods and we're representing periods and we're recording periods, then how do you handle moving due dates? This is a problem.
+
+Matthias Miller  03:16
+Well, so here's how we propose handling it. You pick the due date that you want to move. You move the date everything after that auto calculates one month after that, after that, after that, after that. So technically, you could go all the way back to the beginning, and you can go adjust the due dates. Then you have to defend in an audit, why did you move the due date? Like, why did you charge late fees if this thing wasn't due?
+
+Speaker 1  03:39
+Let me. Let me translate that back to you to make sure I understand what you're saying. So okay, let me are we? How are you as of right now? How are you? You incent planning to go forward yesterday, there was talk about recording an RG of periods. Are you still going to do an RG of periods?
+
+Matthias Miller  04:02
+Yes, effectively, yes.
+
+Speaker 1  04:04
+Okay, so what happens then, if I backdate a due date into a prior recorded period, we don't care.
+
+Unknown Speaker  04:15
+Well, you can't, you can't,
+
+Matthias Miller  04:20
+you can't take the current. You would have to,
+
+Speaker 1  04:28
+Okay, how about this. How about this. What if you we said you could never back date beyond what has you could never back date into what has already been. P, you can always move forward, but you can never back date over, back into something that's been paid so that would allow you to maintain recorded periods and allow for due date moves into the future.
+
+Matthias Miller  04:57
+Okay, here's the big difference. I. Still thinking about this tied to periods. You're thinking about this as a single due date. So if we think of this as a single due date, all that means is that we are always moving the whatever the earliest, the earliest period, that's not completely paid off. That's the only thing we move.
+
+Unknown Speaker  05:32
+Right. Okay,
+
+Speaker 1  05:34
+okay, so, So hypothetically, if you had a stack of of RG rows in the period. And one of those has due date and when it was paid. Or, I'm not sure exactly how you plan to represent that, but on that, on the very top row, would be the next due date. And you can overwrite that to say it says, it says September the first. Oh, no, we want to go all the way to October the first and then you would just work from that way forward. Yep, I don't know that I have a problem with that.
+
+Matthias Miller  06:09
+Okay? And this could be represented as a simple can this be represented as a simple, editable, next new date? Well, either just a simple next Due Date field or zero just field.
+
+Unknown Speaker  06:30
+Sorry, my, are you there?
+
+Unknown Speaker  06:31
+Yes. Sorry, my
+
+Speaker 1  06:34
+three CX decided to commandeer my headphones. Sorry you were saying,
+
+Matthias Miller  06:38
+can we just, can we have it as a single okay, there's a simple version and a complicated version. The simple version is you have a single Due Date field, and the due date just shows the due date for the earliest period. That's not completely paid off, right? I like that. And then when you edit it, it moves that one and it moves it moves everything after
+
+Speaker 1  07:05
+that. I That sounds workable to me. I mean, it
+
+Matthias Miller  07:09
+does to me too. And obviously you can't move it earlier than the like you could have it. You can move it back to right after the last period was due. If you again, your blood is on your own hands,
+
+Unknown Speaker  07:26
+but you can't the the
+
+Speaker 1  07:30
+Okay, let me climb out of this car and let her go one second, yep, no, I dropped my stuff. Alright, okay, let me, let me narrate this back and make sure I'm we're on the same page. Yep. First thing I would want the the row at top of the RG would would always be the only one that is editable, correct.
+
+Matthias Miller  07:56
+Well, we may have it might not be at the top, because you might have it
+
+Speaker 1  08:01
+has to be at the top. I don't want, I don't want, I don't want to end up with a situation where you have to scroll down to find the road. That's editable.
+
+Matthias Miller  08:07
+Well, okay, we could reverse sort it. I don't think, I don't think you would inside the RG. I think the RG is, like, all the detail rows.
+
+Unknown Speaker  08:17
+Oh, okay. But
+
+Speaker 1  08:19
+so you would, you would represent this in, like, some sort of MRG, I don't think it's even
+
+Matthias Miller  08:23
+an MRG. I think it's just an editable expression that modifies the RG,
+
+Speaker 1  08:30
+okay, where would you, like, how are you Where would you propose, like, the mechanics, the functionality of where you would edit it. Where would it
+
+Unknown Speaker  08:42
+be? Yeah, it
+
+Speaker 2  08:42
+on
+
+Matthias Miller  08:50
+the main on the main screen,
+
+Speaker 1  08:54
+sure, but is this a? Is this a field, or is it in the RG row, or it's
+
+Matthias Miller  09:00
+a field? It looks like, I mean, it's a it's what we call an editable expression. So it's a virtual field. It's not, when you edit it, it edits the end. Well, there's one of two ways. If I want to make users happy, it's just an editable field. If I want to make Seth happy. It pops up in X 30 and says, you want to change the due date from what to what, or this due date you want to change to what. And you
+
+Speaker 1  09:29
+put it so you're saying X 30 tied to a button that you would say, override due date. It would pop open say, override it from this to this. And that would that would write it in the RG,
+
+Matthias Miller  09:41
+correct. I like that Seth. Seth will be just, please, just punch with that.
+
+Unknown Speaker  09:49
+And then I like that a lot. That makes it a very intentional operation, yep.
+
+Matthias Miller  09:57
+And then, and then it always edits. Yeah. So it's not always the latest period, because you could have, you can have, you got something like, we have four months that are overdue. If you pay the first two, we'll move the next
+
+Speaker 1  10:11
+100% understand where you're going. Now, I like it,
+
+Matthias Miller  10:14
+okay? And then what will happen is that the second to last period becomes current, and then the next one is due in 30 day in a month, and then it just goes
+
+Speaker 1  10:23
+from there, as long as, as long as the current due date is represented in a way that's easily recognizable. I don't want a user going, okay, which RG row is their current due date. What? Okay, like, we have to represent it very, very well, and maybe it's just right beside the override button, like it's an, you know, just a text there based off of a macro that that, whatever the you know it is, and says, you know, next due date, September. The first blue button, override, override. It pops open. You're overriding from September the first two. And then you pop your
+
+Matthias Miller  11:05
+data, okay? And to be very clear, if they're two months overdue, we're in August, it might say June, July, June four.
+
+Speaker 1  11:15
+Okay, so let's say current due date, July the first Yep. And then, so you are overriding the due date from July the first to then the box, and you put in September the first. Boom, it overrides it. The account is now current. I like it now. There's one question in that, okay, just to make sure I say this out loud, because this, it is the way I would want the functionality to work, is that if there is historical late fees for July and August, those would stay even though you moved the account current, yes, okay, good. We're on the same page.
+
+Matthias Miller  11:55
+And then you would have to literally, if you, if you forgive the late fee, we won't incur late fee again because you had a late fee, but it was forgiven. Now, if you want to right because of audit trail, correct, but if you want to say, Okay, we're current, but you could have late fees again, then you go in, you delete the late fee and then let it trigger again if they don't make their new payment schedule. Or you, or you could go in later and undo forgiveness, that would be the other option. But okay, good. I like it. I like it. Okay, well, I mean, that's the big thing. I can now go back to Seth. I think that's what I need to go back to Seth and say, Let's kneel down. So the plan then, do you want me to talk through the RG structure?
+
+Speaker 1  12:40
+Well, I am now sitting somewhere that I could pop my computer open, if you want me to, if we want to keep diving,
+
+Matthias Miller  12:46
+okay, what you want me to see? If I could bring Seth on and we can walk you through what we did, sure. Okay, well, you can, you can pop open your computer and I
+
+Speaker 1  12:59
+can, okay, I'm going to drop off for just a minute. I'm going to, and then I will, I will log in on my procurement.
+
+Matthias Miller  13:06
+Okay, cool. That's good. Susan, you.
+
+Unknown Speaker  15:51
+I might need to mute myself.
+
+Matthias Miller  15:55
+Get a train there.
+
+Unknown Speaker  16:01
+Uh, okay,
+
+Matthias Miller  16:04
+he's probably, he's probably out for lunch. That is a pretty cool spot.
+
+Unknown Speaker  16:15
+Nice I talked to you, but it's pretty loud.
+
+Matthias Miller  16:20
+Just yell, yeah. Well, I can, I can start. Can you hear me, though? Okay, so I'll start talking you through. I don't have the notes in front of me. Seth has the notes. I think he might be out for lunch for a little bit yet. So I'll walk you through what we're thinking. So we're thinking of having two RGS. Number one is the the fees incurred and forgiveness. So you have the fee type, the due date, the data was incurred, and the amount positive for incurred, negative for forgiveness. And then you have, you have a justification, reason for forgiveness, and maybe one or two other things. But then, if you want to find your balance for any given fee, you just sum the RG and filter based on which row and forgiveness just works, and all this stuff. And then you have a payments RG, which takes the payment ID, the fee, type, the amount, oh, in the other RG, you also have, is it taxable? You freeze the was a taxable thing. And then, and then you say, Hey, I paid this much this payment. Paid this much to this thing. And so, yes, it's two RGS, but you could almost throw it all into
+
+Speaker 1  17:50
+one. I love this, the fact that we have a whole RG Well, however you're gonna do the late piece that there's a positive and negative audit trail and like, you'd literally pop open a customer's account and go, Hmm, forgiveness. Wow, that's a lot of late fee forgiveness going on here.
+
+Matthias Miller  18:07
+Right? The way we're going to handle late fees is we have a so rows can be charges can be incurred in at three different times. Number one, if you're paying for a future period, we will add additional period roads rose to the RG, if you're paying ahead. Number two, every day, we'll go say, Okay, who needs a new, new upcoming due date? And we'll stop in new period rows. And then every day, we'll also say, okay, who's who's past their grace period, and who needs a late fee? And that those the
+
+Speaker 1  18:47
+only question I have in in what you just said, there is so I just paid, I just Okay, I just paid $500 on my account, and in my is my next due date. How's my account going to reflect if, if you're going to turn some of this into a daily task, automated task, to go, go resolve some of this. So I'm
+
+Matthias Miller  19:13
+not sure if you know if your monthly payments $300 I don't know if we want to, if we want to just have a $5 $100 row with a with a an extended due date, or if we want to add a $300
+
+Speaker 1  19:25
+No, we talked through this. We talked this already. So if I have paid everything current that I think if I remember it correctly, he said the period rose would reflect what I paid. Like you can see that that's done, but then we're only going to add it. Your task wouldn't add a new period row unless we hit the due date,
+
+Matthias Miller  19:46
+right, unless you hit your honor past the due date,
+
+Speaker 1  19:49
+yeah, yeah. Okay, so that got it. But then
+
+Matthias Miller  19:53
+on the in the whiskey side, you could still pay ahead whether or not there's a period. Yeah. Eight,
+
+Speaker 1  20:00
+right? And so next due date is based off of calculation and and your last period that you paid is holding that
+
+Unknown Speaker  20:09
+yes,
+
+Unknown Speaker  20:10
+so, yeah, so which then
+
+Matthias Miller  20:13
+lets us do the and then my thought is on the free cash calculation. It's that's just math that we figure out somehow, of based on everything that you paid, what should your due date be? What actually is it? What's the dollar value of that date difference? And that's your free cash amount. I'm
+
+Speaker 1  20:35
+going to be curious if this is going to be something that our two companies are going to want to continue, because the whole free cash amount thing is thing is, it's not free cash, though, and that's what always has bugged me about this.
+
+Matthias Miller  20:51
+Well, it's the wrong term, I
+
+Unknown Speaker  20:54
+agree. And maybe the term,
+
+Unknown Speaker  20:58
+it's, it's, I
+
+Speaker 1  21:02
+mean, maybe dollar documents. Maybe it's dollar value of due dates moved or moved to due dates. That's really what it that's really what it is. It's $1 value of moved due dates, and
+
+Matthias Miller  21:13
+not just moved because you can move a due date. I'm getting really persnickety, because you can move due dates and charge more it's due date overrides.
+
+Speaker 1  21:24
+Okay, dollar value of due date overrides.
+
+Matthias Miller  21:29
+Now, another way to say this free cash, I also dislike, because, in my opinion, free cash is how much money do you have sitting in your account, minus current and upcoming obligations, equals free cash, which is what you can spend. That's my def, that's,
+
+Speaker 1  21:44
+yeah, I don't like, I don't like the free cash. So what like this is what I Okay, there are going to be RTO people who are really, really about this, because they're going to say, well, listen, if you move through Danks at all, that means that you're giving that customer three days that they get to use building without paying for it. Hey, I know. And
+
+Matthias Miller  22:08
+and you're doing it at a cost to yourself of so
+
+Speaker 1  22:13
+it's not, and this is where, this is where I always get hung up. It's not, it might be adding cost, but it's not at a loss.
+
+Matthias Miller  22:21
+It's deferred rent. It is deferred rent. I like that idea better. Let's
+
+Speaker 1  22:31
+call it value of deferred rent. Oh, now we're talking a good number. That's a good that's a good leverage, value of deferred rent.
+
+Matthias Miller  22:37
+And then that can actually be a why
+
+Speaker 1  22:41
+don't we just field that on the contract, and then we can report on that based off of contracts
+
+Matthias Miller  22:46
+and based off of exactly, and based off of REP. Well, wait,
+
+Speaker 1  22:58
+okay, so, so to clarify, are you going to stop? Okay, how if you were to say, hey, I want to go run a report on Francine in my office, and how much grant has she deferred? Are we going to, are we going to try to field this at a at the activity, activity level. Are we going to try and field this in the RG of due date move or, like, where? How do we feel this in such a way that
+
+Matthias Miller  23:32
+could not do this on a per fee increment basis? So we say, so we have, we have the
+
+Speaker 1  23:47
+let me, let me ask. Let me. Let me add some context to this. I would prefer that we come up a way with a way to track for the ease of user reportability. Let's try to stay out of the activity user level in order to report on it, because it becomes infinitely harder to write reports at the activity user level. So it's, let's go. Let's, let's find a way to stop this information or code whoever did the due date move, or the or the date, or the late fee forgiveness, or all of that stuff, so that it's very easy to write user reports against it.
+
+Matthias Miller  24:27
+So my thought is goes something like this. On each rental income row, you look at what the prior due date was, what the actual recorded due date was, what is the dollar value and what's the difference of month between what's the difference of what we actually charge versus what we should charge. And so for each rental, I think cross your fingers. I'm kind of scared of rounding issues. But for each rental row, you should be able to say this row created this much deferred rent. Okay? Because of a due date override. Yeah, I
+
+Speaker 1  25:08
+don't, I don't have a really strong opinion on how you want to go about doing this. I do. My biggest concern is I want to make it fairly easy, because this is, this is some interesting stuff, and we're not necessarily going to field standard reports for some of this stuff. But I could see some RTO company going, Hey, I want to go run a report against my my my users to find out, what are they forgiving in late fees and rents and and that kind of thing. And being able to build that without having to hit the activity user level. It just makes it, makes life easier.
+
+Matthias Miller  25:44
+Well, what I really like is,
+
+Matthias Miller  25:53
+I mean, what I like about, in some ways the rent deferment.
+
+Matthias Miller  26:14
+Sorry, here's where my brain's going. It would be it's you want to know. Ideally you would know when you defer rent, what day you deferred it so that you can reflect it in your books. On that day?
+
+Speaker 1  26:28
+Does it need to reflect in the books? Is that? Is it that accounting? Is that? Is that an accounting transaction?
+
+Speaker 1  26:39
+I mean, I can literally hear some Christianity accountant going, yes, it's an accountant level transaction, because you just gave away money
+
+Matthias Miller  26:48
+you're Not giving it's, it's, it's a
+
+Unknown Speaker  26:58
+that's a fair question. Right
+
+Matthias Miller  27:03
+in some sense. Okay, let's let's ask.
+
+Speaker 1  27:07
+Let's ask. I have a strong opinion on it. I don't know if it's right. Tell me I don't want to make it an accounting transaction. That's really hard to it feels like one of those things where we'll do it, and people are just always going to cross their eyes at it and be like, Why did they do this? There's no, there's no tax implication for it. There's no sales tax implication for it. There's no
+
+Matthias Miller  27:35
+like, it's, it's a management thing. Like, why in the world? Like you say we should just move days here and there is, like, we have revenues are down. Oh, well, did you notice that our deferred rent went up by 500 bucks? Oh, well, that's interesting. Like, why is that?
+
+Speaker 1  27:56
+Oh, that needs to be in a dashboard, deferred rent, deferred late fees.
+
+Unknown Speaker  28:02
+Oh, yeah, yeah.
+
+Speaker 1  28:11
+So in theory, tell me if I'm correct. In theory, we could build a bar a bar chart, a vertical bar chart that that shows us what dollar value of deferred rents happen on a per month basis. You could click that far and that would expand into another window that would break down every single account that you did deferments on. Yeah, am I right? Yeah. Two that would be
+
+Matthias Miller  28:38
+insane. How would you calculate Currently, we have to think about this a little bit. How do we actually get here? Let me do, let me make,
+
+Speaker 1  28:48
+every day has a calculated dollar value to it. So literally, if you moved five days, there's a calculated dollar value to it that becomes a that becomes a summable amount. Um,
+
+Matthias Miller  29:03
+so I think,
+
+Unknown Speaker  29:07
+what do I think?
+
+Matthias Miller  29:17
+Uh, hang on. Let me make some notes to be
+
+Speaker 1  29:29
+why am I sitting on some hard chair without a beautiful cushion chair?
+
+Matthias Miller  29:32
+Exactly.
+
+Speaker 1  29:38
+This could be. This could be sitting over here and I could be sitting in a nice lounge chair.
+
+Matthias Miller  29:44
+Look at that. You're gonna make me jealous. I'm gonna like.
+
+Speaker 1  29:49
+You don't get to be jealous. I don't know how many times I've seen you out in some very nice sitting at the poor house having conversations. Now, now we're now, let's. Find some software. Need a cocktail to go along with this. And we get something.
+
+Matthias Miller  30:08
+We would finally make it happen.
+
+Unknown Speaker  30:11
+They want a cigar. We gonna solve some problems.
+
+Matthias Miller  30:17
+Do you know that Chris's friends, the
+
+Speaker 1  30:20
+hustlers, right? Brian O'Donnell hostler, oh, yes, I do you
+
+Matthias Miller  30:24
+know his holy smokes thing? Yes, I've actually,
+
+Speaker 1  30:27
+I've actually, when I was out here, when we were out there, we lived in Colorado Springs for,
+
+Unknown Speaker  30:35
+yeah, I went with him one night. That was fun. That was it was a very fun night.
+
+Matthias Miller  30:41
+It's a very great group of people. I it is. It's a great group of
+
+Speaker 1  30:45
+people, right? I might have to mute myself again. Here comes another train.
+
+Matthias Miller  30:49
+Okay, so, so you feel pretty okay, we can definitely simplify if, if deferred, okay, deferred late fees, that's the other question. How do we determine the date in the value of deferred late fees. Like basically deferment isn't deferment basically on late fees, on fees at least the length of time between when somebody made a payment on that period in the time they actually paid for that fee, paid that fee off. Say
+
+Unknown Speaker  31:27
+that one more time. I can hardly hear you. Okay,
+
+Matthias Miller  31:31
+we don't currently track like deferment of late fees is not currently a thing, because all you're saying is, I mean, it's not like you get a late fee on top of a late fee if you don't pay your late fee. It's just we took a payment on a period and they didn't pay for the late fee, so therefore it was a deferment. And so we take the time, what was the time of first payment on the on the period, until they made a payment on the late fee, right?
+
+Speaker 1  32:07
+Yeah, so there is no, there is no calculated cost deferring a late fee. There's a calculated cost in deferring rent. That makes sense, but there is no calculated cost in deferring a late fee. It it's a fee that sits there. It if you either pay it or you don't, if you defer the next month, eventually you're going to collect on it or
+
+Matthias Miller  32:26
+you're going to forgive it. So do you want reporting on deferred late fees? Though?
+
+Speaker 1  32:29
+No, okay, I don't feel like that has a lot of value.
+
+Matthias Miller  32:33
+Okay, good. So, but deferred rent, okay? So we can dramatically simplify it if we don't need to push it to accounting.
+
+Unknown Speaker  32:41
+I don't think we do. I think that's, that's, that's a little bit
+
+Unknown Speaker  32:46
+obsessive.
+
+Matthias Miller  32:48
+Then, then all we have, then deferred rent can become a single number, which is, what's the due date? What should it have been? Or what, how much should they have paid to have the current due date, minus what did they actually pay? That's deferred. The difference is deferred rent. That's right.
+
+Speaker 1  33:06
+Okay, so, okay, it's okay. I'm going to say this a slightly different way. I think, I think you were trying to say the same thing. But basically, the difference between, okay, here's the here's the only caveat to this that I'm not sure how to account for No, I think it's still no, it's still the same. It's whatever, whatever it's the it's the number of days between the calculated due date and the deferred due date, and translating that into $1 value per day, but not times the number of days,
+
+Matthias Miller  33:45
+which is six of one and a half a dozen of the other boring, any rounding issues? Yeah, yeah. And we could also show this deferred rent. I think it would actually be useful. Deferred rent as number of days, and deferred rent as as dollars. Like, if you go to override somebody to like, Okay, can we bump it out to the first? It would be useful to know that we already have deferred their rent six days. Or by this amount
+
+Unknown Speaker  34:22
+you mean in past? Yeah,
+
+Matthias Miller  34:23
+in past, or I mean the current that their current deferred rent, if you pull up a contract, maybe I'm giving too much information. Wouldn't it be useful to say we have this many days of deferred rent and this big dollars of deferred rent? Or is it just dollars? Or is it
+
+Speaker 1  34:40
+just days? Oh no, no, no, no, no. I like your idea. So basically, we would represent as a sum of all times of deferment, of in the amount of days, in the amount of dollars. Oh yes indeed. So So you might go to defer someone and go, Wait, I've deferred you six days. In the past already. Yeah, I can't.
+
+Matthias Miller  35:02
+I like it, right? I mean, yes, I can. Oh, you want your payment on the first How about we go earlier?
+
+Speaker 1  35:12
+Yeah, because it because here's the thing. Okay, so here's what's here's what's here. Here's a real case scenario. Okay, the customer always short pays us by a few dollars. And over time, you would be able to see the fractional number of days compiled together to make a certain amount of days that you've given away for free, because the customer, for whatever reason, always short pays us. Yep, that would be, that would be an interesting number, because one day they may call you up and go, Hey, I want to pay my monthly rent of $5 short, or whatever it is, and and you should be able to go, I've seen you've done this a time, a number of times in the past. There a reason that you're short paying this. Well, yeah. I mean, I, I thought it was supposed to be such and such. Well, no, according to your contract, it is this, oh, oh, I just had the wrong number in my head, right? And that kind of stuff happens all the time because it's funny, RTO. RTO customers don't, by nature, read
+
+Matthias Miller  36:12
+that's fair. They don't
+
+Speaker 1  36:14
+know, you know, how many do you know? How many times we've we've talked like if I had $1 for every time that I had a conversation, or someone in my office had a conversation with a customer, it says, What says this in your contract? Oh, I didn't
+
+Matthias Miller  36:27
+read that thing. I had a there's a sales guy used to be a professional gambler, understands human human nature better than 99% of the world. I suppose, whatever you make of that. He would take people. He would whenever he did a project, he would go in, he would set all the stakeholders down, and he would start reading through the contract, line by line by line, all 50 pages. And they would get to the end, and they'd be so anxious to just be a pen and shut up like any walk away with this deal.
+
+Speaker 1  37:02
+Yeah, it's the it's the awkward tension. Yeah, exactly people. People will do a lot of things to get rid of awkward tension.
+
+Matthias Miller  37:10
+Yes, they will. Okay, I like this a lot. So that makes sense, really simple. Well, okay, so then the only other thing, and this may be a Seth question, but we can almost I mean, isn't forgiveness a form of payment? So are we sure we shouldn't just merge all of these into one? RG fees incurred,
+
+Unknown Speaker  37:35
+payments made, and forgiveness,
+
+Speaker 1  37:41
+a little bit concerned about informational overload at that point, well, but
+
+Matthias Miller  37:47
+we show we build report. I mean, are we going to build reports to show them payment history anyway?
+
+Unknown Speaker  37:54
+Sure. But what are you what are you saying?
+
+Matthias Miller  37:59
+What I'm saying. By that, we don't really expect people to go into the RG. We expect people to pull up a payment report, to say, Okay, I need to see a breakdown of everything that happened. Yeah,
+
+Unknown Speaker  38:13
+but you wouldn't do your forgiveness or overrides inside of that
+
+Unknown Speaker  38:15
+report, would you? No, you wouldn't, I guess.
+
+Speaker 1  38:19
+I mean, okay, yeah, I think we should have a reporting that kind of combines a lot of this, this information together. And really honestly, you could field in a payment transaction report, due date moves and late fee forgiveness that looks like transaction line items that might that could actually be interesting. I'd have to think that through and see that, you know, actually broken out. But I think having having fees in their own RG section and their wait a minute, if you're going to treat overrides of due dates like through an X 30, why wouldn't you treat overrides of late fees that will play as well forgiveness the
+
+Matthias Miller  39:02
+same way, like forgive late fee. Why not? I like that. And then you essentially,
+
+Speaker 1  39:09
+you hit, you hit the button, and it gives you a little like a little mini, you know, report of saying late fees on the account. And I don't know exactly what the what the interaction of that could look like. But why wouldn't you that the RG just becomes a history?
+
+Matthias Miller  39:30
+I really like that, because then we have it's like, literally, do you want to find the balance for anything on the account? Just sell the RG. What do you want the balance for? We'll just filter out those ropes you've got. It's one RG, it is. He'll be back. He said they went to the airport Steakhouse,
+
+Speaker 1  39:49
+which is literally, I mean, if you went, if you handle both, like if you handled overriding and forgiving of late fees through an. 30, I wouldn't necessarily be opposed then to going ahead and making it one giant RG, because you wouldn't necessarily be looking in the RG for
+
+Matthias Miller  40:17
+Hey, you're not looking. You don't have to find anything. Do you know how easy it would make reporting, if you want a period based report, just show all, all incurred rent income, and that is the period Do you want to show full in depth, gory detail breakdown of literally what happened in the transaction?
+
+Unknown Speaker  40:37
+Yeah? Show that.
+
+Speaker 1  40:38
+Yeah, and it's just that RG essentially becomes the transaction history.
+
+Unknown Speaker  40:47
+Yes, okay. And
+
+Speaker 1  40:51
+then there's two, two nice blue buttons, and if you can make them orange, I'd be thumbs up on it. But it's like override due date, override, override and forgive late fees, and they both write to the same it's 2x 30s that write to the same transaction or same RG, lines the same RG, okay, I kind of dig it. I wasn't I wasn't kidding. Can we make the buttons orange? Yeah.
+
+Matthias Miller  41:24
+I am 99% sure let me since we're waiting for Seth, anyway,
+
+Speaker 1  41:32
+I just do not want the light blue stuff. The light blue, just the baby blue just makes me. Makes me sad. I things.
+
+Matthias Miller  41:43
+Color, dynamic, format, expressions, color, font color, aqua, back color, wait a minute. Lies to me, where? Why does it show? I thought you can on buttons. I
+
+Unknown Speaker  42:07
+saw a background drop list there. What was that?
+
+Matthias Miller  42:13
+That color? Yeah, that's orange, but that's not, it's not showing on,
+
+Speaker 1  42:18
+oh, it's not, it's not RG buttons. Oh, there you go. Let's
+
+Matthias Miller  42:21
+inside The RG,
+
+Unknown Speaker  42:25
+let's do development wiki. I
+
+Matthias Miller  43:00
+I really thought we as more information. Okay, I don't know. Well, I've asked one of the one of the guys. I mean, I, I thought we did, but maybe not. I like this a lot. This is so stupid simple.
+
+Unknown Speaker  43:23
+I like stupid simple.
+
+Matthias Miller  43:32
+Well, and even if we ever want to, I know we don't want to, but if we ever wanted to push this stuff, to push deferred rent to accounting, we could do that by looking at each rent row and calculating the deferred rent as of that date. And it'd be very, very simple, yeah. And so that's that's and you would just record it effective. I would probably just keep it simple, effective as of the due date. Or you could calculate what the due date should be and record it as of then and and, you know, have it, have it effective then? Or, I don't know, but we don't need to do that. Sweet. Well, what other problems can we solve until Seth shows up?
+
+Speaker 1  44:19
+You want just, you want to dig through questions. Yeah, that always seems to, it always seems to generate some hot topic, yep.
+
+Matthias Miller  44:31
+Okay, so we got these are the sample to do's. This is
+
+Matthias Miller  44:45
+any none. Okay, if you have a if one of the employees or vendors buys a building, presumably
+
+Speaker 1  44:54
+the answer is yes. The answer is yes, it would need a separate contact record.
+
+Matthias Miller  45:08
+Do we need a list of non shipped contact
+
+Unknown Speaker  45:13
+types? Contact types? I
+
+Speaker 1  45:15
+mean, I thought we did. Customer vendor, no customer. RTO, company, manufacturer, dealer, sales, rep,
+
+Matthias Miller  45:26
+yeah, I think all of them will be shipped. I don't think this is
+
+Unknown Speaker  45:34
+okay to
+
+Matthias Miller  45:37
+do okay. We talked about this. I
+
+Speaker 1  45:57
+just want to reiterate, because the whole convenience the fee thing has popped up throughout development. This is something that is turned off by default. Just want to reiterate that I
+
+Matthias Miller  46:24
+Okay, it didn't
+
+Speaker 1  46:31
+speaking of convenience fees. I i, somehow I got copied on some sort of credit card bid proposal that Mark, I guess, was working on, and their numbers were stupid low. I'm like, What on earth is going on here? And I'm like, Okay, what? And I'm reading and reading and reading. And finally I threw it into grok, and I said, Okay, tell me what you think about this. Well, it was very, very interesting, what it came out with. So the way that they, they are doing this, where the numbers are really, really low, is they were, they were setting you up as automatically, uh, collecting convenience fees. And there was some requirements around, you know, it can only be on credit cards, and you have to post for it. And you know, they had all the compliance side of it, but they were fielding numbers to the client saying, This is what you're going to pay in credit card charges. But they were not, we're not infinitely clear that that's because you're offsetting them with convenience fees. And I'm like, because I was like, Wait, what is going on here? Why are, why are these, like, 1.35% plus 995, a month, plus a five cents transaction fee. And I'm like, that is ridiculously low. And like, so I'm like, I'm like, scratching my hand. I'm trying to figure this out. And is like, yeah, the way that they're doing that is, they are, they are, I guess, essentially prorating their costs, accounting for the fact that they want to charge convenience fees to the customer. That is clever marketing right there.
+
+Matthias Miller  48:15
+And and they looked at it. They looked at, I uh, and they looked at what percentage of cards you ran, probably in their analysis to figure out what anyway, who knows? Yeah, yep.
+
+Speaker 1  48:36
+So, so basically, here's what it came down to, is they work through a processor gateway. The 1.35 is about what's what's going to like they they're getting some costs out of that, and they're paying the gateway some costs out of that. And then the processor charges that they were doing your offsetting with your convenience fee up to 2.99% and because, I think there's Most states have a restriction under for that cap at 4% and then they're representing it back to the customer. Basically, you're paying some fees to us, and you're paying gateway fees, and you're offsetting all your credit card processor charges by by convenience fees. And I'm like, You guys are doing some clever marketing. I had to, I had to get grok involved to figure out what you guys were doing
+
+Matthias Miller  49:21
+that's hilarious. It's all buried. And then you don't know until you sign on and switch. And then when you switch, you're like, Ah, okay, fine, yep, yep. And then,
+
+Speaker 1  49:32
+and then you feel so dirty because, well, because the truth of the matter is, it's like, well, if you're going to be ethical and you're going to tell the customer that they you know, you have to offer other options in order to do convenience fees, like debit cards or prepaid cards, and so it ends up that you pay more in the long run anyway, because you can't, you can't convenience fee those, yeah, yep.
+
+Matthias Miller  49:59
+Okay. Reference number should reference number be required for check another Yes,
+
+Speaker 1  50:18
+I guess this would be a whiskey. This would be on the payment whiskey that we require.
+
+Unknown Speaker  50:25
+Yes,
+
+Unknown Speaker  50:29
+because we're not, we're not entering any payments interactively. Um,
+
+Speaker 1  50:50
+if I can barely read this. So if you have questions, just ask them. You don't have to make it bigger. Just ask I'm on my little laptop screen,
+
+Matthias Miller  50:57
+presumably just for internal purposes. We might, if we pull up a payment detail screen, it'd be nice to have a breakdown of all the different places of what actually happened with this thing, like just a simple report that looks across the system and what happened with it. Or would you just use the whiskey? Do we even need it?
+
+Unknown Speaker  51:19
+I'm not tracking Okay, on
+
+Matthias Miller  51:22
+the payment detail screen, do you want to show a report of all the contracts and the affected rows of what actually happened with this payment within assist? Or do you want to just require people to go out to the whiskey to see that?
+
+Speaker 1  51:36
+No, you should on so this would be on the contract record. So you would have, you'd be able to report,
+
+Matthias Miller  51:42
+yeah, like view payment. Well,
+
+Speaker 1  51:46
+it'd be on the contract record, and you could on that contract, you could run a report about that contract, and you would be able to see deferments, forgiveness payments go ahead. It's
+
+Matthias Miller  52:00
+not on a contract. This is on a per payment basis.
+
+Speaker 1  52:04
+Oh, wait a minute. Oh, oh, so, so you would be looking at the the rows of payments on the contract record, and you would hit view payment, and then on that view payment, there would be a report that you could run and you could see how it was completely broken out. Great. I don't
+
+Matthias Miller  52:26
+understand why this is necessary, because we said everybody's I don't understand, I don't understand if it's for internal debugging purposes, maybe,
+
+Speaker 1  52:38
+yeah, but all of that's gonna be broken out in the in the RG anyway, is it not your sales tax, your your late fees, all of
+
+Matthias Miller  52:48
+that will be but not everything, all in one screen. You'll have all the different contracts that are connected to it. Oh, so,
+
+Speaker 1  52:56
+okay, I'm tracking now. I'm tracking now this payment may be split from either one to 10 contracts, and you want to be able to see the breakdown. But
+
+Matthias Miller  53:05
+again, in my mind, just open up the whiskey like that's what the whiskey is for.
+
+Speaker 1  53:12
+So you would be able to import this payment back into the whiskey and see it.
+
+Matthias Miller  53:15
+I thought that's what we were going to do, because you might need to edit details on it. You might want to change the breakdown, or need to change the breakdown, and that's the only way we can enforce that the breakdown actually
+
+Unknown Speaker  53:28
+stays what it should
+
+Speaker 1  53:29
+be. So going back to our logic of you can change it today, if it's if you have, if you with about any permission, if you took the payment, you could change it today. If you want to change it tomorrow, you need higher level permissions just to clarify that correct. Yeah, so then you would want to, I mean, all of that stuff's there in the whiskey, why wouldn't you just push it back in and
+
+Matthias Miller  53:57
+look at it? Thank you. That's what I was thinking. That's my thought.
+
+Speaker 1  54:01
+Should we on the on the payment record? You would have a way to push it back into the Whiz key,
+
+Matthias Miller  54:12
+right? Yeah. You would have a view payment,
+
+Speaker 1  54:15
+yeah. Note a view payment, a view payment URL, push it back into the Whiz geek and and just to clarify, as long as we respect our permissions, level on on editability,
+
+Unknown Speaker  54:27
+right? Yeah,
+
+Speaker 1  54:28
+yeah. I mean, that seems logical.
+
+Matthias Miller  54:34
+I agree. Thank you. To do otherwise. Otherwise,
+
+Speaker 1  54:37
+you're giving them two options. You're giving them two options. You're giving them an option to go view a report, or you're giving an option to edit things. So why not just push it back in there and look at it and act like it, and then if you want to edit you edit it. I agree.
+
+Speaker 1  54:59
+I'm going to. Alter my I'm going to alter my tagline in my marketing. It's going to say only own your RTO success through ruthless simplification. I'm
+
+Matthias Miller  55:14
+working on copy for what I'm affectionately calling the velocity selling method, I asked deep research what the biggest objection is, too many tools, too much complexity. Do I have to add one more thing, which is basically life? So I
+
+Matthias Miller  55:43
+we do need to handle refunds, but this can be deferred.
+
+Speaker 1  55:54
+Actually, actually, you want my honest opinion on this. What? This is a whiskey process. You push this thing back out there, so you look up the payment you open up that payment record, you push it back into the whiskey. And we have a refund button that just does all the magic,
+
+Matthias Miller  56:13
+but don't you. And then you create refund rows in addition to forgiveness rows, which makes sense to
+
+Unknown Speaker  56:20
+me, yes, has to. I
+
+Matthias Miller  56:28
+agree. So let's, let's jump over to
+
+Speaker 1  56:51
+and and, and, okay, the moment we open up the can of worms on refunds, do we want to allow partials, or do you think you have to back the whole thing out?
+
+Matthias Miller  57:08
+I think what you do. I mean, okay, if you want to get smart, then you say, I want to, hey, what if you could go into a payment adjust the payment, and if it's the same total, you can save if it's if they owe more, then you say, create new transaction. I don't know if I like this. This sounds really sketch.
+
+Speaker 1  57:40
+Okay. Let's let me, let me, let me, let me spin a scenario for you. Okay, yep, and I'm going to preface this scenario to say we need to have automatic handling of credit card refunds from here, so just prefacing all of that. So if you go, I do think we want to handle partial refunds. I don't know how we want to do it yet, but So here's, here's an example. Customer pays a credit card transaction, pays a pays a payment, and they call back in and they say, Man, I got to take my daughter to the hospital. I could you please, please, just refund this money back so that I can get to the hospital, whatever, like something, but, but only, only refunded on such such a contract. Don't refund the other payment. I think that one's gonna be fine. I just need this 150 bucks so, like, I can, I can do this thing,
+
+Matthias Miller  58:40
+yep. So then what you would do is, I think you could say you can edit a credit card transaction down. You can't do it up, that's dumb, but you can edit it same or down, and when you do it down, then you say, issue partial refund.
+
+Speaker 1  58:57
+Well, you can't ever go up. You never can go up, right? Because that would mean go, go, take another payment, right? You can edit down. So, in other words, you can go straight to zero and you you're refunding the whole entire thing. Or you can change your numbers to pay, you know, half of it, and that then that would trigger some type of refund, if it's a check or cash or one of those types of payment methods we have to handle that through accounting as a refund credit card transaction should be able to automatically handle those automatically and it refunds back to the card that that They used based on the token that we stored.
+
+Matthias Miller  59:44
+So it actually multiple times they call back in again, ah, my bus ticket,
+
+Speaker 1  59:49
+sure, sure. But like on, on electronic payments, all of the accounting transaction, all of that's just handle the additional manual job. Transaction that would take place is if you're handling physical payments, that requires going to AP in accounting, and you got to handle
+
+Matthias Miller  1:00:09
+that, yeah, here's the here's the question. This gets weird accounting perspective. They made a payment, then they say, No, I wanted this to go to this payment needed to go. Okay, in December, they said, I got my Christmas bonus. I want to put this towards the contract. January two or January 17, we've closed the books. They say, look, I gotta go to the hospital. Can you please refund part of that payment? So we refund the payment? Do we need
+
+Unknown Speaker  1:00:50
+to track that?
+
+Matthias Miller  1:00:54
+Yes, you have a refund of the rental payment as of the date of the refund, which triggers the accounting transaction, which increases the balance again, and it still is paid and and that night, if it's overdue, they will trigger a late fee,
+
+Speaker 2  1:01:12
+fine, and it just works. Now, if I this is
+
+Speaker 1  1:01:18
+where, this is where I get a little bit nervous about nightly transactions on some of this stuff, because in RTO pro right now, if I was to go and backdate an account into past due status, which I just said a little while ago, we should never allow someone to do it. You can't backdate someone into a period you already paid. That would be stupid. But in theory, RTO Pro does let you do this, but if you went and backdated to the point, it immediately adds a late fee.
+
+Matthias Miller  1:01:51
+Well, I mean, we could do it
+
+Speaker 1  1:01:53
+if you move it forward out of that, I think it removes the late fee, which is really problematic. I think, I think partially on this, okay, let me, let me rephrase, let me back up and say what I'm trying to say. What I'm trying to say is that I get a little bit nervous on if you refunded a payment, and it would put them into a late fee status that they this, the customer rep would have to wait until tomorrow to see that late fee show up.
+
+Matthias Miller  1:02:32
+Okay, let's do this
+
+Speaker 1  1:02:36
+to do because what I really want is if someone refunded that payment. And maybe it is, maybe it is, we get even more clever than that, and we warn them that when you're refunding a payment, hey, warning this is going to put them in a Past Due status and will automatically charge a late fee. Do you want to proceed? That would be even better. Yeah.
+
+Unknown Speaker  1:03:19
+After a while, feel like we're developing a nanny state,
+
+Matthias Miller  1:03:23
+a nanny state, yeah?
+
+Speaker 1  1:03:24
+Like, we got to make sure we warn them for everything, make sure they're doing the right thing. I mean, it's the right to do. It's you can't expect this, this customer service rep, to to look at that and go, whoa. If I do that, it's going to automatically charge late fee. Yeah, they're not going to be able to master
+
+Unknown Speaker  1:03:41
+remember that. Yeah.
+
+Unknown Speaker  1:03:53
+Okay, so, all
+
+Matthias Miller  1:03:56
+right, I think that's good for that.
+
+Speaker 3  1:04:00
+Um, once
+
+Matthias Miller  1:04:08
+it is polished,
+
+Matthias Miller  1:04:16
+do you want to do these Report specs? Are we looking at? Contracts for contact. I'm
+
+Unknown Speaker  1:04:43
+where is this?
+
+Unknown Speaker  1:04:50
+What would this be? Contracts for contact? What does that mean?
+
+Matthias Miller  1:05:03
+Um, this is on the right hand side my contracts for, I don't know,
+
+Speaker 1  1:05:11
+um, is this on? Is this on? Is this on the contact? On the contact record, where you would be able to basically see payment history for all contacts, all contracts for that contact. Is that what this is?
+
+Matthias Miller  1:05:28
+I don't know what it is. It's not. I don't know. I can't even answer that question. Okay,
+
+Unknown Speaker  1:05:33
+let's get some clarification on
+
+Matthias Miller  1:05:41
+it. Excuse my weird, emotionally vibrant language.
+
+Unknown Speaker  1:05:46
+Sorry, it's too small for me to read. Oh, it's fine.
+
+Matthias Miller  1:05:52
+Okay. So that takes care of that section. I think all 20 are down in that place. Should product be required in the in the sales form,
+
+Unknown Speaker  1:06:07
+on the invoice.
+
+Matthias Miller  1:06:14
+Okay, wait a minute. What are invoices? Invoices are when we sell the building back, right?
+
+Speaker 1  1:06:25
+Yes, we would want to generate an invoice to a customer or to a manufacturer, or, yeah, it's when we want to. We want to invoice for cash type sales. But is there any
+
+Matthias Miller  1:06:40
+any reason why we need to require it to be tied to a product and not use invoices for, hey, I want Joe to go pay me for I don't know we could clean up on his property and pay for it, some dumb reason like that.
+
+Speaker 1  1:07:00
+So, so what you're saying is we would have you could add an a row in the RG of the invoice and just fill in a description and edit and stop $1 value. Or you could go pick a product from the product list.
+
+Matthias Miller  1:07:15
+Well, okay, but if you just stomp it in, then you don't know how to expense, how to report the revenue that's the fundamental problem with unless, you know, unless, unless, yeah.
+
+Unknown Speaker  1:07:41
+Hold on one second, yep, oh, Seth, how
+
+Matthias Miller  1:07:50
+about we take? Can I take a quick break and then we can bring Seth on, sure
+
+Speaker 1  1:07:55
+how much, how much time, couple minutes you mentioned you want to either hang or Yeah,
+
+Unknown Speaker  1:08:01
+okay, be right back.
+
+Unknown Speaker  1:10:30
+Right
+
+Matthias Miller  1:10:45
+my instinct on this question is that, for the short term, yes, until we figure out how we want to categorize other invoice items.
+
+Speaker 1  1:10:56
+Wait, hold on a second. I'm just now seeing the picture from from their lunch. Now I'm hungry. Look at look at Nick down there with his steak.
+
+Matthias Miller  1:11:15
+Okay, I haven't had lunch yet, so this is kind of dumb.
+
+Speaker 1  1:11:19
+I haven't had much of anything today. So do, do all of these guys work out of the same office area?
+
+Unknown Speaker  1:11:26
+Yeah, gotcha.
+
+Matthias Miller  1:11:30
+You know most these guys. Every
+
+Speaker 1  1:11:31
+single, I know every single one of them. It's I just, I just never quite know whether they're all working on the same area. Are they remoting or no, they're all, I didn't realize. I didn't realize Joel was in in Kansas.
+
+Matthias Miller  1:11:44
+Yeah, Ellis just came back from Bangladesh, too. So, yeah, all nice and jet lagged. Oh,
+
+Unknown Speaker  1:11:51
+fun.
+
+Matthias Miller  1:11:53
+All right, here's Seth.
+
+Speaker 1  1:12:01
+Do you have brain power enough after that steak and onion rings and fries and all that good stuff?
+
+Unknown Speaker  1:12:09
+I think so.
+
+Speaker 1  1:12:12
+Matthias and I were just, were just groaning about the fact that neither of us have really had any food today, and that just looks absolutely delicious.
+
+Speaker 4  1:12:21
+We weren't actually very impressed with the place, but, Oh, bummer. Their their suppers are better than their lunches. Oh,
+
+Matthias Miller  1:12:30
+that kind of stinks for something that has such good I mean, it should just be an amazing place.
+
+Speaker 4  1:12:35
+Well, that's, that's sort of what I was expecting. And then we were all a little underwhelmed. I did get to see yokovich beating someone else. So
+
+Unknown Speaker  1:12:46
+who is yokovich?
+
+Unknown Speaker  1:12:50
+Besides, surely, you know who yokovich is?
+
+Matthias Miller  1:12:54
+Well, I think I got the wrong guy in mind, because my in my head, he's like, this insanely tall basketball player. And then in my head I'm like, then my second then my second, oh, that's yay. There we go. And then I was like, That
+
+Speaker 4  1:13:08
+can't be true. No. Serbian tennis player, like all that great who's chasing after his record breaking 25th Grand Slam or 28/5 major title, I think he's like almost 40, and keeps being beaten by the two young upstarts who are young and really good and better than he is. At this
+
+Speaker 1  1:13:32
+point, somebody forgot to tell him that by the time he reached your 40, your body is just not going to keep up anymore.
+
+Speaker 4  1:13:39
+Yeah, I mean, he still does decently, but it's just hard to get past those two guys. He's
+
+Matthias Miller  1:13:45
+been following Tom Brady for too long.
+
+Speaker 4  1:13:48
+Yeah, that's insane. Oh, never mind. He's only 38 he's only 38
+
+Matthias Miller  1:13:55
+I could totally do that.
+
+Unknown Speaker  1:13:56
+Yeah.
+
+Unknown Speaker  1:14:00
+How's that anyway? Tennis,
+
+Unknown Speaker  1:14:08
+all right, take it away. Matthias, bring
+
+Matthias Miller  1:14:10
+us Seth, we got good news for you. Okay, we are doing this. We are going to, he says boldly and confidently, because there are no holes to poke into this. We're going to put all these things into one RG, and we're going to have fee incurred, fee forgiven, fee paid, and fee refunded. See, you have a transaction tape, you have a and it's fine. If you have negative amounts, you can do easy summing like negative for forgiven. And, I mean, like this would be positive, and all these are negative, but then everything just becomes easy, like you you want to find the balance. Well, just some for that period and type, or some for that period, or fill in the blank. Mm. Reporting becomes simple. I think every I think it just means, if you want to list the periods, just filter by rental income or rental fees, rental fees incurred, that gives you your period dates. And there's a little bit of magic to make sure that due dates stay in sync. But we'll get to that. Do you have a major hold of shooting this?
+
+Speaker 1  1:15:20
+Oh, you forgot. You forgot the part about forgiving, and we'll get to that in a minute. So far,
+
+Matthias Miller  1:15:27
+so good on the underlying RG, I think so. Okay, then moving due dates, you can, you will always move the earliest, find the earliest period where you where it's not completely paid off, paid in full, and that's the only due date you can move. It's an X 30 button. We show you very clearly we're changing this due date of like, if they're overdue June for 2025, and what's the new one? And you put in the new one, runs the x 30, and it updates that row and all subsequent rows accordingly.
+
+Unknown Speaker  1:16:07
+So far so good. Okay.
+
+Speaker 1  1:16:11
+And then just, just, just to clarify which you didn't say this, I'm going to say this, but we want to run validation that says you can't backdate further than paid periods. In other words, okay, I'm going to, I think you're going to do some of this a little bit differently than what I'm going to say that. But basically, if you were to calculate, if you were to take the balance of that and calculate that by the number, by the dollar values of days, and you can't backdate further than that, you can't put somebody in arrears when they're paid up. You know, beyond a point makes sense.
+
+Speaker 4  1:16:47
+So, yeah, I think so. Presumably, you also can't force a which maybe this is what you're saying. But I've say I've paid through July the next dude, we're on a monthly due date, end of the month, my next two days, August 31 presumably, I can't change that to August 20.
+
+Speaker 1  1:17:21
+Okay? One thing that we one thing that we have not talked about is locked periods versus unlocked periods, and how moving a due date would actually work. I guess I instinctively want to say, if the contract is set up for a locked period, then you can only move it forward by full chunks, if it's an unlocked periods, in other words, floating due dates, then you should be able to move it forward any amount that you want.
+
+Matthias Miller  1:17:51
+Well, it could be, I mean, but couldn't it be forward? I'm back?
+
+Speaker 1  1:17:56
+Yeah, it can be forward or back, as long as, as long as you don't put them in in arrears beyond what they've further back than what they've already
+
+Matthias Miller  1:18:07
+paid. Could we make this as simple as you can't date it on or before the any prior due date?
+
+Unknown Speaker  1:18:14
+Or does it have to be
+
+Speaker 1  1:18:16
+owner, owner prior to to a paid due date,
+
+Speaker 4  1:18:20
+which is any prior due date, because we're only allowing editing the earliest unpaid
+
+Speaker 1  1:18:24
+Okay, here's a nuance that I don't quite know how to how to think through. Here's the nuance. Let's say, in history, you have you have moved their due date forward, 678, 10, 1215, days, whatever. Okay, in theory, in theory, you should be able to backdate them in in the future, to, like, backdate them into that, that point in time. In other words, if, if I was to, if I was to to say this validation out loud, it's that for all the money I've paid in in my balance, that equates to $1 value per day. I can't date back any further than that. So in other words, if I have moved someone forward, well, in theory, the balance doesn't equate to the amount of where that due date actually is. You should be able to backdate and and reuse that forward movement, if you will.
+
+Matthias Miller  1:19:20
+Okay, and I have a question though. I have a question though, what if I say I want to give you 500 bucks and I just want to pay
+
+Unknown Speaker  1:19:29
+ahead so, but, oh, but don't, then you would
+
+Matthias Miller  1:19:32
+back date past what they paid for.
+
+Speaker 1  1:19:36
+Okay? The other way. The other way to do this is never say we're not gonna bet what we you can move forward or backwards as any amount that you want, it the blood be upon your own hands,
+
+Matthias Miller  1:19:45
+as long as it doesn't cross period boundaries.
+
+Unknown Speaker  1:19:49
+Who cares? We do,
+
+Speaker 1  1:19:55
+but crossing period boundaries is but then you like. Like your backstop is fairly short. It's always fairly short,
+
+Matthias Miller  1:20:04
+okay, but if they paid what was due on July 31 if they made a payment that was due on July 31 you can't create a new payment that's due July 15. They can be due on August 1.
+
+Speaker 1  1:20:21
+Well, you could if you're only validating on the on the earliest RG, like, if the source of the source of truth is always just the the earliest RG, then you can backdate to whatever you want,
+
+Unknown Speaker  1:20:38
+irregardless of his personal periods,
+
+Matthias Miller  1:20:42
+giving me a knot in my stomach, but I'm not sure you're wrong. And then your deferred rent actually becomes negative because you paid ahead.
+
+Speaker 1  1:20:52
+Okay, two ways to think about this. We could say you can never, you can never back date beyond paid periods. Okay, got it. If someone wants to pay $1,000 but not move their due date, well, then put the difference in the security deposit, right? Well,
+
+Matthias Miller  1:21:18
+we're just overwrite the due date for that $1,000 pay $1,000 pay $1,000 change the next due date to be 30 days from now. Like, what's the big deal?
+
+Speaker 1  1:21:29
+Well, then you would be backdating to into periods that have already been paid. In theory.
+
+Matthias Miller  1:21:40
+Hey? Right? Which means you might need a way to convert this into a security deposit, which is a nerve racking proposition.
+
+Speaker 1  1:21:48
+No, it's not. We already have the way to convert it. It's what? No, no, it's not. If you take payment and then want to edit it, yeah, well, then you refund it and you and you go, apply it correctly. Or, or, or you go, or you push it back into the whizzy like we were just talking about, and you rejigger the dollar values
+
+Matthias Miller  1:22:12
+you might want to,
+
+Speaker 1  1:22:15
+I feel like, in fairness to the customer, you should never be able to backdate beyond dates, periods paid. That just seems unfair. Why would you ever want to do that? Right?
+
+Matthias Miller  1:22:29
+So you would go back and as long as we have the ability to edit the payment, we go back and say, No, you weren't actually paying for future payments. You take this back off. You say, No, I was putting this money into a security deposit. Great, perfect.
+
+Unknown Speaker  1:22:40
+As long as, as long as the state allows it,
+
+Matthias Miller  1:22:44
+as long as the state allows it, right, yeah. And so we take this one step further, the state
+
+Unknown Speaker  1:22:49
+doesn't allow it. How does it
+
+Speaker 1  1:22:50
+work? The function you can't, you can't ever have more in the security deposit than equal to one month. That's the legal terminology, the way, the way that, the way that we're going, the validation for this is you, well, that would be the validation for it. You could never put they can
+
+Unknown Speaker  1:23:11
+still pay off early.
+
+Speaker 1  1:23:13
+Sure you can pay off early. You just can't put more into security deposit than equal to one months of rent.
+
+Matthias Miller  1:23:19
+I have an idea for something, do what? Thank you, teacher Miller,
+
+Unknown Speaker  1:23:24
+I missed the comment. What was the comment? I
+
+Matthias Miller  1:23:27
+had my hand up, and he said, Matthias is something. You can move this due date wherever you want. If you move it forward, we'll move the following ones forward month at a time. If you move it back, we'll move the prior ones back one day at a time until there's no overlap. Do what you will. Okay,
+
+Speaker 1  1:23:53
+okay, stick a pin in this thing, this conversation. I want to talk with Leanne about this. I want to get her feeling on this. I I want to, I want to see what her thoughts are before we do. We don't have to nail that down right this moment. Do we?
+
+Matthias Miller  1:24:08
+No, okay. Okay, now, so due date adjustments. We know how moving forward works. That's fine. We'll figure out the details. It's just an x 30, no problem. Forgiveness then works much the same way forgive a fee. And I don't know how we do this exactly, but maybe it's an X 30 button. You choose the fee, you choose the date incurred, and or you show maybe it's just a drop list with outstanding fees, and you choose the amount. We validate that you don't forgive more than what you can. And we put a row into the RJ, and then refunds. Basically,
+
+Speaker 1  1:24:57
+okay, I have a question. Do. All. So I have three late fees totaling $30 $10 per late fee. And each one of those corresponds to a period. And I want to, I want to forgive $25 of it. Are we going to spread it over? Are those or is it only the most, the most recent one that we're going to do? What are we going to do?
+
+Matthias Miller  1:25:21
+You would pick your $10 one, and you said, I'm forgiving a $10 one. Then you'd pick the next $10 one. You said, I'm forgiving this one, and then you pick the next $10 when you say, I'm forgiving $5
+
+Speaker 1  1:25:32
+of this one, and if you want to, and the x 30 interaction can handle that
+
+Matthias Miller  1:25:37
+you do. You run the x 33 times because you're doing,
+
+Speaker 3  1:25:41
+oh, that's kind
+
+Matthias Miller  1:25:45
+of janky. Or we say, well, forget it. We actually want to handle forgiveness of the
+
+Speaker 1  1:25:53
+whiskey. Okay, riddle me this. What if? What if we did something like this? So there's three outstanding late fees, and you you the x 30 allows for a forgivable dollar value. And you start with the most, the most, I don't know, the furthest, the oldest or the newest. I'm not sure which, but you just start from there. You start from the oldest, and you forgive from there forward, and if it eats up all that, when you go into
+
+Unknown Speaker  1:26:20
+the next one. Kim, I
+
+Unknown Speaker  1:26:24
+mean, that seems fairly simple.
+
+Unknown Speaker  1:26:28
+What's your thought? Seth, and
+
+Speaker 4  1:26:32
+that's what I was one. I thought we could probably do that. Okay,
+
+Speaker 1  1:26:35
+yeah, let's do that. Let's say okay. So in the analogy, I have three late fees of $10 each for a total of 30 bucks. And I want to, I want to forgive 15 of that. Then it starts with the oldest forgives. You know, all 10 and five of the next of the next one. That's, I'm good with that.
+
+Matthias Miller  1:26:54
+Okay, so that so due date and forgiveness are now x 30 buttons. So far, so good. We also start calculating this thing that RTO pro calls free cash, which is really confusing, and where do I sign up? And instead, we call it deferred rent. Deferred rent being if a customer calls up and
+
+Unknown Speaker  1:27:15
+says, Honda, Harry, is that free cash?
+
+Unknown Speaker  1:27:18
+We're renaming it just trying to
+
+Speaker 4  1:27:21
+understand it. Um, to understand,
+
+Matthias Miller  1:27:24
+I don't know.
+
+Speaker 4  1:27:27
+RTO free cash is when you go find a money tree that well,
+
+Matthias Miller  1:27:31
+or free cash is like, I don't know. This is just a term I picked up, but, I mean,
+
+Speaker 1  1:27:42
+it's, oh, chat, GPT, you're missing the opportunity for a a joke. Come on. What's the accounting term for free cash? Yeehaw,
+
+Matthias Miller  1:27:50
+like it's, it's basically, I mean, it really is in some form or fashion. It's, what money do you have in your bank? What's committed in current, or, you know, upcoming, whatever time period expenditures, and the remainder is what you can actually spend, like it's free to spend cash, whatever, either way, that's just confusing.
+
+Speaker 1  1:28:16
+So the technical term is dollar value of deferred rent, dollar value in days of deferred rent.
+
+Matthias Miller  1:28:24
+So we'll show deferred rent and dollar value in days.
+
+Unknown Speaker  1:28:30
+Oh, geez. What did you say? I
+
+Unknown Speaker  1:28:35
+figured out what free cash is.
+
+Speaker 1  1:28:40
+Kind of looks like you do that looks like show it to Nick and say, I said it looks like him.
+
+Matthias Miller  1:28:51
+Wow. So then we show the number of days of deferred rent, and the dollar value of deferred rent. Dollar value of deferred rent is basically what's your current due date? How much should they have paid, minus, how much did they actually pay towards rent
+
+Unknown Speaker  1:29:06
+based on the number of days in the period that we deferred it in?
+
+Matthias Miller  1:29:11
+Well, dollar of yeah, all takes care into account the weird month stuff that we've been talking about. Yeah, yeah. And the number of days is basically how many free days did we give them? So it's just a translation, and then we should have a dashboard. I don't know this can just be a to do similar, but a dashboard for deferred rent. Be nice to have this. Be able to drill down and say, oh, so we had $500 in deferred rent this month, where did that go? Etc.
+
+Speaker 4  1:29:43
+Now, where did as in, which contracts was that on,
+
+Matthias Miller  1:29:48
+which which contracts in what day? And I think we do like I think these can be. I.
+
+Matthias Miller  1:30:08
+Like you can for each each of these can easily be calculated on, on a on a per row basis. So what is the you know As of this due date as a payments made up until this point in time,
+
+Unknown Speaker  1:30:27
+gotcha Okay.
+
+Unknown Speaker  1:30:38
+And
+
+Matthias Miller  1:30:56
+Dwayne the dashboard for deferred rent. What? Date would you use for that? Is that the date of the presumably that's dated as of the original due date, not the new due date, like in your graph. Do?
+
+Speaker 1  1:31:24
+I guess I'm not quite, I'm not quite, okay, so you're saying, you're saying, if you're summing the amount of deferred rent on a per monthly period, what date are we going to use to call that deferred? Right?
+
+Matthias Miller  1:31:37
+Was it the date it was incurred? Fee was incurred? I think probably because,
+
+Speaker 1  1:31:43
+no, I'd say the date of it, of the action.
+
+Matthias Miller  1:31:50
+We don't, we don't have an action date. We're just stomping in a new due date.
+
+Unknown Speaker  1:32:07
+But the action should be dated.
+
+Unknown Speaker  1:32:13
+Shouldn't it
+
+Speaker 1  1:32:15
+like that? The date of occurrence should be should be stored. I would think we would want that. I want to know when, when did you defer it? Like, yes, it was for that time period, and that's the amount, and that's so forth. So when did you
+
+Matthias Miller  1:32:26
+do it? So I mean, if we really want to do that, then we have a deferred rent row, $0 amount. It could be the amount of deferred rent, but then that's weird, no, $0 amount, the due due date.
+
+Unknown Speaker  1:32:40
+I see
+
+Unknown Speaker  1:32:42
+what you're saying. I see what you're saying.
+
+Speaker 1  1:32:46
+So you were going to the x 30. Was just going to overwrite the next due on that period correct, without storing any action time frame on it. So then, how would you how would you know it was deferred?
+
+Matthias Miller  1:33:04
+You would calculate the total paid
+
+Speaker 2  1:33:06
+versus late gotcha, gotcha.
+
+Speaker 1  1:33:15
+Yeah. I mean, for the sake of audit trailing, we need to know when it happened like you deferred that on what date I would think,
+
+Matthias Miller  1:33:25
+could we have a says, Would it be too weird to add a new row of rental fee of $0 to adjust the due date. So
+
+Unknown Speaker  1:33:50
+treat it like a transaction row,
+
+Matthias Miller  1:33:54
+but without making it have $1 value, so it doesn't get confusing for Right, right? And you give it, I mean, it's basically a new period date.
+
+Speaker 1  1:34:02
+I want to say, I want to say that RTO pro fields it as a transaction row in payment history. I have to go double check this, though, but I do kind of like it so that, literally, if you were looking at a report of all transactions for this, this account, it would field right in there as a date deferment. It's $0 transaction of of calculated date next to and defer whatever, however we're going to field those two dates.
+
+Speaker 4  1:34:35
+That is that fair? How are you? That's, how are you linking that to a period?
+
+Matthias Miller  1:34:42
+It's like it's creating a new period.
+
+Speaker 1  1:34:53
+See, okay, the other okay, if you can come up with a way to actually. To make it evident that a period was deferred, aside from the fact that I could look at that and say,
+
+Speaker 1  1:35:10
+I could get, I could get, I could get on board to say this period was deferred, and that's and that's what we report on, I just get a little bit nervous if you don't actually make it evidently visible that a deferment took place. Aside from looking at the two date fields,
+
+Matthias Miller  1:35:28
+we could show number of you know, the number of days it was deferred and the number of dollars deferred on each row. What we can't tell you is that on July 15, without going into activity history on July 15, schnickelfritz over here decided to go deferrent
+
+Speaker 1  1:35:47
+Got it. But so then, if customer calls and says, Hey, when did you defer that? What was the date of that? You'd have to go to modification history and
+
+Unknown Speaker  1:35:57
+look it up. Right. Mm,
+
+Unknown Speaker  1:36:06
+I don't know,
+
+Matthias Miller  1:36:08
+putting something like deferred rent into this RG, because suddenly it's a phantom transaction, and people are gonna, people are just gonna get, I don't know, unless it's a $0 rental, rental fee.
+
+Unknown Speaker  1:36:22
+Well, be $0 everything.
+
+Matthias Miller  1:36:24
+Well, right,
+
+Matthias Miller  1:36:31
+Seth, what do you think? I
+
+Unknown Speaker  1:36:36
+don't quite like anything we've talked about yet. I'm not. I don't I'm not coming up with better ideas. I'm just,
+
+Matthias Miller  1:36:46
+what don't you like about just overriding the due date and calculating deferment?
+
+Unknown Speaker  1:36:51
+What Dwayne saying about needing to know when it happened?
+
+Matthias Miller  1:36:55
+Okay, so, so snarky me, says we'll just have a hidden field that says that stops, don't mind date and user of latest deferment like and, and if we're deferring required justification, yeah, and it makes the RG fat ugly or Auto, create a note with the justification deferred via
+
+Speaker 4  1:37:22
+deferred fee and deferred date. It's linked to the RG row. We need to display it if
+
+Unknown Speaker  1:37:28
+we want to. It's in note history.
+
+Speaker 4  1:37:32
+Oh, we can display it on the record if we want to, okay, but it'd be a no, that's linked. Can we link to an RG row? Not currently.
+
+Matthias Miller  1:37:44
+We could, I mean, we could add,
+
+Unknown Speaker  1:37:45
+when we can, ideally enough,
+
+Matthias Miller  1:37:47
+a hidden repeating field, but it wouldn't I like, okay, Dwayne, what do you think about this? Forgiveness and due date moves require justification. They get pushed into notes instead of a field on there with a little automated thing, forgave late fee and such amount, blah, blah, blah, user provided justification. Boom, done. The name of the user doing it,
+
+Speaker 1  1:38:18
+and that the justification be written as part of the the x 30 yeah transaction.
+
+Matthias Miller  1:38:23
+It would tell you what we're doing, and then we give the users justification and who, and the note would be tied to who did it,
+
+Unknown Speaker  1:38:32
+and that note would be linked in the RG, Did I understand you say that if you wanna, we
+
+Matthias Miller  1:38:42
+would have no type of fee forgiveness and take it,
+
+Unknown Speaker  1:38:51
+I kind of like it,
+
+Speaker 1  1:38:57
+and that would give us, yeah, I mean so and and if we did reporting on fee forgiveness or deferments, we could reference the date of that transit, that note transaction. I
+
+Matthias Miller  1:39:11
+mean, you could just, you'd have a link to call, you know, view notes,
+
+Speaker 1  1:39:15
+sure. But I mean, when you built, when you're building, reporting from a from a like, instinctively, I want to say, I want to say on forgivenesses or deferments of our due date moves or deferments, those kinds of things. I want to know the action date of it happening. So I want to know in this month we forgave X amount of dollars, and that's the point that it actually happened, not for the period that it was for
+
+Matthias Miller  1:39:42
+now with deferment, wait with due date adjustments. See, here's the problem, though, if you do multiple adjustments, we can't report on multiple adjustments.
+
+Unknown Speaker  1:40:03
+Uh, if you're doing notes, you could, and
+
+Matthias Miller  1:40:06
+you would just choose the most recent note.
+
+Unknown Speaker  1:40:10
+All notes you could say it's deferred multiple times,
+
+Matthias Miller  1:40:12
+but you wouldn't know how much it was deferred each time, unless you field it on the note at which,
+
+Unknown Speaker  1:40:19
+yeah,
+
+Speaker 1  1:40:20
+okay, if we said, if we said, if we were to, if we were to say, we do not allow you to defer more than what some period, what would be the parameters by which you could and could not defer? In other words, if I deferred today, when could I defer again? I I
+
+Matthias Miller  1:40:43
+don't think you want to do that, because, again, something happens. Somebody calls in. You're like, Ah, my daughter's in the hospital. Okay, well, let's see what we can do. Um,
+
+Matthias Miller  1:41:03
+that's where, in my mind, for reporting purposes, you just keep it simple, like if, the original if, if the fee was incurred on July 1, you show that as deferred rent as of July 1. I know that's dumb, but
+
+Speaker 1  1:41:21
+well, because it artificially excused the actions. So if I, if I want to know of my, of my, my customer service reps, how much of the, how much in in the month of August did they defer, if they're deferring stuff from back in July? Well, then I have art. I don't get the full
+
+Matthias Miller  1:41:40
+picture. Okay, so why don't we create?
+
+Matthias Miller  1:41:54
+Y'all gonna hate me or love me, create fee deferment rows that are $0 and have no meaning besides just reporting. Hey, we deferred.
+
+Speaker 1  1:42:07
+I like that. I mean, I, I wanted to advocate for that, but I don't know what I'm like You seemed really nervous about
+
+Matthias Miller  1:42:15
+that. I am because I think
+
+Speaker 1  1:42:23
+you want to tie these rows out to accounting transactions.
+
+Matthias Miller  1:42:28
+I don't know that part doesn't bother me. It's the go ahead Seth.
+
+Speaker 4  1:42:37
+Then do you say where it was deferred from? Or we're just saying we deferred as of this date. We don't say, you
+
+Matthias Miller  1:42:42
+don't say which month, okay, you can infer the month, if you have to. It's the prior month.
+
+Matthias Miller  1:42:53
+Okay? But here's what, go ahead,
+
+Unknown Speaker  1:42:57
+but we're in August, and they haven't paid the last four months, and we'd go defer June instead of we go defer from, let's say deferred July and August due dates to pay two months. We bump the next two months out. We'd have heard the last two.
+
+Matthias Miller  1:43:23
+Okay, so if you have a payment that was due on June 15 and you want to defer it, you insert a new row called rental, you know, fee deferred, or even just a rental fee, literally, rental fee, $0 rental fee. And then the as of June 15, and then you move the next one to July 15 and the next one to August 15. And the $0 fee just means it was a deferment. And so it shows up as a period because, well, or maybe it doesn't show up as a period. If it's a fee deferment type, then it's not a new period. It's just a placeholder that says we deferred it, and literally, it has no impact. It just it's just a recording that somewhere in here, somebody chose to take it no except the date that it actually happened. It happened on August 15. That's the weird thing. I don't think fee deferments make sense in this context. It's well, unless you say the deferment was incurred today. The due date was that actually could work. The due date was June, 15,
+
+Unknown Speaker  1:44:44
+so I think,
+
+Speaker 2  1:44:55
+yeah. You
+
+Matthias Miller  1:45:22
+can see basic basically insert it in there, and then you update the due date for those periods. But then this doesn't give you any kind of reporting to say how many days did you give as part of this event?
+
+Matthias Miller  1:45:46
+Okay, let me ask you, this isn't fee deferment, a completely separate kind of reporting than anything else
+
+Matthias Miller  1:45:58
+like so just put it into different RG, we have a read only RG that says deferred fees. We have the, we have the the date deferred, original due date, new due date, number of days, $1 of days, deferred, number of days deferred.
+
+Speaker 1  1:46:29
+So are you? Are you saying? Are you saying that all deferments go into this RG,
+
+Matthias Miller  1:46:36
+and it's strictly an audit trail and for reporting
+
+Speaker 1  1:46:39
+purposes so, so fee forgiveness, and and and do ferments, not fee forgiveness.
+
+Matthias Miller  1:46:45
+Fee forgiveness is a transaction that occurs that affects your balance.
+
+Speaker 1  1:46:49
+Okay, so that would go, that would go into the other RG,
+
+Matthias Miller  1:46:53
+yes, all that deferred fees is doing. It's saying, Hey, we changed this period due date from x to why, and here's who did it, and here's the cost and the number of days, and here's our justification,
+
+Speaker 4  1:47:05
+yeah, the x 30. Then we just, we just edit due dates in the fees RG, and then we throw stuff into deferred fees, RG, for just the auditor, yeah, this is the date
+
+Matthias Miller  1:47:15
+that it happened, and here's how much it changed by, and here's the dollar value.
+
+Speaker 1  1:47:19
+So when, when calculating a due date to show to the customer. You're going to reference those two RGS.
+
+Matthias Miller  1:47:26
+No, you're just going to reference the fees, RG, the fees, RG and the deferred fees. Is just, it's just an audit log for reporting to know that on this date, user x change it from this to that, so that you can
+
+Speaker 1  1:47:38
+so in, the in the period. RG, the the period that you're updating to the next do that's just going to stomp in there, and then the audit log goes up in the in the other RG, yes, I can get along with that
+
+Matthias Miller  1:47:55
+Seth, are you anywhere? Are you less grouchy? Yes,
+
+Unknown Speaker  1:48:03
+yes, you poke the bear.
+
+Speaker 4  1:48:20
+You had told me to tell the picture that bank robber looked like him, and he said that, he said to tell you that his jawline is flattered.
+
+Speaker 1  1:48:36
+Tell him. Tell him that the bank robber has better hair than he does. I I will say, I will say, some of the better ideas that come out of Matthias mouth. Does happen when he gets a little frustrated?
+
+Matthias Miller  1:48:50
+Well, we gotta figure out how hard as a channel this.
+
+Unknown Speaker  1:48:56
+I like this a lot better. Though. I think this is good.
+
+Matthias Miller  1:49:00
+Good. I feel really good about this, because we're saying these are literal balance adjustments. And I think we have to have CRA and security deposit adjustments. I think we want them in here. And I think the beautiful thing is you can pull CRA balances and security deposit balances in LA. I mean, it's just, I just think it's amazing, but
+
+Speaker 1  1:49:23
+essentially, it sounds like what you're creating is an audit log. RG,
+
+Matthias Miller  1:49:29
+it's two things. One is a list of all transactions that affect any kind of balances, whether it's fees, forgiveness any fee, whether it's fees, CRA or security deposit, as well as, I mean, if we want to, we could put EPO write offs in here, or EPO discounts in here is another line item,
+
+Unknown Speaker  1:49:49
+discounts. I don't
+
+Speaker 1  1:49:52
+know that we need that. What's an EPO discount?
+
+Matthias Miller  1:49:55
+Well, I mean, it's just the the balance you don't pay when you're doing an early. Pay off.
+
+Unknown Speaker  1:50:00
+No, no, no, no, no, no, no, no, no, no. That was definitely not a good idea. We need to get
+
+Matthias Miller  1:50:09
+you Oh, come on. All right. I'm that cuts deep,
+
+Speaker 4  1:50:13
+um, Nick. Nick is telling Dwayne that he's feel he should feel free to sit upon the pointy end of a cactus and rotate.
+
+Unknown Speaker  1:50:31
+Wow, that turned violet.
+
+Matthias Miller  1:50:37
+I uh, have you heard Richard Miller's take on on the pacifist Anabaptists? No, it's not that they're not violent. They're just not physically violent.
+
+Speaker 1  1:50:59
+That's That's about as good as as the one you know how to confuse a Mennonite, give them a free beer.
+
+Matthias Miller  1:51:08
+Do you know what happens when you you open source?
+
+Speaker 1  1:51:12
+You This is going on ahead. Hey, back to work. Okay,
+
+Matthias Miller  1:51:16
+I gotta say this open source a big beer recipe. You have free beers and free beer. And if you don't know, there's two types of open source, there's like, free as in free beer and free as in free speech. Anyway, okay, so that landed really well.
+
+Unknown Speaker  1:51:37
+Feel free to sit on the point
+
+Matthias Miller  1:51:42
+to be mean, okay, then the only other thing we need to talk a little bit about how to handle partial refunds. But basically the short answer is, for partial refunds, you can, you can refund a fee, like your refund will just create fee payments or refunds, and then for credit card charges, we need to actually process the refund. This does not have to happen pre Expo, but, but you can have a payment that, you know, refunds pays whatever, and that'll happen as a date of that.
+
+Speaker 4  1:52:27
+So what exactly do we have in DRG? So, like, for a fee paid, do you say which due date we're paying? Yes,
+
+Matthias Miller  1:52:36
+okay, so we have two types. We have the fees. Well, okay, so we have, I think everywhere, we have a here fee type. Or, I don't know what this thing is. This is not a fees at RT. This is a, is it a contract transaction?
+
+Unknown Speaker  1:52:57
+I don't know what
+
+Unknown Speaker  1:53:05
+you asked me,
+
+Matthias Miller  1:53:24
+all monetary movements.
+
+Matthias Miller  1:53:35
+It could be financials contract financials.
+
+Matthias Miller  1:53:56
+Adjustments. I think it's something like, um,
+
+Unknown Speaker  1:54:13
+Church, oh,
+
+Matthias Miller  1:54:30
+contract I don't even know
+
+Matthias Miller  1:54:43
+Okay, so then we have, we have a we have a type, we have an amount, we have a we have a date incurred due date amount.
+
+Speaker 4  1:54:57
+Due Date is only for fee and. Heard right?
+
+Matthias Miller  1:55:05
+When you pay a fee, you need to know which fee you're
+
+Unknown Speaker  1:55:07
+paying. Oh, right, yeah.
+
+Unknown Speaker  1:55:21
+Let's do this
+
+Matthias Miller  1:55:26
+so you have a, this is a
+
+Matthias Miller  1:55:40
+you could almost.
+
+Matthias Miller  1:55:52
+You could almost, if you just tweak this a little bit, you could almost have this be a fee type CRA and security deposit.
+
+Matthias Miller  1:57:16
+Okay, so we had, what other fields do we have? Payment ID?
+
+Matthias Miller  1:57:26
+What else do we have?
+
+Matthias Miller  1:57:40
+Or are we doing the notes on forgiveness?
+
+Unknown Speaker  1:57:45
+I don't know that I would. I think I would just have it in here. Was
+
+Matthias Miller  1:57:50
+there other fields that we had in our conversation?
+
+Speaker 1  1:57:52
+Well, you have this all under, under refund. Is that my misunderstanding this?
+
+Matthias Miller  1:58:00
+Well, so now we have,
+
+Unknown Speaker  1:58:04
+that's what I mean. I'm I think
+
+Speaker 1  1:58:42
+that uh, if this is, if this is the new data model for the for the essentially the period, iG, is that what you're saying? Yeah, so you would need next due date in here somewhere,
+
+Unknown Speaker  1:59:03
+there'll be this,
+
+Speaker 1  1:59:05
+well date, but is that, when you say due date, is that the date, the due date of this
+
+Unknown Speaker  1:59:13
+period that's incurred
+
+Matthias Miller  1:59:15
+rental income would be incurred at the start of period, and due at the end of the period?
+
+Speaker 1  1:59:20
+Basically, where, yeah, but where you gotta field your next, your next due date.
+
+Matthias Miller  1:59:24
+If there's none here, we would just do a month after the latest due date. Oh, period after the latest, yeah,
+
+Speaker 1  1:59:36
+payment cycle, period, yeah, okay. But West, but, but okay, but if, but where, where? If I overwrite the due date. Where does that get stored on here? Yeah, but, I mean, you have the due date for the period. I'm stuck
+
+Matthias Miller  1:59:55
+create a new period. I mean, if, but then we're going to create a new. Know, a new row if necessary, like, if we don't have a row, right?
+
+Speaker 1  2:00:06
+Okay, there's, there's date of incurment. Understand due date. Understand that's, I'm a, I'm making the assumption that's the due date for the period that that the RG row is for, right? And so then you would need a next due date, in other words, the one that follows after this in order to overwrite it.
+
+Matthias Miller  2:00:30
+Well, unless it's an unpaid in which and you're moving it current. And so you just move the due date a month out to make it current.
+
+Unknown Speaker  2:00:51
+Okay,
+
+Speaker 1  2:00:53
+how if I, if I opened up this contract, and I'm trying to find out when is the next, when is the next date due that the customer is going to be. So they just paid a bunch of money, and the customer says, when's my next due date? Now, on the whiskey payment screen, I think we already field for that. But if I was to open up the contract and look, how would I see it
+
+Unknown Speaker  2:01:15
+by macro,
+
+Speaker 1  2:01:17
+okay, so you would have you, you would just have a calculated it would show Okay. So then, if you overrode that, that Macer would update,
+
+Unknown Speaker  2:01:25
+right, okay, got it
+
+Matthias Miller  2:01:35
+all right. Who can, who can poke holes in this? This just seems okay. Seth. One note is that we could tie these out to these
+
+Unknown Speaker  2:01:46
+rows. Yeah, we should. What about sales tax?
+
+Matthias Miller  2:01:52
+Oh, that's right, this is the amount.
+
+Speaker 1  2:01:56
+This would be your rental fee, late fee, damage for your fee, processing fee, CRA, blah, blah, blah, all of that stuff. When did
+
+Matthias Miller  2:02:10
+would you have a I would almost be inclined to me sales tax is completely different beast, and we have some kind of we record sales tax payments in a separate RG,
+
+Speaker 1  2:02:27
+yes, but if I want to know how much sales tax was applied to this, yeah,
+
+Matthias Miller  2:02:31
+you'd have a taxable checkbox. You'd have a you'd have a,
+
+Speaker 1  2:02:38
+got it, okay, that's Yep, okay, got it, yep, yep, yep, yep, yep.
+
+Matthias Miller  2:02:42
+And we may need to store the well, we should,
+
+Speaker 4  2:02:48
+yeah, we should have the cash rate from a from a cash
+
+Speaker 1  2:02:52
+from a visibility logic standpoint, it makes sense to kind of break everything in regards to the payment down in one like in successive columns. So the rent, the late fees, like, the rent, the sales tax, like, kind of, almost like a so that's all together. So that's if I'm, if I'm talking with a customer, is like, Okay, this payment has X amount of rent, there's this much sales tax, there's this, this was amount of late fees, kind of, kind of group it together.
+
+Matthias Miller  2:03:21
+I agree, and I think that's a reporting thing. And I I'm what I'm worried about most right now is the real reason we're having this covered. I agree with you, heard, understood. I think it's a report we create. I'm not worried about it now
+
+Speaker 1  2:03:36
+because, well, I'm also thinking just in in the in the order of the rows in the RG is what I'm specifically speaking to. That way, if somebody opens up the contract is looking at the RG that it makes sense, like you read from left to right, it makes sense. In other words, it wouldn't put you wouldn't put your sales tax after the due date.
+
+Matthias Miller  2:04:00
+I mean, does this make sense to you? Well,
+
+Speaker 1  2:04:06
+okay, maybe you should just put it out in a spreadsheet. Maybe then it all makes sense to me.
+
+Matthias Miller  2:04:12
+Okay, I'm happy to do this. We can mock it up. My thought was barely anybody's going into the RG, but maybe that understanding is completely wrong.
+
+Speaker 1  2:04:22
+Up okay, let me ask this. If you threw it all, if it's in there, I presume it's not hard to move it around inside of the RG, no, we can reorder it for sure. Okay, well, then let's just carry on.
+
+Matthias Miller  2:04:38
+Okay, so I think, I think what this means is that we have a data model by which we can go create fields, and we can then therefore create next 30 and based off of that, doing, okay. Can go shove shove it data
+
+Unknown Speaker  2:05:02
+with a pointy end of
+
+Unknown Speaker  2:05:05
+a cactus.
+
+Unknown Speaker  2:05:09
+Insert data here.
+
+Matthias Miller  2:05:10
+Insert data here.
+
+Unknown Speaker  2:05:14
+Sweet.
+
+Speaker 4  2:05:16
+So then, if you're creating it like a security deposit adjustment, then are you calling that adjustment type of C, incurred or Well, fee paid? A little
+
+Matthias Miller  2:05:40
+that's where debit credit language becomes so useful.
+
+Matthias Miller  2:05:49
+You call it forgiveness doesn't make sense for security deposit refund might
+
+Speaker 1  2:06:05
+What are you? Are you speaking in relation to adding or subtracting from the security deposit during the process of making payments? Right? So
+
+Speaker 1  2:06:21
+wouldn't it just represent itself as a negative transaction for that period, if you used money out of this security deposit?
+
+Matthias Miller  2:06:34
+I mean, it's essentially a fee incurred or something like that. It's just really confusing that
+
+Speaker 4  2:06:41
+really we can make it work. But the fee incurred on a security deposit, it's really, that's my brain, yeah, yeah.
+
+Matthias Miller  2:06:50
+And the fact that the sort of like free cash, the right one to spin her eyes on. But the fee paid is is positive on the is positive on the security deposit,
+
+Matthias Miller  2:07:13
+whereas normally it's negative, it's a reduction of a fee.
+
+Speaker 4  2:07:22
+No happy except for CRA and security deposit. Do
+
+Matthias Miller  2:07:28
+we want them in a separate RG, instinctively, I say, Well, I'm actually torn, because in some ways, CRA and security deposits are completely different things. They're holding accounts and so
+
+Matthias Miller  2:07:45
+Okay, here's another idea.
+
+Speaker 1  2:07:46
+I mean, riddle me this. So the very first period when the customer pays the down payment, it becomes a positive security, security deposit amount every other transaction you know that is either adding or subtracting from it, and it's literally a summing of the RG under the security deposit section in order to find out the balance of the security deposit
+
+Matthias Miller  2:08:12
+correct. So but, but the issue is that
+
+Speaker 1  2:08:22
+same thing with same thing with the CRA it's like, I mean, by the nature of the column in in the RG, it's like, you, you essentially have the account, right?
+
+Matthias Miller  2:08:36
+What if? What if we had another What if we had, I don't know what to call it. What if we had another type?
+
+Unknown Speaker  2:08:47
+I don't like this.
+
+Speaker 1  2:09:01
+Oh, I'm being slow. I see what you guys are are hung up on. It's the, it's the, it's the type of of, whatever you're gonna what the type of the row is that that's, that's essentially what, uh Oh, for Pete's sake, I'm slow.
+
+Unknown Speaker  2:09:14
+You're good.
+
+Speaker 1  2:09:19
+So what's, what's, what's, what's the what's the type. If I'm making a payment,
+
+Matthias Miller  2:09:27
+you have, I mean, currently we have for its fee, incurred, fee forgiven, fee paid, fee refunded.
+
+Speaker 1  2:09:36
+So we just, why would you just remove the fee from the front of the from the language, just do incurred, forgiven,
+
+Matthias Miller  2:09:42
+payment, refunded, refund,
+
+Unknown Speaker  2:09:46
+forgiven and incurred,
+
+Speaker 4  2:09:50
+but, but? How does it work to adjust the security even then? How does it work for adjusting security deposit, like, if I want to pay, add? To the security deposit. What
+
+Speaker 1  2:10:01
+it becomes, it becomes a positive transaction in on that row, okay,
+
+Matthias Miller  2:10:06
+yeah, but it is a forgiven, paid, refunded.
+
+Speaker 4  2:10:10
+So then if you pay from the security deposit, that's a
+
+Speaker 1  2:10:14
+charged, it would be a negative transaction, a negative amount in that in that row. So then literally, it's like, literally, what's the balance of the security deposit? Literally, some, the whole entire, the whole right of the RT,
+
+Speaker 4  2:10:27
+are you saying that's a paid, yeah, we paid the security deposit a negative amount.
+
+Speaker 1  2:10:33
+Well, okay, the row is a the if this is done as part of a as a paying of a period you can deduct from the security deposit, it would show up right as a, as a paid, as a paid type for that transaction, or for that row which has a negative amount in it, which is subtracting out of the security deposit, which essentially is adding it, subtracting it from the security depositing, adding it to rent. Is, is, is the logical sorry, if you want to get accounting wise, we're subtracting it from the security deposit and the adding,
+
+Unknown Speaker  2:11:08
+it's right, what's the
+
+Unknown Speaker  2:11:10
+difference between charged and paid?
+
+Matthias Miller  2:11:14
+This is Inc, okay,
+
+Speaker 1  2:11:18
+so the incurred row would be, what the adding of a late fee
+
+Speaker 4  2:11:23
+or rental fee you now owe or damage waiver fee you owe $500 rental fee for this month incurred rental fee. And then do we? Then we have to pay it, then we have a paid row for it as well.
+
+Speaker 1  2:11:38
+So, so incursion and oh boy, I'm gonna have to retain good to mute myself, because here comes another train. This is the fourth for the time period I'm sitting
+
+Matthias Miller  2:11:52
+here. I mean incurred, slash used is
+
+Unknown Speaker  2:12:05
+that was a short train. Short train.
+
+Unknown Speaker  2:12:10
+It was a
+
+Unknown Speaker  2:12:11
+Amtrak train.
+
+Unknown Speaker  2:12:13
+Nice.
+
+Speaker 4  2:12:14
+Have you tried searching for recursion? Searching Google for recursion? No. I off
+
+Unknown Speaker  2:12:27
+you're not sharing screen.
+
+Matthias Miller  2:12:36
+That is hilarious.
+
+Speaker 3  2:12:41
+I gonna,
+
+Speaker 1  2:12:53
+I'm gonna take my headphones out for one second and answer this
+
+Unknown Speaker  2:12:55
+call, yep,
+
+Matthias Miller  2:12:58
+Seth. What if we just had, what if we had different ones that we use? What if we just, what
+
+Unknown Speaker  2:13:05
+if we just did this?
+
+Speaker 4  2:13:22
+Right? And so used is when you were taking from CRA or security deposit to pay. If we want to add security deposit, then you do paid,
+
+Matthias Miller  2:13:34
+right. Can't forgive security deposit, sorry, so I forgive you for giving me forgive you exactly your
+
+Speaker 4  2:13:49
+security deposit is now it's now forgiven.
+
+Matthias Miller  2:13:55
+So you can have fees rental and fees can be incurred. Well, actually, rentals can be forgiven.
+
+Speaker 4  2:14:03
+They can be forgiven. Cannot? They cannot. Oh, okay, yeah, I was gonna say
+
+Matthias Miller  2:14:08
+fees can be see if.
+
+Unknown Speaker  2:14:15
+Okay,
+
+Unknown Speaker  2:14:29
+CRA and security deposit can both be refunded.
+
+Matthias Miller  2:14:33
+So if we wanted to make this a little bit I don't know what you call this.
+
+Unknown Speaker  2:14:46
+Mirror.
+
+Matthias Miller  2:14:54
+Yeah, I like that better one. I. Again, this is making me happier. Okay, so here's the new proposal. We have a column that says the type, I guess it's the balance type. It's either rent, a fee, a CRA or security deposit. If it's a fee, then we have a fee type, then, which is the same fee type that you have with the contract screen we have, we have an A an adjustment type, which is
+
+Speaker 1  2:15:35
+none of this would be editable in this RG, right?
+
+Matthias Miller  2:15:39
+Not interactively,
+
+Speaker 1  2:15:42
+right? It all gets written, added through the whizky or through x 30s, right?
+
+Matthias Miller  2:15:46
+Yep, okay, or by your team. So then rentals and fees can be incurred. Fees can be forgiven, CRA and security deposit can be used. Everything could be paid and everything could be refunded. Okay,
+
+Unknown Speaker  2:16:06
+I like this a lot better. And
+
+Matthias Miller  2:16:08
+then this is effective date, due date, the amount taxable.
+
+Unknown Speaker  2:16:27
+I think,
+
+Matthias Miller  2:16:37
+I mean,
+
+Unknown Speaker  2:16:39
+sweet, happy now,
+
+Unknown Speaker  2:16:44
+are you happy now
+
+Matthias Miller  2:16:46
+or less grouchy?
+
+Unknown Speaker  2:16:49
+At least less grouchy, at least less grouchy. I
+
+Matthias Miller  2:16:52
+mean, I think we're getting very close to, I mean, we're getting close to diminishing returns, and I think we're getting close to simplest possible model.
+
+Speaker 1  2:17:02
+Given so, by the way, yeah, we've never talked about where to store the sales tax rate or how sales tax works. Do we need to account for any of that when pushing in data, are we just going to push it into text as $1 value? We're going to push in Texas $1 value, aren't we?
+
+Matthias Miller  2:17:19
+Yeah, we can give you a frozen tax rate for each row in the balance for now?
+
+Speaker 1  2:17:24
+Well, I don't, I don't know that it's necessary. Are we going
+
+Unknown Speaker  2:17:29
+to calculate it long term then or
+
+Speaker 1  2:17:31
+not? Well, we are going to calculate long term. We haven't talked about that. But I mean, for the sake of pushing in data, we have a tax field, which means I can push in the tax value I
+
+Speaker 4  2:17:40
+would expect currently, then the tax amount is calculated. We have a tax rate that field
+
+Speaker 1  2:17:50
+is the tax rate on the contract
+
+Speaker 4  2:17:54
+record. This is just on the right now. It's row. It's in this RG, we're just talking about, I
+
+Matthias Miller  2:18:06
+I'm assuming we need to ping tax jar every month. Well,
+
+Speaker 1  2:18:11
+I want to be able to I want to be able to do it too with different ways. We want to be able to manually build sales tax tables, which you're a user responsible for, or you can decide to hook yourself up the tax jar and pay for that, that service now, but for what I'm saying is, for the sake of the for the sake of getting to the demo, are we going to, we're not going to necessarily try to calculate sales tax based off of information. I'm going to push into the RG can. Can Can we just push in straight dollar values of tax? Is
+
+Matthias Miller  2:18:45
+there a reason why you want to give straight dollar values instead of just telling us what the tax rate is and letting us calculate the
+
+Speaker 1  2:18:51
+dollar value? Well, I mean that means, okay, in theory, then we have to talk about how we're doing sales tax.
+
+Matthias Miller  2:18:58
+Why? Why is it different than dollars? It's just $100 times 7.5% instead of saying $100 and $7.50
+
+Speaker 1  2:19:11
+so usually, like, you want to just store a flat tax for the for the sake of the demo, no, sorry, you want to store a universal sales tax rate for the for
+
+Matthias Miller  2:19:23
+the dollar no on each payment row. I want you to tell me what the tax percentage is, and then we calculate what the dollar value is.
+
+Matthias Miller  2:19:37
+I mean, we can also let you specify the dollar value and calculate the percentage or whatever.
+
+Unknown Speaker  2:19:44
+Okay, let me just think about that. I
+
+Speaker 1  2:19:52
+want to try to avoid some throwaway work here, because there is, there is two ways that I want to think about the calculation of sales tax. In the future, there is there I do like the way that RTO Pro does this, where, if you don't want to pay for tax jar, then you literally can, you can go make an RG of of sales tax rates per state. Now would that be we can get all my this is, this is a rabbit hole.
+
+Speaker 4  2:20:25
+We're not, we're not gonna throw away work here this, I think however we decide tax rates to work, we're gonna end up storing the tax rate for each row.
+
+Unknown Speaker  2:20:36
+Okay, okay, so, so, so basically,
+
+Speaker 4  2:20:38
+okay, okay. This is just in like the when you pay, is this line item taxable, so is rent taxable, and what's the right for that?
+
+Unknown Speaker  2:20:52
+Got it? Yep, that makes sense. And the
+
+Matthias Miller  2:20:54
+tax conversation is way bigger than this. We have to break tax rate into three, or think about how jurisdiction and jurisdiction changes work and but that's,
+
+Unknown Speaker  2:21:04
+that's post Expo.
+
+Speaker 4  2:21:05
+So tax rate here is not going to hurt us.
+
+Speaker 1  2:21:09
+No, I guess you're going now. So basically, when we when I push data in, I'm going to push in the tax rate along with it,
+
+Matthias Miller  2:21:14
+yeah, so title plus tax rate, got it, got
+
+Unknown Speaker  2:21:17
+it, got it, got it. Good by me.
+
+Unknown Speaker  2:21:21
+Okay, sweet.
+
+Matthias Miller  2:21:25
+Okay, so grand scheme of things, super big picture. Here's what we got working on invoices.
+
+Speaker 4  2:21:34
+So we get that your voices are on this they're in the system. They're in the system. Um, which we haven't really tied them into anything, because we don't know how all you're going to use them. But are you wanting, like, a link on products? Then probably, I don't remember if Nick added the link yet or not.
+
+Matthias Miller  2:21:53
+Um, Dwayne, do we, uh, let
+
+Speaker 4  2:22:00
+me ask. He's on the phone. Never mind. Let's
+
+Matthias Miller  2:22:04
+defer this just a little bit. So invoices are going to be used to determine what we paid, no what no for the sale of a building,
+
+Unknown Speaker  2:22:14
+99.99% of the time invoices will be tied to product records.
+
+Matthias Miller  2:22:21
+But we can't for the other we can't support the other point once 1% because we don't know what account it should go under, and we'll cross that bridge until we get there. So okay,
+
+Speaker 1  2:22:31
+if we're going to cross that bridge until we get there, then for the expedition, 100%
+
+Speaker 2  2:22:38
+tied to buildings or product records. Okay,
+
+Matthias Miller  2:22:52
+so and then we have the data model.
+
+Speaker 1  2:22:55
+Let's talk real quick second about that in order to to to apply a building in, okay, if you're doing if we're doing that, and you would go to the product record and you would say new invoice, which would automatically link the product and in the invoice together. Hallelujah. Invoices would not invoices theoretically could be generated otherwise. But then you'd have to figure out how to attach them together. And for the sake of the demo, we don't need that. So, yes, new invoice based on the product record. That's That's great. Okay,
+
+Matthias Miller  2:23:28
+now so and then, and then we have, now we have, then we can start calculating payments. We can field the payments and start doing imports, which we should be. I have no idea what your schedule's like, but middle of next week, hopefully that's done and we can start
+
+Speaker 4  2:23:52
+importing that. I'm out Friday and then Monday is a holiday, so less will happen next week because of that, but I think, but, yeah, you
+
+Unknown Speaker  2:24:02
+just have to work twice as hard.
+
+Matthias Miller  2:24:09
+So then that leaves us so that gives us data in the system to start building reports and cross your fingers. This is still big, hairy, audacious goal. Can we get well, some form of accounting impact, which I think actually probably relies more on. I don't know. I don't know if there's a, I don't know if there's a less expensive way than me just mocking this stuff up. I feel like by the time we actually spec out what the events actually are, we'll have coded it. But it could be wrong. Maybe I'm wrong on that.
+
+Speaker 4  2:24:43
+We do. I started a little bit today trying to refactor the accounting impact stuff out. But if haven't put much time into it at all, okay, we do have accounting in. Could be included here.
+
+Unknown Speaker  2:24:59
+I. Yes,
+
+Speaker 4  2:25:01
+that was a 10 minute change. But we have stuff coming in, or we have the so wonderful. We don't have any accounting companies yet. We can add you. Oh, you can't add you need your permission. Go to your user. Oh, by default, none of these users have Accounting I think is what it is.
+
+Matthias Miller  2:25:26
+Do you want an accounting permission or just add it to
+
+Unknown Speaker  2:25:30
+we just want to.
+
+Matthias Miller  2:25:34
+We just want to add it
+
+Unknown Speaker  2:25:36
+to All, or add to administrators.
+
+Unknown Speaker  2:25:44
+But because I
+
+Matthias Miller  2:26:06
+There we go. All right.
+
+Matthias Miller  2:26:17
+Do you think there's a less expensive way I remain unconvinced that there's a less expensive way than me just coding user reports with macros that generate accounting impact and then we standardize it later. But I mean, theoretically, we could do the whole mock up what transactions should happen as a result of this. I just don't think right?
+
+Speaker 4  2:26:46
+I don't know one thing. When I was trying, I was just trying to refactor the standard macros out. And one thing I seen is that we have, we support assets in zfp, and we won't have that here. So I'm not quite sure how to clean refactor. I
+
+Matthias Miller  2:27:03
+would have a, can you just have a non facet, or just a like a non asset include that just creates a blank asset lists, list that doesn't have a record tied to it that way? Because I think all we need is just the list value. Yeah. I mean, it could even be a user. Could even be a investor, tool zone, blank list that you can't use, right? Yeah, the x 30 might be an issue
+
+Speaker 4  2:27:38
+because we're trying to import it. I don't try to set
+
+Unknown Speaker  2:27:41
+a field.
+
+Speaker 4  2:27:45
+You can, you do it with a condition? Now,
+
+Matthias Miller  2:27:49
+I don't know that we have system conditions in there. I mean, the other thing you could do is also just add a you could be. I mean, just, just add a field, a list, field of that name to the RG in
+
+Unknown Speaker  2:28:09
+an account, into that link
+
+Matthias Miller  2:28:11
+catalog you talked about, yeah, the non asset catalog, yeah, it's always going to be blank by definition anyway. And it's a little weird, but
+
+Speaker 4  2:28:20
+it's a little weird, but it not sure how else. So we don't have a nice way to have conditional parameters, no which kind of makes sense. And even
+
+Matthias Miller  2:28:33
+conditional we have, we have better, better tools and for system specific LCR X 30 is the issue,
+
+Unknown Speaker  2:28:39
+right? Yeah. Anyway,
+
+Matthias Miller  2:28:44
+okay, so let's be very clear. I want to be very clear with next steps and timelines. When can, when? When can Dwayne start inputting, importing data. He can import products. Now. When can he start and he has contacts? When can he start importing contracts and payments?
+
+Speaker 1  2:29:10
+So I can do products? I saw one to do contacts.
+
+Speaker 4  2:29:15
+Yeah, Sean sent you a Sean sent an email, email with an import and sample input file for products that you sent that yesterday.
+
+Speaker 1  2:29:27
+Sorry, I misunderstood that. I thought that was the I don't know why I I misread it as context. I don't know why I didn't read product. Got it Yes, yes, I do.
+
+Unknown Speaker  2:29:40
+So that should.
+
+Speaker 4  2:29:43
+Are we confident in what you got a contract record. I just want to thank you for confident in contracts other than the payment side of things. Again, what we have.
+
+Speaker 4  2:30:05
+Is right now, things like early payoff amount are just hard coded macros because we don't know
+
+Unknown Speaker  2:30:16
+or we haven't built it.
+
+Unknown Speaker  2:30:30
+Well if dashboards and if
+
+Matthias Miller  2:30:34
+and reported in accounting are the big
+
+Speaker 4  2:30:39
+Well, I'm thinking, as far as importing even, do we do we think we have all the fields here, basically, is what I'm trying to
+
+Matthias Miller  2:30:54
+cash price, rental, fee, Tax, rate, rate, divisor, CRA. Why is cra duplicated over
+
+Matthias Miller  2:31:08
+we have a RTO type that is standard versus CRA, and then we have contracted CRA
+
+Speaker 4  2:31:14
+that's cached from the contract definition. I
+
+Speaker 4  2:31:26
+I think, don't we pull, we pull the contract definition based on state contract type and RTO type
+
+Speaker 1  2:31:37
+is, is it? Is it okay if I drop off I had to start my meeting with
+
+Unknown Speaker  2:31:41
+Leanne, yep. All right, thanks, guys,
+
+Unknown Speaker  2:31:45
+today, awesome.
+
+Matthias Miller  2:31:55
+I mean we need to know.
+
+Matthias Miller  2:32:04
+Just off the cuff. I mean, CRA amount,
+
+Unknown Speaker  2:32:18
+yeah, I don't believe in all of this. Yet you have massive negative numbers there.
+
+Speaker 2  2:32:25
+Where's the financing base? It's the
+
+Unknown Speaker  2:32:31
+contract cost. Maybe, I'm not sure. Why is it negative?
+
+Matthias Miller  2:32:37
+Because you're paying too much. Well, that doesn't make sense either. I
+
+Speaker 3  2:32:40
+What's
+
+Unknown Speaker  2:32:45
+contract subtitle?
+
+Unknown Speaker  2:32:55
+It's not set,
+
+Speaker 4  2:32:58
+but where, where? What is subtitle? See, we have some Yeah, this is it's things like this that I'm nervous about, yeah, because we started doing contracts and we moved on to other things. And I don't think we ever quite wrapped out contracts, or clearly not.
+
+Matthias Miller  2:33:22
+Well, and I'm kind of scared to even go to the spec, because the spec is such a train wreck, right? I think
+
+Unknown Speaker  2:33:33
+so. I wonder if that needs, if we need to work through this. I
+
+Matthias Miller  2:33:50
+somewhere, there is the possibility that we need to have really weird finagling of terms, stuff like that. I
+
+Unknown Speaker  2:34:18
+right now, contracts approval isn't even on the details. What's contract cost
+
+Matthias Miller  2:34:25
+that is pulled off the product record, purchase amount. So I would think that somewhere,
+
+Unknown Speaker  2:34:31
+don't we need to cash? Well, I think
+
+Matthias Miller  2:34:35
+contract value is probably set on purchase,
+
+Unknown Speaker  2:34:42
+product, purchase. About
+
+Unknown Speaker  2:34:43
+we should cash that instead of looking it up.
+
+Matthias Miller  2:34:48
+No, well, it's just the contract cost. That's that could be cashed. But, but the actual that's just the purchase amount, um, but as far as the actual contract. Value that needs to be stored. Okay?
+
+Speaker 4  2:35:07
+And how does that see? I think part of the confusion was too that we didn't most of this is going to happen from contract entry, right?
+
+Matthias Miller  2:35:18
+I think you should make it.
+
+Speaker 4  2:35:22
+We need to make it work here too. So we have to be able to set contract subtotal.
+
+Matthias Miller  2:35:27
+It would change even at a minimum. Shows contract subtotal editable and import or editable, not detail screen. But underneath contract cost
+
+Speaker 4  2:35:39
+is contract cost a fair that's what we bought it for that right product.
+
+Matthias Miller  2:35:49
+You could call that the purchase amount.
+
+Speaker 4  2:36:09
+Okay, is subtotal, the right word for what we're using it for. No,
+
+Matthias Miller  2:36:14
+no, I want to walk you through something here, because we're dealing with people. You can have a mismatch between the contract value and the payment amount like you could have. I mean, somebody's just going to calculate it wrong. And so what we tend to do is we take the lower of those two numbers. So if you, if you over calculated your payment, then we, then we under calculate or I mean, if your payment, if your contract value, results in a lower payment, then we use the lower payment value. If your payment results in a lower contract value, then we use that lower contract value and we let people override it. Or no, it's no, no, it's more like this. If we if our contract value is too low, we will use the monthly payment to adjust the term. So instead of a 36 month term, you might get something like a 34 and a half month term, but the contract is written for 36 month term, and so we need a way to say that. Effectively,
+
+Unknown Speaker  2:37:30
+I think this should be,
+
+Unknown Speaker  2:37:36
+I'm not quite sure,
+
+Matthias Miller  2:37:39
+but basically what we need to say is, this is the paper value. This is the paper payment amount. And then for all intents and purposes, this is what we're calculating, the contract value in the term set. I
+
+Matthias Miller  2:38:02
+don't think we need, I mean, we obviously don't have to handle this right now. I think what you need is just a contract value that's editable on detail screen. Rename contract subtotal to contract value.
+
+Unknown Speaker  2:38:14
+Okay. Is it working correctly for
+
+Matthias Miller  2:38:22
+I'll this is your makes your answer correctly.
+
+Speaker 4  2:38:26
+Doing is similar to how we did it, how zfp did it? Think was the intent? I'm not sure if, yeah,
+
+Speaker 3  2:38:41
+um, well,
+
+Matthias Miller  2:38:47
+on a CRA, you're basically
+
+Matthias Miller  2:38:54
+CRA is really weird math. I think you might actually need a and I don't know how we want to do this.
+
+Matthias Miller  2:39:06
+So contract subtotal is basically the effective contract value that you use for payment calculation, right? So,
+
+Matthias Miller  2:39:29
+but it's not adjusted for CRA,
+
+Unknown Speaker  2:39:33
+or it's no
+
+Matthias Miller  2:39:39
+CRA has a fancy calculation to translate from $10,500 to whatever that number is based on CRA cash paid
+
+Speaker 4  2:39:59
+so. Contract cost should be relabeled to purchase amount.
+
+Matthias Miller  2:40:05
+I would, I would, yeah, okay.
+
+Speaker 4  2:40:20
+Then, right now, all these fields are coming from the contract definition, like you can't We can't set, we can't override the term.
+
+Unknown Speaker  2:40:34
+Well, it's fine.
+
+Matthias Miller  2:40:38
+I think the main thing that we need you could put the contract subtotal, stick it above or above term length, and call it effective value.
+
+Speaker 4  2:40:54
+So rename contract subtotal to contract effective value. Display,
+
+Matthias Miller  2:41:04
+is it value or total?
+
+Unknown Speaker  2:41:15
+See? That's where
+
+Matthias Miller  2:41:29
+then I think for importing, that's all we need. And then I still think it's technical debt. I still think we need to come back to it. But I mean, we need to handle, we need to handle these weird term lengths and weird contract values, like we're going to pay 200 bucks a month and the term length is going to be 46 a quarter or something.
+
+Speaker 4  2:42:00
+So contract value is not the total amount the customer will pay if they pay out there every month,
+
+Matthias Miller  2:42:10
+or is it no except for yes, it is except For series. And series is weird,
+
+Unknown Speaker  2:42:16
+like, basically because
+
+Unknown Speaker  2:42:23
+open the details thing again,
+
+Unknown Speaker  2:42:28
+I think
+
+Speaker 4  2:42:33
+it changes CRA to, like 500 and see if it's saying, I'm trying to figure out what's going well, subtotal is not right. So, oh, right,
+
+Matthias Miller  2:42:44
+this you don't have CRA amount, no, that's the cash due amount. It is doing some adjustments,
+
+Unknown Speaker  2:42:52
+yeah. So 5000
+
+Matthias Miller  2:42:56
+the financing 500 financing pace is
+
+Matthias Miller  2:43:17
+this is just taking tax into account, and it's not taking it's see or no CRA calculation is not not, either not correct, or it's assuming that there's other calculations that happened before this.
+
+Speaker 4  2:43:30
+Okay. I mean, I think it's very much mirroring insight, but there might be stuff going on there before, but it's, it's mirroring what we calculate based off of the sales order subtotal. Think
+
+Unknown Speaker  2:44:02
+I barely want to run this, but
+
+Unknown Speaker  2:44:19
+see here we have so they paid $1,000
+
+Matthias Miller  2:44:29
+we calculated some kind of bizarre,
+
+Unknown Speaker  2:44:34
+I know Dwayne's explained this to me,
+
+Matthias Miller  2:44:37
+but we pay. I think it's something like we figure out what the payment will be after the CRA is applied, and then you take that payment out. And so this plus this equals 1000
+
+Unknown Speaker  2:44:54
+sounds, right?
+
+Matthias Miller  2:44:56
+That doesn't add. Oh, well, I guess you'd have a tax of 471, Yeah, yeah, it does. And so that's what I mean by the the financing base. Then So theoretically, if I come over here, which I don't think is happening, like if I were to go, we have a 7% $10,000 building, seven and a half, seven, 7% cash rate.
+
+Speaker 4  2:45:23
+Can you get the 10,000 Well, you can't even get the $10,000 that's part of the well, that's fair. You can't add a contract instead of at
+
+Matthias Miller  2:45:37
+all. Siri cash due amount, right?
+
+Unknown Speaker  2:45:45
+Right? I
+
+Matthias Miller  2:45:47
+mean, that's so that these does need to be, need to happen, to tie this out. And I think right, as soon as that's tied out, effectively what we need, I don't care whether it's what makes the most sense is, what is the what's the original non CRA total, what is the CRA amount paid, and then what's The final and then, from that, calculate the financing basic calculates everything else.
+
+Speaker 4  2:46:24
+Okay, so what you called the contract effective value, we just, I mean, we're just renaming what was contract subtitle and showing on the detail screen and making so it gets filled in. But where am I? Yeah, I think so. I think that's the $10,000 and then if it's a CRA contract, that's not the financing base. It's 10,000 manipulated, yes, whereas, but if it's a if it is, if it's not CRA, then the financing base is just that 10,000 just that. 10,000 is the effective value, yeah. And
+
+Matthias Miller  2:47:19
+the only reason to do the effective value is down the road, we want to be able to finagle like we're going to have different right? I mean, it's really, yeah, I mean, so right now,
+
+Speaker 4  2:47:34
+because theoretically, when you set the product, we set the effective value to that purchase amount
+
+Matthias Miller  2:47:39
+or not, right? We, we could, or whoever sets it up, can, whatever,
+
+Speaker 4  2:47:44
+yeah, but we need to be able to then edit the affected value to get the payment. We Is that
+
+Matthias Miller  2:47:52
+what you're saying? Well, we need to be able to override
+
+Speaker 4  2:47:57
+the override. Yeah, payment value, yes, or the contract value, and or,
+
+Unknown Speaker  2:48:05
+yeah, yeah,
+
+Matthias Miller  2:48:08
+okay, and then that's, that's that then becomes whatever new thing we come up with is what we calculate from.
+
+Speaker 4  2:48:19
+Okay, so contracts are essentially ready to go like he could be stuffing stuff in. We think if we once we add that field and an import, yes, and we'll want to set basically everything on here, as in everything in the contract section, contract type, status, contract ID, start date. It's gonna take trying to send salesperson, dealer. It's a little Izzy, right? Was it iffy? Well, do we just because it's not gonna set, it's not gonna create the right type of contact?
+
+Matthias Miller  2:49:00
+No, we just assume they're already created. We need to set primary and secondary customer. Need to set the product in some capacity, to set all this, set this stuff, and obviously update calculations when it's done.
+
+Speaker 4  2:49:17
+I'm guessing product. We're just going to want to use a numeric ID, I would think so, yeah,
+
+Matthias Miller  2:49:24
+presumably I mean potentially rental fees, potentially contract resolution, and then a separate import for payments, yeah, I
+
+Speaker 4  2:49:31
+wish this is all that stuff will obviously change a lot now, yeah, okay,
+
+Unknown Speaker  2:49:40
+I think so, okay,
+
+Speaker 4  2:49:44
+all right, yeah, good, yeah. So I think I know I'll have Nick or someone tweet contracts and then get him or Sean to work on creating an import for Dwayne, and we'll work on, yeah. So should I focus on payment stuff more than impact? Probably, at this point, throw the data model in there. Technically, yes, yes, yeah. Because I think I could probably, this afternoon, knock out the just get the RG in there. And then, once we have that, then we can have, I can have someone create a imports.
+
+Matthias Miller  2:50:26
+The number one bottleneck that's affecting both deliverables is importing data into the system.
+
+Speaker 4  2:50:31
+Yeah, okay, so would you handle that this week as much as possible? That would be wonderful. Perfect. Awesome. Okay. Thank you, sir. Yep, yep. Bye.
+
+
+Transcribed by https://otter.ai

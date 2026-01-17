@@ -1,0 +1,425 @@
+Unknown Speaker  00:04
+Good job
+
+Matthias Miller  12:58
+Sir. Hey, how's it going? Oh, pretty good. Let me see if I'm just thinking Josh, see if he wants to jump on to he's getting all excited about this thing. He's, he's thinking
+
+Unknown Speaker  13:15
+that that
+
+Matthias Miller  13:19
+will some of our clients actually have fiber to the location like the home the lumber guy does. And we're kind of wondering if you could actually use the digital bridge device and Python be doing JSON calls to a database.
+
+Speaker 1  13:37
+Nice. So that'd be sweet. Yeah, he is with us. Okay. Talk to us.
+
+Speaker 2  13:50
+I see. Ellis is willing to go on video for you but not for me. I feel hurt on my behalf.
+
+Matthias Miller  13:56
+I don't need to do is you don't want to you know, every morning I asked him to ask him to do video and you don't answer that. I just know. That's a no for that day.
+
+Speaker 2  14:08
+Yeah, well, you don't want to be asked questions you call the person and when they answer, then you ask the question instead of answering the question and then calling them Okay,
+
+Matthias Miller  14:15
+as you were say, talking about word processor stuff, what are some of your ideas?
+
+Speaker 2  14:22
+Well, I don't know how much you guys have already talked about. But the idea being that you build a mini invest in the brain office Python, and
+
+Matthias Miller  14:35
+really bare bones please
+
+Unknown Speaker  14:39
+remember your bones
+
+Speaker 2  14:42
+embarrassingly bare bones and then you either use the actual spreadsheet as a data model or you have some sort of sequel light data strip behind it or something. And then you push that to a Ethernet connected Raspberry Pi which then talks over cell phone to our servers and pushes, pushes data at us. And so aside from then what you do, okay, so that gives you a backup, but it also gives you schema updates. So instead of handwrite, your whole schema Update Engine, whenever you want to rename or add fields, you push it on to the server, you do the system update, and then you have like this dump and reload function on the client, which is also when they do something and or we have some bug client side, and it just toast their database, we go back to a backup server side, and clean it all up or fix your mistakes, or whatever we need to do and then say, Okay, now click the reload everything but,
+
+Unknown Speaker  15:39
+and, and will,
+
+Speaker 2  15:43
+like otherwise, like support is just gonna be a nightmare, because it's like, they'll say, it doesn't work. And you'll be like, I have no idea why, like, I don't know what your date is, I don't know what you did do.
+
+Matthias Miller  15:51
+So are we mirroring the InVEST system on the Raspberry Pi in talking to it, are we using just cloudbridge. And I got a little bit aggressive with what I was describing to you first. So so let's start with the most basic version of the Raspberry Pi, it's just a push a push a backup, up to invest, does that make up that posting? And so and so, in theory, I mean, ideally, it would be on their network. In theory, if he if they, if they're in a spot where they don't have a network or their content, purchase them to have it on their network, you could have a Python, you could have something on the outside, I have an option on the on the word processor, as you says, Be the flash drive. And that would put an encrypted copy on a flash drive, you take it over to your accountants house or your brother in law's house, you plug it into our Digital Bridge device, and it would do the backup from there,
+
+Speaker 2  17:00
+push up to our server, see if he wants to do updates and reload company load and all that kind of thing.
+
+Matthias Miller  17:08
+But the easiest one is if they if they're willing to have it on their network. And we might be able to say you just it needs to be you know, for this to work you need, you need to have a you know, our Digital Bridge device on the network, it deals with backups and system. And that would be a simple place to start is for now you have to have our Digital Bridge device available on the network. So that you can easily do the same to the back of the data to into the app hosting system. And then also the end and schema updates are basically backed up to the app hosting a plat catalog update and push the new schema and we're and Python scripts down to the client. So there's no Janella needing to Kota schema update in Python. So couldn't we wouldn't I don't know if you want to do this. But could we have an alternate approach where we don't have a digital bridge device? Well, everybody needs to use a flash drive. Yep, sure. Okay, you just have, if you want to, we have this device that sits on the computer, you plug it in. We're we're we're we're I don't know how you tell them when the process is done. If it's headless, unless you have it's a it's a one inch display. Okay, Josh does this with for affordable barns. It's it's red when it's working and green when it's done and maybe a number if there's an error, you know, something really basic. Okay. But then we could also then have a, okay, so here's what we could do. We could say, every day or every week to keep using the software, you have to plug it in to get a backup. And it's at least going on a flash drive. Yep. And then there would be an option to take this to the accountant or the accountant comes in on the laptop and drags the contents of the flash drive onto a go up, upload this. And if we want them to do an update, crank crank crank and say go download this and put this on the flash drive and take it back. Yeah. Now, why would although I think you're right. But do we want to build both in HTML in our own way do we do build both an HTML interface and a Python and the Digital Bridge object? I mean, because the thing is, you could you can copy the flash drive. And you say, well, you need a Digital Bridge device. You know it's $450 And we recommend that you keep it on site. If you can plug it into your network or just keep it plugged in, just plug it in when you need it. Or plug it in at your accountants place if you want to. But any place you've got power. Got it?
+
+Speaker 2  20:21
+Yeah, I think that, like, so we kind of ended up with it needs to be on site. It's just like, okay, so it's exactly kind of where you went with us like, Okay, we could upload it somewhere. Well, why wouldn't we just put a little box somewhere? All it needs is power? Well, if all it needs is power, why don't we just put it right beside? Or in the back closet? where they're at? Or why don't we just put it inside the desk? where it's at? Or why don't we just connect it with another cord?
+
+Matthias Miller  20:45
+Yeah, I think you brand bias either just as digital bridge or a Digital Bridge flash drive. So, which they're all finalities. So, you know, a, the reasons. The reason I buy fax works is that it's using the analogy of fax machine, which is accepted for things like email. And I think if we use the analogy of a flash drive, that makes total sense. I mean, if you if you call it an app hosting flash drive, and you brand that thing as an app hosting flash drive, maybe it's an app hosting digital flash drive or something, right. Yeah. Are you mean, I don't know if you have to throw the word digital internet, but you just bring it as an app hosting. Anyway, SkyDrive I think you call it a flash drive? I really think you do. Because that's what does a flash drive, do a flash drive is a way to copy files. And that is what this
+
+Unknown Speaker  21:53
+device is.
+
+Matthias Miller  21:57
+Now, interestingly, when I described the technology to the newer guy in Kentucky, he said, Oh, this is a private, you have use a private network, which that just freaks me out. Anyway, okay. And then the only sort of circuiting is for real time updates. In real time backups, we try to connect it on the on the land if we can, I think we'd be connected on the land if we can. Yeah. And I think we will have clients that will be willing, I think you asked the client, what features they want to use with this thing. I mean, we say you need this for system updates and for backups. There are some clients that will willing to use this to do things like automated emails, the new order guy wants to automate email sending, and he'd be totally happy to have us use our Digital Bridge to push data into an app hosting system. And then we then we do email, email templates and sending them out from there.
+
+Unknown Speaker  23:03
+So I mean, I just
+
+Matthias Miller  23:11
+here's what it is Matthias, the, this is hilarious. This is like a 20 year, deja vu. But do you remember the the the detail forms that we created for all state back in the day? This is really what we're trying to code. The Python is that digital is that stupid, stupid digital form with almost no logic in there?
+
+Speaker 2  23:37
+Do you think it gives you maybe this what you're saying? I just missed it. But like if you if you want some super complicated report, we can build it in invest. And you you plug a flash drive in or on the network and it goes and runs the thing and then comes back and drops a copy on your network overnight.
+
+Unknown Speaker  23:51
+Right. Right. Right.
+
+Matthias Miller  24:01
+The the I think one of the questions, although I don't think it's that hard. I mean, we probably will sometimes have things that especially these things we want to do specialized Python that you want to write and then click this button and click this button, then something happens, I don't know. So it will take some time to figure out what the framework looks like and how much customization we have. We tried to do. Can you what level of valid field validation do we do? What level of visibility? Do we have editability visibility conditions? I presume we don't have stuff like that. Well, I don't know that LSU and I talked about this. I don't know that it's absolutely out of the picture to be able to translate
+
+Unknown Speaker  24:49
+expression expressions into Python or some equivalent.
+
+Matthias Miller  24:55
+Well, I mean, maybe if especially if you if you what you could, in theory as possible what you could do is use General Allen's mini expression thing, or hat or basically there would were these systems, if this is a sinkable database level, you would say, only use simple expressions. And you will actually have some kind of validation that lets you know, hey, this is too complex an expression. I don't know. The, I'm thinking like, we will never try this. Well, I'm also thinking we'll do kind of what you did with plastic accounting, where if we have a contact record is going to be a stupid simple record. And it basically we don't have all completely separate record sets for Python. So we have a, a PI contact, or an ELO contact for libre office, that is much more basic than our main contact screen. And then you sync with that one. And then if we ever wanted another place of view, you do a second you have a connector to think about with the other one is way too complicated to actually have this thing? I don't know, I might be wrong. But our main modules are just so rich compared to I think what we want to do here,
+
+Unknown Speaker  26:22
+it's fear.
+
+Matthias Miller  26:27
+And maybe we actually put these piles on systems. Maybe we just say we ever use modules, we're
+
+Unknown Speaker  26:34
+literally creating. Just,
+
+Matthias Miller  26:38
+I mean, just basic Python stuff. I mean, and I mean, these are just bare bare bones. Yeah, well, it's, well, okay, now even But see, once you start creating, you'll, you'll want to create a Python context, I bet or at some point your wish to do that. Then the next thing is how do you do insertion points? Or maybe you never do insertion points, it's only a pins. You only do I think only doing a pens would be reasonable. Janella needs to model the I mean, it's I think if we're doing this all through Jen Allen's designer, then it's a matter of I think there's a little bit of data modeling we can do on that front. Pretty easy. Yeah. But it's reasonable to really support things like orgies.
+
+Speaker 2  27:46
+I vote no to start with, but we could do it, like I said, because there's a whole list of things that you could just slowly start getting getting
+
+Matthias Miller  27:58
+I think are the biggest thing is going to be I mean, okay, what Josh says is it takes it takes 10 acts to build something in Python compared to compared to invest. Now, the more we use frameworks, the better off we are, but the framework itself, pulling that out is going to be, you know, 100x I don't know, whatever, it's not cheap. So I think I think we really have to rethink ourselves with this as this is, this is I don't want to use the word janky. But I'm going to I mean, this is really simple bare bones, you know, kind of ad style software that we're trying to create, but with good design, and with enterprise backing. Anyway, because because you're not, you're not going to have the patience to or, well unless Janelle does. But but then even the more complex we make it, the more somebody is going to encounter the bugs and then somebody else is gonna have to figure them out. Because we don't have 1000s of users like we do for MS Webb.
+
+Matthias Miller  29:36
+And maybe we pick and choose our clients and and we tell some of our clients, hey, we're rolling this out. And your problem is tough, or what can we do? Can we do phase one, which is pretty straightforward. And then later, we're going to phase two or
+
+Unknown Speaker  29:57
+you know, that kind of thing.
+
+Unknown Speaker  30:09
+What kinds of things are we people asking for?
+
+Matthias Miller  30:13
+Okay, the simplest one I have is the one guy needs to sales tax is based off of city in a city 400 different city towns in Kentucky. So if he could, we might want to push tax? Well, we may want to have software that shows you here the 400 towns, and here's what their tax rates are. Or we actually push that into classic accounting as separate tax. I forget what their tax classes or whatever they're called there, he thought it was too complicated to he doesn't want to hand enter 400 items. So he was just going to have one item per tax rate. And then manually, I mean, look at a piece of paper that says, Okay, this town, this rate and the manual rate, which that might be the right thing to do. It just deserves design. But then he needs to have reports coming out of there that says how much money each town should get. Because of I mean, last month, here are the towns we had sales we shipped to, there's the amount and here's the rate, and here's what we collected, etc. I mean, that one is stupid, simple. That one, just, I mean, it's just about a script. But I mean, although on the other hand, you could suck it out, it's not going to be charted out of classic accounting, push it up to our server and push the report down. And he just be pleased as can be. He also wants to be able to voice of the people. And he'd like to talk about it. But that's, I mean, that sounds like the combo of the three sort of things he was asking for that said, Well, another one he asked about is How easily could could I could we tie in credit card processing to know? I mean, because they have an independent credit card machine. I said, Well, you'd have to talk that sounds more complicated, we'd have to talk. But the but sending emails, well, that's easy. So you know, we could solve two of his four problems, and his sales taxes his biggest problem. Right now they've got a spreadsheet with, you know, hundreds of columns that they're doing for this
+
+Matthias Miller  32:29
+and I just don't know what all we'll encounter as we get into into it. Will people be willing to spend for software? I mean, it's just so he's, he's, he was not, I mean, he's sound pretty ready to spend 3500 for design on the thing so
+
+Unknown Speaker  32:52
+I think you
+
+Matthias Miller  32:53
+set the bar for entry high enough. And so that it's just quite cool. I mean, you know, to weed out the little guys
+
+Unknown Speaker  33:12
+but I mean, the beauty
+
+Matthias Miller  33:13
+of where this is going long term is because we have an app hosting system the back end. One one of these churches finally gets internet well, we might have to do a rework of their they would expect it to be a rework of the software to get it to run on Windows. They wouldn't be surprised about that. But we have all the data in a database then have it modeled cleanly, and it's not that hard to sync it over and keep on going
+
+Unknown Speaker  33:37
+with Yeah, suddenly the contacts work way better than they ever did before.
+
+Matthias Miller  33:40
+Exactly, exactly. But as I had not known that triple he was older Amish I've seen him on calls and I've always wondered what his I asked him No, you did. Yeah. So just curious. Please don't mind I'm fumbling with ash Yeah, yeah, he's older Amish says Windows an internet I think it's kind of locked down internet. Or as he said, we have to be careful which I have no idea but my It's a pleasure. He is AQIS Ahmed all you sir. Yeah. Anyway. Anyway so far? I mean, those were some of the the technology pieces that we were playing with. So okay, so So what is the actual UI in
+
+Unknown Speaker  34:38
+Libre Office? Kind of Delphi
+
+Unknown Speaker  34:49
+What do you mean like what does
+
+Matthias Miller  34:50
+it look like dialog Windows dialogues mean Is it is it like I don't like it like it to control interface or like tea. Like, is it like a? Like, do you? What's the framework methodology? Or is it like, you have some kind of metadata data that you feed the base or, like,
+
+Speaker 2  35:12
+if you do Python, you, okay, there's two ways you could do it. The way I'm doing is generating the dialogue with Python. So but it's, it's not like it's their whole, it's wholly their own thing. So it's not like anything else. And it's FLAKIES, I'll get out. And you have to build everything from scratch. So what, what I'm doing is starting with a spreadsheet using mostly spreadsheet as data model, and then detail screens is, or the equivalent thereof get launched from from there. So you select the row you want to edit, you click it, you get, get editability from there. So what I'm doing is you start with a spreadsheet, and you have buttons to start doing stuff. I don't know if that's what you'd actually want to do. If people if that feels comforting to people like, Hey, this is not pushing the bounds too much. Or if you actually want to, like launch more directly into menu kind of app, where we have like a 2d menu where you click things and change the colors and stuff. Well, I'm pretty sure you don't have any colors, but many colors.
+
+Matthias Miller  36:34
+So you, okay, over budget. Well, Matthias, what was your question? I mean, does that answer your question? Are you wondering what does the application look like? No, I think this question, I mean, I think then there's there is a question of, well, do you use spreadsheets effectively, as reports? And if you would, you could automatically apply filters, each of the columns, freeze the data on it, and pick people could very easily run very dumb reports. Now, we're planning to put this stuff into into a database in the backend? Well, I don't know.
+
+Speaker 2  37:13
+I mean, I would expect you use the spreadsheet as the report output. So it's like one report your pop up, like what you want your prompts to be in this kind of thing. And then bam, it fills it rows.
+
+Matthias Miller  37:24
+So think of a spreadsheet as a window Report window, basically, maybe and you discreetly create temporary files all over the place, right? What is it temporary tabs, temporary tabs
+
+Speaker 2  37:41
+or you have one sheet per report, like and then you click the button at the top to change your, you know, rewrite it.
+
+Matthias Miller  37:52
+But then, for those reports, I mean, if we're doing dynamic reports, you're still going to have to, either we're gonna have to push reports into metadata, which we probably don't want to do. Or you're gonna push it out and run it server side, or no.
+
+Speaker 2  38:05
+Yeah, so I think there's two kinds, there's like a simple report. And then there's a, I don't want to call it Digital Bridge report or something. And the ladder, it's a server and you got to take your flash drive over there, or wait for 30 seconds, or whatever.
+
+Matthias Miller  38:20
+And on simple reports, you'd still do stuff like grouping and sorting and totals
+
+Unknown Speaker  38:25
+for things afar.
+
+Matthias Miller  38:28
+If you want to keep it really stupid, you can just dump all the data into a spreadsheet. So you get basically a report that says that does all joins and possibly repeats and then you just turn on the filtering feature and just let them filter down the report to whatever they want to see.
+
+Matthias Miller  38:49
+Maybe even do that with a live connection out to the deep to the to the database back end.
+
+Unknown Speaker  39:02
+Yeah, I don't know how you do grouping and stuff, like totals,
+
+Speaker 1  39:04
+but you wouldn't do totals in that case.
+
+Matthias Miller  39:16
+Anyway, okay. So next. So do we have the sales tax guy is the first guy that we tried to do this where? I think so. He's pretty interested. I mean, we could go back through all the people that we said no to because they don't have internet and there's quite a few of them. There's a lot of them. Josh, how would you do that? The import from the way I had been planning to do the import, side note from class Counting was just to have some kind of naming convention, where app hosting fields correspond with the appropriate fields in their SQL database, and then just make it all be automated and we just suck data in. You do that? Or would you do a when our script it maps, I guess, if we had an x 30, here's what we could do if we would if we would dump an ECL sequel date tables. Based on on outer level, you'd have table name array of records. With keys being the column name, then we could have an extra D list server side or next 30 input server side, that would suck that stuff in map it to the appropriate field and shove it into the database. That might be the most resilient way to go.
+
+Speaker 2  40:51
+Yeah, I think I pushed to auto either auto Jerry x 30s, or use credit records or something, update records. So you don't have to, you'd have to maintain the x 30 bridge there.
+
+Unknown Speaker  41:08
+I mean, whatever you can
+
+Matthias Miller  41:13
+see, it feels to me like what we're wanting to do is I mean, as much as possible, find high value simple examples, and kind of figure out how to do this one now and how to do that one now and kind of spit by bit eat away at the thing. I think what we want to avoid is building $100,000 framework before we have you know, $500,000 with the business so how much how much to get a choirboy or will do even want a job I guess we don't even need it. You can just straight up use Libre Office installing on classic accounting or can we just straight up buy
+
+Unknown Speaker  41:57
+a system with
+
+Speaker 2  42:03
+you just buy a triple the, it has its own set of quirks. So when I do it, I test on there because there's weird gotchas that don't show up in the normal Linux version of libre office.
+
+Matthias Miller  42:18
+Do you have one or two use a VM of it? Or what do you have a VM?
+
+Unknown Speaker  42:24
+Can you share your VM awesomely?
+
+Unknown Speaker  42:37
+Cool.
+
+Matthias Miller  42:47
+Anyway, that's enough to kind of stir things around. I didn't. I mean, I told this guy that we're, we think we can do it. It'll take some more time because we're working out the details. But we've done we've done word processor stuff before. And so we're confident we can give them good tools. But I kind of we wait to r&d until we've got here's a compelling use case for it. And let's do that one. And now,
+
+Unknown Speaker  43:17
+I mean, ability to,
+
+Matthias Miller  43:20
+I don't know if I want to ever, you know, email your invoices from r&d. I am a little bit nervous about advertising the fact that you can email invoices from your choirboy. But that's just that is just ridiculously cool. I think augmenting classic accounting is a really, really good first step. There's a lot of people in deep pain with classic accounting because first of all, the software I'm sorry, it's under maintained. And and I think if we could suck data in at least, and give people custom reports that they need. I think that could be a possible easy win. I don't know for sure. But it's been a theme that I've seen at least. Yeah. If we want to advertise that I think we should you and I should have a call with Alan Hoover just to talk through what we're proposing. So I think we can advertise Libre Office programs for the for word processors, without any any I mean, that's totally fine. But I think if we talk about classic accounting, or mentioned any of the the brand names, we should just tell him what we're thinking. Yeah. I don't know that we would even need to I think this.
+
+Speaker 2  44:35
+Yeah. Good. Well, no. Although I think I don't think people connect the dots.
+
+Matthias Miller  44:49
+Certainly connect the dots. I mean, there's only one word Libre Office Word Processor out there. I don't. Okay, that's things that I think of it basically, if we use one of his brand names, we do need to have a written approval from him. Otherwise, I don't mind using the terms word processor Libre Office programs, he said that would be fine. And that's totally fine. I'm a little bit nervous about talking about Internet connectivity or email. In ADS. If someone calls up, I'm totally fine with having it. Maybe we'll even have a PDF of what we can do. This is the kind of thing you know, if if you want to you can do this, but I'd rather not have a stick. I just don't want to put it in front of 80,000.
+
+Speaker 2  45:38
+I agree. Wait till you see people have pain. And they say, can you do this? And we can say yes.
+
+Matthias Miller  45:43
+Yeah, yeah. Yeah, I agree. And I don't even know that you want to offer it to them? Sure. Um, well, I don't know how early you want to maybe it makes sense. Maybe not to but you know, I think I think asking them what, what they're going to do and letting them bring up the subject is going to be much better. And it's like, oh, yeah, well, we could we could do that for you. We don't have to tell them. It's as simple as flipping a switch. Right? It doesn't feel like an out of the box features. Yeah, sure. I'd be i that'd be fine. Do you think we could thread the needle somewhere? That we're we're a little bit aggressive than that. But. But
+
+Unknown Speaker  46:36
+I mean,
+
+Matthias Miller  46:37
+okay, here's a funny thing that may be actually worth considering. What if, what if we'd write a feature to it? Maybe this isn't even necessary, but to automatic to what if the Digital Bridge can also send faxes?
+
+Unknown Speaker  46:56
+And just as a
+
+Matthias Miller  47:02
+war, we create a module, you know, send invoices. For your word processor or something? I don't and I mean, I don't know if I'd advertise it, but but
+
+Unknown Speaker  47:25
+or, here's
+
+Matthias Miller  47:26
+another way that when you're talking to someone is is I mean, if you if you're ever needing a way to send, like send a quote, or an invoice, or a statement to a client by fax, you know, that could be something we could talk about options. And if they don't bite, they don't bite, but I don't think that's
+
+Unknown Speaker  47:53
+yeah. Anyway.
+
+Matthias Miller  47:59
+Cool, but it's about what are the use? I think with time we can start talking about what are the use cases? What does it look like? But But I think we wait till we have the first with the first pain, I mean, first paying client and then go from there. So
+
+Unknown Speaker  48:16
+to show you do you have high level design,
+
+Unknown Speaker  48:21
+unless you think we should
+
+Unknown Speaker  48:23
+preempt. Okay.
+
+Matthias Miller  48:26
+The other way to do it would be to have either been or your assistant comb through the database and say, you know, find the leads that didn't have internet and just call them up and ask them questions, you know, are you still? Do you have software? Do you use a word processor or Windows? Are you still looking for solutions? Would you like to talk to one of our salespersons? Put up for Ben, because he's got familiar already with the market and salespeople? Yeah. And I think we should outline fairly clearly what the script is. Or what the you know, say we do have some options for helping people who don't have internet
+
+Matthias Miller  49:13
+and then I consider my appointment with you go ahead. Would any of this extend over to a Windows client that doesn't have internet? Well, couldn't you still have the same kind of thing of saying, Do you have a friend that can plug this into their network and you can take a flash drive over? Well, I mean, I wonder if you can't leave this on their network. But what if they have windows? Then? Okay, here's, here's Josh, this is what I was thinking. I think we wait to target the windows market until we have Up until we have until invest is running on Linux, so six to 12 months. And at that point, we create a little, I mean, think Linux box, Linux blade, something like that. And we'll put it we'll have invest web actually running on their side with backup star side. Browser, they would run a browser browser application or something we create, I think if we create some kind of Chrome for it. So it's a literal browser, I think it was a huge win.
+
+Unknown Speaker  50:37
+I think too. Yeah.
+
+Matthias Miller  50:40
+It would be kind of nice. Actually, the I mean, it's too bad Linux isn't here yet. Because that could actually be a pretty interesting model. In the short term, where everything's running off of a local system, like, like web
+
+Speaker 2  50:59
+browser, or just like, the sync process,
+
+Matthias Miller  51:03
+like Python would use web web services, to talk to the, to the, to the Raspberry Pi. Got it. And then we would just push up the database itself, run the update on the database itself, push it back down, and cache a copy, you know, a Live app posting records.
+
+Matthias Miller  51:36
+Then you would have basically the same framework, no matter whether you're running on a Windows machine, that's or not.
+
+Unknown Speaker  51:52
+What do you think, Josh?
+
+Speaker 2  51:54
+I'm trying to think how far we go with the Libre Office integration, do you actually go to like typing in a field, you make an unchanged, you push it to the server and evaluate visibility, basically, like that level of thing? Of it wasn't meant to be negative. I'm just sort of musing on like, where you go with it? I mean, it seems to be like it.
+
+Speaker 2  52:24
+Like, I want to make sure we're not under estimating how much work it is to build a Libre Office UI on stuff. And so I think what, what moving the do web services to tighter integration would let you have a better product at slightly more cost? Yeah,
+
+Matthias Miller  52:45
+yeah, I think we should just be really careful and picky and choosey and non optimistic early on in the process. So some, somewhere here, there's, there's got to be somebody who would be willing to write a check for 20 to 70,000 to fix their problem yesterday. Yeah, I think so. Maybe 150 even. And so we need to find job number one is go find that person. And once we find the problem, the person who has the ability to write a big check and has a really painful problem, everything else is going to take care of itself. Well, not everyone else, but there's a lot that will. Although I would also say the simpler that problem is, the better off you will. I mean, if that problem is affordable bar and that's just cringing. It's fair. So there's still gonna be somebody who's willing to write 10 To 2010 to 20k Check so simple painful problem. Um, this guy here I think he might send write you a 10 to 20k Check just for for only the for for a simple report on tax stuff and and the ability to email invoices.
+
+Matthias Miller  54:08
+Talking about servers, you know, some this has not been there. I just did a tiny bit of Googling, but probably not the right CPU, etc. etc, etc. But you know, something that looks at to run invest Web.
+
+Speaker 2  54:27
+Well, I think you have the same things that we were thinking about for the app hosting terminals back in the day. What was that? It was about the Intel nook. Okay. That hardware sitting on here somewhere?
+
+Unknown Speaker  54:46
+Sure, yeah. Yeah.
+
+Matthias Miller  54:53
+The one advantage apart from unchanged as the one advantage of having a local investor web install would be that you could You could generate complex reports very easily. And you could actually eliminate the entire report writing process, you would just push it out, download the, download it as an Excel, whatever, transfer it over, you've got your report, the main thing that you need then as the metadata on the prompts that you're going to put in, you know, name, name label tape, or something like that?
+
+Matthias Miller  55:58
+Not really, I mean, I don't know if running Windows on a little box like that is even an option or we should even consider but I do kind of like the idea of consolidating technologies between a windows and a libre office environment if we can. I echo that, I think tire market for us. Well, and see, I think there's a nonzero chance that sometime in the next few years, we could tell somebody hey, if you do, you know, Libre Office is a pain if you can get approval. Here's a terminal that plugs into hit the local server. And it's it's, you know, it's uh, you know, it's a janky, 14 inch screen with a laptop behind. I mean, whatever that that was a that hits this thing. Josh, what are your thoughts about doing like Intel neck with Windows installed? security updates being terrifying.
+
+Speaker 2  57:29
+It's just harder to lock down. It's like I would have a tough time. Like with it with Linux box, I can say this is just about there's nothing you cannot hit the internet with it. When it's Windows. I don't know that I can confident lock it down to say, you know, if you go plug a mouse and keyboard that you can't get internet. So it makes me Well, aside from the fact that Windows also posted data plans? I don't know. It's just I would I think there's less work getting invested working on Linux or dealing with the bugs over there than there is.
+
+Matthias Miller  58:03
+Trying to get windows locked down. We're not that far away from what do you think the actual timeline is? I'm getting, getting it working. End of the year. That's a quick look at template exports done. So if we could find a client who'd be willing to do a Digital Bridge. While this is probably unlikely to happen.
+
+Speaker 2  58:33
+I mean, if you did that, in theory, you could say yeah, full bonuses. Like they got people sitting in the office that are online salespeople that have internet access and are hitting hitting database. So you could say, well, if you you know, if you have your brother in law command, he can plug his laptop in and he can use the full application I guess I guess he could kind of anyway, if he accessed
+
+Unknown Speaker  59:04
+posting one.
+
+Matthias Miller  59:06
+Well, but we really have to, you have to think about which is where's the current data.
+
+Speaker 2  59:13
+That's true, the guy the guy with a laptop would build at it
+
+Matthias Miller  59:20
+but to that point, you get read only access to it which can be nice for sharing information with your accountant etc. But that's not really
+
+Speaker 2  59:27
+so even if don't do on changes if you have a local server you can at least do like say validation. True.
+
+Matthias Miller  59:36
+So the real question is do we want to do we want to try some well try supporting we want to try supporting a Digital Bridge device about a local server right
+
+Matthias Miller  1:00:04
+Anything, the question is How bad is it to build it out like that? Where if we just build the Python layer with that in mind that we're going to swap it out at some point?
+
+Unknown Speaker  1:00:13
+I wonder if we can't, but I don't know.
+
+Matthias Miller  1:00:25
+I mean, it's not that different.
+
+Unknown Speaker  1:00:28
+Imagine that we had a I don't know exactly how we want to do this.
+
+Matthias Miller  1:00:37
+But if we, if the Python layer basically dealt with the equivalent of query record calls. And we just did a full dump of the database in that format. And we did a one to one mapping of field names into a SQL database. I mean,
+
+Speaker 2  1:01:01
+I feel like it, like the syncing process looks relatively different than what you're saving to SQL or SQL Lite, or spreadsheet wherever that he dumped XML and, and, you know, Delta's, but I started I have to go. But the other one is like, on site, when I click the Save button, before I click, the dialog closes, I make sure it's validated, and it gets stuff back into the database. Cool, let me use on the Linux server idea. Interesting. Alright, sorry about that.
+
+Matthias Miller  1:01:46
+I really wish I know, I'm pretty sure that we can get away with Digital Bridge. And I, I'd be hopeful we could get away with. Okay, first of all, I just we should install Windows Server is that the optics are so bad, as far as, and so
+
+Matthias Miller  1:02:10
+I'm convinced that nobody's gonna give us trouble with well, especially if if literally, the Digital Bridge would not have to be in your office, if you don't want it in your office.
+
+Unknown Speaker  1:02:22
+I kind of feel
+
+Matthias Miller  1:02:25
+I kind of feel like it's worth it just from it. Just from a betting the market thing. We should go with that approach. And and maybe this is this is our bare bones approach. And you know, if you'd want to do something more clever than here's what we do there. It's, I mean, yeah, this is really janky. But I don't know why we couldn't. Let's see, we had a Linux server running, when we couldn't have a small whiskey running there. That gives webs that emulates web service calls for the next six months if we really need that. Anyway, okay, let's say that one more time, for the next six months. Yeah. Until we can do Linux, that we wouldn't have just a really dumb whiskey that's running that emulates web service calls.
+
+Matthias Miller  1:03:38
+I mean maybe it's more work than I think it is. If you don't have our geez,
+
+Unknown Speaker  1:03:48
+oh, I see.
+
+Matthias Miller  1:03:57
+Your only reporting would be literal raw database output with filters in your spreadsheet?
+
+Unknown Speaker  1:04:15
+Well, I'm sorry,
+
+Matthias Miller  1:04:15
+I lost that technology. So I don't know if you want to describe it or jump to keep on going. Let's see when we get a bunch of other stuff. Okay, talk about now, are you if I get a client that wants to do high level design on something, we find what to think how level design on one of these? Yeah, yeah, I mean, assuming all other scheduling things, which is talked about but yeah, that's right. Okay. Yep. What's next? Simba is status. Yep. Tim is out today. He's sick. Don't you want to dip Salesforce? Yep. And switch to us. Please. And even without that, push going fishing, guys see, but this basically bumps the schedule on this project, so as far as the specs is going to be done, yeah, it's fine on vacation next week. Okay, that's fine. What's gonna happen? I'll okay, if
+
+Unknown Speaker  1:05:25
+I guess it's fine.
+
+Matthias Miller  1:05:30
+I'd love to do the pricing with with. With Nicholas. He's the one that's doing the coding. And then I could walk him through the design. So sort of if it's after I fly out on the 20th. So if there'd be any way I could get hands on parts of it, where you see, well, this part and all this stuff is done, go ahead and get your estimates on that stuff.
+
+Unknown Speaker  1:05:58
+That could be helpful.
+
+Matthias Miller  1:06:00
+But if it's pulling everything apart, that would that's not the I mean, that's different. Okay. And as far as lists, we'll be heading out on the 20th May. If there are parts of the design, the symbol is designed to him earlier. Sooner rather than later, he can start review and pricing of that. Lansing. He'll be pricing it with Nicolas. Not with not him. Okay, yep.
+
+Matthias Miller  1:06:54
+Okay, I'm just gonna send this as an FYI. To Tim on the signal. Yep. So the other issue is, there's two things that are just driving me crazy. Yep. Tim and I kind of went round and round and I don't know what I don't know. But basically, not the agenda, delete button. Delete button. No, not that. Okay. I'll be the, I'll take care of that one for you. So, yes, the permissioning is number one. Because you've got multiple levels, you have a memory of a facilitator, you have a regional rep, and you have a super admin hierarchy. Yep. And then they want some people to see some contact type, some people like to see not see others. And my mind just, and then you've got different record types. You have a goal record, you have a monthly meeting record, you have a growth ring record, you have development resource records, and some contacts you want to modify in some not and maybe it's okay, just to carefully spec out who can see what and who can edit what. But I'm terrified. Oh, ha, ha ha. I don't know if you've got any brilliant solutions and.
+
+Matthias Miller  1:08:42
+Okay, here's what I think. I think you should create a centralized table that that lists all the records that are going to have restrictions, and basically a spreadsheet and who can see what, and who can edit what I mean? Well, I guess it would just be read only editable or hidden read only editable. Because I think once you push it all into a table, it might not be Yeah, I wonder if that's gonna help. So, do you mind having different things based on contact type in that case? It talks that What do you mean by that? Like, if they put the pipeline in here, then well, everybody should be all members should be able to see active members. I mean, what do you do with contact visibility? That's actually a significant question. What do you do with contact visibility? Okay, good, go ahead. Good. So should all members be able to see other members are saying all members can see all active members? Got it? Okay. But you might have inactive members who left who left a review on a development resource, that review should be visible, we could hide their name. Right, in that case for record restriction, right. I think I think probably the answer is, is to go ahead and allow subsetting it by, by contact types and just lay out exactly how these things are supposed to be? I think so. I think so. Yeah.
+
+Matthias Miller  1:10:37
+And as far as work, I mean, no, I would I had wished to have this thing accepted by middle of May it sounds like that's not happening. And so do our full blown are they going for phase one? Are they pretty aggressive or not? I don't think it's super aggressive. I don't know if they're doing Salesforce in phase one either. I told him they were gonna talk this week, I told him be sure to demo sales opportunities because it might give them what they need. Sure, sure.
+
+Matthias Miller  1:11:14
+The other day, ditching Salesforce that makes me happy, it's the right thing to do. It is the right thing to do. It is the right thing to do. Um, the other thing that we got hung up on I think we have a decent solution was subscription management. And I think basically what we're gonna say is subscriptions are four year with a 30 day grace period. And I think what we're going to do is have a here's when the subscription starts. And here's when it renews. And here's when it ended. And they after the 30 day grace period, they have to manually go in and end it and it takes them out of any pending meetings, et cetera. So I think we have that nailed down but I just have this knot in my stomach that somehow subscriptions or I don't know
+
+Unknown Speaker  1:12:17
+well, once you send
+
+Matthias Miller  1:12:18
+this thing over I always find stuff when I go through design. So So I wonder if some of this as you just send it my way at some point and and Nick and I read through it together and see if we get knots in our stomachs or not
+
+Unknown Speaker  1:12:38
+yeah
+
+Matthias Miller  1:12:47
+Alright, so the main pieces that I have on my list now are capacity, design capacity code, housecoat, crafters, engagement, etc.
+
+
+Transcribed by https://otter.ai

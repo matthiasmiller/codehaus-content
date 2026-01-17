@@ -1,0 +1,179 @@
+Speaker 1  03:16
+You share screen. Hey, I sure appreciate this. was, copy, paste, and it ain't happening. So the idea was that this was copy. I sure appreciate this.
+
+Speaker 1  03:16
+the main. Hey, I sure appreciate this. You share screen. So. the idea was that this was copy paste, and it ain't happening. Super base So what's happening then is when I run the actual internet execution, and this whole thing works fine on the original copy, which is named more. a PostgreSQL in the cloud. Basically, the main thing that I have gathered is that you don't really call custom SQL queries externally, but instead you create functions that, I guess, basically have the SQL statement in them, and then it in just references that function which causes the SQL statement to run. So what's happening? This is a chat bot, by the way, and I do know for a fact that I was able to get the data into the database. So you're looking at it. The data actually made it in. The structure of this database is exactly the same as the one I copied me, but meaning, um, meaning this kind of stuff, very simple, four columns. Every one of these things matches, unless I'm just like, totally asleep and messing up. Um, think, how do I get to that quickly? That one's more a this one Sudbury like, if you compare top to bottom, I am pretty sure they're exactly the same, and the data is in there. Uh, I get errors, and I've been asking chat GPT questions about it. I initially had no idea about the functions and hadn't duplicated it, so I created that function. But it's just like every time I get further down the road,
+
+Matthias Miller  05:14
+it's, go to the function definition, sir, you're kind of quiet. Go to the function definition,
+
+Speaker 1  05:21
+right here. And again, this is so this was an exact copy of this one. Um, chat. GPT told me that the problem was that this was too ambiguous, and it suggested that I add like, I guess it's like database, Doc tables, how that works, or something. Are
+
+Matthias Miller  05:41
+you switching anything in here? Or is it literally copy paste? It's
+
+Speaker 1  05:45
+it was, it was literally copy paste and then change more a vehicle inventory, which is the name of the table, to Sudbury inventory, which is the new table name.
+
+Matthias Miller  05:57
+Pull up the definition to the two tables.
+
+Speaker 1  06:01
+Here's the original, here's the new.
+
+Matthias Miller  06:09
+Okay, we'll go back to the error or no, go back to the function. And function is here,
+
+Speaker 1  06:18
+side by side, on the side by side, original, and
+
+Matthias Miller  06:25
+go back to chat GPT or the not the Chatbot. Sorry, go where the Chatbot? Yep.
+
+Speaker 1  06:39
+You want to see briefly what chat GPT has to say about it.
+
+Matthias Miller  06:59
+What are the vector store, tool settings?
+
+Unknown Speaker  07:05
+It's empty, and that's true on the original as well.
+
+Matthias Miller  07:12
+Sure see what I mean. You can see what what it's saying Say again, yeah, you can see what chat GPT says.
+
+Speaker 1  07:19
+Okay, so it started suggesting changes, which like maybe, but since it's literally a copy, that kind of perplexes me. So it's telling us, and I'm way down in the conversation here, but I've been feeding it screenshots just for clarification. So the error is telling us that it's returning a big int when it's looking for UU ID, which is literally true, like that. That is what it says right there. Why did this happen? Your ID column is declared as big int and your vector store is expecting it to be UU ID, but it's kind of like, to me, it's like, Well, okay, that's true, but that's the way it is on the original that works. So is that really the problem? Or is Chad GBT leading me astray? That's true, because you can see that right here. So that really is true.
+
+Speaker 1  08:17
+Or, I don't know what this means, or the tool did an implicit. I have no idea how to fix. So change your function, which possibly is a solution, but then that's literally changing. You know, the copy paste is this the kind of thing that happens when a version change, like this was version something, and now I'm making a new one, but things have changed under the hood.
+
+Matthias Miller  08:45
+Yeah, go back to the Animation page, base vector store. I
+
+Unknown Speaker  09:20
+i see the rest what chat GPT said, yep.
+
+Matthias Miller  09:41
+And so on. This vector store tool, you just switch the table,
+
+Speaker 1  09:46
+literally. So there's another workflow that loads the table, but I mean, it's just like, grab an FTP file and upload it, and it is working, because you can see that the table has the data and. This is what it's supposed to look like. Like. Everything about this is good to go. And it's, it's very simple. And so in here, all I've done is in the prompt, the AI prompt, it it now knows to reference. So instead of the, instead of the thing called more a knowledge base. It's now called Sudbury. Oh, there's a typo. That's probably it right there, although I'm surprised it's not throwing a different error, because it's almost like it's doing the right thing. Anyway, maybe there's, maybe there's a para typo, then it matched. Where was that sub it should be said. And so if it matched on the other side too, though, it wouldn't matter. Let me just see that. And it did match on the other side. So that's why that that. So that was a red herring. It just happened to match. So it's all good, okay? And then so, so, literally, I copied this workflow. I changed the word Moray to that literally, because it matches that. Does that make sense? Yeah. Table, when I made the table, I opened this thing and I did everything the same. The only difference is that when you click new on that screen, where is this functions? If you go to functions and click New, there's one more field that I don't see here, and it's this return type. So I asked chat GPT what to do there, and it had me go run a custom script that bypassed all this and made the table, I guess, like an actual SQL query to make the table, instead of this wizzy wig interface, and that code looked, I've Got it open here still like, Nope, It's gone that code looked like we're
+
+Matthias Miller  12:33
+and Search for the two words, CREATE TABLE, potentially great or
+
+Speaker 1  12:44
+split function this, it would have been, or is this, explain what is query, name match. No, hold on. I'm sorry. Let me just search for let me search for this return type there.
+
+Speaker 1  13:15
+That's right, this. It's all it's all this. I
+
+Matthias Miller  13:23
+I'm that UU ID on returns table, open, print ID, uu ID. That should that UID should be big
+
+Speaker 1  13:33
+edge. Oh, so it made the mistake right here. Okay, I'll just trash that table and start over.
+
+Matthias Miller  13:39
+No, you don't. It's not the table, it's the function, scroll up, copy that, go back into your SQL view where you edit it, paste it in
+
+Matthias Miller  14:00
+same seven change UID to begin
+
+Speaker 1  14:07
+that, yeah, I guess so. Let me just make sure. So Sudbury said, why I made that mistake all over the place.
+
+Matthias Miller  14:21
+Smelled right, little grape, if
+
+Unknown Speaker  14:23
+it doesn't just running
+
+Matthias Miller  14:29
+again, yeah, try rerunning your thing. I
+
+Unknown Speaker  14:56
+I also don't understand your
+
+Matthias Miller  14:57
+name is wrong. Say again. I. The query name in options is wrong so
+
+Speaker 1  15:31
+I'm still errors, different error This time column, reference IDs,
+
+Matthias Miller  16:01
+and, yeah, that's, that's the ambiguous thing. To go back into your definition. And
+
+Unknown Speaker  16:08
+are we calling this the definition?
+
+Matthias Miller  16:10
+I mean, you can, you can do it from here and rerun it like this. Dues, I don't know where you were.
+
+Speaker 1  16:21
+What are we wanting to look at? The function, or the table function. It functions right here,
+
+Matthias Miller  16:29
+that's an old version
+
+Speaker 1  16:33
+of the function. We may confuse the function with the thing that creates or edits table itself. So what? What's what is missing here, it's
+
+Matthias Miller  16:41
+old version of the function. We weren't updating the table. We were updating the function
+
+Speaker 1  16:46
+earlier. Or are you sure? So you thought this was,
+
+Matthias Miller  16:50
+we're creating or updating a function which returns a temporary table. Okay,
+
+Speaker 1  16:54
+so put this basically into no
+
+Matthias Miller  17:02
+what? But just copy and paste this into chat, CPT and Say that ID is ambiguous and have it quickly. I
+
+Matthias Miller  18:14
+let's scroll down. Just copy this whole thing and write it, not here, and the other one doing,
+
+Speaker 1  18:23
+okay, the reason I'm running it here is that, literally, this is what Na is calling. So we won't be
+
+Matthias Miller  18:28
+because that's the old one. Super, super
+
+Speaker 1  18:33
+typo. I don't Oh, you think there is a new one? I get your point. Now, at long last, scarred. Thank you for that edit. That's what you're trying to ask me. Okay, so I actually just told chappy GBT the wrong thing, right? Well, I mean, yeah, you can send it this thing and have it fixed it for your shirt. Let's just, let's just do this. Am I on the right track? Now?
+
+Matthias Miller  18:58
+No, it's not. But that's not the rate we need to delete a bunch of you need to either you can just just copy this code into your SQL Editor and run it with or just do that either way.
+
+Speaker 1  19:21
+Now I so that maybe, maybe,
+
+Matthias Miller  19:27
+yeah, here we go. Thanks for the good.
+
+Unknown Speaker  19:40
+And then I
+
+Speaker 1  19:57
+and all right, look at that. I. It doesn't show live inventories, which is not true. So that's even weirder. It
+
+Speaker 1  20:14
+didn't error, though, no parameter. That's a problem. I
+
+Speaker 1  20:26
+uh, off the top of your head, I could not figure out what this is calling or referencing or looking for. Do you know what that even does?
+
+Speaker 1  20:41
+That's fine. That helped a lot. I'll keep hammering away on it. There some of that. So basically, what really went wrong is when I first asked chat GPT, what to do about this, instead of giving me an answer, it had me just bypass this whole thing and run some SQL. But the SQL that it had me run use that UU ID instead of big end so, so that's where it went off. Yep, awesome. All right, thanks. A whole lot. Cool. Thanks. Keep sending me those
+
+Matthias Miller  21:16
+videos, the final I think. Okay, all right. Bye.
+
+
+Transcribed by https://otter.ai

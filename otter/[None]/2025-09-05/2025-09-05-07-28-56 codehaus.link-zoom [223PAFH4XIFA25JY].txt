@@ -1,0 +1,635 @@
+Unknown Speaker  03:48
+You morning class.
+
+Unknown Speaker  03:52
+Hey, good morning. I
+
+Speaker 1  03:56
+build hot chuck on the steps. And so I had to quickly that up because I was in a hurry. Later, a little bit.
+
+Matthias Miller  04:08
+Hey, it's hot chocolate is worth we can like 60 degree overcast weather. Today, it is like ordering
+
+Speaker 1  04:19
+beneath six, a little under 60 on rainy and overcast, yeah, so it's definitely a hot chocolate day here. Okay, so have you heard much about this wholesale dealer portal thing?
+
+Matthias Miller  04:37
+No, just the wholesale dealers need to log in and be able to do their stuff. And I guess,
+
+Unknown Speaker  04:41
+yeah, it's, I mean, I think it's not that different from the retail portal.
+
+Speaker 1  04:51
+It's my take. But see, basically basic. The they're gonna the main thing I'm trying I'm needing to figure out because, oh, you know how we refactored the sales order export stuff into macros. Yeah, I just saved my hide because he was wanting a sub pain to show that. And I just plot the macros in there, and away we go. It was splendid. He was fussing about, how in the world is he going to do this? It looks impossible. And I was like, ah, that does sound impossible. It's like, oh, wait, it's totally possible. That was amazing. That is awesome. I mean, that was a happy win yesterday.
+
+Matthias Miller  05:40
+Kind of shocked how it's not, it's not beautiful by any means, but how workable the format itself is, yeah, exactly.
+
+Unknown Speaker  05:54
+So they're going
+
+Speaker 1  06:02
+to be able to pay a dealer needs to be able to see a whole list of their a building sales orders and select them and pay them, and then give mark them as paid and given ID, probably their internal ACH ID or something, or their for their ACH transaction.
+
+Matthias Miller  06:20
+I mean, does this? Does the dealer? But it
+
+Speaker 1  06:23
+may not always be easy. Like, I think this is when they're I guess that's what he made It sound like, anyway. Or like the wholesale dealer,
+
+Unknown Speaker  06:41
+Dwayne
+
+Matthias Miller  07:05
+you think the wholesaler is going to use their own Ach, not insights, correct? I think so. Um, so in this, in that case, um,
+
+Unknown Speaker  07:24
+what am I thinking?
+
+Matthias Miller  07:38
+I Well, in that case, then they would say that they made the payment.
+
+Matthias Miller  07:59
+Okay, are you familiar? Let's start. Let's start at this level first, and let's let me catch you up on speed. Do you have any familiarity whatsoever how these work?
+
+Unknown Speaker  08:09
+Multi asset payments? Yeah, no.
+
+Matthias Miller  08:14
+I mean, it's a simple record that has this information on it. I wish this book would actually be accounting company, be that as it may, date method and the total, which I believe you can technically change the total, and then go select,
+
+Unknown Speaker  08:38
+Actually, let's go to test assist. Let's just create one.
+
+Speaker 1  08:48
+It looks like Drew's created, like a grand total for them, or something.
+
+Matthias Miller  08:52
+Well, this is the only, I mean we he's deleted three and created one, or created four and deleted three. Oh, okay. Wait
+
+Unknown Speaker  09:06
+a minute. No, where was I? I went in through here.
+
+Matthias Miller  09:22
+How? Do you create
+
+Speaker 1  09:23
+them? Even I have no idea. I couldn't figure out how to do that. Is there a link on the is there a link in the report new multi asset payment in the multi
+
+Speaker 2  09:38
+Well, this is, this was, I thought it was in the action. This
+
+Matthias Miller  09:44
+is in the, I mean, that's the accounting impact report that was, Oh, right.
+
+Unknown Speaker  09:51
+I mean, we can,
+
+Unknown Speaker  09:58
+I think you actually have.
+
+Matthias Miller  10:13
+Open sales orders with payments. Now I don't even know that might have an impact on how much they're using it. If we don't know where it's
+
+Matthias Miller  10:34
+okay. So we do something like Ohio. We have the date, we have the method we're gonna I don't know that we need it. Maybe we put in how much we expect it to be, and then we link sales orders, which pulls up a report with a crazy subset that I don't even remember what it was.
+
+Unknown Speaker  11:01
+Wow. That's a lot of sales orders. I'm going to say
+
+Matthias Miller  11:06
+where you check the checkbox,
+
+Unknown Speaker  11:15
+Save Changes. Yeah, okay,
+
+Matthias Miller  11:24
+and then the way it stands now, you would come back,
+
+Speaker 2  11:30
+still saving or so, there we go. I
+
+Matthias Miller  11:40
+Yeah. So the main thing from a data model perspective, that you need to know is that we are storing the total on here because we want it to be locked. We have a pending a pending multi so payment field that we set on the row which makes the include box editable, and the include box sets the actual embed row, yeah, the multi so like links it out, yeah. And then the payment amount is that literally the payment that is literally the payment amount,
+
+Speaker 1  12:28
+which is just the balance of whatever is left on the sales order, I'm assuming, no, it's the payment row. It's tied to the payment, right? But it's defaulted to,
+
+Matthias Miller  12:40
+or not only, these are, yeah, yeah, yeah, you're right. We're adding a new that is what it is, consolidate the existing human rows into one row for the sake of editability. This is weird, but it's the only way to get the editable report to work right. It lets us have the new row at the top of the record, avoiding weird repeat RG issues. So we set the pending multi. So payment ID, recruit a new RG. We set the date, set the method, set the amount of all multi. So payments for this thing already for the selected multiso, num ID, set the notes,
+
+Matthias Miller  13:31
+auto assign the ID if we have a balance, and then delete any rows besides the first one that are linked to this multi so payment got chats. But actually, what I would think would be way easier for these guys would be to have an X 30. Basically, don't let them right. Select Run X 30 creates the two Exactly. Records, yeah, exactly, yeah, which.
+
+Speaker 1  14:12
+That's what I was thinking. Is it okay? Are we good to use this record for the wholesale dealers? Is that going to cause weird things? I don't know what the county impact stuff is, or when
+
+Matthias Miller  14:26
+your county impact should work. And the advantage with this is that when they make their ACH transaction, that it shows up on the bank statement as a single, single item, um, um,
+
+Unknown Speaker  14:47
+I mean the only other,
+
+Matthias Miller  14:52
+how, how would you do it? I think if you didn't do that, which you would have to do?
+
+Matthias Miller  15:02
+Is and each of the sales orders are paying at a payment row, basically some adjustment payment row saying it's paid on a separate sales order, then created sales orders. I mean, this
+
+Speaker 1  15:19
+record seems like exactly what we need.
+
+Matthias Miller  15:23
+It is, it's just complicated and barely or somewhat complicated and barely used, yeah. I mean, like, how are they, I guess this is the other question, though. How are they currently doing it for SDI invoices, because those are coming through in lump sum payments
+
+Unknown Speaker  15:56
+like this,
+
+Matthias Miller  15:59
+they're just creating a deposit record
+
+Unknown Speaker  16:06
+that ties out. See, oh,
+
+Unknown Speaker  16:18
+would that be better
+
+Matthias Miller  16:21
+if we did that, if this is acceptable to them, I would love to take this one record and just turn it into a deposit record and be done with it. And we don't have
+
+Unknown Speaker  16:30
+exactly
+
+Matthias Miller  16:32
+but then the biggest question would be, probably
+
+Unknown Speaker  16:37
+do this in here. Mm, so we
+
+Matthias Miller  16:47
+would have to have a deposit date. We might need something special on the account. I
+
+Matthias Miller  17:05
+Okay, we need to know the account, the reference number, the or, like, no, not the reference number, but the you need to know the account, we may need a verification process of some way, but on the other hand, the only thing that's going to happen is, if they don't actually pay, then he's going to reconcile the bank account and hopefully say, why is this deposit not the accounting process for this is probably the biggest question.
+
+Unknown Speaker  17:43
+So is this that we need to talk with? True?
+
+Unknown Speaker  17:47
+I would think so.
+
+Speaker 1  18:22
+We do? We not track activity history on the RG, on the deposit, it will look like we don't
+
+Matthias Miller  18:33
+which ones or is that's a virtual RG, it's a virtual RG. G Gotcha.
+
+Speaker 1  18:49
+So we'd literally just be create one deposit and add payment rows to a sales order is linked to that deposit, and then it would auto calculate amount and everything, right?
+
+Unknown Speaker  19:03
+And we could the memo,
+
+Speaker 1  19:04
+I assume we could just throw it and create it from Wholesale dealer portal, right,
+
+Unknown Speaker  19:13
+which that would give us some traceability. I agree. Who looks at it as confused like,
+
+Speaker 1  19:22
+Oh, no. If I should just email Sorry. Go ahead. Wonder if I should email you and Mark copying Dwayne, or, let me just say, I was considering just pinging Dwayne see if he has a problem. Off the Cuff with using deposits.
+
+Matthias Miller  19:43
+Sure, I would propose I would just, I would cut to the chase. I mean, the real reason that we had multi so payments was because we wanted them to all show up together in the bank account, I believe, um. And that's really unnecessary, because effectively, I don't know if we're grouping undeposited funds together or not for these I don't think we are, but it's really unnecessary because
+
+Matthias Miller  20:18
+let's go back into these deposits. I mean, the deposit inherently does that, basically, like, literally, all the deposit is saying it's from undeposited funds into checking, yeah, so literally, the accounting impacts the same it's just technical details and
+
+Speaker 1  20:39
+variations. So is, is Drew's problem with this going to be that it wasn't deposited like it's just them saying they're depositing they're going to deposit it. Is that problematic or not?
+
+Matthias Miller  20:57
+Yeah, that is the biggest question. And probably what I would do is to allow, is there some kind of way that we can allow the deposit date to be blank, or have a, you know, confirmation required, or something like that, that there's a workflow that he needs to confirm? Gotcha?
+
+Speaker 1  21:24
+I mean, simple way is just that you have a Boolean field that's hidden, that's checked when it's created from the dealer Porter portal, and then, and then date is blank until drew comes through. And that's it
+
+Matthias Miller  21:41
+even better at a dealer field, yeah, and then the dealer has a district. The district has a has a default composite account. And then do you have a job? This you do? Yeah, 677369777677, um,
+
+Matthias Miller  22:39
+um district autoset account, and
+
+Speaker 1  23:00
+presumably we'd want, do we want to add restricted data on deposits so that they don't jump around other deposits, but they don't even see them? Really?
+
+Matthias Miller  23:16
+I would probably just do something like this
+
+Unknown Speaker  23:36
+or
+
+Unknown Speaker  24:12
+and literally use the potter
+
+Matthias Miller  24:39
+right now, the Weird thing would be, if they do pay by check, you ponder that check a whole bunch of other things.
+
+Matthias Miller  25:09
+Brings you between a deposit versus a pin. I understand I'm not tracking either. I you
+
+Unknown Speaker  25:40
+I don't know. I thought that might help them.
+
+Unknown Speaker  25:58
+The screenshot of the spec i
+
+Speaker 1  26:06
+Yeah, then drew doesn't create a deposit when it comes in. Then he just sets the date right, right?
+
+Unknown Speaker  26:39
+Obviously, I gave him Zim.
+
+Unknown Speaker  26:43
+Lots of Zim.
+
+Matthias Miller  27:27
+Who's Okay?
+
+Unknown Speaker  27:37
+There we go.
+
+Unknown Speaker  27:39
+Is he coming? He's hopping on. There he is.
+
+Matthias Miller  27:49
+Man, the legend,
+
+Speaker 3  27:52
+okay, first, first thing to know is everything needs to be explained to me at really intense detail today, because I woke up feeling like I got run
+
+Unknown Speaker  28:01
+over by a bus. Oh, dear, I'm sorry.
+
+Speaker 3  28:05
+So if I seem slow today, that's why. Okay, I want to work wherever. I want to work wherever Seth is working in the dark.
+
+Speaker 1  28:15
+It's a cold, rainy day. It's like 60 degrees and rainy. Going to work wherever Matthias is working. It looks like,
+
+Speaker 3  28:23
+okay, let's, oh man, I guess that won't help, will it? That doesn't work. Okay. Did it
+
+Unknown Speaker  28:32
+actually work? Guys? Beautiful parking a lot. All right.
+
+Unknown Speaker  28:41
+All right, all right. Bring me up to speed.
+
+Matthias Miller  28:43
+Pain speaking detail. We have a record called a multi sales order payment.
+
+Speaker 3  28:52
+Yeah, and Seth and I were all geeked out about it yesterday, until you came up today and said, We don't want to use it anymore.
+
+Matthias Miller  28:57
+Well, we have exactly one use case of it, and I just think it, it's unnecessary complexity for one use case. Here is the one time where it's useful when you have a dealer, wholesale dealer, typically, but it could be anybody who pays for a bunch of buildings by check, and you deposit that check in with 50 other checks, and you want it all showing up on your bank account as a single payment for $150,000 or whatever it ends up being. Then the multi so payment is nice because it's a bundle of payments within a big deposit. So you can bundle the payments in a little bundle and then throw it in deposit. Now we've been eventually doing ACH for dealers. Um, I don't know if we ever do them with checks or not, with via checks or not, and we just been tying them out straight to a deposit.
+
+Speaker 3  29:58
+And the. The first thing to note is we do not want to tie out to a deposit on the initial applying of the payment, because we want that secondary depositing step to take place once we have verified the ACH transaction is in our bank account, and that would be the point where someone in my office opens up the bank account says, Oh, look, here's $110,000 Oh, it applies off. It matches up with this eight that this multi. I'm gonna, for the sake of this conversation, call it this multi. So payment. Go ahead and do the deposit.
+
+Matthias Miller  30:32
+Okay, now, could we not just have these, basically the unverified deposits?
+
+Speaker 3  30:38
+Do we have a concept for unverified deposits
+
+Matthias Miller  30:44
+in our heads.
+
+Speaker 3  30:46
+So just to confirm this method by which we're going to agree on at some point at the end of this call is actually applies RG rose to the sales order of the payment amount and the method and the date. Okay, so as long as we're clear on that verified deposits.
+
+Speaker 3  31:18
+Boy, I wonder if Mark would answer the phone. I wonder if he would. I'd love to have his thoughts on this as well. Let me see if he answers the phone.
+
+Matthias Miller  31:27
+The the one thing that will throw a massive wrench in this is if there are wholesale dealers who send checks and they get deposited with other checks, that's the one thing that can make it obnoxious for accounting. No, it
+
+Speaker 3  31:39
+would be a single ACH transaction. It would get deposited. Get deposited as a single HCH
+
+Unknown Speaker  31:44
+transaction. Even better.
+
+Speaker 3  31:48
+Hey, Mark, do you have, do you have Matthias call in details to his Zoom Room? I'd like you to get into this conversation regarding multi sales, order payments for wholesale dealer portal conversation, they have a proposal. I think I want to, I want you to hear it and make sure you're okay with it.
+
+Matthias Miller  32:09
+I No, I don't, I haven't somewhere, but I'm not sure where
+
+Speaker 3  32:15
+Matthias, could you send me the detail, the phone number, details for him, for Mark to call in, or just yeah, just yeah, just email, email it to mark. Do you have some Do you have some time to jump in here?
+
+Speaker 4  32:29
+Mark? I do, yeah, as soon as I get that, I'll jump in. And maybe this would be a good time to look at this building. I did.
+
+Speaker 3  32:40
+Well, he's got an email coming to you.
+
+Unknown Speaker  32:45
+Okay, thank you, Mark.
+
+Speaker 3  32:49
+So let me, let me make sure I understand what you're saying. Matthias, this would be a deposit record that writes, RG, rose to the sales order. RG, payments, RG, and it would sit there in a pending deposit status, whereby, when we go to the bank account, we find this ACH transaction, and we say, Yes, happy. We turn it into a some kind of verified status, which turns it into an accounting transaction of deposit.
+
+Unknown Speaker  33:17
+Yep,
+
+Speaker 3  33:20
+I don't hate the idea trying to make sure Mark's on the same page with it, because this, this would be very different from what was going around in Hickman.
+
+Matthias Miller  33:28
+What I would love about this is that we could then migrate our single multi so payment in assist to a deposit record, and we could literally eliminate a lot of complexity by nuking the multi so payment stuff, because it's, it's just complexity and it's ugly, and it's never used, obviously.
+
+Unknown Speaker  33:53
+Well, we were about to use it yesterday. I've been
+
+Matthias Miller  33:58
+looking for an excuse to kill it. I'm serious.
+
+Speaker 1  34:01
+Yeah, this has come up on prior calls. Diocese very ready to pull the trigger on this one.
+
+Unknown Speaker  34:06
+I'm I,
+
+Matthias Miller  34:09
+trust me, I am not coming in here with zero agenda. I have an agenda.
+
+Unknown Speaker  34:13
+I always like when a person admits they have an agenda.
+
+Matthias Miller  34:18
+Hey, it works better when you do, like, when people actually have one and don't really vocalize it. Chat, GPT gave me an insight. It said that one of the reasons why you don't do well in group discussions is typically the facilitators have a specific agenda with their facilitated discussion, and you don't do well with that. And I'm like, yes to the Yes. Like, yes. I was in a discussion last week, or this past week, this leadership training thing, and in our little small table, I raised the question, and somebody was like, absolutely profound. You should share it with the group. You should share it to the whole group. I'm like, Okay, well, then obviously you just have to, and I did the leaders. Like. All right, let's stick to the topic. I'm like, exactly like this matters, and you're just gonna go anyway. Hey Mark,
+
+Unknown Speaker  35:09
+Good morning, guys.
+
+Matthias Miller  35:13
+All right, so fill you in with a little bit of context. We're just talking about the fact that I am very clearly coming into this with an agenda, and so I have had a hankering for a long time to get rid of multi so payments. We added them for times, and people pay for multiple buildings via via single check, and we've only used it once ever in the system, and that was for an ACH payment. And it adds a lot of complexity that, in my mind, is unnecessary complexity. My proposal would be on the wholesale dealer portal when they go to pay a payment, pay, pay buildings, multiple buildings. We would go ahead and add the payment rows and then immediately add a deposit and link those out to a deposit. And then we'd have a way to say to flag the deposit as being dealer initiated and unverified. And then we'd have a process by which accounting would go through, or AR would go through and confirm that the ACH actually hit the bank, and then confirm the deposit at which point the transit accounting transaction would get created.
+
+Unknown Speaker  36:34
+So the the reason
+
+Speaker 3  36:40
+I wanted to you to jump on this mark, because you and I had talked about this whole workflow process where we don't want to create a deposit, and so this idea of creating a deposit, but having a pending status or something like on that, I just wanted you to hear this and be good, to make sure you knew what direction we're going to potentially go, and that you're good with that. I
+
+Speaker 4  37:05
+Well, first of all, that the multi so payment, I'll confess, I I've never used it. I don't you say it was only used once.
+
+Matthias Miller  37:18
+It's only been used once eons ago for an ACH transaction and going forward. I mean, since then, what we've always done for Lake sheds direct has been created deposit of type ACH linked out to ACH payments to all the buildings that were paying that transaction.
+
+Speaker 4  37:39
+Okay, so let's look at I think this would at least help me wrap my mind around it. Deposits. So fan, overall management just created a deposit this morning for shed time, sheds rec payment, which was an ACH, I mean, which is basically me. That's exactly what we're talking about. I think it's the if you go to the assist deposits for shed time, there's 109 for 480, 4013, so I walk looking at that deposit. How would this so, with your proposal, how would sheds direct? Just walk me through the workflow on how they would, how that would differ from what it does now. And I guess, to put some context, what's happening, I think it makes sense what you're saying, what's happening right now is, is Whitney goes in and onto our bank account ledgers every Thursday and sends out, you know, here's the ACH payments that you receive. Typically, we'll know from them what they're planning to pay. And then once we get that verification from the bank, we go ahead and create, we apply the payments and create the deposit. That's that's what we're doing now. So how would it, yeah, walk me through how that your proposal would would be for doing this.
+
+Matthias Miller  39:21
+So in the portal, they would say, I am going to pay these sales orders, which would create the payment rows and the deposit record. Now, on the deposit screen at the top, it would have somewhere, somewhere in the screen, like maybe, maybe a hidden checkbox or something that says that this is a or maybe a hidden field that gets well, you would have, you would have a field at the top of the screen that says this is a wholesale dealer field, and, and. Then underneath it would be a or next it would be a confirmed deposit field, and and then we would just have a and the date would be blank. So when they create it, we would fill in the wholesale dealer, and we would leave the date blank, and we would not create accounting transactions. And then when your office comes in, or when Dwayne's officers managing this comes in, they would see that it was deposited. They would check the confirmed deposit and fill in the date for the day that it arrived, and then save and at that point it would create a transaction, an accounting transaction, for that night it would and then we could also give you a report that shows you, I mean, effectively, I think effectively, the unconfirm deposits would have a blank date. Confirmed deposits would have a specified date. You could only, you can only create unconfirmed deposits for wholesale dealer deposits.
+
+Speaker 4  41:15
+Okay, that's, that's what would be. Only wholesale dealers could do that, or whatever, right? That, okay, that makes a lot of sense. What I would, okay, several things on accounting. So I would, we can split it like this, so when they so there's two pieces. One is applying the payment to the sales order like that. That that should, that should hit accounting, uh, immediately, as or as of that day. So if they, if there's a big sheds direct, they go in and they say, Well, we're paying these today, then we would on AR. Those would move out. Those would no longer be on accounts receivable, and that transaction would happen however. They would hang out in, I think they should hang out in undeposited payments until we confirm that. And if what, what I think would be ideal is the process you describe, but the unconfirmed deposits, they're there under the hood, but you don't see them on the deposits report, but you see them in undeposited payments. I mean, that's the intent of the undeposited payments. It's so the way I think of it right now is anybody can apply a payment to a to a building, and it impacts AR custom deposits, depending whether it's invoiced or not immediately, but the the it stays in undeposited payments until a deposit record is created for it, which is essentially an authorized person saying, I'm taking this to the bank, or I put this into the bank. Then, well, then obviously that that process then creates, the only way to move it out of undeposited humans is to create a positive record for it. So if we could follow that same logic, I think it would work really well.
+
+Matthias Miller  43:34
+So the biggest key and set this is where it gets tricky, is we need to differentiate between differentiate between link to a deposit record versus actually being deposited. And we need to make that clear so we but the as far as the where the funds are, that's what would happen, because all that a all that the deposit record actually does for sales orders, is just transfers the payment amounts from undeposited funds into the destination account, correct.
+
+Speaker 4  44:18
+And that would, if we could follow that logic. That would would eliminate the need for a another report of like unconfirmed deposits. It would, I mean, at the very so undeposited payments, aging report is something that's reviewed on a regular basis. So if somebody failed to confirm them, then that's they would they would show up in there and would be just follow a normal workflow.
+
+Matthias Miller  44:58
+Okay? And then. Do you see any reason not to convert our current multi, so payment over to a deposit and then straight up, just get rid of multi so payments,
+
+Speaker 4  45:19
+I don't, but I also feel like I don't have enough context to Well, what was the intent that we created, or why did we create it in the first place?
+
+Speaker 2  45:29
+Well, the only reason why,
+
+Matthias Miller  45:33
+okay, the very simplistic reason was wholesale purchases were showing up six times and they weren't on the or a dozen times on when reconciling the checking account, and they weren't lumped together lump sum early on. So a deposit solves that. Now, the other reason why? The other reason why it was added was because, well, what if you have a company that or a dealer that pays by check, and they write you a check for $50,000 and then there's four customer checks for another $50,000 and now you want it to show up on the on your bank reconciliation as a single payment of $100,000 Well, currently, what you have to do for that is either you have to take the wholesale dealer deposit and add on top of that the customer ones that you're depositing as well,
+
+Unknown Speaker  46:42
+or
+
+Matthias Miller  46:44
+well that really is your option. Or you just need to have or Drew. Just needs to recognize that these 250 $1,000 deposits were actually a single $50,000 deposit when he's depositing it. Or you need a workflow where you only deposit if a wholesale dealer or somebody's paying for multiple buildings in a single in a single check. You, I don't know that. Like the situation of paying somebody paying by check for multiple buildings and then putting it in a bigger deposit with other checks and cash is the is the only real problem that the mobile is going to solve.
+
+Speaker 4  47:24
+But I think we're solving for that with with correct workflows on deposits like, I mean, the intent is, when we create a deposit record, we're putting together everything that's going to hit the bank that's going to show up on the bank account as a single deposit. So like for portable barn company here, you know they have a there's a courier that comes around, picks up the checks and takes them to the bank once a week. And so every note, if there's there's there may be a combination of cash and 30 different Jake's going for that deposit. And those all get put together on one deposit record. And so it says, you know, one deposit of 108,000 and that's what the bank shows as well. So the reconciling all so I yeah, I mean, I think if I'm unless I'm missing something, I think we, I agree with you on 100% that let's get rid of the multi so payment,
+
+Unknown Speaker  48:26
+okay,
+
+Matthias Miller  48:28
+and, and it's not an irreversible, irreversible decision, so we'll do that all under same job on our end. And if we come back and say, Ah, we really need to bring it back. We can, we can undo our Undo, and it might not be easy to bring it back, but it's possible. So good. I like it, and that gives us a piece of the puzzle that we were missing as well, which was the accounting process on as far as verify these. Seth, is there anything else you any questions, questions you have on this? I don't
+
+Speaker 1  49:08
+think the only thing I'm still a little fuzzy on is how we want to show it in the RG, the payments, RG, sales order. How do we make it clear?
+
+Matthias Miller  49:21
+Well, the, I mean, there's, there's an so payment, I would just replicate, I mean, literally, just replicate this ACH method, wholesale dealer, payment date or wholesale dealer, or dealer initiated. I guess
+
+Speaker 1  49:36
+the deposit date will be blank anyway, because we just go look that up so we can have the deposit ID there, just the deposit date is blank, and is that enough? Yeah, right. I think
+
+Speaker 3  49:48
+so. Just just as long as you understand that not necessarily always going to be Ach, it could be they're writing us a check, or, you know, as long as, as long as we support putting proper methods in. Sure.
+
+Speaker 1  49:59
+Yeah. Yeah. So we just when they they select their 10 buildings, and they can select a payment method, yep, and then save
+
+Matthias Miller  50:09
+with the date, yeah. Or do you want to make payment on date with
+
+Unknown Speaker  50:15
+the deposit ID?
+
+Speaker 4  50:21
+So is there on the payment date right now? There's, does it allow you to enter any day? Or can you enter a day in the future? For some reason, I thinking you can allow historical days, which we you would need that, but you can't enter a date for the future, like you couldn't say, today I'm going to pay on Monday, the eighth note time
+
+Matthias Miller  50:49
+travel is not supported. It says
+
+Speaker 4  50:53
+I want to smile when I get that warning. Good.
+
+Matthias Miller  51:01
+So Well, I mean, what, I guess, what that means is that if, if, if wholesale dealer says, I plan to pay on Friday, and they put it in, it's going to clear the AR. I mean, it's going to drop it off of AR, even though, on their end, they haven't sent a check yet.
+
+Speaker 4  51:22
+Yeah, I think that's correct. You can either you can't say, I paint this until you actually did or, or you're looking in history, right? Yeah, I like it. I get excited about this. It seems like another one of those projects that we asked for one thing and and we're getting something above and beyond what we even asked for.
+
+Unknown Speaker  51:48
+So yes, for a milkshake, and you got an ice cream sundae.
+
+Speaker 1  51:53
+The nice thing was, we pretty much had an ice cream the milkshake would have taken more work.
+
+Matthias Miller  51:58
+Exactly. That was my point, because well, we're that wonderful people and but
+
+Speaker 4  52:09
+it, I wouldn't almost liken it to, instead of a milkshake, you get a Dairy Queen next door with a free yearly pay, or a free one year pass, or something not, not quite, I guess it's not free. Man.
+
+Speaker 3  52:22
+Mark is setting the bar high here. Seth, you better. You better deliver.
+
+Matthias Miller  52:26
+Now, I can leave the name off, but that'd be a great quote to put. You know, have someone on the expo, we asked for a milkshake and we got a Dairy Queen next door with a one year pass.
+
+Unknown Speaker  52:42
+The only ice cream you need.
+
+Speaker 4  52:49
+I was thinking about that this morning, Dwayne. I saw it like just a few seconds before Drew said something. Dwayne's wearing his only shirt on the call yesterday. So should we? Should we, if we're on the all on the this meeting, should we quickly take a look at that building that's causing all his head scratching as well? Are we okay?
+
+Matthias Miller  53:14
+Sure. I'm fine, Jimmy, are you good?
+
+Speaker 3  53:20
+I don't think you didn't, do you need me for this mark or or,
+
+Speaker 4  53:23
+yeah, yes, we do. We want to know. Okay, what we really want to know is sure. Is, why did Addison create copy a building instead of create a new building? Kind of the it's in the email that I sent you. It looks like a a copy. Well, it, it was that of creating new building, we copied a building and it created issues in trying to report it and stuff. But when the real question is, Is it, is it a process? Is there a legit reason that we will continue doing this. If so, I think we should take the same approach we did for copying of a purchase order and just say, Okay, this is going to happen from time to time.
+
+Speaker 3  54:13
+If what's the what's the spin? Well, it's so copying of buildings. It's only get going to get well, we really should go and make for good methods for copying buildings, because I just had a long conversation with Robert earlier this week on inventory management, and we end up copying a lot of buildings for inventory, like copying a building off of a quote, which is probably not nearly as problematic as What you're about to show me, but it does happen a fair amount of tangible it's understand we have we're looking at
+
+Unknown Speaker  54:49
+is, is, S, sorry, Eric, you ready for the sin? Yeah, go ahead. As 2507, 995,
+
+Speaker 4  55:10
+well, okay, we can look at that. I think the bigger question is, do we have legit reasons to copy existing buildings like Yeah,
+
+Speaker 3  55:20
+and it's exactly the reason is, it's well, so in the this is a shed town, one. I do it quite often for for House of stars. They'll, they'll, they'll send me, hey, we really like this building. We've sold a lot of this building before, and I'll just straight up copy it and put it right back on the BPR as a building for them to buy. So, yes, it happens quite often.
+
+Speaker 4  55:47
+Well, then I think we should just define what, when we go copy a building, what fields do we want to exactly same as what we do with purchase orders, and just say what, what fields should stay intact and watch it be deleted on the new building.
+
+Unknown Speaker  56:05
+So, I mean, obviously the notes and the pictures, I think those should all well,
+
+Speaker 4  56:16
+did those all go or not? I because if you have in this city, on this specific building, yes, they should have gone because we've got a picture from another building. But what if you have,
+
+Unknown Speaker  56:31
+yeah, but I suspect it's exactly the same
+
+Speaker 4  56:35
+it, yeah, but what? There are some notes where I don't know, you can't, you can't fully visualize it. Let's say like a modern style building. And you say something like, I don't know whether it accents above the garage door or whatever the situation is, then you probably want to copy that along over to the new building, so that you get the same so you build
+
+Speaker 3  57:05
+it, not necessarily part of me. Part of me wants to say, Well, we already have the copying concept with the creating of retrieval buildings and all the stuff that we're wiping out. It's probably 99.9% the same, except for adding the RT dash one or the dash RT one. So we probably can adapt that process for as a legit way to to copy a building record. And if we, if we went that method, I would probably go as far as to say, let's remove the copy of building records from the detail screen itself and force you to go through a process to properly copy the building.
+
+Speaker 1  57:48
+I mean, if the logic is shared, if it's going to be the same changes other than the stint, then it's really easy for us to leave the copy on the building and clear certain fields that would happen both. Well, besides, do we use an on copy for the material stuff? Do you know
+
+Matthias Miller  58:11
+for the material? I mean, you mean for the retrievals,
+
+Speaker 1  58:14
+yeah, like, is it an actual I think so, yes, it is. So we could just refactor it. Anything that should be shared should always happen. What happened when a building is copied, even if it like including retrievals? Then we can easily refactor that, like the copy button.
+
+Speaker 4  58:38
+So Seth, are you saying the exact same copy mechanism that we use for creating retrieval buildings. We would use that in the you go to a building record and just straight up copy it, yeah, we can other than, like, the suffix and stuff like that, right?
+
+Speaker 1  58:57
+So you'd have one or two things that are in the component Josh built for the retrieval, like set the RT one and the rest of it, we can move so that anytime a building is copied, it happens, whether it's from the retrieval process or just the copy button on the detail screen. It's really easy to do that.
+
+Speaker 4  59:21
+I'm in favor. Well, Dwayne, I think, yeah, but I'm expecting Josh is copying the on his Can you see if Josh is, when he does the retrieval billing, I would expect him to copy, actually, no. Don't think he is copying the notes. I think we actually fake that out in a,
+
+Speaker 3  59:44
+okay, well, yeah, but he's also sitting four lots, and building is used, and there's a number of stuff happening there that we don't want to do on a street, on a on a copy,
+
+Matthias Miller  59:55
+we can just which of these need to happen on retrieval. Sorry. Sorry. Is a retrieval which one on a patent like it's that simple.
+
+Speaker 3  1:00:06
+It really is that simple. I can go through the link action there, and I can tell you what, what we should and shouldn't do, and you want to just send to you Seth or to Matthias to send
+
+Unknown Speaker  1:00:19
+it to me. Yeah, I can do that.
+
+Speaker 4  1:00:24
+So the only value I think I have to add is, is on the finish, because inventory, the accounting piece, which I I noted in the I just like to run through that real quick to make sure that that we're thinking about that correctly on a copy building. An answer to your questions. Matthias, on that incident, you said, What should we do with FGI calculations when copying a building, they they should all just be deleted on the new building, like the new building should have no FGI values,
+
+Unknown Speaker  1:01:00
+and would just then, at the time it spilled, it would populate standard costing, just like
+
+Speaker 4  1:01:09
+a a brand new building is it's that's not copied, does that? And then two, I said, I believe the deleting of that would resolve the questions below. Wanted to make sure that that I did answer those, or if I'm missing something there,
+
+Matthias Miller  1:01:28
+can we just in the odd okay, because we don't expect we need to do something on our end to make sure this doesn't happen again, even though it shouldn't like kind of a second stop gap. If there's FTI calculations on a building that's being built, can we just not do anything and just let them be
+
+Unknown Speaker  1:01:52
+so the what's an example?
+
+Matthias Miller  1:01:59
+Well, any copied buildings that we have out there that haven't been built yet, I suppose, which we should clean up.
+
+Speaker 4  1:02:08
+So, I mean, would it also be one where, for whatever reason, somebody went in and set an actual cost before the building was actually built? Like with that also, yep, so, okay, there is a, there's a small you I mean, there is a use case where we would actually do that. So something like storage units, where we build 100 at a time, and when we enter them, we say, well, okay, we've, we've calculated the materials on these. And this is what we want each what we know each one is going to cost us the easiest to just go right when we enter them, to just enter actual calls for all of these. But that's if that creates issues. I think we should just, could we just make so that you cannot enter. You cannot enter any FGI values on a building until it's built.
+
+Matthias Miller  1:03:07
+Well, that's, I don't mind you entering this. We just need to. I would like to avoid changing any costs. If you say we're freezing this as an actual we're freezing this as an actual cost, which would let you do this. The question then becomes, if you have, if you happen to have standard costs already on the building before you build it, for whatever reason. So maybe somebody check the checkbox and only put in the raw material prices because you had that. But just assume that the production prices were going to be the standard cost from where we put them in. Do you want to update the standard costs, or do you want to just leave them be for where they were? Okay?
+
+Speaker 4  1:03:49
+When you say, update them, what would update?
+
+Matthias Miller  1:03:54
+Okay, let's say, let's say that you have 100 buildings that you put in. You check the Populate checkbox and all of them, and then you freeze the raw material cost, because you know what material is going to be. And then you go run, run your numbers, and you say, well, our our production labor is actually a few percentage points off. And you go put in a new one. Then they finally build them in that new time period with the new production labor, when those buildings get costed, do you want them to use the labor cost from the period that you put them in, or if they haven't, if nobody's frozen the costs on them? Do you want to update them to the latest
+
+Unknown Speaker  1:04:39
+standard costing? Oh, that makes sense.
+
+Unknown Speaker  1:04:45
+So I think if I'm understanding correctly, what is do we want to use the standard cost percentage
+
+Speaker 4  1:04:56
+as of the day the. Standard cost was entered on the building, or do we want to use it as of the day the building was filled like let's say we entered in June, and we have a labor percentage of at that point of standard labor percentage of 13% but in July, we update it to 15% and the buildings actually filled in July. Which do we use the 13 or the 15? And right, the 15, the built date of the building, is what would be the effective date and what would go to look at the the RG lines of like, which date range to use i Is that, am I understanding correctly the question?
+
+Matthias Miller  1:05:44
+So then, so then any frozen costs we would leave untouched because they were put in for a reason. And then we should, when we market building is built, we should update all standard costs. I um,
+
+Unknown Speaker  1:06:03
+yeah, makes sense to me.
+
+Speaker 4  1:06:07
+So are you saying that the entering of the entering and freezing of actual cause as of today would would be supported entering that before the building is built, that all should just should work just fine. Okay, yeah, good.
+
+Matthias Miller  1:06:27
+All right, sounds good.
+
+Unknown Speaker  1:06:31
+Okay, appreciate it.
+
+Speaker 4  1:06:35
+Yep, thanks guys. You're welcome. You when
+
+Matthias Miller  1:06:43
+You I need to drop off here for another call. Do you need more details on how to do the frozen get our heads together and how to do
+
+Unknown Speaker  1:06:52
+the might not hurt to get our heads together on that. I don't
+
+Speaker 3  1:06:54
+want to get it wrong. You don't. You don't need me anymore. Do you? We're good. Happy Friday,
+
+Unknown Speaker  1:07:01
+Yep, see ya.
+
+
+Transcribed by https://otter.ai

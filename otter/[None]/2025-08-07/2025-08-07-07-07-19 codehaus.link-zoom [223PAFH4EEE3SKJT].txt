@@ -1,0 +1,2375 @@
+Unknown Speaker  00:31
+Hey, hello,
+
+Matthias Miller  00:38
+pretty good. I got some sleep last night. That's always a it's always a good thing. Yeah,
+
+Speaker 1  00:52
+I me, your noise cancelation is
+
+Matthias Miller  01:10
+buffing your voice a little bit, but should be fine, okay,
+
+Speaker 1  01:22
+okay, so this is that mismatch report. Yep,
+
+Unknown Speaker  01:31
+this was the same as you
+
+Matthias Miller  01:33
+had to table, yep, the correction transaction I would look at that. Just run over it one more time, yeah, company, date, event, type, ID, repeating ID, period, correction, account, amount, and then flip the debit. Nice, good. And
+
+Speaker 2  02:01
+then this one, I had to rearrange this because you had the logic out here. That's where we had had it, and we weren't in accounting impact. It was just the like transaction ID anymore. So that's why it wasn't working correctly. I've moved it into here.
+
+Matthias Miller  02:25
+So was it I was running it on?
+
+Speaker 2  02:28
+You were running it on this, these items, which is just the, it's just like, event type, record ID and repeat ID. But that's why we couldn't get the accounting company from being
+
+Matthias Miller  02:41
+row got it. We knew the accounting company from the transaction ID got it.
+
+Speaker 2  02:46
+Yeah, transaction ID is very it's just the event type record and repeat Id
+
+Speaker 1  02:52
+got it. Okay, so we
+
+Matthias Miller  03:00
+and theoretically, if we wanted to make it faster, we could cash it's just not that critical. I don't think latest lock date or something or,
+
+Speaker 2  03:10
+I mean, we'd have to cash it for every company. Theoretically,
+
+Matthias Miller  03:16
+yeah, you'd have, like, a String, String table cache for every company once. And then, yeah, do
+
+Unknown Speaker  03:23
+you care?
+
+Matthias Miller  03:24
+I don't care right now. No, it runs nightly. We know it's slow,
+
+Speaker 2  03:30
+good. At some point maybe we'll decide. So anyway, so that was the, basically, the main thing I had to change after we were off the phone, which it took a little debugging to figure out what was going on. But we understand it's not really, yeah.
+
+Unknown Speaker  03:50
+Okay, then we only check whether, yep, this
+
+Speaker 2  03:55
+is coming from your board as well that we have our latest locker closing, and then needed correction string table. So we take the
+
+Matthias Miller  04:08
+expected minus the encountered. Yep, sweet,
+
+Unknown Speaker  04:18
+yep. Let me grab the first one.
+
+Unknown Speaker  04:22
+And this guy, I just to
+
+Speaker 2  04:24
+so that we group them as long period correction, does that sound fair? Yeah, that sounds this is the transactions for Link record,
+
+Unknown Speaker  04:33
+yeah, yeah, I like it.
+
+Speaker 2  04:41
+And do you see, is there more that we're missing? It's like,
+
+Matthias Miller  04:45
+I mean, it just seems, I mean, did you try creating a transaction, saving, refreshing the report, making sure the road goes away? It went away. It just works.
+
+Speaker 2  04:56
+It seems to just work. I'm afraid that drew will get into it and that. It won't, but,
+
+Matthias Miller  05:00
+I mean, but it's so I don't really thinking about it this morning. It's like, we have been cutting through issues like soft butter, like, yes, we wrangled about the show with the design a little bit. But it's simple. It's clean. It's the one thing I would like to do, maybe, is push an update to the lives, copied a test and run accounting impact and just make sure,
+
+Unknown Speaker  05:30
+yeah, I like that idea. I mean, should I? I?
+
+Speaker 2  05:44
+Do we? Are you? Do we have to update the live system first? No, it will copy the test and update the test system, and we're good, right? I
+
+Matthias Miller  05:55
+think it does a I think, I think it is a copy and update like it'll copy it over and update the latest. Yeah,
+
+Speaker 1  06:03
+Hey, Tim was in here is Tim in CFP.
+
+Speaker 2  06:14
+How recently? Well, his last request was seven minutes ago. Let me ping him. Hurt. I
+
+Speaker 1  06:49
+What? Why won't you let me open?
+
+Speaker 2  06:56
+I click that thing like seven times before it let me open. And know you why i
+
+Unknown Speaker  07:03
+He doesn't mind,
+
+Speaker 2  07:06
+update and copy it'd be good. After I click it, I then check, make sure that's people learn, test the answer, good.
+
+Speaker 2  07:29
+Oh, he was looking at the feature for multiple contact types. Oh, there's more shooting shot bar, so he's paving, apparently, got it. How
+
+Speaker 2  07:52
+long does it normally take? You know, um, well, it's down so it should be application.
+
+Matthias Miller  08:02
+I mean, the whole thing, probably 20 minutes. Okay. CFP is a pretty slow update.
+
+Unknown Speaker  08:14
+Okay, well, was there anything else you want to look
+
+Matthias Miller  08:19
+at? What else do we have on our list last week? Don't we
+
+Speaker 2  08:23
+basically hammered through a lot of it. It's pretty fun. That is pretty fun. They should be happy if my my PDF and Mark will ever load.
+
+Speaker 2  08:40
+Okay, sales tax liability reconcile, which includes the stuff we're just working on, we think is essentially done reporting descriptions. That is a
+
+Unknown Speaker  08:52
+nasty,
+
+Speaker 2  08:54
+scary job. Well, let's ignore that guy for now, and I'll pass my refunds. Dude has three comments in here, which I'm guessing we'll go over all today.
+
+Speaker 1  09:07
+I guess we could look for them now too. But here, what if I think the screenshot doesn't cross the box?
+
+Matthias Miller  09:17
+We have a we have one thing from the reconcile we could do look for discrepancies when we stop using B invoice cost and start using the cost from the PO itself,
+
+Speaker 1  09:40
+which basically means go, copy, user, folders, I AFR, impact, VI, PM.
+
+Matthias Miller  10:00
+Let's see if we can use vi accounting impact changes,
+
+Speaker 1  10:10
+subset so we take VI,
+
+Speaker 2  10:21
+we have accounting discoveries. We finished, get them. Enjoy some report some point.
+
+Unknown Speaker  10:27
+Okay, let's,
+
+Unknown Speaker  10:35
+I vote to do this quick, And we're looking at the invoice cost and
+
+Speaker 1  11:08
+miss your screen. Yeah, I replaced yours. Let me try again, or I shared it alongside yours. I didn't. I didn't notice. I Okay, so
+
+Matthias Miller  11:28
+here we Go, the cost,
+
+Unknown Speaker  11:34
+the invoice. I
+
+Speaker 1  12:05
+do you know the logging into my you're off hand system right now.
+
+Speaker 1  12:35
+So we're looking for something like cost, vendor invoice. Come on. You.
+
+Speaker 1  13:14
+So we have appeals for invoices index,
+
+Unknown Speaker  13:22
+that doesn't look like it's actually linked in specific
+
+Speaker 1  13:40
+the invoice created credit memos. Now this might be in here.
+
+Matthias Miller  13:58
+You'll have some status, po price per times price per multiplier. So here the invoice weighs Po, num, ID, but we should have a i,
+
+Unknown Speaker  14:26
+po skew skew
+
+Matthias Miller  14:30
+POS for invoices,
+
+Unknown Speaker  14:38
+seems to me like, does that index of discount? If it's found? How's it?
+
+Unknown Speaker  14:46
+Oh, DPS for invoices, NDX,
+
+Matthias Miller  14:50
+surely we don't have any expression that looks it up, like a vendor invoice macro that is terrible. Selected product total,
+
+Matthias Miller  15:15
+the invoice, Po, cost, let's do this, probably not a global one,
+
+Unknown Speaker  15:33
+base pair Times count.
+
+Unknown Speaker  15:41
+And then we have the invoice cost
+
+Unknown Speaker  15:44
+here,
+
+Unknown Speaker  15:49
+here,
+
+Unknown Speaker  15:58
+save as I'm
+
+Unknown Speaker  16:05
+Oh 807,
+
+Matthias Miller  16:18
+so I would expect to see microscopic differences. Pennies
+
+Speaker 2  16:32
+makes me think any massive I don't know. It feels different. 4641
+
+Matthias Miller  16:39
+these are all 20, mostly 2024, 76, 769, these get split into multiple rows, for some reason. I don't know why i
+
+Unknown Speaker  17:08
+three
+
+Matthias Miller  17:10
+they're getting redistributed in different ways. See Genesis supplies, production supplies and raw materials. It's changing their split make sure I did this right. Maybe I shouldn't have been. I
+
+Matthias Miller  17:59
+energy, the pomm ID, if the invoice product total.
+
+Unknown Speaker  18:17
+Okay, all right, I'm Yes.
+
+Matthias Miller  18:31
+Okay, well, let's take a look at that vendor invoice. Then that looks basically right. So this one raw materials and raw materials. So this is 10 versus we are now showing raw materials Here, 50, 2050, accounts. There's a cost of goods. I
+
+Matthias Miller  19:07
+397, the invoice cost is blank on some of These. I'm pretty sure I'm
+
+Matthias Miller  19:32
+zero, 7183, zero versus one,
+
+Matthias Miller  19:43
+this guy.
+
+Matthias Miller  19:58
+Yeah, like this one was zero. When it should have been 4046, this one's zero, and it was 337, 82 so of course you would expect that to shift same thing. Then on this guy, which almost certainly we're getting better values.
+
+Unknown Speaker  20:19
+So this one went up
+
+Matthias Miller  20:25
+this one's less dramatic.
+
+Unknown Speaker  20:35
+Which row did we say was the first row went from 86 to
+
+Matthias Miller  20:45
+to 173 that Isn't,
+
+Unknown Speaker  20:52
+let's do a I'm
+
+Unknown Speaker  21:23
+the invoice skew.
+
+Speaker 1  21:39
+So this guy jumped, the 173
+
+Matthias Miller  21:46
+times two. Is 346
+
+Unknown Speaker  21:49
+now that is the 170 that is already times two.
+
+Speaker 2  21:58
+So somebody took it times two earlier, right? So somebody 699, double those 173,
+
+Matthias Miller  22:07
+yeah. So somebody changed the quantity and the invoice cost and update. So I think we can fairly definitively say these are better numbers, the
+
+Unknown Speaker  22:18
+old one, as opposed to the new one.
+
+Unknown Speaker  22:19
+No,
+
+Matthias Miller  22:24
+think the new one had better numbers the old one, production, overhead, production supplies, current asset.
+
+Matthias Miller  22:41
+Yeah, we have, like, like, the supplies went up considerably, not the full amount, but proportionate, probably proportionate to The ratio changed. I'm pretty comfortable with,
+
+Unknown Speaker  22:57
+okay, here i
+
+Unknown Speaker  23:25
+What if we did this? Oh, hey, hang on doing Andrew over here,
+
+Unknown Speaker  23:40
+what if we threw this macro in here,
+
+Unknown Speaker  23:55
+you know, and then I'll, I might add A next year log, but it'll be more of a it.
+
+Matthias Miller  24:07
+Hello, hello, happy Thursday, something that's,
+
+Matthias Miller  24:21
+we don't really need po impact in here that it's fairly if one
+
+Unknown Speaker  24:31
+of your kids
+
+Matthias Miller  24:39
+inherits Your new software project, will they become an only child?
+
+Speaker 3  24:42
+Child? I tell you what people are, just full of jokes this morning. Man, I.
+
+Speaker 4  25:05
+It usually three or four weeks is comfortable a year.
+
+Matthias Miller  25:12
+That's how we look at it. That's not we can we can add a little bit of delivering here, but doesn't have to be perfect.
+
+Matthias Miller  25:37
+Is Mark joining us this
+
+Speaker 4  25:39
+morning. He's busy right now, but we can go ahead.
+
+Matthias Miller  25:42
+We have very terrible news for you. Drew, no, what's that we Seth and I got our heads together, and in a couple of hours, I think we knocked out the lock period corrections, whoa, I know you're very disappointed.
+
+Unknown Speaker  26:01
+Yes, highly,
+
+Matthias Miller  26:04
+and we're looking at it, we're like, we don't think it really should be this simple, but we can't shoot any holes in it. So, yes, I don't great do? We just want to start going through the list of the agenda from last time and catch up on everything.
+
+Unknown Speaker  26:28
+Alright?
+
+Matthias Miller  26:30
+I mean, it kind of makes me excited to break accounting impact, just so that we can
+
+Unknown Speaker  26:36
+fix stuff.
+
+Unknown Speaker  26:37
+Yeah, there you go. Alright. So that is also so i No,
+
+Matthias Miller  26:59
+okay, um, yeah, do we have anything here? We moved, we moved that discrepancy to a different job.
+
+Speaker 4  27:10
+Okay, the only, the only new stuff that I added to incidents would have been this week for stew guys, four, probably dish
+
+Speaker 5  27:28
+equals and equals,
+
+Unknown Speaker  27:32
+yeah, 8485, nothing new here, My stamps,
+
+Unknown Speaker  27:42
+in there, very long, customer refunds.
+
+Unknown Speaker  27:45
+Customer refunds.
+
+Matthias Miller  27:49
+Danger, yeah, let's go into the take a
+
+Unknown Speaker  27:54
+look at this one. This defense is 730
+
+Matthias Miller  27:57
+let's do this one first, because it's in order on my list, I build a report we talked. We were talking to Mark about changing vendor invoice accounting impact from using a stored V invoice cost to calculating the cost off the PO. And there's like five, five different items. One changes by about a penny, the other ones change a little bit more. But from best I can tell, it's more correct, like this one here, 7642 versus 7641 just a little rounding difference. Yeah, actually, I didn't even think about that. We need to that might actually be a legitimate problem.
+
+Unknown Speaker  28:53
+Shoot, do it.
+
+Unknown Speaker  29:00
+Yeah, that might
+
+Matthias Miller  29:11
+actually eliminate the rounding issue.
+
+Unknown Speaker  29:25
+Story.
+
+Matthias Miller  29:27
+Okay, so there's only two issues. One, one was one where there was a there's a skew on the vendor invoice. Two skews on the vendor. Voice flag to $0 and they jump to 40 and 337, which means that we are we used to redistribute everything to 1010, of 5105, raw materials, and now we're splitting it between 10, 5105, and 5027, 105
+
+Matthias Miller  29:58
+which if you pull you. Which, if you pull up the vendor invoice, like we did get, I mean, we do have 337, 82 for this skew. And if you look at the split, it's approximately split half and half between current assets and cogs. And so this to me, full hand wavy thing looks about right. We have a similar thing here, where this SKU went from doubled in cost, presumably quantity of one, to quantity of two, and it rejiggered the production supplies versus raw materials split.
+
+Matthias Miller  30:50
+And these are the only two transactions that are impacted. And so this would then you can then use their fancy
+
+Unknown Speaker  31:03
+correction tool,
+
+Matthias Miller  31:06
+post, post a correction in
+
+Speaker 4  31:07
+January. Yeah, yeah. So this is just to try to better reflect what's going on with the SKUs, I guess,
+
+Matthias Miller  31:17
+more accurately reflect costs on vendor invoices. Yes, costs from POS and vendor invoices. Basically, we were freezing costs at an arbitrary point in time, and so it would sometimes get out of sync, and it really wasn't. I don't really go digging to find out when, but depending what changes you made after that point, the accounting would be out of sync with the vendor invoice.
+
+Unknown Speaker  31:46
+Yeah,
+
+Unknown Speaker  31:51
+because to be anchored. You
+
+Matthias Miller  31:57
+guys good with this change. He did a primer
+
+Unknown Speaker  32:02
+to that
+
+Matthias Miller  32:07
+actually should let us here. Let's do this. I
+
+Matthias Miller  32:30
+Okay, so that's reporting discrepancies, customer refunds.
+
+Unknown Speaker  32:37
+Hey, I guess your call. I
+
+Speaker 4  32:51
+I think that's probably about the only update I made. Well, there might be one other minor thing, but I made this week.
+
+Matthias Miller  32:59
+Okay, so if you go to the unpaid customer overpayments,
+
+Matthias Miller  33:10
+and you highlight a bunch of rows new vendor invoice. Okay? And then Bada, Bada, boom. There they are, and they're all linked out to the
+
+Speaker 4  33:26
+Okay, so now you obviously want to do that if they're for different,
+
+Matthias Miller  33:30
+right? We should show two things, Seth, we should show, we should add the vendor, right? The built the vendor in here. Customer Name, sorry, built the bill two name or the ship two, or both.
+
+Unknown Speaker  33:53
+I mean,
+
+Unknown Speaker  33:57
+maybe both.
+
+Unknown Speaker  34:01
+Why would you want, well, to,
+
+Speaker 4  34:04
+yeah, that's true, because the spiral two would be the one paying, probably just the
+
+Matthias Miller  34:10
+bill to now, okay, so if you want to add that, and then the other thing, Seth, Link gets cut off. Do you want to just change this to so or something on the RG.
+
+Matthias Miller  34:29
+So this takes, this is addressed in the
+
+Speaker 4  34:33
+but so when, if AP or AR or whatever, if they are going through these and being responsible for these items. I guess they just have to use that report. They can't like, what I'm thinking is, if they're making an entry is like, Oh, this is no payment for something he's dealt with. They can't just go right from there, straight to new
+
+Matthias Miller  34:57
+I guess we Seth, how much work to make a. Have a link.
+
+Speaker 2  35:08
+Well, I mean, we wouldn't? We just add a can ask prompt on our report, made run it, and then you'd click the button in the shop, right?
+
+Matthias Miller  35:21
+Yeah. Just Adam, just add us after,
+
+Speaker 1  35:33
+yeah, the show
+
+Speaker 2  35:40
+what just like create vendor invoice link.
+
+Matthias Miller  35:46
+What if you did a what if, if you have any rows that are not tied out to a vendor invoice, any, any of these rows, not, could you make it custom visible and just have it be called unpaid customer overpayments?
+
+Speaker 2  36:01
+Yeah, if there's any rows in the RG that aren't
+
+Matthias Miller  36:07
+they're overpayments, but they're linked
+
+Speaker 1  36:08
+to Yeah, sure, yeah.
+
+Matthias Miller  36:22
+So does that seem workable? True?
+
+Speaker 4  36:24
+Yeah, I think so. So you'd create your payment line, and then this would show up, right then
+
+Matthias Miller  36:30
+this would show up. You click into it and see, I mean, you have a couple clicks, you click into it, you'd see, you'd see this, if there's multiple rows, you have to highlight it and whatever, but at least you don't have to go, takes you straight to here.
+
+Unknown Speaker  36:46
+Yeah, that should work.
+
+Speaker 5  36:47
+Okay, can, can I have a two minute explanation of what this is doing?
+
+Matthias Miller  36:55
+So when a customer ever pays,
+
+Speaker 5  36:58
+yeah, I gather, I gathered that much. But What? What? What does not the vendor invoice do?
+
+Matthias Miller  37:02
+It's just making sure that that we actually paid the
+
+Speaker 5  37:07
+customer. So whether we are or we aren't, are we? Are we saying this? So you're not necessarily going to stack a whole bunch of these on one vendor invoice. This would be a way of taking this, this this overpayment, and tying it out and then issuing it out to the
+
+Matthias Miller  37:18
+customer. The only reason might be, if you sort so if you say you might take some arbitrary amount, everything, $1 and under, and throw them all in a single vendor invoice and write them all off at once, that would be the one time when you have multiple
+
+Speaker 6  37:35
+so how would we write these off? Like, like these, all of these, I'm pretty sure we're not going to send money back, right? Right? So
+
+Speaker 4  37:43
+what I would do is create a vendor invoice for a whole batch of them, and then we do one line item that's negative and make a zero. So you do negative to bad debt or
+
+Matthias Miller  37:56
+whatever, something, who knows what, and then change this to zero and zeroed out.
+
+Unknown Speaker  38:00
+Yeah,
+
+Speaker 5  38:02
+so, so, for example, Matthias, go back to your report of, yeah, the $7,811 one there. I don't know what the story is on this one, but I'm assuming if this, if we were paying, if we were sending this money back to the customer, you would use this to tie it out to a vendor invoice, and then the vendor invoice, obviously would be to the customer, and we write them a check and send it to them. Is that that's the that's the essential process. Essential process we're working on, correct, right? That's great. Got it, got
+
+Speaker 6  38:27
+it, got it. Go back to that one. So did, I think I was, yeah, I was involved with this one. I think. So here we did create a vendor invoice.
+
+Unknown Speaker  38:38
+They just said they had a box of the donor. If you, if
+
+Speaker 6  38:40
+you click on that vendor, analyze link. What do you have down in the notes this guy? So this what you're doing here? Would be tying, gotcha? Yes, you automate, but is
+
+Speaker 5  38:55
+it? Is the proper is the proper method? Then still adjust for customer overpayment.
+
+Speaker 4  39:01
+Yeah, sales order, yeah, that's still correct.
+
+Speaker 5  39:04
+So this wouldn't be, why wouldn't we come up with the method of actual refund so that, I mean, because I thought we're also using adjust for overpayment, for just writing stuff
+
+Unknown Speaker  39:14
+off as well. Yeah,
+
+Speaker 4  39:16
+yeah. So that was the thought we we use the adjustment of customer overpayment for the purpose of clearing out the vendor invoice or the sales the sales order, yeah, and then the ones that we want to write an invoice to to pay the customer back. And we go ahead and we just create that vendor invoice, those that we're just writing off. We just all put on one and write it off and but it all comes through that report, and somebody can look at that report and say, Okay, who do we want to pay back? Who do we want to just write off? 2827, gotcha. 832, 5b,
+
+Speaker 6  39:58
+so what's going to make this. One go away. The this one that we were looking at that's actually been paid
+
+Matthias Miller  40:06
+back. I would guess what you're going to need to do is go through this list, rationalize that everything's been paid, actually been paid. And then I would probably just throw them all on a single vendor invoice and net it out to zero. But the first
+
+Unknown Speaker  40:21
+time I said that, the second time.
+
+Speaker 6  40:23
+So like that one we were looking at. Is that one still hanging out in customer overpayments? Yes,
+
+Unknown Speaker  40:30
+well, that's why,
+
+Matthias Miller  40:35
+like, because it's not linked directly to, we don't know,
+
+Unknown Speaker  40:39
+yeah, but the accounting should all be taken care of.
+
+Matthias Miller  40:42
+The accounting is, but we need to know specifically that this, that this line item is tied to this payment on this sales order, and we don't have that. So the alternative, the easy thing, is, just create a net zero transaction and say, this is just reconciling. We could technically go back and edit the original vendor invoice, say,
+
+Speaker 4  41:09
+and tie it out. But yeah, so if I were all these that are already paid, I can throw into one vendor invoice and put negative lines in back to the same account, so we have a net zero transaction. Those that were not intending to pay, I would move to the whatever account we're going to move to.
+
+Unknown Speaker  41:31
+Right?
+
+Speaker 5  41:32
+So question on the on this particular vendor invoice, there is a link URL. There. Is there? If it's not linked, why is the link URL showing up?
+
+Speaker 2  41:44
+Because Seth forgot to set the visibility correctly. You just did that.
+
+Unknown Speaker  41:48
+Okay, perfect.
+
+Speaker 5  41:52
+So just to clarify, if it's not linked, it's not going to show a link there,
+
+Unknown Speaker  41:58
+gotcha. So I just missed that.
+
+Speaker 4  42:00
+This is not the one in the memo, right that you're talking about.
+
+Speaker 5  42:04
+No, it's on the it's on the RG row on the on the purchase,
+
+Matthias Miller  42:07
+yeah. Oh, this should not have a link, because it's sales order I like.
+
+Speaker 6  42:16
+But the cry, the criteria for for items to show up on this overpayments list is there's a legit overpayment that is not linked to a vendor invoice, is that there's,
+
+Matthias Miller  42:35
+I mean, basically the payment method is, says, allow vendor invoice, and that's what throws it on there. So to Dwayne's point, if you want other people to make the judgment call, does this need a customer refund or not? We could have two types of overpayment, Cust refund, refundable customer overpayment and non refundable customer overpayment, or something like that. And and then it would just never you know that you'd expense out the non refundable one right away if you wanted to. But, I mean, that's all workflow questions, right? Whatever you want.
+
+Speaker 4  43:14
+Yeah, I don't know what works best for you. Dwayne
+
+Speaker 5  43:18
+I mean, I would prefer just for the sake of clarity on on people making doing these things, that there would be a refundable adjust for customer overpayment, just for the sake of so from a somebody just looking at this like, Oh yeah, I'm doing a refund here. Let's, let's grab the correct one. It's a little bit confusing to have, you know, to have a crossover between something you're going to write off versus something you're going to refund.
+
+Speaker 6  43:51
+Well, who makes the who determines whether we do a refund or not, like in most situations? I
+
+Speaker 5  44:00
+mean, there's a number of situations where on who makes that decision, but oftentimes it comes down in the in particular, the sales orders. It's comes down to the sales manager for that particular district of whatever you know, the sales in. So usually that's what happens
+
+Unknown Speaker  44:23
+so how does that affect workflow? Like,
+
+Speaker 6  44:33
+I see us looking at these small amounts, just once a month or once a quarter, just saying, Okay, let's write these off, and the bigger ones are always going to be communicated directly from the sales manager. I mean, if it's, if it's easy to do, add another payment type, that's I'm good with that. I get a little concerned with all the payment types already have that we. Don't Yeah,
+
+Speaker 7  45:02
+make it too confusing, but yeah, but yeah, I agree with you, Dwayne, it would clarify what it is we're doing.
+
+Speaker 4  45:15
+Yeah, it's not hard to put Miller in there. That's mistake. So you could
+
+Unknown Speaker  45:21
+just create another moment to building title,
+
+Speaker 4  45:23
+and that would actually take care of all the ones that are already linked out to. I mean, are already have a vendor invoice connected to them, because this one would be, would become the do not refund one, and then the new one would be the refunding one. So,
+
+Speaker 6  45:42
+oh, and the way we make sure that their refund at the minute you create a vendor invoice, it shows up as needing to be paid. So
+
+Speaker 4  45:50
+when you create the payment, the refund payment line,
+
+Speaker 6  45:54
+yeah, then that creates a vendor invoice. Well, no, it
+
+Speaker 4  45:57
+create it gives you the ability to link and create a vendor invoice.
+
+Speaker 6  46:02
+Are we concerned that those steps are followed through that you know that, that we don't say, Okay, we're going to refund fazol payment, but then we never create the vendor invoice, and it just and it falls,
+
+Matthias Miller  46:15
+well, that's what your tasks are, your monthly task, or something with that, Josh's fancy task thing, somebody's responsible for reviewing this report every
+
+Speaker 4  46:25
+No, that's what this report should be showing.
+
+Unknown Speaker  46:35
+I don't have a strong opinion. I mean
+
+Speaker 6  46:38
+adding or starting out with just this. I mean, this is way better than what we have now.
+
+Speaker 6  46:50
+What if we'd start with this, do this for a few months and then see if we need to add another payment type? I don't know.
+
+Unknown Speaker  47:02
+What do you think?
+
+Speaker 5  47:04
+Dwayne? I don't have a strong opinion, for the for the sake of probably my head's in the space of building software for Dummies right now. And it's like having having things that makes it, you know, abundantly evident is that first thing that comes to mind so Matthias, I did not just call my RTO customer customers. Dum, to clarify,
+
+Unknown Speaker  47:30
+who else were you talking about? Yeah,
+
+Unknown Speaker  47:39
+no, I'm staying with it.
+
+Unknown Speaker  47:40
+Just the only customers he has.
+
+Speaker 5  47:49
+To clarify mark, it's up to you. It would whether you do or not, as long as whichever way you go, as long as I can explain it to AP, so that it sounds like they're gonna be the ones kind of doing this is fine.
+
+Speaker 4  48:05
+On the report. Does that report look at the payment types that have that checkbox checked? Yes. Where could we make the report? So if we have two kinds, if I change this, it will just pick up the new one that has that check box checked, right? It's not like it's looking for that particular one. Okay.
+
+Matthias Miller  48:32
+Well, I mean, yeah, you could. So what you would probably want to do is rename this one to the non refundable type, because you've handled all of those uncheck this box here and then create a new one with the 11 invoice, and then I'll pick up the new one. Yeah,
+
+Speaker 4  48:46
+okay, okay, that's what I was wondering. I mean, that would be very easy to do, and I would suggest that we, if we're going to do it at some point, we might as well do it right now. But
+
+Speaker 6  48:55
+so how would you pick up of these that we're not refunding it? How would you pay? Well,
+
+Speaker 4  49:01
+yeah, I'm thinking we should just have a report for that as well, like just so we can see the ones that were decided to not be refunded, unless you can include them with a filter.
+
+Matthias Miller  49:14
+No. I mean, I would rather give you a payment search report or something that lets you review payments, and you can search for date range and type and company and stuff like that. That would be good.
+
+Speaker 4  49:31
+That would be good to have anyway. I think we have something similar
+
+Matthias Miller  49:36
+idea where it is.
+
+Speaker 2  49:41
+I think I saved it. I mean, IFR reports always a good place to check.
+
+Matthias Miller  49:45
+It's probably somewhere there
+
+Unknown Speaker  49:51
+that don't actually dumpster
+
+Unknown Speaker  49:53
+fire. So by payment time method, all
+
+Matthias Miller  49:58
+right, I. Uh,
+
+Unknown Speaker  50:01
+yeah, I have something like that.
+
+Unknown Speaker  50:04
+Do you know where here?
+
+Speaker 4  50:07
+Um, in my personal folder, sales orders, bad debt, question mark or something like that.
+
+Matthias Miller  50:18
+Write off, reason, payment method, begin date,
+
+Speaker 4  50:21
+it might need some tweaking to be more used a little more holistically.
+
+Matthias Miller  50:26
+I mean, we're not really using write off reasons anymore,
+
+Unknown Speaker  50:29
+right? That can go away.
+
+Matthias Miller  50:33
+So what if we would do something like new report search for so payments, amount rate, so prompt for amount range, date range, payment methods, accounting company, sure. So date range, payment date range. Would you need? Invoice Date Range or not?
+
+Speaker 4  51:03
+Really? Well, that's what I was thinking. The invoicing date range.
+
+Unknown Speaker  51:06
+Invoice date range is
+
+Speaker 6  51:09
+to just go ahead and create, if we have this report, just go ahead and create two payment types and
+
+Unknown Speaker  51:15
+list, yeah, news,
+
+Matthias Miller  51:19
+payment. Payment date range. Is there anything else in the columns you would want you would have so ID, invoice date, Bill to payment match the order on the payment date, amount method, yeah, payment, amount, payment method.
+
+Speaker 4  51:52
+Would it be valuable to have the balance on the invoice on this sure that's information that you wouldn't go here to look for it, but if you're looking for it, see a problem. If you know, if you're look, if we're looking at overpayments, or are things written off, and all that kind of stuff, then, then it's in the same neighborhood of what you're
+
+Speaker 6  52:18
+looking for. So if it's $10 it makes a difference. If it's on a $50 invoice or a $5,000
+
+Speaker 4  52:26
+Oh, you're saying the the invoice balance. Isn't that what you were well, I was thinking the balance, dude, but maybe both the
+
+Matthias Miller  52:39
+so total and the total is total, total, total,
+
+Unknown Speaker  52:43
+the total and the balance, dude
+
+Unknown Speaker  52:48
+might make more sense up there.
+
+Speaker 4  52:52
+Because, yeah, I guess if it's somebody buying a few things and it's $20 off from i
+
+Unknown Speaker  53:06
+Something like that.
+
+Unknown Speaker  53:14
+That should work,
+
+Speaker 4  53:19
+yeah, because you'll just select for which payment type you actually want. So that's one, yeah,
+
+Speaker 7  53:27
+okay, so is this linking? No, we still need some development for we're ready to start using this.
+
+Matthias Miller  53:38
+I mean, not really, it's everything's ready to go. We need the report so you can find non refundable so you can audit non refundable overpayments. But, I mean, you don't actually need the report. We need this report to get rid of Drew's Standard User report that or not a user report that's non standard. But you have everything you need,
+
+Speaker 6  54:03
+like, like, the report for overpayments, that link that automatically create Miller invoices that one's liable already.
+
+Unknown Speaker  54:09
+Yeah,
+
+Unknown Speaker  54:11
+yeah, um, no, I do want, I do have some critiques here.
+
+Unknown Speaker  54:17
+Let's go back
+
+Matthias Miller  54:21
+overpayment. Fire away.
+
+Speaker 4  54:26
+Um, so the the payment date column renamed that one to like,
+
+Speaker 4  54:38
+um, well now we're calling it like adjustments for refund date or something like that. Can
+
+Matthias Miller  54:43
+we just call it adjustment date?
+
+Speaker 4  54:47
+Yeah, what is probably, is it worth the date on the payment RG line? Oh, so may you write it all? Yeah, it's the date you, you, you say, now we're going to pay this. So. It. And then I'd also like to sort by that date, which I think maybe, yeah, no, this list is not sorted by that but, like, the default sort would be by that date as well. Place of order for some Yeah, I think that's it. I had them in the incident.
+
+Speaker 2  55:22
+Yeah, are you wanting to start resetting set the vendor? Or what should set when you hit the new vendor invoice button, other than what's not already vendor and build to and we set them bother
+
+Matthias Miller  55:38
+it should be built to, build to the
+
+Unknown Speaker  55:42
+Do we have a the bill to name?
+
+Matthias Miller  55:46
+How do these get linked out? It's a payee. Look for payee by contact, type, pay.
+
+Unknown Speaker  55:52
+Wait, what?
+
+Unknown Speaker  55:56
+Why is that a
+
+Matthias Miller  55:59
+that's really why is this? Tell me it's just Thursday morning. Why are these called payees?
+
+Speaker 2  56:10
+That's wrong. Underlying field. The underlying field used to be called the invoice payee is our dear Josh, nicely, yeah, I renamed it because it was making me majorly confused.
+
+Matthias Miller  56:29
+Okay, well, look for default it based on contact type payee and district equals district. I think
+
+Speaker 2  56:35
+session is that a shift contact type I
+
+Matthias Miller  56:43
+probably,
+
+Unknown Speaker  56:46
+if it is then Shouldn't it be renamed?
+
+Matthias Miller  56:49
+Can we rename paid as something else, like
+
+Matthias Miller  56:59
+billing company
+
+Matthias Miller  57:06
+why would we?
+
+Matthias Miller  57:14
+Well, Seth, if you really want to open up a can of worms, which it sounds like you're in worm mood this morning. Isn't this really what we want to do?
+
+Matthias Miller  57:30
+Like should we? Let's see what all we use here.
+
+Unknown Speaker  57:37
+Group by I
+
+Matthias Miller  57:43
+could we replace this with a with, well, not quite with accounting company, but could build to basically become accounting company or no,
+
+Unknown Speaker  57:56
+we have to potentially clean
+
+Speaker 6  58:00
+up to that we're basically saying any company that's going to pay an invoice. Yeah,
+
+Matthias Miller  58:11
+I'm a little curious. What about some of these other like we have, we have about we have 43 invoices that don't map out that we have to take care of,
+
+Unknown Speaker  58:26
+probably, who knows how historical,
+
+Speaker 4  58:33
+well the inside ones probably would map out, because there is an inside company,
+
+Matthias Miller  58:39
+sure. So, I mean, probably that's fair.
+
+Speaker 6  58:42
+I don't know why the other two affordable has
+
+Speaker 2  58:48
+the that field is a standard field so n James accounting company would, I
+
+Unknown Speaker  58:58
+don't know, but it
+
+Speaker 2  58:59
+would cause problems for reports and stuff. Fine. All
+
+Matthias Miller  59:09
+right. Well, if anybody has any brilliant proposals for rename, if not Seth, just look up Pe by district.
+
+Unknown Speaker  59:20
+I mean, I think we should rename the contact type. In
+
+Speaker 2  59:29
+my opinion, it's awfully confusing to call it a payee when it's not a payee. So
+
+Matthias Miller  59:38
+it's only used in the context of vendor invoices and POS,
+
+Matthias Miller  59:54
+inventory, customer, customer, we don't want to just call it a customer.
+
+Unknown Speaker  1:00:01
+It. It's not the customer,
+
+Speaker 6  1:00:03
+it's the company. Yeah, is it not?
+
+Unknown Speaker  1:00:08
+Yeah, it is.
+
+Matthias Miller  1:00:10
+It's the I mean, we have vendor here. Do we just want to call an inventory company?
+
+Speaker 6  1:00:22
+Well, okay, you're saying the bill to is what we're
+
+Matthias Miller  1:00:28
+billing, that the build to Yes, the the type of contact, instead of payee. This is an insight, is a is a payee contact type, which isn't right.
+
+Speaker 4  1:00:44
+So are you trying to get rid of the words Bill two or the type payee? Type payee? They will say Bill Two.
+
+Matthias Miller  1:00:51
+Still say Bill two. So in that case, it should be something like inventory, billing company or something,
+
+Speaker 6  1:00:57
+well, it's not, I wouldn't use inventory because we're buying we're also paying other things.
+
+Matthias Miller  1:01:04
+So just billing company,
+
+Unknown Speaker  1:01:09
+yeah, billing company
+
+Unknown Speaker  1:01:11
+or just company. Company
+
+Matthias Miller  1:01:14
+is, I'm a little worried about something as generic as company, because okay,
+
+Speaker 2  1:01:20
+but to me, billing Purchase Order field is has Purchase Order field is named po billing company.
+
+Speaker 4  1:01:29
+Sounds like it's the company doing the billing, and in this case, that's the vendor.
+
+Speaker 6  1:01:36
+Yeah, I'm concerned about, oh,
+
+Matthias Miller  1:01:39
+the bill two
+
+Unknown Speaker  1:01:40
+company, that would sound better.
+
+Speaker 7  1:01:49
+We won't get that confused. How is it like we're so
+
+Unknown Speaker  1:01:53
+if I'm creating an invoice to
+
+Speaker 7  1:01:58
+monto pardore buys some two by fours and the bill two companies.
+
+Speaker 4  1:02:08
+Yeah, I don't know. I mean the term company in this kind of context should always mean us, like, what companies books are you in?
+
+Matthias Miller  1:02:24
+But I'm not opposed the company. If we don't think that other people will see, let's check.
+
+Speaker 6  1:02:36
+Figure I have a suggestion that we create an incident for maybe q4 to rework some contact types, to make the whole contact types thing just, I think there's, there could be some improvements in here, like we have employees and employee non production. I know there's some that we should there's a bunch of contacts that we should go and merge two contacts together. We've, I don't know that's, that's, I mean, we have employees who are on payroll and employees who are haulers, and we just name them slightly different, like an underscore or something to separate them. But I think we, we could actually have one individual be two different contact types right now, and we just
+
+Speaker 4  1:03:32
+so that's more of a contact name issue.
+
+Matthias Miller  1:03:35
+Okay. I think, I think to Seth's point, we can Seth if Josh is okay with changing ke to company change, he was okay with changing this field, but,
+
+Unknown Speaker  1:03:52
+but yes, we should check about
+
+Matthias Miller  1:03:53
+the name Josh, I think, also Alice And Joel may also care, just because it's a fairly generic term for a standard feature, and we want to make sure that we now support multiple contact types. Means we should be able to merge, merge duplicate contacts for the same person.
+
+Matthias Miller  1:04:31
+Mark, can I assign it to you to prioritize and handle?
+
+Unknown Speaker  1:04:37
+Yeah, we can just make the
+
+Unknown Speaker  1:04:39
+priority low. Or medium that's fine,
+
+Unknown Speaker  1:04:48
+bar two.
+
+Unknown Speaker  1:04:56
+Priority
+
+Speaker 4  1:04:58
+that would give you this would. Amount of levels, yeah, yeah, so that we can know that we actually this is the high one absolutely.
+
+Speaker 6  1:05:10
+I think we have enough my experience is the more complicated to make some of these
+
+Matthias Miller  1:05:15
+things though. Yeah, that's true. So do we need to save canceled. I
+
+Matthias Miller  1:05:31
+think this is as expected. But is there anything you need from here?
+
+Speaker 4  1:05:35
+No, no, I'm just saying that it was working. That's I don't erase it, because I want to be able to check out that link and make sure that everything is coming through. All right,
+
+Unknown Speaker  1:05:46
+whatever payments be returned. Is this
+
+Matthias Miller  1:05:54
+okay? So, do you have everything so? So Seth will change this. Seth will either a new report. Seth or somebody will add the new report. Are we going to go in this way? Somebody,
+
+Unknown Speaker  1:06:03
+somebody,
+
+Speaker 4  1:06:05
+you can put a thing in there for me to add the the new refund payment type.
+
+Speaker 6  1:06:11
+Should we also add if to do for you to once? This is once you've added the new payment type to teach Berman how to,
+
+Speaker 4  1:06:22
+we could do that, you said, or send an SOP or whatever.
+
+Unknown Speaker  1:06:27
+Wayne, who should, who should be getting this
+
+Unknown Speaker  1:06:33
+on, on how to handle this.
+
+Speaker 5  1:06:39
+I suspect AP is going to be the one handling this, so they would be the one probably getting the
+
+Unknown Speaker  1:06:47
+so just send an SOP straight to them,
+
+Unknown Speaker  1:06:50
+either AP or AR. I would say, let's, let's just include both of them. Okay.
+
+Speaker 4  1:06:58
+Is there a generic AR email?
+
+Speaker 5  1:07:04
+If you send it to AR at truepoint backyards.com I think that they'll get it okay. All
+
+Unknown Speaker  1:07:15
+right, sweet,
+
+Matthias Miller  1:07:16
+happy customer refunds
+
+Speaker 5  1:07:21
+111, piece there. I dropped this in the chat to you and Seth, I just want to see if it's possible that we can create some kind of tool, either a part of that report or separate some type of report, that we can link up existing sales orders and vendor invoices, kind of like that, $7,800 one. Would that be a possibility?
+
+Matthias Miller  1:07:44
+So we only need it for historical purposes, right?
+
+Speaker 5  1:07:47
+Or, yeah, for for cleanup, unless you're going to come up with a way to disregard some of this stuff in that reporting, the
+
+Matthias Miller  1:07:52
+disregarding, we would just break those off as non refundable. We keep those as non refundable customer overpayments, and so they never get linked out.
+
+Speaker 4  1:08:05
+It will say non refundable, and they'll have this little link to the vendor invoice in the memo where we refunded it.
+
+Unknown Speaker  1:08:14
+But are they not? Are they're going to continue to show up in the reporting?
+
+Matthias Miller  1:08:17
+Aren't they? No, not if they're not refundable.
+
+Unknown Speaker  1:08:21
+Wait, did I miss? How are you sending them as non refundable?
+
+Matthias Miller  1:08:26
+We're going to rename the current overpayment type to adopt non refundable and not link it to vendor invoices.
+
+Speaker 6  1:08:34
+Got it, got it, got it. Drew Are you taking responsibility to clean up
+
+Speaker 4  1:08:39
+the existing and and then, yeah, I can look through that.
+
+Speaker 6  1:08:43
+I mean, I think that would be best you take care of what's there, and then moving forward,
+
+Speaker 4  1:08:49
+yeah, that will work, because I'll just do it before I switch it over. I'll just look at each one of those and make sure that they are already taken care of. And then we should be good.
+
+Matthias Miller  1:09:01
+Okay. We good.
+
+Matthias Miller  1:09:15
+Okay, this is done live. We're just gonna it's closed out
+
+Unknown Speaker  1:09:21
+what was, was that simply turning it into a standard report,
+
+Unknown Speaker  1:09:24
+yeah,
+
+Unknown Speaker  1:09:27
+if Yeah, look at that one, yeah.
+
+Matthias Miller  1:09:35
+Wait, why is the date range last year? Yes, for the prior year,
+
+Unknown Speaker  1:09:42
+IT Pro so it defaults to, what is it
+
+Matthias Miller  1:09:47
+full prior
+
+Speaker 6  1:09:50
+year it can we set it to minimum reception date? Shouldn't we go back to something like
+
+Unknown Speaker  1:09:59
+180 days? Ago, or,
+
+Speaker 4  1:10:04
+basically, why do we not want the older stuff to show
+
+Unknown Speaker  1:10:08
+up? I guess we could that you're no, that's fine.
+
+Speaker 4  1:10:13
+I mean, as long as it's taken care of. Yeah,
+
+Unknown Speaker  1:10:18
+that's that's good.
+
+Speaker 6  1:10:20
+Is that default date, that the minimum date will that always stay at one, 124,
+
+Matthias Miller  1:10:25
+not currently, no, but we could make it.
+
+Unknown Speaker  1:10:29
+What does it do now?
+
+Matthias Miller  1:10:31
+First, last full year?
+
+Speaker 4  1:10:35
+So which that would probably be fine. You never should have something else
+
+Unknown Speaker  1:10:40
+that's good, yeah. I
+
+Matthias Miller  1:10:42
+mean, it doesn't, it
+
+Speaker 2  1:10:44
+doesn't go into the current year. But do you should it? I think we, I just had Sean make it sound I think he kept the prompt default as they were change.
+
+Matthias Miller  1:10:56
+Do you want it to go into the current year? I think this, that's
+
+Speaker 4  1:11:01
+what it's picking up right there. It's all current year stuff. It
+
+Matthias Miller  1:11:04
+doesn't default to current year, but we could default to January of the last year, up to today.
+
+Speaker 2  1:11:13
+What do you mean? Okay, it, it's it defaults to 1231,
+
+Unknown Speaker  1:11:20
+of last year. Oh, the
+
+Speaker 6  1:11:23
+as of date, the as update, okay, I was thinking I was looking at the minimum reception date. Sorry, yeah, the ADS Update. What should default to? The date
+
+Speaker 4  1:11:36
+probably default to the day. I mean, most likely, we're never going to actually use the date that it defaults to. So, sure, well, but you tend to be, I mean, well, I guess if you default into the last day of the last month, that probably the most likely. Okay, either
+
+Unknown Speaker  1:11:58
+I work order, no,
+
+Unknown Speaker  1:12:00
+I think the last month, yeah, I think
+
+Speaker 6  1:12:03
+I just caught one. Was looking through that, trying this out, and there was one from a designer metals for like, 100,000 where a container, full container of starts 30 days out, or almost 30 days out. So I said, What's going on here? Why don't we have an invoice for this? You know, intercom billing, or is usually more louder
+
+Unknown Speaker  1:12:27
+than it tends to struggle. So
+
+Speaker 6  1:12:29
+we reached out to Shannon. He said, Hey, I like that when people ask for invoice so they can pay. So
+
+Speaker 3  1:12:39
+Exactly, I mean, hey, 100,000 here, 100,000 there.
+
+Matthias Miller  1:12:46
+After a while, it adds up. After Well, adds up.
+
+Unknown Speaker  1:12:49
+It's enough that it's worth messing
+
+Matthias Miller  1:12:51
+with exactly that that itself was probably enough to to cover Sean's time on this.
+
+Speaker 7  1:13:00
+The I sweet so there's that good
+
+Matthias Miller  1:13:09
+AR changes. Let's see. I think, Okay, tell me if I'm wrong. But since we can't have multiple things, my understanding was that this prompt takes care of most of the reason for filtering out dealers, retail, wholesale, SDI.
+
+Unknown Speaker  1:13:32
+It, yes, it does
+
+Speaker 6  1:13:36
+the about the only place where we want to go Filter deeper than that is wholesale, like specific wholesale accounts, if, if somebody's working with, say, hardware, outdoor products, and working basically wanting something, like a statement or something for them.
+
+Matthias Miller  1:14:00
+So in that case, does it matter if the dealer list just has a bajillion stuff in it, they just have to
+
+Speaker 6  1:14:07
+filter it down so, well, okay, let me understand you're saying doing the prompt for retail, wholesale, and just right, you can do that, or you can just have all the dealers and Select from that?
+
+Matthias Miller  1:14:21
+Well, no, you can have the deal is, I mean, we could have the
+
+Speaker 2  1:14:25
+prompt for dealer type and then also the prompt for dealer, but it's just that the prompt for dealer can't rely on, can't filter down to only show ones that match the company and the type.
+
+Matthias Miller  1:14:39
+So the dealer listed. We could have the
+
+Speaker 2  1:14:41
+dealer list limited to the accounting company, but we can't limit down to dealer type as well.
+
+Speaker 6  1:14:45
+That's fine. I mean, if we could do the so you're saying, we would have retail, wholesale sheds today, and then if we want to go to specific dealers it, we could limit that to the accounting company. But for all three of those, irregardless. Well, that's perfect, yeah, yeah, okay, we can do that. Sorry, I misunderstood here. Yeah, you
+
+Speaker 4  1:15:09
+thought we couldn't filter by the dealers, like filter the report.
+
+Speaker 7  1:15:15
+Oh, yeah, I did, right, yeah. I'm not sure what I thought. I was thinking too many different things. It's all
+
+Matthias Miller  1:15:22
+good. It's the power of communication, all right. 724, we talked about Nick will knock this out. Seth, do you have an offhand of what the status
+
+Speaker 2  1:15:38
+is? Nick was working on it and ran into some trouble, and I've been kind of smart, so I didn't answer his questions. It's basically, it's a little bit complicated to remove because of how many times we reference main in macros and stuff. So I don't know. I'm not sure what our best topic, I'll
+
+Matthias Miller  1:16:01
+look at active, active checkbox.
+
+Speaker 2  1:16:05
+Then we just have to make sure that all report ask prompts that's fair is the right helper list.
+
+Matthias Miller  1:16:14
+Okay. Copy PO is, is done with revisions. Um, 715, one, five. Did you send a new I didn't even, oops. I didn't let me do that. I didn't even check mark. Did you send a new agenda before the call or No, I did okay. I was I was just going off last, last time. This will come through. The next update should be live. Do you guys want to look at it or not? Look at
+
+Unknown Speaker  1:16:45
+it or not already?
+
+Speaker 7  1:16:48
+I don't mean you've looked at it. Do? I think the only thing we yeah, we needed another one. It was,
+
+Unknown Speaker  1:16:58
+could we make it?
+
+Unknown Speaker  1:17:02
+No, I don't you want
+
+Speaker 6  1:17:03
+contract, yeah, could we could? How hard is that to
+
+Unknown Speaker  1:17:10
+to default to accounts? Yeah.
+
+Matthias Miller  1:17:15
+What accounts do you want?
+
+Unknown Speaker  1:17:17
+Well, it'll be named subcontract. So, like you start just putting sub, oh,
+
+Matthias Miller  1:17:24
+I'm in the wrong that way. Wow.
+
+Unknown Speaker  1:17:28
+So it's those top
+
+Speaker 6  1:17:29
+click in and click or control A and it'll grab all of them or select them all. I mean, it's,
+
+Unknown Speaker  1:17:39
+it's barely worth it. I
+
+Speaker 4  1:17:41
+mean, yeah, it's pretty not more than we go to this. I mean, this is, this is like a twice a year kind of report.
+
+Unknown Speaker  1:17:52
+So, so,
+
+Speaker 6  1:17:54
+okay, maybe, maybe drew understands this. I don't. So you're going to your favorites, all right. So you to remember your ask prompts. Maybe a one minute explanation on how that works, would sure. And maybe that's a bad way to do
+
+Matthias Miller  1:18:11
+it. We know it's not necessarily you would run the report once, and it would, but then your date range is likely going to be wrong, but you can just add it to favorites.
+
+Speaker 2  1:18:26
+Well, what's the you go back to the go to the past? Like you, no, sorry, like add to favorites and go to the path. I'm curious to be extra story.
+
+Matthias Miller  1:18:39
+I mean, if you wanted to delete
+
+Unknown Speaker  1:18:42
+here is put
+
+Matthias Miller  1:18:45
+in a question mark here after this. And now, every time we run it, it will default the dates and ask you for it.
+
+Speaker 2  1:18:55
+But can't we just not pass in the date range and have it use default?
+
+Matthias Miller  1:19:00
+I mean, it's not passed in because it is the default
+
+Speaker 6  1:19:07
+Seth, have you seen just the first time you run it? Just leave the date blank.
+
+Matthias Miller  1:19:12
+Well, just leave it default. And as long as your default, when you add it to the favorites, it'll keep using the default. It only, it only saves your ask prompts in the favorites when you Yeah, when
+
+Unknown Speaker  1:19:25
+you overwrite the default, yeah.
+
+Speaker 2  1:19:29
+So then next time you run it from your favorites, it'll still use whatever the default is. Dates are. It will be stuck on seven one to 731 Yeah.
+
+Unknown Speaker  1:19:42
+Good. Okay,
+
+Matthias Miller  1:19:46
+so that's COI, yeah. Report better handle retrievals, that one we can talk about. But I think first we're getting far enough down the list. Seth, do you want to demo the. Discrepancy stuff.
+
+Speaker 6  1:20:05
+I guess I could that cool report that will just make everything work, right? Like all the
+
+Matthias Miller  1:20:11
+Yeah, it was, it was, I think Seth and I were both surprised how easy it was. And both of us are a little I'm still maybe holding my breath just a little bit, but it's just, just kind of simple, actually, so I'm
+
+Unknown Speaker  1:20:29
+probably gonna have to search for all errors.
+
+Unknown Speaker  1:20:34
+This is in the test system, which we just copied from the license.
+
+Matthias Miller  1:20:41
+Well, if you haven't system, you should, you should have to search all you could just it should be cash from last night's run and run it on everything, and then we can actually fix a real problem that we have there.
+
+Unknown Speaker  1:21:00
+Okay, let's see this one.
+
+Matthias Miller  1:21:06
+Here we have.
+
+Speaker 2  1:21:10
+There's nothing in the encounter, but there isn't expected, because
+
+Matthias Miller  1:21:16
+it's too recent. Some of these that just doesn't go to the
+
+Unknown Speaker  1:21:21
+go to something from last,
+
+Unknown Speaker  1:21:26
+yeah, this one,
+
+Unknown Speaker  1:21:32
+yeah,
+
+Matthias Miller  1:21:34
+go down to the sales let's do sales tax adjustment that's Pretty easy to understand. Here's a sales tax adjustment.
+
+Unknown Speaker  1:21:43
+That was
+
+Speaker 2  1:21:47
+where, what are our differences here? One to sales tax that, but within that, oh, it's not we didn't have, right? This is what we should have, but we don't.
+
+Speaker 4  1:22:03
+So because of our reduction of sales tax, bad debt, etcetera, yeah,
+
+Unknown Speaker  1:22:08
+is on the left is what we should have.
+
+Speaker 2  1:22:12
+So this is, this is what this one. This here is what we expect, the transaction we expect. This is what there is, which is nothing for this one. And this is the net impact on accounts.
+
+Matthias Miller  1:22:26
+This is the correction that it wants to make. Yeah,
+
+Speaker 6  1:22:30
+okay, the left is the correction wants to me. The Center is what we this is,
+
+Speaker 2  1:22:35
+this is the expected transaction, and the right is the actual is what the transaction and what transaction did
+
+Speaker 6  1:22:46
+it happen? But yes, or that something did happen. It was different than what.
+
+Speaker 2  1:22:53
+Yeah, so this side is what's existing, and there just is not an existing Transaction for the sales tax adjustment. Okay?
+
+Speaker 4  1:23:03
+And so in this case, that column to the left would post the 25 but if it's still in an open period, when does that net post or doesn't it post? So then
+
+Speaker 2  1:23:18
+you if it's an open period, then it'll just happen in accounting, like normal accounting impact, okay?
+
+Speaker 6  1:23:28
+So that would mean any anything once this is live, anything that it encounters would at the nightly update, would just correct itself.
+
+Speaker 2  1:23:40
+Well, anything that's not for a close period. Close periods, we have to use our little direction transaction thing,
+
+Speaker 6  1:23:48
+good, okay, and a closed period, yeah? Currently we have 24 flows, but 25
+
+Speaker 2  1:23:54
+Yeah, yeah. So because this sales order, the adjustment should be on the 31st of October. Well, we can't go do that. So we need to create a correction transaction. So that pops open this guy with the first day of the currently open period and the accounts, and it has source record, and then it's that is a locked period correction.
+
+Speaker 6  1:24:22
+So the the so the, how is this, the view source record, does that take you back to link you to the original like, if you,
+
+Speaker 2  1:24:29
+oh, this takes you to the sales order. And so if I,
+
+Speaker 4  1:24:35
+if I, this would, this would just show up in the accounting transactions report for that, right?
+
+Speaker 2  1:24:42
+Yeah. So here, and I, we show it as a lock speed, sales tax adjustment, lock, period correction,
+
+Speaker 6  1:24:51
+yeah. So if, if you do a transaction search, or, like a general ledger for let's do accounts receivable, Will these be you?
+
+Speaker 2  1:25:00
+Because they'll just show up this. They'll just show up the same. I mean, I mean, they're they'll show up in the general ledger and so
+
+Speaker 6  1:25:09
+and they'll be named. Looking at the general ledger, you'll be able to see, like, I'm thinking,
+
+Unknown Speaker  1:25:19
+not to this point
+
+Unknown Speaker  1:25:22
+you're saying,
+
+Speaker 6  1:25:23
+Well, what I'm thinking is, if we do, if this does make a $50,000 adjustment to AR on 125 which and suddenly your AR number on the balance sheet shifts, and you go to look at general ledge and say, Okay, what happened then? Is there a way that does
+
+Unknown Speaker  1:25:43
+that? You can see this clearly, like from the
+
+Unknown Speaker  1:25:48
+could we make it throw a memo in that would show up on the report,
+
+Matthias Miller  1:25:55
+just putting it down, it's called, we don't really have no
+
+Speaker 6  1:25:59
+well, okay, but where do we have maybe, maybe, will transactions be the right place? Like all of the FGI, the labor allocations, like on buildings, I think those show up. I think that's transactions.
+
+Unknown Speaker  1:26:16
+We can't search by transaction type.
+
+Unknown Speaker  1:26:22
+There's Yeah, no, that's contact.
+
+Unknown Speaker  1:26:26
+Well, but I'm not,
+
+Unknown Speaker  1:26:30
+I don't think, are you thinking,
+
+Speaker 6  1:26:33
+No, not the transactions by contact. But I think if go to transactions and go to the Select Account, 5020 whatever the the
+
+Unknown Speaker  1:26:46
+production over production labor. That's
+
+Speaker 6  1:26:52
+yeah. Like on that one, you'll see notes on Yeah, it's the 5026
+
+Unknown Speaker  1:27:01
+Well, yeah,
+
+Unknown Speaker  1:27:08
+could be 5026,
+
+Unknown Speaker  1:27:11
+yeah, yep.
+
+Speaker 6  1:27:21
+I was thinking, there's, there's an, it's noted here. Where do you see that? Like the when you have variances, when you apply actual costs, that those show up, and you can see those, maybe these transactions by contact, do something we just need some way to explain or to, I guess, to Yes, TVs, so
+
+Unknown Speaker  1:27:49
+yeah, transactions
+
+Matthias Miller  1:27:51
+by contact us have notes. This reminds me of, we need to talk about contact linking for these. I did not think about that,
+
+Speaker 6  1:28:01
+okay, yeah, something like notes here to where I mean that. I think that's all we need, that we could just sort them
+
+Matthias Miller  1:28:10
+to the top whatever. Just say, lock street corrections or what? Direction correction, yeah, um, what? What do you want to have happened as far as linking these to contacts, because, excuse me, let's say you have a vendor invoice for contractor A and you switch them over to contractor B, and the original transaction was for locked period. Do you want to have a correction transaction that reduces the amount for contractor a and increases the amount for contractor B. So that when you do a, I mean, I think you have to do something like that, so that when you do a search for transactions by contact, that it includes the locked period corrections?
+
+Unknown Speaker  1:29:03
+Yeah, I think so. So
+
+Matthias Miller  1:29:05
+Seth, can you make a note? I think, I think what we'll do is key the keep the string table off contact Plus account, and just use like new line on the left side, and then add helper macros to split it apart,
+
+Unknown Speaker  1:29:20
+or something. Is that on the transactions by contact report?
+
+Speaker 4  1:29:23
+Well, so it would be so if you would, you know if you'd run a report on here, oh, whatever.
+
+Unknown Speaker  1:29:40
+Oh, you're saying so that
+
+Speaker 4  1:29:42
+if, if the you know, it's just going to show up as the old contacts, and you're never going to add it to the new contact and and this correction makes so that it right, right would make accounting match. Because if you would pull a report and you'd look for. For the vendor that you moved it to, that would be different than what accounting is. We don't have that correct.
+
+Speaker 6  1:30:11
+Can we go back to the transactions by contact in Fort Wisconsin? There's, I want to spend more than three minutes on it, but I want to ask or see what it would take to make a few changes here. So, and the only fields I use here are, well, actually, go back to the, just the the as problem or the so I use a company ID and then account name. I don't use the account subtypes or the include account, and maybe, maybe I don't know how to use those, and neither do I use the exclude anything on the right side. Am I missing something? Matthias there? I'm sure there was a reason why we had added all of those in the first place. But yeah,
+
+Speaker 4  1:30:58
+I think it was. We were using this for our report on expenditures
+
+Unknown Speaker  1:31:05
+which we don't need anymore.
+
+Speaker 4  1:31:07
+Well, we need something because the ledger is not going to work because, Ach, not your files post as one amount, but they pay. Okay,
+
+Speaker 6  1:31:17
+let's, I think, Drew and I should look at this. Let's, let's move on to something else. Okay, so,
+
+Unknown Speaker  1:31:23
+I mean, like I said, we're going to run accounting
+
+Unknown Speaker  1:31:28
+impact. We're going to
+
+Matthias Miller  1:31:35
+copy the license to test run accounting impact, make sure it doesn't create catastrophic change. Catastrophic changes. It does mean that if you have a single sales order like you have to create a correction transaction for each event. So if you have a sales tax liability adjustment, you have to create a transaction adjustment for that, for that, for that. So that's good and bad. The good is, well, you get to tie it straight out to the sales order, tax adjustment. You know exactly what is. What the bad is, if you have a sales order that has four things change, you need four correction transactions to get the straight out. So,
+
+Speaker 4  1:32:15
+so how would it do? So you change the change the customer and which changed his address, which made a change to tax. So how do you have two transactions for that?
+
+Matthias Miller  1:32:32
+Well, and if we, if you change, we're just looking at net amounts, aren't we? We're looking at net amounts, customer plus amounts. So you might have tax little different, because I mean tax, tax should only create a single event for an adjustment like that. I'm trying to think what a scenario would be. You apply a discount, which if and a write off or something like that, weird for whatever reason. So it would change the invoicing event, invoicing transaction, and then you might have a second payment transaction to to handle the write off. Or I, I don't know it's very, it's, it's, yeah, but those are those would typically as from a sales order perspective, it basically means most likely not in every scenario, there are some cases with sales order invoicing, how buildings and sales orders link together for invoicing. There's some situations where POS and BI is tied together, where, because one change, the other has to change. So that's those are situations where you've got completely different records because of a single edit. Yeah.
+
+Speaker 6  1:33:51
+Can we go back to that, that that reporting cast system again? I just want to look at that just a little bit.
+
+Unknown Speaker  1:33:59
+Yeah. So,
+
+Speaker 6  1:34:03
+so once this is live, historical, everything closed period, we would need to look at and just, just click on Create, like do them seemingly one by one.
+
+Unknown Speaker  1:34:21
+And then
+
+Speaker 6  1:34:24
+all of the ones in a non closed period, in this case, in 25 like, what if those automatically correct themselves? We shouldn't have any on here for more than a day. Is that right?
+
+Speaker 4  1:34:39
+Well, there's something else wrong with them. Like, if it's a building retrieval, then the original sin has a transaction that's not working, or something which that works back then in the last period. Like, that's what I'm guessing. Some of these are, like these buildings. So this is so. It. This is a building that is connected to something current, but it has, like some of them I've seen, the reason they show up is it's not because there's problems with how they are being applied now it's problems with full transactions from their original time around.
+
+Matthias Miller  1:35:21
+So scroll to the right, and let's take a look at this, because it
+
+Unknown Speaker  1:35:27
+should be, yeah, um,
+
+Unknown Speaker  1:35:31
+yeah. So that's in 2023
+
+Unknown Speaker  1:35:35
+Yeah, exactly.
+
+Unknown Speaker  1:35:39
+So what's going on is actually
+
+Unknown Speaker  1:35:41
+on one like this once.
+
+Matthias Miller  1:35:47
+So you would create a correction transaction, conceivably, and if you don't want one in 2024 you would, you would just create the correction transaction. You would have to unlock and create it for 2023 because not we didn't have good numbers
+
+Unknown Speaker  1:36:06
+for 2023
+
+Speaker 6  1:36:07
+we did. We're becoming more and more aware of that, as we've worked on we say things like the AR number for company ABC was off by 50,000 so we or we think it was so 23 or 22 or maybe a combination. And so we showed more profits then. So now we have to take the hit for it now. Or
+
+Speaker 6  1:36:37
+does this make sense to you? DREW? I mean, you're the one that's Yeah, yeah. Yeah. I think I have a general understanding of how we
+
+Speaker 4  1:36:43
+still, we still need to work on that thing of, did all the transactions stay for building and invoicing, buildings that are being retrieved and unhooked and whatever, all because I think we're, we're eliminating all transactions, yeah, anything that didn't get the transaction on late and was not in a closed period just got Oh.
+
+Matthias Miller  1:37:19
+So for some of these, you might actually need to go back and unlink the transaction.
+
+Speaker 4  1:37:24
+Yes, yes. We want that transaction to stay there, right? And we wanted to write a new one in the current period for what's actually happening now,
+
+Matthias Miller  1:37:36
+right? So I think, I mean, I think this is just the story, the sorry state of retrievals. And the faster we can fix retrievals, the faster we can fix this problem. But I think effectively what this means is any retreat for any time you have a retrieved building, you have to go back and unlink all historical, yeah, all historical building transactions for that building, right?
+
+Speaker 4  1:38:04
+Yeah, and I think they've been doing it on the sales orders and unlinking those. But what I'm finding is stock with this, and then it's good thing they're stuck, but they're stuck because the lock period they are the the transactions connected to the stin to the
+
+Matthias Miller  1:38:22
+building, right? Which is going to be problematic, because if the building was built this year and retrieved this year, you're going to lose that, right? That's just going to quietly disappear,
+
+Speaker 4  1:38:32
+right? Oh, that's fine. Those are the ones I'm afraid of. That's what I wanted you to build the report for. Go back and look at modification history on sins.
+
+Matthias Miller  1:38:42
+Oh, yikes, talk about a mess. Well, the good news about having accounting tied into your system is that accounting is tied into your system. The bad news
+
+Unknown Speaker  1:38:55
+is that accounting is that into your system. Exactly
+
+Speaker 6  1:38:59
+it, that that is it, that is a downs. I mean, it's something that it changes the game when, when suddenly, I don't know other outside of accounting, move accounting numbers. I mean, well, but the
+
+Matthias Miller  1:39:14
+good news is, you guys could actually start locking periods now, because you have a method for creating corrections. And so you could lock at the end of every every month, if you wanted to, as long as it doesn't create undo workload, and you can audit for accounting impact changes.
+
+Speaker 6  1:39:32
+The guys at Uber, the companies they work with, they they like it sounded like talking to them that they lock the end of the month. And unless you, you know, it has to be a really special situation where you go in and unlock that month, and then they they tie, or this is what they said, whether it's actually done in real life. I mean, I expect it is, but they tie. They basically do an audit of, you know, if your AR. Says 250 then they have back documentation that says of 1850 and so, I mean that would keep, I would argue that it doesn't reflect reality. How many times you know point the 20th of the next month you realize, oh, we made a mistake, and you go back and change it right,
+
+Speaker 4  1:40:19
+but right, you're never, you're never changing bold data. But that does not necessarily mean that your current
+
+Speaker 7  1:40:25
+month is more accurate. Yeah, you just right. But anyway, that's good. That
+
+Speaker 6  1:40:39
+was kind of a bunny trail. Were you? Were you hoping to get into retrievals? Matthias? Yeah, I was okay. Well,
+
+Unknown Speaker  1:40:49
+good. Wait,
+
+Matthias Miller  1:40:52
+Oops, I'm sorry I accidentally muted you. I was having to do this.
+
+Speaker 6  1:40:59
+So we talked with Josh about this yesterday morning as well. I think basically, what, what we owe Josh, what Dwayne and I owe Josh is, when you create a secondary student, what, what information on the building record Do you want to copy over, and what do you want to do sure is that right? Dwayne. I mean, I don't think there's Josh hit a bunch of questions, but I think that, well, go ahead. Matthias, the accounting piece is more, quite a bit more complicated. I think,
+
+Matthias Miller  1:41:32
+well, I mean, I'm brazenly optimistic today, so you guys got me in a weird space.
+
+Speaker 5  1:41:43
+Wait, you just accuse Seth of being in worm mode. So apparently you're in worm mode as well.
+
+Matthias Miller  1:41:51
+We had, we had FGI categories originally changed to a type where you would have a manufactured category and a purchase to finish good category, and and so raw materials, direction, labor and production overhead would all be manufactured categories. And then, and so that part, actually, I think, could potentially persist.
+
+Speaker 6  1:42:21
+Okay, your note, raw materials, production, labor, product, overhead, Paulson Burke to manufacture. Oh, just the meaning of that, yeah.
+
+Matthias Miller  1:42:30
+I mean, it's, it's, we would know some way. I guess the technical, how it technically happens doesn't matter. But basically what we would do is we would add two more FGI categories, one for retrieval and one for greenhouse or, you know, whatever else you guys want to add. So
+
+Speaker 6  1:42:48
+within the finished goods cost box, yes, okay. I mean, I think it's, it's retrieved. Well, okay, but why, why is there a difference between, well, what's the retrieval between, yeah, I mean, it's it's purchased. I believe
+
+Matthias Miller  1:43:05
+the main thing is we need a way to expense if it has to be expensed out differently in any way. Does everything get I guess it doesn't have to be expensed out. You have a vendor invoice where you buy it. It goes into finished goods. So you're making the assumption at this point that it's a pre purchased so maybe it's as simple as a checkbox that says, This was purchased by a vendor invoice and for this amount? Yeah,
+
+Unknown Speaker  1:43:41
+I think it's that simple, but, and
+
+Matthias Miller  1:43:44
+then what I need from you is, when that happens, I need to know, yeah, I mean, you'll never have a variance, right? Does it go? Does it get expensed out to i How do these get expensed out right now? So, I mean, we effectively need to know what's the we have a raw material to finish goods. So we need to, well, we need to know, I don't know. We basically need to know what transactions need to be triggered and Seth, and I can figure out exactly how to how to do that.
+
+Speaker 6  1:44:31
+We get some of these manual I think we could go back to that. But I think on those we just, when we bought a building, when we bought a building, we said, Okay, our raw materials to finish goods increased by we paid 3000 for it increased by 3000 and then from there, it all just
+
+Speaker 4  1:44:54
+right, because we answered it as the raw materials cost. I.
+
+Matthias Miller  1:45:00
+Right, right. And I'm wondering if we want to instead directly input it. And maybe this is wrong, but directly input it into, yeah, yeah. Maybe it's not even completed. I don't know.
+
+Unknown Speaker  1:45:18
+Completed buildings go
+
+Speaker 4  1:45:22
+ahead if we invoice it directly to completed buildings, then there's no transaction that needs to happen until the thing is sold
+
+Matthias Miller  1:45:32
+correct, and then you just need an ex. We just need to know what expense account. Yeah, in some ways this is, this is completely up to you guys, in some ways, for costing purposes. I'm not an accountant, so I I'm pretending to be all smart and highfalutin and all this stuff.
+
+Speaker 6  1:45:50
+So, so what, what you need from us is that this would be builder, would be settings on the builder, just like the the FTI accounts are now for manufactured buildings. What accounts when we buy the building, what account does it hit?
+
+Matthias Miller  1:46:06
+Yeah, no, I think it's because it'll hit that account on the vendor invoice. I think all we need to know is there is no building built, right? There's no building cost applied. There's only the building being invoiced, and so all I need to know is what transactions you want to have created when the building is invoiced,
+
+Speaker 6  1:46:27
+when we buy that building from from the rent to own company?
+
+Matthias Miller  1:46:31
+No, because the vendor invoice will handle it when you buy it from the company. Okay, all I need to know is when that building is invoice to a customer. Oh, okay, what needs to happen on the building side? How does it get? What's the source account and what's the cogs account? What's or what's the asset account, what's, what's the cogs account?
+
+Speaker 6  1:46:51
+I mean, discuss that, whether we do the same, put it in the same account, or we create a new account, but then
+
+Matthias Miller  1:46:58
+actually, but we can actually implement, but that means we can actually implement retrievals right away. Yeah, right away. So here's the new here's the new design. Where's my retrievals? 631,
+
+Unknown Speaker  1:47:11
+or let's try to see if we can
+
+Matthias Miller  1:47:14
+find ID. This sounds too simple again, so I'm add
+
+Speaker 2  1:47:25
+an FG, I think our last two simple ones seems to be working. So
+
+Matthias Miller  1:47:29
+as long as simple works, add an FJ checkbox called purchased by vendor, invoice with a required, required cost amount on the accounting company purchased building source account. What do we call this, for sure, FGI? Well, it's the FGI purchase building FGI account, and then the purchased building cogs account. So to set up cogs expense, and then on invoicing of these, because it would just
+
+Unknown Speaker  1:48:18
+credit FGI accounts when they're, you know, building
+
+Unknown Speaker  1:48:22
+this individual into the list,
+
+Matthias Miller  1:48:27
+I mean that to me, is there you go. It works.
+
+Speaker 4  1:48:34
+What's the what's the workflow when they are, are they creating the vendor invoice first, or are they modifying the building first? Or whichever way it is, you'd want to, you'd want to link thing back and forth somehow.
+
+Speaker 6  1:48:51
+So what we discussed with Josh is the workflow when what typically happens first is a building needs to be retrieved. And so they create a they'll go to that building right here, create a secondary standard retrieval, and that that correct me if I'm wrong going, but I think that building will go into a report or a queue and stay there, and it will not enter finish because inventory until the Josh wasn't sure what his trigger point is, but probably until the hauler completes that transit task, or some so, because what can happen is hauler shows up. Customer says, Here's, I'll just pay it off, or the hauler points have gone ahead, or the please, Ghana or the the tenant may point the gun at the guy chickens. Yeah, I know there's affordable doing planning to do a retrieval Monday morning involves game length fence and. Three halls and getting it out quick. But anyway, like, maybe there's only software, but, but there's, there's, uh, if you can't retrieve it, that's why it kind of stays in that queue. And then once it's retrieved, it goes into finished goods inventory. But then it can be up to 30. Yeah, it may be up to 30 days until we have that invoice for it and tie it to that. So in the meantime, that building could already be sold. So so Matthias, what would happen there is, we would sell the building with zero cogs attached to it. But then I was thinking, when we apply the that would correct itself with a when we input those costs, I think would it not like we building comes back two days later we we get lucky and sell it right away for $5,000 and so for that month, it looks like we have five have $5,000 of revenue and no cogs. And then 30 days later, the invoice shows up. We tie it to that building, and now we say, Oh, that 5000 was not all profit. 3000 of that was calls that that would all just work like
+
+Matthias Miller  1:51:21
+so, or wouldn't it so you may, you may sell the building before you pay the RTO
+
+Speaker 6  1:51:27
+company. May, it won't be
+
+Matthias Miller  1:51:31
+so. I think the question is, is, I think in that case, we need a purchase date. Well, do you want it to just backdate the expense? Presumably, not so. Presumably you want that showing up as a cogs variance at the date of purchase.
+
+Speaker 6  1:51:52
+So, well, okay, what we want to happen is if, if we get the invoice and link it just like we do now with buildings, if, if we now, if we apply actual cost before the building is invoiced, the change pushes to to the balance sheet, to those accounts, and if it happens after invoice, and the change pushes to up To the yeah to cost of goods.
+
+Matthias Miller  1:52:21
+So we need, we need,
+
+Speaker 4  1:52:26
+do we know what the amount is going to be when we when we like, when we say the buildings and finish goods, it's there's actually no amount there is there no like, as soon as they bring it, you want it available to be sold, but we don't have an amount until we actually get the invoice right.
+
+Speaker 6  1:52:46
+Yeah, and purchase buildings might be this could be the same way.
+
+Speaker 4  1:52:51
+So then accounting, nothing is going to happen for accounting until we actually either pay for the building or sell. The bill doesn't matter if it's been sitting on the lot for two months
+
+Matthias Miller  1:53:06
+and we just won't expense it out on sale, so it looks like 100% profit building. If it's sold before purchase, nothing gets expensed out create a do you create? Do you want to create? Just, do you want to maybe, but,
+
+Speaker 6  1:53:31
+but it should just work, like the the Apply actual costs, like, what? What happens with that is currently, if we sell a building, and we just have standard costing, we think it cost us $1,000 to build this building. But then after we, after we've after, we apply actual cost. We say, Oh, it was actually 1200 if it's still an inventory, we just increase the the FGI account by 200 if it's already sold, then we increase the cogs account by 200
+
+Matthias Miller  1:54:08
+Okay, so when, when you retrieve a building, you're willing to make up a number and say, I think this building's worth this much
+
+Unknown Speaker  1:54:16
+we could, I was thinking we could just leave it at zero,
+
+Matthias Miller  1:54:20
+so you have zero standard cost. Okay? I mean, that's fine.
+
+Speaker 4  1:54:29
+When we get the invoice, do we select, hey, this is for this building. This invoices for this building. I'm putting it in this account. Here's why I'm out on the invoice. Can that back feed to the building automatically and put our little cost line in this purchase building cost?
+
+Matthias Miller  1:54:51
+It's fancy putting on my little Josh hat. How many retrievals are we doing a year?
+
+Speaker 4  1:54:57
+Yeah, well, I'm just thinking or. To if we leave it as if we leave it at zero, we just know that when we get billed for this thing, it's gonna it's gonna do everything. If it perhaps is in a closed period, then it's just gonna our closed period. Things gonna just update it to the current period as it should be. Um, if it's not in a closed period, it will apply the cost back then, when we are still allowing changes to that old period. Okay, but is that not something
+
+Matthias Miller  1:55:30
+that's completely up to you? If you want the expense backdated, we can't backdate the I think this goes back to you. I think you guys need to decide in Okay, when, when you when you buy it, when you pay for it before it's sold. That's super simple. It's going to have a purchase date in it. We can expense it out all this stuff. It makes sense to me that we can put a purchase date into it, which is effectively the actual cost state. So when somebody buys it before then, then we expense that at zero. We're not really using variance, and so we just expense it out at the time of purchase, then at that point.
+
+Unknown Speaker  1:56:14
+And, and,
+
+Matthias Miller  1:56:20
+I mean, you're going to have a
+
+Speaker 4  1:56:25
+so the what you're saying is, we have a purchase date on the building. It will hit the cost as of the purchase date, whether it was invoiced a month later or a month earlier.
+
+Matthias Miller  1:56:39
+No, you have a purchase date, and if it gets it gets at the date of of invoicing, sales, order invoicing when it gets sold, yeah, then you expense out that cost. But if it's sold before you purchased it, then it gets expensed out on the date of purchase.
+
+Speaker 6  1:57:02
+Okay, well, but what would it take to make so that it, it does the variance thing and make so that it is expense on the day it was invoice? Well, I
+
+Matthias Miller  1:57:17
+mean, it just means giving you the option. I think if we go down this route, then probably what I'll do is add an FGI category for purchase building, and let you put in standard cost and and that would then be the standard cost, and then when you actually purchase it, you would put in the actual cost, date and the amount.
+
+Speaker 6  1:57:40
+Okay, what? What's different with with doing actual costs, that that all happens at the end of the month, when we when we apply this on the last day of the month, this would and all buildings build in that time frame. It happens at the same time. This would be a one off, like, whenever we get the invoice, right, you're gonna
+
+Speaker 4  1:58:01
+have to go in here and create it anyway, aren't you? We're gonna select
+
+Matthias Miller  1:58:05
+his costs and stuff. You'll have to do it somehow. So I think the only question is, yeah, whether it's other fields or whether it's in here, I don't think it matters that much. But yes, we can give you the ability to enter a standard cost. If you guys want to do that,
+
+Speaker 6  1:58:23
+I would rather just leave it at zero for those purchase buildings until we actually have the invoice. But we're past 11 already. We're good to keep going for a little bit.
+
+Matthias Miller  1:58:37
+But yeah, I'm good for a little bit. I um,
+
+Matthias Miller  1:58:46
+so, so, I mean in that case, then, though, when you say works the same as then there's really no thing so on invoicing.
+
+Matthias Miller  1:59:17
+I mean on invoicing. There is nothing that happens upon invoicing, like, from the building perspective, there's no FGI impact. You don't know, like when you sell the building before
+
+Unknown Speaker  1:59:34
+you buy it.
+
+Matthias Miller  1:59:38
+There is no impact in FGI. It's not in FGI. There is no impact on cogs. You don't know what COGS is. So literally, the building doesn't do anything, nothing. You just have post revenue with no expense, and then, and then, once you buy the building, the vendor invoice increases the FGI, the building decreases FGI and expenses it. Out and then immediately expenses it out.
+
+Speaker 6  2:00:04
+So how would you walk, walk us through the the work flow process that you imagine? So now we we've created this, the secondary stin, and we now have the vendor invoice from the rental company in front of us, and we're inputting those calls.
+
+Matthias Miller  2:00:27
+So then I would imagine, and again, maybe I'm just way, maybe this literally doesn't work. It's bad for workflow. But you would create a vendor invoice. You have vendor invoice for the rental company, and then you would go update the purchase price, date and cost on the on the building record,
+
+Speaker 6  2:00:53
+there'd be linking between the two. I mean, automatic linking or no,
+
+Matthias Miller  2:00:58
+we could, we could, we could talk about, if that's necessary, we can talk about doing that. I mean, the simplistic way is no, but I don't know how you ensure then that these get linked out correctly.
+
+Unknown Speaker  2:01:18
+So we could, I
+
+Unknown Speaker  2:01:22
+mean, does the sales order link? Would that work?
+
+Matthias Miller  2:01:27
+Sales are links, but that doesn't, that has nothing to do
+
+Speaker 6  2:01:29
+with purchase. You have to manually put in the notice or something. Is that
+
+Speaker 4  2:01:33
+what you're looking well, I mean, with a link, due to the payment method thing, because
+
+Matthias Miller  2:01:39
+you're looking to build tied out to the to the building, not the sales order. Oh, that's
+
+Unknown Speaker  2:01:43
+right, they're buying the building. Yeah, never mind.
+
+Speaker 6  2:01:50
+Well, the other thing I'm thinking is, how will we know when? How will we, how will we make sure that when we get or is there a better so we get these invoices from Cricket Valley, or from the car select steel or whoever, for greenhouses. How will we make so that they get well, okay, it almost seems to me like you should. The easy thing is going to be to just enter the invoice. The manager proves them to be paid. They get paid, and life moves on. We put them to some what we think is the correct GL account, if we would. Well,
+
+Speaker 5  2:02:44
+I'm, I'm a little confused in your question as as so you lumped greenhouses into this conversation. I'm, I'm confused as to
+
+Unknown Speaker  2:02:54
+that's what's throwing me off here.
+
+Speaker 6  2:02:57
+Well, they're, they're both the same, so you get an invoice, either from the RTO company or from the on greenhouses, where a purchase building like like you're buying in North Carolina, and says, here's the invoice to pay for these buildings, and then you go to pay for them. I think it would be ideal if we have a way to link where we have a field or something where we say, well, this is a manufacture, this is a purchase building, and then that forces you to select a Sten to tie it to that Building. And by doing that, it would say, Oh, here's the total, here's the invoice total. Now go put here's the invoice total and automatically set in the cause you're
+
+Speaker 5  2:03:51
+talking about on the vendor invoice. Yeah, I mean, I'd love that idea.
+
+Speaker 6  2:04:00
+Okay, if we don't do that, it'll just be a workflow process. Where did
+
+Speaker 5  2:04:05
+you? Did I hear you say that if you select it, then it would automatically write in in the cogs information,
+
+Speaker 6  2:04:13
+that it would write in the cogs information, and it would also link the two together, like link from the vendor, invoice to the
+
+Unknown Speaker  2:04:24
+mean, if we do that, I owe you two coffees
+
+Unknown Speaker  2:04:27
+to the stand. I love that. I love that idea.
+
+Speaker 6  2:04:29
+But I mean, how much work is that? Matthias? It's all. All of this can be done manually. I'm just worried about the consistency.
+
+Matthias Miller  2:04:37
+Okay, so you have a vendor on the non po expense, RG, you have a something like a, either stin or building num ID. I mean, this is just as simple as that.
+
+Speaker 5  2:04:59
+I mean, unless. Unless you, unless we decided to run it through some kind of purchase order process where you link this the into a purchase order. The purchase order then gets paid as a vendor as part of a LinkedIn to a vendor invoice.
+
+Unknown Speaker  2:05:14
+I mean, should we? Are you issuing purchase
+
+Unknown Speaker  2:05:16
+orders for? No,
+
+Unknown Speaker  2:05:19
+we don't for retrieval buildings.
+
+Speaker 5  2:05:21
+No, we don't for retrieval buildings, and we're not doing it for greenhouses either. And I'm not necessarily suggesting that we should. So if we don't do that, then we're going back to what Matthias started to say about linking into non purchase order expenses, which I don't have a problem with
+
+Matthias Miller  2:05:46
+them. Well, I mean, we need, I think we should decide now whether we want to use purchase orders with these or not.
+
+Speaker 5  2:05:55
+I'm inherently lazy, so if we can skip one step, I'm gonna, I'm gonna vote for it.
+
+Unknown Speaker  2:06:02
+I'm good with that.
+
+Unknown Speaker  2:06:04
+The lazy part of the skipping, one step, which one? Well,
+
+Speaker 6  2:06:07
+the skipping. I mean, what? I guess, the how will we catch buildings that we never pay for? If we don't have purchase orders, if we generate purchase orders, then we would have, we would have open purchase orders like likely.
+
+Speaker 5  2:06:28
+Well, I mean, if you, if you came up with some linking process to to a vendor invoice, then you could essentially search for buildings that have not been linked off to vendor invoices,
+
+Speaker 6  2:06:43
+or you could just search finish goods inventory in any building that well, no, they I don't think we need purchase orders.
+
+Speaker 4  2:06:52
+We'd have to have a retrieved, not vouchered account then purchase orders.
+
+Speaker 6  2:07:01
+So let's just go with, let's skip the purchase order idea.
+
+Matthias Miller  2:07:06
+Okay, so, so basically, the non po expense you would, you would link it to extend,
+
+Speaker 6  2:07:11
+and this would have to be per line item, because we Yeah, typically, yeah. So you have four building, one vendor invoice, four buildings. Can
+
+Matthias Miller  2:07:21
+we use the building num ID,
+
+Unknown Speaker  2:07:25
+building number, like the stand number,
+
+Matthias Miller  2:07:28
+no, the num ID. Do we need to use the sin? I think we
+
+Unknown Speaker  2:07:35
+How would you? How would you,
+
+Speaker 5  2:07:39
+I mean, the num ID is not represented on the on the building record currently, so
+
+Unknown Speaker  2:07:45
+it's a little bit dicey.
+
+Matthias Miller  2:07:49
+Okay, we need to make sure we translate. I mean, obviously you'll have to do the stint with suffix and then also validate. I
+
+Speaker 6  2:08:07
+uh, well, ideally, okay, I don't know this is now, could on that drop down list, or on that list of schemes you get to pick from, could we filter to the accounting company and a purchase or a secondary stand that's not already a secondary stand with either $0
+
+Speaker 7  2:08:30
+or not already linked to a vendor invoice.
+
+Matthias Miller  2:08:35
+Well, I mean, if you, if you have, I think we do this.
+
+Matthias Miller  2:08:45
+That won't work for you. Won't have a secondary extent for greenhouses, but Oh, true. Add an FGI checkbox for this on the stand list of stints by accounting company with checkbox checked and without a VI, perfect. So then, okay, so then that, that does tie it out. The is the invoice date or the payment date, the purchase date.
+
+Speaker 6  2:09:25
+Well, on blue Thursday, well, okay, on on, on we're buying two by fours. We would use the reception date. Okay, that takes us back into that hole. I
+
+Unknown Speaker  2:09:43
+It goes back to the PO thing.
+
+Unknown Speaker  2:09:46
+Well, okay, it really should be the the vendor invoice, yeah, because that's true enough for the I think the vendor invoice date is close enough. I mean, we're talking, I.
+
+Unknown Speaker  2:10:01
+A minority of our
+
+Speaker 6  2:10:08
+I mean, it's not quite accurate. We're saying, well, even if we had this building for 30 days before we got the vendor invoice, we're saying we didn't know about it. We were,
+
+Unknown Speaker  2:10:18
+yeah, there's no accounting,
+
+Speaker 6  2:10:20
+which is, yeah, but this, I think this is,
+
+Speaker 4  2:10:24
+I mean, unless you want to have a liability called accrued retrieval costs or something like that,
+
+Matthias Miller  2:10:34
+but you don't know what the cost is, because they haven't invoiced you, and they're not going to tell
+
+Speaker 4  2:10:39
+you what it's going to be, right? It's always going to be retroactively filled in. So which is pointless.
+
+Matthias Miller  2:10:44
+Oh goodness, we need time travel accounting, quantum accounting. That could be the new thing, quantum accounting.
+
+Speaker 6  2:10:51
+What does quantum mean? Most times when I've heard quantum computing, it's, it's like, in scary terms, like it's, it's, yeah,
+
+Matthias Miller  2:11:06
+Seth, are you smarter than I am? I mean, we know that, but can you explain this?
+
+Unknown Speaker  2:11:16
+Nope, I'm not. I'm not that smart.
+
+Speaker 4  2:11:19
+Yeah. Well, if you take the word apart, it doesn't have something or quantum,
+
+Speaker 2  2:11:28
+maybe not. Quantum is a discrete quantity of energy, partial magnitude to the frequency of the radiation you represent.
+
+Unknown Speaker  2:11:35
+Tell me what quantum is. I can look smart.
+
+Matthias Miller  2:11:41
+So if it's sold before, before purchase, no accounting event,
+
+Speaker 1  2:11:48
+if it's okay, if it's sold,
+
+Matthias Miller  2:11:57
+purchased, before sale, expense out at time of sale.
+
+Matthias Miller  2:12:09
+Okay, do you guys want a variance? You guys are not using variance accounts. Do we need to support a variance? I mean, you don't care about variance accounts. In this case, do you? No, um, um, well, we can create a reversal. This is not okay. Here's the upside of linking it on the accounting company, you have a purchased building, cogs account, look at vendor invoice or the reversal of the FGI account.
+
+Unknown Speaker  2:13:02
+Plugins, do, does
+
+Unknown Speaker  2:13:06
+that make sense?
+
+Speaker 4  2:13:08
+We were saying, if something would change, that would keep the two matching. Is that what you're after? I
+
+Matthias Miller  2:13:15
+mean, we'll just pull the wherever you put the vendor invoice. We'll just reverse it when we expense it out so we don't care. We don't have, have to have any setting you guys, you guys, can technically expense it out under, under something. It's dumb. Why would you do that? But then, um,
+
+Speaker 6  2:13:39
+so, so, when you say x, so these vendor invoices will always be, will always say, obviously, the one side is accounts payable and the other side is what would always be finished goods inventories.
+
+Matthias Miller  2:13:55
+So then the building looks at that and says, Your vendor invoice is tied out to finished goods inventory, let's reverse that entry and let's create an entry, or let's, let's, let's debit cogs.
+
+Speaker 6  2:14:15
+Well, okay, now I'm thinking that if, if we're creating secondary stands, we, I think we would have, we could create a specific GL account for
+
+Unknown Speaker  2:14:28
+for purchase buildings, yeah,
+
+Speaker 6  2:14:33
+or we could go one step further and say, I want to know, no, that goes, never mind that's that's Well, this one either way, would work
+
+Matthias Miller  2:14:43
+for that if you want to split the accounting
+
+Unknown Speaker  2:14:47
+company or it's just what account we select.
+
+Matthias Miller  2:14:51
+But I don't care what FGI account you use for greenhouses versus retrievals. But if you want to expense greenhouses versus retrievals differently, then I'm going to take issue with. That
+
+Speaker 6  2:15:01
+no because, because we can, we can break apart in however many different ways. We want a revenue in our college because we track that individually on each building, we can say, I want to see all the buildings with green roofs. What how much, what the revenue was for those, and what was the calls for all of those? And we can, and we can do the same thing here. I think we just use the same GL accounts. And if we want to break it down further, we can, there's a lot of sales side, yeah, looking at the sales order, and, yeah, I
+
+Matthias Miller  2:15:43
+Okay, so here it is in a nutshell. When you create the secondary stand, you'll check the box. There's going to be a box above the FGI screen. Let's see if we can find this guy. There'll be a box here that says, purchase my vendor invoice. And then FGI thing goes away and becomes read only, or something like that. Because you don't, you can't have FGI costing in that standard by in a standard mechanism. And then, and then you go into your creature vendor invoice you tied out to the Sten, and then on the building. So then when you come back to the building, you'll now see purchase date, which is the invoice date, purchase amount, which is the invoice amount? Okay, so if you, if you buy it before the sale, then you expense it out at the time of sale. If you, if you sell it before purchase, you create the event at the time of purchase. And I think it's building. It's basically you
+
+Matthias Miller  2:17:18
+so it's basically just the same transaction. We just have say it's a different type and a different date, whatever, but it's just expensing it from we look up the FGI account from the look up the FGI account from the vendor, invoice and expense it out. And then on the on the accounting company, we have a purchase building, cogs, account setting that says how you want them, expensed. Out. Boom, done. We
+
+Unknown Speaker  2:17:53
+handle retrievals. Great. How
+
+Unknown Speaker  2:17:58
+do you like now? Year forward? Yeah.
+
+Speaker 6  2:18:06
+Good. So what's so we have no meeting next week, but then the following, I think the
+
+Speaker 7  2:18:15
+21st or so. Yeah, what's your
+
+Speaker 6  2:18:23
+what's the time frame on this? Well, okay, I guess priorities on what we talk Am I correct that?
+
+Unknown Speaker  2:18:30
+Well, yeah, what
+
+Matthias Miller  2:18:34
+clean clean up the discrepancy report and retrievals. I mean, is there anything else?
+
+Speaker 2  2:18:41
+A little bit of customer refund stuff, but that's fast, and then
+
+Matthias Miller  2:18:45
+yeah, some little niggling stuff that Seth can chase down that doesn't Yeah.
+
+Speaker 6  2:18:53
+And this, as simplified as this is, is this something like, Is this more like a week or two now that
+
+Matthias Miller  2:18:58
+two months? Oh,
+
+Speaker 6  2:19:03
+it's, I didn't realize you were, you were that heavy on working on only. So that's Yeah,
+
+Matthias Miller  2:19:10
+that's right, yeah, the only 15 minutes here and there over the next few months you should be able to get it done. Dwayne's a tough, tough tough guy to tough client to work for.
+
+Speaker 5  2:19:23
+Hold on, hold on. I take no responsibility. I'm blaming all this on Seth and the rest of the junior developers. They're the ones pushing. So we just try to stay ahead of
+
+Unknown Speaker  2:19:34
+the boss's orders. Tell us moving. So we're keeping moving. I feel like
+
+Speaker 5  2:19:40
+there's circular reasoning going on here. We're hurrying because you're pushing, but you're pushing because we're hurting you. Is that it?
+
+Speaker 2  2:19:47
+Well, we're hurting because Ellis said to hurry. And he said to hurry because you said you wanted soon, and so we're hurting, which is making you feel rough
+
+Unknown Speaker  2:19:59
+again. I think. Worth make sure that
+
+Unknown Speaker  2:20:01
+he can keep up with wanting
+
+Speaker 6  2:20:05
+it to come back to Dwayne. Dwayne throwing out a, an unrealistic deadline on it, right? Not an unrealistic, just a a, an aggressive deadline, not, not even a deadline, but
+
+Speaker 5  2:20:20
+I threw out, I threw out a wishful deadline, and somebody took me serious.
+
+Unknown Speaker  2:20:24
+Yeah, that's that's more accurate.
+
+Matthias Miller  2:20:28
+So I'm going to say, I'm going to say, if I put on my pessimist hat, I would be curled up in a corner crying if this took more than a day. And I think it's more realistically, couple hours to half a day of, once again, Seth and I together. But I mean, it's, it's just, it's just not that complicated,
+
+Speaker 6  2:20:56
+good. So okay, this piece would need to be done as well as Josh secondary STP in order for us to start using it.
+
+Matthias Miller  2:21:04
+So correct, but we can, we can start coding this right away, and you can start using it for greenhouses right away, like, and this is completely independent of Josh the secondary stint.
+
+Unknown Speaker  2:21:13
+Yeah, stuff.
+
+Speaker 4  2:21:17
+So the only other thing is for Dwayne to not schedule any, uh, retrievals until I have to listen from,
+
+Matthias Miller  2:21:23
+yeah, can you tell everybody to stay current, please?
+
+Unknown Speaker  2:21:30
+If only, if only,
+
+Unknown Speaker  2:21:36
+I love it.
+
+Speaker 5  2:21:38
+It's hilarious. This is, this is the, this is the key selling point to my new software, is we will make everybody pay. We'll
+
+Unknown Speaker  2:21:48
+find out.
+
+Unknown Speaker  2:21:51
+We will
+
+Matthias Miller  2:21:54
+shoot
+
+Speaker 4  2:21:55
+just think this might all be worthless programming we're doing here. Okay,
+
+Matthias Miller  2:22:01
+oh, my goodness, alright. Well, yeah, yeah. So, yeah, we are going to run out. I mean, anybody we can. We can clean up a document, sales, order, accounting impact, but we're not going to be we're going to be sitting idle, twiddling our thumbs. So just did that's good. Is the
+
+Speaker 4  2:22:30
+undeposited funds report thing, Stripe number
+
+Matthias Miller  2:22:37
+it's back in your court. 38 is
+
+Speaker 4  2:22:39
+it okay, oh yeah,
+
+Speaker 6  2:22:44
+okay, well, yeah, the Okay. So, so there's some of these little things that you're waiting on details from us. We could
+
+Matthias Miller  2:22:53
+Okay, I think, yes, I think one thing that's out there, I don't know what schedules like, but, but if you guys have a chance to chase down or the Account Reconciliation stuff, and if you actually surface problems, it might be good to set aside some time next Thursday to work on on helping dislodge the discrepancies, reconciliation issues. I don't care. It's up to you.
+
+Speaker 4  2:23:17
+We're saying next Thursday or Yes,
+
+Unknown Speaker  2:23:22
+are you out? I
+
+Matthias Miller  2:23:23
+believe so, yeah, or Wednesday.
+
+Unknown Speaker  2:23:28
+Wednesday would be
+
+Unknown Speaker  2:23:30
+probably better.
+
+Unknown Speaker  2:23:33
+I'll be traveling
+
+Unknown Speaker  2:23:36
+or anything. Here are you
+
+Speaker 6  2:23:41
+going to have time with end of month stuff to really get into that?
+
+Unknown Speaker  2:23:46
+I think so. I'm hoping to get a long ways.
+
+Speaker 6  2:23:53
+Should we? Should we just plan for Wednesday, 930 to
+
+Speaker 7  2:24:00
+930 1030 Wednesday? Gotta wait. 230
+
+Matthias Miller  2:24:08
+or three.
+
+Speaker 4  2:24:13
+230 Yeah, 233 30 morning. It definitely works better for me, but I can make that work too, I suppose.
+
+Matthias Miller  2:24:26
+How early in the morning?
+
+Speaker 4  2:24:27
+Well, you know what thing is, is, I'm not going to get to figuring out any discretion and stuff before that. Okay, not really. Do you
+
+Matthias Miller  2:24:38
+guys want anything? Okay, look, let me know we can wait. I'm happy to I'm happy to wait until 21st if you guys can't get to it till then, if you want something before then, let me know. We can also shoot things back and forth by email. And if it's just something that we need you to walk us through, we can also hop on a call with you and have us, have you share. Question.
+
+Speaker 4  2:25:00
+So if, if I would throw examples of problematic things into the incident, is that
+
+Matthias Miller  2:25:08
+somehow, yeah, works. Just do it that way, and then you
+
+Unknown Speaker  2:25:11
+can just contact me more information.
+
+Matthias Miller  2:25:17
+Yep, awesome. Sounds good,
+
+Unknown Speaker  2:25:20
+good, all right,
+
+Matthias Miller  2:25:23
+thank you guys. Thank you. Bye.
+
+
+Transcribed by https://otter.ai

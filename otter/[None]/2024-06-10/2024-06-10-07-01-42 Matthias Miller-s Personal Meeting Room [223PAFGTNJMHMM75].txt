@@ -1,0 +1,815 @@
+Matthias Miller  00:24
+Good morning, Ben, I completely forgotten about this call, and was like, What is? What is the meeting I have right now?
+
+Unknown Speaker  00:39
+Hey, Mark,
+
+Matthias Miller  00:42
+good morning. Good morning again.
+
+Unknown Speaker  00:45
+All right, let me
+
+Unknown Speaker  01:10
+here comes through in a minute.
+
+Matthias Miller  01:43
+All right, I'm not sure if Dwayne responded to the calendar, and I'm not sure if he'll be joining us or not. Just shot him a message.
+
+Unknown Speaker  01:56
+We go ahead.
+
+Matthias Miller  02:03
+Hey, morning Drew.
+
+Unknown Speaker  02:14
+Do we have Josh on as well?
+
+Matthias Miller  02:15
+Josh is not on Ben and drew right now.
+
+Speaker 1  02:20
+Three. Okay, morning Ben, morning March.
+
+Unknown Speaker  02:31
+All right here,
+
+Matthias Miller  02:32
+let's do looking for another great one to grab. Okay, yeah, I'm looking at the wrong place.
+
+Matthias Miller  02:58
+So there's doing okay, all right, so let me just start out and just walk you guys through kind of what we got. I've got two vendor invoices here. I copied the live system across the test just so we could. We didn't run this run an update over the weekend, and so it's not live in the test system. But we've got here a $475 invoice for Lowe's, and so we're going to create a credit memo. It's got POS associated to it with it, and they decided to discount us $100 for fun and profit. And this should not be let's see high non credits on, on credits to, sorry, actually, no, you can have,
+
+Unknown Speaker  04:00
+never mind. That's fine.
+
+Matthias Miller  04:03
+You can you can assign a grand total. So in this case, this one doesn't have any non po expenses, so it's just going to adjust the adjusted appropriately. So when we go to
+
+Unknown Speaker  04:24
+do this.
+
+Matthias Miller  04:28
+So when we pull up the Okay, so first of all, we come back here, then we'll see under the credit memo a credit of $100 a link to open it. In this case, we already paid it, so we should be good to go. We want to take a look at how this is impacting accounting. I.
+
+Matthias Miller  05:15
+We've got the original transaction, and because everything was under raw materials, the credit goes to the credit goes to raw raw materials. I
+
+Matthias Miller  05:43
+if we were to have a let's do this if we had a vendor invoice with the invoice, Po, and that might be, I,
+
+Unknown Speaker  06:04
+it's actually more like,
+
+Matthias Miller  06:16
+let's go find Find a vendor invoice with multiple accounts the invoice
+
+Unknown Speaker  06:23
+Po.
+
+Unknown Speaker  06:38
+I think that's what I want, but I'm Not sure I
+
+Matthias Miller  06:51
+so here we have current i
+
+Unknown Speaker  07:09
+that is not correct.
+
+Unknown Speaker  07:17
+Here we go. So
+
+Matthias Miller  07:20
+it gets more rare, but here, let's go one for let's do Apple outdoor supply. We've got multiple accounts here, so here, if we create a credit memo, oops, also for $100 also for fun and profit, I'm it, and we come back here, and let's go take a look at what that does to the accounting impact for this vendor invoice. So, so you'll see we had
+
+Matthias Miller  08:02
+10 of vibrant raw materials, 5027, raw materials. And the $100 was split, $10.20 to the 10 of five raw materials, and the 8980 split to the 5027, raw materials. So in the case of a PO purchase, if you issue your credit, we will distribute the credit proportionately. Oops, Josh is here.
+
+Unknown Speaker  08:35
+Hey, Josh. Hey guys.
+
+Matthias Miller  08:41
+So in the case, in the case of a credit to to a PO will distribute that credit proportionally to the accounts. Or if you have like in this case, if we were to go back and say, not on this one, not on this one, but on for this one, but on
+
+Unknown Speaker  09:07
+this guy,
+
+Matthias Miller  09:09
+if we had a non actually, we do have a non po expense. We have a 10 cent. We have a 10 cent non po expense on this vendor invoice and applying the bunch of credits.
+
+Unknown Speaker  09:28
+Wrong way. Hang on. I'm in the wrong place here. I'm
+
+Matthias Miller  09:54
+so if, if we had non non po expenses as well, we. Which is messing up the totals. And then we could, within the credit memo, issue a credit directly back to that account, and the balance would be distributed the 9990 would be distributed over the PO items.
+
+Matthias Miller  10:31
+Yeah, credits for POS are quite similar. Now in this case, if we wanted to use this 100? Well, in this case, we don't have the let's make this total week 17, so it reconcile, right? So this case, if we want to make a payment with a credit, we want to use it $100 credit to the payment. We go in here, select the credit, the credit memo, how much we want to use from that. And in this case, we should make a payment of 1248, 17,
+
+Unknown Speaker  11:13
+for the balance,
+
+Matthias Miller  11:18
+using a credit. Oh, let's, let's start with this does one more caveat, the expecting deposit. Really, the only thing this does it or will do it doesn't really do anything right now. The only thing this will do is mean that it cannot be used as a payment on an invoice because you're expecting a deposit. And it will make it available to include on a deposit record. And it'll move the funds into undeposited funds until you, until you deposit it, instead of, instead of going back to against accounts payable.
+
+Unknown Speaker  12:05
+What's the use case?
+
+Matthias Miller  12:09
+You overpay by $40,000 and you don't want to hold the credit over six months or whatever the situation is, and so they write you a check,
+
+Unknown Speaker  12:26
+gotcha. Gotchas.
+
+Unknown Speaker  12:32
+Can you go back to the accounting impact on the low one?
+
+Matthias Miller  12:41
+Sure. Let's see. Let's do this.
+
+Unknown Speaker  12:46
+Yeah, go get it from him and Get that wiped out. My
+
+Unknown Speaker  13:00
+Yeah,
+
+Unknown Speaker  13:14
+suppose 23
+
+Speaker 2  13:32
+Yeah, okay, the the accounts payable, credit, $100 I think that one should be the secondary lows, because it was the 475, was paid from Lowe's two accounts payable and then So if they, if they credit it, this is just particular with these guys. If they credit it, it's going to go back on that credit card account, and it's not going to be available to pay a bill, necessarily, like I mean, it is because it's back on the credit card. But it's not as in something accounts payable.
+
+Matthias Miller  14:27
+So really what we need is a use as return directly to source payment method or deposit. This uses credit return to source payment method or sorry, return immediately to source payment method or make available to deposit.
+
+Unknown Speaker  14:56
+Yeah, I think that would work. I.
+
+Unknown Speaker  15:05
+And it's
+
+Speaker 2  15:07
+it's just those in house credit cards are probably the only situation that doesn't show up like that, like Menards, those kinds of places i
+
+Unknown Speaker  15:29
+Sure.
+
+Matthias Miller  15:37
+DREW. Am I thinking, right that for something that gets used as a credit jury mark something that gets used as a credit. There is, there's no accounting impact of using credit for Well, is there a place in the balance sheet that you want unused credit to be showing
+
+Unknown Speaker  16:01
+up as? About
+
+Speaker 2  16:03
+me, it could just be as a negative in AP. In other words, we don't, we don't owe as much in accounts payable as as the bills actually are, because there's some credits there. Mark. Do you want that differently or with also with that is if I would pull a list of accounts payable for the certain vendor, then I'd want to be able to see, like, here's how much the bills are, here's how much the credit is. So that would more be a vendor report or something like that. But as far as balance sheet, about me, it doesn't but Mark, what do you want to see?
+
+Speaker 1  16:48
+No, I agree with what you're saying. You're saying, if there's $20,000 worth of invoices that need paid, and we have $1,000 worth of credits that we can apply, then looking at the balance sheet, AP would show 19,000
+
+Unknown Speaker  17:05
+Yeah, correct.
+
+Speaker 1  17:07
+No, that agree with exactly with what you said.
+
+Matthias Miller  17:12
+So there's no accounting impact of paying a vendor invoice with credit. There's nothing in accounting that I mean, it just, you just had expenses to counter the the prior negative, and it'll self,
+
+Speaker 2  17:37
+yeah, I would Think that would only be if it actually is exact. But I'd kind of like so if there was an invoice for $5,200 and we paid it with a credit, I would still like to have a transaction over there for that amount. Okay? If
+
+Speaker 3  18:00
+we do a
+
+Speaker 2  18:04
+transaction search and it's not there at all because we just canceled each other over on the other side, it's gonna, I'm afraid we're gonna go hunting for things that that are correct, and we don't realize, because they look like they're not there.
+
+Matthias Miller  18:26
+So you would like a transaction, in this case, just a 5200 a $200 debit and credit to AP,
+
+Speaker 2  18:35
+basically, yeah, like when I when you would open that invoice, the vendor invoice, and you would look at accounting transactions. It would just be a debit and credit to AB, yeah, okay.
+
+Matthias Miller  18:58
+Makes sense to me. Dwayne, any questions on your end about the process of the AP, process of creating credits?
+
+Unknown Speaker  19:14
+I don't think so. I'm sure there'll be questions that come up as we start heavily using it.
+
+Speaker 2  19:25
+One question I have on it, on that, um, so, so let's say this is a I'm going to go to the Lowe's again, because that's where it is usually on the invoice there we click on, if like, let's say it's, there's a PO connected, and it's and it's with that particular purchase order that they're doing a refund for us. So then we hit the Create credit memo and. And and we create the the $30 they gave, the $100 they gave back to us. And then, in this case, we would just, we create the credit memo, and then we would say, put this back on the payment method, because that's what's going to happen with these. If it is, let's say it's Apple outdoors and we're going to use it again. But they say we're giving you a credit memo like that, I suppose could be used to pay this one, were it not already paid. But it's not normally something they would give a credit memo for. Would already have been paid before so, so on the one that's already paid, you'd click, create credit memo, create your credit memo, and then something later, you would hit pay with credit to pay a different correct
+
+Speaker 4  21:15
+the only, the only question I have that is visibility, like, are we gonna do we have reporting that says, like, standalone reporting that says, here's outstanding credit memos that not been assigned off to to pay off or used up or in some form or fashion?
+
+Speaker 5  21:35
+I didn't create one, but I think that we ought to have one like that. That's on my list to add something. Okay?
+
+Matthias Miller  21:44
+I mean, along those lines, I think one of the things we were going to talk about was
+
+Matthias Miller  21:57
+the best way to handle things that have available credit when you're in the process of paying drew it could be as simple as an available credit, because the payment by credit needs to be a Yeah, I guess would you be okay having something like a an available credit column, maybe right before the invoice due date? I don't know where you're, where you would like it, and then if you do pay by credit, still having you drill into the vendor invoice to assign, assign the credit workable?
+
+Speaker 2  22:49
+Yeah, I would think that would work. I mean, I'd probably put it on the other like, maybe before discounts or after discounts, I don't know, okay, but before the total Anyway, okay, and it would just be static information, is what you're saying, and you'd go to the invoice actually to apply it, and then I guess that would bring back the new total to pay.
+
+Matthias Miller  23:23
+Yes refresh. Well, that's a good point.
+
+Matthias Miller  23:34
+It will I
+
+Speaker 2  23:40
+thank you. Like, if I could go apply the credit and then come back and it would have a new total, and then I, you know, select everything with checks again, because I could go through and apply all my credits and then come back, get the checks, and a little little bit faster that way. But
+
+Speaker 4  24:01
+it sounds unreasonable that the total would update. I mean, that's just really unreasonable, right?
+
+Matthias Miller  24:09
+Come on, what are you thinking? Yeah, it's like, I mean, it's really the total is no longer. It's the, it's the the total really becomes a balance in this case, right?
+
+Speaker 2  24:32
+Actually, since is that, that information is still going to go over onto the check stub, we have been wondering, yeah, we talked about credit that there that line shows up on the check stub. I just thought maybe we should just put it in here as an extra line that you know, like this heritage acres. Site and supply. If there was a credit there, it would have another line with, you know, its new vendor invoice ID, because, I mean, it's not a vendor invoice ID, but it's a credit ID would come in there, and it would show up as a negative in its own column, and it would give instead of 4694 it would, you know, the balance would be 4594 for that for that vendor. Maybe that's hard to do, doesn't mask
+
+Matthias Miller  25:37
+me, but, yeah, that's harder to do, but I forgot about the credit thing on the check stub. That's good. And so for that one, then let's go pull up a check.
+
+Unknown Speaker  25:58
+Let's see. Ah,
+
+Matthias Miller  26:03
+let's go here print check. And so in this case, we've got invoice number, then we'd have a negative, which would be a, is it the how do you want them listed? Do you want the description listed? Do you want the credit for, like, a negative and then credit for the original credit?
+
+Speaker 2  26:38
+Usually they'll give they'll have a number. I'm thinking, anyway, well, okay, lows often does not, but a lot of times vendor that's actual vendor credit like this, would have a new number for they would have a new number. I
+
+Matthias Miller  27:03
+You meet yourself so we'd have a credit memo then, like a vendor credit memo id on the credit memo.
+
+Unknown Speaker  27:11
+Yeah, that probably would be good. I
+
+Unknown Speaker  27:28
+Okay,
+
+Matthias Miller  27:29
+and then
+
+Unknown Speaker  27:32
+we require
+
+Matthias Miller  27:35
+either that or a description, so we can choose it from the list.
+
+Matthias Miller  27:57
+Yep, then other checks, though, we just have a negative with the total credit memo number, and then the vendor credit memo id. And,
+
+Speaker 2  28:10
+yeah, I think that would work cool. I guess Dwayne for your people, if there's no credit memo id number that comes with it put in. They should just put in, you know, credit or something like that, or make something up it looks like a
+
+Matthias Miller  28:31
+credit
+
+Speaker 4  28:34
+mark. We probably ought to in the in the if there, if credit members are showing up with that some type of ID, then we ought to probably have a standardized process for creating an ID. Otherwise we will all be wondering, what the world it you know, what it relates to so I mean, we've done we've done these. We have process for creating a bunch of other stuff. So we probably have something similar for if there's no ID for the credit memo,
+
+Matthias Miller  29:06
+and you would want to just copy the original vendor invoice number over, even though it's,
+
+Speaker 4  29:13
+I mean, I expect this, we're going to end up is probably copying the original, the original vendor invoice number and adding some kind of suffix to it.
+
+Unknown Speaker  29:21
+Okay, yeah, that sounds good.
+
+Unknown Speaker  29:26
+Yeah, I'm good with that.
+
+Unknown Speaker  29:38
+Well, that's I
+
+Unknown Speaker  29:43
+easy.
+
+Matthias Miller  29:56
+Anything else that we should be i.
+
+Unknown Speaker  30:00
+Going over.
+
+Speaker 1  30:03
+I listed about five questions here, just so when you guys, you mentioned a credit is proportionately distributed to the different accounts, does it use the same logic? The same logic as like a shipping charge, which dosh building were? I mean, it be a negative instead of a positive, but, or just says, or, yeah, that's first question. Does that use the same logic? If you have a have $100 credit to a vendor invoice that's tied to purchase order that has say, $25 worth of production supplies and $75 worth of raw materials. Will it apply the credit like 25% 75% fortunately, to those two accounts? Do? Yes,
+
+Matthias Miller  31:03
+and so this may be more technical than what you care to know, but effectively, what we do is, when creating accounting impact for these we go calculate the accounting for the vendor invoice without any credit memos, and then find it with the credit memo and apply the delta so that we use the same rounding logic, rounding and distribution logic in both situations.
+
+Speaker 1  31:36
+But am I correct that in the example I gave the someone would need to manually adjust the purchase order to match the new total the lower total on the vendor invoice. Yes, that is correct,
+
+Matthias Miller  31:56
+okay. But we don't have any kind of hang on, but we don't have any kind of reconciliation that says if you don't invoice, if you don't adjust the vendor invoice total, that I don't think we do. Maybe Josh, Josh may correct me where it says that if you have a credit applied, that we warn if the total Shouldn't we mark the vendor invoice is not reconciled, if the total plus shipping plus Tax, less discounts, less credit memos does not equal i
+
+Matthias Miller  32:46
+Okay, like, here's the apple outdoor supply vendor invoice I've messed around with. It made the total 1298, 17. We have a with a 10 cent postage non po expense. I've credited the non the 10 cents as well as credited the 9990 but the invoice shouldn't be reconciled, because the total cost of the PO would be is $99.80 more than what we would expect given the credit memo. Well,
+
+Matthias Miller  33:33
+do we care about reconciling vendor invoices and POS with the credit memos. That's the real question.
+
+Unknown Speaker  33:46
+How much do we care
+
+Speaker 2  33:51
+the credit memo only on the payment side, so like the total of the vendor invoice is still the same. You're saying, if we do a credit and we write it to the PO, the PO is now less than the vendor invoice.
+
+Matthias Miller  34:11
+No. Okay, so we have this little fancy tool here that says, if I put down 1398, as a vendor, invoice total, it says that we the invoice is 1247, what we selected. Hang on, maybe Josh did handle this. Nevermind. And say anything. If we have a
+
+Matthias Miller  34:45
+okay, but if the if we have a credit for shipping or tax, the invoice is not going to reconcile, maybe that's a conversation for Josh. I. Um, this afternoon
+
+Unknown Speaker  35:02
+dropped off a bit.
+
+Speaker 1  35:12
+So you're saying Matthias that if we apply credit to an invoice, that lowers the invoice amount. The then it's, it's a completely manual process to also lower the per if there's a purchase order attached to it, there's, it's a completely manual process to lower the purchase order amount to match that correct. So
+
+Speaker 1  35:43
+Well, is there anything wrong with starting out, with just leaving it exactly as is, and if it creates problems, then we look to deal with it later? Nope. So yes, Dwayne or drew Do you see any issues with it? I mean, I'm thinking that the typical use cases are lowest charges sales tax, and then No, no, no, no sales tax on this. And we it all gets credited. And so the products going inventory slightly higher price initially, because the sales tax, and then we do the credit, the invoice total is lowered. We just need to remember to, at the same time, lower the PO total.
+
+Speaker 2  36:35
+Maybe this, maybe I'm just overthinking it, but I think I think the invoice total should stay the way it is, like the vendor's gonna look at is there is they, they already issued you an invoice for X dollars, then when they send you a credit. Most times they're not changing that vendor invoice amount. They just have a new entry with a negative. So in order to be able to reflect similar we need to keep our invoice total and so and then and then our PO accounting transactions would reflect that there is a credit here back to those accounts. So it would kind of be like po selections plus the credit memo would equal the original total amount of the benefit.
+
+Matthias Miller  37:41
+Makes sense, which? Which is the current behavior we don't support. If you ever needed specifically credit, shipping and tax, it'll the invoice will show it is not being reconciled. Okay? Because I think unless,
+
+Speaker 4  38:11
+yeah, okay, so really, this comes down to a question of whether we want to, whether we want the cost of our items to actually reflect, reflect what happened on the payment side or not, and the I don't even know. Like, if you're going to try to inject some of this information back, there's enough variables that go along with it, you're going to have a hard time doing it from an automatic standpoint, I don't know. Do you really think you could come up with an automatic way with dias?
+
+Matthias Miller  38:37
+No, I still believe you have to manually adjust the PO, yeah. I sure.
+
+Speaker 4  38:43
+So. I mean, this really comes this really comes down to the to the purchasing department, whether they want to reflect some of these changes on the item itself, or whether it's if it's only an accounting side.
+
+Speaker 1  38:57
+Well, we on inventory items. I think it's important that we do because of how we're applying, gets really complicated, but how we're applying actual raw material cost at the end of every month. So our source of truth is still at the end of the month, we say, how many dollars worth of inventory do we we have? We go and count all high usage so and Nick updates those quantities, and we say, okay, as of this bay 31st this is our our value of inventory, and it's all based off of physical count and the price per unit that it was entered in, which feeds off of purchase order for invoices. And then we go to the accounting site, and we say, you. Say something like inventory, our source of truth, or physical count shows 2 million accounting things. There's 2.1 million in inventory. So we used 100,000 more because of, I don't know, waste or whatever, our standard costing percentages were too low. Do we go in and move that, make that adjustment? And so if, the closer we can, the closer that IMS our Inventory Management System pricing matches with the accounting side. More accurate we're going to be there. So if it's a 20 or 30 or $50 credit here, they're probably no big deal. But I think that's what what we should what we should shoot for is to have to match
+
+Matthias Miller  41:06
+or possible.
+
+Unknown Speaker  41:13
+Don't know if that made any sense or
+
+Speaker 4  41:14
+no. It makes sense Mark, I guess the question that's residing in my mind yet is, can we quantify it to where we can make it automatic, or are we just left with always a manual process that AP people are going to have to just go and say, like, okay, hypothetically, you've got two vendor in or two purchase orders signed into a vendor invoice. How do you split the difference? There's, there's a lot of questions that come up with this, but I do, I agree with you. It's just a matter of, could we get to a place where we can make it a click of a button and it injects it back over onto the purchase orders? But I guess kind of what's in my mind the question is still there,
+
+Speaker 1  41:54
+wow. I don't think we, we could or should even attempt to at this point. I mean, if we do that, then we probably should do the same thing for discounts, like where we if we miss a discount, we have to, I think, I think the answer is, leave it as a manual process for the foreseeable future, and then, because I agree, there's so many variables that I think trying to automate it would be real hard. Would be cool. I'm good with that approach.
+
+Speaker 4  42:29
+I mean, especially, I think you bring up, you bring up discounts that are missed, and like importing those back across the sales order to I mean, having a real clean, easy way to click a button and it updates that stuff would be nice, but might grow a few gray hairs on Matthias head for this one.
+
+Speaker 1  42:50
+Yeah, I'm good with leaving it just as we have it now. I mean, obviously can't see what you're seeing, but it it sounds logical and correct to me.
+
+Matthias Miller  43:01
+So, let me see. Go ahead, keep going down your question.
+
+Speaker 1  43:10
+I mean, that's that's all I had on that question. I do have four other quick questions, but I'd say go ahead and wrap this one up.
+
+Unknown Speaker  43:20
+So if
+
+Matthias Miller  43:26
+here in Apple outdoor supply, we issued a $99.90 cent credit towards the PO items. The po was not adjusted to match. Do you want? I think this is probably a Duane question, I'm not sure. But do you want the vendor invoice to say, Well, you said there's $99.90 so you know the product is $99.89 or 90 cents less than what we thought it was, but your PO items don't actually match. You should maybe go fix the PO do
+
+Speaker 1  44:06
+well, I think yes, we would want that warning. However, are there other situations that it will like falls, like you mentioned something about shipping, or, how are we what's good if we do that warning, how are you going to different? How are you going to will it also warn then, when you have a an invoice from UfP Salisbury for $15,000 worth of two by fours and another $2,000 so dollars. $2,000 shipping invoice to TMC for the hauling and the purchase order is going to show 17,000 like 15,000 for the product, 2000 for the hauling.
+
+Unknown Speaker  44:59
+Oh. Um, so
+
+Matthias Miller  45:04
+I have not thought about the impact of great invoices.
+
+Speaker 1  45:11
+I mean, part of me does, yes, let's do a warning on the invoice if the two don't reconcile. The other part of me says, you may be better off to not have a warning, and if there's between purchasing an AP, they have other ways of being those pricing discrepancies, like they have a pricing discrepancies report that flags items that are, have, are much have a landed cost that's higher or lower than the previous round for the previous, previous time that product was received at that location. And so that catches, I think that would catch a lot of these issues. They're like, why did these outlets go up 30% Oh, there was sales tax charged on these, and there shouldn't have been, and they would that would prompt them to change that. So in some ways, I would suggest we do not add a warning right now because of triggering, positively triggering too many false warnings, and just using the current systems, we have to spot for pricing issues like that.
+
+Speaker 4  46:39
+Okay, hold on, what am I missing? The vendor invoice already will show whether it's reconciled or whether it's not reconciled. It's
+
+Matthias Miller  46:46
+not respecting credits right now.
+
+Unknown Speaker  46:50
+Well, so sorry,
+
+Speaker 4  46:52
+that sounds like a you problem, but I mean, well, I
+
+Matthias Miller  46:55
+mean, I think that's, I'm asking whether it is an issue. I think, I think on the credit memo, we should distinguish between, between po credits. So we already have non po credits in the credit memo. We need to, we need to have a field for po credits. How much is really product you're
+
+Speaker 4  47:09
+saying? So you're saying, if you pay it with a credit, essentially, it shows zeroed out from a payment standpoint, but theoretically, not theoretically, but in reality, that really should be injected over to show up on the purchase on the purchase order itself.
+
+Matthias Miller  47:24
+No, this is, I don't think that's what I'm saying. Okay, so here we have 11, 4702 in product. Yeah, we issued an additional credit of $99.90 is that product? Is that shipping? We don't know. And so if we're adjusting the product, so let's say that we we got a refund for let's do this, one of these pieces, which comes out to, we got 230 I can't edit it now. We're gonna stop paying with credit so we can make changes. Yes, we know. Okay, so we got a credit for for a window and for this 10 cent postage charge that I made up. So that's the window was 230 97 ad, we're gonna make this postage be $1
+
+Speaker 3  48:40
+um, and
+
+Matthias Miller  48:50
+so now,
+
+Matthias Miller  48:57
+instead of this, we can Go back to the original paying amount plus $1 Yes. Okay, so now our our credit adjusted the total by the cost of one window and $1 in postage. But we're not getting any discrepancies here, because the credit amount is not broken out between what's a product credit, what's a product credit and what's a shipping tax and discounts credit. And so the credit memo needs to split out shipping tax and discounts and and product credits or po credits. And if we do that, then we can say, whoa, whoa, whoa, whoa, you said you have your credit memo. Makes it look like you've got, um. 230, 97
+
+Unknown Speaker  50:07
+I don't know like
+
+Matthias Miller  50:14
+your credit memo looks like you got 916, 95 in product, but the vendor invoice still has 1147, 82, of product.
+
+Speaker 4  50:30
+I'm not making sense. Yeah, I know I'm tracking. I'm just not sure how you're gonna resolve it, because if you go update the purchase order, then the credit memo is is useless.
+
+Matthias Miller  50:42
+Why? Is it useless?
+
+Speaker 5  50:43
+Because you the credit the credit memo is to to say, why is my payment different than the invoice total, right? Drew
+
+Unknown Speaker  51:00
+your muted if you're trying to say so.
+
+Unknown Speaker  51:01
+No, thank you. Sorry.
+
+Speaker 2  51:06
+The credit memo, like when we create the credit memo, is when we need to think about, how does it affect the POS when we're paying an invoice with a credit memo, we don't change anything on the invoice or the or the POS that it's simply just a payment method at that point.
+
+Speaker 5  51:28
+So I thought the what we talked about a couple weeks ago is that in in either case, you update the PO to say what you actually got and what the price of that is, and so you end up with an invoice that you should be paying less than you actually are, but you paid extra, and to use a credit memo to difference it out
+
+Speaker 2  51:51
+that would be on the side where you're creating the credit memo. Yes, that's right, you overpaid. So we're showing the credit, creating the credit amount which is less than that,
+
+Matthias Miller  52:08
+which is fine, but then if we want to know whether, if we want to, if we want the invoice reconciliation
+
+Unknown Speaker  52:17
+to work.
+
+Matthias Miller  52:19
+So currently, as it stands, we're not respect credit members are not broken apart into product, and there should be taxing discounts. So when you go fix the PO and say we only got three windows instead of four, it's going to say, Whoa, your product total doesn't match your PO. Well, the credit memo doesn't know whether we got I mean, just to make this net near worse, let's say that they felt really bad and they gave us $50 on our shipping as well. We have no idea. I mean, there's no way to reconcile. So I think I'm just going to go ahead and say this is how we need to do it. We need to have the shipping tax and discounts the credit memo has to be broken down into shipping tax and discounts and po credits and non po credits, and then you've got a total and AP needs to be able to look at something and say, Okay, were these credits for shipping tax discounts, or were there for po items, or were there for non Po, non po items, and tied out?
+
+Unknown Speaker  53:19
+Yeah, I think that's a good plan.
+
+Unknown Speaker  53:20
+Okay,
+
+Matthias Miller  53:24
+Dwayne, you look like you're needing espresso, no or other headache.
+
+Speaker 4  53:33
+Maybe I'm not, maybe I'm not tracking, and I might be slow. It's Monday morning, and maybe having enough coffee. But
+
+Unknown Speaker  53:44
+how do we okay, if,
+
+Speaker 4  53:47
+in this case where, okay, let's, let's hypothetically say, whatever we paid for shipping, and they're crediting it back to us, and all of that shipping was over there, you know, reflected on the purchase order. It was part of the total cost of the purchase order items. How do we get that back in alignment? Are we
+
+Speaker 4  54:10
+just coming back over here and deleting this and then going back and like at that point, then you're pushing it back across to the vendor invoice, and then your credit memo is no longer needed. I
+
+Unknown Speaker  54:26
+Or am I, well not making sense?
+
+Speaker 2  54:32
+Well Mark and I had talked about this a while back when we looking at the design of these things, and one of the things we can close it is we should show the credit that was received on this PO here in this column of shipping tax and total on the right, because we need the total for the PO to still match on that vendor invoice and. But we want the items to be less, so the items are going to be the $100 less, or else the shipping is going to be the $30 less that was due on shipping that day credited, or however it's split out, and then those last items, plus the credit that showed up equals that total that would still remain the same,
+
+Speaker 5  55:22
+but, but couldn't we just like we adjusted the amount of the of the product we received here, adjust the shipping amount here?
+
+Speaker 2  55:33
+Yeah, I'm thinking this would be an automatic this would the credit amount would come in and show up here automatically when the credit is is done, and then the reconcile is it might not be in the right places. So, so you adjust the shipping to whatever it should be. You adjust whichever part of the PO the product that needs to be adjusted. You make those adjustments, and then it will total out because it has brought in that credit. Or we could just let that on the backside and not show the credit.
+
+Speaker 5  56:12
+I guess I'm thinking about that. We don't actually need to have the the shipping and and discounts and stuff broken out if you just adjust the PO here,
+
+Matthias Miller  56:24
+so you will then, but then, so then you'll adjust the shipping here as well. But
+
+Speaker 4  56:33
+is not, is the vendor invoice and the purchase order record? Are they not validated based on shipping and tax, or is it stored once on the initial creation on the vendor invoice side? In other words, if you change it on the PO, is it going to change it on the vendor invoice?
+
+Unknown Speaker  56:52
+You need to change it in both places. I
+
+Matthias Miller  57:05
+Josh, how do you then get away with not changing the vendor invoice total? Don't
+
+Unknown Speaker  57:13
+you have to change that total?
+
+Unknown Speaker  57:16
+No credit memos for
+
+Speaker 5  57:20
+but the credit memo, again, is just to handle the difference between that total and the payment amount.
+
+Speaker 4  57:25
+Yeah, but if you change the shipping does the total not change, of course,
+
+Speaker 5  57:31
+which then makes the total not match how much you paid, and the credit number differences, it out.
+
+Matthias Miller  57:35
+So what you're saying is we are not actually keeping the you're advocating for, the vendor invoice not reflecting the original vendor invoice. You're advocating for it to match the total after the credit memo has been applied, yes,
+
+Matthias Miller  57:57
+but that means we have accounting impact. That means that my understanding was we wanted to have the the account adjustments applied as vendor invoices would get applied. So you're basically saying we would then reverse backwards to say, okay, the vendor invoice is now, you know, 1199 but 10 days ago, it was 1299 so let's work backwards from there to Find out what accounting should have shown 10 days ago.
+
+Unknown Speaker  58:40
+Think about that.
+
+Unknown Speaker  58:43
+That's right after that one through.
+
+Matthias Miller  58:50
+Yeah, I think there's also this question. I mean, drew you weren't for some accounting reason. You weren't wanting to change the totals on the vendor invoice.
+
+Unknown Speaker  59:02
+Is that right?
+
+Matthias Miller  59:08
+You're muted again.
+
+Speaker 2  59:10
+Okay, still muted. There we go. That's correct, mostly because that's not what the vendor is going to do. They're still going to have record of that original amount, and so we're going to get ourselves all confused. If we change the original call, we're saying the original total is, I'm fine with you know, if there's a way that we can see here that there is a credit memo created based on this in this invoice, that it'd be something in the background that says, Okay, we've reduced our PO plus the total of our credit memo gives us this total that's showing up here on the vendor, like something like that would be. Okay,
+
+Speaker 4  1:00:07
+okay, I have recommendation. We have items on additional expenses that do not impact the total of the of the purchase order, ie things like inbound freight and some of these other ones, so that they they only adjust the items that are inside of the purchase order itself. So why wouldn't we just add an additional expense item that is the credit memo amount in the negative that reduces all of your items by that amount? Do?
+
+Speaker 2  1:00:46
+Yeah, that would have the same effect that I'd be talking about, too. Because,
+
+Speaker 4  1:00:50
+I mean, if I'm, if I'm understanding the conundrum correctly, we're, we're, we want the original vendor invoice to reflect the amount that we overpaid, and the credit memo adjusts for that, but we still need to handle the items that were assigned into that vendor invoice via the purchase order. But that is not like we don't need the dollar value to change going over to the vendor invoice. We only need this, the skew items themselves, to adjust for the SKU items. Am I understanding the conundrum correctly?
+
+Speaker 2  1:01:27
+I think so. I mean, from my perspective, anyway,
+
+Speaker 1  1:01:32
+I think Dwayne, what, what you're saying is we want to keep on the purchase order and the vendor invoice. We want to keep the original amount there, like, let's say we paid $1,000 and then later we had $100 credit. Then after we apply the credit to the $1,000 invoice, it's that we only $1,000 minus 100 equals 900 we're not just showing 900 and then we also show the same thing on the purchase order, so that that $1,000 still reconciles with $1,000 original vendor invoice. But we also need to show that our credit memo so so we're in both places, it sounds like we need to show 1000 minus 100 equals 900 and not just if we say the purchase order, we just change that to show 900 then drew mentioned, we'll get ourselves all confused where the vendor actually did receive By I just it doesn't reflect what actually happened. I
+
+Speaker 4  1:02:43
+Josh, yeah, and Josh, you would have to correct me if I'm completely misunderstanding something. But is there any reason we couldn't add a negative amount into additional expenses? Call it, I don't know. It's credit memo. I don't know. I mean, because we're really from an accounting standpoint, it's not really an accounting question. It is a it is an inventory cost question.
+
+Speaker 5  1:03:12
+But on the PO, the PO, if it's tied to a vendor, invoice, isn't going to affect accounting. So the concern about trying to make sure we model everything perfectly isn't a concern here, is it. So couldn't we just make the adjustment to the shipping directly? I mean, yes, you could add a negative thing, but not sure how much that buys you. Audit Trail. I
+
+Speaker 1  1:03:40
+it Josh, if you're, if you're making, if I'm understanding correctly, if you're making that adjustment to shipping directly, let's say there's $100 and now you it's actually zero. You just change it to zero. How do you when you go back later, you have this purchase order for 900 you made a payment for $1,000 how do you explain that? Or how do you like pushing back to understand what happened? I guess,
+
+Speaker 5  1:04:15
+yeah, I'm assuming you put something in notes, either in the in the memo, or in the RG row where the shipping is,
+
+Speaker 1  1:04:25
+is there. I would just from a I would rather if we could just build it so that you have to enter, make another entry on, say, the purchase order, like negative dollar charge, and label it what it is, rather than just adjusting the the amount that's there, then that way you can say, oh, $100 shipping. And then later, obviously it was, you know, there was a negative 100 hour because of the credit memo. Sure. Maybe that's, I mean, it, it all does this?
+
+Matthias Miller  1:05:07
+Okay, so we're coming back around and we're saying POS still have to be manually adjusted. You'll have to change the quantity received to adjust inventory. You'll have to, by standard practice, create a negative on additional expenses. And then, in addition, we still need to break down on credit memos to say, What's shipping tax and discounts and what is, what is product? What are product credits or po credits? And then that will allow us to reconcile So, so the credit memo will let you keep the original totals on the vendor invoice and make adjustments to the practical use case you know what's make those adjustments for reconciliation purposes and the accounting impact changes and and the and everything else happens manually on the PO site.
+
+Speaker 1  1:06:09
+And the PO site, the manual updates there are simply to reflect correctly in IMS and inventory prices.
+
+Matthias Miller  1:06:18
+Yes, correct to it's two things, one to fix inventory, to make sure inventory is correct, and then number two, to because we'll use it to cross reference our totals. Well, I think we may, maybe we don't. No, it is just inventory prices, isn't it? Yeah,
+
+Speaker 1  1:06:39
+well, are you saying the second? The second place is where you reconcile, reconcile between the vendor invoice and the purchase order and create a warning if it doesn't match. Or you, are you planning to drop that warning they don't reconcile?
+
+Matthias Miller  1:06:58
+I think we can keep it. I'm not familiar with one. Oh, we check. I don't think it's sophisticated enough to take a look at the additional expenses. But Josh, maybe, I don't know. Maybe Josh knows.
+
+Unknown Speaker  1:07:14
+Sorry, what was the question
+
+Unknown Speaker  1:07:16
+again? Do we?
+
+Matthias Miller  1:07:21
+Do we look at additional expenses? Is there any kind of what do we actually reconcile between the PO and the Oh, it's just
+
+Unknown Speaker  1:07:30
+product. Okay,
+
+Matthias Miller  1:07:35
+so we'll still have a warning, if you so we still need we're not going to reconcile additional expenses and see if you got that right. We're going to make sure your product adds up to the right number amount based on your credit memo.
+
+Speaker 1  1:07:53
+Okay, perfect. So if you fail to manually lower your product value that you return one item and you and that doesn't match with the original invoice total plus the credit, specifically for product, if those original invoice minus the product credit is not equal to the product on the purchase order, then it'll show the discrepancy on the invoice. Is that correct?
+
+Matthias Miller  1:08:28
+That's what it would propose. Yes, good.
+
+Speaker 4  1:08:36
+I make, I make one further proposal to this whole thing, and somebody's going to roll their eyes at me. But currently, in the additional expenses section, whenever we tie in a, let's say, a landed freight cost or a freight invoice, to be able to affect the items, there is a way to put a PO number in which gives you a link option over to the original Po. If we're going to tie in a vendor credit, could we do the same thing on a purchase order where you can link it back to the original credit?
+
+Unknown Speaker  1:09:14
+I will second. What that suggestion?
+
+Matthias Miller  1:09:16
+Why? Could we just find our link?
+
+Unknown Speaker  1:09:22
+Sorry, what? Sorry, what did you say drew
+
+Unknown Speaker  1:09:25
+I'm just saying. I would second that suggestion.
+
+Speaker 4  1:09:27
+If we tie in a vendor if we tie in a vendor credit from a credit record in that's reflected on the purchase order, being able to tie across in a very simple fashion by clicking a link that would take you back over to the credit that you can see exactly what was in there. Like it's a luxury. And I know I'm asking for a luxury, but it would make it would make life quite nice. What
+
+Matthias Miller  1:09:53
+if we just gave you a link, if, if this purchase order is tied to any vendor invoices that have credit memos you. Give you a link to those credit memos.
+
+Unknown Speaker  1:10:03
+Same, same effect.
+
+Matthias Miller  1:10:06
+I mean, your poor AP, people can't manually type in the credit memo IDs, stuff,
+
+Speaker 4  1:10:14
+things to do. I'm expecting that information will probably be something in the notes about that, but if you do have a purchase order that's tied to a vendor invoice that has credits on and being able to bi directional move between these two would be, would be nice, sure.
+
+Speaker 1  1:10:38
+So Matthias, can you just recap based off of this lengthy conversation, what changes you're going to
+
+Matthias Miller  1:10:50
+do? Well, I actually have one more question, Josh, if we make the vendor invoice reflect the original value, because that's because that's how the vendor is going to think about it. The two implications for that are, number one, the reconciliation logic. And number two, well, how much we think we should pay? And number three, the what we push to accounting. Are you as long as we handle those situations, are you comfortable with using that approach?
+
+Unknown Speaker  1:11:31
+That's fine.
+
+Matthias Miller  1:11:37
+All right. All right. So list of changes. So on a credit memo, we need to have a choice to return to use it as a apply it to a future or apply it to a vendor invoice. How are you going to use a credit memo? Are you going to play it to a vendor invoice? Are you going to return it directly to the source payment method? Are you going to make it available for deposit? So that's change number one, to give that Lowe's option. Change number two, when making payments fully with a credit, we need to do a debit credit for AP so that we can do a transaction search for the amount to the vendor invoices needing payment, change the total column to a balance and add an available credits before the before that for visibility when pay. Add credit information to the check step, which means on the credit memo, changing the description to a vendor credit memo id. Josh is going to write a report to find vendor balances, unless you want me to. I don't mind if you do. That's credit memo balances, right? Sorry, credit memo, sure. Credit balances. Vendor invoice needs to be split. It's already split for non po credits, but we need to split apart shipping tax and discounts and po credits so that we can appropriately handle reconciliation. Product, product total reconciliation of the vendor invoice, and then on the purchase order, have a way to pull up the credit memos, and then also from a credit memo, be able to find, be able to do the opposite. What did we pay with this? And what were, you know, and a link to the original vendor invoice
+
+Speaker 2  1:13:51
+on the report that Josh is doing. Could we make so that we can pull in regular vendor invoices as well? Or, like, show credit memos to a vendor and or all their activities, you know, whether it be vendor invoices or credits, and bring the two together so that we can then see a balance that we have with that vendor. I
+
+Speaker 1  1:14:25
+You're wanting all open invoices, say for Apple outdoor supplies, show me all, told me all open invoices and credit memos. Then you can see one deal that, or you can say, I mean, one use case, or would a use case be when you have a large, a large credit? No, it's a $10,000 credit. And you're debating. You want to see if this use all of this and the existing invoices. Or will it be, you know, should we just go and ask for them to send us a check for this?
+
+Speaker 2  1:15:09
+Yeah, there's that, but probably more. It's just for figure, you know, if a if a vendor says, Hey, you owe us money, and we're trying to go back and figure out, Okay, does the invoices they sent us match with their list? You know, does our list of invoices match with their list? Does our list of credits match with their list? To find out what they're missing, or what we're missing, or, you know, why it's different? I'm thinking maybe there could just be, we already have that standard report of the vendor, the vendor invoices, where you can search for them, and, you know, they come up by paid or unpaid and so on. If we could just have a check box to include credit memos, you know, and you already have all the search functions where you can select a particular vendor if you want, and you select the checkbox for to show the credit memos, and then just come up in there with all those vendor invoices.
+
+Speaker 5  1:16:09
+So under the hood, the credit memos are not better invoices. They're a separate thing. So we can't put them in the same report, but we could build, we could have the credit search or the credit memo search report, you know, have a lot of the same criteria, okay, the same, similar searching. Okay,
+
+Speaker 1  1:16:35
+good, well, Matthias, if you could just, you probably have it all typed up the way you just send us summary of this after the call, just so we Yeah, so we have a reference for what all this is, what we talked about, so that we're all on the same page. I think that would be good. Is there anything else there? I still have a few other questions, which I think we've covered parts of those,
+
+Matthias Miller  1:17:03
+Jason, but from my list, from that, Okay,
+
+Speaker 1  1:17:15
+another question I had was we covered that. Never mind. So who this is more of a process thing, but who will apply credit? Drew, Dwayne, I'm curious is that will, will AP, people apply credits? Will drew apply credits? Will it be a mix of both, as we kind of at least starting out,
+
+Speaker 4  1:17:42
+I would, I would advocate one or the other. I would not advocate. I would not advocate for both sides trying to enter in credits. Instinctively, I would say, AP people and then that, you know, the credits would just be there for Drew to handle. But I would be welcome to be disproven on that.
+
+Speaker 2  1:18:12
+My gut family as well. They'd be there for them to use them to pay. But it probably can be adjusted to
+
+Speaker 1  1:18:27
+you were you were a little broken up or a little hard to understand too, but I think you said a you would agree AP as well.
+
+Speaker 2  1:18:37
+AP would create the credits, you know, because they're, they're receiving those notices. So they would create the credits, adjust POS as necessary with their with their credit creation, and then it would sit there. And then I would utilize it as a payment when I am going to pay. So they do the creating, I'd do the utilize
+
+Speaker 1  1:19:03
+but Okay, so as far as deciding what, when you have the three invoices for a vendor, you're going to be the one. You have three Invoices to Pay and you have one credit, you're going to be the one deciding which invoice that to apply that credit to not AP, they would do Okay,
+
+Speaker 2  1:19:26
+right? Because, and part of the reason why I would see that well be two reasons. One, I'm taking care of the payment anyway, but, but two, at that point, there's, there's, we're not, we're not doing anything with the vendor invoice or the POS. We're simply just this that currently is due, just hitting the pay so there aren't going to be any po adjustments or anything like that at that. Utilization point.
+
+Speaker 1  1:20:06
+Good. Next question, will credit still be visible on the AP verification report? I think we talked about, you know, they really shouldn't be. Don't need to be because we just want to apply them to the first, unpaid invoice that we can like. I don't know. It's probably a Josh from athias question, but instead of creating negative vendor invoices like we are now, once we start creating credit memos and utilizing those, there will be no visibility for credits. You won't see those on the AP district managers won't see credit memos on the AP verification report, right?
+
+Matthias Miller  1:20:59
+Because they're different things. I think the answer is correct. They will not see them if there's nuance in what I mean. I think that's the bottom line.
+
+Speaker 1  1:21:10
+Okay? And that's fine. I think it's just, I mean, they'll, there'll be a report that we so the district manager knows that we've got a $500 credit with Apple outdoor supplies, and they see $1,000 invoice to be paid that won't be. They won't. We're basically just shifting responsibility and saying AP and drew just apply this and just pay 500 instead of the full 1000 because of the credit, I think, is, are you good? Are
+
+Speaker 4  1:21:46
+you confident? Mark district managers can be happy with that?
+
+Speaker 1  1:21:53
+Yeah. I mean, if we might need to have a little some conversations about how it works, and they could, you know that that credits report, maybe we'll want to see that occasionally, but it's really simple. Everyone wants to just apply credits as soon as you possibly can. I think, are you? Are you something? Are
+
+Speaker 4  1:22:15
+you suggesting that we would automate out the credits, like available credits report to district manager so that they can see them, or are they just never going to see them?
+
+Speaker 1  1:22:29
+I was thinking they would never see them unless they have a question, like, hey, what about this credit? And then AP could go and, you know, pull this report and say, here's, here's the credits we have. And actually, this credit was already used on the invoice we paid last week. And
+
+Speaker 1  1:22:52
+then the last question, well, this is, when will this be live and functional? When? When should we'll start with Dwayne's people using it. Well, okay, I guess one other question before that drew is there anything that you're concerned about with all the accounting impact and creating havoc in accounting, like if this were all live, there's nothing,
+
+Unknown Speaker  1:23:21
+no concerns on your site that about just getting AP to start using it? Is there?
+
+Speaker 2  1:23:31
+No, not really. I mean, there was just that one, the only of what he showed, of accounting impact. It was just that case where it goes back onto the payment method. So I think that's fixed. Everything else looked okay. I've been around this, this base before, so I'm not gonna, I'm not gonna bet the farm on it, but it looks like it should be good to go.
+
+Speaker 1  1:24:00
+Well, I think the two options we would have drew would be to either, either, once it's live, you do the first few you know, you use it for a week or two or three, until you know your counsel that it works all the way through on all aspects that the accounting side and it's it's doing the right things to the all of the accounts, or the like the reconfiles and all of those areas. I mean that we could do that, or we could just say it's live now, let's have AP start using it, and then if things arise, we'll deal with that. So I guess I'm putting that question front of you, which, which would you prefer, or which, which is the best path forward? Um,
+
+Speaker 2  1:24:42
+I would say, for the time being, maybe, if like, let's have a B, create the entries, but then have them just send me a notice or something. Hey, we created these credit, these credit. Credits so that I can go in and look at the accounting impact on them and and be ahead of the game, rather than the way down the road say, Oh, this credit didn't work, you know? So we can fix, fix any issues that come up quickly while they're few.
+
+Speaker 1  1:25:21
+Okay, I like that. So AP, create the credits just for the first
+
+Unknown Speaker  1:25:30
+June or something
+
+Unknown Speaker  1:25:32
+through June. Just notify you whenever they create a credit, so you can verify that the accounting transactions are correct, good and then, but Mark, are
+
+Speaker 4  1:25:49
+we saying? We're not saying, like, start doing this immediately. Like, we gotta do you that we got still some development yet to do for for handling them correct. Or my or, yeah, that
+
+Speaker 1  1:26:00
+was my name. My No, that was my last question is, When? When will this be live like with in the live system, Matthias or Josh
+
+Matthias Miller  1:26:13
+dropped off? I mean, yeah, hopefully this weekend. So we're shooting for
+
+Speaker 1  1:26:24
+Okay, and that's with all the changes we we talked about today.
+
+Unknown Speaker  1:26:27
+I think so.
+
+Matthias Miller  1:26:30
+Okay, so
+
+Speaker 1  1:26:33
+Dwayne, then I would say it's safe for you to plan for the 17. Start using credit.
+
+Speaker 4  1:26:42
+I think probably what we ought to do is it may be worth just having a bit of a training call with Leanne and AP and maybe, you know, Tuesday after next week or something, and we just, you know, we kind of break it down, talk about what, how they work, and they're not rocket science to create, but I think it just, it's good, good information, just to kind of talk through that a little bit with
+
+Speaker 1  1:27:10
+them. So is that are you thinking? Who are you thinking? Would all be on that net training call? I
+
+Speaker 4  1:27:30
+Are you sure? Dwayne, yeah, I'm staring at the ceiling, trying to, trying to make up a mind up. I mean, I think it'd be, I think, I think at least you and drew, I think that you know if the two of you are on so that you can answer any questions they may have as to the process side. I mean, it's more of a process question than it is a functionality question, so so that everybody hears the exact same thing. I mean, that's, that's my initial thought.
+
+Speaker 1  1:28:02
+I I like it. I'd say, you name a time Tuesday, and we'll try to be there.
+
+Speaker 4  1:28:09
+I would, I would advocate just use our 10 o'clock position for that. Okay,
+
+Speaker 1  1:28:20
+Tuesday at Tuesday the 18th at 10 o'clock. Good,
+
+Unknown Speaker  1:28:32
+good.
+
+Speaker 1  1:28:42
+So, Matthias, you're going to send out some some notes on what you're changing, and then I can send out
+
+Speaker 1  1:28:50
+my notes on pretty basic but like more on the process side, how we're planning to who does what and through June AP trade credits and copy through some of those notes, is that that good anybody have? Have other things to add? Oh, you be sent that out already? Matthias,
+
+Speaker 1  1:29:30
+well, I'll send out the notes on more on the process side, a few that I have here. And then I think, yeah, at least from my perspective, I think we're, we've, good to go. Any anything else from the others
+
+Matthias Miller  1:29:59
+of me? I think you guys that was useful. Yep,
+
+Speaker 1  1:30:09
+this is, this will be. We'll look back one day and say, Man, how did we ever do it without proper handling of credit? So we will,
+
+Speaker 4  1:30:22
+good, as Drew said, I've been around this base before, but I won't bet the farm on it.
+
+Unknown Speaker  1:30:32
+Wise words.
+
+Unknown Speaker  1:30:39
+All right, guys. All right, thank you. I.
+
+
+Transcribed by https://otter.ai

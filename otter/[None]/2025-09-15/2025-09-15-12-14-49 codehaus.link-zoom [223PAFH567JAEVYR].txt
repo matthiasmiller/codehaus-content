@@ -1,0 +1,356 @@
+Unknown Speaker  00:19
+I've seen you all.
+
+Unknown Speaker  00:37
+Hello, hello, There we are. Hello, hello, hello, hello, hello, hold on one second. How
+
+Unknown Speaker  00:48
+about now. How
+
+Speaker 1  00:52
+about now? All right, there you are. Howdy, howdy, howdy. All right, you
+
+Matthias Miller  01:01
+wanted to start with assist,
+
+Speaker 1  01:03
+yeah, just give me a second. Here I am. I am on a delightful journey of trying to figure out this nice, lovely new computer that I decided to replace mine with, and I am switching platforms. Don't make fun of me. I have taken the leap of switching to a Mac and so far so good. We'll go with
+
+Speaker 2  01:32
+that. All right, becoming one of
+
+Speaker 1  01:36
+those people. No, I'm not. I don't know what that means, but no, I'm Addison. Tried to say the same thing, and I don't, I don't know what. I don't know what one of those people actually means.
+
+Unknown Speaker  01:49
+I am my own person.
+
+Speaker 1  01:51
+Okay, okay, yes, let's start with assist. So okay, you had built, you had built a notification a long time ago, way back with the online sales team. It is currently, um, it is currently under online sales team management. I want to say it is, and I want to build something similar to this.
+
+Unknown Speaker  02:26
+What was it? Huh?
+
+Matthias Miller  02:29
+Building updates. Was it that service?
+
+Speaker 1  02:33
+Building updates? Yes, where, where. Okay, this is I built one last week for to notify the driver or the haulers in Virginia that do hauling for us, that have their own scheduling report. And that the nice part about what you built in this one is inside of the local email body, you have it broken down where it gives Well, first off, I think this one was actually, I think you were actually having variables for emailing the correct sales rep, whatever building things were, were updated in regards to their buildings, which is really stinking cool. It doesn't have to be quite it doesn't need to be that that specific, because we're going to be emailing the dispatch at Berman dot biz only when site checks are updated or completed, I should say. But what I want, what I really want to do, is I want an email only to ever go out to to them whenever a site check is completed from yesterday. And where I get stuck is I started trying to look through how you did this, in that that macro and wow, I got way lost.
+
+Unknown Speaker  03:54
+Well, if I need to
+
+Matthias Miller  03:59
+question whether it is the right report to start from?
+
+Speaker 1  04:04
+Well, it's not necessary. Well, it's somewhat similar. I think
+
+Matthias Miller  04:09
+what's the condition like? Is it just a the
+
+Unknown Speaker  04:14
+condition is
+
+Unknown Speaker  04:18
+transit? Check?
+
+Speaker 1  04:20
+Do? What? Yeah, transit, transit tasks with the type of site check that were completed yesterday and are not canceled.
+
+Speaker 1  04:32
+And essentially what I want to do is I built a report that does pretty much the exact same thing, put it on the scheduling dashboard. And what I want to say is, I'm going to give them URLs to the to the transit tasks the site check transit tasks that were completed simultaneously. Given the URL, URL to the report says, Hey, go look at these. Copy the notes from these. Over into the delivery transit task and so forth. So. I don't, I don't think we need to evaluate, we don't need to evaluate activity history, because we feel the date of completion on the transit
+
+Matthias Miller  05:10
+task, and people override the date of completion.
+
+Unknown Speaker  05:14
+It can, but it's
+
+Matthias Miller  05:17
+very unlikely, yeah, but you want it all in a single email, or one email per side check,
+
+Speaker 1  05:27
+single email. So if there was three site checks done, you know, yesterday, it would give you three URLs in the in the email body.
+
+Matthias Miller  05:35
+And you prefer that or having three emails coming your way.
+
+Speaker 1  05:39
+Yes, I want this thing just to fire one time a day. So, so essentially, it's not, it doesn't need to fire every time it happens. It just needs to fire. You know, the task needs to run like, 4am in the morning and email anything that was done yesterday.
+
+Matthias Miller  05:55
+Well, the only way to do that, then the drop dead. Simple Way is how to fire off reading else is to have it fire off three emails. But we can very easily do it like this.
+
+Unknown Speaker  06:11
+So you're saying, you're saying,
+
+Matthias Miller  06:16
+site check completed for Sten on date email number one, site check completed on date or
+
+Speaker 1  06:22
+on I'm fine with that. I mean, essentially, what I would really like to do is you're recording this conversation. When we get done with this, send me the the the link to the recording, because I want to be able to reference, go back and reference this, on how, on how you do this. Because I go ahead. Well, I have a sneaking suspicion. I'm going to go back and redo the one that I did for, because the one I did for, for the hauler, when, when transit tasks are assigned to this hauler in Virginia, I'm attaching a report of them, and it's like, you got to build three components in order to do that. And it's like, seems kind of silly, and I think there's a much easier way to do this. Hence the reason I'm hoping you're going to show me the much easier way to do this.
+
+Matthias Miller  07:12
+Okay, so if you So, okay. So first of all, is it a site check not canceled, and completion date with an ask prompt. I'm just doing a has prompt because,
+
+Speaker 1  07:25
+well, I mean, I don't think you need an Ask prompt. It can just be, Well, yesterday. Well, okay, the only if this thing fires every single day, then I guess it doesn't really matter going across a weekend.
+
+Matthias Miller  07:39
+No, it doesn't, but we can a minus one. My thought, the reason for doing it is, if we default it, then you can very easily play around with it for testing and other types of times. Sure, sure, sure, sure, sure. So now here we have the transit task
+
+Speaker 1  07:57
+ID or transit num ID, transit, transit num. It's transit num, ID,
+
+Matthias Miller  08:05
+okay, and then here, let's run this thing and see if there's nothing there. Do you have a Do you have a date? Which?
+
+Unknown Speaker  08:16
+There you go. All right. So then I
+
+Matthias Miller  08:40
+and what kind of description Do you want? Not?
+
+Speaker 1  09:00
+Probably, Oh, wow. Why was there a site check with no building attached to it? Does she reference the stint in here at all? Was there never a stint?
+
+Speaker 1  09:28
+Um, ideally, you would reference the stin transit task. Sorry, site check for stin number, such and such, such and such, probably stin and customer name would be The would be what I would want to see standing customer name, yeah.
+
+Matthias Miller  10:18
+And so we could do this, this
+
+Speaker 1  10:22
+actually, if Hang on a second, let me go find and the date for it, because we might we can get a better one. I want to see a better result than what you're getting.
+
+Speaker 1  10:41
+Put this, oh, completed site checks. Here we go. Put in a date of 911 for your sorry, 913 913
+
+Unknown Speaker  10:59
+Where's 910 Why
+
+Unknown Speaker  11:01
+are you coming up with nothing you should have. There should be a nine a, 912 for this.
+
+Matthias Miller  11:09
+Oh, then we should put in 912 No.
+
+Speaker 1  11:13
+Well, there you go. Site, check forward. And Rick Elliot completed on nine. Okay, gotcha. So you're, you're not doing today minus one.
+
+Matthias Miller  11:25
+It defaults into today minus one.
+
+Speaker 1  11:30
+Oh, silly me. I know I see what. Never mind. I ignore my quit, stupid, my silly, stupid question.
+
+Matthias Miller  11:35
+Okay, so then we're gonna do an email merge. Okay, where do you want this thing? So wait,
+
+Speaker 1  11:44
+go to shared logistics, go to dashboard and put it in there.
+
+Matthias Miller  11:52
+Okay, site checks
+
+Unknown Speaker  11:54
+completed yesterday.
+
+Unknown Speaker  11:57
+Notification.
+
+Matthias Miller  12:03
+Like that. What do you think of that? Yeah, okay, we'll
+
+Speaker 2  12:10
+do a browse, new file, template, email,
+
+Speaker 2  12:21
+share, logistics dashboard, like dashboard, continue. Wait, if
+
+Speaker 1  12:27
+you want to, if you want to reference the actual report for it, what are you putting in?
+
+Matthias Miller  12:33
+We'll get to that. Oh, I mean, you got to create it first, and then you
+
+Unknown Speaker  12:37
+can, Oh, gotcha.
+
+Unknown Speaker  12:40
+Like here. We gotta just create it, so it should be, I saved it. There you go.
+
+Matthias Miller  12:48
+So then we went. I
+
+Speaker 2  13:00
+I forget what it's called,
+
+Unknown Speaker  13:10
+email notification sending address.
+
+Unknown Speaker  13:16
+Yeah, there you go.
+
+Matthias Miller  13:23
+Dispatch at
+
+Unknown Speaker  13:25
+what firm and up is
+
+Matthias Miller  13:31
+subject would be? What do you
+
+Unknown Speaker  13:34
+want the subject to be?
+
+Speaker 1  13:37
+Shouldn't you? Wouldn't you just do your Yeah, that right there, yeah, okay, so you can just, you can just name the column and do you can it just,
+
+Unknown Speaker  13:50
+yeah, and then we should be able to this. What happened to this guy? Come on.
+
+Unknown Speaker  14:14
+I don't want some save my changes, silly.
+
+Matthias Miller  14:22
+I mean, that's dropped it simple. Make it prettier.
+
+Speaker 1  14:37
+Can we? Can? Can you put, can you stack the subject so we repeat the subject in the body of the email over top of the URL.
+
+Unknown Speaker  14:49
+Yeah, there you go again. All right, I can drop that into the
+
+Matthias Miller  14:56
+fancy I think you should be able to do the.
+
+Speaker 1  15:06
+Is, wait, what? Now? No way. What? No way. Are you serious? Yep, what did you do? Just bracket, it?
+
+Matthias Miller  15:16
+Do you do brackets? It's like a Markdown syntax, or with some wiki textile syntax, like it's bracket, bracket, URL, and then the label or the URL, bracket, bracket, which, by the way, you can do for anything. You can do this for insight incidents. So there's a few ways you can do this, but if you have incidents, you can do,
+
+Unknown Speaker  15:39
+and I'm familiar with that. Yeah.
+
+Matthias Miller  15:43
+Well, are you familiar with this? Are you familiar with
+
+Unknown Speaker  15:46
+what's the what's the star?
+
+Speaker 2  15:50
+Wait for it. Where is it? I mixed it something somewhere.
+
+Matthias Miller  16:01
+The star will pull the record
+
+Unknown Speaker  16:03
+description.
+
+Speaker 1  16:04
+No way. Oh, man, I'm I'm glad you're recording this, because I need you to send this to me.
+
+Unknown Speaker  16:12
+So wait, why did it do that?
+
+Matthias Miller  16:22
+That's not supposed to happen. But it's, it did something, it replaced it. It replaced it somehow, like you do a Save, and then it's,
+
+Unknown Speaker  16:39
+that's not supposed to happen.
+
+Matthias Miller  16:43
+And also, if you do it replaces it, which it's not supposed to do. That's bogus. That's a bug. Anyway.
+
+Speaker 1  16:54
+So now, just to confirm if I slap this in a in a scheduled task that runs at 4am i It will make an email for every single instance of what it returns in the report, right,
+
+Matthias Miller  17:12
+correct. So you can just have it use default ask answers. And then, if you
+
+Speaker 1  17:19
+just do this, go ahead and just plop this thing in a scheduled task, because that way I have a full recording of exactly how this was
+
+Matthias Miller  17:25
+done. All right, so, oh, here's something else that, just for fun,
+
+Unknown Speaker  17:29
+let's do this
+
+Matthias Miller  17:33
+transit. Transit type equals
+
+Speaker 2  17:36
+site, check, type check and not transit canceled
+
+Matthias Miller  17:46
+completion date. Let's see if you got 220-332-3232, we have two. So just for fun, if you have
+
+Unknown Speaker  17:56
+two, it looks like this. Gotcha. Okay, so then scheduled tasks,
+
+Matthias Miller  18:05
+we want this under.
+
+Speaker 1  18:08
+We really ought to have a notification. We should make another, another category called notifications. And then the one that I did for sleigh ball hauling should be underneath notifications. I mean,
+
+Matthias Miller  18:21
+shouldn't we almost create a logistics one, or would you rather have a
+
+Speaker 1  18:26
+I don't care. We just, we just need a new category
+
+Unknown Speaker  18:37
+on your vote. This is my vote.
+
+Matthias Miller  18:41
+Hey, I could be wrong. Okay, so notify here.
+
+Unknown Speaker  18:47
+Let's just grab the logistics Hello. I can't type logistics
+
+Matthias Miller  18:57
+frequency 4am I'm going to add a appendix, command, Explorer, email,
+
+Speaker 2  19:09
+and we're going to do, oh, fascinating, shared, just dashboard. I'm going to want to pull the report.
+
+Matthias Miller  19:19
+Got some more than 50 emails
+
+Unknown Speaker  19:25
+because that's
+
+Unknown Speaker  19:27
+because spam.
+
+Matthias Miller  19:30
+You can spam because something crazy, because of I'm gonna have it run as
+
+Speaker 2  19:36
+you sure, and email you. Boom, and then, just for fun, we're gonna go back in here. We're going to scheduling
+
+Unknown Speaker  19:57
+me to run and.
+
+Speaker 2  20:04
+Come on, don't be cantankerous.
+
+Matthias Miller  20:15
+Oh, well, you know,
+
+Unknown Speaker  20:24
+stuff just beat us to this, or mark or somebody. It won't run for another, however long,
+
+Matthias Miller  20:34
+but, and it won't email anything, because there wasn't anything for yesterday. But
+
+Speaker 1  20:42
+still, I All right, well, stop, stop this recording, and drop it to me, and I'm going to store this thing in some special place in life. And.
+
+
+Transcribed by https://otter.ai

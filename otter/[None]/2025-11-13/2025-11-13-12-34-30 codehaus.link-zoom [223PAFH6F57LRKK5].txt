@@ -1,0 +1,554 @@
+Speaker 1  02:01
+This is me, i Hey, hey, as I opened your zoom today, it zoom immediately crashed. I mean, like it keeps going, but it tries to get me to set a crash report.
+
+Unknown Speaker  03:12
+I don't know why. So
+
+Matthias Miller  03:13
+anyway, do you know what this is? But what is what I just sent you? I
+
+Speaker 1  03:35
+I assume it's the reverse. I mean, you need to have the cancelation sign on the top one too, but I assume it's the reverse or chicken.
+
+Matthias Miller  03:44
+No, it's a chicken Boolean cube. Oh, my word.
+
+Matthias Miller  03:58
+That's hilarious. Oh, man. If you hopefully you never get tired of, I thought about this on the call, hopefully you never get, never get tired of hanging out with me. Because if you do, you're in trouble. I haven't so far. Okay. Well, okay, good. Do I share your screen?
+
+Speaker 1  04:24
+Yeah, your cool report? Trying to find my report that I was working on, I refer to it Well, I think a minute, and I undid it locally, so I need to get that back going. I was discovering some random things with FGI. Also, I think I'm learning that I need to, if Drew asked for something, I have to not build it until we've talked about it on a call, because he never asked for what he fully he asked for a little piece of what. He needs, and then keeps discovering more and more things he needs.
+
+Matthias Miller  05:07
+That's yeah, he does not know. It's not Yeah, it's very much. I'm in the middle of something and I need something and but I don't have time to think through the whole scope of it. Yeah?
+
+Speaker 1  05:20
+Like the FGI report, he had asked me to add the purchase cost for none or non manufactured buildings to the raw materials column, and I did that, and then he comes back and says, Oh, I need the Please show the purchase date in the built Date column. So I did that, and he's like, No, you need to change the subset to to look at the purchase date. So I did that. Well, I started working on that, and then I was like, I'm pretty sure this should also be reflected in the finished goods Summary Report. And I'm also pretty sure that this total should not just be showing the raw materials column. It should be showing in the finished goods cost column as well. Anyway. So I've just, I've been emailing back and forth, and we got it figured out, but it was just, yeah, it's gone through like, four iterations since the first request. And I think if we'd have talked about it on a call with Mark, we would have, in a five to 10 minutes, we would have known exactly what we needed.
+
+Matthias Miller  06:27
+But anyway, yeah, and Mark has an eye for that, yeah as well. Yep, makes sense. Isn't it funny? How much of this is the sad truth? How much of this stuff really comes down to working with people? That's a fair bit, and the flakiness of or not, the flakiness, sometimes flakiness people, including ourselves. Okay, so All right, let's go back into this.
+
+Speaker 1  07:01
+Did we just modify the helper?
+
+Matthias Miller  07:05
+I think that's all we've done at this point. Yes, yeah. So let's go refactor the what's the current total macros? Or what should it be? I
+
+Unknown Speaker  07:24
+Okay, the adjustment macros, these guys,
+
+Matthias Miller  07:30
+yeah, each of the adjustment macros, let's take that so well. So use tax material, isn't that's clear enough. That's fine. Go into the next one, taxable subtotal, adjustment. So taxable? Well, that's easy. Okay, next one. I thought one of these was
+
+Speaker 1  07:47
+bad debt has a bit more and non taxable has a bit it looks like
+
+Matthias Miller  07:52
+I would refactor the non taxable part of it, and maybe the bad debt. And definitely the bad death. Yeah, that guy,
+
+Speaker 1  08:04
+this part, this is just look so current, non taxable subtotal. Is that fair? Yeah, that's true,
+
+Unknown Speaker  08:19
+yep. And then
+
+Unknown Speaker  08:21
+this makes so much more sense of a little break.
+
+Unknown Speaker  08:25
+Yeah, it's funny how it always is that way.
+
+Speaker 1  08:33
+Yeah, so current bad dad, oh, wait, is this the and then that guy, yep, I
+
+Speaker 1  08:45
+this is not, yes, it is the sub general, because we're doing minus that's about that tax, okay?
+
+Matthias Miller  08:52
+Yep, brilliant, look at that. Okay, and then we can update our tax guy,
+
+Unknown Speaker  09:01
+this guy, right? Yep,
+
+Unknown Speaker  09:07
+that guy's simple
+
+Matthias Miller  09:08
+enough, no, that's no, no. Each of these changes to right here, line 12 becomes so taxable subtotal. I
+
+Matthias Miller  09:25
+i Sorry, rather than doing, I mean, we can do sums. The sums are just really long handled. You could use the macros you just created in here
+
+Unknown Speaker  09:38
+instead. Well, I only created not taxable
+
+Matthias Miller  09:40
+and bad? Well, the macros you created in the Mac Macker you're referencing as the total you're saying,
+
+Unknown Speaker  09:52
+like just using non taxable anywhere like the calc adjustment you. Right?
+
+Matthias Miller  10:01
+We're not using non taxable. What I'm saying is, rather than doing the adjustment plus the current total, why not just you could also just do the grand total, because that's what we're looking for. Okay, so taxable? Okay, go back to here on line 12. You could ditch the sum and do so taxable subtotal. This guy, no, yeah. So taxable subtotal, no, the look are like, no, we want the new subtotal that you could now, if you prefer this, okay, I think I prefer the sum to catch up. This would be the so material, use text material this guy,
+
+Speaker 1  10:45
+the guy that's apparently set when it's greater than the total. Yep. This is look
+
+Unknown Speaker  10:58
+so current. Yes.
+
+Matthias Miller  11:06
+And I guess now that now the question is, now, I guess the disadvantage of using these macros is now you need to have a comment that we need to keep them in sync. So I really genuinely don't care if you would prefer to keep it the other way, so you don't have to keep them in sync. And the logic is all in one place. I don't whatever.
+
+Speaker 1  11:29
+I mean, is it an alternative? Just wrap this in a local macro so we
+
+Matthias Miller  11:34
+sure always use it, sure. I mean, I'm happy with that.
+
+Unknown Speaker  11:38
+Pretty low cost.
+
+Matthias Miller  11:42
+Obvious. Way to do it
+
+Unknown Speaker  11:43
+Look at you,
+
+Speaker 1  11:52
+which means need to update this guy, And we need to update bad debt, taxable subtotal.
+
+Unknown Speaker  12:12
+And
+
+Matthias Miller  12:37
+okay, and then we should have a comment here, explaining why we do this whole song and dance.
+
+Matthias Miller  12:52
+Basically, in order to get rounding sales, sales tax, to tie out, we want to adjust. We want to look at the net ODE or the
+
+Matthias Miller  13:22
+high out. Well, to tie out, look at the look at the grand total. Calculate tax on the grand total and subtract what was historically paid. So
+
+Matthias Miller  13:56
+mean, this just seems, yeah, that's not, doesn't seem necessary. I mean, this seems straightforward, but is
+
+Matthias Miller  14:16
+that, is that coming clear enough that we'll come back two years from now, or Nick will come in two years from now, be like, oh, oh, yeah.
+
+Matthias Miller  14:28
+I think what we should say is that if we, if we calculate sales tax on each we should preface this with a problem, if we calculate sales tax in each adjustment line item will end up with minor discrepancies where we will underpay or overpay sales tax by a few pennies, and this creates challenges when we use because we use the. Sales Tax history, RG to calculate the due dates. Wow. My brain turned off and my mouth is going to calculate the due do, amount the balance, the balance due? Yeah, yeah.
+
+Unknown Speaker  15:23
+Avoid this.
+
+Unknown Speaker  15:28
+This is probable
+
+Speaker 2  15:32
+because we use the sales tax ERG to calculate balance, do
+
+Unknown Speaker  15:52
+that? Oh, decent. Oh.
+
+Unknown Speaker  16:04
+Yes,
+
+Matthias Miller  16:11
+okay, let's run the report, see what shows up.
+
+Speaker 1  16:17
+I mean, I think I don't really have decent data. I never, I never got that other system going.
+
+Unknown Speaker  16:25
+I don't know what shows up. Well,
+
+Matthias Miller  16:28
+that's a little it's a little hard to tell. Then what I think, did it download?
+
+Speaker 1  16:38
+I think so I just, I've been thinking about other things. Do you
+
+Matthias Miller  16:43
+want to extract it, create these vehicles, update it, and we can write the import wallet updates. I mean, unless you
+
+Matthias Miller  17:01
+want to just straight up test it yourself tomorrow or whatever, that's fine.
+
+Speaker 1  17:07
+I'd rather if we can get it done today. Yep, I
+
+Matthias Miller  17:30
+can I delete that thing off the server? Yes, I
+
+Matthias Miller  17:43
+awesome. This is going to break the x 30 unless, yeah, yeah, I don't care
+
+Matthias Miller  18:00
+whether we implement that change, but at least adding the column seems saying, all right, I mean, separate version, no,
+
+Matthias Miller  18:12
+we don't reference it. It's fine. Well, the warnings are just warnings. We don't import from it.
+
+Unknown Speaker  18:19
+Very good. Oh, they'll just throw it on.
+
+Unknown Speaker  18:28
+Might as well just throw it in here.
+
+Unknown Speaker  18:54
+Why are some of those guys not used?
+
+Unknown Speaker  18:58
+Oh, because we simplified stuff. We don't need them anymore.
+
+Unknown Speaker  19:02
+Look at that. Wonder
+
+Speaker 1  19:06
+if we use those at all. I think we do in some other reports, but we do actually need them, but when we're updating, yeah, we definitely do.
+
+Unknown Speaker  19:25
+Yes, we added column 18 for
+
+Matthias Miller  19:28
+tax. Can we fix the header for text? Mount, oh, door, I
+
+Speaker 1  19:49
+and then calc bad debt adjustment. We moved bad debt subtotal out. Same thing for non taxable, which that one we wouldn't really. Need to, but hey, it doesn't, I don't care, right?
+
+Speaker 2  20:09
+And then same for taxable.
+
+Speaker 1  20:14
+Calculate the tax amount. We get the new subtotal based on the type effort sales. Current sales will get the taxable otherwise, if it's used tax, we get the use tax material, subtitle, if it's bad debt, get the current bad debt subtotal, the new tax amount. Wait, oh, new tax for this rate.
+
+Speaker 2  20:48
+Right? What does this guy do some
+
+Matthias Miller  21:00
+some space On matching jurisdiction and rate and type.
+
+Unknown Speaker  21:10
+Right.
+
+Unknown Speaker  21:39
+That'll help someone in the future.
+
+Speaker 1  21:49
+At that subtotal, these guys were just straight up pretty fast. I love it. I mean, that seems pretty sane.
+
+Matthias Miller  21:59
+Import. I
+
+Speaker 2  22:00
+and literally just
+
+Matthias Miller  22:04
+studying it.
+
+Unknown Speaker  22:08
+Boom, all right?
+
+Unknown Speaker  22:23
+Wow, that's the wrong job. This job has done so many different things.
+
+Matthias Miller  22:38
+Gotta love Swiss Army Knife
+
+Speaker 1  22:40
+jobs. I mean, they're all related, like they've, yeah, we found one issue, then we go fix another one, then we fix another one, and just never quite wants to stop. I
+
+Matthias Miller  23:07
+little side note, I think the I would be very curious some time. I don't know that we should take the time, but I would be curious some time to take you through the cash flows report and see if you can actually wrap your head around it.
+
+Speaker 1  23:22
+Now, I have no idea. My head is done more than its fair share of trying to wrap recently.
+
+Matthias Miller  23:32
+Let's been doing a lot of wrapping. Let's, let's, let's give you a break. I feel like it's simpler,
+
+Speaker 1  23:41
+but simpler than it might be what it
+
+Matthias Miller  23:45
+was
+
+Unknown Speaker  23:47
+been shocking, yep. Okay, so fix that
+
+Matthias Miller  23:56
+all right. Now we need the aid the system and the update and yeah, let's see if the migration worked.
+
+Speaker 1  24:06
+Mattress, it did. Oh, I need to grab my exes. Okay, here we are going to,
+
+Speaker 1  24:18
+this to be the full the guy I run out of, usually now, right?
+
+Unknown Speaker  24:33
+I mean, I will clean these up later, but,
+
+Matthias Miller  24:38
+as in a year from now, when you delete
+
+Speaker 1  24:40
+them now, it'll happen in the next week or two. Probably actually stay semi on top of I see on top of the folders that I'm actually in a fair bit that makes sense. So there's some that I use a bit that are, I'm sure are very out of date.
+
+Speaker 2  24:57
+I. Okay, and then CFP asked a missing data files and
+
+Speaker 1  25:16
+see what else can we? Here's invest I and I should go
+
+Speaker 2  25:22
+client test in here. Now, I've had that pop up in a system recently where it was, it
+
+Unknown Speaker  25:32
+might have been a CLS system or something I don't quite remember.
+
+Matthias Miller  25:35
+Seems more likely than,
+
+Unknown Speaker  25:38
+yeah, I guess it's possible.
+
+Unknown Speaker  25:47
+So the sheer number of hours
+
+Unknown Speaker  25:52
+we've had for them this month, I
+
+Speaker 1  25:56
+mean, I'm at a very average month, but Nick's already worked 44 hours for them. And if Sean has 13 hours, wow, between like, he's standardized a few reports the most, but he was building out the I had hard coded something for them to send financial reports the banks A while back, and they're wanting some tweaks. It's like, we just need to standardize it. So I spiked it out for Sean, and he built it. And there's a few things to change in review, but it was great. It was a lot of it's awesome. So nice to be able to hands to floss like that, yeah.
+
+Speaker 1  26:42
+Oh, we also wanted to consolidate shared accounting logic for bad debt at some point. Yeah,
+
+Matthias Miller  26:52
+well, that's not I'm I'm guessing that even my appetite to fight for that is probably dying.
+
+Speaker 1  27:07
+I need to email mark and say hey with Nick's On site time we are wildly over already.
+
+Unknown Speaker  27:47
+On there
+
+Unknown Speaker  28:21
+Hey, okay, wow, that red is glaring
+
+Matthias Miller  28:28
+that really does not match at all.
+
+Speaker 1  28:32
+Really bad. Oh, thank you very much. Yes, I will have that permission.
+
+Matthias Miller  28:41
+Is there a better way to do the I always open up a standard user profile report and try to for what the admin equals, what was there's a better way to seem so convoluted to give Seth for
+
+Speaker 2  29:10
+here, this is what I should be doing. Forget about this, and then I'll be good to go. Didn't
+
+Matthias Miller  29:25
+know where it was, developer
+
+Speaker 1  29:26
+tests. Yeah, developer test is the first one I did. I've done it the other way, way too often in my life, and so it's still muscle memory to try to do it that way.
+
+Matthias Miller  29:37
+Yep. Okay, so first step is going to be, let's just update and see if the migration completed.
+
+Speaker 2  29:42
+Migration completed, yeah, history, and see if it looks right, or look at the
+
+Matthias Miller  29:53
+expected we should see about we should see those 11 sales orders with Penny variances. Yeah.
+
+Speaker 1  30:14
+I had been down to 60 jobs in my queue for a while. Now it's up to 74 again.
+
+Unknown Speaker  30:29
+Oh, I should trim activity history.
+
+Matthias Miller  30:32
+Then that's fair. It trims it a little bit on the system, but it's still a year and a half. Okay. Do
+
+Unknown Speaker  31:03
+the call was in 10 minutes. And right,
+
+Matthias Miller  31:08
+yeah, it is actually yes. I'll have a little bit of time up until three central. I'm
+
+Speaker 1  31:19
+just trying to think through what we've even what our update is, we've not had a super busy week. Fixed auto pay, clean up, payment allocations. That's my big thing. That is a big thing. And Jonathan keeps making progress on
+
+Unknown Speaker  31:38
+busy stuff. Yeah,
+
+Matthias Miller  31:39
+I wonder. We should go through the spec and look at the December stuff as a it's much narrower. Maybe doesn't need to be all of us, but
+
+Speaker 1  31:54
+I think if we can do it basically, I think it'll be helpful for the guys to see,
+
+Unknown Speaker  31:59
+Yeah, yeah,
+
+Unknown Speaker  32:31
+oh, okay, I'm Ready for that update.
+
+Unknown Speaker  32:47
+Outsiders,
+
+Unknown Speaker  33:13
+well, that's not ideal.
+
+Matthias Miller  33:25
+Ah, let me make sure they've got one in my I mean, I've got some in mind.
+
+Unknown Speaker  33:36
+It's just for one. Wait, like
+
+Unknown Speaker  33:40
+those sales orders. What
+
+Matthias Miller  33:50
+did you have? Check your check your user permissions first. Just to be sure I worked? It looks like it.
+
+Unknown Speaker  34:19
+This is ringing vague bells, but I can't remember,
+
+Matthias Miller  34:26
+sales, orders,
+
+Matthias Miller  34:32
+buildings,
+
+Unknown Speaker  34:41
+yeah, what are data restrictions and sales orders? Is there? Is it something with a dealer somehow?
+
+Matthias Miller  34:53
+Oh, do you need to be i.
+
+Unknown Speaker  35:03
+A sales order,
+
+Matthias Miller  35:05
+oh, oh, oh.
+
+Speaker 1  35:09
+Admin Password gives you all permissions, including Josh's backwards, restrict to own buildings, permission.
+
+Matthias Miller  35:19
+That's funny.
+
+Unknown Speaker  35:20
+I told Josh, that's a dumb way to build it. Stick to that statement. I mean, I get his concern.
+
+Speaker 1  35:37
+He'd rather cause some problems for devs than accidentally show stuff that he shouldn't, but it's fair, but still it's just backwards.
+
+Matthias Miller  35:53
+Now we can do the heather G
+
+Unknown Speaker  35:55
+that was so trippy. I
+
+Matthias Miller  36:05
+Why is it still just, why do we have, you're looking at quotes. You're not looking at completed, okay, well, I mean, but this is, I mean, we have a tax amount. I mean, that's kind of what we're looking for.
+
+Speaker 1  36:19
+There you go. Now we have as many rows as you could wish for.
+
+Matthias Miller  36:26
+Okay, you want to run your helper report so the time? Yeah,
+
+Matthias Miller  36:46
+okay, enable development mode or something. Where did that go?
+
+Speaker 1  36:52
+I thought I fixed the column heading. I'd let you do too. I might have just not saved it.
+
+Speaker 1  37:07
+Okay, tax amount, we're still you're not seeing those one cent.
+
+Matthias Miller  37:11
+Do you still have that report that shows us which, what sales orders, they were probably I far folded. I four fold,
+
+Unknown Speaker  37:22
+probably, but I want to, I might literally have it open yet. No,
+
+Unknown Speaker  37:37
+this guy, no.
+
+Speaker 1  37:40
+I mean, this is the one interesting one, but it's not that one.
+
+Matthias Miller  37:45
+It's what would be the balance changes one, wouldn't it? AR calculations.
+
+Matthias Miller  38:05
+Probably that's a lot,
+
+Unknown Speaker  38:09
+that's a lot, a lot.
+
+Speaker 2  38:21
+I mean, here's a that's a 32nd sentence.
+
+Speaker 2  38:42
+That's weird. Did I just close it out accidentally?
+
+Matthias Miller  38:51
+Pull up history unsaved. Look for inside stuff. Search for like report and settings and draft.
+
+Matthias Miller  39:14
+You sure it wasn't just a silver report.
+
+Unknown Speaker  39:21
+I don't know that's local house.
+
+Matthias Miller  39:25
+Well, it's unbelievable. You you restarted, right? You're in a different system, so you wouldn't even have it.
+
+Speaker 1  39:32
+Well, it wasn't in my local system. No, nevermind. Add
+
+Matthias Miller  39:36
+insight as a keyword. I
+
+Matthias Miller  39:44
+You're sure it's not like one of these top standard sales orders ones?
+
+Unknown Speaker  39:49
+I don't know, but it's not or the new report, the next Down, Down, Down, Right? There might be this one, as if. Yeah, it's this guy.
+
+Matthias Miller  40:02
+Boom, okay, look at that. Might want to save
+
+Speaker 1  40:07
+it. Fine. Be that way. This is sales tax rounding, right? Yeah, we know where this goes.
+
+Matthias Miller  40:24
+It's like the junk drawer of report.
+
+Speaker 1  40:30
+Okay, so it's like a good church. Everyone can belong. Come as you are. Just if you stay as you are too long, will
+
+Matthias Miller  40:40
+kick you out exactly. Archive, yes,
+
+Speaker 1  40:45
+that's not cool. I mean, it's a it's a little risky, but that's not completely wrong. Yeah, I mean, it's that's playing a little fast and loose.
+
+Matthias Miller  40:58
+It's playing all right. Well, everybody else is getting ready to hop on. So
+
+Unknown Speaker  41:05
+that's fair. Here.
+
+Matthias Miller  41:09
+I'm gonna make I can stop sharing this recording. I'm.
+
+
+Transcribed by https://otter.ai

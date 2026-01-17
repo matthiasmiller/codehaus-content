@@ -1,0 +1,512 @@
+Unknown Speaker  00:10
+Good morning. Ben, good morning. Matthias,
+
+Unknown Speaker  01:57
+all right, you guys able to hear
+
+Unknown Speaker  01:59
+me? Yep, there you are. Can you hear us? Second?
+
+Unknown Speaker  02:09
+Here, all right, you can hear me now. You can see me, right, yep, that's right.
+
+Unknown Speaker  02:17
+All right.
+
+Unknown Speaker  02:19
+Get my sound worked out here, sure thing.
+
+Speaker 1  02:26
+All right, all right. Can you hear us now? There we go. There we go.
+
+Unknown Speaker  02:33
+Yes sir. How we doing this morning?
+
+Unknown Speaker  02:34
+Doing well. How about you?
+
+Unknown Speaker  02:37
+Pretty good, nice, rainy day in Ohio.
+
+Speaker 1  02:40
+Ah, nice. We've got nice sunny weather here in Virginia, so little bit different. But, yeah, I think the rain is supposed to be moving hitting us here in the next couple of days or so. So, yep, yeah, very good. Well, just a little bit of introduction here, and then we can, yeah, dive into, into the design portion. Matthias is our the other person here on the call. As you can see, he is Ellis's brother. And yeah, has his Matthias has his own own business, but he handles these high level designs for us because he has a really good sense of being able to see the really big picture for the software. And yeah, he's he's really good at finding the right questions to ask to really put together a good a good base for us to continue with. So yeah, he will be the one kind of driving this call, as well as the call this afternoon, if we end up needing that one. It kind of depends on the the amount of information we get here in this first call, whether we feel like we have enough to put together the the ballpark estimate and stuff like that. So yeah, we still block out that two hour block in the afternoon as well. But there's a chance that it would be a shorter, shorter time, or we wouldn't need that that time at all, just the kind of thing that we would probably end up just being in touch about in the early afternoon. And so, yeah, that's, that's who Matthias is. And yeah, as we if we progress into the next step of the design that you would be introduced to Tim, who's my brother, and and get a little bit more information there about about that phase of design as well. So, yeah, I think that's what I've got for introductions. Unless Matthias, you want to add anything else, I'm. Um, if not, then you can take it away.
+
+Matthias Miller  05:03
+Alright, sounds good? Well, good to meet you.
+
+Unknown Speaker  05:06
+Alex, yeah, nice to meet you as well.
+
+Matthias Miller  05:10
+So I'm going to, I spent some time reviewing the notes from your conversations with Alice and Ben. And pretty much, I think, I don't think there's much. I'll probably recap back to high level context. And then let's set set kind of scope and boundaries for what we're looking to cover and put together. And then I'll dive into questions. So you guys do furniture, furniture transport. You guys are picking up a whole bunch of stuff from a whole bunch of different people, getting them back to your warehouse and getting it back out to a whole bunch of people. So sounds like an operational nightmare. This is why people have you do it instead of themselves. And so looking for one of the original reasons for for reaching out was barcoding, barcoding system, making sure the right things get in the right truck, making sure everything gets sent. But then there were also a few others mentioned potentially dispatching as a at least, maybe not something for the system. It's at least a vulnerability in the business to only have. Maybe this is back in this as of, as of last year, this might have changed since then. That was a point of vulnerability having one person who knows dispatching really well. Cubing was something else that was brought up. And I don't know if that's still a, still an issue
+
+Speaker 2  06:44
+Yeah. So to answer that question, I guess the cubing and the dispatching we have since our initial conversation a year ago, we do have a new software in place for dispatching, and I think it works well. The only reason I would maybe look to replace it would be if we would find, if we would find that you guys can bring something to the table that would work just as well and would integrate well with this software, then that we have, which I don't think that we'd have a problem importing from, you know, a custom software into dispatch track is what we use Now, I don't think that we'd have a problem importing in and having it work there, but the functionality of of a custom dispatching versus using a generic one, there'd probably be some benefits there, but then there's obviously concern of cost. I mean, we know what we have into this one here, and I don't know if that would be a number that we could stay close to with, with it being a custom one, if that would be all bundled together to where it would make sense. So just things to look at. We're not opposed to it, but we also don't have as great a need for it as we did a year ago. And then as far as, as far as the cubes, yeah, we we use cubes to figure our loads, and so cubes will be a big part of of our order entry and figuring things out that way, because it's, ultimately, it's what we land on to figure out what, which orders we can, you know, fit on load and where we need to Stop.
+
+Matthias Miller  08:19
+And is that, does that get pushed over into dispatch? Does dispatch tracker help you? Help you, assemble the loads based on what goes where?
+
+Speaker 2  08:32
+Yes, the only thing that dispatches dispatch tracker or dispatching software is really doing. We compile all the information in a in an Excel sheet, and then we import all of that. So what, what it needs from us is a sheet that includes the the shipping location, the item, which is not critical, like it, we just listed generic furniture, the quantity I could actually share with you, probably what our what our import file looks like, so you kind of have a little bit of an idea of what we are actually dropping into dispatch track for its own Oh, well, it's, it's empty, down to one, down to One line. But I'll share this with you real quick, just so you can see it. All right. Are you able to see that?
+
+Matthias Miller  09:28
+You'll have to hit the Share Screen button, that's the green button, and then select the Windows screen and then hit okay, yeah, or share, or something like that. Oh, there we go.
+
+Speaker 2  09:37
+Okay, all right. So not that file, alright, so these, these are kind of obsolete here, it's this line right here that you see that dispatch track requires this information here. So these blocks here do not change, or rather, I guess these blocks do not change. They're the same every time. It's just a matter of copying them into it. This delivery date is a little bit more important, because it changes every week. It cycles to the next week, so we do have to change it. But again, the date just stays generic. And then the information that we compile is basically we tell it who the who the customer is, what the shipping address is. It needs an order ID number to be able to to distinguish what orders, what like, it needs a unique order ID. So we might have four different orders for priva furniture here, but they all would need this. I unique ID number here of 11332, and that can be any, any number, really. It just needs to match all of previous orders need to match. And then here's our cubes. So we we factor this outside in a different Excel sheet, and then, and then copy it over to here once we have it, so we tell it what, what the cubes are for that order, specific order, and then where our pickup location is, which this one happened to be, be already here, so it was marked as VVT or at our warehouse. So I don't know if this helps a little bit of insight as far as what the dispatch chart this is, all it needs, really. We import this file. We might have, you know, 100 and 100 different line items here to import for a specific region, and then we just kind of rinse and repeat.
+
+Matthias Miller  11:39
+That makes sense. So the location, how many locations do you guys have that
+
+Speaker 2  11:45
+you're that we're shipping to? A lot. The
+
+Matthias Miller  11:49
+location is just shipping. Is shipped to column K,
+
+Unknown Speaker  11:53
+yeah, this, this is the ship to. Is that what you're asking?
+
+Matthias Miller  11:56
+I'm asking about column K,
+
+Unknown Speaker  11:59
+sorry, I'm having a little bit of
+
+Matthias Miller  12:00
+trouble here. Hang on, let me. Let me do this. Give me a minute.
+
+Matthias Miller  12:10
+I'm asking about column K.
+
+Speaker 2  12:13
+Column K location, yeah, oh, how many different like pickup locations do we have? That's what this is. Pick up location. Let me share. Another document with you. This is one that we had created when in the initial stages of working with dispatch track to cater a little bit to their system. So I have my builder directory, and this is where it pulls from in order to fill out that low pickup location. So I've got 572 different line items here, all different addresses, anywhere in Ohio, Indiana and Pennsylvania, primarily that we are, that we are picking up at. So quite a few, some of them very regularly. Some might have gotten entered in here once and and we haven't picked up there again, but most of them are multiple, multiple times.
+
+Matthias Miller  13:06
+And then you'll also have entries in there for for your warehouses as well. We
+
+Speaker 2  13:13
+only have one warehouse, or you only have one one warehouse, yeah, we just have one depot, one place, one central location that we bring everything to Yep. So yeah, we have our customer directory here, which that one has 2009
+
+Unknown Speaker  13:27
+line items. So a lot more customers than we do then we do builders.
+
+Matthias Miller  13:35
+But that's pretty much it. Okay. And then the customers are the end they're the the end customers who are getting these right
+
+Speaker 2  13:43
+Correct. Our customers are the ones we're taking the furniture to. They're the ones that pay us the shipping bill.
+
+Matthias Miller  13:48
+Got it perfect. Makes sense. Did you
+
+Unknown Speaker  13:56
+want to see anything more with this? Or should I hang on
+
+Matthias Miller  13:58
+one second? I do have a question on locations. How is the short code generated? The short code the like the VT, the VBT, or is that literally the name? Or is that just a name? Yes.
+
+Speaker 2  14:11
+So VBT would just stand for value transport, it was just the code. So the way that that works, I just have an Excel file that I had that it pulls from my builder directory. So as soon as I enter, as soon as I start typing in a name here, like for example, windy acres is a pickup location we have. It's builder so as soon as I start typing it, it identifies the locations and auto fills that and tells me what state it is picking up in perfect and that one there. Like, the main reason we have this is for after the fact. So we know when we print out our load reports, we know where we need to go to pick up each order, essentially, is what that's for. But also, I have. The state in here, because we do charge different rates depending on where we have to go to pick up. So Indiana, they have enough charge. Pennsylvania, they have enough charge. Ohio wouldn't have enough charge. So it's also we kind of need an identifier there in our system to quickly be able to visualize, oh, they need an up charge, or they don't need an upcharge, you know, to figure figure all that out.
+
+Matthias Miller  15:26
+Alright, so walk me through the process, a lot of these, a lot of these. You're getting your orders in in a few different ways. Walk me through the different ways your orders, you can stop sharing now if you want, but walk me through how these orders come in.
+
+Speaker 2  15:44
+Yeah, so currently we we get, like, one of three ways. It's going to be a call, a fax or an email and and probably 90% of the time that's from our our pickup location. So our manufacturers and our finish shops are the ones who call it in because they have the they have the best grasp of when the product's actually going to be done. You know, they give out ship dates to their expected ship dates for their customers. But most of the time it's, it's just kind of a mark that they aim for. And the good companies tend to hit that mark pretty frequently. But we've just seen, we've seen enough that we're if customers are the ones that that enter the information or try and call in the information, we end up going to a place that the order wasn't even ready yet. So we push the builders to be the ones to call that in. So with that being said, a lot of these guys are Amish, Amish shops. And you know, you got from very plain, very simple, even some sports and Trooper shops to a little bit more tech savvy Amish, and then even some English shops. So it's not they're not all they're not all simple. They do have phones and computers and stuff like that to be able to communicate something. But so the more the the more advanced a shop is. It usually the easier it is to work with them, because they'll have nice paperwork, easy to work off of. They tend to be the bigger shop, so they have, yeah, they just have their ducks in a row. But then it's these smaller shops that they like, literally, Matthias. We've got a piece of paper that they scribble the order down on it, and you can, I mean, it's not not nice scribbling either, and that's what they fax into us. Then those are usually the guys that fax in. So it's like you're, you're kind of deciphering this paperwork as you're trying to figure this out too. So we, well, I won't get too ahead of myself, but it's one of those three ways call fax or email. Typically, I would say fact or call, calls and emails are two, are the larger majority, and between those, it's probably a good 5050, split, like it's, I mean, maybe, like a 4848 and then a, you know, 4% for the faxes. The faxes are not super common, Yep, alright,
+
+Matthias Miller  18:13
+alright. So they'll call up. They'll say, Hey, this is, this, is this is such, such and such. With, with, with, you know, I don't know, windy acres, and we're going to have a load ready on we're going to have some furniture ready on Wednesday, and we're going to have three pieces for this customer, three pieces for that customer, and 10 pieces for this other one. And so you jot it down. Well, you know, at the point of them calling it in with the cube,
+
+Speaker 2  18:45
+um, not typically. So we do that all in house. We have a one. There are a few, a few manufacturers that also work based on cubes. And so they have cubes incorporated into their loads. I don't know. It just worked for their system, and they integrated it. And so there's, there's probably a handful of manufacturers that have cubes listed on their paperwork that you can pull from quickly. But everything else we do, we do just by Well, we had created a spreadsheet for ourselves, of cute like a cubic cheat sheet, basically, is what we called it. And our dispatcher same one for the past decade. She she started with that, and she's gotten good enough that she just looks at a paper, reads what it is, and in her head, she's able to keep it by herself, typically not having to look at her cheat sheet anymore. She just knows well enough anybody else stepping into it needs a needs a way of knowing what it is. Now I that's part of why I had set up this. This spreadsheet over here. I'll go back to sharing here real quick, just so you can see so I had set this up, and this is ultimately what I would want our system to do automatically. But like if you type in what your furniture. Sure is I can't see my line items here, but this pulls from the directory as well. So if I type in a dresser here, you know it's got an auto fill function again, and then I put in my quantity of one, and, oh, that's probably not the right block quantity of one. Wow. I guess it didn't go down this far. My formula didn't go down this far. But technically, it would, it would auto fill this based on our volume directory that we've created here for the dresser. So it would auto fill, you know, 30 cubic, 30 cubic feet for for that dresser there, and it was just a simple way for somebody to come in who doesn't have isn't well experienced in in cubing, to just type it out, type the order out, and not have to worry about, you know, back and forth between this cheat sheet and looking and adding and doing all that. So I would much prefer a system where we It would, it would do it for us automatically, and we could, we could tweak the numbers, you know, on the spot if we needed to, but ultimately it would just be pulling from from a directory that we have stored somewhere. And then we could go into that directory, add things to it as we need to, you know, make changes as we need to. But I don't want to have need somebody here for three years before they're well experienced enough to fly through that. I would much rather it be a situation where they can do things quickly. Yeah,
+
+Matthias Miller  21:35
+hang on making a few notes here. All right, so do you in the dispatcher, in the dispatching? Do you will you dispatch pickups and pickups and deliveries separately, or is there ever a time where you will say you'll, you'll deliver a bunch of stuff and bring a whole bunch of stuff back to the depot.
+
+Speaker 2  22:06
+Nope, they're two very separate operations. We are not even looking for a way to to change our pickup scenario right now. It's, it's not complicated enough that we need to change anything. It's more the delivery and the things that's kind of complicated. And all of our deliveries are done on 53 foot semis, and then our pickups are all done with hot shots, aside from our Indiana or Indiana freight is done with a semi as well, but he brings it all back here too. So we, we pretty much just make these short lists for hotshot pickup and trailers, rather, to go out, grab, bring in, go out, back out, grab, bring in. And they do. They do that three or four times in a day for each each unit. So they are, they're kind of split separately. We don't have anything. It's not all in the same dispatching software. It's just the deliveries.
+
+Matthias Miller  23:02
+Okay, alright, so for the for the sake of pickups, then you really don't care. It's basically, you have the order and it hits the warehouse. You don't really care what happens between then, because it's just,
+
+Speaker 2  23:16
+yeah, not that complicated. Yeah, it's not, it's not, it's not too complicated at this point for us to have to do something about it. Because the way, just to try and give you a little bit of insight of how that works, you know, she'll, She'll create all of her routes. And do you care to see our routing software? Just overview, yeah, just so you have kind of an idea of what it's what we're looking at. All right, let me share this with you as well.
+
+Speaker 2  23:53
+All right, so I'll go into our routing for last week, just so you can kind of see an overview the orders. The orders are insignificant, because the way that they're, the way that they're entered in, doesn't really mean anything, even to us. While they're in here, it's not there's their system. Their system probably works well for certain things for us, we're kind of, we're ultimately just using that as a means to get to this, which is the the actual routing portion of it.
+
+Speaker 2  24:31
+But here you can kind of see, then what, what loads look like when she punches in all those orders it, it throws them all out onto a map. And then you can, from there, you can start pulling things together and creating structure to those loads. But this kind of gives you a little bit of an idea of what things look like, Yeah, from a routing standpoint, you know, all of these pins show up as just a uniform color to start with. And this software specifically has an auto routing feature, so you select all the pins that you want, and it will try and build a load off of that based on volume parameters. So, you know, it'll it'll fill it out to X amount of cubes and 10 stop and create a new load for the next one. And usually we have to tweak it. But this is kind of what it looks like. And so once she builds these, she picks which load she's going to start with. And usually we can handle about three to four loads every day that we work on. So she'll pick her first three loads. And typically that's the furthest ones out. So she'll take this, this load here, this route here, and, you know, maybe this route here then. And she'll print off the load reports, which just shows you, you know, where all the pickups are actually.
+
+Unknown Speaker  25:50
+I can show you, I guess, what a load report looks like. If that means anything to you,
+
+Speaker 2  25:58
+it shows you where all the pickups are that are still outstanding. So you know where you need to go yet to get everything in for that load. And so she'll, she'll take those three and she'll have them setting in front of her, and just start creating pickup lists kind of evenly moving up within those three loads so that all three loads are kind of coming in at the same time. So because we pick up same day, we actually load got it. So it's a very swift process and all that. So you want to coordinate everything pretty quickly. But this is what a load report looks like, right here. It's just a it's just an overview of the of the load with the routes in order. And then this is what we look at here to see, oh, for launch Star Creations, which is the customer that we're delivering to, we need to go to this location, which is what we imported into the software. They have a they have an order here that needs picked up. You know, this customer here has an order at this place. This one has it here, and then we have an order at our warehouse already. So that's kind of how it works with that. And she just, yep, works evenly through it. So it's it, is it like the most fluid system? No, but is it easy to do?
+
+Matthias Miller  27:13
+Yes, yeah. Well, I mean, yeah, exactly. Well, there's a lot of if it's if it's simple, easy to do, not a lot of complexity just happens. There's a lot that can be done. Yeah, you know, I'm not, I'm far from advocating to replace humans. And sometimes when just having somebody do it is is a great option. So I get it all right. So then, so then those will get out. They'll they'll come back to the so guys run out with their trucks, pick them up, bring them back to the warehouse, and you'll start loading those trucks as the as material comes in. And so the point that you want to start the bar coding is, is it at pickup, at the point of pickup, or the point of coming back to the warehouse?
+
+Speaker 2  28:05
+Ideally, you'd have it at the point of pickup, but I don't feel like we can trust our pickup drivers well enough to start it there. I think we'd have to start it at the point of coming into the warehouse. The only the biggest benefit you'd have to starting it there is that you would know exactly. You would get piece for piece everything perfect. And you would probably be paying a little closer attention to what you're actually getting into your truck, where you know you might, you might have noticed if they forgot to give you a bed rail or something like that. But we've created a system now where we do a check in when things come in, because we had issues with knowing, you know, did stuff for sure come in, and not having a way of cross referencing that. So it all comes through our our gatehouse, essentially, and that's where we would set up our our bar coding system. As as as these orders come in right now, currently we get invoices from I really should just keep a generic one here on file, because every once in a while I want to show somebody, but it would be just, it just shows, like a generic or it's just the builder's invoice, or maybe the stores invoice, and it lists the items on there. But the problem with that is that with, you know, these 500 and what was it? 572 builders that we're dealing with, all of them have a different paper. So, so we have, we're, you're looking at so many different papers and and so it makes it a little bit hard to just be able to quickly jump from one to the other and figure stuff out. So if we could, when we enter that order, initially into this, into into the software here, and then it prints out based on the PO that you put in, you know, for each customer and in each order. It prints out a paper for you, and it says, Hey, for this, Po, you're going to have this and this and this, because that's what the builder told you. Those papers would all go out to the warehouse then, and we would use them on our end. Or maybe it's not like ultimately, I guess I mentioned papers, but ultimately, I'd like it more to be on a tablet or something. So you can stay digital, and they, you know, they can flip through the different customers that they have, pop over to a different tab, or something, whatever it looks like for for customer named cherry Ho, and they go to Cherry Ho, and they should see all the orders that should be coming in on this specific truck here, or just all the ones for that day again. I'm not quite sure how, what the easiest way is to do some of this stuff, and they could see, okay, well, I have a bedroom set on this from this builder, and I've got the bed, or I've got the headboard, the footboard, the rails, the dresser, the chest, the mirror, and it looks like everything's good. They sign off on that. It shows that everything came in, it's all good at that point, you you'd start slapping your barcodes on each of those pieces to associate it with that order. So now that order says, Hey, we've generated eight barcodes for this order. There, there might be, it might show that you've got, you know, six pieces on your order, a bed, a dresser, a chest, two nightstands and a mirror. So six pieces. But in reality, we have more than six parts for that order, because your bed comes in three parts, so that automatically takes us to eight. The Mirror might come with a separate mirror bracket that takes us to nine. I want us. I want our guys to be able to to see by scanning that barcode, that first bar code. Hey, you've got one of nine parts now, and you've got to go out and find those other eight, eight barcodes and scan the rest of those in before this order is complete, are
+
+Matthias Miller  32:00
+you going to know the number of parts based on I mean, does that vary from customer to customer, or does each item
+
+Speaker 2  32:10
+it does it does vary. So my, my thoughts on it were that that it would, you would have to punch in the number of barcodes at time of receiving into the into the like, you have an idea of what you're what you'd be getting beforehand, but a bed from this builder to that builder, depending on the style and what it is, you could they could have, they could have sent the rails separate. And so now all of a sudden, you've got two barcodes instead of one it. There is so much fluctuation that we have to be able to make those changes on the fly at a computer or a tablet or something like that. We have to be able to make those changes because there's, there's just too much, yeah, variation in builder to builder.
+
+Matthias Miller  32:55
+So really, when you're receiving a load, probably what makes them or when you're when you're receiving, checking in pickups, what, what makes the most sense is all of the pickups for that load, all of those pickups, all the items on that pickup, is going to be for the same load. So being able to filter down by that load and start receiving items, start checking in
+
+Speaker 2  33:17
+items, and, well, when you're saying they're all on the same load, meaning, like we're all going to load them onto the same truck. Is that true or not? It's not true. We pick up for three four, we'll pick up for a number of different trucks all on one load, because if we go to one manufacturer, we want to get everything they've got. But that might be for customers in the East, in the West, in the south, it could be all over, like we tend to try and pick up for a specific region at one time, but she notices, well, hey, they have this product ready for this other customer. No sense in sending a truck back here if that's all I have. So no this stuff will go all over the place. But we, we typically know what's coming in. Well, I say that, but maybe this is a big, a big complexity that we'll have to overcome too, and maybe we just can't do it the same as what we have been doing. We do something called, what we call doc sweeps, where certain manufacturers this kind of happened during covid, when, when, when warehouses were so packed out, and guys just wanted stuff out. We just showed up in manufacturing. We said, Hey, give us everything you got for for our customers. We'll take it all. It doesn't matter if it's shipping now or if it's on our schedule for next week. Just give us everything you got our benefit, our benefit in that was that? Well, then the products there, we don't have to go out and get it again at a later date. We know it's there and it's it'll be ready to load as soon as we need it. The downside is our warehouse fills up a little bit quicker, but we had the space, whereas those smaller shops didn't have the space, and they love getting stuff out of their warehouse. And so it was kind of a win win for both parties there. We have very little idea of what's coming in until. Hits our dock, but, but we would still have the order at some point, we would have still received the order into our system and entered it in so it's it would be in the system at this point. It would just be a matter of maybe finding that order, pulling it into your pulling it up and saying, Hey, look, this order came in, and now it you check it in, and then it jets it off to a new status of mark here, or at warehouse or at depot or something like that. So it's not just like it randomly shows up, but it it's sometimes not always. It's not on our pickup list every time.
+
+Matthias Miller  35:44
+Sure, that's fair, but that's, that's but you do have the order present, which makes it alright. So then the next question. So really, then you're, you're looking at it by by builder, maybe grouped by and sorted by dates that you can get down to future dates if you did, did a doc sweep. But how do you, sorry, if this is a dumb question, but if, how do you actually in the real world? Do they is it just that the driver knows this stuff came from this manufacturer, and this load is for these three, many or three, three builders. Or, you know, do you throw, throw printouts anywhere? You actually keep track in real life, what goes where? Yes.
+
+Speaker 2  36:35
+So is this like the pickup guy? Like the pickup guy? Yes, the pickup guy. So the way it works is we've got pickup lists that we that we give out to these drivers, and it like they've done this long enough that they know where the shops are. So we give them a shop name and they know where to go for the shop. So it's not like they've got all this address information. Pick up this order, this order, this order. We do a shop name and then we list the stores that we're picking up. There. They go to the shop and they they tell the shop, hey, I'm picking up for this customer, this customer and this customer, the shop gives them all the stuff for that customer. Now they it's kind of the shop's responsibility to make sure they give everything to us. Like, yeah, we tell our guys, like, make sure you're checking stuff too, to make sure it kind of matches up, or you at least, are kind of paying attention, at least that, so you don't walk off without the headboard or something like that. But we, we kind of leave it more up to the builder. But then at that point, they give us the invoice, the same invoice that they are going to give on to the store. They give us the invoice. They hand it into the driver. Once the driver gets back to our warehouse, he turns that paper all over to us, and that's where our gatehouse is starting to keep record of stuff. So then they put all their papers, those papers out, and put them on a table. And as things are coming off, they check them in. So they say, for this, for for customer, built right from windy acres, I've got a headboard, or I've got the bed, and this, this is where the this is where the barcoding system is supposed to kind of alleviate we have to mark an H for headboard, F for footboard, R for Rails, slats for slats. Like we are the ones responsible to put notes on the paper. Because the manufacturers don't put notes because they know, like, they just know what's included in their bed. But for us, we need to make notes so that in the process of us moving things through, we can reference these notes of like, Oh, hey, this bed includes this and this and this. This dresser has a separate, you know, mirror hardware, just small, things like that that the manufacturer doesn't include in their in their steps, but the barcoding system should allow us to almost for that to be a non point, like you just an extra barcode is an extra barcode. So it doesn't really matter. You just scan the right number of barcodes you have. So they we check in all the pieces to ensure we had everything. If there's something wrong, we follow. We try and follow up right away, because if not, it might affect us in the coming hours as we're trying to load. And we take care of everything. And then we distribute the papers. We use the manufacturer's invoice paper to to first check in to ensure we have it. Then it goes to a puller, and he marks it off, indicating he's pulled it up and it's and it's getting loaded on the truck. And then that paper, then, in turn, gets handed into the office, who takes it and writes up a bill of lading. They cross reference everything for that customer that was called in that we should have to see if there's any discrepancies from what we actually received to what we should have had. And then they end up typing it out into QuickBooks in a bill of lading form to send out to the customer to let them know, hey, you've got all these orders. This is what's in each order. Or and who it's from, basically, right? And that's what creates our our manifest for the load, yep.
+
+Matthias Miller  40:12
+Okay, getting down in the weeds a little bit again. But I love the good so when somebody's unloading a bed. It's easy. It'll be easier for you to say, All right, another barcode for the bed, another barcode for the bed, another barcode for the bed. You're not going to know. Like in an ideal world, if you do everything, you would say, hey, the barcode could literally say one of four, two of four, three of four, four of four. You're not going to know that. It's just going to be one more coming in, and you'll have to scan in order to see how many there are. Is that right?
+
+Speaker 2  40:42
+Yeah, yeah. So, I mean, yeah, it would be if it, if it's just as easy to do it that way. I don't know. I don't know where the complexity is in the first format that you said, versus the second. You know, one of 222, of two, or one of four, two of four, versus just 1234, but it would be easier for somebody to be able to and without, you know, without us having to actually gone and worked with the system. There could, there could be some opinions that that come up at that point, but the one of four, two of four would probably aid us more than the 1234, barcode system. But I don't know how complicated that that step would be to make happen all of a sudden.
+
+Matthias Miller  41:30
+The complexity is you got to unload the whole bed and say, Okay, we got all the pieces for the bed, and then print the barcodes for them and say, Hey, we got four. Boom, boom, boom, boom. And somebody comes. Go ahead,
+
+Speaker 2  41:41
+yeah, well, and that's kind of hard for us, like it's kind of hard to get everything, because the pieces come off one at a time, and they just taken away. And so it is a little bit hard. So maybe, maybe that is something where you just have to and to be honest with you, sometimes we're not even positive that you know what, what this piece is for? Like, they might send something in and it matches the PO for the whole order, but we might not know it. Does it go to that thing? Does it go to this thing? Like there's nothing to identify them other than the fact that they've got the same customer name, even. And so we'll write it on the paper so we know to collect it when we go to to do it so, but we do try and keep our stuff sorted in a way. And most times, most times like, I think we'd be just fine with, you know, nine barcodes. And just know that you need to go get nine barcodes because a bed, most beds get three parts to it, 10, 15% of the time. There might be an additional thing to it, but I don't know that's it's a good question. Matthias, I'm not I'm not certain what would be the best, the best way to do that? Off the top of my head, one of four sounds like it would be a better way of doing it, because then, you know, well, if it's bed parts, I kind of know where to go to look for that, as opposed to if I'm just missing one barcode, and I got to go track down one barcode. You know, am I looking for a table part barcode, or am I looking for,
+
+Matthias Miller  43:21
+okay, here's, here's another way to do it. Do this that that could eliminate the bottleneck when you're unloading the the when you're checking things in, if you would give each barcode like a one word label, so it would have the item name plus like a one word like, you know, headboard or rails or something like that. And that would print on there and and then have the bill of leading could show, then each of those items. So you could, so you could then at least track down and say, Hey, we're missing one. What is the thing that we're missing? And have some kind of point of reference where you would have to, you would have to you could go ahead and print the first one. It wouldn't show one of four, but it would show what the part it is. And you could cross reference what's my thing?
+
+Speaker 2  44:14
+Yeah, yeah. That might be, that might be kind of a good middle way of doing it, or center of the road where it kind of serves both purposes, but also kind of fills that gap a little bit of maybe not knowing, not knowing if there's going to be more coming off or not.
+
+Matthias Miller  44:35
+Yeah, I don't know how to do the I mean, it's, it really comes down to operational challenges on your ad, because you don't want to, you don't want to slow down. If you can figure out a way that you can get everything unloaded and know, and be okay, and if it's, you know, just 1% of the time, or 3% of the time that you need to reprint all the barcodes because you've found another piece. Yeah, that's great. I but it sounds to me, so unless you have some kind. A brilliant inspiration on that front, I just don't see, yeah, I don't see a path to that working,
+
+Speaker 2  45:08
+yeah, yeah. Because it, I it's going to happen far more often that all of a sudden, oh, another piece comes out. Because they, when they're loading stuff at a shop, especially if they have a full load of stuff. They'll take all their beds and load all their beds, their headboards in. Then they'll load their dressers to keep those in against they kind of load them in parts rather than by orders. So you'll pull out all these rails and put them away, and then all of a sudden, later, you know, you might get slats, because he decided, oh, now's a good time to put slats in. So they they do. They do very often come off at different, different times. So I think we should steer away from having to having to piece together the order right there on the spot, because that's going to slow us down too much, and find an alternative way of matching that order and and as you were saying, like, you know, a single word. Maybe we could even just class it as, you know, barcode, and then you said a single word. So maybe instead of doing a specific like item, you could even do like a set, so, like it's a bedroom or dining or office or something like that, just to, just for you to know. Okay, well, I'm looking for one more barcode in his bedroom. So it's probably, it's not going to be on my it's not going to be with my dining parts. I'll go check my rails and and see if I missed something on the rails or something. I don't know. I'm going to mark that down as a note, and we might talk through that a little bit and and see, see if we can come up with some kind of a system. Because, yeah,
+
+Matthias Miller  46:48
+when it's, it's, it won't be a problem. I mean, I'm going to, well, I guess this is, this is also up to you too. Are you going to want to tie out each of the pieces to a specific item on the order
+
+Unknown Speaker  47:00
+each of the pieces, each
+
+Matthias Miller  47:03
+of the pieces. I mean, so I was assuming that for each line item, like, say, you have a quantity of, you know, you have two beds that you would, you would tie it out to the bed. You know, this piece printed barcode for the bed, printed barcode for the bed, printed bark it for the bed. And is that I don't understand how your classification system that you're proposing, bedroom, dining, office, etc, is different from or how it relates to your your item list that you would have on your order?
+
+Speaker 2  47:35
+Yeah, versus like, printing out, headboard, footboard, one no
+
+Matthias Miller  47:41
+versus printing out. Well, most times you're not putting the order itself. Doesn't specifically list headboard, foot board, etc, right? It just lists bed for example, right? So how does, how does your bedroom, dining and office classification differ from just linking it out to an item on the on the order itself.
+
+Speaker 2  48:10
+It it might, it doesn't necessarily like, okay, yeah, I guess maybe I don't know enough about how, how the bar coding, how you can kind of play with the bar coding and make changes and manipulate things as you want to, to know what the best way is of doing that like, obviously, if you if you had a way of tying that to so so let's say, let's say you pulled a headboard off and you you could match up the PO. So now you have a barcode that you can tie specifically to a paper, like an order that you have because your your store name and your PO match up. And then can you very quickly just pull something to that like, type like, would you have to be typing out? Oh, headboard. No, you could. You could pull it and identify something quickly.
+
+Matthias Miller  49:10
+I would think that. Okay, so you're going to know that this load is for for these manufacturers and and filter down by date. And so you could very quickly go in, say, this builder, this PO and then preserve and this is what I was thinking. But maybe this assumption is wrong. This, this line item on the and it ties out to this line item on the order. Now what gets confusing is, if you've got four different styles of for some reason, you got four different line items for four different styles of beds. Which one do you choose? And if that's not clear when it's coming off the truck, then it's like, I don't know. And that could be where. Could also just do this in a way that it gives you a little bit less of a triple check, but if each of the items would have the classifications that you described, it's like, you know, categories of things, and you assign barcodes to the category, and at the end, then you review how many barcodes you have for each category, make sure it looks about right based on the items that you have in the order. That would also be an option. I don't know how often it is that you're getting
+
+Matthias Miller  50:42
+part parts within, okay, let me start. Let me say it like this, whatever goes on the barcode. If we're printing something on the barcode, we want a high level of confidence that is, that that's the correct classification. So we can know the customer. We can know the PO done deal. We can we have a high confidence in a general a broad category, bedroom, dining, office, etc. We start losing it sounds to me like we start losing confidence when we say this particular piece is for this particular line item on the order. Is that? Is that correct? Or is that?
+
+Speaker 2  51:26
+Are you asking us if we have a hard time sometimes knowing if this particular piece goes with this particular line item correct? It's not super common. Most of the time, we can figure that out. So I guess maybe we take this back to back to the initial point of if, if we are able to tie it to a line item, and we just know that this specific line item, a bed, has three or four barcodes, that would probably be the simplest way for us to do it, because there are few enough times that we just have no idea what it goes with, and we just know it goes with this order that that would be, that would be an issue. And the reality is, is we could just tie it to a random line item. It's not the it wouldn't be the end of the world. It's not like the store is banking on this. It's more for our sake than anything. Just knowing that, oh, as long as they grab these, all these pieces to go with this order and load everything, then we're good, honestly, yeah, so I don't know if that makes any difference too, like, ultimately, I just want, I just want these guys, as they're pulling stuff up, they need to know that if 18 pieces came out into the warehouse, it doesn't matter if it lists three, three pieces on the paperwork, but 18 pieces came out total, for example, maybe like a kitchen cabinet set, sometimes a little undescriptive, you might have a bunch of cabinets and a bunch of parts to like trim parts that look a little bit aren't easy to read on a on a paper. They need to know that. They need to scan 18 parts in order to have everything to complete that order. That's ultimately all I really care about. And right? So, because I just don't know that much about bar coding systems, maybe, maybe that's where you guys can offer your experience, your expertise on that. But I, I had thought even, like, maybe it's something where you could wear, like, on the back of your paper, and I know this would be double, double the amount of barcodes you're using. But like on the back of our paper that we're looking at, you'd start slapping all the equivalent barcodes on, and that's what you would kind of use to match up to this the number that you have. And so you could even count it out on there what your barcode count is, and that's how many pieces are coming back. So you need to know, you know that you need to go and scan all those and match them up, or something like that. But as long as we have a way for that puller to look at his order and look at the look at it in some way that he can see, I've got, I've got 18 pieces, like the only time where it would be a little hard then is if we happen to stick one, one of those 18 pieces wouldn't go with the pile, and it would get put somewhere else, because maybe it was a small part. We kind of have a small parts rack, if he gets to that 17 of 18 all of a sudden, now, well, where is he going to look for that, that piece? So maybe in that we need a way of identifying, if we're putting something somewhere else, like we can, we can tie that to this barcode. Says, when you scan it, it pops up and says, you know, instead of saying what row it's in it, it specifies the parts rack or something, you know, something like that. I don't. Know if that would be an option, but that would be a good way for those kind of lingering, lingering items that just kind of might not have a home with a pile, because there are things like that that sometimes it the nature of of how things stack in the warehouse. Sometimes it makes more sense to put them on a shelf than to put them like the pile, because it doesn't, maybe doesn't fit very well with that,
+
+Matthias Miller  55:25
+right? Okay, makes sense,
+
+Unknown Speaker  55:31
+clear as mud, right? And
+
+Matthias Miller  55:33
+I mean, that's that's a bigger issue for for doc sweeps and things like that, when you're when you're storing inventory ahead, or is that also an issue when you're loading day of,
+
+Speaker 2  55:46
+when you're asking about an issue, are you saying on the front end of making the barcode or going back and finding
+
+Matthias Miller  55:51
+stuff? Yeah, like Will the question is, do when you're loading day of, do you still do do pieces still go over to the parts rack. Or do they all stand, stay on the pile and just get loaded from there,
+
+Speaker 2  56:04
+they'll still go to the parts rack. They all have their respective respective sponsors go to it doesn't matter if they're loading in 30 minutes or if they're loading in a day or two.
+
+Matthias Miller  56:15
+Perfect. Okay, and do you guys, how commonly do you guys move things after, after unloading the pickups?
+
+Speaker 2  56:30
+Not, not if we don't have to. Yeah. So very, very seldomly they go back into a into a block. So the way our our warehouses is set up is that we've got eight different zones that go stretch the length of the warehouse, A through H, and each zone is kind of dedicated to a region that we ship to. So a for example, is covering our our New Jersey, the state of New Jersey, and and then Colorado customer or not Colorado, but our West plus customers, which is Colorado, Idaho, Montana and Utah, and so all customers in those states automatically get moved over into a block, and they'll go they we don't have, we don't typically really have assigned, you know, our blocks are numbered. Then we've got 16, I think, in each in each zone. And we don't really assign a block for each customer, because there's still too many customers to have assigned blocks. So they kind of move to and fro within that block. Aside from our biggest customers, they they kind of get their own block, because we just know their repeat. They're always going to fill that out, but it would, it would get put from the truck over into that block. We tag our piles so we know as we're walking down, we're keeping an eye out for tags, and if you come up on that customer then, then, you know, but it would be kind of nice. I mean, that's some that's something that we're struggling with right now with, with just the volume that's moving through. It would be great if, if you know, somebody took a pile, took a took a piece back, and they started a whole new pile, because there was no pile started, if they would come back to our our check in person and say, Hey, I started a pile for this customer in block seven of A and then so a seven, if there would be a way that we could tie that into it so that when the person marking marking off like going to pull that order up at some point, if there would be some note in there that would would mention a seven, that would be, that would Be great. And even for putting things away again, because we pick up, you know, we might pick up from four or eight different manufacturers all for one customer, but they'll come in at different times because, you know, you're picking them up on different trucks, because the manufacturers are in different areas. So again, it would be nice if you had, like, if there was a pile back there, and we could automatically see there was, like, a way it would tie to that customer for a temporary time. Obviously there, because as soon as those orders are gone, then you'd want to clear that, and it would almost reset. But for that specific order, maybe you could tie a block to it, so you'd know where you're going with it. And I guess if that's the case, then they could go, they could really go anywhere. They wouldn't have to be together, because the puller would know. Well, I have this order here. This is in a seven, then he pulls up his next one. All that one's in a 10, then he goes back and pulls out. They wouldn't have to be together. I mean, we might lose a little bit of space that way, but if there's any way we could reference that we don't currently have a system that lets us reference where stuff is sitting in the warehouse, we you just have to manually walk back the row looking for that pile. And sometimes that works well. Other times. Not so well.
+
+Matthias Miller  1:00:04
+Well, I mean, I think there's a scenario in which we you could, you could, okay, first of all, customers can, can be assigned to your zones, permanently assigned to a zone. And then here, let me make a note here. And then we could also have, like you said, a temporary block assignments, and the person, the person checking things in, as long as people are, as long as the polar is appropriately checking things out of the block when, when he's loading, we should be able to automatically assign blocks on check in as well. Okay, and so that could then, that could then be the guidance when taking it from, from the point of check in, back to the block to you. Where it needs to go. Obviously, you still need a way because, because we're dealing with human people in real life, you need a way to say, Nah, I actually dropped it in this other block instead. But most of that seems to be, it seems like we haven't have enough. Well, we would, we would have enough in the process that we'd be able to determine which blocks are empty or not and whether the customer has A has a block they're actively using. Let's
+
+Unknown Speaker  1:01:38
+see what
+
+Unknown Speaker  1:01:59
+hmm,
+
+Matthias Miller  1:02:09
+all right, so things are coming off the trailer. You're, you've got the customer name. You're finding out what it is. You're, you're putting a barcode on it, theoretically, in an ideal world, and we can take a look at what how complex it is. But in an ideal world, it gets assigned to warehouse location. It goes, it goes back there, and then the next, the next step is the polar then has, he's got a you
+
+Matthias Miller  1:02:45
+I mean, he's got a reverse when he's going from the, you know, last stop to first stop, loading the truck, loading the semi, and just going through and Alright, here's this customer. I'm scanning this. I need to make sure I scan this many items and at whatever point he actually loads it on the truck. Are you expecting again, weeds question. Are you expecting them to him to scan? Does it matter whether he scans when he's picking it up off the pile versus when he scans when he scans and he's actually loading it on the truck. Does that make any
+
+Speaker 2  1:03:23
+difference to you? Yeah, I mean, from from our past experience, it always works better if we have them scan it, like they go back and find the orders, bring it up. Well, without the scanning process, they are supposed to go back, finding, looking for a specific piece on the order that's in front of them, bringing it forward and then marking it off to ensure that they didn't. They don't scan a bunch of items and then have the best of intentions of pulling everything up, but they accidentally, you know, forget that last chest that was sitting there. So ideally, you'd have, you'd have it to where, and I don't know if you'd even, if you'd even take it a step further and do one more step in the process, we have two man load teams, and this puller is a part of that. So you got a loader and a puller. The puller is is strictly bringing product to the back of the trailer. The loader is the one that actually takes it and loads it in. You know, sometimes, sometimes the puller takes it across the threshold of the trailer and puts it in the trailer. Sometimes it's just sitting in a stage block that we have right in front of the trailer, and the loader will come out and take it in as long as the as long as the puller does his job, right. You know, it's a, it's a, it's an empty block, and he's taking product and moving it into that block after he's like, and once it's there, he scans it, because we would rather it be there, not get scanned and accidentally loaded in. Then we would then scan it, forget to put it onto the truck. And now we think it's on there, and it's not, actually, because you can fix the ladder. Yeah, so we would, we would probably have it to where his his his handheld that he's using to scan would stay up front where he where all his paperwork is. He'd, he'd look at his order and say, Oh, I've got a bed, or I've got a bedroom set here, so I'm going to go back and pull up the bed first. So he pulls up his headboard, sets it down wherever he needs to, grabs his scanner, scans it, and at that point he sees, oh, I've got three parts for this bed. Alright, well, I'm going to go find the rest of those parts. So he goes to his rail section, pull finds the rails for this customer and, and I don't know. I mean, maybe they have their handheld on them. I don't know. It's slippery slope here, but, like, I'm trying to think of a way that it's easier for them to identify things too, because that's part of the beauty of barcodes, is that you can, you could cover up all the information on it, and your barcode will tell you everything. And so maybe, I don't know, maybe we have two different barcodes. One that's not able to actually move it forward in the process, but simply scans it. But anyway, ideally we have them bringing it back to the to the back end of the trailer, and then at that point scanning it. Because we just had too many situations where, like I said, they they mark things off in a pile and end up taking it, taking everything up, except for one or two pieces, because they got distracted and then forgot it was still back there. And also, along with that, then, if we ever put a piece in the wrong pile and it gets mixed in with a pile, if you're, if you check off a whole pile at once and then start pulling you're only, you're only looking for items. You're not looking for the items that are that the excess items. You're not looking for those. So if you think, Oh, I had everything here, it's all good, you start pulling that whole pile. Well, then Miss Daisy has a has a chair side table sitting in that pile that you didn't, didn't realize, and now she's without a chair side table, because we loaded it on an entirely wrong truck. So that's, that's what I'm hoping to avoid with this barcode system. So we have procedures that we have in place, and I think that, I think that it should still stay in place with the barcoding system. So I would probably be a matter of us bringing it to the back end of the trailer, scanning it at that point, but yeah, having a function that you could still walk around and scan, scan things to identify them quickly, by knowing what they are and or being able to, yeah, scan it and get the information pulled off of it, because that's another thing we've debated on with us, with with how we do things, and blanket wrapping everything like could we get to the point where we blanket wrap stuff and put the barcode on the outside of it, so that now we don't have access to the to the sticker on the chair anymore to see, to verify the the name, or anything like that, but this barcode gets us enough information, and that way, It's now sitting in our warehouse with a blanket on protected well, and then you can just load it right away by scanning it. That's something that we could find some value in, if we can get to that point. But there's a I don't know, there's a few red flags with a process like that that I can foresee and And that all comes down to human error. So if it would be something that we feel confident enough with our barcoding system that it, you know, our margin of error is slim enough that it's worthwhile still doing that, then, then maybe we move to something like that. But for now, we probably stay very similar, similar processes we're doing, just using barcodes to check things instead of,
+
+Matthias Miller  1:08:48
+Yep, exactly. I mean that, yeah, we don't have to fall down this rabbit hole. But the I mean, the ways to eliminate, there's two ways I could see to approach that. One is, if you want to blanket wrap it at point of check in. And I don't know if that makes sense in the process, just print two barcodes, and you just have somebody and you just, you have two stickers, like, don't screw it up. The other. The other thing too, would be blanket wrapping later in the if would be making blanket wrapping be part of the process. And so somebody's scanning and and, and then they blanket wrap it, and they say, Done. Prints out a duplicate barcode. They slap it on the outside, and it updates the statuses if having been blanket wrapped,
+
+Speaker 2  1:09:37
+what were you what you were saying the first time there were you saying that you could have two barcodes, and almost like you'd have to scan this one first and then go over and scan this one to ultimately say, Okay, we've married these two together. Now it's good to go. Is that kind of what you were saying? No,
+
+Matthias Miller  1:09:56
+I was thinking it would just print. It would it would either print or. If we have to distinguish between the two, it would print two that are linked together, or just print duplicate barcodes, one for the one for the inside, one for the outside. Oh,
+
+Speaker 2  1:10:09
+if you're covering the if you're covering the barcode, okay, because that would be another way you could do it is if you know, if the piece is sitting back on the pile and and it's got a barcode on it and it doesn't the process isn't completed just by going back and scanning it. Like you scan it first, and that tells you all your information you need, but you actually need to go up and then scan it, scan a separate barcode that that correlates to it, obviously. But it would also have to be like you couldn't scan this barcode here twice, the same barcode twice, and check and finish your checking. Guys will start doing that. Then they'll say, Well, instead of going back and finding that barcode, I'll just scan this one twice. And then we, you know, lose that, lose that whole security there. But that way you could go back, scan it once to verify that it is what you're looking for, and then take it up there, and ultimately, then scan it to finish it up there in some way. But I Yeah, again, I'm, I'm kind of just shooting from the hip here with the bar coding system, because I don't know the ins and outs of it. That's, that's where we'd probably have to just hash that out at some point.
+
+Matthias Miller  1:11:17
+Yep. Yep. I a
+
+Matthias Miller  1:11:26
+good are you? How do you guys check in here? Are you guys wanting to do any kind of pricing in the system, quoting
+
+Speaker 2  1:11:42
+anything like that, yeah, yeah. So actually, I was gonna, I was gonna ask you about that, as far as, like, would we be able to structure this in a way that this system could send out an invoice, like, like we've, as long as we have the pricing input, the pricing in there that that was necessary, it would pull all these orders based on, you know, the data that we feed it and the percentages that it's working off of, and we could hit boom, send invoice, and it would automatically do that. Okay, so I was actually working on typing something up. Here I was and I was trying to work on your email response this morning. We had some stuff going this morning that I had to take care of first, so I didn't get super far on it. But this would all kind of come back down to this, this, you know, adding a new order into our into the software. So we currently, you, you had, you had kind of hit it on the nose with, with the way that we receive calls in sometimes, like we aren't very pushy with our information collection, and we probably should be a little bit more. And I want us to get to the point where we when we take a phone call, we get all of the information that we need from start to finish on that order, from them right away and and if they don't start, if they don't do that for us to start with. We start training them to where they know when they call in. They need to give us all this so we had, we had sat down as a team and just kind of come up with with a lot of the features that we feel like would need to be put in there in order to eliminate some of the back end stuff that we have to do. Because we had, we have, you know, the call in the first the order is called in, and we, that's a process. And you, you know, jot it down on a Word document or a generic bill of lading or something like that, and you file it, okay, so that's process. It's quick, it's done, but that's a process. And then the next stage that the girls are involved in, aside from, like, actually routing stuff, is the back end, where they're getting all these papers in back in from the warehouse after it's been loaded. And they take all those look at all this different paperwork. It's all confusing, especially for new hires, and they take it and then they type it into QuickBooks. So they're looking at this paper, this order here from Lux craft. They type out, you know, what all the order entails, and that's entered into QuickBooks, and then and that's sent out as a bill of lading, so the customer knows what they're getting. That's a process. And then the third process would be invoicing. Somebody comes back around once we finally have all of our pricing, which some of it comes in right away with the invoice that we receive from the manufacturer, some of it we have to go after. So once we have all that, then we enter in the totals in QuickBooks again, we change that bill of lading to an invoice, enter all the information, then we send out the invoice. That usually happens the beginning of the week after we we load this stuff. So there's three processes. Aside from the routing itself, there's three processes that happen. I would love for us to spend a little bit more time at the beginning collecting all the data, so that all of the processes can get condensed into one fluid just right out the door process. And it would just be. We we could basically eliminate the back two stages of this by pulling some pulling some different things around and just putting them in into the right forms, basically. So as far as invoicing, I'd love if we could do that from this. Currently, we use QuickBooks for all that, but we are not, you know, tied to QuickBooks in in any way or they we'd be okay moving away from that. Yeah, but that does mean we'd have to gather quite a bit of information right off the get go, from the called orders, the facts and the email. We'd have to start gathering all that information, right off the bat, but it would benefit us in so many ways that it's worthwhile.
+
+Matthias Miller  1:15:48
+What kind of, what kind of information would you be sorry? Let me, let me make one comment there, even with QuickBooks. So, I mean, you might even want, we might even want to have a one, one way push into QuickBooks. Okay with all the information, just because, hey, we're not looking to replace your accounting system. Yeah, 98% of the time that does not make sense, okay? And I mean, we can, we can take a look at it. I just, I can tell you right off the bat, probably not, okay, but, but all that information then gets entered. You want all the information anyway, for all the rest of the system. And then you just, at that point, you can push it over to QuickBooks. Whether it gets sent from silver loom, whether it gets sent from QuickBooks, really doesn't matter. But the on the on the accounting side, you're going to want to be able to to mark these as received, track the undeposited funds, push them into, you know, push them into the into the bank account, and reconcile all of that. So the Alright, so the, how do pricing calculations work, and what information do you need upfront to get get that nailed down?
+
+Speaker 2  1:16:59
+So at, like, a very bare minimum, we need to know the build to the ship to can we do can we do it without a PO? Yes. Is it more complicated without a PO? Yes. And sometimes we do get orders in without POS. So I don't know if we need a way of applying a generic po to something, if, if it doesn't have one, so that we have a way of tracking it through the system, then you'd obviously need to know your item, your quantity, and then the price, which gets a little bit complicated, because you have your finishers and your builders, and sometimes The Finish, finish shop calls it in. Sometimes a builder calls it in. Sometimes they just give you a finished price. Sometimes they give you a build, just the build price. So you'd have to, ultimately, you'd need the you need the cost on the order, the whole, the total cost on the order is what you what we ultimately need. And and I'd say it would probably work best if we just had maybe, maybe we need three different, three different values that we can input. And one's a fin, one's an unfinished cost, one's a finished, finish, or cost or something. And then one's the total, because there will be times, based on how things work. Now that they might give us a part to the piece to the puzzle, they might say, Well, hey, I don't know what this cost to build the manufacturer cost is, but finishing cost was, you know, 125, per share. And so maybe we need to be able to plug that number in, and then right away we have to get a hold of the manufacturer and ask them for pricing too. It's yeah, like I said, ultimately, I'd love to just train them to know to have that information when they call it in, so that we can avoid some of those extra steps. But to start off with it might just need to be that we have multiple, multiple values to input there until, until we get to the point where we are confident enough that we have all the prices together and then we can do a total. But that's, that's kind of everything we need to input here. I I was, I will work on putting all that in writing so that you can look over it. And there's, there's, there's a number of other features that I didn't go over as well that are either nice to have or maybe I just missed one that is a is a necessary one. And I can, I can line those out and or itemize them and, you know, mark them as which ones are a priority to have and which ones are just not would be a nice feature, sure, but there, there are definitely ones that we just need,
+
+Matthias Miller  1:19:47
+okay, and then, and then, for clarification, do you guys charge some kind of, oh, yeah, once you have the cost percentage, yeah.
+
+Speaker 2  1:19:55
+So we do. It is a little complicated, too. And so this will probably be a fun phase to work through here as well. Generally, we just have, like, a percentage of, like, our very base value is a percentage of the wholesale cost. So, like, let's, let's zero it down to our area Ohio here, in order to get indoor furniture shipped to you from Ohio. Here, it is just going to be a flat, you know, for this region here, 12% for that region, 13% and most of those are based on most of those are based on state. But there are multiple, multiple rates within multiple states or within the same state. So I'm not quite sure. I'm not quite sure how we would do that, unless we can just individually assign the percent. I mean, that's how we do it. Now, we just have a note in every account of what their rate is, and so maybe that's how we'd have to do it. It wouldn't be able to auto assign it. We have to actually figure out where, where they fall on the map, what rate they fall into, and then assign that percentage. And it just knows that it automatically uses that percentage. Then where some complexities lie in it is that for outdoor assembled furniture, we have an up charge 4% more for outdoor assembled on top of their base rate. So 12 to plus four. So they'd be at 16% in the 12% regions if we go out to Indiana and ship it east. So if we pick up in Indiana and then ship the product east, it's 2% more if we ship it West. There's no extra charge Pennsylvania, if we pick up in Lancaster and ship it West, 2% if we ship it back east, no, no up charge. So there I was thinking through how we how we would do that, to keep it, to try and keep it as simple as process. Because I was imagining, you know, like a newer hire coming in and sitting down in front of this and taking their first phone call, and it would get entered in here. Um, my, my initial thoughts were like, if we had, if we had a number of different up charges listed on an order, and you could, you could, they'd almost work like tags, like you, you, you tagged the base for or the the base rate would always be tagged as as a generic flow in so they're automatically take their base percentage. And then, if you see that an order is an outdoor, outdoor assembled order, you tap that four plus 4% tag and then that that that cost is incorporated into that specific order, and if it's if it was picked up in PA yet too, then you add that 2% so now you've got the base 12% plus the 4% plus the 2% for a total of 18. And it would, it would basically just you. You'd have to manually do that as you because, you know one man, you one store that we shipped to might have, might have product in Ohio, Indiana and Pennsylvania, like they're they order from all over the place. So you almost have to be able to alter, alter an order on the fly or like, as as it comes in. You need to identify it and and make those changes, unless you would assign, as soon as you type in a builder, it would pull that their person. Well, that's complicated,
+
+Matthias Miller  1:23:28
+too. So the way that I would think you would, you could do it, is having region so you have, and I don't know what the right regions are, you know, Central, East, West, something like that. Set of rules going from this region to that region is a 2% up charge. And then potentially, if, if your outdoor assembled orders are, if there's certain items that flag that you can you could automatically up charge the order based on those items being included on the order.
+
+Speaker 2  1:24:07
+And how would it know what those orders are like? Would you have to say, hey, you know a glider, a polyglider, gets an upcharge?
+
+Matthias Miller  1:24:16
+Yeah, you would. You would Yes. And then I don't know how you want to, and I don't know how those technically, again, this, this probably requires a little bit more getting in the weeds of how this actually works. But you could say specific items, you could have an item specific up charge. So basically you have to, well, there's a few ways we can do this, if we added item categories. So then, then we could assign up charges to entire categories. Alternatively, if we wanted to, we just grab the glider item, add a 2% up charge on that one. And with that, lets you do, and I don't know if you want to do this, it lets, it lets people combine multiple. The outdoor, indoor items in the same order have the upcharge. And I don't know if it should be applied to the entire order, or whether it should be applied just to that specific item, but it lets you appropriately apply that that percentage of charge.
+
+Speaker 2  1:25:18
+In your mind, would that be an easier route than just having a list of of up charges and looking at the order and applying, like, saying, hey, well, this this, you know, maybe we've got eight different up charges, and we and somebody goes through and says, Well, this one, this one and this one apply to this specific order. And then once it's inputted, it just, it just knows that when it goes to Bill that specific invoice. It's going to use those numbers.
+
+Matthias Miller  1:25:46
+So here's what it's going to force. It's going to force you to simplify your business process, clarify and simplify your business process. And so it's going to be more painful upfront, and it's going to be less painful long
+
+Unknown Speaker  1:25:59
+term. Which which process. Sorry,
+
+Matthias Miller  1:26:02
+building out the rules. Figuring out how we want to how to structure is how do we handle how do we define which region each builder is in, each customers in? How do the rules interact with each other? It's going to push that complexity to the surface. Is it? Is it? I'm not going to lie. It's kind of like trying to sell you on a root canal. But, but it's okay. There's a saying by a gentleman, also by the name of Alex, different last name, who says that simplicity scales and complexity creates constraint. And I think one of the advantages of of figuring this out now is that it forces the complexity to the surface. And if there's hidden complexity in your business process that really just needs to be cleaned up, yeah, it gives you the chance to do it, yeah, and it eliminates, it reduces the amount of human error. Now is, is it unequivocally like you have to do it one way versus the other. Nope. If you're comfortable that it's simple enough and low enough margin of error and you just want to have a certain set of charges, probably you will end up cutting, you know, cutting development, design time, development time, development costs on that, and it's not like it's a wrong, wrong thing to do. I just think,
+
+Speaker 2  1:27:25
+yeah, because I throwing another curve ball at you, like there are
+
+Speaker 2  1:27:36
+I'm failing for the word that I'm looking for. But there are exceptions to to all those rules then, so I'll share another map with you here, and have you follow along with me. So this here, you see that, right? Yeah. So this here gives you an idea of where our rates, our rates change. So you know you go from a 12% region to a 13 to a 14 to a 15 to a 16. So then, like, Florida, for example, you know, here we cross over our 14% line. So you think all of this is going to be 14, but then all of like, I mean, we've got a customer down here in Tampa that has an exceptional rate. They are a 12% rate, and they also have no up charge on the poly furniture, like the vast majority of our customers do. So they they would be an exception to that. So like, how would you build that out then for the system to know, oh, this customer here, even though it is a even though it's a poly order, and I typically add 4% this one, I can't do that with. Is there a way of doing that, or is that? Is that kind of what you're talking about with shedding, shedding some of the excess. And you just, you can't be complicated like that, because it's not that we like the complication, but yeah, as I'm sure you're aware, in business, sometimes you need to make changes for certain customers in order to retain them or bring them on or something. And we do just have a fair amount of exceptions to that, whether it was, you know, Grandfather pricing grandfathered in or, or, you know, somebody threatening to switch accounts, and so you give them a better rate to keep them on. You know, whatever it is right now, those all sit as notes in each account. So for, for that customer down here in Tampa, for example, patio, casual. In their account, it will list, hey, these guys have a 12% base rate, even though everybody around them might have a 14 or 15% base rate, they've got 12% base rate. Also they don't get charged outdoor, outdoor. Poly rates on, you know, any other stuff, and there's just, there's just notes in there that that identify that. So is that, is that? Is that going to get so complicated, then, with having stuff like that and exceptions like that, that you are like, well, trying to work around that would be difficult. Whereas, if we just had it, if we had, you know, notes in their account. And so when somebody pulls up the the account to enter it in, into enter this new order in those notes pop up there, and they can see them as they're making their selections, and they say, oh, okay, they actually don't get enough charge on on on this stuff, because sometimes it's a builder to builder, even like you know, they might get charged more for this builder, but this builder negotiated a special rate with us so that we're not charging for those like Beaver Dam out in Lancaster. I believe for most of their Florida customers, they don't get an up charge on the outdoor assembled poly so you'd almost, you don't, you need a way to be able to for the system to catch that based on a note you put in there, or something you put in there, or manually, you're going to have to, you know, enter all that information. Yep, it is. We've gotten pretty complicated over the years. That's, that's part of what I'm trying to fix here. But
+
+Matthias Miller  1:31:30
+so, I mean, I get it so the thinking, give me a minute. I
+
+Unknown Speaker  1:31:43
+Are you right if I take a bathroom break while you think,
+
+Matthias Miller  1:31:45
+yeah, let's do it. Let's take a quick break to
+
+Speaker 2  1:31:50
+have their routes and schedules. Yep, and then download schedule and route details. Perfect. That shows you the different regions that we've got. Yep total of 10 different regions, and that, you know, we're adding to that from time to time. But currently we're at 10 Yep.
+
+Matthias Miller  1:32:13
+And then, am I right that within those, within those that okay, this, this determines the standard base percentage, and and then there may be adjustments.
+
+Speaker 2  1:32:27
+This determines the shipping schedule. It's not technically tied to the rate, because, like our north, our Northwest is or our West, sorry, is a big region for the red area. We've got 12, 1314, and 15% all in that red region. Yep,
+
+Matthias Miller  1:32:50
+all right. But for but this would be sufficient for the outdoor assembled. Let's see Florida customers are exempt. I mean, that's really just whatever.
+
+Speaker 2  1:33:00
+Yeah, Florida, Florida, for the outdoor, outdoor assembled, Florida, really is the only place that gets that that and then there's just a few scattered throughout the different areas that get that had negotiated that as well, but Florida is the primary one that gets it. And as you can see there, we we kind of have a line drone through the Panhandle. Anything in the pink would still be considered that the the peach or the Southwest plus route six, that would not get that exceptional rate,
+
+Matthias Miller  1:33:33
+yep. All right, the unfinished pine, pine and elder is that? Is that just a flag on a per order basis?
+
+Speaker 2  1:33:43
+Yeah. So typically it's all coming from the same builders, like this specific builder. Builds only that. But there are some where you might have a mixed order in, and we have to single those ones out, which is not very often, that we're like that. We have to pick out different things in order and do that, but yes, it's kind of a per order basis.
+
+Matthias Miller  1:34:16
+Let's see so are the are the items flagged similarly, or G or G, use the same items for could you use a different item for these? If it's if it's not one of those builders, use the item. Define this basically, is what I'm asking in any way.
+
+Speaker 2  1:34:38
+Okay, sorry. Say that. Say that again. I'm having a hard time comprehending the question. Comprehending the
+
+Matthias Miller  1:34:43
+question. So, in your so if you what are some of the products that are made out of unfinished fine,
+
+Speaker 2  1:34:51
+oh, it can be a number of different things. I mean, we've got bedroom suites. We've got a lot of office items. Use, you know, your desks, your bookcases, things like that. That's primarily those two, and a bulk of it does come in from specific manufacturers that just produce pine.
+
+Matthias Miller  1:35:20
+All right, Indiana East, East customers, Indiana pickup, let's see, like Sir pickups,
+
+Speaker 2  1:35:37
+yeah, so this, this Indiana pickup only, that is just a rate that we give if somebody asks us something in from Indiana, but we're not shipping it out. This is a rare exception, but it is a pricing point that we needed, needed factored so it wouldn't be for any of our customers, necessarily, not, not typically, Lancaster pickups. There's pa Lancaster pickups. This rate is changing. It's going to be the equivalent to this Indiana 2% for West customers, and then
+
+Matthias Miller  1:36:17
+great pickup only. Same thing.
+
+Matthias Miller  1:36:27
+Some situations where you build a manufacturer the 4% rather than store. I uh, that's an interesting one. Which one, the one you're on right there, Miller strustic, billing the manufacturer for the 4% rather than the customer.
+
+Speaker 2  1:36:52
+Oh, yeah, yeah, I know. And then we have ones like that, where, where manufacturers sometimes will request, request for them to be built. We have even some manufacturers that say, Hey, can you charge us very few? And these are, these are definitely the rare exceptions. But Can, can you bill us this percent of the order and then Bill the rest to the customer there? There's only one customer I can or one builder that I can think of that does that. So that would probably not be a part of our scenario, and we would just have to have to make that as an exception and manually do it.
+
+Matthias Miller  1:37:33
+But one option is if we can do it per builder. I mean, we could, we could have that be as a per builder, manufactured rate, or, sorry, negotiated rate or rate override in some capacity, rate adjustment, and then just have a manual process, or a separate process by which you can look at all the orders for that manufacturer, and just have a separate weekly, or, You know, whatever invoicing frequency you do for that, invoicing them for that.
+
+Matthias Miller  1:38:10
+Okay?
+
+Matthias Miller  1:38:18
+Carriers, okay, pick up only.
+
+Matthias Miller  1:38:26
+Do not charge people dang customers in Florida jumping down to 17.
+
+Matthias Miller  1:39:04
+Let me the customer versus value transport, loading is that, is that typically, typically consistent? Is it always consistent?
+
+Speaker 2  1:39:38
+As far as it happening, it's consistency,
+
+Matthias Miller  1:39:42
+like or frequency. Do customers always fall on one side of the line versus the other?
+
+Speaker 2  1:39:51
+Well, okay, okay, so this is only applicable if a if a customer comes to us after i. Picked up orders and brought them to our warehouse. If they come to our warehouse then and say, hey, you know, we're in the area. Can we just pick up our stuff instead of to us? That's when something like this is applicable. Is that? Yep, but this, that's a very rare time that that happens. Maybe, you know, 10 times a year or something, all right?
+
+Speaker 2  1:40:33
+And yeah, as far as sorry, not making you lose your spot here, but like, there are definitely ones that are that would probably not be factored into our coding, that would just be a more of an informational thing, and and we could work through all these, and probably, like obviously, some changes need to be made, but even looking at some of these, I we could maybe even restructure things a little bit without there being too much, I don't know, jostling or shaking upset in the fruit basket. Just make things more simple, like this. This one here, this Beaver Dam one here. It doesn't say anything about about notes here, but this whole Florida charge and everything with them, not charging for us, not charging Florida customers, the outdoor assembled charge. We're also about to drop their rate, and they might be okay picking up some of that cost to cover that outdoor so maybe we could just build the full percentage of what it should be, and then Beaver Dam covers a portion of it to to make up the difference of so that their customers are not getting that technically seen that 4% up charge, because they do already cover some cost by bringing it in in themselves.
+
+Speaker 3  1:42:01
+Yeah, makes sense. But yeah, these
+
+Speaker 2  1:42:08
+we could probably do away with this one. These two are very, very seldom happening. I think maybe I should just highlight the more common ones.
+
+Unknown Speaker  1:42:32
+Actually
+
+Unknown Speaker  1:42:36
+think we this one actually very rarely happens as well.
+
+Speaker 2  1:42:49
+Ones are prevalent, actually, really, these are the ones that are the most common to our to our billing scenario, and some of them do need changed a little bit altered a little bit. I don't know if that would be altered to make it easier or or if it would make it more complex, but,
+
+Unknown Speaker  1:43:16
+yeah, right so.
+
+Unknown Speaker  1:43:18
+And actually, even this one
+
+Unknown Speaker  1:43:22
+very seldom, right?
+
+Matthias Miller  1:43:25
+And most of that stuff probably should just be built through the Office anyway, yeah,
+
+Speaker 2  1:43:35
+this one would get lumped in with one, so I take that out. So I mean, very quickly, narrowing it down. We're at nine here, so that might not be too complicated to start adding, you know, start off with these ones as as the base and and go from there, yeah, I don't know, like in my in my mind, still having a way of tagging the system would would feel like the least complicated way of doing it. But as you mentioned, maybe it is better to upfront, build it into the system and so that it doesn't even have to and so you know, all you have to do is go in on the back end. If you have a rule set to add, you add that. And if you need to change any of these ones, you change them. But that it knows automatically what to do based on the orders you put in or something.
+
+Matthias Miller  1:44:33
+So, I mean, I think, yeah, let me take a look at it. Okay, see if I could find a simple, simple path forward. I think it is, it is helpful to know that this is a significant enough pain point that it's it's worth paying attention to.
+
+Unknown Speaker  1:44:56
+Yeah, definitely, definitely is. I. A
+
+Matthias Miller  1:45:02
+good, alright. So then, so then you take the cost times the percentage, with whatever adjustments need to happen to the percentage, and that ends up being what gets invoiced up,
+
+Speaker 2  1:45:14
+yeah. And the exception to that is we do have a minimum in place. So if they happen to fall under that minimum, which would be an easy calculation, we do have a charge for that separate charge for that.
+
+Matthias Miller  1:45:27
+But is that a per account minimum? Is that a regional minimum?
+
+Speaker 2  1:45:30
+It's it's an across the board 250 for every region except for our West plus route, the green, the light green, then it moves to a 350
+
+Matthias Miller  1:45:45
+All right, good. I think trying to think if there's any other questions that I've got, I don't think, I don't think I do, right off the bat, anything else that, from your end, that you think we should cover, that we haven't,
+
+Speaker 2  1:46:12
+not really, but just kind of, just kind of a fly by as far as what we what all we've kind of discussed, and what's important, I guess, is like, like I said, I'm trying to simplify processes, especially for my office. I want to take, currently, multiple processes and reduce them down to, I think, a little bit more workload at the front end to hopefully make everything else run a lot more smoothly. So think in terms of all the information flowing through this software, and then from this software, we pull everything, whether it's an import or, you know, or an export, I guess, to another software or whatever it is. That's how I want this to all kind of flow. So for our dispatching, you know, I want her to be able to pull up, pull up sort based, sort orders based on regions, you know, maybe states, and just automatically export those into a file, and then that can be imported into, into our dispatching software, you know, just very quick like that. So that means it would have to have all of the information we need in the software to be able to export it into into this dispatch, and then also being able to pull, for, you know, sending, sending customers their bill of lading so they know what they want. I mentioned, I mentioned in my response email to Ben this morning, like the customer portal. Are you? Are you looped into that at all?
+
+Matthias Miller  1:47:53
+That's right, let's dig into that. Just Okay, a little bit. Yes,
+
+Speaker 2  1:47:57
+okay. And the idea that I want behind that is we field so many phone calls from customers, especially the stores. Occasionally, it might be manufacturers calling to check in too, but and maybe those ones won't stop, because they often don't have computers to look stuff up anyway. But what we're trying to what we're trying to help is is making it simple for a store, you know, maybe it's one of their sales reps, or maybe it's one of their, you know, sales floor people to hop on a computer, log into their account, and immediately they have access to every order that is Current status with us, meaning from the orders that are called in that are still sitting at the manufacturer, but they've been called in and scheduled with us, so we're we've been notified, because that's a question that comes up, you know, hey, somebody call this one in, and then it moves to another status of of, you know, picked up or received sitting in warehouse, and then one for scheduled on Route, you know, different stages, and we'd have to come up with those all but that they can just look at it very quickly and say, and look, based on the POS, what all orders are at, what status, if that order, if the order that they're after, is not on there, we have no idea about it, because we get calls all the Time. Did so and so call this order in. And right now, you know, we've got this thick stack of papers. We pull out that stack of paper and we start sifting through it, and it's just a nightmare to deal with that. And we, I, I would, I would love if we would have a system that they can log in, which I know that you'll always have customers that just want to make that phone call, they just maybe don't want to hop on the computer and take the time to do that. Do that. But if we can get 80% of our customers to recognize that by logging into an account, they can quickly see what all the what all the statuses are in every order, when things are scheduled to load, when they're scheduled to ship, no different aspects of that and feel like they are cheap. Just as much in the loop on things as what we are so that they can avoid, we can avoid them picking up that phone and and calling us and spending, you know, two hours a day for each of our each of our ladies in the office, answering questions on on order, status and stuff, because they don't. They don't like to call the builders, because then it's a voicemail, then they have to wait, and they just don't get answers right away, and they'll call us on the 50% chance, odd chance that we have an answer first, just because they know they have an answer. And so I'm trying to cut down on on on time spent on the phone there, so that they can focus on their work and getting it done quicker. But that's, that's the main purpose of my portal, and in fact, that's in the entirety of the purpose of the portal is, is to be able to allow customers you know, to spend their time instead of on the phone just logging in.
+
+Matthias Miller  1:50:57
+Yep, makes sense. All right. Good. Yep, I'm gonna, I'm gonna start working on some stuff on on our end over here, and laying out some of the pieces of the puzzle. And we'll be in touch with you if we need a follow up conversation this afternoon.
+
+Speaker 2  1:51:19
+All right, I am always happy to answer emails or any questions that you might have via phone or anything, so don't hesitate to reach out.
+
+Matthias Miller  1:51:30
+Okay, sounds good. Anything from, oh, go
+
+Speaker 2  1:51:33
+ahead. Well, yeah, Ben, Ben, to get to you here, obviously had you had sent a couple emails here, and one is just kind of going over things. But you had asked one of the questions you asked is, if we have any printouts or anything like that to go to, just reference or go over but, I mean, the reality is, we don't really have anything in our current process that we're hoping to bring along, bring along with us to this current process. So it, I think it's all going to be new stuff, and, and, and, and, at least that's what I'm kind of hoping for. Now, if you, if you want from me, just a generic, like layout of like, well, hey, when we print out a paper to give to your warehouse to know what the order is, what does that look like? I mean, I could hop in Excel and maybe come up with something just generic that I'm kind of looking for, but I it would just be as much me designing something as you guys designing something.
+
+Speaker 1  1:52:28
+So yeah, that's fine. Yeah, I don't think, I don't think we would need, need something like that at this point, unless Matthias feels differently. But yeah, the Excel sheets you showed us today, some of that stuff was, was helpful, but yeah, as far as actual printouts and whatnot, yeah, if you don't have anything, that's that's super standard. Now that's fine. We can work on on designing something and and putting something together,
+
+Speaker 2  1:53:07
+okay, on our and if you guys want any copies of the spreadsheets we went over today, just so you can keep referencing it, I can gladly send those over to you.
+
+Matthias Miller  1:53:19
+If you don't mind, that'd be useful. I think I've got most of what I need, but that can,
+
+Unknown Speaker  1:53:25
+yeah, that
+
+Speaker 2  1:53:26
+are there any in particular, do you want me to try and try and get
+
+Matthias Miller  1:53:34
+everything that I sent The No, I mean just the ones that you showed us, the customer names, the import file, the the pricing. One would probably be good pricing. Exceptions, okay,
+
+Speaker 2  1:53:54
+I might go clean up that pricing exceptions, ones to what it's going to be here in the near future, just so that it matches up and sends you that copy, so that you have been for changes. Okay, all right. Well, thank you, gentlemen, that was a was a good two hours. I hope you feel the
+
+Speaker 1  1:54:17
+same, yeah, yeah, very good. All right. All right, yeah, we'll work on this. And yeah, you should be getting an email from me probably one or 130 by then, we'll have a good idea of whether we want or need that that two o'clock call. So here for me, by by 130 feel free to shoot me an email and see where things are at. So, all
+
+Unknown Speaker  1:54:47
+right, sounds good. All right,
+
+Matthias Miller  1:54:51
+thanks, Alex. Thanks. Alex, bye.
+
+
+Transcribed by https://otter.ai

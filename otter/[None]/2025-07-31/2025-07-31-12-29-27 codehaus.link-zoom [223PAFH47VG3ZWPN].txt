@@ -1,0 +1,239 @@
+Unknown Speaker  00:24
+Hey, Mark, Hey, Mark,
+
+Unknown Speaker  00:31
+hey. Matthias,
+
+Matthias Miller  00:34
+how's life in Texas? Treating you
+
+Unknown Speaker  00:38
+pretty hot right now,
+
+Matthias Miller  00:41
+I can imagine that. What do you guys have there
+
+Speaker 1  00:45
+right now? Today, it was supposed to be a high of 101, I think, oh, it's, you know, it we've had a really nice summer. Like it rained with all that flooding that we had, it rained throughout July. We had, I think at home, I got somewhere eight to 10 inches of rain in July, which that's unheard of, like it's still green. People, people are baling hay right now. And normally it would be like a desert out there at this point in time in the year. But, you know, they're bailing hay. It's not like just a little bit. I mean, they're bailing as if it'd be first cutting right now. And it's crazy, like they actually had to hold off on their on their corn harvest a little bit because it was too
+
+Matthias Miller  01:50
+wet. What is when does that happen?
+
+Speaker 1  01:53
+Our corn harvest is normally middle of July. Is when it starts. That's crazy. And they're, they're some fields are done, but there's still a lot of it standing and it was just too wet in the middle of July to get started. Yeah, we've,
+
+Matthias Miller  02:12
+we've had that happen a few times, like, the last number of years, we've had some we've had a lot more rain than we usually do. And then people come visit, and they're like, We thought you guys were in the middle of the desert, like it's supposed to be brown and dry. And dry and it's beautiful. And like,
+
+Speaker 1  02:26
+Well, we actually so last year we did have rain almost till the end of June, and we had our family reunion here end of June, and my brothers normally would come for furlough, Joseph from El Salvador and Lucas from Nicaragua in the summer. And so they always, Texas is always dry, always hot and dry. Like that's all they've ever seen of Texas. Well, last year they came in June, towards the end of June, here was still. It was still green, like the first time we've ever seen Texas be anything nice. And then this year they come again, and here it's just raining, like, just all sorts of rain. And they're like, you know, it actually looks pretty nice around. Like, yeah, it's, this is not normal. This is not normal. But So this last two years, we've had a little bit more, but last year it quit raining about the end of June, and then it didn't it. It was dry like normally we'd start getting rain again end of September. Well, it didn't rain till like October, and then all winter long, we were dry to where our tanks, our stock tanks, and like that, had never fully filled up till right now in July.
+
+Matthias Miller  03:43
+That's crazy. So it we had
+
+Speaker 1  03:45
+a dry spring. It was dry throughout all the winter. I mean, we got some rain, and we actually were having bumper corn crop, because it rained just enough, but never enough to, like, refill stock tanks. It was just it rained enough for the crops, but that's about it. That's about it. So now, now we, we, we made up for it, like Travis Lake, which is, uh, the lake for Austin, where they get their water supply from, they were down 40 feet on that, on that, and they've been down for years, and I think they came to within five feet of their highest level of their normal level,
+
+Unknown Speaker  04:24
+so we're almost out of the drought. Wow. And that happened in about two weeks time. That's a lot of pain. That's a lot of rain, for sure.
+
+Unknown Speaker  04:37
+Hey, Alex. Hey guys,
+
+Unknown Speaker  04:42
+nice to see Alex. Yep,
+
+Unknown Speaker  04:43
+nice to be here. Yep,
+
+Matthias Miller  04:46
+all right, so I'll jump in. Kick us off. I don't know how much time we actually need. Might not actually need that much time. Bottom line is that GHL tying into GHL analytics requires you to use a form. My proposal is since. It's I thought I had a good pathway to do this. I didn't. I hit a dead end on it, but I can pretty easily just use my my web hook to to map across the standard fields, map across the SMS enrollment checkbox. And then, and then we'll just do a we'll just and it'll push across any tracking variables that come through as it mark you need to create. Make sure anything you already have this but make sure that you got custom fields named the same as the tracking variables, like the UTM glib stuff like that. Let you throw in an underscore somewhere in gclid, wherever you want, so that you can capture that, because I can't set the native glib variable. So that's I haven't I haven't pushed the changes I was testing it right before I got got on here. Does that? Does that solve satisfactorily. And one of the reasons I wanted to do this is I've got another shutout client on GHL that we're going to want to be doing similar stuff on. So if we've we have something that we can easily reuse other places. Might as well do that. Does that mark? Do you think that? Does that give you what you need on the analytics side of things?
+
+Speaker 1  06:22
+Yeah, because basically what I'm what I'm looking for, and I'll ask, I'll ask this question as well, will that that will bring in my Facebook, that will bring in the so where we can see what's coming through on Facebook, what's coming from Google? Will it also track what, what is coming in as a organic as well,
+
+Matthias Miller  06:50
+well. I mean, it's all contingent on we can't beat, we know what Apple's like. So theoretically, you can, I mean, you could assume, theoretically, that if you don't have an an FB clarity clip, that it's organic, although that's not necessarily a safe assumption. I mean, not anymore, not a grave and Apple,
+
+Unknown Speaker  07:15
+yeah, I
+
+Matthias Miller  07:18
+think you could infer it basically Alex, do you have any other perspective from the traffic side as far as,
+
+Speaker 2  07:32
+yeah, I would basically echo what you just said. I mean, it's really, it can be really tricky to know exactly on all those things, because there's, there's ways that those, those parameters get stripped out as well. And
+
+Unknown Speaker  07:52
+so we,
+
+Speaker 2  07:56
+whatever I can do on my end to capture values and make sure that I'm passing them in the web hook. I don't believe I'm passing any tracking parameters in the web hook at this point, but, like, it's just, it's just the form data that's coming through right now. That's it, right, right?
+
+Matthias Miller  08:17
+So, so on the new web hook that I gave so I gave mark a script that shoves tracking into local storage, okay, and then the web hook that I gave you sucks it out and passes it up so that takes care of and again, that's a little Bit of a like. There is a recency it's even that is messy data, because do you want to clear if you, if you have UTM parameters in your tracking and you get an FB clip with no UTM parameters, you want to clear your other UTM parameters? So what I've just been accumulating all tracking data with most recent tracking data known, which means you might have tracking data from a session three weeks ago, if, if local storage is still persistent, intermixed with some tracking from a day ago. But I don't, I, I'm not. I'm not. I'm open to exploring other options. I don't know if there's really a perfect solution,
+
+Speaker 2  09:28
+right? I mean, I don't know either. That's the thing like I
+
+Unknown Speaker  09:33
+if there was,
+
+Speaker 2  09:40
+if whatever tracking parameters go high level natively uses like whatever they're they're using on their forms, if we could somehow get that tracking script and install it on both the website and on the shutout lead gen form, i. That we could then pass that data through, and I'm assuming it would match up with the session ID, then, you know, natively, somehow in go high level where it's like, okay, this but, but I don't, I don't think that possible right now. I don't think then
+
+Matthias Miller  10:18
+they don't support setting as an example. I'm not sure about all the other variables you can't set gclid, it only gets set through form. What it was playing around with was, can I? Can I use a robot to populate forms? And it's pretty close. I think I might be able to do it on a trusted IP so it doesn't trigger a caption, but they got a caption it, and so that ends up being a bit of a dead end, and I'm too scared of weird breakage at that point. They don't have like, there is no there's no API for form submissions, no API for tracking anything like that. So mark you and I can rally in some way for for some better support on on the GHL side. But apart from, and I'm not even sure how we'd I would assume that the only real answer to get native tracking integration as it stands now is to embed a GHL form, embed everything that was entered into it into the redirect URL, and you guys provide a custom redirect URL that then saves that and launches a session, creates a session, or whatever.
+
+Speaker 2  11:41
+Yeah, yeah, in we could do something like that. It just, it's going to be a little bit more bulky to support, and it's going to probably have to be on the on the web, you know, on the actual domain versus our we don't have the ability to embed it inside of the shed app, but it can be embedded in sunviewbuilders.com and then we could redirect the user to the shed app, skipping the shed app lead gen form at that point, so they're filling a go high level lead gen format that's embedded on the website. And we have to work harder to get all the data we need and to redirect the user, and it's a little more bulky and messy, but in theory, that's also possible, and then we have the tracking data, right? I think,
+
+Matthias Miller  12:31
+yeah, yes, that sounds right. And I guess I should double check that we can actually, I'm assuming you can, where you can embed variables in a redirect URL on on go, high level forms, I haven't specifically
+
+Speaker 2  12:45
+confirmed. Yeah, I don't know about that either. Yeah, let me see if I can.
+
+Matthias Miller  12:48
+I might just pull it up and see quick if I can see something
+
+Speaker 1  12:52
+like that. Because when, when we were using HubSpot, HubSpot has a script that you can, you can just put in your in your website, that will then track throughout and it will continually update as the customer visits more websites on your site. It will feed that into into HubSpot, and I was looking for that in GHL, and it looks like it's in the plan stages for that. I'm not sure what the timeline is on it, because if you have that's what I think Alex was saying, if you have that script, we could embed it all, you know, on the lead gen form and on our website, and then it would populate all that information for us.
+
+Unknown Speaker  13:49
+Well, all
+
+Matthias Miller  13:53
+right, let me there is no let's
+
+Unknown Speaker  13:57
+see.
+
+Matthias Miller  14:00
+Okay, sorry, I got distracted with just a little bit of that. What's the, what's the feature that's on the list to develop with? Go high level?
+
+Speaker 1  14:09
+It is a script that you can embed in your website that it will feed all the tracking to to go high level. HubSpot has it already, but I believe it's planned for G, H, O, okay, yep.
+
+Matthias Miller  14:42
+Okay, and I don't have an answer either on the form redirect. It's not obvious in the interface that you can embed Form Values in the redirect URL, but I can, I can ping support, and I should have an answer in the next either today or tomorrow.
+
+Speaker 2  14:58
+Yeah. Like. My preference would be to just keep it simple and stick with the lead gen form in the chat app, obviously, but I'm more than happy to pursue an embedded, go high level form as well, if that, if that's worth the effort. So whatever you guys decide we need to do that's great. I did see on a forum somewhere where someone had figured out that, you know, they acknowledge that go high level doesn't have an API's form, a form for an API for their forums, but they were able to basically hack the form submission URL and send a payload with that in some way, but I wasn't able to figure that out myself. There was one comment in one form that I said they they had figured it out, but I don't know. I don't, I don't know if that would have actually included tracking data either. So that's just something I stumbled across, right?
+
+Matthias Miller  16:11
+Yeah, I mean, and that's a little unclear, because when you launch the form, it strips the, if you launch a form with a glib then it strips the G clip from the URL, which seems to indicate that it's doing something special with it, and potentially, but who knows, it's all kind of a black box, but potentially is special casing it in some way? Yeah, yeah. I mean, without reverse engineering the requests and stuff like that, I had seen some stuff like that.
+
+Matthias Miller  16:52
+I mean, I suppose that is, that is an avenue to go down. But really the only advantage between that and I Yeah, well, yeah, Mark, do you have any thoughts on all of this?
+
+Speaker 1  17:11
+No, not really for me, as far as right now, if, if the web hook just works to bring in so we can, we can track just the basic that that's perfectly fine for me. I'm just trying to, to basically sort out what comes from Google, what comes from Facebook, and just try to keep that be able to track it against sales to see which, which is performing, what my what my performance is on both of them, because I can see what my overall performance is. But then, you know, I don't know. Is that coming from Facebook? Is that coming from from Google, or is it, quote, unquote, a an organic and so those are basically what, what, what I'm wanting to have an idea for right now, you know if the and so I'm not. I'm not. You know that whatever that we need to do something that's going to be complicated, and do something like that. If we can put a some solution in place, that I can at least see that data,
+
+Matthias Miller  18:28
+I think that this gives us, that gives you, I think, a reasonable quality of data for you to do that without, without going absolutely crazy. But I think that's, yeah, I think that's where we're at. And if that's where sounds good to me, I'm happy for this. Like I said, I've got another client who, who we just recently discovered that somehow the leads aren't coming through from the form after they migrated off HubSpot, just something I missed an implementation. So we're going to want to use something like this, something something similar for them as
+
+Unknown Speaker  19:12
+well. Yeah, yeah,
+
+Speaker 2  19:13
+yeah, it sounds good. And yeah. So I'm happy to implement whatever as a point of reference. We did release some updates to our lead gen form last night.
+
+Unknown Speaker  19:27
+So
+
+Speaker 2  19:31
+Mark, you were, you were working with Twilio to get approved your campaigns to get approved for automated texting. I do believe, right, yes, so I'm sharing my screen here. This is just the test lead gen form. Okay, we added these two check boxes and a link to Terms of Service and Privacy Policy. Yeah, as well as you can customize this message, and you can customize this message to make it say what you want it to say. Okay, so that is available in your account right now. Now you can go and check that out. The go high level web hook that we have set up right now is not going to be passing this. I accept the Terms of Service and Privacy Policy True or False flag at this point, but it I can easily set that up so it passes that. But we just have to be make sure that that's passed along the whole way, I guess. So, yeah,
+
+Matthias Miller  20:39
+yeah. But that that we can pass along very easily if we so. What I'm planning to do is map the standard fields, first name, last name, email, phone number, zip code, because those are obviously and I'm supporting multiple variations of that, and then for anything else in SMS enrollment, and then, and then triggering DND off of SMS, the SMS DND off of SMS enrollment. But then so I suppose if somebody doesn't accept the terms of service, then we should potentially also effectively DND them or or no.
+
+Speaker 1  21:20
+Well, I think the accepting would be a required field, and so they can't submit unless they accept their terms of service. Sure. So
+
+Unknown Speaker  21:31
+they're trying to just test that. I'll just test
+
+Speaker 1  21:34
+Yeah, right now. So, so the DND would be only for the for the SMS enrollment.
+
+Unknown Speaker  21:41
+Yep, perfect.
+
+Speaker 1  21:44
+And so, so if, if they submit, you know, technically, if they submit, they did, they did accept the Terms of Service.
+
+Matthias Miller  21:52
+Yep, understood. Well, do you want to what do you guys want to switch out the web hook to the web hook again? I don't know. And we can do a I can do a quick test,
+
+Speaker 1  22:08
+and do you want me to put that to your API? Correct?
+
+Matthias Miller  22:12
+That's correct. Okay, let
+
+Unknown Speaker  22:15
+me pull up that script. I
+
+Unknown Speaker  22:23
+Sorry, I'll stop sharing my screen. Oh, good.
+
+Unknown Speaker  22:31
+Let me
+
+Speaker 2  22:41
+yeah it the it can't be submitted without accepting the Terms of Service and Privacy Policy. So I just confirm that, as long as you're using it, if you don't have it on your form, then obviously they can,
+
+Unknown Speaker  22:57
+right? Can Okay,
+
+Speaker 1  23:07
+okay, I do have that I did switch that over Zayas,
+
+Matthias Miller  23:11
+let me I'm gonna fill out the form here, and I'm
+
+Speaker 1  23:28
+okay, I'm looking at the different options you have now for the lead generation form. Okay?
+
+Matthias Miller  23:58
+I'm a little confused here. Do you? You're not prompting for lead information right up front. Are you?
+
+Unknown Speaker  24:08
+Yes, we are.
+
+Matthias Miller  24:09
+Why am I not?
+
+Unknown Speaker  24:12
+Did you?
+
+Speaker 1  24:14
+You fill it up? You if you filled it out previously, you probably have it. If you want to open an incognito window, then it'll Take you to there. Perfect. That's it.
+
+Matthias Miller  24:23
+Appreciate it. You
+
+Unknown Speaker  25:34
+All right, there He is. I'm
+
+Matthias Miller  25:43
+I thought I had set a All right, it came in the UTM didn't make it in. So I'm going to, I don't know that we need to hang around for this, but I'm going to chase that, make sure all that's working as it should, and figure out why it didn't make it in.
+
+Speaker 3  26:02
+I Yeah,
+
+Speaker 2  26:09
+sounds good, if you have, yeah, like I said, I'm I can, I guess mark, you can make changes on, on, on the shut app side as well, within your account there. But if you have additional questions about it at all, if you want that lead, if we're using the the original API call at any point and we need to update it, I can make changes to that, etc. So,
+
+Unknown Speaker  26:38
+yep, sounds good.
+
+Speaker 2  26:43
+All right, sounds good. Thank you guys.
+
+Matthias Miller  26:47
+Have a good day. Thank you. Thanks. Alex, thanks Mark, thank you. Matthias, thank you.
+
+
+Transcribed by https://otter.ai

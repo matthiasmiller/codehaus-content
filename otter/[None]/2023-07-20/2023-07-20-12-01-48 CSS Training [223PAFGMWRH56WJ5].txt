@@ -1,0 +1,1181 @@
+Unknown Speaker  03:00
+Okay, how's it going? Hey,
+
+Unknown Speaker  03:03
+all right.
+
+Unknown Speaker  03:09
+Yeah, pretty well. Yeah. Where do you want to go today?
+
+Speaker 1  03:17
+All right. So Ben is not joining us today. He sure
+
+Unknown Speaker  03:25
+is working on some stuff here. And there are a few think there might be some questions in the thinking proposal again. Okay. We'll start there.
+
+Speaker 1  03:59
+On the proposals, I don't know if your Matthias is the one to ask about this. But it the, it takes a long time to add rows and update rows here. So like, if I click, I click now to add a row, it sits and spins and spins and finally adds the row. Okay, and then if I want to, if I want to change the indent here, too, and click away and it takes about was that three to five seconds before I can edit the next column? So I don't know if that has to do with just the sheer volume of sheer number of rows that we have in this RG How many of you have
+
+Unknown Speaker  04:54
+about 200
+
+Unknown Speaker  04:56
+Yeah, that's
+
+Speaker 2  04:58
+I'm not sure Um, we might be able to optimize it. The Yeah, cuz whenever you're doing that we're, we're needing to resort everything basically, from scratch, so. Right. So, but I'm not quite sure. Yeah. So I, without actually digging into it, I can't say for sure. So, okay, probably change requests, and I'm not sure what the priority is going to be. But if it keeps getting worse, and I guess you could see what it's like on a smaller one, so, yeah,
+
+Speaker 1  05:35
+sure. Okay. Good. Sounds good. So first question here. Let me just wider again. All right. So on this you are sales item. Oh, sorry, this is the one that you and Matthias discussed. printer models. All right. So this is bigger picture for right now as maybe a little bit more of an FYI. Sure. But about what they what they would like to do with with these devices. They'd like to eventually build out these the supply sets for each device. So they can say, okay, the client has this customer has this device, sure, and secure all the things that they might need for that device. Sure. And so they can send them reorder forms, every time they send them a shipment of ink, or toner or whatever, and send a reorder form, tailored to the devices they have. He also wants to go the other direction, where if somebody calls in and orders a random ink cartridge, they'll be able to look it up, redo reverse lookup and say, okay, based on the, the, this model of ink cartridge, here are all the other items that go with that, that would be matches for, for that supply set. So that we can then figure out okay, this customer has a printer, we don't know about here, all of the items. So. So.
+
+Speaker 2  07:22
+Yeah, um, I would think that off, I'm an orphan with like, as any given cartridge, you have quite a few printers that it could I mean, that it can go with does that sound right?
+
+Speaker 1  07:40
+It does, but I'm assuming they thought they've thought all that through. On their side, I mean, given that they're dealing with this type of thing every day.
+
+Speaker 2  07:51
+So and are they hand entering these or trying to import it somehow or
+
+Speaker 1  07:57
+hand entering the sales items? Yeah, in the
+
+Unknown Speaker  08:01
+end, the the sets?
+
+Speaker 1  08:04
+Oh, the initial setup would be? Well, they're doing some of this already on their database that he's got gotten created over there. So I think some of the stuff we could import. But as we talked, it seemed like it was going to be best to do probably best to use a custom record for sales versus apply sets that then could be linked to the different models, rather than defining a model. Because some supply sets will will match a few different devices
+
+Speaker 2  08:42
+now. Like, does a does a model ever have more than one supply set? I mean, is there
+
+Speaker 2  08:54
+so for example, there could be that the cartridge works for this printer, but something else doesn't. Or is that?
+
+Speaker 1  09:06
+Yeah, well, you would, you would have the same cartridge showing up in multiple supply sets. I
+
+Unknown Speaker  09:11
+think I see.
+
+Speaker 1  09:15
+You'd say like, you know that the cartridge works for these three different models. And so you'd have, you know, show up in those three different supply sets. Sure, or something like it's something that they're not ready to build out just yet, but you wanted to bring it up for consideration. We can be laying the foundation for it. Yeah.
+
+Speaker 2  09:39
+Well, it seems like it's pretty simple. It's, it's probably a Well, I mean, I actually think what it is, is it's an orgy of supplying sets on the on the cartridges and stuff, and an orgy of supply sets on the printers is what I would is how I model it. So and then then the supply set record itself is basically just a name. And well, and I'm kind of making this up, because you could go the other direction, too. Part of it might depend, do you prefer? How do you prefer editing these? On what record? Do you prefer editing these? Most often? Because it'll be linked in both directions. We just need to have a Yeah. And presumably, we can have a good name for a supplier and they'll have any meaningful name for a supply set.
+
+Speaker 1  10:43
+Probably, it would probably be cool probably correspond to the printer model or something like that. Yeah,
+
+Speaker 2  10:49
+like dropping off the last three digits or turning those two n n or x x or 00 or something? Yeah. Sure.
+
+Speaker 2  11:04
+And maybe you you do store everything on the on the supply set itself? I mean, you know, that would be a simple way to do it. And then it's stored on the supply set, you create your supply, you set that. And then I think you just have a checkbox to say, for for the manager versus transactional? I mean, in some ways, I think with the, or maybe just like a parts checkbox or something like that. I'm not sure what you would call it, but we can come up with once we get there, we can come up with something.
+
+Unknown Speaker  11:41
+So yeah. Cool.
+
+Speaker 1  11:50
+So yeah, we'll see where that all goes. But that Sure. pool and then a couple of questions on the device record following up from yesterday. This is this historical MPs IDs or G? Just want to make sure I'm getting this right. You had mentioned a column for customer and a column for ID. I think we also probably want to store the install date, that'd be fine. And then, am I right, that the row would be added automatically when the record is saved following a change in the customer?
+
+Speaker 2  12:34
+Yes, something like that. Do we when they change the customer? Do we force them to enter in a small date or not?
+
+Speaker 1  12:43
+Yes, because install date. It clears when the customer is clear. Show or changed? Yeah. And then it's required if the device status is active. Sure. Yep. Yeah. And then Are you good with allowing admins to manually delete rows? Sure. Yeah. Yeah,
+
+Speaker 2  13:12
+the most likely case for that is that they changed it to a wrong customer and added a row and they correct it and then they just want to get rid of that old history because it's not actually accurate. Right.
+
+Speaker 3  13:26
+Yeah. All right.
+
+Unknown Speaker  13:29
+And then I think that covers that is that one
+
+Speaker 1  13:47
+and this was additional conversation for later today. So I think that covers it then. Okay. I mean, like, there's a lot going on, and there's some changes happening from what you know what the previous spec was, but feels like feel like we're making good progress and having a lot of content here already. Yes. So let's see here question in this ZTE Kay. Customers needing check in report. We had discussed a little bit about this yesterday, the that but and then I realized that there was another question related to this or it's a follow up question. You had you had mentioned about the saving habits Word is saved?
+
+Speaker 2  15:02
+No. Okay, this is when you click the ellipsis button. When you click the ellipsis button, it will, it's almost like it what it is, what it's doing is it's opening a child screen for the detail screen that's behind the behind the Oedipal report is, in essence, a detail screen that you can't see. And so when you click the ellipsis button, you're opening up a child screen of that hidden detail screen. And so when they click confirm, continue, it brings the changes out of the child screen back to the report, but it hasn't saved them to the database yet. Okay. Sure. And I don't remember this one. Does this have a save button on the report? Or does it do you say does it say when you change move rows?
+
+Speaker 1  15:44
+This one is the right pane is an autosave. Like we chose? Yeah, but this, this left pane or technically middle pane that we're talking about now, has not previously been an editable report? It hasn't been editable before. So does the does the auto save? Apply across the whole report? Since it's the right I mean, you would need to have a bite? Yeah,
+
+Speaker 2  16:14
+you do. It needs one. But I think we keep them the same normally, or might be required to so I think it'll probably auto save as well. Right? So
+
+Unknown Speaker  16:28
+sounds good. So save tape
+
+Speaker 1  16:43
+so then it'll as soon as they close that child screen, apply the changes to that row of the report. And when they click away.
+
+Speaker 3  16:51
+That's, that's correct. Okay. Yeah. Okay.
+
+Unknown Speaker  16:59
+All right.
+
+Speaker 2  17:02
+And I think I would I just keep the text pretty simple. I don't know that we have to go into a lot of details about how everything works. I think it'll be intuitive once you're using.
+
+Unknown Speaker  17:10
+Yeah, sure. Okay,
+
+Speaker 1  17:19
+sounds good. So then this one, I believe is ready for our plan to clean it up and send it over for you to TreeView then.
+
+Unknown Speaker  17:35
+So that
+
+Speaker 1  17:41
+and then this easy tally, miscellaneous changes job. Question for you. Now, he and said, all lumped together as fine. This first one, though, this is a easy tally, the find payment report where it was the find payment menu option was included as SPECT. And you were asking about how about is to show all prompts. So figure just discuss it here on a call.
+
+Unknown Speaker  18:22
+I have my my
+
+Speaker 2  18:25
+Do you want to click into the master payments thing? The link that you've got their payment ID.
+
+Unknown Speaker  18:37
+Yeah. And then I will try to find the payment to use for.
+
+Speaker 1  18:50
+Me kind of hard to find because we don't have we don't have a master report here
+
+Unknown Speaker  19:03
+all right.
+
+Speaker 1  19:05
+So I paste in or type in a payment Id hit Continue. Then it requires a payment status. Okay. Well, I would know or could find. But like, if I don't know it, then I'm guessing. And then if I click continue again, it still requires payment type which again, I might or might not know, show. If I'm sending the wrong I'm guessing the wrong thing there. You click Continue. Report.
+
+Unknown Speaker  19:39
+Sure. Yeah, let me think
+
+Speaker 1  19:46
+this is, oh, something's buggy here. Because I selected logger as payment type. And it did show up on the report. Yeah,
+
+Unknown Speaker  19:58
+I think we say that effectively yeah
+
+Unknown Speaker  20:01
+to be landowner percentage
+
+Unknown Speaker  20:07
+Yeah, but see it says i Okay, what we could do is because we basically want to use this report there are two ways that we could do it and I'm pretty sure the spec specifically says that it is an ID that we ignore the other prompts
+
+Speaker 2  20:33
+so I wonder if we should actually have a checkbox just want to okay test easy tally let me just quickly take a look at this thing and I've got ideas of how to do it
+
+Unknown Speaker  20:52
+sure
+
+Unknown Speaker  21:12
+Okay, and if I come in here
+
+Unknown Speaker  21:19
+and
+
+Unknown Speaker  21:24
+find payment
+
+Speaker 2  21:39
+there's some I'm trying to see what all the Ask prompts are here
+
+Unknown Speaker  21:48
+and
+
+Unknown Speaker  21:54
+so the yes prompts
+
+Speaker 2  22:04
+payment subtype okay, they could do better layouts too. They could probably do a better layout here because it looks a little messy for one flat payment subtype template mode alert ID as claimant subtype as flat payments subtype okay. They have start date end date as payment status equals all paid
+
+Unknown Speaker  22:41
+okay so
+
+Unknown Speaker  22:54
+so
+
+Speaker 2  23:06
+let me just try this out here and prompt the Ask search by payment a search by ID checkbox
+
+Unknown Speaker  23:24
+hopes 10
+
+Speaker 2  23:29
+And now let me move this one over to 110 I'm going to say.
+
+Unknown Speaker  24:41
+Okay
+
+Speaker 2  24:55
+so let me okay let me send you the URL Okay
+
+Speaker 2  25:18
+so I'm just marking something up here and payment status it's landed include negative payments so if it's land down or flat we include negative payments if it's landowner percent we include negative payments if it's longer we don't so they include negative payments I wonder if we could move that over next to payment type and do that at 110 7001 tends to close
+
+Unknown Speaker  26:02
+120
+
+Unknown Speaker  26:11
+and
+
+Unknown Speaker  26:13
+M then if
+
+Speaker 2  26:19
+so that's a negative pay pay this one can come up to looks like they do about 100 Each not sure 30 asked start due date. So we have due dates for landowner flat and landowner flat for those and if it's all paid so I think we could also rearrange some of these just a little bit I haven't actually thought it through well let me just quickly do it because otherwise so if we have landowner flat
+
+Speaker 2  27:06
+do they start and end let's let's even that out with PE E. So PE E is at at 100 And so we go 120 at 100 and then 190 At 100 you let me say that so you can take a look at it see what you think I'm not quite done yet but but try selecting landowner flat and see what you think and status is all paid
+
+Unknown Speaker  27:50
+you say
+
+Unknown Speaker  28:07
+oh
+
+Unknown Speaker  28:19
+yeah.
+
+Speaker 2  28:45
+In the tract is visible sometimes tract is visible of payment type equals landowner, landowner percent or logger. So we sometimes have the track sometimes not. So I think I'll leave the gap for the track. So depending on what you select, you get the so so if you do search by payment ID, there is a bit of a gap there is a fairly big gap but we just have a menu option that says you know, search by payment ID it would pop it in the continue buttons a little ways down, but I don't think that's that big a deal. How does that look to you?
+
+Unknown Speaker  29:27
+Yeah, I think it looks fine.
+
+Speaker 2  29:30
+And so I think what I would do is say just add a note to this or reach out to not him however, saying let's rework the Ask prompts to have a little bit better layout and add a search by payment ID and then and make sure everything's working. Yeah. Okay, because that's, I mean, we really don't want to miss We're not really we really don't want to have. I think that report intentionally ignores like the status and type fields search by payment ID. So this is a much cleaner. This is a cleaner approach, I should have probably proposal from the beginning. But we could also have searched by with options of, you know, payment ID and other criteria, but then you have to hit the drop list, it's harder to select something and just, this is a simple checkbox to toggle. So
+
+Unknown Speaker  30:32
+sure.
+
+Speaker 2  30:37
+And then actually, the payment ID should become required. But it'll only be required if you it'll become a record, it'll say the fields required if you're searching by payment ID, so that's perfect. Nice. Okay. Okay. Yeah, send that I'll give them the link for this. And there'll be they should be able to implement it pretty easily just by looking at what I did. So.
+
+Speaker 1  31:00
+All right. And then on this, I see like, there's this big gap down here. Are there. Are there things that are hidden here? Done?
+
+Speaker 2  31:11
+Oh, let me let me give you a new link, because I don't have the gap anymore. Okay, all right. Yeah, try refresh.
+
+Unknown Speaker  31:25
+There we go. That's looking better. Yeah. So
+
+Unknown Speaker  31:27
+there's still a tiny gap. So
+
+Unknown Speaker  31:30
+yeah.
+
+Unknown Speaker  31:32
+But it's not terrible. I mean, we could
+
+Speaker 2  31:41
+Yeah, I mean, we could try to get rid of that gap. If you'd want to get rid of the gap. I suppose what you could do is at the payment, I could move the payment type of the include negative payments, I could move that up next to payment status. Is that a? Well? No, but I think I might be using that in some places. Let me check. Yeah, no, I've got something there. At some point. If we do all paid, I've got that there. So yeah,
+
+Unknown Speaker  32:14
+I could guess fine. Okay,
+
+Unknown Speaker  32:17
+fine. Let's Yeah, that's pretty good.
+
+Speaker 1  32:20
+I think it's good. Yeah. Cool. Yeah. No, I like that. That that feels a lot more intuitive. Perfect. So yeah, sounds good. Now, one question. I do have though, when I searched for this payment, a payment ID This is a report it brings this is a landowner percentage payment. But if I run the landowner percentage payments report, it shows me a lot more columns.
+
+Speaker 2  32:55
+Okay, so that's a that's a separate job. Let me give you wording for that
+
+Speaker 2  33:07
+running by determine the view based on that payments tight there you go.
+
+Unknown Speaker  33:35
+Cool
+
+Unknown Speaker  33:41
+did you hear about Matthias is blood clot?
+
+Unknown Speaker  33:44
+His blood clot? Yeah, he woke
+
+Speaker 2  33:47
+up this long family chat he woke up with during the night with severe pain and call the doctor in the morning and they go to the ER and he had a has a nasty blood clot that he's on. It sounds like it's gonna be okay. Because on blood thinner now for a month or so. But it's kind of a bad thing that makes it everything else right now.
+
+Unknown Speaker  34:06
+Yeah, no kidding. Wow. That was just this morning.
+
+Speaker 2  34:13
+Yeah, that was just this morning. I just got a text from Bonita and then just now he texted on the family chat. So
+
+Unknown Speaker  34:19
+Wow.
+
+Speaker 1  34:26
+Crazy. Yeah. Okay, well, I think that that covers everything I have for now. Do you want to go through any of the 101 change request emails that I've been sending over? We're gonna Yeah. Do you want to just knock them out in your own time?
+
+Speaker 2  35:03
+Yeah, let me see here I have your close to right. It's 100 actually right now, what if I can let me, let me rearrange my screen, it would be great to start smashing through some of these. And I also, this is just a bit of background for you. I'm pretty intent in the, for the next few months to be focused on, on client paying jobs. We're doing we're doing quite a bit with with marketing and I'm just I'm wanting to focus on on on revenue. So just that's just, it's nothing you need to be worried about. But just an FYI, that if you give me an option between speeding up proposals and and doing a job for CPP Ultra CPP, so, yeah, but, but I don't I mean, keep bringing the other ones up. It's not like we're completely shifting, but I might just push things down the list. So I'm the
+
+Speaker 2  36:13
+trying to see how many. Okay, let's try this. And let me just do a screen share
+
+Unknown Speaker  36:27
+Do you wanna enable screen sharing?
+
+Unknown Speaker  36:29
+Oh, sure.
+
+Speaker 2  36:44
+Okay, so let's, I think I'm going to, so I've got my solutions folder, not all this will apply to you, but we can just start smashing stuff out and see how far we get. And, and then also sometimes having some working sessions either with you or I think could be with Ben but just starting to go through change requests and
+
+Speaker 1  37:01
+see if we can keep moving forward. Some of the change requests could be could be great. Yeah, that's you there's time lost in the back and forth. That's one of the values of the of these calls is because we can exactly station so yeah.
+
+Speaker 2  37:20
+Okay, so this is done. Is there anything you're needing from me here? I'll read through this but I don't see anything highlighted for me on that one.
+
+Speaker 1  37:35
+Yeah, no, if there's nothing highlighted then should be able to
+
+Unknown Speaker  37:46
+so okay
+
+Speaker 2  38:04
+okay, so, Seth, Nick will be able to help out with that one. This one is this is spam. I'll ignore somebody's wanting to buy my company
+
+Unknown Speaker  38:43
+Okay, so
+
+Unknown Speaker  38:51
+can you chase this?
+
+Unknown Speaker  38:55
+Reach out if you have questions.
+
+Speaker 2  39:00
+And Tim, is this a spirit and asked you? Oh, I said. I just said no. Hey, can you change this reach out if you have questions? So is this in the spec right now? Yeah, it looks like it is.
+
+Speaker 1  39:18
+Yeah, what I had sent to Nick yesterday. Down there, my email to him was from the spec. Sure.
+
+Speaker 2  39:29
+Yeah, okay. I think Nick, I think Nick has responded. I think now Hank can take it from there. Okay, so testing
+
+Unknown Speaker  39:48
+is good.
+
+Speaker 2  39:52
+Yes. Okay. This seems to be in your court. Oh, we're gonna go Nick's gonna be out next week on quieter and quieter we're gonna miss that so
+
+Unknown Speaker  40:06
+so yeah yeah
+
+Speaker 2  40:27
+Ben and Tim i I told the developers that this only needs to be coded and asked prompts and the transaction record
+
+Speaker 2  40:51
+we won't need to show the parent account and reports we may want to ask okay
+
+Unknown Speaker  41:10
+Should we check
+
+Speaker 2  41:16
+there are reports where they would wish for this for this to be displayed or we can deliver it and wait for their feedback I don't have a strong preference on that so okay. Oh, I can show off
+
+Speaker 3  41:42
+your screen or maybe my Zoom Zoom
+
+Speaker 1  41:48
+something that Zoom has seemed to be frozen for me I'm not seeing anything on your screen.
+
+Unknown Speaker  41:58
+Okay, you stopped the video.
+
+Unknown Speaker  42:00
+Maybe I'll
+
+Speaker 2  42:03
+you've got you've got really low bandwidth right now it looks like because you haven't seen it you're looking pretty fuzzy at least.
+
+Unknown Speaker  42:12
+Okay, I'll stop my video for now and see if that helps. So
+
+Unknown Speaker  42:23
+okay, let me try resharing sure okay
+
+Unknown Speaker  42:44
+you in vendor approval
+
+Speaker 2  43:03
+yep, yep, that's exactly right. I think I'm gonna Can we just approve this for the client because I think they wanted
+
+Speaker 1  43:16
+which was it? Most this is something I'm back here. I'm gonna try something on my Wi Fi here. Okay. Isn't that CWA job
+
+Speaker 2  43:25
+CFP, move account settings to Company record. It's something Matthias requested so I'm willing. Yeah, I think we'll just mark it approve. And it looks like they actually started already.
+
+Unknown Speaker  43:38
+So
+
+Unknown Speaker  43:43
+proved handed. Off to CCI.
+
+Unknown Speaker  43:53
+I guess holler once you've got internet connection.
+
+Unknown Speaker  43:57
+All right. It turns better so.
+
+Unknown Speaker  44:24
+Okay, how's that?
+
+Unknown Speaker  44:29
+It's better now.
+
+Speaker 2  44:30
+Great. Okay. You can see my screen. Yes. Okay. I should show off our next ad copy. That's in September ad. I like this one.
+
+Unknown Speaker  44:43
+Your business folks.
+
+Unknown Speaker  44:45
+Is this from God? Rosewood.
+
+Speaker 3  44:47
+This is rosewood. Okay. Yeah. Nice.
+
+Speaker 2  44:57
+Yeah. Good. I'm excited about what they're doing. So
+
+Unknown Speaker  45:00
+good
+
+Unknown Speaker  45:03
+okay
+
+Unknown Speaker  45:13
+Z et miscellania did we talk about this?
+
+Unknown Speaker  45:18
+Yes. Yeah
+
+Unknown Speaker  45:21
+that's what we were just talking about.
+
+Speaker 2  45:23
+Okay. So yours are you going to hand this off to them then or
+
+Unknown Speaker  45:29
+miscellaneous things?
+
+Unknown Speaker  45:30
+Yeah perfect okay, I'm
+
+Unknown Speaker  45:33
+going to hand that one off
+
+Unknown Speaker  45:59
+so this is testing ready for review. Okay
+
+Speaker 3  46:05
+so external projects
+
+Speaker 2  46:17
+and these jobs are in staging the client probably got these already but why did this not CC ah
+
+Speaker 2  46:39
+code review is showing us still as needed code review review is done
+
+Speaker 2  46:52
+so, yeah, it's showing dev started but it's actually not dev started shoot and I need Matthias to check out a script so she won't be able to do right away what how can we No wait this is the wrong job though. We're looking at this job. extra fee. Okay. Yeah. It says in code review. So which code review is not syncing across right? Testing needed code review needed kit shouldn't say coder doesn't think coder is actually needed
+
+Unknown Speaker  47:38
+Okay, so let me take a look at this macro here
+
+Unknown Speaker  47:50
+okay
+
+Unknown Speaker  48:00
+Changed Status
+
+Unknown Speaker  48:13
+there we go this this this one here
+
+Speaker 2  48:22
+so it's product change
+
+Unknown Speaker  48:36
+change if you want it
+
+Unknown Speaker  48:39
+okay. Review
+
+Unknown Speaker  48:45
+the original one wanted individual one done
+
+Unknown Speaker  49:07
+get one of these is wrong
+
+Speaker 2  49:23
+this review is warranted it's a Boolean field. Right it is needed but it's also done
+
+Unknown Speaker  49:38
+okay, let me see if Nico, great to help me out here.
+
+Speaker 2  50:01
+So here is a product change it needs a review but the review has done and it doesn't need a group review or individual to review
+
+Unknown Speaker  50:13
+the this is saying
+
+Speaker 2  50:17
+code review and it should but the reviews are done the promise here is saying it should say hey, I don't know if we've got a macro to wrap grass. Is this a recent change here? Do you remember anything about this? I was just surprised we haven't had problems for a long time.
+
+Unknown Speaker  50:39
+So it should be and not Well, I can't Okay well I can do it somewhere else
+
+Speaker 2  50:53
+I'm pretty or it's done yeah. And so and I have no idea why we haven't been seeing more trouble like this you don't think this macro is recent is do
+
+Unknown Speaker  51:13
+it Okay, well we can
+
+Unknown Speaker  51:21
+so
+
+Unknown Speaker  51:25
+let me create a change request
+
+Unknown Speaker  51:41
+Epson
+
+Speaker 2  51:53
+to set all this stuff hear you or can I mean we all I think you almost change it without even and just smash it in. I don't know. Well, this is code crafters. This is not going to work you their suit. I thought okay, change requests. I've got one here to change request
+
+Unknown Speaker  52:26
+set through code review.
+
+Unknown Speaker  52:31
+Incorrectly
+
+Speaker 2  52:38
+No, that should be you or someone else but sure.
+
+Speaker 2  53:03
+Yeah. Yeah. Up here we say if it's, if it's
+
+Unknown Speaker  53:17
+so if it's ready.
+
+Speaker 2  53:22
+So it should Well, if it's here, we should just check this up here. We should say it's ready to test user done, then we'd say testing. Otherwise, if there's dev inputs, we say review dev input, otherwise we say code review
+
+Unknown Speaker  53:38
+done yeah, etc.
+
+Speaker 2  53:41
+Well, no, it's not this or Yeah, yeah. Okay.
+
+Speaker 2  54:09
+Okay, man, well, that's bad Ben. Tim. Sorry. So this is going to be core solution provider CCUSA. And I'll say this is included at no charge other. Okay. So I can't Are you able to test jobs that are in code review? Although now you don't really know if you should be testing them or not. And we'll get we'll get this fixed. We'll also go ahead.
+
+Speaker 1  54:48
+We do this is kind of a weird one because we basically never test jobs during code review. Right. But with this being a, you know, high urgency thing he I think And when it said to go ahead and test it to him got it so yes it is possible to test a job that's in code review it's just getting normal normally don't okay right
+
+Speaker 2  55:14
+Nicholas and change request okay
+
+Speaker 2  55:27
+so I actually don't understand why it hasn't like Not all jobs a code review anyway I'm almost don't care I think we just fix and keep on going well
+
+Unknown Speaker  55:43
+sure sure. Yep
+
+Unknown Speaker  55:52
+Great. Thank you Okay so that's that one and
+
+Unknown Speaker  56:34
+yep that one eye open
+
+Unknown Speaker  56:40
+so, this one is
+
+Unknown Speaker  56:52
+assets current assets
+
+Unknown Speaker  56:57
+Yes.
+
+Speaker 2  57:02
+So let me specify
+
+Unknown Speaker  57:08
+retention needed by Jo and LS so I'm going to skip that one for now by zsp
+
+Unknown Speaker  57:45
+Okay,
+
+Unknown Speaker  57:46
+I think I'm going to have
+
+Unknown Speaker  57:50
+Jonathan do this one here
+
+Speaker 2  58:00
+so I'm going to guess open the following import
+
+Speaker 2  58:09
+I don't think premium subscription I'm just gonna guess it's 100 $150
+
+Speaker 2  58:24
+And I think with CFP often we just go ahead and have I'll just I'll just oh no I don't have
+
+Unknown Speaker  58:40
+and
+
+Unknown Speaker  58:50
+ready is this quiet premium?
+
+Speaker 3  59:49
+Seth Nick licensing requests. Jonathan.
+
+Unknown Speaker  59:55
+I've assigned this to you.
+
+Unknown Speaker  59:58
+You can get
+
+Speaker 2  1:00:02
+I'd like for you to get some exposure to zfp get a test system from Seth or Nick and now for this job check track your time on this job or anytime assisting Santa Jonathan Okay, so that one's being handed off I guess I'll say it off to coding zfp
+
+Unknown Speaker  1:00:56
+think we fix this one didn't we?
+
+Unknown Speaker  1:00:59
+No. Oh
+
+Speaker 2  1:01:03
+wait this is a duplicate I would just worked on one just like this don't we oh there's a PC there the PC has dev started
+
+Unknown Speaker  1:01:18
+what's going on tonight
+
+Speaker 2  1:01:34
+Do you remember specking this because I just we just saw something where you inspect it cleanly that said you know hide these specific fields and stuff like that
+
+Unknown Speaker  1:01:58
+you there
+
+Unknown Speaker  1:02:03
+Hello
+
+Unknown Speaker  1:02:46
+okay
+
+Speaker 1  1:02:49
+he's fixed but jumped networks again or something. So go back one faster network
+
+Unknown Speaker  1:02:56
+okay
+
+Speaker 2  1:02:59
+oh, there we go. It's this is a we've got two jobs going for the same thing with the same product change. Okay, but billable stuff is different. So how do you want to handle this with I mean, I don't think we care which is which you close one out. You've got billing information on this one. So that might be one reason to to keep that one.
+
+Unknown Speaker  1:03:30
+Yeah.
+
+Unknown Speaker  1:03:33
+That's interesting. There are two of them.
+
+Unknown Speaker  1:03:37
+So yeah, I would say if one.
+
+Speaker 1  1:03:41
+We can switch billing information combined. If both of them haven't billing information we can No they don't. No one does.
+
+Unknown Speaker  1:03:47
+Okay.
+
+Speaker 2  1:03:49
+So this is approved. Approved. Billing type is premium contract. And this one, I will label duplicate and just unapprove it and unlink it good sand
+
+Speaker 2  1:05:09
+Okay I think we're good to go there
+
+Unknown Speaker  1:05:16
+okay
+
+Unknown Speaker  1:05:18
+so perfect
+
+Speaker 2  1:05:29
+Do you know what they want do you know if they want asset or liability? Well first of all how long can you go
+
+Speaker 1  1:05:39
+I have up until until four o'clock Eastern here okay so I'm okay I'm good well
+
+Speaker 2  1:05:48
+yeah let's keep dropping for a bit here because I've been behind on my stuff so the
+
+Speaker 2  1:06:11
+do you know if they're wanting it on screen or by fax
+
+Speaker 1  1:06:17
+I don't know that would be they could reach out to them about that yeah
+
+Unknown Speaker  1:06:31
+so I guess what we could say is except I don't know if we get no facts you should PDF
+
+Speaker 2  1:07:08
+so man, what do you call this report because it truly is a combined a filtered balance sheet and income statement by accounts I mean, I think we might code it kind of generically but we'll probably won't give it to most people
+
+Unknown Speaker  1:08:05
+know
+
+Speaker 2  1:08:40
+balance sheet and income statement I don't know they might have a name they want to use for it and I think we'll probably will probably create the underlying things in the core system but then like the Combined view and stuff like that will put in the in the main system so
+
+Unknown Speaker  1:09:08
+so
+
+Unknown Speaker  1:09:10
+yeah
+
+Speaker 2  1:09:16
+filtered better. I just because it's not I toyed with General Ledger but a because we can do totals with General Ledger.
+
+Unknown Speaker  1:09:50
+Oops
+
+Unknown Speaker  1:09:56
+so let's just say that I
+
+Unknown Speaker  1:10:06
+just have one of those so if I do all of these those accounts hide starting balances and then hit Continue
+
+Speaker 2  1:10:27
+okay well I don't have very many transactions there but see they're not wanting everything they're just wanting some of the stuff I think I can okay well I think it's back to ban added comments back to Ben
+
+Unknown Speaker  1:10:53
+Well, there we go
+
+Unknown Speaker  1:11:05
+okay
+
+Unknown Speaker  1:11:09
+yeah
+
+Unknown Speaker  1:11:33
+live for
+
+Unknown Speaker  1:11:42
+okay
+
+Speaker 2  1:12:17
+although I wonder I wonder if they wouldn't feel I don't know. At what point do they say they don't care anymore they don't want to go back. I mean, they clearly won't go back but what point do they not even want it for research purposes
+
+Speaker 2  1:12:40
+it cost me $25 A month actually about $20 a month to keep it up so
+
+Speaker 2  1:12:54
+so I was toying with several options. One of them is to just eat that cost and said we're gonna keep it up for a year. One is to say we'll keep it up for two months and then we asked clients you know, would you like to pay two or $300 to keep it up for for a full year
+
+Speaker 2  1:13:18
+because if we the problem is if we ever need to look at that system in the next year, it will cost me about as much to bring it back from a backup as it does just live for a year
+
+Speaker 2  1:13:36
+yeah, I think what we're gonna do is let's plan to keep the main system for 12 months until July 2024 create a change request or some reminder to take it down then and then take that down
+
+Unknown Speaker  1:14:11
+Yes, um
+
+Unknown Speaker  1:14:37
+does that give you a cheat
+
+Speaker 1  1:14:45
+I think so. Okay. I'm not sure what's going on my it's something on my side, obviously, screen sharing for union. But ya know what I'm hearing I think it's good. Okay,
+
+Speaker 2  1:15:00
+so I just quit screen sharing and tell you what I'm talking about looking at her. Are you getting some? Oh, he was
+
+Speaker 1  1:15:10
+working for a while I think it might have to do my computer is might be overheating and just not able to.
+
+Unknown Speaker  1:15:17
+Okay. Let me do this. Go ahead.
+
+Speaker 1  1:15:24
+I'm gonna try disconnecting my, my big monitor and running just off the laptop make
+
+Unknown Speaker  1:15:32
+sure let me see if I can just share a similar screen and see if that helps. Except now that will. Okay, I'm going to chase that that one that one we know about SB application? Well, I think the short answer is
+
+Speaker 2  1:16:05
+okay, let me just add a note here. This is No, we don't have a way to do this. It would require enhance enhancing the portal. I'd recommend we bundle this into an updated portal. Significantly would require enhancing the portal? Yeah. Okay. So this is the thing about SP things being lost. I think we just tell them, this is part of the reason you need a new portal. Let's do a new portal. And we'll fix that as let's do the fix that as part of the portal. So just a second here
+
+Speaker 2  1:17:05
+let us know when you do. Yep. So Jonathan Bergen, who's who's the intern this summer, is planning to talk to his advisor there to see if the faith builders portal project could be a capstone project for him. And then he worked on it from as part of a school. I mean, he got paid for it, but he worked on as part of a school project as well. So Wow.
+
+Speaker 3  1:17:24
+Hey, that's cool. Yeah, I
+
+Speaker 2  1:17:27
+think it'd be a win win for everyone. So, yeah. So um I don't know about templates. I'm gonna ignore that one.
+
+Speaker 2  1:17:54
+Yeah, that is probably Seth or Nick. So I'll leave that here. And so Nick is just about he's got one more day left. Sorry, I'm going to heat up some coffee. I hope you're willing to talk to people who drink microwave coffee, because?
+
+Unknown Speaker  1:18:19
+Well, I've done it before myself. So
+
+Unknown Speaker  1:18:21
+okay, some people kind of snobbish about that. I tell them I grew up poor So okay, so that one needs to be them and I'll chase it with them.
+
+Speaker 2  1:18:38
+CWA conditional visibility for sections and contact records. Yes, this is simple let me take a look at it
+
+Unknown Speaker  1:18:53
+okay
+
+Speaker 2  1:19:07
+okay, so he's approved it. I know CWA wants this but oh my dear old going to this. So this is basically we Is it anything besides
+
+Unknown Speaker  1:19:20
+okay
+
+Speaker 2  1:19:33
+the fees and credits section on the contact record should be hidden for other agents. Just like the invoices sections, our section is hidden. Is that a fair description? Yeah, I'm gonna approve it and I'm going to say that it's time and materials it's going to be about I'm just gonna say it's
+
+Speaker 2  1:20:14
+we'll say 100 150 do that change so that can that's waiting for for you to take this this can go to the client now
+
+Unknown Speaker  1:20:24
+okay
+
+Unknown Speaker  1:20:36
+okay
+
+Speaker 1  1:20:39
+and did you send out whatever email I didn't see my email
+
+Unknown Speaker  1:20:43
+I'm just sending it now by email so okay so now comments and read
+
+Speaker 2  1:21:09
+so, so I think we just say well, I think this whole message is just stupid the organization has active one or more active members, I don't care whether they've got active members that the the board have their own accounts for quite the reason that members are active might be because they have their own accounts right. Am I missing something?
+
+Speaker 1  1:21:40
+Right, I mean, that would be that would be one situation that would be legitimate.
+
+Speaker 2  1:21:48
+Now, is there a risk? I mean, can we just
+
+Speaker 2  1:22:01
+are we worried about some Okay, but what if the contact is not a is not a client? should those be I mean and I haven't messed with that I think that might be the question. So if suppose I have let's say say a non a non Mennonite employee who is the primary driver then I think I have to enter him as a as a as an active content ID contact but he probably wouldn't be listed as a client does that sound right
+
+Unknown Speaker  1:22:40
+right so
+
+Speaker 2  1:22:58
+Okay, so here let me respond to your second question
+
+Unknown Speaker  1:23:30
+too
+
+Unknown Speaker  1:23:41
+now on this one
+
+Unknown Speaker  1:23:49
+there okay this one is.
+
+Speaker 2  1:24:25
+But, but clearly there was a reason why we added this validation in the first place, like organization is one active. I mean, it's a funny, funny wording there certainly non English but has one or more active members and therefore cannot be deactivated. I suspect the spec does that. That says something like that. Did you do you know offhand?
+
+Speaker 1  1:24:51
+I don't or is that possibly a standard part of the standard organizations? Teacher
+
+Speaker 2  1:24:58
+organization as act I mean the wording is super embarrassing. So let me double check not super embarrassing mildly embarrassing the organization has active
+
+Unknown Speaker  1:25:34
+has active one or more active
+
+Speaker 2  1:26:12
+Okay, so yeah, I mean I found the validation it is CWA specific
+
+Unknown Speaker  1:26:24
+so
+
+Unknown Speaker  1:26:29
+proposal ditch
+
+Speaker 1  1:26:32
+I'm not seeing it in the spec but the spec is much less detailed Sure,
+
+Speaker 2  1:26:38
+then organizations the only risk I can see is if one of the linked contacts is a non client for example, a non Anabaptist employee that should be made inactive we could say that non client
+
+Unknown Speaker  1:27:17
+yeah
+
+Speaker 2  1:27:21
+anyway does the client care about that? I
+
+Speaker 2  1:27:32
+cost Okay, so, if you click into do the incident front of you or shall I Sorry. Okay, so refresh my se my two blue comments so I'm offering two different things one free and one paid but I need clarification on the first one
+
+Speaker 1  1:27:54
+Okay, so remove validation for inactive organizations
+
+Speaker 1  1:28:03
+risk can see is one of the link contacts
+
+Unknown Speaker  1:28:07
+that you need
+
+Speaker 1  1:28:08
+to inactive and that's actually one of the scenarios that one of the two scenarios that the client emailed about had a non client contact
+
+Speaker 2  1:28:19
+okay well so so the question for him is does he want those Okay, now there's another change we could do let me add another comment here
+
+Unknown Speaker  1:28:35
+let me think this through how would you do it though the Okay.
+
+Speaker 2  1:28:48
+How can we make it simple? I was I mean, okay, I'll give you several options
+
+Speaker 2  1:28:58
+options number one
+
+Unknown Speaker  1:29:06
+change Okay.
+
+Speaker 2  1:29:13
+Add a button slash link to deactivate to.
+
+Speaker 2  1:29:42
+Wow, that's a little messy. Change the report below to easily allow deactivating. Link to contacts. Run a knightly process to deactivate any linked non client contact any non client contact that is linked to an inactive company this may sometimes deactivate too much this may sometimes deactivate someone that will probably not I mean that's not bad it's just a nightly we don't warn in a nightly process that just deactivate it that cleans it up and says this contact is inactive so we're going to this this is a non client contact link to an inactive company will automatically deactivate them so that one I would charge for
+
+Unknown Speaker  1:31:01
+that would cost something
+
+Unknown Speaker  1:31:07
+and
+
+Speaker 2  1:31:14
+include a bit of this one is included below that's last one. So I thought I had one other adult okay
+
+Speaker 2  1:31:32
+add a link to the or contact record to deactivate
+
+Speaker 2  1:31:45
+linked contacts this would be a one click option to deactivate non client linked contacts. We could consider what it is called
+
+Unknown Speaker  1:32:05
+this
+
+Unknown Speaker  1:32:14
+probably about
+
+Speaker 2  1:32:25
+okay, I actually added some options and prices there to take to the client so
+
+Unknown Speaker  1:32:31
+you can refresh if you're
+
+Unknown Speaker  1:32:37
+unable to create invoices for fees and credits.
+
+Speaker 2  1:33:03
+Oh I see. Yes. So this one is approved sent to client approved. Okay. So at times, fees for
+
+Speaker 2  1:33:33
+Okay, and invoiced. Fees for a prior owner are not automatically invoiced are not automatically added to the invoice due to a bug in the software
+
+Speaker 2  1:34:00
+they end up being invoiced in the annual invoicing process.
+
+Unknown Speaker  1:34:10
+Software
+
+Speaker 2  1:34:12
+will be changed so that these are automatically invoiced. So do you need to know what items are like this right now? Well, if there aren't too many, because we just come through the annual process. That's the good news.
+
+Speaker 1  1:34:31
+Yeah, I think I don't think well, you're saying that in saying in the live system
+
+Unknown Speaker  1:34:36
+and the live system there shouldn't really be much at all.
+
+Unknown Speaker  1:34:41
+So okay.
+
+Unknown Speaker  1:34:46
+I guess you would, what you see with the code there when
+
+Speaker 2  1:34:49
+Yeah, so it does it will get the invoice to annually but just doesn't get invoiced intermittently. So Gotcha. Created spec and approved assigned to CCI
+
+Speaker 2  1:35:14
+and let me move on
+
+Unknown Speaker  1:35:28
+the Deaf speck from his comments there
+
+Unknown Speaker  1:35:35
+longer name not aligning the footer
+
+Speaker 2  1:35:45
+okay, I'm not seeing Okay, let me take a look at your image see if this thing has
+
+Speaker 2  1:36:09
+it's not an easy fix. Let's wait for a new PDF library or short names I guess I mean sure if it's an easy fix, it could be that we aren't at the footer
+
+Unknown Speaker  1:36:32
+could be tweaked.
+
+Speaker 2  1:36:35
+Let's see. Let's keep this around but lower priority Okay, I'm going to make it about a four core i think I'm gonna give it to CCUSA. So the code drafters spend too much time on it. No change other vendor approval is approved approved. See design can try our see notes below. And dev spec, I'm going to say try widening the right part of the footer
+
+Speaker 2  1:37:29
+to to use most of the space.
+
+Unknown Speaker  1:37:36
+If it's hard post
+
+Speaker 2  1:37:39
+just spend one to two hours on this. We could see if a new what's the word? If and if if the new PDF export that investor tools PDF docx export is adding which fixes
+
+Unknown Speaker  1:38:15
+in 2024, okay.
+
+Speaker 2  1:38:24
+Okay, so that one I'll just respond it said approved as lower priority. added comments. Yes. Next one. Yeah, we do want to do that. Approved, set the client approved. I'll leave this one around this. This could be something that we might be able to have Jonathan do some time. So Jonathan is going to be working about 2025 hours a week during college and then hopefully full time next in June. So
+
+Unknown Speaker  1:39:04
+okay.
+
+Speaker 2  1:39:07
+And cool. He's doing a great job. He's it's yeah, it's really fun. And he's enjoying himself.
+
+Unknown Speaker  1:39:16
+Cool. Okay. Um, Kenny we got
+
+Speaker 2  1:39:34
+Okay, yeah, there's someone else's chasing that that one will ignore Oh, yikes. This is coming up. I want this one. I like making way off as EVP. Um, so we need to design this one. Let me just mark this one. And that'll probably be okay, I'll chase that one. Okay, change invoice restrictions
+
+Unknown Speaker  1:40:08
+I think we've
+
+Unknown Speaker  1:40:19
+now 718
+
+Unknown Speaker  1:40:37
+So we take a look at
+
+Unknown Speaker  1:40:54
+okay
+
+Unknown Speaker  1:40:59
+yeah
+
+Speaker 2  1:41:00
+are you fine with just saying that once we get rid of the link that deals with most of the problem I mean the worst thing is they might be able to save a blank invoice but I don't think we care that much about that so and we are going to be no wait a second we're playing to hide the whole section here
+
+Speaker 2  1:41:31
+okay that job may or may not be in code review Let me double check. Testing ready to review? Oh, it isn't code review assigned to me. Yikes. Okay, fine, that isn't code review. Good. Okay, I'll chase this one
+
+Unknown Speaker  1:41:49
+yeah okay.
+
+Speaker 2  1:41:58
+And more she replied after you've sent your email so I think we're fine there. So this one is this one's troubling to me. I need to get on top of that one. I think I need to call the client and just talk things. Okay, Josh has given me some information and doing it just based on zip code is cheap and easy. But it is not. It's almost it's not perfectly precise. There are some some complex rules do you have any do you have an email exchange with a going with the client right now?
+
+Unknown Speaker  1:42:38
+Which one is this one again the
+
+Unknown Speaker  1:42:40
+Avalara terror attacks
+
+Unknown Speaker  1:42:43
+yes I do
+
+Unknown Speaker  1:42:50
+think yeah
+
+Speaker 1  1:42:56
+I will their attacks was it was a subject because email and I certainly brought in support Sure. Tech support gotten 10 At some point
+
+Unknown Speaker  1:43:08
+Sure. So let me just
+
+Unknown Speaker  1:43:11
+meet you in let me Yeah. Where I can take something soon.
+
+Speaker 2  1:43:20
+It just copied me back in um or I could just reply to one of the older ones I guess. Well which is better is Judas want to look me back in or should I just reply to an older one
+
+Speaker 1  1:43:32
+yeah, I'll just reply right now and look you in sure support at
+
+Unknown Speaker  1:43:57
+all right okay
+
+Unknown Speaker  1:44:13
+okay
+
+Speaker 2  1:44:21
+okay, so let me bring that over to talk to Josh folder because I want to get wording from him on this I understand for sure what I'm talking about. So
+
+Unknown Speaker  1:44:38
+yep.
+
+Unknown Speaker  1:44:48
+Okay
+
+Speaker 2  1:44:59
+okay, So let's make sure this is yep this is in the Cuban ready good hey we are down to 50 emails instead of say
+
+Speaker 2  1:45:19
+hello eles should we export non primary email addresses for contacts in a separate column should it be important on primary email addresses for contacts
+
+Unknown Speaker  1:45:38
+I think
+
+Unknown Speaker  1:45:49
+okay, well okay let me just reply here this is
+
+Unknown Speaker  1:46:01
+seems to me that we could
+
+Speaker 2  1:46:19
+Okay, all these are our priorities are going to drop down
+
+Unknown Speaker  1:46:51
+okay, yes, here's the one I wanted to write up client reason on contact record
+
+Unknown Speaker  1:47:11
+okay
+
+Speaker 2  1:47:20
+so let me create a new change request. And if at any point you think your internet's better than I can also do a full screen share again but
+
+Unknown Speaker  1:47:32
+okay, so yeah. So
+
+Unknown Speaker  1:47:43
+once you stop, try stopping your screenshare Yep.
+
+Unknown Speaker  1:47:56
+Sorry, what was that you got out just as
+
+Unknown Speaker  1:47:59
+you said something
+
+
+Transcribed by https://otter.ai

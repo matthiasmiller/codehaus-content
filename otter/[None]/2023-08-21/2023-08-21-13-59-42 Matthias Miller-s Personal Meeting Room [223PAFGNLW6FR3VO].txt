@@ -1,0 +1,518 @@
+Matthias Miller  01:27
+Right hello hello not
+
+Unknown Speaker  01:42
+waiting for Joel and Josh
+
+Matthias Miller  01:44
+yes we are okay Cool.
+
+Matthias Miller  03:27
+It'll be on Joe will be on soon
+
+Matthias Miller  03:36
+how's your day going? Pretty good. There's a lot of trying to cut through the noise with some of this stuff. We just hit another roadblock on Yeah, we got a bunch of payroll stuff we need to do for the payroll module. Okay. Okay, gotcha. And then hit some blocks on some other pieces we've got going on as well.
+
+Speaker 1  04:10
+Did all that come up in the I have Marco? Yeah. Okay. I'll definitely review that tomorrow.
+
+Matthias Miller  04:20
+I think most of it's noted in the proposal, but hey, Joe.
+
+Unknown Speaker  04:24
+Hey, both of you. Hey
+
+Unknown Speaker  04:32
+how's it going?
+
+Unknown Speaker  04:34
+Not too bad. You good? Pretty good. All right. Looks like you're in your office on wheels at the moment.
+
+Speaker 1  04:43
+I am. I'm on the road today. So I am pulled over in a Walmart parking lot with some shade that I found thankfully, that's amazing. I know it is
+
+Speaker 2  04:52
+intense in your part of the country is that is yeah, it's
+
+Speaker 1  04:56
+it's I think our high today is going to be 103. So yeah,
+
+Speaker 2  05:00
+Okay, yeah. I think we're probably a little a few degrees over that, but
+
+Unknown Speaker  05:09
+it's a lot. Yeah.
+
+Speaker 2  05:11
+Yeah. Where are you at? I'm in Kansas. central Kansas. Okay. All right. Yeah. Are you in? Where are you based?
+
+Speaker 1  05:25
+Well, I live in in Julesburg, Colorado, which is right near Nebraska, but my dad does a lot of work doing building fences and pastures out in like the Goodland area. So I spent a lot of time in Kansas actually. Yeah.
+
+Unknown Speaker  05:40
+Oh, cool. Cool. Yeah,
+
+Speaker 1  05:42
+hopefully he's not out building fence too. That sounds like a bad idea
+
+Unknown Speaker  05:48
+Yeah
+
+Matthias Miller  05:58
+Good to see you. There Josh gums All right.
+
+Unknown Speaker  06:14
+Hey, guys, hey sash. Ellis is not with us today.
+
+Matthias Miller  06:21
+He's traveling down to spend time with Joey Ruth. is traveling Yeah. Good. Well, let me grab this, again, high level update on the project, from my perspective, we are, there's some small miscellaneous things that we are needing to clean up for a payroll module to go live. And
+
+Matthias Miller  07:01
+I think it's probably a few hours of my time to get it wrapped up half day of my time to get wrapped up. But in addition to that, we're running into some issues with finished goods, mapping. And I gotta chase that working on some speed ups to make it actually be semi sanely usable, to run.
+
+Unknown Speaker  07:23
+To run which
+
+Matthias Miller  07:25
+the FDI allocation or FDI accounting impacts
+
+Unknown Speaker  07:33
+this is like that the report the runs on buildings and
+
+Matthias Miller  07:37
+yes, and, okay. And in addition to the that, we also
+
+Matthias Miller  07:54
+we also, apparently, Mark is not happy with the Let's go catch up counting today, based on changes that we've seen in the database, and wants to assign historical transaction dates for buildings. For example, when a building gets delivered, wants to find some kind of historical Transaction Date. Basically go as early as we can without getting into closed accounting periods or prior periods where we've applied historical costing to the building. So that's in his court, but that's a potential wrench in gears. I didn't see that coming.
+
+Speaker 2  08:51
+So a good time to ask for clarification or shy
+
+Matthias Miller  08:55
+he's okay. Oh, well, I mean, sure. Okay. So
+
+Speaker 2  09:02
+am I understanding correctly? It's not the fundamental issue of the fundamental approach of, hey, let's look at the net impact the total impact that we think there should be and figuring out deltas, but it's looking at and figuring out deltas from what we have applied. But it's taking that model and applying it to a particular historical time.
+
+Matthias Miller  09:38
+I think it's taking that model and applying transaction dates for the delta.
+
+Speaker 3  09:46
+And does it just assume that the whatever historical date we pick is what we picked the last time we did a delta and therefore we're not going to suddenly time travel and create earlier transactions.
+
+Matthias Miller  10:00
+We could time travel. I mean, do we, it's a fair question whether we need to fundamentally change our approach. So if we do that, then we've got a special automatic transaction type, such as building built, building sold, building, you know, fill in the blank. And we have a definitive, one definitive transaction that we
+
+Speaker 3  10:31
+well, I guess I like it, or is he actually trying to literally go back? And I guess I'm, I guess I don't, it sounds like there's some something, my guess there's something concrete he's going after these days, you think, like abstract rule. So there's, there's some situation he's trying to solve for, I guess, I don't know what that is. Like, he doesn't literally, I'm guessing he does not literally mean, the building was built today and delivered. The building was built yesterday and delivered today, let me make the transaction dates be two months ago.
+
+Matthias Miller  11:01
+Because you know, it would be based on literal, the literal, the date of the literal event, except you can't always do that, if you forget to enter a building, you build the building and 22 Worst case scenario, and, and delivered it in 22. And you forgot to mark it as delivered for some reason, then you can't back to the transaction all the way back to 22, to indicate that it's been delivered.
+
+Speaker 2  11:24
+Okay, so it's tying accounting impact to material changes in the status of the actual items in inventory. And trying to say, as of this change in status with this with deep history stuff, weird corner, but with this change of status, this is the impact. Is that correct?
+
+Matthias Miller  11:52
+Yeah, basically.
+
+Speaker 3  11:54
+So is the deal that they will enter billing and suddenly say, oh, yeah, shoot, this was built a week ago. And we want to enter the transactions as of a week ago. Is that the idea?
+
+Matthias Miller  12:03
+Yes, I mean, I believe so. But this is at the end of a 90 minute call, and we were going off the rails already. So I don't really know that it's clear at this point, what exactly they went. I think kind of what triggered this problem. I mean, what originally triggered this problem is, Drew's doing the initial imports. And he's saying, well, these numbers don't make sense. And it's possible that at least part of the problem is this knee jerk reaction. And we don't understand anything here. Why aren't the dates historical? And well, the reason was, because we didn't see it as being necessary. But we have a whole host of other issues going on, and we did not give you control to historically, the plan was not to let you take buildings and create historical transactions for them, we were going to start at a given point in time and start applying those on a daily basis. So I don't know how much that one's to the computer. I don't think it's all of it. But it's possible there that contributed to Sure.
+
+Matthias Miller  13:16
+I'm becoming increasingly less concerned that the bottleneck is going to be on our end, for missing the September 30 deadline. I don't think that's really good news. But
+
+Speaker 3  13:31
+I wonder if he and I should talk to it. I bet I could talk him into or work through. I feel like often they're like, Oh, this is a really big deal. And then we'd like talk it through. And it's like, okay, yeah, that it's not that big a deal. Deal. Or, like, yeah, there are weird cases where it might cause a problem. And for a huge amount of work, we can fix that. But do those happen enough to make to justify it and answers? Usually, no.
+
+Matthias Miller  14:06
+I think even even giving
+
+Speaker 3  14:13
+like, I mean, just the fact that like you don't I mean you often mark the building is built a day later or two days later, but But you should do it a week later, like, so it's like yeah, there's a theoretical problem. That's really a problem with the import. So do we do a one time thing to try to make the the import process do better and go from there?
+
+Matthias Miller  14:44
+Yeah, I think I think something like that. Probably is about right.
+
+Speaker 3  15:08
+Yeah. Okay, um,
+
+Matthias Miller  15:12
+I will have zero capacity. I mean I'm gonna have another hour or so now but I will have we're onboarding Ed's machinery tomorrow and I will have no capacity to do anything before Wednesday morning. Besides what I can get done between now and about an hour and a half from now.
+
+Speaker 3  15:29
+Okay, well I I will just put it on my agenda chat with him on Wednesday
+
+Matthias Miller  15:38
+the other thing another thing that came up is just I made some personnel validation changes that are breaking at least broke zfp I don't know if it broke any other systems so if we do push an update we should for sure to evaluate components and zfp first before we it'd be nice to be able to push an update so that so that well if I can get some of this stuff pushed push through to push an update tonight but
+
+Speaker 3  16:09
+so I had fixed some validation errors. Saturday evening was just popped up since then. What did I not test like we pushed an update live Sunday morning.
+
+Matthias Miller  16:19
+There was no I just fixed this afternoon or this morning I fixed an issue with using reference parameters within ask prompt
+
+Unknown Speaker  16:28
+Yes, that's true.
+
+Matthias Miller  16:32
+I was thinking there was an update components. I'm not sure exactly where this is at but there was something with the there's an accounting report that I think the transactions transactions report match linked asset ID does not. Well, that's not really at all.
+
+Speaker 2  17:05
+That may well be something that our folks coded and
+
+Unknown Speaker  17:13
+I sincerely hope it was not something they committed. Failing validation as it was. But I mean, it said was recently added in any case,
+
+Matthias Miller  17:25
+what I think this is probably easily fixed by adding asset management to zfp but they're gonna break all the other standard systems. No, it isn't CFP. I'm confused. happens to me match really sad. Okay, nevermind. Sorry. I'm lying on that one. I think we're good on that.
+
+Speaker 3  17:52
+I'm happy to take a pass. I think I can find time tonight to try to go through and make sure everything is validating if it isn't, I can take my best shot at figuring out why and fixing it. But it might not. I don't have the inside scoop on this stuff. So it might not be what we want.
+
+Matthias Miller  18:12
+validate my network.
+
+Unknown Speaker  18:15
+Did you want more than that?
+
+Matthias Miller  18:20
+On asset management, it doesn't matter. Yeah.
+
+Matthias Miller  18:28
+All right. So okay, I'm gonna check this here. Okay, so um, so miscellaneous employee verification changes, some calculation changes, some weird rounding issues. We've got Penny rounding issues on the verification reports, I'm mildly nervous that some builder somewhere is gonna get grouchy and he's gonna doubt our numbers because there's Penny differences, but Mark is too concerned about it. And if Mark's willing to go to bat for us, we've got bigger fish to fry. I told him, I told Mark to get in touch with you about changing the invoice number format in the BPR. If it's a Josh and this is a report that that we can once you want to modify
+
+Matthias Miller  19:29
+or SDI builders or sbsta buildings.
+
+Speaker 3  19:35
+Okay, there's two things going on here. There is a builder priority port that gets back Saturday morning to all the builders, they check stuff off and do it. That's all done in Python. Then for some reason, Dwayne convinced Seth to cook up some like our 20 base version that's kind of like it and they are ever since then they get confused about which is which and I. Anyway,
+
+Matthias Miller  19:59
+can we go That's something else getting confused.
+
+Speaker 3  20:03
+And we keep calling a builder. Like, build a priority port is a proper noun. And so when Seth created, he created a builder priority port and literally called it builder priority to our 20, which cracks me up every time I see it. Because there's a builder priority report. But that's not a priority report. That's just what it is. So I don't know what to do. Like you can I'm totally fine if you change the builder a priority or 20. But that will have nothing, no impact on what actually gets faxed out to builders. So
+
+Matthias Miller  20:37
+do you have any idea with the builder priority that we're 20 actually does?
+
+Speaker 3  20:42
+I mean, it tries to emulate roughly what the facts shows it just like some Dwayne and Seth cook it up over on the side, and I totally can't vouch for it. Okay. So, proposal, dear Mark D. Are you trying to talk about the facts thing that gets back to builders that they can do? Check stuff off it as Oh, Mr. Or are you trying to change the r 20? And if it's the r 20. Knock yourself out? Sure. Seth, Nick, whoever I don't care for drafters. If it's the if it's the facts thing. That's different,
+
+Unknown Speaker  21:21
+though. Doesn't this note talk about facts?
+
+Matthias Miller  21:25
+Yeah, but the other report can be pulled by facts to candidate because he had to
+
+Unknown Speaker  21:31
+be, but I don't know what he talks about.
+
+Unknown Speaker  21:35
+Every morning.
+
+Speaker 3  21:40
+Yeah, I just, I think what ought to happen is Yeah. Everything's got to kill off er 20 version, but
+
+Speaker 3  21:59
+why don't you just say Can Can you talk with Josh about this Monday, or Wednesday morning? Yeah.
+
+Unknown Speaker  22:17
+All right.
+
+Unknown Speaker  22:23
+Okay. Why is that in here? I don't understand it. Like what is that?
+
+Matthias Miller  22:30
+I just, it has nothing to do here. I just put it in here to find Okay, so don't forget about it. Okay. Let's get rid of it. Speed up billing accounting impact FDI accounting allocation. He's testing, testing and counting their testing. Imports are working, or should be working. thanks to Joe for chasing that down.
+
+Unknown Speaker  22:52
+Are they? Are they still testing in the test system?
+
+Matthias Miller  22:54
+No, they're in the live system.
+
+Unknown Speaker  22:56
+Happy day. Can we rename that to testing live system?
+
+Matthias Miller  23:01
+Here we could go. They said we want to go change that libre office stuff. So I say go change that libre office stuff, go knock yourself out. I think at this point they're planning to we went to all that work to do the mapping. I think they said we still want to match by name. So I don't know how we want to handle this exactly. But maybe we'll just have an AR 20 that assigns that once they got all the names matched up.
+
+Speaker 3  23:36
+Is that something? Can I just talk with him about that? Like does each shard have? Does each account in the chart of accounts have a unique like that? 10.3 or 10.0 1.101? Does that ever change? Is that permanent? It
+
+Matthias Miller  23:50
+should never it should be? It should be permanent?
+
+Speaker 3  23:55
+So what I'm wondering is what if we, on the Libre Office side, put that number space and the account name. And for all practical purposes, we ignore the account name and just match on the ID when we do the import.
+
+Matthias Miller  24:08
+I wouldn't have a problem with that. I don't know that they're completely done though. Because I'm seeing
+
+Matthias Miller  24:18
+Okay, so it looks like it looks like we have a proposed GL account that is matching. However, we have GL accounts that don't match appropriately to be counting accounts.
+
+Speaker 3  24:40
+And how does this relate to that field that I added and broke stuff?
+
+Matthias Miller  24:46
+Well, I mean, it's a fair question. What do we want to do is do we want to
+
+Unknown Speaker  24:53
+we have to kill that field.
+
+Matthias Miller  24:58
+We can use it to do that. It doesn't currently.
+
+Unknown Speaker  25:02
+Okay, so in the live system that field really isn't filled in.
+
+Matthias Miller  25:06
+No, it's not although, that's that's as simple as doing this.
+
+Unknown Speaker  25:11
+Do what you do. Yeah. Gotcha.
+
+Matthias Miller  25:14
+So
+
+Matthias Miller  25:22
+I'm sure I don't know what it is even whatever that field is. Yeah, gotcha. That's fair. We can I can talk with him. Okay. So do you want to keep chasing this to do the mapping?
+
+Unknown Speaker  25:43
+I don't like pushing stuff forward. There are what?
+
+Matthias Miller  25:48
+I can talk to him Wednesday about it as well. I don't really care.
+
+Speaker 3  25:51
+Okay, I don't know yet. Well, I might take a shot at talking with him about it Wednesday morning. And we won't get done and so then but maybe that will start the conversation for you guys that then I think I think if I talk with him he at least get a picture of what is safe and not safe or reasonable or not reasonable in in libre office. I'm really nervous about this training match strings between Libre Office and an investment keep the two in sync it just I just don't think it's gonna go well. So
+
+Matthias Miller  26:25
+I mean, it is a pretty simple thing just just to do this
+
+Unknown Speaker  26:38
+do you really mean all or do you mean selected?
+
+Matthias Miller  26:43
+I don't know if it really matters.
+
+Speaker 3  26:54
+Like, I'm concerned about the name matching for other reasons. Like anytime they renamed the ad, make sure they get it exactly right down to the number of spaces or things just won't work. And what happens right now is libre office is, is the source of truth. And so when things go when they miss type stuff, then it just gives up. Like they end up with duplicate serverside. And everyone realizes that mistake and they fix it. Or sure things will just quietly not work in weird ways. Just like things, things will not end well.
+
+Matthias Miller  27:29
+The conversation
+
+Matthias Miller  27:36
+Asset Management is under development plan to have a pair program by the end of August. This is done. So you found some of the issues with that you're chasing that with them. This one is done. I don't know why this one's here. I don't think it's actually an issue. Impact should be 00. No, I need to double check that kind of thing. We're handling it but I'm not sure. About ACH payments. Much just good.
+
+Speaker 3  28:19
+Yeah, this is done. We're waiting to test in live. I was gonna do it on Friday, and then we got busy. So talk about that one.
+
+Matthias Miller  28:36
+Check printing, I suspect the other proposal but haven't had a chance to sit down and actually there's a whole bunch of stuff that's kind of waiting on my design stuff here. Trump running cash flow statement,
+
+Speaker 2  28:48
+this cash flow statement is not completed. Still working on it. But But yeah, it's not completely handed over.
+
+Speaker 3  29:05
+So I know this is totally off topic. But what do you keep getting blank images in here like that messed up images?
+
+Matthias Miller  29:10
+We've had this issue for a long time we had some kind of caching issue with there's a job written up somewhere caching issues with I think, old and it history getting pushed out of the data store or something and we can't load it. Like it still saves but
+
+Speaker 3  29:29
+so is it only a factor with emoji memos, because I've never seen this anywhere else?
+
+Matthias Miller  29:36
+Let's try it. Yes. And then if you actually do that, then it reloads.
+
+Matthias Miller  29:52
+I don't know there is a job written up for it. We would love you if you'd want to fix it. But I think it's one of those things that cuz
+
+Unknown Speaker  30:01
+I totally want to fix it.
+
+Matthias Miller  30:06
+Yeah, fair enough.
+
+Speaker 3  30:10
+I have I, this morning, I had some time and built this for purchase orders the simple version. I mean, the simple one, I guess it's a simple if it's I don't know, but at any rate and build a bunch of so I'm doing mine different take a different approach because I don't know, which is better, I just I like mine better, I think it's a personal preference about how you build it like. So I'm doing all mine and macros with lots of string tables. I I don't know if mine's gonna be fast enough long term, but I'm dependent for speed ups to make it faster.
+
+Matthias Miller  30:57
+One of the things that helped me a lot one of the main speed up I'm doing is making the repeat for list loop over a blank item. In case there's anything unspecified Plus account names for any accounts that are linked to this item, whatever the item is, plus any account names that are in the model. So basically, what are all the encountered account names? What are all the expected account names? And what is an include the blank, and instead of iterating over the entire financial accounts list. So it's good enough for me at least at this point. So I don't know if it's how long it's gonna be stable but
+
+Speaker 3  31:38
+so I would hope to have something I would hope to have this on basically done by the end of the week,
+
+Matthias Miller  31:42
+you're gonna see brilliant, AR is dependent on is waiting on Mark to figure out deposit process. This, which adds to the nervousness of I don't know I'm just nervous. Mark is overloaded.
+
+Speaker 2  32:13
+Is there any, any iteration that can can reduce the demand for Basic Law readers reduced the mental load for him in helping us toward ultimate solutions?
+
+Matthias Miller  32:38
+Well, part of the problem is that their AR process as it stands now is horribly sloppy. Like there is no business process around this. And I think he and Dwayne had a little bit of a mini back and forth, I wouldn't quite call it an argument but about fixing the business processes part of this
+
+Speaker 3  33:03
+so presumably ideas, fixing the business process will make things nice and clean, but it's gonna take enough time that gonna push stuff back and miss deadlines. That the idea I
+
+Matthias Miller  33:11
+think that's the idea.
+
+Matthias Miller  33:23
+But then not doing this makes it a lot more challenging. Because if you fix the business process, then you can say I'm expecting a deposit of this amount because they said it's coming. And otherwise you might not find out that somebody paid for sales order until after it's been deposited in the bank.
+
+Matthias Miller  33:48
+Which might not be the worst thing we could still handle it like that.
+
+Matthias Miller  34:01
+Interesting. There's also actually here's here's one piece that could be spun off. They want tax jar integration for somehow tax Garko tech tax jarred calculations for non buildings. for things that aren't tied to transit task, and I think, I think it's probably I mean, there's two ways you can do it. One is a, a force exit edit mode, and have it pop up a little whiskey thing that you put stuff in it, updates it and redirects back. Or you just have a little calculator and passing query parameters to default the calculations and like it goes, looks it up and you copy the tax rate. Well, so the
+
+Speaker 3  34:58
+idea is you need to do They're going to they're going to create a sales order record in the database for this thing. The question is, since it's not created through the checkout process, how do you get tax started? Diane? Correct. Okay.
+
+Matthias Miller  35:16
+Go ahead. The other thing that Dwayne wanted with this is a breakdown. And I think I just think I just put this down further down the list, but he wanted to tax rate by city county state. for reporting purposes. I
+
+Speaker 3  35:35
+don't know if we get that cleanly, I think you'll find out
+
+Matthias Miller  35:45
+kind of like, I mean, they're doing a lot of hand wavy stuff with non buildings. Like none, I don't know that they're actually reporting sales tax on those at this point. It's just a low volume thing, but
+
+Speaker 3  36:13
+it's totally not going to happen by September 30. It's totally just because it's really not needed for I mean, that's just 20s it wants things right. Like, he wants lots of things. That's, can we put it under like in the 1000s? Like, 1100, or something?
+
+Matthias Miller  36:34
+You can go in the unscheduled for 24. I mean, even. Okay, here's the question, though. Is the tax jar really? Like even the tax jar thing?
+
+Unknown Speaker  36:50
+They actually need that.
+
+Matthias Miller  36:52
+I mean, do your making do without it?
+
+Speaker 3  36:56
+I feel like you can punch in it. Can you punch in a tax rate? I don't know. I mean, that feels to me a little bit like what are they going to do? Like that? Eat the difference in sales tax? Just Yes. On the on the sales order. Like if there are handwriting I like it. There's some Amish guy out there and cornfield doing his thing. Right? Yeah. So he just gets the tax rate?
+
+Matthias Miller  37:18
+Yeah. Oh, yeah.
+
+Speaker 3  37:21
+So why would we not here just build a simple, like, if we have to do anything, a very simple whiskey calculator, you type everything in.
+
+Matthias Miller  37:35
+Here, we do a little link that will, okay, if it's non transit, then it's cash and carry, which means it's based on the dealer location, and you'd have to have any other any other info. And so we could we could pass in the the source location, passing the subtotal and the well passing the subtotal and then pass back with the tax tax rate is and whether it's shipping is taxable. I mean, not pass back, just show that in the whiskey
+
+Matthias Miller  38:12
+and there's a question of priority of that.
+
+Speaker 3  38:18
+I'm going to wager it's pretty low, what they've got right now is working. I mean, it just feels like Dwayne's trying to make things more accurate and useful and easy to use, which is totally justified. I don't think it's in the September 30. Push.
+
+Matthias Miller  38:35
+Yeah. Okay, payroll module treatment or invoices, this is still in my court. It actually no, this is not? Well, maybe it is. I'm not sure that they understand exactly how they want to handle employee and company payroll liability with this stuff. Like, we're gonna go push a whole bunch of stuff to QuickBooks. And then we got to come back in and say, well, for these four paychecks, the company the employee payroll liability was $419. And for these, the company liability was $316.
+
+Speaker 3  39:16
+That I don't get like is it because that cryptic Santos taxes or something right.
+
+Matthias Miller  39:23
+tax calculations Well, I mean, what's what's the most important part is the employee payroll liability, because we say we're gonna pay an employee $1,000 But the check is actually $916. So what happens to the other $84 When you push it to the accounting system? So we at some point, we have to know that we only pay them $916 So that we can accurately push it to to the accounting system so that we can pay them the right amount
+
+Speaker 3  40:01
+Got it. So effectively we're using QuickBooks as a payroll calculator correct
+
+Speaker 3  40:13
+Do we have any way of getting that stuff out an automated manner? Are we going to have one each go through and enter it manually for everyone?
+
+Matthias Miller  40:24
+Yes, they have a report that they want to run and multitasking on too many of these things. I think the answer is basically what you should do is you should create an Excel Excel spreadsheet that can suck the data out of where you can export from QuickBooks copy and paste the values into subsequent tabs and reformat it for an import and you can import the Excel file or something like that there's not really well no I
+
+Matthias Miller  41:11
+don't know though because if we had
+
+Matthias Miller  41:21
+I don't know if they have support or
+
+Matthias Miller  41:29
+we might be able to pull it using using something like transaction Pro or something similar
+
+Unknown Speaker  41:53
+that's in our coral yeah
+
+Unknown Speaker  41:59
+yeah
+
+Matthias Miller  42:13
+gotta flush this out and just think it through and I haven't really had time to sit down and do much of that. Better sections on income statement. This is coming after everything else
+
+Unknown Speaker  42:31
+Sorry, I was muted. But yeah.
+
+Matthias Miller  42:37
+Okay. Contract count for reconciliation process. I don't even know what this is. I'm not even sure if we need to keep it
+
+Matthias Miller  42:53
+actually, they're gonna tell us if we do I don't think it's anything. And then transaction verification reports still requires specking from me or somebody to just go knock out the report I don't really know which but it's it's essentially like the PIO verification report but it's for transactions and then something that gets sent back some kind of editable report that that the accounting team can use to verify transactions make sure that they're okay
+
+Matthias Miller  43:44
+they're saying no else so all that to say that's why I'm I mean, I know there's some big pieces waiting on me. There's some stuff Joe, you're pushing ahead, Josh making good progress in your stuff. I'm much less well, payroll module does make me a little bit nervous. Although I'm hopeful that we can that I can push most of that stuff through this week
+
+Speaker 3  44:24
+okay, I'd like to see what I can. Yeah, I'm gonna try to get my stuff wrapped up. I'd like to see what I can do to help them meet that deadline. I don't have their stuff I can take off on marks plate or try to help them cut scope on stuff
+
+Matthias Miller  44:43
+Yeah, it's probably one of the most helpful things to do.
+
+Unknown Speaker  44:54
+Okay, I like it. Good.
+
+Matthias Miller  45:03
+Did you have anything to add from any of your anything you're in?
+
+Speaker 1  45:10
+Um, no I don't think so. I'm just trying to absorb the structure of what's happening here and so I mean it's really helpful for me to hear what you guys are doing but I don't think I have anything useful to add to the discussion right now. It's good
+
+Matthias Miller  45:31
+just your will judge me main thing that I haven't talked about yet on this stuff is the skin. The skin thing that you mentioned?
+
+Speaker 3  45:45
+Oh, yeah. I mean, in some ways, I don't care one way or another. I am using numeric IDs for my stuff. Generally, what I've done is you Stens where they're entering them. And it's obvious when stuff breaks. Here my bias would be the other way because it's auto generated and it doesn't really matter but I don't care. Would you
+
+Matthias Miller  46:14
+do that? I think you're right we would you do the same for the SSID
+
+Speaker 2  46:18
+Yeah. It's an SSID sales your ID Gotcha.
+
+Matthias Miller  46:26
+We got
+
+Unknown Speaker  46:31
+Yeah, actually, I think I do even more for them because compasses miserable things with those things. They'll change them up stick suffixes on them and
+
+Speaker 3  46:52
+that's that's something if you'd like we could do that after go live right. Along the way, tomorrow stuff have to change but
+
+Matthias Miller  47:05
+it's true. We could.
+
+Unknown Speaker  47:07
+Staff wondering if I should just go do it.
+
+Matthias Miller  47:12
+I don't mind if you do. We do have accounting transactions currently tied out to want to transfer expression for stin the Building ID no mighty.
+
+Speaker 3  47:28
+Okay, I can never understand transfer. So usually what I do is put both fields in and hide the old one and use an X 30 to move stuff over and then get rid of it a week or two later.
+
+Matthias Miller  47:39
+Fine. Good, good. Anything else? Nope. I don't think so. Thank you all super helpful. Awesome. Thanks. Thanks. Talk to you later. Bye.
+
+
+Transcribed by https://otter.ai

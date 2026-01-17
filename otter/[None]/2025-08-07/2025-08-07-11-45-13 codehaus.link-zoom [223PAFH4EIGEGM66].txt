@@ -1,0 +1,551 @@
+Unknown Speaker  00:30
+Where did you go?
+
+Unknown Speaker  00:32
+I got stuck at Starbucks.
+
+Unknown Speaker  00:35
+Starbucks, come on. Wait. You have such better options,
+
+Unknown Speaker  00:45
+I know,
+
+Unknown Speaker  00:48
+but sometimes you just need a fix.
+
+Speaker 1  00:50
+Sometimes you need to do that's, that's, that's about the incentive it
+
+Speaker 2  00:54
+all right, I went out for a little walk, okay, um, I started thinking about this payment record. And restricting it after it's completed, I think what we want to follow is kind of the same model we've done with some other records. Is you can edit the record if it's the same day, but if it's tomorrow, then somebody with a higher restriction level is going to have to to do it, because there's a lot of there's a lot of very pertinent stuff that happens in the payment record that we don't want you to be able to go back and just Monkey up.
+
+Unknown Speaker  01:34
+Makes sense. I like it.
+
+Unknown Speaker  01:42
+How was lunch?
+
+Speaker 3  01:44
+Good? Had some good smash burgers on a park bench by the Juniata River, and that's where I'm sitting right now. Great.
+
+Speaker 2  01:53
+So hold on a second. Matthias is at Starbucks. You're out by the Juniata River. What am I doing with my life? I can do better things with my life.
+
+Speaker 3  02:02
+You do. I spent the whole morning at East End coffee shop, and now I'm sitting by the Juniata River with it blowing peacefully by big trees, a few birds singing, cicadas going for
+
+Speaker 1  02:13
+it. He spent all morning looking at the pharmacy drive thru.
+
+Speaker 3  02:17
+Yep, it was really, really quite something. Here. I'll send you my view pharmacy.
+
+Unknown Speaker  02:22
+Drive through, Yep, here,
+
+Speaker 3  02:29
+lest my day sound too glorious. There's my there was my view this morning.
+
+Unknown Speaker  02:40
+I mean, I mean, it's pretty good view. So got yourself a nice coffee. There.
+
+Speaker 3  02:49
+It was a solid morning. Yeah, yeah. In between talking about accounting impact, I watched the random characters strolling the street.
+
+Speaker 2  03:00
+You know what? I wouldn't have been okay. That's what I need to do. I need to start having assist dev calls in a coffee shop. I would be happier about them.
+
+Matthias Miller  03:10
+Well, there you go. There you go. Once I miss about my former offices. I had a good view of the public library, which is apparently where most of the downtown Drama goes down. So you know you can see cops show up and altercations between people and car accidents, and you know,
+
+Unknown Speaker  03:30
+I was in nope, alright, so
+
+Matthias Miller  03:34
+Steph, I'm gonna be back in my computer. I can do screen sharing in a minute, but, or a few minutes, but we are changing how we do due date calculations. The basic challenge kind of sort of changing. The basic challenge is that we Okay, so first of all, there's two methods of due dates. First of all, thank you. There's two methods of due dates. One, one is like a fixed due date. So the due date. So the due date is always going to be on the fixed day of the month. And the other is the floating due dates were based on what you pay determines your due date. So far so good. Okay, yep. But then on top of that, we need to be able to fudge due dates. So somebody says, Oh, my two days gonna be on the third run the on the 31st I really needed to be on the first. Can I please have it be on the first and then you're looking like, oh well, you're a good customer. Sure you can have it be on the first. So even though it doesn't calculate automatically to that point, we need to be able to work from
+
+Speaker 4  04:39
+that point that was, that was the best response, that that was yes.
+
+Unknown Speaker  04:46
+So I think it's pretty accurate.
+
+Matthias Miller  04:49
+I mean, and so here's, here's, here's how I think, I think we need to do it is, I think we need to, I. Be able to, I think the payment record, I think we'll calculate due dates based on the most recent break it down. When you don't have any payments, you just calculate the next due date based on the term and the contract start date. So monthly, it's a month later. Weekly, it's a week later. And then when you make a payment, we will auto calculate the next due date based on and if it's fixed term, the next due date will stay exactly the same. You know, it'll be the, you know, you pay half a payment, it's no matter what you pay, no matter what you pay. And if you have floating unless you pay the full payment. And then if you have floating due dates, then, well, if you pay a partial amount, then effectively the next there's a next row that has, you know, I mean, your your next due date, like, that's effectively the payment for that due date. And then you have a new row that says, next payment is due a month after that. And then you can fudge payments. And so basically, due dates are always calculated based on the latest payment row across all payments for that contract.
+
+Unknown Speaker  06:22
+Okay?
+
+Matthias Miller  06:24
+And so if you fight your payment, we just calculate a month after that and handle partial partial month payments.
+
+Speaker 3  06:41
+Okay, how did the partial month payments work? If you're missing it, but Okay, so
+
+Matthias Miller  06:47
+on the if you make a partial month payment, on the payment row, it'll say, here is the last due date, and then it'll also say, based on what you paid. This is when we think your next due date should be. So if you pay, if your last due date was 731 then we use our fancy partial month logic, how much of that money goes to July? How much of that money goes to to August based on number of days a month. And I know that's, that's yeah, because they're the same number of days.
+
+Speaker 3  07:29
+And that's, that's for fixed term loading or,
+
+Speaker 1  07:35
+okay, I'll pull up a minute, and it'll make a lot more sense.
+
+Speaker 3  07:39
+Yeah. Yeah. So the confusion for me is you presumably can't do that for floating,
+
+Unknown Speaker  07:49
+for fixed.
+
+Unknown Speaker  07:51
+I mean, sorry for fixed,
+
+Matthias Miller  07:53
+yeah, I think for fixed, basically, for fixed, you need multiple payment rows with the same due date until the amount matches the total payment. Amount.
+
+Speaker 3  08:03
+Yeah, that makes sense. Okay, tracking, okay.
+
+Matthias Miller  08:11
+And so at any given time we will when we calculate due dates. Due Dates really are calculated one month at a time,
+
+Unknown Speaker  08:28
+one period at a time,
+
+Matthias Miller  08:30
+one period at a time, correct? And so let me, let me pull up the mark up.
+
+Speaker 2  08:38
+So let me, let me give you the scenario Seth, and so that it helps, maybe it'll help you think through this. So there are quite a number of scenarios where, let's say, for example, have a customer who's five payments behind, and the customer calls and says, Look, I'd really like to get current, but I've only got certain amount of money. And we say, Well, look, if you make this payment, this payment, this payment, it shows us that you're, you're you're trying to consistently get back on track. So we're going to defer these other two payments to the end of the contract. And by defer, I mean we're going to just move the due date to show you back on track. That's, that's the scenario I see.
+
+Matthias Miller  09:18
+So then if somebody wants to pay ahead, which, and this
+
+Speaker 3  09:23
+is only an option, again, this is only an option for floating term. Or can you, well, know, you'd
+
+Speaker 2  09:29
+be able to do it on the fixed term as well, hypothetically, because, you know, the same scenario applies. It's, it's a right, it is. It's a way for the RTO company to say to the customer, hey, Mr. Customer, you know, you show us some, some track record. We're gonna, we're gonna meet you halfway, and we're gonna, and we're gonna get you current. Now it's not, there's no dollar value theoretically tied to that date, that due date moved. We theoretically there's $1 date tied to that due date move. But we've, I've always looked at this like somewhat disconnected between dollar values and date values. And so in a case like this, they give us three months of rent. I'm going to give them, I'm going to defer the other two months of rent by moving the due date up to current. And the same thing. The same thing exists where, let's say, for example, a customer would call us, and whether on fixed or on moving due dates, they paid enough to get one day short of their like, their payments 100 bucks, they have a $5 late fee, and they're like, Look, all I have is $100 and so okay, we'll take your $100 and because you've been really faithful as a customer, we're just going to slide that due date forward a day and put you back on track.
+
+Speaker 3  10:55
+So do you have a maybe you have over here? I'm curious what that how we ended up fielding that then,
+
+Unknown Speaker  11:01
+okay, so
+
+Matthias Miller  11:02
+one more thing to note is somebody might also want to make five payments at a time, and but not move their due date, not move their payment date. So you would, you would add those five payments and then mark them all as you know, having been due today, and then the next month would just start a month later, and they continue making payments. And that's, that's how we get around the well, it's not technically a security deposit. It's just, you just paid it early, and you want to keep paying it early. And, okay, so fielding it, we do have a payment amount still go ahead. I'm just
+
+Unknown Speaker  11:43
+trying to think through that last one where you're saying, versus you pay for the
+
+Speaker 2  11:49
+reverse set, yeah, the past due customer. So this is who says I paid 1000 bucks, moves me out 10 months. I just want to, I want to be moved again next month is to keep myself in a good cycle. And so you just back, yeah, you backdate the due date. Again, missed it,
+
+Unknown Speaker  12:13
+like you added an override checkbox and due date. Yeah. So, so
+
+Matthias Miller  12:19
+the only change, here's the only change, good.
+
+Speaker 3  12:26
+So if they pay forward, then we again, we are also overriding. We're just moving the due date earlier instead of later, right? And then our logic, when we open a new payment we say, What is your most find the most recent time we have paid the most recent row. If the due date is overridden, we use that. Otherwise, we use whatever the next due date would normally calculate to. Yeah, okay, okay, tracking, I
+
+Matthias Miller  12:58
+think, and so at any given point on a contract, theoretically, if you have calculated due dates. I mean, we might store due date just for specific to calculate due dates the whole way back. However, we want to do that. Yeah, that sounds right, but I like, effectively, we'll still let you edit calculated due date, which will change the payment amount. But then if you need to override box,
+
+Speaker 3  13:21
+yes, yes, yes, tracking, and presumably you can only override on the last row the contract.
+
+Unknown Speaker  13:34
+Last Are you saying the last row for that for that contract,
+
+Unknown Speaker  13:36
+for that contract, on that payment? Yeah,
+
+Matthias Miller  13:41
+presumably Yes, and it has to be on or after, prior to the last due date.
+
+Speaker 3  13:47
+So how does that work with the scenario Gabe that someone's five months behind they pay three? How are we modeling that? Is it on the last row that they have a payment amount, not necessarily, because we're going to auto populate to show like, if you're five months behind, we're going to show you, at least as I understand it, we're going to show you those five past due dates that you still owe stuff for, and then also at one future one. What I think you're saying is that you would then not you would clear the amounts on the most recent two, and then you'd check override on the last row where we have an amount, or the latest row where we have an amount, and override the due date. That right?
+
+Speaker 2  14:36
+I didn't, we didn't, I don't think we thought it through to the fact that this it gets it complicated, because we're fielding each month as a row? Yeah,
+
+Matthias Miller  14:47
+do we need to feel each month as a row? You do need to to calculate late fees, but I think, I think you're right. Seth, I think it is on the last row. I. Uh, that the payment applies to, yeah, well, or it's then last open period over the first open period.
+
+Unknown Speaker  15:13
+No, it's meaning, I mean, isn't the same difference?
+
+Matthias Miller  15:20
+Well, if you have a partial payment, it's slightly different. I think it's the last payment applied, because that's all we're really ultimately wanting to store. We're not wanting to store roads for unpaid payments. I think so.
+
+Speaker 2  15:40
+Okay, and just as you were coming on Seth, I was telling Matthias that due to, due to the fact that this record is becoming more sensitive by the minute, editing of this record, post saving and making the payment, should only to be editable to most users, anything below administrator level, but the same day that you make it, if it goes into tomorrow, and we're going to have to go up to Administrator levels to actually to edit it, because it does have some pretty big ramifications and and I kind of almost want to, I almost, I almost want to say that, is there a way that, if you have, like, only the last payment record is ever editable? In other words, you can't, you couldn't go back in history to five payment records, you know, before the last one, and go edit a due date. And it's
+
+Matthias Miller  16:38
+like, it
+
+Unknown Speaker  16:39
+throws your it throws everything into a tizzy.
+
+Unknown Speaker  16:45
+I mean, you can do that
+
+Matthias Miller  16:46
+same.
+
+Unknown Speaker  16:52
+Do we need to have some way to those corrective transactions for locked periods?
+
+Speaker 2  17:00
+We're going to get into, we're going to get into some of that once we get to accounting, I'm certain, but I don't know. It's some things that we need to make sure that we're we do, right? Because if, if you were, if we were, if you're a super high administrator level and you decided to go back and edit five payment records ago, edited due date for some silly reason. I don't know why you would ever do this, but people do dumb things. I don't even know what would happen that the whole world would probably explode.
+
+Speaker 3  17:37
+So where do we draw the line between keeping them from doing dumb stuff and making it hard, but allowing it if they really want to shoot themselves in the foot. Well, you bought a pistol you pointed at your big toe. Now you don't have a big toe.
+
+Speaker 2  17:57
+We should. We should definitely limit the fact of owning guns that would that would solve that problem right there.
+
+Unknown Speaker  18:06
+Let's get rid of the pistols. I don't
+
+Unknown Speaker  18:18
+know what to say to that Seth, I really don't this is that's
+
+Speaker 3  18:32
+just a balance we're always trying to hit, like, as it gets expensive, the more You expensive and we there are actually instances where, okay, maybe we do actually want a backdoor,
+
+Unknown Speaker  18:45
+right? But
+
+Speaker 3  18:48
+so completely locking it down is a little a little scary, but not completely locking down is also a little scary in different ways. But I
+
+Matthias Miller  18:59
+do do wonder if this is where I think it's a little bit of a to do permissions thing, because I think, I think there needs to be, it might even be a temporary mode where it's like, elevate it's like a pseudo command really, like, elevate me into this a High, high end role for 15 minutes, 30 minutes, and let me literally go do anything I want to, and that the blood be on your hands.
+
+Speaker 2  19:37
+Because in theory, I'm assuming that if you edited a payment record, a due date on a payment record, or dollar value on a payment record in history, then like you should go every, every payment record in succession, after that, you should go and evaluate and make sure is correct.
+
+Matthias Miller  19:58
+Presumably, yes, yeah.
+
+Speaker 2  20:02
+Yeah, so, I mean, okay, so in that regard, and I don't know, I don't know what I'm asking here, but instinctively, I want to say, if it's today, then the payment record that you just did is fully editable. You can go back and do whatever you want to it, because it's still today, we haven't gone through any accounting cycles or whatever, if it's tomorrow, then we go up to an administrator, a higher administrator level, and that administrator level still couldn't edit anything beyond that last payment record. And then the highest permission level would be allowed to go do whatever they jolly well, please.
+
+Speaker 4  20:44
+Is that fair? So
+
+Unknown Speaker  20:56
+that? Yeah, that sounds great for me.
+
+Speaker 2  20:58
+You need, you need one more. You need one more setting there Matthias, and you need way beyond today, tomorrow and way beyond, all right? That's a that's a reference to a movie, fair enough. It was, the joke was, it was Bed Bath and Beyond, and then it was Bed Bath and way beyond.
+
+Speaker 4  21:22
+I do
+
+Speaker 2  21:39
+we, do we want to field some kind of warning on any payment record that is beyond like that is that is in history. That's not the last one with a big, giant Hey, you're doing something here that you better be careful. Or maybe it's on save. You'd say, Look, you are potentially messing up the world, and you need to go evaluate every payment record after this, just so that some high level admin doesn't, you know, shoot themselves in the foot with their
+
+Unknown Speaker  22:10
+pistol, seems to be fair.
+
+Speaker 3  22:17
+Trying to think how it would, although, how much is that? How much is editing a historical one actually going to cause problems, because we calculate the due date based on your latest and other than that, it's just the amount.
+
+Speaker 2  22:37
+Okay that what was, what was the part that was going through my head is, what if you have multiple overrides in successive payment records, and I guess at that point you just still respect the override.
+
+Speaker 3  22:49
+That's fair. I think it's just with whatever the last the latest row is. It
+
+Matthias Miller  22:57
+does mean you can't move a payment to be prior to and, yeah, well, earlier payment, rich payment, you can't move a payment date that puts it before slash after other payments. Okay, that's true. Well, or you could, you could just have a big security warning.
+
+Speaker 3  23:24
+I think, I think that's more more a concern than the editing store or,
+
+Speaker 2  23:31
+okay. The other way to handle this is we say anything after the last record is completely uneditable. If you want to do something with this record, you have to refund this payment and go and handle it properly.
+
+Matthias Miller  23:43
+And so you might have voids void six payments, but what if it's paid out to an HCH or credit card transaction?
+
+Speaker 2  23:48
+Well, it's not necessarily void six pay. Well, that brings up a whole nother question. What happens when you refund a payment?
+
+Matthias Miller  24:01
+Well, when you refund a payment, we effectively nullify everything that happened in
+
+Speaker 2  24:07
+there. Yes, but if you have successive records after that with overridden due dates, you could be potentially locking yourself to a particular overridden due date.
+
+Matthias Miller  24:24
+Why do you refund historical payments?
+
+Speaker 2  24:26
+Because people do dumb things. I don't know. I don't know why you would ever want to do that.
+
+Matthias Miller  24:31
+Why wouldn't you create a shoot off toes? People shoot off toes.
+
+Unknown Speaker  24:40
+My wife looks very confused beside me.
+
+Matthias Miller  24:45
+She's like, where should I watch this?
+
+Speaker 2  24:59
+I mean, the. Other option is that we say, Okay, anything beyond the last payment, if you want to get back to some payment in history, then you'd have to refund all successive payments in front of it. That would be one way to handle it, unless we and then give us a a only support level permission that says, oh, yeah, you go do it, because you guys wrote the software. You ought to know what it's going to do if you try to do something silly like this, that would be the other way to handle it. It's like you'd have to have, you'd have to call support to go fix something that far back in history.
+
+Unknown Speaker  25:35
+How do other platforms handle it?
+
+Speaker 2  25:37
+Maybe we don't care. I think, I think RTO pro forces you to refund everything back to it okay, which would be the three that seems like the correct way to do it. It's like you're gonna have to refund your way back to whatever you want. You decided you needed to fix, yeah,
+
+Matthias Miller  25:59
+refunding payments just seems dumb, though, like,
+
+Unknown Speaker  26:07
+why not? It happens,
+
+Speaker 2  26:12
+customer calls in and says, you know, I made that early payment of $1,000 and now I broke my foot. No, no. I shot my toes off with my pistol and I
+
+Matthias Miller  26:24
+need to go. That's the latest payment. Yeah, I've got my I've got my toe in the cooler. I'm on my way. Can you please refund it quick?
+
+Speaker 3  26:42
+I was that? I've got my toe in the cooler. I'm on my way. Can you please refund it quick? Exactly.
+
+Matthias Miller  26:51
+That's worthy of the quote sheet.
+
+Speaker 2  26:56
+That's what's called a mock up of a disaster. I
+
+Matthias Miller  27:03
+All right? Well, I think the good news is it limits the complexity to this record Seth, and I think, congratulations, you just got job security. Like, I don't actually think it's I think it's kind of bad. Is there any way we can make it not be as bad?
+
+Speaker 2  27:28
+Okay, I'm not sure which way we're talking about right now. Which way did we decide to go, um, refund your way back to whatever issue you want to fix?
+
+Matthias Miller  27:40
+Yeah, if it's more than one, yeah. I mean, if somebody needs money back, then let's start by refunding your last payment. That, to me, just is logical. You need 1000 bucks and you have three payments. Okay?
+
+Speaker 2  27:51
+I 100% agree. But there are times like, Okay. I have had situations where somebody, two months later comes around, figures out that they completely miss, entered something back in history. We're doing an audit. There's a check that we go find in the bank account. We go figure out we put way too much into the payment history. So now we gotta go back and fix that thing, back five payments ago, or whatever it is. So you gotta have a way to get back there and fix that?
+
+Matthias Miller  28:21
+Well, that's where you use the way beyond permission and and I think that's a little bit where it's either it's, I don't know, maybe I'm thinking wrong, but at some level, knowledge about how to fix those requires such a superior knowledge of the system and how it works that they should just get you on the phone and pay you to fix it, or whatever it takes.
+
+Speaker 2  28:45
+Am I wrong? I tend to agree. I tend to agree. So I'm gonna let me state this back, and I think this is where we're landing. If the payment is today, you can edit the record. If the payment is tomorrow. It takes an admin to edit that last record. If it's further beyond the last record, then you need some way beyond privileges, or you refund your way back to it. And if you refund your way back to it, and
+
+Speaker 3  29:18
+then refunds correct, say normal admin would refund back. Yeah, correct.
+
+Speaker 2  29:23
+You would, you would refund your way back to it and then reapply all those payments in order to put it back to Rex. Is that fair? And if you really don't want to do that, if you're really, if you're 10 payments back, and this is going to take five hours to do so, then call up only support, and we will go in there and we will fix the record for you and fix all the successive records after it, and you'll pay us 150 bucks. Hallelujah,
+
+Unknown Speaker  29:49
+that fair. 250 Matthias, you good with that? Yeah. All right. I'm good with that.
+
+Speaker 2  30:08
+Really, really, we really should call it the way beyond permission level, that that would be the way beyond, the way beyond.
+
+Matthias Miller  30:16
+Back in my day, it was the way down, the way down, diet.
+
+Unknown Speaker  30:22
+Um, sorry to complicate your life. Seth,
+
+Matthias Miller  30:28
+the other major change job security is the breakdown. We want this as a table, I think, where you have a subtotal and sales tax for taxable rows and a grand total, and then sales tax needs to be displayed in here, sales tax, and the RG needs
+
+Unknown Speaker  30:48
+to be, Oh, sales tax. I've been forgetting about
+
+Unknown Speaker  31:02
+that. So
+
+Speaker 3  31:04
+what's the comment about finding the due date and reason stuff? Can we
+
+Matthias Miller  31:08
+entirely, can we add column level visibility that if all rows are blank, that the columns completely disappear from the RG,
+
+Unknown Speaker  31:16
+I think so you're saying that if we're we're not including any rows, then
+
+Matthias Miller  31:24
+we're not writing any rows, then completely hide the columns
+
+Unknown Speaker  31:28
+except
+
+Unknown Speaker  31:29
+overriding as in,
+
+Unknown Speaker  31:33
+as in, checking the override checkbox.
+
+Speaker 3  31:36
+Oh, that way. Yes, yes. I think so.
+
+Speaker 2  31:39
+The override the override checkbox reveals the override due date and override reason. And the override reason, it's the override reason is, is required, and I don't know. Can you require that if you came back in the next day, that if someone tried to re override the due date, that you re again required to put a reason in? I
+
+Speaker 3  32:03
+we could Susan if it's next day, and yeah, if it's next day, we could say that the override reason has to be updated if the override due date change.
+
+Matthias Miller  32:19
+Well, you could blink it out, because it will be required. That's true if
+
+Speaker 3  32:24
+it's the next day, if you change the due date, that blanks out the reason you need to return to a reason or do you want? Yes, is that fair?
+
+Speaker 2  32:35
+Something like that? Because what I don't want to happen is some admin comes in the next day changes the due date, and then we don't require them to re update the reason, right?
+
+Speaker 2  32:57
+This is, this is Dwayne's way of adding the reason why things happen to the modification history. There you go. Fair enough.
+
+Speaker 1  33:10
+June, I had a note too about the breakdown being at table.
+
+Unknown Speaker  33:22
+Oh, and one question, are you checkboxes?
+
+Matthias Miller  33:27
+Sorry, I can't catch here. Are
+
+Unknown Speaker  33:33
+you not wanting to include checkbox?
+
+Matthias Miller  33:37
+No, we'll just auto populate it, and you'll just blank out and edit values
+
+Speaker 3  33:42
+based on the amounts. Yeah, yep. Remember Which side did we settle down? Then on order that were we saying that you can't. You can only edit the latest row, the amount on the latest row, and you have to go backwards to go backwards to clear
+
+Unknown Speaker  34:03
+them out. We
+
+Speaker 3  34:06
+talked about this yesterday. I can remember what we settled down.
+
+Matthias Miller  34:09
+I think so. Dwayne, is there a reason why not? You have to pay payments from earliest to latest?
+
+Speaker 2  34:15
+Yeah, as long as, as long as late fees and other fees are still, are still editable, and that that brings up a whole nother, whole other subject, that if you, if you remove late fee or other fee from a row, it doesn't negate it. In other words, it still needs to be paid. We need to have a way to actually negate it at some point. But we want, like those are somehow stored.
+
+Matthias Miller  34:46
+Okay? So if you literally want to waive a fee, you have to go to the contract and say or something. Well, you don't want to do it here, because this is the payment source of two. Truth. And it's like, why would it not be? Why would you not is it so you're literally letting people make two rental payments, but skip the late fee on the first month's payment?
+
+Speaker 4  35:13
+Yes, it happens. I Yeah.
+
+Speaker 2  35:23
+Now, you know, we could say, I mean, the, I guess the other, the other option is we give an override, an override late fee, that or negate late fee, or, I don't nuke the late fee, some something as part of this road, just to say we are, we are not doing it. But I guess, since late fee is the last thing I think, in the payment options. So if you didn't want to pay the late fee as part of that row, then you would only put in $1,004.50 or what? No that that's going to be really hard to figure out.
+
+Matthias Miller  36:07
+Well, I mean, we are going to have to handle multiple payments for the same due date. So you could say, do you need to be able to waive the other fees as well?
+
+Speaker 2  36:25
+Yeah, there's going to be I there's going to be times when somebody has a redelivery fee or something like that. Can I just pay that next month? Okay, fine, we'll let you pay that next month.
+
+Matthias Miller  36:38
+Can we if you literally need to waive okay, we haven't talked about how fees are going to get stored,
+
+Speaker 2  36:45
+unless, unless we did. We did something like, I don't know if this is possible. So if, if you have multiple rows, no, I don't know. I don't know. I don't know. I
+
+Speaker 2  37:30
+if this payment record is the source of truth, then we need to, in some way, store it on this payment record. And if it's it's one either paid or it's negated off of the record in some form or fashion. And maybe it's a, maybe it's somewhere on here, underneath a button of some sort that says, you know, stored fees and late fees. And if you want to actually remove it from the customer's account, then you need to open that thing up and remove it. And if it and I guess if it wasn't paid on this payment record, if you didn't resolve those fees on this payment record, they automatically translate to the new payment record, Yep, yeah, I think so. I mean, something like that is that? Is that? But?
+
+Speaker 3  38:19
+But you are saying that it would be possible to pay all of month one except for the late fee, or other fee, whatever, and then go and pay month two yet on the same payment.
+
+Speaker 2  38:35
+Yes, okay, here's a, here's a, here's a hypothetical scenario. Let's say you have three months that are due. Two of those months had late fees. You pay all three months, but the late fees,
+
+Matthias Miller  38:46
+well, why do we care about what month they pay to like? Can't we just let them pay to whatever they jolly, what like? It's dumb. You have a late fee. You're going to continue being late but, but if some if you can sweet talk the customer service rep into putting your payment into future payments and never paying this payment until the end of the contract, and never having to pay another late fee again, because you're going to keep caught up. Stupid, I know, but like, what's there to stop? That's fine. Never mind. We can do it your way. We can say you can't open, you can't edit a subsequent payment until you've paid, paid off dwf in the previous rental, and the moment that you have at least that much, then you can pay the next payment. And these fees are just going to keep hanging out forever until finally you pay them off.
+
+Unknown Speaker  39:44
+Yeah, you're right. That's exactly right.
+
+Speaker 3  39:47
+It makes calculations a lot more I feel like it makes the logic a lot more complicated to fill the RG every time, because now we have to know,
+
+Matthias Miller  39:57
+right. No, go, find all rows. Shows all historical due dates
+
+Unknown Speaker  40:03
+that are not fully paid.
+
+Matthias Miller  40:06
+And, yeah, do the sum of what's due minus what's paid, and find the balance and show anything that has a balance. Sure it makes a little bit more
+
+Unknown Speaker  40:17
+complicated. It's called, it's doable. I
+
+Speaker 2  40:25
+uh, trust me, Seth, if we could lock customers into paying all of this stuff and not moving their due date until they did, would I would be all in favor. But unfortunately, it's a negotiation dance with customers to be like, Hey, Mr. Customer, look, if you just pay the 100 bucks to date. Look, we'll push the late fees to the next month. You can take care of them then. And it's, it's that whole, it's that whole, you know, I mean, my joke has always been that customers RTO customer service reps are actually sales reps, because I'm always selling you on the idea of paying as much money for you that you currently owe as possible,
+
+Matthias Miller  40:58
+right? Yeah, makes sense. Well, and it's kind of like, if you can sell them to give you 55 5050, more dollars instead of five more dollars, and put it towards next payment, instead of the late fee. Like, well, like, let me help you avoid the late fee next month. And you can, you can get caught up on this late fee, whatever. It's all that weird. Who knows how it all goes. Okay, I'm gonna have to drop in four minutes so then I can pick back up again in 30 to 60.
+
+Speaker 3  41:31
+I'm out for the day in 20 minutes. So do you guys want to continue that, if you want, but okay, do you
+
+Matthias Miller  41:41
+besides the fact? Well, I don't think, I don't think we're in a position to say we believe in this. This is the closest that we believe in. But I think we need to update the mock ups in the spec and say, what are the true implications, and how does this work? And take another swing at it and see if we believe in it. So that seems same. Think so
+
+Speaker 2  42:10
+the only concern I have, depending on, depending on what you guys land on, how you're going to how you're going to track these due dates, and how you're going to move them forward, where you them forward, where you're going to store them. It has to be understandable to the customer service rep to know, to know, to know where to go to negate a late fee completely. In other words, we are forgiving this customer this late fee. If that's always on the last payment record, then it makes a whole lot of sense. I don't want to ever get into a situation where you're trying to go somewhere else. Go somewhere else or like it has to make sense.
+
+Matthias Miller  42:45
+I think an option would be something like that, something along the lines of this.
+
+Speaker 3  42:51
+Oh, can we just say the last the last record is the source of truth this. I mean, this I mean, this is sort of what we're saying already, but then you just look at the last record to see if there's rows that still need to be paid because that was copied from the prior record, which was copied from the prior record, then that would really make sure we don't want to mess with Historic payments, but, but
+
+Matthias Miller  43:21
+what if we had a late fee resolution MRG field that they could use where you could say, look, I want to waive this or but then you need to Have it for all the other fees as well. I
+
+Speaker 3  43:52
+is my Am I wrong? Is it? Is it a bad idea to do what I was saying, have the
+
+Matthias Miller  43:59
+latest record be the source of truth.
+
+Speaker 3  44:03
+Like that's when you create a record. You don't go look back through history. You just look at this, the last payment, and we say, this is,
+
+Unknown Speaker  44:11
+oh, is it? Is it that easy? Why is my why is my video support off?
+
+Matthias Miller  44:17
+Um, all right. Well, Seth, you're about to be host. I'm about to drop.
+
+Unknown Speaker  44:23
+I'll drop. I'll drop it. Did you say you want to get back
+
+Matthias Miller  44:26
+together a little bit later today? Yeah, I could be you in 30 to 60 minutes.
+
+Speaker 2  44:29
+Okay, let's see it's 233, as long as it's 40 later than 45 minutes. Okay,
+
+Matthias Miller  44:38
+sounds good luck then. Okay, thanks, guys.
+
+
+Transcribed by https://otter.ai

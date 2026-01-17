@@ -1,0 +1,464 @@
+Unknown Speaker  01:08
+Mark ready for more? Yeah. Well, I with a bit of my thoughts on paper and just shut send it your way
+
+Speaker 1  01:37
+so by no means all Hello raises more questions than answers but we can start here or if you have something questions you want to start with we can start.
+
+Matthias Miller  01:52
+Let's pull this up. Go ahead and print this off
+
+Matthias Miller  02:11
+was assuming that Dwayne did not send you in, but I was assuming with everything he's got going on, he will not be joining. But should I be checking in with him to see if he wants to?
+
+Unknown Speaker  02:25
+Yeah, you could ask him I could affect some of their processes. But I'm thinking ahead, but yeah, but let's check with him. You have payroll module? Those updates have not been made yet. Correct?
+
+Matthias Miller  02:48
+That is correct. I've tried twice. I'm running into some kind of issues, multiple issues actually getting that done. I don't understand what's going on. I added to my list of tax just about in about an hour or so.
+
+Unknown Speaker  03:00
+Okay. Yeah.
+
+Speaker 1  03:08
+Okay, so Accounts Payable integration, the accounting module. So first, let's review the existing process using the attached flowchart. So I'm just going to walk through what I sent you one more report, which is the accounts payable ation report. One of those things where we've, I know we've we've talked about this a number of times off and on how it should work. But then you get down to the point of actually doing something it's always a little different than what emphasized or thought it should
+
+Unknown Speaker  03:54
+be. The last report I sent to you is what we're going to be talking about first is how it's working. Now, we call it the accounts payable verification report. And it works. Very well, I would say I mean, it's cleaned up. Fitness. It's made us clean up a lot of our loose ends. So taking that and the flowchart, what happens is well,
+
+Speaker 1  04:33
+I'm going to start on the left side where it says the invoices to be paid by the account. So then invoice to accounts payable, batch, whatever the company is email by fax, and we're working to get most of our vendors to send them directly there rather than there's no need. So yeah, like airworks is mostly just send them directly to accounts payable, email, and then brookhollow management agent, the person they have doing that does a threeway match with this, okay? Do I have an order confirmation? A purchase order in assist? And does that information match with invoice. And if it does then and they select the status unpaid unverified and up then shows up on this verification report, like I sent to you. And every Monday, on a weekly schedule, this report gets sent out to whoever's responsible in each district, they go through there. Okay, I see, you know, information there, everything looks correct. And they typically don't ask a lot of questions by the time it gets here unless something looks way off. But the obvious ones, and they may ask a question or two or the situation but generally they go through and then they mark off. Mark, approve whatever needs to be paid, and send it back in. Then Burkholder updates, the status is to unpaid approved. And then on a weekly schedule. The accountant comes in. Wayne has a report set up for her in assists, goes in and it looks at her report showing all unpaid approved invoices. And enter that information in QuickBooks updates the status to paid they fall off of this report and pulls her information directly from from this report like the GL account, the vendor the amounts, and she's no longer storing. Filing copies of the invoices, the purchase orders, the packing slips, and QuickBooks because all of that is already filed.
+
+Matthias Miller  07:23
+That says so since
+
+Speaker 1  07:27
+Yeah, that's the current process. Obviously, a manual process between assist and QuickBooks. But a much better process than anything we've had so far before this. It was varying degrees of accuracy. The invoice ended up in the builders office and they said, I think we got this and on larger stuff, they would have had purchase orders to match up and make sure that they did receive it. But there was a lot of stuff that especially smaller stuff like we got this not sure so and then they proved it to be paid, they would go through their drawer full of rubber stamps that you know for the different GL accounts and pick one that was close and stamp it and put it in a packet and send it off to Whitney who would then take it and file it. And so it feels like we've come a long way things are a lot more organized because of this process. And that's where we're at today. So any any questions on
+
+Matthias Miller  08:38
+that process? No, I don't know if that makes sense.
+
+Unknown Speaker  08:45
+Dwayne is not going to join as he
+
+Matthias Miller  08:52
+he saw my message he hasn't responded he's not joining or he hasn't joined yet so not sure.
+
+Speaker 1  09:01
+Okay, well, let's keep going. I just thought he might have a few more details to add on exactly. On what all is done in their office on this as far as how do you know if you receive an invoice and you don't have a matching purchase order? What are your next steps to match it up? No, they reach out to purchasing and work through like that, but I don't think that really matters here. So b Now let's discuss how we will integrate assists on the module. So first point at the point that biller approves invoice to be paid we want to pay in wasn't a few steps as possible because we have already verified all points listed below. We've done our three three way match. Reg GL accounts have been identified. And we've authorized approval to pay the invoice so all I'm saying is at the point where Mr. Barnstaple marks that approved are basically saying go pay this invoice, write a check, put it in the correct GL accounts and makes those vendors paid. So your steps all the approvals been done already. So too I said can we set up the option to pay it all on paid roofs vendors display a list of all these invoices, the amounts amount, the amount payment methods and payment date after reviewing we'd have the option can you which would issue payment for all selected invoices using the preferred method of payment at the same time this would also this would post debits and credits to all correct account now obviously you would also have the option to unselect any to be reviewed almost kind of almost like a reconciliation process where you mark them approve and batch reconcile a whole batch and so payment date think there should be a default date on payment dates with the option to eat something into the future if for whatever reason I don't I mean maybe maybe money is tight and we have a few large lumber invoices that are net 30 And so now we're we're going to be in a better cash position by the end of the month and we are now on a date them to have been paid. But I think generally the payment date when you go into pay should be default either today or? Yeah. Default should be Yeah, I believe
+
+Matthias Miller  12:16
+on that future date would that be? I mean, are you thinking if it's scheduled for ACH? Well we need to talk about how to future dating works. I want to I think I want to actually keep going here before we get into that but
+
+Unknown Speaker  12:34
+yeah
+
+Speaker 1  12:36
+okay making it a year and then further questions when do we post something to accounts payable? So ideally at the time goods or services are received for our company what are the trigger points so for product when the item is marked and received art received and sent to assist the order confirmation and in IMS, we're calling this reception date so product comes in receiving looks at it they mark off their order confirmation say I received this product and as Mark and send it to a service that automatically updates the status and gives it a reception date for that date adds and whatever the value of that item was added to inventory if it was an inventory item
+
+Unknown Speaker  13:33
+and or services the invoices entered into us is not I think made if finding points they're very layer because well the easy one is anything where we have a purchase order or an assist moment that that order confirmation gets sent back in and mark that we've received this
+
+Unknown Speaker  14:12
+then then we become liable to pay for that but there's also a bunch of things that Well, I guess would house invoice when do we become liable to pay for that? I mean, we obviously don't issue a purchase order for services like that. One company or the utility electric bladder
+
+Speaker 1  14:50
+think when we receive the invoice and it's entered into assists, that's when we become liable to
+
+Unknown Speaker  14:59
+you For now there's a number of edge cases that is what if what if you're buying a your that your editor trade show and there's a company running specials on
+
+Speaker 1  15:27
+lots of lumber you buy at the show and you get a $2,000 discount so are you at the show I think one week expenses as a liability account or you could put as a negative AP I don't know that that needs to that happens often enough hung up with that then when there's something we would move out of AP and onto our checking account payment is issued was determined I think that would be whenever you go through and pay then it will obviously move from accounts payable in will start shaking and then when you reconcile your books in the bank that's when you would catch any gubbins is there I would we apply an existing credit so that's kind of my main dump on on this so
+
+Matthias Miller  16:43
+let's start with
+
+Matthias Miller  16:51
+see this is two things. One is the accounting impact of POS and vendor invoices. So and the other piece is payment for future payment, is this scheduling for payment? And if so, how does that work? And I wonder if it's it's actually not payment. If it's if it's more like snooze this vendor invoice until this date. And at that point, you start getting alerts saying you've got things to pay, you got things to pay, you got things to pay, why aren't you paying them? Please pay and the ACH payments yet process you know whether it's if it's checks, then you know those checks get printed to be printed. If it's ACH the ACH gets initiated but it takes a follow up step to actually pay now what one other question do you do future payments on? You pay by credit card for AP
+
+Speaker 1  18:12
+you you're saying if we handle a credit card account like and accounts payable
+
+Matthias Miller  18:21
+Yeah. Well, let's say that you've got a vendor geo vendors that you that would come through AP where you would run a card to pay
+
+Speaker 1  18:34
+we do actually yeah, like the the app hosting invoices that we pay are actually yeah, those are all
+
+Matthias Miller  18:46
+those are auto pay. We have
+
+Unknown Speaker  18:47
+Yeah, auto pay.
+
+Matthias Miller  19:06
+Let me ACH is really the only thing that you can do. I mean for check. Yes, you can post date that but you'll still have to print it out and remember to drop it in the mail unless you schedule it through your online billpay to go out by a specific date.
+
+Speaker 1  19:28
+But I like your your proposal of it seems to make a lot of sense your proposal to like an alert because they know that with a more manual process. The place I worked previously, they would have one of those one date organizers where it's almost like a ruler with with all But in the whatever attached one for each date, and then get an invoice that you want to pay on the 15th. And you'd slide it into that 15 slot. And then you know, it was there for future when you need it.
+
+Unknown Speaker  20:18
+There's a place to start something like that. I mean, I think that would it's a little scary to have a completely automated, like, have an ACH schedule in there.
+
+Speaker 1  20:32
+Although I guess that's how payroll I mean, I know that's how we need us payroll, she'll process payroll first of the week schedule a payment for Friday.
+
+Matthias Miller  21:25
+Yeah, although either way, either way, credit card and cheque would have to work on a reminder basis, I'm assuming, unless there's a different process unless you would post the check and just go ahead and print it out but not mail it. predated whatever.
+
+Speaker 1  21:50
+Oh, yeah. So with a credit card like scheduled to run the 25th of every month or whatever, like the app hosting ones are would those? Is your thought on that?
+
+Speaker 1  22:18
+Well, you were talking about a credit card to be we manually have to issue payment. And in the future. Today, you weren't talking about the auto pay ones. Were you?
+
+Matthias Miller  22:36
+Yeah, no, not the auto pay ones. The auto pay ones, I think you say Oh, this will be like in the app hosting case you would market paid as of the 25th is I mean, it's effectively paid. It's no longer your responsibility to make sure it gets paid. It's the vendors responsibility because they're auto billing. But for things like anything else you're paying by credit card, I'm going to assume there's some kind of like there's not a standard process to say we're going to pay this by credit card. It's either I approve you running this on the card ending and 1234 Or it means calling in and giving the phone number it means logging into a website and putting in the putting it in Yeah.
+
+Speaker 1  23:45
+Is your thought as far as future date for Ach, you just go ahead and schedule it. And then it's it's effectively on you just know that on that future day it's going to process and everything's going to be okay, but then you have alerts that pop up and say, hey, you've got this check to a, you need to issue rent this check during the mail, need to run this credit card or to you when when that time comes.
+
+Matthias Miller  24:33
+It's something like that that's good. Okay, I think probably what you would do is have a perhaps a process to kick off ACH payments. It could be something like 430 Every morning, go kick off all ACH payments. And then 445 In the morning, go send it List of unpaid vendor invoices that are scheduled to be paid. It gives you at least some level of fallback.
+
+Speaker 1  25:13
+You're saying that the list of invoices would be the ones that were paid by ACH that morning.
+
+Matthias Miller  25:22
+What I was thinking was would be unpaid invoices. Although we could include both that includes both that way if the ACH is if ACH fails for some reason that you would see that on a report, but we could actually had the report beat include including both
+
+Speaker 1  25:44
+I see being the ones that failed. Or it was just simply show unpaid. So you achieve this and didn't pay or did wasn't paid. Yeah. Well, not sure if we plan to use this verification report, similar to what we're using it now. I would like for something that stated in the future that we're going to pay at a certain day should it disappear off of this list once we scheduled payment even though we've scheduled payment two weeks out? Or he thinks that it should stay here and we would to add another column that says
+
+Matthias Miller  26:37
+yes, scheduled?
+
+Speaker 1  26:39
+scheduled payment date? Yeah. I think that would be the right thing to do. Because if you don't you're watching your cash flow and I have sufficient cash to pay the three invoices this week. And you forget about the others that have been scheduled two weeks ago. I like don't like that approach, like the scheduled payment date.
+
+Matthias Miller  27:09
+Make sense? I would agree. I mean, that makes a lot of sense to me.
+
+Speaker 1  27:26
+And the same would apply with like the banks and credit cards would also have a date scheduled for the future. But instead of automatically issuing payment those would send a reminder to whoever's responsible right
+
+Unknown Speaker  27:54
+right.
+
+Matthias Miller  28:05
+Okay, so there's more detail to be specked out here, but this is definitely a step in the right direction. So then the counting impact when you have a purchase order with a reception date Well, one question before we go into that, can a vendor invoice be tied out to multiple POS and vice versa, can it be POB paid by multiple invoices?
+
+Speaker 1  28:48
+When you say invoices, you're talking about the system generated invoice not the invoice coming from a vendor necessarily unnecessarily?
+
+Matthias Miller  28:57
+Well, I mean, however it happens, I mean from a Cisco perspective, like a purchase order, can you have a purchase order in assist and you have two vendor invoices that link out to it and vice versa Can you have to purchase orders in assist paid by the same vendor invoice?
+
+Unknown Speaker  29:21
+I don't know.
+
+Matthias Miller  29:28
+The question for Josh.
+
+Speaker 1  29:32
+Yeah. Are we talking system limitations with what we have now or are we talking about whether we have that, that those situations
+
+Matthias Miller  29:53
+I think the question is system limitations. Do we allow you to do it? I think because if we allow you to Do It seems to me like we should probably need to let you do it
+
+Speaker 1  30:12
+yeah that would be a question for Josh okay
+
+Matthias Miller  30:28
+you're gonna keep Josh busy in the day
+
+Matthias Miller  30:36
+you have multiple POS to the same vendor invoice Can you have multiple yes to the same
+
+Unknown Speaker  30:50
+okay
+
+Matthias Miller  30:53
+so let's say that you do then presumably on a purchase order on reception date, so purchase order you would take take all skews not tied out to a vendor invoice, prorate tax plus shipping and allocate to appropriate to default GL accounts per SKU. Now there's this weird thing about freight invoices. Do you know how those work
+
+Speaker 1  31:39
+yeah, so we have the inventory management system and we have
+
+Speaker 1  31:49
+counting so on a couple guests let's talk about counting first on accounting by a load of lumber for 15,000 and we contract the rate to haul it from North Carolina to Indiana $2,000 So we get two invoices one from the freight company and another from lumber lumber company so from an accounting perspective, we just say well this lumber is asset so towards posted and we pay everybody's happy the freight invoice for $2,000 we say well we're switching that but we use it so we pay them $2,000 And they're happy but instead of posting that to a we also post that to an asset materials account because it are the cost of getting those here it's no different than if we buy from a vendor that has free shipping while they're no vendor ever has free shipping they just built into the price of the product. So the from the accounting perspective the only thing we do differently then is we just post we use the same GL account then on the Inventory Management site we say we keep track of Okay How much did this one to buy for cause well we bought it for $10 apiece, but then we dash build it to so that we can think IMS we can link materials purchase order an invoice to the freight invoice and it says oh okay, I have 2000 lumber here and so that means and I have $2,000 of freight so I allocate that and my landed costs for materials is actually $11 per piece instead of 10 because of so in inventory goes up basis by that amount as does the assets account balance sheet missing Yeah, that's to have a that makes sense or not.
+
+Matthias Miller  34:42
+Do you happen to know how that second invoice gets tied out to purchase order?
+
+Speaker 1  34:53
+Yeah, so there's an additional expenses option on the field. Looking at, I could pull some example if it were helpful, but there's an additional expenses line on the on the purchase order and it's used for that additional expenses. It's not It's also used if we have a freight surcharge from a company that does their own freight or a fuel surcharge or a rush fee or whatever. So the intent is always have a so it can it can be manually entered like a number or it can be entered or a link to another a freight invoice entered, which then pulls that amount in.
+
+Matthias Miller  35:48
+So additional expense Pio we see if there's any other system? I can do you have one?
+
+Speaker 1  36:05
+Or maybe I can have one very, very shortly. Here I go. Aaron, Mrs. Do you have one?
+
+Matthias Miller  36:12
+I got one UfP sells sells very.
+
+Unknown Speaker  36:17
+Yeah, linked to TMC the freight company.
+
+Matthias Miller  36:24
+See the link? You didn't see
+
+Speaker 1  36:28
+it? Okay, so you're seeing we've got an error don't rise.
+
+Matthias Miller  36:37
+Well, this gets interesting
+
+Matthias Miller  36:45
+exclude purchase orders that are weighed as an additional expense. So I mean, the main thing we want to make sure then is that the TMS basically gets fun. Okay, so TMS would hit at the time of, okay, let me take a step back the way that I'm envisioning this, I think, if we do this any other way, then the same way we do accounting impact for buildings and sales orders. I'm terrified that we're gonna get ourselves into trouble.
+
+Matthias Miller  37:42
+I could be wrong, but I'm terrified that we will. And so I think the way I'm thinking about it is much the same way. Let's look at this Pio. And how should this Pio impact accounting? Now let's go in and let's see what we've calculated previously. And let's create the Delta. There's
+
+Speaker 1  38:13
+why in this, why would we calculate it twice? Like,
+
+Matthias Miller  38:19
+Well, okay, you get the TMS sends the invoice, let's say TMS. You get the PIO for TMS first, and you enter that in will technically. Or you enter the reception date for that first, that's going to hit the books immediately. But you actually only received half of your inventory? Well, I don't know. I guess it doesn't matter.
+
+Matthias Miller  39:01
+No, because they get paid independently. So you could you could, you're right. So what we could do is on the purchase order. When when calculating the AP for a Pio exclude any additional expenses that are linked to a Pio. That would make more sense is that what you're thinking?
+
+Speaker 1  39:36
+Yeah. But so is that but okay, we just talked about this with Dwayne recently but like the the example you were looking at the additional expenses so you have that. Sales very, up sells very order send an invoice for all that and the TMC freight invoices linked to that but it whatever the the amount is for the freight invoice cannot obviously did not increase that purchase order total or invoice total or it would not have right if match was additional
+
+Matthias Miller  40:40
+Let me see how this is getting calculated versus out to excel
+
+Matthias Miller  40:54
+we've got 77 I mean on this purchase order that I have pulled pulled out I am seeing the PIO total including the landed freight cost
+
+Unknown Speaker  41:16
+okay but then it won't match with Okay which one are you I'm looking at one report well it's I didn't send you that page but at
+
+Speaker 1  41:36
+it's a purchase order number is S T 30609 A B one
+
+Matthias Miller  42:13
+all right, it was St. Air let me include complete that was ste 2036098 B 1230609.
+
+Speaker 1  42:22
+Got a b one.
+
+Matthias Miller  42:30
+All right. All right. So got that. So this one is showing but
+
+Speaker 1  42:38
+is that is their freight linked to that already? Yeah. So what is what is the amount that we're that we owe you P cells very
+
+Matthias Miller  42:52
+1902 84
+
+Speaker 1  43:02
+I'm showing on my AP verification report I'm showing $7,983.72
+
+Matthias Miller  43:09
+Oh I'm sorry up Salisbury I got the wrong 173 7983 72 Yes
+
+Unknown Speaker  43:17
+that's what yeah that's so that's the amount
+
+Matthias Miller  43:36
+the basically what we need to do is when the purchase order gets Okay, when you when a purchase order is received. Let me check one other thing here. When a purchase order is received, ie reception D is populated. Then debit slash increase
+
+Matthias Miller  44:14
+Well, yeah, debit slash debit the assets slash expense account. And this is true because assets and expenses both increase and then debit slash decrease the accounts payable account. When a vendor invoice is paid. Create an adjustment
+
+Matthias Miller  44:55
+well
+
+Matthias Miller  45:10
+So then when you mark a vendor invoices paid what determines which account? How do we know which account it got paid out of
+
+Unknown Speaker  45:32
+you're seeing whether it's taking or if we have multiple checking accounts you're saying right? Well, we would have to have a default. Based on the payment method, we would have to have a default
+
+Speaker 1  45:58
+like so if you're paying by bank it always bank account if you're paying at Cashbox, a cash I mean I don't think you would but if you would have two different checking accounts one for your ACH payments and another for your banks you could could we have a default setting per company where I checked in then it always goes to this account if you pay by ACH is always draws from this account I don't know like credit card and credit card works same very similar to a well how would credit card work
+
+Unknown Speaker  46:57
+in that that should be a predicate works like a let's just talk about check and ACH.
+
+Matthias Miller  47:38
+Yeah, man, I think I think we're actually pretty close here
+
+Matthias Miller  48:12
+here's my thought. It is generally speaking like set Okay, for when you're buying product, we determine the AP value
+
+Matthias Miller  48:33
+well, I mean, this is getting a little technical, but the AP value is determined based on
+
+Matthias Miller  48:45
+the P, the PIO. Yeah, this may be more technical than lens require, but the eight the accounts payable, line item gets updated based on the purchase order gets increased based on the purchase order. And so if if a purchase order happens to get tied out to a vendor invoice, we recognize that but still have the purchase order be responsible for calculating what the what the what the AP value is. And then on the vendor invoice, the invoice makes the corresponding transaction that says, okay, decrease accounts payable, decreased checking.
+
+Speaker 1  49:29
+I follow your well maybe we have to go back to Larry's suggestion of what you're saying is when we receive product saying what it is we we think it's going to be $100 So that's what we enter an AP but when the invoice comes it's actually $103.22 Because that or whatever I mean that that just happens We're seeing is what happens with that difference?
+
+Matthias Miller  50:03
+Well, I guess that's true too. That can happen on either side. So we could say, another way to do it is to say, the PIO only creates transactions upon receipt. Well, this actually doesn't make as this might not be that bad either. And then on the vendor invoice we adjust AP for what was actually paid and create any additional adjustments based on what we thought the PIO was going to be.
+
+Speaker 1  50:39
+So in the example, I just gave that $3.50 cent adjustment you would make that adjustment since the invoice right, if you would increase accounts payable by $3.50.
+
+Matthias Miller  50:52
+Right.
+
+Speaker 1  50:56
+Yeah, that's different than what Larry it's it was more of an organizational thing where he he split his accounts payable categories one is the if not voucher, meaning product received don't have a vendor invoice I had to get and then the other was
+
+Speaker 1  51:18
+a vendor invoice or not have a vendor invoice. But I think the way we're organizing that or managing that, and the verification report is yeah, we deemed it's not.
+
+Matthias Miller  51:42
+Right, seems not really necessary. I mean, I think
+
+Speaker 1  51:55
+So is that where you're thinking your delta transaction? At the end of every day, it would look at what are the differences between
+
+Speaker 1  52:10
+what do you what are the differences that happened in the last 24 hours? From orders within accounts payable, like not the whole lump sum, but what are the change values on orders in accounts payable that changed or the value changed
+
+Matthias Miller  52:47
+I actually don't think it would be that much more work
+
+Matthias Miller  52:56
+to have a V receive not voucher to support receive that voucher and support looks at why support if we don't need it and support the whatever the second account is and even for testing
+
+Matthias Miller  53:33
+Okay, the only argument from a business standpoint that I can make and you know this way better than its might not it might be completely unnecessary. But the advantage of having that differentiation is again, you can tie out if you need to sanity check or number looks off. You can tie out the verification report against the balance sheet and saying well there's a difference of 1436 Let's go hunt down where that difference is. Whereas if it's all in one category that's harder but I don't know that that merits much change I think
+
+Matthias Miller  54:22
+But effectively, okay, so.
+
+Speaker 1  54:36
+Basically, what we're wanting it wanting to happen is we we enter a an estimated amount when we received the product. And then when we actually get the invoice and enter an approved invoice. We want to cancel out that estimated transaction and replace it with the new The actual values and most of the time the values won't change but the
+
+Speaker 1  55:23
+part of me thinks that if we if everything would follow the same process where a good amount goes in then when we hit the next status take that amount out and replace it with the actual amount and that would replace the need to I dividual purchase orders or invoices other somehow USCIS will need to know is a new invoice you're entering is is is the amount is changing
+
+Matthias Miller  56:03
+Yes, well we need the tie out so we know how much to cancel from the PIO and, and then the advantage of doing it with Delta transactions is if you fix up an invoice I mean, it's might end up being a little bit weird, but if you fix up an invoice then we can capture those modifications and handle them appropriately. Now, the elegant thing about this is that there is no special handling for services rendered because there is no Pio to reverse. And so therefore, we're just going to apply this straight AP and keep going
+
+Speaker 1  57:05
+and with the same apply if we have like what if we have a purchase order by the time the product arrives, we also have the invoice for the product
+
+Matthias Miller  57:21
+what happens if you get the invoice right? So here's a weird scenario. You get the invoice before you receive the product
+
+Matthias Miller  57:38
+well, you can't really process this but let's just say it would happen. And you get the invoice before you receive the product. You enter the invoice that goes in but but because the PIO has not yet hit the books, you just increase AP by the invoice amount. And once the PIO hits the books, well that's going to create its adjustment but we also take a look at the vendor invoice and the vendor invoice makes its corresponding adjustment right away as well.
+
+Unknown Speaker  58:12
+Well, but in that case with the vendor invoice what determines when a vendor invoice is it when we enter it into assist because it in that example it should have a different status. Like for those we would just we would just put them in a holding folder until a purchase order till the product is received.
+
+Matthias Miller  58:43
+Sure so we could I mean we could say that we never have any that
+
+Matthias Miller  58:57
+we just say that there's no impact for a vendor invoice tied to a Pio without without any product received. Is that what you're thinking? Wow,
+
+Speaker 1  59:15
+not not necessarily. I mean, I think we're kind of boxing ourselves in a corner if we do that because I think we're gonna have situations where I want to do that.
+
+Matthias Miller  59:30
+Sure. Excuse me. I don't see seems to be the system would work just fine in that case. When it's when an invoice is entered. Does it have to be does invoice have to be approved in order to hit AP?
+
+Matthias Miller  59:58
+AP
+
+Speaker 1  59:59
+invoice have to be approved before it hits AP.
+
+Matthias Miller  1:00:03
+I'm sorry, that hits the the accounts payable account, GL account
+
+Speaker 1  1:00:23
+so you're asking something like company sends in an invoice directly to the accounts payable email? Does it have to be does that have to go through an accounts payable process? Or the accounts payable? People enter it and it hits the accounts payable? When
+
+Matthias Miller  1:00:52
+maybe maybe I should go back to the let me go back to the purchase order statuses?
+
+Unknown Speaker  1:01:07
+No, that's not
+
+Matthias Miller  1:01:18
+well, you're gonna have to, we're at your
+
+Matthias Miller  1:01:30
+should vendor invoices show up on in the GL entry immediately or do they need approval before they show up? On the Account? Accounts Payable account? That's the basic question.
+
+Unknown Speaker  1:01:48
+Well, someone needs to find the GL account. So. And the way we're structuring that that's on the builder side, primarily now. The reoccurring one, that's right, can it be posted?
+
+Matthias Miller  1:02:24
+But we still have default GL accounts in many cases. But the argument for that is that and I mean, the POS would be driven off of default accounts.
+
+Speaker 1  1:02:43
+Well, I don't know why they would have to because we're not accounts payable of saying we're liable to pay for this. And if we if it shows up on the verification report later and
+
+Unknown Speaker  1:03:00
+responsible that says in 2000, no, our agreement was five we make a phone call and they change that, then
+
+Speaker 1  1:03:14
+that's just an adjustment on accounts payable in that net gets fixed before it hits. Or it's actually paid. So I don't I don't think it has to go through an approval.
+
+Matthias Miller  1:03:35
+All right. Well,
+
+Speaker 1  1:03:37
+as we're saying, we're basically saying at that point, we think this is what we think we need to pay. And the verification process is saying I approve this to be paid
+
+Matthias Miller  1:03:55
+Yeah. Right. There's there's no harm in saying AP is it's more accurate to say AP is accounts for everything that we received 90% of the time that 98% of the time that's going to be correct, more correct. And if a if an invoice gets declined, then we just decrease AP again.
+
+Unknown Speaker  1:04:25
+Yeah, you're right. It has no impact on it shows up on the balance sheet but it has no impact on the money's being paid based off of that
+
+Matthias Miller  1:04:52
+okay, so I think this is good enough that I could take this and I I'm stuck out AP impact accounting impact sufficiently that nickers Seth? And are with with me perhaps I don't know, could code it? I mean, I could spec it out and get it over to your approval to code. And then that feels to me like the bulk of things. I'm talking to Josh about ACH this afternoon. Et cetera. And then we can keep any we can keep that. That rollin? Rolling that way. And then we can touch base on on Wednesday, probably with follow up questions on both of those pieces.
+
+Speaker 1  1:05:51
+Okay. So Ach, you're approaching that with with your saying you have enough information here on what we need on accounts payable, that you can make out to Josh, what you don't
+
+Unknown Speaker  1:06:09
+need order to. A and easy also going to look at check printing.
+
+Matthias Miller  1:06:19
+Check. Check printing is going to be my court, I think probably the biggest question is specific layout of the check, because we're going to be printing these as PDFs or generating PDFs that then can be printed onto the checks. So making sure that you
+
+Speaker 1  1:06:42
+write what, what type of check where we want to use it we're using Yeah, that's right. I can get that for you.
+
+Speaker 1  1:07:20
+Good, and then you're, you'll be sending an update on or you're, you'll be looking at real module updates on the test system this afternoon and update on what you have there.
+
+Matthias Miller  1:07:36
+That's right. And if you don't hear from me today, let's talk tomorrow morning. Morning on our call on where that's at. Okay.
+
+Speaker 1  1:07:50
+Okay, well, very good. Yeah. Feels like we've made a lot of progress. So good.
+
+Matthias Miller  1:07:58
+Yeah. I appreciate you taking this time this. If nothing else, this helps my sanity a little bit to just, I feel like we're not continuing behind the eight ball and getting some of this stuff nailed down. Yeah. Yeah.
+
+Speaker 1  1:08:13
+Good. Well, have a good Good afternoon, evening, and we'll talk and stay at 10.
+
+Matthias Miller  1:08:22
+So it's Wednesday. Yeah, that's right. We'll talk then. Thanks. Yep.
+
+Unknown Speaker  1:08:26
+Thanks, guys.
+
+
+Transcribed by https://otter.ai

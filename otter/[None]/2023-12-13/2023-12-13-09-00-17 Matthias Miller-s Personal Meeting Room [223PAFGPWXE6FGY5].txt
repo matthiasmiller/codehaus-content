@@ -1,0 +1,767 @@
+Matthias Miller  02:10
+Five mirror their top of the hour might have been a little mystic might have been here you can
+
+Matthias Miller  02:30
+while we're waiting on them
+
+Matthias Miller  02:36
+to Word by duration largest to smallest
+
+Matthias Miller  02:55
+saving editable report
+
+Matthias Miller  03:01
+can be an Import Auto transaction scheduled task is it better
+
+Unknown Speaker  03:16
+or is he doing records it's too
+
+Unknown Speaker  03:33
+that they can
+
+Unknown Speaker  03:46
+mid find
+
+Unknown Speaker  04:08
+okay let's find oh now this confuses me because these are backwards
+
+Matthias Miller  04:27
+okay and so
+
+Matthias Miller  04:34
+this is we care about everything that is
+
+Matthias Miller  05:11
+didn't use is that running no problem updating records
+
+Matthias Miller  05:37
+exceeding Annual Report
+
+Matthias Miller  05:47
+okay that's too old to care about 12 Nine that one matters
+
+Matthias Miller  06:05
+those matter but not my problem that is Josh's problem older than that
+
+Matthias Miller  06:23
+auto create transactions that's out of time out of D range does it matter Kanban import service SKU sheet all of these are outside my control
+
+Matthias Miller  06:47
+auto transactions though it doesn't matter scheduled task mark this one is one that we know we can chase
+
+Unknown Speaker  07:58
+a potential offenders
+
+Matthias Miller  08:09
+filter
+
+Matthias Miller  08:18
+editable reports continue to be an issue
+
+Matthias Miller  08:29
+it's also do this
+
+Unknown Speaker  09:41
+okay so then
+
+Matthias Miller  09:49
+Data Filter
+
+Unknown Speaker  10:01
+This is date
+
+Matthias Miller  10:53
+either
+
+Matthias Miller  11:48
+Where do you guys let's see we What time do people typically get the office around they're
+
+Matthias Miller  12:03
+just me I can't hear us so it was that Mark
+
+Matthias Miller  12:17
+do I think there's something with your audio not hearing you guys
+
+Matthias Miller  12:28
+there we go the better yep that's better
+
+Unknown Speaker  12:33
+that's very I don't know I wasn't muted I muted it
+
+Matthias Miller  12:38
+I have no idea as far as salespeople and needing to have the system be usable Is there a window during the day when that becomes an issue is that seven to five I
+
+Speaker 1  12:51
+don't I don't know if there's a certain time I mean when when the system
+
+Matthias Miller  12:59
+there's things that we I'm taking a look at things that are slowing it down and there's things overnight that slow it down but there's also some things that are running later in the morning I'm just wondering at what point at what point do these things matter but
+
+Speaker 1  13:16
+most salespeople won't there's not much happening on the sales side before eight in the morning
+
+Matthias Miller  13:26
+so let's focus on anything from eight to five
+
+Matthias Miller  13:35
+so I mean by far the greatest greatest
+
+Speaker 2  13:46
+see the BIOS I did talk to those guys with the filter compass foundation and they haven't bypassed now. So I think he's really long save times are I mean it definitely wasn't improvement and put it that way. So recent save times are
+
+Matthias Miller  14:11
+all right, well, let me show you what I'm finding here. And let me size this down. Make it a little bit more a little bit more palatable. We just send appeal. So I'm seeing master Kanban import service SKU sheet vendors. Obsolete KB rows Kanban rose SKU import not sure what you guys did kick off a or somebody did auto create transactions that kind of impact, which showed up here. There are some one off changes that have done here and there that, hey, so things go sideways. But by far skew sheet imports and Kanban look like the violators. You that are going to be happening on an ongoing basis BPR sync. Schuylkill Kietzke left from purchase orders. And then pretty soon we're getting down into three second delays, which I think should be within the recovery time window. So I'm not seeing anything here that makes me say accounting is at fault. But if somebody could cassoulet, at least in the recent, at least in the recent, I'm pretty sure that the reconcile or there's a pretty good chance that the reconcile was slower than it needed to be in the past because of the column that we had on there. That was incredibly slow, which we've optimized since then.
+
+Speaker 1  16:17
+So, so that, okay, on the SKU sheet, or like the Okay, what is the standard master Kanban? Import x 31?
+
+Matthias Miller  16:33
+Let's go find out.
+
+Speaker 1  16:39
+Now, the Yeah, let's look at that one first. But
+
+Matthias Miller  16:45
+we definitely get to Josh's court, I kind of feel like, I feel like there's two things going on here. I think that we had some speed improvements. And I think the delay between when the salespeople were feeling the pain and it made all the way to us in that timeframe, we actually fixed a bunch of them. And there's kind of this generalization that accounting is slow, can you please fix it? And I think the other thing is, I mean, if we're looking here there's some other things that may potentially be getting in the way. So this one,
+
+Speaker 1  17:27
+tell them recently, so is this work? Is this where it used to be the SKU sheet that we would import those through the Raspberry Pi that Josh set up, which is basically emailing that file to assist an assist automatically updates? Now we've since we're currently we're doing a skew sheet synchronization where Josh is built so that the synchronizes with assist allowing us to align purchasing to make updates, add vendors, change skews. And then it immediately saves that change into a says or it can. Now, my question is, is are those some of the the delays we're seeing? I think that started it the first. Last week, we did the first parts of that. And I'm curious if that's what were some of the things we're seeing.
+
+Matthias Miller  18:38
+Let me see if I can.
+
+Matthias Miller  19:01
+Yeah, and vendor ID. I mean, maybe. I'm not familiar enough with what was going on. But you've
+
+Speaker 1  19:11
+got importing records that row nine there. What are the so you've got some hidden hidden rows? Are those just irrelevant data? Or what what is that? Those
+
+Matthias Miller  19:24
+are older than a week, or outside of eight to five?
+
+Speaker 1  19:30
+Oh, okay. You're just looking at? You've got it filtered eight to five in the last week. Correct. So if Did you have a bunch of accounting that was older than that, which well, that's that's what you were saying basically. Right. Thank you. That that
+
+Speaker 3  19:56
+Oh, Are
+
+Unknown Speaker  20:06
+we just
+
+Matthias Miller  20:13
+Okay, so let's go through some of these these are accounting related this was back in November this one was December 9 So this one was pretty recent but it was early in the morning although that's something that can be taken a look at this one's not combined import combine important hours. This one is after hours doesn't matter that are problem after problem after problem after problem I'm not sure why I'm getting use happens this late in the morning but also not my problem. Well, I think this is probably after an update or something. Updating records so this one was an issue but if it's me, it was likely a one time thing back in December 1. This was back in November and it's also after hours not us after hours. So marking clear transactions we believe we sped up the wreck and potentially sped up the reconcile but I don't know it's possible that reconciliation is something that's periodically I guess this one wouldn't necessarily be tied into the speed up so this this could be one that we we can take a look at saving editable report we'd actually have to find out which which one it is to know. Well
+
+Speaker 2  21:42
+that would be at 719 in the morning, that's what I'm seeing is that right?
+
+Matthias Miller  21:49
+Right but now that wouldn't be automatic. So there's no telling I mean there's no assurance it wouldn't happen during the day it's just different
+
+Unknown Speaker  22:00
+my day is
+
+Matthias Miller  22:04
+as it said you don't
+
+Speaker 2  22:05
+know how long my day is. I mean I'm not eight to five like like market rates or whatever
+
+Matthias Miller  22:13
+I thought maybe you just work from like six to eight you take the rest of the day off and go fishing or something
+
+Unknown Speaker  22:19
+yeah
+
+Matthias Miller  22:24
+not our problem after hours not our problem. Saving editable report we're not sure Mark clear transactions that when we can take a look at me updating records just not going to happen. Going forward saving editable report. So the big issue is what are the editable reports that are slow to save. And I don't know if these are there's I think basically three things they could be they could be reconciled, that could be deposits but it could be multi sales order payments
+
+Speaker 2  23:07
+well I would say they're probably the reconciles or deposits and of those two I would say it's most likely it's probably reconciled
+
+Speaker 2  23:21
+which I'm not having the issues that I had back then anymore for sure. Now if that chain if that takes that long is that happening in the background while I can continue on doing other things with it because I've never sat and waited for a half hour
+
+Matthias Miller  23:42
+it's not a half hour it's 30 seconds.
+
+Unknown Speaker  23:45
+Oh yeah probably still takes 30 seconds um some of the bigger accounts
+
+Matthias Miller  23:55
+Okay, let's filter this by save editable report and let's see if we can save being editable report this guy Alright, so if we filter down to that and then let's take a look at dates 12 Nine Okay, so our speed up let's find out when our speed up happens
+
+Matthias Miller  24:34
+well for wandering around that would have gone live. I'm not you. So didn't get recognized. System Update 12
+
+Matthias Miller  25:02
+12 312 five we would have updated already. Okay, so really any editable reports after 12 five are the ones I'm most worried about. Who anything prior to that seemed just a tad suspect. So if we do editable reports after 12 Five see what we find. Okay, so these we we have for three on the ninth. Do you know what you were doing the morning of the ninth from six to 730?
+
+Unknown Speaker  25:54
+We're going on reconciles. Okay.
+
+Matthias Miller  25:56
+So you're reconciling the nine on the seventh? Would that have been the same thing?
+
+Unknown Speaker  26:03
+Wrong? Probably.
+
+Matthias Miller  26:06
+There would have been Thursday morning.
+
+Speaker 2  26:09
+Go go to since the 11th and see what that says. Because it was the morning of the lab that I got them to unhook it from the filter. So let's see if that what that's even saying. I mean, I probably did some before I had them on joke it but so we got nothing here we're
+
+Matthias Miller  26:32
+seeing. Yeah. dropped down to nine seconds. And after that the longest one was, I mean, then you're looking at twos and ones. Now, it's not clear why this particular one
+
+Unknown Speaker  26:49
+was no time a day was that one.
+
+Matthias Miller  26:53
+This one was 11 o'clock. 1111.
+
+Speaker 2  27:00
+Okay, that might have been after it Well, I would say it looks like it's significantly improved.
+
+Matthias Miller  27:14
+Alright, so.
+
+Speaker 2  27:32
+What were the sales guys experiencing? I mean, that's what they were the ones saying this sort of stuff for them. Right. Was that mean?
+
+Speaker 1  27:39
+Yeah, Dwayne, it said, but I'm curious if it is what it is that you know, it's been a week or two or three ago, and the changes haven't been made since you didn't have specific just that they couldn't see that like a sales order
+
+Matthias Miller  28:03
+just having a CFP would be a very odd chance be available to have one blank
+
+Speaker 1  28:08
+Yeah, me you can try and he's not going to be I wanted him to be on but he said he's going to be in meetings in India today. So
+
+Unknown Speaker  28:17
+okay.
+
+Unknown Speaker  28:21
+Message him and see if the answers are that kind of well as we have just Yeah.
+
+Matthias Miller  28:35
+Way Alright, let's do this.
+
+Matthias Miller  28:42
+So, this is slow downs doing.
+
+Matthias Miller  29:05
+From what we can tell, is a combination of us making speed improvements were over a week ago, drew up
+
+Matthias Miller  31:12
+All right. So I'm going to I'm going to call that good on the accounting slowdown for now and leave it back in Dwayne's court to chase more, if he wants and then the second thing from the email, miscellaneous invoices and AR reports. Oh, are these your custom AR reports?
+
+Speaker 1  31:43
+By No, Josh, Josh turned them into standard reports now.
+
+Matthias Miller  31:53
+So, the
+
+Speaker 1  31:54
+number the second and third I believe, got it.
+
+Matthias Miller  32:03
+Okay, so
+
+Speaker 1  32:07
+yeah, isn't the eggs in in
+
+Matthias Miller  32:16
+you'll find this first sales were first two, three or 379. Alright, so this one you would expect to be on a district X?
+
+Speaker 1  32:27
+Yes, because you have a balance due and it has been invoice. Right? You have an invoice date on it.
+
+Speaker 1  32:40
+Now, okay, Josh, is Josh is going to chase getting it to show up on this report for that was the plan. I mean, unless you want to just make to know, let's Josh was going to make so that they appear on on his report. But what the reason I'm bringing up, I'm bringing it up here is how are we tracking these on the accounting side? Review diagnostic reports. Either way, whether this is working correctly. I'm guessing it it might just be it might be working correctly in the accounting side. So we just need to make sure they both do the same thing. So you've got a sales order. Show it as income a debit. So a debit to AR means that it is an AR Right. Like that. Yeah.
+
+Matthias Miller  33:32
+receivable is an asset. So debit increases. Yes. This
+
+Speaker 1  33:37
+happened on 920. Okay, why did this? What why 920 Is that one it was entered in assist, or what? What is the 920 date?
+
+Matthias Miller  33:51
+We find this particular one was in waist and 90
+
+Speaker 1  33:58
+or 40 foot looks gorgeous. And it's from offset and empty, affordable. And there is no payment applied to it. At least I'm seeing. So from an accounting perspective, this is working correctly, right. I believe so. The other one as well this, the one we just looked at is older than I had thought.
+
+Matthias Miller  34:27
+But I mean we're not generating accounting impacts because it's invoice as of three 820 23 which is prior to our our accounting impact.
+
+Unknown Speaker  34:40
+So how's it invoiced earlier than what's ordered? Well
+
+Matthias Miller  34:54
+don't know you should talk to the guy who changed it
+
+Speaker 1  35:00
+Yo, what is this? Aren't we looking at some something else? This looks like it sheds direct order
+
+Matthias Miller  35:08
+to 303789. It's a build on site, though, so it can't be sure it's it's built to ship this direct. It's just straight build on site.
+
+Unknown Speaker  35:19
+Yeah, they do.
+
+Speaker 2  35:22
+Oh, 91367 No, no, that's okay. This
+
+Matthias Miller  35:25
+is proposing an invoice date. Let's find out. Why has this invoice? I mean, why it's proposing to simply state it's got a transit task. The transit task? No, okay, here, let's let's start messing around. Let's let's actually literally figure out what's new. Yeah. No, no need to guess.
+
+Matthias Miller  35:51
+The proposed date it was created on the eighth. So I know who but the proposed date is the eighth. This probably doesn't matter. So that means it's coming from. So creation date. I'm gonna guess it's the creation date that's triggering it. Right? Yeah. It's because it was created on the eighth. That's why it was invoiced on the eighth.
+
+Speaker 1  36:32
+Okay, that, yeah, I see that this one. So did you take a look at the second one already?
+
+Matthias Miller  36:42
+Yeah, I mean, this is the second one. The this is the second one.
+
+Speaker 1  36:48
+The end to 3090. Got it. And this is this was later this was a nine. Okay, let's take a look. At one more this one is more recent. I should have is and?
+
+Speaker 1  37:07
+It's n 2311462. This should have been invoiced in probably sometime in November.
+
+Unknown Speaker  37:26
+Number eight
+
+Speaker 1  37:28
+AR we should income sales tax. That's correct. Right. The full amount goes to AR including the the sales tax liability.
+
+Speaker 2  37:45
+That's correct. Right. Right. Because yeah, because we need to receive that
+
+Speaker 1  37:53
+goods. So from what I'm seeing with us all good on the accounting side, this is working. Correct. Gosh, just needs to update the logic. Basically, he's not on his AR report. He's only showing invoices that have a building and he needs to start showing all invoices, so he knows what he needs to do I just could see
+
+Speaker 1  38:25
+you had a chance to look at three on the list or not.
+
+Matthias Miller  38:30
+Me I'm got a weird typer that's bugging me here and well, not yesterday. I'll get to that
+
+Matthias Miller  38:47
+a little bit too much of an accent for what we should be doing here.
+
+Speaker 1  38:59
+Why'd you do that aside? No. We had the results. All this accounting tools. Get a podcast just recently about the quirks the nuances of Islamic accounting. So there's the four of you do your due diligence before you build an accounting system for an Islamic company because there's looks like there's a lot of nuances to how it has to work. Interesting. Basically, most of its around our business owner tight it was tight.
+
+Matthias Miller  39:50
+That's fascinating. Okay, so is this off of the are we looking at? Just make sure we're looking at the same thing. Is this the agenda you're looking at? Oh,
+
+Speaker 1  40:01
+yeah, no, no why this was the email I sent yesterday. But if we're looking at number one on this email from here on out, we can just use this report.
+
+Matthias Miller  40:14
+Okay, so please holler with a check. Caller does not turn the check in until 1212 enters this check to be deposited on 1213. But correctly interest customer date of 12 for referencing the date on the check.
+
+Matthias Miller  40:43
+We do not currently have an undeposited funds account, but if we would would you would want it to happen is that 12 For you have a payment hitting undeposited funds.
+
+Speaker 1  40:59
+When we haven't undeposited funds, are you? Are you saying it's not automatically allocating anything to undeposited funds?
+
+Matthias Miller  41:06
+No, maybe there is. Let's go to let's find a sales order. Where payment and random. So we're the payment type of payment method is a check is an ASO payment deposit ID as the deposit date.
+
+Matthias Miller  41:46
+Alright, let's try one of these. Okay, so this guy was here's one paid on the 13th deposited on 1130. And if we pull up the sales transaction
+
+Unknown Speaker  42:06
+Yeah. So sir,
+
+Matthias Miller  42:07
+what did I say? I don't remember the dates No, 13th and 30th. Okay, so here it was invoice in the sticks. With the customer deposit, then we credit customer deposit in debit undeposited funds, which increases undeposited funds asset. And then if we pull up the deposit this is deposit number viewer doing this 10. Yeah, I'm not quite sure what kind of nails are there? Oops, deposit transactions is what I'm after. And this record ID would be worth three to four. No. 10? Well, I mean, and then we credit undeposited funds by the total amount. We don't break it down per building. Although we Yeah, so yeah. And then we debit primary checking on the 30th. So it looks to me like that's being handled correctly.
+
+Speaker 1  43:37
+By but the customer payment date. Like it's, yeah, it's mostly a work process. issue where if you look at the final deposit sheet I send along, this is what we're what we implemented yesterday and are starting to use the deposit date. We're calling it customer payment date we're saying if you're filling this out, then column Okay, so second column from the right. You're saying if it's checks, enter the date on the check, which is in most instances to be the date that the customer hand at the check to the to like so, do we have when we get the question is when we when we record a payment if we were to record a payment today. And this sheet comes in saying we actually got this, this checks actually dated for 12 Four. Can we record that payment as of 12 for like backdate the payment date
+
+Matthias Miller  45:01
+You can you can enter the at least up until it's not sure what all you can modify up until Yeah, even after it's deposited, you can adjust the payment date.
+
+Speaker 1  45:12
+Okay, and then the weapon 13 follows through all the way in, in the accounting transaction is likely. Yeah,
+
+Matthias Miller  45:20
+that's right. It does.
+
+Speaker 1  45:23
+So I'm saying the hypothetical hypothetical scenarios are training people to do verify the payment dates, the end all on the does that reflect on the invoice copy that as well, like, if you if you were to change this to 11? Four, will that reflect on the customer's invoice then? Like when it prints out? Or what the customer sees? Like it shows the payment? Dates at the bottom?
+
+Matthias Miller  45:51
+The yes would check payment on Yes.
+
+Speaker 1  45:56
+Perfect. Because that, that's just another, we're matching reality as closely as possible. So if you, you don't want to call somebody up and say, Hey, if you use the deposit date, the potential exists, if you could call somebody up and say I received a payment. So you made a check payment of X amount of days ago on there still. And the customer to the customer, no, he paid it two weeks ago, was slow and getting it processed. So the potential does exist that over the end of the month, like we might have a balance sheet. We could have a balance sheet on the fifth of the month. And we say, Okay, we're done with the previous month all is good.
+
+Unknown Speaker  46:42
+And then that AR number at the end of the base. Like on the positive side, some of those numbers could ship some analytical positives, but it wouldn't affect the income statement. Good.
+
+Speaker 2  46:59
+Was that his question? Another question on that? Are G payment line? Um, can the amount change on the payment after it is deposit? No. Okay, because I was just thinking, you know, so if somebody said, Well, actually this much was paid that amount was wrong? How's it going to adjust the deposit? So that makes sense. You simply have to write another payment line and receive that other payment?
+
+Matthias Miller  47:29
+Yeah, you'd have to do a, you'd have to I mean, in this case, if if, I mean, obviously, somebody's wrong somewhere, you can't have a deposit accurate deposit in the customer not have paid that amount. So I think ultimately, what you'd end up doing is creating a new payment with a write off. That's basically settling an argument between the person who made the deposit and the customer. Well,
+
+Speaker 2  47:54
+the case, the scenario, where it would be currently is, we would say, Okay, we've received these, these payments on these buildings. But we have one building that that's not lining up. So we're just gonna write a miscellaneous amount in our sales, miscellaneous sales box, right to match the deposit actually hit the bank, because we got one barn that's somewhere out. And so so when we would come back to fixing things, we would reduce our miscellaneous amount and make up for the difference in that, you know, once that building actually hits. So that's how we could fix those on the building, if it determines that the amount on the building is wrong.
+
+Matthias Miller  48:42
+Right, because
+
+Speaker 2  48:43
+I'm running into some fairly strange things that in, you know, a normal life when everything is really, it never should happen. But
+
+Matthias Miller  48:53
+yeah, when you can just write offs on the payment itself as well, because that doesn't affect the actual payment, it just affects how that payment is applied to the invoice. Okay.
+
+Speaker 1  49:07
+Now, that brings, that brings up another question on right else, how long can you do write off? Or is there a certain status on a sales order or an invoice where you can't like when it goes to complete it? Can you still do it right off? Because the use case would be actually we talked about this Monday, briefly, but that RTO premiums, so typical workflow, the buildings are going to be paid for completed, everything's done and then oh, we get a premium, like up to a month and a half, almost two months later, that we want to tie to that building. Can Can we still do that?
+
+Matthias Miller  49:58
+Well, that one doesn't have a balance and So balance is greater than zero.
+
+Speaker 1  50:03
+If you figured out how to do this, you could speed up a lot of things.
+
+Matthias Miller  50:08
+On your side, we, we have training videos, they are as
+
+Speaker 2  50:13
+allowed to argue with with accounts receivable, and say, Well, no, we got this much for this for this building. But then they're gonna say, No, we got it was building. Because I actually just emailed them something, it was some strange thing where a building was received was returned, and the salesman bought it. And ABC kept something for the, for the shipping. And I have a deposit for a check record of 9000 something and the notes in the assist transaction say that, that they retained it, that ABC got this money, and the amount is 500. And some dollars. But the deposit is 9000 and some dollars. So I said what's the difference here? And just said, well just say it's in the notes, though? I mean, yes, it is. I see that. So on that one, I'm just waiting to hear back from her some more. Like I understand ABC got the money for moving it. That makes sense. But but the amounts don't line up. So
+
+Unknown Speaker  51:28
+what they're saying and what actually the bank has to write.
+
+Speaker 2  51:30
+Right, at least. But there again, I mean, you preface that with, well, I really don't know, because I really don't know if every single thing is coming through either. You know. So, anyhow, that was funny trail.
+
+Speaker 1  51:48
+was referencing like writing reports like, oh,
+
+Unknown Speaker  51:51
+doing that. Yeah. Yeah, that'd be
+
+Matthias Miller  51:59
+okay, so like, here's an example, we have a complete sales order with a balance due of one cent. So I see.
+
+Speaker 1  52:09
+But this one wasn't marked completed. Was it when you open like words or resources? Oh, okay. Okay,
+
+Matthias Miller  52:16
+but couldn't you just temporarily uncheck the Yeah, it's still we still didn't want me to, to save. Oh, I have to save. Is there anything else I mess up if I just
+
+Unknown Speaker  52:31
+I don't know, I've messed things up.
+
+Matthias Miller  52:34
+Okay, so and then we would do and then go back into edit mode. That would you would add your one set right off? Presumably you want you want that on your later transaction, which I don't know if you guys actually want to keep but the reason would be
+
+Unknown Speaker  52:49
+receivable
+
+Matthias Miller  52:51
+receivable and then you would mark it complete. And now let's go check in the activity history. You see if that had any other surprise implications. Complete yesterday? No. Yep. So I mean, that's currently you have to do that we could let you modify write offs even after they're complete. Currently, we don't let you modify write offs. If you have a zero balance that just sounds like add write off so just sounds weird.
+
+Speaker 1  53:20
+But that's, that's basically what we'll have is typically zero vowels and then we want to add a ride off, which is 10 minutes of a premium adding a premium to that. So you're saying even if the balance is zero, the building's Mark completed we can come in unchecked to complete it. Save it, edit it, and then mark it complete again. Well, I've
+
+Matthias Miller  53:49
+got some stipulations about when let me see if I can find that oops. So what I wanted to do but
+
+Unknown Speaker  53:55
+is there a better way to handle it?
+
+Matthias Miller  53:58
+Hang on let me let me see what I'm let me see what I'm doing let's let's start with that.
+
+Speaker 1  54:04
+Oh, but you'd be doing it well. They're supposed to be doing it on the recording payments pain we're and not
+
+Matthias Miller  54:15
+not in here
+
+Speaker 1  54:19
+but then these wouldn't show up right like the ones that have been completed in our
+
+Matthias Miller  54:28
+Okay, so
+
+Matthias Miller  54:35
+it does get locked down for complete sales orders. But don't you normally receive all payments before you market complete?
+
+Speaker 1  54:46
+Yes, but something like a premium. Because we're not invoicing for a print and RTO premium. That's about the only case we'll be collections people will happily be doing their thing and then And when a premium payment shows up, it's like, oh, yeah, this was an RTL we got, you know, we got paid a premium for this. And then we want to go back and add it here.
+
+Matthias Miller  55:11
+So but how are you going to? How are you going to? Are you going to record a negative payment of the premium? Or like, what? How does the premium hit income?
+
+Unknown Speaker  55:25
+So if you Oh, can we just do one?
+
+Matthias Miller  55:31
+Yeah. Do you have one that we could do? Or just make one up?
+
+Unknown Speaker  55:37
+Let's just make one.
+
+Matthias Miller  55:40
+So, so payment random ID where so payment method? Let's find one that is? Financing. Okay, so green sky. So recording a payment it has does not have a balance do Oh, it's and let's actually skip complete just to make our lives easier
+
+Speaker 1  56:11
+if we can all right, go get a balance of zero. Okay, we already have one right off. So even.
+
+Matthias Miller  56:28
+We wouldn't if we would.
+
+Speaker 1  56:31
+It wouldn't be on. Okay, yeah. But instead of selecting financing, where do you select the right Oh, amount? Over
+
+Unknown Speaker  56:45
+to the right.
+
+Speaker 1  56:48
+And let's say it's $500. And the reason is? No, not Well, yeah, that that's fine. But I want to see what happens if we do an RTO premium just to see if it if it goes.
+
+Matthias Miller  57:04
+Alright, so now this is going to show if we show a premium, we're going to show an overpayment of $500.
+
+Speaker 1  57:15
+But even if you even if it's selected as a write off, like a write off, well shouldn't show it as a
+
+Speaker 2  57:22
+difference. Off, that should mean that it's not extra inner balance, because we're not applying it to the balance, but I'm not there. Is that shouldn't be still receivable on the, like there shouldn't be a payment available still to deposit. No, it won't be because because you're receiving a payment of zero down.
+
+Matthias Miller  57:49
+Nevermind, you add a payment of $500. Wait are to premium?
+
+Unknown Speaker  57:58
+Yeah, yeah, that works. Yeah, yeah. Like this,
+
+Matthias Miller  58:01
+this in this business, right? You haven't you get a payment of $500, which is your RTO premium. And then which, which if you don't have a write off, it's going to show an overpayment and overpayment of $500 So you do a write off of type or to your premium to
+
+Unknown Speaker  58:20
+okay yeah,
+
+Speaker 1  58:23
+I don't know if we want to save this but if we did, I'd like to see the transaction ensuing.
+
+Matthias Miller  58:30
+We're almost
+
+Unknown Speaker  58:32
+Do do you need to drop it to all that?
+
+Matthias Miller  58:35
+Let me see what my life is like. I have to drop I have another here let me see
+
+Matthias Miller  58:52
+here Scott scattered these days okay so.
+
+Unknown Speaker  59:24
+Okay, so.
+
+Matthias Miller  59:38
+Okay, so if we do I've got at least a little bit of time. So we're going to do just for fun. Because we like being crazy. We're going to do the payment on the 29th. No, we're going to do the payment. We get paid on the 30th but we recognize the premium am on the 23rd, just because we feel a little goofy. And then we're going to find this guy, and sales order transactions. And so we have a service paid on the 14th, we have a write off of bank fees for green sky fees. Then on the 23rd, we have an RTO premium. We debit customer deposits. So the RTO premium actually goes immediately into customer deposits at that point. And then on the 30th, we Why is it going?
+
+Unknown Speaker  1:00:57
+Yeah, that's right. That's right, goes from positive funds receives the payment.
+
+Speaker 1  1:01:08
+And then it would go to the bank account. Does this report show deposits as well, if there were deposits?
+
+Unknown Speaker  1:01:17
+networks that invoiced on the fourth?
+
+Speaker 1  1:01:20
+But if we had, if we typed this out to deposit record yet, would that also show here?
+
+Matthias Miller  1:01:27
+It would not show here, they would just show under the deposit record.
+
+Speaker 1  1:01:32
+But yeah, good. Yeah, that works. Do I think you might want to remember how to do this? Because expect once we try to have firm and do the first RTO premiums that no one's gonna say it just doesn't work? I can't do it like that.
+
+Speaker 2  1:01:55
+Good, let's receive the payment and do the write off.
+
+Matthias Miller  1:02:02
+Yeah. That's, that's the beauty of accounting math is that you can not think through a situation and because it just works by the rules, it just works.
+
+Matthias Miller  1:02:18
+Okay. Warren for duplicate transactions. This one, I had some questions on payment account, if we're crossing between accounting and vendor invoices, then matching on payment account is going to be relatively easy. I believe. Matching on payment type is not. So is it fine if we just change this to amend this to say payment
+
+Unknown Speaker  1:02:50
+account? Yeah, that should be fine.
+
+Matthias Miller  1:02:54
+So in the vendor invoice, we will warn, if you have a vendor invoice, or an accounting transaction that matches one or both of these. And on the accounting transaction, we will warn if we have a vendor invoice or a transaction that matches one of these. And it's not the thing that's linked directly to the current record, obviously, we're not gonna warn if you have an accounting transaction for the current vendor invoice.
+
+Speaker 2  1:03:17
+Now, you're saying if it matches one is the one of those four items?
+
+Matthias Miller  1:03:23
+No, if it matches all four of those can, am I understanding, right? If it matches all four of those conditions?
+
+Speaker 2  1:03:28
+Right, right. We'd want to match all four conditions. Yeah, that's the work and it, you know, if you're going by payment account, type means nothing. Yep. So it's those four meaning? Yeah.
+
+Matthias Miller  1:03:43
+Yeah. Okay. Can do
+
+Speaker 1  1:03:48
+the work we're doing on vendor. I'm wondering how Josh is going to handle vendor changes, because we're going to, we're just, we're going to see a lot of vendor names change. Are you referencing the vendor? The ID on the vendor name or the ID of the vendor name?
+
+Unknown Speaker  1:04:06
+Case? The.
+
+Speaker 1  1:04:11
+I'm thinking of where we have UfP Solsbury. And then we change the name to universal for us products. Same vendor, same vendor ID. We just changed the name. I'm not exactly sure how Josh is going to handle the call that's being added. Does that change? All of them in his view, does it just change them from that point forward?
+
+Matthias Miller  1:04:40
+It's, it's linked to there is a special type of record within within the platform. That is called a lookup record. And it's basically stored in a separate table but identified everywhere by by or displayed. It has a hidden key that you never see, basically. So it looks like it's keyed off of the name, but it's actually keyed off of an underlying underlying ID. So it will update all of them historically. Okay. Perfect. Um, all right.
+
+Speaker 1  1:05:20
+Well, on that do you have? Do you have an ETA on? What is that something before you head out for Christmas? Or will it be in January? Do you know?
+
+Matthias Miller  1:05:31
+There's a good chance that I had a question. I still wasn't working on it. But there's a good chance it'll, it'll happen before I'm out for Christmas. I would like to hear from you. I got started working on this is jumping ahead a little bit. I guess we're working on some of the AI, I have availability to work on this, I started working on some of the payroll stuff. Sidenote, I found a bug in the payroll stuff where we were rounding work order amounts to the nearest dollar in some situations. Or not nearest dollar, but dropping the cents off of that in some cases. But if there are things that speedups I think are not in my court statement dates, we have a temporary workaround. Are there things that the sorry, let me the things that I see as urgent, if there is anything is the reports that I emailed this morning, but I don't think there's anything more required for me, I think that's all in your court. I think it's clearly explained what needs to happen. Is there anything from your end that you're looking at, and you're like, man, if we could really have X, Y, or Z fixed or taken care of before you leave? That would be lifesaver?
+
+Speaker 1  1:07:03
+Well, I think you would say that duplicate transactions, that one would be really nice to have or not.
+
+Speaker 2  1:07:11
+Yeah, I mean, we're, we're primarily not going to be using it until we push ever, like, I mean, it would be nice to have. Um, but more than that, are there any, I'm running into some things with reconciling. Um, and I'm just looking for ways to tie together a few more things. I'm not even sure what I want this stuff. Like Nebuchadnezzar told me my dream and the meaning
+
+Unknown Speaker  1:08:00
+of it, he was really quite ridiculous
+
+Speaker 2  1:08:10
+because we have, we have deposit records, that, you know, theoretically, if the deposit was entered correctly, all the different items, all those different payment items should in some way, well be tied together. But that's not until you create the deposit. So I'm not sure if there's any way to I mean, if the multi orders, multi payment, multi sales order payment is entered correctly, there would be something that would tie those invoices together, right. Do Do we have something that that does that for the deposit module?
+
+Matthias Miller  1:09:01
+Well, deposits shouldn't be doing that. Are they not?
+
+Speaker 2  1:09:05
+Well, once you pull them together so if you go to the positive module
+
+Matthias Miller  1:09:16
+are we creating but they won't be showing up in your reconciliation until they're actually positive. Right? Right.
+
+Speaker 2  1:09:30
+But I'm also having you know, like something that was a multi sales order payment. I'm not quite convinced that those sales orders are all showing up in the deposit module directly to choose.
+
+Matthias Miller  1:09:50
+Like that makes
+
+Speaker 2  1:09:52
+you think these ones like on the night. This payment file for 11 oh nine, down a couple where it says payment file it would appear as those as those are all connected by maybe that was a multi sales order payment there. Right? But how do I? How do I know? Because that number When I add all of those together does not equal anything on my deposit record.
+
+Matthias Miller  1:10:33
+Okay, I have an idea included into that deposit
+
+Matthias Miller  1:10:59
+okay, this is a little hand wavy, so please forgive it, but forgive me, let's see groupbuy
+
+Speaker 2  1:11:12
+anymore, the more hands you can wave, the more the better czar
+
+Matthias Miller  1:11:22
+Okay, imagine if you had something kind of like
+
+Matthias Miller  1:11:30
+this, and you got down to this guy. Wait, why are we not seeing any? Okay, let's do this
+
+Unknown Speaker  1:11:53
+you're
+
+Matthias Miller  1:12:00
+gonna find a multi? Well, part of the problem is we don't have multi cell sorter payments. But imagine if we had a grouping where you would group payments by date, and then have one grouping for each multi sales order payment. And then one grouping for all individual payments for that date.
+
+Unknown Speaker  1:12:26
+So So part of why this is not grouped is because they're not listed as multi sales order payment. Nope. Okay. Well, I mean, it's more of a historical entry issue, then a reporting issue? Well,
+
+Matthias Miller  1:12:47
+it's both actually
+
+Matthias Miller  1:12:53
+we would need to, I would need to update the report to show it like this. But we also have a historical data issue here.
+
+Matthias Miller  1:13:18
+Let's see if we've got a okay, we said this one was four. This is Ohio. four, and five would be other ones to try. Let's see if there's anybody here who has one. Actually, let's do this is faster. Multi. Yeah, there are new multi sales order payments in the system. So there's that.
+
+Speaker 2  1:13:52
+So so that because if it was a multi sales order payment, there really shouldn't be only that that payment not the individual buildings that shows up on that deposit record. That
+
+Matthias Miller  1:14:07
+is correct. However, because of technical reasons. It's probably what we should do. I mean, for technical reasons will probably make you still check all the boxes just grouping together and then you have validation that you that you deposit all multi so payments at the same time.
+
+Speaker 2  1:14:32
+So you could have this could function just a little bit like that thing in the deposit. And that deposit the reconcile on the payable side, you know, so all these invoices are tied to this one check. Here's the total of the check. Whereas here we have the column. These multi sales are payments. Here's the total of sales over payments and these are all
+
+Matthias Miller  1:14:58
+connected But, yeah, I mean, we could do that as well, if that would be easier is just sort them together. I don't know if this is what you're saying. But potentially sort them together and just show it as a column with the payment total for those
+
+Speaker 2  1:15:16
+that would work out or to whatever is easier.
+
+Matthias Miller  1:15:22
+I mean, I think it's a question for you, would you rather have a concise, concise view? Or would you rather have the grouping?
+
+Speaker 2  1:15:35
+Code? Grouping would be nice. I mean, as long as it actually gives the total numbers in the group, because, because if it doesn't, I'll feel like I have to actually compute that to say that, you know, that these are correct. Yeah.
+
+Matthias Miller  1:16:05
+All right. So let's see if there's anything marked dropped off. Well, I don't think that there's much to add until or even I can fill you in on the rest of this stuff this afternoon. If there's anything else required. Anything else you need before then? Now?
+
+Speaker 2  1:16:28
+So yeah, I would say if you can get that grouping thing, but that ahead of having this morning playing for sure, because that's, that's one of my stressors, but
+
+Speaker 3  1:16:41
+now, the stressors, I'm saying. Okay, well, sounds good. Yeah. Well, I had to your The other thing I would have that, I think would be
+
+Speaker 1  1:17:00
+really nice to have an appeal, kind of like true. I'm not sure the exact is on a number of accounts on the balance sheet. similar way to what we looked at on accounts receivable a way to reconcile the audit and reconcile, say, customer deposits or undeposited funds or whatever makes so that those Yeah.
+
+Matthias Miller  1:17:34
+Oh, okay. Yes. Basically, it's the same thing that we talked about with AR But being able to do it for any account, where basically we show you all automatic transactions, that zero out no automatic transactions that still have a balance on them. Is that right? Yeah,
+
+Speaker 1  1:17:56
+that is that yeah. So on accounts receivable, what we're going to do is we're going to start with AR report make so that that replace your current reality. Basically, say that this list is reflects all unpaid balances on anything we still expect to collect on and then take it make so that it matches to that the transaction so that the sum of the transactions total up to that? Well, it gets from the assists perspective that will carry that number over into QuickBooks then for your numbers, but from the assist perspective, that's really all we need. I know you sent those. Well, we're running out of time here. Do you I'll show you the report hopefully by Friday I'll have a little bit more on that we
+
+Matthias Miller  1:18:59
+can yeah
+
+Speaker 1  1:19:02
+I guess that's basically reports that you can put together pretty quickly so
+
+Matthias Miller  1:19:09
+yeah. Let me let me um, I probably won't be able to do much before the call. Unfortunately, I have some other things that needed to chase after but so top two we just make a note to myself and yes, that should go in the Project Management it's not and I am sometimes my own worst enemy. But top to this report in the accounting impact reconcile report from standpoint of accounting, ie, remaining non zero pounds of record impact. Well,
+
+Matthias Miller  1:20:05
+Okay, let me alright. Noted. I'll see, I may have I may have some some chance to work on some of this stuff before. Before a call, but if not, yeah. All right call. There's that tomorrow. Sorry. Are we still doing we call this? The checking call this afternoon at? Three? No, three.
+
+Speaker 1  1:20:30
+Certainly. I mean, we're gonna be in meetings. We're meeting lightwire here. Wanted to 30 So we'd have no unless you think oh, well, there. Yeah, that actually that's let's do that. Let's, let's plan to do three to finish up a few new things that we didn't get to. Yeah, good point.
+
+Matthias Miller  1:20:56
+Sounds good. I will see you.
+
+Speaker 1  1:20:58
+I thought you had a conflict this afternoon. I
+
+Matthias Miller  1:21:01
+did, but I'll be available by three. Okay, I have a one o'clock conflict. So. Okay. That's what it was good. Yeah. Cool. Thanks.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,530 @@
+Matthias Miller  00:52
+Yes it looks like you're muted you intend to do that
+
+Matthias Miller  01:08
+let me try this see if I can help you
+
+Unknown Speaker  01:54
+oh whoops oh there we go awesome we prevailed
+
+Speaker 1  02:02
+that was really strange I live video is working like before I joined while I was waiting for you to join but as soon as you joined that instantly just cut me off
+
+Matthias Miller  02:13
+that's bizarre All right, let me log into GitHub right now can you drop your GitHub username into the chat it gets you access to the repo and then come on
+
+Unknown Speaker  03:28
+that's a really logical name
+
+Unknown Speaker  03:31
+yeah I mean, one
+
+Speaker 1  03:36
+of the few places that I was able to get my yeah just my normal name
+
+Unknown Speaker  03:41
+that's awesome
+
+Matthias Miller  03:48
+guy reached out a while back asking if he but I want to sell my smaller.com domain name. I was like Yeah.
+
+Unknown Speaker  03:59
+Well, how much was the offering you?
+
+Matthias Miller  04:03
+I don't know. Not enough. Remember if he made an offer but maybe it was prejudiced but I think it was worth it.
+
+Unknown Speaker  04:13
+Yeah.
+
+Matthias Miller  04:17
+All right. So there's the link to the repo. Let's get you set up and configured and then I can kind of walk you through what needs to
+
+Unknown Speaker  04:38
+see
+
+Unknown Speaker  04:52
+I don't remember how we
+
+Unknown Speaker  04:54
+do I should I should clone this locally, right? Yeah.
+
+Matthias Miller  05:44
+Your your switch over there I don't know if it sure if you were using impersonation kind of thing or not.
+
+Matthias Miller  06:26
+Alright, here's the meat, there's the skeleton rig. Let me see the framework
+
+Matthias Miller  06:50
+Alright, so basically, you know what? Well basically we have we're Triple D, we're running, running the same whiskey out of test for the test and live system. And the only difference is to seeing GitHub repository same same version it's just pointing to a different database so so that's the local versus test environments with that is flask secret keys. I think what you should do with that is generate some kind of secure basics before here yourself which
+
+Unknown Speaker  08:10
+you
+
+Unknown Speaker  08:19
+doing fine
+
+Matthias Miller  08:35
+I think I think in the past what I've done is fired up in the best system and use random gear string, which probably isn't the most secure but it's good enough for this. For these purposes.
+
+Speaker 1  08:51
+This production calendar, I'm assuming that it's running like on a screen and in their office? Yes,
+
+Matthias Miller  08:57
+yep, was the one that really got the 4k Type screen that they've got running.
+
+Matthias Miller  09:08
+And then if you haven't set the first thing was the key switch in your test system. You'll need to set that system switch and that's a description is in the system switch. It's a 64 character right into a string
+
+Unknown Speaker  09:48
+but the system switch called
+
+Matthias Miller  09:51
+App hosts reposting with the payloads it's a less common system
+
+Matthias Miller  10:02
+Are you familiar with H Mac? No. Basically, it's a it is not encryption, it's what do you call it? What certificates provide. So private keys provide encryption. Certificates provide identifications, authenticity, whatever. So it's, it allows transparently passing information while verifying its authenticity. So what we use this for is, so basically, in this case, we generate a URL. And then, and then creates a, some kind of hash uses specific algorithm that goes with it. And you can only verify you can verify if both parties have this key, they can create the hash and to verify the hash. But it prevents tampering, URL tampering. And so it's a fairly lightweight way of so within the app hosting system, we then generate URLs that just include the current user ID in the in the URL, and use h Mac to avoid tampering. And that's how we're doing authentication in this in here.
+
+Speaker 1  11:30
+I've got the payload payloads random to that, do you need that key or I'm just going to be using that local
+
+Matthias Miller  11:37
+here. You just locally there so that when we go in environment local your average.
+
+Speaker 1  12:05
+And then the the other app posting whiskey settings, I'm seeing host subdomain and username. Am I going to be setting all of those?
+
+Matthias Miller  12:17
+Yeah. You might not even need to, I don't, you probably wouldn't actually have to set this up with a local system for what you're doing. But yes, you'll need to set set host to your local local system and you're gonna have to run it, you can't run it as standalone, I have to run it in the world fullblown whatsover mode so that you get the username and password authentication. To get those needs those reset or you can look at the environment test you can you can use your username in the system and you just your set of password reset your password your investment is like that
+
+Speaker 1  13:23
+installing the server now, I've set up the full blown mode once before and it took a long time but I think I know how to do it quicker this time. So I just need to install the server in the Windows version right? Yeah, and once I have that running
+
+Matthias Miller  13:47
+then use three will access it with your local IP address.
+
+Speaker 1  15:45
+So I set my username and password but it's saying that it's incorrect even though I'm positive that it's correct
+
+Matthias Miller  15:52
+were you so we will login interactively with this username and password
+
+Speaker 1  15:58
+yeah I ran invest web and and then set my username or set my password and then close that ran it in full blown mode and and then I needed a username and password and I've run into the issue before but um I just don't know what causes it
+
+Unknown Speaker  16:24
+thinking
+
+Speaker 2  16:45
+not sure offhand what it would be
+
+Matthias Miller  17:02
+wants to use the same password sadboys
+
+Unknown Speaker  17:16
+Nice
+
+Speaker 1  18:05
+is there some kind of setting that could be preventing me from logging in the first time
+
+Matthias Miller  18:13
+you would have password needs reset a little bit doesn't seem likely
+
+Unknown Speaker  18:23
+don't
+
+Unknown Speaker  18:29
+new user login
+
+Matthias Miller  18:34
+I mean if you're using me I mean if your profile already exists that shouldn't make any difference
+
+Unknown Speaker  18:44
+why the user profile settings are there
+
+Matthias Miller  18:54
+you can check password never expires that shouldn't matter for the short term
+
+Matthias Miller  19:08
+give any special characters in your slashes or anything like that in the next.
+
+Unknown Speaker  19:28
+constraint this
+
+Matthias Miller  20:34
+You could try could drag try using the Command Explorer and doing something like a report web services via PowerShell. And just making sure making sure when you plug in your authentication works
+
+Matthias Miller  21:01
+what's the what point are we trying to authenticate here? What's the what's the trace back file?
+
+Speaker 1  21:13
+So it's just trying to log into the local host when I'm running into full blown mode. So Oh,
+
+Matthias Miller  21:26
+so it's gotta gotta gotta go. So you're not able to log in at all right? Oh, okay, got it I'm sorry. So in the in the Windows app, there's in the configuration there's a setting on whether to use database password or domain authentication. And so if you avoid having your windows password in plain text, you want to switch that to primary authentication to do a specimen and then restart your web server
+
+Speaker 1  22:09
+nicely so honestly, just that database password and Yes.
+
+Speaker 1  23:40
+So it's having trouble starting now it says unable to start the web server this operation returns because the timeout period expired. But it is prompting me you know like the windows prompt to do you want to let it affect your computer. So
+
+Matthias Miller  24:00
+I break something when there's problems and try restarting again.
+
+Unknown Speaker  24:30
+Go.
+
+Unknown Speaker  24:59
+Right All right Brian
+
+Matthias Miller  25:16
+All right awesome All right. So then there's also one more system switch in there that we need to set which is may find that
+
+Matthias Miller  25:36
+you can just search for delivery calendar and system switches we need to set the hosts which should just be those http colon slash slash IP address and then the
+
+Matthias Miller  26:00
+the risky path should be like this
+
+Unknown Speaker  26:08
+right now to set to deliveries
+
+Unknown Speaker  26:18
+sort of switched to it set it set
+
+Speaker 1  26:19
+to slash open carrot off slash deliveries.
+
+Matthias Miller  26:28
+So you want to replace that first past segment with local slash local slash deliveries All right. You should be able to the main menu under delivery SIP production calendar, and it should I read up for you Oh, if you Sorry, that's assuming nevermind. We never really we never spent up the wisdom
+
+Matthias Miller  27:17
+Millia are you with virtual environments?
+
+Speaker 1  27:21
+Is this such a like a Oh yeah, then I mean, somewhat familiar. They're a bit mysterious to me but I have used them a bit
+
+Matthias Miller  27:33
+I mean, this is you can do any number of ways but this is at least one way you can do it. I don't remember the better padding windows.
+
+Matthias Miller  28:13
+Usually what I do, let me just let me see if I can find a better 100 gallons a minute or somewhere.
+
+Matthias Miller  29:05
+You noticed any way you want to, but I kind of have a little boilerplate script that I use. So I mean, use the first command line to create the virtual environment. And again, feel free to choose whatever name you want I use on Unix systems, they use that but Windows ignores that for auto where the autocomplete just drives me crazy. So use underscores and then create a batch file that goes that no matter where you're at from CDs to the batch file folder, and then auto installs requirements and then kicks off and scripts
+
+Speaker 1  31:55
+So I ran the I set up the bridge environment three. And now I have a scripts folder inside of there and some wanting to run PIP dot exe, right as the first thing.
+
+Matthias Miller  32:23
+Sorry, pull up. One more time. Apologies.
+
+Speaker 1  32:28
+So I installed virtual environment three, and I have a scripts folder inside of there. And so I'm wanting to run PIP dot exe as the first one, correct? Correct.
+
+Speaker 1  36:20
+I'm having issues with running running PI. I'm used to running on a Mac and it's a little more difficult to
+
+Unknown Speaker  36:31
+understand
+
+Speaker 1  36:34
+so the only requirement that I'm seeing is Dubai which I've never heard of but it sounds great would work to just install that directly without the scripts or the scripts also setting up something else
+
+Unknown Speaker  36:51
+no you should be fine
+
+Matthias Miller  37:01
+don't even think about that sometimes these packages don't work well on Windows I think they have ever set it up in the virtual environment in Windows
+
+Speaker 1  37:25
+eight Okay, I see I think that I'm just not inside the virtual environment
+
+Matthias Miller  37:52
+so I'm always running from the root of the tree What's that? I've always I've always run a run hit from the rid of the country. So the using relative path to get districts and then using the dash or requirements on the dash or framework requirements he exceeded
+
+Speaker 1  38:57
+I'll share my my code editor and you can maybe walk me through what I should be doing here
+
+Unknown Speaker  39:25
+so I'm here at the top of my coach the route I guess. Yep. And try running the activate dot bat file
+
+Matthias Miller  39:44
+so it will hear you do dash r requirements that txt does that.
+
+Speaker 1  39:51
+It seemed that PIP isn't the isn't it nice? Yeah.
+
+Unknown Speaker  39:59
+Um, All right, I mean
+
+Speaker 1  40:08
+I did run the the PIP dot exe command in it, but it's like popped up a window for a second. So it seemed like he was doing something in the background and a quick Google search said that PIP is automatically installed if you're working in a virtual environment. So I'm wondering if I should just be inside of inside of one
+
+Matthias Miller  40:36
+Yeah, I mean, you should be able to you should be able to just use a relative path versus the environment three slash scripts slash pip install
+
+Matthias Miller  41:10
+install dash r we having some tasty
+
+Unknown Speaker  41:20
+Oh, there it is. There's Thank you.
+
+Matthias Miller  41:21
+There you go. Yep. And then do framework slash requirements. Or, I'm sorry, I do the same command line just read the requirements file out of the framework, simple framing, simpler, I think
+
+Unknown Speaker  41:41
+instead of
+
+Matthias Miller  41:44
+to be dash our framework slash Oh, okay.
+
+Unknown Speaker  42:03
+I see in here there we get plascon work. Yep.
+
+Matthias Miller  42:17
+All right, well, you should be able to use the I mean, technically, you should just be able to run me I don't know if your activate worked. Or if we're tabling remain or something
+
+Matthias Miller  42:36
+I don't know. Try doing a relative looks like you're activates somehow didn't work. Try try using the relative path to get to Python. Pi instead of having just pass in name.
+
+Unknown Speaker  42:56
+So we're already
+
+Speaker 1  42:59
+we're already at the top.
+
+Matthias Miller  43:03
+So go use the three slash double underscore view. Three
+
+Matthias Miller  43:20
+and then slash scripts, go to scripts and then get a pi that hopefully your python three whatever you got, I'm not sure exactly. Yeah, it's just called PI. Yeah. Okay. And then do a space mean that pi it I mean it looks to me like the activate bad smell for some reason didn't work. I think it's made up Hi.
+
+Unknown Speaker  43:45
+No do an LS and your scripts folder
+
+Unknown Speaker  44:04
+wrong not pay cash
+
+Unknown Speaker  44:22
+using
+
+Speaker 1  44:24
+Python Oh, there is a Python here. So here we can just go I found that exe
+
+Matthias Miller  44:40
+except mean is two levels out.
+
+Unknown Speaker  44:42
+So we're gonna have to
+
+Matthias Miller  44:47
+if you're if you activate work, you should should be able to, instead of pi just do Python main.pi. It's worth a try. No, okay. Do relative paths and pipeline that you use that to basically, what's going on here is somehow your activity got bad isn't, isn't setting the path correctly or something. And so, but if you if you directly use relative paths to directly execute pip in Python, it'll work. Okay. So app the app do you have your config ini in this folder
+
+Unknown Speaker  45:36
+do you mean in a in the top here?
+
+Matthias Miller  45:40
+Well in the secret it was via posting
+
+Speaker 1  45:50
+No. Today copy that over from the VB folder. Yeah,
+
+Unknown Speaker  45:57
+move it over
+
+Unknown Speaker  46:20
+looks like I don't have one.
+
+Matthias Miller  46:24
+I'm sorry, this was the one this is the template that he sent with chat with the
+
+Unknown Speaker  46:34
+Oh, good app
+
+Matthias Miller  46:36
+section at the top and all that
+
+Speaker 1  46:44
+Oh, I see. And so I can just make a make an ini file? Yes. And put that in there. And do I Where should I put that file?
+
+Matthias Miller  46:56
+In the folder that you're in right here the Triple D whiskey fo seem to be to be called config ini.
+
+Unknown Speaker  47:09
+And then I'm guessing that I want to
+
+Unknown Speaker  47:13
+put the
+
+Speaker 1  47:15
+the whiskey key that I did a random string of 64
+
+Matthias Miller  47:19
+Yes. So copy that one from your system switch switch your username and passwords at the app hosting URL and you'll also need to set up last secret key to a random string
+
+Unknown Speaker  47:40
+do I need a username and password?
+
+Matthias Miller  47:43
+Yes. username and password you set up your local system.
+
+Speaker 1  47:46
+And those are just my like my own username and password from invest. Yeah.
+
+Unknown Speaker  47:52
+Okay. Yes. Yep.
+
+Unknown Speaker  48:01
+The most secure passwords in existence
+
+Unknown Speaker  48:05
+using insecure passwords
+
+Speaker 1  48:13
+okay, we've got that. So rewriting this
+
+Unknown Speaker  48:23
+secret key decoding with Flash
+
+Speaker 1  48:27
+is supposed to be a hex so is this also system switch?
+
+Matthias Miller  48:34
+No, this is just something that last means the bow just you probably just type in an even number of stipend something like dead beef or something. It's probably a word
+
+Unknown Speaker  48:48
+that's my favorite password I've ever heard
+
+Unknown Speaker  48:52
+it's a great I mean it's valid hex
+
+Matthias Miller  49:03
+used a lot for as a as a pattern in like C++ if you free up memory and debug you would use that binary pattern trusted the memory use something's gone rogue
+
+Speaker 1  49:22
+Okay, that's awesome. I did a little bit of stuff with assembly and one of my classes that's definitely seems like something you'd find we didn't bomb lab where you had to go in like you're you're looking for you know, the key to unlock the Domino's often a you know very recognizable strings hidden somewhere. And that seems like something you'd find.
+
+Matthias Miller  49:42
+Yes. Okay, so now you should be able to go back to invest and to hit the hit the production calendar. All right. Well, I'm sorry. No, your your host needs to be localhost colon 5000 like that. HCP when you say When we said that I told you
+
+Speaker 1  50:15
+that there's a specific one or can I just do like 1000 AD AD?
+
+Matthias Miller  50:20
+I mean it has to be the sport that the whiskey is running on unless you want to change it to a different port but I wouldn't
+
+Unknown Speaker  50:31
+5000 it is
+
+Matthias Miller  50:38
+cross your fingers if we did that right you should be able to hit the we struction calendar link and should throw you into this vehicle whiskey
+
+Unknown Speaker  50:49
+do I need to restart this after I set this
+
+Unknown Speaker  50:54
+No
+
+Matthias Miller  51:01
+well I mean sorry, you need to you need a lunch here your lunches
+
+Unknown Speaker  51:11
+and how to I'm sorry,
+
+Matthias Miller  51:12
+I'm sorry. I'm sorry. I'm sorry. I told you wrong for miscommunication. The app hosting URL and config ini should stay where it was the system switch in invest needs to change
+
+Speaker 1  51:27
+so this this can go back to once that is correct right there. And then my system switch for delivery calendar was the host Yes. Should be by 1000s
+
+Unknown Speaker  51:42
+Yeah
+
+Matthias Miller  51:48
+well I'm gonna have to drop off in just a couple of minutes here all right. Allow quite enough time we're gonna get you up and running
+
+Speaker 1  52:01
+and this
+
+Speaker 1  52:11
+so it's not it's not opening or not it's not able to
+
+Matthias Miller  52:15
+you need to back in your command line. rebrand me that I restart me that pie
+
+Matthias Miller  52:31
+now when you refresh should you shouldn't get it
+
+Speaker 1  52:48
+doesn't look like it's working is should I I'm not sure that I have 5000 set as my as my address or the web server should I double check that Oh no, here it is. Yep, here it is. Let's go so yeah
+
+Matthias Miller  53:14
+we it's it's strange to you can't connect to the
+
+Matthias Miller  53:24
+you ever seen system very good
+
+Unknown Speaker  53:28
+yes
+
+Unknown Speaker  53:36
+I mean, we did it load
+
+Unknown Speaker  53:40
+it error and SOC dot connect
+
+Matthias Miller  53:47
+and this is for sure. I mean, if you click the link which is 760 312 That's what the base match
+
+Unknown Speaker  53:58
+which link this one here okay
+
+Matthias Miller  54:00
+so on one line which line six in your config if you confirm that that's the right
+
+Speaker 1  54:28
+this is brought to you by don't panic, your friendly work using our traceback interpreter
+
+Matthias Miller  54:39
+what is the what is the URL that you're using to access invest web in your browser?
+
+Speaker 1  54:47
+It looks like it might just be localhost localhost flush system switches.
+
+Matthias Miller  54:56
+Well, I mean, you can quit. So you could change this to be like seems to be localhost port that should do it. Okay then you'll have to restart with the use of Python
+
+Matthias Miller  55:27
+I'm sorry we got miscommunication the config the INI fo CRO shouldn't be we should be beautiful localhost double double slash
+
+Matthias Miller  55:52
+then so your your invest systems which should be worth 5000 This one should be net worth and theoretically that should
+
+Unknown Speaker  56:31
+ah maybe.
+
+Unknown Speaker  56:35
+Yeah, there it is. Okay works.
+
+Matthias Miller  56:38
+So I have to draw but one of the there's two Tripoli jobs. One, I have dev specs, and it's really simple.
+
+Speaker 1  56:46
+If you can just changing colors of something. Yeah,
+
+Matthias Miller  56:50
+changing colors of something. It's basically just changing one of the toggles to go through a tri state instead of a single state sounds. And then the other one, I think, too, but if you I should be available this afternoon, about tomorrow. And I'll be able to Monday out most of the rest of the week. Well, Monday, Tuesday afternoon might be an option. So if you need to circle back in on any of that stuff, just holler.
+
+Speaker 1  57:20
+Alright, sounds good. If I have a quick message, what's the best way to reach us through zoom? Signals?
+
+Matthias Miller  57:27
+Best? I've got two zoom accounts. So zoom access is sporadic. And that is oh, let's see. I'll send you my signal link. That works
+
+Unknown Speaker  57:48
+awesome. All right. Thanks. Yep, you bet. Thanks, Johnson. Absolutely. Have a good one. You too.
+
+
+Transcribed by https://otter.ai

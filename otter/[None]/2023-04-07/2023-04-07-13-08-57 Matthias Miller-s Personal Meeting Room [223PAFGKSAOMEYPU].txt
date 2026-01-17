@@ -1,0 +1,101 @@
+Speaker 1  00:35
+Oh come on my Can I
+
+Unknown Speaker  00:45
+speak to me
+
+Unknown Speaker  00:59
+select microphone, speakers
+
+Speaker 1  01:13
+come on can you hear me? I can hear you. Oh, I can hear you too. Oh, sorry. We're trying to get some most going.
+
+Unknown Speaker  01:25
+No, I try plugging this back in. Hug my scream it Okay, so here's, here's my question is there is a vendor invoice field macro. But
+
+Unknown Speaker  01:40
+the odd thing about
+
+Speaker 2  01:41
+the way the vendor invoice thing and the purchase order thing is there's not really a crossover field and he's not Josh's not storing the like when they're linked together, he's not storing anything from besides the skews that are actually in there to be able to reference across hence the reason for what the index thing that you just wrote.
+
+Unknown Speaker  02:04
+Okay. So
+
+Speaker 2  02:09
+so essentially what you mean, when I'm going to go use what you wrote for is to access on the purchase order level access information off vendor invoice, because there's like, there's a lot of reporting that I was like, Okay, let me let me back up. Here's the deal about Kenny when did we fire Mabel? We had to But two weeks ago we fired Mabel for some very egregious breaches of company core values anyway, so Leanne and I had her head back back in accounts payable stuff and as you as you well know, when you come back over into the system, somebody's like, well why are we doing this and why don't we have that what is going on over here and like I need this tool like give me something I'm not gonna sit here and go through all of that data you're getting me like give me some sort of tool. So foot we don't really have like okay, it unless you know something that I don't I don't know of a good macro to be able to access information from the purchase order side on the vendor invoice if those if you have a vendor invoice and a personal link together.
+
+Speaker 1  03:19
+Yeah, but you're wanting to access a row in the vendor invoice RG based on the SKU on the PIO
+
+Speaker 2  03:28
+because that's what actually links the purchase order and the vendor invoice together. Yeah.
+
+Speaker 1  03:36
+And your invoice quantity with little field number what's the name of the RG for in the vendor invoice
+
+Speaker 2  03:44
+so I I think there's a there's a virtual RG on the vendor invoice that has that stores a lot of this information.
+
+Speaker 1  03:52
+There's a fee invoice Pio num ID Yeah,
+
+Speaker 2  04:00
+yeah, it's the that's the PIO num ID from the row Correct.
+
+Unknown Speaker  04:06
+Yeah, so what you really want is
+
+Speaker 2  04:10
+and if you share your screen so I can see some make sure I know what you're talking it's the wrong one. Come on, hang on
+
+Unknown Speaker  04:29
+come back over here.
+
+Unknown Speaker  04:52
+So this should then let you do
+
+Speaker 1  04:59
+make sure that this And explain field in wisdom skew all right this will let you then access our G values now so you could say
+
+Speaker 1  05:15
+something like that theoretically it just takes a minute okay yeah okay and pull the quantity across
+
+Speaker 2  05:25
+so this will allow you to act so this would allow you to access any information from the purchase order level that's over on the vendor invoice side it can you right can you write this macro to be to be in the like, it needs what are you are not called standard macros. What is a regular macro? Well, whatever make it global because this because there's a number of stuff that I'm working on building that I can act like I can be I can be evaluating purchase order stuff, and if they're linked together with vendor invoice, I can see that stuff and
+
+Unknown Speaker  05:57
+it's Yeah.
+
+Speaker 2  06:02
+So this one, this thing actually functions a lot like your other lookup field macros.
+
+Speaker 1  06:10
+Yeah. Which find the vendor invoice that has a row for that's for this Pio. And that has this SKU on it, which sorry, find the vendor invoice that has a row for this PIO and skew that on that record, find the latest RG row where the VI invoice Pio num ID equals that's.
+
+Speaker 1  06:57
+So, the nd explained field even though this is a repeater G index, it evaluates in the context of the record not in the context of the RG row. So, that's what you needed latest RG to get the matching row then.
+
+Speaker 2  07:11
+But it's not it's not necessary. It's most time I'm not looking for RG information. I'm actually looking for record information. Like what's the status of the record? What's the vendor invoice number? What's the PIO num Id like? It's not it's not necessarily RG row information that I'm actually hunting because all of that RG row information mirrors what's happening over on the on the purchase order anyway.
+
+Unknown Speaker  07:33
+Oh, it does. Yeah. So you don't really want it like that?
+
+Speaker 2  07:38
+No, it's really it's really fielding on the vendor invoice that I'm that I'm a vet that most of the time that I'm evaluating for it now if it can be do double duty and actually give me row information on the RG that's fine. But it's not. As of right now that's not usually what I'm hunting for. There's there's a couple key things I'm usually go hunting for what's the vendor invoice ID, what's its status? Is it paid or not? And you had written some macros and some other stuff to find out whether that thing is paid or not. When was it paid? So I already have access to those macros. And that's usually what I'm hunting for. It's like, you're going I'm going through a list of POS and evaluating are they paid yet or not?
+
+Unknown Speaker  08:21
+It's just Yeah.
+
+Speaker 1  08:29
+Okay, well, I mean, it's easy enough to allow you to do it. So there you have it. Merry Christmas
+
+Unknown Speaker  08:44
+boom. Perfect. Delete it. You made it. You made it global. Global. You made it look local, local.
+
+Speaker 2  08:59
+Local, local, a local. Perfect. Thank you, sir. Yep.
+
+
+Transcribed by https://otter.ai

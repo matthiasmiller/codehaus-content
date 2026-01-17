@@ -1,0 +1,212 @@
+Unknown Speaker  00:32
+I think I've talked to you enough for one week. I think it's
+
+Matthias Miller  00:36
+probably a record. I'd have to go back and see. It'd be interesting to see when I when the last time was, when the last time was? It looked at this much too
+
+Speaker 1  00:46
+deep. I got to the end of this day and I'm like, I am tired. I am
+
+Matthias Miller  00:54
+yeah, I left. I left our call. And then yep, I can, oh, can you hear me now? Yep, I can. Can you hear me? Second about now, I can hear both of you. I can hear you. Okay, there we
+
+Speaker 2  01:14
+go, just to make it clear that it's not your problem. Thanks.
+
+Matthias Miller  01:19
+Yes, Dwayne, I left our call and quick prank through a whole bunch of stuff that I've been putting off because everything, and then turned around and consulting with a construction company that's got data flowing from many different places, and I'm just like, Yeah, I feel your pain. That's the bottom line. I
+
+Matthias Miller  01:53
+stuff did we for sure to say we did then for sure decide that we wanted to,
+
+Speaker 2  01:59
+I think so that's what I was remembering anyway, yeah, unfortunate as it may
+
+Matthias Miller  02:06
+be, unfortunate as maybe
+
+Speaker 2  02:10
+and then do so you all might be needing to work on zrt stuff again soon. We have three guys cranking on it right now, and we're making progress.
+
+Matthias Miller  02:22
+Hold it. We're
+
+Speaker 2  02:26
+having fun. Nick will be back soon. He's starting on the contract, on the notes record. He'll he'll have that done. He's leaving on Wednesday. I'm betting he'll have it decently done before he leaves. And I'm hammering contract definition, and Jonathan's making changes to contract as I work on that, and Sean is doing stuff for sales people and dealers.
+
+Matthias Miller  03:00
+Pop the gloves. Don't make it stall.
+
+Unknown Speaker  03:04
+It's fun.
+
+Matthias Miller  03:08
+The only thing that would make this more fun is if Dwayne and I could be in your office. Oh, that would be a party. It would be baby
+
+Unknown Speaker  03:18
+Dwayne wants to fly to Kansas and fly you to Kansas.
+
+Matthias Miller  03:23
+Actually, that'd be a good thing. We could go. We could come see mom and Yeah, time over there. Yeah, work about six hours of design time. I could get up super early. I got six hours of design time for the next day.
+
+Speaker 2  03:41
+Yeah, we're planning. We're tentatively planning to go out for steak Tuesday. So we
+
+Matthias Miller  03:52
+actually had talked about coming when Wes are gone. And anyway, it's crazy. Oh,
+
+Speaker 2  03:59
+Wes is left by now, I'm trying to remember when they're leaving. No, they
+
+Matthias Miller  04:02
+left. Right, yeah. I mean, I'm assuming, so Okay, yeah,
+
+Speaker 1  04:12
+okay. I am very sorry. My three CX takes over my headphones, and then, instead of hanging up the phone I accidentally answered and so that then I was in this embarrassing situation of going, do I just hang up again? Because they're just going to call again. It's going to hack my headphones again. I apologize.
+
+Matthias Miller  04:37
+So here's the sad news. Because of how we handle bad debt. No, not bad debt, yeah, well, refunds, I mean customer refunds, we are moving towards having sales orders balance out to zero when they. It canceled, like you have to go in and zero it out, okay, but then that means it's going to be only afterward.
+
+Speaker 1  05:10
+The thing that threw me for a loop was Seth said in the email, said something about invoice. And so that's what was like, wait, wait, whoa, whoa, whoa. So that's what, that's what triggered my response. I'm like, okay, it sounded like what you were saying was that after their invoice, they go to zero. And I that's not the case.
+
+Matthias Miller  05:35
+Okay, no, unless you're canceled,
+
+Speaker 1  05:37
+okay, so it's only canceled that go to zero.
+
+Speaker 2  05:44
+Yeah, we're going to force cancel to zero. Well, force like validation, saying if you cancel it, you need to have a refund. That takes it to zero.
+
+Speaker 1  05:56
+Okay, so if there's money on the sales order in the payments RG, and you click the button, we're going to force you to deal with that money before we're allowed to begin. Yeah. Oh, about that,
+
+Speaker 2  06:08
+which we haven't made that change yet. But what that'll do with how our candidate record is currently on sales orders that'll make so that after if a sales order was invoiced and then canceled, most users won't be able to edit it, which I think we should probably just change it so that if it's canceled, well, I don't know if it we could if it's canceled, make so that that doesn't apply, but I don't know if it matters to you or not,
+
+Unknown Speaker  06:37
+so I
+
+Speaker 1  06:44
+do we? Do we have a ready scenario to say why somebody would want to do something with it after it's canceled?
+
+Matthias Miller  06:52
+Well, I mean, I think, I think one thing we could say is you can edit it on the cancelation date, if that's appropriate. I
+
+Matthias Miller  07:03
+kind of the classic, like Warren saying this. Yeah, so
+
+Speaker 1  07:13
+in other words, if you mistakenly canceled it, then you like you could, I don't know that that cancelations, cancelations are a little bit finicky as it is, because I'm not sure what the restrictions are, right? But once you cancel a building, it's difficult to get it uncanceled. And so I kind of just want to, I don't know that we need to do anything further with it, I'd say, so if I let me just clarify that I understand what you're saying. What you're saying is that if there is money in the on the sales order, and you click Cancel, you're going to be you have to deal with that before you can actually cancel the business or the sales order. I states,
+
+Speaker 2  08:03
+yes. I mean, we haven't coded that yet, but that is what we're
+
+Speaker 1  08:07
+finding. Okay, I think I said something about this before, but at some point we really should go come up with a more elegant way that if a sale is made, to handle both the building and the transit tasks that are attached to that. Because right now it is, it is all a manual process to cancel. Like, if there's a sale and the building's not built yet, like there's you have to go manually kill everything on the on the building side and the transit task right hand side, which is, which is very misleading to to some individuals who go, Oh, I'm just gonna cancel this sale. And so they do, and then the building suddenly gets built, and they're like,
+
+Matthias Miller  08:58
+Oops. Well, I think maybe the the appropriate thing would be to go back to Mark. I mean, we're not going to hear this this week anyway, but Go, go back to Mark. Here's a proposal. The proposal is, is do this means it will become read only to non administrative users. Dwayne's plea is that we codify his kind patient request was that we codify the cancelation process so that rather than needing to follow manual processes, you can't interactively cancel it, you have an X 30 that does all the things to cancel
+
+Speaker 1  09:41
+well, and it's, it's, it's no small ask, because if a sales order is tied to a lot building, then it needs to be there's, there's a bunch of stuff that needs to happen there. If it's tied to an unbuilt building, then there's a different process. If it's tied to a. Built building that's not necessarily, it wasn't necessarily a lot building before. In other words, they canceled after the building was built. There's a whole nother process. So I don't know if there's a way to really turn this into a whole entire process that's really nice and sweet and elegant and automatic. It's because there's a lot of, there's a lot of nuances around it.
+
+Matthias Miller  10:19
+Okay, well, there seems like the nuances, though, seem to me, it should be deterministic, but hey, what do I know?
+
+Speaker 1  10:36
+The biggest nuance is around lot buildings and defining what a lot building is, because we don't currently have a good way to define what was a lot building, right? Because once, once a lot building is sold, it gets unchecked as for lot, and the only way to determine that accurately is from modification history, and that can be cumbersome to to really sort through and figure out, and, you know, whatever. So ignore my, my passionate plea, and just leave it alone for now. Okay,
+
+Matthias Miller  11:18
+so, so, just for a written trail. Can you note something somewhere, either in the job or the email chain saying that we talked to Dwayne, who's fine with the beginning read only after every cancelation and yeah, you haven't
+
+Speaker 1  11:42
+come up with a fun way to refund the payments that are on there yet, have you
+
+Matthias Miller  11:47
+well, you put in the adjustment, and then it goes over to Drew to create vendor invoices and do all that,
+
+Matthias Miller  12:00
+which process for
+
+Unknown Speaker  12:02
+well, it's another nuanced thing.
+
+Matthias Miller  12:07
+Well, I mean, how much is the overpayment? Was it paid by credit card?
+
+Unknown Speaker  12:11
+Exactly? Yeah, exactly which
+
+Matthias Miller  12:15
+it was paid by credit card. Then you really shouldn't, anyway, then drew yesterday, or whatever. That's his problem, not mine.
+
+Unknown Speaker  12:25
+Good. I'm good. Awesome.
+
+Matthias Miller  12:27
+Thank you, sir. Um, thanks guys. Dwayne, did you want to set up a time for I mean, do you want to just try to hit it Wednesday? Or do you want anything before then?
+
+Unknown Speaker  12:39
+Not before Wednesday.
+
+Speaker 2  12:42
+Stalling out are we think we're going to have most of this stuff done in by Tuesday? I would think it's fine. We have other stuff we can work on, but we're hammering
+
+Speaker 1  12:53
+it's just, it's just that Mondays is always crazy. Tuesday I've had a whole bunch of things booked. Wednesday's really the first day I can really get back to it again. I
+
+Matthias Miller  13:05
+wonder if there's any way I have removed the assist call to Wednesday, because I've got other stuff on Wednesday, I might have to rearrange and make room. Does it matter? How early would you start
+
+Speaker 1  13:22
+on Wednesday? Yeah, well, um, Josh's call is at 645, or seven o'clock, and
+
+Unknown Speaker  13:34
+I'm gonna drop it.
+
+Speaker 1  13:37
+Thanks, Seth, appreciate it. Yep, um, uh, so I don't have anything until the assist call. So we could, we could do it another eight o'clock, if we wanted to,
+
+Matthias Miller  13:58
+and then I want to use any way I can move. Jesse, I'm sorry that's not for you. I would move if we would just work until like, hour off and on, take a break. I need to come check in with Audra, work up until like, 1230 year time. By that time, we're going to be trash anyway. We're not going to want to do more the rest of the day. And if I could have this other we buy other call into the afternoon. I've got one other thing to potentially reschedule as well. Okay, let me, let me, I'll chase it into I mean, the
+
+Speaker 1  14:30
+I don't, I don't generally book things on Monday, just because Monday tends to be a bit of a it always tends to be a bit of a dumpster fire. That being said, if we, if we said, look, let's pound something on Monday, Monday afternoon would work.
+
+Matthias Miller  14:50
+Maybe do like I could do three to 430 I'm
+
+Matthias Miller  14:59
+going to. If you wanted to,
+
+Speaker 1  15:04
+well, it sounded like if we don't, then they park at the station.
+
+Matthias Miller  15:10
+It does sound like if we don't park at the station. I think it's a question for you. Do you want to carve out space amidst the dumpster fire?
+
+Speaker 1  15:21
+Ah, sure. Let's, if three works for you, let's do it.
+
+Matthias Miller  15:26
+Let's just do it, and then I'll see what I can do to make up some, open up some space and
+
+Unknown Speaker  15:34
+and do do a, do a Monday, Thursday,
+
+Matthias Miller  15:37
+Monday, um, I might, I mean, I would be able to do, I know I can do. I can, for sure, do Wednesday afternoon as well, but, but with Wednesday being so open for you, it really is nice, and as much stuff as we have to do, it really would be nice just to block out a big block in the forenoon. So let me, let me see if I can open up my schedule on Wednesday. Okay, and but,
+
+Unknown Speaker  16:05
+yeah, go ahead and shoot me one for Monday. Let's just do it.
+
+Matthias Miller  16:08
+Okay, done. You got it all
+
+Unknown Speaker  16:12
+right, sir, have a good weekend. Thanks. Bye.
+
+
+Transcribed by https://otter.ai

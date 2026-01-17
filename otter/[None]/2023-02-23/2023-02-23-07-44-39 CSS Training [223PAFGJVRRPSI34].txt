@@ -1,0 +1,998 @@
+Unknown Speaker  01:19
+Good morning?
+
+Unknown Speaker  02:22
+Morning Good Morning Hey Tim
+
+Unknown Speaker  02:40
+wants to be hitting 68 degrees and sunny today so I broke out the short sleeves
+
+Matthias Miller  02:45
+heard North Carolina was hitting 80 today. That's
+
+Unknown Speaker  02:53
+I think Virginia is hitting 80 or 82 today so then broke out the short sleeves to crazy
+
+Unknown Speaker  03:05
+79
+
+Unknown Speaker  03:07
+Holman Virginia. Well,
+
+Unknown Speaker  03:10
+look behind me zero degrees.
+
+Unknown Speaker  03:13
+Zero degrees
+
+Unknown Speaker  03:17
+don't judge like your judging.
+
+Unknown Speaker  03:21
+That's East Coast
+
+Unknown Speaker  03:28
+we're nicely in between that at 42. So
+
+Unknown Speaker  03:33
+bad. Sounds kind of balmy, actually.
+
+Matthias Miller  03:44
+Yep. screensharing All right, where do we want to go today? Oh, right. So we have things here
+
+Speaker 1  04:11
+so it's a bunch of different Z, ch, core, et cetera items here. But a few things involving testing, client management, all of that. So I guess we'll just start charging down the list here and see what we can knock out. The first one here is 6591. And have input metrics about this a while back and you've done a bunch of specking on it.
+
+Speaker 2  04:55
+And there was some more specking that I was supposed to do on this that I never got done. Okay, I was supposed to expand in spec out on on that recording. And that was like right before I left. And I didn't get it done before, before I was out until I got back I was having a hard time figuring out are remembering what I was supposed to be doing.
+
+Matthias Miller  05:22
+So sure, do we want to take excuse bad excuse thing there but do we want to take five or 10 minutes to kind of spec out what this might be
+
+Speaker 1  05:33
+that probably would be a good idea to at least get a high level picture of it and then awesome or we can flesh it out from there. All right, well,
+
+Matthias Miller  05:47
+I mean number one I'm seeing is group by group by prompt which is that
+
+Speaker 1  05:55
+huh let me be quickly up over here and over pose and grab our snippet for x I don't even have to go to grab the snippet for argies Now argies reports
+
+Matthias Miller  06:18
+so we can use that as a base we should let you be able to choose multiple types and when you choose multiple types then you can
+
+Matthias Miller  06:31
+use can't reference field specific information but you can reference
+
+Matthias Miller  06:41
+anyway stick to the task at hand Sure. We'll do
+
+Unknown Speaker  06:51
+so
+
+Matthias Miller  06:54
+being with us filters is a group by and then you've got developer tester
+
+Matthias Miller  07:05
+client code parent incident tester reason tester resolution
+
+Matthias Miller  07:23
+and by the way, does this report show this is a repeater G report
+
+Speaker 1  07:28
+apparently Yeah, we will be filling Yeah. All the Okay. Yeah.
+
+Matthias Miller  07:40
+So then in the somewhere we need to note that that
+
+Speaker 1  07:58
+would there be any reason is this an editable report? Or just a no, I
+
+Unknown Speaker  08:02
+don't think so. Yeah,
+
+Unknown Speaker  08:05
+we wouldn't be editing anything on here
+
+Matthias Miller  08:10
+it's a report of DEV input reasons.
+
+Unknown Speaker  08:22
+And menu location is
+
+Speaker 1  08:27
+thinks some of those things we could knock out later to share certain spot on the
+
+Matthias Miller  08:31
+menu. Well, I mean, just client scope jobs under client scope jobs dev input analysis maybe
+
+Unknown Speaker  08:44
+Yeah, I think that makes no sense.
+
+Matthias Miller  09:07
+Also, filter is date range
+
+Speaker 1  09:21
+and is that looking at what date is that looking at? We're looking at the Yeah, the dev input date and time. Yes. Not the Oh, yeah, we don't have another date time there. So yeah.
+
+Matthias Miller  09:48
+I would also see
+
+Matthias Miller  09:57
+see it useful to be able to filter by developer tests. Your client code and parent incident will actually probably it could be useful to filter by all the rest of those in some form or fashion
+
+Unknown Speaker  10:23
+hmm
+
+Matthias Miller  10:33
+and all of these except parent incident can be multi select Blank equals all sure
+
+Unknown Speaker  10:48
+our columns
+
+Speaker 2  10:48
+parent incident plus all the same columns as
+
+Unknown Speaker  10:53
+the RG.
+
+Matthias Miller  11:02
+Yeah, I think you might want incident ID incident title. And then the RG rows or the RG columns
+
+Unknown Speaker  11:18
+one of those needs to be link.
+
+Matthias Miller  11:21
+Yeah. And then I would group by group by is
+
+Unknown Speaker  11:34
+see filter selection
+
+Matthias Miller  11:37
+selected options sorted by I think you would just sort by first by incident ID and then by date time
+
+Unknown Speaker  11:54
+should also set a default for the group by
+
+Unknown Speaker  11:57
+Yes.
+
+Unknown Speaker  12:09
+Oh
+
+Matthias Miller  12:15
+what should the well, the other option would be making the grouping conditional in that group if it's blank. I don't know if that makes sense or not group by parent incident probably makes the most sense.
+
+Speaker 2  12:30
+I think so, too. I think that's what I was leaning.
+
+Speaker 1  12:34
+Okay. Just to clarify parent incident, does that mean the incident that it's on?
+
+Matthias Miller  12:38
+It's the root incident, though,
+
+Unknown Speaker  12:42
+if you have multiple child incidents,
+
+Matthias Miller  12:45
+they would all be under? Yeah. That way you can see like for if I AFR EBS, or something like that. And then change requests would all be I don't know, though. I said, Are you sure it's that or is it playing code? Because if you've got a set of change requests.
+
+Speaker 2  13:14
+Now I don't think it is parent incident. Like I don't think that's what we want it defaulted by. Because Aren't there a lot of maybe I'm wrong. But aren't there a lot of jobs that won't even have a parent incident per se? I guess if it doesn't have a parent incident? Would it just be the incident that they've been put us on? Yeah, maybe it could be client code actually. That's almost just yeah, in some ways. It's about not that different than parent incident.
+
+Matthias Miller  13:49
+No, it's not the only differences change requests would fall together into one grouping instead of
+
+Speaker 2  14:04
+how often are we even having multiple testing jobs that have one? Change Request doesn't seem like very often.
+
+Matthias Miller  14:11
+Not not. Okay. You don't match up like, hey, next update, we want five? Five change requests,
+
+Speaker 1  14:22
+right? Usually no? Okay, fine.
+
+Matthias Miller  14:30
+For the sake of simplicity, if we don't need the parent incident grouping. I would
+
+Matthias Miller  14:42
+think it's a small thing, but I think it's a little simpler to just remove it.
+
+Speaker 2  14:47
+I guess when when you first said current incident i My first thought was oh, that's the incident that the RG row is on, which may be a helpful grouping. Possibly. Oh, All, I mean, it's only going to be a helpful grouping if we have a lot of rows per end up with a lot of rows per job.
+
+Unknown Speaker  15:12
+So that could be useful.
+
+Matthias Miller  15:18
+The other thing that would be useful would be to have when you pull up this report, the groupings themselves, don't you want the groupings themselves sorted by most recent Dev. And put which requires?
+
+Matthias Miller  15:49
+Or the date range up to 30 days or something?
+
+Matthias Miller  16:09
+Think I've got Sorry. Go ahead. I'm interrupting you guys.
+
+Speaker 1  16:15
+I guess what would be the most common use case for this? When would? When would be when would we be wanting to use it?
+
+Matthias Miller  16:23
+I think it's every few months. Ellis is like, what's going on with my guys in Bangladesh. And he sticks his head in here and says, Oh, the last 90 days? Well, that's interesting. So it's one to one of us could have the same kind of question with Austin being like, I know, this is kind of a interesting gauge, but like the developers work is easy to measure objectively. I mean, they're generating dev inputs, well, unless it really is interdependent. If Austin isn't doing his job, then then we're gonna have low numbers. If the developers aren't doing their job, we're gonna have high numbers. If they both happen to be absolutely amazing. If you have low numbers, it doesn't really mean anything, inherently, it just tells you where to start looking. Yeah, I mean, good. We're just we're going
+
+Speaker 2  17:27
+to be able to learn a lot of interesting things from this. I don't know, as far as me, I don't like I don't need this report, but it's going to be interesting information. And, and that sense, like, I'm just gonna end up playing around with it. So I don't know what the most common use cases yet. It's gonna, you're also going to learn some interesting things by project like for zfp. A lot of the dev input reasons are going to be I need more information. Current CWA a lot of input reasons are, hey, there's something not working right.
+
+Matthias Miller  18:01
+Exactly. Let me show you guys something. And this might be let me see if I can find this email here. And this might give you guys a little bit of a vision for what could be Can I share my screen a little bit. So there's an email that Ellis puts together with a bunch of reports like this, which is each development cycle, he goes back and runs a whole bunch of metrics. So how many jobs needed review by team, and what percentage of jobs were reviewed code reviewed by cutover. And their target is 90%. This was in last October, they hit a 90% target, which is phenomenal. If codes if all code is reviewed before cutover, it gives the testing team a head start on getting getting rolling, double codes coding into development, staging, consulting targets 10 to 20%, because their changes are lower impact. And programming targets five to 10%, because their changes tend to be higher impact, higher impact higher risk. In this particular case, they're fine. You know, there's one consulting team that was substantially higher than the others. Another programming team that was substantially higher than the others, called the average up. One team, two teams in particular that were under the under the target. Broken builds is when somebody makes a change and it prevents the platform from being able to be built or you don't get any executables out of it or the system can't be created because of an error. There is below 1%. And so here you can see which team is at what level? And then regression metrics is. regression tests are tests that run every night. There's some things that are, who has financial analytics that are definitively true. And there are things that are, this is probably the best answer in this type of situation. And the best answer in this type of situation is a bit of a moving target. And in addition, and, and so with things like that, that change over time, we have what's called regression tests. So basically make sure that when we run it, we ran it last night. And then we ran the same thing with the same parameters, but with new logic. We're running it tomorrow night, and we want to know, are they within an acceptable margin of error? And if they're not, then we need to have really smart people taking a look at the analytics and figuring out like, why did that change? And is the change actually better or not? And approver or deny? And so these are regression failures. And so this becomes a, so I guess, what is? What does that mean? Well, I mean, I think one of the things could be, there's certain types of things that are. So one potential use case is using something like this in a monthly development and testing monthly or per cycle development and testing report and saying, Okay, here's how we did on our projects. Z, you know, and break down by some of these filters and on zfp projects, or for this developer or, you know, you really need to clarify your testing instructions more or whatever whatever it is.
+
+Unknown Speaker  21:53
+So yeah, that's interesting.
+
+Unknown Speaker  22:13
+Yeah, so
+
+Speaker 1  22:25
+yeah, defaulting client code and then defaulting a start date to can we default the start date to the basically the the date range to the current cycle? Or to the past cycle?
+
+Matthias Miller  22:49
+Yeah, we can I think the question is, which one do you prefer?
+
+Matthias Miller  23:04
+Look at it.
+
+Speaker 2  23:06
+And grouping by client code there. Where are we getting that from? client code does not feel that on client scope.
+
+Unknown Speaker  23:14
+Jobs.
+
+Unknown Speaker  23:17
+That is,
+
+Speaker 2  23:19
+is that I guess that's up in the works to
+
+Speaker 1  23:23
+I think that's the our Yeah, I think that would be something that we need to to be adding as a very good point. I mean, it is.
+
+Matthias Miller  23:37
+You can look it up based on incident cls.
+
+Speaker 2  23:50
+Yeah, not to mention right now I have a whole slew of jobs that don't have any client code, and I'm not exactly sure where they fit. I'm sort of assuming that they're accounting jobs, but I don't have much to go on to assume that all of them seem related to accounting, but they don't have any code in the title.
+
+Matthias Miller  24:11
+And if they're accounting they probably don't in which case they should be we have core for change requests which is nice to be nice to these because core I mean, we have this is not visible in the detail screen but we do have that what's coming off the client scope incident itself mean the client script job itself
+
+Unknown Speaker  24:45
+you see that's coming off the client scope job itself. Yeah. Yeah,
+
+Speaker 1  25:18
+In the wire grouping, do we have a grouping? Do we want a sub grouping, we all want to always subgroup by the testing job. Use a for loop grouping first by client code, then by testing job.
+
+Matthias Miller  25:35
+In which case, let's take, can we just take we're,
+
+Speaker 2  25:42
+I think if you if you sort reports gonna be a lot cleaner if you just sort first by testing job. Or if the sort can keep the testing jobs together, because if you group by testing job, it's gonna make the record a lot messier. If you get the sort so that the testing jobs are always together that'd be cleaner than having a sub grouping, but maybe that's just my opinion.
+
+Unknown Speaker  26:18
+Okay, well, I'm gonna say that we are
+
+Matthias Miller  26:26
+I would just do testing job as a textbox. of incident ID. Okay, well, and for this one, I would say that this is actually this actually is a parent incident ID.
+
+Unknown Speaker  26:49
+Sure,
+
+Matthias Miller  26:50
+because there are times when when we might want to look at we might want to look at IFR and say, I want to see only I want to go across all time and just see what this one or EVs or something.
+
+Matthias Miller  27:11
+Sure. So I think we're 80% here, and you guys can take it from here.
+
+Unknown Speaker  27:26
+Sure.
+
+Unknown Speaker  27:39
+Sounds good.
+
+Speaker 1  27:49
+So while we're on the topic of fine codes, and whatnot, maybe we'll tackle some of these other ones well. So 6880, no, sorry, 6686. B, this one of adding the client code to proposals. And maybe we should as a side note, maybe we should start standardizing this a bit more. To client code rather than three, I'll see.
+
+Speaker 1  28:25
+We had put together some, some details. Both of those with you and Ellis had thought this looks good, but just want to review it. Oh, actually, Ellison, given his vendor approval, but I guess we might be ready to go but anything. Anything further? Basically?
+
+Matthias Miller  28:58
+Should client code be the same list that you use in incidents as well and change requests?
+
+Unknown Speaker  29:10
+Rapidly so
+
+Speaker 1  29:19
+you're probably so except for cases where like when we're in design, before we reserved the plant code.
+
+Matthias Miller  29:29
+I guess codes don't change. So what if we made it a text field with a helper list? Well, do we even need that?
+
+Unknown Speaker  29:46
+Why not just validate that it's three characters. Make it all caps.
+
+Speaker 2  29:56
+If anything, we're using four characters on core and The
+
+Matthias Miller  30:00
+core, okay, three to four characters.
+
+Speaker 1  30:04
+I, I actually kind of like the idea of I think maybe the droplist would would make no sense. I'm thinking about it because we don't we don't assign the client code until, until the in depth design is done. And we get the approval from CCI.
+
+Unknown Speaker  30:29
+We make proposals to it
+
+Speaker 2  30:35
+we make proposals for the for the client, could you mean, good client? Good? Hmm. I think I think it would streamline things. And if we could, yeah, at least have a suggested client code pretty early on helps, I don't know, keep things a little more consolidated, as opposed to, you know, working on a project up to x point, and then all of a sudden, we assign this three letter code that we're going to be using and relying on pretty heavily for, you know, recognition and stuff. Like, I think it would help things be smoother if we could, you know, leave, you know, assign that, assign it slash suggest it, you know, pretty on pretty early on, get it in that field. And
+
+Unknown Speaker  31:23
+but, and we
+
+Unknown Speaker  31:24
+think that too much.
+
+Speaker 1  31:26
+We should probably then with that we should basically we reserve it with DCI
+
+Unknown Speaker  31:34
+in the high level design, and then if they don't go through, then we cancel it or something like that.
+
+Matthias Miller  31:41
+I don't know that it would go that far. It seems like that's, to me, that's a little bit, that's more work than what's actually necessary. Okay. But I do want to avoid I think we do want to avoid populating client code with client codes that are not not actually clients or have not been clients at some point. So I see a few approaches number one, we could have the we could have the client code become a lookup record with an active checkbox. And we could start syncing that with client scope to keep it in sync with whether it has an active subscription or not. That's option one option to which is much simpler is well just let this thing be fielded as a plain text field for now and I mean what's really the harm and how often do we use it and do we need perfect now
+
+Unknown Speaker  32:53
+Yeah, I think that yeah. I like that simplicity
+
+Speaker 1  33:16
+and is this is this ECA chooses core Zuli course it has to do with proposals
+
+Unknown Speaker  33:25
+I think it's core Yeah.
+
+Unknown Speaker  33:56
+Keep rollin um, let's see here
+
+Speaker 1  34:13
+Okay, so yeah, I think we'll go to this one next, the client tracking and billing, this incident 7453. And this one, just a bunch of miscellaneous ideas regarding how to track clients better. So some ideas for contacts. One is migrating cch to the new contacts set up and then requiring all client type contacts to be specified. We're currently using the contact type for for contacts. We're already doing that and we have notes in our arch checklists to set up those contacts. So maybe this isn't as necessary. But then this would be taking the snippet that we're using in the memo currently and adding fielding for it. Including, and probably the main thing is the client code. So then linking, making client client code back to the contacts. And then doing some stuff as far as like billing for contracts, this comes out of some of the, for example, Austin's testing of various jobs that are billed to different people, a lot of that stuff is in my head, but not even all of it. And so sometimes Austin has to ask me, and sometimes I have to ask, pass the question on to somebody, you know, Matthias, and Ls, if we could somehow have a good way to track who gets billed for which projects. Something to think about there.
+
+Matthias Miller  36:17
+Can I get Can I jump in with a proposal? Yeah. Let's start making everybody responsible for billing. And let's make one person responsible for how things get built. And let's give that one person whatever report they need to assign billing whenever it needs to happen. not that dissimilar from I mean, Tim, this is basically let's go enhance our unbilled hours report. And let's add columns for is it billable and is available to whom and five to 10 minutes a week? If we want to do it like that, or more frequently, or less frequently, if we want to once or twice a month, whenever we need it for billing, we go through and we go Go clean those things up.
+
+Unknown Speaker  37:02
+Sure. Yeah, that would make a lot of sense as we as we continue to expand and have different people doing different different things. Then basically, everybody else wouldn't have to worry about setting billing.
+
+Matthias Miller  37:24
+You just please make sure you track time when you're, I think the probably the biggest question would be there's still okay, so. Okay, well, let me finish my thought that, you know, the biggest thing is track time when you're when you're working on something that matters, that's billable. But the potential, the only potential downside that I can see is if you have a
+
+Matthias Miller  37:58
+there are some times when you don't want to track time on the change request, you need to track it on some other job. And how should we handle those situations? Like zc?
+
+Speaker 1  38:17
+was not correct. So do we still do to track time on change requests? We just build them to the bogus contact for the time tracking Sure.
+
+Speaker 1  38:42
+I think maybe the timing would be this wouldn't be more confusing than what it already is as far as testing jobs for Austin where it's important for him to know whether he should track time on the individual job or track time on a an umbrella time tracking incident.
+
+Unknown Speaker  39:03
+But that's we already have that.
+
+Unknown Speaker  39:06
+That question mark now so I don't think that makes a difference there
+
+Speaker 1  39:19
+so sounds pretty good to me off the cuff feedback from Austin men.
+
+Speaker 2  39:30
+Yeah, I mean, the desired end goal is to let me just do my testing and track my time on the jobs and not have to constantly worry and ask questions and trying to figure out how I'm supposed what I'm where I'm supposed to be tracking and who I'm supposed to be setting up billing to and all that stuff. So I mean, if we're getting rid of all that stuff I'm happy I mean how we do it I don't really care that's my perspective
+
+Matthias Miller  40:14
+then in the old spoken
+
+Unknown Speaker  40:20
+I don't think so okay
+
+Unknown Speaker  40:28
+when outside perspective
+
+Unknown Speaker  40:38
+my opinion I don't see any problem with it. Yeah. Yeah, no I like it.
+
+Matthias Miller  40:50
+I'm pretty sure Nick is glad he doesn't have to think about whether he how get how things get billed for the CLS versus the FP versus x FB versus Exactly yeah. You can do the message as I understood it good Well that was easy. So then what's going to happen is if I'm involved in that then the pain is going to fall on me and I'll go figure something out if it gets too terrible I think in the short term I think the easiest thing actually the short term is we will
+
+Unknown Speaker  41:34
+see.
+
+Matthias Miller  42:06
+Okay, I'll tweak some permissions it'll make these things easier for everybody but basically and then it'll start showing up on our weekly report 10
+
+Unknown Speaker  42:16
+Okay. And will that also catch missing rates ie billable written incidents? We will
+
+Matthias Miller  42:26
+make sure it does
+
+Unknown Speaker  42:38
+all right
+
+Speaker 1  42:45
+alright, so you got the notes you need there gonna be to make any notes
+
+Matthias Miller  42:52
+Yeah, I mean just make a comment here I think I think we should hijack this so
+
+Unknown Speaker  43:00
+we will
+
+Matthias Miller  43:09
+we will centralize billing with Matthias slash Tim. And they will put a process in place to make sure these get billed appropriately
+
+Speaker 2  43:32
+and then I guess somebody's gonna let me know exactly how this is gonna change my workflow.
+
+Matthias Miller  43:40
+billing details are going to disappear and you'll have to think about billing. Great. Just track your time as you always have been. And it's not going to warn you on save about missing stuff anymore. Missing rates or anything
+
+Matthias Miller  44:16
+and yes, there's almost certainly things that are going to break as a result of this and we'll just go fix them
+
+Unknown Speaker  44:29
+all right, so.
+
+Speaker 1  44:52
+All right. So then let me just make a note of this back On the CSS file for us to talk about
+
+Unknown Speaker  45:05
+some other time
+
+Unknown Speaker  45:12
+and
+
+Speaker 1  45:20
+All right, so that's all related to that then there's the the aspect of client tracking where we're proposing tracking the client client code on the organization accepting new contacts and tracking client code and organization and maybe as well tracking upon the individual client contacts
+
+Speaker 1  45:52
+to help with linking with stuff is that is that helpful to have that linking basically this is linking this is linking the client code to the organization which we don't have currently. If we do that then we can we can do some some things like setting the the incident contact organization automatically based on the client code or vice versa
+
+Matthias Miller  46:32
+and we can also show the client notes on the Yes change request we're testing job
+
+Matthias Miller  46:58
+can we go back to our list how much of this is Nick
+
+Speaker 1  47:14
+proposals change requests this one maybe would be this one probably would be
+
+Unknown Speaker  47:28
+yeah okay, let's let's do a
+
+Matthias Miller  47:41
+let's reorder this slightly, let's go over to those that he can drop off then. And keep working on stuff that's that's grass. So
+
+Speaker 1  48:01
+let's say we had a lot of discussion here. And big picture, improving and documentation process challenge keep track of all the care that need to be documented because there are different report the testing job so basically figuring out on the change request, how to attract documentation. And then I think there is also Yeah, that this one is related in that it's tracking change requests that have been deployed. So look at these change requests and improving the whole workflow process especially for Austin. Well, it's improving Austin's workflow process to make things easier and clearer for him and then it's also giving better insight for me and other people see where where things are at.
+
+Matthias Miller  49:01
+So we have the design summary currently. So we do not have the mark documentation complete
+
+Unknown Speaker  49:26
+this has been feeling like less of a pain point as I've been getting more use to how things have been working
+
+Speaker 1  49:52
+are there things then with at this point that would get things that you would see that would would help To improve it, make it clear. Is it? Because finally VAs is or would it still be helpful to have better linking or better reporting? It would show you what needs documented where to document it?
+
+Unknown Speaker  50:21
+Yeah.
+
+Unknown Speaker  50:27
+Thinking Thinking
+
+Speaker 2  50:39
+Yeah, I guess one of the pain points that still exists is me having to figure out where to document stuff, it would kind of be nice if in the process of developing the change request. We are, like, you know, as we're defining old spec and new spec, when we say old spec, it'd be nice if we could say where that old spec is. If you know what I mean, like which proposal which section in the proposal especially as systems, I don't know if we're going to keep going this direction, but especially as systems are having multiple proposals. And I have to, like, look through different proposals, and then I find a spot and one proposal, I think, I think this is the spot, but then I have to sort of feel like I need to check around and other proposals to make sure it's not also there.
+
+Matthias Miller  51:34
+Okay, so here's the proposal, that's being proposals. On the at the top right of the client proposal, we have a location that has the proposal name, pipe, parent, section, one parent section, two parents section three pipe, current section title, that you can triple click and copy over into. Or, or it's a or it's a proposal colon link to proposal, new line. Section colon, and then the parent hierarchy of this current section.
+
+Speaker 1  52:30
+With the pipe list, you could could you copy and paste it and paste it back into the proposal and open that spot directly? No, but
+
+Speaker 2  52:50
+I mean, if if you're telling me where it is, even if I have to go there manually, you're saving. I mean, 8020. That's 80% of the work right there. You're saving more than 80%. Nice. Well,
+
+Matthias Miller  53:03
+here's something else we could do. Side note, this might actually be pretty simple. I don't know if we want to do this. But we could. We could have.
+
+Matthias Miller  53:21
+If we would only include the section title, couldn't you? Don't we search section titles in the search?
+
+Unknown Speaker  53:32
+Yes, maybe not? Yes, I think so.
+
+Matthias Miller  53:37
+Okay, here, here's my original proposal, where it was originally gonna go with my variant link link to the proposal, the ID of the section itself. And the proposal title. And when Austin wants to find it, he copies the ID. And we allow the search to match on ID as well. So you copy the section ID and it shows it highlights and searches, it drops down. And that's where it is. And any subsequent edits will always take him back to that same place.
+
+Matthias Miller  54:13
+The advantage of using the ID is that you're only going to find one instance of it. And it's not going to
+
+Speaker 1  54:25
+Yeah, but it looks like the search results does include the name so like your overview doesn't appear anywhere else in the record in these in these memos.
+
+Speaker 3  54:37
+Yeah, it does. Oh, it does. I mean, sorry, no, I was not contradicting it. I would say yes. Saying yes, it does search the names of the section. So yeah, that was
+
+Matthias Miller  54:54
+but so if you want to if you want to do any 20 the original proposal of showing the section hierarchy He so that even if things do change, Austin can take some manual work, we can find out where it is. I don't know. Either one's probably actually either one's probably about the same amount of work to be honest because on in one case, we have to stitch up the hierarchy. And in the other case, we don't we just have the ID that you can use to locate it but we have to add it to the search
+
+Unknown Speaker  55:35
+that sounds about right now.
+
+Unknown Speaker  55:55
+References
+
+Unknown Speaker  56:07
+a big part of it comes down to it what's easiest for Austin?
+
+Unknown Speaker  56:14
+Yeah, I mean, both sound good. I don't know if I have a preference towards one or the other.
+
+Matthias Miller  56:26
+Nick, if you were a developer, which one would you rather
+
+Unknown Speaker  56:38
+was a choice between searching for the ID. And
+
+Matthias Miller  56:45
+once the other option stitching together the hierarchy of the current section
+
+Unknown Speaker  57:01
+probably search by ID,
+
+Unknown Speaker  57:03
+although it really doesn't
+
+Unknown Speaker  57:04
+matter that much.
+
+Matthias Miller  57:07
+And then here's a small coin toss that stitching together the hierarchy can actually could actually be useful for communicating back to clients saying hey, you can find this information in X, Y or Z. So we're a hair Brett's away from nobody really cares.
+
+Unknown Speaker  57:29
+Yeah
+
+Unknown Speaker  57:36
+yeah, then let's do the incident hierarchy. So it'll be easier for communicating back to the clients to
+
+Matthias Miller  57:46
+Okay, so no proposal add a Share section.
+
+Speaker 1  57:55
+Button. Now this is in the this is on the proposal right? On the proposal
+
+Matthias Miller  58:17
+that, that opens and MRG memo or MRG memo expression that shows colon proposal colon and then URL and then section
+
+Speaker 1  58:44
+is this Are we doing it like is going to be a list or is it going to be just all a string multi line? Line? Okay.
+
+Matthias Miller  58:54
+Section colon, and then section hierarchy.
+
+Speaker 1  59:08
+And is that going to be for example, if I'm playing user groups, it's going to show
+
+Unknown Speaker  59:17
+settings
+
+Unknown Speaker  59:19
+like user groups or
+
+Matthias Miller  59:22
+something like that. Yeah, sounds good. We can actually do it. You can even do for example, just do it. Do a real example, like Uline paste the link to the
+
+Speaker 2  1:00:00
+I suppose there's a way we can make that a hyperlink like we do for sharing incidents.
+
+Matthias Miller  1:00:24
+Like the i n 00. Yeah, yeah.
+
+Unknown Speaker  1:00:28
+That's just nice and clean. But um, well, we can
+
+Matthias Miller  1:00:42
+we would have to do what we'd want to do is assign a client proposal Id like we do for instance CP something something something
+
+Matthias Miller  1:01:22
+so what would that take that would mean adding field, adding migrations, showing it on the title
+
+Unknown Speaker  1:01:33
+I'm not sure the title of the client proposal That'd be better yet rather than an ID right.
+
+Matthias Miller  1:01:54
+And then creating the max clap proposal num system switch that we increment for auto numbers
+
+Matthias Miller  1:02:12
+I'm open to it. I think we should split it off into another change request
+
+Unknown Speaker  1:02:19
+at the outset of 8020
+
+Matthias Miller  1:02:21
+that would be outside of 8020 I think I mean, I could see it being really useful especially the more that we start working with cross referencing change requests yeah
+
+Unknown Speaker  1:02:40
+okay, so then
+
+Speaker 1  1:02:48
+mean this all has to do with making things more accessible for Austin this doesn't touch the question of allowing you to him to document directly from the Yeah, testing job is that you know, resume
+
+Speaker 2  1:03:11
+I'm not even sure we need to I mean, that information is all there already up in the memo that has the change request information. It's just one click go over to the change requests and hit the documented buttons. I'm just not sure that's necessary. I mean, this is going to what we're talking what we've been talking about here is a whole lot more helpful
+
+Unknown Speaker  1:03:34
+than what that
+
+Unknown Speaker  1:03:38
+change request is originally talking about. You could
+
+Matthias Miller  1:03:43
+Tim if you want to do is maybe a little more work but if you wanted to create a new chain you can keep this one around Okay Oh got it. That's what you're doing. Now I'm paying attention to it's good
+
+Unknown Speaker  1:04:09
+yeah, and then I'll just this one I can mark as deferred.
+
+Unknown Speaker  1:04:40
+And then this one
+
+Unknown Speaker  1:04:49
+do you have in there
+
+Speaker 2  1:05:32
+think it's as simple as that? Well, I mean that the information is going to be on the testing job, because it'll be in the memo. It'll be in the clients. Client. Sure. Like I would I would envision you pasting that, that information under the old spec when you when you're writing the change request spec under old spec. Yeah, yes in there, then it'll show up on the testing job itself. Now, I'll still be opening the car to check documented but that's fine. Right
+
+Matthias Miller  1:06:22
+so now at the point that you're testing as many jobs that that click becomes a problem for you, I will be happy to fix it Austin's are cranking out 500 jobs and he's like, Man, if I could carve off those three and a half minutes every day from clicking for those 500 jobs.
+
+Speaker 2  1:06:46
+Well, if I'm ever testing 500 jobs for change requests, somebody needs fired
+
+Speaker 1  1:07:03
+or we'll be at the point where we have 750 clients and then yeah, hopefully a lot of things have changed by that
+
+Unknown Speaker  1:07:36
+okay, cool,
+
+Matthias Miller  1:07:37
+even better idea one more thing. Hmm. In your share, do a new line then include the actual Section requirements in there just copy the whole thing.
+
+Unknown Speaker  1:07:52
+You know, Isn't that too much? I don't know is it
+
+Unknown Speaker  1:07:58
+I think it's too much information.
+
+Unknown Speaker  1:08:01
+Okay, it might be too much information sometimes it would be
+
+Unknown Speaker  1:08:06
+probably most times I think but maybe not.
+
+Speaker 1  1:08:10
+Well, we are moving toward paralysis request we are moving toward having less fewer words per section
+
+Speaker 2  1:08:21
+I guess I guess you could add it in the box and you don't have to copy the whole thing
+
+Unknown Speaker  1:08:26
+true
+
+Speaker 3  1:08:35
+good you lose the ability to triple click click and that cuts down on efficiency.
+
+Matthias Miller  1:08:42
+You won't be able to anyway because it's multiple it's already multiplies you'll be able to control a here that's fine. I mean, if we wanted to change the format a little bit we could actually have it be a link format in a single line so it links to the proposal with the section name
+
+Matthias Miller  1:09:16
+anyway, I don't know sorry. I'm throwing stuff in the in the mix. It doesn't even matter. keep innovating past the point of done so.
+
+Unknown Speaker  1:09:42
+I was 13 years idea
+
+Unknown Speaker  1:10:02
+Cool. Nick here, this is nice. Okay. And then the other one here was the this one auto marking deployed for for change requests. This is 7317.
+
+Speaker 2  1:10:31
+This point this is in Ben's court, I'll just say, with pending updates. least it should be my understanding of how things have went. Right?
+
+Speaker 1  1:10:44
+So, yes, based on new current workflow, we've been handling the updates to life systems. current workflow would be he runs the update, and then he once once it runs, then he'd go in and the change request report and open all the change requests that were that are set as ready to deploy, and marks them all is deployed. And then they're ready to go over to LS for billing. This would, this would automate that. And yeah, we wouldn't have been we would know automatically when when something has been deployed, or which ones have been deployed. So this is some logic that Austin had proposed.
+
+Unknown Speaker  1:11:46
+Probably,
+
+Unknown Speaker  1:11:47
+yeah, that was kind of
+
+Speaker 1  1:11:49
+100% bulletproof. But I'm not sure if we're going to get something that's 100% Bulletproof without doing a ton of work.
+
+Unknown Speaker  1:12:00
+Got me nervous.
+
+Matthias Miller  1:12:07
+Like, primarily, I know, we're gonna do fewer dev systems, but like, we just had this instance recently where we're looking to switch ZDC to staging. But we tested in dev. Like, I don't know, crossing branches can create funny things.
+
+Unknown Speaker  1:12:43
+While we're making it easy i.
+
+Unknown Speaker  1:12:56
+think everybody said go ahead at the same time.
+
+Speaker 1  1:13:01
+Where you starting to say something awesome. No? No. Okay. Then Matthias, I
+
+Unknown Speaker  1:13:09
+think it's
+
+Matthias Miller  1:13:16
+well, I mean, I think the way I would prefer to do it, let me just talking to Josh about it, his recommendation was to
+
+Speaker 4  1:13:25
+go off of the release date, which if you pull up the about page, you can see.
+
+Matthias Miller  1:13:37
+So, there is a very sorry, the build 23 dot o to the top or catalog release 23 Dotto two. And so what we would do is we would push across, we would in the subscription system and the billing system we would track when we do an update, what the catalog release is where they're at and sync that across and then we give you a report of all change requests, where the incident was targeted for release in that date, but it's not deployed. Like it was targeted for release on or before that release, but it's not marked as deployed. That makes sense. And then you may have to go through deploying
+
+Speaker 1  1:14:36
+that would, that would speed things up from what we currently have.
+
+Speaker 1  1:14:46
+So am I am I right in saying and thinking that there isn't. We don't literally have a way to say this product change has been applied. To this off to this system, or this feature is in this system well
+
+Unknown Speaker  1:15:12
+if all
+
+Matthias Miller  1:15:13
+commits were 90% of the time, yes, but there's this 10 of 10% of the time that it could be no. So let's say that somebody did codes and development, it, we have carryover, it goes into staging, we do an update, then they make a fix in development. And that fix that needs to be double coated. And we need to make sure the double code revision is in the is in the updated revision. And it's, I mean, at some point to make sure that literally, yes, positively we know that this got, you know, that this specific revision includes that particular revision. I mean, I think that's
+
+Matthias Miller  1:16:01
+just it's more complexity than what it's worth, or we're trying to do.
+
+Speaker 2  1:16:11
+I think in prior conversations about this, I was like, well, if it's been tested, if testing is complete, and we've run a system update, it had better apply. But yeah, I mean, I'm fine with deferring it if it's just more than what I was thinking. So basically,
+
+Matthias Miller  1:16:31
+your argument is, well, it doesn't really matter. I mean, it's not the end of the world if it didn't, if it didn't deploy. And if something slipped through, and it didn't deploy, that's a separate issue. And we'll catch it some other way. It's not related to this.
+
+Speaker 1  1:16:50
+Right, because we don't like we tell the client what is heading their way. But we don't follow up and check every single item to make sure that we don't test in the live system normally.
+
+Unknown Speaker  1:17:11
+So that's true, we are already making assumptions.
+
+Unknown Speaker  1:17:25
+Okay, well.
+
+Matthias Miller  1:17:38
+I don't mind making it easy for you to flag it deploys. Still. I'm still hesitant about the automation, I just don't know.
+
+Matthias Miller  1:18:04
+So, okay, bottom line, how much utility is there in a report that shows change requests are not deployed that we think should be
+
+Speaker 1  1:18:14
+if, if it includes an editable report, that includes a way to mark them as deployed? Right there, I that would save if we were deploying six change requests or something like that it would save time, we're having to open each one.
+
+Unknown Speaker  1:18:43
+But it could also be something that we defer and discuss again, in a few months, once we work out our cadence. We've been doing the updates and all of that figure out what's what's going to be better.
+
+Speaker 1  1:19:07
+So that's, that's from my perspective, Austin from the test me from the deployments that you've done.
+
+Speaker 2  1:19:18
+I mean, some of the stuff that I'm bringing, it's just like, an annoyance. And I think, man, there's got to be a simple fix for that. And then when you guys like, it's not that complicated. I mean, it's not that simple. Um, sometimes my tendency is like, Okay, well, I thought there was a simple fix. So if there's not, there's not a simple fix, that's fine. That's, that's kind of more how I'm thinking with a lot of these change requests. And I feel like that's where this one is at. I'm like, There's got to be a simple way to make this a lot easier. And you guys are like, well, it's not that simple. And what I want to say is okay, and it's not that big of a problem in the first place, so let's not waste any more time on it. Okay,
+
+Matthias Miller  1:19:59
+so let's do Let's let's document how we would fix this. If we wanted to, I think I could cave on this whole idea of is it deployed or not? Basically, here's how we do it in the billing system, track the release date of, of the last update somewhere in some some way, we need to have a way to flag this as the primary client system. So I don't know how we want to do that. But we need to flag that somehow. And then we have automation that the deployed checkbox becomes read only. And we, at any point, the subscription version, and the CR version can change, you can update the live system, or a developer could say, I lied, we're gonna get this in, we didn't make it in before in time, we're gonna defer it another release
+
+Matthias Miller  1:21:12
+and then have an automated import that updates that toggles the delivered checkbox based on whether the change requests release date is less than or equal to the live system release date.
+
+Speaker 1  1:22:01
+Right What was the FDA said make delivery checkbox read only you were saying a few things there about behind the scenes stuff that I
+
+Matthias Miller  1:22:10
+Oh, I was just, I mean, it's just a note that we need to account for Change Request release dates being changed by developers.
+
+Matthias Miller  1:22:25
+And so this means you'll lose your way to say yes, this was deployed or no, this wasn't like it'll all be automatic.
+
+Speaker 1  1:22:43
+And the linking back and forth between these would happen based on the client code?
+
+Matthias Miller  1:22:50
+Well, yeah, presumably based on the client code.
+
+Unknown Speaker  1:23:04
+Well, okay.
+
+Matthias Miller  1:23:10
+Yeah, isn't really based on the client good.
+
+Matthias Miller  1:23:19
+Mm. I mean, the other way to do the fielding instead of having something on the subscription record, which might actually be better is having something filled in on the contact record that says, What's the subdomain for this client?
+
+Unknown Speaker  1:23:51
+Okay
+
+Matthias Miller  1:23:58
+Alright, so is that involves Nick,
+
+Unknown Speaker  1:24:01
+Nick, so perfect.
+
+Speaker 3  1:24:05
+Just one question for humans is who should I be talking to about changes to the phone menu?
+
+Unknown Speaker  1:24:14
+Development changes or other changes.
+
+Unknown Speaker  1:24:19
+There might be development changes involved.
+
+Matthias Miller  1:24:22
+If it's changes, if it's just editing records in the database, Dwayne if it's database changes, Josh.
+
+Unknown Speaker  1:24:35
+Yep. Yeah, yep. Yep. All right.
+
+Unknown Speaker  1:25:31
+Okay
+
+Unknown Speaker  1:25:33
+cool. So
+
+Speaker 1  1:25:49
+bunch of stuff in there that this one include handling billable rates now is not in Austin's court anymore because that
+
+Unknown Speaker  1:26:07
+was what we were doing as far as the
+
+Unknown Speaker  1:26:10
+the new approach to billing there. So that happened was nice. Talk about that some time if needed.
+
+Speaker 2  1:26:23
+I said I'd love to say my two cents about that thinking thing. But yeah.
+
+Unknown Speaker  1:26:30
+Yeah, we can go into that one next is
+
+Matthias Miller  1:26:36
+no, just gonna say the other jobs also in our court
+
+Speaker 1  1:26:39
+has been here. Yes. Thank you. Okay, so then 7560.
+
+Speaker 1  1:26:56
+Austin has mentioned this a number of times, and I finally got around to it to get a change request on it. With is mentioned that it could be law simplest to allow admins warning on save?
+
+Speaker 2  1:27:11
+Yeah, I think that's too loose. Like I assume Matthias is saying as admins would always be able to edit the fields with a warning on save. I think that's probably too loose. I, I think what how I would most idealize seeing this work? Yeah, this has caused me a fair amount of frustration, and testing and supporting the system. What I think I would see as the most ideal solution is have a system switch that allows all the fields on a contact record to be editable. And if that system switch can only be changed, edited by an admin all the better. I don't know. Can you have systems, which is permissions on system switches? I don't know. But yeah, very similar to that we rely on suppressed validations system switch.
+
+Matthias Miller  1:28:03
+So is there a reason why we don't just want to let you edit it in a test environment and just have a big red label at the top that says this is a testing environment, and you're able to edit it because of this Use with caution.
+
+Speaker 2  1:28:14
+I mean, sure, it'd be nice for testing. But at this point, we're more into support, and like so. So I mean, it might make my life easier. But like things like what we ran into that recent bug that we're spending a whole bunch of hours trying to fix when we could have just entered an ID in the contact record and then done in two minutes. Right. It's stuff like that, like, we have created a validation in the system that's really, really, really tight. And I see there's good reasons for that. But I mean, there's use cases that we can't necessarily anticipate that's going to make that really tight validation, just a pain in the butt. Yep. We could create a backdoor for that. It's going to be helpful.
+
+Matthias Miller  1:29:01
+Okay, so here's my proposal, your system switch idea, but with a caveat. It's only available to admins.
+
+Unknown Speaker  1:29:09
+Yeah. Yeah, good. Exactly.
+
+Matthias Miller  1:29:14
+And also with either a red label at the top or a warning on Save saying, Look, you have temporary edit privileges. You should once you're done making your changes you should disable this under system switches, whatever the name is, etc. And yes, we do have permissions that control system switches. Most users should not please No, be able to modify system switches, if that's a client configuration issue.
+
+Speaker 1  1:29:58
+In this video only for editing the Well, should we just make it a suppress all validations across the system? Or Should this be specific contact record?
+
+Unknown Speaker  1:30:12
+I think it would just Well,
+
+Unknown Speaker  1:30:15
+I think it would just make all fields on a contact record add on.
+
+Matthias Miller  1:30:19
+I think it should be allowed editing allow administrators to edit Wait
+
+Matthias Miller  1:30:31
+Why wouldn't we make this a user permission instead of a system switch? And standard users wouldn't have it. And you would temporarily give it to the admin and then take it away from the admin? No, because the admin has to know the admin wouldn't have to have it
+
+Speaker 1  1:30:56
+so the admin when when Jesse wants to go in and do this, he goes in to his user profile gives himself the permission saves goes and makes the changes comes back and takes a permission away from himself again. Yeah.
+
+Unknown Speaker  1:31:19
+What are the advantages to doing that over a SWIFT system switch
+
+Matthias Miller  1:31:29
+I already have an entire mechanism that
+
+Unknown Speaker  1:31:37
+sure, to control permissions.
+
+Matthias Miller  1:31:47
+At the end of the day, don't really feel that strongly. But
+
+Speaker 2  1:31:51
+let's say it's in whatever is easier to implement, or the same thing.
+
+Matthias Miller  1:31:55
+Sure. Let's get going to systems which allow admins to edit contact records
+
+Matthias Miller  1:32:16
+and then add a warning on the Save or you know, I don't want to go unsaved.
+
+Matthias Miller  1:32:37
+Switches set I guess would you say users admin this contact record
+
+Matthias Miller  1:32:58
+is editable because the allow admins to add a contact record system such as set
+
+Matthias Miller  1:33:16
+any changes that you make? Any changes you make may be overwritten by
+
+Unknown Speaker  1:33:28
+the next Yep.
+
+Unknown Speaker  1:33:50
+We think that awesome. That sounds great.
+
+Matthias Miller  1:33:53
+This should also only be okay, so let's just change on the contact record. If the record would normally if the switch is set, the current user is an admin and the record would not normally be editable. Because, I mean, it's presumably editable in import by bye.
+
+Speaker 1  1:34:33
+Okay, now, question for Austin. We're past our time. But Quick question for Austin. Is this clicking through the warning going to be too cumbersome for you when it comes to testing? No, it's fine with that.
+
+Speaker 2  1:34:46
+I basically when I'm testing, I basically always have warnings anyway. It's uncommon for me to be testing and not have any warnings on a record I say right now In a lot of systems anyway, yeah.
+
+Unknown Speaker  1:35:04
+That's very true, because that's exactly what you're trying to do is
+
+Unknown Speaker  1:35:08
+do all the abnormal stuff. So.
+
+Speaker 1  1:35:12
+Yeah. Okay. Excellent. So I'll plan to send the bunch of these things off here, follow up on them, and go from there. So thank you, buddy. And I want to talk next time. Awesome. Thank you.
+
+Speaker 2  1:35:37
+Can I ask one more quick question? Am I correct in thinking I should not update any system or test system that has the the accounting module thing, like I'm seeing those emails? Like I have a bunch of testing to do and accounting and systems with the accounting module. But I was kind of interpreting that I probably shouldn't do that until whatever the accounting thing is fixed.
+
+Matthias Miller  1:36:04
+I think you're okay. Updating the systems, but if you do, but accounting testing itself should should hold off. Well, yeah, I should. Probably hold off.
+
+Unknown Speaker  1:36:20
+Sure. Okay. Well, I'll look for when that's fixed.
+
+Matthias Miller  1:36:25
+Okay. Okay. Sounds good. Yeah, they were supposed to have it fixed by
+
+Speaker 4  1:36:29
+today, actually, today or tomorrow, I think. Well, they're out tomorrow. So
+
+Unknown Speaker  1:36:41
+leaping now again, and see.
+
+Speaker 4  1:36:56
+Yeah, I'll see if he responds. Okay, good. Awesome. Yep. Okay, see ya. All right. Talk to you later. Bye.
+
+
+Transcribed by https://otter.ai

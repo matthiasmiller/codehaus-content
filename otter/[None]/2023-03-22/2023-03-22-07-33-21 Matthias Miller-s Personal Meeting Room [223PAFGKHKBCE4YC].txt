@@ -1,0 +1,671 @@
+Unknown Speaker  02:26
+Hello Hey how are you going? Oh not too bad here deeply annoyed at my internet but otherwise
+
+Unknown Speaker  02:40
+good understand it's one of the things that is bestilling right
+
+Unknown Speaker  02:54
+yes indeed yeah let's see
+
+Speaker 1  03:10
+wow okay this is odd I feel almost like our like the voice like the connection is a bit weird even here which should not be
+
+Unknown Speaker  03:33
+Wow sorry are you talking
+
+Speaker 2  03:38
+sorry no I got some renders you know yeah yeah
+
+Speaker 1  03:43
+okay you know and maybe that was the source of the choppy feeling I don't know
+
+Matthias Miller  03:50
+it might be I've got some noise cancellation on money sorry I'm I am working from Starbucks this morning because I got an appointment that I need to get to before Yeah, anyway before before work so Okay, cool.
+
+Unknown Speaker  04:06
+All right. Well, let's let's see how it goes.
+
+Matthias Miller  04:11
+Yeah. If Yeah, okay. If it is an issue let's let's maybe we can we can maybe destroy your cell the cell phone connection
+
+Speaker 1  04:26
+cool. Okay, so we've, I'm not sure what all you had in mind. I think we had the two questions from my email, one of which we've actually Well, depends which email I guess
+
+Unknown Speaker  04:49
+accruals
+
+Speaker 1  04:51
+closing and then also there was a depreciation thing and I guess anything in that I that Come on for us if our data female
+
+Unknown Speaker  05:11
+so where should we start?
+
+Matthias Miller  05:16
+Let's do it. Okay depreciation schedules so I think we're that's that is I'm supposed to verify that with Mark and make sure he's on board did you think it could be helpful if you would, and actually to this point I should move this down into another section so stops getting lost because it just keeps I don't know. It's it's been it has been getting a lot of split Do you have any thoughts when you take a look at the data model? And I don't know that we have to go through it now if you'd rather do to that separate time I think it could be I guess what's most expedient very view that with Mark first and then that
+
+Speaker 1  06:21
+oh boy, okay, so I see our last email on that is three is the second and you were asking me for input
+
+Unknown Speaker  06:37
+Okay, let me just very quickly Okay, they're using straight line they want to store Okay, so I said let's define a schedule on the asset okay, they want to store assets in the accounting system. Oh, my handle book value in? Yes.
+
+Speaker 1  07:02
+Okay, just to clarify, do you remember the only handle book value in assist does that mean? Only assist has book value or only book value is assessed
+
+Matthias Miller  07:18
+only book titles and assists and then the taxable value is maintained by an accountant in his spreadsheet or whoever the whatever the tax accountant wants to do. For us, we're not here for them.
+
+Speaker 1  07:31
+Okay, so basically, we're saying the, this is I mean, this is accounting information but you but not tax
+
+Unknown Speaker  07:45
+evasion basically. Okay.
+
+Speaker 1  07:48
+Okay. Asset close record. Name useful life. Okay, so we have asset class. Sure. Then asset record is name all your purchase date cost? salvage value? Yeah, that sounds fair.
+
+Unknown Speaker  08:07
+That's an account
+
+Speaker 1  08:13
+specifically that under the asset record, you have a counting and expense account. What are you thinking of? That goes in that expense account? Is that depreciation or something else?
+
+Matthias Miller  08:27
+It's depreciation should be clarified that as depreciation expense account
+
+Speaker 1  08:35
+I'd like that just for increased clarity. I mean, there aren't too many expenses. But I mean, you know, I don't know something about maintenance. So I don't know the depreciation is good. Then for depreciation we specify asset class useful life in years, oh, automatic and read only so it's not a that's not a stored field, does that Correct?
+
+Matthias Miller  09:12
+Correct. And what we're thinking of doing is using they would configure it with the IRS asset classes. Like I forget what it is 257 You know, something, whatever it is. Sure.
+
+Speaker 1  09:29
+Oh, and I guess there is a question though. So if that if the appreciation, specifications change, then do we we just create the we renamed the old asset classes, or do we or do we actually copy over useful life on initial specification
+
+Matthias Miller  10:11
+and what happens if you buy a piece of equipment? Now, I don't know if you can do this, and it has a useful life of 10 years, or 15 years and five years into it, you decide that it's useful, I should have been 10.
+
+Unknown Speaker  10:29
+Right.
+
+Speaker 1  10:35
+Probably a question for an accountant, I would. My guess is you probably just go ahead and depreciate it, but, and run on fully depreciated equipment for a while, but I don't know.
+
+Unknown Speaker  10:52
+Well, okay, and the other question is, if the IRS changes depreciation rules to you, and you bought a 10 year piece of equipment two years ago, and now they say that piece of equipment is a 15 year piece of equipment.
+
+Speaker 1  11:16
+I mean, I'm making up numbers, but do you continue on the initial depreciation schedule? Because you purchased it there? Or do you change over to a completely new schedule? And I don't know the answer there.
+
+Matthias Miller  11:44
+The question mark, which in this one mark, here? What happens if we change useful life during the life of the assets? Do we prevent this? We catch up depreciation? Do we prorate the remaining depreciate depreciation?
+
+Speaker 1  12:09
+I mean, I think it's pretty clear what happens if, if the useful life shorten, you take a write down? I'm not sure what happens if if you think oh, this actually should have been longer?
+
+Matthias Miller  12:30
+Well, I mean, you could conceivably adjust the appreciation for the current period a year and get it as close to what it should be as possible. If you want it to.
+
+Unknown Speaker  12:49
+Seem.
+
+Speaker 1  12:58
+On its face, that seems like it could be a on the menu of reasonable approaches.
+
+Unknown Speaker  13:05
+Or am I? I'm sort of assuming that they are looking at accounting basically for usefulness, not necessarily an accounting for GAAP compliant statements. Is that correct?
+
+Matthias Miller  13:35
+I think the answer is yes. Although with the caveat that where it's relevant to the gap is that compliance is preferred over non compliance.
+
+Unknown Speaker  13:52
+Yeah. So I so I think for that, well, actually, there are several possibilities
+
+Speaker 1  14:15
+probably the highest confidence approach, if we want to make sure I've got compliance is to actually get a a professional accountant to weigh in. I did just I've just acquired a raft of accounting relevant guide books that may have may have information in them, but it will probably, you know, so I could try to find the answers to those questions. It'll probably end up being more expensive and less reliable than asking an accountant
+
+Unknown Speaker  15:07
+anyway,
+
+Matthias Miller  15:09
+we've a bit about me the bit leery as a resource and get other resources. Yep, put it back on them. So when you say write down effectively what it means is you certainly have to save 1015 years and 10 years then we would create an adjustment as whenever as of that date or whatever that takes it down to what the book that like you'd have depreciation expense as of that date that we've patched it up the book value works with these
+
+Speaker 1  15:41
+I forget if it actually run through the depreciation account or or through a different meal but but one way or another you do end up with the with taking an expense to account for that difference
+
+Matthias Miller  16:06
+now this is a little janky but we could say you can never change an assets useful life and if you want to adjustment assets useful life then you have to close out the old one with a salvage value and create a new one as at the same date with the new value with the well that's gonna get you in trouble too because you might have a useful life won't necessarily fall on an exact no one that matters right okay I will those are great questions
+
+Unknown Speaker  16:59
+so I think
+
+Matthias Miller  17:08
+I wonder if useful life should just be copied from asset class and remain edited well I don't know though
+
+Unknown Speaker  17:25
+right bank
+
+Speaker 1  17:34
+okay, I'm seeing Hey, just one thing here online and they're writing down with a debit to impairment loss and accumulated depreciation rather than depreciate so impairment loss rather than depreciation expense
+
+Unknown Speaker  18:02
+that makes sense. But then
+
+Unknown Speaker  18:18
+that gets okay. Well this might tie into
+
+Unknown Speaker  18:29
+when you purchase
+
+Matthias Miller  18:40
+is that the same thing? When what happens if if let's say you bought a $10,000 equipment and depreciate depreciate it $3,000 And you sell it for $5,000 that $2,000 difference also going impairment loss was that something else?
+
+Speaker 1  19:01
+Okay, you you bought it for 10 You depreciated five oh and you sold it for three so what is that almost thinking something like a loss on on disposal
+
+Unknown Speaker  19:31
+good surfing well when my internet is off but yeah, I think that is I'm pretty sure that is loss on disposal. I can't pull it out right now.
+
+Matthias Miller  19:54
+There is a gain On sale of asset and a loss on sale of asset
+
+Unknown Speaker  20:04
+Yes Okay excellent.
+
+Unknown Speaker  20:06
+This is what it appears to be at least
+
+Unknown Speaker  20:09
+okay that sounds right.
+
+Unknown Speaker  20:13
+Now is accumulated depreciation is that an expense account
+
+Unknown Speaker  20:23
+sorry accumulated depreciation
+
+Unknown Speaker  20:26
+yeah
+
+Speaker 1  20:27
+accumulated depreciation is a contra asset account depreciation expense then income statement account that gets that flows into accumulated depreciation period and
+
+Matthias Miller  20:49
+so, end of year you would zero out the accumulated depreciation
+
+Speaker 1  20:55
+no you would zero out depreciation expense transferring it into accumulated depreciation
+
+Unknown Speaker  21:27
+okay
+
+Matthias Miller  21:33
+and then okay so the purchase of an asset would be
+
+Matthias Miller  21:59
+okay so then
+
+Matthias Miller  22:06
+I'm thinking when you purchase when you create the asset then we have a new transaction link that has a new like a new purchase link with two rows debit slash credit for the amount of purchase and linked to the asset and defaulted to the the assets asset account.
+
+Speaker 1  22:53
+Sure, and sorry, you said this is a new transaction or new purchase so I
+
+Matthias Miller  23:02
+well, actually, I have an idea could we now, this will get us in trouble. Maybe it will maybe it won't. Could we have the purchase date and purchase and cost as inferred from the first transaction maybe we don't want to do this from the first transaction that gets created for this asset
+
+Speaker 1  23:37
+or don't the information flows get pretty janky then yeah.
+
+Matthias Miller  23:43
+Or do we need any kind of checks and balances to make sure that you don't I don't know
+
+Matthias Miller  23:55
+Yeah, if the turtle Okay, here's a consideration at least consider having warnings if the total debits and credits in the asset account do not match the expected if the lease the total linked Democrats do not expect match the expected value and having warnings if the total credits in the depreciation expense account do not match the expected value. Yeah, I think that's very reasonable. But then end of period. We will also need to if we want to do this then we'll also need to tie out the transfer to accumulated depreciation to the specific asset
+
+Matthias Miller  25:04
+Do we need to? Do we have to? No, we don't because nevermind, because those zeroing out won't be linked to the assets in which case we can just look at all right. Yep. Got it. Cool. So the
+
+Matthias Miller  25:37
+So, probably another question is whether these So, on the sale of an asset, we can also have a new sale link that works like the purchase link that that opens a new transaction with remaining asset value feature decrease of asset account by remaining asset value adjustment to gain slash loss account and set should the should the gain and loss accounts be actually, adjustment and row or gain slash loss, noting gain slash loss in the memo allowing them to assign to the proper account, it seems to me like it's overkill to automatically populate that account? Sure.
+
+Speaker 1  26:59
+So, for every, for every asset to specify from the start, where gain or loss on on this disposal, it's gonna be Yeah, yeah.
+
+Matthias Miller  27:11
+I mean, you could conceivably, if there's only a single it depends a little bit how they want to do this. If they only have a single, a single acid, acid Gee single asset accounts and or a single game account and or a single loss account. And if there is just one mean, the other thing could be you could link it to have the asset account itself that for this asset account, the default gain or loss account is this or if there's just one account that I don't know how most companies do this, but could it just be an accounting settings for the gain or loss account? For a subtype?
+
+Unknown Speaker  28:13
+Oh, wait, wait a minute, you said? Can you repeat you're less sensitive?
+
+Matthias Miller  28:19
+Sure. So do people want assets on? I have three questions? Do people want that? Well, no. Two questions. Do people want assets? They're purchased assets to show up on different asset accounts on the balance sheet? Or do they all go into one asset account? To do gain or loss? On sale of assets? Go? Do all sales go into a single account or in sales go into? Do people have multiple accounts for those?
+
+Speaker 1  28:54
+Right. Okay, so two questions. Um, well, and I think a big part of the answer is independence. I don't know that there is a prescription for for which way you go. As far as practice goes. Well, okay, I'm handicapped by not my narrow experience, but my sense is you don't want
+
+Speaker 1  29:40
+you don't want hundreds of different asset accounts on your chart of accounts you want. You want that information aggregated from an accounting perspective and
+
+Speaker 1  29:53
+you analyze the individual things. There's something other than your balance sheet or whatever? And so I think the short answer is I assume that a lot of US companies do have a very few. White possibly one, unless you're talking about multiple divisions, accounts for asset and for gain on sale or loss on sale.
+
+Unknown Speaker  30:37
+But, I mean, if you have multiple divisions you know, you might have gain on sale for or widgets and gain on sale for thingamajigs. And
+
+Unknown Speaker  30:56
+and then you no longer have just one.
+
+Matthias Miller  30:59
+One thing, but the bottom line is I mean, I think there is a bit of question on utility here, because we have the assets, we can give you a report. I mean, we can categorize these assets as well, and can give you a report saying, which of these assets, what was your gains on which asset? So, I will run them last March and see, but I think so, probably the most forward thinking is to leave the door open in some form or fashion to multiple asset accounts and, or multiple gain or loss accounts. And if we wanted to default something, it would make most sense to put it on the asset account itself and leave the asset account over to the gain and loss. Sure. But, like I said, we don't really need a default Munar loss, it doesn't happen often. So then, automatic transactions. Well, automatic transactions depend on how useful life adjustments were. I am a increasingly a big fan. And maybe this is gonna get me in trouble. But I'm a really big fan of the basic design of saying, here's an entity, what should the sum of all the debits and credits do? Which account is B? And let's go create a Delta transaction to catch up. That's the accounting system do what it should be.
+
+Unknown Speaker  32:41
+Yeah, um, I think I'm close to that. I, I probably lean a bit conservative on that in in saying, what is the saying?
+
+Speaker 1  33:04
+Let some stuff up. And in many cases, well, in some cases, at least, say, hey, we think something needs to happen here. Maybe we even have a good idea of what needs to happen. But do you want to do that?
+
+Unknown Speaker  33:34
+And then just basically propose, either alert or propose and unless someone say, Yeah, that's right, or what are you thinking? Well,
+
+Matthias Miller  33:51
+I mean, a warning when you edit linked to an asset might be sufficient. It's somewhat akin to when you edit a reconciled transaction in QuickBooks and it says, basically says Here Be Dragons. Are you sure? Yeah. But because most likely won't do what you expect in this case, right.
+
+Matthias Miller  34:25
+Or are you looking for something more than that?
+
+Speaker 1  34:42
+Okay, well, I guess it really depends what context we're talking about. Because
+
+Unknown Speaker  34:51
+once a good example,
+
+Unknown Speaker  35:11
+Well you know I'm having trouble coming up with good examples I think my main the main thought is when we auto generate transactions then I'd say let's make very sure that we that there is one right transaction to generate one right possible transaction to generate there.
+
+Matthias Miller  36:26
+Do we need a configuration when these depreciation when depreciation should get handled or do we assume end of month beginning of month
+
+Unknown Speaker  36:39
+or so, but again
+
+Matthias Miller  36:41
+the auto created depreciation life accepts actions no entries do we do we just end of month good enough for that? Or is that a question for Mark
+
+Speaker 1  37:00
+um lifeline question for Mark but I assume is that possibly automatically or possibly by manually kicking off something at end of month and saying here's the date I want to enter depreciation yeah and I would expect stuff to happen on Monday
+
+Matthias Miller  37:37
+that's actually an interesting idea because then we could do we do a report of accounting value expected value difference
+
+Matthias Miller  37:57
+and that could be a stop gap for showing you when the accounting system appears to be out of sync with your asset
+
+Matthias Miller  38:12
+and then the real question is when there's a difference do you do you do the monthly amount or do you
+
+Unknown Speaker  38:26
+do you do the do you catch it up Oh
+
+Speaker 1  38:53
+I mean honestly if the if the two numbers differ you probably screwed up last month
+
+Unknown Speaker  39:01
+yeah
+
+Unknown Speaker  39:07
+that said I'm not sure
+
+Unknown Speaker  39:15
+Well, maybe again that's a question for Mark slash accounting my my gut says catch it up and throw an alert somewhere
+
+Unknown Speaker  39:44
+yeah.
+
+Speaker 1  39:48
+I mean, yeah, throw an alert if the if the two differ
+
+Unknown Speaker  40:00
+I don't know if one thing that I have become a huge fan of and and reports I build just internally is just and an alert column you know with a exclamation point icon with hover texts there's an issue but anyway
+
+Matthias Miller  40:47
+all right well I think it gives me plenty to go back to them on
+
+Matthias Miller  41:09
+so I will unless you get something else to add I'll take that back to Maurice and circle back to you on it that's awesome um regarding closing the financial reporting period, inferring retained earnings and
+
+Unknown Speaker  41:45
+and then accounting going
+
+Speaker 1  41:49
+I will say I think on that I am inclined to sit to assume that we need some sort of closing transaction support including and excluding although one question is how exactly what they're going to do handle that? Like are they going to want to close out temporary accounts monthly quarterly? Or just I mean if it's just annual it's really simple
+
+Matthias Miller  42:50
+Okay, so, let me let me see if I can put this together into a question from Mark Mark design agenda, if our design agenda mark we need to discuss following you know, I really should actually
+
+Unknown Speaker  43:20
+speciation
+
+Matthias Miller  43:32
+by the way, is there a term we can use for asset the asset record and asset class both of those that differentiate it somehow from federal income from Chart of Accounts
+
+Unknown Speaker  43:54
+I mean
+
+Speaker 1  44:03
+so, the one thing is in chart of account then unless they have a huge Chart of Accounts, then they basically have a fixed assets account or property plant and equipment or whatever it is
+
+Speaker 1  44:25
+beyond that I mean so, I guess what I'm saying with that is, there is some natural distinction but it's still when you say asset there's room for ambiguity
+
+Matthias Miller  45:01
+no tangible asset is something that is used but then would it be went right now tangible assets?
+
+Unknown Speaker  45:08
+Although, again please will these
+
+Matthias Miller  45:10
+records only be used for tangible assets?
+
+Unknown Speaker  45:28
+Depends honestly, yeah
+
+Speaker 1  45:36
+yes they are, if they end up amortizing our software I mean, it there are other possibilities. But so say if you acquire a company for more than its book value got goodwill but actually I forget if that's amortized anyway, I mean, there are intangibles that get amortized but that's also amortization not depreciation per se
+
+Speaker 1  46:27
+I mean the model though is identical I think we should say yeah, assets and whatever that periodic writing off is and if we need to know nuanced terminology here and there then let's do that but otherwise call them the same thing well
+
+Matthias Miller  47:09
+basically just rely on context. Yeah. Just for fun as chatty GBT, this
+
+Speaker 1  47:31
+chat Hi. I just, I mean, I haven't tried it out. But I edit right and automation script for me this morning, too. To auto archive, auto create transactions? Well, it doesn't know it's creating transactions. So to take emails and extract the contents in RTF and feed them to a web service which I think could be awesome for archiving receipts in our accounting system, but anyway
+
+Unknown Speaker  48:19
+the journal so what did it
+
+Matthias Miller  48:23
+it's a team that was tangible assets and asset accounts. owned assets is versus an asset account
+
+Unknown Speaker  48:38
+oh
+
+Unknown Speaker  48:46
+I mean, that gets a little weird. I don't remember the.
+
+Matthias Miller  49:03
+But you might actually have a control. Is it possible have a controlled asset that you don't know?
+
+Speaker 1  49:08
+Well, that's what I'm thinking. It's something with leasing that. I mean, I think there are leases that I don't remember if you actually do depreciation, but it's I think accounting treatment is you know, for certain kinds of leases, I think is basically like you're on the thing but you don't.
+
+Matthias Miller  49:43
+Manage the asset. That's what's coming up with now. It has to be include both tangible and intangible This is, let's say both owned and controlled and managed assets.
+
+Unknown Speaker  49:58
+Now you're a portfolio man. yeah
+
+Matthias Miller  50:01
+exactly interesting I'm getting completely derailed
+
+Matthias Miller  50:17
+okay so appreciation
+
+Unknown Speaker  50:43
+asset depreciation?
+
+Unknown Speaker  51:42
+When you want to
+
+Matthias Miller  51:52
+so that's the they're those questions and then on the closing holding periods, do you want to close out temporary accounts on a monthly quarterly or annual basis annual is the easiest way that we can look at supporting sounds. Is that fair? Sure. Sure. And then
+
+Unknown Speaker  52:38
+and I do think there's a decent chance that we'll end up actually just sort of doing a general thing where we say you can do all three if you want but probably still a useful thing to to think about just for their own processes
+
+Matthias Miller  53:20
+I mean, it's looking from a software standpoint, there's really nothing that keeps you from doing it at an arbitrary basis. They're
+
+Speaker 1  53:36
+not really. So, okay. I think I did some design work after sending that initial question. And one, one of the big things is So, okay, for something like accounting for income statement, then you just want to completely ignore any closing transactions. You want to look at a given period and what were what was the income and expense and ignore the stupid closing stuff or
+
+Speaker 1  54:29
+for a, something like a balance sheet, it gets weirder. I think you basically need to say, Okay, I want to respect either none of these closing transactions or I want to respect one category. So, you know, I'm running for the quarter. Forget about your silly little transfers monthly. You Um, I know that I've got all these accumulated transactions in temporary accounts. And the last 10 years I had 10 Closing transactions and annual closing transactions that each time set, zeroed out those accounts. And so now, okay, presto, I'm here this year,
+
+Matthias Miller  55:30
+why wouldn't you just have two options? One is I want to run it, I want to run it, I want to disregard them, in which case, you can run a balance sheet for any arbitrary date. Or you can say, I want a closing balance sheet, in which case you say, Pick from these closing dates. And you can run each one of these as have these as of one of these closing dates.
+
+Speaker 1  55:57
+And when you say closing dates, how are those determined? Actually, nevermind. Wait a minute, though. Maybe it doesn't make a difference. I was thinking that assuming calendar year, I was thinking that December 31. is closing for three different periods. But well, and in a way it is. But your balance sheet?
+
+Matthias Miller  56:48
+Maybe way too simplistically, but it seems to me what you're wanting to avoid is having a balance sheet where you've got some of the some of the temporary items closed out and but not all of them?
+
+Unknown Speaker  57:11
+Um
+
+Speaker 1  57:17
+No, I don't think so. I think what you're trying to avoid is having a balance sheet where? Okay, let's say you're running on March 31. Calendar quarters again. You want to have a balance sheet? Well, you don't want to have a balance sheet, where March sorry, were January and February. zeroed out their respective months. So you know those, they have no impact on temporary accounts, those have already been transferred to to permanent accounts if you consider the closing transactions. But you have March accounts, March transactions in temporary accounts. So I think what you're trying to avoid is is not split across accounts, but it's split across chronology or myth mixed.
+
+Matthias Miller  58:47
+Like for balancing comparisons. Or
+
+Matthias Miller  59:00
+yeah, I'm Steve as big as couldn't shoot them, say if you run a comparison, again, I'm probably taking way too simplistically here. But if you want to run a quarterly comparison, then you pick an ending date. And you go back every three months prior to that last day of the month. And if somebody didn't have a if you didn't close it out on that period, you glued it. For me repeating column was or if you do it monthly, you just do whatever month did you have?
+
+Matthias Miller  59:39
+Or you find or if you want to get more complicated, if you do it quarterly then you find the latest close out period within that quarter for each of the quarters, and he showed that as of date.
+
+Unknown Speaker  59:52
+Going back historically. Again, I think I'm probably missing something here but it's See
+
+Speaker 1  1:00:12
+oh I'm having a bit of trouble connecting your comments with the with my mental model so
+
+Speaker 1  1:00:31
+well and actually could I take just a very few minutes to reduce some distractions All right I'll be back in a couple of minutes.
+
+Unknown Speaker  1:03:56
+Okay I'm back sorry
+
+Matthias Miller  1:04:13
+we should okay let me pull out this other link to get we can we can talk to him about closing out the the asking this question without going deep into this if you want to take if it would be helpful some time to take the time to talk through what your mental model is up close outs then and it was just as helpful to talk that through and discuss the value and see if there's simpler ways to approach things. I'm happy to do that. And if that's just something that you need to go wrangle with and figure out I have no problem with that either.
+
+Speaker 1  1:04:54
+Okay, I think I have something that will work where basically you can create a closing transaction each month you say it's a monthly closing or create a closing transaction whatever you want as long as you identify it as one of these three categories monthly quarterly or annual and then when you run a balance sheet then you choose which one to to consider if any and you get assuming that everything is entered like your accountant wants, you get balance sheets that will make your accountant happy
+
+Matthias Miller  1:06:27
+so, you don't need anything else. Anything else from me on retained earnings and I think that's just basically a status update.
+
+Unknown Speaker  1:06:38
+Yeah, I think that's right.
+
+Unknown Speaker  1:06:40
+And then um, okay.
+
+Speaker 1  1:06:45
+So, accrual is the biggest question mark in my mind. Well, accrual transactions and how much of that we need to happen in the accounting system for affordable barn steak, or how much of that is basically
+
+Speaker 1  1:07:18
+the accounting system having done transactions that get fed by other stuff
+
+Matthias Miller  1:07:35
+think my big question is what determines whether DME transaction was good enough? And where will this get us in trouble in the future? I don't see. Well, so a few questions I could see is do they need to pull cash reports at any point do we do we need this for cash flow statements?
+
+Speaker 1  1:08:17
+And I liked that question.
+
+Matthias Miller  1:08:23
+And does want cash flow statements so that might give us the answer right there
+
+Speaker 1  1:08:33
+okay. So I feel like we do need something pretty close to I mean, well okay. Either something pretty close to what I designed for thinking code crafters needs it for something alternate to that but we do need some way clearly saying yeah, this is this is happening in the world of accruals. This is cash this is the bridge between the two.
+
+Speaker 1  1:09:14
+So when I talked about
+
+Speaker 1  1:09:23
+when I had an idea earlier for how to work this stuff. I forget which Okay, head I was that when you have a test transaction and you're saying well that's either
+
+Speaker 1  1:09:43
+that actually needs to be tied to either accrued expense or income. One thing I did realize is that you can also have the other aspect of it oh, what's your bid example? Well, whatever for the sake of discussion anyway, let's say you have an expense that you enter a contract now. Your expense, and you need to pay 400 bucks in a year. Yeah. And so you actually have no cash transaction right now. So let's see, I think I included the link to the code crafters to what I thought we need to do for code grafts there, but I think need something similar for for their situation?
+
+Unknown Speaker  1:11:05
+You have that email in front of you right now?
+
+Matthias Miller  1:11:08
+The medium. Here's the link, let me pull it up here. By the way, if you can get, I'm doing cash flow projections on an Excel spreadsheet right now, single quarter cash flow projections. But you would have a way to tie this into the accounting system. That would be amazing.
+
+Speaker 1  1:11:32
+Oh, my word? Well, I am just we basically have not done significant cash flow projections, which is ridiculous. And I'm really wanting back.
+
+Unknown Speaker  1:11:52
+So I, I wonder, I know, you probably have, well, you know what, it's okay, I guess, I guess we should probably constrain ourselves
+
+Speaker 1  1:12:09
+for this call. And I mean, unless we just shift modes a bit, to affordable bar and stuff, but you know, they're gonna want or we're gonna want something, but not concrete enough at this point to build them.
+
+Speaker 1  1:12:35
+But at some point, I would definitely be interested in talking with you about what sorts of things you look at, for cash flow projections. anyway
+
+Matthias Miller  1:12:56
+um, well, side note to that I can give you the 62nd answer, which is, Oh, sure. Three, or I have at this point, six big buckets on income. Four to six big buckets on expenses. Most of the monthly expenses are averaged out. And then greater than your expenses, over a specific threshold, arbitrary threshold are on separate line items. And so it's basically a globe line, income statement, type of thing with a column for me, projected out across a number. So and it's the whole point is, it's not it's a little more granular than orders of magnitude. It's almost a actually, maybe it's not, but whatever. It's kind of your orders of magnitude brushstrokes. Where's the red line? What we're, or where's the discomfort line, whatever, whatever it is.
+
+Speaker 1  1:14:04
+Yeah, it's approximately right. Yep, exactly. Where you need approximately is very valuable.
+
+Matthias Miller  1:14:12
+Extremely important to many moons your freak outline, so
+
+Speaker 1  1:14:26
+yeah, you know, it's ironic. I am I'm very much sort of evolving into the well, some weird mutant hybrid bookkeeper controller DM. From it will end, you know, without having really done. I mean, it's sort of blazing new trails, in my own experience anyway. And so
+
+Unknown Speaker  1:15:17
+I actually just got a guidebook actually several bookkeeping and controller, you know, just with simple, okay, like, Okay, here's, here are the big things that a that you should look out for. Here's a set of procedures you know, just
+
+Speaker 1  1:15:49
+basic stuff, but okay, what would be basic if you, you know, drop into a company and you've got someone to train.
+
+Unknown Speaker  1:16:01
+Exactly, exactly,
+
+Unknown Speaker  1:16:04
+or whatever. But when you're basically then outsourcing everything and, you know, trying to give receipts and whatever, it's a different story.
+
+Matthias Miller  1:16:23
+Yeah. Yep. Understood. I will, I will make one last comment on this. Tim Francis. I forget what Number he says he says he spent I forget if it was 100k and the year of his life traveling across the country, going to everything he can get his hands on on managerial accounting. Yeah, I think you know, I can't really compare it to more sophisticated they're more sophisticated just alternate classes but when it comes to managerial accounting, especially for entrepreneurs his his cash whatever it is finance courses that are passed along I highly recommend it in Scott Hoover might have a lot of that same kind of stuff too. I haven't really dug into his stuff but yeah it's been
+
+Speaker 1  1:17:14
+Oh man. Let's see Yeah, you had sent that link and oh, just procedures stuff I know I think are going to be huge
+
+Speaker 1  1:17:46
+think I sort of got distracted by the procedures and never actually got to the weight Okay, does he sell a course
+
+Unknown Speaker  1:18:00
+so it lets me
+
+Speaker 1  1:18:02
+Oh, does he spell a
+
+Unknown Speaker  1:18:07
+yes, he has a correspondent Yes. We're specifically on managerial accounting
+
+Matthias Miller  1:18:17
+where is it it's under a different brand
+
+Unknown Speaker  1:18:25
+okay
+
+Unknown Speaker  1:18:39
+let me get
+
+Unknown Speaker  1:18:47
+back to you logging here excuse one
+
+Unknown Speaker  1:18:58
+so it's like it's new it's the know you're
+
+Matthias Miller  1:19:33
+think it's his note. No. Your numbers might not be
+
+Unknown Speaker  1:19:40
+know your numbers workshop.
+
+Unknown Speaker  1:19:42
+Yes.
+
+Unknown Speaker  1:19:48
+Okay, that looks a lot. Gotcha. Gotcha. Cool.
+
+Matthias Miller  1:20:05
+And I only did like, I think I only did a one I'm not sure. Because he promised a one would be well worth the effort.
+
+Speaker 2  1:20:15
+implemented that and mostly, I don't know, why didn't keep going. Anyway, now I got enough of your three.
+
+Matthias Miller  1:20:27
+Okay, so cash flow statements, I guess what do you need from me? Or do we need to spec out? Well, we needed to have some of that tracking in place now presumably?
+
+Matthias Miller  1:20:45
+Or is this a question that we should bring the Larry
+
+Unknown Speaker  1:20:53
+Wow. Um
+
+Speaker 1  1:21:06
+I just have not thought through what cash flow statements look like. I mean, it's I think it can be fairly mechanical, it may generating them automatically will take
+
+Unknown Speaker  1:21:35
+probably the most likely additional work is that it may require more tagging and tagging in the broad sense of account accounts and transactions just with their particular attributes. Some of it though, anyway, it will take off and am I right? That's not really on the official if I A fr roadmap at this point.
+
+Matthias Miller  1:22:21
+Okay, well, it's it's in the long term. It's in what we call the toe. Well, I don't know if it's pointing to toe wiggling, but it's pretty close out there. So if we can,
+
+Unknown Speaker  1:22:35
+okay, define toe wiggling? Okay, toe
+
+Matthias Miller  1:22:37
+wiggling. Toe wiggling is when they're sitting at their desk, and their feet are propped up. And they're so happy and delighted with everything the accounting system can do that they're leaning back in their chair and wiggling their toes. I gotcha. that's those are my team up with early on. And so I don't know if it's white all the way out there. So there's some little things like some things like that, that are just like, basically icing on the cake. And they want to get to some day, but it's not I mean, there's not immediacy So my understanding is I'm gonna go pull it up but my understanding is it's something that's closer to
+
+Speaker 2  1:23:22
+it's out there it's not it's not near term. Okay.
+
+Unknown Speaker  1:23:30
+Okay. Um So that's the general Cash Flow Statement stuff.
+
+Unknown Speaker  1:23:45
+Do you think for the near term are they needing to go to be able to create cash statements, cash basis statements
+
+Speaker 1  1:24:07
+and basically to track
+
+Unknown Speaker  1:24:12
+accruals
+
+Unknown Speaker  1:24:15
+within the financial transactions themselves
+
+Unknown Speaker  1:24:25
+will ask him that
+
+Matthias Miller  1:24:33
+All right, well, I will send this over to him. I will see. Let me send this to you through through our discussion, I am sending glowing remarks No actually needed just that I will send that over to him. And anything else that we'll need to chat about
+
+Unknown Speaker  1:25:17
+I don't know that there's more right now.
+
+Matthias Miller  1:25:21
+Sounds good. Fun. Well, this is kind of it makes me kind of eager or excited and excited to better word to be able to work on this project together with you about accounting, so
+
+Unknown Speaker  1:25:40
+yes, I'm, I'm looking forward to it too. And enjoy it
+
+Unknown Speaker  1:25:49
+and we'll be in touch.
+
+Unknown Speaker  1:25:52
+All right. Thank you, Master
+
+
+Transcribed by https://otter.ai

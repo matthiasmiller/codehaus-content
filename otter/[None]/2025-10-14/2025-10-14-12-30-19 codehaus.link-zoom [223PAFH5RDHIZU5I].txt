@@ -1,0 +1,1070 @@
+Unknown Speaker  02:27
+Hey, hey, I've been
+
+Speaker 1  02:33
+running hard trying to keep Jonathan Wilson happy the last little bit. I think they're finally actually going to be pushing this thing live. John called John Anderson just up and called me yesterday morning wondering where we're at on this I was like, well, we're the shareholder system as shareholder system. We're done on the development side. We're just waiting on Wilson. It's been like that for most of the last year, with random spurts of him going for it and then it falling by the wayside anyway. Poor guy,
+
+Unknown Speaker  03:07
+overworked
+
+Speaker 1  03:09
+very they're currently switching from NetSuite to Sage,
+
+Matthias Miller  03:15
+end of year,
+
+Speaker 1  03:17
+probably, and he's terribly short on employees like accounting is severely understaffed, not for lack of trying, but it just is so anyway, so he is, I think he feels pressure from every single side.
+
+Matthias Miller  03:34
+Understand, you know, CFOs are their own breed. That's all I can say,
+
+Unknown Speaker  03:43
+wrong. Okay, RTS, stuff.
+
+Unknown Speaker  03:51
+Shares. What should we? How do we want
+
+Matthias Miller  03:55
+to go forward? Let's do I don't know. I'm tired of doing all the work. Share the screen, go into pm planned, pull up the to do Seth and let me pace. It's always a good sign when you go down to the Indian restaurant and you ask for an ice Chai, and they're like, cold. Yes, tea, Chai, Chai. And then they like, don't say anything else, and they go get it for you. And then you're like, hey, like, okay,
+
+Unknown Speaker  04:29
+work for me.
+
+Unknown Speaker  04:42
+Okay. So
+
+Unknown Speaker  04:48
+wait, where was that list of things?
+
+Unknown Speaker  04:53
+Oh, it was right up at the top. So,
+
+Speaker 1  04:59
+payment record. Record tax and deposits, I think, are the big things I'm wondering about right now.
+
+Matthias Miller  05:06
+Okay, sorry, which one was the first one
+
+Unknown Speaker  05:10
+payment record like, what? What are you wanting
+
+Matthias Miller  05:15
+here? Okay, so here, here is we would like to be able to issue invoices. And what's the use case? We sell a building back to the manufacturer, we like to issue invoice, and we like to them to be able to take, you know, pay by ACH or credit card, okay? And so could we just use the existing are we absolutely bonkers to tie into the existing payment portal and have a section at the bottom if there are unpaid invoices, to be able to, you know, Apply a certain amount to each one of them. And run it. And then if so, do we want to maintain the model, then that the invoice has an RG that links out similar to the contract record, that the invoice has an RG that links out to the payment record so you can calculate the balance.
+
+Speaker 1  06:27
+So you're saying an invoice could be paid via this.
+
+Matthias Miller  06:32
+So a payment record could be used to pay a contractor an invoice. Sure, what are invoices for? That's like typically going to the manufacturer, but we want to be able to process credit card payments for that, right?
+
+Speaker 1  06:51
+Would a, well, any one person ever be paying both on a contract and an
+
+Matthias Miller  06:57
+invoice? Not typically, so if you wanted to flip and when we can enforce it tight to say you can either have one or the other, but not both, that'd be fine.
+
+Speaker 1  07:09
+But I was trying to think like from the whiskey side. What does that look like? As far as
+
+Matthias Miller  07:15
+that's a fair question
+
+Speaker 1  07:18
+Jonathan And Philip, but sure, awesome
+
+Unknown Speaker  07:27
+link.
+
+Unknown Speaker  07:35
+It's coming.
+
+Unknown Speaker  07:52
+Good afternoon. Hey, Jonathan.
+
+Speaker 1  07:59
+Just give them the little bit of context you're talking
+
+Matthias Miller  08:02
+about. What's nice? Yeah, so we have manufacturers. We want manufacturers to be able to pay for invoices by credit card and Ach, so they might be paying for multiple buildings, or there's also cases too, where a customer might we're also going to have, this gets confusing, but you could have a rental company that has rentals, but they also could have lot inventory as well. And so between the time that it gets rented, they could somebody literally could buy the building, which is just an inventory purchase. But the you know, the short story is, what makes the most sense in terms of payment processing, in my mind, is, can we just use the payment record? Because that's going to have the authorization code and all of that kind of stuff. And and then either have you do it one of two ways. One, I mean, realistically, all you really need to do. You can have a mode that says that says I'm paying invoices or paying contracts. Realistically, I suppose there is potentially a world in which a customer.
+
+Matthias Miller  09:26
+Okay, here's an idea. I mean, here's a scenario. It's not completely made up. I don't know that happens very often, and we don't have to go out of our way, but it is conceivable that you would have a customer with a building. And have an invoice for a shed Hall because they're moving and again, they don't have to be able to pay both at the same time. You can force them to run separate transactions, but that
+
+Speaker 2  09:57
+can only have a like. Can you hear me? Yeah, if this wasn't lining up, don't we have, like, a redelivery fee that would show up for them in that instance. That's probably true.
+
+Matthias Miller  10:11
+It could be added as another charge.
+
+Speaker 2  10:14
+I think I'm leaning towards a separate interface for that. It would be something that's a lot simpler, like it. I'm not sure we would really pull anything from the database to give them the initial page, just like a take, take a payment. Very straightforward thing without all the contracts. I feel like the the work of adding another interface is less than trying to, trying
+
+Unknown Speaker  10:47
+to, like, add a different mode to to the existing one. I think I'd rather keep them separate.
+
+Matthias Miller  10:54
+And then, do you see any reason why we can't just use the payment record for both and maybe just have two types of payments, a contract, payment, invoice, payment, with the understanding that invoice payments, I'm thinking we model them very similarly, where you have RG rows on the invoice that links out to the payment, payment record, but that would then let you
+
+Unknown Speaker  11:21
+invoice be paid across multiple,
+
+Matthias Miller  11:25
+yes, across multiple width payments, yeah. So you might, you might say, I'm paying, I'm paying $50 of this invoice, $100 of this one and 250 of that one. It might mean you have an outstanding balance, and so you have a payment of two, you know, $200 $300 whatever that comes out to.
+
+Speaker 1  11:46
+So what RG rows in the invoice need to be tied to, potentially tied to multiple payments you would have, or you have a separate RG of payments on an invoice,
+
+Matthias Miller  11:58
+separate on the on the invoice, you would have an RG of payments that links back to the payment record, yeah? And we treat it like we do on contracts where we basically say, okay, who's pointing to me and for how much? And that's how much. I mean, that's there you go. Yeah, yeah,
+
+Speaker 2  12:11
+makes sense. Yeah. That sounds good to me. I think I'd like the idea of using the same basic payment record for this in a very similar linking way.
+
+Matthias Miller  12:19
+Okay, good. I'm happy with it. You had asked about merchant processor. We're planning to use clearance slash explore pay, but it's still in our our court to nail down a handful of things, but basically the way they work is we have an iframe that does tokenization. And, I, you know, I don't know. We'll have to think through some some about how tokenization and refunds and stuff work.
+
+Unknown Speaker  12:49
+So, anyway, okay, cool,
+
+Matthias Miller  12:56
+good. But I think that's it on Is there any of this? Yeah, I think that's it on our end. Yeah, thanks. We need thanks. Jonathan,
+
+Unknown Speaker  13:03
+Yep, see so
+
+Matthias Miller  13:08
+basically, so let's go ahead and just spec it out quick on the invoice. We have a payments RG with a with the payment, payment record ID. I
+
+Speaker 3  13:20
+payment,
+
+Unknown Speaker  13:25
+payments, rgt, invoice,
+
+Unknown Speaker  13:30
+record ID,
+
+Matthias Miller  13:32
+and then a payment amount, amount, and then a virtual and then some virtual fields like view, payment, payment method, payment date. There's really not much else to put on there.
+
+Unknown Speaker  14:08
+Do payment. Payment. That's the
+
+Speaker 1  14:24
+then do we need? What do we do right now for like, do we have a balance on invoices?
+
+Matthias Miller  14:32
+Not currently, okay,
+
+Unknown Speaker  14:36
+so we would probably add one.
+
+Unknown Speaker  14:39
+Yeah, and
+
+Matthias Miller  14:42
+I guess the payment date is probably going to be the date that it goes to zero.
+
+Speaker 3  14:48
+Presumably, we.
+
+Matthias Miller  15:00
+Me check something here. I thought we had something somewhere that let us sales
+
+Unknown Speaker  15:04
+for invoice.
+
+Matthias Miller  15:08
+Sales forms can be special invoices or estimates,
+
+Unknown Speaker  15:13
+labeling,
+
+Matthias Miller  15:16
+recorded payment amount. Hang on, we have something. It's
+
+Matthias Miller  15:29
+probably controlled by a system switch, don't you think? Probably visible sales form include payment info, which is a misspelled macro or config invoice. Include payment info.
+
+Speaker 1  15:49
+There's a sales form, invoice, recorded payment date. Here.
+
+Matthias Miller  15:55
+Do this, this guy, I system switching.
+
+Speaker 1  16:11
+Oh, I bet I can't catalog. Oh, it is, let me just pop up my local system. Yep,
+
+Unknown Speaker  16:34
+here's who uses that even
+
+Speaker 1  16:37
+I've like, never worked in sales farms, right? Because we don't use them in zfp, and so I work with anything in zfp and does random other things I don't know about.
+
+Matthias Miller  16:45
+They're they're pretty obscure. I think we added them for cake, for Kate Graber or construction, so we might not even be using them anywhere. Oh, it's good. Now we are.
+
+Unknown Speaker  17:03
+You're saying the payment vehicle
+
+Matthias Miller  17:05
+insurance? Oh, no, we're using it for Maryland.
+
+Unknown Speaker  17:09
+Okay, well, that's kind of a big deal
+
+Matthias Miller  17:11
+that it's kind of a big
+
+Unknown Speaker  17:15
+deal getting a whole bunch more people to come on,
+
+Speaker 4  17:17
+sweet. Good times. It is happy,
+
+Unknown Speaker  17:26
+yeah, so it looks like we added it for vehicle insurance
+
+Unknown Speaker  17:31
+base.
+
+Unknown Speaker  17:39
+I love that we call the
+
+Unknown Speaker  17:41
+record sales form and then config invoice.
+
+Matthias Miller  17:48
+Yeah, well, I mean, but it's
+
+Speaker 1  17:50
+only, I guess it is only for invoice, invoice, sales, for
+
+Matthias Miller  17:55
+invoice, but not all of the others are
+
+Unknown Speaker  17:59
+to be completely fair.
+
+Unknown Speaker  18:01
+Did you see
+
+Unknown Speaker  18:03
+Dwayne's colors? They
+
+Unknown Speaker  18:10
+are alive.
+
+Matthias Miller  18:13
+I told him to go alive. He had like a dark and like a dark gray and like this, a little too alive. I don't know, does it look different in light? It's like,
+
+Unknown Speaker  18:27
+makes me squint a little bit.
+
+Matthias Miller  18:30
+I mean, I'm bad at colors. I just I didn't like the I thought the other ones were like, I
+
+Unknown Speaker  18:34
+didn't see the other ones. I have no idea. Real, real bad.
+
+Unknown Speaker  18:42
+That's live it's
+
+Matthias Miller  18:45
+notification red does
+
+Speaker 1  18:53
+okay anyway, back to payments, plus, so we'd need to customize this a little bit, yeah, unless we try to go some other way. But it seems like if we have an existing structure,
+
+Matthias Miller  19:20
+I would love to use it as much as possible.
+
+Speaker 1  19:29
+I mean, I suppose we could, and there's still, I just do amount and everything.
+
+Matthias Miller  19:35
+I really dislike the model of the wonder
+
+Matthias Miller  19:46
+if we could just swap out check a check number with payment ID.
+
+Unknown Speaker  19:52
+Yeah, that seems reasonable
+
+Matthias Miller  19:58
+in what about ID? Notes. Okay, that's fair. Well, I don't know. How soon do we start?
+
+Speaker 1  20:08
+Are you saying? How soon should it even be the same? RG, I guess. I mean, but things like due amount are there? Then we don't have to build it out.
+
+Matthias Miller  20:21
+Do we use payment date any I mean, like, is the payment date? Would
+
+Unknown Speaker  20:28
+use it in reporting or something?
+
+Unknown Speaker  20:31
+I don't know if we do,
+
+Matthias Miller  20:37
+but we could do a i
+
+Speaker 1  20:45
+It's used In government vehicle insurance reports, but not no standard reports.
+
+Matthias Miller  21:12
+I mean, we could conceivably rename it to his hate introducing this complexity to a stored underlying field and have a macro that can conditionally give you whatever you want. The problem is they use it for an index, so you can't go look up other which they wouldn't so that would be fine, I guess I
+
+Matthias Miller  21:51
+Yeah, part of the issue is Okay, but if you, if you take out the fact
+
+Matthias Miller  22:06
+the only reason we actually use the date anywhere is just because it's the primary ID.
+
+Unknown Speaker  22:13
+I think
+
+Unknown Speaker  22:16
+that's all like,
+
+Unknown Speaker  22:21
+except, well, except for Waverly.
+
+Matthias Miller  22:26
+ID, Id ID ID, ID, Id ID, yeah, so it's not meaningful. So my proposal would be, make,
+
+Matthias Miller  22:42
+add a price. Primary ID field, right? Or change it to some I don't know.
+
+Unknown Speaker  22:54
+Are you still thinking the same? You still think it's the same?
+
+Matthias Miller  22:59
+RT, yeah, I'm thinking it's to say my RG, but why not? Why not have something like, like amount is the anchor that you have to have there,
+
+Unknown Speaker  23:11
+instead of date,
+
+Matthias Miller  23:12
+instead of date, yeah. And then let people swap out date, however they jolly well, please date and check number notes. However they jolly well, please do.
+
+Unknown Speaker  23:21
+Please,
+
+Speaker 1  23:24
+I need to, I don't know. I'm gonna switch to my laptop and my car over. I have the story of my life these days. Is car stuff, unfortunately. So sorry. Anyway, sorry for the timing, but I'll hop back on as soon as possible.
+
+Matthias Miller  23:41
+Okay, sounds good.
+
+Unknown Speaker  36:42
+Sorry. Hello, Oh, good. The Service drops a little bit. So, yep, this
+
+Unknown Speaker  37:00
+is just upload tires. So that's just too bad.
+
+Speaker 5  37:08
+Over the last two months, I think we've more than covered the value of Michelle's car.
+
+Unknown Speaker  37:13
+Just not fun.
+
+Matthias Miller  37:15
+Oh, that is just not fun.
+
+Speaker 5  37:20
+Anyway, Dad said he thinks that God must have had an angel with a finger that I can tell he got married.
+
+Matthias Miller  37:28
+Sorry that what
+
+Speaker 5  37:30
+that dad said, that he thinks God probably had an angel with a finger in the dike, keeping this single teacher from all these pills. And then, as soon as we got married, then they hit me. Should
+
+Matthias Miller  37:48
+have told her to keep his finger in the dike a little longer.
+
+Speaker 5  37:54
+That I would not have found Okay. Payment record wave, I didn't save those changes, but it's not that hard. Did you decide I wasn't quite tracking what you were thinking with, okay? The designs here,
+
+Matthias Miller  38:11
+yeah. So change, change the the the amount to be the primary ID on the RG, or have a randomly assigned row ID.
+
+Speaker 5  38:29
+So what's the problem with the date? Oh, because we look at we don't store that.
+
+Matthias Miller  38:32
+Yeah, like, if we just, if we just, then we could just, theoretically, no, you can't delete the field. I guess even on the date, wouldn't? You have to do a Never mind on the date, you have to change it to an editable macro that with the stored value. Or no, no, no, no, no, okay, no,
+
+Matthias Miller  39:08
+this could get you in trouble. But could we just hide the Date field and have a different macro shown in CRT,
+
+Speaker 5  39:21
+like we're bending over. It hard to make it fit the model.
+
+Matthias Miller  39:27
+Well, the other option is we just ditch the RG and override the how much has been paid macro.
+
+Speaker 5  39:40
+That's probably, yeah, that's bad. I'm pretty sure right.
+
+Matthias Miller  39:47
+I Yeah, you're probably right.
+
+Speaker 5  39:49
+I mean, I'm fine with that. Like, I like the idea of trying to use the existing link, but it doesn't seem like it's actually worth it. Okay with how many things
+
+Matthias Miller  40:06
+I mean. I mean the only other way to do it, yeah. I mean, or you resort to x 30 triggers or something to back populate the date, which is just dumb, okay, yep. And then we need the so the RG for payment linking is going to have the payment record ID. It's going to have the payment amount. And then we have all these macros, which is going to be a view, payment date, payment method, yep, I think that's it good.
+
+Unknown Speaker  40:49
+Then you're wondering how we figure out.
+
+Matthias Miller  40:59
+So who's that
+
+Unknown Speaker  41:02
+is? Looking at the status? I would
+
+Matthias Miller  41:09
+think that we should have a field change expression on on the unsaved that checks the balance and marks it as paid.
+
+Unknown Speaker  41:22
+Was. So if you have multiple
+
+Speaker 5  41:24
+payments, you're going to send this payment date just that is full once it's
+
+Unknown Speaker  41:30
+Yeah,
+
+Matthias Miller  41:33
+date of the latest payment, or something like that.
+
+Speaker 5  41:36
+But only if it's fully only If it's fully paid, right? You?
+
+Unknown Speaker  42:05
+On the payment right? Human
+
+Matthias Miller  42:15
+record really doesn't need anything. I mean, well, I mean we need a visual or link to view invoices, and possibly virtual.
+
+Unknown Speaker  42:21
+RG, do you
+
+Speaker 5  42:25
+want a payment to possibly pay both an invoice and a contract, or does it not matter? So it doesn't matter. I don't care. I mean, if you want to make
+
+Matthias Miller  42:35
+it explicit, we could have a payment type, yeah, and that would probably be matters or doesn't. I would
+
+Matthias Miller  42:49
+expect, for reporting purposes, maybe better to Feel the type drink.
+
+Unknown Speaker  43:15
+That did that just be Hmm? Hmm,
+
+Unknown Speaker  43:30
+just be what it seems a little
+
+Unknown Speaker  43:31
+confusing to me to label that a payment type, payment that makers, if
+
+Matthias Miller  43:45
+payment for or payment
+
+Speaker 3  43:58
+of I, um, so that's pretty simple.
+
+Speaker 4  44:07
+Track records, what all happens on the SIS tracks?
+
+Matthias Miller  44:12
+I think we need to go take a look and see what's, what's the pieces. I mean, off the top of my head, we need the we have user settings that control printing, print positions. It's all under assist check. I'm
+
+Matthias Miller  44:41
+going to assume, I guess, that some of the fields are going to be
+
+Unknown Speaker  44:45
+looks like silver limb settings. We have
+
+Unknown Speaker  44:49
+check layout stuff,
+
+Matthias Miller  44:52
+which is important. And this should almost go on the it's an RG, shouldn't this almost go.
+
+Unknown Speaker  45:01
+The rental company,
+
+Unknown Speaker  45:03
+accounting company,
+
+Matthias Miller  45:08
+because, well, I mean, I don't know, it seems conceivable to me, go ahead, Archie. I'm going to assist, and you'll see it'll make sense.
+
+Matthias Miller  45:32
+The other option would be to break this out into a check layout.
+
+Matthias Miller  45:42
+I see I actually prefer that check layout record, and then you could, is that too weird? You could then assign
+
+Matthias Miller  46:04
+mean conceptually, then you can name it based on the like, I don't know the type of checks that you're printing
+
+Unknown Speaker  46:21
+on that just Matthias, or if you have
+
+Unknown Speaker  46:25
+multiple companies in the same system, yes.
+
+Unknown Speaker  46:31
+So do we read factor
+
+Unknown Speaker  46:34
+or we use a whole bunch of fiscal documents? Yeah. I mean, I would think that if we just read back during that.
+
+Matthias Miller  46:42
+Yes, okay. So, I mean, if we, I mean, argue with me. I think silver, silver loom settings is too, is too broad. It needs to, okay, we could. We could do a few, few things. One, you could have a way to copy it from another accounting company that you've got access to. But, like, I don't know, realistically, these are akin the way I conceptually think about it. This is the same as the Word templates you download from Avery for a certain type of label,
+
+Unknown Speaker  47:22
+absolutely
+
+Speaker 3  47:22
+that's
+
+Speaker 5  47:29
+fair. Is there any linking to and then you don't, you don't
+
+Unknown Speaker  47:38
+think to accounting
+
+Unknown Speaker  47:41
+company or anything like that,
+
+Matthias Miller  47:44
+we're doing well, I mean accounting, I would think accounting company has to specify what, what, what it uses,
+
+Speaker 5  47:51
+just which? Check, oh, yeah, that makes sense.
+
+Matthias Miller  47:54
+Check layout it uses, yeah, but yeah. Am I overthinking it like we could, seems to me like this is a lot of configuration to put on us, on every single record,
+
+Unknown Speaker  48:15
+all of this.
+
+Unknown Speaker  48:22
+Why? Do we what is the override?
+
+Speaker 5  48:32
+Is that makes that if you have a long name and things Good day,
+
+Matthias Miller  48:40
+I'm sorry. The sorry, the weird, the way, this is for the user record. Yeah, you have a printer that does stupid stuff, and so adjust everything left or down, up, down, left or right.
+
+Speaker 4  48:57
+Gotcha true.
+
+Unknown Speaker  49:08
+Okay, so trying to
+
+Unknown Speaker  49:15
+so you think we should have this layout.
+
+Matthias Miller  49:21
+Yeah, that's my instinct.
+
+Matthias Miller  49:31
+Or we just copy it on every accounting company and then, I mean, I
+
+Unknown Speaker  49:40
+don't think it's ridiculous to have it be a level, although will we ever have it be one?
+
+Unknown Speaker  49:48
+You do what I want.
+
+Matthias Miller  49:52
+Five weeks though, it's like, okay, so assistant. Play out becomes a level. It's not assist, check layout. It's just check, check layout, yeah,
+
+Matthias Miller  50:15
+it just has a name.
+
+Unknown Speaker  50:20
+Same Margie. Yeah, and
+
+Matthias Miller  50:28
+then a field on the accounting company for check we have
+
+Unknown Speaker  50:50
+Do we just
+
+Unknown Speaker  50:51
+read the level from SIS? Checks? Just checks, yes.
+
+Matthias Miller  50:59
+So silver loom, it should move into a silver loom accounting checks, silver dot txt. Silver loom accounting checks, dot txt,
+
+Unknown Speaker  51:16
+it's the one I work out level name, and
+
+Matthias Miller  51:18
+then the level name is
+
+Unknown Speaker  51:23
+checks, accounting checks.
+
+Matthias Miller  51:29
+I think we have accounting trends,
+
+Unknown Speaker  51:34
+accounting company.
+
+Matthias Miller  51:40
+I would go to accounting. I think accounting where financial accounts we chart of chart of accounts and financial accounts we don't those are also multi word levels. I would say accounting check with an ACCT check prefix.
+
+Matthias Miller  52:06
+I would spell out consistency, spell out accounting, check the level name, and then ACCP, yeah, yeah, let's go see what else we got moved it. I mean, move the user. Let's go see what, what? Let's go check the assist. Check level.
+
+Unknown Speaker  52:38
+Let's go to levels. Yes, or Yeah, yeah, looks sane.
+
+Matthias Miller  52:53
+Indexes,
+
+Unknown Speaker  52:57
+this would be
+
+Matthias Miller  52:59
+Yeah, VI, that is, that is this Yep, or create an assist, or a silver loom accounting check, but just leave an assist.
+
+Unknown Speaker  53:13
+Yeah, we can always revive on it.
+
+Matthias Miller  53:16
+Yep, the rest of those, okay, two and three obviously can move over,
+
+Unknown Speaker  53:22
+yeah, middle one does it
+
+Unknown Speaker  53:26
+Sure.
+
+Matthias Miller  53:33
+Let's go into fields. This would go this guy, B, I R, G, I think everything else can stay and we might need a way to we need to think through how we want to handle bills, assets, should. Assets could conceivably be, well, no, I mean, assets are fine. We just didn't we say that we're going to have an NA list and just support assets. Or is that? Am I thinking something wrong? Yeah,
+
+Unknown Speaker  54:18
+we have an accounting
+
+Unknown Speaker  54:19
+impact. What? When I said,
+
+Speaker 5  54:22
+which, I guess that seems a little
+
+Unknown Speaker  54:27
+misnamed, if we're,
+
+Unknown Speaker  54:33
+I guess that would
+
+Unknown Speaker  54:38
+this one. I
+
+Matthias Miller  54:43
+is there you break it up.
+
+Unknown Speaker  54:57
+Hello.
+
+Unknown Speaker  55:05
+Michael
+
+Matthias Miller  55:22
+then, yep. Okay, so what's your question? I lost you.
+
+Unknown Speaker  55:28
+Yeah. I mean,
+
+Matthias Miller  55:32
+I don't care what you do with with asset, it's, I think we had a blank list. I don't know where we left
+
+Unknown Speaker  55:41
+that long as we make it working, yeah, yeah, yep. So vendor invoice is the main
+
+Unknown Speaker  55:47
+thing, yep.
+
+Unknown Speaker  55:52
+Then there might be a few things like that. I
+
+Unknown Speaker  56:05
+What is this?
+
+Unknown Speaker  56:09
+Is this the position stuff?
+
+Matthias Miller  56:11
+This is a vendor invoice. Vendor invoice assist, go to assist. Checkout memo. I'm pretty sure this is the pull in vendor invoice information,
+
+Speaker 5  56:24
+sys, check, payee, contact vendor account number. This is
+
+Matthias Miller  56:33
+assist specific. I wouldn't worry about it. I
+
+Unknown Speaker  56:51
+fields are cyst specific as
+
+Unknown Speaker  57:08
+Okay,
+
+Unknown Speaker  57:10
+Matthew, thank you.
+
+Unknown Speaker  57:13
+If I have questions, I can
+
+Speaker 5  57:16
+try it again. It's enough for either I wonder if I'll probably do these, just because I know zfp And how wearable had danger of messing stuff up there.
+
+Unknown Speaker  57:32
+Yep. Does that sound right?
+
+Matthias Miller  57:33
+That sounds reasonable. I think it's just bordering on the Nick being able to run with it, but
+
+Unknown Speaker  57:42
+it's no funny for
+
+Speaker 3  57:44
+you, it will be fine, yeah.
+
+Matthias Miller  57:50
+It could also be that if you just help him, No, it's not urgent if you it could also be that if you help him, just extract a few of those fields that don't belong there, I don't know. And then he can do the rest.
+
+Speaker 5  58:11
+Yeah, I'll try to give a little bit of I'll just give him a few notes on what we don't need. And then he can pull me anything. It's confusing.
+
+Unknown Speaker  58:18
+Yep, fine. Are
+
+Unknown Speaker  58:21
+you needing to drop?
+
+Matthias Miller  58:23
+No, I got time, Nick. Nick's after you.
+
+Unknown Speaker  58:28
+What are you? Are you working on
+
+Matthias Miller  58:30
+the income statement? Yes, I would actually be kind of interested in getting some feedback on you on that. But anyway,
+
+Unknown Speaker  58:37
+I mean, I'm happy to hop on then.
+
+Matthias Miller  58:41
+Okay, let's do okay, the assisted positive. Let's go pull that up. Or is that that's not in a separate
+
+Speaker 5  58:48
+level? Well, it's a separate level, but not a separate catalog, not a separate category, right? More work,
+
+Unknown Speaker  58:56
+to be fair, largely grunt work, but it's going to be take more downwards.
+
+Matthias Miller  59:02
+Just pull the detailed screen. I can almost tell you faster there, there. What needs to happen.
+
+Unknown Speaker  59:08
+Yeah, great minds.
+
+Matthias Miller  59:12
+Great Minds running the same track. I
+
+Speaker 5  59:28
+Okay, so sales, order payments, that's going to be different,
+
+Matthias Miller  59:35
+yeah, so that one would be, we are depositing
+
+Unknown Speaker  59:41
+payment records,
+
+Matthias Miller  59:46
+and so I don't remember if this is an RG, or if this is a it's a virtual RG, so the payment then links back out to the deposit, right? So. And then you have a report to pull stuff in. But we would have to do it like that. In some ways, it would make, kind of, it would kind of make sense to say, have a drop list of undeposited
+
+Unknown Speaker  1:00:16
+I don't know.
+
+Speaker 3  1:00:19
+Do I care? I really
+
+Speaker 5  1:00:24
+can make sense to do it the other way to actually feel that deposit fairly,
+
+Matthias Miller  1:00:38
+no, not necessarily. And then the credit memos and the attachments would disappear as well.
+
+Speaker 5  1:00:49
+Right then transactional anxiety did same.
+
+Speaker 5  1:01:02
+And do we just label these things as deposits instead of assist deposits?
+
+Matthias Miller  1:01:06
+Yes, same way accounting deposit and ACCT deposit, same as the other one.
+
+Speaker 6  1:01:11
+Okay. Sorry.
+
+Speaker 5  1:01:19
+What for CFP, do we call it assist deposit so they don't know anything changing. Just change it to you. Just change it. How do you want to label it for the user? I mean, just if you want to label just on their heading is just deposit.
+
+Matthias Miller  1:01:42
+Yeah, okay, no, it doesn't, it doesn't matter if they see things change. We're just standardizing, I mean, we're just taking things that we customize for them and standardizing it.
+
+Speaker 4  1:01:57
+So, yeah, exactly. So it was miscellaneous. Disappear.
+
+Unknown Speaker  1:02:15
+Miscellaneous items stays the same,
+
+Speaker 4  1:02:19
+sales, order, maintenance. I
+
+Unknown Speaker  1:02:52
+it, what's the word
+
+Unknown Speaker  1:02:57
+for deposits, sorry, what's the what?
+
+Unknown Speaker  1:03:02
+What's the workflow for deposit phenomenon,
+
+Matthias Miller  1:03:07
+go create a deposit, enter the amount, save the record currently as it stands, and then add the deposit items to it, and or vice versa, and make sure that they balance, which is slightly weird.
+
+Speaker 5  1:03:28
+Why don't we? I thought it's something like you select we have a report, and you select all your rows and hit add to deposit, and then it creates your deposit.
+
+Matthias Miller  1:03:37
+Let me go see if we Have an undeposited funds aging report. I
+
+Matthias Miller  1:04:03
+I know, but I mean, there's a lot of ways in which that would make the most sense.
+
+Matthias Miller  1:04:14
+By the way, it would be useful to change Go ahead. Useful to change deposit records, to use accounting company instead of district.
+
+Matthias Miller  1:04:34
+I would think that the most natural workflow is similar to the the unpaid vendor invoices, where you have undeposited payments on the left, you highlight them and hit add to deposit and but then I guess we don't have a pending that. So true. How do you finalize that then say I'm done? Or do you just just show one deposit per day and just add it to that? Or do you I
+
+Speaker 5  1:05:23
+this be a design question for Drew, what you want, or maybe he doesn't really care if we just make it
+
+Unknown Speaker  1:05:27
+work. Well, he doesn't care. It would be
+
+Matthias Miller  1:05:29
+interesting to see.
+
+Speaker 1  1:05:32
+I was meeting Dwayne not Drew, but Drew is right, but Dwayne
+
+Matthias Miller  1:05:35
+doesn't, Dre doesn't, wow, I can't speak, but it would be interesting to see if Drew actually likes the current process, because it seems to me like It's more makes more sense to say I went to
+
+Unknown Speaker  1:06:07
+like,
+
+Matthias Miller  1:06:12
+Okay, here's Okay, here's here's a proposed design add a hidden field To the payment record that says queued for deposit. And then you can, you can say, and then you have a create new deposit and an add to existing deposit, or something like that. So then you can go through and say, I want to right? But is that actually going to be the case? Like, why would you not normally just create a deposit for everything? Thank you.
+
+Speaker 5  1:06:57
+Well, okay, isn't there potential for having day.
+
+Matthias Miller  1:07:04
+Why wouldn't you just make them? Okay? Here's another proposal, new deposit pops open, fills in an RG with all the pending items.
+
+Unknown Speaker  1:07:16
+Then you can remove rows,
+
+Matthias Miller  1:07:18
+yep, and then, and then if you don't like it, there's either a, well, you could
+
+Matthias Miller  1:07:30
+do it one of, yeah. And if you don't like it, then you either have to delete and start over, or there's a button to, you know, add. There's this many missing, and add them. Add them in.
+
+Unknown Speaker  1:07:53
+It's not terrible.
+
+Unknown Speaker  1:07:56
+I didn't think so. If
+
+Speaker 5  1:08:00
+we and are you thinking only, this is a miller only at this point, not for insight, right?
+
+Matthias Miller  1:08:08
+What I mean? Can we, can we have it be for for insight, like, why couldn't we have insight using this as well?
+
+Speaker 5  1:08:32
+So we switched the made the linking wouldn't be hard.
+
+Matthias Miller  1:08:36
+Actually, never mind. No, this is only for insight, because they don't have payment records, so we don't care, right? I was
+
+Speaker 5  1:08:45
+just thinking, do you need to have a standard way? Because if we have deposits going forward, you're going to want to be able to link to multiple records, aren't you record types? Potentially, maybe not,
+
+Matthias Miller  1:08:57
+yeah, but you just have a macro that says, and
+
+Unknown Speaker  1:09:02
+everyone just creates their own customary workflow. Have to,
+
+Matthias Miller  1:09:09
+I mean, you kind of have to. What else are you going to do? It's true. It's
+
+Speaker 5  1:09:12
+true. I didn't like it at first, but I think it is actually
+
+Matthias Miller  1:09:16
+have to do well. I mean, it's the rule of three. So just control yourself that this is not for forever. It's just until we have three, three clients and we can see the pattern, then let's not make a pattern.
+
+Unknown Speaker  1:09:30
+That's very fair. Yeah. So I
+
+Unknown Speaker  1:09:46
+Are you proposing this workbook that says right?
+
+Unknown Speaker  1:09:52
+Do you still want the queued for deposit field? No.
+
+Matthias Miller  1:10:00
+So we would just have a create deposit, then you have an on a net that populates it with all pending items. I think it could make sense to say what are unlinked and maybe it's only if the deposit date is today and there are additional unlinked items to say you're missing x number of items in or or you just have if this is getting really fancy, but would it be too terrible to have a helper list of all unlinked deposits that are not on this record.
+
+Unknown Speaker  1:10:45
+That's simple,
+
+Unknown Speaker  1:10:49
+that you would auto populate PRG, and then you also have
+
+Speaker 5  1:10:57
+the field B Alberta list. And then you just get validation make sure we don't double deposit stuff somehow.
+
+Unknown Speaker  1:11:06
+But Yep, yeah, yep.
+
+Speaker 1  1:11:11
+So then what's the concern? Why did we field it on the payment row instead of on here? Is it because in I'm trying to think, why did
+
+Speaker 5  1:11:22
+we do it the way we did in zfp? Is there a reason we should be doing it that way?
+
+Matthias Miller  1:11:27
+I think it's just the sheer volume of
+
+Unknown Speaker  1:11:31
+payments,
+
+Matthias Miller  1:11:34
+potentially, or the fact, well, part of the reason is that on a wholesale dealer, it's not actually, per check, it's for
+
+Unknown Speaker  1:11:45
+sales order.
+
+Matthias Miller  1:11:48
+So the wholesale dealer you have, like, however many that are all going together. Why not? I
+
+Matthias Miller  1:12:05
+is the concern? But again, go ahead.
+
+Speaker 5  1:12:12
+Is it concerned that from the sales order, we then have to bounce out to say whether it's paid or not? Well, the
+
+Matthias Miller  1:12:23
+payment record says whether it's paid. If we want to know whether from the from the invoice, or we want to know if the payment was deposited, then we need to bounce through the payment find out whether the payment was deposited. But it's it's still just two index lookups. It's not and even if we wanted it on the RG, I genuinely don't know why. I think it's completely possible. I
+
+Matthias Miller  1:12:59
+don't know why this would have made it any easier. I mean, because even if we wanted this, even if we wanted the zfp format, we could still show a report and have a new record button for selected rows that pops it open with those rows populated like that's not beyond the realm of question. It makes it harder if you want to add, use a report to add a bunch of items, but you could do that too with a Modify button. You highlight them and you have a special report that says you're editing this deposit and select rows and add and it's done like, I can't see lookups just being I like the fact that the deposit total, then can audit correctly calculate, and it's never out of sync. Yeah, I don't know. I can't find a compelling reason, but if you Can't happy to entertain it, no, it's good. Um, I
+
+Matthias Miller  1:14:34
+not on this or any other deposit to be very technical,
+
+Unknown Speaker  1:14:39
+right, right, no right
+
+Matthias Miller  1:14:41
+and deposit payments, never mind. Well, never mind. I don't care. Yeah, that's what,
+
+Unknown Speaker  1:14:45
+because
+
+Unknown Speaker  1:14:52
+they would appear to be undeposited if you
+
+Matthias Miller  1:14:56
+were so then on the payments add a link, deposit macro, not field.
+
+Speaker 5  1:15:05
+Yep. You want to display deposit date or not,
+
+Unknown Speaker  1:15:12
+yes, yes,
+
+Matthias Miller  1:15:18
+and add a note to switch from district to accounting company.
+
+Unknown Speaker  1:15:37
+Sweet, good.
+
+Speaker 5  1:15:44
+Okay, but I think that gives me what I need. I'll need to do a bit more to spec it out so that it's understandable for them, but I think I have what I need for us to move forward.
+
+Matthias Miller  1:15:56
+Okay, where do you I'm losing my mind with this spec. And it's it's my own it's the demon of my own creation. Is there any kind of support in this organization process, like, Should you and I, or being Nick, or, I don't know who and who, get our heads together and spend two hours and say we're going to roll up our sleeves and grit her teeth and drink lots of caffeine, get this thing whipped into shape.
+
+Speaker 5  1:16:38
+But whenever I start running into it, I feel it's almost, I don't quite know. Maybe this might say for you, but context, I wonder if sit down. Thank you.
+
+Matthias Miller  1:16:53
+Welcome. Sorry. You say if Nick and you sit down?
+
+Speaker 5  1:16:56
+No, I think. I think you and I
+
+Matthias Miller  1:17:00
+Yeah, okay, let's be, let's do that, just because I would agree.
+
+Speaker 5  1:17:05
+A fair bit of design in my head, but you have more and Nick and John, yeah, some, but it's a lot less.
+
+Matthias Miller  1:17:14
+Yeah, okay, I would be a huge fan. And so let me,
+
+Speaker 5  1:17:22
+if there's let me see what I've got on my calendar for today, I started doing a bit of work on it as I can here and there, but I haven't touched the big ones that really mattered, because,
+
+Unknown Speaker  1:17:32
+yeah, that makes
+
+Matthias Miller  1:17:33
+sense. Okay, so let's do this. Should I see if Nick would be available to hop on for a few minutes for the
+
+Unknown Speaker  1:17:55
+income statement,
+
+Matthias Miller  1:18:02
+unless you're ready to, unless you're done, already ready to head out, then we can,
+
+Unknown Speaker  1:18:07
+well, I should go back and check.
+
+Matthias Miller  1:18:12
+Why don't you do that? Because if Yeah, I'm gonna break for a quick minute while you check. And then we can, sounds good.
+
+
+Transcribed by https://otter.ai

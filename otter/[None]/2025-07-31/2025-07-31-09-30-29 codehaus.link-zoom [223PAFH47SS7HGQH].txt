@@ -1,0 +1,1253 @@
+Unknown Speaker  00:33
+You're Monet Matthias,
+
+Unknown Speaker  00:41
+I can hear you.
+
+Speaker 1  00:51
+Hello, there we go. I can't hear Matthias, is it just me? Can
+
+Unknown Speaker  00:56
+you hear me now? Yeah, I can hear you. Awesome. Seth, you can't hear
+
+Speaker 1  01:08
+like a skill issue, honestly, yeah, like your nickel looks like your camera has a skill issue. Yeah, my camera does have significant skill or at least quality issues,
+
+Matthias Miller  01:23
+at least we could piece together the the pixels to see who it is i
+
+Unknown Speaker  01:46
+Hey, there's the man here I am.
+
+Unknown Speaker  01:49
+I'm here.
+
+Matthias Miller  01:52
+Senor, all right, what? Um, well, I feel like we're Steve. We've stolen the thunder. Nick Dwayne's been gushing and raving about the notes feature, and it got featured on the assist call yesterday, and he's selling it to mark and so sorry you can't see his highly emotionally happy, excited reaction. What happens? But there you go. You still get to see it. Yeah.
+
+Unknown Speaker  02:30
+Well worth it. Well worth it. I could also imagine.
+
+Matthias Miller  02:35
+So I guess, do you guys want to Seth? You want to walk me through, What? What? Or Seth, Nick, Jeff, I don't know who, what do you guys want to walk us through, kind of, what's development since last time?
+
+Speaker 1  02:51
+I mean, notes is a big thing, and you've seen that already. I guess I could share screen. I'm trying to you've probably been seeing stuff anyway. Notes is probably the big thing, biggest thing that Nick was working on which we may get progress on. Think he's got some more changes that I might not have in my system yet. Yeah, if you'd update, you'd have the layout changes and
+
+Speaker 2  03:22
+and then can I ask a quick question? Yes. I threw a note into dev spec right below the layout changes to this. Do we have in the dev spec where, when you're on, let's say, well, any detail screen we have the new Note link. Are we? Did we expect to add a view notes there as well? That would just basically give us a report? I
+
+Speaker 1  03:53
+don't think we'd expect it, or I don't remember seeing that, but it'd be easy to
+
+Speaker 2  03:57
+do. Okay, I threw a note in at the bottom of of the notes record page for that, I think, I think, and I'm not sure, 100% like the way you're concatenating the notes in there, yet with just pipes and just kind of all big, one long string. But if we have a view notes, and we might just leave it. Otherwise it could get really, really long. So if you, if you go to like, if you go to my user profile, there's a couple times
+
+Unknown Speaker  04:32
+with pipes we want new lines in. Here it
+
+Speaker 2  04:35
+was, I don't know if we want to do new lines yet. If we have the view notes URL there.
+
+Matthias Miller  04:46
+We want new lines. Dwayne,
+
+Speaker 2  04:48
+yeah, but it okay. So the only problem with the new line thing is that contact records for customers are could potentially get really, really, really, really long. Maybe that might be okay, but I. I do think new. I think new, uh, new line is the right thing.
+
+Matthias Miller  05:03
+Let's do something like this. Why would we limit it to 1000 characters, and if, if we exceed it, you add a charge, yeah, something, you know exactly,
+
+Speaker 2  05:16
+something at the top, as long as, as long as we are concatenating with the newest note at the top.
+
+Matthias Miller  05:25
+So we do newest note down to the oldest and making notes, notes about notes, notes about notes. Could we just stop like could we stop at the first note that takes it over a certain number of characters, like 1000
+
+Speaker 2  05:48
+in some form of I mean, I don't know how long is how long is 1000 characters? I don't even know, like, how long is that?
+
+Unknown Speaker  05:59
+Well, I guess 1000 characters. It's close.
+
+Matthias Miller  06:07
+It's like 66 with these little bits. So it's 20 times, 20 times yeah, 20 times that, yeah, 1000
+
+Speaker 2  06:16
+okay. The only thing that's gonna throw this whole thing off, because we're going to put in letters and so on and so forth, like one letter is going to completely wipe out the whole entire thing.
+
+Matthias Miller  06:27
+So do you want? Do you want each note limited to? Nah, probably not.
+
+Unknown Speaker  06:39
+Is this a design question that does
+
+Matthias Miller  06:41
+it is a design question.
+
+Speaker 2  06:43
+Let's kick it to a design question. It's Thank you. Whatever we do, as long as we have the view Notes button there that turns it into a report where you can just see everything that makes life really, really easy then. And so now what I need you to do, Seth, is I need you to evaluate all the notes and figure out which are the important ones and only put the important
+
+Speaker 1  07:01
+ones there. Okay, I'll search for the search for whatever keywords make me happy. We'll say those are important.
+
+Matthias Miller  07:08
+What do you think about a virtual RG with a hidden RG? A virtual MRG, the RG itself is hidden, so you just have forward back buttons and just cycle through notes and then say note x of y, and you just hit the back button to cycle through I cycle
+
+Unknown Speaker  07:23
+through. I don't hate it. I kind of like it.
+
+Matthias Miller  07:28
+Duplication between records, it is a lot, and
+
+Speaker 2  07:32
+you don't really get a quick view of a bunch of information.
+
+Speaker 1  07:35
+You went now without hitting the link. Yeah. Oh. Are you with Dwayne about Yep, sounds good.
+
+Speaker 1  07:48
+There's a note for y'all. Um, so notes have been a big thing of the last week, and then I've worked a fair bit on calculations, on contract, definition stuff. Just because we changed logic, I've changed the contract definition. So reworking that has been a big part of what I've done. Jonathan's been doing work here and there as he has time.
+
+Speaker 3  08:17
+I reworked the transfer, contact, secondary and primary contacts got rid of the RG, and now you have a hidden one that only pops up if you transfer
+
+Speaker 2  08:31
+sweet, by the way, I showed the contract definition the way we're doing contract definitions to Leanne, and she was overjoyed. Like centralized everything around a state on one record is just so mind bendingly easier than the way that RTO Pro does it. And so way to go.
+
+Speaker 1  08:54
+Awesome. That's that's very happy. I think if we have other
+
+Speaker 2  09:02
+before, before you leave notes, I want to make one comment. No, stop it. I'm not answering you right now, we need to put some logic in for if somebody copies a note record that it updates date that's the that's the only thing I just I went and copied one, and it kept the created date exactly what the original one was. So just updating the created date would be the only thing it would be nice to have the
+
+Unknown Speaker  09:34
+memo you want to that's the whole point of
+
+Speaker 2  09:39
+copying something you want to copy. You know you want. You want things that are there. The only thing I like I said, the only thing I really thought about when I went and copied one, I was like, let's make sure we update the created date.
+
+Matthias Miller  09:52
+Sounds good? Do you want to mix the completed date?
+
+Unknown Speaker  09:57
+Good point. I. A good point
+
+Unknown Speaker  10:04
+those things,
+
+Speaker 1  10:14
+guys, is there other things, other big things we've been and the rest of you all the things we should talk about, or is that I feel like notes and then contract, contract definition stuff has been the main push, with some work on different contacts, like manufacturers and stuff. Strong actually has been putting some of that
+
+Speaker 1  10:41
+stuff together. Sweet. I like some of the linking to dealers and stuff, which I don't have any dealers in my system,
+
+Speaker 3  10:49
+but I also added a virtual RG of contracts, so if you switch contact type to customer, I don't know if you have any link to this one.
+
+Unknown Speaker  11:02
+Well, let me actually open my
+
+Speaker 3  11:07
+Sean doer, nice, yeah, now we got a link to all the contracts for that's a
+
+Unknown Speaker  11:18
+that's mostly update on our site.
+
+Matthias Miller  11:25
+Yep, sweet. Well, Dwayne and I are still I'm I'm putting Dwayne through the gauntlet. That's what I'm doing.
+
+Speaker 2  11:35
+So much, so much so that yesterday, I just finally said, Look, I gotta quit. I can't focus anymore.
+
+Matthias Miller  11:41
+I'm like, I'm here to, I'm here to, well, no, I'm not here to run your ragged. But anyway, so it's been, it's just a lot of tough edge cases, interactions, things like that, weird scenarios, trying to predict what companies we're going to support, and on my end, then trying to, trying to split the line between, alright, or both of us trying to split the line between, okay, Dwayne, you gotta go research this. Go find yourself a good lawyer, or somebody else to go figure out what needs to happen here, and then diving into the, I mean, just just one little nugget that you'll appreciate and enjoy a CRA contract. If you default on a CRA contract, the CRA amount turns into a security deposit. And so when you're making a payment, then so you need to manage security deposit balances. And when you make a payment, you might be using part of the security deposit to pay for it. And then, if you make a big payment, you either extend the due date, or you might. If you don't want to extend the due date, you want to pay, you know, your monthly payments 500 bucks, and you pay 1000 you put 500 of that into your security deposit. So your due dates keeps, keeps on track. In addition to that, due date calculations are really interesting,
+
+Speaker 2  13:04
+yeah. FYI, I was testing that just right before the call, we're being one day slightly more generous than what RTO Pro is. But for the most part, I've hit a bunch of history in RTO Pro to see where we come out. And so far, like we tend to end up giving them one more day than what RTO Pro does, because I brought this up to Leanne. It may be I brought this up to Leanne, and she just rolled her eyes and said, We just had a massive conversation with a customer that was arguing up and down with us on due date calculations out of RTO Pro. So one of the things we do need to do is once we nail this to the wall, is documented well,
+
+Speaker 1  13:47
+on how the wiki or something, yeah,
+
+Matthias Miller  13:50
+yeah. The reason it gets
+
+Speaker 2  13:51
+very important because, you know, it's like, on the surface, it's like, well, this is pretty easy and, well, you can do simple math to calculate. Oh, it's not at all. The
+
+Matthias Miller  14:03
+basic problem is that your daily rate varies based on how many days of the month it is. So you need to effectively find daily rate for for the first month of the contract, which is a partial partial month, then find how many full months you're paying for, and then find the, effectively, the daily rate for the where, whatever month you land in, and stitch it all together. So fun times were had by
+
+Speaker 1  14:27
+all. What can we ship a wiki record and then link that on? I don't know, contractor payment like we could just have a link,
+
+Speaker 2  14:38
+or just having that have that as an explanation on the payment record would be, really, would be where everyone put it is, like, due date calculations. Here it is, and it links over to the wiki page. That's pretty That's brilliant, because it is. It's one of those things where it's like, you want to, like, when you're on the phone with a customer, you want to be able to explain this in good language. Language, simple language, and a customer can understand it because it's not it's not WYSIWYG at all.
+
+Matthias Miller  15:10
+Anybody else this is probably jumping way too far ahead. But it could also be really interesting to break down the specific numbers. So this much of your payment is going to cover. So for this first partial month in April, this payment is covering this many days. It's this percentage of the month. It's this if you really have, if you really want to
+
+Speaker 2  15:31
+get some sort of calculator there that that says, you know, here's, here's the here's the person's contract, here's the date that you paid on, and then whatever they paid. And it just like, gives us a whole break kind of whole break, kind of like, kind of like the one we built, it gives the customer rep a breakdown that says, well, your payment paid so much of this month, and so much of this month and this many days of that month.
+
+Speaker 1  15:53
+What I was thinking is we can have an MRG, so we don't show all that stuff in the RG, but you could, we could either always show an MRG. Or we could have a checkbox you check and then it shows the MRG. I'm just that's just a breakdown of extra details
+
+Matthias Miller  16:07
+if you want that, or even a memo that, I mean, that wouldn't take up much space in the RG to pop open a memo that shows it all. That's pretty cool, a little geeky, but,
+
+Speaker 2  16:20
+yeah, but it's, it's little things like that that, you know, customer service rep is not going to understand due date calculations. Like, nobody's in RTO training. We don't sit down and go, Okay, Mr. Customer service rep, here's how you calculate this. But it's like, when you're under the gun, if you open up the payment records, oh, here's an explanation or a calculator. It's like, oh, cool. I can very quickly, you know, explain this to the customer. It just puts a tool in their hand.
+
+Matthias Miller  16:47
+Let's be blunt. There's a reason software engineers are not customer service people, and there's a reason why customer service people are not software engineers. So there it is, in a nutshell, very true. That's a it's a little black and white, but I think you get good, sweet, awesome. Well, Dwayne and I are so Dwayne and I fed a whole bunch of stuff over to Seth, a bunch more refinements on contract, contract definition, payment record. We still have a bunch of work on it. We're still holding off on whiskey stuff, because this really is the heart and soul of the system, and we do have to get this right. And it's better to it's better to breathe and get it right than it is to rip out the guts start over. So,
+
+Speaker 1  17:42
+yeah, for this next week, I think Nick has note templates to work on, and then we'll we got a fair bit with different contact types, switching rental company to contact type, and more stuff on contract and contract definition. And I'm trying to nail down payment spec, because Matthias tossed that at me. So I'll try to get that to reasonable place as soon as I can send it back to y'all. So Dwayne, as
+
+Matthias Miller  18:07
+soon as Seth gets the payments back, then what you and I are going to take another look at it before we send it off to them. So good. Thank you guys.
+
+Speaker 2  18:18
+Hey, I'm going to say this one more time. You guys make me tired. You guys are like, but it's, it's fun. It is. It feels like I'm going to the gym every morning. It's like, it's just, it's fun. And I the further we get along here, the more I'm excited about going to the nbsra conference and actually showing some of this, by the way, Jonathan, I'm going to send you a different I'm going to send you a different logo that matches the blue color, because we're not going to have the new the new UI by the by the point of the according to Josh, we're not going to have the UI by the time of the conference. And so I'm going to give you a logo that matches the background blue of what we currently have. But I'm, I am super stoked to, I mean, I know that. I know that this, you know, you could kind of look at this whole notes thing as is, kind of like fluff and icing or whipped cream on top of a cake, and it is, but it's one of those things where it's like, I'm gonna geek out like crazy demonstrating this. Because it's one of those things where I don't know how many times I have sat in front of RTO Pro software or other softwares, it's like, I just want to create a note. I want to assign it to somebody to go follow up on and done and walk away. And it's like, you don't have that gotta go over into Trello or some other project management software and link URLs and blah, blah, blah. And it's just like, get rid of that
+
+Matthias Miller  19:56
+point. It's way better than having a project management system inside. Side of, inside of only.
+
+Speaker 2  20:04
+Maybe that'll be my tagline. Three softwares in one. We're going to have RTO project management and accounting all in one. We need to find a fourth one that'll be fun.
+
+Speaker 1  20:16
+People start thinking it's a Swiss army knife and wonder about quality or like, you can do all the little things, but can you actually do them? Well? Well maybe, but
+
+Unknown Speaker  20:29
+I get, I don't know, who should we talk to about that? It's
+
+Matthias Miller  20:35
+just got your marching orders.
+
+Unknown Speaker  20:39
+That's hilarious.
+
+Speaker 2  20:43
+Man, no, Good job, guys. I'm really, really excited about this.
+
+Speaker 1  20:50
+We're having fun. Let's get to work, y'all. So I think we'll drop now, unless there's anything more, we should be here for nothing here. Okay, have fun. Okay, yep,
+
+Matthias Miller  21:09
+alrighty. I was telling a friend of mine about my conversation yesterday about shutting up in team meetings, and he's like, you've got a really good friend, if he tells you that, I was like, Yeah, I think you're right setting up in team meetings. You just you were talking about the dynamic of where I sometimes when we're in in groups of people, I
+
+Speaker 2  21:31
+you change, you change your communication style, yeah?
+
+Matthias Miller  21:35
+I'm like, Yeah, I do actually have a really good friend. So,
+
+Speaker 2  21:41
+okay, um, what's Well, thank you. I'll take that as a compliment. You're welcome. I want to, I want to hit one thing. And if you don't mind, please making that bigger. I need to bring my TV back in here. This is stupid. There you go. That's perfect. Let's go to contract definition. I had a conversation with Leanne yesterday, and she's like, Hey, will it do this? And we need to do we need to, I think I put it in underneath your name. I want to say,
+
+Speaker 2  22:20
+yeah, it's right down there. Next red section down this guy, yes,
+
+Matthias Miller  22:28
+turn the limitations section into an RG and contain Max combined and minimum debt. Oh, so you can stack limitations and tie it to a down payment needed. Okay, so So, in
+
+Speaker 2  22:41
+other words, like up to 14 wide we require, you know, X amount of payments or percentage. But if we go over 14 wides to 16 wides, then it's, you know, it's, it's like, so you can, so you can layer this and automatically require increased secure or down payments based on your size and and price limitation. Right? Agreed, and I was like, Whoa, that's a good one. That is a good one. I
+
+Matthias Miller  23:28
+and so this would still be, oops, this is still be option, you know, optional,
+
+Speaker 2  23:33
+yeah. I mean, it's, it's basically taking the exact fields that we have and turning it into an RG so that you can, so you can stack the limitations and simul and simultaneously tie the limitation to a down payment amount.
+
+Matthias Miller  23:47
+Exactly. Brilliant. I love it. So this is done.
+
+Speaker 2  23:53
+I'm going to dig a little bit longer on this due date calculations.
+
+Matthias Miller  24:00
+Oh, we found a bug with it. Oh, you did, but we're gonna wait until you get back with us. I think
+
+Unknown Speaker  24:05
+what's the bug?
+
+Matthias Miller  24:14
+When you start on 731, then 12, 31 shows up as the next due date, and then the next month it shows up as 1231
+
+Speaker 2  24:35
+so I have not, I have not paid attention on like, on down through um, because essentially what I'm doing is I'm taking the very, very, very top section, and I'm just literally going because in RTO Pro, it tells me what the due date was at the point of the payment, and it'll tell me what the next due date is after that. And so I'm just duplicating that as I'm calling it the contract start date at that point of payment. And so. Just, I'm just testing line by line to see, you know, where are we coming out? And so far we come out, we are one day more generous than what our to Pro is. Now, do we want to go and chase that? I don't know. I almost kind of like being there a bit so much more, slightly more generous than Well, I mean, I
+
+Matthias Miller  25:18
+think part of this can come down. I don't know what it is exactly. Is Exactly. Is it always one day, or is it just sometimes
+
+Speaker 2  25:24
+one day? Um, so far it's come down to almost always both forwards and, oh, both on overpayments and underpayments.
+
+Matthias Miller  25:33
+So it's possible it's
+
+Speaker 2  25:34
+how, it's how we do our the calculation, which,
+
+Matthias Miller  25:38
+speaking of rounding or something, maybe,
+
+Speaker 2  25:43
+speaking of which, I wonder if RTO Pro has, I need to go and see Don't, don't do anything right now with this, but I need to go and see if RTO Pro has a document explaining how they do due date calculations. I pretty sure they do. If they do, we'll just go take a look at it, and we'll say, Well, you know, we probably can spot our differences, right? But you might be trying. You might be right. It might be just a rounding thing
+
+Matthias Miller  26:09
+that seems like to me, that's logical, like, I think, I think it's very defensible to say, Well, if you only pay for half a day, you're still not like, you don't get a free day just because you paid for like, half a day. But you can also argue the other way.
+
+Speaker 2  26:32
+Well, did, I think, didn't we do? I don't remember what we did. I think we, we rounded based on, on the midpoint of a payment. And he may be, he may be rounding down at the midpoint of a payment instead of, yeah,
+
+Matthias Miller  26:45
+yeah, exactly
+
+Unknown Speaker  26:52
+718191,
+
+Matthias Miller  26:54
+but see so for them too, if you start on, if you start a contract on the first it's due on the end of that month. Maybe that's part of it too.
+
+Speaker 2  27:14
+Yeah, I don't know. I'll dig into this and and see if I can, if I can get an explanation from them, then it'll be real easy to, you know, kind of go about seeing how this
+
+Matthias Miller  27:30
+works. Yep.
+
+Matthias Miller  27:39
+No, I
+
+Matthias Miller  27:59
+Okay? Are you okay with with having these show up, if is something like welcome script number one, if you're RTO Company Number one, and having some kind of suffix like that, so you have welcome script call script, or is there a way that we can uniquely name these so that you can not have duplicates inside of an RTO Company, but you can outside.
+
+Speaker 2  28:36
+Are we? Are we planning to tie a RTO company to the template?
+
+Matthias Miller  28:45
+I was but do you think we should?
+
+Speaker 2  28:47
+No, I like the idea. But the adding the suffix you're saying we're we're just to the name of the template, yeah,
+
+Matthias Miller  29:06
+if, I mean, if we would assign a short code to the RTO company as well, then we
+
+Speaker 2  29:12
+could just, that's what I was wondering, is assigning the short code to it. And I'm assuming this really only becomes a function of when you research all templates. But then again, I guess in the if, when we search all templates, you could group them by RTO company, yeah. I
+
+Matthias Miller  29:29
+mean, it's just easier to show them. I mean, it's easier if we can just leave the suffix on there, everywhere, droplets and everything.
+
+Speaker 2  29:34
+I don't have a problem with that, which means we have, we had to add a field to the RTO company to define a short code. Or do you want to just, want to just manufacture one based on essentially its initials? Well,
+
+Matthias Miller  29:53
+initials seem a little sketchy.
+
+Unknown Speaker  29:57
+Yeah, you can
+
+Matthias Miller  29:59
+based off of a number. Number. But people are then going to be like, What? What? What's this number mean?
+
+Speaker 2  30:03
+Let's define the short code. That's fine. I
+
+Matthias Miller  30:33
+So then here contract, no template we would have. I'm
+
+Speaker 2  30:48
+uh, can you make a note before I forget about this, because I did not get a chance to make a note on this, and this has to do with payment cycles. Had an interesting conversation with jmeg and how they're doing payment cycles, which NetSuite forces them into, I think it's something we want to support.
+
+Matthias Miller  31:12
+And is this on the contract definition? Probably, actually,
+
+Unknown Speaker  31:16
+probably yes, and it's, yeah, discuss payment cycles and and just make one more note there, and how to handle over and under payments.
+
+Speaker 2  31:35
+I don't love the what they're doing, but it's something that, if you know, depending on where a company is coming from, they're coming from, RTO, pro, if they're RTO Pro, they're coming from NetSuite. And this is going to need to be there if we're going to support, you know, if I'm going to make a really hard pitch to bring JMAG on board, we're gonna have to pitch whatever they're doing. We're going to support whatever they're currently doing on their on their due date cycles. So I didn't get a chance to put it in there, because Seth was writing in the in this, in the in the dev spec. And I, by the time he got out, I forgot about it. And so, yep,
+
+Matthias Miller  32:08
+um, will there be late fees?
+
+Unknown Speaker  32:12
+Will there be late fees?
+
+Matthias Miller  32:16
+Sorry, do you always require late fees? Can you have contract definitions without late fees? I
+
+Speaker 2  32:26
+If we require it, then if you do, don't charge a late fee. Just put a zero in.
+
+Unknown Speaker  32:32
+Sure.
+
+Speaker 2  32:34
+Yeah, let's so the question is, are we going to require there to be a row? Yes, I think we should. I uh,
+
+Matthias Miller  32:44
+well, I mean, this is actually, this is still this, but this is still in your court to think about. We don't know what we want while late fees, so let's not okay. Will clients be confused and think this is the way to add a standard term length, like 36 months to the RG for configure new term lines. I I
+
+Speaker 2  33:04
+thought he was going to put a some sort of URL that jumps him over to the term record,
+
+Matthias Miller  33:10
+right? But okay, so somebody sees, you know, 2436 48 and they're like, oh, I want to throw 60 on here. They already have the term length record set up. They just need to add an RG row, right? I mean, we do this potentially with a ghost row, just have a blank row at the bottom. That seems the most logical
+
+Speaker 2  33:34
+is that, is that, is that what like when it says to add a new like, it has like, yeah, versus putting what the plus and minuses,
+
+Matthias Miller  33:45
+you'd still keep the plus and minus, but versus requiring them to hit plus and
+
+Unknown Speaker  33:51
+minus? Yeah, sure. I
+
+Matthias Miller  34:04
+Okay,
+
+Matthias Miller  34:11
+let's get back to that. I don't want to talk about that payment record. I
+
+Matthias Miller  34:31
+Okay, payment record. We need to come back to, I don't know if we want
+
+Speaker 2  34:36
+to. He's working Seth is working on specking that, right? The
+
+Matthias Miller  34:40
+payment record, yes, yeah, um.
+
+Matthias Miller  35:06
+Okay, it seems to me like there's not very much new stuff. Well, actually, there might be some in here, but 729, visible, if not CRA, oops. I
+
+Matthias Miller  35:56
+Is that right?
+
+Speaker 2  36:00
+Sorry, I was going to open my email to get our last Okay,
+
+Unknown Speaker  36:22
+yeah, that's right, okay,
+
+Matthias Miller  36:32
+visible if they're blank. I would think you want the visible if they're blank.
+
+Speaker 2  36:42
+I this is, this is on the contract
+
+Matthias Miller  36:46
+record, contract record under the additional details screen, yeah, because
+
+Speaker 2  36:50
+there are times when you come back and add damage beverage fee to a contract, sure, same. No.
+
+Matthias Miller  37:12
+Late fees, retrievals, oh, this is just, this is slightly discouraging, how much work is left here.
+
+Unknown Speaker  37:28
+Wait, you thought we were getting somewhere
+
+Matthias Miller  37:31
+we were we have been the gap in the gain. I
+
+Matthias Miller  37:44
+Okay, how to display notes in the source record? Okay, we have a few options here. I'm gonna throw out some ideas. What are we talking about when you on the contact record, how do you want to view the notes? Or do you want to view any notes? Or do you want people to hit? Okay,
+
+Speaker 2  38:03
+no, I want to view. I want to view. Well, here's what I
+
+Speaker 2  38:19
+instinctively want to say, like, the last five. But the problem is, if some, if one of the or so of those, unless, unless, we would, Okay, how about this? Are we? We're typing? How are we type? Like, okay, if we put a note temp, if we put a letter template in, or is, are we? Is that being somehow defined on the note record so that we could exclude them from the list of concatenated notes. I mean, we
+
+Matthias Miller  38:45
+could exclude templates, but there's nothing that indicates what kind of template it is. Just
+
+Matthias Miller  38:57
+going to ramp it up speed. I
+
+Speaker 2  39:13
+Okay, riddle me this we were going to Def on the note, detail, screen record on the on the note record we were going to define, we were going to have some definitions on there, or of a type, like it's a promised payment, or it's just a note, or it's a correct
+
+Matthias Miller  39:36
+we were not certain yet how promised payment was going to work, But, but it would make sense to be that so we could on the if it is a so you could have types of notes, and you could say this note should be included,
+
+Speaker 2  39:55
+yeah, see, that's what I'm thinking. So like user notes, notes that were just generated. Like. Uh, we'll call them just notes. Okay, so if it's, if it's a type of note, then notes and promise payments probably should be in the concatenation on the screen. But, like, exclude anything that was like letter templates for the for the visualization, and then we would limit that to, like, the last, I don't know. I mean that alone would limit, you know, some some size, and, you know, give us the last five to 10, or something like that, of the notes. And then the view notes would give us, would give you everything.
+
+Matthias Miller  40:35
+So, but then we need a we change some things. You would have a note type, you could configure note types.
+
+Speaker 2  40:47
+Seth is answer asking a question. As of 18 minutes ago, will you all be working the payment spec? If not, I'll copy it out and edit elsewhere.
+
+Matthias Miller  40:57
+He can copy he can copy it out. I think we'll just work on other stuff, or we'll put it elsewhere. Any changes, I'm
+
+Speaker 2  41:08
+going to tell him just to copy it out and so he can work on it, so we can keep going. Yep,
+
+Speaker 2  41:20
+I mean, those are my thoughts. We come up with some way of excluding like templates and
+
+Speaker 2  41:36
+then give us like the last five or 10 notes. And that way of or or 1000 characters, or something like that. And, you know, truncate the thing, and so that you get, you know, the most recent information. And, and we, you know, we could even say that, we could even call it rather than call it the notes that you call it the most recent information. And go, go, click the thing and go view your the whole thing.
+
+Matthias Miller  42:18
+Okay, but so here's my beef. Do we need no type for any other reason?
+
+Speaker 2  42:23
+Yeah, for promise payments and for, I mean, that's the other reason. So
+
+Matthias Miller  42:28
+we might have custom fields on notes, like for promise payments, well, it's really a follow up date. The follow up date, basically is the date of the promise payment. Promise payment, and you might want to track whether they did pay or not for further analysis. But
+
+Speaker 2  42:55
+no, no, no, no, we do need to type we. We need some way of typing it as a promise payment, because we want to do specific reporting on promise payments. Promise
+
+Matthias Miller  43:04
+payments, but you also want follow up reminders, which is why it makes sense to make it a note. Yeah, I wonder if we should make this record type. I
+
+Matthias Miller  43:26
+and then we have a Okay, and then on the note type, I'm
+
+Unknown Speaker  43:39
+Is it
+
+Unknown Speaker  43:50
+a description, or is it a list? I'm sorry, is it a record, or is it a list?
+
+Matthias Miller  43:55
+Do you have one per company or not
+
+Unknown Speaker  43:59
+of types? No,
+
+Matthias Miller  44:11
+and then you have a okay. Is it? Do you want to show it at all like say we had a letter on, but contents are omitted.
+
+Speaker 2  44:28
+Oh, like, okay, yeah, yeah. And we could, if we stored the, if we stored the template name somehow. And then we just it would just have it would just have that in there, you know, such and such a template on such and such date.
+
+Matthias Miller  44:49
+I like that. Okay, so something like this, so you have a note type, this now has a note type which is required. Mm.
+
+Matthias Miller  45:05
+And then on the
+
+Matthias Miller  45:11
+rental, sorry, on the notes, record, I'm
+
+Unknown Speaker  45:32
+okay, you do know we're getting dangerously close to incidents, right?
+
+Matthias Miller  45:37
+We are, but I don't think you want incidents.
+
+Speaker 2  45:42
+Well, I mean, at this point, we're 90% we're 90% the same as incidents.
+
+Matthias Miller  45:48
+I mean, no, I mean, we have priority due date, contact linking, yeah, I mean, but yes, we have a title.
+
+Unknown Speaker  45:56
+It's getting really, really close. Yeah.
+
+Speaker 2  46:04
+No, it's fine. I just, I just thought about this as, like, Well, I mean, we keep adding to this thing. It's like, how much, how much further do we go until we just figure out how to incorporate this thing as an incident thing?
+
+Matthias Miller  46:15
+I mean, we could, all you really need is, I mean, we could see about creating a dummy incident. Like, just dumb it down. See if we could dumb it down wildly, kill the title.
+
+Speaker 2  46:27
+I mean, you could at that at that point, you could leave the title, probably get rid of status. I mean, like, literally, I'm almost wondering. It's like, okay, no, this gets that gets really obnoxious. If you had to fill this thing out every single time you made a note, that's obnoxious. Note, that's obnoxious? No, let's keep moving. And I don't think we're that level yet.
+
+Matthias Miller  46:52
+Hopefully we won't regret this. But it feels to me like the goal is still to have this be pretty lightweight.
+
+Unknown Speaker  46:58
+Yes, it is. It is still to be pretty lightweight.
+
+Matthias Miller  47:02
+Okay, is a note type required?
+
+Speaker 2  47:07
+Yeah, it's required. You got to define whether it's, I mean, I so we note type if you, if you pop in a template, we could automatically fill the note type, right? I
+
+Speaker 2  47:28
+Yeah, that's right, read only, because once, once you assign a template to it, you don't want to, because we want to use that to exclude information from the concatenation. Yeah.
+
+Matthias Miller  47:53
+Okay, all right, so then, no type here, no template. So where were we? Okay, so then here what We would do is, I'm
+
+Matthias Miller  49:04
+I mean, this is basically What you something like this, and then,
+
+Speaker 2  49:22
+um, could we make the truncating length a system switch so that you could go like a company could decide to say, you have written last five. So then, you know, companies say, Well, I want more than five, so maybe they want 10. Is it? Is it worth going through that kind of work?
+
+Matthias Miller  49:43
+I mean, maybe I don't know
+
+Unknown Speaker  49:55
+how much more work is it,
+
+Matthias Miller  49:57
+by the way, when you say five, does that include ones? Content submitted, or does it probably right? Oh, it's an hour of developer time, I don't know at most.
+
+Speaker 2  50:11
+Okay, let's do it that, that if we, if we turn it into a system switch, then, then somebody can say, look, I want more than what you're showing and you
+
+Matthias Miller  50:23
+might put it on silver limb settings just to make it more user friendly.
+
+Unknown Speaker  50:29
+Fine by me. I
+
+Speaker 2  50:54
+You want to kill. We kind of turned we kind of made the idea so you want to kill the ideas section,
+
+Matthias Miller  51:00
+yeah. So we added a note type, record type that indicates whether contents are included on the linked record. Then we generate an embedded memo on the source record like this. I'm
+
+Matthias Miller  51:47
+this is a I'm
+
+Matthias Miller  52:44
+okay, dun, dun, dun. You happy?
+
+Speaker 2  52:52
+Scroll down to the very bottom there. What's the what's my to do? IDD, what did I put in here? Oh, that's for right now, I've been just messing around with some of that's, that's just a note for some time to go look at the only thing. No, no, no, no. I mean that the view notes report that will be linked there, there needs to be some default, there needs to be some filtering. That'll be a part of that,
+
+Matthias Miller  53:22
+like, how,
+
+Speaker 2  53:23
+oh, things for like, well, one of the filters would be by the type, so that you could, you could pop that open on that person and look at all quick, very quickly, look at all their promised payments.
+
+Matthias Miller  53:32
+Um, do you want to share the Ask prompt when you open it up? Or let them click the title?
+
+Unknown Speaker  53:40
+Let them click the title, okay, let's it
+
+Speaker 2  53:55
+would default to opening up everything, and Then you could filter it down to other information. I
+
+Matthias Miller  55:06
+Anything else, missing originators, assignees, needs, follow up, overdue, created. All right, where to from here?
+
+Speaker 2  55:34
+We can't work on payments record, because Seth's working on that. Anything on, anything more on we did. I think we're 99% on contract, definition, agree or disagree, let's
+
+Matthias Miller  55:46
+go take a double check. I mean, no, not really. Payment cycles, late fees are waiting on you, so we're caught up as far as we can on that 90% I thought I added a ghost row comment here, you did too.
+
+Speaker 2  56:12
+Awesome. Thank you. Do you want to? Do you want to? Do you want to go to the contract definition and spec on um, what did you just say,
+
+Matthias Miller  56:26
+uh, payment cycles and late fees? Yes, payment cycles, all right, so what's up with late fee? With payment cycles?
+
+Speaker 2  56:33
+Okay, so with payment cycles, um, I think, I think I would want to say that the way that we would work this is, if you select that this state works on payment cycles, that whatever the start date of the contract is that, or whatever the like, whatever, however we set the first payment due, that's what your your cycle is. So if you're if you say, well, your first payment is due on on August the first well, then you're due on the first cycle. If you say August 15, then you stay on that cycle. The way that they're currently doing this is, if you pay a payment and a half, it goes into a credit account. Now, here's the here's the little pickle that I don't know quite what to do this. We can't necessarily dump it into the security deposit because of states like Indiana where you can't have more than a certain amount in the security deposit. So I'm uh. So in other words, what, what they're what they're saying is, um, it for for them, it goes into a credit account. And, man, this is something I feel like is so stupid. Why do we even want to do this? If this is what I said the last time, and every time I come back around to this is that if you want to this is that if you want to stay on payment cycles, then just move
+
+Unknown Speaker  58:03
+your due dates. And maybe it is
+
+Speaker 2  58:07
+that we just say, if you support payment cycles, that we just automatically move your due date. We don't, we're not going to throw anything into a credit account if you're if you and maybe it is that we if you say you're selected for payment cycles that if they underpay, you ask them, which way do you want to go up or down? Okay?
+
+Matthias Miller  58:36
+Payment cycles are for when you bill on the first or 15th, right?
+
+Speaker 2  58:40
+In other words, you always work off of a one month period no matter what. So if you, if you Okay, hypothetically, if you overpaid, but you're you're not enough to move like you under you overpaid, but it's not enough to make you to the next month. The way that he described in in NetSuite is the extra dollar values goes into a credit account that you can then use at a different time in on your cycle. So in other words, if you paid two and a half months, we're only going to move you two months. The extra half month goes into a credit cycle, into a credit account. Yep, if you paid, if you paid a half a payment, then we're going to apply the amount, but we're not going to move your due date at all. You're still overdue. And what he didn't I said, Well, okay, so how do you, how do you track that? And because, I mean, I guess at that point you could say everything, everything goes into if you underpaid by Okay? Backup, Dwight, slowdown. Customer calls and pays a half a payment. If it's not a full payment, it goes into the credit account. We're not going to we're not going to do a single thing, but put it in the credit account until
+
+Matthias Miller  59:55
+you have the full payment, which means if they have a payment, you'll still get a late fee.
+
+Speaker 2  59:59
+It's. Still, yeah, that the account doesn't move. Your late fee still stays. Everything's like, there it's, you know, right? Goes into the credit account. I don't love that, okay, I have an
+
+Matthias Miller  1:00:11
+idea. Okay, what if we said that you can only you can't payments don't affect security deposit. You can just convert to and from credit for your security deposit and so and there's a payout process, I mean, a payoff process that makes it all work nicely. But at point of payoff, you basically convert all the security deposit into credit. Or if you're if you're behind, it's like, Okay, do you want to use your security process? Do you want me to turn your security deposit into a credit that you can use? Yes, all right, so then, first you have to turn your security deposit into a credit, and then you can apply that credit to a payment, and you have a credit balance. You don't like that.
+
+Unknown Speaker  1:00:55
+It's complex,
+
+Matthias Miller  1:01:00
+right? But it's real.
+
+Matthias Miller  1:01:11
+What's the alternative? What would you tell them? You would say you can't do this. We're just going to have floating dates. Or you're going to say, we're going to have floating dates, but, but we'll just pretend that you don't like. You can't do that, or we'll just print other dates for the customer. You can't do that.
+
+Speaker 2  1:01:26
+What I want to say is, really the credit account is a fictitious number, because if you called in and paid a half a payment on a month, we're not going to move your due date. Nothing happens. We're just going to show that amount in the credit account. And so when you call up and say, Look, I'd like to pay the other half of that payment, then automatically, when you make the other half of that payment, we're going to pull from the credit account to make it in order to move the due date. So it's literally, it's literally just calculation macro that says, okay, based on we don't move, we always stay on one month cycle, so anything over under goes into the credit account. If you don't pay enough to make a full entire month, the excess goes into the credit account. If that means that you are, if you are, if you are due, and you pay a half a payment, it doesn't move your due date at all. You're still going to be past due. You're still going to be exactly where you're at and but that that half payment sits over there, calculated in as $1 value that you can see the one the moment the customer calls and says, Look, I would like to pay a full month plus whatever was left over from that month. Well, then, okay, you're paying a payment and a half, and it pulls the, you know, the rest from the from the credit account and pushes you out two months.
+
+Matthias Miller  1:02:44
+So basically, what you're saying is that's actually fair. Okay, so let me, let me talk this back through. I think, I think we're getting close, um, on the payment record, the big difference is due date calculations stay the same. Everything stays the same. It's just you have a rolling balance of credit amount, and so when you say this customer is making a payment, we say, Okay, what's the net of their payment, their credit? We're going to start by applying that to their contracts in order, and then whatever they're going to pay in cash, we're going to start adding out, and if it's too much, then on the last row, we're going to say, well, here's your other credit adjustment. So it goes back the other way if they're if they're overpaying.
+
+Speaker 2  1:03:32
+So I think, I think the distinction where I got hung up before is that viewing it as unrealized cash or unrealized funds, almost like an AR account. I don't want to treat it that way. You realize it both from the customer standpoint and accounting standpoint, as contract paid, contract dollar amount paid, we just are not it's like, it's a due date calculation thing. It's like we're not going to move your due date. We're not going to show you up current. And if you incur a late fee because of this, that's that's on you. You didn't pay. You're still our past due. You did not
+
+Matthias Miller  1:04:08
+okay. But then you can't illegally charge a late fee if they don't come up with the last half before the due days. The contract has to be written in such a way that partial month payments are that late fees will be incurred like that's where I'm a little struggling with the reality of it, because to me, it sounds like, from an accounting perspective, they did not pay it. You have a liability account with cash that they gave you, that they said they're going to use towards payment, but you don't actually use it to payment until you get the full
+
+Speaker 2  1:04:42
+amount. I Yeah, but I'm afraid that would legally get us in trouble in somewhere like Indiana.
+
+Matthias Miller  1:04:49
+Is this a, okay, but is, is that how j max is using it right
+
+Speaker 2  1:04:54
+now? So I don't have full details on on the underpayment side of things. The overpayment side is, is fairly straightforward in that if you, if you pay a payment and a half, the extra half goes into a credit account that you can use next month. Okay, nobody's nobody cares about that. It's the underpayment side and late fees that gets us all into trouble. And I don't have the exact details on how that works, albeit I don't know that we necessarily need them. I think we can figure this out. But what I don't want to get into, and here's the key thing, Matthias, that I don't want to get into. I don't want to ever sit with Indiana and they say, you're holding more money than what is equal to one payment. And I want to say, Nope, we automatically applied it to the contract. It's a due date thing. We did not move their due date, but they realized it on their contract balance,
+
+Matthias Miller  1:05:46
+okay, but, I mean, we can enforce that you never have more than a single payment like there's no reason for you to have you're effectively saying You can't have more than a month's worth of credit hanging out, because if you have more than a month's worth of credit, it should be applied to a future month. That's right, right? That's right 100% so that's easy. I The question that I have if, if I rent from J bag, and the contract is written such that payment extends the due date, then I have cause to legally dispute late fees that they incur to me when I pay half a month's payment, but don't pay the second half, because I should not get charged those for another two weeks. I
+
+Speaker 2  1:06:45
+Okay, you would have to make sure that you write it contractually into your contract to say that late fees are incurred 10 days after your due date period if you didn't pay your full month by your due date, it's irrelevant, because late fees are incurred 10 days after your due date, unless the contract is paid. I think it's a it's it's one of these things you're going to have to define critically in your contract. And I actually think I would have to go pull up an RTO contract. I think most of our RTO contracts are worded that way. Just go see one second.
+
+Matthias Miller  1:07:30
+Okay, I'm very I'm still very skeptical. I suppose
+
+Speaker 2  1:07:38
+RTO contracts, let's not use North Carolina. Let's use Ohio. Okay. Terms, renewals. No option, cost reduction, late fees, additional charges not included in the cost of lease. Total cost does not include other charges, such as late fees, $5 return in the tenant, okay, but where does it define how it works, cost reduction, maintenance, risk and tendency to transfer insurance? Late fees, if a lessees monthly lease payment is not received by the lessor within 10 days of the date it is due lessee will be liable for a $5 sub $5 charge, subject to change, late fee, reinstatement fee, whatever this thing is called, lessee hereby expressly acknowledges and expressly agrees that the lessor has the unconditional right to increase the late fee, reinstatement fee upon notice to the lessee of the effective date and amount of such an increase. Blah, blah, blah, that was all, but the Express language is 10 days of the late of the date it is due.
+
+Matthias Miller  1:08:55
+But is there anything about due date? Like, what is the dude, when is it due?
+
+Speaker 2  1:09:05
+Um, so most contracts to find when the first payment is due. And so if you stayed on that 30 month, if you stay on that monthly cycle, then whatever, whatever the initial start date is. Now let's go look at let's go look here.
+
+Matthias Miller  1:09:26
+It's doing the first of each succeeding month.
+
+Speaker 2  1:09:32
+Let's look at today, Indiana. What does Indiana say about late fee, any monthly rental payment received by lessor five calendar days after the date it is due will be late. Lessee agrees to pay a late fee of up to $8 per each monthly rental payment that it is paid late.
+
+Matthias Miller  1:09:58
+So here's what I think.
+
+Speaker 2  1:09:59
+Right, any month. So Indiana defines as a monthly rental payment. So anything less than a monthly rental payment would be considered not a payment. That's my non lawyerly ex thinking.
+
+Matthias Miller  1:10:13
+So here's the fun thing. We need to define. We need a rule that defines due dates. I payments, because the whole there is nothing in the contract here that says all of these contracts say payments will be due on the first or the 10th day of the month.
+
+Matthias Miller  1:10:39
+There is none of these that have contractual language for extending the due date.
+
+Matthias Miller  1:10:52
+So the due date logic doesn't really exist, but you're saying companies run like that? Yeah.
+
+Speaker 2  1:10:59
+I mean, I think if you were sued on this there is, there has to be an extrapolation of saying, Okay, you paid your first payment on this date. So thereby you are, you know, that was, you were considering that as your due date. And so as long as, as long as you're paying, as long as you can track $1 value to the monthly amount that is defined in the contract as that is a monthly amount to be paid, the exact date that it's due, I think is somewhat irrelevant, because, if like, if you Okay, so this is where the the floating due date is so it makes, to me, is like, it's so stinking easy. It's like, well, it doesn't matter you paid, you paid $5 okay, we move you slightly forward. Okay, so your next 30 day amount like that. Floating due date just erases this whole entire conversation. But for those that want to stick to a, you know, a cycle is where it gets
+
+Matthias Miller  1:12:08
+tricky. Okay, I'm still gonna go back to reality. Reality says, When is this thing due? This thing is due on the first of every succeeding month. So if you rent on the 31st it will be on the first so you have payment one due by the 31st payment two due by the or on the first of that month, the following month, following month. And for each of these, if you do not have, if your balance is not caught up by the if your balance for the first is not caught up by the time you get to the 10th, then you incur a late fee and and what happens in between the floating due date is really saying, Okay, I paid halfway into the next month. When should I call you back up to give you
+
+Speaker 2  1:12:56
+well for the floating for the floating due date, literally, somebody could go and like you could call up right before the whatever the threshold is when you start to charge a due date. So let's, let's call that 10 days after the due date. So on day 10 after your due let's say your due date was on the first you called on day 10 and you paid $5 Well, now maybe you moved forward a day, or half a day, or let's just say you paid enough to move forward a day. Well, then it the calculus, the the the clock starts, you know, you just moved it by one day. And so we're always looking at, what is the due date, what is the threshold? And so if you pay enough to move that threshold slightly forward, you can stay ahead of that late fee the whole entire time. But it's like so the but go ahead, you need it.
+
+Matthias Miller  1:13:47
+This is a business conversation, because there's nothing in the contract that states that the late fee can be deferred by making one more daily payment. And so this is not reality. This is a we just like to be nice to people, and we're going to hold off and charging them a late fee if they keep making daily payments.
+
+Speaker 2  1:14:05
+So I guess the lawyerly question is, when you contract with a customer, do you contract on date? Are you contracting on $1 value? RTO companies looked at as as we contract on $1 value until you make a full dollar value. We don't calculate it as a as a a month paid. So essentially, we're always like on the floating due date. We're always looking at, what did you pay divided by the amount of your monthly payment. That's what your next due date is.
+
+Matthias Miller  1:14:32
+So you're saying, RTO companies do or don't use the floating due date? No, we do. We 100% do.
+
+Speaker 2  1:14:42
+And most companies I know have kind of moved to that, this whole floating due date thing, because it's just way easier art actually. You know, this is a business question. RTO Pro supports this whole, this whole cycling thing and putting dollar values in and so forth. Let me go read up on it, on how he handles this, and it'll be much more effective. They have this whole account thing. Let me just go read how he's doing
+
+Matthias Miller  1:15:14
+this. Okay, I have I am very nervous. Um,
+
+Matthias Miller  1:15:41
+I'm happy to build it as you want. I'm nervous about just saying literally every payment is applied at the date that it's received. It's maybe I'm just too far outside the industry. But it just seems dumb that that your contract doesn't doesn't match your standard practice, and that you would decide that you would wait on charging a late fee, like theoretically, you might wait three weeks before you charge them a late fee. Well, not that long, but you might, you might wait. You might wait up to another 10 days, or something, whatever it is to charge them a late fee, because they keep making daily payments, and then they stop, and all of a sudden you're like,
+
+Speaker 2  1:16:25
+not necessarily, if you, if you called up and paid one day worth, well, you just, you just bought yourself one more day before the late fee comes again. Because you might be sitting in the in the grace period, but you just paid enough to move it by one day. So you just moved your, you know, your late fee date,
+
+Matthias Miller  1:16:43
+right? So you can move it out as far as you want. But technically, you could do that for up to a month, and then it becomes a full cycle, and then it becomes a full cycle. But if you stop right before the full cycle, then contractually, this is where I'm way too analytical for this, and this has to be a business conversation. Contractually, you're going back in time and slapping on a late fee for the payment you didn't receive, or something
+
+Speaker 2  1:17:05
+like that. I don't think so. And I think I think where you're hanging up with is, are we contractually obligated on a date? Are we contractually obligated on dollar value?
+
+Matthias Miller  1:17:16
+I think it's just yeah. And where I'm hung up is it stupid to write the contract like it's on a date, but operationally not run it like that. That's oversimplified and too blunt.
+
+Speaker 2  1:17:27
+Well, this is not going to be the last thing that you find in RTO contracts that are stupid. If you want to go read Indiana's contract that says there is literally a line in Indiana's contract that says, in order to understand the contract, you have to read it.
+
+Unknown Speaker  1:17:42
+I wait,
+
+Speaker 2  1:17:48
+let me go find this again, because this one made my head hurt so bad when they made us put this In
+
+Matthias Miller  1:17:57
+before you read it. I'm not seeing it. I'm
+
+Unknown Speaker  1:18:29
+maybe they've changed it again. I
+
+Speaker 2  1:18:43
+maybe they changed the login like there was, yeah, I'd have to go back and find an older contract then. But this was because Indiana. In Indiana, we do audits about every two years. The Indiana Department of Finance like audits, like every contract that you have and and then this is, this is quite a number of years ago going through the audit. We got to the very end of the audit, and she said, Oh, by the way, you need language in your contract that says, in order to, in order to understand this contract, you have to, I forget the exact wording of it, but I was like,
+
+Matthias Miller  1:19:21
+I just understand it.
+
+Speaker 2  1:19:24
+I paused for a moment and I said, You do realize, in order to read this statement, you have to have read the contract, right? Like, yeah, I know.
+
+Matthias Miller  1:19:33
+That's why I'm not a lawyer. All right, in your court, do you join think, Oh, okay. Um,
+
+Unknown Speaker  1:19:46
+no fun contract entry,
+
+Matthias Miller  1:19:52
+yeah, I mean, um, is there more stuff on contract definition we need? Or sorry, contract do we need? I mean, I mean, it just feels to be like we still have glaring issues. Okay, we're waiting on late fees. How close are you to late fees? Is I don't
+
+Unknown Speaker  1:20:16
+I just need to sit down and do it. Okay.
+
+Matthias Miller  1:20:22
+This is tied to the payment cycles. Security deposit is waiting on payment cycles, financial history report of some kind that is going to end up depending on payment cycles to it like last time you said, I'm the bottleneck, I think you're the bottleneck. I think
+
+Unknown Speaker  1:20:52
+we, well, I knew that was going to happen Eventually,
+
+Matthias Miller  1:20:54
+contract term. We should do something like this. I'm
+
+Unknown Speaker  1:21:23
+Yes,
+
+Speaker 2  1:21:27
+okay, but then does, does term records? Do they have a deactivation,
+
+Matthias Miller  1:21:32
+sure they should have a they should I?
+
+Speaker 2  1:21:45
+Because if we're if we're saying that we can't change something after it's been used inside of a definition or contract, then we need to have a way of deactivating then and and creating a new one if you want to make a change to it. I
+
+Matthias Miller  1:22:01
+just think it's so dumb that you would see my note in that record. I think it's just stupid to let you change the term lengths.
+
+Speaker 2  1:22:13
+I'm looking at a term record right now. Are we doing term records by RTO company? I would think we would,
+
+Matthias Miller  1:22:26
+I guess that's that is what we could do, is, instead of active, have a list of,
+
+Speaker 2  1:22:33
+well, I think we still need the active, inactive or,
+
+Matthias Miller  1:22:38
+well, no, but I Why wouldn't we just do this? And if you want to deactivate it with an editable macro that with a hold
+
+Speaker 2  1:22:55
+on a second, we are talking about the terms record that literally has just the number of months in that's all we're talking about,
+
+Unknown Speaker  1:23:01
+right? Yeah,
+
+Unknown Speaker  1:23:04
+why would you ever change a 24 to a 24.1
+
+Matthias Miller  1:23:08
+or you wouldn't. Now, if you said I put in a 60 that's or 61 i fat fingered it. Well, if you're not using it anywhere, you should be able to change it. But if you use it, then, I don't know.
+
+Speaker 2  1:23:34
+But I do think we need to have terms by RTO company, just in case, some RTO company wants to have 24.2 months, I don't know. 25 months. Let's, let's call it. We're not. We're not actually fielding for a decimal point, are we? No, we're not. Maybe it's 25 month contracts, I don't know. So we should have it by RTO company, that would make sense.
+
+Matthias Miller  1:23:57
+So, I mean, but instead of an active checkbox, my proposal is, I why not have a multi select list? I guess then you can't show it by RTO company.
+
+Speaker 2  1:24:13
+So if terms should be rarely ever changed, they should be by RTO company, and if you screwed one up and assigned it to 1000 different contracts, different contracts, well, then guess what? You got to call up support. We'll have to go and, like, figure out how to handle it. You really screwed up.
+
+Matthias Miller  1:24:31
+Why wouldn't we put terms? Why do we Seth is really going to roll my eyes at all the changes here. Why is this a record? Why would we ask
+
+Unknown Speaker  1:24:40
+that a while back myself. It should be a list
+
+Matthias Miller  1:24:47
+like an RG, a numeric RG on the RTO, the rental company that we just stored as a string field, and display it as months, if we need to. But
+
+Speaker 2  1:24:58
+so this would go so. Would you would define what terms are allowed on the RTO company? Yes. Okay, so RTO company do configure rental companies, cricket Valley, renter shit. I don't know that I have a problem with that. I
+
+Matthias Miller  1:25:33
+Okay, let's do this. I'm
+
+Speaker 2  1:25:43
+okay, I do have a question. What you create a rent to own company that's assigned off to 1000 different rent to own contracts and has lots and lots of accounting history, and then one day you come and deactivate it? What happens?
+
+Speaker 2  1:26:02
+Does all historical data just work? And you just,
+
+Matthias Miller  1:26:06
+is that right? I think it just works, and
+
+Speaker 2  1:26:09
+then it just means it doesn't show up in filtered lists anymore.
+
+Matthias Miller  1:26:13
+Yeah, okay.
+
+Speaker 2  1:26:22
+But yes, I like your idea of putting the the RG of terms on the rental company. I think that's fair. I
+
+Matthias Miller  1:27:00
+uh, but then this would let us also be able to set terms in weeks as well, like, well, if it's a 12 year multiple Well, yeah, actually you could. How do weekly contracts get written? Do they get written in a one year contract? Here's the end date or, I mean, it seems theoretically like you should write the contract as 52 weeks, which is slightly less than a year,
+
+Matthias Miller  1:27:33
+like a day short of a year.
+
+Speaker 2  1:27:38
+So then, essentially, what you would need to do is if we had this, as if we had this as a two field, RG on the on the rental company record that defined weeks or months, and then the number, and then that means that you would need to have two contract definitions for a state. If you do both weekly and monthly contracts, and the the weekly as a weekly. Yeah, it had to be in the language, right? So, yes, it would need, you would need to have two definitions for it.
+
+Matthias Miller  1:28:11
+Are you happy with two definitions for it?
+
+Unknown Speaker  1:28:13
+Well, you'd, you'd have to, because the language is different,
+
+Matthias Miller  1:28:18
+right? I mean, the alternative would be multiple templates, but or trying to handle right now, I don't want to,
+
+Speaker 2  1:28:26
+I don't want to get into the writing include if language, I mean, because yes, you could do, you could support that in here. And do include if language to swap out language in the contract. I just don't know that. I want to get into that. Yeah.
+
+Speaker 2  1:28:47
+Because, yeah, the cash price, percentage and the divisors, everything would be different for a weekly contract.
+
+Matthias Miller  1:28:56
+What do you call it? Term, unit term,
+
+Unknown Speaker  1:29:02
+you go to the unit. Of measure.
+
+Speaker 2  1:29:08
+I don't care. I don't care what you exactly call it. I
+
+Unknown Speaker  1:29:32
+let me see if this is
+
+Matthias Miller  1:29:34
+okay. So to the i
+
+Matthias Miller  1:30:53
+Something like this,
+
+Unknown Speaker  1:31:00
+what's a what's A rent trawl, contract up there,
+
+Matthias Miller  1:31:02
+rent trial. It's my lazy typing. This would be contract definition. I
+
+Speaker 2  1:31:32
+Why do you want to Why would you do a drop list for the number of months?
+
+Matthias Miller  1:31:38
+Do you Well, I mean, so we're saying these are the allowed terms. Do we need allowed terms? Do you just define the allowed terms on the contracts?
+
+Speaker 2  1:31:46
+Oh, this is on the contract. Sorry, sorry, sorry, sorry, sorry, sorry, contract definition, I was thinking, you're on the rental company. I'm sorry. Length number, yes, weeks. Okay, yes. So then I mean that that should Yeah, so the drop list, yes, you're I'm sorry I miss I misunderstood. Okay, I'm good. Do we have any validation for uh, more than one state record, contract definition record, what? What validation do we have on the name? So for duplicates
+
+Matthias Miller  1:32:35
+on the name?
+
+Speaker 2  1:32:37
+Well, I mean, how are we what are we validating? Do we have any validation for definitions?
+
+Matthias Miller  1:32:43
+No, yes, you can't have same company, same state, same type.
+
+Speaker 2  1:32:51
+You can you cannot. So that would be a problem. So we need to be able to relax that validation that says you can have because if, unless, unless you're going to, because in this case, you would need to have two different so you need to have cricket Valley, Arkansas, two different RTO companies, or two different RTO contract types for weeks and months. Okay,
+
+Matthias Miller  1:33:19
+well, I mean, we just need to loosen the validation. So in the contract definition.
+
+Speaker 2  1:33:35
+Now, unless you said on the contract definition, we went, went ahead and typed it as weekly or monthly, and then that would filter the list based off of the terms that are on the rental company for weekly and monthly.
+
+Matthias Miller  1:33:48
+Well, I mean, yeah, it should be, I think, I think this would be easier if we would just say, if this would just be a drop list of of of lengths on of available lengths based on term type from rental company. No need to add a suffix. So basically, you would just say it would be stored as a number under the hood. I
+
+Matthias Miller  1:34:44
+This is the right seems to me like the right way to do it.
+
+Matthias Miller  1:34:58
+I'm gonna bring Seth on and run it past. Of,
+
+Matthias Miller  1:35:20
+all, right. Seth, well, this is another rework piece, so I'm not sure what lessons we need to take from this. We're thinking of adding a con terms type list, which is months and weeks, eliminate, eliminating the contract term record, having a type in length, with the length being the number, like X, number of months and weeks. And then on the rental company, you have an RG of available terms, so like, 36 months, 52 weeks, 18 whatever thing, or we
+
+Unknown Speaker  1:35:52
+just had them set everything up. Well,
+
+Matthias Miller  1:35:55
+when you, when you create a that's actually good idea. I would probably just do an on in init, on a rental company to populate with, 2436 48 months.
+
+Speaker 2  1:36:13
+The other, the other way would do it is on, on a net. You would well, we wouldn't populate anything, but it has to have a row in the in the RG, just validate for a row in the RG. So you got to
+
+Matthias Miller  1:36:27
+warn it, or warn if there's something missing. I don't really care. Rental company setup isn't that frequent, so I don't know that you have to completely block it. I mean, it's completely useless, but it's but it's nothing. There's no harm in saving it without any terms defined. That's right. And then a contract definition, the contract definition would then have a up at the top, would have a rental like a term type,
+
+Unknown Speaker  1:36:57
+and so you can week versus month,
+
+Matthias Miller  1:36:59
+yeah. And then we validate against duplicate between rental company state contract type and term type.
+
+Speaker 1  1:37:06
+And ideally, and then, ideally is the same way?
+
+Matthias Miller  1:37:11
+Yes, contract is the same way. And then we just store numbers. And then this, the terms are cheap. We just probably just do it. I just do an editable drop list of just the number value. Um, obviously filtered based on term type. Maybe show term length in the title, and then a drop list, and then other contract we'd store term type and term length. And then if you change, and then if you change what's available, doesn't change what contracts or contract definitions you have out there, you got to go clean those out. I think maybe you know, potentially warn, warning, slash error on contract definition if the term length is no longer available on the rental company, okay? Or we could go the other way and say, why not just disallow give an error. Give an error. If you have a contract definition that uses a term that's not listed, can we just do that? How
+
+Unknown Speaker  1:38:18
+often will the rental company be edited though
+
+Matthias Miller  1:38:22
+very rarely, but you'll, you'll, you'll never add, you'll never it just keeps you from deleting.
+
+Speaker 1  1:38:31
+I wonder, long term, it's a, oh, that way I see, no, that's fair. I
+
+Matthias Miller  1:38:39
+mean, theoretically you should never get bad data if you do it like this. Yeah. Like
+
+Speaker 1  1:38:43
+this, unless you switch rental company on the contract definition. But yeah, that's fair.
+
+Speaker 2  1:38:58
+Well, what have we validated on the contract definition that says this, if this that that definition is tied to a contract, then you can't change the rental company.
+
+Matthias Miller  1:39:11
+Well, there's some things that should not be able to change inside to a contract. You should not be able to change the state. You should not be able to change the contract type, like you have a contract, right? But what should or should not be able to be changed?
+
+Speaker 2  1:39:30
+Yeah, I mean, I mean, once the there's a whole bunch of things on the definition, once you tie any of that stuff, if that def I want to say, if that definition is tied to any contract, how do we validate that that definition is tied to a contract that it generated a contract?
+
+Speaker 1  1:39:53
+We cache the contract definition ID on the contract saying where we're getting our numbers from. Yeah. We do. I don't think it's a problem if numbers on the contract definition changed necessarily, because we cash all the numbers we need on the contract in case they would change. So we don't want old contracts that
+
+Speaker 2  1:40:13
+so historic. So So theoretically, then you could change the contract definition on a whole bunch of things. Just the next time that you choose that contract definition, it generates a very different contract from the last one it generated. As long as you're caching all that data on the contract, then the contract record alone stands alone by itself. Yeah, I think that's cool. That's cool so that then the definition can be changed.
+
+Speaker 1  1:40:36
+Yeah, I think it'd be reasonable to lock down rental company, state contract type and term, because that's, that's very much how we what we're keying off of, yeah, but
+
+Speaker 2  1:40:50
+I mean if, if it doesn't, if changing the contract definition does not break any historical contracts, I don't care what you change on it. It just means the next time that you you do contract entry and you select this changed contract definition, it generates something completely different than the last time it generated
+
+Unknown Speaker  1:41:11
+a contract,
+
+Speaker 2  1:41:13
+as long as, as long as you can tell me with confidence that changing the contract definition doesn't break any historical content, yeah, then I don't care. Yeah.
+
+Matthias Miller  1:41:24
+So then this goes back to just
+
+Matthias Miller  1:41:40
+simple as that, is there something besides the gut punch of, wow, why did we go to all the work to create a term record if we're not going to use it? Is
+
+Speaker 1  1:41:52
+there any Well, the term record is very, was very simple. So sure it's, I mean, it's going to take a couple hours to switch, because it's just a different model. I like this better long term for calculations, like it will work better,
+
+Speaker 2  1:42:07
+yeah, because it moves us. It moves us from it's either, it's either we had to go and put a RTO company on every term record, or we move it all the terms over to the to the RTO Company
+
+Unknown Speaker  1:42:18
+record. Yeah, no, it makes a
+
+Matthias Miller  1:42:20
+lot of sense. Okay, I mostly wanted to go ahead. It will
+
+Unknown Speaker  1:42:26
+take some time, but it's not terrible.
+
+Matthias Miller  1:42:28
+So I think this is back in your career. I think we're fine doing any reason not to pull the trigger on
+
+Unknown Speaker  1:42:33
+it. No, I'm good to pull the trigger on
+
+Matthias Miller  1:42:35
+that, and then I'll let you so integrate into spec and implement, and ready to implement, yeah, mostly wanted to get you, give you a chance to shoot, holding it,
+
+Speaker 2  1:42:48
+stuff. So since, since we're talking contract definitions, you want to cover the stacking terms or the stacking stacking,
+
+Matthias Miller  1:42:59
+oh yes, the minimum down payments. We are changing this to be an RG, so that you can say, if you pay $500 you get a 10,000 Okay, awesome.
+
+Unknown Speaker  1:43:11
+So that's not contract, yeah,
+
+Matthias Miller  1:43:16
+contract definition that makes
+
+Unknown Speaker  1:43:20
+sense. That should be pretty straightforward.
+
+Matthias Miller  1:43:24
+No, wait, wait, this type needs to be outside the RG, you can't say, if you pay 5% then you get this, and you pay $500 you get this because we don't know.
+
+Speaker 2  1:43:36
+Oh, no, no. It literally is this way. So let's say, for example, up to 25,000 it's a, you know, two months down. We allow two months down. But if you go over 25,000 we want 30% of the of the cash, of the, you know, of the contract price. Okay, fine.
+
+Matthias Miller  1:43:56
+Dwayne tells me I need to get comfortable with really bizarre, non whatever, wacky scenarios I'm embracing my wacky scenario life right now.
+
+Speaker 2  1:44:07
+It's because RTO, okay, the truth of the matter is that the storage building rent to own industry does not fit the definition of what rent to own was created for. We fly under the radar, and we've flown under the radar for many, many years and and because of that, it CR, I feel like it creates these anomalies of stuff that people want to do. Because the whole the whole rent to own industry got started because they went and lobbied states and Congress to say, look, people return these things at such a high rate that it's pretty much a rental well, we don't have high return rates in storage buildings. It's like less than 10% or less. And so really it's not. It is it is a we fall under this, this safe harbor umbrella of red. To own and because the rent to own industry, storage building rent to own industry does not make waves. We quietly get along with it. They let us. They let us. Let us do this. But it there's this is where some of these anomalies get into because the rent these buildings want to get bigger and bigger and bigger and bigger and bigger. And it's we start, we start asking for more and more and more and more in order to mitigate risk.
+
+Matthias Miller  1:45:33
+Yeah. I mean, we're going into, well, I mean, this is this, this that's been a relatively recent development. It used to be a shed as a shed, but now tiny home shelves and cabins and who knows what all these things are. It's pretty two story, whatever
+
+Speaker 2  1:45:47
+we're working on it Matthias, we're working on a deal right now where we're building a guy a house. There's a there's $112,000 deal that we've been working on for several months out of South Boston, where we're building the house shell, on site, building the house shell, and he's going to contract with contract with contractors to finish it out,
+
+Matthias Miller  1:46:10
+who's the who's selling, who's sales personnel?
+
+Speaker 2  1:46:14
+Well, William is after your time. So he replaced Marcus. I told you know that Marcus passed away, right? I did. You had,
+
+Matthias Miller  1:46:21
+you had mentioned something he wasn't doing well. He wasn't doing well, and yeah, I heard,
+
+Speaker 2  1:46:26
+yeah, he's, he's the replacement, Marcus's replacement. Yeah, nice. That deal currently sits at $112,000
+
+Matthias Miller  1:46:33
+right now, that'll be a nice little, little, uh, check. That little check, man, that makes you wonder if this really is an anomaly, or can you build an ad campaign for more of the for more of these? Marketing Campaign
+
+Speaker 2  1:46:45
+very, very finicky, because it's like, it does not it. It's hard to sell this to the mass public, because the mass public thinks you're building a house, you're going to do the entire thing. And it's really comes to somebody who's who's somewhat DIY, they don't want to do the, the initial frame out and outside. And the reason he came to us because he wanted designer metal siding. And so, so he's doing, like, the exterior house is all designer metal siding. And so they're, they're, they're doing, we're gonna do the whole, the whole shell for, wow, yeah, 112 grand. That's wild.
+
+Unknown Speaker  1:47:23
+Is there anything else that's a
+
+Speaker 2  1:47:27
+normal story? There is. There's more and more of this happening in the shed industry, where, particularly as housing has got so expensive, people are trying to explore this whole Tiny House thing. And it's, yeah, it's hard to do. Some states are easier to do it in than North Carolina. North Carolina is a really big pain in the butt.
+
+Matthias Miller  1:47:47
+Yeah, all right. Well, that was good. That was productive. Contract definition, so here, I don't even know where we were. What were we working? I don't know where we were. Contract record. I Right?
+
+Speaker 2  1:48:04
+Well, we finished off that whole thing with the with the RTO Company record and does that doesn't change?
+
+Matthias Miller  1:48:12
+Okay, no specking out. RTR, this was the answer for this.
+
+Speaker 2  1:48:16
+Hold on a second. There's nothing. There's nothing about that. RG, that it's going to be a conflict with changing rental companies to a contact record, is there?
+
+Matthias Miller  1:48:26
+I don't think so. No, yeah, you just put a custom like, just custom visible. RG, on the contact record.
+
+Speaker 2  1:48:32
+Okay, what is, what is checking out? RTR, I
+
+Matthias Miller  1:48:36
+don't know what I mean, what, what contract details need to be on. RTR, um, I
+
+Matthias Miller  1:48:46
+I mean, this is, I think the basic answer is, you need, so this one here to do dB. This is done. DB,
+
+Speaker 2  1:48:56
+okay, I don't remember what we're what we all pulled off. I just switched a contract definition to RTR, the whole Max price, that whole RG, I don't know that it's net, like, the minimum down payment thing. I don't know that it's needed. Like, that whole section is, is kind of almost a moot point, because really, there's only two things when it comes to RTR, there's two things, what's the monthly payment and what's the monthly payment and what's the security deposit,
+
+Matthias Miller  1:49:25
+and that's it. Demi, do you have a dwf? Do you have early determination? Do you have balloon you don't, you wouldn't have balloon payments here. Let's spec this out. Let's spec it out on the let's go back. Let's spec it out on the contract definition. So what we have this here? Okay, but we you're saying minimums don't apply to RTR.
+
+Unknown Speaker  1:49:45
+Minimums do not apply to RTR.
+
+Matthias Miller  1:49:55
+Okay, late fees. Do
+
+Unknown Speaker  1:49:57
+late fees? Do you. Um, NSF fees, do
+
+Matthias Miller  1:50:01
+Yep. Um, rent to rent. Financials does have dwf and early termination fee.
+
+Speaker 2  1:50:08
+Yep, dwf, it requires balloon payment. Um, why would you have a balloon payment on an RTR? You wouldn't
+
+Matthias Miller  1:50:16
+Yeah. This is in the wrong section. It should not be visible for Yeah. Balloon payment needs to go section and should only be visible for RTR. RTO rent to own, rent to own, financials
+
+Speaker 2  1:50:34
+and the placement of NSF fee, I feel like should be at least on RTR should be find a different home. I want to put it down in the rent, rent to rent financial section.
+
+Unknown Speaker  1:50:52
+Do we have to? Um,
+
+Unknown Speaker  1:51:00
+no, we don't have to No,
+
+Speaker 2  1:51:04
+no, that's fine. But why is there this, like, giant gap between between the box and the and the field name
+
+Matthias Miller  1:51:14
+here, it's the early termination fees and all these line
+
+Unknown Speaker  1:51:17
+up, gotcha. Gotcha, um,
+
+Matthias Miller  1:51:21
+configured. New term link probably should be,
+
+Unknown Speaker  1:51:25
+should not be there for RTR.
+
+Matthias Miller  1:51:37
+Okay,
+
+Speaker 2  1:51:39
+and there's no, there's no monthly calculation. There's no There's none of that. It's like when you do contract entry on an RTR, you're going to specify what's the monthly rent. Now, that being said, I could see in the future somewhere where we come up with some sort of calculation table that, you know, maybe it is on the rental company. I don't know that there. You know, if somebody used this for a storage unit place, it would make sense that you had some way of automatically calculating based on some sort of units. But at this point, I don't know that we want to support it. Let's make it simple.
+
+Matthias Miller  1:52:18
+So what if we, we called this thing rental fees. And it's going to have late fees in the NSF fees, rental fee section, yes, this one, yeah. And then this would move down. This would move down in the RTO thing. This would move down into rent to own financials.
+
+Speaker 2  1:52:33
+Okay, I have questions. How long are we going today? Oh, I
+
+Matthias Miller  1:52:37
+don't know. Sorry, I'm losing track of time. Um, uh, actually, hang on. No, I I could go, I have another hour if you want, but we can drop early if you want. I
+
+Speaker 2  1:52:47
+just want to, I want to take 10 minutes and eat my dinner, my lunch with my wife, and then we jump back on.
+
+Matthias Miller  1:52:52
+Yes, let's do it so 130 or Yep, 135
+
+Unknown Speaker  1:52:58
+okay, what?
+
+
+Transcribed by https://otter.ai

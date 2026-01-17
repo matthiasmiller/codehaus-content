@@ -1,0 +1,914 @@
+Matthias Miller  03:21
+Hola Yeah,
+
+Unknown Speaker  04:09
+Howdy. Howdy.
+
+Matthias Miller  04:10
+good screenshot. Howdy, howdy. good screenshot. big enough. Howdy, howdy.
+
+Matthias Miller  04:10
+Or as. Howdy, howdy. Well, hello. Oh, there he is. That's funny. That's funny. Okay, Doki. Well hello there he is. Ah, you're sending me pictures of me. He we mock these things up in a spreadsheet before we we start deploying. Because this was super helpful. I. good screenshot. big enough. That's funny. That's funny. Okay, Doki. Happy Wednesday. Happy Wednesday. or as the JMAG folks like to call it happy, Wednesday. Wednesday. Wednesday. Today I I'm making, I make an executive suggestion. Okay, I like it. No reason why not.
+
+Speaker 1  05:02
+I mean, really super helpful, but I have all kinds of questions. So is this where we're going
+
+Matthias Miller  05:08
+today? This is where we're going. We're going here. Hallelujah.
+
+Speaker 1  05:12
+Hey, if I'm going to I'm going to tell you this upfront, but I hope you don't mind if I go have a conversation with Josh about this whole late fee thing. Just, I want to get his perspective on it.
+
+Matthias Miller  05:24
+I don't care. Okay, just wanted to read on the on the calendar versus,
+
+Speaker 1  05:28
+yeah, I just want to, I want to throw this whole ball of wax at him. And he tends to have a fairly sharp knife on cutting through clutter. And so I'd like to see if his sharp knife will cut through the clutter and go. You guys are way overthinking this. And here's a simple solution. Sure, I didn't, I didn't want to go do that, and you find out and be like, Well,
+
+Matthias Miller  05:48
+I feel, yeah, I feel like we're in a position where you're grasping for some kind of single thing we can optimize for, and I'm grasping for accuracy. And I've never been good at these types of you know, if legal isn't really the standard, like, I don't know. I don't, I don't really do well with arbitrary standards like that. So
+
+Speaker 1  06:11
+interestingly, I sent, I had a conversation with Francine this morning. I was showing her this detail screen, and then that led into this whole late fee thing. And then she made the comment that, if you are, she thinks, and I told her to go, go find examples of this, because I need, I need examples of this. But she thinks that RTO Pro is actually charging a late fee every time you go past due, whether you've been charged in a month or not, or whether you if you've been priorly charged a month. She so I can't hardly believe that's true, because Indiana is pretty obnoxious about this. So I told her, go find me examples, because if she finds me an example of it, then I'm going to literally send her to go talk to RTO Pro and say, um, I need to understand how late fees are charged. Well,
+
+Matthias Miller  07:01
+and there is the other way, which is saying we're not going to charge more than 36 late fees over the course of your contract. Well,
+
+Speaker 1  07:19
+let's not, let's not, let's not get mired into this thing. Let's deal with this, this. This sounds like way more fun.
+
+Matthias Miller  07:26
+Okay, so the thought the process is, you put in the customer, it defaults to today's date, probably, you put in a payment amount, and it populates the payments. RG,
+
+Speaker 1  07:36
+and this thing doesn't actually work that way, right? Right now, we're not doing any fun calculation. Okay, so, so let's do, let's deal with the first, top section first. Okay, so, um, explain to me total payment impact. What is total in payment impact?
+
+Matthias Miller  07:56
+Well, this is, it's a horrible term, but basically it means, I mean, if you're if you're pulling, this is terrible. It made sense in my head when I explained it to Seth,
+
+Matthias Miller  08:19
+payment Rico, I go.
+
+Matthias Miller  08:34
+Okay, this is, this is the, this is the check or credit card amount, okay, this is how much plus or minus we're putting into the security deposit. Yep, this is why do you say minus?
+
+Unknown Speaker  08:47
+I
+
+Matthias Miller  08:49
+mean, couldn't you theoretically use this security deposit so you could pay you could pay 1000 by check. You could pull out 300 from the security deposit and have a 1300 total payment impact?
+
+Speaker 1  09:07
+Yes, I do. I do think. I do think that if we're going to do something, if we're going to allow you to pull from the security deposit in this fashion or manner, then we probably need to. I would like to, I don't want to just handle this with positive or negative numbers. That's too easy to screw up.
+
+Matthias Miller  09:32
+Okay, so you would have a withdraw security deposit.
+
+Speaker 1  09:38
+I don't know if it's, if it's a drop list, is it a check box? It is no,
+
+Matthias Miller  09:43
+it's two amounts. It's a withdrawal from security deposit and a withdrawal, sorry, and a i.
+
+Matthias Miller  10:01
+I know that's redundant, but
+
+Speaker 1  10:05
+okay, in order to, in order to make Okay, I have a suggestion, I think, to make this user experience in such a way to trigger in a person's mind that they're doing something with the security deposit. I almost want to put it underneath a button of some sort, and that and that at that point you would have the two options so that you don't just, so that you're not just running down through there and dropping in numbers, and it's like, whoa, whoa, whoa. We just, we did something stupid, like, let's, let's make this an additional step where it's like, I don't know is it? Is that? Does that make sense? Sure some kind of button,
+
+Matthias Miller  10:53
+it's something like merge emerging. I hate this. I I hate mock ups with passion. I think they're obnoxious, but I understand why we do them.
+
+Speaker 1  11:07
+I get that it's I get that it's obnoxious to you, but dude, it's super helpful.
+
+Matthias Miller  11:11
+Oh, I I completely understand why it's helpful. Yeah, I agree. So then we have a and
+
+Speaker 1  11:18
+I will say, who, who did this? Sean, yeah, this guy's a level of patience that I could never have.
+
+Matthias Miller  11:24
+Oh, well, it's called being an intern.
+
+Speaker 1  11:26
+I mean, it's called, holy cow. Like, no.
+
+Matthias Miller  11:30
+But even in Austin, priests, I don't know if you ever worked with him at all, but yeah, he's, yeah. I mean, he's the same kind of like, and he just knocks out. I'm just like, okay, so this is either add to, okay, we had, we had an ad to or pay from there
+
+Speaker 1  11:49
+you go. So it would be, it would be a drop, a drop down, and then, then you put the amount in. And
+
+Matthias Miller  11:53
+so here we have a security deposit, add to $150 these numbers don't match up. So this would be an add to security deposit, and we're going to make these be these numbers line up. Thank you very much. So you're going to have to be, well, no, we're not, I don't know. Will we maybe,
+
+Speaker 1  12:18
+would that be a read only field security a pot deposit adjustment,
+
+Matthias Miller  12:23
+well, I would assume that, right, this doesn't get tied to the specific payment, or maybe it does no so This doesn't this, these don't these disappear. Correct? You just say where the payment applies to. Yeah, that makes sense. So we said $400 is
+
+Matthias Miller  12:58
+okay, just fine. Be that way. So then the
+
+Speaker 1  13:04
+field there are, we're going to represent it, but let's call it what, something like security deposit adjustment, or something like that. I
+
+Matthias Miller  13:30
+Well, we would do a and by
+
+Speaker 1  13:31
+the way, I don't need you to do all of this, just so we can see it. Now, as long as we understand what we're what, where we're going, that you can push this all back over to Sean to take care of,
+
+Matthias Miller  13:44
+sure, security like, adjustment type, adjustment amount, yep. And if we just have a heading on here, is that enough?
+
+Speaker 1  13:57
+What I was, what I was referring to is over on the left hand section. Oh, you probably are probably a read only representation of what happened in the security deposit box.
+
+Matthias Miller  14:06
+I mean, this is what I was thinking. But is this not clear enough? Well, it
+
+Speaker 1  14:10
+can't be add to it needs to be. You need to name it security deposit adjustment, or something like that. Or are you? Are you? Are you saying? Oh, wait a minute. Wait a minute. You're going to represent the title there based on the drop list, yeah, like this. Oh, fine. Yeah, fair.
+
+Matthias Miller  14:31
+Okay, then we need a better term than total payment impact, like I get way that's just stupidly confusing. But
+
+Matthias Miller  14:42
+do you have a, is this a
+
+Matthias Miller  14:51
+cash slash, cash payment amount and then a, i.
+
+Matthias Miller  15:07
+Uh, available for payment. Okay,
+
+Speaker 1  15:17
+leave it. Leave it for that. Now, let's, let's go with that for now available for payment is, let's do that. Let's leave it that for that. For now, I'm gonna, I'm gonna source this with Francine and Leanne heavily to get to get their feeling on this. Now, let's talk about, okay, one of the comments I left was due date and next due date. And I would probably put the next due date on the yeah on the right hand side, so you have your the due date of whatever payment you are paying, and if you adjust the amounts on that particular month, then it'll automatically calculate your next due date based on that, on that now that being said, this is really, really, oh, this is really tricky, because that would mean that that would adjust the next row down. No,
+
+Matthias Miller  16:05
+you cannot. You cannot for historical the only one that you could overpay is on the last is on an upcoming payment. You can't ever pay on a historic, historical payment,
+
+Speaker 1  16:28
+correct? And so, okay, first off, delete the two amounts from payment. Amount there that one and the one above. Let me ask question. Then once you've done that. So we have $1,700 available. And
+
+Matthias Miller  16:46
+so we start by putting this in, and then we put in this and and then we still have stuff left over.
+
+Speaker 1  16:53
+So in other words, if you were to short, if you were to under, underpay, first payment,
+
+Matthias Miller  17:01
+you can't how if you would put in, if you would put in, if this would be $500 then all that would show what would be $500 right here, and the next due date would be
+
+Speaker 1  17:18
+so. So here's my question, do we want to auto fill payment amount down there? In other words, do we force the representative to, I guess you if it, if it equals more okay, in fairness, if it equals more than okay, I don't know what I'm asking for, but the way that it would be really, really really cool is that if you have multiple months that are due, and you have an amount equal more than the then if you have a payment and a half, if you have two payments due and you have and you're putting an amount, an available for payment, amount of a payment and a half, it's going to auto fill it, and you cannot adjust the prior payment. In other words, July 31 if you, if you're putting 17, you can't adjust that payment amount on that one. If you, if it's, if it's $1,009.50 the remaining goes into the second one. You can adjust the second one, but you cannot adjust the first one because that has to be a full payment. You have enough money there to make a full payment, right? In other words, you can't, you can't half split two months.
+
+Matthias Miller  18:28
+Yeah, no, you have to go from so the way we were planning to do this is that we would sort by oldest due date to newest, and just go down the list and just pay oldest to newest. And if they're both doing the same day, you pick the earliest contract start date, and if they both started on the same date, then you use the earliest contract ID, so you have a definitive order in which you pay contract pay payments. So
+
+Speaker 1  18:51
+let's, let's clean up some of this language, because the balance piece throws me for a loop. Okay, this would this. So in other words, what you're saying, if I understand correctly, Damage Waiver fee. That's the Damage Waiver fee amount for that, that monthly payment, correct, correct. Let's just call it Damage Waiver fee, dwf, okay. And then, yep, just rent. And then just late fees. Okay, late fee, let's, let's be real simplistic with the language, and then what's the all that, all the other stuff down on the right hand side?
+
+Matthias Miller  19:29
+What I think this is, if you make a partial payment, then payment impact doesn't matter anymore. But if you make a partial payment. So let's say you pay $5 well, that's going to go to every what we said, late fee, and you pay $5 more, it goes to dwf, and $5 more it goes to and then it starts going into the rent payment. So that shows how much, if there's a partial payment, where it went.
+
+Unknown Speaker  20:02
+Oh,
+
+Speaker 1  20:10
+can we turn that into a little mini breakdown with a URL at the end that just says breakdown, and then you can click it and it'll tell you exactly how the payments broken out, rather than try to do it in the RG and make it so full of information, it's confusing. Is that fair?
+
+Matthias Miller  20:27
+Yeah, okay, so then let's back up the breakdown a little bit.
+
+Speaker 1  20:38
+Or maybe it becomes like an MRG or something down below, or something like that. I don't know, some way that keeps it out of that, out of that confusion.
+
+Matthias Miller  20:46
+If you have a roast about mental health, that's a mock up of a breakdown. Maybe I send this to Seth because it needs to go into books. Oh, goodness, you are
+
+Unknown Speaker  21:08
+in rare form today.
+
+Unknown Speaker  21:17
+This was a Seth quote.
+
+Matthias Miller  21:18
+No, I said it's your, it's, a quote for the spreadsheet. My quote for your spreadsheet. Okay, breakdown, payment amount is 100, 950, dwf, $5.05, two. I can't type late fee. $5 is this the order it gets applied,
+
+Speaker 1  21:58
+damage, waiver fee, then monthly rent, And then late fee.
+
+Speaker 1  22:21
+And then let's, let's put a, wouldn't you? Put the payment amount at the bottom of the breakdown, if you want. Yeah, I like that. I like. And then the same thing with in the row of the RG, I think we need a total for the for the row. So in other words, like a total do, yeah, before, before the payment amount goes in.
+
+Unknown Speaker  22:57
+Yeah, there you go. Simple language. I like it. I
+
+Matthias Miller  23:04
+merge emergy. Merge emergy,
+
+Speaker 1  23:14
+and in for the sake of non editable fields, can we represent them with dollars as the amount of dollar strings.
+
+Unknown Speaker  23:23
+Guess so
+
+Unknown Speaker  23:24
+please, if we must, okay,
+
+Matthias Miller  23:27
+now that you asked nicely,
+
+Speaker 1  23:34
+obviously you can't represent the editable field for that, but, yeah, well,
+
+Matthias Miller  23:38
+you can, but it's not worth the effort. Probably you can percentages. I didn't realize this until
+
+Speaker 1  23:50
+recently. You can represent it with $1 value. Then with the dollar you
+
+Matthias Miller  23:56
+have to write dunking stuff that dunks it back and forth. It's just, I Okay, that's totally the wrong color, but, oh, it's a custom color, that's why.
+
+Speaker 1  24:07
+So then the next due date would only be, would only give you the next due date if there is not a full payment paid. So in other words, there's no need for the next due payment. Next due date there. That's a full payment, okay? Unless it's, unless it's, you know, if it's a okay, how do I want to say this? If it's a historical like, if it's a late fee payment, or a late MONTH, or a late payment, then having a next due date is irrelevant. Unless it's a single like, it's a single month. Like, if you have multiple rows, then only the very last row gets, gets the next right?
+
+Matthias Miller  24:44
+So here, then we would say something like they paid on 810, which this is 395,
+
+Unknown Speaker  24:53
+it's the rent. The rent for that row should be 1004 50. Yeah. Yeah. And the same thing with the Damage Waiver fee,
+
+Matthias Miller  25:07
+right? Bingo. Somebody got real creative. Okay, so then the do equals the sum of these. And so then they paid for little under half. So it's due it's like 915 or something, nine nine, something like that, right,
+
+Speaker 1  25:39
+right. So for the sake of playing this, let's get rid of this bottom row. I'm not sure what it means. I think it was just something else thrown in there for the sake of imagery, but let's get rid of it. So the question is,
+
+Matthias Miller  25:53
+well, it's a different it's the old this is actually, these are different contracts.
+
+Unknown Speaker  26:01
+Oh, what?
+
+Speaker 1  26:08
+Okay. Well, we're gonna have to group those like separately from each other. Like all, all months that are due per contract Id Need to be grouped together. I'm
+
+Matthias Miller  26:27
+I hate this. I
+
+Speaker 1  26:48
+Is there, is there a way to can you do grouping like with a grouping header inside of an RG, no, i
+
+Matthias Miller  27:03
+Gentlemen, we can do background colors. We need
+
+Speaker 1  27:08
+to. We need some way of making a distinction. I don't know. Can you skip a row? Can you is that exert? Is there some way to make a distinction between the two contracts so that it's very distinct?
+
+Matthias Miller  27:17
+Let me check something. I
+
+Matthias Miller  27:25
+format expressions.
+
+Matthias Miller  27:37
+You can Set colors text colors. I'm
+
+Matthias Miller  28:12
+linker just seems messy because you're going to have the unless you make it be a virtual orgy, it could almost in which case, because we all that we really need to store is the payment amount for which contract, right?
+
+Speaker 1  28:32
+Yeah, and I'm going to, I'm going to say, Do we even need to include checkbox if we're dealing with the payment amount of dollar values in the in that section.
+
+Matthias Miller  28:42
+The easiest thing is, you check the box and it auto populates or clears it. But if you don't want to, then that's fine. I don't care. I'm
+
+Unknown Speaker  28:50
+gonna say, Let's Nix it. Mix
+
+Matthias Miller  28:54
+it away. I
+
+Matthias Miller  29:04
+Okay, let's do this.
+
+Matthias Miller  29:13
+Notes, I'm
+
+Matthias Miller  29:35
+and wrappy. Wrappy, I'm
+
+Matthias Miller  29:45
+and then, and if
+
+Speaker 1  29:48
+we're gonna, if we're gonna add the next, if we're gonna add the next due date into the RG Road, do we need it down in the contract Preview section? I don't know that we do.
+
+Matthias Miller  29:56
+You could add it. I mean, I really don't care. Um. Uh,
+
+Speaker 1  30:01
+well, I like being ruthless about the idea of maximizing and minimizing information. So let's if it's if we're giving it somewhere else, then let's remove it from from the secondary place, because that's just kind of dumb. That's just my opinion, and since, apparently this is my software, my opinion, apparently,
+
+Matthias Miller  30:29
+some Dwayne's on this ego trip. Every time you didn't get a voice, it assists. Boy, company comes flaring out here.
+
+Speaker 1  30:35
+Listen for all the times I didn't get a voice when building assist. It's my software, so it's mine.
+
+Matthias Miller  30:41
+I can do what I want. That's right, it's hilarious. Well, the only, the only, the only thing is, if you want to make due date, what we could do is make this be an editable field, so that when you enter in the due date, it recalculates the payment amount.
+
+Speaker 1  31:03
+Wait, well, we'll back up say that again. Oh, you could. So in other words, you could punch a date in there and say, I want my next due date to be on such and such. And so they would automatically, here's what you got to pay. Which would that auto update the total payment up at the top? Yeah. So it's backwards. It's backwards and forwards compatible. Yeah, I don't hate that. I kind of like that. I don't hate it.
+
+Matthias Miller  31:34
+I think it would be very intuitive. What's it going to be how much I have to pay to be making you on the fifth Oh, this. What if we did about the weaker, okay, boom, okay, I like it. Well, hey, can we just round it out? It'll be off by day, but I just want to round 1000. Okay, boom, done.
+
+Unknown Speaker  31:51
+I like it. I learned it a lot.
+
+Matthias Miller  31:59
+Next, Next, Next due date is editable, and recalc the payment amount based on the target due date, and then
+
+Matthias Miller  32:21
+somebody puts in something like January 1. Just change the payment date to zero and still do anyway.
+
+Unknown Speaker  32:28
+Okay, so question, I hold on a second. I don't know where that came from. Okay, is this? Is is this a stored record? Then,
+
+Matthias Miller  32:43
+yeah,
+
+Unknown Speaker  32:45
+so you could potentially look this thing back up.
+
+Matthias Miller  32:47
+Oh, yeah, totally will.
+
+Speaker 1  32:56
+So, so are we going to call this a payment event record? What are we going to call this thing payment payment record, yeah, and so you could go look up this event. Are we gonna have notes on this record?
+
+Matthias Miller  33:10
+Oh, yeah, we do already.
+
+Speaker 1  33:12
+But I mean, okay, do we want? Oh, man, basically, we have a payment event record. You can go RTO pro doesn't have this dude like, I can go back through and I can look through the modification of this thing, but
+
+Matthias Miller  33:35
+a provisional patent. Sorry, go ahead.
+
+Speaker 1  33:38
+Okay, but can we validate that you can't save this thing unless you've actually clicked receive payment, then, well,
+
+Matthias Miller  33:46
+where it shows the status of Pending? I mean, you have to, if received payment, goes out to a portal to take the payment, we probably need something like a status or something where it's pending. Wait, why
+
+Speaker 1  33:58
+would you, why would you push this out to a portal for someone to make.
+
+Matthias Miller  34:03
+Somebody has a credit card payment. How are you going to take payments? Right
+
+Unknown Speaker  34:07
+here? Credit card, select your payment type,
+
+Matthias Miller  34:11
+but you need, but you need some kind of window if, if you need to add a payment method, you can't do that from assist,
+
+Unknown Speaker  34:19
+wait a minute, say it again.
+
+Speaker 1  34:26
+So, but I mean, okay, why wouldn't? Why wouldn't you have, like you, we should be able to store the payment information on here. So if it's a check then you would automatically, you would select Check, type, and you put check information in blah, blah, blah that automatically stores into the payment history. If it's credit card, if you're receiving it as credit card, then there would be a this credit card button down here that pushes that out to to, I'm assuming a whiskey thing, like we do in in an assist, yes, no, maybe not. I.
+
+Matthias Miller  35:00
+I thought you just told me, why are we doing that? I'm so confused. What do you mean? You have to save a record to push it out to whiskey.
+
+Speaker 1  35:13
+Sorry, I misunderstood what you were trying to say. I thought you were pushing this out to a customer portal that they're going to then do something with so you're set. Okay, just Pardon my ignorance. Okay,
+
+Matthias Miller  35:27
+I mean, that's fine. I i
+
+Speaker 1  35:32
+Just Pardon my ignorance now, now, okay, I some some form or fashion from here, okay, I guess, um, well, okay, pushing out to the whiskey portal to actually make the credit card payment. And whether we're using a stored credit card token or blah, blah, blah, that's a whole different conversation. But I if it's just a check, we should be able to put that information right on here.
+
+Matthias Miller  35:59
+Right? Would you do a payment method here, yeah,
+
+Speaker 1  36:06
+or maybe, maybe it goes underneath the available payment like, right. There we go with payment method and text fields for
+
+Matthias Miller  36:18
+stinker. Why do you guys do that?
+
+Unknown Speaker  36:23
+I can hit the bathroom real quick. All Right? I
+
+Speaker 1  38:09
+so Riddle me this, if you select credit card and you click Save, will that automatically push you out to the portal.
+
+Matthias Miller  38:19
+We could have you, we can't do an automatic redirect. You can, no, you can't. But you could show a big thing at the top saying, this thing has not yet been processed or does not have an associated charge. Now, what happens if somebody processes credit card payments some other place, or, I don't know,
+
+Speaker 1  38:49
+in some form or fashion, we have to, we have to make sure that if you select Credit or debit card or whatever payment method, Ach, blah, blah, blah, that they go to that step, otherwise the potential exists for them to it to not happen, right and then, and then, secondarily, we need to talk about what happens if the payment declines and the customer can't make the payment. How do we how do we ensure that the payment record is resolved. I
+
+Matthias Miller  39:27
+think we need a payment status of some kind.
+
+Speaker 1  39:40
+Well, you're gonna, I'm gonna let you this is a Matthias to do, think, because what, what I want to ensure happens, is that there it almost 100% is no way for you to to create a record and not be able that we can't have any holes. Unresolved payment records. In other words, I don't want to have a payment record that says it was paid and then a credit card transaction that's not linked to
+
+Matthias Miller  40:08
+it. Well, there's, there is. We have two options. Option one is we store descriptive we store payment tokens, plus, I think this is fine, payment tokens, plus description in the database. So you say, okay, credit card, which payment method are we using? And then when you save, you trigger a web hook that that runs the transaction.
+
+Speaker 1  40:42
+So where we wouldn't put the credit card information here, would you it
+
+Matthias Miller  40:46
+would just be a token with the last foreign expiration or something like that, sure. But I
+
+Speaker 1  40:50
+mean, if you, if you don't have a token, you know, if you're triggering a transaction, a brand new credit card transaction,
+
+Matthias Miller  40:55
+then you would have an add payment method link, and you have to pop open into a new window to add the payment method first,
+
+Speaker 1  41:05
+which would not be stored. It would automatically get pushed to the credit card.
+
+Matthias Miller  41:09
+You get tokenized, and then we store a token in the database. Got it okay. Now, what's the downside of that is that we're dealing with external triggers, and it's one more thing to break. Upside is it makes it more streamlined user experience.
+
+Speaker 1  41:23
+Okay, so if that was the case, can when that transaction takes place, can, can we store the Can we store back onto the record? But it was paid? Well, yeah, and the transaction whatever the transaction ID, yeah, yeah, transaction ID and just what we'll have to talk about approval codes and blah, blah, blah, but at some point, but, yeah, so all of that, however, okay, however we need, this needs to be fairly bulletproof, so I'm Open to, okay, I understand there's going to be compromised between bulletproof and user experience. So,
+
+Matthias Miller  42:08
+I mean another way to option two is you have a receive payment link or something, and it requires you to save the record so, or, you know, basically charge credit card, or whatever it is. You pop it open, opens a whiskey. You choose how to pay. Click pay, and it stops, it back in. And then when you say, without running it, you get a big, scary message at the top, saying, No, this is an ACH slash credit card or ACH transaction. And you have not. And it has not, the customer has not been charged. Click Here To charge the customer with a link to the received payment,
+
+Speaker 1  42:55
+which would then carry you out to a whiskey portal to make that happen, is what I'm understanding, correct, right? Right.
+
+Speaker 1  43:07
+So, and then, and then, I guess, if we went that route, then you could build some kind of reporting that we could put on somebody's dashboard that says unresolved payments, or untransact payments, or or, or, you know, something like that, that if, if it happened, if you know if it go, if it becomes midnight, and there's unresolved payments, somebody gets an email that says, Yoo hoo.
+
+Matthias Miller  43:33
+The The interesting thing that makes it look more like a feature rather than a bug, would be if these are basically promise payments. So you have promised payments for five minutes until you run the charge. But I don't think, but then that means promise payments don't live on notes, or you auto create a note that's tied to the promise payment, which is weird, and auto resolve it, which is weird. So I don't think there's a world in which that works very streamlined, but that's,
+
+Speaker 1  44:09
+are you? There's no way to, like, restrict you from going off of this record until you resolve that payment, until you went out to the and finished it.
+
+Matthias Miller  44:20
+Trying to think how we would do it.
+
+Speaker 1  44:23
+I mean, if you click save and try to, you know, go to somewhere else in the menu, it's like, no, you can't leave until you, until you we get back a transaction ID.
+
+Matthias Miller  44:36
+Okay, well, let me walk through, let me think through a scenario in which you would so when you create the contract, before you store it, you generate or when you open the payment detail screen, we generate a random, unique payment ID, then we have a separate record called something like an AC, like it like an E payment and so you. Open up the whiskey link with that payment. By the way, this does now mean that you can generate the payment transaction and close this window and not save it. And nobody knows what that payment we just know we got a payment. We don't know which contract it was for, where it was supposed to go, okay, riddle
+
+Speaker 1  45:21
+me this. What if? What would happen if we, if you, if you're on, I'm assuming, the contact record for the customer and you want to take a payment, there's gonna, probably gonna be some type of take payment URL that's gonna take you to this record. What if it didn't take you to this record? We went straight out to a whiskey portal that then, you know that basically, kind of looked like this, or something like this, and it did all of this right here. And because you're now on whiskey land, you can, you can get all of that done properly, to restrict them and make sure they do all the blah, blah, blah. The whiskey Portal would then write this record. Once it's all done,
+
+Matthias Miller  46:00
+we could. Why would we
+
+Matthias Miller  46:07
+okay? I know you hate the idea of impersonating, and maybe it's not technically impersonating, but why would we effectively share screens between this and the customer portal, like there's nothing here that we I mean, the customer could conceivably,
+
+Speaker 1  46:32
+so you're saying, you're saying, we would always transact the same way the Cust any customer would, yeah.
+
+Matthias Miller  46:40
+The biggest thing is you would have the chance to override late fees, I suppose, which is not,
+
+Unknown Speaker  46:47
+which would not be allowed by the customer.
+
+Matthias Miller  46:49
+Should not be allowed by the customer.
+
+Unknown Speaker  46:52
+But, I mean, I imagine you could write some sort of admin access that
+
+Matthias Miller  46:55
+way. Yeah, yes. So it'd be fundamentally the same screen. And obviously, you can't,
+
+Matthias Miller  47:11
+that is the only way you can do this.
+
+Speaker 1  47:18
+Okay, I'm very nervous. Okay, I love the being interactively in the software and having this created. And if we could find some really elegant, you sweet solution that forces them to resolve the payment, if it's a credit card, Ach, blah, blah, blah, in some way, form or fashion out of the database side of things, I would that would be my first preference. Second preference would be to do to push you out in an admin status on that customer's account on the web portal.
+
+Matthias Miller  47:55
+Okay, so here's how we could do this. I think, I think, basically, okay, here's how I would do this if we well, I don't know if I completely, I don't know it's more work, but
+
+Unknown Speaker  48:12
+need to figure out how to get whiskey to run in a sub pane.
+
+Matthias Miller  48:17
+Well, we do have integrations that do work in a sub pain, but I don't know that that really solves the problem that much. I would rather code this in a detail screen inside of silver loom than I would in a whiskey. It's cheaper to maintain so
+
+Speaker 1  48:39
+well and less less problematic to maintain, or less problematic overall.
+
+Matthias Miller  48:46
+So if you would have a something along the lines, I don't know how to do this without web hooks, basically, but when you save you basically show a message saying we are getting ready to run a transaction. Please wait for confirmation that the transaction succeeded. Okay, you hit save. Soon as you hit save, boom, it triggers it. And so it goes out and it says, run this transaction. Here's the payment method. Go do it. And
+
+Speaker 1  49:15
+then this is, this is very similar in functionality to the ping thing to tax jar on the sales,
+
+Matthias Miller  49:20
+yes, exactly. And then, and then we set up a real time user notification back to that same user that says customer X, credit card payment for this amount for customer X was succeeded or failed?
+
+Speaker 1  49:36
+Well, no, okay, but I mean if, if we had, okay, riddle me this. If you did it this way, if you clicked, you're saying, on save, you could, you could trigger a web hook. You can't. Yes, okay, so on save, you triggered a web hook. A message pops up along with the the like, if your credit, let's talk about this strictly, currently in the in. In the vein of credit card, just for the sake of the ease of this conversation, if you chose credit card as a method, automatically, a I don't know, payment ID field that's red shows up. Okay, and it's right, because obviously we want to, we want to visually trigger the person that something's missing. When you click Save, a message pops up that says, we are, we are running the transaction. And as soon as that, it actually runs the transaction, the payment ID would pop into that box. It turns green. You have the payment ID, blah, blah, blah. And maybe there is some sort of message center as well that says, you know, if the payments decline, da, da, da, you know? Is that possible?
+
+Matthias Miller  50:44
+So the biggest issue is that I don't believe that screen that payment ID will refresh until you tab off or tap back and tap back.
+
+Matthias Miller  51:00
+There's not like a real time,
+
+Speaker 1  51:02
+yeah, but oftentimes the database will show up a a red bar across the sap that says this has been modified.
+
+Matthias Miller  51:13
+I guess I wish of that kind of
+
+Unknown Speaker  51:14
+trigger you to refresh to get it.
+
+Matthias Miller  51:18
+That might be good enough.
+
+Unknown Speaker  51:20
+Might be it's a little bit clunky.
+
+Unknown Speaker  51:30
+Is there like I'm going to ask a dumb question,
+
+Matthias Miller  51:34
+go for it. Those are my favorite.
+
+Speaker 1  51:39
+What would it take for the database to auto refresh like, I know it's like platform changes, all kinds of good fun, blah, blah, blah, but I have no idea what I'm asking. I have no idea if it's $5 or $5 million
+
+Matthias Miller  51:56
+Well, refresh under what scenario?
+
+Speaker 1  52:00
+Well, in a case like this, where the web hook wrote stuff back to the record, and it just auto refreshes when it writes back,
+
+Matthias Miller  52:07
+the biggest issue is not the writing the check. The biggest issue is getting it approved in Josh for Josh's team to go do it, and him being willing to maintain it long term. And I am trying to remember it's been so long since it's been 15 years since I probably worked in most of this code. It seems sane on one hand. Here
+
+Matthias Miller  52:50
+I don't even know if, obviously that should be title only
+
+Speaker 1  52:56
+secondarily to that question, give me a really good reason, or give me a really good explanation when I'm standing in front of a customer that says, why we don't auto refresh
+
+Matthias Miller  53:11
+so we have code on page focus, I
+
+Matthias Miller  53:50
+but if the if
+
+Matthias Miller  54:17
+library entry points, private and not that one.
+
+Matthias Miller  54:34
+Water this guy, I'm
+
+Matthias Miller  54:59
+let's do this.
+
+Matthias Miller  55:07
+Editing warning, slow warning and
+
+Matthias Miller  55:20
+it Looks like there's some level of refresh
+
+Matthias Miller  55:46
+every 15 to 60 seconds.
+
+Matthias Miller  55:56
+Good reason, why? Why don't we do this? Because I
+
+Matthias Miller  56:06
+uh, it's a background I mean, that's where I think real time notifications on success or failure make are very defensible. Well, it's background process like, we don't literally store, we can't literally store the credit cards in here. Like, are you foolish? Are you out of your mind? And you don't know that already here, let me let here's the PCI compliance checklist, whatever. And so we, we have a third party process that does it, and it just tells you whether it worked or not. And oh, okay.
+
+Matthias Miller  56:52
+Jordan, language didn't fit the bill for you. Okay. How could you say pejorative language didn't fit the bill for
+
+Speaker 1  56:59
+you? So so how well? If you can make make a little bit more bombastic, then we'll even get better at it. I know we could do it in Trump's voice. That'd be even better.
+
+Matthias Miller  57:15
+We can. Oh, trust me, we can. We
+
+Speaker 1  57:20
+okay. How much of okay? You made the comment about expense to maintain and reliability. If, if we said we're going to push this, like, the moment you say, I want to take a payment, we're going to push you out into an admin version of the customer portal. I don't even know what that would necessarily look like, but that's what we're going to refer to. It as, the we're going to refer to it at the moment. Like, how, how? How scared are you of that?
+
+Matthias Miller  57:49
+Sorry if we do that, maybe one more time, if we do what the
+
+Unknown Speaker  57:54
+admin version of the customer portal to take the payments.
+
+Matthias Miller  58:02
+Not scared, as long as we designed this for I mean, there's okay, it's just, this is all pros and cons. I'm not scared. It's just we're gonna have to design it in such a way, in such a way, okay, I don't understand why you don't like the idea of impersonation.
+
+Speaker 1  58:20
+No, it's not that I don't like the the concept of impersonation the database is, to me, feels way more reliable than is the servers tell me I'm wrong.
+
+Matthias Miller  58:40
+No, I would agree. I generally prefer, just from a UI standpoint, from index cheap to maintain all this stuff, like on a what I would prefer to do on the customer portal is say, here are your payments,
+
+Matthias Miller  59:06
+and what's your payment amount, and here's how we're going to apply it. Oh, you don't like it, pick up the phone and call,
+
+Speaker 1  59:12
+okay, let's back up for a second. Let's, let's, let's go back to the concept of web hooks on save. Okay, yep, yep. If you did a web hook on save, I think you said that we could put some big, scary message pop up that says, Please wait. Transaction is being processed. Yes, right. Okay, so if you clicked either stop editing or save, either one of those, and it would pop up a message says, Please wait, and then as soon as you know what could happen after that, would that would inform the person to refresh the record in order to get transaction codes,
+
+Matthias Miller  59:54
+a little pop up that pops up and there's a real time notification that says you made money. Me,
+
+Speaker 1  1:00:01
+this is secondarily, secondarily. If you're sitting on that record, that red bar will pop up saying the record was modified, correct? And so then that could be your secondary indication, yes,
+
+Matthias Miller  1:00:13
+yes. It, yes, it is. It could,
+
+Speaker 1  1:00:17
+if there's, is there any scenario where you don't get that notification? In other words, is there, is there any? Oh, yeah, we screw up.
+
+Matthias Miller  1:00:25
+Okay, what do you mean? The web hook isn't configured, right? It doesn't go out. The web hook really spectacularly fails and we didn't code the recovery correctly.
+
+Speaker 1  1:00:37
+Doesn't that also produce some sort of like, failed API, something or other pop box that pops up at the bottom,
+
+Matthias Miller  1:00:46
+yeah, for admins.
+
+Speaker 1  1:00:50
+Admins only, so in other words, but then the potential exists that Something broke in the system and nothing happens. Yeah? I'm
+
+Speaker 1  1:01:30
+not in love with just about all of these options. We're like 99% there, and there's this 1% that I don't love. I
+
+Matthias Miller  1:01:49
+Okay, well, what don't you love about my the web hook thing? Because that That, to me, feels to like, if I'm optimizing for UX, that's about the best. And I just don't see why it's a problem. To say, Hey, hang around. You'll get a little ding and like, All right, just hang on. And if you really need to check the status,
+
+Speaker 1  1:02:13
+what happens? What happens if something breaks the the the API, the web hook, breaks, the cost, the cus the customer rep gets no indication, whereas, if you were out in some kind of whiskey portal, you probably get some 501, error, which is pretty obvious.
+
+Matthias Miller  1:02:41
+Okay, fine. How do we make?
+
+Matthias Miller  1:02:49
+Okay, you know every transaction should get a response within one minute, and so when you save you also trigger a process within, within only that says, All right, we're watching for this transaction within one minute. We expect the payment within one minute, or on the record. We save it on the record say we expect the payment within one minute, and then we have a we have a process by which we trigger a real time notification. I don't know if I'm promising things I can't deliver on, but if 60 seconds later we have not yet gotten a notification, we say a cataclysmic error has occurred, please call only tech support ASAP, and they will help you take money.
+
+Matthias Miller  1:03:42
+Said, in a trope voice again,
+
+Speaker 1  1:03:46
+can we have it with scary dinosaurs and all things?
+
+Matthias Miller  1:03:51
+Sure, I'll be just, I'll be working on that right here.
+
+Speaker 1  1:03:57
+Oh, goodness, oh, total, total. Side note, guess what? I just bought, I have no idea. I bought a 3d printer. Did you really we're gonna have some total fun with it. Okay, get out of this squirrel box before we blow way too much.
+
+Matthias Miller  1:04:16
+Okay, so that's your fallback. It's basically saying silver loom itself is the fallback, like, reasonably, you should get a transaction within 60 seconds, and if not, something really did go sideways, and it can go completely dark. And like they know to call up tech support and say, Look, we're not able to process payments,
+
+Speaker 1  1:04:37
+and there's no way to tie that process to a pop up on the detail screen,
+
+Matthias Miller  1:04:51
+we check something.
+
+Speaker 1  1:04:55
+This is this is where we are. We are solving for dummies. And I know it. I'm. Going to have to be anal retentive about it, because some dummy somewhere is going to be like, well, I faint the thing and I didn't get anything back, so I just assumed that it went through.
+
+Matthias Miller  1:05:13
+Hello, it's only for dummies.
+
+Matthias Miller  1:05:21
+Do not push the big red button. Do not root from the tree. I have a client we're working on. Didn't solve
+
+Unknown Speaker  1:05:30
+for Dummies very well on that one, did he
+
+Matthias Miller  1:05:35
+Oh? But the devil did Oh. Didn't. Though that could be again. I collecting these metal song titles, the devil in the dummies, that'd be great. Okay, so he doesn't need you. He's already got the dummies. Sorry, I'm not. I
+
+Matthias Miller  1:06:05
+Okay. Well, keep it. What's wrong with just a big, scary, okay, like, literally, the moment you save. Okay, let's get super wild, and we can turn it back. The moment you save everything on the detail screen disappears, and all you get is a big message saying we are currently processing that this transaction. Please refresh this screen. Please refresh to check the status. And then it has a countdown timer that counts down for from 60 seconds. And then if you hit 60 seconds, it said this transaction failed or could not be confirmed. If there's three states, one, you're going
+
+Speaker 1  1:06:59
+to have somebody just sitting there waiting like nothing happened. But well, when it did actually happen, and it's like,
+
+Matthias Miller  1:07:06
+like, how do you if you if you know it succeeded, then you say you got money, and if it fails, only in a Donald Trump voice. And then if it fails, then it says, Okay, could not process. And here's the error code, in which case, presumably you need a way to retry the transaction.
+
+Speaker 1  1:07:27
+Wait, wait, you're telling me things you can actually do. What do
+
+Matthias Miller  1:07:31
+you mean? I don't understand. Well, I don't Okay. So okay, so you save and then we say, okay, we're waiting on a payment, and the detail screen knows to go hide everything, which is way over the top. Hopefully we don't have to do this, but way over the top, go hide everything and just show a status message on the record instead just on the record itself. Or maybe it's just a big white box that makes everything scroll down and it says, and every it becomes read only, and it says, Hey, we're processing this transaction. Please refresh for a status update. Okay. Meanwhile, it's triggered a web hook. Now there's three ways this could go. Number one, we don't get any response back in a minute in which we say, Look, we have no idea what happened. Something went wildly sideways. Do not run this again. We may have charged the customer. We may we have no idea what's going on. Don't do anything. Pick up the phone and call 911, and then
+
+Speaker 1  1:08:23
+so the message pops up. And immediately something goes and refresh. Does the message pop up again? If we don't have the the details from the transaction,
+
+Matthias Miller  1:08:32
+yeah. So on the message, you show a countdown timer. We're going to assume 60 seconds it should have run, right? Hey, maybe less than that, we come up with an arbitrary number to refresh and say, there's, you know, attempting for 20 more seconds and 10 more seconds and five more seconds, and after, if it doesn't process for a minute, which is going to be an internal interminably long time on the on the record, that's going to be just terrible. So that's that's only if, if something's really broken in the whiskey, and it never gets back to us, normally, we're going to get a response back in like two seconds. So they refresh, refresh, refresh, and even if they're clicking fast, by the third refresh, we say, okay, transaction succeeded, transaction failed. And you get back to your payment screen.
+
+Speaker 1  1:09:27
+And automatically, if you hit refresh and the transaction details happen, it would just take you right back to the payment screen.
+
+Matthias Miller  1:09:32
+There it would be right. So basically, it's just a what I would do, instead of a pop up, is just have a bait section, a big section that pops into the top of the screen, pushes everything else down so you don't see the other stuff, or whatever it needs to be, that says, Look, we're processing the transaction refresh for status updates. And then if, if we know it succeeded or failed, it can give you that info. If we don't know what happened after a minute, then we say, hey, we have no idea. This requires.
+
+Speaker 1  1:10:00
+What it's like. So this is, this is not a pop up message. This is basically a hidden, a hidden text field,
+
+Matthias Miller  1:10:05
+hidden text field that,
+
+Speaker 1  1:10:07
+well, I don't even know that, essentially a countdown timer. I'm not I'm not opposed to this. So it's so basically you are creating, so basically a hidden text field that says this is not processed. Please wait for transaction to process. And the moment that it can it can it. If you hit refresh and it still, we don't have details back, it stays there. And then, if there's a hidden timer that eventually, if it doesn't process within one minute, we just say the transaction failed. Please call customer support. I'm not opposed to that. That's gonna, that's that, that's, that's usable. Okay, so
+
+Matthias Miller  1:10:45
+let's, let's see if we can spec this out in a way that we don't hate. Um, Jonathan Bergen,
+
+Speaker 1  1:11:01
+the the, details coming back from the credit card provider, we would be able to field any like if it declines, we can be able to give them that
+
+Matthias Miller  1:11:11
+reason insufficient funds. Or,
+
+Speaker 1  1:11:13
+yeah, yeah, okay. And I imagine we can do some color formatting based on some of those answers or some of those types of things.
+
+Matthias Miller  1:11:26
+Yeah, we think so, okay, so we have, okay, so he's just searching.
+
+Speaker 1  1:11:33
+If I push on you long enough, you come up with something brilliant or something that works. I'm not sure it's brilliant, but it works.
+
+Matthias Miller  1:11:40
+One of my both blessings and curses is that I'm a highly adaptive and highly creative in finding really bizarre workarounds to technical limitations, to include the Trump voice, which also made me a really good and a really bad Amish amishman both at the same time. Yeah, say anything about mp three players, cassettes. But what about mp three files? The
+
+Speaker 1  1:12:05
+MP three players were not addressed in the ordnance. They weren't
+
+Matthias Miller  1:12:11
+okay. So years later, one of the guys gave me the most grief relocated to a more conservative area where they're locking down even harder on all this stuff. Good, gracious. Fun times. Okay, so payments, payments, adding payment methods will require opening a new window into the Whiz key, take the credit card. Credit card info saves a token back somewhere into the database with a customer, Custer, Cust, dimmer, um,
+
+Matthias Miller  1:13:05
+on save, show a message. This will run a transact. This will charge the charge card in the amount of four while save is pending. This triggers an external trigger, slash, web hook. I'm
+
+Matthias Miller  1:13:45
+and I think we have a sorry. This is so a damn sorry, very add this triggers while we wait for the response from the web hook show a big, scary warning or big, big message at the top of the screen, i e a Read Only memo or something similar, that says the true transaction is currently pending,
+
+Unknown Speaker  1:14:30
+processing,
+
+Matthias Miller  1:14:32
+processing and Okay, what do you think about the countdown idea? I
+
+Matthias Miller  1:14:44
+here's what I want. I want. I in my mind, it'd be good to have definitive amount of time where, if we don't get a response after, I don't know what it is, 15 seconds, 30 seconds something, we say, look, something went wrong. Call support. You. Do not try this again.
+
+Matthias Miller  1:15:09
+Refresh this screen or updates. We just say it like this. If this transaction does not If this message persists were more than 30 seconds, please call only support at 855555885,
+
+Speaker 1  1:15:39
+how do you how do you prevent reruns? In other words, somebody hits the save button again. Or, for example, the other question I'm going to have around is editing this record and reopening it back up and and clicking Save again. And will that? Will I try to run on the credit card transaction and so on and so forth?
+
+Matthias Miller  1:16:00
+Well, I mean, presumably, if there's a payment ID on it already, you can't,
+
+Speaker 1  1:16:05
+you can't rerun it, right? That would make sense. And I guess, I guess, I guess, what we could do is, if it doesn't process within a certain amount of time, then we punch in a we put text into the ID section so that you can't run it again.
+
+Matthias Miller  1:16:27
+It's actually good. I like that failed, no response
+
+Speaker 1  1:16:31
+in the payment ID section. So if it does, and you know it doesn't happen within, let's just say, 30 seconds. That's a long time when you're running credit card transaction, we put text that says failed, so that prevents you from ever from continuing to run it the end that should be a read only box, and only somebody who's really, really, really, really, really smart to know how to write a editable report and clear out the text to actually rerun the transaction, would need to know how to do that. Right? We do need to have a method for rerunning that transaction at some point,
+
+Matthias Miller  1:17:07
+I wonder if, I wonder,
+
+Matthias Miller  1:17:21
+if we could have a scheduled task that basically monitors for these things that are at least a minute old or a certain time period old. And you, I'm not quite sure how to, for sure, do that secondary edit to stop that In i
+
+Matthias Miller  1:17:52
+i think what you might do is I
+
+Matthias Miller  1:18:17
+um, I Okay, on success or failure. Do
+
+Matthias Miller  1:18:32
+you want to use that big screen there where it just or does that? Does the message just disappear?
+
+Speaker 1  1:18:39
+And then, so can you can you can the box disappear? If there is data in the payment ID without refreshing the record. I guess if you're refreshing the wreck, it's going to tell you to refresh the record anyway. So just tell it to refresh you're sitting there, refreshing the record until it actually trans it disappears.
+
+Matthias Miller  1:19:00
+Yes, I think so. Why not? Like, they're gonna obsessively be like, Did it go? Did it go? Did it go? Okay, it went through. I don't know why it didn't go through. That's the weirdest thing this dang system. Sorry.
+
+Speaker 1  1:19:21
+But again, we do need to have hilarity aside. We do need to have a way to handle transactions like or records like this that did not transact. I
+
+Matthias Miller  1:19:51
+also I'm.
+
+Matthias Miller  1:20:16
+I'm going to assume, if you have three insufficient fund runs that you want to see, that we try to run it four times or three times that that it failed three times we tried to run it,
+
+Speaker 1  1:20:30
+yeah. I mean, this is only on credit card or debit card like ACH is handled like a return check. So ACH is going to take your information, return you a payment code, and if it fails, then they notify you later. Check. There is no such thing as a failed payment on a check or cash or money order. So, yeah. Okay, and what is this on this on this payment record? Is this where we're going to handle the NSF? Then, uh, sorry, let's not know. Let's not, let's not throw that wrench into the gears. No, don't, don't, don't, don't put that in there. We need to talk about NSS, but not today.
+
+Matthias Miller  1:21:20
+Okay, so, so the question is, do you want real time notifications when a payment
+
+Speaker 1  1:21:32
+succeeds or fails? Can we make that user a selectable In other words, the user says, I hate these stupid things that go ding and turn red up there. Can I turn my notification off?
+
+Matthias Miller  1:21:49
+Yeah, I forget exactly how to I mean, yes, but if you think that's like, is it even worth it? Is that just over engineering? It
+
+Speaker 1  1:21:58
+is a bit of over engineering, then let's leave it
+
+Matthias Miller  1:22:02
+like, doesn't the refresh, click, click, click, solves the problem. Lizard brain is going to do that just fine, like it wants to know, it's always looking for an ice cream treat
+
+Unknown Speaker  1:22:11
+somewhere. Yeah,
+
+Matthias Miller  1:22:14
+right, yeah. So we just solved,
+
+Speaker 1  1:22:20
+I do. I do think we need to have some sort of reporting, then, just as a backup that, and maybe it's some sort of scheduled task that runs, runs a report of failed transaction payments and puts them into an email and emails an administrator, saying, hey, these things failed. Go look into them,
+
+Matthias Miller  1:22:43
+right? Well, you for sure are going to have to have, could we just consider a nightly report of all payments that have not succeeded, and then have a way for an admin to void them out.
+
+Speaker 1  1:23:08
+Yes, although I don't know it's necessarily just an admin thing. Secondarily, I mean, okay, two things, I think it should fire an email and it should, it should put a red notification on for an admin do if we
+
+Matthias Miller  1:23:23
+have the right notification? Do we need the email?
+
+Speaker 1  1:23:29
+Yeah, unfortunately, because, as we have proven over and just asked Josh, for some reason notifications to get ignored. I
+
+Matthias Miller  1:23:43
+We could auto create an A note nightly, ensure there's no sorry. Well,
+
+Speaker 1  1:23:52
+you can you last time I remember, you can assign or de assign people on a scheduled task, on who receives them. So if some administrator says, I don't want to get that stupid thing anymore, well then go over to the scheduled task and take yourself off of
+
+Matthias Miller  1:24:09
+it. Yeah, I
+
+Matthias Miller  1:24:26
+Okay, where are we at on time? Okay, do you we had said, this is our stopping point, and
+
+Unknown Speaker  1:24:38
+we're picking up two.
+
+Matthias Miller  1:24:40
+Yeah, can we? Is this in a place where I can?
+
+Speaker 1  1:24:43
+I need to. I need to. I'm supposed to talk to Mark at 1230 anyway. So,
+
+Matthias Miller  1:24:47
+okay, let's drop off. I'm going to run this. I'm going to take a quick break and and walk Seth through this and see if he can shoot any holes, holes in it, and then he can update the spec, and we're good to go. All right.
+
+Unknown Speaker  1:25:00
+See it two o'clock. Awesome.
+
+Matthias Miller  1:25:02
+Thanks, fine. Thank you.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,1016 @@
+Speaker 1  03:29
+Hello, hello there. Yeah, did okay, yes, did
+
+Matthias Miller  03:38
+Mark's latest email make sense to you? It just looked like he resent the same thing, but
+
+Speaker 2  03:43
+he literally resent the same thing. I don't know why, as far as I could tell, anyway, accidentally about left the meeting instead of sharing my screen. Illinois,
+
+Speaker 2  04:04
+okay, oh, I do have the we got most of these collected columns coming through now. I have one do the other fees yet. But anyway, okay, so switch my tag to CFPB.
+
+Speaker 2  04:25
+Inside, I don't remember, is this one in mine or your courts?
+
+Matthias Miller  04:32
+It's assigned to you. I mean, me. I mean, yeah.
+
+Speaker 2  04:36
+I mean, that's what I was meaning by. Okay, so this one is okay. That's helpful. Hadn't seen that. I think he was trying to send that with his last email. Didn't, didn't go through. That's my guess. Okay.
+
+Matthias Miller  04:56
+Could we? Could we run this full. Report off accounting transactions,
+
+Speaker 2  05:06
+hold on based on event type and payment date,
+
+Matthias Miller  05:17
+confirm and verify no.
+
+Unknown Speaker  05:47
+So what? How would it work if we'd run it off of,
+
+Matthias Miller  05:51
+Oh, it doesn't that defeats the purpose.
+
+Speaker 2  05:58
+Okay, so we do need what I started building.
+
+Unknown Speaker  06:07
+Yeah,
+
+Matthias Miller  06:15
+transactions coming, does it. I think we should go ahead,
+
+Speaker 2  06:22
+go ahead. So essentially, look at all sales orders for the company as of a date. I'm assuming there's more substance that needs to happen, because they don't want to see this many. I would think I
+
+Matthias Miller  06:43
+well, it should only show. I mean, there's a couple of fun scenarios this doesn't happen. So first of all, definitions matter. Do you know what they mean by customer deposits?
+
+Unknown Speaker  07:01
+Not completely sure.
+
+Matthias Miller  07:03
+Okay, a customer deposit is simply money that is paid prior to invoicing.
+
+Speaker 2  07:12
+Ready. So any money prior to invoicing,
+
+Matthias Miller  07:19
+yes, and then at the point that it's invoice, it's no longer a
+
+Unknown Speaker  07:24
+deposit, it's a okay,
+
+Speaker 2  07:31
+that's the piece I was missing. I was still thinking as a deposit, if that makes sense,
+
+Matthias Miller  07:37
+not like a bank deposit, like that's a different right, or anything like that. Okay, so then we need to also handle so as soon as so this should not i i
+
+Unknown Speaker  08:08
+know that.
+
+Matthias Miller  08:11
+Well, no, the invoice and the invoice date. No, that's not right, no, and the invoice right, yes, yes,
+
+Speaker 2  08:21
+yes, yeah, yeah, yes, all right, the ask as of date is less than this,
+
+Matthias Miller  08:31
+yes.
+
+Speaker 2  08:34
+So if it's not invoiced, which we need to think about canceled or the as of date is less than the invoice date, and the payment is less than the as of well, less than or equal, right? Yes, he said less than, but it's actually less than or equal. And payment date is less than invoicing,
+
+Matthias Miller  08:57
+I'm going to assume so well, I mean, yeah, because assuming we're doing end of day balance, and we should have a sum On this one, and
+
+Matthias Miller  09:21
+then if you run it for well, and the payment method adjusts the so balance.
+
+Unknown Speaker  09:37
+What are ones that don't
+
+Matthias Miller  09:40
+it's very unlikely that you'll have one but bad debt, right? No like financing premiums, fees and premiums.
+
+Matthias Miller  09:56
+What else do we have?
+
+Matthias Miller  10:06
+Some balances, strike fees.
+
+Speaker 2  10:13
+And I saw that in our other customer deposit port report. We're looking at the write off amount stuff too.
+
+Matthias Miller  10:25
+I think I don't know that we have write offs. Yeah, any act, anything active?
+
+Unknown Speaker  10:32
+Okay,
+
+Matthias Miller  10:36
+so we said it wouldn't be such work. I would get rid of write offs as well. But I think
+
+Unknown Speaker  11:06
+yay, yay,
+
+Unknown Speaker  11:14
+okay, and then,
+
+Matthias Miller  11:18
+if you run this For
+
+Speaker 1  11:20
+i 9898,
+
+Unknown Speaker  11:32
+yeah,
+
+Matthias Miller  11:37
+see how close we get to
+
+Unknown Speaker  11:45
+that looks about right, not including anything from the ninth, 10th or 12th.
+
+Matthias Miller  11:53
+So we have the, what are the sales order IDs?
+
+Unknown Speaker  11:58
+Oh, I need to have a link here. Then
+
+Matthias Miller  12:01
+three, 1307, some of these, he's got on his negatives.
+
+Speaker 1  12:10
+Oh, aha,
+
+Matthias Miller  12:14
+we need to. He's looking for for deltas. So if it's
+
+Unknown Speaker  12:37
+no,
+
+Unknown Speaker  12:40
+what do you mean? He has them on as negatives.
+
+Matthias Miller  12:45
+Here's these. Okay, his ending balance is like 138,000 almost 139, rounded. So,
+
+Speaker 2  12:59
+well, I mean, is that? Is journal entries gonna No, Surely not. Doesn't play that much of a role.
+
+Unknown Speaker  13:08
+Well,
+
+Matthias Miller  13:10
+I guess it depends. It depends how many journal entries he's got that like, maybe there's a I
+
+Speaker 2  13:27
+So would this be? Was he running general ledger? I
+
+Unknown Speaker  13:40
+sure
+
+Matthias Miller  13:45
+which I can't modify
+
+Speaker 1  13:49
+rails new report,
+
+Matthias Miller  13:55
+kind of transaction where, ow here. Here the transactions by contact has an include account names. We'll expand it a little bit. Okay, we're going to include account subtype, cell type of customer deposits is a liability.
+
+Unknown Speaker  14:22
+You
+
+Matthias Miller  14:22
+accounts. What's the type of this? Let's change this.
+
+Matthias Miller  14:36
+Oh, I need to select a company ID. Wow, that's okay, so let's do ABC account names. Is customer deposits. And then we're going to change the subset, because I can actually modify this one in is an A account trans event type. Yeah, all right, so that accounts for about 36
+
+Speaker 2  15:04
+grand. Okay, so we're still wildly different.
+
+Matthias Miller  15:19
+Okay, so if we
+
+Matthias Miller  15:28
+include Cancel Cancel sales orders, did you do that?
+
+Unknown Speaker  15:39
+That's getting invoice. Well, no, it's not here,
+
+Matthias Miller  15:47
+but shouldn't you? Well, first of all, and isn't a so invoice date or
+
+Matthias Miller  16:03
+that should make a big difference. Yeah, 291, that's not quite right.
+
+Unknown Speaker  16:10
+Too big of a difference, and there's so many canceled ones.
+
+Unknown Speaker  16:24
+Okay, I need to get that link working.
+
+Unknown Speaker  17:25
+Up available. I assume
+
+Unknown Speaker  17:27
+you don't want to include zero. What are
+
+Unknown Speaker  17:38
+ru it
+
+Unknown Speaker  17:42
+just curious why there's so many $0
+
+Matthias Miller  17:47
+well, they're write offs probably
+
+Unknown Speaker  17:49
+$0 other, great, Oh, these are 23 people.
+
+Unknown Speaker  17:55
+I need to include them. I don't know.
+
+Matthias Miller  17:59
+Um, that's a fair question you could probably, probably should exclude anything
+
+Unknown Speaker  18:11
+before I can,
+
+Matthias Miller  18:15
+yeah, before the accounting impact start date
+
+Unknown Speaker  18:22
+based on payment. Date.
+
+Unknown Speaker  18:40
+Wait, I have the ask for accounting.
+
+Unknown Speaker  18:50
+What's the Do we have something for
+
+Matthias Miller  18:52
+it? Accounting, company, field, well, there actually is a hang on.
+
+Unknown Speaker  18:59
+There is a,
+
+Unknown Speaker  19:15
+yeah,
+
+Matthias Miller  19:19
+it would be planning company, impact effective date that
+
+Unknown Speaker  19:35
+gets us much, much closer, although still,
+
+Matthias Miller  19:38
+How far are we off? Though, well
+
+Speaker 2  19:41
+off by eight. But then we also have the journal entries to add
+
+Matthias Miller  19:50
+journal entries in.
+
+Speaker 2  20:07
+How it sometimes the context. Why does it go to RG subset for the level
+
+Matthias Miller  20:17
+model definition? I don't know. I
+
+Speaker 2  20:27
+I don't know what account to pull from. Do I hard code each customer deposit? You can look it up off of general ledger or chart of accounts or general ledger account for what it's on the accounting company? No, it's, there's
+
+Matthias Miller  20:43
+a, there's a field on the accounting company. You can pull it off of customer deposits account. Okay,
+
+Unknown Speaker  21:00
+I was
+
+Unknown Speaker  21:05
+Wonder if I need to use my own accounting company
+
+Unknown Speaker  21:20
+that's going to be awfully slow on transaction.
+
+Matthias Miller  21:23
+There is a trans by account, account, trans by account and date or account and system ID, and you can just Do a fine part, ampersand by ACCT. Ampersand, I um,
+
+Unknown Speaker  22:38
+assuming for I'm
+
+Unknown Speaker  23:16
+Oh, Bobby, I have to grab the Oh, no, it's yes,
+
+Matthias Miller  23:24
+you should. You should have a repeat RT,
+
+Unknown Speaker  23:27
+right, do it right, yeah,
+
+Matthias Miller  23:32
+and then it's a liability. So you just want to do a minus debit, PLUS credit. Sum.
+
+Unknown Speaker  23:41
+I How
+
+Unknown Speaker  24:20
+which I wonder if there's
+
+Matthias Miller  24:23
+parent yeah, there's nothing new. Yeah, we're good date filter, and the date is less or equal to the effective date.
+
+Unknown Speaker  24:40
+I purchased this part. I'm.
+
+Matthias Miller  25:15
+Know that's something's wrong.
+
+Unknown Speaker  25:36
+Wish I could preview models. Oh, great. Oh.
+
+Speaker 1  25:42
+Make
+
+Matthias Miller  25:52
+sure that my I have mine for ABC.
+
+Matthias Miller  26:16
+Ask the accounting company is not the ID, it's probably some kind of decorated version.
+
+Speaker 1  26:20
+You
+
+Matthias Miller  26:30
+want to ask account company ID. Just add the ID to the main you're good.
+
+Matthias Miller  26:39
+Anywhere else in here. Let's see if that fixed. Oh yeah, oh yeah.
+
+Speaker 2  26:46
+There you go, graciously, whoa, whoa, whoa,
+
+Matthias Miller  26:51
+and did you do an is in a account trans event type? No.
+
+Unknown Speaker  26:56
+That would help. That would help
+
+Matthias Miller  27:17
+Okay, so that gets to 110
+
+Unknown Speaker  27:22
+We're off by about.
+
+Matthias Miller  27:35
+You sure we don't have i
+
+Matthias Miller  27:43
+I'm sure you shouldn't include is included or so canceled? Can you have it an invoice date and cancelation date?
+
+Unknown Speaker  27:57
+Yeah, I think you could do
+
+Unknown Speaker  28:04
+so I think
+
+Matthias Miller  28:07
+you should include that in your subset. Sure,
+
+Speaker 2  28:40
+a number of times we convert back and forth between a number of strings.
+
+Matthias Miller  28:51
+Ridiculous number.
+
+Speaker 2  28:55
+They No, it's a string. Don't ask me why? Oh, my goodness, why? I take no responsibility,
+
+Matthias Miller  29:03
+nor should you. That's crazy.
+
+Matthias Miller  29:12
+And then presume you want to get really technical. We should sort by payment date, but
+
+Speaker 2  29:21
+well, but I think they want you. Wanted the transactions different than wait Well, we can
+
+Unknown Speaker  29:29
+or by that for now, I.
+
+Unknown Speaker  30:26
+Know, so you're saying in the
+
+Matthias Miller  30:40
+Now do you add a column now? We don't have a good way to use should we handle write offs? Maybe that's our problem. I don't know. I don't know
+
+Unknown Speaker  30:56
+you were saying that in. Where were you? What were you wondering about canceled
+
+Matthias Miller  31:04
+in this isn't as Oh, invoice date, or is canceled, or the as of date is before the invoice date.
+
+Speaker 2  31:13
+So anything that's canceled is included as a deposit, yes, until it's zeroed out. Okay? So then also the RG subset, we say is NA or so is canceled, yes.
+
+Matthias Miller  31:37
+Now this is gonna have a kind of rose. I would expect that if there's something that,
+
+Unknown Speaker  31:53
+yeah, like, this guy should go because he's zeroed out.
+
+Matthias Miller  31:58
+Yeah, we could. We could add a balance if, if the sales order balance is zero, we could exclude it
+
+Unknown Speaker  32:06
+zero as of the date.
+
+Matthias Miller  32:09
+Right, right zero as of the date.
+
+Unknown Speaker  32:13
+So.
+
+Unknown Speaker  32:22
+Mountain. Balance.
+
+Matthias Miller  32:27
+I know, what does it kind of do?
+
+Matthias Miller  32:37
+It's never balanced if it's not been invoiced, so
+
+Matthias Miller  32:50
+with Mount urbanizer,
+
+Speaker 2  32:57
+get rid of it. Yeah, we got rid of it because we didn't need it, because we only need the accounting
+
+Unknown Speaker  33:12
+one now the balance adds up, is the only one we have. Now, right? You can put
+
+Matthias Miller  33:19
+your RG macro into rd, subs into a macro into some RG, and if it sums to zero, exclude the whole Record. It's true. So
+
+Unknown Speaker  33:50
+I don't
+
+Unknown Speaker  34:06
+Sure.
+
+Speaker 2  34:11
+Wouldn't it be fair to also sort by so ID and then payment date or not? It was like you really want to see them beside each other, if they if there are two for the same it really did numbers.
+
+Matthias Miller  34:32
+Well, of course it didn't. I mean, you didn't expect it exactly, exactly, bring it up. So okay, so let's do you.
+
+Matthias Miller  34:48
+Okay, how would the customer how would customer deposits work then? Or how would write offs work, invoicing, payment, accounting, impact. No invoicing, payment,
+
+Unknown Speaker  35:12
+sum, if,
+
+Matthias Miller  35:21
+oh, you need to create.
+
+Unknown Speaker  35:34
+Which I need to create? I think
+
+Matthias Miller  35:38
+you're gonna want to create a macro. A payment you're going to have to create a macro that evaluates the customer deposit amount for a row, because the write off date can be different than the payment date. It could theoretically be before or after.
+
+Unknown Speaker  36:09
+Okay, then, but then that affects the amount too, right,
+
+Matthias Miller  36:17
+correct. It does, yeah, yes, so I would do a low so you know, customer or SOP, customer deposit amount or something.
+
+Unknown Speaker  36:32
+So I
+
+Unknown Speaker  36:47
+it's a weird name, but there's not the same logic, right? Yes,
+
+Matthias Miller  37:07
+also bad debt. Bad debt is never a customer deposit. We have hard coding and accounting impact for that. That could be the other part of your issue. I
+
+Matthias Miller  37:38
+a signal message. It's Really easy, copies of that. Left
+
+Unknown Speaker  38:04
+looks awfully similar to what it was. I mean, it's good to have it in there, but the amount of assumptions we have baked in is scary.
+
+Unknown Speaker  38:21
+Well,
+
+Matthias Miller  38:24
+yeah, it would be good to have this as a macro on the customer deposit have index on the macro
+
+Unknown Speaker  38:36
+page. I
+
+Speaker 2  38:45
+Okay, so we include, if we have a deposit or write off date, then what else is it look so and is in a so invoice date, the date is less than the as of date and isn't it or so is canceled, or So the date is less than so invoice.
+
+Unknown Speaker  39:21
+So if
+
+Unknown Speaker  39:24
+so payment date,
+
+Matthias Miller  39:27
+so payment amount,
+
+Unknown Speaker  39:36
+if
+
+Unknown Speaker  39:39
+so payment right off
+
+Matthias Miller  39:45
+it's actually minus so applied amount goes in the opposite direction. Yeah.
+
+Speaker 2  39:57
+Okay. Uh, then this also, what if there's, what date do I put here? Because write off and I also have a write
+
+Matthias Miller  40:18
+offs happen?
+
+Unknown Speaker  40:22
+We also need to pass through the write off and just have a column for that. Then the amount gets confusing.
+
+Matthias Miller  40:32
+Well, the way we apply it to accounting,
+
+Unknown Speaker  40:38
+if
+
+Matthias Miller  40:47
+right?
+
+Matthias Miller  40:57
+Well, we could get theoretically. Create two rows. If a write off amount and a payment amount, create two line items. Mm, dollars.
+
+Speaker 2  41:28
+Do you have a sales order, payments model and a sales order write off model, unless you're going to just encourage cat RG twice in the expression and not to repeat our G No, just No, no, no, no, no, no, no, yeah.
+
+Matthias Miller  41:52
+And if you wanted to for your full for your whole record exclusion, why would you do a pipeless sum on the list, I was thinking that, but that's with transaction. You don't want to, you don't want to, really want to do that, no?
+
+Unknown Speaker  42:16
+Because if it's not zeroed out, we want to show stuff, Right?
+
+Matthias Miller  42:22
+Yeah, if we have a macro for the I
+
+Unknown Speaker  42:40
+best
+
+Unknown Speaker  42:46
+this stuff is I mean,
+
+Matthias Miller  43:02
+but how? But how about, is it if you
+
+Matthias Miller  43:10
+what, if you wouldn't make this, what if, to your point, you would not make this be a repeat. RG, but you would make it at the macro to get it for a single sales order, you can concat the whole thing, and then if it sums down to zero, you pick that Long You
+
+Unknown Speaker  43:54
+okay, so
+
+Matthias Miller  43:57
+and then You don't really need
+
+Unknown Speaker  44:29
+I got this
+
+Unknown Speaker  44:44
+so if.
+
+Unknown Speaker  45:08
+I still payment going on. I Feel
+
+Unknown Speaker  45:42
+like I'm gonna want this out there. Then
+
+Unknown Speaker  45:53
+that sound great.
+
+Unknown Speaker  45:55
+Probably
+
+Unknown Speaker  46:43
+oh, I need this stuff yet,
+
+Unknown Speaker  46:46
+except do it.
+
+Matthias Miller  46:49
+Yeah, that applies to both write offs and,
+
+Unknown Speaker  46:56
+oh, wait, I had them. Well,
+
+Matthias Miller  46:59
+you need your dead one. Yeah,
+
+Unknown Speaker  47:09
+and you wanted to move this right? I
+
+Matthias Miller  47:16
+mean, that's in the
+
+Unknown Speaker  47:20
+No.
+
+Unknown Speaker  47:22
+We haven't dealt with that. I
+
+Matthias Miller  47:25
+think what I would do in the subset is I would just say you need to replace an A where you get the amount out of every row and the total isn't zero. Just, can you change this literally, just to Include records where it's a non zero, non zero, non blank value,
+
+Matthias Miller  47:48
+and also the V ask as of is less than so invoice date is incorrect because that was excluding cancelations.
+
+Matthias Miller  48:00
+I would remove that condition completely, but
+
+Unknown Speaker  48:04
+it says, or you don't want to check that the invoice date is blank,
+
+Speaker 2  48:11
+or that it's canceled right or right, never mind. You're fine. It's done. Fine, okay?
+
+Speaker 2  48:43
+I built it cannot
+
+Unknown Speaker  49:08
+never ending.
+
+Matthias Miller  49:13
+You might want to put decimals on There your string conversion.
+
+Unknown Speaker  49:36
+HDS like that. I
+
+Speaker 1  49:50
+02, yes, yeah,
+
+Unknown Speaker  49:55
+that would be confusing. Yeah.
+
+Matthias Miller  50:03
+It All right, any change,
+
+Unknown Speaker  50:08
+not really
+
+Unknown Speaker  50:10
+this, So, like the same numbers.
+
+Unknown Speaker  50:22
+So
+
+Unknown Speaker  50:34
+I do not
+
+Matthias Miller  50:56
+are we running into the eighth there it is. Sorry, what we're running as of the eighth, right? Yeah,
+
+Unknown Speaker  51:09
+I should double check. I
+
+Matthias Miller  51:30
+Okay, so
+
+Unknown Speaker  51:33
+this isn't including any write offs currently. Can you
+
+Matthias Miller  51:37
+word it? I mean, maybe we don't have any. It's possible, it does seem unlikely, that you would have write offs for deposits, unless you have a non refunded payment. Can you do sort by payment date,
+
+Unknown Speaker  51:55
+by payment date? I think I am.
+
+Matthias Miller  51:58
+Oh, you are okay. So we have 1000 so seven,
+
+Unknown Speaker  52:08
+551,
+
+Matthias Miller  52:22
+should I? Showing wildly different numbers. I had written. This is for ABC, right?
+
+Unknown Speaker  52:38
+Okay, so
+
+Matthias Miller  52:42
+move $1,000 $1,000 on six, 424, we have transactions prior to this to the accounting impact start date. So technically the account transact accounting transactions report should include
+
+Matthias Miller  53:10
+those as well as na or it's less than the accounting impact. Well, I guess,
+
+Unknown Speaker  53:33
+did I somewhere?
+
+Matthias Miller  53:44
+Race that doesn't make sense.
+
+Unknown Speaker  53:49
+Where did my accounting impact date go? Oh, here.
+
+Matthias Miller  54:07
+Actually, I'm not, I'm not 100% convinced here on this, but I
+
+Matthias Miller  54:32
+hold off and just run the report before you,
+
+Unknown Speaker  54:40
+before I change the transaction part, yeah.
+
+Matthias Miller  54:48
+Okay, so the first date we have in the report is x4 24 which I have it for $1,000.28 75,000 On 1211 then I have a second one on 1211
+
+Unknown Speaker  55:04
+or
+
+Unknown Speaker  55:11
+I have
+
+Matthias Miller  55:14
+one for 740
+
+Matthias Miller  55:20
+okay, this sales order here is showing up on a variant version of My Report,
+
+Unknown Speaker  55:29
+not on yours.
+
+Matthias Miller  55:35
+It was canceled. 1216, 24, 24,
+
+Unknown Speaker  56:09
+that's true. That must be
+
+Unknown Speaker  56:14
+my RG set. Oh, it doesn't have a payment row.
+
+Matthias Miller  56:20
+Somebody deleted the payment row after the end of the year, or something
+
+Unknown Speaker  56:27
+marked it on the fourth of April,
+
+Matthias Miller  56:35
+I was guessing be the first. Okay, well, so there's one issue you can send him that one, they
+
+Matthias Miller  56:58
+spent a good bit of money For an account balance diagnostic report in the side note, it's working shockingly wrong. Sorry, what they spend good money for account balance diagnostic report that helped me find this in the side Note. Ah,
+
+Unknown Speaker  57:17
+nice. We found that if payment row,
+
+Unknown Speaker  57:41
+um, all
+
+Matthias Miller  57:43
+right, so let's keep going down the list that accounts for 5000 next one should be 2072, no, 5194, that one should be why is that one? This one shouldn't go off. No, there's another 1775194,
+
+Unknown Speaker  58:01
+I 5194,
+
+Speaker 2  58:03
+35, this guy should go off because there's another there's another row. Oh, there's a third row. Why? This is why I want to sort them all together.
+
+Matthias Miller  58:16
+Well, I mean, I understand I'm running into I'm trying to reconcile, like I don't have a 263, on mine.
+
+Unknown Speaker  58:26
+Yes, okay, is it because it's a quote this
+
+Matthias Miller  58:33
+you accounting transactions in this guy? None.
+
+Matthias Miller  58:47
+Well, why would you have a
+
+Unknown Speaker  58:54
+I mean, because that's a quote we, as we bring payments in once you,
+
+Unknown Speaker  59:14
+Oh, I bet it's this stuff. I bet the payment method looks at invoice date. Maybe
+
+Unknown Speaker  59:28
+no payment date,
+
+Matthias Miller  59:34
+if so is quote at the bottom, yep, so just put a note that we have a payment applied to this quote. And
+
+Unknown Speaker  59:58
+should I be having the number? Is on here?
+
+Unknown Speaker  1:00:01
+Oh, I'll leave it for now.
+
+Matthias Miller  1:00:06
+I don't know. I mean, like this whole thing a
+
+Unknown Speaker  1:00:10
+payment row of Wait, do that?
+
+Unknown Speaker  1:00:21
+Is it? Payment?
+
+Matthias Miller  1:00:31
+Might link to put practice around it. Oh,
+
+Unknown Speaker  1:00:35
+yeah, there we go.
+
+Unknown Speaker  1:00:47
+Okay,
+
+Matthias Miller  1:00:49
+okay, so then that's in the next one was 2072, which is right, 1650, then we have this weird 5194 that has something bizarre going on. No, I have that one too. It's just further down 51 yeah, that matches. Then I have a Do
+
+Unknown Speaker  1:01:12
+you have something before it? 16, 1650, then 5194 is what I have.
+
+Matthias Miller  1:01:23
+Yeah, in my mind, put mine just combined all three of those into one line. Now I
+
+Unknown Speaker  1:01:30
+do got a
+
+Matthias Miller  1:01:35
+27, 250, which is down from the transaction. So that's good, okay, then I have a 940 okay, this 535 again, is just is not pushing into
+
+Unknown Speaker  1:01:52
+accounting. Oh, it won't.
+
+Unknown Speaker  1:02:11
+Okay, I'm just gonna tell them, there's a payment, right? They can,
+
+Matthias Miller  1:02:14
+yeah, 940, 1257, 14, 1250, okay, the 1400 I don't have, oh, maybe that's down below. What's the numeric 6701
+
+Unknown Speaker  1:02:32
+the new recordy.
+
+Matthias Miller  1:02:35
+Yeah, that one has, okay, I'm gonna assume you get multiple rows with this guy as well. This guy as well.
+
+Speaker 2  1:02:44
+I mean, I should 4041, 5000 of this guy. Yeah, way down here.
+
+Matthias Miller  1:02:53
+Okay, so we got 1500 963-813-7052, 1606, 14. There's another bizarre 136,
+
+Unknown Speaker  1:03:07
+30, I don't have
+
+Matthias Miller  1:03:10
+this what is this one?
+
+Matthias Miller  1:03:20
+It's a journal entry. Oh, it's fine. It's nothing to worry about. I don't think
+
+Unknown Speaker  1:03:26
+then, why is there my report?
+
+Matthias Miller  1:03:29
+It's a It's lumping together. It's A deposit that zeros out. Oh, I'm
+
+Matthias Miller  1:04:03
+I think it's a bizarre reporting thing, but I'm not completely sure. I think it's basically the chain light act, but I'm not 100%
+
+Matthias Miller  1:04:18
+convinced, 614,
+
+Matthias Miller  1:04:25
+the 718 I'm assuming the 997 is that sales order referenced further below,
+
+Speaker 2  1:04:36
+which one? Oh, the 997 Yeah. Reference another time, and then it was also, no, that's a different one that was retrieved
+
+Matthias Miller  1:04:48
+64 so it should be about 71
+
+Unknown Speaker  1:04:53
+Yeah. I mean.
+
+Matthias Miller  1:05:00
+I don't know how deep we need to go fixing their problems. I don't know.
+
+Speaker 2  1:05:06
+Is this report going to give them what they need to start digging.
+
+Matthias Miller  1:05:12
+Yeah, but I think they should also use to me, this is also a great report to use. Okay,
+
+Matthias Miller  1:05:28
+like these top the top rows should approximately match
+
+Unknown Speaker  1:05:35
+what's in your report. Yeah.
+
+Unknown Speaker  1:05:40
+I mean, I'm missing a few of these guys, right? These
+
+Matthias Miller  1:05:43
+three, yeah, these three. How do we want to handle that? Okay, the solution would be to, I
+
+Matthias Miller  1:06:03
+I mean, but realistically these,
+
+Matthias Miller  1:06:13
+like, I am genuinely confused how we should handle this, because this was insult, but we have no record of it being refunded,
+
+Unknown Speaker  1:06:30
+right?
+
+Matthias Miller  1:06:37
+All three of these
+
+Matthias Miller  1:06:43
+Okay, this one got moved over. So this here. These are the, well, I guess you can find the top three there. One of the payments got moved.
+
+Unknown Speaker  1:07:01
+The other two don't look like it did. Or, Wow, it's this guy.
+
+Matthias Miller  1:07:07
+Well, I mean, probably some is using, was getting this is a stand. Wait.
+
+Unknown Speaker  1:07:21
+Why does that not match? So, 231,
+
+Unknown Speaker  1:07:27
+buildings.
+
+Matthias Miller  1:07:31
+This one was canceled. Let's go to this order. Oh, they moved it and the customer didn't respond. So we kept the
+
+Matthias Miller  1:07:45
+like, I don't know there is a rat's nest there, and it's not our responsibility to fix exactly
+
+Unknown Speaker  1:07:52
+so what do we do? Do I tell I can't words.
+
+Matthias Miller  1:07:58
+What I would, I would tell them that, here's the report. It doesn't match. They should compare it against this account balance diagnostic report that we built to help them find out what's going on, which
+
+Unknown Speaker  1:08:16
+I wonder if I should move this well, I made this to your IFR folder or leave it my and
+
+Unknown Speaker  1:08:38
+move it just because I
+
+Unknown Speaker  1:08:43
+it's almost
+
+Speaker 2  1:08:53
+better to have them all in one place rather than an SKU make it mildly easier to clean up. Hopefully, I
+
+Speaker 2  1:09:13
+Matthias suggests you all should go through the economic Balance diagnostic report to help trace down the discrepancies. I
+
+Matthias Miller  1:09:58
+In spite of.
+
+Unknown Speaker  1:09:59
+Is safety
+
+Unknown Speaker  1:10:09
+and for myself, let me down here.
+
+Unknown Speaker  1:10:18
+Wow, wow.
+
+Speaker 2  1:10:23
+That's crazy. How is this accounting stuff going to work in like, CRT? Are they like? I'm curious what level of granularity people are going to go for compared to what the what CFP is doing.
+
+Matthias Miller  1:10:42
+We going to guess they care a lot less. In really, all that they're asking us to do is find out there's two things they want to know. One is, can we calculate each of these numbers in a different way, outside of accounting impact, to make sure that the right thing is happening? And the other thing is, what records still have an outstanding balance on our
+
+Unknown Speaker  1:11:20
+on our balance sheet,
+
+Matthias Miller  1:11:28
+and this the latter was exactly the question that the account mount diagnostic was built
+
+Unknown Speaker  1:11:35
+exactly. Yeah, yeah,
+
+Matthias Miller  1:11:40
+okay. Thank you. Thanks. Bye.
+
+
+Transcribed by https://otter.ai

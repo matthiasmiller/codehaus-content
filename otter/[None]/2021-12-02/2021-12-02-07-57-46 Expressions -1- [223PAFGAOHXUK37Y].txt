@@ -1,0 +1,254 @@
+Matthias Miller  00:02
+All right expressions, welcome to power. So expressions, if you are familiar with Excel or have done something like that, you may have some familiarity with expressions. There are in terms of programming, there are two, there's a few different categories of programming or types of programming. One of them is strictly typed programming languages, and one is loosely typed programming languages. And one of the things you need to know is that I talked earlier about the field types, different fields have different types. And, and so in a loosely typed language, you can do something like contact name plus billing rate. And it will say, Oh, contact name is a string billing rate is a number. Uh, probably, what he wants to do is he wants to turn it all into a string. So you'll get like, you know, you know, Fred 10, or something like that, or Fred 20, or whatever the Write whatever the outcome is. That's what happens in a loosely typed language, Excel works kind of like this, where we'll just kind of coerce it into whatever type that you think that it thinks it should be. And it kind of works 90% of the time and all of that. There's another type of language, that's a strictly typed language, which basically says, okay, so I want to add the name and the billing rate and billing rates, a number names a string, and it throws up its hands and says, Hey, you can't do that. In fact, let's just try it right now. We have contact name plus oops, contact name, no contact. name plus contact incident, billing bill. ontact incident billable rate. And it says here it says you cannot add a character value and a numeric value. So one of the things that's really important to know about expressions is that each expression has to has to be one type, you can't mix and match. And if you want to turn it from one type to another, then you have to specifically like if, in this case, you can't add a number. You can't add characters or a string and a number. So you have to either change the contact name to a number, or you have to turn this into a string. So so there's functions for that. But we'll get to that. But what I want, what I want you to get in your mind is that there's different types. So what are the types of numbers it's very similar to fields, you can have a string, I'm sorry, what are the types of expressions and it's similar to fields, you can have a string expression, which is just text, you can have a memo expression, which is formatted text, you can have a number. And you can have a Boolean expression, which just simply is either it's true or its false. You can also have a list expression, which you for the most part, you don't really need to think about. Contact Name, technically, is a list expression. But you can think of it just as a string expression. So really, when you think about it, is it is it a string expression, which is text, oh, I'm sorry. And there's a date, string expression, which is text, or a date expression, or a number expression, or a Boolean expression, those are the main ones that you need to care about. Most of the other things you really don't, don't have to care about at all. So in there, so let's start with that. There is, so you can you can start with field names. So if you want to do contact name plus, contact phone, or contact let's let's go to Abby, because Abby actually has a phone, you'll see that it takes the text the name and then sticks in the phone number right there. But we don't actually want just the phone number, we want to put in a space and so we add what is called a string literal, which has quotes around it and it says add a space between it or if you want to add some dashes you could do space dash dash space, or you do a quote colon space. And it you know does a colon and formats it like that. All that's fine. I get very simple, you know, addition to concatenate stuff. Now, let's say you want to get a little fancier, you you actually do want to include the the billable rate, there is a concept of functions, functions and macros.
+
+Matthias Miller  04:59
+So what are functions? macros, a function is something that takes input and gives an output macro is the same kind of thing takes input gives output. So they may be. So here's the difference between a function, a macro function is something that the platform provides. So for example, the content instant billable rate, if we want to add these two together, there is a string function, the string function takes a number, and turns it into a string. Also a little tip for the expression editor here, Alt G, will take you to the definition. And there's also appear, you'll see that it's, well should see it there. But I guess you can't Alt G takes you to the definition. So here's the string function creates a string from the number x, that is W characters wide, padding it with spaces if it's not that wide, and rounded to end decimals. So what we want here is we don't need any extra width. But we also don't need, let's say, in this case, we don't want any decimals. So we put in zero here, and you'll see that it now just shows that or if we wanted to show five decimals, then we could show it to five decimal places. So so this is a platform like this, this is called a function, you use parentheses. And these in here are called parameters. And the parameters get passed into there. Now you can also have well, okay, and then macros are much the same way, except macros are actually written in the same language that expressions are written in. So I'm trying to think of a good example I should have, I should have looked for something but there's a date range pipe list, that.
+
+Matthias Miller  06:59
+Alright, so let's, let's take a look at this, dig a little bit more. There's a date range pipe list macro, which I will take a look at just soon, it takes two parameters, it takes, or I'm going to get rid of contact name for now. It takes a date, it takes two dates, start date and end date. And it returns a pipe list with all the dates in that range. So this part here, today is a function that returns the current date. And so we do today minus one, which is yesterday, through today. And we pass those two values into the date range pipe list. It runs does its thing, and it returns a string that has these things together, put together. Now we jump into here. This is called a macro. And you'll notice here that that whereas the functions don't show what's going on, this actually shows what's going on under the hood. And I think for the case of this, all I want you to know is that on a macro, like you can actually see the code here and see what it runs. Actually, let's dig into this just a little bit. We'll break it down. macros to define a macro. Well, actually, no, let's let's go into into into variables first. So let's say that within an expression, there's something that you want to calculate that you want to use more than once. There's a special syntax to define variables, variables are just like an algebra, it's something that you can give a name to, and you can reuse it multiple times. So here we're gonna do a variable for the V as of date. And we're gonna assign it to today for now. And so, and let's say we do assign V, num days equals one, so then we'll do and then we can even do assign the starting date is the V as of date, minus the V num days. And so we'll have the then we can do the starting date through the VI as of date. And so this allows you to calculate to take certain things and store them as a value and reuse them within your within your expression. So the syntax is a sign of the convention is to use a lowercase v, and and then a name. And then equals and then the expression. So this is any kind of expression that you want to have. If you wanted as of date to I mean, yeah, I mean, you could you could do that if you wanted to. And then suddenly you see from yesterday and the day before showing up Any quite good
+
+Speaker 1  10:05
+question. You said syntax of the sign. Convention is the Could you explain a little bit more what you mean by syntax and convention?
+
+Matthias Miller  10:13
+Okay, so sure syntax basically means there are specific rules for how you have to type things in, and what things do you have. So, so the syntax, so syntax means these are unbreakable rules, you have to have a sign spate or in some kind of whitespace. It doesn't have to be a space, but I'm sorry, let's let's do this syntax are unbreakable rules, this is how it has to be you cannot say you cannot say assignment, V as of date, like, because that's against the rules. Now, it is within the rules to say, as a, you know, do something like that as of date. So that's syntactically Okay.
+
+Unknown Speaker  11:01
+Hmm.
+
+Matthias Miller  11:04
+You syntactically are required to have an equal sign, and you're required to have some kind of expression. Okay, convention says, and syntax will allow you to do silly things like this. It will not allow you to delete the semicolon, you can have all kinds of whitespace in there, you can have all kinds of names convention is to do assign space. And then these may be on multiple lines, if it makes sense. But typically, there's also an auto format here, an auto format feature that will kind of reformat your whitespace and make it look nice convention is to use a lowercase v for variable. And then a, what we call Well, in a title case, variable name. It's also somewhat conventional to have some kind of, like, if days is a number, I mean, num days and sometimes indicating the type in the name is isn't completely uncommon. cetera. So that's a difference or anything else.
+
+Matthias Miller  12:17
+Alright, so jumping into date range pipeless, the way macro works is it's the same way except there's a parameter keyword. And it says, These are expected as parameters, which means that you have to put in a blank value. So there are things called literals, which is basically like we've looked at the string literal, this is a string literal. This is a number literal, or you can do even like that. And this is a you can reassign these, which if you there's rare, rarely that you'd want to but you can I mean, there may be situations. And then there are date literals date literals are probably the goofiest, it's just square brackets with the date. So we could actually reassign the V as a date to January 120 20. Which we should really do. Up here, so that this is starting to calculate correctly, and then it shows 1230 111. And so the way that blanks are handled, then if you want a blank string, it's this if you want a blank number, it's this the default boolean is false. And the date default date is bracket na bracket bracket. Adding anything doing any math with Na results in NA or doing any any comparisons of any type will always be false. Nothing can be equal to na except perhaps I think na can perhaps be NA is equal to na but it is not equal to anything else. It is not greater than it is not less than it is just not anything else. So in the date range pipe list what it was, that was all a bunny trail to explain why on the Assign parameter, we have to assign it to a blank value in the macro definition because we don't know what the value is going to be. That's going to depend on what they pass it on when they call it passing is just again a term used to this to basically pass these values into the macro or function parameters so that we can reference that and then From there, the way this macro works is it turns the date to a number, which is a numerical representation and the number of days since January one at Navy, or negative indicate before that, change the nd to a number and we generate a numeric pipe list of all those numbers. Then we do a list substitute, and basically what we do or we can break this Yeah, so basically, that we take that pipe list, which is like maybe you know, 14 1516. And the list, substitute function takes a list for each item in the list, it does something with the item, and then it returns the new list. So for each item in the number list, it comes in as a string, we turn it back into a number, we turn it back into a number to a date, and from from a date back into a date string to come out as a pipe. So the reason this is a string is because the list because it's a pipe list has to come in as a string. So this comes in as a string, we know that these were are actually numbers, so we can turn it into a number value. So now it went from a type string to a type number. But we actually want to work with dates. So we use the inverse of data num to turn it back into a date. But in order to put it back into a pipe list, it has to turn back into a string. And so it comes back out as a pipe list. So that's here, let's actually, we can actually do this. Let's break it down a little bit. So let's say
+
+Matthias Miller  16:59
+so here's today's number. And let's work through the here, let's actually do this 14 910 We're just going to hard this card, get this in here. And we'll we'll break through the process. So this is just Alright, so we're not allowed to do that. Let's do this. Alright, so by the way, brackets, curly brackets like that are used for comments, which means that they're just ignored. So you could put explanations in there, which is helpful. So here, it's a string, which you can't really see from here, but it is and then you let's we can turn it into a number. So now that's a number. And now let's turn it into a date. So now it's a date, and you can actually do math on it. And then we want to turn it into a string, because this is what the output is going to look like. So that's the sequence there. Any questions on any of that so far?
+
+Unknown Speaker  18:23
+You're staring at you with
+
+Matthias Miller  18:27
+glassy eyes and head spinning I could keep you know, I mean, I'll keep rolling and keep trying to explain.
+
+Speaker 1  18:42
+That's fine. Man, even if we think this type of thing that we are getting in for myself, I'm I'm getting a lot of information here, it's going to take some processing and review and using it. People continued input.
+
+Matthias Miller  19:01
+So here's, here's what I would like to see the most effective training I've seen on this. And the most effective training I think I've seen it for programming in general is a is a learning do approach. And I don't typically have the patience to break this down into a series of steps. But what would be awesome would be to have a a step by step process. So let's start with here's like a basic expression like we saw, like here's add these two together, and this is how it works. And then let's add a little bit on top of it. And here's how that works. And let's continue adding it on top of it. And so ideally, we'd actually have have something for that so I think I think I don't know if I don't know what this should look like but I kind of like to toss this back to to to you and Mindy. You guys have like what would you guys need for me to put for me to put together something like like that. or you could start building out out some of those components by piece. And actually have exercises that you could work through.
+
+Speaker 1  20:08
+Mm hmm. I think it would, would involve discussing where this where we would be using it and, and
+
+Unknown Speaker  20:20
+use cases, use cases,
+
+Speaker 1  20:21
+right, and then maybe building some practical practical exercises out of that.
+
+Matthias Miller  20:31
+Yeah. And one of the things that we talked about here, which you kind of touched on here, so, so one of the one of the things that's useful in understanding these and how these work is understanding order of precedence and understanding how operate like, it's almost like learning how to read a language. So in this case, this is a Boolean expression. And so or is kind of the great divider between all of this stuff. So as you're looking at it, conceptually, what you should be doing is in your mind, you should be breaking this into two parts, the part before the order, and the part after the order. Now let's look at this part. Now, what you should be looking at is, okay, well, we, we can see this as a function. Here's the function is, is NA. And if you know if you need to know, then it says returns true. If it's numeric, and Na, na, or an empty string, you'll see that it's a Boolean function. And you'll see this, you can look in and say, Oh, this is a numeric ask prompt, but if you named it according to convention, then you'll be able to tell that from the name as well. It's why good names are so valuable. So that will explain Okay, so if, if the minimum length is blank, then we should include everything include this record, if the minimum length is blank, then you can go into here, and your next dividing point should be between the greater than N equals equal comparison. So now you now you're looking at, at this part, it's split into two parts is, is this greater than or equal to the other? So what is this far? It's a function looking at county name, how many characters are there in County? And how does that compare over? Versus the minimum length? So if it's nine characters, and the minimum length is three, then it's a yes. Again, when you're looking at comparisons, it can be helpful to look at like, what's the number right above it, right? Right below it right beneath it. So should it should this be greater than, or less than, or greater than or equal to, less than or equal to? So in this case, you could do greater than, but then, you know, you think through like, okay, so if county name is three and min length is three, then actually we should include it, so should be greater than or equal to. And then you can kind of zoom back out. So if it's, so either it's blank, or the length is greater than or equal to that. So that's, so subsets are Boolean expressions. And those are, those are, you know, I mean, it has to be, that's the only way for subsets to work.
+
+Matthias Miller  23:13
+county name, okay, so, so, but a lot of other things that may depend on the context. So on the Sort By, we'll go into this because there's a handful of things that you may want to use here, you may want to do a sum. So most likely, you'll do like a name. But if you want to include a date, there's a function called a date sort string, that is a that is today are like data source string, something like that. And what it does is it turns a date
+
+Matthias Miller  23:50
+it turns a date into a numeric value that can be sorted by year, month and day. Something else that you might want to do is a there's a function called pad CH, or pad care. So you might want to take if you want to do a number, you might want to sub pad care. So pad care, takes a string lengthens it to length x by padding it with a character C, so C is in the middle and then comes x. So then we'll we'll do padded with zeros to whatever the maximum length is. And so if we come over here and evaluate it, you'll see that oops, pad actually, what we want is pad L, which pads it left. And so that turns it into a string that can be sorted effectively. If you if you sort it just as a straight up numeric value, or sorry, if you take a number and sort it as a string. Then you'll end up with
+
+Matthias Miller  25:08
+You'll end up with things like this, which totally does not make sense. So if your sword expression is a string, then you want to left pat it with zeros, so that when you actually go to sort it, get sorted like that. It's one of the reasons why I name all of my folders, any file that is dated. I named like this. Because that way, when I sorted, it's sorted by date automatically. I see all kinds of people doing like October 1020 20. And it's like, so all your October's are grouped together, and then your 10s in October one is grouped together, I just think it's confusing. And witnesses, I mean, when as it's getting better at sorting some of those things naturally, but even then there may be times where
+
+Matthias Miller  26:16
+I think another some other major things that you might run into are there's functions called left, which returns a left X number of characters, there's a mid that will return part of a string. Right, there's a right function left of so this might be for county desk, you want to find everything left of the first space, everything right of the first space. There's situations where you may want to do replace Na, where if the contact phone type is blank, then instead, you know? Be Oh, it's the right that's the wrong record. I mean, it's the wrong type. But or if if it's a date field, that if like here would be another example, where we ask date, if if you have an ask problem, it's a date and it's blank, that you that you replace it with today. Treat it as if it were today. Other major constructs would be if statements. So if is like a function, so if true, then a else B. So if we go over here I don't need that. Let's find somewhere where Let's go here. So if if if it's true. So if I mean we could do if today is 1027 2020 Then do a or if today is 20. You know, if we compare it against 26, then we'll get B instead. So, it will look at this expression if this is true, it will return this expression, otherwise it will return this expression. Another very common construct other things like why and string you might use this for for sorting. So if you want to turn a Boolean into sort expression, this could be good. If count contact active, you may want to have the active first and the inactive seconds. This would be a good thing for a group group expression or sort expression.
+
+Matthias Miller  28:58
+Boy, I could go quite deep on this. We have got there's a few other things I'll just touch on at least. Pipe lists are very common. So there's I talked about lists substitute. There is a function called numeric pipe list. That is that returns a list of numbers. This is useful if again, this is kind of advanced. I don't think we're going to get into too much stuff here. There's a sort pipe list that takes a C B or C CDA and sorts it. There's a sort of pipeless natural that will take c to c 14 Ursi. Let's do this See 32 Now see 18 And I
+
+Unknown Speaker  29:58
+will source elements removes that's not natural sorting I'm not sure that's an astral sorting, I'm not sure
+
+Matthias Miller  30:26
+and then there's a pipe list remove duplicates that removes duplicate items from pipe lists. Another major thing you may run into is if you're on a let's say you're on an incident
+
+Matthias Miller  30:56
+Alright, let's say you're on an incident. And so this may be in an incident level report. Then, and you want to end you want to find information from the assignee. There is a function called lookup level field that takes a list value, so in this case, it would be the incident assignee. Then the second parameter is an expression from that record. So you could say incident assignee I want to find so because it's the insert assignee as a contact, I want to look for the contact phone type,
+
+Unknown Speaker  31:32
+or contact address type, let's find something that actually exists on the record.
+
+Matthias Miller  31:39
+Contact billable contact incident. Let's find the billable rate of the current incidents assignee. So it looks at this value and gets this now there's sometimes depending what you do with this, that it won't know. Like, let's say you do it we'll be able to figure it out from here. Sometimes it doesn't know what type. What look at type it is, there are times when you have to pass that in. So it's just the list name of the of this field. So this is like incident incident assignee. Again, that's pretty advanced. There's also something called concat lookups. That will look at all contacts and get the contact billable. So because it's concatenating, all things, all of them into a single string, you will get the billable rate you want all followed in the habit specified and a pipe list. So so this will go through all contacts, it will turn the billable rate into a string, where the billable rate is specified delimited delimited, by a string and by a pipe, or you can do comma. If you do pipe, it will automatically remove duplicates for you. Now you can also do contact. So if you want to find everybody who has a billable rate, you can return the contact name and return the incident billable rate. And then here you can see all the contacts in the database that have that specified within a report, most times you can probably just put the expression in here but we also have the ability to add macros within a report. So if there's an expression that you're using a lot, you can put it in here. So let's say you're and then and then you can just use look macro instead of all that stuff that was in there. So we'll see actually here there's a very complex macro that is used for searching so there's like alright, and then I guess one last thing on these these can be used these expressions can be used many different places. It can be used in columns, or in and ask prompts some of the default values. And they can also be used in the advanced into the footnotes. You can put them within the pounds and they can be used there. So there is a jumping, diving off the deep end with expressions like how can I make this stuff clear? We didn't even talk about our GS which we can talk about In my here, my headsets dying, I'm going to switch over to my external mic. And I'm going to All right, can you guys still hear me?
+
+Speaker 1  35:28
+Yeah? Well, I mean, this has been really? Yeah, so deep dive, drinking out of a fire hydrant, especially this last session. So, yeah, I think we'll take some
+
+Speaker 1  36:04
+yeah, like I said earlier, some processing and handling practice and stuff. And read what reading rewatching this or looking at other things via the other resources to even like, like all these different things that you can enter and all the different, you know, what the, what to use for the greater than less than we saw you do some of that stuff. But you know, what, you know, I'm used to writing greater than less than, you know, with, with a flash in between or whatever. So, whatever. Yeah, some of those things do this specific things you would enter, just knowing what to enter when it's going to take some, some practice and some reference probably reference dictionary or something that no till get up to speed on it.
+
+Matthias Miller  37:11
+I think I think building some more building
+
+Speaker 2  37:15
+blocks is probably what would be most helpful with this.
+
+Matthias Miller  37:24
+I probably had to put some more water, we'd have to put some more thought into, into what those specific building blocks would be. I mean, there's, there's this whole thing I mean, we go into operators, like divided by minus plus times power of we don't modulus is not something that you would use much. But there's a modulus function, which basically gives you 10 mod three is one because it's the remainder, remainder after division.
+
+Matthias Miller  38:07
+Common string manipulation functions, like what functions you need to mess with strings, I think I touched on a good bit, a good number of them. But maybe even maybe breaking them down more sequentially. into like, here's, here's how you work with dates. Here's how you work with numbers. Here's how you work with, even with dates. Like there's a there's a date function that takes something takes numbers and turns them into a date. So if you want to get January, one of the current year, you can take a date, and for the year parameter you pass in, there's a function to get the year of a date. So this returns the year as a number. And so you can pass that in as that parameter and returns January here.
+
+Matthias Miller  39:02
+So there's a day, there's a there's a month function. There's a weekday that returns. Today, as a weekday starts on I think certain it's on what Sunday 123 There's a weekday name, I think that's actually a macro that returns it as a name. There's a date, string, or date, format string. It makes me wonder how well it's documented. But basically, it's very similar to the Excel formatting where you take so here's the here let's do one 120 20. So, single M is single month, double M was leaking 03 letter month, full month and then you have day Without a zero day with a zero review today, full day, you have two digit year, four digit year as a as formatting options to format your, your date, appropriately. So breaking I guess what I'm trying to say is what would be really helpful is to have a more systematic approach of like, how do you work with numbers? How do you work with dates? What are the functions? What are the core core functions that you use for those? How do you work with bullions, one of the things we didn't get into either is parentheses. So this is, I mean, it works just like math, like like you would have learned in math 13 minus three times three, which you can do that, or you can have an expression where if true or false, and other condition. So you have, you have two conditions here, one of them must be met. But this third condition also has to be met regardless. So this gets evaluated first. And then this gets broken down. So So diving deeper into kind of those Boolean logic. I might, My instinct is to say, can you and you and Mindy should probably go through this, and extract and try to categorize and kind of put together where you see. I don't know, I don't know if this is right or not. But this is this is kind of my instinct, kind of put together the overall gameplan. Like, these are the categories of things that we recovered.
+
+Matthias Miller  41:51
+I think maybe having some of that structure could help identifies where some of the gaps are. Doing What are you thinking?
+
+Speaker 3  42:05
+Okay, too many thoughts going back and forth? On some things. I'm just gonna remain quiet for a moment, for the time being. I mean, very cool. I mean, suffice it to say that, as you've talked, my brain is about a year down the road on how we want to use. I mean, this was this has been more informational on understanding what to ask for. In the future, probably. There's a few things, I think over time, where, especially on the reporting side, where I can start to build reports
+
+Unknown Speaker  42:45
+for myself, which is which is really, really good. But yeah, you've you've lost me someone this expression stuff, and that's fine.
+
+Unknown Speaker  42:57
+Yeah. Yeah, I think I think it's, yeah, yep. Make sense? Good feedback. And I think to be fair, there's some of this expression stuff that
+
+Speaker 2  43:13
+is helpful to have context understanding of, I don't know how much is actually practically used in a day to day basis.
+
+Speaker 3  43:23
+I should probably say this, you haven't lost mem. And all this stuff makes sense. To me. It's where to apply? It is probably the bigger question that I have. It's like, I mean, nothing that we've talked about today is beyond. I mean, this all has, you know, we do this, this over another sequel software that we use. And so all this kind of makes sense, but how to use it as the bigger question.
+
+Matthias Miller  43:48
+But I think part of the challenge is what kind of reports you want to create? And what kind of information do you want to extract? And it's hard for me where I'm at to, to say, I mean, there's very common constructs for syntax, like syntax will often say, if is an A ask prompt,
+
+Unknown Speaker  44:14
+or
+
+Matthias Miller  44:18
+some kind of prompt condition. And isn't a ask prompt to or some kind of ask prompt to condition. And so this is a very common metaphor that's used or not metaphor, but thing that's used for subsets. Because often, you have multiple ask prompts that you're filtering by. So that would be another way to kind of categorize like, what are some common idioms for subsets? What are common idioms for sorting? A sorting, I don't think it's as big of a deal to be honest. Maybe Is totaling could be. I didn't go deep into the different types of total types, we have some percentage average median, standard standard deviation, I don't expect you to use much min max product running some expression may use less than pipeless. Sometimes a lot, you know, mixing and matching total numbers. Although to be fair, some of that you can just run the report and learn Excel and make a few tweaks. If you wanted to. Mindy, what are your thoughts on all this?
+
+Speaker 4  45:36
+Extra with mean it's not last but it's just when to use it and format? And not what format but what exactly are you wanting to find?
+
+Matthias Miller  45:51
+Right? For many of our reports let's take a look at this. This is a fairly complex report. This is really a complicated report. I wonder if there's one that's less complex? This would be a good one. Maybe a better one.
+
+Matthias Miller  46:48
+Here on the subset this is we have oh, that's not it. I mean, okay, so this one again, that that gets complicated. But this report is sorted by contact name. It shows shows the name, we have a special macro to calculate the hours worked. Special macro to show the time off special macro to show the effect of hours even this isn't a good one.
+
+Speaker 2  47:17
+Because that ends up getting more complex as well. See what incidences like incidence is also going to be somewhat complex.
+
+Matthias Miller  47:28
+This one could be getting closer. Now with this, this is one report with multiple views. This is getting complicated as well. Some of these standard reports and I'm getting getting pretty complicated. This could be an example. Here we're looking at time off requests. So if we're viewing might if if we're not just viewing mine, which is means we're reviewing anybody's, or the time off request employee is the current user. So we have an ask prompt here that says do you want to show my time off or all time off. So if it's my time off, then we show show this another way that you can write it that would be simpler, would be like this, if asked view is my time off. Then then record then only show for the current user, I'll show all and then maybe a simpler way to think about it. The columns then most of these columns are just fields, from the field names that we're showing. Grouping, we have a something called a local macro, where we're grouping based on the date string and the request ID. So the date source string is what we're using here. This could also be a left padded read time off request, but we're using the pin string function to again is advanced. I don't I don't know that. I mean, yeah. And then we're showing just showing the requested date on the grouping label. The ID doesn't mean that much. We're repeating on the requested date. So we're showing each item once per date and it's being requested. So that one gets closer to something that you might expect But I think a lot of reports you can write just with a good subset with with maybe a few ask prompts to help filter, a good subset, and then just field names as columns. I think 80% of the reports that you write are going to be that maybe some grouping. Good. All right. Well, I mean, I'll happily entertain more questions. I guess we're past the wrap up time. And we can give us some time to set. A good
+
+Speaker 3  50:55
+example, people aren't going to ask them questions, I'm going to go work. So I'm looking into, as you're talking, I'm trying to figure out how some of my reports are built. In particular, where some of the math is done. So obviously, there's there's math being done somewhere that's returning information, but trying to figure out wearing it's being done because it's not being done inside an expression in the report itself.
+
+Matthias Miller  51:30
+So what is a Well, the question would be, is it a total? From a grouping row? Or is it? Or is the mat? Is the contents like here? Is this a macro?
+
+Speaker 3  51:45
+Well, okay, so let me see here. So I know I'm using specific stuff out of our site and stuff. So it it, I'm gonna have to try to right ask the correct question.
+
+Matthias Miller  52:05
+If you let me know, I mean, if you're looking at a specific reporting component on my site, and we can maybe talk
+
+Speaker 3  52:09
+about it. So dashboard diagnostics cache. Yep. Where is the one I'm looking for?
+
+Matthias Miller  52:30
+Oh, all right. So and this one. First of all, notice that there is a repeating list for each week of the year in the advanced settings.
+
+Matthias Miller  52:51
+So this is a district level report for every week of the year, and then in your columns, let's go into if you hit the expression editor on like the district dash, we call stats like the
+
+Unknown Speaker  53:11
+I guess the cap. Let's do cash available. There's gold. Cool. Yeah, column five. You open up the expression editor on that.
+
+Unknown Speaker  53:24
+Well, column six actually comes next.
+
+Matthias Miller  53:27
+And then click in the district dash diag Cashville avail weeks and hit Alt G what just happened? And so that will take you into
+
+Speaker 3  53:44
+Hold on a second. Oh, gee did not work the way you thought it would. What just happened? Okay, here it is. Oh, gee, also apparently ties to my LastPass account. Okay, now I'm back. Oh, yeah.
+
+Unknown Speaker  53:59
+Sorry. It's pretty obnoxious, but it does.
+
+Unknown Speaker  54:03
+I had to come back in there to Okay.
+
+Matthias Miller  54:06
+So then we take the we take the year the week we turn it into a date. I think the
+
+Unknown Speaker  54:17
+see this is what I was looking for. Okay.
+
+Matthias Miller  54:22
+And then the data just Okay, so you can look for date for week num. See how that works. Basically, it takes a year and a weekend and a weekday and turns it into a date. Then you have the fence that I mean, then I mean, you can keep digging as far as you want to in here
+
+Matthias Miller  54:50
+some of this reporting stuff, quite frankly. I would. I mean, you're welcome to probe CBS deep as you want to
+
+Speaker 3  54:59
+call it That's what I was looking for the the to get to get that to get into the deeper part of what actually is going on there because it wasn't. Okay, that makes a whole lot more sense. Because I think I can find some of my information that I had scheduled with Josh to actually find out what if I, if I dig long enough in this direction, I might do a find what I'm looking for.
+
+Matthias Miller  55:23
+Yeah. Yeah. Yep. And if you trace this far enough, eventually, we need to get OG you'll get, you'll get to a field, and they won't have any kind of information. And those are from the actual record itself.
+
+Speaker 3  55:46
+Yeah, this is super. Okay, this is super helpful, super, super sick metaphor. What else. So go back to I want to go back to a multi pane report type thing that you talked about. And this comes from what we're going to want to build out for when we start adding time tracking to buildings, building profitability per week. So theoretically, this is this is theoretical, this is what I wrote down, we should be able to do a multi pane report where if we have a week of profitability numbers, that that would be clickable that would be able to drill down to what buildings are inside of that week, that would be able to drill down to all the inventory numbers tied to that.
+
+Matthias Miller  56:45
+And do something approximately like that,
+
+Unknown Speaker  56:48
+at least. Yeah. Okay.
+
+Unknown Speaker  56:50
+I can't think through the specifics. But yeah.
+
+Speaker 3  56:54
+Basically, you would have you would have a date for you, you would have a date list, that would be tied to production numbers for that week. And if the if the date is that or if the date is clickable, where it would bring up all the buildings that were assigned to that date for the production numbers for that date, and then being able to select individual buildings, which would then give me all the inventory that was inside that building, as well as its time tracking, as a way of being able to chase down information really, really fast audit reports that we're going to want to build out of that. Yeah. Does that make more sense?
+
+Speaker 2  57:30
+Yeah. Yeah. Yep. So it was it was
+
+Speaker 3  57:34
+something I wrote down before we even got there. And then you kind of covered it. I wanted to make sure I was understanding that it's, yeah, that's, yeah, super helpful.
+
+Matthias Miller  57:45
+And again, the simple way to think of it is it's like multiple, multiple reports. But then you can pass information from the selected record as an asset crop into the next one and into the next one. Exactly. However, do you. That's all I got. Very cool. Sounds good. Well, we will call it a wrap. So tomorrow, tomorrow, doing joins getting kicked out again. And we'll be taking a look more at this specific kind of design process. How do we actually approach this? How do we extract this information from from the client? How do we put all these pieces together in a way that it kind of makes, I guess, kind of makes sense? So that's pretty much all I think it's a pretty proceed you guys have been doing? It was good having you. Hopefully, this was sounds like it was helpful for you.
+
+Speaker 3  58:42
+Super helpful. And I mean, like I said, you might have opened up Pandora's box.
+
+Speaker 2  58:47
+Yeah. Well, here's my disclaimer for Josh. My disclaimer for Josh is
+
+Matthias Miller  58:55
+there's enough complexity in your system, that if you start digging too deep into reports and get in over your head hole, may come back around around to me and he's like, why didn't you ever tell Dwayne about all this capability? But
+
+Speaker 3  59:08
+where I think I asked better questions.
+
+Matthias Miller  59:12
+Exactly. I think that's, I think 100% That's gonna be that's the biggest value for you is having understanding. I don't have
+
+Speaker 3  59:21
+time to learn this stuff. So it's not like I'm gonna kick him out of a job.
+
+Unknown Speaker  59:26
+We're not worried about that
+
+Speaker 3  59:30
+might make his life difficult, but that's probably more of a concern than then than the other. Yeah. Yeah, exactly. Great.
+
+Unknown Speaker  59:40
+Cool. Awesome. Sounds good.
+
+
+Transcribed by https://otter.ai

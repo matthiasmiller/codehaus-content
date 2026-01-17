@@ -1,0 +1,647 @@
+Speaker 1  06:03
+My apologies. My last meeting went a little bit long, and I had to run to the bathroom before I could jump into this one.
+
+Matthias Miller  06:11
+I guess it's forgivable. Thanks for not taking the call from
+
+Unknown Speaker  06:18
+the bathroom. Video Call in the bathroom.
+
+Matthias Miller  06:23
+Oh, my goodness. All right. Things burning
+
+Speaker 1  06:29
+on my mind today, go for it. I want to nail down tax jar, sales tax, tax jar, at least, at least tax jar nailed down. And if we want to chase after any amount of, well, no, okay, let me back up. Actually, there's three things burning on my mind. One, I'd love to see what came out of your spec cleanup. That is, that is definitely, I want to see what you got there. But the other two things are tax jar and sort of acting some of the thoughts from the customer portal. Awesome.
+
+Matthias Miller  07:09
+All right, so let me I think both Seth and I were just we felt way, way different by the time we got through after cleanup. So we surface a ton of items. I do. I just need
+
+Unknown Speaker  07:27
+to get my TV back
+
+Matthias Miller  07:30
+in here. Yeah, you do. I mean, I'm getting ready to ship you buy one and ship it there. Just so you
+
+Matthias Miller  07:45
+Yeah. So we have kind of our really big stuff we need to talk through up top here. Then we have a December section of what's yet to do for December. We have the spring section for go to market, and we have everything that's done, like, a like, and then we tried breaking a bunch of this stuff apart. And, I mean, anyway, it's just like, instead of big rambly records, create sub, sub things that's a little easier to wrap the heads around. And you uh,
+
+Unknown Speaker  08:23
+what were the giant holes you found?
+
+Matthias Miller  08:30
+Um, oh, stuff like CRA conversion, I don't know, non monthly payments. Is that? You know? What? Where do we some of this stuff? I think we need to take two things. One, well, I mentioned this my in my text. We need to hit design if we're going to keep the guys busy next week when I'm gone, and also, we should be absolutely white knuckled. And probably need to act some stuff to hit our December timeframe. So let's just be mindful about about scope. With that do
+
+Matthias Miller  09:15
+you want to start with texture?
+
+Speaker 1  09:17
+Well, in the, in the in the interest of what you just said about axing scope, which is going to be okay, let me ask a question around sales tax before I say, what is about to say if, if we were hooked up with tax jar, are we still going to store a list of, are we gonna still? Should we? Should we still store a list of of whatever you want to call records around city, state, like combination records. I don't know what, I don't know what you want to call them, but essentially, if, if tax chart gives us back a. Response of you know, hamptonville, Yadkin County, blah, blah, blah, like, are we going to were you thinking we would store that only on the record that it's a tied to, like, the contract record, or should we store it as a central database record that contracts point to? And there's very, very specific reason I'm asking for because if we're going to build a a core repository of these things, then I almost wonder if we push, we punt sales tax or tax jar integration till later, and we just build the manual repository of sales tax responses, and essentially, now you have manual sales tax records.
+
+Matthias Miller  10:53
+Well, I'm trying to figure out if tax store is doing anything funky about sometimes a certain state tax is,
+
+Speaker 1  11:19
+And here's, here's, here's the my thoughts process, if we, if we pinged once a month when we're filing sales tax in the future, I'm saying, if we're hooked up with tax jar, right, you're only pinging on the records that you currently have. Well, the ping load is way lower than if you're pinging for every single record, like every single contract in the system.
+
+Matthias Miller  11:47
+Well, if you're okay, so if you're fine, okay, here's what I don't know if. I don't know if, well, maybe we could actually figure this out. I um,
+
+Speaker 1  12:05
+and by the way, in answer to which platform we're going to go, we're going with tax jar, because we already have tax jar accounts for some of our RTO companies, so there's no sense in trying to reinvent that wheel. Let's just go tax jar.
+
+Matthias Miller  12:17
+Okay, do
+
+Matthias Miller  12:29
+Okay, let's not waste your okay. If you're fine pinging every single address. So if you have 1000 if you have 500 open contracts, you'll Ping 500 times for a given period. If you're fine with that,
+
+Speaker 1  12:51
+that's no that's what I'm trying to avoid. Okay, so you're
+
+Matthias Miller  12:55
+wanting to, okay, so here's, I think here's fundamentally the question. So if we go into this is tax exempt, you stinkeroo.
+
+Matthias Miller  13:13
+Here, let's do because
+
+Speaker 1  13:19
+kind of what I What's In My Head is I want to ping on new contract entry to see if we, if we already or do not already, have a record for it the database. And then, literally, if you're pinging for new contract entry, and then monthly, when you run sales tax, you you, I'm assuming you can ask tax jar and say, I've got these combinations in my database. Are they still good for this rate? Question mark, yes or no, or does it only work by address?
+
+Matthias Miller  13:53
+Okay, let's, let's do this. I think this is a i
+
+Matthias Miller  14:06
+So what is this guy? Apple Creek? Let's not do we can't do
+
+Matthias Miller  14:17
+it. So these guys are quotes we're getting this in. Well, let's just do this not
+
+Unknown Speaker  14:27
+what size your TV.
+
+Matthias Miller  14:29
+I think a 42 inch. I
+
+Speaker 1  14:47
+I don't see what kind of sales Amazon's currently,
+
+Matthias Miller  14:52
+okay, so it looks to me that, okay, that's what the tax city rate
+
+Speaker 1  14:57
+extra TV sitting here, I'm an idiot. I. Just sorry, squirrel brain
+
+Matthias Miller  15:04
+County, county rate. Okay, this probably still needs a conversation with texture just to confirm, but my assumption was, ah, here's something.
+
+Matthias Miller  15:35
+Here we have. These are at the same time. It's in the same county, but it's a different county rate,
+
+Unknown Speaker  15:48
+but then I mean the same state,
+
+Matthias Miller  15:51
+state, Virginia and Ohio. Okay, fine, fine, fine. Be that way. Be persnickety. It's kind of important. So okay, so texture, lookup, rate API,
+
+Unknown Speaker  16:19
+it's probably only checking the zip code
+
+Matthias Miller  16:21
+show tax rates for given location.
+
+Unknown Speaker  16:32
+You note,
+
+Matthias Miller  16:38
+but see, we don't have a way of
+
+Matthias Miller  16:59
+a they Don't give us a way in the API to say
+
+Matthias Miller  17:12
+you have the country, state, county, city,
+
+Speaker 1  17:15
+yeah, because zip code is not the zip code is the you can have multiple different rates for a zip code, and
+
+Matthias Miller  17:23
+they don't, they don't have a way to say, here's the unique code for this.
+
+Unknown Speaker  17:31
+So it does have to be address.
+
+Matthias Miller  17:35
+I mean, you can make some assumptions, but I don't know that they're accurate assumptions. You can make some assumptions that if,
+
+Matthias Miller  17:48
+how are we getting the other
+
+Matthias Miller  18:04
+So, okay, that's what it looks like to me, unless you want to contact them and ask them, Is this true or not? It looks, it does look to me like we do have to ping every single address now a we can consolidate for customers,
+
+Matthias Miller  18:28
+we could say,
+
+Matthias Miller  18:40
+Is there a way to say when does this expire?
+
+Matthias Miller  18:58
+That should be collected So we have from to
+
+Speaker 1  19:30
+Oh, for Pete's sake, never mind what the world here's the deal. I'm okay. I'm looking I finally found their, their their pricing
+
+Unknown Speaker  19:42
+to process 1 million it would cost $37,000 a year.
+
+Speaker 1  19:55
+So wait, what does that comment? Okay, so still. Um, oh, come on, seriously, Apple, you can't put the commas in for me, so I can tell you what I'm so I can see how far I went. That's 10 million, okay? Divided by 12, that would be 83,000 Yeah. But there is a world where that could be actually a number that we would have to deal with if we absorb the ping. Okay, we're gonna just gonna, we're gonna cross this, this, this threshold of whether we pass this cost on into the future. It sounds like if we're going to do this, we, we either go, we either go pinging for all addresses and or you go manual sales tax records. You have to pick either you're totally Manual in your sales tax compliance, or you use tax jar. I don't know. I don't know there's, there's no other way around this.
+
+Matthias Miller  21:05
+I mean, no,
+
+Speaker 1  21:10
+but I'm, but I guess what? I'm really, really curious. I I would love to know a way. I'd love to know if RTO is smart. Are they every time you go to run sales tax? Are they pinging for only new stuff? Are They pinging for to check sales tax rates,
+
+Matthias Miller  22:00
+oh, I Can't see the pricing. So besides, That looks great.
+
+Matthias Miller  22:20
+Literally, we have no,
+
+Speaker 1  22:29
+oh, wait a minute. Wait rate lookups are counted as 1/10 of an order towards Oh, goodness, let's, let's just go get it done. Just so you
+
+Matthias Miller  22:39
+might actually only be looking at, instead of 8000 you might only be looking at only be looking at 800 bucks a month.
+
+Speaker 1  22:46
+Well, it's okay. API tax calculations or rate lookups that we provide are counted as 1/10 of an order and and so I think the let's see monthly order limit. Monthly order limit, okay, if that's the numbers they're telling me, that means you could,
+
+Unknown Speaker  23:07
+if this number is in monthly then 200 orders becomes times 10,
+
+Matthias Miller  23:16
+2000 contracts. Yeah.
+
+Speaker 1  23:20
+Now, if you are, if you're paying sales tax, each one of those becomes one order. So I guess it depends on the like, if you want to, this is why, okay, this is why they're saying, if you want to, if the ping we're going to absorb. But if you, if you want to actually pay your sales tax, you have to pay for it. Okay, so let's just, let's just, let's just go with tax jar and be done with it.
+
+Matthias Miller  23:44
+All right, so are we basically doing, are we doing only tax or not manual?
+
+Unknown Speaker  23:56
+Yes,
+
+Unknown Speaker  23:59
+only tax return nut manual,
+
+Matthias Miller  24:02
+and we are doing this whenever we incur. Are we cashing this in any
+
+Unknown Speaker  24:11
+way? How would you cash it? You
+
+Matthias Miller  24:14
+would just cash on a monthly basis. Well, basically, if you, if you calculated, if you did a ping,
+
+Speaker 1  24:19
+yes, we want, we would want to cash it. So if you ping and that, if we have other ones in the system that are the same, then it would update anybody else that has the same combination.
+
+Matthias Miller  24:31
+Well, it's address, really, I mean, it's, you catch it on the customer record,
+
+Speaker 1  24:35
+so it but it's city, state and zip right.
+
+Matthias Miller  24:39
+No, because there's a there's a there's a district, like, there's a further jurisdiction, like, you can have a city with you can have a city with multiple codes, and even counties can have multiple codes depending on
+
+Speaker 1  24:52
+location. It's based on city, state and zip. It's not, it's not address
+
+Matthias Miller  24:56
+based on yes, no, it's based on address. It's rooftop. Mm.
+
+Unknown Speaker  25:00
+Okay, so then. But I mean, how would you cash it then
+
+Matthias Miller  25:05
+on the contact record or the or whatever? Okay, if you're on bi weekly payments, there's not a reason to Is there a reason to ping it twice for the same month? No, probably not, like most I would assume maybe I'm wrong.
+
+Matthias Miller  25:34
+That make any sense, or does it literally not matter? Okay?
+
+Speaker 1  25:38
+Is it? Is it okay? Who's it? Are we gonna? Let me ask a couple questions. Let me think this through. If Is there a way to say like there's going to be crossover on, on city, state, jurisdiction, blah, blah, blah, there's going to be crossover between customers, right?
+
+Unknown Speaker  26:02
+Yeah.
+
+Speaker 1  26:03
+So how can we, if one, if you ping, because you entered a new contract and there are other records that share that same combination, can we, can we update those as well?
+
+Matthias Miller  26:16
+So if, if, if the old percentage was x and it changed to y, anything else with that same city, state and zip and sub subdivision with the same old percentages moved to the new percentage values, right?
+
+Unknown Speaker  26:32
+Is there any way to do that?
+
+Matthias Miller  26:36
+There is, are you comfortable that that's an accurate way to do it?
+
+Unknown Speaker  26:42
+Okay? So then the question exists, if we don't,
+
+Matthias Miller  26:44
+because here's what happens with when a property gets annexed.
+
+Speaker 1  26:53
+Okay? So then, so then you are, then the only way to stay in compliance is you ping once a month, when you run before you run sales tax.
+
+Matthias Miller  27:01
+Well, you ping. Anytime you incur a fee on the contract record, you trigger a ping, or if the first, the first of every month on a contract, you do a ping to get the updated rates.
+
+Speaker 1  27:24
+Do we? Do we give any amount of discretion to that, to the company itself? Like, is it? Is it really necessary to ping every single month? Like, so. So every time, every time a customer wants to do a transaction, we're going to ping sells a tax jar for it.
+
+Matthias Miller  27:48
+Well, I mean, there you could do it as often as every day. Anytime you do a transaction, you incur late fees or anything else that happens to be taxable. You do it once a month. You do once a quarter. You do it once a year. The fact that the matter is, if you ever get audited, then, I mean, theoretically there's, there's a tax liability that they could incur. It be a nightmare to prove and sort out. But I I mean, let's say the state tax rate changes. Well, that's gonna affect all your contracts.
+
+Speaker 1  28:36
+Okay, I'm a little bit worried about, let's say an RTO company that has 20,000 contracts, open contracts. How does this? How does this just not like, get
+
+Matthias Miller  28:50
+okay, what's, what's the, what's the price per order? No, I'm
+
+Speaker 1  28:53
+not, I'm not worried about the cost. I'm worried about, does it? How does how do we? How do we? How do you structure this in a way that that doesn't just slow the system down. If you're like, either you do it once a month and overnight it like it, you know, it checks all your addresses overnight. Or, I don't know
+
+Matthias Miller  29:11
+most, most of your Well, I mean, but, but your fees are all going to be incurred overnight, right? Okay, and so, I don't know, you just go hang a bajillion things and get it done. I mean, I don't know, we might need some rate limiting somewhere. I
+
+Matthias Miller  29:47
+I mean, maybe, maybe the way to do it is we designed the ping web hook that it doesn't just the ping just means go look for things to ping and it starts cranking through. Or which ones need to be pinged with rate limiting logic and and it gets them all caught up. And, I mean, or maybe it, maybe it's got its own queue on the back end that says, Okay, I see this one needs to be pinged. I'm going to go ping it sometime, and it just starts working through. But what is? What is the
+
+Matthias Miller  30:32
+so 10,000 API calls a minute?
+
+Matthias Miller  30:43
+I mean, so that in that case, I mean, I would think that either way, our ping should handle the rate limiting stuff, and I just think it takes a few minutes for it all to come back.
+
+Speaker 1  30:59
+Shouldn't I feel like I'm struggling to wrap my head around a good strategy for this. That's why I
+
+Matthias Miller  31:04
+don't I don't understand why it's a problem.
+
+Unknown Speaker  31:10
+Okay, two concerns, cost and speed.
+
+Matthias Miller  31:13
+Okay, well, let's deal with the cost is once a month, too much? No, I think that's great. It's every Okay, so then are you going to log?
+
+Speaker 1  31:23
+So let's say, for example, I enter a contract one day before the normal run that should not, it should we should not be pinging the API again for that. So can we log? Can we log like, when was my last ping?
+
+Matthias Miller  31:37
+Yeah, we would have a hidden RG of sales tax rates with the date that we got it and the information and it's, it's one of two things depending on the logic in my mind. What's the most logical is, if it's in the current calendar month, then use it. And if not, then go ping again. Okay? Because calendar month seems to me like a common boundary, okay?
+
+Speaker 1  32:00
+That That seems, that seems, that seems good strategy like that. And so in that regard, then it would be a scheduled task that runs overnight and it aligns all your sales tax.
+
+Matthias Miller  32:12
+Yeah. Okay, so then let's, let's, let's design the model hidden RG of tax rates. Where we have a we have the date, the effective date, we have the state, state rate, city, city rate, state, county, county rate. We have the other, other rate, and then we have oops, then, then we have on the, on the in the entry, or in the entry, or the events RG, we have combined rate frozen. We have a hidden ping tax jar. Actually the events RG has a a I
+
+Matthias Miller  33:28
+don't know if I like this or they're gonna like it, but do we need deposits and checks by December? I
+
+Speaker 1  33:46
+How will you deposit? How will you align your bank account with the deposits journal entries? I think it's so. In other words, you'll do a manual a manual entry as a deposit. Yeah, I can. I can forego both deposits and checks, at least, at least for, at least for, you know, but by by market launch, obviously, we want to have that.
+
+Matthias Miller  34:26
+That's fine. That's the type of thing where, if we can make compromises like that, let's bump it down the list, and if we get to it, great. Um, okay. So then the biggest thing is when we add rose
+
+Speaker 1  34:35
+the only, the only thing about deposits is that, um, um, yeah, it just, it just means that we're probably going to end up in any mess in the future. Then whenever you want to start tying out deposits to to actual payments, maybe not actually.
+
+Matthias Miller  34:59
+Yes, it. Will. It could make accounting impact tricky, but checks, we wouldn't need to. Deposits really could be useful,
+
+Speaker 1  35:05
+yeah, checks, deposits, checks is not it's not needful. That's but deposits a little bit. It makes me a little bit nervous.
+
+Matthias Miller  35:26
+Contract product, rental company, customer.
+
+Matthias Miller  35:36
+Okay, so then combined tax rate frozen, hidden ping tax jar, and then to do some way to avoid paying taxable. What happens
+
+Speaker 1  35:59
+somebody's avoid paying tax dollars if we don't have a rate. What does that mean?
+
+Matthias Miller  36:05
+What happens if? What happens if somebody Okay? Do we always calculate? There's two ways to do this. Calculate ping tax or on the day that we know we need them, or ping all open contracts on the first, so we always have it.
+
+Unknown Speaker  36:31
+I like the latter.
+
+Matthias Miller  36:33
+Ping it on the first, so we always have it. It makes our life easier. Do
+
+Matthias Miller  36:48
+Okay, let's do this. So in the contract record, we have hidden
+
+Speaker 1  36:56
+and and you know that well, especially around around customer changes their address, there should be a manual ping, yep.
+
+Matthias Miller  37:06
+Well, I wonder if there's any kind of way where we could, where we could
+
+Matthias Miller  37:26
+Yeah, okay, if they change the address on the 31st you want to go ahead and reping on the 31st even if we were not going to have any more
+
+Speaker 1  37:34
+activity well. So this is where I wonder, okay, the only, the only thing that, well, you said calendar month, so if you pinged it when it wouldn't reping Again, if you're, if you're, if you're pinging on the first Yeah.
+
+Matthias Miller  37:50
+I mean, if you do my calendar month within a 30 day period, what
+
+Speaker 1  37:53
+about if you did a 30 day or calendar month?
+
+Matthias Miller  37:59
+What does that mean? Like, like, never repaying within,
+
+Speaker 1  38:05
+never repaying within, like a 28 or, like, everything within 28 days, or, you know, or calendar month, right? That way you can, you have some limitation on, you know, a post across and
+
+Matthias Miller  38:21
+you do it 15 day period or something, yeah,
+
+Unknown Speaker  38:25
+20 day period, yeah.
+
+Matthias Miller  38:40
+I wonder if we need something like this kind of a lot of data. But
+
+Speaker 1  39:03
+maybe Then aren't you going to have issues with alignment between the contact record and that? RG, well, you would
+
+Matthias Miller  39:08
+recognize him when the contract record changes, that this is just a cache of tax rates. So when, when the address changes, you would see it's not in there. I
+
+Matthias Miller  39:30
+How much do you care about de duplicating pings for multiple contracts per contact record?
+
+Speaker 1  39:43
+Well. But if you stored, if you stored this on the contact record, you only get it once you.
+
+Unknown Speaker  40:03
+Right?
+
+Speaker 1  40:17
+Because it'd be contact records tied to open contract records that you would be that you would be working off of
+
+Speaker 1  40:55
+and is there? There's not any problem with this, a single account handling this. Or do you think we're going to need or you think it's going to individual accounts that'll get to be tied out to instances?
+
+Matthias Miller  41:18
+No, well, we'll somehow tie it out to rental company. You mean, as far as API keys, or what?
+
+Speaker 1  41:26
+No, it's, it's, yeah, API keys, but it's more, it's, if we're going to, if we're going to include this in the prize, it's really just, you know, it's, it's, per software, it's, and it'd be nice if one, one account, one tax jar account could handle. You know, let's say we have 50 instances of the software running out, they would all hit the same API key. Is that possible? Or will I need 50 different accounts?
+
+Matthias Miller  41:53
+No. I mean, if you want them all to use the same API key, we can do you want do? It. But you're not expecting multiple the same addresses to appear in multiple accounts. It's not like somebody's going to go buy a, rent to own company, from company A and also from Company B. And you're going to care about that.
+
+Speaker 1  42:13
+I don't want to care about that. Okay, so here's, here's kind of my thought process is for the sake of manageability. I, you know, I don't want to have, if I have, if I have 100 clients, I don't want 100 tax jar accounts.
+
+Matthias Miller  42:28
+No, that's fine. I mean, we can.
+
+Speaker 1  42:31
+But if someone says, Look, I want to be able to pay my sales tax through through tax jar from the software, well, then guess what? We're going to swap out the API keys and they get to pay for the ping and everything
+
+Matthias Miller  42:45
+well, but we're not going to add support for orders at The moment. Any No,
+
+Unknown Speaker  42:52
+no, that's a someday. Okay? I
+
+Matthias Miller  43:08
+Okay, so then we have a events are G grab the sales tax rate. Okay, then we need an X 30. I'm.
+
+Matthias Miller  45:25
+Going to say is here as well. Oh, I
+
+Matthias Miller  45:46
+Okay, I think we got it.
+
+Speaker 1  45:49
+We probably, as a part of this, we're going to need some kind of reporting on sales tax as well, as well as the one thing I do think we want, from a from a software standpoint, is be able to have CSV uploads or CSV exports that you can go and take and upload into tax jar, and you can make it a to do of mine, to go find out what the format is for that. But I mean, that would, well, I don't even know anything to do that. I we can, if you, if we have tax if we have sales tax reporting. Then if we have both a nicely formatted one and a simplistic one that I can very easily drop in columns or or rearrange columns,
+
+Matthias Miller  46:32
+well, you're basically want to know what is the actually that means in the events RG needs to probably include the breakdown. Course it does.
+
+Matthias Miller  47:20
+Okay, so then, but I think this is also where,
+
+Speaker 1  47:30
+yeah, a very quick search on formatting for for tax jar CSV uploads is very easy to find, and we Just want to make sure that we have CSV exports that allows a company to the only the only thing I see in here is a transaction ID that we may need to figure out how to add. But I think that's that shouldn't be rock rocket science, but that a company can take the CSV exports for sales tax reporting until we decide to have full on tax jar connection. They can easily take the they can easily take the CSV, export and and drop it into an upload into tax jar to paid sales tax.
+
+Matthias Miller  48:14
+Hey, I don't know why people would just straight up do that.
+
+Unknown Speaker  48:18
+Well, that's what I'm saying.
+
+Matthias Miller  48:22
+There's other fun stuff too. What happens if you forgive Okay, is revenue reported based on cash collected, or sales tax calculated based on cash collected or based on increment date or
+
+Unknown Speaker  48:43
+a cash collected
+
+Matthias Miller  48:50
+doesn't that make the argument that this should actually be stored on the payments RG, or the reporting should be based on payment date. Maybe it's more like that. I mean, I'm thinking through forgiveness is going to be a fun one. No. Forgiveness is another, another row that doesn't matter.
+
+Speaker 1  49:17
+Forgiveness is a moot point where it's only on cash collected.
+
+Speaker 1  49:29
+Nothing becomes liable from a sales tax standpoint, until you paid money,
+
+Matthias Miller  49:38
+and is the rate effective as of the date it was incurred.
+
+Speaker 1  49:43
+Yes, no, no, no, no, no, no, not incurred at the date of as it paid. So from a sales tax standpoint, it's a cash transaction. And from a like it's no different than you walking into a store and and buying something off the shelf. Sales tax becomes liable at that point, and the sales tax rate, liability of rate would be the day that the transaction took.
+
+Matthias Miller  50:15
+You're wrong, and we can keep going this way. I don't mind that, but I think you're wrong.
+
+Unknown Speaker  50:19
+Tell me why.
+
+Matthias Miller  50:22
+Okay, take, take something where it's, it's, it's not like getting something off the shelf. If you buy a building and say, I am ordering this building where it gets delivered, if it gets delivered this month, your sales tax liability. You are liable. The customer is liable for to pay you that sales tax. You become liable to pay that sales tax at the moment that it's delivered. It doesn't matter if you can't collect from the customer, well, then you can report bad debt and you can get a credit to it, but that's basically your problem for not being able to collect, and whether, if they pay, if the tax increases over three months and they wait to three three, wait to pay it three months later, they don't have to pay a higher tax. They pay the original tax at the point of delivery. So your fee, as long as you're assuming that your fee is a literal fee that's incurred in May, you should pay the May rate you don't pay, and and then whether you want to diff, you're
+
+Unknown Speaker  51:26
+right, you're right, you're right, you're right, you're right, you're right, you're right, you're right, you're right. But then we need it is at the point of incumbent,
+
+Matthias Miller  51:35
+but then we do need a way to say we are making a tax payment. Do we need to tie these out to
+
+Speaker 1  51:47
+but it like with the caveat to say it's the rate is the rate is fixed at the point of incurment. The liability of it doesn't take place until you they actually pay money.
+
+Matthias Miller  52:06
+Sure, assuming you don't want to report bad, you know, you're not reporting bad debt to, you know, simplistic reporting. So the
+
+Speaker 1  52:21
+so then do you literally explain to me the reporting of bad debt that would be some
+
+Matthias Miller  52:26
+jurisdictions ask you to report, allow you to write off revenue as a bad debt expense.
+
+Speaker 1  52:32
+Okay, so then what you're saying is that if I repo a building with three or six months in arrears, you could write that off.
+
+Matthias Miller  52:43
+You could, yes, I mean, you could file, you would have filed the tax, and then at the point that you say this is non collectible, bad debt, you would basically, it's a reversal to your revenue, whereas, and in some cases,
+
+Unknown Speaker  52:56
+anybody who's doing that,
+
+Matthias Miller  52:58
+I'm sure they're not, well, what you're
+
+Speaker 1  53:01
+saying is that the six months, okay, I repo the building with six months and arrears, I would have paid sales tax on those six months,
+
+Matthias Miller  53:09
+and then we get them back upon retrieval.
+
+Unknown Speaker  53:12
+No, that nobody's no
+
+Matthias Miller  53:16
+so can we
+
+Speaker 1  53:19
+then, like I said, the rate becomes fixed at the point of incurment, but the liability doesn't take place until the transaction takes place.
+
+Matthias Miller  53:30
+So when you're doing your sales tax reporting, you're basically doing doing a filter based on payment date, yes. And then are we locking? Presumably we're freezing this stuff and assigning it to a particular period, yep, and it also means that we need these fields. Yep. Are we gonna have use that? No, we're not gonna have use tax as a dumb question, but I love asking it anyway.
+
+Unknown Speaker  54:04
+What is use tax?
+
+Matthias Miller  54:06
+Use tax is when you have a pole barn and you go buy the materials, and you got them at wholesale, and you didn't charge tax for it, but then you go build it on the customer site, and so you bake your tax on the price, but you're not paying the customers and paying sales tax on the whole project. They're paying sales tax on
+
+Speaker 1  54:26
+their would that come into play with what PD called floor planning, where they're buying buildings and sitting them out there as inventory?
+
+Matthias Miller  54:35
+No, because I don't believe so, because they're buying a finished good from the manufacturer. Okay, now, if they were buying kits and assembling the kits on potentially,
+
+Matthias Miller  54:54
+okay, so we need a.
+
+Matthias Miller  55:03
+A filing. So this is quarterly, monthly, quarterly and semi monthly. Are you aware of any other frequencies? No. I mean, would people ever do it annually?
+
+Unknown Speaker  55:22
+No, so
+
+Matthias Miller  55:28
+if I do semi annually? Yeah, finally, period start month. So we need a
+
+Matthias Miller  55:44
+let me close this before I save it and recap.
+
+Matthias Miller  56:00
+Yeah. So then we have reporting.
+
+Speaker 1  56:04
+Well, you we just stacked up a small batch of work for these guys.
+
+Matthias Miller  56:08
+Yeah, I want to see if I can get these. I'm
+
+Speaker 1  56:18
+a little bit nervous about this because sales tax is a big, a big deal in RTO world. We just got to make sure that this thing, well, no, I'm not nervous about it. It just the moment, the moment we we just need to have really good reporting in case, in case this just royally screws up. And yeah,
+
+Matthias Miller  56:37
+I guess one question I do have is, do we want to have a
+
+Matthias Miller  56:45
+right? People will then just create a check again, sales tax liability for the for the proper period. Is that? Right?
+
+Unknown Speaker  56:52
+Yeah, I think.
+
+Matthias Miller  56:56
+All right, let's do this. And this is going to be in
+
+Speaker 1  56:59
+to the paid to the sales tax vendor. Correct? Sales tax vendor? Yeah, I don't
+
+Matthias Miller  57:06
+know where this should be product, record and waste record payment contract over here. This
+
+Speaker 1  57:11
+is, I kid you not. This is the point where I just want to go, Mark, can I hire you just to get on these calls and just bring your your anal, retentive, detail oriented mind to this conversation.
+
+Matthias Miller  57:24
+So this sales tax reporting requires specking at this point. But the fielding on this
+
+Speaker 1  57:34
+specking from a how do you want it to look? Standpoint? Or how are we calculating it?
+
+Matthias Miller  57:38
+Standpoint? How are we calculating and storing it, or how we I mean, but, but on this side, report on payment date within period, stomp in Period, end date on relevant rows need New Field in I think this is to do Seth flesh this out to mirror.
+
+Speaker 1  58:10
+So you Yeah, because we want, we want to be able to run sales tax, and it impacts the liability account when we say we actually paid.
+
+Matthias Miller  58:21
+And are we? Are we log right
+
+Unknown Speaker  58:22
+history like you are on sales orders,
+
+Matthias Miller  58:30
+no because we are no because we're not repinging. The only reason you need history is because I
+
+Matthias Miller  58:46
+this is not quite right, is it? I don't think this is quite ready to
+
+Matthias Miller  58:56
+go. Okay? I gotta drop. I gotta call at the top of the hour. We are so stinking close.
+
+Speaker 1  59:00
+Let's, let's, well, I mean, you only booked there, like 30 minutes for tomorrow. Is that all you got? I
+
+Matthias Miller  59:05
+mean, I could go, I can go more. How much earlier Do you want to? I just the biggest thing I wanted to push was,
+
+Speaker 1  59:14
+Well, you saw my calendar. You saw what's, what's open there, as much as, as much time in there, like you want to, I know we want to look at the 11. We want to look at that mock up stuff, but I mean, then we can come right back around and pound away on this
+
+Matthias Miller  59:27
+thing. So you have two to you have two to four available, I think so. Oh, sorry, that's 12. Hang on. I got the 12. Yeah, I could do so. I could do 12 to one, Eastern, Eastern, and then two to four, two to four I could do as well. I.
+
+Matthias Miller  1:00:00
+Let me just can you double check your calendar, make sure that looks good?
+
+Speaker 1  1:00:14
+Yeah, 1212, to one and two to four.
+
+Matthias Miller  1:00:19
+Good, sweet, checked in all right, sir, yep.
+
+
+Transcribed by https://otter.ai

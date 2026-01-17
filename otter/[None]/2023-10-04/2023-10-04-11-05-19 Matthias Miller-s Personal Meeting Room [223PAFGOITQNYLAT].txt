@@ -1,0 +1,1103 @@
+Unknown Speaker  00:35
+This is my work.
+
+Matthias Miller  00:59
+Right.
+
+Matthias Miller  01:06
+Mark, you want to just jump in on your agenda?
+
+Speaker 1  01:14
+We're going to have drew cover what he's found so far on payroll module imports and exports. No, that is on the list, but just want to make sure we cover that. So I asked him if he could just cover that first. So go ahead through. Okay.
+
+Speaker 2  01:35
+So definitely what I've found is, QuickBooks is very tight on what can go into their timekeeping system, like you can only mask you can only import timesheet items. So it's just like ours and who it was for that kind of thing you cannot, to the best of my knowledge, import rates. So with our changing rate system, that really gives us a hiccup. Exporting, I cannot export a paycheck, regular checks, I can export. And so I have to export it as a transaction, which could work. But given some of our other troubles with a, I don't know. So what I sent you is showing what we can do, but we might be able, we might be further ahead, using some other you know, withholding tax figuring program that we can just just connect with a saint, like some KPI thing or something rather than export and import and all that. So I don't know what you can do. If you look at the file that I sent payroll timesheet that's, that's what we would need a line item for each payroll item. Having commission on here is pointless, because this right column does not work. Sure, yeah, the right column there does not work. Like they say it does the service item, we can do something that would just throw something in there, all we need to do is have something in there and then have a matching service item in our QuickBooks file. So that could be x, you know, it really doesn't matter we just need a way of filling that column at the same way with the customer call and if it's not for a particular customer to be built a particular customer then you know, we could we could create customer X and just have it fill in with that. And the
+
+Matthias Miller  04:02
+customer would be be blank because not all items
+
+Speaker 2  04:07
+it wasn't allowing me to So yeah, that's a little weird because you would not bill everything to a customer so I mean, I guess they expect you to build it to overhead or something like that if you're this year, but but those those red red lines red got the ones in red need to be filled in. But what we fill it in really doesn't matter as long as we have something matching in QuickBooks payroll item and the duration that can be either as minutes and hours or as decimals either way and it'll figure it so I don't know which way it is an assist but class, billable and notes those are all optional. So That's what we needed to go in. But beings, our hourly rate changes. We need to, we would have to key in that hourly rate for each person. And each paycheck, it's it's not something that would take a huge amount of time. But it definitely would increase our chance of error. Like I see that as a bigger issue.
+
+Matthias Miller  05:24
+Would you would you consider switching to a service like gussto?
+
+Speaker 2  05:31
+Well, we haven't we haven't really looked at a lot of others. But I think I think we might be further ahead. Doing some, yeah, something else that will allow us to import more?
+
+Matthias Miller  05:46
+Yeah, I mean, from from what? There's parts of gussto there. I haven't dug deep into their API's, broadly speaking their API's are, I believe better supported than than QuickBooks? Yeah. Okay. Do you do we want to walk through the transaction. And the of the
+
+Speaker 2  06:17
+experts, I'll show you the exports just really quickly, the paycheck detail is one way that I can try to export it. This is not, this is not the full export, there's only the first five lines, it's probably about 20 lines long. Because within this paycheck detail tied into the back of it is going to be all your employer transactions as well, like employer taxes and that kind of thing. So with both of Well, this one, I'm almost certain would would not work as well as as the transaction export. But, you know, there might be something we can do with that one, the transaction export, I can filter this to only include certain accounts there and in column Jewish. And this is, again, this is only a very small part of it. So the employees check is this first line where it says commercial bank as the account. So that's the line we would really need in order to bring checks over these other the next four lines are all just gross pay item lines, you know, there was 961 and hourly and, or something that was a salary 1084 was was hourly, and so on. The picture that I sent has more of the rest of it. But so that we could, we could filter this report to only show the commercial bank account. But then we need to know, we need some way of filling in the other side, like that would just be the credit, we would need the debit to expenses. Because we're not, we're not exporting the whole transaction
+
+Matthias Miller  08:23
+would like previously, we talked about splitting apart the employee payroll liability, payroll taxes and insurance and accompany payroll liability. And the three sections, three pieces. If we need to do that, I think we have to go with and we do stay with QuickBooks, I kind of think we have to use something like this so that we can mix and match which pieces are which.
+
+Speaker 2  08:49
+Yeah, if we want to bring all of those pieces over. What we need to do in QuickBooks is set up payroll expense accounts that match where we want them to.
+
+Matthias Miller  09:05
+So that you could still
+
+Speaker 2  09:07
+good, yeah, yeah. And that, you know, a Payroll Expense like an employee net Check expense account, and a employer liabilities expense account and so on. We could separate those out into separate accounts and send them right to where they're supposed to be. If we want to move all of that data over. I think that will work. As long as there are no changes made to history in QuickBooks, you know, which there shouldn't be. Yeah, but you know, at the end of the year, you might have an argument between what QuickBooks is saying is correct and what that assist is saying is correct.
+
+Matthias Miller  10:06
+Yeah, Ellis had some admonition at the beginning of the week, he was had a conversation with Steve Hoover who runs the bureau and CFO, Scott. Scott, sorry, Scott. Scott, basically said he's never seen any kind of duplicate accounting system that's ended well.
+
+Speaker 2  10:31
+So, yes. So that, for that reason, is why I'd be a little bit hesitant to try to move all of those numbers over and make all of that match.
+
+Matthias Miller  10:45
+But if if we don't do that automatically, then I mean, would you then just go into QuickBooks to find out what the liabilities are?
+
+Speaker 2  10:54
+Right? Right. Because Because I would also be generating like, I'd be generating those liability transactions and paying those liabilities over there, and do the same thing with this transaction over and say, okay, you know, here's a liability check coming out of the bank, and it goes to this account, this guy, this guy,
+
+Matthias Miller  11:17
+and that, and then the assist balance sheet wouldn't reflect the pending payroll liabilities, it would just show up as an expense when you're, we're right where we're going, okay. If we were to switch to something like gussto, what would I don't know? How do we want to? Do we want to finagle it with QuickBooks in the short term so that we're not throwing too many changes in at once. Do we want to look at a
+
+Speaker 2  11:53
+more standard? Mark, what kind of timeframe Are you interested in? With? Well,
+
+Speaker 1  12:03
+if we. So if it's feasible, I would think short term, we should, if it's feasible for in the short term to just simply do it manually, or pretty much manually, like, here's what it says says, put it in QuickBooks, take your information back out a lot of manual work, if that's
+
+Speaker 1  12:33
+possible in the short term until we get time to set up. Set up, but he call it gusto or with something else than I think that would be ideal, but through what I mean what. So we pay weekly, and we're going to have about I don't know 45 employees 4045 employees every week, like well, if I back up one step, I think nouns like doing any type of integration with QuickBooks is all throwaway work. So that's why if bi seems to me the best path forward would be something long term that works completely manual until we get set up with gusto. So from your perspective, Drew how much as well okay, backing up one step. Another thing to mention is so from now until the end of the year we're going to continue paying employees he's going to continue paying employees from QuickBooks though it is okay if we had something up and running by the end of the year preferably before end of year so we could of course test it makes sure it works like with gusto I think that would be ideal but family longtime there been curious your thoughts? who advise
+
+Speaker 2  14:29
+Yeah. I agree. If QuickBooks isn't where we're planning to end up at it feels like a little bit work that might not be worth it. You know, if it's on my end you know, if Matthias can create an export, that's what we need and can utilize these imports. Sure assist, you know, we can, we can be using this process within, you know, our doing the manual entries that are needed, we might be looking at an hour a week or slightly more maybe. And we'd have to set up the companies, which wouldn't take majorly long, I don't think. So it's a relatively small amount of work yet to make QuickBooks work. But if we're simply looking at being able to run payroll by the beginning of next year, and be able to test it for a little while before that, yeah, that's the next thing we're needing to do, then I don't know that we should need to mess with workbooks in less than five, unless you guys are saying, you know, getting those API set up and all that if it's gonna take longer than
+
+Matthias Miller  16:03
+I think, do it doing the payroll time export, the time she export, that's pretty straightforward. Doing the net Check, import as well, is going to be pretty straightforward. And probably what we'll end up doing is Yeah, I mean, we'll just basically what we'll need to do is make sure that what you're importing? Well, yeah, I mean, there's there's little fine details that need to be nailed down. But it's it's not rocket science. You can let them know that you want to go to that manual.
+
+Unknown Speaker  17:00
+Well, how big a project is it to? Set up with? Well, okay. Do you believe seeing what you see now that long term, we should just we need to just plan to go with something like us.
+
+Speaker 1  17:32
+Think but work long time, or it could work long term.
+
+Matthias Miller  17:43
+There's a little bit of a small tear with the thought that we are managing payroll liabilities in QuickBooks and that some of our liabilities are reflected only in QuickBooks and that reflected in the main accounting system.
+
+Matthias Miller  18:05
+Is it functional? Yes.
+
+Matthias Miller  18:14
+Could we get you know, okay, long term ideal, you can have anything the way that you want it and you want to automate as much of the payroll process as possible. Gusto is a way better? Well from you know, assuming some due diligence gussto is a way better option than QuickBooks payroll is. Know it's all a matter of scope and prioritization at this point. I mean, it is anyway but
+
+Speaker 1  18:51
+well, maybe, maybe we need to look at the rest of items on the list. And then circle back and figure out where this fits in because from now, okay, the biggest. The big goal we have now from our to the end of the year is to start creating accurate financial report, in assist, so that we can ideally look at, say, the month of October and say, Where is this says, you know, our income was in our balance sheet and all that. Here's what QuickBooks is showing. And we can understand and can you explain why the difference is because of things, supposedly doing things the right way. QuickBooks is doing some things as a workaround or so. Okay, So how that what how that affects payroll module is we won't actually use. Now to the end of the year, we're all set with paying people money, paying employees money, just doing it in QuickBooks like we are. But in order to create actual accurate financial reports, we'll have to some in one way or another
+
+Unknown Speaker  20:29
+bring that payroll information. Probably manual process to bring that those transactions into is that in all, is that does that change how we already can scope or does that does that I think it has some bearing on how we approach this.
+
+Speaker 1  21:03
+Because even if we mocked up a QuickBooks important exporter got that working, had that working today, it wouldn't necessarily, but I'm sure it wouldn't match. Actually, with what we're nice QuickBooks is using to pay employees today.
+
+Speaker 1  21:32
+Think if we get maybe a better way to say this is we will need something by January 1, we will need a system there.
+
+Unknown Speaker  21:45
+Import Export or something like gussto. up and running by January 1. It sounds like if we have capacity and time gusto is the right thing to do, if not up and running late rather quickly.
+
+Matthias Miller  22:09
+And I think broadly speaking, Josh has got availability through the end of the year, he'd be a great person to do the integration. And and with just a little bit of input, and I think I think the holdup would be any due diligence that I needed to do to make sure that we've got the API's that we need, and anything that you guys need to do to make sure that you're comfortable that it can handle all the things that it needs to on your end. Okay, so
+
+Speaker 1  22:41
+knowing what you know, now, this could be a Josh project that he would have capacity to have done by end of year with minimal inputs from you and possibly.
+
+Unknown Speaker  23:04
+Yeah. Well, that's, I mean, I'm good with that approach. Any reason not to pursue that drew?
+
+Speaker 2  23:20
+No, I think that'd be just fine. I mean, in order to generate those reports that you're looking for, like, as far as financial reports, I think we're going to be just simply taking updated reports from Whitney and, you know, an entering those in anyway. So I don't think there's going to be more entry or less entry. Because it's going to take time to duplicate that player payroll in QuickBooks anyhow. So just simply saying, here's an expense that was paid. There's going to be a fairly small number of entries to would that Matthias, that gusto, would that work? Something similar to like tax jar where it's just simply getting you the amounts that you should pay? And was that kind of what you're thinking like where you would connect it? And it would just be feeding back information, not necessarily moving transactions over and back?
+
+Matthias Miller  24:25
+Yeah, it would. Basically the way it would work is we do the payroll verification, and then there'll be some kind of process that says, Go push this all over into gussto. Your view? Do probably, I think the way it would work is one final review to sanity check. Payroll, you say run the payroll, it runs all the calculations, schedules, the ACH, et cetera, et cetera. Well, you wouldn't have to schedule the ACH, I think I think they would let us do that if we wanted to. And then, and then you'd have another process that says, go ask us though, what the net documents what you know what all the breakdowns are? Yeah. And then import it back in Do
+
+Speaker 1  25:09
+you have any idea on the cost for gussto are probably less than somebody manually doing that work do you have any idea on it would cause for our usage
+
+Matthias Miller  25:28
+I think it's let's see if you go with a multistate all these would be so we have three separate plans right one per district
+
+Speaker 1  25:41
+Yeah, I mean, there's no we couldn't use the same plan for the three right um legal entities and the income statement
+
+Matthias Miller  25:59
+if your liabilities will get paid out of the same account
+
+Speaker 1  26:03
+No, they don't have payroll liabilities you know affordability their own shit I would pay their own and
+
+Matthias Miller  26:14
+yeah, yeah. Unless you've got a central entity single single state single state is $40 a month base plus $6 per month per person multi state is ad per month with $12 per month per person Yeah, so I don't know if Ohio and Indiana have single state state 40 base $6 per person multi state ad dollars $12 per person
+
+Speaker 1  26:55
+does that mean $6 A person or affordable they would only have portable time employees only be single state but that would be 40 hours plus would it be $4 per month for every employee
+
+Matthias Miller  27:20
+so portable instant time it'd be $40 base plus $6 per employee so you can get 10 employees to be $100 a month
+
+Speaker 1  27:34
+that is that sounds like a lot I mean because like affordable would have 2526 28 employees I think so we would be something like you know eight times 600 860 $800 A month or 400 a year all
+
+Speaker 1  28:09
+i no idea really what to expect it's considerably more than what I had expected but that you know
+
+Unknown Speaker  28:25
+imagine a saving that amount of time on accounting just
+
+Matthias Miller  28:37
+system there are alternatives paychecks is another one that I've heard of I've never used
+
+Unknown Speaker  28:47
+the
+
+Matthias Miller  28:51
+it looks like I know which for comparison QuickBooks plan is only $6 per employee per month. But it has $100 base on the Core Plus essentials which I don't know if we would actually need
+
+Matthias Miller  29:13
+it just the core plus simple starts probably all that we would really need.
+
+Speaker 1  29:18
+Now is is the QuickBooks plan. Is this something different than what there's something specifically for payroll
+
+Matthias Miller  29:29
+it's their basic payroll. It's a basic accounting plus payroll package
+
+Unknown Speaker  29:46
+you have have used already Yeah.
+
+Matthias Miller  30:01
+And it's Scott's it also came with we I've used it for three years. I think Scott Hoover is it's also his recommended payroll thing like like anything you know, doing due diligence is is is great and I think even taking a look at alternatives and looking looking for folks have used other services as well as I think it's can be worth spending a little bit of time taking a look at that
+
+Speaker 2  30:35
+on the gusto I'm just seeing here that the if you want to do direct deposits, you have to go to the 80 to 80 bucks a month. 12 bucks a person per month.
+
+Matthias Miller  30:48
+We could process direct deposit through we lost them or we could do the direct deposit through assist.
+
+Unknown Speaker  30:53
+yeah
+
+Unknown Speaker  31:03
+here's the biggest
+
+Unknown Speaker  31:13
+what, what would QuickBooks cost with what you were you that was a definitely QuickBooks I wonder
+
+Unknown Speaker  31:22
+where you live? Is is I
+
+Matthias Miller  31:25
+forget it's probably what it is.
+
+Unknown Speaker  31:32
+Yeah, QuickBooks Online is gonna run you more desktop
+
+Speaker 2  31:45
+like, I would guess desktops gonna be similar to the gussto pricing except for the dollars per month per person. Like you wouldn't have that but then you're going to be paying somebody that makes that happens, which, you know, so it's gonna be that much you know that that labor to make it hat like, I was surprised it was gonna be personal.
+
+Speaker 3  32:10
+The quick you mean, the manual, more manual QuickBooks rollin? Right, the godstone right now I'm seeing here it says full service, multi state payroll, including deputies and 1099. So how it like, we're not using it now. But we have a bunch of Kennedy nines like our subcontractors could we.
+
+Speaker 3  32:34
+We could also issue and many nines. This could also be used to create or omitted items, right?
+
+Matthias Miller  32:43
+Yeah, it could be but there's another if we really want to look at mass producing 1090 nines, there's another service I forget what it was I found another service that specializes just attending the nines. Your contractors are also going to have a monthly fee. And I guess he's contractors are they on on the independent contractor? Like are they on payroll? I mean, I mean, we're paying them for production for other contractors
+
+Speaker 3  33:18
+most of them are the ones that most of them are going to be people building chips at their with their equipment at their place. And we pay that 15% of manufacturer price
+
+Matthias Miller  33:35
+okay, I mean, if it's if it's based on the 15% What would make most sense is to do a vendor invoice to the ACH. And then there is a service if we want to go down this route. There's a there's a service that does manage to 99 out if I can find where it is that you beat it a whole bunch of information and it takes care of all the stuff for you.
+
+Speaker 3  34:07
+Well, from what I'm seeing all things considered, I think the gusto Is this the right thing to do we mean something you're comfortable with and we know it's going to work and we may be able to save 200 or $400 a year on a cheaper system that we probably spent that much dealing with the man or you know
+
+Speaker 3  34:42
+I would be comfortable just move ahead with gusto and get Josh started
+
+Speaker 2  34:51
+Is that what you said the Scott Hoover recommends or was that the paychecks?
+
+Matthias Miller  34:56
+That's gusto is what Scott who recommends
+
+Unknown Speaker  35:03
+Curious what was Ellis? I just read Scott Hoover's article. Oh, what was it about? Is he can you write about fractional CFO? Like them in the PCB?
+
+Unknown Speaker  35:16
+He does right in there. I
+
+Speaker 3  35:17
+didn't read the last issue. Something about how he helped Potato Company. He talked about working through our process and how he helped them get accurate numbers because he said if you don't like in a seasonal business like that, you'll have a couple of Bremen noodle on private jet.
+
+Matthias Miller  35:41
+Yeah, it's good description.
+
+Matthias Miller  35:50
+Good, well, should we
+
+Speaker 3  35:54
+think okay, if we. So on payroll of payroll, we're saying, let's move ahead with gusto. And we could circle back see if that still fits within the scope for this year, but
+
+Unknown Speaker  36:18
+go the other other one other. One other thing on here, oh, man, is there. So we want to, we talked about manually entering numbers for the metric amounts and the liabilities.
+
+Speaker 3  36:41
+But we all we still have this thing of setting up default GL accounts per employee, like where he works. In is there, what would keep us from doing that development and having the gross pay amounts posed to the correct accounts and then kill it, then you need to make that we need to be manually input would be
+
+Unknown Speaker  37:14
+well know that the debits and credits would bounce, right? You either have to do
+
+Matthias Miller  37:22
+that what I can still go ahead. Well, we could still put a field in there and give you a way to enter the net paycheck amounts on a weekly basis, which would let us balance it out and have a single payroll liabilities account in the short term, until we break it out more specifically. Or if you guys want to manually enter the breakdown, we can also manually enter the breakdown. Seems like more than what we should bite off. I think when question I would well hang on. I think we should take a look at what we want gussto to do and how we want gusto gusto to handle it because gussto does a lump sum debit. I think it does one ACH for all your liabilities and one ACH for all your your net. And so you'll you'll generate two ACH is so we'll want to we'll want to have some kind of record somehow. I think before well. I guess my vote is we should probably what you're proposing is a good idea. even get my words out what you're proposing is a good idea. But I think it would make sense to take into consideration how gussto is going to integrate before we go too deep into that
+
+Speaker 3  38:57
+you're saying figure out how gusto is going to integrate and build in that direction first and then
+
+Unknown Speaker  39:07
+then see if we can do parts of it we can use parts of that from now through the end of the year to good, I like them
+
+Speaker 3  39:37
+anything else out there. Should we go back to Okay, yeah.
+
+Matthias Miller  39:40
+So let's jump back to the
+
+Speaker 3  39:42
+top. This is kind of the again, the I feel like the over arching goal is to come up with start actually creating balance sheet and income statements that are accurate from now through the end of the year. So here's kind of some of the things that need to still happen. So, the first one is well, I guess before we continue, is there anything else do you have? What are your thoughts on that? Matthias, like, are we? Am I missing something? Or is there something?
+
+Matthias Miller  40:33
+No, I don't. I mean, ultimately, that is the goal. And as we work backwards from there, we're gonna find gaps in the workflow. I think 100% That that's the starting goal. And I think it's going to flush out 95% of the problems or gaps. Good.
+
+Speaker 3  40:49
+So cash manage with bank reconciliation. Today Matthias making updates improve this process? Do you have any idea on ETA on one that?
+
+Matthias Miller  41:04
+Really don't? Okay,
+
+Speaker 3  41:06
+so I think number two is where we're going. It feels to me like the biggest area that the most amount of work still required is the credit and collections management. receivable receivable measurement is we go with that for probably collections management is so how are we going to record payments for record payments for all these different types of payments basically. Money coming in, there's no right there's there's basically two parts, we have to all the money coming in, we have to tie it to a to an invoice. And all an invoice or a sales order gets it to down payment. And then the other side of that is the bank reconciliation, making surance ends up in the bank, the first part we're doing now the second, the second card not. Not so well. So check the ACH, the cash is all pretty straightforward. But then we have stripe where we have the example here we have rent a home where the customer is I didn't find my notes. When we when we talked with 20 million about this, like rent to own, the customer makes the first payment. Basically, that's what comes in makes the first payment to that company who then turns around and gets the contract to the the RTO company who then becomes the invoice moves from from the accounts receivable news from the customer to be out to Congress. And then we've got two different finance companies landmark and green sky and I think one of those big Kilmore work same as stripe, they keep some of the money back. So one will D still Yeah, so that's Well, I think you've been doing a lot of work on this Matthias Yeah, so
+
+Matthias Miller  43:35
+yeah, the big thing that's missing here is I think you you it's in your you and Dwayne's court to go figure out how we're somebody somewhere I don't know I don't know who should be talking to who don't have you guys need to figure out something before you talk to me but RCO Lin landmark and green sky are the are the big scary. I don't know what's going on things here
+
+Speaker 3  44:09
+so you have anything built for the agree? I think what we need to figure out is how are we going to get that information like how are we how are we being paid for those? Show me a process what exactly happens for for our to where does the information come from?
+
+Unknown Speaker  44:35
+How will we know which to which how to apply the great payment you know if it's an RTO and then the same with landmark and green sky and correct
+
+Speaker 2  44:56
+if you make that payments received As a separate record, like we talked about in this earlier call today, that would probably be a good starting point then to make all the rest of this work,
+
+Matthias Miller  45:10
+because my guess is if you'd have a payment type of RTO, and have it auto calculate anticipated premiums through the end of the lifecycle or something like that, where it would be linked back to possibly be linked back to the original payment?
+
+Speaker 2  45:38
+I mean, you need some way of editing it, because it's probably not going to be always correct. But
+
+Unknown Speaker  45:51
+yeah. Oh, you're you're talking about? Well, I think as far as who should be talking to who I think
+
+Speaker 3  46:09
+I need to talk to Dwayne on that we need to get a clear plan on on those last three, before we can really move forward. Because,
+
+Unknown Speaker  46:18
+yeah, that's keep this process moving, we'll have to have that. So.
+
+Speaker 3  46:31
+Can you can you show us what you have? Are? On the other four payments? Or do we? Do we have anything at this point?
+
+Matthias Miller  46:44
+Well, it's pretty. Let's see, let me take a look. I mean, it's, it's really rough. But it's, I mean, if we're just looking at single, single payment, handling, we gotta figure out how to hit handle wholesale how to handle historical stuff that doesn't have that's not gonna have payments recorded. Here, the invoice items at the top invoice invoice items at the bottom. And kind of relying what would be relying on people just to use this search to find specific ones if they want to. If they want to input something
+
+Matthias Miller  47:42
+here, or just actually going to do this?
+
+Matthias Miller  47:59
+Was should probably see a total payment but informed total payment of 8084, in which case it would then apply these payments to those, those particular ones. But this is kind of a concept and we'll probably want to I don't know, I think it's the kind of thing that ideally, we could have somebody start using and start getting feedback on and tweak and make improvements and et cetera, et cetera. We need a slightly different process for a payment that comes in where it's a single payment applied to multiple sales orders. This is intended for a one to one entry such as retail predominantly.
+
+Speaker 3  48:50
+Okay, and I see you have the invoice section here. Does that mean is that since you started to sales orders meeting invoicing, that report is that what was sent here? Yeah. And currently that has no that's more or less just a report. It's putting them here but it's not moving them. They're not showing up on that report is not moving them from finished goods inventory to AR is it? Is it I think that's still relying on date.
+
+Matthias Miller  49:35
+That's right, we did not change the buildings to look at the sales order to determine when they should we finished goods inventory. And then all that. Well, I
+
+Speaker 3  49:46
+don't think we want to this now. And I think we want to get this report dialed in to work or verified that it is working correctly.
+
+Speaker 3  50:00
+Okay, what about the Isn't this where we were also going to have the the ability to write off? Say, something that short paid? Or did you have that somewhere else?
+
+Matthias Miller  50:12
+We need to? Yeah, but what what account, we need to talk that through a little bit? What account should the write off? fall into? Or does that vary? Oh, do we need to write a write off type?
+
+Speaker 3  50:29
+That's what? Yeah, no. That's what Larry had suggested. Building, you know, three or four write off types. And then we just tie an account to it. So that so that it's intuitive for whoever's using this to, you know, I don't know like
+
+Unknown Speaker  50:51
+maybe one would be upset customer does. Just
+
+Matthias Miller  50:57
+customer appeasement.
+
+Speaker 2  51:02
+Yeah, I think that'd be a good route. Because it's gonna vary. I mean, you know, someone's just gonna be simply because he just didn't write his check out quite right. You don't want to chase him down for 35 cents, you know. And then others is going to be you're specifically giving him a discount because of something, you know, she'd go to returns and allowances that or something like that?
+
+Speaker 3  51:25
+Oh, yeah. I think you could give us payment, or write off types, with the ability to, like, enter the very similar to the payment, payment type payment account. I think that would give us all we would need.
+
+Matthias Miller  51:43
+And does the sales order need to need to have multiple write offs? Or can it be a single? Single?
+
+Speaker 2  51:54
+I would assume single would probably be good. But there's probably, I mean, it's gonna be so so rare.
+
+Matthias Miller  52:06
+I think I think what we'll do is we'll just put a write off, drop down between total and balance due with the, you know, a write off with the list of types and the amount, which would, which would then adjust balance do? I think? I'm not sure what the implications are? Because I think there's some assumptions about well, I don't know, we'll, we'll take a look. But that's that would be my proposal. And perhaps a Yeah.
+
+Unknown Speaker  52:42
+And then
+
+Matthias Miller  52:46
+the other good, what would be good then would be to have a, let's do this. Let's, let me see if this thing would. Let me see if this would actually update then sort of we throw in a balance field. And here we we say they paid 4000 in cash, because that balance does not update?
+
+Matthias Miller  53:36
+Well, we will want, would you want a warning every time somebody just pays part of an invoice? Or would you just want to warn if they pay part of the invoice and there's no right off?
+
+Speaker 2  54:00
+Well, just receiving a payment in a string of payments is gonna be fairly common. I think.
+
+Unknown Speaker  54:08
+You're saying, like payments.
+
+Speaker 2  54:10
+Yeah, leftover balance isn't necessarily on common. theme. And so I don't know that there would need to be a warning.
+
+Speaker 3  54:23
+I would, wouldn't it be something like whoever's managing collections or accounts receivable periodically, maybe once a month or once a week go through and see. Sorry, look at sort of smallest to largest and look at all the ones that are $5 or less and then do the right thing.
+
+Unknown Speaker  54:47
+I think something like that would almost work better because I mean, it's a little bit of a management decision. Anything that's a significant amount anyway.
+
+Matthias Miller  55:00
+So would you want the write up but you would still want the write off accessible here so they can control the write off? Or would you want a completely separate process for handling? You want it in here don't you?
+
+Unknown Speaker  55:11
+I would think I would
+
+Speaker 2  55:12
+think so because everything that still has a balance should show up for whoever's doing receivables
+
+Matthias Miller  55:24
+okay
+
+Matthias Miller  55:30
+good all right. Well, I will I will add the so we can add the write off we can we can add the write off mapping add it to this report
+
+Unknown Speaker  55:57
+good. Yeah. So on on stripe out of this right transaction look like what information or are. So,
+
+Speaker 3  56:20
+somebody in collections, or accounts receivable is looking at, like, how will they know? Okay. We'll have a somewhat manual process for communicating when a check or cash payment has been made. But how will we know when a stripe payment has been made? Like, here's here three stripe payments to be applied. And what information will they see
+
+Matthias Miller  57:00
+you know, like Stripe
+
+Matthias Miller  57:07
+that's cool, find one. So I mean, straight, straight gets automatically added to the payments. So there's really nothing that they have to do. It shows up on here as a credit card payment fee is automatically assigned. And then I Josh is looking at some things that are going wildly sideways with a few of these stripe payouts. But effectively, then we've got a separate table, when we pick one that actually balances out where this is the stripe payout tied to a district with the amount, the arrival date, destination bank, and then it has a list of associated charges connected to that payout. And so that's then how we're going to be able to link the deposit date for the credit card, we'll know that it was deposited on the second and we'll be able to create a settlement or create an accounting transaction based on the payouts that that well, the stripe payments, do stripe payments show up anywhere on the balance sheet until you get a payout. I can't remember. Okay, so. So then and then we would we would simply decrease AR and increase bank balance and handle the difference in the merchant fees account or whatever, whatever it's called for you guys who
+
+Speaker 3  58:55
+don't well will those, like those won't even go through a deposit process that will all be done automatically. The only time you look at stripe is when you do a bank reconciliation. Correct. Can you go back to that? Those transactions are the one that balanced out like what was listed out as you just said a minute ago. This one? Yeah. Like if we look at the number 247 So
+
+Unknown Speaker  59:29
+that is so
+
+Speaker 3  59:37
+so what is that? Just walk us through that what what that's showing.
+
+Matthias Miller  59:42
+Okay, so let me make sure my report is 2774. Actually, this one should probably not be Oh, you make one change to this. It's not as confusing. Total payout should be. I don't think we want that one total. Okay. So, total payout amount for this payout is 27 7401. And we according to the payout record that we have we netted 413 35. We looked up the sales order Sales Order amount was 426, or $26. Here, let me add one more column in here as well, which will we'll get the look
+
+Matthias Miller  1:00:52
+all right, let's try this. Even better, better visibility. So this one was tied to this sales order. And if we pull up the sales order actually
+
+Unknown Speaker  1:01:13
+well
+
+Matthias Miller  1:01:24
+you'll see a payment here for 99 $426 with a fee of 1265. So back here, this is the payment amount from sales order. This is the payment amount or the fee amount. This is the net amount according to the sales order. And you'll see that it reconciles with what the payout said its net amount was going to be. So
+
+Speaker 3  1:01:50
+this all happens automatically. And so we can actually open a building a sales order record and see the payment fee
+
+Unknown Speaker  1:02:04
+per transaction there. Although we said we will, like basically those payment fees, we'll have all of those go to a bank fees account, because there's really no value in seeing them. Her
+
+Speaker 3  1:02:27
+individual transaction, we just don't see what they are for a month or whatever. We're just looking at these bounces. And while it's a lot of money, or like
+
+Speaker 2  1:02:40
+yeah, this payment receiving operations are there to make money, that's Sure.
+
+Matthias Miller  1:02:52
+Talking about injecting yourself in the lifeblood of a business.
+
+Speaker 2  1:02:58
+I mean, if you had a report just like this, if there was something that you wanted to figure out, you could just come and search this report. But I think yeah, just everything going into account and you can drill down on that account and find those numbers to and look back through and
+
+Speaker 3  1:03:20
+Oh, this looks great. So is this a standard report currently and that's live in assists?
+
+Matthias Miller  1:03:29
+It's going well this one's Yeah, the payout diagnostics is okay. It's not it's not on the menu I can email drew link and it's not really intended to be well comprehended but it does you know, the reason I did it was to find out the problem spots.
+
+Speaker 3  1:03:56
+Is this. Like who sets the default accounts where where this
+
+Matthias Miller  1:04:14
+file check is under it will be under here. I think I haven't thought all this through but
+
+Matthias Miller  1:04:31
+uh, there will be part I have not thought this through. I have a feeling that some of this some of how this is structured was a little simplistic, because
+
+Matthias Miller  1:04:48
+credit cards shouldn't actually hit
+
+Matthias Miller  1:04:56
+this currently where it's set up to be configured, let's just say that oh, Um This would be something like primary checking and you know
+
+Speaker 3  1:05:13
+what, what's too simplistic about this? Or what's wrong with this?
+
+Matthias Miller  1:05:19
+Um, because when you maybe it's actually correct? Well, because stripe payments. Currently we're driving transactions off of the payments sub table in sales orders. But this should not be its own transaction. This should be linked together with the payout
+
+Speaker 3  1:05:51
+mean that the 2778 payout for three of them.
+
+Matthias Miller  1:05:56
+Yeah. And so I think for this for the sake of from a payments perspective, we need to ignore credit cards, because those are handled by the stripe payouts and everything else needs to be handled normally. i It's something like that. I mean, there's some other ways we could, this is getting pretty technical. But there are other ways that we could structure it. But you run the risk of
+
+Matthias Miller  1:06:28
+yeah, there are other ways you could structure it where we could
+
+Matthias Miller  1:06:37
+drive it off of here, but lump it in with the payout that actually might not be a terrible idea either.
+
+Matthias Miller  1:06:51
+Little nervous about what's going to happen?
+
+Matthias Miller  1:07:02
+Yeah, anyway, driving it off, the pay out means that there may be times when if there's something that didn't make it into a sales order that you could theoretically your accounts receivable is going to be too low. Because some somewhere somebody ran a strike charge that didn't get tied out, which we're gonna want to have a way to go find.
+
+Unknown Speaker  1:07:32
+So,
+
+Speaker 3  1:07:33
+on stripe, the next thing is what do you guys have some? Some things you're chasing? And then after that it's what ready for? For testing? Like or for someone to verify that basically audited or or verify that it's working correctly or not? We would audit them. When would you go into the stripe? With somebody like Drew need to go into the stripe? Direct lenders stripe portal and make sure that look at that data and see what's happening on the transactions. side? And this is just matching?
+
+Matthias Miller  1:08:20
+I think it's it. Yeah, it's it's making sure this one, making sure that red goes away on this report. And then going in and cross checking it with stripe, I think
+
+Unknown Speaker  1:08:31
+why have you been writing? The red? Currently? Those are some that are not dying out?
+
+Matthias Miller  1:08:38
+Yeah, like, here's the sales order without any fee.
+
+Matthias Miller  1:08:48
+And currently, some of the older ones, because of some stuff with Well, yeah, some of the older ones because of some stuff with Artio or whatever they had been splitting some of the stripe lines into two pieces, which means that the totals didn't come out correctly. I don't like it didn't get linked linked correctly to the stripe charge at cetera, et cetera. So they're changing their process to not split apart stripe payments on a sales order. And then the other issue is we don't handle refunds, and refunds are one status codes that should all just work smashingly well, because whenever you issue a refund, it's tied to an original charge. So Josh can find the original sales order and apply the refund to that sales order. And everything should just work
+
+Speaker 3  1:09:41
+from there. Are you setting up refunds is that something where an administrator level person somebody with higher level permissions would need to do?
+
+Matthias Miller  1:09:54
+Yeah, somebody goes into the Stripe account and goes finds the customer and finds the original charge and issues of full or partial refund Through the Stripe account,
+
+Speaker 3  1:10:02
+and when they issue I'll directly in the Stripe account. Or they will do that and it says right?
+
+Matthias Miller  1:10:11
+No, they log into stripe to do it.
+
+Speaker 3  1:10:13
+So how do we? Oh, okay, then we'll stripe bring, like on this report stripe will show a refund which will then have to be
+
+Speaker 3  1:10:32
+thinking how will the refund get posted to the correct? GL like?
+
+Matthias Miller  1:10:39
+I don't know exactly how Josh finds out about it either stripe has little thing that ways that Josh and says Hey, Josh, here's a refund, or, you know, periodically Josh goes back and you know, every day goes and checks for refunds. I don't know which one it is, but one of those. And then when stripe says here's a refund, Stripe will say here's the idea of the refund. And this is a refund of this other charge over here. And so Josh will look at what is the other charge over here and go find that sales order and an added as a payment as a negative payment to that sales order, which will then cause a reversal of an accounting reversal, that whatever happened on the on the on the original payment? Okay. Make sense? or No?
+
+Speaker 3  1:11:41
+Mostly? I think, no. I mean, it did. So what would basically happen is is checking would go would become be lowered by that amount. And hopefully the other side of that would be increased. They are
+
+Matthias Miller  1:12:04
+and then you'd have to take some other action to either. So this is what Josh would do automatically, is he'd add a row for today, negative 420, or Yeah, for 26 of credit card with a negative fee, which would make accounts receivable go up? And so in this case, probably what we would do is cancel the invoice and detach the building to put it back into FGI and make it available for resale. Which is what would which which is what would then end up taking care of you know that would that would that would update accounting
+
+Unknown Speaker  1:12:54
+why the negative fee as well would
+
+Matthias Miller  1:12:59
+straight refunds the fee? Oh, maybe if you want to get your fees back, just refund your customers.
+
+Speaker 3  1:13:10
+Good. So what about ACH? How is like there will ACH we're expecting that will have to be communicated to just right makes an $80,000 Ach deposit How is accounts receivable going to find out about that payment? Is that a manual process where builder says receive $1,000 Ach and like we talked this morning they'll go apply those payments and then when we reconcile with the bank will verify that it was indeed you know, the 80,000 or whatever Are you are you automating with somehow
+
+Matthias Miller  1:14:07
+on inbound ACH
+
+Speaker 3  1:14:12
+or inbound ACH is yeah when a we have a little bit on me it's mostly on wholesale I mean we have some retail but when say a wholesale customer makes an $80,000 ACH payment well I check gateway are we going to step my automate that as well and make it appear as a make it show up as here's a payment that you've received. You need to apply it but AR then needs to apply.
+
+Matthias Miller  1:14:51
+Do we initiate the ACH based on customer details we have on hand I think it's this I hear it let's try this no it's not gonna like me if I do this I think it works basically the same as credit card where
+
+Matthias Miller  1:15:27
+let's see if we can do this without getting ourselves in a world of trouble not going to put anybody's bank information and thank you very much
+
+Matthias Miller  1:15:43
+so let's go take a look in browse actually we can do this over here oops so we've got sales reps report we want a sales order report sales order report. So Id so payment amount so payment fee where
+
+Matthias Miller  1:16:26
+so payment
+
+Matthias Miller  1:16:41
+Alright, let's see who here's an ACH, let's do this too. So sorted by so payment in reverse and we find the most recent ones Okay, so here's one payment for that
+
+Unknown Speaker  1:17:13
+I guess she added that manually
+
+Matthias Miller  1:17:30
+I have no idea how these are actually being handled if
+
+Matthias Miller  1:17:43
+because this is all happening in a lump sum
+
+Matthias Miller  1:17:54
+I'm gonna guess that it's just manually being entered somehow by Dwayne's office.
+
+Speaker 3  1:18:06
+Okay, so, but how do we how should it work? How are we intending it to work?
+
+Unknown Speaker  1:18:17
+Just like this, or do we? Do we automate that? Like we're seamless? This right payment? Right, Jake gateway says, Do you have a payment here with Simone?
+
+Matthias Miller  1:18:36
+Well, I mean, this ties into the wholesale discussion, I think and when we deal with the wholesale discussion, we'll deal with how we handle these ACH is
+
+Speaker 3  1:18:48
+but from what you're seeing now, they're just being entered manually. Somebody somewhere tells someone that we've got an ACH payment and they just go into that apply that to a building and then we
+
+Matthias Miller  1:19:03
+work somebody's got some kind of report that they're running that's adding all these payment line items to tweaks who do 24 Well, it would it would appear that it's manual. Just best guess
+
+Speaker 3  1:19:27
+okay. And that could work for right now. I mean, it's not
+
+Matthias Miller  1:19:34
+it's not ideal or elegant but
+
+Unknown Speaker  1:19:40
+yeah. So part of the whole field has gone from good.
+
+Unknown Speaker  1:19:52
+Anything else on number two?
+
+Unknown Speaker  1:19:57
+I don't have anything
+
+Speaker 3  1:20:07
+I would say buy what the sooner you need to know as soon as possible on the last three rent online I mean the sooner the better right so next Wednesday is that does that work
+
+Unknown Speaker  1:20:21
+yeah
+
+Speaker 3  1:20:28
+we're almost at 230 We're good to continue a little bit but if you need to drop that's fine. We can pick it up at three again
+
+Matthias Miller  1:20:38
+if we can take just a short break I'd be good to keep going.
+
+Unknown Speaker  1:20:44
+Okay
+
+Unknown Speaker  1:20:46
+short break and then back in
+
+Matthias Miller  1:20:51
+the bottom of the hour okay we're minutes
+
+Unknown Speaker  1:20:54
+yeah
+
+Unknown Speaker  1:21:05
+so Adam can be wrong
+
+Unknown Speaker  1:21:27
+next let's talk Blaine Barkley
+
+Unknown Speaker  1:21:44
+or finished goods inventory file 930 in inventory
+
+Unknown Speaker  1:22:04
+All right, let's see got a double check
+
+Unknown Speaker  1:22:12
+is my belief
+
+Unknown Speaker  1:25:34
+Right insider
+
+Matthias Miller  1:25:36
+working with some rain depressant
+
+Speaker 3  1:25:49
+Are we ready for number three billing management? Yep. Okay. So invoicing. This but the sales orders needing input invoicing report makes up a bunch of good discussions. So I said review criteria and what should be added to this was this was just in my words, like, trying to explain what should be in it, which I think you're modeling this pretty much modeling this, I believe. Retail Sales are the transit test, options, transit tested, final location has been completed retail sales, well just go through the list and I guess verify that this is basically what you're doing.
+
+Matthias Miller  1:26:37
+Okay, so it's a it's a retail sale without a transit task. I'm actually doing the day after it's built.
+
+Speaker 3  1:26:55
+Okay, and that's fine. That Okay, for I think, from software standpoint, it doesn't care whether it's a retail or wholesale sales. Really, right. If we have a sales order with a transit test, basically, it's once it's at the final location
+
+Matthias Miller  1:27:22
+Well, I don't know how much of this is same or different. If it's a building if it's if it's a district X building without a transit task, it's the day after it's built. If it's any other building, it's based on the final delivery date
+
+Matthias Miller  1:27:46
+and then nonbuilding Sillars invoice on the creation date. I don't know if this is same or different. We could we could do this
+
+Matthias Miller  1:28:09
+let's actually do this. So let's do so a sales order. We've got the soI D so proposed invoice date, and then we're going to do a new load
+
+Matthias Miller  1:28:31
+let's grab this okay, obviously if it's alright so if it's a retail sale so if not so is wholesale and S O has transit tasks then it would be the So Fine
+
+Unknown Speaker  1:29:06
+it's not quite right
+
+Matthias Miller  1:29:19
+would be the final delivery date if it's not so is holes wholesale. And so building can build. If it has a building, then it would be so building field building built date, plus one to match the other one. If it's a retail
+
+Matthias Miller  1:29:54
+then it's so creation, any other retail. Now we're into You will sell space if it has, as a transit task, be when the final one is delivered? If it has.
+
+Matthias Miller  1:30:26
+Retail sales would be
+
+Matthias Miller  1:30:34
+how do we determine the difference of as an SDI sales order versus a?
+
+Matthias Miller  1:30:46
+Is that the legacy? I don't know if that's legacy or not?
+
+Speaker 3  1:30:55
+Well, I'm not. I mean, I'm not sure that your logic is really needs to be changed for what you had I was just, I guess cross verifying or does your logic, I don't have.
+
+Speaker 3  1:31:16
+think it'd be worth going through the logic that you that you didn't have. There's some obvious discrepancies here where we're showing them in the wrong we're showing, like Indiana buildings, buildings built in Indiana, appear on the North Carolina sales, invoice even some of that, but I think that's a different something completely different.
+
+Matthias Miller  1:31:47
+So basically, what we said was that the only the only buildings that get invoiced after be without getting delivered are wholesale buildings
+
+Unknown Speaker  1:32:08
+that he was
+
+Matthias Miller  1:32:09
+having to drag the test. So it's any district X building, without transit tests.
+
+Speaker 3  1:32:16
+And sei buildings get invoiced on every Monday after build. And then so what happens if we, okay, am I correct on so another situation we might have is we write up a miscellaneous sales order for, say, a
+
+Speaker 3  1:32:41
+a bucket of paint, and the guy says, I'll be there, you know, five days later to pick it up. And we don't want to invoice until then. One way to do that we could enter that sales order and leave it like whoever's responsible for marking this off. They could just let it sit on this report day after day until they're ready to invoice. Right. Okay. I think I mean, yeah, I think that's good. That currently, this this report is showing, just showing. Here's what we think should be invoiced today. Or here's what we think should be invoice should have been invoiced yesterday it's not carrying over anything that wasn't marked off right. That was correct. Perfect. But one of the challenges is like we're we're kind of asking people to well no this is this is perfect for testing other than so let's let's take a quick look at some of those discrepancies that we had. Here we have an NC building that was built by someone in North by North Carolina shop that should be on should not be listed here
+
+Matthias Miller  1:34:11
+this one yeah let's go to let's go to this one
+
+Matthias Miller  1:34:35
+so is it's an Ohio district
+
+Unknown Speaker  1:34:38
+was the builder who built it?
+
+Matthias Miller  1:34:41
+Wait, wait till run.
+
+Unknown Speaker  1:34:45
+Okay, how did that happen?
+
+Matthias Miller  1:34:48
+It's just under looks the other night
+
+Matthias Miller  1:34:57
+is this actually
+
+Speaker 3  1:35:00
+That's a That's a deal or in North Carolina or Virginia so
+
+Matthias Miller  1:35:06
+so is the is the dealer district is wrong
+
+Unknown Speaker  1:35:12
+is that what is that what determines it? What determines your district? Yeah that is an NC D or
+
+Matthias Miller  1:35:22
+so district is coming up to dealer any issue with just I don't know if there's an issue let me ping that ping Dwayne or is is he the guy to yeah, yes. And then
+
+Speaker 3  1:35:43
+Okay, well we're good that's it so why are we seeing just trying to understand
+
+Speaker 3  1:35:59
+No, oh good on that one. Some questions on the North Carolina one. So there we have 2458 Curious if that's the same issue if those also have a dealer
+
+Speaker 3  1:36:23
+but that logic is completely wrong I thought they always looks at who built the building
+
+Matthias Miller  1:36:32
+Do you want to based on the do you want it based on the on who built it?
+
+Speaker 3  1:36:38
+Yeah, because well, more importantly from finished its inventory. Like based on who built it is what determines who's finished with inventory belongs and I wasn't aware that this was I wonder if there was a recent change that would have done this
+
+Matthias Miller  1:36:58
+oh, this is Yikes. Yeah, like what happens when district de Ohio builds a building an Indian associate? That looks like you're on your books.
+
+Unknown Speaker  1:37:12
+It's messy but what we want it to happen okay
+
+Speaker 3  1:37:21
+so currently, okay, are we talking just sheds right
+
+Matthias Miller  1:37:26
+um I don't know what we're talking
+
+Speaker 3  1:37:31
+with chest rack we if that happens we say no no, no. Pay this to Ohio not Indiana. Or Hey pay this building to whoever built the building we don't care why it was sold just make sure it's paid to whoever built the building
+
+Matthias Miller  1:37:47
+okay
+
+Speaker 3  1:37:51
+now it district X that hasn't happened and I don't see that happening if it would I think the correct thing to do would be simply to one that one guess we can work together for the building
+
+Matthias Miller  1:38:05
+here let's try this so so ID so district and so building field building let's see what is the link builder district and so this district is not equal this and not is an A and then let's also add a and so creation date reverse sorted by a co creation date
+
+Matthias Miller  1:38:59
+Okay one more time
+
+Matthias Miller  1:39:05
+here we have TNT landscaping doesn't have a district design. Oh
+
+Speaker 3  1:39:18
+okay. This This has started since we started selling buildings such as Rei wholesale, like any other wholesaler and so it's tied to maybe this is something that Josh should cheese what it what it means is that every dealer, every ships direct dealer, we have to assign the district. There's a discount percentage, a wholesale discount percentage. In what we long term what we need to do is we have to have a say Hey, that's Greg, Ohio, just Indiana Cedric North Carolina. There's some complexities that Josh has pushed or doesn't want to do it for the time being yet but
+
+Unknown Speaker  1:40:18
+I'm sure those T and T ones are North Carolina district is probably a New Dealer I'm sure there's no discount percentage assigned to them and then we have one that's blank so
+
+Matthias Miller  1:40:37
+so is it I don't know the implications is it appropriate to assign the North Carolina district to TNT?
+
+Unknown Speaker  1:40:45
+Yeah, that and also the outdoor building solutions, just
+
+Speaker 3  1:40:55
+do you have a word there's a field somewhere where you can set the wholesale deal percentage
+
+Matthias Miller  1:41:01
+if you market a wholesale dealer
+
+Unknown Speaker  1:41:04
+Yeah, and then set that at 40%
+
+Matthias Miller  1:41:08
+What should the effective date be?
+
+Unknown Speaker  1:41:13
+I gotta go back to six 523
+
+Matthias Miller  1:41:20
+Do we need a wholesale dealer on TNT?
+
+Unknown Speaker  1:41:23
+Yes, Sam yeah
+
+Unknown Speaker  1:41:35
+okay
+
+Matthias Miller  1:41:46
+great
+
+Unknown Speaker  1:41:48
+yeah, that looks right yep.
+
+Matthias Miller  1:41:50
+Okay, so three run this let's make this a little bigger so we can actually see what's going on here's one that doesn't have a dealer it's a wholesale to somebody but we don't know who A to Z storage she's in North Carolina dealer based in Ohio North Carolina District address in Ohio selling Indiana buildings wow so I mean bottom line for for the accounting impact we should use the buildings the builder district
+
+Unknown Speaker  1:42:34
+Yeah
+
+Matthias Miller  1:42:40
+it seems to me like these are still things that let's seems confusing to me but anyway
+
+Speaker 3  1:42:51
+you download a few of those like the one that was all confusing or cover three different districts and then I think that's a Josh Josh thing that we need to just work with him well one will
+
+Matthias Miller  1:43:09
+do this one was a to z storage buildings and let's do
+
+Matthias Miller  1:43:24
+I'll send this over to you and this is so district was
+
+Matthias Miller  1:43:37
+North Carolina building district Indiana dealer state equals Ohio Yeah. I will send this over to you and let you take it from there. So then over here though on the.
+
+Matthias Miller  1:44:18
+Builder district so district look at what is district
+
+Matthias Miller  1:44:35
+and then also just the other place that will be
+
+Matthias Miller  1:45:07
+yeah anyway we need to
+
+Matthias Miller  1:45:15
+we really shouldn't be taking time for this now we should go get in or other stuff let me so so district s s o County District
+
+Unknown Speaker  1:45:51
+okay some County District Board Warren
+
+Matthias Miller  1:46:15
+I will make a note yet we just do this
+
+Matthias Miller  1:46:37
+over here and I'll come back to it okay so I mean if my logic holds up great I guess we were taking a look at that just a little bit
+
+Speaker 3  1:46:53
+yeah, I'm fine with just leaving that logic there's a few things that I'd like to add to that report that would make it more useful. Okay. On this report, the second from bottom building why is that one listed there just it has a building built date of 9.3 and curious didn't have maybe have a transit task and was then taken off which is why it suddenly appeared
+
+Matthias Miller  1:47:24
+Hey, so Monday
+
+Matthias Miller  1:47:36
+it was no longer a quote
+
+Matthias Miller  1:47:50
+it's a building without any
+
+Matthias Miller  1:48:01
+I mean, it's a isn't this in? Is this an SDI building that would have gotten billed yesterday as part of the automatic billing process?
+
+Unknown Speaker  1:48:08
+Well, but there's no
+
+Speaker 3  1:48:18
+okay, it was built the 23rd and it has no delivery date. So like those all getting to get a delivery date stamped in
+
+Matthias Miller  1:48:35
+that's fair. Let's go back here then. Okay, those invoice date was wait propose invoicing on the 24th because of what
+
+Speaker 3  1:48:54
+because it was built the 23rd Oh, no, this is not a this is not HS reg building this is a district X building
+
+Speaker 3  1:49:10
+so my question is, I mean, I think the 23rd 24th is probably accurate, but why did it not show up until? No. One thing I could think of is it it had a transit task attached and then customer was pulled off for whatever reason the transit task was unanswered okay. No longer
+
+Matthias Miller  1:49:39
+Well, the sales order was only created yesterday.
+
+Speaker 3  1:49:48
+Okay, so the building was built the 23rd. The Sales Order was created yesterday.
+
+Matthias Miller  1:50:03
+So we wait Is this a case we're not handling we're not handling lot buildings correctly right
+
+Unknown Speaker  1:50:18
+I'm curious if this is not one that was
+
+Unknown Speaker  1:50:26
+sure I don't know
+
+Matthias Miller  1:50:32
+I mean, we never want to invoice it prior to creation date do we know it's seems a little wrong
+
+Speaker 3  1:50:43
+but there's more there more things that are confusing on this one it so the invoice ID is just n 23104 Yeah okay this was the first building
+
+Speaker 3  1:51:03
+but like here it says she gets to go state skill sets to go which is that's a he says Greg Keeler.
+
+Speaker 3  1:51:19
+We have him in demand on 10 Two oh
+
+Unknown Speaker  1:51:28
+so the building was built on the 23rd and then the sales order
+
+Speaker 3  1:51:42
+I'm curious if this is what happens the building was built it was taken to a lot everything was fine. And then a sales order was created for what when when does a transit task when is a transit task attached to a sales order? Like is Does that happen once Logistics is the the sales are coming through and they say oh, we need to go deliver this building and attach a transit task and they just haven't attached the transit test and while it was in that period, it showed up here
+
+Unknown Speaker  1:52:19
+I don't know that we have to chase it any further right now i i can see if I can find out from either the builder or Dwayne what what really happened with this building as far as because I think we need to know that before we can build logic for handling situations.
+
+Unknown Speaker  1:52:42
+Yeah
+
+Matthias Miller  1:52:48
+let's at least do this.
+
+Matthias Miller  1:53:10
+Otter after the.
+
+Speaker 3  1:53:39
+Makes sense that in this case that would have Yeah, that makes sense.
+
+Matthias Miller  1:53:45
+In that case, it would have gotten invoiced. Probably actually, probably, it would have gotten invoiced today because it wasn't there in time yesterday morning when we were running it.
+
+Speaker 3  1:54:01
+Now I have one more on the Indiana which I didn't send that to you but that the invoice number is 231013231013 and it appeared on the Indiana report with no build date can no delivery date. Okay, this is probably a miscellaneous
+
+Matthias Miller  1:54:31
+with two there any prefix
+
+Speaker 3  1:54:34
+no and 231013 customer name is Janice miles which
+
+Matthias Miller  1:54:47
+let's do this. Maybe it's there we go. should move.
+
+Unknown Speaker  1:54:56
+Okay
+
+Speaker 3  1:54:59
+so let's go was working on and this is correct right or was there so she had moved but was there was there a transit task attached to this
+
+Matthias Miller  1:55:15
+scene any there's no building attached to it. I'm not seeing any transit.
+
+Speaker 3  1:55:22
+This is fine this is perfect. That makes sense. Okay so you get on that invoicing I think we're yeah we'll watch that but I think as far as good for now the changes you know changes you made with those appear on tomorrow's report already. Did those go through
+
+Matthias Miller  1:55:50
+not I mean they go through an update cycle unless Yeah, I'm gonna push him through
+
+Speaker 3  1:55:58
+so the sales or capital that I just need to manually create a sales order capital and input this information accounting for billings okay, we finally got people revenue in see there Yeah. So yeah, Drew you're working or you're setting up that default discount account to just go to one Okay, thank you. Yeah, we decided we'll simply have one discount account greatly simplify things rather than trying to figure out which default ones
+
+Unknown Speaker  1:56:54
+yeah
+
+Matthias Miller  1:56:59
+okay, cool.
+
+Speaker 3  1:57:02
+But then when we go into the sales or can we verify that
+
+Speaker 3  1:57:10
+so they can they can continue to really you know, just freeform enter a discount
+
+Unknown Speaker  1:57:17
+the description, but can we verify that they have to add a value, enter a value of
+
+Speaker 3  1:57:26
+positive one cents or more so that they can so that the discount miscellaneous accounts can't be misused by say, putting a
+
+Speaker 3  1:57:48
+using a miscellaneous entering a miscellaneous item, just entering a negative number, or if we Yeah, if we go to the sales sales order for a dealer with us
+
+Matthias Miller  1:58:03
+Yeah, we we have that. Winner how but
+
+Matthias Miller  1:58:16
+and then why is this rounding? decimals or we're on there? No, it's not. It's just taking a minute.
+
+Speaker 3  1:58:33
+There my lane is do we have the same thing on the miscellaneous?
+
+Speaker 3  1:58:47
+Know that you're saying we can't enter? Or we could enter a negative number there?
+
+Matthias Miller  1:58:55
+Yeah, we could.
+
+Speaker 3  1:58:57
+Can we change that or other implement? Just because that that'll make sure people don't use them for like, technically, somebody could put a discount in there and just put a negative amount which would channel it to the wrong
+
+Unknown Speaker  1:59:15
+GL account? I think it would have discounts going to a say a building or a deliveries or a building or a
+
+Speaker 3  1:59:30
+probably have to do the discounts going to a revenue account when they should be going to a contra discount account.
+
+Matthias Miller  1:59:43
+Yes, I will. I mean, you'll have Josh and I think it might affect the dealer portal, but
+
+Speaker 3  1:59:58
+good luck So for inventory management, B is the Okay. How are we going to how do we currently raw materials and finished goods are more or less stored in the IMS? And how do we connect those to where they're going on the balance sheet? Like to drill down into the balance sheet, the raw materials and you?
+
+Matthias Miller  2:00:50
+Well, that's an interesting question. Because, I mean, it's only a matter of putting stuff in there, right? Because it'll be taken out when you build a building. The end of the period.
+
+Speaker 3  2:01:03
+Wow. Wow. Yeah, we take out dollar value chunks of Yeah. So okay, putting stuff in there happens automatically when when a shipment is received. The way IMS works now is when raw materials inventory when a shipment is received, the order confirmation goes in and says, Oh, I see that you've received this load of OSB. And it adds that SKU lot and the dollar amount. So it's incrementing actual product actual SKU lots. But the only way we currently have to decrement it's currently not decrement we just at the end of the month, we do an inventory count, we say here's what it is, we're going to make an adjustment and it just follows the FIFO and just lower the inventory to that amount and then we we just take those total amounts and put them into QuickBooks on a balance sheet. But I think what we're trying to do now is
+
+Speaker 3  2:02:19
+every day we incur we increase increment by what's received and then we decrement by we increment by SKU lots but we decrement by dollar values based on standard costing as buildings are built. And then we have an inventory account to reconcile at the end of the month
+
+Matthias Miller  2:02:44
+but so why wouldn't you just reconcile inventory the end of the month?
+
+Matthias Miller  2:02:56
+No, we have why is this complicated? Where deducting standard cost. So really what you want is you want to delta between you want to know really what you want to know if you want to know your
+
+Matthias Miller  2:03:28
+there's two ways you can go about it. But basically you want to adjust your balance sheet based on current inventory values.
+
+Unknown Speaker  2:03:45
+No
+
+Matthias Miller  2:03:56
+Can we map this out, but it's not complicated? It's complicated in my head. I'm
+
+Speaker 3  2:04:02
+willing to I mean, I think we're at that point where maybe we should just when we regroup Friday, I can try and put my thoughts on paper. And we can work off of that if that's because we kind of we have a very similar situation with finished goods inventory. I mean, that's yeah, we can do that unless you want to continue further on that was fun. Yeah. I don't the rest of the stuff. I don't think that well. Okay, circling back to payroll management. Do you see any reason not to continue moving ahead with gusto and having Josh do that. Do you see any other conflict extents on collections are receiving payments, where God should be focused focusing on
+
+Matthias Miller  2:05:23
+I mean, my understanding of Josh's workload is that there's not much he's got on his plate, he's looking at the stripe stuff. I can't think of anything. I can't think of anything that that might interfere with or derail.
+
+Speaker 3  2:05:41
+Okay, so refresh my memory on what we covered today other than payroll, was there anything that Josh would be? Would be ready for Josh to work on?
+
+Matthias Miller  2:06:01
+I can't think of anything.
+
+Speaker 3  2:06:04
+Okay, because I think like if there is something on credit and collections that would be, which should take priority over fields. Just because sooner than payroll,
+
+Matthias Miller  2:06:23
+there's possibility that some of the payments, stuff would fall in his lap.
+
+Speaker 3  2:06:30
+But until you have details on the process, or on the financial right, you can't really
+
+Matthias Miller  2:06:37
+know there's some some pieces with, how do we want to how do we want to structure data payments in the database that are there's kind of two approaches we could go with it. And I think each one has pros and cons based on ease of entry.
+
+Matthias Miller  2:07:07
+Actually, I know that this is probably the best way to do it. I think actually may have the solution. I think it's actually a hybrid solution.
+
+Matthias Miller  2:07:21
+Good. Yeah. We'll talk I'll talk to him talk that through that might be something you can take. Good thing else? Very good. All right. Awesome. Appreciate it. I'm good.
+
+
+Transcribed by https://otter.ai

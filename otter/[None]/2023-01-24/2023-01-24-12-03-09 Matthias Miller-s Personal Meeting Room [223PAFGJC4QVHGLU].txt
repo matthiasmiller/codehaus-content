@@ -1,0 +1,797 @@
+Matthias Miller  00:00
+Hey. Alright, so today I want to spend some time talking about how about inter record relationships, how to link one record to another how those linkings happen, how when you're writing reports or expressions, you can access information from another record based on the current record, as well as how to deal with how argies work in the context of expressions and evaluating expressions. So, first of all, it's helpful to understand the structure of the database is like, you have these, these, if you want to put it into tangible terms, you've got imagine that you've got a stack full of papers, and every paper on this stack, all has the same information that gets stored on it, like a, like a, you know, contact record is like, there's this bucket where all contact records go, and they all can store certain types of information. And then we've got fancy logic lets you show and hide certain things based on other values or, you know, a variety of reasons. But here is the bucket for contacts. And then we have incidents. And here's the bucket for instance. And, and even though there's custom behaviors, every type of incident has the same set of fields, and some of them will just be inaccessible or that. And then you have timecards, for example, and invoices and fill in the blank the whole way, the whole way down. Within these and this is, I don't think this, I think this is most review based on some of the training we've done in the past. But some of these are identified based on a string identifier. And some of them are identified through, you know, with a building identifier. So what an example of a string identifier is on a contact the record ID is, well, let's start with something simple. Actually, let's start with activity history. Every time the database makes a change, there is something over here called an activity record. And it's just it's a list of all the activity within within the system. So, for example, we go into activity history. And we run activity history history for doesn't really matter what we choose. But we're just going to pick him for accounting transactions. And you can see here is an activity record that says has all the information about whatever got modified. These records are assigned a numeric identifier, which is called Activity ID. And that is the within this bucket, you need to be able to to point to one of those things, if you're imagining sheets of paper, you need to know exactly which sheet of paper you want to pull out to look at the information. And each of those must have unique identifier for things like activity record, that's a numeric ID, for things like contacts, well, contacts, we could assign a numeric ID, but we have kind of a shortcut that allows you to say, Well, the main identifier on the contact actually ties out to this this list. And so the contact name becomes becomes the record identifier. So under the hood, the way that it works is, is there is on the contact record, there is a a number that is stored internally that is the list number within Okay, so let me let me back up. So here you have, you have the contact contact record with all the information on the contacts. But then there's a separate thing somewhere else, it has a list of all the contact names. So
+
+Unknown Speaker  03:48
+in this system, we go into
+
+Matthias Miller  03:54
+the list, there's a list of contacts. And there's a separate record that actually stores all of the names of these contacts. And this is you can basically think of this as a pair of, there's a list number, and there's a name. And this is this is and that's a special list record that is used for that can be used for any number of things. In this case, there's a list that specifically for contacts. So the contact record on the on disk actually says my contact number is negative four, and it goes out and so if it wants to know what the contact name is, it goes out finds the list and says okay, for the contacts list, go find the list item negative four because that happens to be its unique identifier. And oh, that's Albert Pascal. And, and therefore that's that's the name. This is mostly going to be useful when we go back to this will be particularly useful when We're looking at indexes, which we'll get to in a bit. So, then, so the thing about so even though under the hood on disk, it's linked by number to to list item, anytime it's displayed on screen, it's just displayed as a drop list. So you go select. In some cases, well, in this case, when you modify the name, then it goes and updates the new list value. But there's other cases where
+
+Unknown Speaker  05:38
+gonna find a contact.
+
+Matthias Miller  05:44
+Now, okay, so So for the main, you know, the the main field that can that identifies the contact, that's useful. Talking a little bit about how list items are stored for not the main things like employee. If you look here, under employee, this is actually tied to the contact types list. So and you'll see the list these list of items. Here, this is an employee, if we pull up the employee, you can actually see the list number here in the URL, this is list number negative one.
+
+Unknown Speaker  06:21
+So
+
+Matthias Miller  06:23
+on disk under the hood, the contact type value is negative one. And what that allows us to do is we can go in here, and we can rename employee to employees. And this will automatically update without us needing to modify the contact record. So contact record says I didn't have negative one goes out finds out what is item ones, negative ones, descriptive name and its employee and therefore it shows employee respect, respectively, then if I want to change it from an employee to a client, that particular list number happens to be negative four. And so on disk, it will say contact type is negative four. And whenever it wants to show this as a drop list or string value, it says, Oh, this comes from the contact types list. It's item negative four, therefore I should show client as the
+
+Unknown Speaker  07:19
+as the value.
+
+Matthias Miller  07:24
+So when it comes to linking one record to another, using what we call lookup records, lists tied records, it's a lot of this stuff is handled pretty magically. I mean, the link from contact to contact type is a list. This type, you know, it's it's it's a list of in LinkedIn.
+
+Unknown Speaker  07:51
+Where things get well, okay, let me just
+
+Matthias Miller  07:58
+I may be explaining this absolutely horribly, or it might be partially clear. Any questions about kind of high level overview of database structure and identify record identifiers. Let's start with that database structure and record identifiers.
+
+Speaker 1  08:23
+Just to make sure I'm hearing your right for the for the contact, you're saying that the contact name is not literally stored on the contact historical list. And the unique identifier references the list. So we've got here this, like we've got these fields for Aaron, the Abrams that stored here, but then then it takes this and puts those together sends it over to the contacts list. And, and updates the listening there. And then the list number is what keeps them tied together. That is correct. Yes. So the contact, or contact records don't have a contact ID number. Is that right?
+
+Matthias Miller  09:19
+No, not that we not that we should well, they actually do. This is the this is the same number as the list item in the contacts list. Okay.
+
+Unknown Speaker  09:35
+And that would be you know,
+
+Matthias Miller  09:38
+under the hood, they have an ID number. Although in practice, unless you work with indexes, which we'll get to, you don't really ever worked with that
+
+Unknown Speaker  09:49
+number. Okay.
+
+Matthias Miller  09:54
+For example, there's a function called list string
+
+Unknown Speaker  09:57
+that says, For this list Just give me
+
+Matthias Miller  10:01
+the item number, negative 1011, which is the number I grabbed from here. And you'll see that it's Aaron Abrams.
+
+Unknown Speaker  10:13
+Or you could do list value, sorry, list.
+
+Matthias Miller  10:20
+Contact Name. And that translates it from this text version to the American version.
+
+Speaker 1  10:33
+So essentially the, like an Indian, so the equivalent of the incident ID for contacts. We don't have that. But if it I mean, it would be that negative 1011. Is this? Well,
+
+Matthias Miller  10:48
+I mean, incidents are actually a little funny, because let's get into that cleanliness, because this is technically not the incident ID doesn't necessarily correlate with the list number. I've noticed that before. So the incident is a lookup record. With the name of the lookup record is an is auto generated. There's a I think there's
+
+Unknown Speaker  11:21
+no
+
+Matthias Miller  11:28
+okay, there's a there's a macro called Max incident id num. That is used to determine is used to track what the new i n 0000 number should be. So then what happens is the incidence name is I n, whenever it comes up with, it gets added to the list. And whatever list number is actually, whatever list number it happens to be, there is what it gets added as.
+
+Matthias Miller  12:05
+So differently, the incident ID here is the equivalent of a contact name and a contact.
+
+Unknown Speaker  12:12
+Okay, that makes sense.
+
+Unknown Speaker  12:21
+get in their
+
+Unknown Speaker  12:25
+way questions do you have? Or how can I explain it differently?
+
+Speaker 2  12:31
+Oh, would I be correct in thinking that the reason why the numbers don't line up is if students are deleted?
+
+Unknown Speaker  12:39
+Is that correct? That is correct. Because
+
+Speaker 2  12:42
+the like the ID in the URL like that actual ID is, is that completely sequential, like with no gaps, whereas there could be gaps in the ID and the incident name if instance are deleted?
+
+Matthias Miller  12:55
+Correct. Correct. Or if somebody created a few wealth? And I'm not even sure if I'm not completely sure in what cases with deletion because my understanding was actually that Mac's incident id num is a system switch.
+
+Unknown Speaker  13:15
+And I don't
+
+Matthias Miller  13:20
+well, actually yeah, it's possible I forget exactly how this works. It's possible that deleted list items at the end of a list that that list numbers for deleted items at the end of the list will be reused. I think that might be the scenario.
+
+Speaker 2  13:39
+So listen to negative 96. If we delete and to negative 95, will this one become negative 95?
+
+Unknown Speaker  13:49
+No, say
+
+Matthias Miller  13:51
+okay, record IDs remain permanent across the life of the record.
+
+Speaker 1  14:03
+But if we would delete negative 95 and then create a new incident, would that one become negative 95? Or could it become
+
+Matthias Miller  14:10
+I don't know.
+
+Unknown Speaker  14:23
+Let's do this.
+
+Matthias Miller  14:37
+Context and then let's see what this is I'm not 100% Certain but what I do know the most recent item number in this system is negative 1016. What I believe may be the case or may have been the case at some point is if you You delete this item, which specifically is string contacts. If you delete tie from the contacts, and then create one immediately afterward, then 1016 may get reused, I believe. But if you delete anything like negative 1015, well, 1016 is already in the database, we're not going to remember or re reuse those list numbers. To, to my knowledge, now, I could be mistaken. And it's been a while since I've gone deep down to the depths of those reuse. But as far as I know, they don't get reused. So anyway,
+
+Speaker 3  15:55
+so give me a slight little primer as to why this is important to understand. Like, I feel like there is a whole conceptual piece or theory piece that I'm missing and understanding why this is important.
+
+Matthias Miller  16:12
+This is going to be important once we get to indexes. Because well, and I can explain why this is I think I'm gonna get tripped over myself if I try to explain why it's important before we actually get into what indexes are, how they work and why. Yeah.
+
+Speaker 3  16:33
+But I mean, just to do a very high level overcap, what I'm understanding you to say is, a record is not necessarily a standalone item, there is a lot of there's component pieces that tie that thing together to other lists, other indexes, if you will, I probably said that wrong. But that actually make up that record.
+
+Matthias Miller  16:58
+He Yes, but really, if I had to reframe the bottom line, let me put this in the bottom line, every record in the system has an underlying number that does not change for the life of the record. That is the bottom underlying thing. And if you're looking at working with something like a contact record, and you want to work with indexes, you have to have a way to go find what the underlying number is. Whereas if it's activity, then well, that's very obvious on the detail screen exactly what that what that number is, and you can just go find it and run with it. Okay, now, there's one thing for linking records. So So linking from, from a, you know, to a contact to an incident, those things are really easy, because you can define it as a list field and the platform takes care of all the let me store this, this number here, because it actually means that over there, and let me go look at the value of whatever. But if you want to link something, let's say that on the contact record, you want to say, for whatever reason, you have a employee behavior concerns, and you put in activity IDs of questionable behavior that the employee was engaged in. And then you wanted to go pull information from that, well, you know, the only way to link it to an activity ID is to just straight up put the activity ID into a number field. And then you can go look at whatever you want to but you know, there is no go turn activity records into a drop list that automatically gets
+
+Unknown Speaker  18:37
+linked over you can
+
+Matthias Miller  18:40
+handwrite that. But there's no built in platform support for that. used very rarely, but used predominantly within the accounting system to link transactions together. It's really that's probably the primary place of worry right now we use that. So hopefully with a little bit of context on indexes, this some of these pieces will become clearer and maybe. So let's go into that. What is an index? Well, back when I was a kid, I remember the the beat up station wagon that would pull into our driveway, and this minimum wage worker would get out and go in the back and pull out this big
+
+Unknown Speaker  19:26
+fat
+
+Matthias Miller  19:28
+yellow phonebook with the white pages in the back, and it'd be wrapped in plastic and drop it on the porch. And if we were really lucky, I don't even know how we got connected with it. But, you know, that was you know, Hutch wasn't bad, but, but once we started getting to like the Wichita one that was like, this thick and, you know, it's paper, but you can still give somebody a concussion with it. And the way that it worked was well All phone numbers are numerical. And I have to have a way to find out what somebody's phone number is, it doesn't make sense to just put them in a book in numerical order. So what we're going to do is we're going to index them. And we're going to index them based on last name, and then first name. And we're also going to put the, perhaps the address in there, I'm not completely sure. But we're going to put the address there in case there's duplicates of the same, the same kind of contact. And then for businesses, Well, number one, we want to capture more revenue. But number two, you might not know the business name, I just need an auto shop. So the white pages are categorized based on big category like auto shop, and then within them their alphabet that's alphabetized by name. And then you can go look at the number from the phone from the ad itself. Indexes work the same way. So let's say you're looking for a contact, and I want to find a contact, whose phone number is let's use this example. Actually, let's actually before we do this,
+
+Unknown Speaker  21:11
+we're going to use
+
+Matthias Miller  21:17
+we're gonna find a real index that we have
+
+Matthias Miller  21:28
+is a good one, because then we can use a macro for it.
+
+Unknown Speaker  21:31
+I want to find
+
+Matthias Miller  21:34
+all contacts who are also incident assignees. So well, the simplistic way to do this is you tell the software, hey, go through the whole stack. Remember that stack of contact records that we have over here go through the whole stack one by one by one by one and say, Are you an incident assignee Are you an incident assigning or units and an assignee Are you an incident assignee, and you just go top to bottom. And because your computer is much faster than scanning that, you know, then for that versus names in in a phonebook that's might be acceptably fast. The equivalent of that in the phonebook is, imagine the phonebook would be in numerical order. And so if you want to find Sally Smith phone number, you just go on page one looking for Sally, Sally Smith, page two, and then somewhere along the way, you you'll find her and then her number will be will be there in numeric order. That's horribly inefficient. In some cases, it's okay to do that in the database. And other cases, it's that's really troublesome. In this case, incident signings are a small, very small segment of it, and we want to often display it in lists. And so and so we want to be able to find them more easily. So what we do is we create an index and index is like a phonebook for records. It has to be applied to one record type. And so we say, here's an index for contacts. And then we get to say, two things we need to say, should this record be in the index or not? And then once it's in the index, what is its key? How do we what's the identifier by which we want to look it up? So we have
+
+Unknown Speaker  23:17
+here
+
+Unknown Speaker  23:25
+a,
+
+Matthias Miller  23:26
+here you can find the index definition. It is a lookup level. It's a lookup level index. Because it's a list tied database record for contacts. It only includes it if the contact is incident is a sign in assignee, incident assignee, and it's active.
+
+Unknown Speaker  23:48
+And
+
+Matthias Miller  23:50
+the identifier, this is where it gets tricky. And this is where those numbers become meaningful. There's a bit of technicality in how these keys get defined. First of all, the contact name is the main identifier, but we can't put the contact name in the index because what happens it because then if somebody renames, the index renames, the contact name, we have to go update the index. And it's just a nightmare, basically. So we turn it from the contact name to what is your underlying identifier. But then, there's this, this technical thing. indexes have are defined using string fields. And we want these to be sorted in an appropriate order and we don't know how big it's going to be. So we have a special function called been string that turns a number into a, a binary four character string. And with a few exceptions, it's always four characters which can support very low large numbers, and it turns it into a four character string that then gets put into the, into the index. So this is the equivalent of a phonebook. But instead of last name, first name, we have a special four digit code, essentially, that translates to the contact,
+
+Unknown Speaker  25:17
+contact me now.
+
+Matthias Miller  25:23
+So anytime you create a contact, it adds, it checks this subset. And if it's, if it should be there, it adds it it shouldn't be there takes it out. Anytime you modify it, if you uncheck the box, it takes it out of the index. If you delete it, it takes it out of the index. And now you have this list of all incidents that match these criteria. So how does this get used? Well, one simple way this gets used
+
+Unknown Speaker  25:53
+is we can write a report for that with this.
+
+Matthias Miller  26:02
+Now, in this case, this is a contact level report. And in this case, we and we're going to add contact name, the column, and you'll see there's 1000 rows. And then in the subset, we'll say, active incident assignee index find. And then it says, What key do you want to search for? Well, in this case, we actually just want to use it to filter. So we want to say, give me back for any contact record that has a key in that index, included in the record, record and exclude everything else. And sure enough, our list of of 1000 goes down to about 100. You pull them up, it's active, and it's an incident assignee, and everything matches that criteria. Now let's, okay, let's, let's start with that. Questions about how indexes
+
+Unknown Speaker  27:02
+work and are defined?
+
+Unknown Speaker  27:12
+Just from a high level, I guess, at this point.
+
+Speaker 1  27:18
+Conceptually, does it make sense? Our index is basically in a second set of lists.
+
+Matthias Miller  27:28
+Yes, it's a special database construct, it's essentially a separate, yes, essentially, a separate set of lists. You can think of them as
+
+Unknown Speaker  27:38
+a, a,
+
+Matthias Miller  27:42
+you know, left side is whatever your key is, just like your phone book. And then the right side is whatever is the record that it points to, which is the equivalent of the phone phone number in the example.
+
+Speaker 1  27:57
+And so then the right side is basically using the the list number and the record name. To combine those two unique identifiers combine that information with the indexes references
+
+Matthias Miller  28:19
+it's pointing to to nowhere it points to all it really needs to know is the list number. I mean, I mean, implicit in that is that is the contact name in this case, but for the context of indexes themselves, it's not really relevant
+
+Matthias Miller  28:47
+Okay, so
+
+Speaker 1  28:50
+clarifying to clarify, the index is also a basically I stubs that of any given batch of data.
+
+Matthias Miller  29:02
+And based on a certain set of criteria, yes, it must be it must be a single record type. And it can be none some or all of those records
+
+Matthias Miller  29:21
+and we'll get to this later. The risk of confusing some things it may actually have multiple entries
+
+Speaker 1  29:30
+for each record in the same index, yes. So sorry, let me let me before diving ahead, make sense? Any, any other other questions?
+
+Matthias Miller  29:52
+So it makes sense why this is faster.
+
+Speaker 3  29:58
+Maybe this is a a a silly question. But indexes are actually created maintained lists or the macros themselves actually create the list?
+
+Matthias Miller  30:09
+No, they're separately maintained lists. Okay? Yep, they are, they are automatically updated anytime a record is modified or created, and they are rebuilt neatly as part of the nightly rebuild process. Part of the advantages of rebuilding it is that,
+
+Unknown Speaker  30:29
+well, I shouldn't get into this.
+
+Matthias Miller  30:36
+You know, as essentially, as you modify records, the database becomes slightly less efficient, because you need to have, you can have Person A who's looking at the database here, person B makes three changes. And at any given point, you have to be able to look at the database from a consistent standpoint, you can't look at the database with some of somebody else's changes, and some of them not some of their changes, etc, it has to be a consistent standpoint. So because of that, there's some special mechanisms that the database does to allow for that. But we had an issue with a client recently, because we forgot to configure their nightly rebuild process. And basically what happened was, theoretically, they could have gone back at any point of time between, you know, the past year, they didn't have this capacity. But the software, the platform had the capacity to go back and look at the database as of a state nine months, two weeks and four days ago, and know exactly what the database looked like at that point. And what the rebuild process does is it takes all of it kicks everybody out of this system, and it basically re optimizes the database, to make it fast again consolidates it into a single state that it starts from again, and then makes edits from there. So a little bit of a technicality. bunny trail that might be my is probably not even relevant for the conversation.
+
+Speaker 3  32:02
+Is that Is that also part of the reason that if somebody else is actually editing a record, and you're on the same record, that you're flagging it so that you don't have criss crosses that information?
+
+Matthias Miller  32:10
+Well, the reason for that is that there is a first come first serve on those modifications.
+
+Unknown Speaker  32:18
+Yeah.
+
+Matthias Miller  32:22
+Alright, so now let's go to context by active contacts by type, let's take a look at this index. So this is also a lookup level index. It is, it's for all contacts that are active. And this is a little convoluted way to say it, but as a non blank contact type. So if contact type is blank, then the underlying number will be an A.
+
+Unknown Speaker  32:52
+And then, the key.
+
+Matthias Miller  32:55
+The left side of what we're looking at is, what's the list number of the contact type. And what is the contact list number the contact itself. So let's take a look at how we might use this and subset. So we do an MDX find. Part In this case, because we're only going to look, we're actually only going to look at this part of the key. We don't want we're not going to try to filter down by contact name. So we do pin string list numb, or yeah, let's name contact types. And we want let's find vendors this time. So this will find all activity all items in this index that start with these four characters, which is which identifies the contact type. So we have the number of the vendor item in the list, we turn it into that four character code that
+
+Speaker 4  33:51
+is appropriately sorted. And you don't have any vendors. So let's try
+
+Unknown Speaker  34:00
+or I coded this incorrectly No, but we do have employees
+
+Matthias Miller  34:06
+and so there's a more common way to filter out you know, filter these things out is part of the subset it's part of indexes
+
+Unknown Speaker  34:24
+see now there are also
+
+Matthias Miller  34:38
+okay, you can also have some that repeat. So let's see if we have any phone phone would be great. No email we have I know we have an email. No.
+
+Unknown Speaker  34:57
+Email address Maybe this is an old system. It's not an old system we don't have it here
+
+Unknown Speaker  35:16
+let's do this is a good one.
+
+Unknown Speaker  35:21
+I think it is. No, it's organizations not.
+
+Matthias Miller  35:30
+Attacks by strike context, organization, ah, found it. Now let's take a look at it repeating indexes. Because you'll see here that you can actually have multiple organizations on a contact. So what do those look like? Well, look at level again. This time, it's for all contacts. It says it repeats on the contact organization RG
+
+Unknown Speaker  35:57
+and if
+
+Matthias Miller  36:02
+if the contact is an organization or as a blank organization, then we then we actually don't include it after all this is kind of an old syntax, but we
+
+Unknown Speaker  36:11
+could anyway, it is what it is.
+
+Matthias Miller  36:15
+And we skip it. But if we have it, but we're not an organization and we have an organization thing in there, then we then we get the organization number plus the contact name. So how would this work we would do contacts by Organization and the X find in string list num organizations let's go find
+
+Unknown Speaker  36:51
+and this gives us wait Is that correct? Sorry, I just lost that
+
+Unknown Speaker  37:22
+what did I do wrong context by organization?
+
+Unknown Speaker  37:29
+Actually,
+
+Speaker 2  37:31
+I think that I've run into that before so if if that that the one you're looking for was at the top of the list, I think it would work. I think it might be a bug.
+
+Matthias Miller  37:43
+Well, in this case Sumeragi that's that's something else we'll get to about evaluating RG expressions know what you're talking about. In this case, it's because we're using legacy organizations or organizations and this is actually only for new organizations. So that part doesn't work. So I don't know that we have to get deep into this context organization organization contact can see once there's an easy one that we could I don't know I don't know that it's it's worth getting into but you can main thing to know is that you can have multiple items in there for for you know, based off of an RG or actually based off of repeating list your own list that you come up with All right, so what are the types of functions that are available? Well there are
+
+Matthias Miller  38:50
+okay, there's there's three of them that are available for for searching. One is MDX find if you know the actual okay, this is subset specific only use one subset and MDX find says find me anything with this exact key or set of keys fun fact that we can't get into but you can actually oh goodness we're going deep now but let's do contacts by organization actually let's do active contacts by type.
+
+Unknown Speaker  39:28
+No
+
+Matthias Miller  39:33
+MDX find Okay Ben string
+
+Matthias Miller  39:44
+Okay, so this gives us all employees good active context
+
+Speaker 4  39:56
+Oh, it's fine. Art big because the index is more than that,
+
+Matthias Miller  40:01
+okay, but we can also pass in. Second item if we want to show employees and
+
+Matthias Miller  40:17
+which doesn't look like we have clients.
+
+Unknown Speaker  40:19
+So this would be service provider.
+
+Matthias Miller  40:26
+Okay service providers. So you can do it like this. And you can say find me everything that matches this and just keep adding parameters forward matches this etc. Other fun fact is that you could also
+
+Matthias Miller  40:45
+and you'll have to go back and watch this to probably remember everything about how this gets done. But you could also do
+
+Unknown Speaker  40:50
+a list substitute toute.
+
+Matthias Miller  41:10
+Alright, there's a few issues here, but we've addressed but you can also do exactly the same thing by basically passing in using a list, sorting the list into a key. And then instead of having it be pipe delimited, there's a special nd X key delimiter that gets used to if you want to put multiple keys in one parameter into one of these functions.
+
+Matthias Miller  41:39
+basically allowing you to smash multiple keys in one thing. So in the X find, we'll search for the entire key matching, the entire key find part will match on just a part of a key, find a range will match on starting and ending. So find range might be good for Finally, all activity records from activity record number 10,000 to 20,000. And, and it'll find everything in that range. If you're wanting to use partial keys, I don't think you can use let's see, we can use partial keys and n dx find. I don't think we can, but actually, but maybe we can.
+
+Unknown Speaker  42:24
+No, we can't
+
+Matthias Miller  42:26
+win in the x, I believe in nd X find range. You can actually see if this uses.
+
+Matthias Miller  42:49
+Let's try find range, I don't even know if these numbers are valid. So it might be so this finds all list. This is a little nonsensical. But by find range does a partial match. And starting with M, you know, any contact types, starting from whatever the list numbers for employee through whatever the list number is for service provider. And we can see here what that is, again, not super useful in this case, but for the activity. And the explain that that might
+
+Unknown Speaker  43:24
+might make sense.
+
+Matthias Miller  43:30
+And then we start getting into index functions that can be used anywhere else. So not just to filter records in a report, but you can use index functions to go you can do all kinds of stuff with them. So
+
+Unknown Speaker  43:47
+you can
+
+Matthias Miller  43:48
+use it to go find everything that matches a key and an index and go put some kind of expression together for all of
+
+Unknown Speaker  43:54
+them. And
+
+Matthias Miller  43:58
+and put it into single string. You can go find the first record that matches or the first key that matches this partial key and evaluate an expression for that. Or you can find the last record that matches this key and give an expression off of that. You can evaluate a number or a date and say give me the highest number for anything matching this key or the lowest number matching anything, anything that matches these this key. Or you can say go out at this number for everything that matches the scheme. So go back to one of our earlier examples. There's a macro called active incident assignee list. How does this work? Well, it uses the active incident assignee and the x, which is incident signings that are active, using, you know keyed on their contact name. It says go concatenate all the keys. Go turn and this is a little bit of a ninja move, but it's fast, faster this way, which is why we did it this way because it gets used a lot
+
+Unknown Speaker  45:00
+Turn the key back into a number
+
+Matthias Miller  45:03
+and go find the name of the contact out of the contacts list. And then delimited using pipes, and then go sort the pipe list. And so what this looks like now is you have a sorted list of all the incident assignees. Now, if you didn't care, okay, so running that takes 300 milliseconds. So now let's try, I don't know, caching might
+
+Speaker 1  45:31
+affect this differently. We could also say, contact name. Oops,
+
+Matthias Miller  45:39
+we don't do it. Let's string it all. So go find all contacts in that list. And give me the contact name for all of them, separate them with pipes and go sort them. And you'll see here that it actually took 700 milliseconds, almost over twice as long to do that 800 700. The reason being, it went. And in the first example, it went to the index, it found all the items, but then it used the item key to turn that back into listening. In this case, you're looking for all the items and it went back and it went through that pile of the stack of contacts and pulled out the contact and said, Hey, contact, what's your name? Oh, your name is this puts the contact back and puts it into the list. And so that extra lookup ends up costing three to 400 milliseconds for generating the active contact that the accident at the active incident assignees list. Again, a bit of a ninja move most times, another second, three quarter second on building your report is not going to matter. But just FYI. And we could go through all kinds of examples for these as well. For example, we could do
+
+Unknown Speaker  46:51
+active
+
+Matthias Miller  46:53
+contacts by type and dx, some field. And we could say, been straying contact types, again, employee ups, lists numb contact contacts, types, employee or. And we could just say I want to count them all. So we're going to sum the number one,
+
+Unknown Speaker  47:23
+in this case, for the sum field,
+
+Matthias Miller  47:27
+you'll notice the full definition of it is contact type plus contact name for the key. In this case, we only want to specify the first part of it. So we do the first part. And then we add an ellipsis. To say, this is not an exact match, go catch whatever else you want. And it goes to add some number one, and we have 205 employees in the system. Or you could say I want to go add up all their billable rates, which doesn't really make sense. But
+
+Unknown Speaker  47:53
+you could find I don't know,
+
+Matthias Miller  47:58
+fill in the blank, or I want to find
+
+Matthias Miller  48:06
+let's see, this is a macro is probably not going to be super fast, but you want to say and the x we could also do it in the X Max. Let me find out how this works record last monstering.
+
+Unknown Speaker  48:26
+Just do this difference do like this.
+
+Matthias Miller  48:31
+Okay, what's the last activity ID that affected an employee contact record. And we do an MDX Max, and 11668. Last time, it was modified. And then we could go
+
+Unknown Speaker  48:45
+well, actually, let's do this. So that
+
+Matthias Miller  48:50
+that tells us the last time a contact was modified one of these kinds of types is modified. And then we can do an
+
+Unknown Speaker  48:57
+activity in the X Find.
+
+Matthias Miller  49:13
+Find fields. Okay. So the activity index is just an index on activity with the activity ID. And we say go find the one with this ID. And go tell me the user. Well, shocking all you guys saw me modifying it earlier. I'm the guy who made the most recent edit to any contact
+
+Unknown Speaker  49:32
+of type employee. And
+
+Matthias Miller  49:43
+what should we break this down further? So, let me let me break this down just a little bit further tactically the MDX Max MDX Find field and the MDX can catch. The first parameter is the key. The second parameter is the the expression that you want to evaluate on the right third link to that key.
+
+Matthias Miller  50:06
+So for every so what this does and the X Max, for everything for all candidates in this index, go, go calculate the last activity for that specific record, return the max of all of them. And then we take the max here, look at the activity record. And here's the the expression from the activity record to return based on that. I don't know if I've just thoroughly confused everything out of you guys are that remotely makes sense? But questions?
+
+Unknown Speaker  50:46
+We got it.
+
+Speaker 1  50:56
+For me, maybe the main thing is understanding how the expressions are put together with maybe the conversation.
+
+Unknown Speaker  51:06
+But what some of those different things? How like knowing when to use with which part of expression? Like, once I understand more of that, it would help to know how to put into practice. Sure.
+
+Matthias Miller  51:31
+And think it's a fair, it's a it's completely fair question. So if you break this down, okay, what are the pieces that are in play here? We have two statements here in this expression, we could
+
+Matthias Miller  51:56
+this is just a matter of storing a storing and naming a value that you need for something else. So let's start with this very basically. So we could say, Who modified activity ID 10,000. Congratulations, Austin for the win. So we have the Find field function, the parentheses indicating what information the Find field function needs. Broken down between these commas as this is parameter one, and this is parameter two, you go into documentation here, you'll see this is pretty poor, but there's a key. And there's an expression and there's an optional condition. So this then is the part that's the key, which is the been string construct. This part then is the field coming off the activity record.
+
+Unknown Speaker  53:06
+I don't know. And then, and then the
+
+Matthias Miller  53:10
+I don't know, maybe this isn't even helping that much. Probably explaining it very poorly. But then, you know, jumping back to this example, here's kind of the each, here's kind of the big piece. This is the function and the X Max, here are the parameters that it needs. Here is kind of separated by commas parameter, one is the key, which we do. And again, just kind of like further breaking it down. Based on the key definition of for character, numeric code, what's the number, the number is the list number of the employee item and the contact types. And then, well, this one here, I kind of grabbed elsewhere, and I don't really
+
+Unknown Speaker  53:52
+have time to
+
+Matthias Miller  53:54
+I don't know, I don't know that worth their time at this point to go digging into where that thing came from. But any expression that could be any expression reference expression or field reference from the contact record. So part part of this, I think, is just learning this syntactically recognize, okay, a sign name equals and then there's this big, big thing. And if there's a word and then parentheses, that's a function inside the parentheses, there's, you know, parameters, and like, if you can think of this as a tree, your outline structure it might
+
+Unknown Speaker  54:32
+help a bit.
+
+Matthias Miller  54:36
+Because I mean, realistically, we have an assigned and then we have, you know, assigned with a name. And then we we have a gonna make this as a comment. And then we have a function call and then parameter one equals
+
+Unknown Speaker  54:58
+this And parameter here
+
+Unknown Speaker  55:16
+and then we have
+
+Matthias Miller  55:36
+this one here, then oops, this one here can even be broken down further than into
+
+Unknown Speaker  55:53
+so
+
+Matthias Miller  55:56
+the way that this gets executed is,
+
+Unknown Speaker  55:59
+okay, we've got the mean. And this can be
+
+Matthias Miller  56:03
+broken down even further because you've got the been string, which then calls the list num, which then passes it all back. But just for the sake of example, here, you know, it takes the Ben string and says, Dear Ben string, turned the last modified ID into a four digit, four digit code, four character code. And in the x, find field needs that value is parameter one. And then go get activity user and it needs it as parameter two, and then it says, Any explained field, go do your magic, here's parameter one, here's parameter two. And then tell me you know, there's implicitly there's a return value, which is what what did you come up with as a result of the output of the function? So I think that kind of hierarchical structure can help you kind of like read this and understand like, tease apart the pieces and understand the order of operations and what's happening when
+
+Speaker 1  57:08
+any any questions? What would be helpful to further explain?
+
+Unknown Speaker  57:29
+If not, it's might be just
+
+Matthias Miller  57:30
+either complete boredom or complete doesn't make sense. Or you guys are just like 100% on board, you're just wanting a chance to go richer. And
+
+Speaker 1  57:39
+I think another session sometime, specifically on writing expressions in here can be helpful
+
+Speaker 1  57:54
+so the basics of expressions, but does more of the syntax and what do has been string mean? What does everything to build expression? So but yeah, I think for me, like, it's funny stuff, it's over my head. So this point, but I'm talking I'm getting a level of I will candidly admit that I am.
+
+Matthias Miller  58:29
+I do not consider myself to be a particularly skilled teacher and I don't know that I'm putting completely the right building blocks in place where teaching
+
+Unknown Speaker  58:36
+in the right and most helpful or beneficial order.
+
+Matthias Miller  58:41
+I agree, it's expressions index. We actually have a video from that the past that we kind of went over some of those things and I don't know
+
+Unknown Speaker  58:49
+well, that covers it
+
+Speaker 1  59:02
+Austin urbanity or Dwayne any feedback so far?
+
+Speaker 3  59:10
+No, you're finally putting framework just some things that I've always looked at and go I don't know what that thing does. But you know, now it starts to make sense out of
+
+Matthias Miller  59:22
+Yeah, like
+
+Speaker 3  59:25
+I'm not sure 100% know how to use them exactly yet, but it starts to make more sense as to what how they're functioning. Particularly with my as where this conversation started was my frustration with trying to navigate from one record level to another to get information when they you know, have when there's combined information.
+
+Unknown Speaker  59:47
+Right.
+
+Matthias Miller  59:51
+The good news is that for looking at records and listed records, it's a lot easier. So let's open a timecard Let's actually create it. Let's create a timecard report.
+
+Matthias Miller  1:00:19
+And we're going to do, we're going to show timecard employee. And we're going to show timecard started week.
+
+Unknown Speaker  1:00:27
+All right. And
+
+Matthias Miller  1:00:31
+now we want to find something off of the. So here's the report. Let me go back to an employee record and find something that we want to I want to know, I want a timecard report that shows me the state that the employee is working in, for example. Well, the time I'm going to timecard, there's an employee field
+
+Unknown Speaker  1:00:54
+that's less tied. So
+
+Matthias Miller  1:00:59
+in this case, it's as simple as lookup lookup level field timecard employee, so given the timecard employee, so
+
+Unknown Speaker  1:01:12
+in the context of a timecard,
+
+Matthias Miller  1:01:14
+we're gonna go do a lookup on a lookup record. The first thing is, is, is what record is the current timecard employee. And I'm going to do the contact
+
+Unknown Speaker  1:01:28
+to contact primary state.
+
+Matthias Miller  1:01:35
+And now you have all the time cards with the state that's on the
+
+Unknown Speaker  1:01:39
+on the contact record. And the cool
+
+Matthias Miller  1:01:49
+thing is,
+
+Speaker 3  1:01:51
+okay, you just you just answered my biggest frustration with look up level field expressions. Now, that starts to make sense.
+
+Matthias Miller  1:02:00
+Now, there's one little weird gotcha, stay that we do. What happens if most times when it when you do this, it automatically knows what what type of record you're looking at. But if you do something like Mr. Tim Ritz here, and we do the contact,
+
+Unknown Speaker  1:02:24
+it'd be a good name,
+
+Matthias Miller  1:02:24
+good thing contact. Oh, you didn't have a stain on there was just a contact names. And you try to do that? Well, in this case, contact name. No, that's not quite right.
+
+Unknown Speaker  1:02:46
+When does it Okay, here
+
+Matthias Miller  1:02:47
+we go. Sometimes, actually, this, this would be fine with the primary state, let's actually kill this, this, this thing, just confused.
+
+Unknown Speaker  1:02:57
+You know, oh, it's in there as Timothy. Okay. So
+
+Matthias Miller  1:03:06
+normally, if you say, I'm looking for something on the timecard employee, then it knows you're looking for contact because that's the timecard employee is tied to a contact, or you're saying I'm looking for contact primary state? Well, that's a contact field course you're looking at when I look at a contact. But here, we just managed to confuse it because it can't look at the name and know whether this is a contact or timecard, or an ID or an incident, it has no idea what it is. And here we convoluted this such that it doesn't know for sure that you're looking for a contact name. And like, I have no idea what type of record you're looking for. Sometimes you need a parameter number three that says I'm looking for looking at the contacts. This is supposed to work in the context of contacts. And then it's like, Aha,
+
+Unknown Speaker  1:03:51
+so So in this case,
+
+Matthias Miller  1:03:57
+you know, then it's finally able to know where exactly needs to needs to look. So basically, there's an optional third parameter. That is sometimes a hint that says, not a hint, but like definitively telling it, what record what record type you want to look
+
+Unknown Speaker  1:04:13
+you're looking at.
+
+Matthias Miller  1:04:20
+And then there's all kinds of other things like look up level Max, where you say contacts and I want to find the one. Let's actually go over to different let's do that over
+
+Speaker 3  1:04:35
+here. Besides, let me ask you a question. So lookup level field expression has to have a contact has to have a list that based out of out of the level that you're working in over to the level that you're going to like those those that list has to correlate is what is it? Am I correct?
+
+Matthias Miller  1:04:57
+Well, technically no. Oh, you could I mean, in the context of companies and what is it companies and whatever we have in companies and dealers perhaps that we have, technically you could say, look at level field timecard employee. But I want to look it up in the wiki pages list. I want to find this value timecard. employee. And I find that that value, it doesn't have to correlate.
+
+Unknown Speaker  1:05:40
+Okay, I got to know.
+
+Matthias Miller  1:05:45
+So in the, in the case of Yeah, and the most useful example, in Assist is the case of dealer and company records that have identical names. But yeah. So this basically says, Go find me a wiki page, give me its wiki ID. And it should be named timecard. Employee, which there won't ever be any, but you could also say, you know, maybe you have a wiki category for each.
+
+Unknown Speaker  1:06:15
+You know, sorry, wiki, gory name. You know, maybe you have
+
+Matthias Miller  1:06:25
+a wiki category that's named the same as the employee name, for whatever reason, I don't know, necessarily a great data design, principle or approach. But so what's the longest name? Go ahead.
+
+Speaker 3  1:06:39
+So just just to make sure, I'm 100%, clear, go back, go back to your report itself. When you're, when you're doing a lookup level field, it's taking whatever lists the name that's actually in that row in that list to go out and find wherever you're sending it to go find.
+
+Unknown Speaker  1:06:57
+Got it? Yep.
+
+Matthias Miller  1:07:01
+So here's the length function length tells you how many characters are in a in a field or expression. And this is a look at level max. So go look at all contacts. Find the the largest value for length equals contact name, the longest contact in the system is 23 characters, the shortest is eight characters. Or you could do a sum field and say, what are the total number of characters of all names in the system? Well, it's 14,042. And what if we said,
+
+Unknown Speaker  1:07:39
+well, and then anyway, there you go.
+
+Matthias Miller  1:07:43
+Or you can say concat, lookups? I want to find the I want a list of all the first names. delimited, by pipes. Sorry, hang on concat lookups? Oh, let's do this. One of the first names of concat lookups, takes four parameters, the list the expression, the subset and the delimiter. So which list? What value do we want to pull out of it? Which expression should we look at? We only will look at employees, and in separate list using pipes. So here's a list of all the the first names of all of our employees.
+
+Speaker 2  1:08:30
+What if we didn't want to define the contact type? What if you wanted all contact records? You do all our true?
+
+Matthias Miller  1:08:40
+Either one just just true, okay, all are true. And all is just a student infer True. True would be typically when we use. And then by the way, you can also do, let's say your wiki categories are only named by first name. So you can do a look at level field. You can nest these. So go find the employee, and what is their goal, find their first name, and then use their first name to go find a wiki category that has the same name as that. Or you could say, you know, maybe it's named employee dash first name, well, then you can then it says go find me wiki category that has, you know, whatever. This is still a little bit meaningful but meaningless, because what are you pulling from the wiki category, but
+
+Unknown Speaker  1:09:35
+roughly get the idea.
+
+Matthias Miller  1:09:38
+So you can nest these as many times as you need to or use, or this would be another case
+
+Unknown Speaker  1:09:42
+of where a variable would make it easier to read. Where you call it the category title and then you look at the category table in the wiki categories.
+
+Matthias Miller  1:09:59
+All right. So I think we have just enough time to dive into
+
+Unknown Speaker  1:10:02
+the argies.
+
+Matthias Miller  1:10:10
+argies are stored on the, they're stored on the record itself, but they're a repeating set of fields on the record itself. The important thing to know about RGS is that RGS can be evaluated in one of two contexts, it can be evaluated in the context of a specific row, or it can be evaluated in the context of the record. So So if I go to the contact, if I have it, evaluate contact legacy organization here, it will return Anderson and sons. Because that's the first row, we have something called dated orgies. And what that means is that if it will find the most it will find the most recent row where the date on the RG is on or before today. I don't know if this is what we use, but you know, timecard mileage rates would be an example. Where what is today's mileage rate? We'd have multiple than it would say, Oh, hey, today's mileage rate is what you know, today. And then once we get to January 1 23, then and we say what's the mileage rate? You know, off of the settings record here? I'm not sure if this is actually how that one is configured. But just for the second example.
+
+Unknown Speaker  1:11:36
+I don't even know what this is called.
+
+Matthias Miller  1:11:44
+But then, then it would say, you know, so we could put in a future row.
+
+Matthias Miller  1:11:56
+I don't even know if this is possible. But we'll see how this is configured. Okay, this is a dated RG. So if I say what is the mileage cents, from the context of the mean record now in the context of a row, it ignores future data items, find the most recent item, and it says it's 58 cents. If I adjust this to say, say this is effective on the 24th, then this will start evaluating to 100 cents a mile, or else it was 23 or whatever. Does that make sense? So then, here's here's where it starts getting really important when you're writing reports.
+
+Unknown Speaker  1:12:38
+And the subset using the
+
+Matthias Miller  1:12:42
+using the example, let's use the contact example. If we run a report and we say contact legacy organization equals this
+
+Matthias Miller  1:13:00
+it does not return Aaron Abrams, because this subset here gets evaluated in the context of the main record, not specific RG rows. So what you would need to do is there are functions that allow you to look at all our G rows. So here we're going to look at all rows in the legacy organization R G, does does it have an R G that matches this? And now Aaron Abram shows up in the list and there's all kinds of RG related functions. I don't know that we'll be able to get into all of them but concat Archie, go through all the or through the RG and put them either either into a pipe list or whatever you want to do count the number of orgies that that that match this expression. So we could do well anyway. What's the earliest R G? What's the latest R G that matches this condition? Does it have an RG that matches this condition? Sorry, find the Entergy find that on the first, second, third, fourth, fifth, or G that matches this RG row that matches this condition. Get the max value from an RG get the min value from an RG add all these numbers together for the RG and so we could here do account RG contact legacy organization. So count
+
+Unknown Speaker  1:14:37
+sorry, count our G very true. Count all
+
+Matthias Miller  1:14:45
+find by me let's do actually greater than one. Find all contacts. Count the number of RG rows in each contact.
+
+Unknown Speaker  1:14:56
+True Meaning all of them
+
+Matthias Miller  1:14:58
+and count the ones that you and only return the records that have more than one contact. There's more than one organization Well, Aaron Abrams is actually the only one who has more than one organization associated. This is different from at some point, I should probably dive deeper in the syntax I think I'm kind of losing myself you're losing steam myself, but
+
+Unknown Speaker  1:15:23
+this is different from
+
+Matthias Miller  1:15:29
+something called a repeat RG.
+
+Unknown Speaker  1:15:33
+We do this you'll see here
+
+Matthias Miller  1:15:38
+non repeat RG report, here's the name, it returns the first row and I'm looking for it there's something called a repeating group report where it includes one row in the report per line in the arg and in that case, this evaluates to whatever the current row is, and then if you want to subset on a on a rows on a specific row, so you do not want this one included, you can update the group subset to excludes the repeating group subset then evaluates on a per row basis. So this will still evaluate on the main main record this will evaluate on a per row basis
+
+Speaker 4  1:16:31
+that was a really fast run through RGS what questions
+
+Speaker 3  1:16:45
+so back up a second give me the predominant difference between like RG related expressions versus using your your repeating groups of repeating group in your repeating repeating group subset what is the major difference between those two?
+
+Matthias Miller  1:17:02
+Well the repeat the this thing will cause a row to be created in the report for every row in the RG that is the major difference
+
+Matthias Miller  1:17:20
+so do you want one row per record? Or do you want multiple rows per record? If you want one row, you have to use the subset if you want multiple rows, then you need to decide do I want to repeat it based on a repeating group name or from a repeating list? And so basically what determines how many how many items that have if it's based on repeating group well then you can reference the whatever the current repeating group row is in your columns and expressions wherever you want. You can subset them appropriately. If you use repeating list you could do a you know a pipe list of well sorry I'm going down a rabbit trail I don't know that I want to completely confuse this with repeating or
+
+Unknown Speaker  1:18:10
+repeating everything yet but
+
+Unknown Speaker  1:18:20
+makes sense.
+
+Matthias Miller  1:19:04
+So if we had to do an iteration version two of this training that actually
+
+Unknown Speaker  1:19:10
+I don't know this is like kind of
+
+Matthias Miller  1:19:13
+true to form hand wavy me trying to explain it as best I can. I'm going to assume that a better learning style would be to break this down tactically into step by step go practice this go do this go make this perhaps I don't know
+
+Matthias Miller  1:19:39
+look at this from learning and mastery perspective
+
+Speaker 1  1:19:46
+what are you guys useful for you guys? Thanks for me, like there was definitely a lot of information. There is good information, but it would definitely be helpful. Do you get to do a little more hands on and
+
+Unknown Speaker  1:20:06
+mess around with it a little bit myself? Yeah, I feel like that would definitely be helpful for me anyway
+
+Speaker 1  1:20:22
+for me, the main thing would be to have more of a understanding of what I mentioned earlier with the, with how the expressions were attack
+
+Unknown Speaker  1:20:35
+those more foundational people have a good grasp as far as I think after that, I would have a better grasp of what what you're explaining here
+
+Speaker 2  1:21:07
+Yes, I think this has been helpful in just filling in some of the gaps and just overall understanding of how some of this stuff works. Yeah, I mean, I'm all for having hands on things. So I don't know, some basic try to accomplish this or whatever, with a few hints in the right direction. I don't know giving me a problem to solve and then having to figure out how to solve that specific problem. I don't know. I think it's helpful for me and learning some stuff like this
+
+Speaker 3  1:21:45
+Yeah, I want to I'm gonna agree with Austin some of this some of the tactical use of of index lookups and like just using them it's it's like knowing when to use which and what where and and so forth. So yeah, agree with that
+
+Unknown Speaker  1:22:08
+would a
+
+Matthias Miller  1:22:11
+logic tree or flowchart or a
+
+Unknown Speaker  1:22:13
+if you're here
+
+Matthias Miller  1:22:17
+and you want to do X then you should go there and you should go do this kind of thing that would be helpful as well or no?
+
+Speaker 2  1:22:28
+Yeah, you know, almost like huh, that's interesting. So if you say if you want to you want to accomplish this, here's the best way to do it. Here's a couple other options for different scenarios in simple terms something like that could be helpful. I don't know what all that stuff is but
+
+Speaker 2  1:22:57
+even just you know getting the top 10 in the list molest
+
+Unknown Speaker  1:23:07
+I'll second that one yeah, I agree with that girl just want to be helpful
+
+Speaker 1  1:23:30
+think the foundation you laid the beginning was really helpful as far as explaining the different the different foundational pieces of the database structure and whatnot numbers. Record names are not meant to come in very handy later on to understand where you're going out with.
+
+Unknown Speaker  1:24:13
+Good, well
+
+Unknown Speaker  1:24:25
+that's helpful.
+
+Matthias Miller  1:24:27
+I mean, the only question that remains is when the listings happen Yeah. That's very helpful feedback.
+
+Unknown Speaker  1:24:49
+Good, anything else? If not, we'll call it a wrap. Thank you guys. Awesome thank you yep
+
+
+Transcribed by https://otter.ai

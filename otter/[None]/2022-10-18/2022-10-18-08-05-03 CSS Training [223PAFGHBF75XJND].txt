@@ -1,0 +1,596 @@
+Unknown Speaker  01:11
+Morning. Hey good morning Nick Good morning everyone. Good morning Sam All right, so first CSS con like I spent a week on Tuesday with the last one
+
+Speaker 1  01:58
+I think the main thing to focus on here today is easy stuff to do and then items they're so solid you show your screen and work through those I think that maybe to avoid getting bogged down in the the payments, do reports and all of that maybe we'll get started on those and work for a bit and then it feels like we're spinning our wheels we'll just switch to something else for a while and circle back later in the call or on tomorrow's call unless you have something that you think would work better with us
+
+Matthias Miller  03:01
+yeah
+
+Unknown Speaker  03:03
+and then working on the payments to reports I
+
+Matthias Miller  03:10
+think that's good I think the payments do
+
+Speaker 1  03:20
+I should just double check I feel like I had questions about I know while I was out y'all had moved the
+
+Unknown Speaker  03:30
+payments that are separate record. But when Nick and I were working on specking out out a little bit
+
+Speaker 1  03:37
+I had some questions on on how it's going to work practically for some of the some of the pieces I should find those questions here
+
+Unknown Speaker  03:59
+go ahead with what see what you're gonna see well. So we've got we've got payments going into landowners, three different types of payments, go to landowners and then go to loggers and vendors.
+
+Speaker 1  04:39
+So question there is, I wasn't sure what your data model was for payments if if it needs to be distinguished Overlander payments need to be further distinguished. Between flat and percentage.
+
+Matthias Miller  04:58
+Okay, let's take a look at this That payments I think what I would propose is on
+
+Unknown Speaker  05:22
+where are the financial details I mean the
+
+Matthias Miller  05:47
+start of harvest mid harvest the end of harvest are actually pretty easy because we can have a payments ID
+
+Unknown Speaker  05:56
+as a
+
+Matthias Miller  05:59
+hidden or visible column I don't know how we want to do this and and whenever whenever you you have a field change expression that sets or adds or creates a payment whenever whenever that you know when whenever that payment is becomes due when you click this the start harvest checkbox and we go ahead and automatically create that the date is a little trickier
+
+Unknown Speaker  06:37
+one option
+
+Matthias Miller  06:39
+is to simply allow for future payments and we exclude it until you know the reports just exclude them until they're no longer future that would be the most strict that makes sense that was you guys are you there
+
+Unknown Speaker  07:23
+oh boy. What did I do?
+
+Matthias Miller  07:27
+Not sure. Did I lose you guys? No.
+
+Unknown Speaker  07:30
+I can hear you. Okay, did you get all that
+
+Speaker 2  07:35
+about the date as Tim lost his audio oh
+
+Unknown Speaker  07:41
+he looks very good. Were doing the Hang on a second
+
+Matthias Miller  07:48
+what was the freeze challenge? I'm too old to remember these things social media like the
+
+Unknown Speaker  07:55
+get a freeze during your meeting or Zoom class or what?
+
+Matthias Miller  07:58
+No, it was like a
+
+Unknown Speaker  08:01
+man mannequin challenge. Oh
+
+Matthias Miller  08:06
+zoom keeping the mannequin challenge alive
+
+Speaker 1  08:14
+if you don't know about me maybe I was sitting here just not hearing anything and Matthias was deep in thought and then disappeared and then I realized my my audio had switched and I wasn't hearing anything
+
+Matthias Miller  08:40
+okay, here's what I would do. So, how do we handle mid harvest? Okay, so
+
+Speaker 1  10:03
+proposal on these payments here we have a good if you have a
+
+Matthias Miller  10:22
+if you have a future date if you have a payment for a specific date, we go ahead and create the associated payment record but we and we future data and we hide it from reports
+
+Matthias Miller  10:51
+and then, for starting end of harvest, that's easy when you click the box and we have a field change expression when you save the record that automatically creates the associate payments, and we pass the payment well, for future data, we pass the payment date through the record ID so you also need to be able to initialize it and so I think effectively it's a payment type contacts list num and a payment date but then mid of mid harvest is the weird 1am I right that they can have multiple mid harvest payments
+
+Speaker 1  11:31
+they probably don't very often but I think we should we should allow for that.
+
+Matthias Miller  11:36
+And then one option for that would be having a an MRG on Change button called basically create payment
+
+Unknown Speaker  11:50
+that creates a payment whatever they want
+
+Matthias Miller  12:04
+Does that make sense? Or no? Am I going
+
+Speaker 1  12:08
+um Well I think it might be helpful if I can understand a little bit more what your data model is for for payments because I'm seeing that we're still having a lot of information stored on the RGS on the on the track record. But like this I feel like all of this like the purchase type of end like and all of that it's probably gonna have to go to the payment record rather than like it might be displayed Read Only here
+
+Matthias Miller  12:43
+while they we should show it here was that I don't think we should show it here.
+
+Unknown Speaker  12:49
+I think Yeah.
+
+Matthias Miller  12:57
+Correct me if I'm wrong Yeah.
+
+Unknown Speaker  13:24
+So you're saying basically don't need
+
+Matthias Miller  13:36
+Yeah, because all that information will be stored on the payment record.
+
+Matthias Miller  13:47
+Okay, so So Tim, here's the data model. We have a payment record that says, Who is it for? Who does it go to? And what's the date? What's the cheque number? What's that? And what is it for? Well, it's for these loads this tally this. Presumably at this point, it's just going to be a straight up amount, in some cases for a flat payment.
+
+Unknown Speaker  14:09
+And for
+
+Matthias Miller  14:12
+four, we're actually going to link it back to the RG rows and we can talk through how flat payments work but basically, it's where these these tallies are loads, I think vendor is what would have vendor what's the vendor payments are lots of
+
+Speaker 1  14:32
+new buy. There's a yard tallies that they buy that people bring in that aren't coming from one of their contracts. Got it?
+
+Matthias Miller  14:44
+So they might pay the right of course. So landowner logger, logger is for tracks vendor is for other loads and so these tie back To the tallies and pulpwood loads so far so good makes sense or no?
+
+Unknown Speaker  15:13
+Yeah, I think so.
+
+Matthias Miller  15:15
+And then, okay, then the question is how do flat payments work?
+
+Speaker 1  15:20
+Or hey, quick question. Is there like an itemization RG on the payment record as well?
+
+Matthias Miller  15:29
+No, because those records actually point to this one.
+
+Unknown Speaker  15:35
+Okay. So we would basically have like a payment itemization report that you would open, they would show you all that information.
+
+Matthias Miller  16:05
+Probably something like that. I mean, we already have the where we have the payment summary already. We have an existing report that's supposed to show you all that
+
+Unknown Speaker  16:17
+okay. We do that's true. While the payments landed in Flint, we don't have one for vendors, but we could
+
+Matthias Miller  16:32
+probably shouldn't make one probably
+
+Speaker 1  16:36
+actually let payments I know flat payments. Yeah. Okay.
+
+Matthias Miller  16:45
+So so that takes care of yard tallies and pulpwood loads, but it doesn't take care of his flat payments. Now how do you want to do flat payments?
+
+Unknown Speaker  16:53
+Well, you could
+
+Matthias Miller  16:59
+you could have a payment type which is a when you have a landowner payment, you could have subtypes. And when you set up the you can do this. Here there's two models, we could use one, you could have the RG on the track that drives these payment records. For B you can just have them create payment records for all the payments that they want to have
+
+Matthias Miller  17:36
+and then you have so on a landowner payment if it's a if it's a landowner payment on a flat rate tract then you get a payment type of date sort of harvest mid harvest end of
+
+Unknown Speaker  17:51
+harvest and
+
+Matthias Miller  17:58
+they can fill that in and then the due date then you'd have a due date field that gets auto populated based on if you had if it's towards a specific date that's the due date if it started harvest and it would evaluate based off the track started harvest if it's mid harvest I mean mid harvest it isn't really due until end of harvest technically I mean we don't really know what that's going to be maybe we would allow them to enter a due date if they want to be optional end of harvest we got to calculate that off the track and then in your payments reports you would only show payments that are
+
+Unknown Speaker  18:38
+that are due right
+
+Matthias Miller  18:42
+so it means it's a little more hassle for instance for setting up the little more hassle setting up the track because you have to go to a separate record to create these it might be better than having these things in two places
+
+Speaker 1  19:15
+Yeah, so another question was What were the reasons for for having payments be a separate record rather than storing them on the contact record
+
+Matthias Miller  19:33
+it allows us by using a separate record allows us to automatically initialize them
+
+Matthias Miller  19:42
+the other option would have been to take the contact record and hijack the contact record for tracks and having tracked via type of contact that felt pretty me that felt actually like A moderately acceptable option but felt pretty weird as well. Nick, are there other reasons I was a missed.
+
+Speaker 2  20:08
+I think those are the main ones. And in some ways it is nicer. I mean, moving into the separate record takes a bunch of complexity off of the track screen, which is I feel like valuable at this point given how big it's getting.
+
+Matthias Miller  20:29
+Sure So, yeah, Nick, I think you have a really good point with that too. It is a matter of managing complexity and working with lookup records from a development standpoint is going to be a lot easier than trying to tie up our G IDs because there's automatic wiring that makes it all
+
+Speaker 1  20:59
+work. Hmm Sure. Okay yeah, that sounds good. I think I'll just then as far as the like the flat payment types I would say let's just keep trying to minimize complexity there too What is wherever it's going to be the simplest
+
+Matthias Miller  21:36
+simplest way to go
+
+Matthias Miller  21:45
+yeah, what is that what is the simplest way to go with that?
+
+Matthias Miller  22:02
+Do you think it's obnoxious to force them to set these are on a separate
+
+Unknown Speaker  22:08
+record so basically, when they set up the tract or when they mark the tract as as contract signed, then they would they would need to set these up or or can we just do a reminder they were already wanting an alert to to be triggered. Let's see these were for the date based flat payments. So this wouldn't be the harvest percentage. But the harvest percentage, they're being reminded by the
+
+Speaker 1  23:14
+by the forester. So I'm guessing I'm wondering, do we even need to set them up ahead of time? Or can just we just remind why on the alerts and the forester to say there's a payment coming due and then they set him up? Or set it up?
+
+Matthias Miller  23:39
+That would be a question for I mean, isn't that a question for them?
+
+Speaker 1  23:47
+Um, I don't I don't know if your question for them. I don't think they would have set up out of the RG rows
+
+Matthias Miller  24:02
+I thought they were going to enter the RG rows based on the contract
+
+Unknown Speaker  24:12
+Oh harvest percentage? Sure. Sure, yeah. So then it probably would be a question for them.
+
+Speaker 1  24:28
+Basically, it can be a whole lot. They're going to be less cost involved if they can just set them up one at a time and reminder comes in.
+
+Matthias Miller  24:43
+So there's a third party reminding them to make payments.
+
+Speaker 1  24:47
+So the flat payments are there two different types of flat payments there are date based and harvest based. So for the date based paste we can just run a reminder and and based on date and then that brings up the day the power the tells them when they're coming due for the harvest based the Forester is contacting them and saying alright you've harvested half the property your half the trees so now your your mid harvest payment is due or something like that I mean really, if we're talking about setting them up ahead of time the only ones they would need to set up ahead of time if they would do that would be the date based ones
+
+Unknown Speaker  25:48
+okay
+
+Matthias Miller  25:50
+so can we just skip the tape and just you can have if it's flat rate, it's just a payment date and it can be in the future and it'll show up you know you have a due date that defaults to today and you can move it to the future
+
+Speaker 1  26:07
+and then we have a new payment link we just need to make sure we have a note in there where they can they can specify that this is a you know the start of harvest payment or the mid harvest payment rather than thus
+
+Matthias Miller  26:27
+oh okay
+
+Unknown Speaker  26:28
+yeah module Yeah,
+
+Matthias Miller  26:30
+but we could but we could okay well we could we could have a subtype but basically not have any magic with it probably one or two or we could have a customer notes
+
+Matthias Miller  27:34
+it's actually not date it's it's a
+
+Unknown Speaker  27:42
+well sure right yeah, I think so. Dude, I like it. Does that sound right to you nick or am I jumping too far under the simplify bandwagon
+
+Unknown Speaker  28:16
+I think that's good yeah
+
+Speaker 1  28:36
+sweet Oh, then a bunch of these like here this landowner payments RG little screen that would that would go away right we need to make sure that all the fields here are accounted for on the on the payment record but that RG would go away and be replaced with a link to a landowner payments report
+
+Unknown Speaker  29:03
+is that right? Yes and same with longer payments same with
+
+Unknown Speaker  29:17
+like I said just be those two
+
+Unknown Speaker  29:37
+okay
+
+Speaker 1  29:45
+cool then back on a payment record section I have a note there's a to do during the middle of the section does that lead to have some kind of linking between yard tallies and payments which I guess is what what you were saying earlier that the the yard tallies and the pulpwood loads are pointing to the payment record
+
+Speaker 1  30:23
+yes so do we how do we do that? Well this is actually
+
+Matthias Miller  31:04
+I think it's actually documented elsewhere in the proposal as well but I'm not sure
+
+Unknown Speaker  31:09
+okay
+
+Speaker 1  31:14
+so this would be where he could the user could pay the yard tally directly from here create a payment from here dependent tally or he could use the editable report to
+
+Matthias Miller  31:30
+pull this was when you say we have a
+
+Matthias Miller  31:39
+whenever you create a yard sale you would automatically link to I guess we need to think through about reassigning to different payments
+
+Speaker 1  31:50
+actually make a lot more complex. Your tally? They are telling you could have two payments like to it right for the landowner and one for the logger? Yep. Well, landowner I mean, I think this is
+
+Matthias Miller  32:28
+I would like to say this is well within the bounds of you guys just specking it out. But I'm happy to dig in more deeply here if necessary.
+
+Unknown Speaker  33:16
+So we would have to always have an unpaid payment. Each when or longer vendor, does that, right?
+
+Matthias Miller  33:27
+It would auto auto create it? Yes.
+
+Speaker 1  33:31
+As soon as they pay one, it would automatically create a new one.
+
+Matthias Miller  33:37
+The next time we need one correct.
+
+Speaker 1  33:46
+All right. And then it would still be the payments, do reports that'd be driving all of that. That'd be the workflow for creating getting
+
+Matthias Miller  34:01
+paid. Well, no, I mean, they be created on record saved automatically and then the payments do report would just be reported to well to actually pay them to mark the records is paid.
+
+Speaker 1  34:16
+Okay. Sure. Okay, so then, yeah, okay. So basically, as soon as a yarn tally is created for someone who doesn't have an existing unpaid payment, it would create that payment, and then any other tallies would automatically be added to that one until it's paid. Okay, I think Okay, so now
+
+Matthias Miller  34:42
+and then if they want to defer a payment for a tally, they'd have to go create a new payment record and link, link the new one to that other ID or something? Should be a little bit of a manual process. I suspect we should support it in some form or fashion. But
+
+Speaker 1  35:05
+so then the next question would be what's the advantage to doing it automatically like that over actually creating the payments from the payments do reports when they go to pay them? Well, when select you select these three yard tallies for this landowner and say, pay these and then it runs the process or create the payment.
+
+Matthias Miller  35:40
+So you basically are back to two step process to
+
+Matthias Miller  35:52
+what I would rather have is basically a button that you click that says, go create pain, create all pending?
+
+Unknown Speaker  35:59
+What would it be?
+
+Matthias Miller  36:02
+Okay, then you're back to a report that says, Go tell me what pulpwood load totals are, go calculate what everything should be paid. So you have to generate that for the report to figure out or do you not show them what's due? You need to handle popup loads and tallies. So do you have do you have a process for one or both? I mean, I'm fine with a. Me, if we don't want to auto create these, I'm fine with a one click button that says go create these things. And boom, we go create payment records for everything that needs to be created for. And then the next step is you actually go pay them and you know, if you want to defer a payment, you just defer it. You just don't mark it paid. And then the next time we'll just keep adding to it. So it's really not any different from the payment record. It just means that the payments do report is not automatically up to date. Which again, that's it is it is simpler. We don't have to pass information through the IDs.
+
+Unknown Speaker  37:09
+We can um
+
+Matthias Miller  37:18
+I had gone down this route, because I think I had mentioned something along those lines. And at that time, I think your as, as I recall, you were arguing the other side of avoiding to do that.
+
+Unknown Speaker  37:37
+Maybe so
+
+Matthias Miller  37:40
+that's how I remember I certainly don't mind.
+
+Unknown Speaker  37:43
+Well, yeah. Yeah, no, I just Yeah.
+
+Matthias Miller  37:54
+The biggest advantage is that you, you, the payments do report is live at all times. And up to date at all times. That is the biggest advantage. It's the this is the only way we really have to do this
+
+Speaker 1  38:17
+right, so Okay, so I think that's probably one thing. I had been thinking of the payments due as like it would start out showing the amount due, and then you create the payments from there. And then what you're proposing here is actually you open the report, it's actually showing you all payments, ready to pay. So that Yeah,
+
+Matthias Miller  38:42
+thanks. Yeah, which allows you to start entering check numbers immediately. Like the payment records are there you just start putting in check numbers like pay this, pay this pay this pay this pay this pay this pay this? And yeah. And it's it's all up to date, and all the total calculations can live on the payment record itself. And we don't have to have a separate report that says or separate. You'd have to have a report that says okay, go calculate what's due, and then go go create payment records and make sure that they stay tied out or I don't know, that's the that's the complexity that you eliminate the arguments I'm not thinking about it completely correctly. But yeah
+
+Unknown Speaker  39:28
+sure, and then, tract, your intelli, so please
+
+Speaker 1  39:49
+do so then there's payments do report them can from what you're proposing there would have we Would you be able to see all the yard tallies that are being included? Or just have? Well yeah, we could just have a separate list or something like that to tally IDs or something like that.
+
+Matthias Miller  40:15
+Yeah, something like that. Or we can have a sub pain.
+
+Unknown Speaker  40:18
+Sure.
+
+Matthias Miller  40:24
+I mean, you could have a left pane with payment is due. And then you could have a, you know, top right pane with low tallies, and bottom right pane with pulpwood loads. Like that, then you can filter the payments do I want to see payments due for loggers I want to see payments due for landowners. I'm gonna see payments due for everybody I want to see payments due then you have one magical payments report. I want to see. I want to see future payments. I want to see historical payments. I want to see payments within this range. Like you can do all your your one stop shop for payments. Called Out 100. Pay Now.
+
+Unknown Speaker  40:57
+Pay Now.
+
+Matthias Miller  41:00
+I don't know that doesn't work. But pay now zero. I don't know what.
+
+Unknown Speaker  41:08
+When 100 Pay EVs No, they're paying on the people there. One of your 100 TVs pays TV pay.
+
+Matthias Miller  41:19
+What 800 Go pay me.
+
+Matthias Miller  41:27
+In related news, I'm leaving software. I'm going into the infomercial business. Just see me as like the star of the infomercial show. Don't answer that. Like the worst personality for that,
+
+Speaker 1  41:41
+anyway. All right. Well, I think I think you're winning me over. Do you have any thought off the bat how much this whole thing will cost? But no, I guess if if using doing payment records is going to be cheaper than doing RGS than. Now, that's what we want anyway. So yeah, I
+
+Matthias Miller  42:12
+think the whole way around.
+
+Unknown Speaker  42:16
+I think we've,
+
+Matthias Miller  42:18
+you know, Famous last words. I mean, there are a few other variants that we could take, that would be of similar cost and complexity. But I think all things considered, we've reduced this pretty close, quote, pretty nearly down to the irreducible minimum. The only thing that we could eliminate is to say that there's actually a button that you have to click that these payments don't get generated automatically or linked automatically. There's a button that you click to go link them out. And once you do that, then I'm not sure that
+
+Matthias Miller  43:00
+I see that as a few percent variance in the cost of the project. Hmm. I don't see that as a Yeah, we could cut 10 to 20% off the cost of the project. If we, I don't know. What do you think, Nick? Cost of doing an X 32. To create payment records and assign IDs, to all the places where that need them? Versus passing this information through on a net? It is less complex, admittedly. And for the external projects team, it probably would be easier Sorry, I'm asking you a question that I'm answering the question that will ask you the question again to get your opinion, which means I'm muddying the waters because I'm tainting your opinion with mine which is a fantastic decision making tool but in sarcasm the downside of the look at record on a net magic is that it is more complexity for the external projects team does need his be SPECT Well, in order for it to be successful, but Nick, do you have thoughts on go clicking Next 30 to go create all these things versus let's initialize them in Autonet. You ready?
+
+Unknown Speaker  44:34
+So the x 30 would be a.
+
+Matthias Miller  44:54
+You will have a master report that says what records need payments and of what type Yeah, that would be the source of truth driving it. And then you would have one externally dictate the payment records, then you have a second externally for the tallies, that's that stops it into the appropriate tallies. And then you have a third one for the pulpwood loads that stamps the ID into the pulpit loads and go ahead
+
+Matthias Miller  45:33
+you might have to have a totals and subtotals report and have pipeless or something of what pulpwood loads and what Talia said you can run all three levels through the same I think you want the same data source just to keep it simple but back to you
+
+Unknown Speaker  46:11
+I think the externally might be a better option. Um I don't love that we're handling three different lookup types to create them to create the payments, but I just think it's gonna get really complex having
+
+Speaker 1  46:38
+Okay, so the with the audit method when we we'd still have
+
+Unknown Speaker  46:53
+an X 30 to create the payments now
+
+Unknown Speaker  46:57
+with you know,
+
+Matthias Miller  46:59
+with the audit net Rick record, you'd have a field change expression on the tally and the tract that populates the tally record with a an auto generated ID and the same with the pulpwood load RG and that are that ID would contain the initialization instructions with the type contact ID and I see I think we're down to type of contact ID
+
+Unknown Speaker  47:23
+Yeah, yep sure
+
+Speaker 2  47:37
+I think the extra day will probably be the cheaper option it's more like to me it seems more like other stuff that we've done like there'd be more Yeah, I don't I'm not really thinking of a similar example that we have for for the alternate method and I guess the either way it's going to be somewhat different than Yeah, I think yesterday so so Oh, we lost him somebody goes Yeah. Internet issue
+
+Unknown Speaker  48:52
+Alright, I'm back
+
+Unknown Speaker  48:53
+had the computer then.
+
+Matthias Miller  49:01
+Anyway, so, ah, so I guess the bottom line is it would be less expensive to do X 30s versus.
+
+Unknown Speaker  49:52
+The X 30 like automatic X 30s or the button
+
+Matthias Miller  49:58
+well, some form of x 30 Huh which means as part of their payment process
+
+Matthias Miller  50:15
+okay, so then let's talk through what the process would look like. You click the button, and you
+
+Matthias Miller  50:35
+get three options. Saving mailman, number one runs 15 minutes every 15 minutes in background. And we make it fast well, it runs pretty much every 1515 minutes in the background, we make it make it be really fast. So it doesn't take up a lot of server resources. Option number two, we have a menu option or something that makes you click the button. And option three, we've got some kind of magic way. Or there may be more than this. Option three, you can only get to these reports through a workflow report.
+
+Unknown Speaker  51:14
+And
+
+Matthias Miller  51:18
+and so by virtue of that, you do the workflow and then you get to this, and you have to run the import first. Or we can have a button on the import itself or on the report itself that says refresh refresh payments. We could explore how difficult it would be to have a macro that says Are there any potential payments missing? So how hard would that be? That actually is not difficult. Nick, could we not have an index of all records? Yes, we can have an index of all records that need all landowners.
+
+Unknown Speaker  52:09
+We could have sorry.
+
+Matthias Miller  52:11
+We could have an index of all tracks that are missing payments on the pulpwood loads and an index of all tallies that are missing payments. And then we could refuse to show you
+
+Unknown Speaker  52:27
+the
+
+Matthias Miller  52:30
+payments report like I don't know what it come up empty or something. If there are no with a preface message, I don't know that we can do preface message. We could do a well, we could do a preface. If when you pull up the payments report if there are missing loads from the payments report. We could show a preface message in red that says you have one or more pulpwood loads. We can even give you a number very easily you have five pulpwood loads or five you Pope with loads missing from five tracks. You have five yard tallies missing. The other thing we could do is we could make the assumption oh this is easy. Okay, you guys want the easy answer is the easy answer is that you never pay pulpwood loads and tallies on the on the
+
+Speaker 1  53:32
+day of don't think that works for them? I think they're I think they settle with somebody on the same day. I think you have vendors or loggers who bring in I must be vendors who bring in loads. Because they'll hang around and wait for their check. Right. I think so or I don't know we W question for them. They might be open to it. The challenge might be when it comes to a Friday. They might want to be able to Well, yeah. I don't think it's going to work. Because they're going to want to be able to settle with people on a Friday for including loads that came in that same day.
+
+Matthias Miller  54:28
+How do you cope with loads get entered? Those get entered from the office?
+
+Speaker 1  54:33
+Yeah, presumably I think the loggers would let the office know how many pulpwood loads there were and then they enter them. Okay, and so it's not necessarily entered on a per day basis. It's it's kind of whenever I don't know if the loggers report daily or weekly or that I remember how that works. I mean
+
+Matthias Miller  54:58
+new proposal number one We create the index I talked about. Number two,
+
+Unknown Speaker  55:03
+we
+
+Matthias Miller  55:06
+we show this preface warning on the report. Number three, we, we add an X 30 call to the app, that when we create a yard tally, we go run this x 30 To attach the payment
+
+Speaker 1  55:44
+another thing that I thought of while you're talking here, maybe your proposal here solves it. But what happened if it's Friday at noon, and he's in the office making payments, and a new tally comes in for somebody that he's working on paying right now. If the tallies are being added automatically to a payment, we have any kind of edit collisions or things like that. Well, would that be an argument for for clicking a button to to force an update wherever he goes to make payments? And then if you know, if he's making the payment, and when a new tally comes in, it just gets skipped until I mean, get to wait until the next payment, you're gonna make something the second payment today or he adds it on the next week payment.
+
+Matthias Miller  56:46
+Yeah, I mean, I think we're gonna ask him to, to confirm the amount of the check on the payment record. I think we would have a calculated amount. And the actual payment amount, so we could tie that out. And that's how we edit collections. And then we say, Hey, you're paying this guy less, like, less than what he's supposed to? What are you thinking? Which could be obnoxious, but might be fine. And, and pragmatically speaking, they don't happen that often. But to your point, and then he would end up with a don't add it automatically, you would enter it, make the payment. And then the next time you refresh pressures reporting, it's like, Hey, you're totally paid for. But the likelihood of the same person? Well, I guess it could happen. I'm gonna guess people who want to get paid same day always want to get paid the same day, and they're not going to have to loads back to back asking for their check. And so it seems like a relatively, you know, we should validate against it somehow. But practically speaking, I wouldn't be surprised if it would be a recurring issue. I guess it's more likely to happen that you'd be paying a landowner when a load comes in or something, right, yeah,
+
+Speaker 1  58:16
+they probably more like that. In which case, it's probably fine just to let it wait until the next payment to as long as it's accounted for on that payment. Okay, so
+
+Speaker 1  58:45
+what's the plan? We have two is it worth giving them two options, one for one for automatic and one for a button they push? I think we're either way close enough and to equal that we just do what seems best for data model and development. All that good stuff. I think either way,
+
+Matthias Miller  59:24
+we're gonna want to win that index. We're gonna want to figure out, we're gonna want to have that x 30. And it's a really an operational decision on their end, do they want that running automatically? Or do they want to run that manually? And I think we still want to, either way, if we're not guaranteeing that this is live up to the minute actual information, I mean, I guess we would have run into this issue anyway. With
+
+Unknown Speaker  59:54
+we would have run
+
+Matthias Miller  59:55
+into this information anyway with our other approach.
+
+Matthias Miller  1:00:08
+No I'm on the wrong record that's why this is no yes this is right it really is the question Do you want to do you want to have that updated automatically with potential risk for collision in very rare situations
+
+Unknown Speaker  1:00:42
+or do you
+
+Matthias Miller  1:01:16
+Yeah, do you want to run the risk versions and have it be there automatically with you
+
+Unknown Speaker  1:01:22
+when I click the button every time sure alright so then I guess that would would you mind adding a down in financial report 330 Would you mind adding a new city a new section there
+
+Matthias Miller  1:01:47
+and just throwing out a few notes in summary basically this is those four payments reports are getting combined into one report with a bunch of filters and kind of what your proposal is and then there's a question for the client and we have that document there then we can pick it up.
+
+Speaker 2  1:03:56
+So, it just be a repeat for Lister poor on an MDX concat and the XL keys for those
+
+Matthias Miller  1:04:03
+Well, there's no this is actually a report on payments record.
+
+Unknown Speaker  1:04:08
+Oh, of course yeah. Questions for clients were. The main question was basically, you want to automatic with the risk of collisions with a push button every time you update payments every time you
+
+Matthias Miller  1:05:22
+Man, we just took an axe to that
+
+Speaker 1  1:05:25
+thing we did. Mike, my guess is that every project redesign project has at least one gotcha in it. And this whole payments thing seems to be the the gotcha for this project.
+
+Matthias Miller  1:05:49
+soapbox. This is what inexperienced software developers and designers do not catch until after they're knee deep into actually building out the project. And we just save them. I mean, we could go back to them and say, do your EVs. Right? It's another check for $10,000? Because we just save you 20 to 30. Like, seriously, like, right.
+
+Unknown Speaker  1:06:23
+And I think
+
+Matthias Miller  1:06:27
+our biggest or biggest problem right now, right now is that we're not effectively marketing. How awesome we are, but it really is pretty impressive that we nail this thing down at this stage of the process. Right? So Oh, sidenote, well, anyway, we another five minutes is this wrap it up for what we need for EVs? At least? I mean, this gives you guys a whole bunch to work on from now but
+
+Speaker 1  1:07:03
+take a look at any of this other stuff. Or let me just quickly see if there's any. I mean, they're a bunch of other to dues. But Nick, are you remembering anything and anything specific that we want to get masseuses input on?
+
+Unknown Speaker  1:07:25
+Feel like there was at least one report question. I don't remember from yesterday. Maybe not? Yeah, I think I think this gives us a lot to work on.
+
+Speaker 1  1:07:50
+Yeah, probably another three minutes isn't going to make a big difference.
+
+Matthias Miller  1:07:57
+So we'll plan on tomorrow, that was tentative, but it looks like we need it right. So in the last few minutes that we have, and I gotta run, because I've got another call, I want to get ready for soon thereafter. But I'm working to talk to them about software development design. And we'll actually really system development design, but including software. And I have two possible stories to use. One is a story of building Legos with my son and and how and drawing similarities to finding order in the chaos and building Legos, you know, putting the building blocks together. The other one is taking the New Horizons case study, not by name. But here's a project we charge 20k for and it ended up costing us 60. And as a result of that, you know, we became as we focused on nailing down operations and fixing, you know, implementing systems processes and introducing predictability. And here's the result. target audience, I think I'm still leaning towards, you know, construction and manufacturing type of businesses outside the Anabaptist sector, because that's actually pretty parallel to where we've been working, kind of your service base, blue collar type of type of stuff. The second one really makes a lot of sense within would make a lot of sense within a software context, if I wanted to consult with custom software development companies, but I'm not really I don't think I'm really looking to do that. So I'm curious if either of you guys have any gut reactions to the use of either story as a compelling case for why you need need to implement systems and processes and automations and possibly even software, your business
+
+Speaker 1  1:10:00
+I think the second one definitely would apply in the, in the software sphere like you were talking about the first one. Like, I think you could I think you could take the first one there, especially if you would do like a contrast between what what systems and processes or do you have when you're building Legos but I guess someone who's building a massive Lego house out of 10,000 blocks is going to have some they're going to be organizing their, their pieces by shape and color and laying a foundation and all of that whereas, you know, for six year old boy, having a blast, it's just gonna stick them all in whatever color order he wants. I don't Is that what's your angle? You're, you're thinking of there or what?
+
+Matthias Miller  1:11:09
+Yeah, I mean, this case, it wasn't following that. It's not one of those. I grew up playing Legos with random Legos, not with a booklet that tells you what to pieces to put together. Right, every single page. And so, but I don't know that everybody else in this context. You know, what, you know, what are people thinking? Thinking of if the Legos lead them down the book approach that's the wrong direction that I want to take them.
+
+Speaker 1  1:11:36
+Mm hmm. Yeah, no, I mean, I would at least be interested in hearing as a singer, high level draft of that. Going an interesting direction.
+
+Speaker 2  1:11:57
+I'd say the Lego Legos concept makes sense to me, but that's partially because I My thing was to have a massive box of Legos just totally mixed up and then build a castle out of it or whatever.
+
+Speaker 1  1:12:17
+Okay, well, I gotta drop. All right. All right. We'll talk tomorrow. Plan. Thank you. All right. Bye. Bye.
+
+
+Transcribed by https://otter.ai

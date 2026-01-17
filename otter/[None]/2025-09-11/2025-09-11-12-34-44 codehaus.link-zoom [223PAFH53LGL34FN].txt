@@ -1,0 +1,353 @@
+Matthias Miller  00:10
+You, hey, is this that was not working out? Working. You're muted. That's not working.
+
+Unknown Speaker  00:27
+There we go. Yeah, look at that. Apparently, if I have my mic in, then you can't hear me.
+
+Matthias Miller  00:33
+Make the defense. Take as many tape, whatever you want. Yeah, you're welcome. Yes, have
+
+Matthias Miller  00:49
+a good one. Thanks for what you doing.
+
+Speaker 1  00:56
+What food are you handing out? Do we get any ollies? I that's making me hungry.
+
+Matthias Miller  01:08
+It's about the closest thing I can get to Bangladesh culture of street food. Yeah, yeah, oh yeah.
+
+Speaker 1  01:17
+I'm gonna have to not look at your video for a while until you're done,
+
+Matthias Miller  01:23
+you're pretty good. That makes me hungry.
+
+Unknown Speaker  01:31
+Well,
+
+Matthias Miller  01:33
+if Dwayne's running to sleep,
+
+Unknown Speaker  01:34
+Wayne, I
+
+Unknown Speaker  01:52
+and under what five minutes, yeah, we can start. That's true.
+
+Matthias Miller  02:02
+Hey, Jonathan Howdy, either watching
+
+Speaker 2  02:06
+someone eating? Is someone eating a pack of Ritz crackers?
+
+Matthias Miller  02:10
+Tamales, not Ritz crackers?
+
+Unknown Speaker  02:13
+That's what the package looked like.
+
+Unknown Speaker  02:18
+It's a little better than Ritz crackers, all
+
+Matthias Miller  02:26
+right, here's my argument for a second. I think, I think basically we're looking to nail down is separate rows between, Oh, here he comes. If I start talking, then he can't jump in with a random her brain comment. We can make the most of the Okay, I was gonna say, Dwayne, if I keep rolling and pretend like we're in the middle of the conversation, you can't jump in with anything to derail us from the rest of the 23 minutes that we have on our
+
+Unknown Speaker  02:58
+calendar appointment.
+
+Matthias Miller  03:02
+What time? Dive right in. So I think, I think the main thing I want to nail down right now we have a disagreement, difference of perspective around, how do we model rent versus rent versus cash, amount of a payment, and how does that affect EPOS? And the two ways we can go about it is, the two ways you can go about it is having a separate field for the rental fee, which I should pull up the, let me pull up the i
+
+Matthias Miller  03:43
+Let's pull up A contract so we can pull up the transaction. I
+
+Speaker 1  04:06
+Are we calling these things transactions? If we also have accounting transactions?
+
+Matthias Miller  04:12
+That's a fair question. Do you have a I
+
+Speaker 1  04:16
+don't have ideas off the top of my head. It's just something we need to think about.
+
+Unknown Speaker  04:27
+So
+
+Matthias Miller  04:32
+I don't know. I mean, we're starting with the assumption that nobody, I mean, here's my argument for making it a column everywhere where we represent it, in real world, it's basically going to be, it's going to be represented as a single number, the total lump sum of rent that you paid. It's only for internal purposes. Now if, and I think most of the places where we should. In reporting, we're going to end up saying, is there another row? What's the value? And add it back in, or we're going to have or we're going to ignore the rows and have a macro that calculates it, which could be done. It's not beyond the realm of reason, I suppose. If you want to forgive the rental portion of a payment and require that you could potentially do that and still collect the cash portion for whatever reason. Having them split would theoretically allow you to do that, but
+
+Speaker 2  05:35
+I don't know. So what's your proposal for a column? It would because then the columns would obviously be there for all other things, such as damage waivers that have nothing to do with right, rental
+
+Matthias Miller  05:49
+correct. It would just be basically a cash, you know, rental cash portion, or something similar to that. Yeah, from
+
+Matthias Miller  06:08
+an accounting impact standpoint, I don't care. I think the question is, from from a from a whiskey standpoint and from a reporting standpoint, what makes the most sense?
+
+Speaker 2  06:30
+I'm not sure I think it would be easiest to go with the way that I suggested, what you know, which is why I suggested it. The only downside that I see to that with having, you know, where you would have two rows is that they currently only have one incurred rental fee. And I say this is the source of truth for this being a period, or that's what I base my other stuff off of. But I'm not sure that that's actually an issue.
+
+Matthias Miller  07:03
+Well, you just base it on the cash price, on the cash line item and the other one, yeah, period. It also means that every payment you're going to double, you're effectively going to double the number of lines in the RG, because you're gonna have to pay both portions of it and validate that both get paid simultaneously and
+
+Unknown Speaker  07:23
+it doesn't mirror reality as much to have it separate.
+
+Matthias Miller  07:29
+No, that's my biggest argument against it, yeah, and it's not like you can pay just a cash portion and not the or it's not like, I mean, when you're applying payments now, you have to think about, okay, somebody pays a portion lens rent. Well, I suppose what you really have to do is recalculate that and readjust the row. Like, if you pay, if your rents, rents rents $500 and you paid 300 you now need to update both of those prior rows to the new the new number.
+
+Speaker 2  08:14
+Yeah, I'm fine with I'm fine with adding the extra column. I think it makes no sense that if you guys lean towards that way with this significant amount of weight, then we can go with that. I do,
+
+Matthias Miller  08:29
+I feel, I feel like it using, using, I think partially from a complexity standpoint, but also from a what, most, what best reflects reflects this in the real world, which I've seen historically. Lens not always, but 90% or more of the time. Lens better than anything else. Wayne, are you good with that?
+
+Unknown Speaker  09:03
+I don't even know what you're talking about.
+
+Matthias Miller  09:06
+Okay, so we are going to on rental within the within this RG, I don't think you care, but just for your information, within this RG, rental fees will have a rental fees incurred, only incurred not paid. We'll have a split out amount that is the cash portion of the incurred fee.
+
+Unknown Speaker  09:34
+So you have a cash and rental fee column. Is that right?
+
+Matthias Miller  09:40
+Yeah, and I'm assuming the cash percentage is input. The rental percentage is just a macro that calculates off the amount.
+
+Speaker 3  09:50
+I mean, I think that's you have those you have the those fields stored anyway. So, yes, go on. Well, and the. Point being
+
+Matthias Miller  10:04
+the we have to feel the storm, but we need to take into consideration the effective This raises interesting questions for CRA contracts, but that because effectively you're changing the term. Does that? Do you actually just on a CRA contract? Are you actually just discounting anyway? That's another conversation that we don't have to solve for today.
+
+Speaker 3  10:31
+But what? What is the reasoning for putting in the addition the split?
+
+Matthias Miller  10:35
+Um, it makes depreciation on sale of the building easier, because we know how much of the payments went
+
+Matthias Miller  10:50
+directly to cash portion the building and what was rental income. So
+
+Speaker 3  11:03
+I felt like I heard something slightly different out of PD today. What was your thoughts on that?
+
+Matthias Miller  11:24
+Well, effectively what you're doing, no, you're right for PD today, it was effectively your EPO should, should match.
+
+Matthias Miller  11:45
+Your EPO should match the value of the non depreciated value of the building, and you should write off as a gain or loss the few cent discrepancy, if there is one right.
+
+Speaker 3  11:58
+No, I thought I heard him saying he was right. I thought I heard him saying they're just basically disregarding that completely now that
+
+Unknown Speaker  12:05
+accumulated
+
+Speaker 3  12:08
+depreciation is a community depreciation and revenue, revenue is revenue, and the difference between the two is what you get, or did I misunderstand what he was
+
+Matthias Miller  12:16
+saying? Here's the real issue. It's not that. Sorry. The real issue is, it would be really nice to be able to record an early payoff payment as a rental payment that is all cash, no rental fee.
+
+Unknown Speaker  12:35
+Okay, be
+
+Matthias Miller  12:37
+able to look at at the value of the contract based on either contract total, less contract balance, or contract effective value, less cash payments. And effectively, a building is paid off when the sum of all the cash payments equals the contract value. I don't have a
+
+Speaker 3  12:59
+problem going this direction under one condition that we are going to run into. He and I talked a little bit further about this at lunch, but we're going to run into this every every rent to own company is going to have a CPA that thinks of it slightly differently. And can we support the the variances of how we look at around depreciation, what's considered cash, what's considered rental fees, those like, as long as we can bake in some, some variant like you can decide on, on how you want to handle some of this stuff from a from a setup standpoint, as long as we can do that, then I, I don't care whether you put more rows in this RG or not.
+
+Matthias Miller  13:47
+Well, I'm proposing a column, and I think it actually gives us more flexibility, not less. All right, we can now report cash revenue versus rental revenue, if you should. You so desire. Got it or Yeah.
+
+Speaker 3  13:59
+I mean, I think, I think that's I think that's okay, let me, let me, let me put it this way. I think the guiding light to this is that where we've baked in a lot of flexibility on the RTO management side, but you're going to run into some very persnickety accountants and CPAs and people who handle their books in different ways. And as long as we have developed in a way that allows us to somebody goes, well, I really want to go this way. Sure, just go set it this way. Go set up your your accounting impact this way. And blah, blah, blah. And then there you go, hallelujah.
+
+Matthias Miller  14:37
+There are some kinds of customizations that we need to add for state level breakdowns and and year level breakdowns for buildings. Yeah, but, but if we, but adding this column in my mind, should somebody want to say, I don't know, just all the bizarre stuff?
+
+Speaker 3  14:58
+Yeah, I hear, I hear you say. That this actually gives us more flexibility, not
+
+Matthias Miller  15:02
+less, I think so. Yes, all right, I think it's the right call. I'm not 100% sure. I don't even know if it needs to happen before. Sorry. One other thing that we forgot to discuss this morning, which I think you get to discuss, is within middle of next week, we should probably be doing pausing automatic updates and doing some kind of development freeze, because having this go haywire in the last few days would be absolutely nerve wracking. So once this change, Jonathan, once this changes live. I'm going to need to make some changes to our to the existing data. So if you just want to let me know, and I'll fix up the transaction energy and fix the accounting impact so it keeps working.
+
+Speaker 2  15:52
+Okay, sounds good. So you are using this test only system for demo. I wasn't sure if you'd use this one or spin up the new like demo only system or something. We
+
+Matthias Miller  16:04
+didn't really talk about it. Dwayne, what do you want to we can take all this and clone it into a demo system, if you would like,
+
+Unknown Speaker  16:14
+how much time and money?
+
+Matthias Miller  16:21
+Couple hours of Jonathan's. Jonathan, are you able to do system copies?
+
+Speaker 2  16:28
+I'm not sure it was this, just like the copy to test system thing in an app listing, you could
+
+Matthias Miller  16:35
+probably configure it that way and make it be a copy to test system and internal test environment system switch.
+
+Speaker 2  16:41
+I think we did one very recently, so I think we could figure it out. So I
+
+Speaker 3  16:44
+have, I have two opposing opinions. One is that absolutely, we should be copied over and it should look like it's, it's functional software. The the opposing opinion is, leave it in the test environment, and everybody knows that we're not done building it. I don't know what what we can give me your Give me your best opinions.
+
+Matthias Miller  17:05
+We can turn off the test environment switch for a period of time if you just want the thing to go away.
+
+Speaker 3  17:11
+The red bar, the red bar, oh,
+
+Matthias Miller  17:15
+we can also give you a custom bar that looks like something like this, that shows some kind of bar at the top, but you can say, you know, nbsra demo,
+
+Speaker 3  17:32
+NBS ra demo under construction. Ha, that could be kind of cool, especially if you especially if you did it in the only orange
+
+Matthias Miller  17:42
+we can't. We have full control of the color, right color and text.
+
+Unknown Speaker  17:48
+Yeah, we do. I mean,
+
+Speaker 3  17:50
+that seems like a better option than, than than going and copying out to a whole new system. I would agree. I'm fine with that. Okay? That gives us some allure to have it NS it's NSRA, not NBS Ra, NSRA, NSRA conference, demo,
+
+Speaker 3  18:20
+yep. So the questions I have that are at the top of my mind right now is contract value, which is monthly payments, times the term, uh, uh, remaining balance, remaining months and EPOs are working all correctly. Those are, those are the those are a big deal to have fielded right there in the contract details, ready to go or not necessary, not ready to go, actually feeling and working properly.
+
+Matthias Miller  19:08
+That's on the do you guys, I mean,
+
+Unknown Speaker  19:11
+I think we can have that by beginning of next week.
+
+Unknown Speaker  19:16
+That right? Jonathan,
+
+Speaker 2  19:19
+yeah, all the surrounding stuff is in place, and I'm a few hours from being able to apply payments from the whiskey. And so then we can start generating, you know, test data and actually making sure these numbers work,
+
+Speaker 3  19:35
+so that then next week, what I would really like to do Matthias is that you and I just sort of do a comb through the system and go, ooh, we really should look at that, and we should try to fix that yet, before, before demo week. So that, so that, like, Well, okay, the other, the other thing that really would be nice to have, because it's, I. Don't know why, but it just the reason, the reason I asked you, Matthias, to have the link on the transaction record. The accounting transaction record is for exactly PDS face when it happened, it's like the light bulb goes on and he was sitting at lunch, and he goes, You know, when you did that, I literally in my head, these are his words. I'm quoting his words. He goes, Oh shit, who am I going to have to fire? Those were his words. I'm like, that's like, that's the so. But so having having the accounting impact link at the bottom of each transaction of each detail screen is very, very important for the demo you want to be able to do by bi directional navigation on this,
+
+Speaker 1  20:43
+I have that in my to do for today or tomorrow morning. It's, I mean, it's super easy to add.
+
+Speaker 3  20:50
+To be clear, I was quoting him. Those were his words. I didn't make those up. And if, if you want to take, if you want to take, like, this whole dashboard thing. If you want to put that, we probably want to put that out as I don't care. For the sake of this, you could turn some of these standard and stick it out there.
+
+Matthias Miller  21:09
+Let's standardize. Are you? Are you 100% happy with the colors?
+
+Unknown Speaker  21:13
+Ah, I don't know.
+
+Matthias Miller  21:16
+Let's do that Monday as well.
+
+Speaker 3  21:19
+I really would like to build this, the projected revenue one, because I think that would be really, really cool. And if we can come up with a good past due one yet as well, those two in there would just be killer.
+
+Matthias Miller  21:33
+Yes, I agree. All right, so there'll be some standardization of components, probably middle of next week.
+
+Speaker 1  21:40
+I share that to nick or Sean and boom, it happens. That happens.
+
+Matthias Miller  21:45
+I okay
+
+Speaker 3  21:47
+and Jonathan, if you have opinions on colors, do feel free to share them. Because I, I have, I feel very kind of meh about the coloring so far.
+
+Speaker 2  22:00
+Yeah, our I was complaining to Seth earlier today that our whole graph, color palette stuff is pretty bad, just the whole like platform thing is pretty bad, but I have some ideas, so maybe we can do
+
+Speaker 3  22:17
+I know, but that being said, when PD saw the stacked bar chart with rental income broken down by contract term. And then you could click on it, and you could see everything inside there. His eyes were getting kind of big. It was. It was worth it.
+
+Matthias Miller  22:31
+Dwayne, that was some of the mark if you want, if you want to write marketing copy for this software, sales pitches, anything like that. That conversation golden.
+
+Speaker 3  22:46
+Well, it's too bad I don't have the rest of the conversation recorded from from rest of lunch then, because, yeah, I, I think I moved him a whole lot closer to the goal line than before. There is some things that. Well, anyway, it's, it's outside the scope of this conversation. You have to drop off soon, anyway. And so,
+
+Matthias Miller  23:07
+all right, sounds good. So, so Dwayne for tomorrow, we can projections would be a great thing to work on first tomorrow, if you want.
+
+Speaker 3  23:16
+So I, normally, I have the a sales meeting in the afternoon. I am, I don't this week, so my Friday afternoon is wide open. Okay, if you wanted to jump into it and we'd knock out some more of these.
+
+Matthias Miller  23:30
+Yep, sounds good. My afternoon, your afternoon.
+
+Speaker 3  23:34
+Because ideally, out of that conversation, we write a little spec to shoot off to nick or somebody to build the accompanying reports to some of these graphs.
+
+Matthias Miller  23:44
+Identify reports. Yeah, identify reports.
+
+Speaker 1  23:49
+Do you Sorry? One quick question, what? What should we label the link to transactions like I haven't seen, it's gonna be a little card down to the bottom. But especially on contracts, is where I'm well, I guess everywhere. Do we want to just call them transactions? Or do you want to just link down into
+
+Matthias Miller  24:07
+or accounting? Transactions gotta be said, modification
+
+Unknown Speaker  24:10
+history. I just call it accounting impact, an accounting punch in the face. There you go.
+
+Speaker 3  24:19
+I don't know. Throw it into chat, chat, GPT, and ask it a couple questions. I, I, I agree with you the trend that we're ending up with a bunch of trans references to transactions that it's hard to know which you're talking about.
+
+Speaker 1  24:31
+So I'm a little leery of calling something other than transactions for the actual accounting transactions, because that's what the records are called so that's what our reporting calls them. It's just woven throughout. I think we'd be better off renaming our contract transactions and just, let's just
+
+Unknown Speaker  24:53
+call it payments instead.
+
+Matthias Miller  24:56
+You can call this fees and payments. Fees and payments, sure, casually, that's not. Great,
+
+Unknown Speaker  25:04
+or just label it with all in caps and call it
+
+Unknown Speaker  25:10
+money, free money.
+
+Matthias Miller  25:14
+Bottom line is the link. I agree with you said, I think the link should say something like accounting transactions. I think Dwayne me, Brock Chad, somebody should come up with a better term, instead of transactions on the contract itself. In different
+
+Speaker 1  25:28
+I'll add a link just view accounting transactions on the Yeah, car down at the bottom.
+
+Speaker 3  25:35
+I think our I think RTO protocols, I think they call it payment history is what they call it.
+
+Speaker 1  25:47
+A little leery of, sorry, go ahead, I was gonna say I'm a little leery of calling it payment, because it's not just payment, it's also the fees being incurred. And I'm a little leery of calling it history because we also throw the upcoming
+
+Speaker 3  26:01
+I understand well, since you're being opinionated about it, at least give give us some some alternatives.
+
+Unknown Speaker  26:13
+I don't know, guys, I am proposing things.
+
+Speaker 3  26:15
+I am super excited. This is, oh yeah, I was gaging a bunch of things on PDS responses today, because I wanted to see his the impact of his response, and I'm sorry that line sitting at lunch and he's like, oh shit. I gotta figure out who I'm gonna fire is just that says it all.
+
+Matthias Miller  26:37
+Oh, it's exciting. I love it. Okay, well, I have a proposal. My proposal is events. Well, it's not, it's financial events or balance events, balance adjustments. We'll come up with
+
+Speaker 2  26:57
+something sweet. Thank you guys. Thank you.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,1124 @@
+Unknown Speaker  00:24
+Hello, hello. What just you and me? Mark's
+
+Matthias Miller  00:28
+jumping, jumping on.
+
+Speaker 1  00:30
+Drew's out. Something's something's, nevermind.
+
+Unknown Speaker  00:37
+Good morning. Hi, Mark. Good morning.
+
+Speaker 2  00:59
+So how close are you guys with, with only the Shed show about two weeks, week and a half,
+
+Unknown Speaker  01:09
+you'll have to come to find out.
+
+Speaker 2  01:13
+Well, I it's, I've I've decided not to go. I know Calvin. About four people from Indiana are planning to go, I think, day, and there's not a whole lot of people coming from Ohio, everybody kind of has other opted not to go this year. I guess a lot of most of us were there last year. But so I'd like to go for that, though, but yeah, app did not well. I like to go for that. And also you're going to be there Matthias, but guess we all have competing priorities in life,
+
+Unknown Speaker  02:09
+literally, but
+
+Unknown Speaker  02:13
+this is the only thing you should be doing. Mark,
+
+Speaker 1  02:20
+we need. I didn't get the reference to to Seth's digital laugh tracks, but this bit seems like an appropriate moment for
+
+Matthias Miller  02:34
+it. Well, Mark, Mark, if you can't come you should. If you haven't bought your copy of my book yet, you should do it now while the price is down to $4.60 which is what happens when you miss the deadline for author copies. So we're gonna, we're gonna buy about retail.
+
+Speaker 2  02:57
+Now, okay, I do i i I got one copy of I got both of your books delivered here Monday.
+
+Unknown Speaker  03:10
+But what was the price on? I didn't get we missed the
+
+Matthias Miller  03:15
+deadline for author copies, so we temporarily tanked a retail price and again, buy a bunch of books and then put it back up. So I missed your your $3.40 cent discount, or $3 and 30% discount.
+
+Speaker 2  03:36
+So is this more out of curiosity than anything is I brief it while last year or two, I bought some books that I was suspicious were just because of the print date that they're set up with a printer that, as people order them, they print them and ship them out directly. Is this same situation here?
+
+Matthias Miller  04:01
+Yes, so what? Okay, years ago, Amazon went there's this very specific model of book printing equipment that's really good at it, and I don't know what it's been. 10 years ago, Amazon went out and basically bought up every last one of them that they possibly could. And there's a lot of these types of books, all of my books are they might keep someone if there's a spike in demand over consistent period of time, they might keep some in stock, potentially. But as demand drops, I'm sure they get rid of inventory and just print on demand.
+
+Unknown Speaker  04:42
+So yeah,
+
+Speaker 2  04:46
+well, yeah, just looking at both of your books. They're both dated, September 5, 2025 which was the day I placed the order. So it's like, what is it? Pretty much, fully a. A fully automated process of order fulfillment, where it's, instead of going the warehouse and finding the book, you just, just print it on the press, just like a and create it and shipped out.
+
+Matthias Miller  05:17
+Yeah, something like that. It's, it's, it's pretty crazy that they can do two day shipping on their prime delivery on something like that for this same day that's ordered.
+
+Speaker 2  05:32
+Wow, I went through them real quick. I didn't know I spent some time.
+
+Unknown Speaker  05:43
+Going through these, but I did notice the Amish software connection. Expect that I know where that comes from. I think
+
+Matthias Miller  05:59
+that one was in the frictionless
+
+Unknown Speaker  06:03
+teams one, right?
+
+Matthias Miller  06:11
+Yeah, slightly into the radar. Yeah, I should say we're letting bloody you play. I'm not sure what
+
+Speaker 2  06:20
+it is. Matthias, I have trouble understanding what, what you're seeing, some of it. So I didn't quite get that.
+
+Unknown Speaker  06:37
+It was the me. I can hear you.
+
+Matthias Miller  06:42
+So switching my mics. I got an issue with my
+
+Unknown Speaker  06:45
+audio that I needed.
+
+Matthias Miller  06:48
+Okay, I was just saying that was in the frictionalist teams, and we're, we're letting you guys fly under the radar on The Shed side. So, okay, yeah, are
+
+Matthias Miller  07:11
+you able to hear me now? Is this better? Yeah, I'd say that's better. Oh, there we go. I had your volume down, all right. Good.
+
+Speaker 2  07:20
+Well, should we jump into the agenda? So little nervous. Next meeting is almost a month out, October 2, because of conflicting schedules and stuff. But just fine. So software development projects, so the sales tax AR reporting issue, I
+
+Unknown Speaker  07:53
+so one of them is one of the steps is done, but
+
+Speaker 2  08:02
+is there okay on your proposal? At the bottom of the incident there, you said, add an effective date at a night like 30 is that? Is there anything keeping us from just moving ahead with this? Like, are you waiting on, on? Sign off from us on any of this,
+
+Speaker 3  08:23
+waiting on me to finish the last little pieces today, it's about done.
+
+Speaker 2  08:28
+Okay, good. So this would go live with the next, next,
+
+Speaker 3  08:35
+yeah, and I'm gonna have to keep my eyes figure out what happens. Excuse me, set up a scheduled task to run every night.
+
+Speaker 2  08:45
+That's good. So accounting discrepancies for finished goods inventory actually ignore my note there on my agenda, but so I spent quite a bit of time with that this morning. And added some notes. Drew, added some notes as well. So I think, Well,
+
+Unknown Speaker  09:10
+looks like he did some, a bunch of work on funding transaction mismatches. So
+
+Unknown Speaker  09:25
+So if we look at that incident,
+
+Speaker 2  09:37
+oh, you've been busy. MS, eyes, I didn't, I didn't see this since you've updated it. So starting at the top, stay closing.
+
+Speaker 2  10:17
+Okay, so the first question I had there, we're currently stumping the building costs. Applied value on building Bill transactions is that one of the issues we're having with finished goods, inventory report showing different than an accounting is where, if, if on, say, we build a building on 624 and then on 630 were as of 630 we apply actual cause the way the system currently works. We we go back to 624 and just stomp that on as of then, yes, but the finished goods inventory report respects that properly where 624-620-5626, it'll show the standard cost, and then come 630 it'll show the actual cost. Is that that correct or not?
+
+Matthias Miller  11:15
+I'm going to assume so. But yes, it is correct.
+
+Speaker 2  11:24
+Oh, okay, okay. So, so we're which that, that that's the React? Well, that is the reality in that time frame, from 624 to 630, in the example, we don't know. We don't know, I guess we don't know what the actual cause is, so we just butter along with standard cause. Um, good. So the next note you have there little confused. There were some line items with blank values, but not when the building is filled. Um, so then I shouldn't, shouldn't generate playing. You're saying, however, we do need $0 transactions to move from raw materials to finish on the balance sheet. So if I look at this report now, have you made the update your dimension here?
+
+Matthias Miller  12:26
+Yes, I have. I
+
+Speaker 2  12:56
+maybe I'm thinking about this. I can't even remember, but I was thinking it was in the building invoiced section. You had building invoiced you had $0 amounts there,
+
+Matthias Miller  13:14
+yes, and if that's what you removed,
+
+Unknown Speaker  13:18
+yeah, and that's what you removed,
+
+Matthias Miller  13:20
+that is correct.
+
+Speaker 2  13:23
+Okay, because I don't. I think that's what most of the when I look through the big report showing all discrepancies, it looked like 90% of the buildings on there were were there because of that. But if I was looking at that correctly, and a lot of those should go away now, right?
+
+Matthias Miller  13:49
+That is a good, okay, yes, that would make sense.
+
+Speaker 2  13:54
+But okay, you're saying we do need $0 transactions to move from raw materials to finished goods in the balance sheet that I don't quite understand. Sorry that
+
+Matthias Miller  14:06
+that is a dumb that is a sorry for the bluntness. That's a dumb statement. Every every accounting transaction is a $0 transaction I don't like. I uh,
+
+Unknown Speaker  14:23
+just scratch it.
+
+Speaker 2  14:26
+Okay, but it's what happens. What happens, if we, like, had we left those intact, when you looked at accounting transactions, would a $0 transaction even show up?
+
+Matthias Miller  14:40
+Well, I think we, I, I'm not sure if we would have either the import would have failed because we had a it was actually blank, or we would have just skipped the lines, okay, but yes, it would have shown up and it would have been senseless and useless and Okay, so it's. Good to remember, and
+
+Speaker 2  15:04
+did that have anything to do with the variance? I think we still have some variance Gremlins hanging out from the initial design where we I think when
+
+Unknown Speaker  15:18
+we, we built in for variance accounts. But now we're saying, well, by actual cost, and it is what it is,
+
+Speaker 2  15:33
+or do we still have, like, if we go to, I think it's counting companies, there's,
+
+Matthias Miller  15:44
+we still have allowance for a cogs variance account, but we don't use it. And so if we want to, if we wanted to, we could remove it.
+
+Speaker 2  15:58
+Wow, I I don't see us using it, but should, I mean, should we remove it just for housekeeping and or does it? Should we just leave it?
+
+Matthias Miller  16:08
+I think it'd be good to remove it also. The The other thing too with this is that we had added this accounting basis field, or the cost basis field previously, and I don't think or the accounting, accounting basis, whether it was a standard or accrual, and I think that one can be removed as well. I don't think we need it anymore.
+
+Unknown Speaker  16:35
+Okay, I'm good with that, do we just add that to this incident?
+
+Speaker 2  16:48
+Good. So the next one, I think the next one is just resets the above. Just need a little clarification. I think we covered that in in the first building. Is that right? But, okay, yeah, I think what I should have, I said, gives you all transactions and building, a spiel that should say when building is invoiced. I believe
+
+Speaker 4  17:11
+that's right. That's the source of the confusion.
+
+Speaker 2  17:18
+The next one that is correct okay. Well, initially, okay, your note, though, if you prefer, we can always create a building cost apply transaction. I was thinking we should have that so if we, if we looking at transaction, it doesn't raise red flags like, Wait, did we not apply actual cost? But knowing this, I think this is the cleanest, best way to do it. I like it. I would prefer to just leave it exactly like you have it. So, moving on down to Drew's question. Something in this that will fix the solution. I think what he's saying is, I didn't talk to him, actually, but I think what he's saying is the issue of having, well, like the two buildings up above, where one shows up in cogs with two raw material line items, and the other one shows up as one. But with your fakes, well,
+
+Speaker 2  18:36
+okay, I think I'm making it confusing again, but with your fakes here. They will all be handled the same way. I believe
+
+Matthias Miller  18:46
+is that the difference I don't understand. I don't it wasn't clear to me what he knows,
+
+Speaker 2  18:58
+okay, what he's saying is, is, if you look at the two buildings you reference, you just go to the accounting transactions and look at those, you'll see
+
+Speaker 2  19:12
+the 6643, when the Building is invoiced, it only has six lines of transactions.
+
+Unknown Speaker  19:23
+But the other one, the Six Sigma five, five has,
+
+Unknown Speaker  19:35
+I think, he's asking, Why the difference, which, I think
+
+Matthias Miller  19:43
+the difference is because of timing. But with your change, both of these would have, would only have six sets of six lines of transactions when the building was invoiced, I believe right,
+
+Speaker 2  19:58
+they would take. The combined total of standard cost and the adjustment when the actual cost was applied, and use only that, rather than like we're seeing in this second building, where we have the two line items,
+
+Unknown Speaker  20:19
+yeah,
+
+Speaker 2  20:21
+yeah, yeah, that's fair. I mean, that's what I was seeing on your, yep, that's on your Yeah, on your fakes there. So I like it. I think that's good. Your note. Bottom Correct. However, I mentioned if you creating the last question, all these proposed transactions cause issues with lock periods to one event,
+
+Speaker 2  20:55
+you'll likely need to create a lot of corrective transactions. So I'm not understanding that that last response.
+
+Matthias Miller  21:07
+So if you look at, let me pull up one of these guys.
+
+Matthias Miller  21:20
+If you look at the 66431, we changed all the amounts on the building, built transaction, and then we added a new building costs, applied transaction. And so because we needed these to occur at different dates. So his discrepancy report is going to show a discrepancy for those two transactions, and to get it to tie out, he needs to create a a correction transaction on January 1. Okay?
+
+Speaker 3  22:14
+Are you meaning with our the report we had built to push transactions across, okay, exactly for every building from 24
+
+Unknown Speaker  22:29
+well, any building with this, with discrepancies,
+
+Speaker 2  22:34
+Matthias, are you looking at the 6643, building? Yeah, so. But that was all of the that was all,
+
+Matthias Miller  22:42
+well, that one's not gonna that one wouldn't. But if we have a similar building in 2024
+
+Speaker 2  22:53
+Oh, because it couldn't, it couldn't make any corrections in 24 so even if, even if both, even if both the old and the the new one that it's wanting to make were in 24 it couldn't and so we would make a so let's assume this 6643, building was the building was built in 24 How would that so the first line item there, we've got raw materials, the old accounting is 3500 the newest 3050 how would that corrective transaction for lock periods look on one 125 Yeah.
+
+Matthias Miller  23:42
+So you would have one corrective transaction for building built with a credit of $460 or something, or whatever it comes out to, on the raw material completed buildings, you know your $250 whatever that ends up being the whole way down through. And then you would also have a corrective and almost ident, almost identical corrective transaction on the building, let's see the building cost applied. Well. Then then you would basically create the building cost supply transaction for January 1. That would basically be the inverse again of the corrective transaction for building built.
+
+Speaker 2  24:35
+So the okay and the net, the net total of that transaction would be zero, right? Like the one one, the corrective transaction,
+
+Matthias Miller  24:44
+that's right, those two corrective transactions would end up being non functional. It's just, we're wanting to tie them out to we're wanting to we're wanting to tie. About to buy event.
+
+Speaker 2  25:07
+So okay, doing that would make so that our finished goods inventory report. Ideally, it should finish goods inventory report would now match, as of, say, one two or one, 125 and forward, but it would not match historically. Is that correct? It would not match with the balance sheet account
+
+Matthias Miller  25:29
+for, I mean, yes, it wouldn't, well, yeah, it wouldn't match historically, because we can't, unless we unlock the periods to make
+
+Unknown Speaker  25:39
+these changes.
+
+Speaker 2  25:43
+Well, I don't think it's worth it, but so his if we if we wanted to look at finished goods inventory values
+
+Unknown Speaker  25:53
+325, then the report would be the more accurate one. But then,
+
+Speaker 2  26:01
+after or in 25 let's roll down with this, the report and the balance sheet, we would expect those to match.
+
+Unknown Speaker  26:11
+No, yeah, that's right.
+
+Speaker 2  26:18
+Okay. Well, and is it okay if, for some reason, we decide we would like to make those changes effective in 24 before we run the accounting impact changes, we could just unlock 24 and then it Would would go and correct those in 24 is that? That correct?
+
+Matthias Miller  26:46
+It is correct. I would want to, I mean, I would want to review the mismatch report to make sure that you don't have any other transactions that are trying to be applied. Or for
+
+Unknown Speaker  27:05
+2024, or
+
+Matthias Miller  27:10
+potentially, we could help you build a one time thing just to filter down to only these changes perhaps,
+
+Speaker 2  27:28
+okay, well, I'm going to say there's one review withdrew, but I don't, I don't see any. If we come up with what we believe is a legit reason to push this back into 24 will get you, well, okay, if we do that, then, then our ending 24 numbers will be skewed anyway, and they won't match with what we file taxes on. So, bad idea, no. Okay, we will not do that.
+
+Matthias Miller  28:00
+Okay, most, most of them, you'd be fine on. But if there's something that, yeah, first the boundary, you could, you're right. You could change those numbers.
+
+Unknown Speaker  28:09
+And I'm pretty sure it would. It seems uh, good.
+
+Speaker 2  28:15
+So then I think, I mean to me, this all makes sense. It looks correct. What is the next what's the next step?
+
+Matthias Miller  28:29
+Next step is, I think would be Seth, and I getting our heads together. And I would like to I just put this together in a user report, but get our heads together and actually implement this as the correct methodology, like putting into the systems that it goes live.
+
+Speaker 2  28:55
+Okay, so are there two pieces to this? One is you, you you run the accounting impact update so so that all existing transactions are updated. Anything in a lock period just gets moved to the first open, first unlock date, and anything in an unlock period just gets updated. That's understanding correctly. I guess this is question that would be step one, and then step two is, is changing the behavior of how we generate transactions when we apply actual costs to mimic what your your adjusted or your what your the new transactions you're you're showing on the mismatch report. Board is that, are we talking about those two pieces, or is
+
+Matthias Miller  30:09
+it only we right the the two pieces in my mind are we take this report and we change accounting impact to work that way, and that will automatically update 2025 numbers. And then you and Drew,
+
+Speaker 4  30:27
+clean up discrepancies, 2024 discrepancies,
+
+Matthias Miller  30:34
+and ask for help if you need help.
+
+Speaker 2  30:41
+Okay, but, but what about changing the behavior, the generation of or how we, how the creation of accounting transactions moving forward? Is that also part of this work, you're changing it to model what we what we now say it should be,
+
+Matthias Miller  31:02
+yes, correct. Oh, everything going forward would use, would work the way that this new report functions.
+
+Speaker 2  31:10
+Okay, perfect. So, so we wait the next steps is you and Seth to do make those changes, and then, once those are made, then drew and I can start auditing this against the finished goods report and cleaning up any 24 discrepancies. Yep, good. I like it. What? What? What's an ETA on this?
+
+Matthias Miller  31:49
+Well, it's either going to be you'll either have it the week of, it'll either be live the week of the 22nd or it'll be live the week of the sixth I have, I have a client right now who's pretty greedy for my time. I don't know if he's listening, but I think except available availability on Tuesday, yeah,
+
+Speaker 3  32:21
+so Monday and Tuesday are both open for me, but then Wednesday through Friday is maybe working half time, right? Because I'm going to be off in western Kansas looking for birds and working when I feel like it,
+
+Matthias Miller  32:38
+you get a good feel like working muscle? Yeah, I think, I think we should be able to knock it out on Tuesday before Seth disappears. It's not a lot of work that's done, that's left. It's just, I want to drag for Seth through the weeds so that he at least pretends to understand everything that's
+
+Unknown Speaker  33:05
+going on, okay?
+
+Matthias Miller  33:07
+Or I pretend to teach him,
+
+Speaker 2  33:16
+okay? So, I mean, this would there's no other like from, from our list of things. This is our top be our top priority. There's nothing else that we have slotted from our project, slotted higher than this that could be shifted around in order to get this for this weekend up. Hang on,
+
+Matthias Miller  33:34
+I might have
+
+Speaker 4  33:36
+let me check something I uh,
+
+Speaker 2  33:49
+we're just the reason I'm asking is we're trying to get all of the balance sheet accounts audited and completed by end of this quarter, and sooner we could have it, the better. But obviously, me
+
+Matthias Miller  34:03
+understand, I am 90% sure I had, I had somebody this afternoon who's a little less greedy with my time than some other people on this call, really taking five shots. I think Seth, would you be available this afternoon? Yeah, I don't know. I'm just gonna throw a time on the calendar. I may need to it.
+
+Unknown Speaker  34:34
+Should work, though.
+
+Speaker 1  34:36
+Is this your way of telling me that you've been we've been talking too much lately.
+
+Matthias Miller  34:42
+I love talking to you. I love getting stuff done. We've been, we've been, we've been making stuff happen, in my opinion, good, no, I like it. We can. I think. I think we can. I think we get a good shot at i.
+
+Speaker 2  35:01
+Well, okay, that would be awesome, but yeah, but yeah, either way, let me know, and then we can know. Soon as it's done, I want to get, get on it and work on that. So wholesale dealer, Portal, anything to look at on that understanding is the eight that the applying payments, deposits discussion is, is your guys court that's in Matthias. Uh, uh,
+
+Unknown Speaker  35:45
+yeah, I think that's right. Um,
+
+Unknown Speaker  35:48
+oh, the
+
+Unknown Speaker  35:50
+Go ahead. I
+
+Speaker 3  35:52
+haven't started on it because the sales tax one was listed as hiring. That's what I've been working on. I don't we're trying to remember what we had decided. I don't think we have that much work, or there's not that much coding for me to do. There is some that I need to get done, but I think I could do that early next week, if I don't know if that's early enough or not, or does it need to be this weekend? No, that's
+
+Speaker 2  36:23
+no. I think what I'll do is, I've been telling sheds, right? We should have this by end of September, but I think I'm going to move it out a little bit, to just give us some space, because it's important, but it's, it's not a big deal. That moves out a little bit So
+
+Speaker 1  36:41
+Mark, before you go on with that one. Yesterday, I stuck the I stuck all of our the current, what we have currently built in dealer portal into restricted users. So as soon as well and tested, tested the new permissions that Josh gave out, which worked flawlessly. And so I guess from Josh's side, we still need from him some additional records restrictions on viewing your own record, but so far so good on on the functionality. And so all of that's in a restricted user profile now, and it's it's going to be ready as soon as Seth's ready with his stuff to put together and and start testing good
+
+Unknown Speaker  37:36
+I'm just going to make a Note. I think I'll set the expectation to or like, mid October. I'd rather come to them early.
+
+Speaker 1  37:53
+I mean, the other option, but the other option is you, we tell them where we're at and let them start playing with it. And, you know, I mean, they could at least see their current orders. They can see when they're built, and they can see some of that stuff they don't have the AR side of things wouldn't be ready to go yet. But, I mean, they, there's nothing that hinders them from playing with it.
+
+Unknown Speaker  38:16
+You mean, as of today? Well,
+
+Speaker 1  38:18
+not quite as of today. I still need to go back in. I added in the Ask prompts for for choosing the the dealership, and we're going to need to stay with dealerships. Doing company is not going to work because it's it's not relevant for someone like an SDS or a single, a single location wholesaler, because ideally, I want to go ahead and direct it for us. For the single use wholesaler it, we should be able to just, they don't even know that they ask prompt is even there. So that and, well, I mean, you and I can talk about this further. But for for someone who, you know, a wholesaler that may want to be purchasing for individual, like, if they have more than one location for themselves, and it's all within the same company, you know have having a company pick is is kind of odd. So I think picking their own, the dealerships that are assigned to them is probably the right way to go.
+
+Speaker 2  39:25
+Okay, I like that idea. I mean, of starting with with a partial, partially, you know, they could start with that, and then, soon as we have the the payments piece ready? We can, they can start using that kind of doing it in steps.
+
+Speaker 1  39:46
+Yeah, it was, it was kind of fun. Yesterday I was, I was attempting to on the restricted side, acting as a restricted dealer, and attempting to swap out URLs in the top, swap out record ID. In the top and see if I can get to other people's stuff, and it just tells me it doesn't exist. And so that that's pretty it's it's working quite the restriction works quite nicely.
+
+Speaker 3  40:15
+Yeah, if you can find holes in the restricted behaviors, then you need to let us know as soon as possible, because that would be very problematic.
+
+Unknown Speaker  40:24
+Well, I was trying,
+
+Matthias Miller  40:28
+pretty sure that'd be worth bounty. We can send you two girls if you find something like that.
+
+Unknown Speaker  40:41
+Good, anything else on dealer portal, so cash flow reports, so
+
+Speaker 2  40:52
+you'll resurface that email, send it out, or like waiting on a response from me, I think. But do you have any idea? We probably need that. But the idea on size. But do you have any idea on on the size of that project? Have you discussed it with Joel
+
+Matthias Miller  41:11
+on Yeah, we think it's we think there's a way to it depends how much muscle and how automatic you want it to be. The problem with cash flow projection is that there are instances where we're not tracking enough data to perfectly, or we've got multiple events in a single transaction, or there's weird stuff where you can't always infer what happens in the cash flow statement. So we think that we could have something that's 90% complete and lets you manually fill in the missing pieces within maybe two or three weeks, made up numbers, don't know. And depending how automated we go, and depending how many rocks there are with lots of creepy crawlies, running, running around, living under them, it could be two months, maybe worst case scenario, we think,
+
+Speaker 2  42:12
+okay, so, okay. Are we talking the Cash Flow Report? Are we talking about is what happened historically, like, like all other accounting or are we also talking a way to create cash flow projections, cash to use cash flow reports for future? What we expect cash flow to be in the future based off of our budget numbers?
+
+Matthias Miller  42:48
+Well, I'm not aware that any of this is directly connected to budget or projection,
+
+Speaker 2  42:54
+but what we're talking about, the Cash Flow Report, we're talking about is all looking at numbers that have at events that have already happened, right, correct. Okay, so what's the just for context, what's the manual work that you would Oh, okay, for depreciation. But why would that require manual work? Like, isn't it? I think I'm oversimplifying this, but isn't it, setting up the each account on how and where it should appear on the cash flow statement?
+
+Speaker 2  43:42
+Um, um, are we getting in? Is this a Joel question beginning into too much? Here are some
+
+Matthias Miller  43:51
+when a non cash expenses charged in the income statement, right? This is true for depreciation and for gain or loss. Accumulated depreciation accounts should not
+
+Matthias Miller  44:21
+Seth, do you what was there was a there was an event, okay, like, I think Joel references it in the email.
+
+Matthias Miller  44:42
+We are missing something. I was thinking that there were some cases.
+
+Unknown Speaker  44:48
+Okay, let me see if I can find this. I.
+
+Speaker 2  45:05
+Well, okay, this is, this is, I think this is good for, for right now, three weeks would be the basic version. But if we go all out, it could, it could be as large as two months. Is that a fair?
+
+Matthias Miller  45:28
+Yeah, so I think there's, there's a few, there's a few potential issues. One is complicated transactions like equipment purchases that have a cash impact and expense and depreciation adjustment, so that can probably be handled automatically, but needs to be thought through. There are some times where, if you sell equipment and post it to AR, we might not handle that right. Maybe transactions that shift between major buckets in the cash flow statement, but I'm not sure about that. Sure about that depreciation, which is an amortization expenses, which was discussed in the email. So it looks like it's primarily and these like what we're thinking is on sale of equipment. If there is a world in which we could let you we're planning to design it in such a way that you could manually specify the cash flow impact of a transaction until our classification is good enough to correctly identify what how it should be represented on the cash flow statement. So that's hence the two three weeks in expansion. But there's a lot of this feels to me like something where we're going to get it 90% right, and then we're going to have a ton of back and forth to figure out how to get it, finding all kinds of edge cases and getting it working.
+
+Speaker 2  47:01
+So how does is this something where Joel's heavily involved? Going to be heavily involved? The reason for asking is, if so, how does his capacity look for for doing this in fourth quarter?
+
+Matthias Miller  47:15
+No, no. Seth is going to take ownership of it, and he and I will continue being and we're taking it over from from we're taking Seth is going to take the technical side over from Joel. Okay, good.
+
+Speaker 2  47:37
+So five purchase, transaction, anything else on cash flow reports? I think that answers the questions I had
+
+Unknown Speaker  47:46
+says I don't think there's anything else
+
+Speaker 2  47:50
+purchase transactions that I have not gotten to doing anything on this yet. So, so my court cross linking between that's a really I think it's a pretty small project. And just look at that real quick. Make sure it makes sense. Maybe you have taken a look at it.
+
+Matthias Miller  48:14
+770 is actually not the cross linking incident.
+
+Unknown Speaker  48:19
+That's the 772
+
+Unknown Speaker  48:22
+is. These are flipped.
+
+Matthias Miller  48:25
+There we go, yeah. So we're getting a little lazy here, but if you could add links, oh, is this? Well, I don't know. Is this a Josh? Josh thing we're looking at, the actual building
+
+Speaker 3  48:47
+on me. It's pretty simple, okay, I think unless I'm missing something.
+
+Unknown Speaker  48:57
+What? What was that
+
+Speaker 3  48:59
+I said? I think it's pretty simple, unless I'm missing something.
+
+Speaker 2  49:02
+Okay. So the only this gets kind of an edge case, but if we have a second so the initial building that the original sin stays, and then we have an RT one, which is the retrieval. And then, if we have enough this, this does actually happen where a building is retrieved a second time and sometimes a third time. But if it's retrieved a second time, then we have an r e t2 so it real technical. The R e t1 building would have could have a link that to essentially have two links, one that takes you back to the original and then one that takes you up forward to the R 82 building. It doesn't happen often enough, and we can. I mean, if there's an easy way to do that, great. If not, that's fine as well. Josh, I think we run into this with the. Purchase Orders where we have multiple a back order on a back order he's created linking that we go from the back order to the original. But now, if we have a back order with a back with another back order off of it. So I don't know, Dwayne, do you have? I mean, this Yeah, ideally, just something that a link that takes us from the original building to the retrieval and then the other way around is fine. You have anything to add, Dwayne?
+
+Speaker 1  50:39
+I don't think so,
+
+Speaker 1  50:49
+if I understood what you were saying. All the all the RT copies should have some way to link back to the original.
+
+Unknown Speaker  50:58
+Well, yeah,
+
+Speaker 1  51:03
+so that if you're three copies deep, you don't have to, it doesn't just go to the prior one, and then you got to jump from the prior one to the prior one to that and the prior one that like the original.
+
+Speaker 2  51:12
+No, no. What I was thinking is, if you're three copies deep, it would take you to the prior one. But if you're if you have an R 81 and two on a building on the R 81 you technically should have two links, one that takes you to the original, one that takes you back, and one that takes you forward.
+
+Speaker 2  51:34
+So if you have a building that was sold, retrieve ones, then it's been sold to three different people. You have the original. It was picked up, brought back, sold again. Picked up, brought back, and sold again. So if you're on the RT one word, where do you want your linking to go? To the RT two or the original or bold?
+
+Speaker 1  51:58
+Okay, so you're saying, if you're two copies deep, the middle copy, you should be able to go either way.
+
+Speaker 2  52:05
+Well, I'm saying, if it's easy to do, if it's not easy to do that, no big deal. I mean, you have an opinion on that.
+
+Unknown Speaker  52:17
+You have it. My I agree with you. Like, yes, you should. You should always be, you should always be able to what, yes, yeah.
+
+Speaker 1  52:39
+I was trying to say it better, and couldn't come up with a better way to say it. I just, I sort of just gave up in the middle of it.
+
+Speaker 2  52:49
+Dwayne's famous for his his answer to very complicated questions, multifaceted questions, sometimes saying to sing Yes.
+
+Speaker 4  53:02
+Well, awesome.
+
+Speaker 2  53:14
+Could we, as we go through these projects, I'd like to just put a size on on these just so we know for reference in the future. Again, I think Josh is just putting it in the Status summary so it shows up on this report.
+
+Unknown Speaker  53:28
+So we don't have to do that now, but that would be helpful your split income statement for revenue channels. So the
+
+Speaker 2  53:46
+I made an update there Wayne a good point, and suggested we only do wholesale and retail split, which I think is great, rather than so just wanted to note that so that have that when we were looking at it. And then also, do we have an expected size on on that? But the reason is this expected size is helpful. To be clear, we're not expecting to hold anyone try to hold anyone to it, but it's just helpful when we're prioritizing, like sometimes, if we don't know if a project's a one hour project or a three day Project, it makes a difference on where we prioritize.
+
+Matthias Miller  54:42
+Um, two days Seth. I We Seth and I could maybe knock it out in an afternoon. All goes well. Um.
+
+Speaker 2  55:06
+Okay, well, I'd say when you when you put in be realistic, and I'd probably
+
+Unknown Speaker  55:14
+vote to keep it on the high side, just for but all good developers do that anyway, don't they? Like they, they, Oh, what is the term? They over.
+
+Unknown Speaker  55:32
+Add your estimate. Yeah, you
+
+Matthias Miller  55:35
+figure out how long it's gonna take you to double it, and that's usually about, right? They over,
+
+Speaker 1  55:39
+promise not to perform. Yeah, no, no, the other way around,
+
+Unknown Speaker  55:46
+underprime, over deliver. I yeah,
+
+Speaker 3  55:58
+that reminds me of Fiddler on the Roof. There's a line in the musical where they're singing about the people in the village, and they're saying overworked and underfed. And I think America is the opposite, where underworked and overfed. Anyway, just Dwayne's comment reminded me of that.
+
+Speaker 2  56:20
+Now, who are you referencing to, if you say underworked and overfed Americans
+
+Unknown Speaker  56:25
+in general, nobody in particular,
+
+Speaker 2  56:29
+Americans in general. And so from is that from the the eyes of somebody that's lived most of his life in a
+
+Unknown Speaker  56:42
+like this is digressing quite a bit. But what's the like?
+
+Speaker 2  56:49
+What are some of the biggest change? There's things that you see living in Bangladesh and then moving to the States, things that just, I don't know, biggest cultural changes, or things that kind of,
+
+Speaker 3  57:09
+I mean, one of the things that would strike us every time we come back is you get to American airports and the people are just so big, like, the average size Compared to third world countries is pretty wildly different. Oh yeah. Matthias messages me and says that in palangis, you get compliments if you're fat and they're they're worried if you are losing weight, they'll, they'll say shuke gese, which means you're drying up. It's not a good thing you don't want to be drying up.
+
+Unknown Speaker  57:49
+So is that just because? Wow, that is that is real different than in America.
+
+Speaker 2  58:00
+So you didn't Seth, I'm sure you didn't get any compliments. Then in that area, not really. Bangladesh, interesting,
+
+Speaker 2  58:19
+good. So are there any any other specific projects we want to look at before we I'd like to just take the rest of this time, if we need it, and clean up the list of incidents before we do dev priorities. And I think there are some that need to go away, some that but does anybody have a specific project to look at before we just run through these
+
+Speaker 2  58:56
+good Well, then let's Just start with, very top, I was the in progress, very high and high. Does it still belong here? If yes, at a size, if no, either delete or move to medium or low. So that's a Matthias is one, if you want to make updates as we go talk through these. Yeah. Okay, so the revised asset management report, I know that's still waiting on me. I would want to just take that down into medium and just, no, I actually put it all the way down to low, because which one is that the revised is it more helpful?
+
+Speaker 3  59:44
+Number one is very high. Should it still be assigned to me?
+
+Speaker 2  59:52
+No, assign it to me, because that's that's where I should put it into. Put it in a medium, sorry, assign it to me and put in medium. Um, the next one purchase, transaction, not linking to asset waiting on me. Should that? What's your thought? Should? Should we assign it to me? Then, since it's waiting on me or not, it's
+
+Matthias Miller  1:00:21
+I rarely look at this, so I think it's strictly a question for you, what makes your life easiest?
+
+Speaker 2  1:00:28
+Well, I look okay, then I'd like to leave it here, because I look at it in like when we talk with Josh, I look at Josh the incidents and we talk with Yeah, let's just leave it here. Um, reporting discrepancies, the any positive funds, right? Payouts. What is that? Is that part of that massive,
+
+Matthias Miller  1:00:56
+yeah, this is, I mean, this is the whole rabbit hole. By the way, if you're looking to tie out perfect numbers by the end of the month, this should probably go
+
+Speaker 2  1:01:12
+well. It looks like we're waiting on drew to do Jason's
+
+Unknown Speaker  1:01:24
+right,
+
+Speaker 2  1:01:29
+are you suggesting we move it to very hot? Well, no, it is very hot.
+
+Unknown Speaker  1:01:36
+So Matthias, you have a working report there then,
+
+Unknown Speaker  1:01:40
+well, theoretically, yes, okay, do
+
+Speaker 2  1:02:19
+so is the conclusion on this one. It just, it should stand very high and
+
+Unknown Speaker  1:02:27
+Drew, does work on it, and then gets back to to Beth and Matthias. Yep. It? Do you have what you need?
+
+Unknown Speaker  1:02:43
+DREW? Yeah, I think so.
+
+Speaker 2  1:02:49
+Okay, I will say this working through these account or these balance sheet audits, if you ever have a project and a big project, and you need somebody to doggedly work through round one and then round two, and then round three and four, and however many rounds you need until you get the without becoming very frustrated and or giving up who would be a good candidate for a project like that?
+
+Speaker 5  1:03:25
+Well, that's if I get to it. When they're big, long projects, I tend to throw all the little stuff in that needs done quick, and then soon my time's all eating up and but
+
+Matthias Miller  1:03:45
+be less competent.
+
+Speaker 2  1:03:51
+So, I mean, trying to put aside on that, I think, is kind of silly, because we don't expect it to be small, but we don't know what we don't know, I think not to file system follow up is that
+
+Matthias Miller  1:04:08
+it's in CES court. It's less than an hour. I just updated it. And I think the question is, I don't think it's actually very high, but I'll defer to you guys,
+
+Speaker 2  1:04:21
+through what I mean, how important is this Drew? Or should it be in priority?
+
+Speaker 5  1:04:27
+Well, so the, I mean, the one part of it was high, but that part's done already. The the first thing about the the Edit to the report this point too, can go to medium probably. I mean, it's not a, it's just a, just a handiness issue.
+
+Speaker 3  1:04:54
+Have we decide which which design we want to go with?
+
+Unknown Speaker  1:04:58
+I don't think so. I. Just the
+
+Matthias Miller  1:05:00
+cheat. Yes, we did the cheap one. I mean, as of now, I think when we talked about the first one option one was sufficient,
+
+Unknown Speaker  1:05:13
+yeah, yeah.
+
+Matthias Miller  1:05:15
+I'll move this stuff to history and get this cleaned up a little bit so that I um, name in here. Gotcha. Um, good.
+
+Speaker 2  1:05:30
+The next one, Accounting format improvements to balance sheet, income statement. I just need to put some examples together. It's just some all this, like, know that they're cosmetic stuff, but that that should go down into medium that's, again, size. We don't know until we is something like that on on balance sheet, income statement. Does that get does that make a difference on time frame? Does that get sent to code crafters? Does it get sent overseas?
+
+Matthias Miller  1:06:05
+Most likely stateside, Seth, right? Port accounting, probably.
+
+Speaker 3  1:06:14
+I may. I'd be happy to keep most accounting stuff here now, just because I'm the one working on it the most, and if I can be close to the action, then it will help with quality, probably
+
+Speaker 2  1:06:31
+good payroll thing says, I think you said, drop that to medium and just put in size, whatever you believe it to be.
+
+Speaker 3  1:06:47
+I mean, if we're doing with Matthias proposal, it'd be an hour maybe, like I could, I could just throw it to one of the one to two hours, and I'll throw it to, I'll probably delegate to nick or Sean.
+
+Unknown Speaker  1:07:02
+It's, I think it's pretty simple. It's just a button, yep.
+
+Unknown Speaker  1:07:09
+Okay, good, revised weekly build sheet. You need information from me on that. Just put that into medium
+
+Speaker 2  1:07:21
+remittance email link talked about this last week. Hello, solution that kick that into medium as well, and actually we should add a note on it. Go ahead. Matthias the note should say something about waiting on
+
+Speaker 2  1:08:01
+should say something like do mark and Dwayne to review exactly what AP needs, and then get back to you.
+
+Speaker 2  1:08:17
+The next one's fun paying down technical debt. So Matthias, I'll let you.
+
+Unknown Speaker  1:08:25
+How does this look like? I don't think we have an overlay
+
+Speaker 2  1:08:34
+full schedule projects for fourth quarter. So how does this look?
+
+Unknown Speaker  1:08:42
+Well, I think we but
+
+Speaker 2  1:08:46
+if we do this like, are you, do you need a lot of input from from us, or is it mainly things under the hood that be done.
+
+Matthias Miller  1:09:04
+Do we have, I don't know where that where's the job written up for user reports, or is it not?
+
+Speaker 2  1:09:20
+I don't think there is one, but you're saying user reports to turn user reports, basically eliminate all the heavily used user reports, or turn them into standard reports, standardized user reports,
+
+Matthias Miller  1:09:35
+especially on the accounting side. Um,
+
+Matthias Miller  1:09:43
+I'm trying to think
+
+Unknown Speaker  1:09:47
+any I'm
+
+Matthias Miller  1:09:53
+trying to think what, what the other things are.
+
+Speaker 4  1:10:00
+I don't think these are all. These should be standard schedule tasks. Is there anything
+
+Matthias Miller  1:10:18
+else that you can think of Seth that we've talked about
+
+Speaker 3  1:10:24
+hand I think this is the sort of incident we should probably leave open and keep throwing things into and then we clean them up in child incidents or something,
+
+Matthias Miller  1:10:33
+something else, specific items. This is about as interesting as technical debt, but requires more is more involvement from you, but clarifying user permissions and actually doing user role enforcement. Yes, I mean, I love having permissions that everybody has. It's very communal and builds lots of common ground.
+
+Speaker 4  1:11:01
+Thanks. We
+
+Speaker 2  1:11:07
+we know, and we were very well aware that, should that also be part of this technical debt, or should it be its own project, like, okay, but do you need in order to do this paying down technical debt? Do you need us to do both of those pieces, the user permissions, properly? Use permissions the way we're using them. Now we really don't need permissions. We just have an admin and then we have user portals. That's about all we would need, the way we're using now, which is really lousy, but the that and cleaning up user reports do those? Should those two pieces be done before we look at doing technical debt?
+
+Matthias Miller  1:11:58
+Well, I would consider user reports to require minimal involvement from you guys. So here's where I would draw the line. Technical debt would be things that require minimal, minimal involvement from you guys. That is just clean up for the sake of maintenance, user roles I would consider should be a new incident and,
+
+Unknown Speaker  1:12:22
+uh, we should handle we should handle separately. There's a separate incident,
+
+Speaker 2  1:12:37
+okay? And I think that the user permissions thing is something that Dwayne and I need to get our heads together and figure out who's going to be the gatekeeper on that, right? I mean, that's there's the pieces are all there, as far as we know from you guys, what we need to for permissions, right?
+
+Matthias Miller  1:13:02
+Well, there you may need additional permissions, theoretically, sure, but, yeah, I mean, but
+
+Speaker 2  1:13:13
+at this point we don't know. I mean, at this point, wow, are we? We're just saying, oh, we'll give you admin information, and then we keep going, which is,
+
+Unknown Speaker  1:13:22
+you're right. Well, as we start doing that properly, we'll, we'll need, we expect that we would need additional permissions,
+
+Speaker 5  1:13:36
+right? One question on this permissions thing, just, maybe just a note to put in here. But can permissions be date driven, meaning that you might be allowed to do this certain task in a current time frame, but you're not allowed to do the same task six months ago, like to something that's dated or will be dated six months ago or a year ago, or something to that extent.
+
+Matthias Miller  1:14:07
+If we can have a good delineation of timeframe, for example, you can't do this for a locked period. That would make
+
+Speaker 5  1:14:14
+sense, but not like, you know, 30 days in the past, or 9090 days in the past, or 30 days in the future, or something like that extent.
+
+Matthias Miller  1:14:23
+I mean, we could. We need to. We just need to clarify what I mean. You know, if we're not going to have arbitrary settings that say how many days, but if, if you have something where it's like, you know, can edit recent sales orders, you know, 30 days, whatever it is, or better, invoices, or whatever the thing happens to be, for sure? Yes,
+
+Speaker 5  1:14:53
+I think some of that would be, would be kind of nice. It would look. Limit the edits to chase down potentially, I don't know.
+
+Speaker 2  1:15:07
+DREW What are some? Do you have a few examples of that?
+
+Speaker 5  1:15:11
+Well, I mean, not, not right off, but a lot of it, I think, is just simply user error to where, like, Miss dating something, especially in the beginning of the year, things get dated a year off.
+
+Unknown Speaker  1:15:31
+But then there's other stuff, like, like, changing deposits, um,
+
+Speaker 5  1:15:42
+the people that create deposits should be able to change them, but yet, if you're going to change one that's, that's two months old, I,
+
+Unknown Speaker  1:15:51
+I would really like to know the really good reason for Why. So that would just be, an example.
+
+Speaker 2  1:16:11
+Well, I suggest we just add it to that incident, and then we it's either, well, there's there's about three ways we can manage that. One is training. Who is using lock locking up periods earlier to prevent that type of thing, or the other option would be to what you just suggested, and I think
+
+Unknown Speaker  1:16:36
+either one could work, but that's that's that's what you're suggesting, Drew Right?
+
+Speaker 5  1:16:44
+Like, yeah. I mean, however, it doesn't have to be a certain way. It could be done multiple ways. I mean, even just on the whole, accidental dating errors, just warnings in general, maybe all that's needed as well. You know, hey, this is more than 90 days old. Are you sure you want to do it?
+
+Speaker 1  1:17:08
+Oh, goodness, please don't add more warnings. People already get so many warnings, they don't even pay attention
+
+Speaker 5  1:17:13
+to them. Okay, well done with the permission. I mean, if
+
+Speaker 1  1:17:17
+you want to come up with a way to slap them upside the head, say, Hey, dummy, you might want to think about this. That'd be better. But warnings anymore just isn't working.
+
+Speaker 3  1:17:26
+We could have another new level. We could have a new level of warning that, like zaps you from your chair or something
+
+Speaker 1  1:17:33
+blinking, blinking, like bars and texts and flashing, flashing buttons, and I don't
+
+Speaker 5  1:17:40
+know I was, I was on a video call with somebody recently that, I mean, they've been in QuickBooks. I think, I think this person knows more about QuickBooks than I do by a long shot, anyway, just a perfectionist. And we were working through some journal entries or something, and these warnings came up that I'm sure she's seen them 1000 times. But anyway, well, maybe she just never did that thing, I don't know. But anyway, painstakingly reading every little bit of it, figuring out what it means and everything before moving on, and I'm sure she's seen it before. I was like, okay, that's the annoying other extreme of warnings. So we'd all sit there and wait till she read it and figured out what that warning was before we could go on exploding.
+
+Matthias Miller  1:18:35
+So what was that? What was that? What priority for the cleanup,
+
+Speaker 2  1:18:45
+I would put it in medium, where does, how does the new user interface play into this? Like, I know Josh has been talking about, oh, what is like? The cockpit concept of where, well, one thing, no, that really doesn't play into the permissions. I don't. Well, I guess that's a question that doesn't affect permissioning at all, does it?
+
+Speaker 2  1:19:18
+No, she was saying was more. I was more with with warnings, like the ideal scenario is that each individual only sees the not even the warnings, but almost like a checklist of you come in in the morning, you open up your your login, and you see your checklist of items waiting for you to do, but
+
+Speaker 2  1:19:50
+good. So anything else on on that before we move on to the next one? Nope. So company selections to replace all district selections,
+
+Unknown Speaker  1:20:04
+yes, please.
+
+Speaker 2  1:20:08
+No, that's okay. I think it's a scientist said. Josh said, Are you saying yes please? Because it's one of those, an ugly project to do.
+
+Speaker 3  1:20:19
+It's something that would make, I mean, is going to be an absolute chore to get done, but will make life so much better.
+
+Speaker 2  1:20:27
+Okay, I like the way you think that's that this has booked me for a long time already. It's like, it's silly, like, some places you pick the district, other places you pick the company. So my understanding is Josh did the initial work, and he said, This is something that would be great for Seth to do. So I would, let's leave that in high we have no idea.
+
+Speaker 3  1:20:52
+What do we still want districts around you. Still want it for reporting mass prompts and stuff, but,
+
+Speaker 1  1:20:59
+well, the the issue is his district is so embedded throughout the infrastructure that extracting it could be akin to pulling your spine out. Those were my words. Those weren't Josh's words, but it was, it was, it was kind of
+
+Speaker 2  1:21:16
+like that talk to Josh, but his, his thought was that we keep districts around under the hood, and we just, on the surface, we just talk all in companies.
+
+Speaker 3  1:21:27
+Okay, that makes me less happy, but still a little better. Well, I'm ready to go, but I don't. I don't want to deal with whiskey and stuff. I'm sure there'd be, it would be probably too much, I don't know, but I just wish we hadn't built it this way.
+
+Matthias Miller  1:21:44
+Basically set. The middle ground would be having editable macros for districts that set underlying a company and or vice versa.
+
+Speaker 2  1:22:01
+I have no idea what the site Well, obviously it depends whether you're just going to do the cheat version or you're going to rip the spine out. And I would, personally, I would like that approach better, because I think it's going to be, we're going to be fighting with it ongoing, if we don't do the complete fix. But my suggestion on that would be talk to okay, it's, it's an inconvenience, it's unhandy. There's no big urgency to it, but it's, I
+
+Unknown Speaker  1:22:37
+would still like to keep it in high I'd say talk to Josh. And if
+
+Speaker 2  1:22:43
+come back with a proposal on what one on Route versus the other is, and if it's and then we'll if you determine it's not, well, yeah, discuss with Josh and and then we'll go from there. That sounds fair,
+
+Speaker 2  1:23:12
+good. So remove companies from list of accounting companies.
+
+Unknown Speaker  1:23:25
+Oh, the remove the default, or main, I forget which one's left.
+
+Unknown Speaker  1:23:36
+I think one of them still.
+
+Speaker 3  1:23:38
+Nick started on it, and then we ran into difficulties, and I've been busy, so I haven't we figured out how to get rid of main, yeah.
+
+Speaker 2  1:23:50
+Oh, okay. Well, I suggest we just leave it where it is. I don't know if you have any again, this Do we have? If we have an idea on size, put it in if not it just, just stay there. These goods inventory. Talked about that dealer portal, talked about that sales tax. AR, talk about that drew just quick update. Seth, is very close to being done with that. I think says you're expecting that. I mean, it's reasonable to think that this would go live this weekend with this weekend's update, right?
+
+Speaker 5  1:24:25
+Sales tax, okay, the sales tax AR, reconciling issue, very.
+
+Speaker 2  1:24:37
+Good. So that takes us down to the medium, priceless in assist. I think this can go away completely. Yeah, delete this guy. There's a big project for Josh in fourth quarter that will take this. The priceless in assist. I just delete it.
+
+Speaker 4  1:25:03
+I don't what am I missing? I guess, Brother, it is, can I just close it out? Not gonna do. Oh, no,
+
+Speaker 2  1:25:20
+did you find it? Matthias, yeah, I found it. Okay. So the next two paper cut projects should just stay as they are.
+
+Speaker 2  1:25:35
+Okay? I think we've looked at everything all the way down to vendor invoice paid. Okay? This is assigned to Drew, vendor invoice paid to unpaid warning while it's assigned to Drew, let's not look at or take time for that now. Deal account renaming. That is no that should stay there. We want to do it. We just haven't found the time to do it. Actual cause, make actual cause, date and amount edit un editable in what is that?
+
+Matthias Miller  1:26:19
+Let's do this seems to me like a technical debt project that we should link to from the technical debt job
+
+Unknown Speaker  1:26:29
+you're looking at incident 699, yeah. Okay, good cash flow. Looked at that. Calculate finance charges.
+
+Speaker 2  1:26:42
+Drop that to low, and I think that takes us through all of the incidents.
+
+Speaker 2  1:26:58
+So that is all I had will be, yeah, we'll have to get our dev priorities list together yet for for Friday morning. But all I had anything, anything else we should look at,
+
+Matthias Miller  1:27:21
+a question mark. What would happen if we would delete everything under Main? Or what if we change the accounting code for, for, for insight to main? What
+
+Unknown Speaker  1:27:44
+uh, I think it would be just fine. I mean, part of me is okay. This is
+
+Speaker 2  1:27:52
+so this seems kind of silly, but currently we don't do accounting for insight within assist. We ship that all off to Whitney, and she does that in QuickBooks. There's not a lot of accounting you
+
+Unknown Speaker  1:28:11
+do. What should, should we? Should we look at doing it internally in the future?
+
+Matthias Miller  1:28:20
+That's a business question.
+
+Unknown Speaker  1:28:23
+Why wouldn't,
+
+Speaker 2  1:28:26
+well, that's what I'm asking. Have asked myself, like, from a technical perspective, why wouldn't we, I guess, is there. It's quite different than like, we could have our own chart of accounts. It, yeah, the chart of accounts. But could be completely separate. I don't know. I mean, I can't think of any good reason not to where we I think we've run into some problems with we order some things with Kanban Cards, and they kind of as it's so different, gum up the system. I don't know. I mean, is there? Does anybody? Can anybody think of any legit reasons why we shouldn't just do that internally? I
+
+Matthias Miller  1:29:25
+Yeah, the only reason, I mean, I can't think any reason why not? I think anything that it comes up we should fix, and if just pragmatically, from an efficiency standpoint and from a customizability, okay, first of all, let's just do, let's just put the pragmatic financial hat on. The more, the more you can consolidate your systems into a single place. And if you already have people who are who excel at accounting within, within here, like, why wouldn't you? I. And it seems like you would gain efficiency on the long run, in the interest of and I don't know the complexities and intricacies of how all this stuff works, but theoretically, if there are shared expenses that you split out, and you have automation for all of that stuff, that stuff could once you have it in your you're going to start brainstorming ways to streamline accounting and stop paying somebody to just go do it. So that's my thought.
+
+Speaker 2  1:30:24
+Well, I think we should. I mean, Drew, can you think of I mean, we just have to set up some like making payments, ACH payments, not to file uploads. Just have to set up with the correct banking account or the banking we'd have to set up the accounting company information that would be required to make payments.
+
+Speaker 5  1:30:44
+But The only hiccup that I can think of is on vendor invoices. There would be, if I understand how it works correctly, there'd be a lot more expense accounts to pass. Possibly select, then, then, what would be valid, like a lot of the selection options on the vendor invoice expense account, selection would would not be linked out to an accounting account. So, but, but which, that might be a different kind of issue that should just be fixed.
+
+Matthias Miller  1:31:31
+It seems like, I mean, I think it's plausible. Again, maybe this is just way too much, you know, I don't know. Maybe we'll find just 1,000,001 one of these things. But eventually we're going to, we're going to flip this to the account, drop down. That would be another type of project. Stop using, well actually, we had talked about this
+
+Speaker 1  1:31:57
+there might stop using ledger accounts, I will jump up and down.
+
+Speaker 2  1:32:03
+Okay, but drew, I think it isn't, I mean, we have a plan for that. We just haven't. It's bottleneck with me, I think on implementing it, don't we? I mean, I think, I think we've,
+
+Unknown Speaker  1:32:15
+yeah, there's, that's,
+
+Speaker 5  1:32:17
+there's a couple key people at insight that need to sign off on what the names need to
+
+Unknown Speaker  1:32:26
+be but, but short of that, I don't think it's, I think it's just one of the things that we need to
+
+Speaker 5  1:32:31
+do. But still, what, what this is, is that drop down list should be limited to only things that are linked.
+
+Speaker 2  1:32:43
+Correct. You're saying purchase orders with a vendor invoice, connect or link to it.
+
+Speaker 5  1:32:48
+No the GL accounts. So if I remember right, we were just going to give new names to the GL accounts that match the accounting accounts. We were just going to name them the same thing so they see the same thing, but it was still going to be two separate deals like that. Was going to be the cheap fix that we were going to do. I think anyway, if the GL account is not linked to an accounting account, then it should not show up as an option for that company.
+
+Matthias Miller  1:33:19
+But right, maybe we can filter that based on GL. I mean, that just makes sense.
+
+Speaker 1  1:33:30
+I mean, Seth was was itching to rip somebody's spine out. So that's it. This is great when to go rip out and fix
+
+Unknown Speaker  1:33:36
+it's another spine issue. Yeah. I
+
+Unknown Speaker  1:33:43
+Well, I think it's worth I I think that GL Account thing should be, yeah, should be
+
+Speaker 2  1:33:52
+part of the the technical debt thing. So, okay, this all started with the question, can we replace insight with main or whatever? But if we're, how does that affect this? If we're, if we're saying, No, I mean, I think I would like to my suggestion is that starting one, 126 we start doing accounting for insight internally, rather than being in QuickBooks. The
+
+Matthias Miller  1:34:23
+Do you have I'm assuming So are you going to be using vendor invoices there?
+
+Speaker 2  1:34:30
+Yes, we'd be using vendor invoices, but very little purchase orders. I mean, there's be some, but not a lot. Um,
+
+Matthias Miller  1:34:44
+do you have any well? Does it need a district? No?
+
+Matthias Miller  1:35:00
+What was that? Can you make purchase orders without a district? Yes.
+
+Speaker 2  1:35:11
+I mean, we're using it to make purchase orders now, already we're buying office supplies with
+
+Speaker 1  1:35:19
+it. Po district is derived from the build to company.
+
+Matthias Miller  1:35:33
+Yeah, but it's, there's not a
+
+Speaker 1  1:35:34
+No, there's not. There's, we don't, we don't field for it. But it's, if you go look in the reporting side of it for anything with district there it's deriving it from the from the company.
+
+Matthias Miller  1:35:44
+So we might want to change so isn't this another issue in the right and so we'll filter by accounting company, which will translate to a billing company for vendor invoice filtering, presumably, yeah,
+
+Unknown Speaker  1:36:06
+right?
+
+Unknown Speaker  1:36:11
+Or we don't anything
+
+Unknown Speaker  1:36:14
+one more time Matthias,
+
+Matthias Miller  1:36:16
+we prompt by Bill Two location on vendor invoices instead of accounting company, probably For this very reason.
+
+Unknown Speaker  1:36:28
+Yeah, probably,
+
+Unknown Speaker  1:36:39
+so any anything else where we wrap up?
+
+Matthias Miller  1:36:49
+Sorry, two more questions. Who's owning the project? Is this a drew project to get this, get this, who's internally owning this, this project, and are we doing any historical financial imports? Are we just starting fresh with 20 sets
+
+Unknown Speaker  1:37:08
+for for insight?
+
+Unknown Speaker  1:37:18
+Should that be you or me? I don't,
+
+Speaker 5  1:37:21
+I don't know. I don't know that. I mean is, is what this entails for us, just simply setting up company information, or is there, is there more going on here.
+
+Matthias Miller  1:37:43
+I'm nervous. Sorry. Go ahead, you go.
+
+Speaker 2  1:37:47
+I think, I mean, it's that, and I think it's also training like, I think this is small enough that I don't think it makes sense to to, like, do this, because there's, there's so little going on with this that I think it makes sense to just keep, currently, Aaron's doing a form of like AP internally. Anyway. I think for this, we would just, he would handle all of that internally. We wouldn't, I don't think it makes sense to ship this or to have your office, Dwayne, do the AP and stuff on this, because it's so
+
+Unknown Speaker  1:38:24
+very small,
+
+Speaker 2  1:38:27
+yeah, and it probably be more confusing than because it's so different. So I think it's, it's internal, it's setting up companies, training internally, just starting to use it. And then obviously you would start making these, doing these, issuing the payments Drew. I mean, I think that's about what it entails.
+
+Speaker 5  1:38:54
+And that's basically just going to begin with a big fat journal entry of 1231, 25 numbers.
+
+Speaker 2  1:39:03
+Yes, yeah, no, no importing of historical, right, right.
+
+Unknown Speaker  1:39:12
+That's where you're wondering
+
+Unknown Speaker  1:39:13
+that project.
+
+Unknown Speaker  1:39:14
+I don't mind setting it up, but whatever.
+
+Speaker 2  1:39:19
+Okay, yeah, put assign it to Drew, or I
+
+Speaker 3  1:39:24
+was just doing want to start cold turkey from the first of 26 or should there be some some happening before?
+
+Matthias Miller  1:39:33
+Yeah, my question was whether we want to set up accounting impact for vendor invoices and POS for 25 or some arbitrary period, and then, I mean, we can even 00, everything out at the end of the year. But I'm a little maybe I'm maybe I'm overly nervous. I'm just a little nervous that we're going to run into just bizarre things here and there that's going to be obnoxious to fix and but if it's low stakes and small enough, and you guys. Are willing to live with the bumps. That's fine, but, but the flip side is you and drew are going to be up to your ears with stuff in January, so you're not going to want to be like if we can move that those fixes on this side of January, it's going to be better for for you guys. My two cents,
+
+Speaker 2  1:40:19
+well, Drew wouldn't, wouldn't we, shouldn't we just, I don't know, start in the next few months, or say, like a October, November, just start doing it. What would be wrong with just starting to do that? I mean, rather than sending the invoice to Whitney, we start entering it into assist, and you just start paying, and we can kind of start, yeah, 25
+
+Speaker 5  1:40:46
+that's, that's kind of what I was thinking, is if we start before the end of the year, we'll be better off now we don't have to, like in a way. It will be nice for Whitney. It'd be nice for reporting if she still continues through the end of the year for 2025 because, you know, having half our information here and half our information there for 25 is kind of a pain, but, but I would definitely start doing the basically, we just be doing two entries for, say, December, and we try to figure out and make sure everything's working in November, and Do two entries in December and something like that. Mm,
+
+Unknown Speaker  1:41:53
+good anything else to discuss?
+
+Matthias Miller  1:42:02
+Thanks, nothing here.
+
+Speaker 2  1:42:09
+Okay, well, sounds good. We will be group again on October the second. I believe,
+
+Unknown Speaker  1:42:22
+believe, it is and yes, wish you well at the
+
+Speaker 2  1:42:33
+at the Shed show, both Dwayne and Matthias with your your endeavors. So
+
+Unknown Speaker  1:42:47
+it's gonna be fun.
+
+Unknown Speaker  1:42:51
+You only get one shot at doing it. Right, right? There's no end to only
+
+Speaker 1  1:42:58
+jokes. There's no end to only jokes, you're so right.
+
+Speaker 5  1:43:05
+Whole bunch of catchphrases that you'll be throwing out there.
+
+Speaker 2  1:43:12
+I have a suggestion, Dwayne, that I wasn't there, but I heard a lot of talk about this. This, this, what was he a rapper or a singer in j max booth? Could you? Could you write a song about only and have him in your booth? Think about all kinds of catchphrases in the song about only and, okay, his, his whole theme was flawless. So instead of flawless, it would be only right, I
+
+Unknown Speaker  1:43:48
+don't know about that.
+
+Matthias Miller  1:43:53
+Literally, that he makes singing commercials. He's he is one of the zaniest wackiest people I know when it comes to this type of type of thing, so you lean Brandon,
+
+Speaker 2  1:44:14
+good. Well, thanks guys, and we'll keep moving onward and upward.
+
+Unknown Speaker  1:44:24
+Good. Thank you. Thank you.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,1256 @@
+Unknown Speaker  02:17
+The Princess.
+
+Unknown Speaker  06:10
+Hey, hello,
+
+Speaker 1  06:14
+I told dad I feel like I'm a saint. I'm leaving my work on license tiers to work on bad debt, sales tax adjustments, and then once I finish that and license tiers, then I can go work on contract calculations.
+
+Matthias Miller  06:31
+Anyway. Fair enough.
+
+Speaker 2  06:41
+Um, well,
+
+Unknown Speaker  06:46
+glitching out
+
+Matthias Miller  06:47
+on me. I'm having a blast with cash flow reporting.
+
+Speaker 1  06:52
+Let's go. You were up at like ungodly hours this morning. Either that or very godly, I don't know.
+
+Matthias Miller  07:00
+It's hard to tell sometimes, at
+
+Speaker 1  07:05
+least I was seeing revision. I saw, there's revisions from like 430 Central time. Yeah,
+
+Speaker 1  07:16
+okay, should I share? What are you thinking?
+
+Matthias Miller  07:20
+Let's see, what do we? What do we? What are we doing?
+
+Speaker 1  07:30
+Aren't we trying to get the accounting impact to a point where we can, where stuff will be balancing out for them? Well, accounting impact and the total accounting.
+
+Unknown Speaker  07:40
+Total are those? Were those? The two is the fixed AR report, whatever is it?
+
+Matthias Miller  07:51
+Yeah, it's the AR report. And then the Oh for none, the Filipino cleanup thing.
+
+Speaker 1  07:58
+Oh, yeah, I think the AR report takes precedence. Yes,
+
+Matthias Miller  08:06
+let me wrap up my changes here too. Theoretically,
+
+Speaker 1  08:17
+it is nice to have more guys to be delegating stuff too. It's fun because, like, I specked out the financial banking reports standardization stuff for Sean, and he added fields and standardized the report and just made it all nice, and now we can give it to them, and I didn't have to do anything besides spec it and review it, which is great. That's beautiful. That's beautiful thing. And I spent 10 minutes explaining to Nick what we're wanting for the that dashboard, and now he's cranking away on that. So it's just fun.
+
+Matthias Miller  08:48
+Wait, that is, that is, that's a thing of beauty.
+
+Unknown Speaker  08:54
+Okay, where are you at with the cash flow stuff
+
+Matthias Miller  09:07
+I have, well, I've moved everything into reports so that we can, so we can play around with logic without doing catalog updates and working on building, actually building the report now and so still, still, basically on the, on the premise of the, You know, the rebuild that we talked about initially, right?
+
+Matthias Miller  09:43
+Okay, so my thought on this is that, well, I guess we got to figure out how we want this thing to work, to actually work, um.
+
+Unknown Speaker  10:01
+So,
+
+Matthias Miller  10:08
+like, if you So theoretically, if there are rows and it's no longer taxable, do you want any event occurring on the on the on the last, the date of The last adjustment? Or do you want to ignore? You could almost just
+
+Matthias Miller  10:55
+ignore the the
+
+Matthias Miller  11:02
+I yeah, I think if you have a sales tax history row, when you get to the last one, you add back in the bad debt amount, if it's tax exempt.
+
+Speaker 1  11:20
+All right, my brain is just not running over time.
+
+Matthias Miller  11:26
+So if you,
+
+Unknown Speaker  11:33
+if you,
+
+Matthias Miller  11:36
+if the sales order is tax exempt, and you have a tax history row. Then when you get to the last row, you apply that row like we have been doing, but then you also add back in the the full value of the bad debt, write off.
+
+Unknown Speaker  12:05
+Okay, this is on the accounting total,
+
+Matthias Miller  12:09
+both the accounting total and accounting impact. Okay. Do you want to because? Because, oh yeah, yeah, I'm catching up now, because when we mark it as non taxable, then we have a net zero, yeah, in the sales tax history, not a reflection of reality, correct? But we don't want to go all the way back to the beginning and backdate that and make change all that stuff. That's just weird. So we want to do it as the last row. So if you want to share your screen, I don't know, Cody, it. I'm happy to have you code it, whatever it's
+
+Speaker 1  12:50
+I can get it. And given where my brain is at, I'll get more out of this if I am actually driving i
+
+Matthias Miller  13:05
+It is shocking how simple some of these fixes are when you just take
+
+Unknown Speaker  13:09
+a minute once you Yeah, personal, also, I'm such a fan that we're finally starting to standardize some reports.
+
+Matthias Miller  13:25
+Yes, I can't wait to archive the whole IFR actually probably everything in my folder and just see what completely blows up. It just sounds very delightful.
+
+Matthias Miller  13:42
+A archive. Calculations, and then,
+
+Unknown Speaker  13:47
+okay, this guy, wait,
+
+Matthias Miller  13:58
+yeah, I think so, yes, yeah, yeah.
+
+Unknown Speaker  14:14
+No
+
+Matthias Miller  14:20
+payment row. Cutting impact. It's that, but we want it further down. It's not this one. We want a V, last bad debt row, ID, I'm
+
+Unknown Speaker  14:48
+three. Well, how about
+
+Speaker 1  14:57
+Seth doesn't duplicate the code and we just are. It doesn't retype it
+
+Matthias Miller  15:02
+like copy, boom.
+
+Matthias Miller  15:17
+And then on the subtotal.
+
+Matthias Miller  15:24
+Do a sum
+
+Unknown Speaker  15:30
+of, are you?
+
+Speaker 1  15:37
+Are you thinking? We just straight up apply it to the what that road last row of the RG,
+
+Matthias Miller  15:43
+yes, and that'll just be a delta for the tax. Basically, effectively,
+
+Speaker 1  15:50
+I see right? Because yes, yes. Okay, now I'm tracking even more
+
+Matthias Miller  16:00
+look at that. So tax exempt, then we and it's the last row.
+
+Matthias Miller  16:24
+Then we use the row off the the payment
+
+Unknown Speaker  16:29
+value also, do we have that assigned somewhere?
+
+Matthias Miller  16:34
+I think we do. Surely we do. I
+
+Unknown Speaker  16:44
+No,
+
+Unknown Speaker  16:50
+well, do we only use it here? I think I just go get it
+
+Matthias Miller  16:59
+again. Yeah, just go get it again.
+
+Speaker 1  17:04
+This would be earliest. RG, so payment, Rand ID. Every time I not every time. Half the time I type out Rand ID. I think of Ayn Rand, not my favorite person to think about.
+
+Matthias Miller  17:20
+There's a blogger. I forgot about this guy,
+
+Speaker 1  17:26
+earliest, RG, payment, random ID, so payment now
+
+Unknown Speaker  17:36
+momentarily forgets. Yeah,
+
+Unknown Speaker  17:45
+that's okay. Can't believe he's still blogging.
+
+Matthias Miller  17:56
+No, I mean, there's just so ran ID equals, don't we save it? Do we Yeah,
+
+Matthias Miller  18:09
+the bad debt payment, rain ID,
+
+Unknown Speaker  18:11
+ah, there we go. Okay,
+
+Speaker 1  18:28
+okay, so the bad debt subtotal is the bad debt adjustment, which would be
+
+Matthias Miller  18:35
+typically negative. I mean, pretty, pretty. It should be pretty negative. Yep.
+
+Speaker 1  18:39
+I mean, are we ever gonna have a weird thing where there's a jurisdiction change and it's not no, if it's if it's tax exempt at the same time, then we just cancel out the last row. Okay, never mind.
+
+Matthias Miller  18:53
+Now there's gonna be a weird situation where, oh boy. If you market exempt, we're going to have a 24 hour. Well, if you market exempt and apply this before you apply sales tax liability, you'll get a really funky result, but we don't do that, so we're good, okay, we should probably document this.
+
+Unknown Speaker  19:21
+Yeah, I'm tracking so.
+
+Matthias Miller  19:32
+So basically, tax exempt sales orders net out to zero. If this was taxable at any point, reapply the bad the bad debt, something like. That
+
+Speaker 1  20:07
+we do explicitly, explicitly ignore it up here, right,
+
+Matthias Miller  20:11
+right. Since we ignore it up above,
+
+Unknown Speaker  20:20
+where are we doing that?
+
+Matthias Miller  20:21
+Well, we we grab the first row if we have
+
+Speaker 1  20:28
+it so taxable any point, apply the bad debt payment amount from payment RG, ignore it above if there were sales tax rows,
+
+Unknown Speaker  20:51
+yep. Okay.
+
+Matthias Miller  20:55
+So then we need to find that if you pull up the balance report, you can get the so numb, ID of the donation that was creating havoc. Balance Report, yeah, this guy, yep, at the top, this guy, this that. That's the that guy.
+
+Speaker 1  21:13
+This guy, Yep, yeah. Trish, donations are always cause problems. Exactly. Yeah.
+
+Matthias Miller  21:30
+I just search for the name ID, 65886,
+
+Unknown Speaker  21:42
+how about we make this game bigger.
+
+Matthias Miller  21:46
+All right, what did he change? So now we should have, let's see bar. There we go, 970-417-9419, 50. So donations.
+
+Unknown Speaker  22:04
+The donations got a whole lot more, presumably, because it's tax exempt.
+
+Matthias Miller  22:11
+Donations went okay, this is the old one. Went to 59 on the payment date. Probably do we directly sales tax at 417, and then on this tax adjustment, we hang on, then we sales tax is a liability, so we decrease liability, accounts receivable, credit, we decrease AR, wait sales tax. Sales Tax nets to zero. That last row nets to zero.
+
+Matthias Miller  23:07
+AR is 6387 we have 57 5970 of revenue for 17 is taxes. We cancel taxes in the subsequent row, we expense it to donations, we cancel the accounts receivable, and then we have this bizarre
+
+Matthias Miller  23:40
+are those two separate rows? Those are two separate transactions, where we Yeah,
+
+Speaker 1  23:48
+one's a sales tax adjustment, one's a bad debt sales tax adjustment.
+
+Matthias Miller  23:54
+So one no,
+
+Unknown Speaker  23:56
+okay, what is on this guy? I
+
+Unknown Speaker  24:06
+31 the 930 why are these both? 918 oh, never mind. Wait. What are there.
+
+Matthias Miller  24:28
+I see, because the other one does, never gets created, because it gets out to zero. Probably Okay, so, so the first one, we actually, I sales tax adjustment. Okay, I'm so confused bad debt.
+
+Matthias Miller  24:58
+So go back to 918, Yeah on the go back to the text history, or G, yep.
+
+Speaker 1  25:24
+Yeah, so bad debt was adjust, was adjusted to zero, which increased our taxable amount,
+
+Matthias Miller  25:36
+right? So we on 728, we said, it's all bad debt. And then we said, oh, if it's bad debt, then it also needs to be taxable. And then on the night in the 18, 918, we said, oh, it's not bad debt and it's non taxable. So
+
+Speaker 1  25:56
+we take both out. We just said it's not taxable. And so we have to cancel, we canceled the bad debt row,
+
+Matthias Miller  26:01
+right?
+
+Speaker 1  26:08
+So total, a straight reverse on those guys. Okay,
+
+Matthias Miller  26:12
+spit. What's confusing to me, though, is on the Okay, on the 19, 918, okay, of course we're not doing we're not doing the 59 the Okay? The 728, row we're not doing because that gets lumped into the So, payment accounting impact,
+
+Unknown Speaker  26:30
+right? They're the same thing,
+
+Matthias Miller  26:33
+but the current sales tax adjustment, then, why does that not do anything? Do? Doesn't it here?
+
+Matthias Miller  26:49
+No, that's that that gets generated off the off the bad debt, doesn't it?
+
+Speaker 1  26:54
+Don't we ignore the first sales tax row,
+
+Matthias Miller  26:58
+don't we ignore the first bad debt row?
+
+Unknown Speaker  27:12
+Is there a 728, effective date
+
+Matthias Miller  27:21
+for his invoice? Effective fact,
+
+Unknown Speaker  27:22
+you did his what a month before its invoice,
+
+Matthias Miller  27:27
+they uninvoiced it and re invoiced it. Oh, okay, I'll bet.
+
+Matthias Miller  27:41
+Quote. Was it ever did? Jimmy, there it is. Vanessa did,
+
+Unknown Speaker  27:53
+but it was blank. I went to 828. Here we go. He entered a payment for a month back.
+
+Matthias Miller  28:06
+Oh, he backed, he did the payment,
+
+Unknown Speaker  28:14
+and then drew, changed the payment date, when he changed it to tax exempt.
+
+Matthias Miller  28:24
+Okay, but help me still rationalize. I still feel very lost. Oh, same I was just go back to the accounting impact. Sure, let's go back to accounting impact. So we believe so invoice makes sense. We said, because we have accounting impact rose, we are invoicing it as taxable. Makes sense now, first payment row, we're treating that as bad debt, which means that nothing is taxable at all on this thing. Great. Then we have a tax adjustment. And we don't know exactly which one this is. I think this is actually why is it 918, it would have to be, if you go back in your RG here, what if I it look, it appears that we're not generating a row for the current sales of
+
+Unknown Speaker  29:29
+to make so we can just look at these at the same time.
+
+Matthias Miller  29:38
+It would appear that given, given that this is both for 918, it would appear that we never created a row for the 831,
+
+Unknown Speaker  29:52
+well, it's an eight, 828.
+
+Matthias Miller  29:54
+28 date. It's. Which is bizarre, because that would have, should have said that it is actually taxable again.
+
+Speaker 1  30:09
+So where did we do have? Where does the bad debt come in?
+
+Speaker 1  30:20
+It's never in here. What am I missing?
+
+Matthias Miller  30:26
+Okay, shouldn't the sales order paid is the first bad debt row, right?
+
+Unknown Speaker  30:40
+This guy, yeah, I think you're right. Well, okay, let's look now. What is this number?
+
+Matthias Miller  30:48
+Yeah, there we go. There we go. That's, that's the sales tax history. Road number 116, it doesn't match any of them. That's the payment. Road number, never mind, okay, because it's a payment sales order paid, 79102102, is indeed the 918. 976, is indeed the last one. So this, this row right here that you have highlighted, I don't know where that's at. So let's go into somehow. Let's go into so accounting, impact. It would be in the tax adjustment copy. So if it's the first bad debt row, or it's a bad debt first non Wait a minute. Wait a minute, the invoicing is grabbing that row. Yeah, the bad debt payment is grabbing the first bad debt payment. Yeah, bingo. So everything's right, correct. I mean, if you just look at it, it nets out to zero.
+
+Matthias Miller  32:11
+So AR cancels out. You can see
+
+Speaker 1  32:13
+that, oh, I know, sales tax does net. Sales tax
+
+Matthias Miller  32:17
+debts to zero and donations. Is a 5970, which is right, which is when all is said and done is correct. Now, I don't know how I mean fundamentally, what's the big difference between 918? Is the same between the old and the new. The sales order paid for 19 or 1790, 59 we're expensing out. We weren't expensing out the full we never expect. Had previously, had never expensed out the full value.
+
+Unknown Speaker  32:57
+Yeah, the donation was a lot lower.
+
+Matthias Miller  33:06
+But where did we? How did we? How do we make up for that, though, because that's not we have two non balancing no sales or invoiced. Okay? So we never corrected. That's it. We never corrected the fact that it was, it
+
+Speaker 1  33:35
+would have looked like it was overpaid, right? Or how AR, no, like, there's still AR,
+
+Matthias Miller  33:48
+yeah, we had 417 90 in AR. We didn't expense out of the 417 90 when it became non taxable. Boom, okay,
+
+Unknown Speaker  34:00
+okay, I'm happy now. No confusion later. I mean,
+
+Matthias Miller  34:10
+whatever. Wow, this stuff is something else. Let's go fix the let's go fix the balance, and then let's come back and fix the rounding.
+
+Unknown Speaker  34:24
+Oh, don't talk about rounding.
+
+Matthias Miller  34:29
+Please, please. All right, so this guy, we just need to do basically the same thing.
+
+Matthias Miller  34:43
+Locus, so counting balance, yep,
+
+Unknown Speaker  34:45
+not that
+
+Unknown Speaker  34:49
+I love the space in the label.
+
+Matthias Miller  34:53
+Look, guess, okay, it's a write offs as a cup, all right, so go into the right. Yep, this guy All right, then we also need to know,
+
+Unknown Speaker  35:13
+wait, won't
+
+Unknown Speaker  35:20
+does that fix it? If
+
+Unknown Speaker  35:25
+it was is a name sure it would
+
+Matthias Miller  35:33
+well, bad debt tax subtotal, so if it zeros back out, isn't
+
+Speaker 1  35:42
+that what we want? Because if it was taxable, then it's tax exempt. The bad debt is going to zero out, like everything in the sales tax RG should zero out if it's marked, if it's marked as tax exempt,
+
+Matthias Miller  36:02
+no if it's zero and we're on the bad debt row, then we exclude it. Wait, that's what
+
+Speaker 1  36:13
+I'm not. No, no, if it's not, if there's a value here and it's bad debt. Skip this row. If there's a value in the tax subtotal,
+
+Matthias Miller  36:25
+then we and if there's no value, then we assume it's because it's tax exempt.
+
+Speaker 1  36:32
+Yeah, I guess tax exempt or accounting hasn't run yet. Sure enough, that's the right assumption to make or not?
+
+Matthias Miller  36:40
+Yeah, I'm not sure either, because won't this mean that? Oh, you'll start including the bad debt total too soon.
+
+Unknown Speaker  36:53
+Yeah,
+
+Speaker 1  36:55
+fine. Poke holes in my utopian solutions.
+
+Speaker 2  37:01
+Oh, feeling pretty good about that.
+
+Matthias Miller  37:13
+Why not just i?
+
+Matthias Miller  37:25
+Can we just ignore in line five? Just not so tax exempt?
+
+Unknown Speaker  37:40
+Well Or, how does that work for running it back in history, though,
+
+Matthias Miller  37:48
+right? Because,
+
+Matthias Miller  37:58
+okay, so what we want to know is,
+
+Matthias Miller  38:20
+so, okay, we could do a max date of bad debt adjustments. And if the optional as of date is on or after that, and it's not tax exempt, we add
+
+Unknown Speaker  38:35
+and it is tax exempt.
+
+Matthias Miller  38:40
+Yeah. Do we have to payment
+
+Unknown Speaker  38:52
+back in? I?
+
+Matthias Miller  39:10
+You could actually change it to the included all bad debt adjustments and then do A hazardy i
+
+Speaker 2  39:20
+Not,
+
+Matthias Miller  39:30
+not, has our G, where,
+
+Unknown Speaker  39:39
+oh, allow sales
+
+Matthias Miller  39:43
+tax history row ID where the Row Type is bad debt adjustment and the date is greater than the as update. Oops. I.
+
+Unknown Speaker  40:11
+And then, if,
+
+Unknown Speaker  40:21
+yep,
+
+Matthias Miller  40:28
+and then why
+
+Matthias Miller  40:40
+wouldn't you? Why would you just put another if statement in there up at the top? If, yeah,
+
+Unknown Speaker  40:56
+if, if, well,
+
+Matthias Miller  41:02
+create another Boolean variable, assign V use, bad debt subtotal,
+
+Unknown Speaker  41:15
+sales tax, are you or which sub what?
+
+Matthias Miller  41:20
+Well, right sales tax subtotal, right or, and then if, if we use it, if we have not included,
+
+Matthias Miller  41:38
+or it's not exempt,
+
+Matthias Miller  41:46
+and then just put that as an and On the front of line, 27 it just works.
+
+Unknown Speaker  42:00
+Boom.
+
+Matthias Miller  42:19
+Wait, this isn't right, yeah, it
+
+Matthias Miller  42:30
+was going to use the wrong effective date. It's
+
+Matthias Miller  42:54
+going to revert back to the payment accounting date, which is the wrong date to use.
+
+Matthias Miller  43:06
+Okay. Oh, so, okay. Let me talk this through before you. I take you through the weeds. We find the max, max date of all of them. If the as of date is past all of that, then we change the Bad debt. We override bad debt tax subtotal to
+
+Unknown Speaker  43:30
+no
+
+Matthias Miller  43:59
+another way to say it is if we're on,
+
+Matthias Miller  44:09
+okay, no, implicitly, if we've included all bad debt payments, it means The as of date is correct to include it if
+
+Matthias Miller  44:25
+so we could make it as simple as another if statement, where, if we've included all bad debt, debt sales, tax adjustments, and it's tax exempt, and we're on the payment Road, then we just throw in So, payment amount, so it here. Or we do hang on just wait. Or we say, assign the bad debt, tax sub, no, it's easier to put it in here. Yeah, right. There be included. It all bad debt sales tax adjustments. Is
+
+Matthias Miller  45:08
+there something else, and it's a it's a bad debt payment row?
+
+Unknown Speaker  45:13
+Oh, yeah, that would
+
+Unknown Speaker  45:16
+seem reasonable.
+
+Speaker 1  45:43
+We don't have to check that it's a bad debt payment row here.
+
+Matthias Miller  45:48
+Yeah, you do. You're looking at roller G rows. You're gonna use the bad debt tax total
+
+Unknown Speaker  45:54
+use it down here. We don't.
+
+Matthias Miller  46:00
+No, no, it's an apply to balance. You can't use the bad debt tax subtotal for all payments.
+
+Speaker 1  46:18
+Right? What I was I was confused why we're using it, why we're checking is bad that payment row and we're going to NA, but I think it's
+
+Matthias Miller  46:30
+we don't need line 22 And line 38 anymore.
+
+Unknown Speaker  46:39
+This guy, right?
+
+Matthias Miller  46:42
+Because we're including the bad debt tax subtotal up above B is bad debt payment room.
+
+Speaker 1  47:03
+Why do we I'm still not tracking why we need to check this, given that, if this isn't a
+
+Matthias Miller  47:08
+because you can have a cash we have a cash payment. If we have a cash payment on here, you need to apply the cash payment, even if it's not a bad debt row.
+
+Speaker 1  47:18
+We're not just working bad debt. Yes, there, okay, I'm tracking now.
+
+Speaker 1  47:30
+Okay, okay, okay, yes, yeah, I was Losing that parallel somehow.
+
+Matthias Miller  47:41
+Yeah, so theoretically now,
+
+Matthias Miller  48:09
+we should really comment our condition at the 32 if it's tax exempt, we will have the bad debts will net to zero, and we need to use the original payment amount in the balance, or for the balance,
+
+Unknown Speaker  49:31
+uh, should we be checking date range here?
+
+Matthias Miller  49:34
+No, because included all bad debts, sales tax adjustments, checks,
+
+Unknown Speaker  49:37
+well, but what about the payment, road, date? What if you're running What's
+
+Matthias Miller  49:47
+the matter
+
+Speaker 1  49:54
+where you're trying to run a date before like the. Sales Order is paid on the first of November, and you run this for October.
+
+Matthias Miller  50:09
+Okay, if you, if you post date, your if you move your, I mean, this happens. This happens if you move, if you move your date, past the sales tax adjustments, the payment date, or if,
+
+Speaker 1  50:27
+how do we we don't expect this to work intraday, right? Like, no, not. There's no reason to.
+
+Matthias Miller  50:34
+Well, I mean, how is it going to fail intraday?
+
+Speaker 1  50:37
+Oh, never mind, because we don't look at the sales tax or G because there wouldn't be any. I mean,
+
+Matthias Miller  50:45
+if there's a correction, if you make a tax exempt, you might still show a balance, I suppose, until the next day. That's a little obnoxious. We would,
+
+Speaker 1  50:54
+but they don't. They only use this on the AR report. This isn't how the main balance is calculated, right? That one's always current, right? So, and they're not trying. They shouldn't be trying to run the AR report day of really, you sort of know that there's accounting stuff related here. I would think I so I'm back to thinking we don't necessarily need this. That means I need the date check on here. You're right.
+
+Matthias Miller  51:32
+Well, I mean, you could conceivably, if you want to handle that edge case, because technically, accounting impact doesn't hurt it. Yep, and we need to use the is, is in a
+
+Matthias Miller  51:48
+say, just copy line 41 Oh. And then we also need to handle that on line 19, oh.
+
+Unknown Speaker  52:02
+Oh, right,
+
+Unknown Speaker  52:18
+if you're in a sense,
+
+Unknown Speaker  52:32
+sure, let's get back.
+
+Matthias Miller  52:55
+And if you're being really persnickety, you should remove the closing the wrapping parenthesis on line 35 Yeah.
+
+Unknown Speaker  53:03
+Okay, all right,
+
+Matthias Miller  53:08
+now, theoretically this should work.
+
+Speaker 1  53:24
+Is a I mean, so 728 we say the balance is negative, which is because there is sales tax history. 728
+
+Unknown Speaker  53:42
+Wait. Is the amount? Right?
+
+Matthias Miller  53:45
+63 the old balance, we said they overpaid.
+
+Matthias Miller  53:55
+What was invoiced on the 28th so of course, it was overpaid, right?
+
+Speaker 1  54:00
+I'm not, if you go back, I forgot if I thought the numbers lined up quite
+
+Matthias Miller  54:08
+right? They underpaid before 19 because they didn't pay sales tax, and on the 18th, we said it's tax exempt, and now it's zero. Boom, looks good to me.
+
+Unknown Speaker  54:22
+Yes, yes.
+
+Matthias Miller  54:26
+All right, okay, was he actually wanting us to take this live this weekend?
+
+Speaker 1  54:29
+I don't remember. We should probably run it past them before we do.
+
+Matthias Miller  54:35
+Probably let me call him? Yeah, we call him.
+
+Speaker 1  54:52
+I saw him today via Nick's video.
+
+Matthias Miller  54:57
+He was in the background. I. You. Hey, you want to message Nick and see if he's is Nick still in there?
+
+Unknown Speaker  55:08
+See if you grab mark,
+
+Speaker 1  55:13
+since he's offline, but he has been pretty often, depending what he's doing with them,
+
+Matthias Miller  55:19
+we'll try again. Do you have Aaron's number? I do not. I could call Nick. We try again. Let me
+
+Unknown Speaker  55:29
+check where he is in Google Maps. He's at their office. He's not there, yeah, I'll try calling Nick. Okay. You
+
+Speaker 1  56:28
+not picking up yet, so I'm suspicious they're all working on something,
+
+Speaker 2  56:41
+shade here and stuff. See
+
+Unknown Speaker  57:01
+from internet. How
+
+Unknown Speaker  57:14
+can we find this contact info and insight
+
+Matthias Miller  57:18
+it might be in there? I think email somewhere
+
+Matthias Miller  57:33
+that's I got it here, eight. Eight. I don't know what the difference is, 330604,
+
+Speaker 2  57:59
+I use On the phone. I let's Try the other line. 83919, six
+
+Unknown Speaker  58:49
+have reach and Aaron Bowman, please leave a message.
+
+Matthias Miller  58:54
+Hey, Aaron, this Matthias, I'm here with Seth trying to get a hold of Mark to see if there's see about getting a change in for the update this weekend you're around to have Mark give us a call. Appreciate.
+
+Unknown Speaker  59:13
+It is drew in on Fridays.
+
+Unknown Speaker  59:22
+Good thank you.
+
+Matthias Miller  59:32
+Hey, Mark Seth and I are working on the accounting impact stuff for AR, and wanted to get your sign off before we push it live if you want to give me a call, but if there's any way you could get back to us to us this afternoon, that would be wonderful.
+
+Speaker 1  59:49
+Appreciate it. We could also try calling Drew,
+
+Matthias Miller  59:53
+he's probably not at the
+
+Speaker 1  59:55
+office okay, because he doesn't work Fridays there. Well,
+
+Matthias Miller  59:59
+yeah, I think it's just. One or two days a week. Okay, let me I'll text, I'll text him, take my DND off for a minute. Let Stan calls in. Make sure there's actually
+
+Unknown Speaker  1:00:17
+ah, look at that.
+
+Unknown Speaker  1:00:20
+Is Mark calling. Yep, nice, Hey, Mark,
+
+Matthias Miller  1:00:28
+Hey, Mark, hey. So Seth and I have fixes for the AR stuff, at least some of the fixes, but we wanted to make sure there's it's going to trigger a bunch of transaction discrepancies, and we wanted to make sure that you were happy with what's happening before. I didn't know. We didn't know if you wanted to it in for this weekend, weekends update, but if so, we want to make sure you're happy with what's going on before we send it across.
+
+Matthias Miller  1:01:13
+I mean, most of it, most of it's going to get applied automatically. Some of it for historical periods. Seth, do we have stuff for historical periods?
+
+Speaker 1  1:01:31
+Yeah, there's some. No wait, that's nevermind, let me look.
+
+Unknown Speaker  1:01:41
+Yeah, yes,
+
+Speaker 2  1:01:51
+yeah, it looks like it correct.
+
+Matthias Miller  1:02:15
+Yep, and we can, and we can apply the same logic, where if the entire record, or if the entire transactions for the live period net out to zero, that it shows up in a report for for Filipino to resolve every
+
+Matthias Miller  1:03:00
+it? Well, I mean, the worst thing that would happen is we get our calculations wrong, and we're going to have to fix it and wait until next week for these to get cleaned up. That's really the worst thing that would happen
+
+Speaker 2  1:03:17
+sitting there as mismatches. Yeah, well,
+
+Matthias Miller  1:03:23
+I mean, it's not going to be extraordinarily wacky either way. I guess one thing we could do is check to see Seth, we didn't check to see net debits and credits to see if this what the net impact actually ends up being. But you're only looking at, even if it is, you're only looking at sales tax for about 50 sales orders. So maybe at most it's going to be, well, I guess it could be 50 times 50 times 500 Yeah, i Yes, okay, sounds good, but we'll set it across and then go from there. Sounds good, awesome. Okay, sounds good. Sorry to interrupt. Appreciate you, but
+
+Unknown Speaker  1:04:22
+we're were they? Were they working on something? Or
+
+Matthias Miller  1:04:25
+he's, it is, I can tell you straight up, it's a gifting that he's got. He's he's way more patient than than his uncle is when it comes to to teaching people stuff.
+
+Unknown Speaker  1:04:36
+So are you talking about? All
+
+Matthias Miller  1:04:43
+right, sounds good, and I'll let you get back to it. Appreciate it. Yep, you bet. All right, he's fine if we just push it across. But I am somewhat curious about. About 17. But, I mean, there's not really 11 now. We are just, we are expecting AR to shift by about we don't know by what amount, right, AR should drop by about 50 times 250 like 12 grand or something 10 to 15 grand, we think, although
+
+Unknown Speaker  1:05:23
+this isn't just
+
+Matthias Miller  1:05:26
+no per tax exempt. Tax Exempt one, well,
+
+Matthias Miller  1:05:35
+7531 there would be five bucks. Yeah, I don't know.
+
+Speaker 1  1:05:46
+It just, I mean, I think it drops some, I don't think it drops by as much as you were saying,
+
+Matthias Miller  1:05:54
+right here, because most bad debt, right? Because it's taxable amount for bad debt write offs, which is like maybe $10.10 to $50 times tax times 50.
+
+Speaker 1  1:06:08
+Yeah, exactly. So really, it would be going to be the exceptions where, like a building is stolen, but sure, or the dealer pockets the money. Well, that's what I was referencing. I guess it's not quite a building being stolen, but no, basically
+
+Matthias Miller  1:06:28
+it is. I mean, well, the same one is, yeah, anyway, so maybe several 100, really, probably I Okay, well, let's, um, I vote that we push these into the catalog and get them committed, and then dig into rounding.
+
+Unknown Speaker  1:06:48
+Rounding is
+
+Unknown Speaker  1:06:51
+just not one of my favorite things in the world.
+
+Matthias Miller  1:06:58
+Yeah, fair.
+
+Matthias Miller  1:07:06
+It? Are we even certain though that we can fix the rounding issue now? Well, we don't have to. I'm not.
+
+Unknown Speaker  1:07:18
+Where did we change that? Was it just bad debt.
+
+Matthias Miller  1:07:24
+Why wouldn't we do the same thing that we do? Why would we do the same thing for
+
+Matthias Miller  1:07:36
+why wouldn't we do the same thing regardless, even if it's non tax exempt for the last row, we use the actual bad debt values, and we split out the taxable and non taxable tax, which means that Your sales tax liability.
+
+Unknown Speaker  1:07:59
+That's awful. I'm not tracking.
+
+Matthias Miller  1:08:07
+I think for bad debt, the only way you can get it to work is raising the tax amount, because you need your sales tax liabilities. Well, anyway, let's go commit this and let's, let's cross that bridge until we get there.
+
+Unknown Speaker  1:08:27
+Let's burn that bridge till we get there. Thank you. There's all sorts of options. I Yes,
+
+Speaker 1  1:09:01
+I'm trying to remember, did we change stuff in other ones?
+
+Matthias Miller  1:09:05
+Yeah, the you have, the looks, the tax this guy, I think we did. I
+
+Matthias Miller  1:09:25
+that should be the extent about
+
+Speaker 1  1:09:30
+I guess we could do an expand expression then, oh, probably don't need those changes for now. I.
+
+Speaker 1  1:10:14
+What? What are we handling this cancelation date. I um,
+
+Matthias Miller  1:10:24
+bad debt is meaningless after cancelation. Okay? I mean, you know, what do you think?
+
+Unknown Speaker  1:10:32
+Right? Fair enough, I
+
+Matthias Miller  1:10:36
+don't know why we just validate, But anyway, yeah, I
+
+Unknown Speaker  1:10:53
+there's so much going on.
+
+Unknown Speaker  1:11:03
+Oh, I
+
+Speaker 1  1:11:19
+actually kind of want those comments just change them a little bit. Mm,
+
+Unknown Speaker  1:12:10
+each Okay,
+
+Speaker 1  1:12:16
+good. Would it be worth doing expand expression?
+
+Matthias Miller  1:12:19
+Probably
+
+Unknown Speaker  1:12:23
+would be expanded that would do it. I
+
+Speaker 1  1:13:01
+I look at that and that looks good to me. Looks good here. Wait, okay, let's commit that guy time. Do we have
+
+Matthias Miller  1:13:18
+45 minutes until the seal? See? CLS go.
+
+Unknown Speaker  1:13:25
+Oh, forgot about that. Wow.
+
+Speaker 1  1:13:29
+I don't know when I'm ever going to touch license billing tears that I really need to okay, do.
+
+Matthias Miller  1:13:50
+For bad debt, try to not be feeling not feeling super descriptive. But anyway, same, I'm
+
+Speaker 1  1:14:12
+actually committing. I don't do that very often these days, they're
+
+Matthias Miller  1:14:18
+probably committing more than you are this week, probably
+
+Unknown Speaker  1:14:24
+you're gonna come do specking for three guys.
+
+Matthias Miller  1:14:29
+You know, I actually never really enjoyed specking all that much.
+
+Speaker 1  1:14:32
+That's kind of what I figured. Well, you like doing the high level design, right? High level
+
+Matthias Miller  1:14:36
+design is great. Well, I guess depends on the level of specking. Sorry, I love the level of specking I do on the assist side. Yeah, that's happy, yeah,
+
+Speaker 1  1:14:47
+where you have a broad knowledge of the system, and then you can say, Go fix this. And this is what it should be doing, and this is where you need to change things, and this is roughly what you need to
+
+Matthias Miller  1:14:57
+change. And the developers smart enough and has enough. Context of, go figure out the rest of it right to me, if it's like, if I'm going to spell it all out, I might as well just go do it like, right, right.
+
+Speaker 1  1:15:11
+I feel some of that I'm having to learn that it is actually still valuable to just spec it and move on, because it is actually faster. Well, you don't have the for everything that I'm needing to be doing. Well, for real, and you don't have the tail on the back end of it either,
+
+Matthias Miller  1:15:27
+right? That's a big thing.
+
+Speaker 1  1:15:34
+Okay, I'm just thinking about not having the tail on the back end of it. Well, that's how most humans are. They don't have a tail on the back end of it. That's there.
+
+Speaker 1  1:15:53
+Okay, probably not my most important revelation for today, but mirror. Here.
+
+Unknown Speaker  1:16:16
+This guy's the same, right? It's just the payments and
+
+Matthias Miller  1:16:19
+write offs. Yeah, should be
+
+Matthias Miller  1:16:26
+so it's in the parent one. It's so balance, accounting, balance as of,
+
+Unknown Speaker  1:16:36
+yeah, there we go. Yep. Hope
+
+Matthias Miller  1:16:42
+I have, I have a hunch. I really don't want to do it today. I mean, we don't have time to do it today. I have a hunch that there's a cash or something that we could build, or a helper macro, or something that would make this share that simple. Yes, and it would, it would dramatically simplify the logic.
+
+Speaker 1  1:17:02
+I mean, it feels like we're almost at the point we're needing a bad debt history.
+
+Matthias Miller  1:17:13
+Well, which, which, if we would always just include bad debt rose regardless of taxability we'd have. I it. We have it.
+
+Unknown Speaker  1:17:31
+Yeah, just No, are we documenting?
+
+Matthias Miller  1:17:37
+We should have a to do, like here. No, this needs to be parallel to the tax adjustment in the bad debt accounting impact macros, and we should have those reference the other two. Or maybe this one needs to reference a bad debt macro, really, because that's the one that one needs to be and then the bad debt,
+
+Unknown Speaker  1:18:05
+and the the logic for calculating bad debt sub totally
+
+Unknown Speaker  1:18:21
+not gonna I will find there actually
+
+Unknown Speaker  1:18:26
+bad debt, so bad that less common Is
+
+Unknown Speaker  1:18:37
+this one, right? Yeah, so
+
+Unknown Speaker  1:19:43
+all that just makes me sigh inside.
+
+Matthias Miller  1:19:50
+I really do think we need to I don't know when it's gonna be so easy for it to disappear, but no. Really like to have that, see that cleaned up. Yeah, I
+
+Matthias Miller  1:20:28
+to be too long. We're bad debt.
+
+Speaker 1  1:20:47
+I gotta just, how do you want to do that? Should I just set it for early next year? Or
+
+Matthias Miller  1:20:56
+is this something we should pursue like soon? You think like, try to do next week sometime. The nice thing about doing it next week is that we have the context. We have the context, and we don't have to. It's still a priority, right? It becomes part of the same project.
+
+Speaker 1  1:21:22
+And I'm gonna have a clear priority on the 12th, which is next Wednesday. All right, awesome. It's not good. Yep.
+
+Unknown Speaker  1:21:40
+Okay, so we want
+
+Unknown Speaker  1:21:43
+to throw something on the calendar for that
+
+Matthias Miller  1:21:46
+we could, yeah, let me see what I got.
+
+Matthias Miller  1:21:56
+Which time do you think we'll need
+
+Speaker 1  1:22:02
+long power. I don't know is that ridiculous? I don't think so.
+
+Matthias Miller  1:22:14
+Trying to decide where to decide for myself where I want to put it.
+
+Speaker 2  1:22:21
+I What if we just did 130
+
+Matthias Miller  1:22:32
+clean up bad debt? I'll just do it on the back end of Dwayne's call and on Wednesday, and we can take as long as does that work? Gotcha.
+
+Speaker 1  1:22:44
+Well, How late is it? 130 Central, okay, yeah, no, that should be just fine. I don't want to go super late, but 130 will be just fine. All right, we have friends from our FB days. Oh, that are a couple. A surgeon, Bri all that we were good friends with are going to be at our place Tuesday evening through Thursday morning. But I am planning on working. I just don't want to. I don't want to push it a late day at all.
+
+Unknown Speaker  1:23:17
+Yep, understand.
+
+Matthias Miller  1:23:19
+Okay, well, I need a quick two minute break. I'll be right back hit the right sounds good.
+
+Speaker 2  1:25:40
+This we
+
+Unknown Speaker  1:25:45
+wanting to work on? Oh, the rounding. Oh no, rounding mismatch.
+
+Matthias Miller  1:25:52
+Can wait till next week. Yeah, the the, okay, here's the problem. We're creating sales tax liability entries based off of these rows. So we're also using this bad debt write off to zero out AR.
+
+Matthias Miller  1:26:19
+So we have a few
+
+Matthias Miller  1:26:29
+we have a few options. I
+
+Matthias Miller  1:26:53
+wait, do we don't have any guarantee. If so,
+
+Matthias Miller  1:27:18
+the only thing I can think of which I really hate is doing one of two things. Option one, adding a rounding discrepancies, column for bad debt into the sales effect history. RG, well, I mean, I'm not sure we have. Do you have
+
+Unknown Speaker  1:27:42
+examples? I'm like, what are the where?
+
+Matthias Miller  1:27:46
+Yeah, go, pull up the balance report that we were looking at. I
+
+Unknown Speaker  1:27:58
+don't know what it is. AR, calculations.
+
+Unknown Speaker  1:28:03
+Yeah, we had a whole bunch of, like, one or two cent discrepancies, right?
+
+Matthias Miller  1:28:10
+Yeah, like, if you go into this one, so the best 31 okay, and then what's the so bad Debt, tax, 7531 that 1-490-375-3014
+
+Matthias Miller  1:28:38
+90 new document. Sorry, we said, we said it was sorry. What was it? 7531 you said 493, yeah.
+
+Speaker 1  1:28:53
+This is one of those weird ones that had a correction to because we were calculating bad debt, wrong.
+
+Matthias Miller  1:29:00
+But, but this would leave a balance of b2, minus b3, 7038, if I do if I do b4, times, 1.0575 and I round it, b5, to two decimals. Wait a minute. What am I missing? One, five? Is it 575? That's no. What's the total? It's six. It's 7% right? Yeah, seven, okay, so the correction is just wrong, because we should be able to get to 7570 38 I think the correction is just wrong. Why? Because. A 7038 Can you move your mouse the 7531
+
+Unknown Speaker  1:30:10
+minus 493,
+
+Matthias Miller  1:30:16
+no, it's not. It's because, okay, let's try this. Why did I ever choose to do this in numbers, not excel? This is obnoxious.
+
+Matthias Miller  1:30:34
+Okay? So then this times 1.07 so
+
+Matthias Miller  1:30:48
+it's because, because it's split in multiple pieces, the rounding comes is is off resulting in discrepancies.
+
+Speaker 1  1:31:06
+So is it only because we were doing it wrong the first time? So it's,
+
+Matthias Miller  1:31:14
+well, I think that's the main reason. But isn't there still, there's, is there still a theoretical situation in which you could say that needs a total 7531 and but, like, if you had a bad debt right off of that, that which you need to get here 1.0
+
+Speaker 1  1:31:36
+I mean, yeah, I think we could still pretty easily be off. I mean, if you had 7% on a five cent or a $5 bad debt, right on A 50 Cent bad debt
+
+Matthias Miller  1:32:01
+equals da, divided by e8 what do you what do you don't like about me? You sure you want to know? Yeah, don't start now.
+
+Unknown Speaker  1:32:15
+Wait to turn the recording off. Yeah, fair enough.
+
+Matthias Miller  1:32:20
+Round to two equals this times this equals round two. So just for kicks and giggles and
+
+Matthias Miller  1:32:40
+I don't know how to mathematically prove that we're going to be okay. No idea. I
+
+Speaker 1  1:32:51
+mean, it seems like we're got a very solid chance of not. I
+
+Unknown Speaker  1:33:09
+Okay, where's, where are our numbers? We're still a little confused. Where the numbers wrong, though.
+
+Matthias Miller  1:33:18
+I think it's because, because we are the 492 excuse me, like 493 rounds out just a little bit differently, and so it doesn't reach the same grand total.
+
+Matthias Miller  1:33:51
+Now, the way around this potentially
+
+Matthias Miller  1:33:59
+is to say that the tax amount, this is terrible, but the tax amount to calculate, tax amount, you sum this and all prior rows times the tax amount less all prior tax calculations, which means that, yes, You do have to calculate all of that historically, which is just obnoxious. Well, no, it's, it's, it's really, what is the current line, what is the total of this and all prior times tax, what's this? What's all prior times tax? And what's the difference? And go apply that. That's the tax amount.
+
+Unknown Speaker  1:34:40
+I little longer.
+
+Unknown Speaker  1:34:43
+We would love hundreds of one cent adjustments. Well,
+
+Matthias Miller  1:34:54
+in most cases, it's not going to make any it's not going to be an adjustment if you don't change. Jurisdiction. I mean, the truth, it's just corrections which are already wrong.
+
+Unknown Speaker  1:35:07
+Is it just corrections?
+
+Matthias Miller  1:35:12
+I mean, if you have multiple theoretically, if you have jurisdiction, well, I mean, that way you can't do this with jurisdiction changes. I mean, you would have to match. You presumably have to match based on jurisdiction and type or something.
+
+Matthias Miller  1:35:38
+Please tell me there's a simpler solution.
+
+Speaker 1  1:35:48
+So how bad is this one? What is this one cent difference going to do? It's just going to make.
+
+Matthias Miller  1:35:55
+It's gonna AR is gonna, well, it makes it impossible if we change our so accounting balance to match accounting impact, it's going to make it impossible to get things out of AR, or you have to get,
+
+Speaker 1  1:36:11
+I mean, theoretically you could add another one cent adjustment, which is dumb, but then Won't that main balance will be wrong, right?
+
+Unknown Speaker  1:36:20
+Exactly, exactly, yeah, yeah, yeah. This is why I'm not an accountant.
+
+Matthias Miller  1:36:41
+Valley. Have you accepted? Hey, let's go. They've been in the pipeline for years, by the way, that was
+
+Unknown Speaker  1:36:53
+the one. Was that the one that Ben called up, and
+
+Matthias Miller  1:36:57
+I don't know or not, I'm not sure. Okay. We have notes from Ian way back.
+
+Unknown Speaker  1:37:09
+I mean,
+
+Matthias Miller  1:37:16
+okay, but is this going to adjust? This is filing implications, doesn't
+
+Speaker 1  1:37:27
+it, right? Yeah, of course, buddy. I mean presumably a whole bunch of plus one minus one cent filings,
+
+Matthias Miller  1:37:43
+exactly, not a whole bunch, but some, some. But we need to handle it in such a way that we recognize the difference, so that we can issue a correction, so that we actually okay. Please tell me there's a better solution.
+
+Speaker 1  1:38:11
+I'm kind of wondering if this is the sort of thing we should circle back to with fresher brains, but I don't know. Probably right, maybe not. So I'm afraid it's feeling very bogged down to me right now. I'm not sure how to push past it, and I wonder if we come back to it and let it stew for a day or over the weekend, come back to it.
+
+Matthias Miller  1:38:34
+Does this mean how many do we have that actually changed the final balance?
+
+Speaker 1  1:38:42
+123, 234-567-8910, 11, Oh, wow. We literally have a This one's lying. I don't know why things ending balance changed.
+
+Matthias Miller  1:38:59
+Oh, it's a weird rounding, okay, but most of these are on the AR report
+
+Unknown Speaker  1:39:04
+already.
+
+Matthias Miller  1:39:08
+So it's not like, well, oh yes,
+
+Speaker 1  1:39:14
+right, yeah, yeah. None of them are not or wait, we have all the dates on these guys.
+
+Matthias Miller  1:39:26
+Are we? Are we missing a date? We're missing an A on here. That's what we're missing.
+
+Unknown Speaker  1:39:34
+Oh, that might dramatically change things, couldn't we also just add a
+
+Matthias Miller  1:39:44
+well, no, it is here. Oh, we're no, I'm adding it back down at the bottom. It's in there. Significant data has it. Oh, I see this array has it. Why is it not in the.
+
+Matthias Miller  1:40:01
+Going to go in the balance guy,
+
+Unknown Speaker  1:40:08
+include an A
+
+Unknown Speaker  1:40:13
+list. What I
+
+Matthias Miller  1:40:26
+I'm very confused. Well, can we try? Just Sure?
+
+Matthias Miller  1:40:46
+Then the grouping needs to change as well. Go to the grouping
+
+Matthias Miller  1:40:58
+instead of na do, well, I don't know. Maybe it should just be today, it's the same thing. Should be the same thing. I say, well, it's not showing the same thing. I don't know, because we have zeros, two zeros matching. Okay. How many do we have now?
+
+Unknown Speaker  1:41:27
+Same? Is
+
+Matthias Miller  1:41:31
+it they show up on the AR report with they had been off the AR report. Was they had been off the AR report they're going to show up now as a penny balance. So we just need to warn drew that he's going to get 12 with a penny balance on it, until we fix
+
+Unknown Speaker  1:41:55
+it. This one's back to some weird
+
+Unknown Speaker  1:42:01
+5686 686, 50, yeah, it's gonna be
+
+Unknown Speaker  1:42:09
+a overpaid. Oh, I bet it was marked tax exempt today.
+
+Speaker 1  1:42:20
+Yeah. So we just need sales tax history to run, then we'll be good. All right,
+
+Matthias Miller  1:42:34
+I'll shoot up an email, okay?
+
+Speaker 1  1:42:39
+So basically, AR reports going to have 12 or true items with a one cent balance until we can figure out how to get it to
+
+Matthias Miller  1:42:51
+even out. Dwayne on here, chance the AR report next week will include 12 new sales orders with a one cent balance. This is, this is an artifact. Our bad debt fixes. We will not be able to come to a good solution this afternoon yet. Okay, sweet, okay, all right, see if you Yep.
+
+Speaker 1  1:43:32
+Sounds good. I'm gonna go crossbow for a bit. I love it. Sounds good. I'm gonna go to walk. Sounds great. Yeah.
+
+
+Transcribed by https://otter.ai

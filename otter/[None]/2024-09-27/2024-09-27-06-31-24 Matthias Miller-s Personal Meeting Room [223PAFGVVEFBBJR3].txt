@@ -1,0 +1,713 @@
+Unknown Speaker  00:30
+Hey, good morning Mark, good morning Matthias,
+
+Unknown Speaker  00:35
+hey, I think we can just go ahead and get started through thought. Talked about calling in until he shows up, but it's
+
+Speaker 1  00:53
+what let me See then just conference him in might be helpful,
+
+Unknown Speaker  00:57
+sure.
+
+Unknown Speaker  01:36
+Matthias,
+
+Speaker 1  01:38
+hey, Drew is pulling in set within a minute or so, so it'll be right on, but we can still go ahead. Well, first of all, thanks for fitting this in. I think all the messiness or all the details yesterday, I'm pretty I think this, I think it pushed us to a good solution here. But yeah, wanted to review and see what
+
+Unknown Speaker  02:12
+where we go from here.
+
+Speaker 1  02:17
+So did you get you should have gotten my email. Just some takes, and then also a file from files at inside,
+
+Matthias Miller  02:24
+yes, I did. I got both of these pulled up. So let's
+
+Speaker 1  02:30
+start with the sales tax reporting. So I believe really overthinking some pieces yesterday, just why it seemed overly complicated. After reviewing through the afternoon, I think this basic concept that we have should work quite well. So I think there's several absolutes to acknowledge which keep things from becoming overly complicated, which so listed underpayment overpayment and invoice sales tax log, so over or underpayment, we said all underpayments will be handled the same way, like invoices that are tax exempt. Those are simple. You just increase your bad debt, decrease AR, which is exactly what we're doing now. So and if there is sales tax, again, we increase our bad debt, but only by the amount of underpayment, less sales tax portion, and we decrease sales and use tax by the amount of
+
+Unknown Speaker  03:41
+underpayment times of sales. So if a customer short pays $200.07 a quarter tax rate, then we just lower our tax liability by $14.50 you know, regardless of whether that was due to a sales tax increase. It doesn't matter what the reason that the customer short paid
+
+Unknown Speaker  04:12
+right, right
+
+Speaker 1  04:21
+overpayments. All handled the same way, and that any money collected in excess of the final invoice balance will Oh, doesn't make any sense. I must have deleted some
+
+Unknown Speaker  04:35
+good, heated some. I
+
+Speaker 1  04:41
+uh huh. Well, okay, what that was supposed to say, or what that had said was, any overpayments are handled the same way. Either we fully refund the money to the customer, or it's a minimal amount that we don't bother with and we just. We just keep the money and it's, it's, you know, who's to say, or, How do you know that if we keep 35 cents or $3.50 that it was because of the customer overpaying, straight up overpayment, it was due to him working off of an estimated sales tax that ended up changing, right?
+
+Speaker 2  05:26
+Like again.
+
+Unknown Speaker  05:42
+Renders, good morning
+
+Unknown Speaker  05:52
+different here, so
+
+Unknown Speaker  06:00
+email it to me.
+
+Unknown Speaker  06:05
+So that's on overpayments. Is
+
+Speaker 3  06:09
+the story there and then. Sorry, what?
+
+Matthias Miller  06:14
+What's the rest of the overpayment money collected in excess will either
+
+Speaker 4  06:19
+one of two things, either we'll refund the full amount, or we will, if it's minimal, we'll just keep it like, that's what, okay, right now, we just keep, if it's, you know, it's just a per per invoice decision, It's, rare that that happens, and it's usually just, you know, if it's $500 we'll send it back. If it's two or $3
+
+Unknown Speaker  06:49
+you know, whatever, we'll
+
+Speaker 4  06:49
+just keep it if, and if we keep it like we're saying, it's the potential exists that because that the reason it's $2 more is because they were working off of an estimated sales tax, a sales order that was incorrect, but it's but, but how can you tell, like, how could you, like, say, in an order? How could you go back and say, Oh, this customer had a sales order in hand. That's why he overpaid. And this customer also paid $3.50
+
+Unknown Speaker  07:27
+but he just, and
+
+Unknown Speaker  07:28
+I've got the math wrong, forgot,
+
+Speaker 5  07:32
+because, like, in the end, we do have a sales order to prove what we actually charged him, you know, right? I mean, that's that would be thinking that we gave him the understanding that he's paying on an estimated tax, not the action. You know. Now we probably don't clarify that, but Right? It wouldn't disagree with our sales numbers,
+
+Speaker 3  08:02
+right? So, yeah, yeah, okay, so
+
+Speaker 4  08:09
+that's over payments. I completed my payments and then the invoice, sales tax log, which I show on the examples. I think there's only three types of events that aren't logging a new line item on this log. One is what we currently call the so invoice date, so once the other's invoice, and for the majority of the invoice, it's this only thing we log like prior to that, okay, we ping tax dollars, or the customer has an estimate on what to pay. But then when we invoice that is, I would expect 95% of invoices. That's the the only thing we love. And then if there is a situation where sales tax changes to a different jurisdiction, or it becomes tax then those situations are rare enough that I think we would just need to uninvoice and re invoice that same invoice, which, if I'm thinking correctly, that would give you a second so invoice date. Now it could be the same date, but can the action of invoicing again? Ping's tax jar? Yes, we could do that. Would say, Oh, you're in a different jurisdiction, so, or you're not tax exempt, so bring in that information. Yeah. The other thing we would log is an invoice added or changes, maybe the invoice that affect either the self total or the sales tax,
+
+Unknown Speaker  09:47
+right? I guess that. Yeah,
+
+Speaker 4  09:54
+and then adjustment for customer underpayment. So this would be derived from the payment method. Selection. So if somebody, you know, after two months, after invoicing, we say, You know what, we're just going to write this off. We use the customer underpayment, that payment method selection, if I ask that you share that's or sent through that spreadsheet as well, I didn't
+
+Unknown Speaker  10:28
+Yeah. So
+
+Speaker 4  10:35
+I think those, those absolutes like should help clarify a bunch of or should keep us from getting, hopefully, getting bogged down in complications like we did yesterday. But then I have on the spreadsheet, I have three different examples of what, what I envision that if we, if we log this information on each sales order,
+
+Unknown Speaker  11:12
+will give us
+
+Speaker 4  11:14
+all the information we need to to Do our sales tax reporting right, so any anything before we jump into those examples,
+
+Speaker 5  11:27
+I would make a suggestion that the payments be recorded on this Log as well, like the taxi you're making a payment. Um, main reason is because,
+
+Unknown Speaker  11:48
+well, here let me well,
+
+Matthias Miller  11:50
+you mean what we that makes a lot of sense to me.
+
+Speaker 5  11:54
+Yeah, yeah. Like, you have them on here. They're just not listed here as things for the log. So they'll really be true. What are the four things? What
+
+Speaker 4  12:02
+I meant with the law is, is the top left section the invoice, sales tax. Okay, those are the only three types of events. Now they could be multiple jobs listed multiple times. But yeah,
+
+Speaker 3  12:17
+yeah, okay, the law, um, law.
+
+Unknown Speaker  12:26
+There's three different sheets I suggest we just look at
+
+Speaker 3  12:32
+all right, maybe, yeah, just sharing your screen and we can just, yeah, Give me one second here. What a
+
+Unknown Speaker  12:52
+here we would
+
+Speaker 3  13:00
+I think that thing we did yesterday, but
+
+Speaker 5  13:08
+like the Kansas thing, changed the way it was done, but put in the payments, you know, and what all should happen to accounting
+
+Unknown Speaker  13:18
+over here, right?
+
+Speaker 5  13:23
+Because, like, if we change location or a stage, that it care, that it matters, we should actually be, you know, like in this, paying everything back to partridge and then paying hutch, you know,
+
+Speaker 3  13:41
+like you're showing Yeah, right.
+
+Speaker 4  13:47
+So what we have here is, if there is an underpayment, so the invoice sales tax log, we can call it what we want to, but my thought is we would log this on every sales order. So six, three, we have an so invoice date, and then we ping tax jar, and that's where we get those rates, and the sales tax then on and and going to the right, those are your resulting accounting transactions, which we thought would be helpful to just show.
+
+Speaker 6  14:22
+Got it. So
+
+Speaker 4  14:31
+on six seven, there's an edit to the invoice. The total subtotal changes from 5000 to 5195, so the invoice subtotal is different, the sales tax total is different, which my understanding is that currently, those types of edits push to accounting every night. The nightly update. Is that correct? Yeah. Now I didn't know the accounting transactions, most likely you just wipe out. The earlier ones that replace them with like I listed it as rows six through 10. I listed four transactions, the first two just reversing the earlier sales tax. Does? Does that? Does that just when that happens, does it just wipe out the earlier?
+
+Matthias Miller  15:28
+Currently? Yes, currently, we're just updating the the the prior transaction to have the current sales tax liability. But if we wanted to, we could have the main sales order. We could have the main sales order event be only for the subtotal and always generate separate. Sorry, we know the main sales order transaction be for the subtotal and just have separate events for sales tax.
+
+Speaker 4  16:08
+So you're saying the way it currently works. It would do exactly this, except the first, the transaction on six and seven. It would, it would leave the six three transaction in place, in place until six, seven,
+
+Matthias Miller  16:23
+right? And then on, on the on the eighth, you would come in, and the transaction was six would be adjusted. And then on july 25 you come in, and the transaction on June, June 3, sorry, June 3 would be adjusted. So it all be a single transaction with current source of truth, of what, what the liability is,
+
+Unknown Speaker  16:49
+yeah, okay, so that then
+
+Speaker 5  16:55
+this all works, what we need to do is pay sales tax, then from the beginning of the year
+
+Unknown Speaker  17:03
+to current like,
+
+Speaker 5  17:07
+because, because these edits will still show as they were in June, but we've long paid June but, but we still have a balance on this particular One in, say, accrued sales tax, so we pay cumulatively,
+
+Unknown Speaker  17:24
+you know, right?
+
+Speaker 5  17:26
+We we pick up all the, basically adjustments to prior sales each month,
+
+Unknown Speaker  17:36
+which I believe
+
+Speaker 5  17:39
+would be the I mean, that's how you're not going to go back and file an amendment for a prior month just because, oh, we had one less sale than we thought would be, right? We're just going to adjust this month's sales.
+
+Speaker 4  17:56
+So, I mean, I think what you're doing this, the way we're handling it now, I think is just fine. I don't think it needs to log all of this. I mean, unless any of you see a reason to to you're just going back and saying, oh, same as on on revenue, which we're not showing here, you're just changing, like, in this case, revenue on six three would show 5000 on six seven, it would show 5195 and if on six seven, you go back to seek three, that would now show 5195
+
+Unknown Speaker  18:36
+right? That yeah,
+
+Unknown Speaker  18:38
+and that's yeah, that's fine.
+
+Speaker 5  18:44
+I mean, we're taking it as it's still a sale from back then, but it's with more accurate data, right? So therefore we do want to correct that sale.
+
+Speaker 4  18:57
+So okay, so, so invoice, edit, um, the accounting transactions would be much simpler than what I haven't shown here. And then on 725, the customer underpays. We don't know why they underpaid, but we agreed to write it off. So negative $200 which lowers our tax, our sales tax divided over the 362 14.
+
+Matthias Miller  19:31
+Yeah, I might have misspoken on that one. I think in that one, it makes sense to have that be rolled into the a single AR adjustment so you would um.
+
+Matthias Miller  20:00
+What? Sorry, I'm missing the taxable, non taxable portion of that. Well,
+
+Speaker 4  20:11
+okay, another way of looking at this is saying, is saying our subtotal was 5195 that's what we were collecting for. But now that the customer short paid, our subtotal is now 50 is is like 4995 or $5,000 about $5,000 I uh, the state still gets there seven and a quarter percent, but just on a lower subtotal,
+
+Unknown Speaker  20:53
+right?
+
+Matthias Miller  20:54
+So I think for this one, we would create a transaction for the payment. And have a, have a setting on the payment method that it should reduce sales tax liability, and then as of 725, your sales tax liability would hit accounting, because that's when you recorded the bad debt, because that's recorded as a, as a payment method,
+
+Speaker 5  21:21
+that's perfect? Yeah, you wouldn't necessarily be adjusted because you don't want to adjust your invoice total, right? You're adjusting AR, sending it to bad debt, and you also want that to post as of when you calculate the bad debt, yeah, when you when you take it,
+
+Speaker 4  21:41
+we're not showing the bad debt here in accounting, but we could, like, we could say, okay, it would be so 1450 is the amount we're lowering our sales tax and the what is it? 185 50 is what goes to bad debt, right?
+
+Unknown Speaker  22:09
+Then,
+
+Speaker 4  22:12
+so, so that would be the logging that
+
+Unknown Speaker  22:17
+that affects
+
+Speaker 4  22:20
+the invoice, sales tax log, and then further down 15 through 20, we're showing the government entity sales tax payments log, or whatever we call that. Want to call that. But so on 720 usually the 20th of every month where sales tax is due. On 720 we make a payment of 376, 64, which is, is part of the total payment of 39, 740, 23 which that that we pay to the state. So if you we're thinking, we need to have something like a almost like a vendor's invoice with each and a paid stuff that shows you know, we're paying sales tax on these 100 buildings totaling 39, 740, 23
+
+Unknown Speaker  23:10
+and then this is just bringing this individual the payment for this individual building, or recording that here, and then again a month later, on 820, when we go to
+
+Speaker 4  23:27
+pay for that month, we actually have a $14.50 cent credit that lowers our you Know, we pay the State 55,007 4259 and it's that total is is $14.50 lower because of the short payment.
+
+Matthias Miller  23:54
+Um, do you need this to tie up in your account? Balance? Diagnostic,
+
+Speaker 3  24:02
+or more like sales for the
+
+Matthias Miller  24:07
+taxes account to see if, to cross reference, whether it's tying out.
+
+Speaker 4  24:18
+Oh, I mean on the one side they're coming in sales tax increases, typically increases by whenever we invoice, and then that amount leaves by.
+
+Speaker 4  24:36
+I mean, that's probably one where, where we would need to just I could, I could see us saying, Well, according to our sales tax reporting, what were due this date? There's, it's different than what accounting shows, and then
+
+Unknown Speaker  24:58
+they need a way to find. Find the difference if there is one,
+
+Speaker 4  25:16
+or would our reporting be? Would our reporting look at the invoice the sales tax law like say, here's what we're as of this day. Here's what we're due to on sales tax. But then, like, if that were on the left side, it would say just, just using this example alone, it would on seven, if we were to look at it on eight one, it would say, your due sales tax of $362.14 but you have paid 376, 64 and use you've overpaid by $14.50 What I would say on on eight one,
+
+Unknown Speaker  26:16
+do I
+
+Unknown Speaker  26:23
+the
+
+Speaker 5  26:25
+the 362 14 would actually never be posted, right? Because the 376 would be posted from the last invoice Edit, and then, because it's a bad debt adjustment, it gets 1450 from that AR adjustment, and posts a 1450
+
+Unknown Speaker  26:59
+credit there.
+
+Unknown Speaker  27:01
+Like so the 76 if you pulled a balance, it would say you're negative.
+
+Unknown Speaker  27:10
+You know, like
+
+Speaker 3  27:12
+you're negative 1450, right, right?
+
+Speaker 5  27:20
+Because instead of, instead of re instead of taking away 37 376,
+
+Unknown Speaker  27:28
+you would 376.
+
+Speaker 5  27:30
+Was your last entry in this little log. And and then 1450 Well, no. And then the payment, you know. And then you're 1450 and then you know, so now you're a negative 1450 on this balance.
+
+Speaker 4  27:46
+I think that would make more sense than Yeah,
+
+Unknown Speaker  27:52
+because if you're posting Yeah,
+
+Speaker 5  27:56
+you're essentially posting four things. Well, three things, the the invoice changes, whether that be creation or an edit, but anyway, changes to the invoice, bad debt, write offs and payments.
+
+Speaker 4  28:19
+So Matthias, what's most helpful here? Should we look at the other two examples quickly and then we or should we keep so? So this is an overpayment, which there's really nothing to see. Like, all we're saying is, if there is an overpayment, it doesn't show up on the sales tax log. We don't pay X before, and we just handle that outside of this, like, if there were $200 overpay, we just sent the money back. Or if we keep it, we just, you know, if it's $2 we put it to bed. We probably just put it to bed. Debt, expense,
+
+Unknown Speaker  28:55
+makes sense.
+
+Speaker 4  28:59
+Yes, the leftovers, so. And then here we have the RE invoice situation where or what. This is very rare, but the address changed, and so somebody knows to say, Oh, well, we have to go re invoice, this thing which creates a new holding a new rate, and now you have two and a half percent on the county instead of two, which increases your sales tax. But here again, we're saying that the customer, because of that change, the customer was never notified, so we our short paid 1250 but we're saying, okay, the state is still going to we still owe the state the seven and a quarter of seven and a half percent, but it's just going to be on a slightly lower number, just like we would, if we can, like because I think if it's a a large amount, we'll go. The customer to, like, the remainder, if not, we're just going to say, well, we'll just eat it, and we we eat 92 and a half percent of it in this case.
+
+Unknown Speaker  30:13
+So that's,
+
+Unknown Speaker  30:14
+I mean, I think that covers the I think that covers the situations we have so
+
+Matthias Miller  30:24
+so one one question on the other, re invoicing thing,
+
+Matthias Miller  30:35
+we don't log re invoicing dates. And so what would happen is the transaction date would shift from six, three to six, seven. I think we could watch for changes to well, what is it, though?
+
+Speaker 4  30:54
+So are you saying because we don't log that this, this example would would not show lines. Would not show line three. It would just show line as of as of six, seven. It would six. Would stomp over line three.
+
+Matthias Miller  31:11
+Yeah, really, yes. And I mean really, all that would get generated in accounting is it would switch from lines three and four to line set eight and nine.
+
+Unknown Speaker  31:21
+That would be fine. I
+
+Unknown Speaker  31:22
+think, are
+
+Unknown Speaker  31:23
+you saying the date would switch as well?
+
+Matthias Miller  31:25
+Yeah, if you re invoice,
+
+Speaker 5  31:29
+if you re invoice, right? But if you just go in and say, oh, there were no ramps in this order, and he actually took ramps. And, you know, we want to add ramps to this, right, if you're just changing the amount, or if exactly, then it just takes the old one, exactly,
+
+Unknown Speaker  31:49
+yeah.
+
+Matthias Miller  31:53
+And I mean, if changing dates is an issue, which, I mean, it doesn't matter, we could conceivably have a button on the or a checkbox or something that you can check to say, hey, please recalculate tax jar.
+
+Unknown Speaker  32:11
+And
+
+Matthias Miller  32:13
+I mean, maybe, maybe we want that anyway, for internal, internal reasons. We could, we could just, I could discuss with Josh, but, yeah, no, I mean, that's, I think it's good,
+
+Speaker 5  32:30
+one nuance that included in this, if there is, if there's a bad debt write off, and a, you know, and then later you have a jurisdiction change, or a re dating, or something like that, where the rate changes or the jurisdiction changes, then You need to reverse that bad debt write off, because that was written off to that other jurisdiction, and then, and then implement it in the new jurisdiction, because Essentially the lake should go back To that
+
+Unknown Speaker  33:19
+jurisdiction.
+
+Matthias Miller  33:37
+Then if
+
+Unknown Speaker  33:42
+and then,
+
+Speaker 5  33:49
+like, if it's only a rate change, a bad debt write off, could just be recalculated. Like, I don't know how it's, because it's is its calculation going to be live or not, but I mean that should be a very rare case if, if the rate changes after a bad debt write off for a reason other than jurisdiction change.
+
+Unknown Speaker  34:18
+I don't know, the only
+
+Speaker 4  34:20
+time, if I'm thinking correctly about this rate can change is if you repay tax. John,
+
+Speaker 7  34:24
+right, right. So I don't, I only think that's a thing,
+
+Matthias Miller  34:35
+but it does he I think it's actually okay. But then when you if you have existing bad debt, and you switch to new jurisdiction, do you still need to report the bad debt to the new jurisdiction? Probably should
+
+Speaker 5  34:54
+Right, right, because we're saying, we're saying we took a credit. I mean. With with bad debt. We're just saying we paid you too much. We get some of that back. So now we say, Oh, we took some of that back in error. Give it back to the first county, and it just adjusts our liability. I don't know. I mean, we never paid it to the fur like it should. It should just show up as the current like it shouldn't actually be considered a bad debt credit on the second one, because we've never actually paid it in but I don't know if it's worth being that technical.
+
+Speaker 4  35:40
+But on the first jurisdiction, if you have a jurisdiction change, don't you just reverse everything and like, couldn't you just lump some like in the if, if you paid $200 and then you took back $10 from Holmes County, and then later you say, Oh, that was actually Wayne County. Wouldn't you just say, oh, Holmes County, you're, you're due or $190 Yeah. You need Yeah. You owe us $190 because we mistakenly paid it to you,
+
+Unknown Speaker  36:27
+right, right, but, but
+
+Speaker 4  36:28
+how would, could you just, could you show that in the form of
+
+Speaker 5  36:33
+that's the sales announcement, because you agree a call, you agree invoice to, right? But your sale to the new jurisdiction is still the the full sale amount, and then you're, you're, you know, like the sale amount doesn't change,
+
+Speaker 4  36:54
+but the original jurisdiction, you can just show that change as a lump sum, like you don't, or you wouldn't have to
+
+Unknown Speaker  37:03
+to show that
+
+Speaker 4  37:05
+as 100 and min or 200 and minus 10, would you,
+
+Unknown Speaker  37:11
+I guess? I mean,
+
+Speaker 5  37:15
+I don't know it would be a little weird. I mean, it's just one of those weird situations that I'm sure there's no writing on it,
+
+Unknown Speaker  37:27
+because, because bad debt,
+
+Speaker 5  37:31
+a bad debt credit, is just saying we paid you too much, and so we're going to take some credit for it. So if it's going the other way of rental is it? It's not necessarily bad debt. We just have to have a way of, like I was understanding that if you re invoice, the payments that were applied to that thing will stay there. So if we're using the write off as a payment, it would stay there. So we're going to have to have some way of, you know, processing that change on that payment.
+
+Speaker 5  38:12
+So maybe it'll all do it in the background, and it's not actually like new transactions, I don't know, but
+
+Speaker 4  38:20
+you're talking about payments, as in, payments from the customer on the right,
+
+Speaker 5  38:24
+right? So they paid 2000 and then you go re invoice, that payment still stays on that new reinvoice, yeah,
+
+Speaker 4  38:32
+because, because you can apply payments to a sales order before, you know, like the down payments,
+
+Speaker 5  38:37
+it's just, you know, so if a, if there's a bad debt sitting there, we need to make so that bad debt doesn't still show to the old jurisdiction, and nothing gets changed, right?
+
+Speaker 4  38:51
+And what would happen if there's a shift there, it would show up in ER, again, it's a positive or negative,
+
+Speaker 5  38:57
+but, yeah, but like, and we then we need to, like, in our next filing, we need to make an adjustment for that on on both the old jurisdiction and then on the new jurisdiction. You know, we're getting back from the old, paying the new. The old
+
+Speaker 4  39:13
+would be automatic. We want to happen automatically. The new might have to be adjusted, like, if, if it moved to a new jurisdiction, they might have only short, paid 150 instead of 200
+
+Speaker 5  39:25
+now, right, right. We basically have to reevaluate the whole thing. And
+
+Speaker 4  39:31
+it would that $50 change should show up in AR. Then say, oh, actually overpay. And then we open and say, whatever, we had a $200 short payment. Oh, okay, well, it looks like we need to change that to 150
+
+Speaker 5  39:44
+I mean, maybe the thing to do would be, if there's a re invoicing, it requires you to get rid of write offs and rewrite them. Like maybe that. I don't know what that do it or not. Well,
+
+Speaker 4  39:57
+how often do we re invoice and. I think it's so rare that it's for right now, I would vote to just
+
+Unknown Speaker  40:07
+leave it all
+
+Speaker 4  40:09
+manual until we like I think the only time I don't know it seems to me like it's something we do, probably do 10 times a year.
+
+Unknown Speaker  40:30
+I mean,
+
+Speaker 5  40:32
+if it's easier to put it in, but Sure, but if it's not, that makes a difference. I
+
+Speaker 4  40:44
+What are you thinking on on re invoicing with, or what's the process currently, if you have if you re invoice, is that something that
+
+Unknown Speaker  40:54
+only a future
+
+Matthias Miller  40:57
+go ask Duane to create an editable report that lets you blank it out, and then it shows up on the sales orders needing invoicing report, and you go, re invoice it. There's not a good process for it. I mean, the only real reason we need any kind of reinvoicing trigger is to recalculate sales tax.
+
+Speaker 4  41:24
+So right, what you're saying is, okay, I like your idea of of adding a button to recalculate sales tax, or repaint tax jar, whatever, whatever it is. And then, when we do that, could then that takes away the need to reinvoice Correct. And then when you do that, could you then just, could you just wipe out any
+
+Unknown Speaker  41:51
+customer? Wow.
+
+Matthias Miller  41:56
+Okay, what's the issue with having right? Because you're if, when your sales tax rate changes, then you'll end up with another weird under, I mean, you might end up with an overpayment or something. So
+
+Speaker 4  42:13
+I think the two options are, one is we just we change the rate, and then it shows up in AR either as a negative or positive again, or we have it when we repaint tax chart, it just looks for any customer. Well, that gets nice. It doesn't look for customer underpayments and overpayments. But okay, even if it, if it would wipe all of those out, then we'd still end up with something in AR to give
+
+Speaker 5  42:44
+it a customer overpayment doesn't hit sales tax, so that doesn't matter,
+
+Speaker 4  42:55
+right? But if there was an overpayment, it certainly might not be an overpayment
+
+Unknown Speaker  43:00
+or the UI, right? But
+
+Speaker 5  43:03
+wouldn't that update? Just like that would update your invoice, it would update what's due, which would all post a new number to accounting payables on this sales tax,
+
+Speaker 7  43:22
+I think the question and then, I mean, so for the AR side of it, if you reaping tax jar,
+
+Speaker 5  43:34
+I mean if, if it changes the balance because of a write off that you had or an overpayment, you have to change your write off or your overpay makes balance work out.
+
+Speaker 4  43:46
+So either way, you're going down Well, unless we try to automate it and say, no this, I think that would be ideal. Just, just leave those write offs untouched and they show up in accounts receivable, and then you go in
+
+Unknown Speaker  44:04
+and edit them. Or, what are you? What are you thinking?
+
+Speaker 5  44:13
+If we So, if we do the tax jar repay and it comes back as a different jurisdiction, we would that adjust the the tax liability created by the right yeah, or rate like, if it, if it, if it adjusts the tax liability by the new rate or the new jurisdiction, or whatever the whatever the invoice says, and it corrects all of that on our on our log and in our accrued tax liability. Then if it zeros out, if the balance is still zeroed and the things done, then there's not. More. And if it doesn't zero out, then you say, oh yeah. Then the change made the balance go up. And so, you know, there's less of the write off now there's more of a overpayment or whatever, which then that update. If there is a tax implication to that right off, it updates that part of it too. Yeah, you know, it's now 6% of of 200 instead of 7% of 150
+
+Unknown Speaker  45:35
+so
+
+Unknown Speaker  45:41
+what
+
+Matthias Miller  45:47
+how important is it to do this, make these line item adjustments real time, versus just having a kind of period close out
+
+Unknown Speaker  45:58
+to, well,
+
+Matthias Miller  46:02
+I'm not even sure which it is. It could be period close out. It could also be just a nightly process that creates these, these items, these line items,
+
+Unknown Speaker  46:11
+which, which
+
+Matthias Miller  46:12
+logs are you for the sales tax history log?
+
+Speaker 5  46:19
+And you're saying, like the thing that we talked about yesterday of creating a process where you'd say, okay, prepare the sales tax log and it would update everything, right? I
+
+Unknown Speaker  46:31
+think that would be fine. We we
+
+Speaker 4  46:34
+really won't need it outside of that rule. I mean, I don't. I mean, from
+
+Speaker 5  46:37
+a financial side, we're going to go by whatever accounts payables, I mean
+
+Unknown Speaker  46:44
+accrued libraries,
+
+Speaker 5  46:48
+this is simply for preparation for paying sales Tax, right? I would think that would be fine. I
+
+Matthias Miller  47:11
+Okay, so then, when you have existing bad debt in a new jurisdiction, can we just keep it simple and
+
+Matthias Miller  47:28
+include bad debt for the new jurisdiction, and Just always treat it
+
+Unknown Speaker  47:37
+as always report okay
+
+Speaker 7  47:41
+when I I mean the thing is,
+
+Unknown Speaker  47:55
+so like, Take Indiana,
+
+Speaker 5  47:59
+you file it on a separate line. You file bad debt on a separate line. You're not filing any jurisdiction amounts within the county or within the state. So which jurisdiction is in doesn't matter at all. For Indiana, Ohio, you're filing amounts for the counties, and then you're putting that bad debt adjustment in, but you're, you know, you're putting the bad debt in on the state. But if, if the jurisdiction changed, obviously we're, we're applying, we're changing our sales numbers for that particular jurisdiction as well, but I don't know that there would be any like my concern is that there'd be trackability to where we never paid sales tax to, say, Greene County. And now, the next month, we're trying to claim a credit on Green County as bad debt. But I don't think there's any situations where we actually enter something like that. It's simply the counties are simply just changes in sales amounts. You know, we're just updating negatively from last you know, because of something from last month, the bad debt applies to the state.
+
+Unknown Speaker  49:28
+I think so. I think that's fine.
+
+Unknown Speaker  49:34
+Too many things in here for messing with the state. But,
+
+Matthias Miller  49:42
+all right, and then we want to record. I.
+
+Matthias Miller  50:17
+But then then you were also wanting a way to record payments.
+
+Speaker 4  50:33
+Can you to when you go to File sales tax? Can you create a a special type of vendor invoice that says, Okay, you're, you're, you owe the state 39,000
+
+Unknown Speaker  50:52
+and here's, you know, list out all invoices you're paying on, list
+
+Speaker 4  50:55
+all the invoices like in a pay stuff that you're paying On, and then record that back onto the individual sales order,
+
+Unknown Speaker  51:04
+it would have to be non posting, because you're not well. I
+
+Speaker 5  51:10
+mean, I guess you could post it to accounts payable. I mean, you could say, you could say it's we've paid accrued liabilities, and now we have an account payable, and so you pay the state. You're paying your accounts payable, not accrued liabilities. That would work.
+
+Speaker 4  51:26
+But Why could you just make it instead of posting to accounts payable, it would post to accrue liabilities. It would lower that, lower your account
+
+Unknown Speaker  51:34
+well,
+
+Speaker 5  51:35
+it would increase, if it's a vendor invoice, it would increase accounts payable. And then when you make the payment, then it lowers accounts bail, just like a regular rendering books,
+
+Speaker 4  51:43
+oh, for the day or two that it's queued up, or for the day it's queued up well,
+
+Speaker 5  51:47
+or for the 30 seconds queued up like, yeah, like you, you, I mean, for, for, I mean, according to what happens online, what actually happens online that you might not record it in the books the same way. But what happens online is you click the file button and then you and then it takes you to the pay page. So,
+
+Unknown Speaker  52:11
+I mean, is that, are we asking for something doable, or is that a ton of work to it?
+
+Matthias Miller  52:19
+Well, I mean, it depends exactly what you're asking for. Are you asking for a vendor invoice?
+
+Matthias Miller  52:34
+I mean, can we create a vendor invoice with non PO line items that has the sales order ID in them for all the line items.
+
+Speaker 5  52:51
+Well, it doesn't actually like go back to the sales order. It
+
+Matthias Miller  52:56
+doesn't link back to it. Now,
+
+Speaker 4  52:59
+I think the biggest thing we're after is this logging on the sales order then, so that we can see, like, on this sales order. We paid, you know, 370, $6 and now we're doing credit on this one. And if we could do that with none
+
+Speaker 7  53:18
+like we yeah, we need our we need our
+
+Speaker 5  53:24
+run, prepare the sales tax payment thing, Gizmo, to know about payments, so that it has a proper balance.
+
+Speaker 4  53:36
+But for paying the state and figuring that out we don't. All we need is that one number, the $39 that's all we care about. The The only thing we need, variables, yeah, the log is we think we need that on a per sales order logging so that we can keep track,
+
+Unknown Speaker  53:59
+you know, for Yeah, so.
+
+Matthias Miller  54:17
+I mean, my assumption was that we go catch up all sales orders to what they should be, and we pay based on the period end date, and just assume that we paid all our liabilities and we actually paid the right amount.
+
+Speaker 3  54:42
+I mean, we could go on. I wonder if
+
+Matthias Miller  54:57
+the easiest thing would be just to. Oh,
+
+Matthias Miller  55:16
+I mean, we could ask good.
+
+Speaker 4  55:39
+Well, okay, the the other thing that maybe this is a bad idea, but, but how could we do this? Is probably a really bad idea, but let's say you're reporting says, Okay, here's what you're based on all the information, here's what you're do. This the state the 39,000 and then you get an example. Could you have a list where you just may as import all of that into, I don't know, like run a transaction import
+
+Speaker 4  56:21
+for all, am I correct? I mean, the only thing we're really concerned about is, is tying what was paid back on that sales order,
+
+Unknown Speaker  56:37
+right? Because,
+
+Speaker 5  56:42
+like, I'm thinking, we need to have what was being on that particular sales order attached to that, because that then tells us if we need to lower or increase any particular jurisdiction.
+
+Matthias Miller  57:01
+I mean, that was the plan of the history was that that we track increase and decrease of liability. So end of end of end of So end of June. Go figure out. Go zero out all old liabilities. If and and then make any adjustments to current liabilities, any debits or any increases decreases, and that tells you what you need to pay for June, for the June 30 period, or for the June period. So there's no
+
+Speaker 5  57:42
+Yeah, but what about for the July period? There was a change to this one, and then what's it going to say for the July period?
+
+Matthias Miller  57:51
+So it'll it'll say zero out all jurisdictions. Take a sum of all the liabilities. Take the sum of all the bad debts, adjust to match the current bad debt value. Take a sum of all the all the prior liabilities for prior periods and make an adjustment for the current liability. So it's always summing prior liabilities and finding the Delta and adding a Delta to get it matched to match the current the current liability.
+
+Speaker 4  58:22
+Believe Yes, you have a heart stop there at nine, 930 so is, is next step. You create a creative
+
+Unknown Speaker  58:33
+proof of
+
+Unknown Speaker  58:37
+like an outline or proof of concept, and then we revisit that. Or,
+
+Matthias Miller  58:47
+I guess, if you guys, if you guys could shoot over by email, what you're hoping to gain by being able to tie the vendor invoice back to the sales orders is it, is it a reconciliation? Is it B accuracy of numbers?
+
+Matthias Miller  59:15
+I don't know. And then, if you guys can do that, and then I can, I can put together something, yeah,
+
+Speaker 7  59:26
+yeah. Kind of what I had in mind was, if it's,
+
+Speaker 5  59:30
+if it's July, and there's $3 that are left over from June or from May that need paid, that we can pick those up and pay those
+
+Matthias Miller  59:40
+that'll happen with, with, with my approach, I mean, we'll detect all adjustments and changes, so that's not a problem. Yeah.
+
+Unknown Speaker  59:47
+Okay, cool.
+
+Matthias Miller  59:49
+I get I gotta drop. Okay. Thanks. Thank.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,572 @@
+Matthias Miller  00:46
+How's it going?
+
+Speaker 1  00:48
+Alright, well actually first are thinking or just integrating a new system so
+
+Matthias Miller  00:54
+good. It's always good news.
+
+Unknown Speaker  01:00
+Yeah.
+
+Speaker 1  01:07
+You have the email from Mark, I'm guessing.
+
+Matthias Miller  01:11
+Yeah. It's gonna pop in and have it take a look
+
+Unknown Speaker  01:23
+all right.
+
+Unknown Speaker  01:31
+Ah
+
+Matthias Miller  01:42
+Is he going to be doing a search on this?
+
+Unknown Speaker  01:45
+He's doing some other things we might as well get started
+
+Matthias Miller  01:49
+automatically recurring invoices. These would be are these only these will only be your prepaid approved vendor invoices? No,
+
+Speaker 1  02:01
+not necessarily, but it would be the stuff that the amount is always the same. Yeah. You know, some of these are automatically set up like it's a recurring ACH automatic, weekly or monthly ACH bank, that's just setting the bank and it just does its thing. And we just need to match that. Some of them are ones that are just every month, we need to send a check. Some of them are every month or every day even like Google the daily charge the credit, sorry. So it's mostly just from my work smarter, not harder. Nerve.
+
+Matthias Miller  02:50
+But with like the Google credit card. You don't? I mean, normally that's your ad budget, your daily ad budget, but isn't there a possibility that you get double charged or skip a day? Or? Yes,
+
+Speaker 1  03:06
+yes, there is. What I have seen on the statements is, often there's about one day a month where it's not. It's not the full amount? Sure. So I think for those, what I would like to do is I mean, to me, they're regular enough, that just allowing it to do its thing. And then when I go to reconcile as Okay, this one right here was actually not full amount. That would be one way. Another way would be to put them in as as unpaid approved. And then they would show up on my list of pay? And I would say yes, yes, yes. You know, that'd be another route, something that that's definitely what I would want to do for something that that the amount does have a fair amount of shift to it. But, but definitely, like the majority of these are gonna be like lot rents that are the same every month. Weekly salaries are not salaries, weekly, owner drawers, things like that.
+
+Matthias Miller  04:28
+Okay, so for owner drawers, et cetera. Simple automation is good. I wonder for Google slash varying amounts. Google might not Google might just be prepaid and you just clean it up but varying amounts. I wonder if having a prepaid unverified status would be an option. Let me let me talk with Okay, other question general priority for this
+
+Speaker 1  05:02
+Um, do? I mean, this is just something I do manually until until then? So, I mean, I'd say put it in February. Okay. Like, we need a balance sheet before we need this.
+
+Matthias Miller  05:22
+Yeah. Okay, I think broadly speaking, it makes sense. Do you want? Is there anything with kind of fancies scheduling, and I say this because I was, I coded an email reminders back way back in the day. And I had one particular meeting that was the Tuesday before the third Wednesday of the month, and an email reminder based off of that. And so I have this whole scheduling calculator that can do extremely sophisticated scheduling things. We could, I mean, is it worth making it that sophisticated or as simple day of month?
+
+Speaker 1  06:04
+I think, I think if we had day of month or else day, it could be driven by day of month or day of week, you know, every Wednesday. I think if it's a monthly thing, we just use day of month, if it's a weekly thing we use day of week, I think that would cover practically everything. You know, that'll have to get fancy. But if it could be those two options. There might be some weeklies, I'm not sure. But we might just have to create two ones beyond the first and another one that happens on the 15th or something and just wanted us to separate that
+
+Matthias Miller  06:54
+transmits bi weekly or semi monthly or whatever, which one is always there. But if it's the latter than the one in 15, that's pretty easy. I think you just do create duplicates. And yeah, it's, it's, I mean, you just, you just create the template and duplicate it. And that's all you need. Good.
+
+Speaker 1  07:13
+Um, if it is something bi weekly, that's day of the week driven, maybe there should be a thing where it's every other week, I don't think it's worth getting that complicated, though for now.
+
+Matthias Miller  07:27
+Okay, so let's cross that bridge. When we get there, once you have a need for it. It's not It's it'll be trivial to add invoice numbering sequence, my thought is this is probably going to get created, vendor invoice gets treated on the date of the schedule. And so it's just going to be the next. Whatever the next. Yeah, I mean, wherever we're at, Can
+
+Speaker 1  07:48
+we somehow I would like a notification or a way of identifying that these are auto generated invoices. So maybe there can be something like that in the in the numbering system? Or, or notes to it. I don't know.
+
+Matthias Miller  08:11
+I think I need to talk to Josh, how we want to do this for sure. But I'm thinking we might have something along the lines of a template record or something. And if we do that, then we probably just say this was created from an a link to whatever the template was that that triggered it. Now, the vendor invoice number, would that be filled in for these? When University?
+
+Speaker 1  08:40
+Um, no, well, no, probably not. Because a lot of these are happening without ever really getting
+
+Speaker 1  08:54
+I would, I would say scripts the only time the only time a vendors invoice number would be there. Or like as far as vendor invoice ID would be if we would happen to receive one and do find it and attach it. But then we'd want to enter that but it would probably just be a field that is not automated.
+
+Matthias Miller  09:21
+That's fair. I don't I don't know that we can do I mean, we can't really the numbering scheme, the numbering scheme is it come from? Currently, the numbering scheme has to be sequential. Of course how these get numbered, right? So if we want to indicate them. I mean, we want to indicate them. The most common thing to be displayed would be a vendor invoice ID. And we could have a special syntax that says just auto generated maybe an auto generated ID and then that And then our internal ID or something. Right? Right. Would that be something like
+
+Speaker 1  10:05
+that would work? Okay. And then, and then if we do receive a vendor invoice for it, and we want to edit that, well, by then it's it's now manually manipulated and so it's not all sounds good.
+
+Matthias Miller  10:21
+Okay. All right, so broad brushstrokes. We're good. I'm sure we'll have more questions. Let's see. Oh, hang on. This thing's being goofy and have this thing saved?
+
+Unknown Speaker  10:40
+Oh, that does not.
+
+Matthias Miller  10:45
+Sorry, I'm gonna have to really make sure otherwise, I'm gonna lose my notes. To England one, five. No, I did not. Okay.
+
+Speaker 1  10:58
+Yeah, I'll just be sitting an hour with this defending our data
+
+Matthias Miller  11:22
+okay, so this counts the Payment Amount field. I came back from vacation and felt like we had talked about the whole thing of verifying payment amounts, and how those kind of have to be about the discounts and all that and I couldn't find any notes and couldn't remember what we talked about and couldn't find it in our recordings. So for transcripts, so. Okay. I don't know if this is related far away.
+
+Speaker 1  11:44
+Yeah, it is. And yeah, I remembered we had talked about it, we had figured something out. I think you had coded a thing to deal with it. Because because I am getting warnings, you know, these are? These are this this invoice has differing payment and total amounts in my warnings. You know, what I ran into? Actually, you can look it up. There's a shared time invoice vendor ID number 7022, she
+
+Unknown Speaker  12:18
+will get to see what what appears is that high volume discounts or vendor discounts are looked at the same way and handled the same as early pay discounts.
+
+Speaker 1  12:38
+So early pay is driven by the date, you know, do you get it if you pay soon enough, so you may or may not, that's all determined about upon payment, whereas the other two are not.
+
+Matthias Miller  12:56
+So okay, so here?
+
+Speaker 1  13:00
+Yes. Okay. So, um, the 3292 is subtracted from the total. For that payment amount, which is, is correct. The way I had been thinking before, that there's discounts is like an early pay discount, you know, oh, we got to have this one. And so, and so we used it. This particular discount is actually not an early pay discount, it's a discount. Just a little high volume discount or something like that. That is given. And it is figured in the PIO love. Like if you go to the PIO there oops, this guy. So the discount is right there. And hit the link in the SKU items. Now the other one.
+
+Matthias Miller  14:09
+Yeah. Go back over. Yep.
+
+Unknown Speaker  14:13
+So
+
+Matthias Miller  14:18
+32 So this one, this one?
+
+Unknown Speaker  14:20
+Oh, no, that's not the
+
+Speaker 1  14:28
+blank. Well, wow. Had I found it. It's like a breakout of what is charged for the pieces. Where's that? We get there from the PIO. There's a link with a Pio.
+
+Matthias Miller  14:44
+There's a cost here from the PIO M ditional. Expenses. We can take a look at a discount. See it No.
+
+Unknown Speaker  14:54
+And I was not there
+
+Matthias Miller  14:58
+or no Print do we might be able to find it on the SKU lot
+
+Speaker 1  15:13
+there was a report there's a report that Aaron gets
+
+Matthias Miller  15:18
+transmissions here's a here's a
+
+Matthias Miller  15:26
+this guy, okay
+
+Speaker 1  15:32
+Mark, what do you call that? You call that page that
+
+Speaker 2  15:36
+he gets with the it's if you go to a vendor invoice it's on a drop down right
+
+Speaker 2  15:50
+now go to an actual vendor invoice open an actual or don't know, it's it's always on the video, it's on the purchase order. Yeah. Okay.
+
+Unknown Speaker  15:59
+There's the print Pio. Oh print pa got it,
+
+Speaker 2  16:05
+I think this was something that make it green, okay.
+
+Speaker 1  16:10
+So, under ordered, then that center part, you have the price of the items 376. And then to the right, you have the 374. So that is the final price of these items after shipping and discount are figured in. Got it. So this, this discount is figured on the P OE level and is already figured into this total. And right. And so this discount should not be subtracting to get our payment amount.
+
+Matthias Miller  16:50
+So, here's one way to do go ahead. Now
+
+Speaker 1  16:55
+they are using, no, I checked with Mark, and they're entering early pay discounts in the same format. So like with that current system, if we don't meet an early pay deadline, we have to go all the way back to the pod to fix that change. So I don't know. I guess part of the question is really to follow that theory. Yeah, we should just take the total at the top and transfer that down to the payment amount as far as the the automatic and not make this discounts. Probably subtracting out of there. Unless, unless we turn this into an early pay that type of thing. And somehow back feed that into the price of those items, if it is taken after the payment has all happened to complicated?
+
+Unknown Speaker  18:06
+Well,
+
+Speaker 2  18:08
+okay, so we need to make I think at some, before we go too deep, we might have to might want to talk to Josh about it as well, because anyway, I'll send them over. So he has a video of pricing discrepancies report said to to that basically says, If flags or items that say last time you purchase this product, do you actually pay 10% Let's just kind of as an FYI, so that then I think that happens in the point when you place an order, and then it also could reappear when the invoice is attached and says hey, now it's been invoice and it's actually okay, the use case would be okay, long story short I It seems nowadays I think we might want to get Josh involved is because he's I think he's thought through some of this stuff. And just to make sure that so yeah,
+
+Unknown Speaker  19:15
+I don't know much about not reinventing the
+
+Speaker 2  19:18
+wheel, not reinventing the wheel, but also Howard Wayne and land use, are they using jobs intended to be used and I think we're now looking at some things that Judge probably wasn't fully planning for when we
+
+Speaker 1  19:35
+um, so I guess the short term fix here is what's the Payment Amount field at the bottom? What does it when is it referenced? Because I noticed that if I go to actually pay this invoice on a check, it will pay the total it will not pay what it says down there in the amount
+
+Matthias Miller  19:58
+Oh, um Know, is that for ACH or for checkers at both? The
+
+Speaker 1  20:04
+I'm assuming both now? Well, I mean, that's what it says on the invoices needing payment. And then when I granted the check, it still said that was the amount he was using.
+
+Matthias Miller  20:20
+Well, that's just a let me grab, let me grab a scratch pad. And otherwise I'm gonna forget this stuff. So
+
+Matthias Miller  20:38
+alright, so if you want invoices needing payment, we have use, we should use we should show and use payment amount. Well, or I
+
+Speaker 1  21:06
+mean, it works now because because the total is the correct amount and the payment amount is not the correct amount. So until we fix the other issue we don't I think that's the way it should be. But we don't want to change it to that until we fix the discount issue.
+
+Matthias Miller  21:23
+Got it? Okay. Well, Mark, I think you're right, Josh is the right guy to talk to you about this. He's done a lot of this stuff through. I think it's probably an error that we're applying a discount in multiple places. I mean, it seems to me like we're double double entering a discount just be over here not knowing what I'm talking about. And it seems like that's partially a process error. And that perhaps clarifying what's a clarify clarifying this difference, and then also figuring out how do you want to handle the early pay discounts? And do you? Can we do we really want to make that completely automatic? Or do we show when you pay? Do we give you the option of whether it's whether you should be applying that early pay discount or not? And leave that to you as you're paying them to decide, you know, we might make a recommendation, but give me the chance to override whether whether we're using whether we're taking the early pay discount? I don't know it feels like, yeah, business process issues probably. First,
+
+Speaker 1  22:34
+I think that's a big part of it. The main thing I need to know going forward, just until we get that figured out is like if that if that is a Payment Amount field is not being referenced by something else, then I'll just not worry about if it's different. For the time being, he
+
+Speaker 2  22:55
+wouldn't be sure. I'm not sure what you can just really have on Monday for
+
+Matthias Miller  23:02
+whatever is being put on the check is gonna be what's paid. So, but I don't know if that's going to show up in it can potentially create confusion down the road? If right. Excuse me. Yeah. pretty confusing.
+
+Unknown Speaker  23:19
+One, it's on the reconcile.
+
+Matthias Miller  23:24
+It's off the check.
+
+Speaker 1  23:26
+Okay, so then the check comes off the total of the invoice. Yeah. So, yeah. So it shouldn't be okay to just ignore it. I mean, it'll create something we want to fix. But,
+
+Matthias Miller  23:48
+um, should we not? Do you enter the in the discounts as negative amounts or positive amounts?
+
+Unknown Speaker  24:00
+As far as were like
+
+Matthias Miller  24:02
+this, this field here is always as entered as a positive amount to be discounted.
+
+Speaker 1  24:07
+Hmm, I think Yeah. I mean, that's what I've seen. Okay,
+
+Matthias Miller  24:12
+well, Herein lies the problem. We're checking to see whether payment amount equals 467 plus 32, not 467 minus 32. And so it doesn't fix the double discounting problem. But we shouldn't technically be warning in this situation, because from what we can tell here, the payment amount is a legitimate payment amount it should be either 430 502 or 467 92. We should not warn in this case.
+
+Speaker 1  24:46
+Except, well, yeah, yeah, I guess.
+
+Matthias Miller  24:49
+I mean, except for the fact that we have a double entry on the discount, right.
+
+Speaker 2  24:59
+So if I I didn't hear the first part of what he had said but are you saying this is an issue we should take up with Josh?
+
+Matthias Miller  25:06
+Yes, I talked to him first I'm happy to get involved but I do agree you're right this is a this does need to be talked through with Josh and he'll be able to get to the bottom of it much better than I can. And I'm happy to get involved after after you have that conversation.
+
+Speaker 2  25:26
+I think we should try and schedule a time for blindly and Josh need to talk because there's like the per unit price is we don't want to change all that scale that's working well but how do we
+
+Unknown Speaker  25:49
+good Yeah, sounds good.
+
+Speaker 2  25:54
+Right now drew you're just basically ignoring the payment Yeah, that kind of like it's not there
+
+Matthias Miller  26:06
+I also think that the seeing what is the that is absolutely correct.
+
+Matthias Miller  26:21
+I'm wondering about these we do have some discrepancies here. Why is there a negative 130 discount
+
+Matthias Miller  26:45
+and it should be a positive number
+
+Matthias Miller  26:53
+1311
+
+Matthias Miller  27:00
+Okay, this is a billing fee so that is correct
+
+Matthias Miller  27:09
+see if we have another billing fee here. W repair that was the same one wasn't it? What do they have a billing fee? Yeah I needed a funding bill. I didn't start doing that. I didn't I didn't know that was a service you can charge for that is hilarious for me are okay and then we're back in Okay, so Apple outdoor supply this one looks like it was just wrong. Shannon because it's showing not only is it showing us a discount on the attachment but the difference is $2.60 which is 2x Two discount and if we were to change this to dollar 30 It would balance out and the payment amount Wait a minute. I don't know payment amount is 133 99. So
+
+Speaker 1  28:10
+so there it doesn't owe that's already been paid.
+
+Matthias Miller  28:17
+It's been paid it's got a negative discount but we didn't take the negative discount.
+
+Unknown Speaker  28:23
+Right.
+
+Unknown Speaker  28:24
+So I think we can
+
+Matthias Miller  28:28
+change it to this there's no impact because it has been paid. Mm hmm.
+
+Speaker 1  28:37
+Yeah. Shouldn't be able to. And then
+
+Matthias Miller  28:54
+yeah, and then everything else is good. Okay. And then over. Alright, so subtract discounts. Warning. Okay. I will I will fix going through to fix that and update. Okay. Good. Glad we caught that. unrelated but good. multiple invoices by ACH. I knee jerk reaction. This is a Josh question. But if you want to give me a high level overview, I can.
+
+Speaker 1  29:31
+Well, my problem is, I have a credit showing up from Boska us and we pay them with ACH. So I have to pay ACH at the invoice level like right here. So and I can't pay a credit and if I paid the other two invoices, how do I how do I tie all this to Gotta make this work, because more than they need to be paid.
+
+Matthias Miller  30:09
+I think you need to talk to Josh. Okay?
+
+Matthias Miller  30:23
+I'm sure you can run an ACH transaction with, will I say you can, the ACH uses the payment amount and you can adjust the payment amount for the transaction, pay it and then just copy the reference information across. But that's not going to link it everywhere.
+
+Speaker 1  30:39
+I wonder if I could, if I could do that, and then create a check, pay by check the difference, which would zero it out and say that it's all paid. And just I would have a zero check.
+
+Matthias Miller  30:57
+You probably do that.
+
+Unknown Speaker  30:58
+I can do any payment, that'd be even better yet. For now, I'd hate to have to do it long term but sounds good.
+
+Matthias Miller  31:14
+Like that. Alright, going live. I think I haven't had a chance to test it. I really, really want to test it before it goes live. But I think I have the copying the contact and reference number onto the transaction record ready to go. I made both fixes to the missing information warning. Because I was working in the same Yeah, this system and it just easy
+
+Speaker 1  31:56
+fixes the one is requiring an address on the vendor level if the invoice is a check, and the other would be not not requiring a vendor default.
+
+Matthias Miller  32:08
+Right. That is correct. Sounds great. And then there was one potential fix for a slowdown that is going live do Duane wanted me to switch Colin orders in the deposit window which I fixed for him? And and I think the other changes went live earlier this week. So I think that's basically it for what's going live this weekend.
+
+Speaker 1  32:54
+Okay, I just want to send a heads up to a&p on that what they're going to be forced to do on their injuries.
+
+Matthias Miller  33:05
+Sure. Yeah. No. I think that I think that gets us through all the deadlines that we had for
+
+Unknown Speaker  33:13
+Yeah, I think this weekend
+
+Speaker 1  33:23
+are unable to attach notes.
+
+Matthias Miller  33:29
+So attachments are not this is not working.
+
+Unknown Speaker  33:36
+Well. That is working is not 5600.
+
+Speaker 1  33:43
+Okay, that's all the information basics.
+
+Matthias Miller  33:49
+Oh, okay. Um, and
+
+Speaker 1  33:52
+I forget now if I had sent you an email or not, but when I go to create checks, then if if there's anything up like, well, one of them was these matching, invoice total and payment amounts. But if anything is amiss with any of those invoices, then it shows me a warning after it has created the checks, like, kind of like here's errors on these checks. The only information about what invoice it is, it's just line items, so and so like line 13. And, and after I close that window, they all become checks in rearranged order and the line doesn't apply anymore. Is there some way that we can have maybe a reference number or like something more identifying showing up on that on that warning?
+
+Matthias Miller  34:56
+Okay, so this will, I guess the question I would ask you is
+
+Matthias Miller  35:06
+are these warnings that still matter? Um,
+
+Speaker 1  35:12
+so Well, I took a green shot
+
+Speaker 1  35:30
+Okay, okay, I took a screenshot of one. And it just gives just that the invoice total and payment amount are differ, which we're going to ignore that for now because it it does it did actually use the correct amount there was another one that it might have been ones that are attached to invoice to assets, and there's no particular asset prescribed to it or something that was one I think that's what that one was. So, like, depending on what it is, I, it is something that I do want to check out depending on what the the error might be
+
+Matthias Miller  36:23
+thinking so, um,
+
+Unknown Speaker  36:26
+I don't know, yeah.
+
+Matthias Miller  36:32
+I'm not sure how much easy control I've got over that, I'd have to do a little bit of research to find out. One option would be I actually really like would be to add a column in the vendor invoices needing payment, a status column. And I don't know if this has slowed down the report too much, but have a yellow triangle. If there's a warning and a red, well, there shouldn't be an error, but we can do a red triangle if it's if there's an error and then you can open it up try to save it and see what the warning is or you might even have a way to do a tooltip or something that was that you can hover over and see what the warning is and do it from that point and then when you actually run the check suppress the warnings right
+
+Speaker 1  37:28
+well that would be that would be great because then if something does come through like you know an assets not applied for you know, I mean we could we could throw in there that if if a discount is not met like discount date or yadda yadda for
+
+Matthias Miller  37:51
+the two by meeting payment
+
+Matthias Miller  38:04
+P O and C are so fast
+
+Speaker 1  38:07
+I mean it's yeah that thing coming up after you hit create is a little bit of an after after it's too late but then you got multiple things
+
+Matthias Miller  38:35
+priority
+
+Speaker 1  38:39
+um I don't know in January would be good let's see what else do we have on January a whole bunch of stuff going after your next week stuff
+
+Matthias Miller  38:59
+so January mag teens yeah
+
+Matthias Miller  39:12
+I think we can do that. I mean, I think as I recall we've got pretty good pretty pretty good functionality to do this but may may adjust slightly as needed. I'm good. I think what else there is.
+
+Speaker 1  39:36
+On the another thing on invoices needing payment. Can we put a button to pay by or to basically just mark as paid, change the status to paid and this would apply to credit card payments that I need to call somebody and make a greater payment or II payments were I'm making a payment, like through the bank, through a bank transfer or an eight bank ACH or something like that. Like, it's not an eight, we're not generating an ACH out of assist. And we're also not writing a check
+
+Speaker 1  40:20
+really all just change status instead of instead of needing to open each invoice and change the status, edit and change status. And
+
+Matthias Miller  40:28
+would it be sitting a? How's this different than the pay manually?
+
+Unknown Speaker  40:39
+A manual manually. That's kind of what I'm doing.
+
+Matthias Miller  40:46
+Well sorry, that's very unclear. vendor invoices, the payment, okay, so if you select the payment type, like E payment ABC, right. Then there's a paid manually button that prompts you for you don't have any, any any records here. See if anybody needs epayment
+
+Unknown Speaker  41:19
+yeah, there's not now though. I don't think there's any sitting learning.
+
+Matthias Miller  41:26
+Let's see. There'll be any others that,
+
+Speaker 1  41:33
+um, okay, go to his shed time.
+
+Matthias Miller  41:39
+Let's just, there we go. If we go to just find out what payment types currently the button is only visible for a single payment type. So this one is ACH S T. So change
+
+Speaker 1  41:49
+that. Well just go into the invoice these need to be changed to E payment, not ACH. Change that one. change both of those to
+
+Unknown Speaker  42:04
+oh, I ran into this the other day? What was going on with it? Like it's their
+
+Matthias Miller  42:20
+new payment. Companies. Let's see if this is configured here. The payment? Is there. Like a figure out? What puts it in that list? Is it Oh, it's just between 24
+
+Unknown Speaker  42:41
+Yep, probably.
+
+Matthias Miller  42:45
+That would probably make a difference. Okay, so this was for Samuel. Calvin.
+
+Unknown Speaker  42:52
+That one needs.
+
+Matthias Miller  42:55
+Okay, and then if we do that, there we go. Yep.
+
+Matthias Miller  43:06
+All right. So then we go over to so the pay manually only shows up for a single payment type. The payment should time probably would help provide the right one. And then you do pay manually. The asking for the payment ID payment date payment Id hit continue. And it stops it on there.
+
+Speaker 1  43:29
+Okay, um, payment ID. That could be anything like that could be ACA, you can you can put ACH or you could just that's, well if you're any sort of identifier for the payment, right? Yeah, if
+
+Matthias Miller  43:48
+you have if your bank gives you back in an E payment verification code, right, then that's what you would put in there. Yeah.
+
+Speaker 1  43:59
+Yep. Okay, because I was just, I was always just looking at the All payment types page and so I was not seeing that.
+
+Matthias Miller  44:09
+Um, should it always be visible for all payments, just to make it less confusing.
+
+Speaker 1  44:19
+It might like if it could just be made to not work if you have highlighted pay by checks, you know, like if it's a check payment type don't know, they wanted to create a check for something that was I accidentally selected something that was paid by credit card and it created a check.
+
+Matthias Miller  44:46
+Well, the the way to deal with this
+
+Matthias Miller  44:56
+is to under Payment Type
+
+Matthias Miller  45:03
+have a way to mean payment types or just names right now. But to indicate here, whether it's an ACH check or other.
+
+Speaker 1  45:15
+Oh, and then that would allow it to be selected by those buttons or not. Okay. Well, that would work that way, then those buttons could just always be there, no matter how you use your prompt questions? Yeah,
+
+Matthias Miller  45:29
+then you could, then you could have just just the pay button, couldn't you? Theoretically, maybe, well? Maybe not. Yeah, I
+
+Speaker 1  45:47
+think so. And it would just say and work according to the payment types pre selection method. Right?
+
+Matthias Miller  46:01
+Yeah, but if you select multiple ones pick different types. Is there a reason why you need to be able to select multiple payment types in here? We're running on all I guess running into all kinds of
+
+Speaker 1  46:12
+nice. This is, this is handy. You see everything that needs to be paid. But yeah, I'm good.
+
+Matthias Miller  46:22
+Would it be okay to hide the pay buttons always hide the pay buttons if you don't select the type?
+
+Speaker 1  46:30
+And then we're selected a certain type then that Pay button shows up? Or why? Yeah, that would work. The
+
+Matthias Miller  46:39
+reason? The reason is we need to like when you pay me annually, then we need to ask you for some of this information, but if you pay by Ach, there's different it's
+
+Speaker 1  46:49
+so so currently, there's a pay by ACH button when you when you have those as well. Okay, okay, well that's an either but I had never prompted for the pay by ACH No,
+
+Matthias Miller  47:04
+that was always that wasn't showing is always visible. No it's not. Where is that? Run imports press confirmation fees transfer visibility report is run import I don't understand. I am confused
+
+Matthias Miller  47:44
+don't know where that button is not showing up
+
+Matthias Miller  47:52
+we check Oh, it's here.
+
+Speaker 1  47:58
+Ah, okay. So is that because the payment goes per? Yeah, per invoice.
+
+Matthias Miller  48:15
+You can't do multiple
+
+Unknown Speaker  48:27
+Yeah, and that gets back to our Josh's question
+
+Matthias Miller  48:32
+Yeah, and I mean, I think I think it makes sense that we could Oh, goodness. I wonder if it let's let's put some thoughts together And
+
+Unknown Speaker  50:05
+What's up backyard creative beasts office? Right
+
+Matthias Miller  50:20
+Is this fine for February or March? Or what are you thinking?
+
+Speaker 1  50:24
+Yeah, I would think so. Now that you know that I can just select just put in the prompt question for a particular payment type. Yeah, that should work where? I would say put it in March.
+
+Matthias Miller  50:41
+Okay. All right, that at least gets us gets it on the table and we'll we can circle back to it
+
+Matthias Miller  50:54
+we had talked about a missing new check button. What priority is that for you? Um
+
+Speaker 1  51:13
+I wouldn't say put it after everything else in January. The other January stuff I think is more important. But if it can be done in January, that would be great. If it gets pushed out to bed rails, okay. Oh,
+
+Matthias Miller  51:33
+C says it'd be
+
+Matthias Miller  51:44
+good enough now.
+
+Unknown Speaker  51:49
+Oh, God.
+
+Matthias Miller  51:56
+All right. Anything else? Well, I think it's
+
+Speaker 1  52:01
+March. Oh, yeah. Um, yeah. attachments on vendor records. Mostly for attaching like W nine forms or other vendor identification? source documents?
+
+Unknown Speaker  52:21
+Yes. I mean, currently, we could just throw him into the notes section. But does that does have
+
+Matthias Miller  52:31
+that capability? I mean, yeah, I think that's fine. The main thing, this is a matter of prioritization. Ideally, long term, no, it's throwing space there gets expensive and it adds up. And it's not necessary, but in light of priorities. I think what I would do is just do this move attachments from vendor notes, two attachments are GE and march slash April. And just put it on the backlog and we'll migrate that stuff over. And
+
+Speaker 1  53:12
+then well, I mean, do the same thing with the transaction.
+
+Matthias Miller  53:19
+We had talked about Yeah, attachments. I think I had put that on that one too. Yeah, I've got that one right now.
+
+Unknown Speaker  53:31
+Should work then.
+
+Matthias Miller  53:33
+This should not be this is. What like that. Okay. Good. Well, have a good weekend. Awesome. You as well. Thanks, Drew.
+
+Unknown Speaker  53:48
+Thank you.
+
+
+Transcribed by https://otter.ai

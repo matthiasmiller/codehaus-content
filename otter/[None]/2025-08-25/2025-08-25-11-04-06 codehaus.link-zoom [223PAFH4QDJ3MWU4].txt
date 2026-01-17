@@ -1,0 +1,1541 @@
+Unknown Speaker  00:39
+You, you.
+
+Unknown Speaker  00:56
+Let me tell you.
+
+Speaker 1  01:02
+I am, I somebody should be fired about Now this, this pricing shake up thing is,
+
+Unknown Speaker  01:19
+well, it is a, it is a, okay.
+
+Speaker 1  01:29
+Let me, let me, let me, let me. State my thoughts clearly. If this was Mark's problem to fix, we would not do dumb stuff like this again. We really wouldn't.
+
+Speaker 1  01:52
+We broke so much stuff. We broke so much and then and couple that with over the weekend or end of last week, Wayne sends me this message that says, hey, I want to rename all of my dealers to something shorter so it shows up better on the BPR. And, you know, some days I should, I should think before I just send them off to lower level things, often lower level people to do. Do you know how much stuff we reference based off of dealership name that just flat out broke? Oh, boy. Like, you know, you haven't got a single configurator lead through the configurator because you went and changed the deal the dealership name, and we reference the dealership name in the URL on the ties out the configurator from the website, which means that there was no dealer like that anymore. So it's just, what does it always say? What's the error that we always get when something like that happens on the on the Whiz key?
+
+Matthias Miller  03:02
+Okay? Internal Server or something that was
+
+Unknown Speaker  03:04
+that one, yes, so customers were getting internal server errors.
+
+Matthias Miller  03:10
+You for why they didn't get leads? Well, I think
+
+Speaker 1  03:17
+Mondays, Mondays are always a dumpster fire, like it's always a dumpster fire. Why? Good? Well, because we do, oftentimes, we do updates on the weekend, and then it's like every, every single time we do updates lately, I feel like it is a dumpster fire. Well, okay, I say it's a dumpster fire because it's, it's, it is. This pricing thing has just been a big, giant pain in the neck, because we spend all of last week trying to find workarounds to be able to to get through the weekend, through the week, and then guess what, over the weekend, it gets fixed. Well, yeah, so now all the workarounds are wrong now, and now you have to go undo all your workarounds
+
+Matthias Miller  04:07
+anyway. There's solution to this. Do the same thing that we did in accounting, which is basically prioritize the changes there. There are no basket fires unless there truly is a basket fire. But prioritize your changes. Take the time, make sure we do it right. Think through the implications of everything you're asking for. And I, I'm horribly bad at saying yes to sales people, because whatever. But
+
+Speaker 1  04:40
+anyway, fun times. It's fun times. And then some of these sales reps, in particular, Indiana sales reps are dumb as a box of rocks.
+
+Unknown Speaker  04:52
+They can't use computers.
+
+Speaker 1  04:57
+Oh no. It's like. I I don't understand people who chat message me, and then within a minute or two, I respond, and then it goes 10 minutes before you respond again. So then I respond almost immediately, and then it goes another 10 minutes. What are you doing, taking naps in between. Like, what? What he what it's like. And then you pop up online, answer my question, and then go offline again. Like, what are you doing? Yeah, that Anyway, okay, and somebody said they wanted to go build RTO retail software. Somebody should talk some sense into that guy.
+
+Matthias Miller  05:41
+Well, there was another guy who said, Hey, I think that's a great industry to consult
+
+Unknown Speaker  05:48
+in. We should talk sense
+
+Matthias Miller  05:50
+into that guy too. All right.
+
+Speaker 1  05:55
+Anyway, enough whining and complaining. It's Monday. We should be careful about doing design calls on Monday.
+
+Matthias Miller  06:03
+Just need to allow for a little time. That's all
+
+Unknown Speaker  06:06
+Yeah.
+
+Matthias Miller  06:09
+All right. I feel like our perfectly crafted little agenda is not agenda
+
+Speaker 1  06:20
+gets murdered every single time we try to do cleanup. Okay,
+
+Matthias Miller  06:24
+we got sign off.
+
+Speaker 1  06:27
+They like it. Yeah. So I, literally, I printed out RTO pros, and I laid it in front of Leanne service reps and said, Okay, you're familiar with this. And then the funny part is, the funny part is, I laid it in front of the two service rep girls and I said, You're familiar with this screen. They're this screen. They're like, yeah. I said, How often have you used this breakdown over here? Never.
+
+Matthias Miller  06:49
+Can you explain it to me? No.
+
+Speaker 1  06:53
+So I'm like, Really, you've never had this conversation with the customer on how this stuff works. No, okay, so is this one more comprehensible? Oh yeah,
+
+Matthias Miller  07:06
+it is. Oh this makes sense.
+
+Speaker 1  07:10
+No, Leanne was Leanne was there, and she's had many a conversation with customers in this regard. So it wasn't
+
+Matthias Miller  07:16
+Yeah, easy sell for her.
+
+Unknown Speaker  07:20
+She's like, Oh yeah, this makes way more sense, good.
+
+Matthias Miller  07:24
+Okay, so here's my basic idea, tell me if you love it, hate it. May only tell me if you love it, if you hate it. Keep to yourself, no, just kidding.
+
+Speaker 1  07:34
+The one, one second, I gotta run again. Hey, cord to plug my mouse and so I can keep working here one second. Oh, yeah, yep.
+
+Speaker 1  08:35
+Okay, it was blinking red last week, and it hasn't got any better.
+
+Matthias Miller  08:40
+All right, there we go. So it seems to me, if I'm just going strictly logical approach here, that the best way to handle this would be on the payment record. You basically flip the switch that says I'm closing this thing out, and you get this breakdown instead of the by period breakdown,
+
+Unknown Speaker  09:05
+or
+
+Matthias Miller  09:15
+no or we have a different now we get to fight about with the user experiences. That's really it.
+
+Speaker 1  09:25
+So and really the fight is going to be whether to make it its own process or try to incorporate it into the payment screen. The thing I'm
+
+Matthias Miller  09:37
+nervous about the payment screen is that we still need to collect payment so, I mean, that's maybe fine. Maybe it's the right thing to do. It might be the right thing to do. Talk, talk me through.
+
+Speaker 1  09:54
+Okay, let's go with Avenue one. Let's, let's do with Avenue one, which is we put a. Close contract button on each contract card on the payment screen, which, when you click it, gives you options on how you're closing it, and if you're closing it as early payoff or payout, then you're presented with the screen that we that with the breakdown of information that that you're that we gave you, with the ability to do overrides, etc. What's your concern with that method?
+
+Matthias Miller  10:32
+What about closes that don't require payment? I
+
+Unknown Speaker  10:47
+you would close it for a $0 transaction,
+
+Matthias Miller  10:51
+that's true, and you would just say, we're writing it off at $0 because it was lost. Skip, whatever the thing is.
+
+Speaker 1  10:59
+So, basically bring up, okay, one of two things do you want to? Do you want to spin this up in? You want to spin this, break this thing up in, in your your visualization? Or do you want to handle it right here? Sorry, I I hit the plus sign up there to expand your side columns. I was making this so I could print it.
+
+Matthias Miller  11:19
+Get the plus to expand my side columns. I have no idea what you did. Idea what you did, but it looks fine. Very top.
+
+Speaker 1  11:25
+Oh, fine. I just grouped the columns with the date and you can expand them, right?
+
+Matthias Miller  11:35
+They also have a print selection, but that's okay.
+
+Speaker 1  11:39
+So, okay, so, so if we were here, then if, let's say, for example, we were closing this as a write off, okay, then you would straight up, I guess override all of the overrides down to zero.
+
+Matthias Miller  11:57
+I guess. So,
+
+Speaker 1  12:01
+um, unless, okay, well, riddle me this, what if you were closing it as charge off, why wouldn't we just automatically zero out all the boxes and you define your your category of write off?
+
+Matthias Miller  12:18
+So basically, up here, we would then have a you'd have something like a closeout reason, or something
+
+Speaker 1  12:27
+that was that the German version Klaus at reason klausat,
+
+Matthias Miller  12:33
+and then they would be a drop list of, let's do this data.
+
+Matthias Miller  12:48
+So we would have payoff. Payoff,
+
+Unknown Speaker  12:55
+yeah, we'll call it payoff, early payoff. Charge off.
+
+Speaker 1  13:10
+There's some other ones in here that I really don't necessarily think we need. Yeah, you had a, you had a, I think you had a list. I did have a list. I
+
+Matthias Miller  13:31
+let's do it. Search for church. It's
+
+Unknown Speaker  13:36
+probably two words. I
+
+Matthias Miller  13:43
+uh, early payoff, payout, skip repo and return, okay, or dwf fee, right? Uh,
+
+Speaker 1  13:59
+whatever you call this let's, let's, let's talk about, let's talk about charge off and damage waiver feet write off. I mean, we already kind of did talk about the damage review right off. Charge off is we're charging it off like we're never going to try and collect on it, the the repossession and return. Those are not charge offs.
+
+Matthias Miller  14:27
+In other words, we have the building, but we're not going to collect on the contract,
+
+Unknown Speaker  14:33
+correct, and I don't know,
+
+Speaker 1  14:35
+I don't know how to, I don't know how to think about that from an accounting standpoint. But like, we have the building on repossession and return on, charge off and damage rear fee, charge off, there is no, we don't have the building would be that, you know? I
+
+Matthias Miller  14:50
+mean, you could do it like this. Dwf, right off.
+
+Unknown Speaker  14:57
+Come on.
+
+Matthias Miller  15:04
+Oh, come on.
+
+Matthias Miller  15:11
+And maybe it should be this way. I don't know if it matters me contract. It's really this customer charged so on a no building. Building exists, no here, let's just do this.
+
+Matthias Miller  15:38
+Then we have the charge off. Customer is not charged. Ah, come on, building does not exist. Then we have the early payoff. Customer is charged, the building does exist. Then you have the payout. The customer is cargoed. Card. Carched cards.
+
+Speaker 1  16:05
+Custom caged. How about we fit, put the ER, wow, custom charger, Skip, um, skip. I just really want to get rid of okay, because it's really
+
+Matthias Miller  16:36
+Okay so fundamentally, no customers not charge, correct? Yeah. Fundamentally, there's three categories. The building disappeared. Well, we're not going to charge customer for whatever reason. It could be hurricane or theft, or, who knows what hurricane or theft, which one are we on? I'm saying there's, there's there's three basic reasons the building disappears. Number one, and like, okay, scenarios, forgive me. This is not how people think about it, but this is the big categories. Building disappears. This is theft, hurricane, act of God, etc. Well, go ahead. However, we all have this plan to theology of suffering, then we have
+
+Speaker 1  17:28
+the should we define which Gods might might produce
+
+Matthias Miller  17:34
+anyway? So then the building. So then, then there's also the building. I um,
+
+Speaker 1  17:43
+well, I mean building destroyed. I mean that would, I guess you could put that under disappears column as well. There you go.
+
+Matthias Miller  17:57
+I mean, I know this sounds dumb, but like the three basic scenarios, like, the only difference between a dwf write off and a charge off is, really, how do you how does it hit accounting, that's right, and even the early payoff and payout. That's all also, I'm assuming, basically just, I mean, it's what money do you take? But, I mean, I don't know,
+
+Speaker 1  18:17
+okay, for the sake of not naming things like RTO Pro does. I wonder if we should be consistent with our language. Either we go damage by refeed, charge off and secondary charge off, or we do damage by your feet, write off and then write off would be the second. Would be the second. I want to go kind of right off, because he does. He does charge off. Let's do, let's do damage by your feet, write off. I I
+
+Matthias Miller  18:43
+mean, is this just other write off?
+
+Speaker 1  18:46
+Do we are we going to define other then,
+
+Matthias Miller  18:49
+or do we just have it as a write off and then we specify the reason, like it was a wait on a retrieval the building exists? My bad.
+
+Speaker 1  19:02
+So if we do, if we, if we call it a regular, if we call it demo or other write off, it other implies we need to give a reason. Which, giving a reason is not a bad idea anyway.
+
+Matthias Miller  19:12
+Well, so you could, you could basically go down this route then write off.
+
+Speaker 1  19:17
+Well, write off should actually write off should require reasons. Yeah, with both of them.
+
+Matthias Miller  19:25
+Oh, a written reason. Do you want to differentiate between the other types of write offs, like a, I guess, a charge up versus skip?
+
+Speaker 1  19:35
+Well, no, I think we this is okay. No, no. Well, no, no, because danger fee write off has a accounting implication. So other write off should require a a reason, which means it can cover all kinds of other write offs,
+
+Matthias Miller  19:51
+but we're all account as long as we're accounting for the same way. It doesn't matter.
+
+Speaker 1  19:54
+I don't think with it. I don't think there's any other accounting implication besides Damage Waiver fee is there? I. I
+
+Matthias Miller  20:00
+don't think so, but I don't think so either. Okay, now, payoff versus payout, this seems to me to be fairly obviously automatic, like a pay early payoff is any place where you get an EPO discount, and if you don't get an EPO discount, well, it's not an early payoff, it's just a payout. Yeah,
+
+Speaker 1  20:23
+yeah, so in your envisioning of closing out a contract that is its final month, customer is current. It's the final month. There is no payoff. What? Hap? How does, how does this contract close?
+
+Matthias Miller  20:47
+Well, presumably, at whatever point you pull up the contract. I mean, I think basically, I don't know how we want to do this. We could say that if you try to pay off, if paying, making this payment results in a zero balance, then you have to stop what you're doing, and you have to switch it over to a to a contract close.
+
+Speaker 1  21:07
+Why wouldn't we just figure out how to like, why wouldn't we just validate and say, let's say you're taking the final payment, and a screen, a message pops up says it appears that this is your final payment. Are you closing this contract? Question mark, yes, no,
+
+Matthias Miller  21:26
+why would you keep the contract open after final payment?
+
+Speaker 1  21:38
+Oh, no. I mean, as soon as soon as we say there is no reason, then somebody's going to come up with a reason. I don't know. Maybe, maybe they're, maybe they're, maybe they're making a payment on the wrong account. Maybe, maybe they, Whoops, oh no, no, no. Actually, we don't want to close that one that. Yeah, I'm so sorry. Let me go over here and put it on this payment instead. I mean just a simple, I mean just a, just a, a validation, verification, that if you're paying up the last payment, that it automatically
+
+Matthias Miller  22:10
+type the word Yes to confirm or something.
+
+Speaker 1  22:14
+Oh, I mean, I probably would do, do with, I mean, maybe, I mean, something like that, yeah, I would think so, because I I really, like, why would you, why would you have a close out? Reese, like, okay, no. What's happening with RTO Pro is he never really accounted for the fact that the software should just automatically close the account and and simultaneously, if I was a customer on the online portal, I want the exact same thing to happen. I want them to say, you know, the customer comes in at their last payment. Let's say their their payment normally is $250 a month, and there's only $200 left on the account. Customer comes in and types in 250 it's like, well, no, you can't there's only 200 left on your account. Do you want to close this account? Yes, I want to close it like pay my 200 and be done. So right.
+
+Matthias Miller  23:10
+So then the only reason this is this screen is required is for early early
+
+Speaker 1  23:15
+payoff, early payoffs, or the other reasons that are involved, charge offs and or write offs, I mean.
+
+Matthias Miller  23:22
+But the only real reason for charge us and write offs is that you can see what's the, what's the damage that I'm doing by writing, by closing this contract, right?
+
+Speaker 1  23:32
+Yeah, um, I'm a little bit, I'm a little bit nervous. We can handle the building on retrievals and returns, but on retrievals and returns, what happens with the contract? Because the contract technically closes, but there's balances left on the contract. In other words, you should be able to open that contract up one day again, if the customer comes back and says, Hey, I want to rent another building. Oh, I see you have a contract that we had returned. You'll have to pay your past due rent on that contract before we'll rent you another one. Sure I'll pay that one, and I want to get this new one, so we need to be able to handle that. Yeah.
+
+Unknown Speaker  24:23
+This stuff makes my head spin.
+
+Speaker 1  24:39
+So, really, okay, let me actually. Let me clarify it further. If you're writing off a damage waiver fee, well, damage or fee write off is not the same case. Other write offs maintain the past due rent balance on the con. Contract, while simultaneously closing the account. So the account would show a status of being closed, but there's still past due amounts left on that contract,
+
+Speaker 1  25:16
+damage, damage waiver fee is different in that it would write off. It would close out that contract without maintaining any dollars in balance if they were past due, because, by nature of the damage waiver fee, if it well okay to be technical past due, rent would stay any there, and we would close the account. So, no, it's not, it's not actually different. Damage, waiver fee, right? Other write offs, all the, all the write off stuff, repossession, Return, return. We should. We should be able to, if
+
+Matthias Miller  25:58
+somebody returns their own past due, do they have to catch up on the next one like, should I think? I
+
+Speaker 1  26:02
+think the way that I want to handle this is that all write offs, re uh, retrievals and returns. If there's past due rent, it maintains on the contract. Now, if it's a return and you're deciding to forgive that past due rent, then you should go back over to the contract and you should forgive it, override it, close it out otherwise. Otherwise you're closing it out. I mean, we are going to, I'm assuming that we're going to, I guess if you close it as a return, then you really should write off any amount that's currently due if you're if you're forgiving it, that should handle the any any balances on the contract
+
+Matthias Miller  26:47
+well, but it depends if you're forgiving or not. Like it doesn't seem to me like there's an obligation to forgive it there. It's not
+
+Speaker 1  26:54
+like there's your obligation to forgive it. You're correct. You
+
+Matthias Miller  26:57
+should have told us earlier before you got into financial arrears.
+
+Speaker 2  27:02
+Um, now
+
+Unknown Speaker  27:13
+that I've thoroughly made your head hurt
+
+Matthias Miller  27:33
+Okay, fundamentally, I
+
+Matthias Miller  27:54
+it. I mean, fundamentally, it's the question of, does this makers? I see a new book coming on, sacred rentals.
+
+Unknown Speaker  28:12
+God gets the building.
+
+Matthias Miller  28:13
+Yeah, God gets the building. I mean, fundamentally, part of the resolution question is, what happened to the building? It's gone. It's building? It's gone. Customer got it. We get it. That's fundamentally like the outcome that that is the overarching thread. Now, again, I'm not saying people think about it like this, but this is
+
+Speaker 1  28:33
+the overarching thread, correct? Well, and let's, let's, let's expand those scenarios. And let's add, let's add parameters to each one of those about what happens with the money. Mm,
+
+Matthias Miller  29:05
+okay, so with the money, so past due, fees persist,
+
+Unknown Speaker  29:18
+fees slash or rent slash fees,
+
+Unknown Speaker  29:27
+right?
+
+Speaker 1  29:29
+Um, not, not in the case of damage waiver fee, no, no, no, it is. It is, yeah, it does past due rents and fees. Yes, we should probably just, you should probably clap clarify that past due, okay,
+
+Matthias Miller  29:52
+$0 results.
+
+Matthias Miller  30:01
+Right, correct. And then this one also passed to rent, slash, fees persist.
+
+Speaker 1  30:10
+Do we? Do we want to? Do you want to add the further clarification that says, can be forgiven?
+
+Matthias Miller  30:17
+I mean, I would just say any of these. I mean, do you want to? Do you want the process to? I mean,
+
+Matthias Miller  30:34
+is that the process or they jump over into the building? The process should let them do it.
+
+Speaker 1  30:41
+I would like the process to let them do it. I think it makes a lot of sense for the process, like I'm gonna Leanne may disagree with this, but I am very much of if I'm somewhere, I want to get to all the places. So if I'm closing an account, I want to be able to do all the work. I don't have to go jump back into another screen to finish my work. I
+
+Matthias Miller  31:07
+mean, the argument against it is, yeah, that makes sense for taking payments 99% of the time. But how often what percentage of your contracts close in returns? 10%
+
+Unknown Speaker  31:19
+Well, returning retrievals 10% All right.
+
+Speaker 1  31:30
+Now, okay, okay, you could, you could argue me into the position to say, when you're closing out a contract, all rents and fees, all past due. Rents and fees persist. If you want to go forgive it, you got to go back over the contract to do so. I could, I could be argued with on this one, but my, my overarching question is always going to be, why add the extra step?
+
+Matthias Miller  31:54
+Well, okay, but let me ask you this question. So your standard procedure is, when somebody returns, you forgive everything. No, what percentage of the time Do you forgive?
+
+Unknown Speaker  32:08
+Very low.
+
+Matthias Miller  32:09
+So there's my point. You normally don't forgive. So why optimize for the edge case?
+
+Unknown Speaker  32:16
+Okay, okay, I like.
+
+Speaker 1  32:21
+I can get on board with that. Do we want to give them any kind of direction? In other words, if you're closing out on a a write off or retrieval or return, say, if you wish to forgive, please go over to the contract. To do so
+
+Matthias Miller  32:50
+well, the rents would technically be an override that they could write off. What I'm really fussy about is we've we've said, historically, you don't forgive fees, at least on the payment screen. And if we, if I can avoid, obviously, there needs to be compelling reason to do this. But if we can avoid adding a way to forgive fees, if we think that it should normally happen, I would like to continue doing that. It seems like past due rents. You could potentially use this override,
+
+Speaker 1  33:26
+yeah, okay, in the event. So it sounds to me like what we're saying is that the only close reason that would have overrides would be early cash payoff, the early payoff, all other closing reasons, overrides, I
+
+Matthias Miller  33:51
+forgot about that because we said you are actually literally when you forgive you are literally paying. I think we just with this. We're saying, Okay, we had a conversation with Leanne. Leanne said, No, we don't need to forgive on the payment screen in most cases, but if we truly register this as a payment on the payment record, sounds like we're pushing forgiveness to the payment screen, where you're effectively I guess I'm losing my own argument, because we're going to have to handle it here.
+
+Speaker 1  34:52
+Uh, well, okay for close out, for closeout reasons, like, um, write offs. So this would be a very simplistic that you wouldn't have all of this. You would simply have, you would simply have past due rents, any late fees, processing fees, any other, any of those, any of those fees and pasty rent would be the like when you're closing it for any of the write off stuff, that would be essentially what you are. And I guess you could forgive it at that point, if you didn't override, and say, we're going to overwrite this off. Well,
+
+Matthias Miller  35:34
+I mean, you could override it. It seems like you could, okay, it seems to me, okay. Let's, here's an EPO mock up. Let's do a duplicato. This would be like a other closeout mockup, because technically, contract total, contract amount makes sense to persist. EPO doesn't exist. And then, well, thank you. Well, past due rent. Where's that coming from? Past due rent, past due rent. Hang
+
+Matthias Miller  36:12
+on, I want to show you something. Okay, and this guy becomes 24 because there is no EPO now, now we mix this and now. So here we say, CRA, pass to rent, lay fees, processing fees, current overdue dwf fees. And then we have the we have the um.
+
+Matthias Miller  36:47
+Something like this, basically saying this building will continue
+
+Speaker 1  36:53
+to have okay. First off, first off, just as a point of clarification, you would not be able to close out a contract with a persisting CRA. You got to go deal with the CRA before you close out the contract.
+
+Matthias Miller  37:10
+Out, okay?
+
+Speaker 1  37:13
+Because we can't, we can't close you can't if you're closing the contract, then obviously you're holding customer money. So you have to deal with that before you can close out the contract for any reason whatsoever, except in an early cash payoff.
+
+Matthias Miller  37:32
+And you can't just handle it as part of the pay the payout process
+
+Matthias Miller  37:40
+or the Closeout process.
+
+Unknown Speaker  37:44
+Well, it needs to be converted into into a
+
+Matthias Miller  37:48
+security deposit.
+
+Speaker 1  37:49
+Yeah, speaking of which, we need to include security deposit into this conversation. Which we haven't, I don't think we've. You didn't have it in your breakdown. So far, we handled CRA, but it'd be CRA or security deposit, both of those, It would be either or you would never have both.
+
+Unknown Speaker  38:23
+Okay,
+
+Speaker 1  38:31
+so I just, I just did a contract in RTM Pro, like we're going to be charging it off, and he, all he
+
+Unknown Speaker  38:43
+gives
+
+Speaker 1  38:49
+is, wait, what is he saying? Okay, um, this is, this is interesting. Hold on a second. I think I'm telling you a little bit something wrong here. The way this might be valuable for to let you see this, and then I can walk you through it. So this is it. I'm going to give you a completely current account.
+
+Matthias Miller  39:12
+Okay, so we're
+
+Speaker 1  39:14
+going to charge this off. And okay, this makes this actually makes more sense.
+
+Speaker 2  39:20
+Okay, okay,
+
+Speaker 1  39:27
+so what he's actually doing is, when you're charging off this customer, the balance due, including tax, becomes the balance that's left on the account, not just past due rent because
+
+Matthias Miller  39:43
+sorry, one more time, so on a charge off. Okay,
+
+Speaker 1  39:50
+the if you got that screenshot up in front of you, balance due, including tax, 5140 74 that is the contract balance. Okay that he stomps back on there as what's left open. Now you can override that and say, No, it's not going to be that. It's going to be, I think you can override this. Let me just double
+
+Speaker 1  40:20
+check, yeah. Okay, that is just that just is weird to me. Do you want to do? I don't know. Can I actually share a screen with this? You want to actually see this?
+
+Matthias Miller  40:37
+I mean, maybe I don't know. Well, okay,
+
+Speaker 1  40:39
+so this is the odd thing. Okay, when I'll just do screenshots of this. So you saw the first one, right? The first one I gave to you. So if I stop in, Nope, we're not gonna, we're not gonna leave 5140 74, we're only gonna put $200 that we're gonna leave on the account, right? Okay. When I click continue, I get a $0 transaction. If I would click Complete and enter right now, it would close this contract and leave $200 on as an as a contract, balance on the closed account.
+
+Matthias Miller  41:16
+So basically, what you're saying is, when you close the account, you can do whatever you can do, whatever write offs you want to for whatever reason, any purpose.
+
+Speaker 1  41:24
+Yeah, pretty much. So now, just for kicks and giggles, I'm going to close this like it's a repossession. Does it follow the same logic? No, it does not follow the same logic, because there's no past due rent. It would only show past due rents if we're repossessing or returning it, which that makes sense, because we have the building. If you're charging it off, we don't have the building, so we're going to try and get the rest of the contract balance from you, if we so choose, because the building went missing,
+
+Matthias Miller  41:59
+makes sense. Yes. So it's gone.
+
+Speaker 1  42:14
+Well, it would just be contract balance plus, well, yeah, contract balance plus fees, because contract balance includes any past due rent.
+
+Matthias Miller  42:23
+So then when the RTO company gets it past due, it's only the past due rents, because we have the building, we know they're not renting it
+
+Speaker 1  42:31
+anymore, right? So that so it, yeah, in the case of retrieve and return, it's only past due rents that persist, rents and fees.
+
+Matthias Miller  42:39
+But in all of these cases, it would seem reasonable to have a spreadsheet. Go ahead, let
+
+Speaker 1  42:44
+me do it. Let me do it as a damage waiver fee, write off and see what happens. Number eight, what persists? Well, he persists. The contract balance on that.
+
+Speaker 1  43:01
+Really well, that's just straight up wrong. So Damage Waiver fee write off by by nature of the damage waiver fee means that we do not continue to collect on the contract because we're writing that off on the Damage Waiver fee, write off the con. It should only be any past due. Rent persists. I
+
+Unknown Speaker  43:25
+So let's put that in a clarification besides your dw,
+
+Matthias Miller  43:28
+right, right, right, right. So this really should just be
+
+Matthias Miller  43:41
+and this is really past,
+
+Unknown Speaker  43:48
+all right,
+
+Matthias Miller  43:56
+but It still seems to me like it's reasonable to say. To take something along these lines, because you would still keep this balance, this contract. Well, no, you're saying the CRA has to be dealt with before this. So I
+
+Matthias Miller  44:23
+Yeah, but effectively over here, what you would say is that there is no security deposit.
+
+Matthias Miller  44:36
+Delete Row. This is a
+
+Unknown Speaker  44:42
+Yes, exactly,
+
+Matthias Miller  44:43
+yeah. This then becomes overridable, correct, and then,
+
+Speaker 1  44:52
+just for the sake of visual clarity, specify your close out reason, so that. As we talk through this, we're on the same page. Why isn't? Why doesn't charge off, show up.
+
+Matthias Miller  45:07
+Well, because we haven't
+
+Unknown Speaker  45:10
+a write off. Call it a write off.
+
+Matthias Miller  45:24
+Early payoff, payout, payout, boot, retrieval. You could almost do a voluntary return and involuntary return, but people call it retrievals and returns, so let's call them that I
+
+Unknown Speaker  45:45
+not A, not a bad way of putting it, um, actually, let's do that. Let's do that. I like that voluntary return and involuntary return. I like that a lot. That's good language, thanks. Well, let's you respect. Let's start with
+
+Matthias Miller  46:16
+dwf write off, or other. Write
+
+Speaker 1  46:18
+off, other write off, yeah, let's do without, yeah, there you go, no, okay, yeah.
+
+Matthias Miller  46:21
+So on other write off. It defaults to,
+
+Speaker 1  46:24
+what is your other what's the overridable up there in the header line?
+
+Matthias Miller  46:30
+I meant to say, yes, there you go.
+
+Unknown Speaker  46:38
+Closing low, sewing,
+
+Matthias Miller  46:42
+okay, so this guy equals this guy, which equals,
+
+Matthias Miller  46:51
+all right.
+
+Speaker 1  46:58
+So, then that. So, then, then. So, if you were to override the 8183 28 on the contract balance of above, then that would reflect as what's left on the contract balance after closing right? Yes, I like it. And when we say it's overridable, is that forgiveness,
+
+Matthias Miller  47:23
+yeah? It's essentially becomes a Yeah, essentially Yes, yes.
+
+Speaker 1  47:41
+And this would be, do we want to, do we want to do another example of of a damage? Bury, write off. Yeah, just for the, just for the sake of, just for the sake of, let's, let's just spec another one. Right, right, right after it.
+
+Matthias Miller  47:54
+Let's do this other duplicate.
+
+Matthias Miller  48:08
+Okay, so we have so in this case, it's going to be
+
+Unknown Speaker  48:14
+default, $0
+
+Matthias Miller  48:17
+yeah, everything else would reasonably persist, unless you want to close it
+
+Speaker 1  48:21
+out. Well, let's not present this one like it has a security deposit of 3687
+
+Unknown Speaker  48:29
+29 why not? Well,
+
+Matthias Miller  48:32
+I guess it's too big of a security well,
+
+Speaker 1  48:34
+okay, so well, like, Well, I mean, okay, in theory, if this was the case, damage waiver. Yes, we would owe them a check. Just make that note beside there,
+
+Speaker 1  48:54
+hi, oh, no, don't, please don't do that. I like your head. Oh, one second, sir. Yep. You.
+
+Speaker 1  50:18
+What's the, what's the, what's the Amish term for crazy amishman? How do you say that in Dutch? Yeah, I've got some of those.
+
+Unknown Speaker  50:33
+Anyway. Do we need to mock any other ones up? Um,
+
+Unknown Speaker  50:44
+I don't know.
+
+Matthias Miller  50:46
+We're just assuming that if there's a balance, a negative balance, it'll show up on,
+
+Speaker 1  50:51
+do we, do you want to mock up? Do you want to mock up, like for return or retrieval? I
+
+Matthias Miller  51:02
+mean, return is just the same as a dwf write off.
+
+Unknown Speaker  51:07
+You're 100% correct. Make that note
+
+Unknown Speaker  51:11
+somewhere,
+
+Speaker 1  51:15
+return and retrieval would be exactly the same as damage repair fee write off.
+
+Matthias Miller  51:35
+So technically, to reach people, you could choose to forgive fees, although it's a little weird too.
+
+Speaker 1  51:39
+Yeah, you can, but it's, it is, you know? I mean, we've done that. There have been times where we went and, you know, I mean, most of the time with retrievals, no, but with returns. I mean, we will override it, but, yeah, just let's, let's simplicity. Let's keep those the same. Man, I never, I never dreamed that closeouts would be this hard.
+
+Matthias Miller  52:09
+It will be easy. They said,
+
+Speaker 1  52:11
+eat rocks. They said, it'll be fun. It'll be fun. They said,
+
+Matthias Miller  52:18
+Okay, um, all right, interface then,
+
+Speaker 1  52:23
+well, okay, do we? Do we? Is this a? Is this a you me conversation or a you Seth conversation to figure out how you're going to field some of this on the contract record on close out.
+
+Matthias Miller  52:41
+I mean, that's, I mean, potentially, that's not the question, though. Okay, the question is, from your perspective, from a user experience standpoint, what do you
+
+Speaker 1  53:00
+prefer? What I prefer is that these numbers are visible as what remains on the contract and
+
+Speaker 1  53:18
+and they would be editable, although, if they're editable, then we got to talk about handling them as write offs.
+
+Speaker 1  53:38
+Okay, riddle me this. Let's say, let's say, for example, here's the scenario, we closed the account, okay, and we left all the fees and past due rents, and then five days later, an admin comes along, goes, Oh yeah, by the way, I completely forgot to put a note in there. I had a conversation with the customer, and I was going to forgive all of those fees. So we go over there to the contract record, and we open the contract record, and we go to edit those the stored fields, or wherever the Dollar values are for these stored rents and fees and so forth. If we, if you, if you were to process them out, then we have to have some kind of specifying, of write off at that point.
+
+Matthias Miller  54:34
+Well, either way, you need to be able to process a payment post contract close. Because even if, even if somebody says, I mean, let's say the fee is precisely they want to rent a new contract, you're like, Oh, you got to close these offers. Okay, well, let's apply payment general contract.
+
+Speaker 1  54:51
+Okay, so then you need to, you need to process payment. So, so basically, you, what you would do is, then you would go process a $0 payment, and you would override those fees.
+
+Matthias Miller  55:06
+Yeah, I think basically we need a post closeout screen that ends up looking very similar to this, yeah,
+
+Speaker 1  55:13
+where you could go process money again. So you could, you could go, you could go real. You could say, Process Payment for this contract after it's closed, and it would give you something very similar to this, and you could process $1 value. The
+
+Matthias Miller  55:32
+one thing I think needs to change is this. I
+
+Speaker 1  55:53
+so So hypothetically, let's say, for example, the customer calls in and says, Look, I got $671 due on my account. I really want to go rent this thing. I want to rent another building. I can only make $100 payments. Can I make $100 payments for the next six weeks to close this out? How would you process partial payments to do that?
+
+Matthias Miller  56:14
+Well, I think on this contract, you basically just go in and you say, I mean, this contract has been closed, and you just go in and say, how much are you paying today? Alright, $100 well, pull it up, still shows everything
+
+Speaker 1  56:30
+so, so the $100 would just spread across everything that's there, right? Indiscriminately? Well, I guess if you don't want it indiscriminately. Okay, what this doesn't handle for is saying, I want to, I don't want to override this. I just want to defer it. Do we want to have any deferment happening here? Or do we? Do we just say, Okay, I'm paying 100 and I just want to spread it across all that's there.
+
+Matthias Miller  57:02
+Do technically you could use the other screen to do that. What if somebody wants to close it? What if you want to close it out and somebody just wants to pay past due rent? Says, can I handle the fees later?
+
+Speaker 1  57:16
+But then that's that's what I'm saying. But then why would you determine what
+
+Matthias Miller  57:25
+uh, that's where you put say, what's being paid today is $0 so you have the closeout event. So if somebody wants to pay part of it, well,
+
+Speaker 1  57:40
+so contract is closed this month. There's 671 14 that persists on the account of 625, 44 in rent and $11 in late fees and $10 in processing fees and so on and so forth. And so those monies persist on the customer's contract. They call and say, You know what? I'll pay $100 today. I'll pay $100 next week, $100 the following week, and so but why would we, why would you want to split it at that point? Why would you care? Why wouldn't you just pay the 100? And if, if they're saying, Well, okay, if you do that, we'll, we will pay, we will for, well, okay, here's why you don't want to do that. Here's why you don't. Okay, fine. Look, Mr. Customer, look, if you pay off your past due rent, we'll forgive the late fees, processing fees and overdue fees, but we're not going to we're not going to do that until you've paid all rents. So you would want a way to defer it,
+
+Matthias Miller  58:38
+which means when we override past due rent. You might also be in a negotiation where you say, look, you're three months overdue. If you get caught up for the first two of those, I'll write off the third one. And so you do want payments, or if you get caught up for the for the for the first two of those three rents, I'll write off the late fees in the last month of rent, and you're good. Okay. Now,
+
+Speaker 1  59:02
+hold on a second. Hold on a second. Why wouldn't okay, why wouldn't this contract has a balance on it, right? And it still has it still has a balance. It still has fees. There's no payoff. So why wouldn't you just use a regular payment screen, which already handles deferments,
+
+Matthias Miller  59:20
+like, why close the contract if they're still going to pay
+
+Speaker 1  59:22
+money? Well, you can still make a payment on the contract, even though it's closed, because there's, there's still a balance on this contract. There's still a contract balance. There's
+
+Matthias Miller  59:33
+just no pay. So the customer payment would always show anything with a balance, whether it's open or closed, all open contracts and anything with the balance, right,
+
+Speaker 1  59:44
+just as long as, as long as that doesn't, as long we don't ever field for an EPO after the contract is closed, because there would be no EPO, right?
+
+Unknown Speaker  59:58
+Yeah, yeah. Yeah, yeah.
+
+Matthias Miller  1:00:09
+So, if you want to,
+
+Matthias Miller  1:00:15
+so, the only time you really collect payment at a contract close is an EPO right.
+
+Unknown Speaker  1:00:31
+I think you're right.
+
+Matthias Miller  1:00:35
+I mean, there's a world in which we could show this information and then a contract close section down, but below, it seems like a lot of noise.
+
+Speaker 1  1:00:46
+Yeah, it's a lot of noise. Yeah, I think you're right. The only time you take a payment on a contract close event is if it's an EPO, yeah.
+
+Matthias Miller  1:01:03
+But you have to be able to take that payment with other contract payments as well. So that's an argument for putting it into the single screen.
+
+Speaker 1  1:01:16
+No, why would you? Well, okay, what if
+
+Matthias Miller  1:01:23
+you want to move the security deposit? What if you're closing I'm king of complexity, so please forgive me, but I have a contract. I have two contracts, one with CRA, one without. I want to close out. The one with the CRA, turn it into security deposit, throw it against the other one, and keep going. Or I don't, bless you. I had one of those when I was a kid.
+
+Speaker 1  1:01:53
+Okay, I didn't understand that scenario. Say it again,
+
+Matthias Miller  1:01:56
+like, let's say that you have a security deposit or a CRA that you want to throw against, different payment, a different
+
+Speaker 1  1:02:01
+contract. You can't put a CRA against a different contract, right? That's directly tied to its contract. What about a security deposit? The same thing, there's always a one to one ratio, ratio there. You can't,
+
+Matthias Miller  1:02:17
+right? But I could, I could remove $400 for my security deposit, apply 400 to the next one and or use it to make a payment to the next one.
+
+Speaker 1  1:02:34
+I mean, if you just straight up, no, no, please, no, that makes my head hurt.
+
+Matthias Miller  1:02:39
+So if you just then, in this case, a contract
+
+Unknown Speaker  1:02:44
+closeout
+
+Matthias Miller  1:02:45
+is a contract close out. You can only close out a single contract, and any payment that you take with that, if you want to do an EPO, plus something else, you have to run your card twice, Right? Steve,
+
+Speaker 1  1:02:57
+I want to make contract close events. It's standalone thing. If you want to make a contract, if you want to close a contract and make a payment, I really want to make them separate events.
+
+Matthias Miller  1:03:09
+Why not? Why would you what
+
+Unknown Speaker  1:03:40
+Yeah. So
+
+Speaker 1  1:03:48
+what would be the answer? Client comes to me and says, look, I've got a lot of customers with multiple contracts, and they're closing and making payments all the time. Why in the world do we have to do them as separate events? Why can't Why can't they be together? What would be the answer I needed? I need a craftily good answer for why? Because, because saying we didn't feel like trying to handle the complexities of doing both the same time is kind
+
+Matthias Miller  1:04:16
+of lame. Well, because you're well, I don't know how feel about pot shots, but how usable Do you think the Swiss Army knife of RTO management software is working for you in terms of complexity, any features in RTO Pro that you find hard to understand because you could do everything in one screen, what's a little bit like the Apple argument, like,
+
+Speaker 1  1:04:46
+no, it's this. It's this. I'll tell you why. It's very simple. It's very simple. Actually, we thought about that one long and hard. It's too complex to try to handle both of those at the exact same time. People get. Confused about what amount goes to what so handling them as separate events, keep them as completely separate things, and it's just cleaner, right? It really is. I
+
+Unknown Speaker  1:05:30
+so let's, let's argue back another way.
+
+Speaker 1  1:05:45
+No separate events. Separate events, contract close. Contract closes are a, are a standalone event. And the reason being is because you need to handle CRA s, you need to be a handle security deposits, all in relation to that contract. We don't want to confuse it with the secondary contract that may be on that account. They are separate events. Let's keep it that way.
+
+Matthias Miller  1:06:07
+Okay, then on the payment record, how to structure the data model you're just going to tell me to talk to Seth, about it.
+
+Unknown Speaker  1:06:22
+I We
+
+Matthias Miller  1:06:24
+obviously we need a payment record for EPO.
+
+Matthias Miller  1:06:34
+Maybe we just no but what we said was, this is for a charge, so all we need is to field it on the in the payment surgery of some kind to say this is an EPO payment. And this is the, this is the discount percentage, this this was the applied rent, this discount percentage. This is the write off amount. Here's the amount that was charged, and it should theoretically work. Okay, fine,
+
+Speaker 1  1:07:03
+yeah, I am going to tell you that you and Seth to figure this out, because I'm having a really hard time conceptualizing how, like I can, I can well walk through the the user interface side of this thing. But when it comes to getting all of this, I want the the information has to be right wherever we store it, but getting it back there, getting it like this, is really under the hood stuff, and where you're going to where you're going to store it. The only thing I care about is, once it's closed, the contract is closed, that we can still go back see the numbers that are outstanding on that contract and be able to run a payment against it to zero out any monies that are there that were left over after close. Yep. Is that unfair? I feel like, I feel like, if you and Seth spend some time and get a working concept, that coming back to me with a working concept, I'm going to be able to have a lot more input than trying to I'm afraid I'm going to be at this point.
+
+Matthias Miller  1:08:09
+I am slightly worried about, I don't know if I
+
+Matthias Miller  1:08:32
+Okay, Seth, I wonder if part of what needs to happen is that Seth and I, I Don't know where this where, how this needs to happen, but I wonder if Seth and I should just get our heads together and I
+
+Speaker 1  1:09:04
+and if you want, if you want me to be alone for that conversation, there may be value I bring in the middle of it, but to the two, you kind of really start to sketch this out. Right? I
+
+Matthias Miller  1:09:23
+I said, for purchases, and
+
+Matthias Miller  1:09:32
+I feel like.
+
+Matthias Miller  1:10:39
+Um So
+
+Matthias Miller  1:10:45
+do you think is next? Is that the next thing seems to me like, Okay, you're aware. First of all, Audrey reminded me this morning, we're four weeks away from the expo. Like this is really, really narrowing down. And so we need to start, I think we need to start making some pretty tough decisions around, what are we actually going to take to the expo to show Yep, agree. And so I think we should maximize your time. Let me even say this maybe to Seth, let me get back with you on
+
+Matthias Miller  1:11:35
+to grab Dwayne for as long as he's i It's
+
+Speaker 1  1:11:56
+when you when you Have, when you are, when you finished your thought. Here
+
+Matthias Miller  1:12:04
+so, so,
+
+Speaker 1  1:12:05
+so, here's, here's the question, contract close. Let's talk about, does we have, we have a working we have a working model to take payments right, and they're already working on that correct
+
+Matthias Miller  1:12:23
+they're working on the customer payment page. Yes, yes. So not the back end, but the visual.
+
+Speaker 1  1:12:28
+The question I don't Does, does contract close? Do we need to do? We need to demonstrate a contract close like that feels way in the weeds for a demo.
+
+Unknown Speaker  1:12:48
+What's your thought?
+
+Matthias Miller  1:12:53
+Well, let's zoom way, way out.
+
+Matthias Miller  1:13:01
+The thing you're really selling is reporting and analytics and and and accounting integration, right? Well,
+
+Speaker 1  1:13:08
+if you're going to say it that way, then we really should be getting dummy data in there. We should be building cool, flashy reports and dashboards stuff like that.
+
+Matthias Miller  1:13:20
+Well, I mean, okay, but I mean, isn't that right?
+
+Speaker 1  1:13:27
+Hold on, let me, let me answer this real quick. I'll be right back. Yep, all right.
+
+Speaker 1  1:17:22
+It's very hard for people to understand the multiple different places that we pull price from and why that one's not correct when the other ones are correct. And this thing, this thing,
+
+Matthias Miller  1:17:33
+so much fun, so much fun.
+
+Speaker 1  1:17:41
+I mean, the day that we disconnected, the price that we put on the building record to what a dealer sees, was kind of a dumb day. I am regretting that one, and I'm the one who who advocated for it, and I feel dumb that I did it has caused no end of problems, because you never know the price is never the price. Now,
+
+Matthias Miller  1:18:05
+what is the price? Not a price?
+
+Speaker 1  1:18:07
+Because what's on the building record and what a dealer actually sees is two different numbers.
+
+Speaker 1  1:18:16
+That's funny, yeah. Anyway, moving on. Okay, okay, so two things, two things we should have that we have not done yet. One is we should have dummy data in, and we should be able to build reports off of it. And I kind of like your idea about dumping in a bunch of demo data from the from the demo system, and then, if you give me, we probably ought to build some sort of imports to be able to build out a spreadsheet and be able to push in contract data and payment data. The secondary thing that we haven't done yet is contract entry. That is going to be a question that's going to be asked. So, how do we enter contracts? And we ought to have, we ought to. It may not be the final product of how we do it, but we ought to at least have a process to do it. Okay?
+
+Matthias Miller  1:19:20
+Well,
+
+Matthias Miller  1:19:30
+how what
+
+Unknown Speaker  1:19:32
+time do you need to drop off today?
+
+Matthias Miller  1:19:35
+I mean, I've got a couple hours. Okay? I I gotta get this. I'm here. Let's do this. Oh, look at that. Actually use this thing before I almost,
+
+Speaker 1  1:19:58
+I almost wonder if y'all just. Yank Seth on, and we get this thing out of your brain so you can so, so it doesn't bother you. I
+
+Matthias Miller  1:20:09
+want a plan of attack.
+
+Unknown Speaker  1:20:12
+Okay, plan of attack.
+
+Matthias Miller  1:20:15
+So, okay, non negotiables. Yes,
+
+Matthias Miller  1:20:26
+right
+
+Speaker 1  1:20:29
+when you say mock up of the payment screen, should it work? I don't
+
+Matthias Miller  1:20:35
+know how much, how much should it work. I
+
+Unknown Speaker  1:20:42
+think it should work. Okay,
+
+Speaker 1  1:20:54
+counting demos, that's, that's a, I feel like, okay, how? How confident? Yeah, flashy reports and dashboards. How confident are you on faking accounting?
+
+Matthias Miller  1:21:17
+I don't know.
+
+Matthias Miller  1:21:24
+Uh, to me, it seems like I'm just lazy. It feels like a lot of work just for a demo. But like, aren't you going to want to show hey, here's this payment. Here you can see the underlying accounting records. Like, isn't that part of the fancy shebang thing? Or Not really?
+
+Unknown Speaker  1:21:39
+Okay? If, if,
+
+Speaker 1  1:21:42
+if I was going to demo something in accounting, it would be that I would run a P L or income statement, whatever you want to call it, and we would go look at a revenue account, and you would able to see a whole bunch of of line items, of of payments in there, and be able to link across to the payment record and blah, blah, blah, that would look really cool. Secondary piece would be to go into, you know, an asset account and see every single building sitting there like I would probably peruse a couple through GL categories on a on an accounting P L, and show how everything's linked together. That would be about as deep as I would want to go, but I realized when I just said that that is a probably four weeks for the work
+
+Matthias Miller  1:22:29
+well, but it depends. Who does it like? If you want to figure out from your building records, what accounting should show that you could just go import the transactions. Who cares?
+
+Speaker 1  1:22:45
+What do you mean? You You threw me for a right hand curve on the import the transactions, like,
+
+Matthias Miller  1:22:55
+you know what your sample stins are going to be. And so, I mean, maybe we give you a way to link out to I mean, maybe you just put the building, maybe we just give you a record link to the building, and you import it into the notes that you can click through to see the building, or the building of the payment, or whatever it
+
+Matthias Miller  1:23:17
+is. You just import transactions. You create an Excel file with all the transactions.
+
+Speaker 1  1:23:21
+Okay, let's, let's back up a second. Okay, hypothetically, you are a guy who owns an RTO company, and you come walking into the nbsra, and there's some booth about this software company that's building an RTO software and the first things out of of the mouth is like, we are in the middle of building, yes, we're going to, we can show you some things. What would you forgive and what would you say? Like, that was dumb. Why in the world did they even show us anything? If they, you know, if it's not even that wasn't even worth showing me. Like, great. Like, where's the, where's the threshold of That's stupid. You don't, you're not really showing me anything. Versus, wow, they really have, you know, for for two or three months worth of building things. They are really, really far along. Mm,
+
+Matthias Miller  1:24:23
+okay? Me the RTO owner.
+
+Matthias Miller  1:24:38
+First of all, I'm not going to buy half baked software,
+
+Unknown Speaker  1:24:42
+correct. Wouldn't expect you to
+
+Matthias Miller  1:24:53
+my questions right out of the gate are going to be Who are you and do you? Know what you're talking about,
+
+Speaker 1  1:25:02
+17 years in the RTO industry. Sorry, 17 years in RTO management and five years in software development. Okay.
+
+Matthias Miller  1:25:26
+And then,
+
+Matthias Miller  1:25:40
+okay, so then next, sorry, I just
+
+Matthias Miller  1:25:56
+the I don't even know. Okay, so do you know what you're talking about? Okay, great, okay, what? Why? Why switch like, what do I trust you? What do you guys give me? What's the big shiny thing? Well, it's like
+
+Unknown Speaker  1:26:17
+web based software,
+
+Speaker 1  1:26:20
+ability to have access to all your data, custom build reporting in directly integrated accounting. This is where, this is where we always get hung up because it's like, I'm gonna say directly integrated accounting, and they're gonna be like, Oh, show that to me. You. Yeah, so maybe there. Maybe it really is. Maybe we really should focus on reporting and dashboards. Obviously, we need data in there to do that and getting to the best level of faking accounting that we can get to.
+
+Matthias Miller  1:27:01
+Well, it seems to me,
+
+Speaker 1  1:27:05
+because those are the three big things. It's like, it is web, it is cloud based software. It is we give you immense power on the reporting side to build and and and do custom reporting, and we're directly integrated with accounting. Like, that's, those are the big things.
+
+Matthias Miller  1:27:24
+But couldn't you how terrible would it be?
+
+Matthias Miller  1:27:37
+Okay building the full accounting impact is not going to happen. But how terrible would it be to have something like
+
+Matthias Miller  1:27:50
+I'm trying to think, I'm trying to figure out what the minimum viable thing would be like. Couldn't you just have a bunch of couldn't you actually build out a half baked accounting impact and get pretty stinking close
+
+Unknown Speaker  1:28:11
+you're going to be
+
+Matthias Miller  1:28:14
+so what would that end up looking like on the building record you have the purchase of An asset? But there's some other stuff too, like I
+
+Matthias Miller  1:28:47
+like we don't have any invoices in here, So you can't have outbound payments yet.
+
+Matthias Miller  1:29:14
+I know how I think
+
+Matthias Miller  1:29:42
+that if we.
+
+Matthias Miller  1:31:07
+So basically, we give you fields, if we give you a few basic fields,
+
+Matthias Miller  1:31:19
+user defined list for the accounting event. And in X 30 you could actually, you could actually, if you wanted to build out a user report that's hard coded to the whatever accounts you have in your system, and we could get a nightly sync, they would just run off the data.
+
+Matthias Miller  1:31:51
+That's not a bad but I need from you. You're going to need fairly quickly to come up with a list of or maybe we do it together, but come up with a sample chart of accounts, and then we need to say these records push across in this way, and we need to make sure that the Data Model is pretty rock solid on payments, we also should probably consider bringing invoices in. What
+
+Matthias Miller  1:32:33
+do you think
+
+Unknown Speaker  1:32:42
+sounds that
+
+Speaker 1  1:32:46
+was a little bit over my knowledge base so, but it sounds like probably we could do that. You and I might have to do somewhat together, but it's,
+
+Matthias Miller  1:33:01
+don't we need, don't we need invoices for this to work,
+
+Unknown Speaker  1:33:03
+one second, one second with us. Yeah, yeah. Where do you access it?
+
+Speaker 1  1:33:18
+For which company here I'll show you. You said, you said, so you go to the builder and cherry stone, cherry stone, cherry stone, cherry stone, cherry stone, cherry stone, configure payroll and another so that they're currently at nine and at 9.7% that's for the company, like, that's the that's the pool production, that's the owner payout, and that's the pool production. So he wants to change it to 9% instead of 9.7
+
+Speaker 3  1:33:49
+No, he wants the, he wants the bonus pool to be 100% for who for cherry stone. And then he said he wants the employee pool to be 9% and I was under the impression that the the company pool was like bonuses, right? But I'm not sure what employee
+
+Unknown Speaker  1:34:11
+pool, so the
+
+Speaker 1  1:34:16
+how much an individual draws from the from the pool, production, pool is based on the employee, and this, this creates that off of production. So this that that 9.7% creates the production like based off of what they built last week, times 9.7 that creates the bonus pool, okay, because and then each employee has a has settings to say how much they can get the draw from that. So it sounds like what he's saying, what I would call what I would send back to him and say, currently, cherrystone is set up on 9.7% production pool,
+
+Unknown Speaker  1:34:51
+okay, because their rate of pay is also $9 so
+
+Speaker 1  1:34:54
+that's, that's, that's an individual Okay, that's, that's on the per individual basis. So it sounds we're going to. It sounds like what he said. Did he send you an email or do you call
+
+Speaker 3  1:35:03
+it? Sent me the payroll? And then he called me and said, Oh, I forgot to tell you that the employee pool should be 9% and I'm like, employee pool, so I would
+
+Speaker 1  1:35:11
+just call him back and say, currently, it's set to 9.7 so you're going down 9% is that correct? Okay, if that's correct, then you would need to put in another, another row here, another column, yeah, and backdate it for to account for last week. Yeah. Okay. If that doesn't work, let me know if I need to get, if I need to to have a conversation with two I can. All right. All
+
+Matthias Miller  1:35:39
+right, go ahead. All right. Um, don't, don't we need invoices for
+
+Matthias Miller  1:35:54
+Don't we need it? We need invoices to make this work, don't we?
+
+Unknown Speaker  1:35:59
+Otherwise, there's nothing to pay
+
+Matthias Miller  1:36:01
+right? Yeah, do we want to what if we, what if we brought stuff on? I think, I think I've got a pretty clear picture. What if we brought Seth on at this point to figure out a game plan. Sure,
+
+Speaker 1  1:36:20
+I do think Matthias at some point, we're just going to have to reconcile with the fact that we're trying to fake a fully done software. It's just not like, there's no other like, I mean, we Okay. When did we start officially? When did we have the first
+
+Matthias Miller  1:36:39
+like, was it a month ago?
+
+Speaker 1  1:36:43
+Like, I need to, I need to have, we need to know that, when did we, like, officially, like, kick off, like, when did they write the first fields on stuff? Might be able to tell us that the first meeting was on July 17. July 17, but, yeah, but there was some work done before that,
+
+Matthias Miller  1:37:03
+right? July 10, maybe when we actually coded the first when was the groundbreaking on the project? Let's see.
+
+Unknown Speaker  1:37:14
+I can figure out.
+
+Matthias Miller  1:37:16
+Give me a minute and a half. You.
+
+Matthias Miller  1:37:25
+Uh, voracious. We have so many chain revisions.
+
+Matthias Miller  1:37:33
+Uh, July 8 was the first revision.
+
+Speaker 1  1:37:38
+Okay, July 8. So we're like, a month and a half in, and we're crying about the fact that we're not going to be able to go. We're crying about the fact that we won't have more to show by the time we get to the to the to the expo. Like, man,
+
+Matthias Miller  1:38:00
+okay, so I went to Seth, my crazy, somewhat crazy idea, approach, or approach here is, well, okay, giant, you know, big picture, what's going to sell this stuff? The big thing, really is, here, let's, let's move this up here. What sells software. I mean, it's silver loom, web based, fully customized reporting, etc. There's flashy reports and dashboards like, and I don't know how much of this you want to do, Dwayne, but you know, forecasting, etc? No, it's,
+
+Speaker 1  1:38:41
+it's more like, we're gonna, we're gonna go duplicate some of the stuff that's in RTO Pro, how many buildings do you have? And you know, what was, what was your building count on January? What was it in February? What was in March? Like, like, a nice little line chart that counts like buildings and when they were received, it's, you know, how much, how much rent Did you receive against, you know, expected thresholds. It's more simplistic than fancy things like, you know, cash reporting. Well, I guess it sort of is cash reporting, but you know, it's those kinds of things where, you know, how many past due customers do you have in, in this category, in that category, and it's that kind of stuff for the for the
+
+Matthias Miller  1:39:26
+initial So, and I think this is all completely up to you, based on how much I think there's a world in which we could probably throw, I mean, we can teach you how to make charts as an example, or or or we can, I mean, starts by figuring out, what do we actually want to have? Where do we get those numbers and the
+
+Speaker 1  1:39:47
+biggest, the biggest issue. So I've messed around with charts enough to know that I have to understand models a little bit better in order to really make this stuff work. And for some reason, models. Always befuddle me,
+
+Matthias Miller  1:40:02
+yeah, they're not the most intuitive thing in the world. I mean, it's basically a mini report, but you have to be smart to figure out how to pull stuff out of it, yeah? But okay, hard thing,
+
+Speaker 1  1:40:12
+granted, it's like, but it's, I don't know. Every single time I went to build a model, I can never make it do what I want to do. And it's like, I can make a report do what I wanted to do. But then when I go to but do a model, it's like, I don't know, it just turns me upside down, and I just
+
+Matthias Miller  1:40:25
+get, we don't have a way to preview it either. That makes it harder, yeah, that makes it hard. Jonathan started on a job to do that, and then it got complicated. And so it hasn't happened. It might happen at some point, I don't know. Yeah, I was wondering what job I was talking about. And then I said, preview models, either? Oh yeah, yeah, models. The model is some of the old, oldest code in the system. It's not quite but getting close which case it'll probably get worked on at some point in the near future. It should get, I mean, it'd be great to have it reread. Okay, so, all right, so then, so okay, what non negotiables? Oops, I know I'm typing in there. This is dumb. I should just throw it up in the top here, because right rather than risk losing it.
+
+Matthias Miller  1:41:30
+Okay, so what sells a software that non negotiables or demo some form of the payment screen, saving records. I mean, short of I guess it's really payments without running charges. We need dummy data, customers, products, contracts,
+
+Speaker 1  1:41:56
+and for that matter, Matthias, pardon me, wants to say, let's, let's not, let's let's not, let's not worry about faking credit card transactions. That's a pretty easy thing to say. Look, we're not tied in with a credit card providing it, so I can't fake a credit card transaction, but we can do cash, and we can do check, and we can do, you know, physical payments, sure. Um,
+
+Matthias Miller  1:42:24
+so then dummy data, customers, products, contracts,
+
+Matthias Miller  1:42:37
+and all related variations and yeah,
+
+Matthias Miller  1:42:45
+and then ideally with This one.
+
+Matthias Miller  1:43:06
+Invoices are a big missing piece. Um,
+
+Matthias Miller  1:43:20
+yeah. Okay. So then the next question is, so we could actually, if we just added fields for, basically add the same accounting impact fields. We could then just build user reports at a have a user list of event types, throw everything into a single R 20 using models. Can cat it all together and have a single x 30 to import accounting impact, and we could then just build accounting impact and user reports at least two degree that we're happy with. We could hard code financial account names. You would have to add field mapping, anything like that. That could basically be a Dwayne a Duane NRB project, where it'd be minimal scaffolding, and most of the work is business logic to say, Okay, in this event, what, what should get generated, and how, and all this stuff. Want to start pulling accounting impact into its own catalog, like just the basic framework, or is it variable enough that we'd start working barely Well, I mean, I would see the account impact, ROI being mostly, mostly useful, exactly, I would,
+
+Speaker 1  1:44:57
+here's, here's the thing with us. If I knew, if I. I knew that nobody from Insight was potentially there. I would just straight up show some some how assist works in accounting wise, and be like, yeah, here's, here's a partner platform that does exactly the same stuff. We would just, but I about promise you that they're going to be people there to show so to show assist stuff would be, would be a bad idea.
+
+Matthias Miller  1:45:27
+That could really sour an important business relationship. Yeah,
+
+Unknown Speaker  1:45:30
+that wouldn't be so good.
+
+Matthias Miller  1:45:37
+Well, Gabe, so he can, he can introduce me to Mr. Ulrich, who told us we're crazy.
+
+Unknown Speaker  1:45:46
+Which one was that?
+
+Unknown Speaker  1:45:48
+Oh,
+
+Matthias Miller  1:45:54
+I want to say I don't remember which one it was even. I have to, I have to see if I have it my notes, crazy for accounting impact stuff. Yeah, okay, that's not Yeah. It was Leland, October 28 22 I've got my call notes. It was exactly three years ago. Oh, well, not exactly, but oh,
+
+Speaker 1  1:46:21
+is this When Gabe wanted to talk to Leland. Leland about about this stuff?
+
+Matthias Miller  1:46:26
+Yeah, he got Leland on a conference call with me one afternoon, and boy, just Leland just grilled me one do we have ACID transactions? This is a cloud project. Are we able to produce basic PLL balance sheet? Um, do we have flexibility what accounts are hitting? Do you have the right infrastructure places in relational database? Well, actually, I mentioned it's relational database, cost of operation. What about server hosting? They're getting a good deal on server hosting. He's never been able to see a project pulled off in that price range. What position without making rookie mistakes. So no, we did do it for that price range.
+
+Unknown Speaker  1:47:06
+What Leland was saying,
+
+Matthias Miller  1:47:09
+how much did we spend on the accounting project? It was that was expensive, $364,000
+
+Unknown Speaker  1:47:17
+okay, I don't know. It was somewhere around that.
+
+Matthias Miller  1:47:19
+Yeah, there was a lot of Matthias and Joel and just a lot of time. Yeah, there was, yeah. There was a lot of spinning wheels that were getting it, yeah. Anyway,
+
+Speaker 1  1:47:33
+I think that, I think the calculated cost until you figured it, Mark, Mark did this fancy mock up of till he included his time, Drew's time, anytime that I involved, we were close to 500,000
+
+Matthias Miller  1:47:46
+not surprised.
+
+Speaker 1  1:47:49
+Yeah, I suspect though even at that number, Leland would doubt that we could actually done it,
+
+Matthias Miller  1:47:56
+I would not be surprised. He was extremely skeptical, and they they did, I don't know what they did, all kinds of weird API finaglings types. I was just nightmare. Who's this Leland guy? Some other guy or what? For sure, not ask. You can ask. Who wants to do the intro?
+
+Speaker 1  1:48:22
+Okay? I'll frame it this way. There are some noisy, opinionated people in the shed industry. Leland and his brother Jonathan, are probably in the top three. Well, let's put down. Let's be a little bit more generous. We'll say in the top 10. There are some other noisy individuals in the shed industry. And I mean, granted, his brother, Jonathan, I mean, both of them have multi million dollar shed companies and that, yeah, they are, they are.
+
+Speaker 1  1:49:06
+So I know his brother, Jonathan better than I know Leland. And Leland tends to be, I think they're, they're fairly conservative Mennonite, yet Jonathan is, is not conservative Mennonite anymore, and they practically hate each other. And it's always, it's always fun. Drama, like the it, yeah, it's fun. It's always fun. Drama, what did I miss?
+
+Matthias Miller  1:49:34
+I think that's fair. I also think that, I mean, we've had conversations before about people who buy things based on who's flying the private jet. And I think there's a lot of that that happens with those individuals as well, which is that's fine. It's a decision making guideline you're welcome to use. I don't the opinionated the opinion holding. Right? And the allure of optics sometimes clouded their judgment. I think
+
+Speaker 1  1:50:09
+let's, let's put it this way. Seth, this should be a fairly understandable analogy. Leland is the older brother, and he typifies everything in regards to older brother. Isms and Jonathan is the younger brother, and he typifies everything in regards to younger brother isms and the two of them, like, I don't know what, but like John it. But if you get to know Jonathan, Jonathan always comes across like he's trying to prove that he's like he's he belongs the table, and Leland always looks down his nose at you.
+
+Matthias Miller  1:50:42
+Nice. Yeah, that's, that's a little stereotypical bit. I mean, whatever broad brush strokes. But so you said that. You said noisy and opinionated is there is the main weight behind the noisy and noise and opinions, just the dollars that or Well, there's, it's more than, I mean, Jonathan's part of the Young Entrepreneurs Association, or something like that. He's
+
+Speaker 1  1:51:11
+actually, in fairness, I don't feel like paying for a conversation about Jonathan and Lee. Let's keep going, but catch set up a little bit I needed. Leanne just asked me a quick question. Let me just jump over there she was asking, and I'll be right back.
+
+Matthias Miller  1:51:26
+Okay, so integrated accounting, then this lets us do the Well, that was a really terrible money trail. So user, I feel like integrated accounting, it might actually be easier rather than mocking up data to import, just doing a user reports version. Like I said, I'm not sure about refactoring it out. I dislike some of the things about how accounting impact is done currently, okay, such as well, um,
+
+Matthias Miller  1:52:03
+maybe primarily the fact, what I'm not super eager to do in the test system is to go split, although maybe we should like
+
+Matthias Miller  1:52:27
+needing to create a dictionary, especially needing to create A dictionary list from type to database level. Do it?
+
+Matthias Miller  1:52:43
+Yeah, well, I mean, I don't know. Maybe we just do naming convention, like, like, you know, product colon subtype. We could still have catalog validation, just to make sure that right, our macros grab it correctly, exactly and and if we wanted to create shared logic, very easily, renamed the event types in assist to follow suit with similar validation, and then just getting rid of, you know, the dictionary list for mapping, but that lets us keep a single, single List. Question then becomes, do we want to have the similar X 30, except it takes a database level instead of a event type, event type or event types. And I mean, the advantage of doing that then is that it is easier to write our 20s rather than shoving it into a bunch of models. So there's one fewer level of separation there. And once you have that, you can basically easily clone it. So that then lets it I think it puts the bulk. I think it gives us just enough scaffolding that we could so in that if you go down that route, you could move it into some of it, at least into a shared catalog, and it could be useful, like the account impact, RLI macros, the fields, potentially even the import. We're not going to need the asset column, but that doesn't matter. And then we would rate the R 20s if we have it overwrite. Okay, so the basic, here's the dev specs.
+
+Unknown Speaker  1:54:42
+Let me, let me ask a question.
+
+Speaker 1  1:54:47
+If I, if, okay, I'm gonna, I'm gonna pose this question again to you. Matthias, yep, so let's say you're an RTO company and and I said, we are building directly integrated accounting. We. To show me, well, I'm sorry, we're in the middle of building the software that is a piece that has not, we have not reached yet. We can show you all these things. I can tell you how they're going to tie together. I can tell you how they're going to talk together, because we already have done this inside of another platform, which I can't show you because it's another company's platform, but it is like we do already have, this is already a proven model. Is that off putting like it like, are we going to spend a ton of time over here trying to fake accounting when we'd be better off served by getting data in and building others like reporting
+
+Unknown Speaker  1:55:29
+stuff? Okay? Well, I feel
+
+Matthias Miller  1:55:33
+like the sales question not a software question. Are you hiring me for sales question or software question? So I don't really know how to answer that. I think part of me is like, yawn, like you just took one of your biggest differentiators, if not the biggest differentiator, and you just said, we can't show you that. Well, okay, all right. Well, here's another one of these guys who sure talks big. And nobody, nobody can. Everybody's hush hush about everything in this industry. You know that? And so, yeah, we've done it other places, but we can't talk about it because it's kind of a secret like everybody, like you sound so much like everybody else,
+
+Speaker 1  1:56:07
+I know, I know, but you feel confident enough that we can effectively fake this thing, enough that people will be like, Whoa, that would be that's really cool. It
+
+Matthias Miller  1:56:18
+seems to me like we have a reasonably good shot, and that relatively little amount of this stuff ends up being throw away, unless we start getting stuck in the weeds of where does what, what account does this hit, where and why. And that's the most likely thing to derail this is it turns into some kind of accounting conversation of like, oh, where does this go?
+
+Matthias Miller  1:56:39
+Or if we want to throw in more data than what we have in the system, more accounting data than what we have in the system, that's going to be an issue as well. But that way, to me, it seems maybe I'm wrong. To me, it seems like less work because we only need to mock up the products and Okay, here we go, before you pull the trigger, before we say, I don't know, before we say, this is the plan. I think, I think, I think, sleep on it. I just, I am struggling a little bit with that whole thing of we promised you that this is what it's going to be, what you're going to get, and we can't show you or talk about how what it looks like elsewhere.
+
+Speaker 1  1:57:36
+And none of the demo account does not have this kind of accounting inside of it
+
+Matthias Miller  1:57:42
+not accounting impact of any kind, And we don't have sample accounting data, I don't think
+
+Matthias Miller  1:58:03
+I mean, we're not even really faking the accounting side of things that much. Can't we put it together fairly quickly to then whatever products and contracts and stuff we enter, then we just have that's what I'm saying. Am I missing? I don't think, like, if this is, I don't think this is two weeks of developer time. I think it's, I think it's a week of or I think it's a half a day to day of developer time, and I think it's a day of half a day to day of Dwayne and my time, or less than that, if Dwayne can list out what events need to happen, where And how,
+
+Unknown Speaker  1:58:52
+well,
+
+Speaker 1  1:59:01
+I think what would be the best, most helpful, and I can't provide this on the split of the second, because I got to get Leanne's help to go into QuickBooks right now, where we're running RTO accounting, and just run you a P L
+
+Matthias Miller  1:59:13
+to see what it looks like, P and L balance sheet, yeah, P
+
+Speaker 1  1:59:17
+and L and balance sheet and and that would give us, like, I think that would give us a lot of insight as to how deep we need to go. Yeah, that fair, that's sure. So okay, I need to, I'll get you a PNL on balance sheet for a company, and now I will tell you the biggest difference between what we're doing in accounting now and where we're going to be in accounting in the future is that right now, income is brought in in big buckets. Buildings are brought in in big buckets. They're not there's no, there's no like individuals in here, because it's it would take way too much time to into. Digitally empty and, you know, cross enter. So the big thing is, it's like the buckets are going to in the future, the buckets are filled with grains of sand. Today, they're just filled with big, huge rocks.
+
+Matthias Miller  2:00:10
+Yeah, that's why this is cool. That's, that's why they think too. Okay, so I feel like, so payments, payments need to happen. We're saying we don't, okay, skipping for the demo is we are not doing contract well, not doing
+
+Speaker 1  2:00:35
+no worry about contract closure.
+
+Matthias Miller  2:00:38
+Contract closures,
+
+Speaker 1  2:00:41
+yeah, I mean, that opens up a whole can of of worms, because there's a lot of, there's a lot of things that happen on the depreciation, like, there's a whole lot of things happen around contract closing accounting. I don't even think we should try to fake that. Let's not, let's not even get into that. Let's like, act like we've never closed contract in our life. It's just open.
+
+Matthias Miller  2:01:02
+So then we get payments. We need payments done, dummy data, which I take it to mean. So basically, Seth. The big question for you, I think this is where you and I need to get our heads together is, is our data model? First of all, what's the data model for payments? And are we close enough to the data model? Is our data model good enough that we can start writing x 30s and sample our 20 exports so that Dwayne can start shoving data in, coming up with sample data.
+
+Speaker 1  2:01:29
+Because I think, I think what you and I talked about Matthias is if, if we imported a bunch of dummy customers from the from the demo system, I'll make up a bunch of fake contracts with chat, GPT and payments for them. I just need a way to push them in then and link them up,
+
+Matthias Miller  2:01:47
+right? I think, I think one of the ideas was just, can we just export? I mean, this should actually be pretty simple, but export content. I have an x, yeah, we could just do this right now.
+
+Matthias Miller  2:02:17
+I give a small chance that there will be an error, because, yeah, created, there's so contact type is the main thing, and then there's editability stuff, service provider, employee, software vendor. Wait, this was out of the demo system. What types are the oh, these are,
+
+Unknown Speaker  2:02:49
+got it.
+
+Matthias Miller  2:02:52
+Okay, so we should change something like, I mean, could we just shove in customer type on all these? Well, except we need the company name. You're just, what were the 38 that actually succeeded?
+
+Matthias Miller  2:03:17
+Probably a bunch of the blank ones. And then it's 505.
+
+Unknown Speaker  2:03:22
+Though I don't I don't need more than about 50 of them.
+
+Matthias Miller  2:03:27
+Well, then we might be fine. There's 40 already.
+
+Unknown Speaker  2:03:32
+That's probably enough.
+
+Matthias Miller  2:03:35
+Okay? And you just they need to be set to customer and linked to rent LinkedIn, RTO company. I mean, Dwayne can do that with a Modify button. Yeah, that's super easy. Yeah. Okay, so does that so then, but Okay, the question still remains. We gotta nail down that, make sure that so now we got dummy customers in.
+
+Unknown Speaker  2:03:57
+Are you still questioning the payment?
+
+Matthias Miller  2:04:00
+Are modeling for payments? Yeah. I mean, I think we had discussed, at least in part, changing the model for payments to being I think Dwayne's kind of washing his hands in the matter, and just wants to make sure that we're on the same page. We had talked recently about the idea of changing payments to be payment information primarily stored on the contract, if it's all edited during bathroom. Whiskey. Okay, that's as we're that's what we're planning at this point. Okay, we haven't gone far down, but we've, we are starting that way. Okay, so I think started to get our heads together and started to work on payments. So, okay, awesome. So I feel that data model, that data model, like, if you Jonathan, are flushing it out. That's fine. I just kind of have it on my stomach until we get that fleshed out, fleshed out and cleaned up. I mean, I'm, we'll have to bring you in again, I'm sure. But I'm fairly I think this feels like the right way forward. Okay, so then also, then implementing invoices. I. Um, with a custom field to link back to a product record. Do you want to just explain what the custom field is there? Uh,
+
+Unknown Speaker  2:05:27
+um, sure,
+
+Matthias Miller  2:05:29
+and then refactoring into turning on accounting in the system, in the system, and moving over, um,
+
+Matthias Miller  2:05:56
+I think I just created a catalog for kind of impact, does that sound right, that we share? And then have a modify and like, yeah, just modifying only to make the events list user owned and and then I'll create, I'll probably just on macros, just create a standard syntax of something like level dash or level colon, level colon event, and then I think we just make a quarterly change in CFP at some point and consolidate wherever we implement it. All right, so does this seem doable in the next for the next week or two, or which you're saying, finishing payments in the next week or two now, making good progress on it? Yes, okay, getting invoices turned on? Yes, that's I'll throw that to Nick and he'll have it done in a couple hours. It's not that shouldn't be bad, okay, having x 30s, having the data model nailed down such that we can have X 30s push stuff in for Dwayne, I think so. And what's the time frame on this? I
+
+Matthias Miller  2:07:24
+I think in the next so hopefully sometime next week, or I'm not sure we have talking what's built out. Actually, it's just as long as we basically, as long as we have the fielding, right, I think. So.
+
+Speaker 1  2:07:47
+I want to, I want to say the fielding for it, so that we can push payment data in, is more important than necessarily, the whiskey stuff that payments instinctively. I want to say that, you know, if, if we can't take a payment, that's that's less than, like, having the ability to push this data in so that we can make it look like there's data functioning here, versus, you know, running a payment is probably more important. Now, that being said, you know, even if the payment whiskey stuff is mocked up so that it pulls in information, but it doesn't necessarily like, I don't know how much there's a difference between pulling information in
+
+Matthias Miller  2:08:31
+and writing data back. We can already, I think we can already save payments from the whiskey. We don't. It's not pushing to the contract yet. I don't think he says it's not. I don't know if is he configured for the test No, it's not. We need to get stuff configured for the test system, get that up and running here I could Jonathan probably be the one to Shall I just show you what I mean? It's pretty rough right now, but I can show you what we have if you want to see that. I don't know if we need to. I think, I think, I think we have what
+
+Speaker 1  2:09:10
+I'm just Oh, I'm terribly curious. Can I ask
+
+Matthias Miller  2:09:14
+one question? First, accounting, the accounting work, is that by next week's time as well? Yeah, um, okay, so trying to think what all we have, so you're wanting payment fielding nailed down and accounting by sometime next week. What? Okay, the payment Fielding. Yeah, payment fieldings First, or, I think we could start if we had, I don't know what that either one has to be first if we had accounting stuff, then we could start pushing as soon as we if we had accounting and invoices, we could already start building out some of the infrastructure for accounting impact. So I don't know how to prioritize. Yeah. So this is, this is what we have at this point. It's rough yet, clearly, but, and I think we just have hard coded numbers coming through for now. But this Jonathan's, we've got it the first little bit in place, and we'll be working on it. So,
+
+Unknown Speaker  2:10:18
+Dude, that looks like it belongs in the regular database.
+
+Matthias Miller  2:10:21
+Yeah, he tried to mimic the card layout that it doesn't look wackily different when compared to detail screens. You like that? Dude? Yeah, you like that
+
+Speaker 1  2:10:38
+as long as it has round, as long as all fields of boxes are rounded because that looks with Isaac, I had this whole goofy conversation about what makes software look modern. It's it came down to Dwayne has an opinion that modern software has rounded corners.
+
+Matthias Miller  2:10:55
+You're not completely wrong, honestly,
+
+Speaker 1  2:10:57
+yeah. But that sounds so immature to be like, ooh, modern software, rounded corners, really,
+
+Matthias Miller  2:11:09
+anyway. So this is our rough, nice. This stuff is that's still hard coded, but, yeah, yeah, we had mentioned to what we really need to demonstrate is cash, cash payments, right? So, all right. So, so we think, by I don't know how to prioritize this stuff, it seems like invoices and accounting are low hanging fruit that don't require just requires minimal specking. It just needs to get done. And if, if Wayne and I had that, we could start, yeah, on this is how this impacts accounting. And we, we could break at least a few of the constraints in terms of model decks, yeah. So we can do that, I'll have also a nick on adding invoices all. I think I'll do accounting myself. I don't, I know the kind of impact from zfp. I don't want to feel like that's the best way to do it faster, but you spend an hour to doing it, then I think so Okay. So then, yeah, are you? Do you still want to spend time tomorrow or Wednesday on going over the data model stuff with you? Jonathan, yeah, I'm happy to Okay, yeah. And I'm finally, my availability is freeing up again, finally, so I should be able to hammer down more. I've been, I've just been hammered the last two three weeks with other projects. Okay, should maybe I am out Friday, though I'm out Thursday and Friday, so that's Thursday and part of Friday at least. Okay, sweet. Well, I might also give you some of my time with Dwayne. We'll see. Oh, we'll get in touch. Awesome. Thank you. Thank you very much. Thanks, Seth, how do you feel about that,
+
+Unknown Speaker  2:13:09
+dude, that payment, that payment screen is, is sick, man.
+
+Matthias Miller  2:13:16
+Dude, that's your problem. Everybody's just gonna take it for granted. Oh, it's just part of
+
+Unknown Speaker  2:13:22
+software. I dude. That's
+
+Speaker 1  2:13:26
+yeah, man, man, oh, man, oh, man, oh, man. Quick side question, bring up, bring up. The software, bring up. Only I have a question. Yep. Menu wise, yeah. Does it have to go does it have to go vertical? Can we go with stuff some horizontal? It's this is this is not a, you question. This is a, I'll go tell Jonathan what I want. If. Does it have to be stacked like this, like this, yeah? Or can it be like somebody's stuff be side by side.
+
+Matthias Miller  2:14:01
+I think it can be, I don't know why it could be sand by side by side. Let me pull up a sandbox. I mean, this is what we have. So, yeah,
+
+Speaker 1  2:14:15
+so like, the fact that some stuff is in second and third columns is not necessarily a matter of how much stuff there. It's just how it's placed.
+
+Matthias Miller  2:14:25
+Yeah, it has to be, well, I'm not even sure how this works. I thought it had. I thought you said something. You said something like it's four columns wide. But there must be something more than that going on, because we have a missing, missing thing right here. But no, it's basically like, I don't know what all you can do with placement, but absolutely, you can do more than just
+
+Speaker 1  2:14:50
+all right, and Jonathan, who's the one to talk to on that? Who's, who does the the the UI on I mean,
+
+Matthias Miller  2:14:58
+you can probably, I would expect. You could, you could talk to Sean about that, I don't know. Okay, pink Seth and find out, but I would think so.
+
+Unknown Speaker  2:15:08
+I'm super bummed. It turned out that I can't have colored icons.
+
+Speaker 2  2:15:11
+Gotcha. I
+
+Matthias Miller  2:15:23
+All right,
+
+Speaker 1  2:15:27
+fine, whatever. I mean, I like, I like my little customer guy and I like my clients guy. That was the one I changed up last week. I like, I like those
+
+Matthias Miller  2:15:40
+sweet All right, so I'm
+
+Speaker 1  2:15:45
+gonna, I'm gonna put a hard stop at 330 for myself. Okay, I got things. I got things I gotta go fix. I think it's fine.
+
+Matthias Miller  2:16:00
+Well, I think we just said contract close
+
+Speaker 1  2:16:05
+isn't happening. Yeah, let's, let's, let's not, let's not try and fake that. Let's just punt that.
+
+Matthias Miller  2:16:12
+Is there anything that you and I mean, all of a sudden it feels like you, and I just found, I mean like feels like you and I are coming up for error. But what do we need to talk about next?
+
+Speaker 1  2:16:22
+I think, I think the, I think the big thing that that I'm okay, the knot in my stomach is getting data in. Once we have data in, then it's like, then I can go fiddle around and play with stuff. As far as reporting goes, I'm just nervous about so what does it look like to build fake data? I don't mind going in, you know, if we've got 50 ish customers or so in there, how do we get, how do we, how do we get contracts in? How do we get payment data in for those contracts, etc, etc, you know, and, and, I guess the, the big question I have is, well, what is the I guess, if we have the import for it, does that give us? Will that give me a formatting export?
+
+Matthias Miller  2:17:16
+No, this is, I mean, we, sometimes, what we do is we build a matching R 20 that goes with it that gives you an import, export
+
+Speaker 1  2:17:23
+pair. Well, I'm just okay, probably, probably instinctively, what I want to say is we should just you and I should just dedicate an entire call just to getting data squared away. Because once we have data squared away, there's a whole lot of fun stuff that can take place in regards to dashboards and reporting and and, you know,
+
+Matthias Miller  2:17:41
+we can be confident about the product record, right? Yeah, should we do? We need literally everything on the product record, all fields,
+
+Speaker 1  2:17:57
+there's, there's, um, um, I mean, well, if you, if you, well, okay, here's the big thing, if I know, if I know the spreadsheet layout format for this stuff, what I'm going to do is I'm going to go to chat GPT, and I'm going to I'm going to say, I need to know what, what is no no Nothing on the product record is auto generating for, for so I can go, I'll go create fake stin numbers, secondary ID numbers, structure, like all that information, chat, GP, T, and I can come up with, you know, I just need to know what, what the layout format is. And maybe it is, maybe it is. I just go create one, and we can rearrange the format. Ready, we're ready to import. That's probably the better question, that's probably the better answer, isn't
+
+Matthias Miller  2:18:49
+it? Well, okay, but there's this other option too, which is, what if we just we can't today. We're running out of time. Could we? Could? If we would just specify, like, is it just this top section that we need to handle right here? I mean,
+
+Speaker 1  2:19:14
+be kind of fun just to fake depreciation numbers in it too, because that wouldn't be that hard to do. I don't what I guess, what I don't quite understand is the initiation of Rosen inside of an RG when you do an import.
+
+Matthias Miller  2:19:26
+Well, it depends on whether you want to have chat GPT generated JSON files or not. I'm going to guess most, most cases, people are going to want to import flat files like CSV or Excel or something like that. Yeah. But we could. So there's two ways we could do this. One is we could just repeat all this information for every single row and have columns for depreciation. Or we could just give you a separate Import File, import format for depreciation. One. For one for buck and one for tax, for depreciation events, I guess.
+
+Speaker 1  2:20:09
+Well, the only one that's pertinent is tax, because the book depreciation. Well, that's very easy to say, yes, we have the ability to do book depreciation, but we're only currently showing tax.
+
+Matthias Miller  2:20:21
+Maybe the tax will never hit accounting, but, sure,
+
+Speaker 1  2:20:23
+yeah, I mean, I get that. I mean, it's this is all about giving someone the appearance of something working. I'm just
+
+Matthias Miller  2:20:31
+saying, if you want to push it across the if you want to push line items across it, you're going to easily mock up, mock up accounting, like an expense accounts for depreciation. Having line items would be useful. But if you don't, that's fine.
+
+Speaker 1  2:20:46
+If we have the, if we have the imports for it, I'll be glad to generate the data. It's, you know, it's one of those things where we are going to bump against my knowledge really fast on on generating the imports. I can generate data all day long, and we'll go, I'll go over to grok, and we'll, you know, we'll make stuff up. But it's, it's a matter of, yeah, I mean, that's where I feel like you and I need to spend time together on,
+
+Matthias Miller  2:21:19
+here's, here's What I would do. Import number one for this. Um,
+
+Matthias Miller  2:21:43
+so do you feel strongly? You only want tax, tax depreciation, or you want to, you want to do the others as well, or book as well, just tax if
+
+Speaker 1  2:21:53
+it, if it decreases the workload slightly, then I'd say, let's just pick one. I'm still
+
+Matthias Miller  2:21:59
+confused. Why tax? It says something issues up in the accounting impact, but that's fine, do what I'm so confused why you're choosing tax instead
+
+Speaker 1  2:22:09
+of so which one, which one affects accounting depreciation.
+
+Matthias Miller  2:22:12
+I thought that. I thought that book does. But am I not right?
+
+Unknown Speaker  2:22:16
+I think tax does, doesn't it? I
+
+Matthias Miller  2:22:34
+You see book value here.
+
+Unknown Speaker  2:22:44
+Tax appreciation,
+
+Matthias Miller  2:22:46
+tax, oh, wow, that'll understand it.
+
+Matthias Miller  2:23:02
+So tax depreciation normally would just be used when you're filing taxes, unless you need it to show up for some reason on your income statement book, depreciation typically affects the income statement.
+
+Speaker 1  2:23:18
+So if, if a company was was not using two forms of depreciation, and they were only using one. It would be book.
+
+Matthias Miller  2:23:40
+Well, I mean, they basically need to say, I mean,
+
+Matthias Miller  2:23:57
+I mean, so this one the Reason You fudge on or you have a separate schedule for taxation purposes is, I believe tax planning, tax I don't know what, whatever it might be, but for business management purposes, you're Using this, you're using book, yeah, okay, well,
+
+Unknown Speaker  2:24:22
+I needed to be educated. Okay.
+
+Speaker 1  2:24:37
+Well, hence the reason he calls them RBV in here, real book value.
+
+Matthias Miller  2:24:51
+Do you want to key the book depreciation off of a primary ID?
+
+Unknown Speaker  2:24:59
+Well. Do you mean
+
+Matthias Miller  2:25:01
+when you're importing okay, if we have separate import files for this date and depreciation, did you want them all in one import file with information repeated in just one entry for or do you want a separate import file for depreciation?
+
+Speaker 1  2:25:20
+Both. I don't know the benefits of one or the
+
+Matthias Miller  2:25:24
+other. Benefits of
+
+Matthias Miller  2:25:32
+having separate files is easier to understand. The downside is that you then need to know how to match up. How do you want to match up on this import? How do you want to match it up with the do you match it up based on manufacturing? Manufacturer plus primary id plus secondary
+
+Unknown Speaker  2:25:45
+ID? Why wouldn't we use the record num ID?
+
+Matthias Miller  2:25:53
+And how are you going to generate you'll you'll import the products first, then export the num IDs and then attach the depreciation to it.
+
+Unknown Speaker  2:26:01
+Yeah, that's what I was thinking, okay? And I think, I think probably what
+
+Speaker 1  2:26:18
+we're going to end up doing is we're going to end up doing is we're going to fake from the beginning of the year. We're going to act like this RTO company started January 1. And so all of this stuff is going to be fairly short, but at least we'll have, you know, it's, I mean, if we wanted to be, if we wanted to be, well, maybe we do it for as of January 1, 2024, so we can do last year versus this year? Kind of conversation, stuff that I don't, I don't know how much I don't know. I don't what I don't what I can't wrap my head around is if does the generation of data into last year, does that make the work any more or less heavy? I have a feeling you're going to tell me no, not from our
+
+Matthias Miller  2:27:00
+standpoint, from your standpoint, to make sure things get right. Like, probably, but I don't think it does from our
+
+Unknown Speaker  2:27:07
+standpoint, okay,
+
+Matthias Miller  2:27:09
+okay, cool. I'll see what they say. I
+
+Speaker 1  2:27:10
+mean, because, because part of me wants to say, I'm going to go into one of these RTO companies, and we're just going to export all buildings, like, because I could do an export out of RTO Pro on, you know, say cricket Valley, rent a shed, export the buildings that were entered from January 1, 2024, and just give me all the breakouts of their costs and their their that's probably what I'm going to end up doing. The only downside to this is that, well, I guess, I guess in that regard, if I have start dates, if I had depreciation, start dates on all these buildings. Then taking this into chat GPT, and say, Okay, now let's generate, let's, let's generate, you know, straight line depreciation on every single one of these from the time frame. Yeah, that's exactly what I'm going to do. I'm just going to export some of this information out. Okay, that way, that way. I'm literally not manufacturing anything. I'm just going to go ahead and export real data on this. All right, good. I mean, for that matter, we could just, we could just export the customers that match them. Too good. All right, I'll think about that. Okay,
+
+Matthias Miller  2:28:22
+awesome. Thanks, sir, thank you, sir.
+
+Unknown Speaker  2:28:25
+That's this is these
+
+Speaker 1  2:28:28
+suddenly, suddenly feel out of breath. It's gonna feel that way for a little bit, isn't it? It will, all right, we'll get there. Thank you, sir. Thanks. Bye.
+
+
+Transcribed by https://otter.ai

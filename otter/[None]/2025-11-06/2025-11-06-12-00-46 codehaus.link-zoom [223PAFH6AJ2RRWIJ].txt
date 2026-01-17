@@ -1,0 +1,1718 @@
+Unknown Speaker  00:16
+Audi,
+
+Unknown Speaker  00:22
+guess what I was digging on today. Tell me,
+
+Unknown Speaker  00:27
+sales tax.
+
+Speaker 1  00:32
+Nice. I have some I have some thoughts on this.
+
+Matthias Miller  00:42
+Let me see if these guys are joining us.
+
+Speaker 1  01:00
+I tell me when you tell me when you're ready for my thoughts.
+
+Matthias Miller  01:13
+Here, go, go, tell me your thoughts. They're gonna be hopping on. But tell me your thoughts.
+
+Speaker 1  01:17
+Okay, so I presume we're going to field on the contract record, something very similar to, like it's on the sales order record from a fielding standpoint, for for inputting Yes, something like that, correct? So I think a company has a choice. I don't think we're going to include the cost of tax jar. I think that a company has a choice when you're entering contracts. If you're small enough, you don't have to sign up for a tax jar account. You can, you can literally go to tax jar forward, slash, I don't know what's it called, sales tax calculator. And you can validate an address. It'll tell you what the city, state, and so on and so forth, for free. And then you just manually. You can just put it in the fields, in yourself. The secondary thing is, if you choose to have a tax jar account with an enterprise level account, which I think starts at 99 bucks a month, valid address validation is free. Anyway, we'll pick these. We'll pick these thoughts up after, after, after we get done here. But anyway, I have, I have a whole, whole thing going around in my head. I'm from a strategy standpoint, BUM
+
+Matthias Miller  02:28
+BUM BUM Bob, love it.
+
+Unknown Speaker  02:34
+Somebody needs to turn around and tickle Seth to get on.
+
+Unknown Speaker  02:41
+I'd have to go into the bathroom to do that.
+
+Unknown Speaker  02:44
+Let's not that'd be weird
+
+Speaker 2  02:50
+when you're saying that someone needs to tickle you, and I said I'd have to go into the bathroom with you. I
+
+Speaker 1  03:05
+somebody, somebody should call Nick and say, Look, just because you're in Ohio just doesn't mean you should, doesn't, doesn't, not, doesn't exclude you from this conversation. So I just
+
+Speaker 1  03:21
+like, I like I like picking on the fact that he's working and dating at the same time
+
+Speaker 3  03:28
+exactly. I don't know if I think Nick has a design call usually now, oh, right, we're gonna, yeah, might have to figure out that schedule, although I know he hasn't had much RTL the last week or two, so Well, at least not the last week.
+
+Matthias Miller  03:49
+All right, well, it feels like a long time since we've been together.
+
+Unknown Speaker  03:57
+So yes,
+
+Matthias Miller  04:00
+I think just catch us up where it's new and exciting. We
+
+Speaker 3  04:08
+haven't this last week, we haven't done a whole lot. We've been pretty hammered with cut, yeah. So before that, I was working a fair bit on contract calculations, and I'm starting to pick up on that again as I wrap it up, cut over stuff, trying to nail down those calculations. Make sure, yeah, the structure we believe in. Okay, that's the main thing I've been working on.
+
+Speaker 2  04:40
+What about you all? I haven't done much at all with RTO this last week. Like you said with cut, I have been absolutely swamped with client scope stuff. We are untangling the biggest, messiest ball of nasty code you've ever seen in your life.
+
+Unknown Speaker  04:59
+The biggest, nastiest, what
+
+Speaker 2  05:03
+all of code, just all these macros that have accumulated over 20 years into this horrible thing. And anyways, I won't, I won't scare anybody with stories, but, but, yeah, but I'm done with that now, finally, so I oh and explore play. I told Matthias, but they sent Dwayne and I the stuff for our sandbox so I can start programming against that. So I'm excited about that. A bit sad that we do not have mock ups yet, though, but
+
+Speaker 1  05:38
+Jonathan, the hold up on that was my fault because I was supposed to sign a document that I didn't realize was supposed to sign. I was looking for it to be in digital signature anyway, so the hold up on that was completely my fault. So blame it on
+
+Speaker 2  05:50
+me. That's totally fine. I did not mind not having it in my plate yet because of super high priority client code stuff that needed to happen. So I was very happy to not have to do it this week.
+
+Matthias Miller  06:06
+Cool. So update from Dwayne and I, sorry, Sean, did you have anything else?
+
+Speaker 3  06:18
+Sure, yeah, not very, not very much necessarily. I've been working on the bills report or not report the bills record. That's kind of been the main thing, as well as few random things here and there a system switch, report, ask prompt, yeah, it's there's one more thing that I need to do, and then I'm going to pass it over to Nick for getting sales tax stuff figured out. So that's my update. All right,
+
+Matthias Miller  06:48
+Dwayne and I have been hammering out depreciation design. I don't know. Doesn't feel like some customer portal stuff, which and probably the biggest thing is overall, big picture on project, we're going to introduce another milestone. So Milestone One is Get, get zrt running side by side with, with RTO Pro as a read only system, milestone to get it operating as a live system, and then milestone three, spring go to market. So just being able to having another layer of triage that we can apply to what we're doing and trying fairly aggressively to we would love to have the have everything but trying fairly aggressively to say what, what really is necessary by when and prioritize it accordingly. So yeah,
+
+Unknown Speaker  07:58
+so does that look like? Just imports across. Yeah,
+
+Matthias Miller  08:05
+it looks like a bunch of expertise. I think I effectively, it's a SQL database. Mac has horrible support for it, so I poked around a little bit, but it's just, we'll probably end up needing to work in a running on a Windows box. I was just good, basically all I was going to do. So my plan was go, suck out the Go suck out the suck out a list of the SQL tables put in column headers with a SQL table name, double underscore, field name, and then go have Sean or somebody, go create, literally word for word, identical names and fields. Then create X 30s that read field names from column headers and import in. And so that'll give us, so I mean, it's kind of the, I mean, it's, it's like eto without the transform, like, it's like, Go, suck it out, go, load it in, RTO pro specific records. And then from there we can, we'll have the data in the system, and we can figure out how we need to transmogrify it to get it over into into our data model. Yeah.
+
+Speaker 4  09:20
+That
+
+Speaker 1  09:26
+needs to be, that needs to be a tab on the menu. We want the Transmogrifier tab.
+
+Matthias Miller  09:33
+That's right, it'll be in the marketing comes Transmogrifier included.
+
+Unknown Speaker  09:39
+Happened to read Calvin and Hobbes growing up? Did
+
+Matthias Miller  09:42
+you growing up, did you? No, it just slipped into the the investment tools formerly, I mean, the the software builders lingo, eons ago, and it stuck around
+
+Unknown Speaker  09:57
+a little bit like Portal salt.
+
+Matthias Miller  10:01
+Yeah, Dwayne. Dwayne had fun with salting passwords.
+
+Matthias Miller  10:11
+He puts salt in his alphabet soup.
+
+Unknown Speaker  10:19
+Good. That's so.
+
+Speaker 1  10:21
+So I want to add a comment here Seth regarding the auto pay stuff. Yes. Is it possible to have to have that stuff working by make a look at my calendar here, because I have an individual that I want to do a demo with the
+
+Speaker 3  10:40
+11th I mean, Nick said he's got it fixed, so Okay, hopefully that's the case. But I think if we update the system, we could update it today and you could look or you can wait and check tomorrow and see if it's doing what you expect. All right, very good. Yeah, yeah, we can, for sure, make sure it's ready by then, got
+
+Unknown Speaker  11:03
+it okay, because I
+
+Speaker 1  11:06
+don't know it's one of the it's one of the coolest things that's really easy for a customer or for a client to understand and fiddle around with. Some of the other stuff that's really cool in there is a little harder to understand and fiddle around with, but yeah, that is, that is by far,
+
+Speaker 3  11:23
+yeah, we still need to work on making so the auto pay makes payments, but that's another story
+
+Unknown Speaker  11:33
+right now. We have this we just wanted to look cool.
+
+Unknown Speaker  11:36
+Don't want it to actually work.
+
+Speaker 1  11:41
+I mean getting money in all reality, we got to have, we got to have, really have credit card processor working before we
+
+Unknown Speaker  11:51
+before we had to work. Oh, by
+
+Speaker 1  11:53
+the way, Jonathan, the plan actually is, I don't know how this impacts you, but the plan is to use explore plays ACH at this point. So just Just an FYI, that sounds good.
+
+Matthias Miller  12:15
+So I guess the question is, do you guys have Jonathan? You should be busy for the next week? Do we have that? Do you? Do you have resources that we should be filling up?
+
+Speaker 3  12:29
+Probably I am pretty clearly a bottleneck right now, but between trying to wrap up cut over stuff and trying to get part of the problem is that I'm wanting to take the contract calculations and be working on that, then I also need to be delegating stuff out. And yeah, I have more than more things on my plate the last month or two than I've had ever so we're trying to figure things out.
+
+Matthias Miller  13:07
+Okay, well, if there's, I don't know that I'm in much of a better position than you are. Probably it's bad or worse. But if there's a way we can, like depreciation could be a fairly easy, I think a fairly easy spec and handoff, and it could just start literally with building the macros for depreciation calculation based on different models. And I think that could be very easily, secondarily, a very easy go as perplexity and chat GPT, how maker, maker works in straight line. I mean straight lines, pretty simple, and we need a macro to say, basically, get back a probably, actually, the easiest thing would be to have it return an array of numbers with one number per month, and say what depreciation is based on month number across the term, and it's guaranteed to always return 12 times the number of years. So just say month one's this much, month two is this much month. So that'd be a very easy, delegable piece that somebody could start going off and building, and
+
+Unknown Speaker  14:24
+then we could tie off, tie out,
+
+Speaker 1  14:29
+if it, if it would be helpful. Seth, it would also make me feel really good. Is if the three you me and Matthias would just dedicate an entire design session for for calculation stuff, and just nail that thing to the wall.
+
+Unknown Speaker  14:43
+Yeah, that's right.
+
+Matthias Miller  14:47
+How soon would that be useful for you? Actually, let's do this. I think. Jonathan and Sean, thank you guys very much for what you're doing. I don't think we need to drag you through the weeds of all of this good. So holler, if you need anything. Looking forward to seeing what, seeing what shows up. I'm Sean. I did. I did. Did you see the mock up? I pushed over to you
+
+Unknown Speaker  15:08
+or not yet. Is it in the proposal?
+
+Matthias Miller  15:11
+It's in the proposal somewhere. It's under your name? Sure. Sure. Awesome. I'll look it up. Awesome. Thank you, sir. So Steph, how soon would you be far enough through your calculation stuff that'd be useful to do that?
+
+Unknown Speaker  15:32
+I mean, probably fairly soon. Not today,
+
+Matthias Miller  15:40
+Monday, Wednesday, Thursday of next week.
+
+Speaker 3  15:44
+We shoot for Mondays, and I can then I have a target to be working on. Okay? And, yeah, we've been just hammered with this massive clients continue the last few days. So I have put very, very little time into that. So I it's gonna take me just a little bit to get back into it and figure out where we are, but I'm hopeful I can do work on that most of tomorrow.
+
+Matthias Miller  16:12
+Okay, so let's do that. 230 Central, 330 Eastern, till
+
+Unknown Speaker  16:23
+let me call on one second. Hang on.
+
+Speaker 1  16:27
+I have an early cut off Monday. Let me go find out what the exact time is.
+
+Unknown Speaker  16:44
+I have to leave the office at three.
+
+Matthias Miller  16:47
+So let's do in 1245 is as soon as 1245 my time is so that takes us to 250 Wait. You have to leave at three ready, so we keep five. Yeah. Do you want to skip any of your team calls, or do you want to bump it to find a free Time on Tuesday?
+
+Unknown Speaker  17:10
+We can go to Tuesday.
+
+Speaker 1  17:22
+Oh, my, I would have, I would have between 11am and 2pm on Tuesday.
+
+Matthias Miller  17:32
+So can we do 2pm two sorry, 12. 30 year time, 1030 can we do? 1030 to 1211, 30 Central, 1230 Eastern. Is that good? Sorry, say that again, 1230 Eastern on Tuesday, 1230
+
+Unknown Speaker  17:59
+to two, yeah, yeah, that'd be fine.
+
+Speaker 1  18:05
+I just we might, might need to leave it. Might need to go to, like, 150
+
+Matthias Miller  18:09
+or something. Well, it's, or is it better to do? You want to do 12? I'm fine with 12. Okay, let's do 1212. To 130 and then if we have any straggling things to chase, all right? And then I don't know, let's just do that. And then Seth, how soon do you have development resources available for us to be doing more
+
+Speaker 3  18:34
+stuff, mixed workout, sales tax. So that's his big thing. Other than that, like, anything I can throw to Sean. It's great we have, I have a whole bunch of just small sort of wrap up, sort of things that I can keep having Sean work on, which is great to be doing. But if there's other higher priority stuff, I'm happy to
+
+Matthias Miller  18:56
+Okay, well, we're gonna, we're gonna triage, lean into to help triage stuff. Yeah, so that'll give us a clearer picture. Awesome. Thank you, sir. Hey, thank you.
+
+Speaker 1  19:05
+Yep. All right, before we get into triage, let me get this, let me get this sales tax off my brain and and you log it as as need be. Okay, so from I think that how often we repaying the database for validating sales tax should be a system switch, or a switch of some sort, a setting of some sort, that the company can decide. I don't, I'll go 365, days before, I'll go revalidate the database, or I will do it, you know, every single month.
+
+Matthias Miller  19:45
+Or do you want it as a number of days? Or just, you just want to, but it should be on the RTO? Do you want this in the RTO company or system switch?
+
+Speaker 1  20:00
+I guess it probably should be company, because one company may want to validate their database more often than the other, although, in the case of a management company, they're going to do this, this is going to be a setting. No, I think it's a system switch. I don't think it's, I don't think it's, what do you think you're jumping into this question? It's, a costing impact for tax chart to say how often we hit, rehit the database to validate that that sales tax rates have not changed.
+
+Unknown Speaker  20:30
+Why wouldn't you do it once a month? Cost,
+
+Speaker 1  20:36
+if you have depending on how many contracts you have, it really depends on what that cost will be. I think it's either one or two cents per ping.
+
+Speaker 5  20:45
+I mean, you could. So you're saying you would make it optional to the the entity,
+
+Speaker 1  20:50
+yeah, well, optional to the instance,
+
+Speaker 5  20:53
+like most people get a notice, like, we'll get something in the mail that says, hey, just to let you know, in October, West Virginia's tax is going to move to blah, blah, blah. Well, that would be the time to be like, Okay, let's set a reminder for you know, October 1 to ping it, because we know West Virginia's changing their tax zone, because you typically get a notice.
+
+Speaker 1  21:19
+But okay, so the secondary piece to this, I'm gonna think about this for the other whether this is system switch or company switch. The other part of this is that there is crossover on zone and number of customers or contracts in those zones. So I, what I really think we should do is we, you should. We should build a Okay, for the lack of a better word, an ex, a reporting on this that says, look up one address in every zone, validate it with with tax jar, because validating is free, it's a different hit on on the endpoint, validate those address and then ping those so that you're literally not pinging the entire database, because, if you
+
+Matthias Miller  22:11
+have you're not pinging for invalid addresses. Well, so no,
+
+Speaker 1  22:15
+it's not that you're not pinging for invalid addresses. It's that you're not pinging every single address, active address in the system, you're only pinging one out of every zone. So what this in my head, it's like, okay, if you were to run a report on all zones, all active contracts and what their sales tax zone is, you would pick one address out of that grouping and validate it and ping that one and then update everybody that matches that zone right as a as a way of limiting the cost of what it actually takes to revalidate the entire database. Let's do, are you understand what I'm saying?
+
+Matthias Miller  22:59
+Yes, I am I do what it doesn't catch is rezoning of addresses. Do what it doesn't catch rezoning of addresses?
+
+Speaker 1  23:08
+Well, you're saying if, if an address, if the address was changed,
+
+Matthias Miller  23:14
+no, if annexation and other types of stuff that changes rates do
+
+Unknown Speaker  23:25
+why wouldn't you like
+
+Speaker 1  23:31
+you keep poking holes in my idea. That's what he said. I'm that's what he's supposed to do. Ah, that's right. Okay. So then, okay, you're correct. So then, so then, in that case, then maybe we just go with the company gets to decide how often they reping the database.
+
+Matthias Miller  23:49
+Okay, here's, here's what I think, and I don't, this is not we need to determine scope. I think, I think what you're saying is re ping. I a option two is system switch with number of days until reping could be set to never. Option three, watch for notices and allow repinging subsets. What is cricket ballot? What do you guys want to do in the in the short term? What's your your plan?
+
+Unknown Speaker  24:29
+Manual, ping, okay.
+
+Speaker 1  24:32
+Option one should be okay. Option one, I think, the one that, the first one that I don't even think that should be an option, because that doesn't, it doesn't it doesn't handle addresses that have been rezoned. So let's, let's get rid of that one. So option one should just be manual pinging, like there is literally a spot where you go run a report that says, go check all of these address and if you decide to do that once a year or twice a year, that's up to you the second. Dairy. The secondary piece to this would be there's a system switch that says this thing's going to automatically re ping every 90 days, or every 60 days, or something like
+
+Matthias Miller  25:11
+that. And, I mean, this is basically just,
+
+Unknown Speaker  25:20
+that's right, is this spring the
+
+Unknown Speaker  25:24
+system switch? Yeah.
+
+Unknown Speaker  25:33
+I think both can be spring
+
+Unknown Speaker  25:36
+the manual pink. Yeah. In the
+
+Speaker 1  25:39
+meantime, we're just going to manually validate our, our, our tax zones. What do you think? Because you can, you can run reporting on the tax zones and the rates and go look it up against some database somewhere, manually. And we'll just, we'll update these. We'll update these accordingly, manually. Well, because, because, literally, at this point, at that point, we could, we could forego doing tax jar till the spring versus doing it now. It's another thing we can cut scope on. Sure, yeah, that's fine.
+
+Matthias Miller  26:17
+Is that fair? Matthias? Look at that, man. I mean, I'm happy. So we do need to back up Here then
+
+Speaker 1  27:01
+yeah and if we're going to do this manually, we're going to we're going to need to build some kind of reporting on, on, on zones in the system and their rates.
+
+Speaker 6  27:17
+Okay, let's do is probably
+
+Unknown Speaker  27:37
+okay. Do it
+
+Speaker 1  27:44
+okay before, before we get into to get taking the acts out. I think, I think one of the things that Leanne and I talked about this yesterday, after our our last call,
+
+Speaker 1  28:02
+I how do I say this? I think you're taking you probably have these, these deadlines as way more solid than I do as timeframe wise. I think that's good, but it's like the world's not going to end if we don't hit, you know, our companies into the side by side by the end of the year. Yeah.
+
+Speaker 5  28:30
+I mean, I I've been married to Dwayne for 25 years, so I'm kind of adaptable, and I'm not going to go up in flames. My head's not gonna light on fire or something like that if it doesn't turn out quite like we originally anticipated.
+
+Matthias Miller  28:49
+Okay, well, that's, that's fair enough. I'm, I'm, I'm happy to adapt, and I'm not gonna, we're not gonna, we're not gonna pull all nighters to make you happy. I'm going to be here negotiating scope and timeline
+
+Speaker 5  29:03
+to be doing that. So yeah, but I am going to
+
+Matthias Miller  29:08
+but I do love distinct targets and distinct deliverables. I think that's the only way to execute a project.
+
+Speaker 5  29:15
+Well, I absolutely agree, and I do think that there would be many advantages to being able to go into it at the first of the year, clean break, financial, accounting wise, all of those types of things. Yet it's not the worst thing if we have to back do some stuff, if it's later.
+
+Speaker 1  29:35
+So, yep, awesome. I mean, I think I think targets are good. It what I what I've sensed from you over the last couple calls is you, you are getting quite anxious about the idea of hitting some of these, these deadlines by the end of the year or spring. And I was like, Well, okay, it's not as I'm making it. Sound like we got to hit these things, but you know, without reason,
+
+Matthias Miller  30:05
+part of, part of the thing that's not your problem that's also affecting it has nothing to do with these timelines and the fact of completely unrelated to you, after having a fairly slow 25 everybody in q4, comes out of the woodwork and is like
+
+Unknown Speaker  30:27
+time to do it's like
+
+Matthias Miller  30:30
+the guy who has trouble, who both wants to is both goal oriented and sometimes has trouble saying no. Is like, All right, let's do it anyway. So I apologize if any of that bleeds over into pressure on this side. It's just there you go.
+
+Speaker 1  30:44
+Well, I mean, I think the pressure is good. Sure, what I what I my to be, to be very candid. I've when Matthias does his to me, it appears that you do your best work when like you don't. You're not staring at a brick wall going 60 miles an hour like there are, there are, there are better ideas that come out of your head when it's either that or make you mad. That's what go other good ideas.
+
+Matthias Miller  31:16
+Well, you're welcome to do that anytime. I really would prefer not to my brother has a mentor who said that that you will know the truth, and the truth will set you free, but first it will make you very angry.
+
+Speaker 5  31:32
+So I think I'm dealing with some of that right now. First it will make you very angry.
+
+Matthias Miller  31:42
+You You should ask Dwayne for the first part of our phone call on the assist thing this morning. I don't know that's relevant or not, but
+
+Speaker 1  31:49
+fortunately, you and Mark connected at a very deep level about something I frankly, was not listening.
+
+Matthias Miller  31:57
+I'll send it to you. I know
+
+Speaker 1  32:00
+there was something about truth and honesty, and all I remember is simultaneously, I was working on the pricing model and calculator, and it's like, oh, suddenly I heard Mark go, that's really good, something, honesty and something and I was like, What? What did I miss? And then he's like, you want some transcript? And I'm like, Okay, I wasn't listening.
+
+Unknown Speaker  32:27
+Yep, no, sorry. It's sometimes
+
+Speaker 1  32:30
+it's really hard to pay attention when Mark and drew are going,
+
+Matthias Miller  32:36
+all right, understand, all right. Well, let's go let's go dig. Let's go dig. Let's let's go prioritize. Yep, how's that,
+
+Speaker 1  32:48
+which I made numerous notes in here before the call, okay, on, on some things in the pm plan. Yeah. I think, I think cash sales, early payoffs, payouts and rent should if I was to have exactly what I want, those would all be part of accounting impact configuration. If you decide to assign all of those the exact same account, great. If you decide to split them into different revenue accounts, then great.
+
+Matthias Miller  33:25
+Is that fair? Yeah, I mean, I think it's perfectly reasonable.
+
+Speaker 5  33:32
+So why are charge offs not applicable to
+
+Unknown Speaker  33:37
+because charge off is not
+
+Speaker 5  33:41
+a revenue on the balance sheet. Do what it still needs to show up on the balance sheet, right off. It's lost revenue, it's lost inventory. How it's depreciation? How would
+
+Speaker 1  33:52
+you reflect it depreciation? Yes, depreciation zeroes out. But what from a revenue standpoint, all those other items were revenue
+
+Matthias Miller  33:59
+or expense? I mean, it's a lost building. I mean, it's a
+
+Speaker 5  34:02
+I don't I don't know how the accountants handle that, but I know that there is an accounting impact when we do charge offs, and I know that they, Paul prefers to do them at the end of the year, which always drives me bonkers, because then they're open accounts showing past due, rent forever and ever, when he knows in January he can't retrieve it, like just charge it off.
+
+Speaker 1  34:26
+So is that it is that a to do for me to go figure out exactly how we want to handle charge offs? Or do you have an opinion on this?
+
+Matthias Miller  34:33
+Well, I mean, I think the most fundamental question is, I'm assuming you expense it out. But yeah, is there? Yeah? Okay.
+
+Speaker 5  34:40
+I know it is in some way I haven't handled it, but yeah,
+
+Matthias Miller  34:45
+assume it's not some kind of contra revenue account or something weird like that. Yeah.
+
+Unknown Speaker  34:49
+Okay, so then you can remove my note,
+
+Unknown Speaker  34:55
+since it does have an impact. Yeah.
+
+Speaker 1  35:18
+Um, the other go back to that, because there's still a question there about this gainer sale and loss of asset. I really want to nix it, because even PD said he's not really doing it anymore.
+
+Speaker 5  35:29
+No, you need to talk to somebody like Philip before you completely Nix
+
+Matthias Miller  35:34
+it anyway. Go ahead like I just think, I suspect there's a lot of room for how you think about it, and I also suspect that there, I mean, there's always fractional differences that you have to square away somewhere. So how are you going to square away those fractional differences? Or is that other? You know, do you put in another revenue instead of gain or loss? But in my mind, why not? Why not give them settings on where to put gain or loss, and if they want to squirrel it away in revenues? It away in revenue, squirrel it
+
+Speaker 1  36:04
+away in revenue. Who cares? Okay, that's my biggest concern. Is that I like hold on. My biggest concern is that if you think it's viable to keep in then they have an ability to actually decide where it goes and how it's done.
+
+Unknown Speaker  36:20
+That's the that would be the biggest thing
+
+Matthias Miller  36:22
+the the other big thing is what happens. I mean, do we need to handle gain or loss? This is actually maybe a thought that we should consider, yes, we should. I think this is a little overkill, but consider having the separate gain loss based on contract closure events. And if you really want to say,
+
+Unknown Speaker  36:49
+you say a separate GL account, yes, you would, because you would have,
+
+Matthias Miller  37:00
+I mean, like a gain or loss on it. I mean, a charge off is just a loss, right? You're never going to have a gain on that payout or early payoff. If you happen to have a gain or loss in early payoff, it's or that's probably just a rounding error payout. Same thing, rounding error cash sale, you could conceivably sell it for less than the building is worth. Sure, and then what do you want to do with the gain or
+
+Speaker 5  37:22
+loss of that? Yeah, what and you're going to see that, especially we you saw that in the industry in like 2021 when buildings that were built in 2018 resold for more than what they actually cost. So yes, it doesn't happen all the time, but you want to be able to capture that. Yep.
+
+Matthias Miller  37:47
+Okay, so I think that's and again, we run the risk of having too many controls. But considering that you're dealing with accountants, Dwayne, this might be one for the system, I don't think there's too
+
+Speaker 1  38:00
+many controls when it comes to the accounting impact in this regard, impact. In this regard, everybody's opinionated on this thing. Did you need to add it, to do to that, to that whole thing?
+
+Matthias Miller  38:08
+Well, let's, I'm just moving it over into here, and let's get this thing broken out. And then let's break down the individual pieces. I also
+
+Speaker 1  38:17
+sorry I forgot to add my name to this, but the auto pay failures, I added notes in there too. Okay.
+
+Unknown Speaker  38:38
+Well, let's, let's,
+
+Matthias Miller  38:41
+I can't, I can't, I can't
+
+Unknown Speaker  38:44
+time to stamp your own stuff.
+
+Speaker 1  38:46
+Sorry. It was my it was my fault. I forgot. And if you want to prioritize that initially, I don't think it. There's no notes get assigned, sorry. Notes just get assigned to the as a note record, as a note type, and then let's just build reporting around auto pay failures, and it's something that somebody should run every single day. Okay, this is the i
+
+Matthias Miller  39:27
+Spring, yeah, yeah, yeah, okay. So when this becomes spring, I
+
+Speaker 1  39:31
+want to have agents and and that's going to be the correct way to do this. So yeah, that simple reporting around auto pay failure notes, and you just go handle it.
+
+Matthias Miller  39:42
+Database connector, that's actually sooner rather
+
+Speaker 5  39:47
+than later. That's what will import contracts from shed app. And
+
+Speaker 1  39:51
+no, that kind of No, no. This is, this is connected to the current RTO pro database.
+
+Unknown Speaker  39:56
+Well, that's essential. Yeah.
+
+Unknown Speaker  40:00
+In order to allow us to run side by side,
+
+Unknown Speaker  40:01
+can't do anything without that.
+
+Unknown Speaker  40:04
+We we can
+
+Speaker 4  40:06
+just straight up figure out the s, the SQL, exports and imports and and do it. Do it manually, but I don't really want to
+
+Matthias Miller  40:18
+auto pay validation to prevent users from paying too little and incurring late fees.
+
+Speaker 5  40:27
+I mean, I don't think we want to prevent them from that, though, because, I mean, you can that, but then you're forcing them to talk to a rep.
+
+Speaker 1  40:36
+No, this is, is this online or on account.
+
+Matthias Miller  40:43
+Okay, online, they will not.
+
+Speaker 1  40:44
+We're not gonna even allow them to do they would have. They're gonna have to be current, and they have to do full payments,
+
+Unknown Speaker  40:51
+or just for the initial online,
+
+Speaker 7  40:53
+like, if they're setting it up themselves. We auto pay for auto pay, but for for
+
+Speaker 1  40:59
+auto pay on the account. It's massive flexibility.
+
+Speaker 5  41:02
+There's a difference between auto pay and going in one time paying $20 right?
+
+Matthias Miller  41:08
+Well, technically that is a single, non recurring auto pay.
+
+Speaker 5  41:13
+So okay, if you're wanting to launch that way, I don't have a problem with it. If you're saying long term, there's going to be problems with
+
+Speaker 1  41:22
+that. You're saying you want a customer to be able to go into the online portal and set up a $20 per week,
+
+Speaker 5  41:28
+no auto pay. I don't mean a reoccurring auto pay, but we want them to be able to make a payment amount less than what they currently owe without reaching us, because otherwise you're going to get trapped in a conversation with somebody who works night shift and they never can talk to you, and they never can pay because that's due and they don't have enough to pay the whole thing.
+
+Speaker 1  41:50
+It's just, we need to put a note somewhere. It can be
+
+Unknown Speaker  41:54
+down the road like we can launch with it that way.
+
+Matthias Miller  41:57
+That's That's very different, but making a one time payment online of any amount. But you're not even suggesting a scheduled Are you suggesting a scheduled one that just a one time payment?
+
+Speaker 5  42:07
+No, just I want to be able to accept one time one offs. I don't want them to be able to set up a reoccurring debit for a stupid amount that's not going to be able to bring their account current. Yes. Grandma wants to pay $50 on their account. She should be able to do that.
+
+Matthias Miller  42:35
+I just think that's sanity, so I don't complexity. That's all. It is okay, but if they talk to a rep, and a rep sets them up for auto pay for that's $10 short. Are you? Are you comfortable with rep shooting themselves in the
+
+Speaker 5  42:47
+foot? Yep, because then we take that, we eat that in in house. Okay, I don't love that, but there are times and there are places, and we want to make sure that we can provide.
+
+Unknown Speaker  42:57
+Do we warn for it this auto pay schedule. It's hard
+
+Matthias Miller  43:02
+to warn
+
+Speaker 5  43:03
+because think so. I mean, you're saying you would put a you would put a lock on it so that you couldn't, well,
+
+Speaker 7  43:11
+it's, it's basically trying to remove the stupid factor. Is it a possibility that that could be an option if you wanted it? It's an option for the future. Matthias is what it really is. That sounds good. I mean, I think that it's a cool feature to figure out in the future, and it could be valuable
+
+Speaker 1  43:27
+for for December and maybe even spring. You can set up whatever you want. You can set up $10 per month, and if you set that up, Mr. Customer service rep, that was dumb
+
+Speaker 5  43:36
+on you. But I think that some of these types of things are things that are great to come out with later on. Hey, guess what? We've got this cool
+
+Speaker 1  43:42
+feature now validated that you can't do stupid with auto pay anymore.
+
+Matthias Miller  43:46
+Hey, we've just fixed the stupid
+
+Speaker 5  43:49
+problem you wish right now. You like to fix a few more for me. No,
+
+Matthias Miller  43:53
+that was part of Drew's complaint. He's like, Yeah, the problem is, software still can't fix people problems. It can't, but it can surface them, shine a light on them. Would
+
+Speaker 5  44:04
+be much better if we just deleted the notes. Then you couldn't see what somebody had said. It didn't wrong. I didn't know why we don't just
+
+Speaker 1  44:11
+delete the notes in RTO Pro, literal conversation in RTO Pro, you can set up a $10 per month auto pay if you wanted to. Right? Yeah, there's and then it doesn't tell you that was dumb or stupid. You could literally set up anything you want. Okay?
+
+Speaker 5  44:27
+Literally had an Amish person say that that one of our team members didn't remove notes that they told them to delete out of there. And I said, well, our team members know that deleting notes is something that they probably need to get oversight on and approval before they do. So that was actually a good fail safe, and that's not something they're going to get reprimanded for exactly.
+
+Matthias Miller  44:52
+Well, by the way, there's also activity Well, I guess that, and not if it's on the RTO side. But anyway, I
+
+Unknown Speaker  44:57
+know, yeah, unfortunately, you still can't tell why they took it out.
+
+Unknown Speaker  45:02
+So yeah, yeah,
+
+Speaker 1  45:04
+that can delete. Hard delete, yeah, thank you. Which one, yeah,
+
+Speaker 5  45:07
+restricted data. All right, moving on. What do we got next?
+
+Matthias Miller  45:11
+Okay, bills to manufacture, for purchase, buildings. This is not even thought through whatever, but
+
+Speaker 1  45:22
+January, January. We need to pay for buildings in some form or fashion in January.
+
+Speaker 5  45:28
+Yeah, I mean, you're talking about creating reporting to do that, or you're talking about, yes, being able to write checks in so, I mean,
+
+Matthias Miller  45:34
+we're not both. It's making bills that you can pay the both. The both is, if Dwayne wants to write a custom report to figure out what buildings you need to pay for, that's he's he's welcome to do that.
+
+Speaker 7  45:45
+That's what I figured. Yeah. But I mean, we do need to have some indication on the building whether it's been paid for or not, don't we?
+
+Matthias Miller  45:51
+In January, yes. Okay, right. Okay, the Swiss Army Knife Analysis Report, no spring future
+
+Unknown Speaker  46:06
+bring maybe even future.
+
+Matthias Miller  46:09
+I mean, we'll, we'll, we'll go through this when spring comes around. But Swiss Army knife of analysis, analysis,
+
+Speaker 7  46:22
+a, l, Oh, please. Y, s, i, s,
+
+Matthias Miller  46:28
+December, spring, 25
+
+Speaker 1  46:34
+invoicing, invoicing methodology we do need to have, we need to be able to to send out both email invoices. And is anybody doing invoicing or so? We would not spring, but we
+
+Speaker 5  46:51
+don't have to have we need the ability to email past due letters. Yeah, we send out payment booklets. We do not send invoices.
+
+Speaker 1  46:59
+Yes, past due, letter creation mass past due. Letter creation will, or, I should say, batch, batch is that definitely past due, letter creation is a thing, but, but batching invoicing needs to be by spring,
+
+Speaker 5  47:13
+because you think there's still some people who are doing, oh yes, yeah. PD, still does.
+
+Speaker 1  47:19
+I think, I think, yeah, like, literally, they're still doing, like, prints and,
+
+Speaker 5  47:26
+oh, gosh, oh, yes. Do you know how much trash people just throw it away?
+
+Matthias Miller  47:31
+Do you know how much paper there lives one of my clients has, literally has all of their design prints for all their manufactured products sitting in a file that's not fireproof. Digitally. Anyway, it's, it's enough to give you anxiety. The world lives on paper. Still, weirdly, okay, old industries live on paper, still, invoicing methodology. This is spring.
+
+Speaker 7  47:57
+It's, we will have a we will have a template. So we can, we need to have, I've already worked on building the template, and we can generate land
+
+Speaker 5  48:06
+because there are times that we do send an invoice manually to a customer upon request, sure,
+
+Matthias Miller  48:13
+but you can pull up the payment portal and hit print
+
+Speaker 5  48:16
+right precisely. That's all we need. Print a PDF, and that's it.
+
+Speaker 1  48:19
+But the thing that we the batch letters. We do need to have a batch Well, this will be a letter, but building out a the coupon, the whole packet that we currently print, we're going to have to figure that one out. And I think, I think most that's just figuring out the macros, and some others. I think I'll need your help on that Matthias, because actually generating the coupons to be the length of the contract is probably going to need some, some better help than I can is this, it's, we need to see, it's,
+
+Unknown Speaker  48:55
+it's a, it's a nick build, or maybe even a Sean build, I'm not
+
+Speaker 5  48:59
+even sure, but that will need to be fairly close to the beginning. We won't have as many new contracts, but we will have, you know, we will have some through the winter, and that is a the first interaction with customers after their welcome call, is mailing that packet that explains, again, their contract, that gives them all the different payment options that they have, that outlines Damage Waiver if they haven't had it, and we insert some labels as well if they are the kind of person that wants to mail it in, but most people don't. The amount of mail we get today is so much less than it was 10 years ago.
+
+Matthias Miller  49:40
+Thank goodness. Logistics,
+
+Speaker 5  49:46
+um, that that can actually, that could actually be spring, because if we can do pick up letters, as long as we have a letter, temp. What that would be that can be emailed out manually, and just like we do with RTO pro at this point, like, I mean, we want to have the logistics integration, but it definitely doesn't have to be for go live.
+
+Speaker 1  50:13
+The only thing I'm going to say about the whole logistics thing is that we just need to make sure that we have all the functionality in order to consider a building in stock and no longer connect repo like, like, we have the whole like, the building's been repoed. We know that it's now in stock and needs to be resold. It's like, that functionality from a from a product and contract standpoint, needs to be correct. But the actual tracking its location, or having logistics records, or some of those that that's spring mm, we
+
+Matthias Miller  50:44
+think that's happened inherently, but I want to think about it now. But right, okay, external contract submission
+
+Unknown Speaker  50:54
+spring, or maybe beyond spring.
+
+Unknown Speaker  50:57
+What do you mean by that?
+
+Speaker 1  51:00
+A portal that someone can actually, dealer can hit and go enter them like, kind of like, what? Yeah. Sterling structures has always grumbled, yeah. Now we might, we might actually, we might actually just give Sterling a way to be a restricted user on the platform and come in and enter their contract. But we haven't even to some.
+
+Speaker 5  51:23
+Listen, the people at Sterling are special. Yes, they are very special,
+
+Speaker 1  51:28
+document handling for social security numbers and driver's license. What does that mean? I don't know. I mean, it's are we talking about the physical documents, or are we talking about the viewing of like, because I thought we already had PII set up,
+
+Speaker 6  51:52
+I'm going to put this in s3 does need to be set up. 580,
+
+Speaker 7  51:56
+and that's probably a Josh thing. Wouldn't it be? Yeah, we do have to have attachments?
+
+Matthias Miller  52:01
+Yes, by December or January,
+
+Speaker 5  52:07
+whatever the transition point is, just to make sure that house those attachments as
+
+Speaker 7  52:11
+they come across. The moment we want to start pulling data
+
+Unknown Speaker  52:15
+across. There's tons of attachments. Yeah,
+
+Matthias Miller  52:18
+oh, you want to sync attachments as well, is what you're saying. Well, we have
+
+Speaker 1  52:21
+to have access to their, their their PDF contracts
+
+Speaker 5  52:24
+right now. In RTO Pro software, everything lives as an attachment there
+
+Matthias Miller  52:31
+that do you have any idea how it's stored
+
+Unknown Speaker  52:35
+PDF documents in a big old file
+
+Matthias Miller  52:37
+with a folder with all kinds of documents, yes.
+
+Speaker 1  52:41
+And I think, I think the name of the document denotes what, what account it gets tied to.
+
+Unknown Speaker  52:49
+That's wonderful, indeed.
+
+Matthias Miller  52:51
+Can you? You can't. Are the names unique across history?
+
+Speaker 7  52:56
+I think so, yeah, because I think, Well, like I said, it's tied to the contract number. I
+
+Speaker 5  53:01
+think it either is going to have either account or contract number or both on it,
+
+Unknown Speaker  53:05
+yeah, okay, if I remember correctly.
+
+Matthias Miller  53:11
+This respect,
+
+Matthias Miller  53:21
+ask me about adjusting due dates backwards past the latest due date.
+
+Speaker 1  53:25
+I still don't quite understand that question, but maybe it's a great time for you to since Leanne sitting here.
+
+Matthias Miller  53:32
+I mean, it's all about due date overrides.
+
+Speaker 1  53:35
+So if let's say, for example, do you ever adjust a due date backwards?
+
+Unknown Speaker  53:42
+Well, don't think so. Only ever forwards. You've never went.
+
+Matthias Miller  53:47
+What if? What if you say, hey, I want
+
+Speaker 5  53:50
+to buy we've ever done backwards is when we did a forward to tell somebody like a long time ago, we used to have to sometimes do that because of the functionality that wasn't available in RTO Pro, but I don't know that we have done it ever anymore.
+
+Matthias Miller  54:06
+I mean, you would never do it before the actual schedule, you might say, customer might say, can I have 10 extra days? And you're like, Yeah, sure. And then they come back and say, hey, I can. I can get back on schedule now, and you might revert it, right? Or no,
+
+Speaker 5  54:19
+theoretically, yes, it's not not. It's a very much of an outlier, but hypothetical.
+
+Unknown Speaker  54:29
+Yes, okay, um,
+
+Unknown Speaker  54:50
+would that be the incurred due date? I
+
+Matthias Miller  54:56
+forget exactly how we're planning to do this. I.
+
+Unknown Speaker  54:59
+It worries
+
+Speaker 5  55:00
+me. Why? Well, what's the incurred due date? Because, what are you? How are you using that?
+
+Speaker 1  55:06
+We look at a period. We look at the when you hit a due date, it creates an incurred amount on the contract. Right? The incurred amount then gets paid. So this is how we actually can produce AR accounts receivable on the in accounting reports. So in theory, you wouldn't be able to back date beyond an incurred time frame, right? That's the that's the core question, isn't it,
+
+Matthias Miller  55:33
+Matthias, but it's not due until. I mean, in what universe are you going to say that your money is receivable before the contract states that it's receivable,
+
+Unknown Speaker  55:43
+you're not like, I don't that doesn't make sense.
+
+Unknown Speaker  55:48
+What am I missing doing this
+
+Speaker 1  55:50
+would? This would take place after, after it's in, it's like, it's due, and for whatever reason you would want to back up. Why you would want to back up? I don't know. I'm sure somebody could think of something that's
+
+Matthias Miller  56:03
+fine. If it's due, you can move it back up until the earliest date that the contract allows it to be backed up to. But if, if you're on a 12 month, if you're on month 12, and normally your your your payment is due on December 15. Based on your payments that you've made, you can't make it due on the 10th.
+
+Speaker 5  56:27
+So I just, I'm going to walk you through one we have this conversation frequently with customers. Is I'm going out of town. I want to pay my account. Can I pay it before it's due? Well, yeah, of course. But it just goes for the next month a friend. So just making sure that that's like you're paying to this date and when I pay the next payment, it's going to pay the next 30 days. Doesn't matter if I pay it 10 days early or not. That doesn't change anything. You just paid it in advance. No big deal.
+
+Speaker 1  56:54
+Yep, yeah. Have we ever, have we ever thought through from payment portal how we're going to handle
+
+Unknown Speaker  57:02
+that from a from a
+
+Unknown Speaker  57:03
+Jonathan, the current payment portal,
+
+Speaker 7  57:05
+the Not, not currently do, but they could still make, we had talked about having a, you can
+
+Unknown Speaker  57:09
+create period or something.
+
+Matthias Miller  57:11
+No, you can, I don't remember how, what we decided on the payment portal. I think, I think the idea was you would
+
+Unknown Speaker  57:18
+just pay the pay an amount,
+
+Matthias Miller  57:20
+pay a big amount for a period, overpay for the period, potentially. But
+
+Unknown Speaker  57:24
+if there's no period that's due, I think currently the
+
+Matthias Miller  57:27
+portal shows, we show always one more. We always show one period past. Oh, good, yeah, then you're fine. One available period. Next
+
+Speaker 5  57:34
+available period, your next payment of blank dollars is coming. I might be
+
+Unknown Speaker  57:37
+wrong, but I don't think that's what's currently happening.
+
+Matthias Miller  57:41
+Well, you might be right.
+
+Unknown Speaker  57:43
+It's something we need to look into, where it
+
+Speaker 5  57:46
+just shows your net. It can show the next until you know the 18th and it will be this amount would be helpful.
+
+Matthias Miller  57:55
+Let me just shoot Jonathan a message.
+
+Speaker 1  57:58
+I haven't looked in a while, so maybe he did some magic since then, once
+
+Unknown Speaker  58:18
+you're done with your message,
+
+Speaker 1  58:20
+let me know, because there's another piece I want to add to this. Go for it. I don't think we yet have a way to quote move due dates.
+
+Speaker 6  58:30
+No, okay, I think
+
+Matthias Miller  58:39
+this is a spring. I mean this, this would be a January thing. I think the idea was you would, you would have an x 30 button to do a due date override, and you would create a note, and you'd have to offer some kind of explanation, and there'd be a note tied to the contract. You
+
+Unknown Speaker  59:06
+you want to force a note every time you do a due date change.
+
+Matthias Miller  59:11
+This would be a due date change based on anything different than obviously, if you pay three monthly payments at once, your due date changes automatically, assuming
+
+Speaker 5  59:20
+only if you are deferring rent without payment. Yep, then it should have a note.
+
+Speaker 1  59:28
+Does that get logged in the RG, that the payment? RG,
+
+Unknown Speaker  59:36
+I'm not quite sure how to how to represent it.
+
+Unknown Speaker  59:40
+So, so it kind of needs design here.
+
+Matthias Miller  59:44
+Hang on, Jonathan says he's not handling it because he doesn't know how it's supposed to be handled in the in the RG, so you're right, or in the database. So. When you make three repayments, if you, if you pay three months at once, shouldn't we auto create the future periods for you and just mark it as paid prior to them being due?
+
+Speaker 5  1:00:18
+You're you're saying, if someone pays in advance, you would create that period, and you would pay November and December and January. Yeah, correct, yeah, yeah.
+
+Speaker 1  1:00:29
+This whole period thing, some days, I wish we would have never went down this road, because it introduces
+
+Speaker 5  1:00:34
+complexity, yeah, but it solves a lot of questions. It solves a lot of other problems and issues. Yeah,
+
+Speaker 1  1:00:40
+you're correct. Matthias, your question is, is the right way to go?
+
+Speaker 1  1:00:50
+Because some days I like that the simplicity of RTO Pro, where you could move due dates wherever you want to and you could,
+
+Speaker 5  1:00:56
+yeah, but it also creates the mess that makes it hard for accounting to
+
+Unknown Speaker  1:01:00
+work? No, that's very true.
+
+Speaker 5  1:01:03
+Then you have nightmares on the accounting side when you're trying to make sense of what actually happened. So pick your nightmare.
+
+Unknown Speaker  1:01:12
+Okay, keep going. I
+
+Unknown Speaker  1:01:13
+think this is good. This is this good.
+
+Speaker 5  1:01:22
+I Okay, and that's actually required, like in the state of Indiana, we have to do that, right? What do you mean? If someone pays more than their month of rent, we are legally, contractually required to pay future periods,
+
+Speaker 1  1:01:37
+right? Because you can't store the payment, because you can't store the the
+
+Unknown Speaker  1:01:42
+additional more than equal to a month of rent.
+
+Speaker 1  1:01:49
+Oh, by the way, total side note in assist, the dollar value that the limitations on the contract actually look at are post sales tax. I think we should fix it at some point, but I had to go finagle, Indiana, so it could actually be a $25,000 building as a subtotal versus 25,000 after sales tax. Sales tax is irrelevant when you're writing an RTO contract,
+
+Speaker 5  1:02:18
+so I think it doesn't really matter either way. The point was not the actual dollar amount, but ridiculously
+
+Speaker 1  1:02:24
+expensive. I wanted you to know this. I wanted you to know that so that because everybody in the office understands it as a subtotal number, and it's not currently so
+
+Matthias Miller  1:02:39
+here is my proposal on due date adjustment that we have a field on the contract that says, basically deferred due date by Number, deferred due date by number of days.
+
+Matthias Miller  1:03:01
+Okay? And when we calculate next due date, we look at that, well, actually,
+
+Speaker 1  1:03:08
+that's hard to like do math to figure out if you want
+
+Matthias Miller  1:03:11
+to, but we entry. Entry doesn't. It won't affect entry.
+
+Unknown Speaker  1:03:14
+What do you mean? Oh, you're saying,
+
+Unknown Speaker  1:03:18
+you're saying number of ways. Well, I don't understand
+
+Matthias Miller  1:03:25
+on the, no, oh, this is horrible. I kind of think you want to have a setting on the when you incur a rental fee that says, here this guy,
+
+Unknown Speaker  1:03:57
+Hey, Dwayne, close Your eyes. It's gonna hurt. I know there's stuff everywhere
+
+Matthias Miller  1:04:04
+in the due date column, or maybe it's somewhere else. But we have a field that says defer, you know, days deferred, that bumps out the due date this many days forward. And then we give you a button to say, I want to move the due date to X, Y or Z, and it changes the next open rental. It defers those.
+
+Speaker 1  1:04:32
+So I'm the customer service rep, and I need to move this due date. Am I putting in a number of days, or am I putting in a date? Do
+
+Unknown Speaker  1:04:43
+I want to put in a date.
+
+Speaker 1  1:04:47
+Yep, if you need to calculate days from the last port and use that for something great, just hide it or put it in the RG after it's done. I don't care. It's going to be confusing. In other
+
+Speaker 5  1:04:57
+words, you want the service rep to be able to say, Okay. You don't you can't pay until the 20th of every month. No problem. Your due dates the 20th. That's right.
+
+Speaker 5  1:05:17
+And then one of the things this is probably does not even need to be said, because I know the reporting capability of this is ridiculous, but being able to report on dates that were moved is an important part. Well,
+
+Matthias Miller  1:05:31
+right? And you could then go ahead, well, the I guess here's, here's one question I have with this, the I forget what the better term is, but the free cash like,
+
+Unknown Speaker  1:05:46
+right? We don't want to call it that
+
+Matthias Miller  1:05:50
+the I mean the deferred the deferred rent liability. I mean it's basically deferred rent liability, or deferred
+
+Unknown Speaker  1:05:57
+liability, deferred rent liability,
+
+Speaker 1  1:06:01
+or even if deferred rent value, even if dollar value, or something like
+
+Matthias Miller  1:06:05
+that. Well, I mean deferred rent as a liability account, yes, yes, right, yep, to show that
+
+Speaker 5  1:06:14
+things that you should have that should be factored in there. And I don't know that RTO will pro ever has done if I take an account and I defer rent, when that person goes to pay off they really should have to pay for the rent of the month that they deferred because they use that building. That's not EPA, but I know that. I don't think we've ever had it calculated that way. So I'm not saying we have to necessarily change it, but for the most part, we don't see customers abusing it, but or sales or reps customer service reps abusing it. But there have been occasions where that has
+
+Speaker 1  1:06:51
+happened. Well, I mean being able to report on that based on the customer service rate would be nice, right? But the liability account are you? Are you positive? Are you proposing to track this on an on a accounting side,
+
+Unknown Speaker  1:07:07
+yeah,
+
+Speaker 5  1:07:10
+on the balance sheet. I mean, it should be, that's what the that's what they call a free rent of or what do they call it an RTO Pro. You're gonna
+
+Speaker 1  1:07:21
+have some rent to own companies that says, I don't want to do that. Can, can if, if, if you, if, in the accounting impact, you put no account in there. Does that mean we just ignore it? What do you mean? There's going to be some rental companies that go, I don't want to see that on my balance sheet?
+
+Unknown Speaker  1:07:41
+Like that? Much you're giving away? Well,
+
+Unknown Speaker  1:07:42
+yeah, but not everybody's gonna just with you
+
+Matthias Miller  1:07:45
+put it into AR,
+
+Unknown Speaker  1:07:49
+yeah, it would be going
+
+Unknown Speaker  1:07:51
+zero out. Yeah, you could
+
+Unknown Speaker  1:07:52
+100% do that zero out. How?
+
+Unknown Speaker  1:07:56
+If you put it into an accounts receivable,
+
+Unknown Speaker  1:07:59
+yeah? But when would it zero out when the building's paid.
+
+Matthias Miller  1:08:04
+So technically, what we should do is, every time your monthly payment literally becomes due, we create an adjustment to AR and they create an additional adjustment for deferred rent. If we're deferring your rent by X number of days,
+
+Speaker 1  1:08:18
+just note that no RTO company that's currently using RTO Pro does this right now. Nobody's tracking this, and this is going to be like, shockingly, the bottom left hand corner, nobody's importing it into
+
+Speaker 5  1:08:30
+their books. I wouldn't say that nobody is, but probably most people aren't. Most people are free money or something
+
+Speaker 1  1:08:36
+like, yes, free money. So the question then is, if an RTO company says, I don't want to look at free money that way, Ken, is there a way that we can just straight up ignore it?
+
+Speaker 5  1:08:54
+Well, they just want to bury it. They don't want to acknowledge that they're actually giving away that much rent. Is that what we're saying, like, you listen, then, you know, entry it away,
+
+Unknown Speaker  1:09:05
+okay, where to
+
+Unknown Speaker  1:09:09
+ask my accountant? Is that where you're going
+
+Matthias Miller  1:09:11
+to journal into, post it to AR, that's
+
+Unknown Speaker  1:09:15
+where it comes from. AR, yeah,
+
+Speaker 7  1:09:18
+that is the answer, yeah. But how do you ever, how do you ever zero it out? When them buildings pay,
+
+Matthias Miller  1:09:24
+it'll all happen automatically, because it posts to AR. You're gonna have a bunch of zero entry or never showing up. Okay, if you really think Dwayne, I could give you a checkbox if you really want this or allow it to be blank,
+
+Unknown Speaker  1:09:38
+checkbox where,
+
+Matthias Miller  1:09:41
+whether you want to, you want financial reporting on deferred rent over you can say, Oh, you don't want deferred rent. That's really weird. You're such a slut with managing your money, fine. Put it in AR. You won't see it.
+
+Speaker 1  1:09:54
+Are you saying as a part of accounting impact record? Yes. Okay, please, yes. Do. You want to check off, I promise you, some RTO company is going to be like, Oh, wait, it would never I'm like, the brain's gonna start glitching.
+
+Speaker 5  1:10:09
+I mean, if RTO companies weren't doing depreciation at all, then you definitely
+
+Speaker 1  1:10:12
+yes, like, so let them turn it off if they want to. And then one day they'll be like, you know, we turned that on. I'm really glad we did, and now we understand it and blah,
+
+Matthias Miller  1:10:21
+blah, blah, no, they're not. They're going to turn it off me, like, Oh, finally, the system works, and then they'll forget about it exactly and never want to look at it
+
+Unknown Speaker  1:10:28
+again. But here's the thing, you and I get paid the same? Well,
+
+Unknown Speaker  1:10:35
+that's debatable.
+
+Matthias Miller  1:10:39
+No, actually, I mean, compensation is really effective anyway, let's not we'll shut up. Okay, so how about this? Stop carry on. Yeah, thank you for keeping us
+
+Speaker 4  1:10:51
+on task. Hey, we've been doing really good. Okay, so
+
+Matthias Miller  1:10:55
+this is my proposal for deferred rent. I think I'll have to check with Seth to make sure he likes it. But basically, we have a button. Have a button that says new due date and an explanation which is required, and it automatically creates a note that says, With this information, deferred rent by X days from a from deferred rent from X to Y for Z days, and with users supplied explanation,
+
+Unknown Speaker  1:11:30
+we should have you on these calls more often. There's valuable information,
+
+Matthias Miller  1:11:35
+and this would be a January thing,
+
+Unknown Speaker  1:11:39
+right? Yeah, yes,
+
+Unknown Speaker  1:11:42
+January 1. Well, spring's
+
+Matthias Miller  1:11:45
+gonna launch in April 1. So there's that,
+
+Speaker 1  1:11:50
+listen, I've been telling people late spring, so
+
+Matthias Miller  1:11:53
+that's all the way out to May, right?
+
+Unknown Speaker  1:11:57
+I was June. I was thinking, June
+
+Unknown Speaker  1:12:01
+have you? Yeah, June is
+
+Unknown Speaker  1:12:03
+June weddings are considered spring weddings. So June the 30th
+
+Unknown Speaker  1:12:06
+is not a considered summer weddings. Yeah, the
+
+Matthias Miller  1:12:09
+the practical and the and the technical definition of spring and summer all the seasons is just really baffling to me, because that's not how my brain works. But, yeah, anyway, 855 No, that's January. Hang
+
+Speaker 1  1:12:21
+on. Okay, we gotta, we gotta think for a second, if we can actually launch this to market, fully functioning the way it's supposed to be, by one year's timeframe, we are insane.
+
+Speaker 5  1:12:34
+I wouldn't say insane. I'd say that's a mark of being really smart and accomplished and
+
+Unknown Speaker  1:12:40
+working with. Think there's some
+
+Unknown Speaker  1:12:42
+inside people. I don't think that's insanity.
+
+Matthias Miller  1:12:44
+No, it's the way, no, if you look at the level of Okay. Anyway, little side note, most of the world is 90% of the world is incompetent other jobs, regardless, the software field is no exception. And if you can work with the top, even 10% your life is going to be dramatically easier. So
+
+Speaker 1  1:13:04
+side note, I did tell you the comment from JMAG was that we're building the NetSuite for we're building NetSuite for the RTO industry. Did I say that to
+
+Matthias Miller  1:13:12
+you? Ah, that's a great marketing line.
+
+Speaker 1  1:13:15
+That was, that was their comment after using, okay, the good parts about NetSuite, let's not talking about the bad parts about NetSuite, but they said, like, this is just, there's, there's a lot of similarities between this and NetSuite. It's like, you guys are building the NetSuite for the RTO industry. Wow. Okay, I'll take that as a giant compliment.
+
+Matthias Miller  1:13:35
+Okay, I think we had something for forgiveness,
+
+Unknown Speaker  1:13:38
+late fee. Forgiveness.
+
+Speaker 5  1:13:40
+Has anybody ever talked about this is down the road further, but rent to rent?
+
+Speaker 1  1:13:45
+Yes, it's got, it's a it's a spring thing, maybe not even, maybe not even a spring thing. It might be a summer thing. Yeah, just making sure we already have the recording for RTR. It's RTR, by the way, it's not RTO. It's not right, it's RTR, yeah. By the way, do you know what comes after RTR? Matthias, what traditional financing recording? I already have a company that wants to do it. Dude, yeah. They want to be able to run RTO and their traditional financing side of the business inside of the same software this client, if I can convince them, this client might be a whole custom built for a a POS side of it as well. Sweet.
+
+Matthias Miller  1:14:33
+Which POS acronym do you mean? Sorry? The okay. I'm just being stupid. I
+
+Unknown Speaker  1:14:43
+Yeah, point of sale.
+
+Matthias Miller  1:14:48
+I think we have the spec for forgiveness, but I'm going to put this. I think we should actually. I note this
+
+Unknown Speaker  1:15:09
+blast your ears out over that one. Yeah, I know you should hand
+
+Unknown Speaker  1:15:12
+out your plugs, your plugs that were needed.
+
+Unknown Speaker  1:15:15
+I'm going to grab this real quick because it's Alexis.
+
+Matthias Miller  1:15:22
+I so we had talked about having an audit log for deferment, an audit log instead of notes.
+
+Unknown Speaker  1:15:35
+Where would the audit log go?
+
+Matthias Miller  1:15:37
+Just in an RG on the contract
+
+Speaker 1  1:15:41
+for deferred, for deferred late, or is it late fees,
+
+Matthias Miller  1:15:45
+deferring moving due dates? Oh,
+
+Unknown Speaker  1:15:52
+but you were talking about putting in the payments. RG,
+
+Matthias Miller  1:15:57
+just yeah, this is just Yes, but you were saying, but
+
+Unknown Speaker  1:16:01
+that says deferred fees.
+
+Matthias Miller  1:16:07
+Well, this, I mean, that's what it means. I don't know. I think, I think you were wanting to say, be able to have a report where you say, where you can more easily report on, just specifically, what happened?
+
+Unknown Speaker  1:16:20
+Can that be pushed off till spring? I don't
+
+Matthias Miller  1:16:24
+know why we wouldn't just field it if you want it.
+
+Unknown Speaker  1:16:26
+Okay, how are we going to field it,
+
+Matthias Miller  1:16:30
+just an RG and have the x 30 fill it in.
+
+Speaker 1  1:16:41
+Okay? In theory, in the payments, RG, a late fee is incurred. If it's not paid, then obviously it's we don't know whether it was deferred, or we just know that it wasn't paid, obviously, if they did, if they made a payment, but it was not paid. Obviously, it was deferred. So in theory, we already have a somewhat of an audit thing going on.
+
+Matthias Miller  1:17:09
+I think the only thing we would actually have to do is, if you wanted to put the user, you know, days deferred, and then the,
+
+Speaker 1  1:17:20
+I feel like this, that whole that right there is spring, I think, or at least post January. Okay, I'm a little bit scared about, once we get data in there, we start working, that we're going to be like, what were we thinking when we did this? Like, that was dumb. Can we get rid of that and make it this instead? Kind of a stuff,
+
+Matthias Miller  1:17:49
+what us never spring 1675, we do it on scheduled future, and we can grab stuff out of there when we get free time, um, fee forgiveness, we already handled sales tax payments. Do we need to handle sales tax payments? That would be in January, right? What
+
+Speaker 1  1:18:11
+do you mean by sales tax payments? Obviously, you have to being able to pay sales tax. Well, you have to pay sales tax. It's got to come out of accounting some point.
+
+Matthias Miller  1:18:17
+I think it's already handled in bills. I don't think we need to. We already expect it for
+
+Speaker 1  1:18:25
+bills the only at some point, by January, we need to have CS reporting that you can export as a CSV file to push in.
+
+Matthias Miller  1:18:35
+That's fine. You can build that.
+
+Unknown Speaker  1:18:38
+You're probably right. As
+
+Speaker 1  1:18:41
+long as we've got good helper macros, you're probably right. And if
+
+Unknown Speaker  1:18:45
+not, we'll get you the macros. There you go. And
+
+Matthias Miller  1:18:49
+we'll get a request on a Friday afternoon, last Friday of the month, or the first, you know, whatever. Hey, can you build? Can I get a macro for this report thing? Email, bobber. And we'll like, Yep, here you go. You're like, thank you. And then we'll like, okay, along
+
+Speaker 1  1:19:02
+with the trans Transmogrifier. Yep, exactly the thing about bobbers.
+
+Matthias Miller  1:19:06
+Okay, so that takes care of that RTO pro connector. I'm gonna leave at the top here that that needs we do checked entry that seems legit like we probably should just gonna mute this guy.
+
+Speaker 1  1:19:24
+And as far as first, first round of contract entry is exactly what we had, I really liked the idea of through a dashboard, all all things visible,
+
+Unknown Speaker  1:19:36
+really like that.
+
+Matthias Miller  1:19:39
+Okay, I feel like a contract closure has to happen for January as well. I feel like we can leave it here. Customer Portal is January.
+
+Speaker 1  1:19:51
+It's not January. It's probably February.
+
+Unknown Speaker  1:19:57
+Okay, even better. Well,
+
+Speaker 1  1:19:58
+maybe if we're going. If we're gonna run side by side with RTO Pro. I mean, right? You know, in all realism, you know, we're gonna have some time frame there. But, yeah, it's, it's, it's not, it's not end of the year. It's not end of it's somewhere maybe towards the end of January, beginning of February. Let's do this.
+
+Matthias Miller  1:20:38
+I can't tight, we are maxing out this. RG, that's 755,
+
+Matthias Miller  1:20:55
+let's not think about that. That's a that's also a January thing, 665,
+
+Unknown Speaker  1:21:09
+Dwayne's notes.
+
+Speaker 1  1:21:17
+Oh, just the dashboard thing you can straight up get rid of we've already worked a lot on. Worked a lot on on dashboard stuff and and we're going to probably work more on in the future, but that can be
+
+Unknown Speaker  1:21:27
+just moved well.
+
+Matthias Miller  1:21:31
+I mean, everybody lands on the homepage if they want. If they should land somewhere else, they should just bookmark a different page in their browser. Okay, let me see if I
+
+Matthias Miller  1:22:27
+let's post copy commands. I mean, okay. I
+
+Matthias Miller  1:22:57
+um, what time do you wait? I mean, is this blue sky? What are you? What are we? What are we? What are you talking about? You said you want to be able to control this or an inactive time. Can we find a logout point for anyone that is inactive for a certain period of time? I mean, we already do. I don't know what it is, but do,
+
+Speaker 1  1:23:29
+can we just scrub those notes for right now? I don't, there's, is there anything here that there's so much that's taking place since July that I don't even, I don't even know that. Obviously you already have the database connector thing.
+
+Speaker 5  1:23:48
+Are you talking about from a daily standpoint? Are you talking about from a I don't
+
+Unknown Speaker  1:23:53
+remember what it was about. Are, you know, we
+
+Speaker 5  1:23:55
+hasn't used it in four months that they're no longer a user?
+
+Speaker 1  1:23:58
+No, I think it had more to do about, about where they land when they come in, and so I wanted to force them out so that they had to come back in. So it's, it goes to this whole conversation about, how do you ensure that a like our RTO people are actually looking at the dashboard and seeing their notes or something like that,
+
+Speaker 5  1:24:21
+that when you're working, I mean, I'm assuming it's going to work just like assess after you log in, you have to come back in and put in your Gmail account.
+
+Speaker 1  1:24:28
+No, I'm talking specifically talking about making sure people are looking at the notes that are assigned to them. It is, it is, I want, I wanted to force visibility on it so that people actually make sure that they
+
+Matthias Miller  1:24:41
+follow up. Well, you can, you can sweet talk Josh into saying that, I really want to just
+
+Unknown Speaker  1:24:46
+tell you to throw it down in history. We're going to exhort
+
+Matthias Miller  1:24:49
+I want to know, can I put this is there any of this stuff that's relevant? Can I just throw all this stuff into like, blue sky?
+
+Unknown Speaker  1:24:57
+Well, I kind of think we just want to. You to delete it you
+
+Matthias Miller  1:25:03
+think it's completely irrelevant. Okay,
+
+Speaker 1  1:25:07
+I don't know what. What's the second thing need to map out hauling charges incurred. That's definitely future blue sky stuff. I mean,
+
+Matthias Miller  1:25:14
+do you want to delete it? No, so let's put it in blue sky and we'll deal with it, or either blue sky, or we'll sort it in spring, and we'll figure out what needs to be done in spring. Right, right or No, right, correct. Thank you. That's the correct answer. Leanne has trained you well. That was a joke. Okay, so look at that. Contract entry, contract closure, this is spring. Let's do this though.
+
+Unknown Speaker  1:25:53
+Contract closure is spring. What
+
+Unknown Speaker  1:25:58
+January? I mean?
+
+Unknown Speaker  1:26:00
+Yeah, it's gonna say, sorry, Jane, you very
+
+Matthias Miller  1:26:19
+I really don't feel like accounting impact, generally speaking, is going to be, is that going to be? December? Ish, December ish.
+
+Matthias Miller  1:26:40
+I'm losing my tenacity here, so I'm just going to do this.
+
+Speaker 1  1:26:43
+That's because you are time frames. You are three minutes away from 90 minutes. Well, the problem is you don't get much done after 90 minutes. No
+
+Speaker 5  1:26:53
+one does. That's why you should always leave the room and go do something else after 90 minutes, for at least 20
+
+Matthias Miller  1:27:00
+Let me see how much time I got. What do I have?
+
+Unknown Speaker  1:27:03
+I think we stick. No, we expect it to be done at 330
+
+Matthias Miller  1:27:08
+Well, if you, if you want to do this, what we could do is we could take a 10 minute break, and I would have another 20 minutes where we can rip through the December portion and defer anything in the December portion that needs to go to spring or to January. I mean,
+
+Unknown Speaker  1:27:21
+so you want to say four o'clock, my time,
+
+Matthias Miller  1:27:24
+10 minutes. I said, I have to, I have to be done by four.
+
+Speaker 1  1:27:28
+You have to be done by four. Okay? 10 minutes,
+
+Unknown Speaker  1:27:32
+that good. 343.
+
+Matthias Miller  1:27:35
+4340. All right. Do
+
+Speaker 1  1:27:53
+on tonight, and you really want burgers, you should call Alexis and tell her to do you have food already
+
+Speaker 6  1:27:59
+on? She's just finishing up mixing those chicken chicken meatballs, chicken meatballs, or you could do them as burgers.
+
+Speaker 5  1:28:06
+Ooh, chicken burgers, yeah. She just has them mixed. Grill them, yeah.
+
+Speaker 6  1:39:27
+Really, no, why would I do that? I hope Be quiet.
+
+Matthias Miller  1:39:32
+All right, so I want to work backwards on this list, because it makes sorting easier. You're kind
+
+Speaker 5  1:39:40
+of one of those people that goes turns right to go left. Right to
+
+Matthias Miller  1:39:43
+go left, exactly something like it only if it's more efficient to do that. Dashboards, the dash this.
+
+Unknown Speaker  1:40:00
+Dashboards, dashboards,
+
+Matthias Miller  1:40:02
+it's January. Didn't my notes report
+
+Speaker 1  1:40:07
+that's January, right? We have a dashboard currently running, and it filters in people's notes according to the user. And so our current dashboard, our current two dashboards, are going to work just fine for the time being.
+
+Matthias Miller  1:40:20
+Where would they need to be standardized? Well, yeah, we
+
+Speaker 1  1:40:23
+probably need to go through them at some point. But, I mean, they wouldn't even have to be standardized by, like, This is spring. Like, really good dashboard reporting is spring.
+
+Matthias Miller  1:40:38
+Payment portal is January.
+
+Unknown Speaker  1:40:41
+Payment customer payment portal,
+
+Matthias Miller  1:40:44
+yeah. I mean, either way,
+
+Unknown Speaker  1:40:46
+taking payments. I thought I said February
+
+Unknown Speaker  1:40:48
+what we have to be able to take payments when we launch
+
+Speaker 1  1:40:51
+it. Oh, sorry, wrong. Payment portal, yes. Customer payment portal is more towards February.
+
+Matthias Miller  1:41:00
+Email receipts, customer
+
+Speaker 1  1:41:02
+that we're going to run side by side with RTO Pro for a bit.
+
+Unknown Speaker  1:41:04
+That's what I'm saying.
+
+Matthias Miller  1:41:06
+Authentication is and Customer Portal is February to spring.
+
+Speaker 1  1:41:12
+February ish, February to like, beginning of spring. I don't know. I mean, well, we'll
+
+Matthias Miller  1:41:20
+sort it out. What I'm most interested in is getting a clear picture of December, and then getting that clarified, and then we can clarify January, and then we'll get beyond that portals, that sounds like some kind of Spiritual something, be in payment history, not spiritual portals via payment history, is December accounting and AR. I mean, that's basically done anyway. My notes really doesn't have to be until January s3 setup. We need accounting impact. We already have to a degree.
+
+Speaker 1  1:42:03
+Are we going to add the other things into it? No, no, the other things we talked about can be pushed. So you okay? Are you okay? If I'm making the executive decision, instead of using I check gateway to use the ACH as a part of clearance,
+
+Unknown Speaker  1:42:21
+or you don't care, I don't have any strong
+
+Speaker 1  1:42:23
+it might be ever so slightly more expensive than I checked gateway initially.
+
+Speaker 5  1:42:29
+I don't have a problem with that. I do think that long term, we are going to need to think about providing multiple options for ACH
+
+Unknown Speaker  1:42:39
+or critical, okay,
+
+Speaker 5  1:42:40
+but just a conversation later, not now, that's fine.
+
+Matthias Miller  1:42:46
+Okay, Link to payment
+
+Speaker 5  1:42:47
+right now. We're using at least two or maybe three different ACH portals for the different entities, really.
+
+Unknown Speaker  1:42:55
+So they're not all, they're not all I check gateway. I
+
+Speaker 5  1:42:58
+don't think any of them are a check gateway anymore, because they forced us away from my check gateway, probably for the same reasons that
+
+Speaker 1  1:43:04
+he did other well, I should take a look at what your other ones are then. Yeah, that'd be a good idea.
+
+Speaker 5  1:43:08
+Don't ask me the names. Off the top of my head, I can visualize the dashboard, but I can't tell you what the name
+
+Speaker 1  1:43:14
+is. Riddle me this Matthias, there's no storing of tokens on Ach, right? I don't know. Like this, like that, whole process is pretty much straightforward. It doesn't have all the complexities
+
+Speaker 6  1:43:28
+of of credit card payment
+
+Matthias Miller  1:43:33
+processes do typically store tokens for ACH transactions. Yeah, they are. And it's better, because then you don't have, you don't have exposure to routing and account numbers,
+
+Unknown Speaker  1:43:46
+did you ever mail a check?
+
+Unknown Speaker  1:43:49
+Sorry, keep going.
+
+Matthias Miller  1:43:50
+Do you ever download checks out of your software?
+
+Unknown Speaker  1:43:54
+Download checks out of your software? What do you mean exactly?
+
+Matthias Miller  1:43:57
+I mean, no, no, checks end up in the bank. I mean, I don't know you have it for a few days and it disappears.
+
+Unknown Speaker  1:44:05
+Okay, moving on. Depreciation.
+
+Matthias Miller  1:44:08
+Is that December? Yeah, January, December. Okay,
+
+Unknown Speaker  1:44:12
+we definitely need depreciation.
+
+Matthias Miller  1:44:16
+This guy basically stays. It's basically done. Auto pay is February?
+
+Unknown Speaker  1:44:23
+No, well,
+
+Speaker 1  1:44:24
+no, I this really needs to be January. I mean, because as soon as we can start moving, as soon as we can, we want to start moving people over into that. But, I mean, auto pays
+
+Unknown Speaker  1:44:35
+almost done.
+
+Matthias Miller  1:44:37
+It's not that much payment record. I think it's just close enough that we can leave it here about payments and bills. Bills would be January, yeah, and checks would be January, and this would be January. And contract entry, we have spec. Right? But that would technically also be January auto pay we have the second time it would be, it
+
+Speaker 1  1:45:06
+would be clunky, but you're basically done. There is already you. Somebody had threw together something kind of like with a with a button to move forward to the next piece. Like, it would be clunky, but it could be done with absolutely no contract entry currently. Like there is, you can actually go enter contracts currently.
+
+Unknown Speaker  1:45:25
+Well, do you want to bump it?
+
+Speaker 1  1:45:29
+I think you and I should take a look at it before we straight up bump it.
+
+Matthias Miller  1:45:34
+CRA conversion needs to be January.
+
+Speaker 5  1:45:36
+Yes. Are you good with me reviewing these legal documents while you work on that? Yes, just pull me in if you need Okay. Current
+
+Matthias Miller  1:45:43
+EPO calcs who basically have paper contract values we need to spec out for January.
+
+Unknown Speaker  1:45:49
+What is paper contract values?
+
+Matthias Miller  1:45:52
+Sales people who can't copy numbers and can't do math, where are we
+
+Unknown Speaker  1:45:56
+going to do some kind of override stuff?
+
+Matthias Miller  1:45:58
+Yeah, okay, but we need to spec it out that
+
+Speaker 1  1:46:02
+is important, that's part of contract entry. It really, that really should be part of contract entry as a concept, but, I mean, it's, that's where, that's where it comes into play.
+
+Matthias Miller  1:46:12
+CRA conversion. We need, yep, for January, due date calculations. Yep. We should probably do that December, right? Yes, contract record. We mostly have contact. We mostly have, wow, okay. I think we could almost move this to almost make this November,
+
+Speaker 6  1:46:36
+okay, but I don't know we are in November so
+
+Matthias Miller  1:46:41
+well, I mean end of month, beginning. I mean December, beginning of December. I mean I, I don't know.
+
+Unknown Speaker  1:46:45
+I mean that should be the things we crunch away on here in November. You're right. So, all right,
+
+Matthias Miller  1:47:02
+I'm happy with this. This gives us a clear focus.
+
+Speaker 1  1:47:08
+Does it decrease your white knuckling a bit? Oh,
+
+Unknown Speaker  1:47:12
+yeah, good. It
+
+Matthias Miller  1:47:16
+helps us to know where to focus, too. I like that a lot. Agree. All right. Well, I'm happy. If you're happy, you want to call it a wrap
+
+Speaker 1  1:47:27
+until Tuesday. I felt like I was supposed to talk about something yet, what was it?
+
+Unknown Speaker  1:47:33
+Can't help you out there. I
+
+Speaker 1  1:47:49
+nope, I'm good. If I think of it, I'll make notes of it and put it somewhere.
+
+Unknown Speaker  1:47:53
+Okay, awesome.
+
+Unknown Speaker  1:47:56
+Like it? Productive day, hallelujah. Day,
+
+Matthias Miller  1:47:59
+yes, you as well.
+
+Speaker 1  1:48:01
+Do we want to? Do you want to slap? Do we have something on for Wednesday or just for Tuesday?
+
+Matthias Miller  1:48:07
+We don't have anything for Wednesday? You want to do here? Let me check something.
+
+Matthias Miller  1:48:21
+Wait, where am I? I'm lost. That was Tuesday when that happened. Okay, so let's do, do you want to do the same basic time frames?
+
+Speaker 1  1:48:32
+Are we doing? Are we doing two for Wednesday? Or Yeah, let's do, if you have the space for two for Wednesday,
+
+Matthias Miller  1:48:38
+are you good up until like 330 to five.
+
+Speaker 4  1:48:40
+My day for Wednesday is wide open. So
+
+Matthias Miller  1:48:50
+it's either that or I don't know if I can.
+
+Unknown Speaker  1:48:53
+It's up to your schedule,
+
+Matthias Miller  1:48:57
+one or 330 I like one,
+
+Unknown Speaker  1:49:04
+330 My, my, my productivity goes down.
+
+Unknown Speaker  1:49:14
+All right, I'll get them sent over.
+
+Matthias Miller  1:49:17
+Probably put you on these invites too, shouldn't I? Huh, unlike last time,
+
+Unknown Speaker  1:49:24
+I know picky so they show up in my calendar. Yeah,
+
+Matthias Miller  1:49:28
+I'm just gonna start sharing my calendar with everybody so that I don't have to invite them. Good.
+
+Unknown Speaker  1:49:34
+So you just doing one for Wednesday
+
+Unknown Speaker  1:49:38
+two.
+
+Unknown Speaker  1:49:40
+That's one way to do it. Only see one. How
+
+Unknown Speaker  1:49:44
+about now? Now? What about There we
+
+Unknown Speaker  1:49:49
+go, see, look at that.
+
+Unknown Speaker  1:49:52
+I'll even confirm. How about that? All right, sweet. Have a good weekend.
+
+Unknown Speaker  1:49:57
+Yep, later.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,506 @@
+Unknown Speaker  00:56
+Good morning with us. Hey, good morning, Jared.
+
+Speaker 1  01:09
+You got marks little agenda. Yeah, I did. Okay, I'm running over that. And then I sent you a couple things on the reconcile module just in an email just as of like a minute or two ago. So if we don't cover everything, that's perfectly fine.
+
+Unknown Speaker  01:34
+Hey, Mark. All right. So let's start with stripe. Let me actually go ahead and kick off this process again.
+
+Speaker 2  02:03
+So, we are switching. So we've made some changes. On how we link out stripe transactions to sales orders. And it's only really effectively working it looks like starting with the payouts from yesterday. Okay. And everything historical to that. It's not going to have the right fees posted to the fees account. Okay. But, but bottom line is when this thing gets.
+
+Speaker 1  02:46
+Now, that's just talking about the record on that invoice, right? It's not necessarily talking about like, this is talking about getting the fee to the right place, not necessarily splitting, like if there were multiple stripe, like credit card payments. They're not, this isn't splitting them into their separate amounts, or is it like it onto those separate? You know, let's say there's only backup. So three buildings were sold. And there's only one lump payment coming in to our bank.
+
+Unknown Speaker  03:23
+Right? Is
+
+Speaker 1  03:24
+this working with how those are recorded? Only in the that invoice like those three invoices separating them correctly with the with the fees?
+
+Speaker 2  03:43
+Well, if, if you have let's take this pay out here or this one because it's simple. It's going to be from two two different sales orders,
+
+Unknown Speaker  03:53
+right.
+
+Unknown Speaker  03:56
+So the resulting transaction
+
+Speaker 2  04:04
+would be so this is 303 resulting transact transaction or sorry, let's let me grab just a few more numbers. So the payment net is 2020 30903. The gross is 2378 61. So we would there's 20 30903 debit for primary checking 6958 For stripe fees. And then undeposited funds is adjusted by the gross amount 23 credited 23 cents 7861
+
+Unknown Speaker  04:45
+Okay, so that now was that pay out all for one building?
+
+Speaker 2  04:56
+Multiple sales orders. Are you paying my bill?
+
+Speaker 1  04:59
+No, no, no, this is exactly how I want to. Good. Because what I was having is there would be, it would hit undo. But like if I looked at the transactions, I found there were multiple transactions where I had, let's say there were two buildings, it would separate the two payments for the two different invoices in the bank account, but it had only been one payout. So I was needing to match those two. It was like separating it by invoice.
+
+Speaker 2  05:37
+So it was it was even worse than that the first invoice was separate from all the other invoices. So there were only only up to two.
+
+Speaker 1  05:50
+It was why one was always much greater than the other than the rest
+
+Unknown Speaker  05:54
+horribly wrong. So well, that
+
+Speaker 1  05:57
+Yeah. So that'll that'll clear that up. That's great. That's good.
+
+Speaker 2  06:01
+So I think as long as we keep our eye on this report going forward, the biggest thing is if somebody manually enters a credit card charge. Well, everything needs to go through Josh's process, and everything needs to tie out on this diagnostic report going forward. We're gonna have things going wonky. And could
+
+Speaker 1  06:24
+you send me a link to that report? Just for?
+
+Unknown Speaker  06:27
+Yeah, let me how far
+
+Speaker 1  06:31
+back in history? Does that report go however far? You know, like, through September and stuff?
+
+Unknown Speaker  06:37
+I mean, yeah, it does.
+
+Speaker 1  06:40
+So it would, it would show me what what would have been tied together. You know, in older reconciles. You know, like, say I'm looking at October payments or something
+
+Speaker 2  06:59
+this one? This version does not. It won't give you that historical. Okay. But I can give you? Well,
+
+Speaker 1  07:12
+I think I think we'll be okay, because the only deposits that we have coming from assist in that reconcile are our stripe, payments. So, yeah, so I know that everything came from stripe. So it's just a matter of figuring out which ones go together. And let me they are linked by transaction ID number. So it's not impossible. And there's really not that many, there were eight or 10 per month or something like that. So far. I can think of some everyday, I thought it would be daily about two but it wasn't. I mean, unless maybe there just weren't any stripe payments on certain days.
+
+Speaker 2  08:02
+Let's skip those. I can take this one back to the way it used to be. Or at least stripe payout payments stripe payout? No, I was just doing the sad.
+
+Speaker 3  08:34
+day job, everything moving forward, everything needs to go through Josh's process you're talking about, probably about what he covered this morning to the whiskey page where you paste in.
+
+Unknown Speaker  08:46
+Okay. Yep. I'll send you the link to this one. There's a custom report that shows you the
+
+Speaker 2  08:54
+Yeah, I mean, you can also hang on maybe it's not that bad, actually. So if you go into a local transaction that Josh was sent over this morning that you've talked about. So if you go into the source record, and you go into the payments, you have the SLA DS in here. But I can also give you a link to this report that would show you that if that's helpful, or I could modify this report to make it more useful. Yeah. Up to you. Yeah.
+
+Speaker 1  09:37
+All right. That should take care of that then. The Cheque Printing Have you worked on that at all? Basically, this is going to that payments module. Where are we at and being able to make those payments and all that kind of thing.
+
+Unknown Speaker  09:59
+All right. Do entail time So, under accounting vendor invoices needing payment let's do let's see. Primary checking ABC let's see what we got. The ACH a lot of these don't have a payment type on it. So I don't know. Are these
+
+Unknown Speaker  10:38
+are these old? Like, okay, yeah, invoice due date data
+
+Unknown Speaker  10:46
+these are is this is this affordable? This is everything.
+
+Unknown Speaker  10:54
+It's not separated by company.
+
+Speaker 2  10:57
+I mean we can go to good affordable
+
+Speaker 3  11:11
+Okay, so why would these? Why would so many of these not have a payment type?
+
+Speaker 1  11:19
+Would this be because she hasn't paid yet? So she hasn't so Whitney hasn't put when you put it on?
+
+Unknown Speaker  11:28
+Accounts Payable those usually but where is the payment type? Okay, there's a there's a default payment type on the vendor, right?
+
+Speaker 2  11:38
+Let's take a look. Sure. Williams vendor default payment types? Uh huh.
+
+Speaker 3  11:47
+Yeah, there is. Okay. And if it's not there, it can also be added.
+
+Speaker 2  11:56
+You can go into the vendor invoice. Okay, to
+
+Speaker 1  12:07
+each vendor invoice is going to have to have that added manually with before we get this default payment type setup.
+
+Speaker 3  12:18
+What happens if we, if we enter a default payment type like, say the premier metals if we enter it? We have that for ACH planning team?
+
+Speaker 1  12:29
+Yeah, I mean, when we get our vendor thing running, or going to up to date, then it will have that.
+
+Speaker 3  12:41
+So but if you add, if you if you now go to premier metals and set a default type of let's say chain with that. Would that populate payment type on these existing invoices? Currently, no. It's only for invoices moving forward. Correct. Okay.
+
+Speaker 1  13:12
+So, in a way that answers our question about does we need to get those vendor that vendor information uploaded, so that it knows that we're going to want to print checks, that is to be done before we need the address for printing checks.
+
+Speaker 3  13:30
+So that you can also even if the payment type isn't entered, you can I'm assuming you could go in here and like I don't know just well, you are doing your show and tells and I kind of keep going with with that.
+
+Speaker 2  13:44
+Yeah, so if you pay by cheque, we don't know where it's gonna go. You can't pay by cheque if you don't write if it's if you don't know where it's going. So we don't have anybody
+
+Unknown Speaker  13:59
+who you don't have any interest in Oh, you put your address in for your vendor
+
+Unknown Speaker  14:05
+here
+
+Speaker 2  14:14
+I wish I had I can show you in my test system might actually be that we will go creating
+
+Speaker 1  14:22
+premier metals just open premier metals now give you what needs enter there
+
+Unknown Speaker  14:31
+your medals. The vendor.
+
+Speaker 1  14:34
+Yeah the vendor. All right. So address is 1685. State Route 39 Sugar Creek, as one word Ohio 44681. And then The primary checking would be the program checking abc will be the default payment type
+
+Unknown Speaker  15:20
+we're going to go well let's just let's just pay one
+
+Unknown Speaker  15:31
+well I have to open those individually and put that in won't we?
+
+Unknown Speaker  15:36
+Yeah unless we give you a report that shows
+
+Unknown Speaker  15:45
+we could do something like this vendor come vendor invoice
+
+Unknown Speaker  16:05
+the invoice
+
+Unknown Speaker  16:15
+let me see if there's one something for the
+
+Unknown Speaker  16:24
+so it'd be voice Bender where
+
+Speaker 2  16:58
+hello I look that's the only one that showed up okay so this one is going to be David knife harder this is a dating these so that we know about when they're going to expire
+
+Unknown Speaker  17:55
+so this is
+
+Speaker 2  18:03
+modify selected records and be invoiced
+
+Speaker 2  18:21
+so this is showing all vendor invoices
+
+Speaker 2  18:38
+under invoices with a blank payment type and with a default payment type set let's just try it on this guy to
+
+Unknown Speaker  18:53
+come over here the one that we were on there we go that one set and so we can go select all of us
+
+Unknown Speaker  19:32
+send you a link to
+
+Speaker 1  19:40
+the basically you need to set one for that specific vendor. And then for that one to the rest. No,
+
+Speaker 2  19:49
+I mean I just did the first one by itself to test you can select as many as you want to assign
+
+Speaker 1  19:56
+and then copies in what is set for that vendor. Then the vendor would
+
+Unknown Speaker  20:00
+have set for that default, what sets the default for the vendor. So copies basically copies from here to and
+
+Speaker 1  20:14
+so now if we go back to that payment thing we should have
+
+Speaker 2  20:19
+so now the payment type now okay now if we go Filter by primary checking ABC metals is showing up now, do you mind these? Do we want to test it just on one vendor invoice or two or so so that we can
+
+Speaker 1  20:38
+I would say do two that way we can see how it combines we
+
+Speaker 3  20:42
+probably want to I think the first one is, maybe we should ignore it for a while maybe
+
+Unknown Speaker  20:46
+ignore the first one.
+
+Speaker 3  20:48
+Probably a credit that's they have a huge discount in there, which
+
+Speaker 2  20:56
+All right, so let's do these two here. So we hit pay by cheque. And now you have a check over here. It's grouped by the checking account and by the check. But these are unprinted. And then if you have multiple you just have different vendors and then we have now you can you can let's say you can remove this from the check and it will refresh the left pane but now we should be seeing oh wait a second. It is not removing from the check is not market as that's an issue 1312 32 It does not change the status to pay approved, which it needs to make an
+
+Speaker 2  21:57
+removing a vendor invoice from the check should revert status from the pay to be approved. Okay. All right. So then, then you can also if you've got, if you already have a check with a vendor and unprinted check with a vendor and you hit payroll check, it will add it on to the existing check.
+
+Unknown Speaker  22:21
+Oh, okay.
+
+Unknown Speaker  22:22
+It'll just say oh, I'm assuming you want to add it to the existing J.
+
+Speaker 2  22:32
+You can drill in, you can see the check details. Not much interesting to see, there's no check number sign, you can see the written amount that's going to be printed the AP name and address both from the vendor, we're putting the vendor invoice IDs in the memo. And then, and then you would do print selected checks. And you put in your starting check number this would be I mean, it's it's one because you don't have anything in the system. But it'll be it'll auto calculate. So 12345 Work, Work work. And you then get a download link, which is your PDF, that the background check. We just had the background right now to help with layout that gonna be there. But there's, so there's just,
+
+Speaker 1  23:34
+that's simply just the background. Like it's not going to print, it's only gonna print those couple of lines. Well,
+
+Speaker 2  23:40
+it will print as it stands now it's going to print but we're going to take the background off. We need to clean up the layout here but it's not like you can see the date is way high premier metals is off to the right.
+
+Unknown Speaker  23:58
+Memos too far down, etc. But this, this is the basic idea then. So then you would print this to your printer to print the checks.
+
+Speaker 2  24:14
+Oh friend has a button. It's just a PDF like normal. Yeah. Anything? Yeah, yeah.
+
+Speaker 1  24:19
+Now, are we going to have the ability to adjust those? Because our experience is that? Well, there's differences and check stock but also different printers sometimes move things around. So are we going to have the ability to shift those numbers up or down or sideways or
+
+Unknown Speaker  24:52
+is it shifting the entire thing left or right and up and down?
+
+Speaker 1  25:00
+I would I would guess that that probably will work to just ship the entire thing because? Yeah. Like the placement in relation to each other should be something that is pretty standard. Yeah, we'd probably be just shifting our whole image. Yeah.
+
+Unknown Speaker  25:24
+So
+
+Speaker 2  25:31
+the short answer is? Well, I mean, it just sort of answers we have to I don't think we have much of a choice. And yes, we keep well, but does that vary from user to user then? They'd be per user setting,
+
+Speaker 1  25:50
+probably. Now, I'm going blank right now, is that a? Is that a possibility to do in the print? Or? Like, instead of in assistance on the PDF, print out function?
+
+Unknown Speaker  26:17
+That's a great question.
+
+Speaker 1  26:18
+I'm not sure where the I think, with QuickBooks the adjustment, I'm very sure is within the QuickBooks function.
+
+Unknown Speaker  26:27
+Yeah.
+
+Speaker 1  26:32
+No, I think there's some printing abilities that give you a little bit of shift. But probably not most of
+
+Unknown Speaker  26:42
+what I would probably do I mean, the way we'll probably do it is oh, is we can have a spacer we can shift it in inches, I think. Or fractional inches. Or for points and we'll use spaces on the left Hey, to the left, I wonder if we could just have the entire thing Yeah. Yeah. I'm thinking thinking thinking.
+
+Unknown Speaker  27:57
+Let me play around with it. There might even be a way that we could do pretty dynamic positioning
+
+Speaker 2  28:16
+and then be able to control let me let me let me let me play around with that, I think. Yeah.
+
+Speaker 2  28:31
+So then once we get back, there is not yet a kind of abuse checks report.
+
+Speaker 2  28:53
+But if we go, if we pull this one back up, you'll see this number here. Yeah. It should have back Yeah.
+
+Speaker 2  29:17
+And then if you'd want to take it back to no longer I mean, put it back in the end printed checks, you could just do that. blink, blink out the check number it'll it'll go back in your printed list. Or oh,
+
+Speaker 1  29:35
+but that's not gonna like if the check actually was printed. Does that change our status of everything?
+
+Unknown Speaker  29:49
+No status would be
+
+Speaker 1  29:52
+like as the status would still show that it's paid even if somebody changes the check number.
+
+Unknown Speaker  29:58
+That is correct. Okay.
+
+Speaker 1  30:01
+Yeah, cuz occasionally, something comes through as like, oh, look, somebody printed the wrong number onto that or.
+
+Speaker 2  30:10
+Right. I mean something like, you know, most common use case would be I forgot that I pulled some checks and I didn't double check in money go fix up the check numbers right, right.
+
+Speaker 1  30:25
+Yeah, okay. Yeah, as long as it doesn't go to unpaid status
+
+Speaker 2  30:32
+well, then as soon as as soon as you have have a have an audit check, even if the checks on printed the status is paid. And the vendor invoice shows and printed checks, and then we'll have a scheduled nightly scheduled task probably that builds
+
+Speaker 1  30:54
+Yeah, so that would so once you put it over to an unprinted check, it changes to paid and then after you print in the evening, it updates what the number was.
+
+Unknown Speaker  31:12
+Perfect, perfect.
+
+Speaker 2  31:20
+Alright, so the main thing is removing from check does not work as we expect. Yeah, so that's, I mean, that's kind of the workflow and the other thing is we need a
+
+Unknown Speaker  31:34
+neater way to search for checks. Which Yeah, this scheduled task bank transactions for truck for checks so we have the I thought I had demanded too many did I create it I did not create it yet. No need to work with Josh then. And having to show up correctly in accounting. So apart from some of those things that we listed off, like does this workload seem workable? Yeah,
+
+Speaker 1  32:23
+I think that looks good. If if it was an ACH, the workflow would basically be the same thing except for you wouldn't have to do the the print selected checks. Step it would just once you select it on the left to pay those ACH it would just go ahead and do it. Yes,
+
+Unknown Speaker  32:45
+correct.
+
+Speaker 1  32:48
+And if it's a credit card payment it basically just changes the record because you would have to call that person and then to make that credit card payment anyway. So so the only thing happening there is it's just changing with status with a credit card I guess.
+
+Speaker 2  33:10
+Yeah, I mean, do we need a just simple mark is paid button that marks the selected ones is pay thanks so
+
+Speaker 1  33:20
+yeah, yeah. That would work
+
+Speaker 2  33:35
+okay yeah, so I'll have Josh wiring the pbch go so let me
+
+Unknown Speaker  33:56
+go ahead and
+
+Unknown Speaker  34:03
+switch these back
+
+Unknown Speaker  34:24
+we probably need a
+
+Unknown Speaker  34:34
+when we void a check
+
+Speaker 2  34:40
+we need to think through the the voiding process. Well,
+
+Speaker 1  34:49
+when a check is voided, then it should make that bill. Go back to unpaid status. Whatever you know, like we shouldn't be able to change check number without making it go back to unpaid status but if the check is voided or deleted for some reason whether or not it was printed then the bill should go to unpaid is my thought make sense? No and yeah so, so, you avoided a check the guy lost at sea avoid the check goes back to bill to pay the bill again and then you need to reissue another check in order to go are some of the payment methods are
+
+Unknown Speaker  35:50
+good all right so.
+
+Unknown Speaker  36:22
+Okay, so looking into reconcile so you want the starting balance
+
+Speaker 1  36:35
+I mean, yeah, there's the starting balance would pull the ending balance from the previous reconcile, which means we're gonna have to have a way of recording each reconcile that happened. As a as an event, and of these were the items cleared and these were the items that were left uncleared this was the date this was the ending reconcile ending balance number all that information as an event record or something like that, and then which means we will need to be or we shouldn't be able to print that record or go back and find it you know, we're looking back and hey, did this check clear back then and that kind of thing because the way I'm understanding the deposit thing I mean, that reconcile thing is it's kind of just functioning as a as a tool for clearing items at this point is that grocery
+
+Unknown Speaker  37:43
+yeah so if
+
+Unknown Speaker  38:02
+mean really what we need is we're ultimately looking for
+
+Speaker 2  38:18
+is probably something like a statement and date Yeah, but identify the reconcile Yeah, right. Right. And and then also on a transaction then what we'd want to do
+
+Unknown Speaker  38:49
+is I would reconcile thing on here on the reconcile under the hood store the statement date, I guess if we want to do this to get the statement date wrong and that's obnoxious, but okay, yeah right.
+
+Unknown Speaker  39:32
+within the limits, group transactions by statement date can give you that report
+
+Unknown Speaker  39:56
+but also
+
+Unknown Speaker  40:12
+It's either that or
+
+Unknown Speaker  40:20
+we might actually have is almost like a statement record
+
+Unknown Speaker  40:36
+okay I'll talk I'll talk you through with jewel go and then the reconcile button you said is not
+
+Unknown Speaker  40:47
+yeah
+
+Speaker 1  40:49
+so if you look there there's a bunch that say yes they're cleared and I've gone through and clicked that reconcile multiple times and I haven't it just didn't do anything for me
+
+Unknown Speaker  41:29
+starts there place was cancelled it was shipped back on
+
+Unknown Speaker  41:45
+automatic Yeah
+
+Speaker 2  41:54
+Are there we can give it oh yeah yeah so this this one's ready to reconcile three yeah one more one three KB three
+
+Unknown Speaker  42:12
+yeah okay thank you
+
+Unknown Speaker  42:29
+are obviously canceled
+
+Unknown Speaker  42:34
+yeah
+
+Unknown Speaker  42:41
+so we can actually you know
+
+Unknown Speaker  42:49
+reconcile
+
+Unknown Speaker  42:57
+and then you have to hit save changes did you do that
+
+Unknown Speaker  43:07
+probably not reconcile and then hit Save Changes
+
+Unknown Speaker  43:13
+got it? Yeah Yeah,
+
+Speaker 1  43:19
+can you make it just automatically save the change like get reconcile and then it just automatically does the change Save changes are not
+
+Unknown Speaker  43:28
+thinking because I guess
+
+Speaker 1  43:30
+in a way that gives us that gives us an option to hit reconcile and then oh, I didn't want to but for the most part, I would think that when you hit reconcile it's like yeah, I'm done. I want it to go on through but we can work with it for this point for sure.
+
+Unknown Speaker  43:54
+Yeah, the tricky thing is
+
+Speaker 2  44:10
+Yeah, I mean, that's a little I can make a no I don't have a good the main thing is we need to make sure that if we don't require to save then we're gonna make sure that any of your pending edits and you do a Save changes before you do reconcile. And we don't really ever
+
+Speaker 1  44:46
+have you if you go through and do your do your changes, you know, clear what you want cleared and then hit reconcile without saving those changes that would not actually right reconcile as you have it in your screen
+
+Speaker 2  45:06
+correct if we if we go the route of skipping the save. We don't have a good way to say if we skip the Save and reconcile, we don't have a good way to say make sure that all the cleared checkboxes are saved first
+
+Unknown Speaker  45:29
+then you bring up a prompt when you hit the reconcile button to save changes first and save the reconcile or you know, give you some some I don't know, I'm just thinking
+
+Unknown Speaker  45:49
+out loud. Yeah, no, they could be.
+
+Speaker 1  45:55
+Yeah, I mean, it's, I mean, I can see myself doing that all the time. You know, I go down and click through okay, this is done. And so I click reconcile and troubles we have.
+
+Speaker 2  46:08
+Yeah, that's work. Let me
+
+Unknown Speaker  46:20
+make a note. We'll talk about something that was good. workable.
+
+Speaker 1  46:28
+I think that pretty much covers covers everything. We talked about selecting like a group and clearing around declaring a group. Was that anything that then progress on that or
+
+Unknown Speaker  46:47
+no progress on that? No.
+
+Speaker 1  46:48
+That's fine. I think that's about it. Okay, sounds good. Okay. All right. We'll see you later. That sounds good.
+
+
+Transcribed by https://otter.ai

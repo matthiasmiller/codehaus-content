@@ -1,0 +1,746 @@
+Unknown Speaker  04:11
+This is Mark.
+
+Matthias Miller  04:53
+No empathized There we go. Hey Mark sorry about that
+
+Matthias Miller  05:09
+how are you doing?
+
+Speaker 1  05:13
+Like I'm running about half a day behind probably typical for a lot of people you're about to
+
+Matthias Miller  05:28
+pretty good. had kind of heads down on some other stuff and looking over some of your stuff trying to get my head in this game.
+
+Unknown Speaker  05:39
+I'm here yeah, we can use this and just take the apology
+
+Matthias Miller  05:45
+Alright, well, I think I think pretty much everybody's got one so I think we're even
+
+Unknown Speaker  05:49
+an excuse or apology
+
+Matthias Miller  05:52
+yes
+
+Speaker 1  06:04
+let me add you forwarded this to Dwayne's class?
+
+Matthias Miller  06:08
+I have not, I can, wow, I'll
+
+Unknown Speaker  06:11
+send it here we go
+
+Speaker 1  06:25
+if I recall correctly, that we're going to talk about allocating issues inventory, cause labor primarily in a different method based on our conversation with Larry Trier, or we're going to explore that that was kind of the primary focus for the call today if I recall correctly, but we also have questions on depreciation and just price for documentation on software processes. So whatever makes most sense for you, Matthias, wherever you want to start?
+
+Matthias Miller  07:12
+Yeah, FDA is the priority. So let's do that. Well
+
+Speaker 1  07:21
+the Attach examples based on my preliminary preliminary research and how subcontractors are paid I believe this will give us the flexibility we need. To get into the weeds, there's quite a number of bills and poorly things being done differently on one builder versus the other. But there's several parts to that one is less we can track that per builder or method Well, we're where we are at today, it doesn't make sense to think it makes sense to try and like actual cause or builder so that we can then get variances are builder. So I think what we talked about this a little bit last meeting and what I have here is some give us something that is is really close. So I'm just going to start with my basic little spreadsheet and walk through that and then we can look at the documentation that covers that part of what we change there. So up until now we had looked at everything as standard costing managers district wide with what I'm proposing here, I'm saying
+
+Matthias Miller  09:13
+look at it per builder
+
+Speaker 1  09:15
+who built the shed and then let's also add actual and standard actual or standard it's just a cause to eat these percentages and standard being a an educated guess and actual being a number that we know this is actually what we're paying and it won't change. So I have Roman well, so the first builder I have Bob's contract said who is a 1099 subcontract builder, material, material. Always be universal in it does. Always have that At like standard costing, nothing changes on the raw material percentage. We nothing needs to change from what we had been planning for, but then on the production labor percentage by Bob's and 99, we're paying him 15% When that shed is built, and that is the actual costs we're not, that's how we calculate what he's paid. And there's no reason to come back and review the variants on to that later. And then we have a very low overhead because it's just basically the cost of managing some some basic high level management four by fours and whatever is involved with in managing a contract up, which is why we have such a low percentage and that would be a standard. Then the shed time we're saying this is a typical employee shed, we're getting materials and then duction labor of 8%. At managers a standard costing percentage, that have an actual, much higher production overhead because here, we're responsible to pay for the peanut butter in the klondex in the break room and for the gravel in the parking lot and fill in the forklift. And this is standard which means so I guess before I continue, is does this make sense? Besides I think this is kind of the path we were thinking last last time we talked about this but what are your thoughts?
+
+Matthias Miller  12:04
+Yeah, I think I think it's a matter of I think it does make sense. My functionally it does my
+
+Matthias Miller  12:25
+I'm tempted to get just a little nitpicky about how we're specifying actual versus standard on these because it's
+
+Unknown Speaker  12:40
+been clarifies it to make it less confusing.
+
+Matthias Miller  12:44
+Yeah, because we're using actual and standard cost as in maybe maybe I'm getting too scared about confusion but if there would be a way to clarify even if instead of just saying wow I mean if it is actual cost and eating you don't need to clarify that it's standard
+
+Speaker 1  13:19
+Well, I'm not I mean I just put this I always was looking at what we had I'm all for making it simplifying it and making it horrifying and so I'm not emotionally tied to these terms so in your mind what what should it be or what what would be something that would be more at an all okay, this makes sense
+
+Matthias Miller  14:00
+will there's
+
+Matthias Miller  14:08
+each of these having a checkbox use raw material percent percentage as actual cost
+
+Matthias Miller  14:19
+or freeze raw material percentage as actual cost or a list of
+
+Matthias Miller  14:39
+I don't know if it matters. Do you have an opinion? I don't think so.
+
+Unknown Speaker  14:53
+I have an opinion. Not a strong one.
+
+Matthias Miller  14:56
+The problem I'm concerned about is it on the building record. We'll have seen it costing the actual cost? And?
+
+Matthias Miller  15:17
+Maybe it's fine. I don't have a really?
+
+Unknown Speaker  15:21
+what's your what's your concern?
+
+Matthias Miller  15:24
+My concern is just confusing. Like if somebody goes in here, whoever's going in here is well, there's there's two, two people I'm concerned about being confused. Whoever goes in here is trying to figure out how to set these up. And second of all developers and testers going in here and not understanding the implications of what this setting does and how it works.
+
+Matthias Miller  15:50
+And at this point, it's no longer a cost estimate. It's a it's a cost estimate and or actual cost.
+
+Matthias Miller  16:06
+But if we just clarify, this is the projected cost used? Let's see. I think if we if we just, we can spell it out in the documentation will be fine.
+
+Speaker 1  16:22
+What we're, what we're trying to say is to like this, that means that Bob's contract sheds the insurance and production labor, we want something there that someone can display that says, I selecting this will be the actual labor apply it link built by this builder. It won't be affected by reconciliation processes.
+
+Matthias Miller  17:00
+Yeah, I think part of my main complaint is that we've got two kinds of of actual costs, we got fixed actual costs, and we've got variable actual costs. And and so when we go to specify FDA actual costs, well, we're not actually always specifying FDA actual costs. We're, we're, we're specifying the FTI. Very variable actual costs and the fixed actual costs are assigned elsewhere.
+
+Speaker 1  17:30
+Yeah, no, I think that's a legit. I mean, if you're good with it, I would say just take it in and do what you believe is best. bring clarity to that.
+
+Matthias Miller  17:49
+And so if, if I do anything, I might actually flip it to a checkbox called use variable, actual costing.
+
+Speaker 2  18:05
+So I feel a little bit late to this conversation as to costs. What's the difference between the fixed and what could what constitutes variable?
+
+Matthias Miller  18:17
+Well, variable is we think it's going to be shed time, we think we think production labor is going to be 8%. But it might be higher or lower than that. And so we need to account for that at the end of the month, whereas based on what's contracted, based on what we actually pay.
+
+Speaker 2  18:37
+Gotcha. So this is good. Okay, now I'm tracking.
+
+Matthias Miller  18:41
+And but Bob's contract, we write him a check every single time for 15%. So no variability in that. And so when we get to the end of the month, we say, our production labor expenses were, we thought it was going to be x, but it actually was why, and we don't want to go back and modify any bill, any any sheds built by Bob's contract sheds. Because the labor wasn't used for those buildings, it was used for use for something else. Make sense?
+
+Unknown Speaker  19:13
+Yeah. Now I'm tracking.
+
+Speaker 1  19:17
+So looking at this, the more Matthias I think I'm overcomplicating it, because I think the only place where we need that what I'm calling actual standard is, is labor at the end of production. won't need it in materials, we won't need it in. I don't think we will, in materials, our production overhead. I mean, we'll need the percentage per production overhead obviously per builder if we go this route, but I think the only place where we need that the ability for that checkbox is reduction labor percentage. I don't know does that make it easier? Much easier, not are you
+
+Matthias Miller  20:01
+I think it probably does make our lives a little bit better. Okay. Well, I will 100% on the same page conceptually, I think it's a matter of terminology and few details. What really just a matter of terminology, and maybe slightly how its structured, but not that much. And I think I'm good.
+
+Speaker 1  20:20
+Does that mean how much complexity does this add is something that we're learned about the complexity, it adds
+
+Matthias Miller  20:31
+Marshall, so But No, as long as if you it means we, well, it doesn't hit accounting until it's built. So there's no worries about switching builders. And so we'll freeze these numbers, we'll assign these numbers at whatever, at build time, which is what should happen anyway. And, you know, besides the fact that, and we may want to, this might happen in Dwayne's office whenever you guys need it, but we might want to, at some point, whip up a report that you guys can see where all the biller percentages are as of which date.
+
+Matthias Miller  21:22
+But and then what's the other piece and the only other piece is variance distribution needs to exclude certain records, but we already need to exclude some records as a matter of expanding it. So very long winded answer saying no, it's not a significant increase of complex again, this?
+
+Speaker 1  21:38
+Well, good. So I mean, the way I'm planning to approach it, then is if we so if we, if we have a subcontract builder, and we say, Okay, how's this person being paid? And it's answers 15%? You know, MSRP, all the way through? No variation, then good. We'll set it just like I have here. If the answer is something like 15% on most buildings, but then some buildings, it's just more of a case by case basis. And then then we're going to have to, okay, let's look at history. What was the average over the last quarter that in, we'll just set it to standard. I just thought of something that.
+
+Speaker 1  22:31
+That means when we do our actual costing, when we do our actual costing, we actually pay out we'll have to intentionally exclude actual, like, in this case, we would have to exclude whatever was paid to Bob's contract shit.
+
+Matthias Miller  23:04
+are okay.
+
+Speaker 1  23:09
+Wouldn't we have to have a separate GL Account? A way to to?
+
+Speaker 1  23:19
+Know note that are? Well, I mean, we get to the end of the month. And we've we've done our allocations on buildings that were built. And we've actually, we've paid Bob $5,000. And I said, time doesn't matter. But we paid we actually wrote checks to Bob for $5,000. And wrote this wouldn't happen, but it will happen, where what we've allocated is actually buildings that Bob has built is actually in that time period is actually $6,000 Because build two buildings last day of the month, and BM for those next week.
+
+Unknown Speaker  24:22
+How are you playing that to account for that?
+
+Matthias Miller  24:31
+Okay, so my believe the plan was on the building that for each of these categories, we got three numbers, what's the standard cost? What's the actual costs and what's the accounting cost? And so, if you sell it before you have an actual cost than the accounting cost is the standard cost. If you sell it after, then the accounting cost is the actual cost and So what you would do is when you calculate, you would take total costs or period, you would subtract out anything, you've calculated actual costs work. And then you would just distribute the remaining actual cost to all those buildings. Let me let me make some notes here. So they actually
+
+Matthias Miller  25:35
+subtract actual costs from monthly actual costs, actual building costs from an actual permanent the actual cost distribute remaining actual costs to remaining buildings. And then you would simply calculate variance between actual cost and accounting cost and create variance transaction. That makes sense. So
+
+Speaker 1  26:14
+I think we still have, we have that additional time to put this video together, so the period we built, allocated for Bob we've allocated $5,000 as he's built, and for shed 10, we've allocated 2000 and get to the end of the month and our actual costs show that we've paid Bob 4000 All right, our counting shows that we paid Bob 4000 Chad time made 500 So counting says 6500 for the period what we allocate it says 7000 So I mean, we can like 5000 the the amount allocated for Bob from the 6500 distribute the main the remaining 1500 on to dead time. But what what really should have happened, I think is the
+
+Unknown Speaker  27:50
+4000 in accounting that it the BB have been removed from Asian and now we would only have $500 to distribute to buildings built by dead time.
+
+Matthias Miller  28:18
+So then how are you going to account for in accounting? How are you going to account for that $1,000 difference? Bob?
+
+Speaker 1  28:33
+I think it's really complicated. Well, it wouldn't be a prepaid expense. I mean, I think we could would it be a prepaid?
+
+Unknown Speaker  28:43
+Oh, it would be the other way around. It would be I think it would be the other way around. It would be like an accrued labor
+
+Speaker 1  29:09
+that's pretty lousy, though. I mean, we're going to battle I don't like that idea at all.
+
+Speaker 1  29:21
+I may be overthinking it, I may be what what you're proposing what would ensure that at the end of the day, owning and what we're allocating to finished goods, always, always in sync? It may from time to time, put a disproportionate amount of favor on the wrong buildings. But if we look at it, we're going to be looking at it over periods of a quarter anyway. So I don't think that that's an issue really. So
+
+Matthias Miller  30:04
+If it seems to me, maybe I'm missing something, I guess I'm missing why your expenses for Bob do not match the actual building percentage. And if that's actually what happens, then we should go back in the building and manually override the actual cost from 5000 to 4000. And fix that. And to your point, yes, they will get distributed distributed incorrectly. And if Bob is building 95% of the buildings, and there's some kind of discrepancy with Bob, it's going to really throw off the remaining buildings.
+
+Speaker 1  30:45
+Well, to your question on, you're asking, Why would in a period, why would what we're allocating be different than what accounting shows?
+
+Unknown Speaker  30:52
+Yeah. Well, if we break it down to a week, if
+
+Speaker 1  31:05
+if so, accounting says we paid Bob $100. Wait this week delay for buildings that he built last week. And but we're allocating 500 the buildings that he built this week. So we're just looking at a one week period, but monies paid to Bob were $100 this week, but what we allocated for what he did was actually $500.
+
+Speaker 1  31:51
+That just, is that just a matter of making sure that our accounting is is correct. Correctly dated to overcome that?
+
+Unknown Speaker  32:05
+If you?
+
+Speaker 1  32:19
+I really think if we look at it in periods of a quarter or more, don't reconcile more frequently than that. I feel like it's a non issue. Like, if we get five cans of coffee on the last day of a period, and we whatever it is, we don't pay them until the next period, then. When we like, when we reconcile the next time, we'll just buy the cost of the coffee to blink still in that quarter. Yeah. But you're right, if if we have a large percentage of these be one company then it could and would, it will skew the numbers.
+
+Matthias Miller  33:12
+Now to your point, we can go this other direction and saying the checkbox is actually not the checkbox is actually a checkbox to exclude from FDI labor costing. And so at that point, it's very clear what it does. We're treating this building as if it doesn't exist. And you guys can figure it out, we'll need to figure out on your end, how to get the right number two input there. And at that point, doesn't matter when you pay them. So I think we can go either direction. I think it's ultimately ends up being a little bit of a judgment call on your end. I think that's actually that's that's also not a completely unreasonable way to well, you can go either way with it.
+
+Speaker 1  34:12
+Yeah, yeah. The second option or option where we will make a separate GL account for those sub shops is but it's a lot of pressure on accounting to make so that those are always a correctly and in a perfect world, I think that would be the most accurate but I think if we look at it over a long enough period of time, order so I think what you're proposing is is think that would give us the most accurate results.
+
+Matthias Miller  34:57
+Well, I'm gonna pull the layer in here and say A purpose, the purpose of accounting is to give you the proper management tools that you need no more no less. I mean, apart from, you know, taxes and that stuff, but so if if you're comfortable with the with the first approach as a management accurate enough for management then when I've been favoring that, but what are your is that? Is that how you're leaning to?
+
+Speaker 1  35:27
+It is with without giving it a lot of thought. But yeah, it is. Because what we're trying to do is we're trying to find an accurate cost to each building that we build, so that when we sell it, we know
+
+Unknown Speaker  35:47
+what is our gross margin on that building?
+
+Speaker 1  35:57
+Yeah, I think that approach makes sense. You're basically just let me repeat back what you're doing just to make sure I think I understand but you're basically. So at the end of the month, you're you're thing, here's what we allocated, then you subtract all the x, all the actual cause the ones that can't be changed from that total, or by that amount, and then you look at all the accounting costs for that period, and subtract the same amount out of that, then distribute the remaining or distribute the difference between the remaining two numbers.
+
+Matthias Miller  36:50
+Okay, you give me a lump sum total cost for accounting. And I look at everything that's that has fixed costs, that already has a cost, calculated fixed cost. And I remove that from your total and distribute the balance to the remaining buildings. Is that would you say is that would you say,
+
+Speaker 1  37:14
+Okay, you remove these fixed costs, like in this case, the five contracts is for you remove that that amount from the accounting number I give to you. Correct? Right. And then whatever the remaining Yeah, you distributed? If there's still a variance of there will be if accounting still shows 200, more $200 more than just inventory, then you distribute that 200 to the ones that are not fixed.
+
+Matthias Miller  37:54
+Yep. Based on manufacturer price still.
+
+Speaker 1  38:01
+No, that would be bait based on our standard costing. I think we changed that in the documentation. I was just looking at that. Somewhere, we I saw that. Right. That's what we're doing. Now, instead of going back to the manufacturer price, we're using standard costs that was weighted by the standard costs that was applied at the time, right.
+
+Matthias Miller  38:29
+Right, right, right. Yep, you're correct.
+
+Unknown Speaker  38:31
+Good. Yeah. Good. Makes sense. I think this is this seems easier than what I had thought it would be.
+
+Speaker 1  38:42
+I know we talked about this briefly a month or two ago and discarded the idea and said we have to do these pages district wide, but I think this will be better.
+
+Speaker 1  39:01
+Okay, so next steps on that is what you'll update the proposal and meet on your site and just send out a new copy.
+
+Matthias Miller  39:13
+Yes. So let me update this waiting on bias to update proposal and we're good.
+
+Speaker 1  39:30
+Good. So documentation on software process we've partial review, I said partially because that is like 25 pages of intense I guess. It gets pretty massive. One question on that is, what is the price for documentation for? What are the cause navigate
+
+Matthias Miller  40:00
+We all know that your this part of it was 1800. And I think not all of that was spent on the payroll documentation. Some of that was also spent. I don't know what it is 70% 30% spent on 70% spent on the payroll module 30% spent on sorting out all the scattered pieces of documentation that we've gotten pulling them all together.
+
+Speaker 1  40:42
+We said 70%, I mean, estimate on payroll module alone would be something like 1250 1300,
+
+Matthias Miller  40:52
+maybe something like that. Yeah.
+
+Speaker 1  40:57
+Yeah. Have some idea on that? And then we'll
+
+Speaker 1  41:08
+just let you know, on that, is that something you're ready to get started? Or you would get started, you have capacity for someone to you on with that?
+
+Matthias Miller  41:19
+depends a little bit where it is, and, and depending on what it is, it's is going to affect the price because payroll module was largely written and clearly defined.
+
+Matthias Miller  41:38
+For example, I don't know what we're gonna get into when we get into IMS types of stuff. If it's as simple as documenting what's on the screens, then that's not very expensive. But if it's digging deep into the processes, and what flows where, and how, and when all the weird gotchas that happen that nobody's thinking about that's. That's really where it starts becoming more expensive.
+
+Unknown Speaker  42:09
+Payroll better. Go ahead, Mark.
+
+Unknown Speaker  42:16
+I wanted to hear what do you say? What do you had to say about?
+
+Speaker 2  42:19
+I was just gonna say the payroll module? Probably was, well, it was the only project I've ever worked on that we thoroughly documented from the from a design process. Everything else has been.
+
+Matthias Miller  42:37
+Well, CRM we did and then we threw it away. hauler portal we did. And that one persists.
+
+Speaker 2  42:48
+No, I'm saying from a from a length of design standpoint, we we deliberated on that for a long time.
+
+Matthias Miller  42:59
+Yeah, I think we, yeah, very clever.
+
+Speaker 1  43:03
+So if we continue, what is I think we need to look at what is most important to document? Yeah, I
+
+Unknown Speaker  43:13
+mean, from from. And who does this affect most? Is it? Is it.
+
+Speaker 1  43:23
+Developers gain most by this documentation, or who use who's going to use this most in your opinion?
+
+Matthias Miller  43:45
+Dwayne, have you ever poked your head into payroll documentation? I guess you don't have as easy access to it yet. And that's something else to put on my
+
+Unknown Speaker  43:54
+list. What do you mean?
+
+Matthias Miller  43:57
+Have you ever stuck your head in in payroll documentation to figure out what's I guess? We haven't even deployed it yet. So maybe not. But to figure out what's going on and how things work?
+
+Unknown Speaker  44:06
+You mean an assist? Yeah, I don't do I have access to it?
+
+Matthias Miller  44:12
+I don't know that you have, you'd have to go digging through a PDF, which would explain why you wouldn't. Who would use it the most? If we have.
+
+Speaker 1  44:28
+But what I'm trying to get at is is how do we set priorities and which ones to do next?
+
+Matthias Miller  44:42
+Let me let me let me run this past Josh Ellis. I think probably the piece what I would probably say is doing what part of the system is most painful for you to support right now.
+
+Unknown Speaker  45:04
+Wow, that is a broad question.
+
+Speaker 2  45:25
+From a for okay, I always look at this question as a two part question, are we talking about technical documentation? Are we talking about user documentation? Which Which side is your question address?
+
+Matthias Miller  45:42
+Well, I'm interested in hearing the answer to both because I think both is useful. In this particular case, we are most concerned about technical documentation. And I think the answer probably doesn't actually affect you that much. But I'm still interested in your answer.
+
+Speaker 2  45:53
+Okay, technical, from a technical documentation side. A lot of it's on the IMS side of stuff right now. Although I wrote a bunch, I say I wrote about I mean, I wrote it from my perspective. So that's probably part user part. More more from a user side. But from a user side, the question really is dealer stuff, I feel like probably is the most painful.
+
+Matthias Miller  46:29
+Do not find that hard to believe.
+
+Speaker 2  46:37
+And I say it's the most painful, I don't think any amount of documentation is going to help with that. It's on some some of those
+
+Matthias Miller  46:44
+things. When we let's let's just continuing to make it as drafted simple as possible to use and continue training them and it is just part of it.
+
+Unknown Speaker  46:58
+Yeah, I mean, I can't I can't imagine the technical support side of large legacy software's I can't, I can't imagine.
+
+Matthias Miller  47:11
+Yeah. So bottom line, Mark. I mean, this is most likely to. So sounds like there's a small bit from doing an IMS, I need to talk to Ellis and Josh, it depends on a lot of things. Like there's a few moving pieces as far as US based coding for resist. Bangladesh coding for assist, how those interact. So, bottom line, I'm going to talk to Ellison. Josh, get back to you, and who defects and how we should prioritize it.
+
+Speaker 1  47:51
+Okay, so you'll come back with a proposal on what do you think should be priority for technical documentation? Yep. And how big of a, of a when I'm sure. Big deal to investor tools and their clients to continuity of
+
+Unknown Speaker  48:16
+up into? I mean, the continuity of of software, continuing your function, even if something were to happen to a key developer? Is that I mean, how does that play in here? Should we be thinking about documenting that angle? Or is that?
+
+Matthias Miller  48:47
+Well, there's a sliding scale of risk, I think one of the ways to, okay, so. And there's very multiple ways to solve the problem. Documentation is really helpful because especially as a, as a project grows, the rate of change increases. And when you when you're in the moment, you think, oh, yeah, that makes perfect sense. We'll never forget that. And then as little as three weeks later, sometimes three years later, you're like, Oh, why did we do like that again. And so, so documentation can really help anchoring that having, I think team size and redundancy is, is really helpful. We would really be up a creek If staff had not only coded but also designed the payroll module. And so having somebody who at least has a broad knowledge of the system is really helpful. And you can make up for some of this just with smart developers and it's going to take some time to catch up but they'll get their head in the game and as long as Quality Standards are are upheld, and somebody's not. We have a term called spaghetti code. As long as it's not spaghetti code, then somebody else can jump in. And, yeah, it's gonna take some time to get up to speed, but they can figure it out.
+
+Matthias Miller  50:21
+So there are multiple ways, but the time lapse thing is, in my opinion, one of the biggest things that I'm concerned about, because some of these, the more these systems interconnect, the more there is this, you have to think about this, because it's going to affect this other thing over there. And
+
+Speaker 1  50:42
+yeah, yeah, so didn't quite follow it. But what did you mean with would really be up a creek with if set hadn't coded and also designed payroll module,
+
+Matthias Miller  50:59
+know if he if he had been, if he had designed it, and he coded it, if I had not been heavily involved in in the design, as well is that if that whole thing would have been done by a single, single person, and with him being an EPI, and with it being a fairly critical core part of the system, that would put too much knowledge in his head and too little knowledge and somebody else's. And so we, I mean, in the short term, we can help balance that, but there's still this thing of just the sheer sheer size and volume, size, the project, speed of change, all of that.
+
+Speaker 1  51:40
+But all of that, I mean, leads me to believe that IMS is probably the most important part to document but although I don't have well, multiple factors. It works exceptionally well, and it but there's so many it's large enough, there's so many moving parts to it. And where we don't have any documentation and I think it's but it's also the most probably going to be the most most difficult to document and the most offensive right?
+
+Matthias Miller  52:26
+Getting gonna guess you're probably right.
+
+Speaker 1  52:30
+Which is probably why it's most important. Usually the easy stuff is easy for a reason well discuss. And yeah, I'm curious to hear what what would you guys come back with? We'll do
+
+Matthias Miller  52:56
+all right. And we should do this or not. I'm inclined to jump past I'm inclined to talk a little bit about closing closing out reporting periods and it jumping ahead of depreciation for a moment because I think we have I think closing reporting periods and cash reporting has potential implications that are higher priorities. Are you good with that?
+
+Unknown Speaker  53:33
+Yeah, that makes sense.
+
+Matthias Miller  53:36
+So Joel was telling me this, I did not know this information, but effectively at the end of the year, all of your temporary I think it's SGA accounts get transferred out, get zeroed out and get applied to the equity and get transferred into an equity account in a standard process, standard accounting process
+
+Matthias Miller  54:19
+and I think the question question here we see if there's let me see if I can get you better
+
+Matthias Miller  54:38
+let me let me just read what he's actually let me let me let me email this out. And then I can also
+
+Speaker 1  54:53
+wonder if it matches pretty much matches what sounds like the same thing that Larry
+
+Matthias Miller  55:35
+okay so yeah basically revenue and expense get moved to retained earnings at the end of a period of reporting period
+
+Matthias Miller  55:52
+and and so we may want to include those Yeah. So, these will be basically special special closing transactions that we can include or exclude in various various parts
+
+Unknown Speaker  56:27
+let me say are you sending something some documentation? Yes,
+
+Matthias Miller  56:32
+it should be it should be coming over now
+
+Unknown Speaker  56:35
+send you this as well
+
+Speaker 2  57:03
+like his like his language under proposal, let's add and respect a special transaction type. That is, I'm going to start using that one let's let's add an SOP and respect. Let's add and respect an SOP for this department. I like that
+
+Matthias Miller  57:29
+sounds a little bit like a GPT prompt right there. Let me be very clear about what I want you to do.
+
+Speaker 1  57:41
+I still have I haven't once I come across one of my redneck spreadsheet formulas, I'm gonna send it to you.
+
+Speaker 2  57:54
+Yeah, I dropped I dropped a fairly complex formula into it the other day and it rewrote it for me and it was pretty good.
+
+Unknown Speaker  58:05
+He did it shorten it up.
+
+Speaker 2  58:08
+Yeah. And thankfully, thankfully, most software code doesn't specifically care about capitalization but because I'd be the king of capitalizing correctly
+
+Unknown Speaker  58:31
+it sounds like the same thing
+
+Matthias Miller  58:47
+and it looks to me from Joe's comment as of the 20 of that he was looking to do looking to support it monthly and quarterly closing as well. So I don't know specifically if this is still a question he needs to have answered or not but
+
+Speaker 1  59:13
+you I can't think of any reason why we would want to do it more often than annually but what you're seeing is, is the support annual
+
+Unknown Speaker  59:46
+that
+
+Speaker 1  59:48
+it looks like he's going to build it up so that it does annual, monthly and quarterly anyway. So it may not even be something that requires an answer.
+
+Speaker 1  1:00:06
+Alright yeah say nothing will ever use his annual and that makes his life a lot easier and there's a lot less work on that he will have to do
+
+Matthias Miller  1:00:24
+yeah it's possible and I don't I don't know the details well I have to know how how much mean is it I think he's gonna evaluate basically what what the needs are and and you know it's possible it's just as good to support multiple frequencies as it is to do one but if you're good with with this I'll note it in the proposal and let him know
+
+Speaker 1  1:00:57
+I am yeah annual annual and finally okay
+
+Matthias Miller  1:01:05
+all right so that takes care of this alright let me go back okay so the wasn't even on my list and I got it done okay good. The kind of verification we talked about did you let's jump to cash reporting still because that one is also something that has potential short term implications
+
+Matthias Miller  1:01:43
+so pull this one up
+
+Matthias Miller  1:02:03
+on a cash flow I'm pretty ignorant about cash flow statements I'll admit
+
+Unknown Speaker  1:02:11
+it makes to have it
+
+Matthias Miller  1:02:15
+makes me feel better I don't know what it says about me when I'm feel better when I'm surrounded by people who don't know the same things I don't know but
+
+Speaker 2  1:02:25
+you know you know your cash flows you just don't always know where
+
+Matthias Miller  1:02:32
+cash flow Yeah, she does.
+
+Unknown Speaker  1:02:35
+Let's let's figure this out so we can redirect the flow
+
+Speaker 1  1:02:43
+if we can come up with a way to create a perpetual cash flow and sell the idea then we wouldn't need any marketing or any fancy sales to sell that I'm sure.
+
+Speaker 2  1:02:59
+You should you should talk to Gibbs friend that goes up behind their shop and looks for the oil then that would be a perpetual cash flow
+
+Unknown Speaker  1:03:12
+that one sounded a little fishy to me
+
+Speaker 2  1:03:19
+Yeah, but I will say anybody who who knows where my cash box is and wants to put money in it I will make it available sorry, Matthias you don't know. You don't know this whole story but there's this rather eccentric slightly I'm looking for the right politically correct word. But anyway, this guy that wanders around North Carolina, this vinyl structures shop and everyone's gonna hook him up there and he'll go out the back of the property looking for the oil that's supposed to be back there and then there was something about hidden knowing where the cash box is so they decided to go and audit the cash box only to find out there was 5000 extra dollars in it so that they they're assuming he's been putting money in instead of stealing it out. So the guy
+
+Matthias Miller  1:04:10
+Interesting. Well, I guess that works.
+
+Unknown Speaker  1:04:20
+Hampton, Bill's got some characters in it.
+
+Matthias Miller  1:04:24
+We got some I'm not too far from some mountain town. So I understand what that's like.
+
+Speaker 1  1:04:32
+There's a place out there that my brother in law to be they do construction in the southern part of the state and I was like, he said there's a town up in the mountains. They do a lot of work and there's
+
+Speaker 1  1:04:51
+he said, he said Colorado is an interesting place anymore with all the marijuana being grown out there. You don't see that around to your place. I don't know.
+
+Matthias Miller  1:05:04
+Well, our community has been pushing pretty hard against it here. And so much so I don't know if anything ever happened with this, but they were trying to get some hemp farms in. Because apparently, apparently growing hemp has a fairly wide pollination radius. And it can, it makes it difficult to grow marijuana urea. So I haven't really heard if they've made more progress on that. But other parts of other parts of Colorado Definitely. It's here too, but yeah, yeah. All right. So I'm looking at well, I wonder if well, a few things. Cash Flow Statement still is, I don't know making up numbers six months out.
+
+Speaker 1  1:06:05
+Oh, okay. Did I know are we looking at at? I was looking at cash flow statements as what happened, what actually happened? Or cash in the last week, the last month, or whatever? Are you? What you're referencing? Looking at your budget type?
+
+Matthias Miller  1:06:39
+Well, there's Okay, here's here's. Here's the fundamental question. Do we need to when there's when there are cash transactions? Do we need to how how, how thorough does our linking and reporting need to be QuickBooks, for example, lets you track you can run any report from a cash basis or accrual basis, if you want to. And, and the the only the main reason I brought this up, because the only thing I could think of that would affect this is gave a talk about wanting to do cash flow statements. And I had kind of incorrectly assumed that there would be some cash flow projections in there as well. But that might not actually be true. And so from the core accounting piece, and looking at how to prioritize things, I think I think we wanted to know the impact of what are the things that could potentially impact the prioritization of some of this linking and tracking that we're looking to do if cash if the cash flow statement is a priority in the next few months? And if that's going to come ahead of some of the payroll integration and other other pieces that I think we should we should look at it sooner rather than later. If not, then I think we should understand the potential implications of it. But but it does affect but but maybe we don't really need to think about this more for another three to six months.
+
+Matthias Miller  1:08:32
+Yeah, I don't know that just confused things more than actually clarified anything for you more. Well,
+
+Unknown Speaker  1:08:38
+so one question cashflow statements
+
+Speaker 1  1:08:47
+looking at those in the context of, of what actually happened to our cash and given periods, is is the way that we were thinking about them. But you're saying that's not an Well, banking at one step, is that something that you would be involved in the design and development or is the other day I was led to or I was I assumed that would be sold and stolen, people in Bangladesh asked for to prioritize that. And other things could continue to move. Are you saying that it's it's we have to pick one or the other that that's not the case?
+
+Matthias Miller  1:10:00
+Wait, I'm sorry, I understand your question.
+
+Unknown Speaker  1:10:12
+So if we say, yes, we want cash flow statements. We also one, payroll module integration, those other pieces and those run in parallel are not
+
+Unknown Speaker  1:10:30
+those two, Candice,
+
+Speaker 1  1:10:33
+you're saying they can? Yes. Well, then I mean, if they can, and I think the answer is, is
+
+Unknown Speaker  1:10:47
+yes, let's move ahead with cash flow statements at the end of the schedule, or what what are the constraints that would keep us from
+
+Matthias Miller  1:11:03
+I don't know that there are any constraints that would keep us from it. Probably, but one thing that would be helpful would be
+
+Matthias Miller  1:11:26
+okay, there's what's you know, what's the right what's the right way to approach this? I feel like some of this is like a cash flow statement as a cash flow statement as a cash flow statement. And so is the right way to do this to turn it over to Joel and say, Joe, can you come up with a proposal for cash flow statements and run it past you before we take it and run with it? That's option one. Option two is well, am I wrong in my assumption that the cash flow statement is a cash flow statement? And if so, if I am wrong, then I think goes back to you Mark and say, Hey, Mark, what if there's five different types of variations of cash flow statements? Which one what do you want and in what should they look like?
+
+Speaker 1  1:12:20
+Well maybe I'm wrong on this again. But I expect this is me expecting a cash flow statement is is cash flow statement just like income statement is an income statement. And it's something that
+
+Speaker 1  1:12:47
+it's a core piece of accounting it's not simple or basic but it's it's a core piece that out
+
+Matthias Miller  1:13:04
+Why
+
+Speaker 1  1:13:05
+has it not been built out? Up until not just there was no need for it? Or is there lots of complexities with it or there's no need for it
+
+Unknown Speaker  1:13:22
+it needs to know with our cache was going
+
+Unknown Speaker  1:13:26
+yeah
+
+Matthias Miller  1:13:31
+we have smart cache here it's got it's got a brain walks where it needs to go.
+
+Unknown Speaker  1:13:35
+Ai driven cash.
+
+Matthias Miller  1:13:37
+Ai cash I guess that's that's the scariest thing
+
+Speaker 1  1:13:45
+at this point so what I guess what's the next step on this Messiah is
+
+Matthias Miller  1:13:53
+let me let me I'm going to make the next step on cash flow statements to circle back in with Joel and take a look at prioritization and scope versus other pieces that he's got going on
+
+Matthias Miller  1:14:20
+hey
+
+Matthias Miller  1:14:26
+so let me know I'm jumping around and stuff because we prepared okay so that left appreciation and
+
+Matthias Miller  1:14:41
+Okay, so that basically leaves appreciation
+
+Matthias Miller  1:14:50
+we have two bullet points, okay. So extending extension of useful life makes sense to me. So basically, you took take the remaining life in you If
+
+Matthias Miller  1:15:06
+you take the remaining the remaining or the current value, and you prorate it over the the remaining period
+
+Matthias Miller  1:15:25
+then there's the question of adjustment, automatic adjustments versus manual adjustments. And what happens when there's a discrepancy between the accounting and the asset record?
+
+Matthias Miller  1:15:44
+How do you want this to be handled?
+
+Speaker 1  1:15:52
+So the first one, do you want these adjustments to be done automatically or manually by the accounting team? So automatically would be linked to the the assets table or the depreciation table and it is as a as an accounting transaction? Report months based on what shown in the table, is that the automatic process?
+
+Matthias Miller  1:16:19
+Well, if we would, well, the the automatic process would be everything is going to be linked to the asset, the automatic process was specifically in regards to shortening and extending the useful life. So if we, if we certainly useful life.
+
+Matthias Miller  1:16:40
+Oh, this is another question. How much goes into the impairment loss? Do we we take what the value would have been at the original depreciation and take the dish if we start in the life, and we take what we actually depreciate, we actually accounted for and the balance for what it's what it's depreciation should be based on its certain life and apply the balanced impairment loss.
+
+Speaker 1  1:17:26
+I would think that's how we would say, or another way of looking. So if you shorten, if you're depreciating $100 per month, that's the schedule and then you shorten it by a year. Then asking if do we that would be $1,200. Or an impairment loss? We put all 1200 into that account or that transaction? That adjustment, right.
+
+Matthias Miller  1:17:58
+Oh, got it. All right. Make sense? Am I not understand? Yeah. Or you could you could say, this thing was this, this was $10,000 over 10 years? Well, it it's a 12k asset 2k salvage value $10,000 over 10 years, $1,000 a year. And then you shorten it by to five years. And
+
+Matthias Miller  1:18:39
+you take and so you would only depreciate it $500 For the remaining years and take an impairment loss. On a higher amount. I don't know. Does that make sense? I made a spreadsheet.
+
+Speaker 1  1:19:03
+I didn't. I didn't quite follow the math, but I was thinking the monthly depreciation or the annual depreciation would still remain the same though over the last end of that shorten. Are you saying it would it would actually decrease?
+
+Matthias Miller  1:19:24
+I'm not saying it would or wouldn't I'm asking. I don't think it's Yeah.
+
+Speaker 1  1:19:35
+I would think the easiest would be to just keep appreciating by the same amount per year that we had been appreciating.
+
+Speaker 1  1:19:50
+It seems like that would be be the cleanest? Yeah.
+
+Matthias Miller  1:19:56
+I like it. So then, do you want the accounting team just to go in and manually adjust the useful life and have depreciation vary based off of that automatically based on these calculations, or do you want a more manual process? readjustment of useful life?
+
+Unknown Speaker  1:20:28
+Well, I mean, if it's possible, I'd say, let's do the automatic because doing it manually, it's something that's going to be done maybe once or twice a year. And so he could easily easily be missed or messed up if we try to do it manually.
+
+Matthias Miller  1:20:55
+So I think that's what I was asking on that particular one. But then there's this question of somebody changes, the there could be any number of reasons. We have a transaction. So we haven't asked we have the 12k asset with 2k salvage value and useful life of 10 years $1,000 A year. Appreciation deducted you know, adjusted. Yes. Here's another question. Is, does this get broken out? On a monthly basis? Or?
+
+Unknown Speaker  1:21:52
+Yes, monthly.
+
+Matthias Miller  1:21:54
+So it's like $84 a month. And somebody goes back into January's adjustment and voids the transaction. And now the asset should have had one $1,084 worth of depreciation, instead, we're only seeing 1000. What do we do in that? In that case? Do we ignore this discrepancy and keep depreciating it by an additional $84 a month? Every single month? Or do we do some kind of catch up transaction? What should happen in that case?
+
+Speaker 1  1:23:02
+I would think a catch up transaction would be the cleanest. Same as what we are in the live we'll just keep the annual monthly amount the same and we'll just for the rest as an impairment loss. Got it?
+
+Matthias Miller  1:23:34
+And then if it would go the other way. We would reduce the monthly amount
+
+Speaker 1  1:23:48
+you're saying if there's a discrepancy or if we extend the useful life.
+
+Matthias Miller  1:23:53
+But let's say Okay, so in my example, somebody avoided it. And so we would take an impairment loss, so so we would see that it's under depreciated. And we would take an impairment loss to catch up the value. Now what happens if we're, yeah, and then what happens if somebody creates it automatically? That's January and February and February 15. They put in a depreciation entry of $150 against the asset, would we then just prorate the balance? So instead of $84 a month and now goes down to $79 a month or something similar to what we would do extending the useful life
+
+Unknown Speaker  1:24:52
+yeah, I mean, what else could could we do?
+
+Speaker 1  1:25:02
+That's fine. I don't that that's fine. I mean, I think all of these pretty much all of these feels to me like we're looking at them answering these questions like, the source of truth is the list of assets or that asset table. If something gets moved there, then accounting just us to follow.
+
+Matthias Miller  1:25:34
+Sounds good. Well, I will put it together with that in mind. And then I will see how soon I can get that back out to you for you to go work out. Yeah. So just going back over my list on things talking with Josh announcement documentation, updating the proposal for sub shop buildings, talking to Josh back refining to vendor invoice appreciation. Me slash jold update the spec, mapping out automatic debits and credits is still in your court cash flow statements. And Mike were to get it in joules court. And then that brings payroll integration into to accounting. There's
+
+Speaker 1  1:26:38
+one thing that if it works for you, Dwayne, and I would like to talk Monday about tying in accounts receivable or talk more about integrating accounts receivable planning process, does that. That work or do we have other things we should be looking at Monday?
+
+Matthias Miller  1:27:01
+Does that does it make as long as it makes sense to have that conversation before I have a chance to talk to? Josh?
+
+Speaker 1  1:27:09
+I think it does, because we're talking about accounts receivable. And not.
+
+Matthias Miller  1:27:14
+Oh, I'm sorry. Yes.
+
+Speaker 1  1:27:17
+Yep. I just didn't want to jump into that. You know, if we have a lot of loose ends yet that we wrap up first, but if you if you're comfortable with that, then
+
+Matthias Miller  1:27:29
+I think so the only thing I might say is that if we can get sign off in some shops before before then probably be good.
+
+Speaker 1  1:27:40
+Okay. That's should be pretty straightforward. mean? Yeah. Good. Yeah. Pretty straightforward. You'll update the documentation and then send it to me and I'll take a look at it. And then by Wednesday, we should be after you've talked to Josh should be able to resume on AP That's right, right. Correct. Yep. Now there's well, on depreciation there's there's the one thing that does concern me about depreciation is and we've talked about this some but my question is, would it be possible to use a third party depreciation table as a source of truth and link it is is with an API and integrate so that we have and have that function as our source of truth because my concern is if we don't then we'll always be juggling the two one for management purposes or another for or you know, for tax purposes, kind of like ex charming Sure, we could have built logic into this to do sales tax calculations. But things are constantly changing
+
+Speaker 1  1:29:13
+by on third party like tax jar to do that, or is there something like that even possible?
+
+Matthias Miller  1:29:22
+I have not taken a look at this. Now
+
+Matthias Miller  1:29:33
+is this won't your wants your accountant? Isn't this primarily a matter of tracking your tax, depreciation and tax value?
+
+Unknown Speaker  1:29:55
+mean from the the tax bases side of things
+
+Unknown Speaker  1:30:00
+Yes
+
+Speaker 1  1:30:07
+it is. But there's also know how familiar you are with with like tax schedules. There's our depreciation schedules, there's also things that certain things you can know, like banned, you cannot depreciate and other things. Different types of depreciation methods, you know, based on what you choose. And my, I'm concerned that we're we're always trying to, if we have them listed in two separate places, we're always trying to
+
+Speaker 1  1:30:54
+win sync. So if we don't pay well, but on our table, sure, it'll be easy to shorten the useful life but there's also are like, we haven't a sale of an asset. That's the fall needs to be recorded. That seems like it's easy enough to do on our site, but that all needs to be recorded on X bases. Patient schedule as well?
+
+Unknown Speaker  1:32:00
+Well
+
+Matthias Miller  1:32:07
+so I don't really know the answer to that I would have assumed rightly or wrongly that the right source of that would be more a CPA question that stays up to date on tax codes, and update us on taxable values that it would be some kind of API integration, but if
+
+Matthias Miller  1:32:39
+but I'm not dewpoint I'm not super familiar with with this.
+
+Speaker 1  1:32:53
+Well, the reason I already said he just don't get too caught up in building depreciation schedules inside yourself word but because, well, it's for this exact reason. But what Whitney is using what our accountant is using, she says she cannot do most of them, you can switch between book bases and tax bases. And so you'll use tax bases for filing your taxes like an accelerated depreciation, and then you switch to book basis.
+
+Unknown Speaker  1:33:35
+Chose your useful gives you a yearly or monthly amount is for depreciating management purposes or what you would see on your financial report.
+
+Speaker 1  1:34:00
+All right, I mean, I don't know this needs or is it something that we need to we keep going or should we wrap it up for today? And
+
+Matthias Miller  1:34:14
+yeah, could you put together I wonder is a good next step might be a if you want to put together a brief outline or a brief summary based on your conversation with Larry and that might make it easier for me to
+
+Unknown Speaker  1:34:33
+Yeah, I can do that.
+
+Matthias Miller  1:34:35
+That in the fact that we've been going for 90 minutes. But yeah, easier for me to wrap my head around it.
+
+Unknown Speaker  1:34:43
+Good, good. Shit. We covered a lot of things today. Thanks for Thanks to you.
+
+Matthias Miller  1:34:58
+Yeah, you're welcome. I I think we're finding a better cadence of college Enders and getting some things in writing before we get going on the call. So I think that's very helpful. Yeah.
+
+Unknown Speaker  1:35:15
+Good. Well, we will talk Monday then.
+
+Matthias Miller  1:35:18
+Okay, sounds good. Good weekend. Good weekend. India. Thanks
+
+
+Transcribed by https://otter.ai

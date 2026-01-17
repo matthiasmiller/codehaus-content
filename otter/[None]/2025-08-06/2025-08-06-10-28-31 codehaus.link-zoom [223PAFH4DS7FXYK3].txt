@@ -1,0 +1,1028 @@
+Matthias Miller  02:42
+how awesome people are. Hello, how awesome people are. Hello, And so we are optimizing for the lizard brain here. And so you just click refresh, refresh, refresh. Is it through? Is it through? Is it through? And then, if we don't get any if it's still pending after 30 seconds, then we show a message saying something went hoo. Hello, hey, hey, I'm finally here. Okay. Okay. It's really fun to not only be able to brag about easier when you have awesome people, number one. to not only be able to brag about they're awesome. about how awesome people are. but, well, it's sorry, two reasons, everything gets easier. one, you can legitimately, encourage them and brag on them because they're awesome and they're just easy to work with, and they get stuff done. So so so Dwayne was super delighted with the mock up, and it's a very good thing. I think, let's go. I think, yeah, let's go. Okay, so let me walk through what's fresh in my mind is the credit card processing portion of this. And so let me talk through how that, how we think that works, and poke holes in it. The I, I know Josh isn't super keen on external triggers from a support standpoint, but we're, we're we're faced with a decision, do we want to use external triggers to run credit card transactions, or do we want to completely code this in a whiskey. And neither Dwayne and I are very excited about maintaining something like this in the whiskey. And so the current thought is, on Save. When you're getting ready to save, we say warning this is going to run a credit card transaction if indeed it is going to run it and and then, and if it is then, then we stomp in a field change expression or something into a payment ID that says pending or processing, and then we trigger a web hook, and then and then on save, a big message pops up on the detail screen that says we are processing This transaction. Please refresh this page for updated status. Horribly sideways processing this transaction, please call only support, or maybe, or we just say, If this message persists for more than 30 seconds, please call only support at you know their support number, basically, if, if it never, if the whiskey never gets back to us having processed the payment, either yet, yay or nay. On processing the payment, we we say, call only support, like we don't know if we don't we have no idea when we have no clue, like there's nothing so, so that handles that scenario. And then on Save payment ID turns green or something, the message disappears, and your payment was, you know, we see, oh, payment was successful. Otherwise it's red and it shows the failure reason, and maybe they check a box to retry it or something, and they retry the transaction. And then we have a report alert and a both report alert and nightly email that goes out to certain people that says Warning, we have these payments that were recorded, but they're in draft status, they need to either be voided or they need to be charged. Can you go clean them up please? Because there's a possibility of
+
+Speaker 1  06:15
+stranding it So, and this is specifically credit card
+
+Matthias Miller  06:19
+stuff, credit card and ech, okay,
+
+Speaker 1  06:23
+I can't find are we? Are we building that on payment somewhere? I mean, no, we have to, yeah, we'll
+
+Matthias Miller  06:29
+have some kind of payment ID. We're not even sure he thinks. He doesn't even know what processor he's going to be using at this point. I uh, man, would it be great to have an affiliate relationship with whatever processor he uses, um, but um,
+
+Speaker 1  06:54
+because presumably that cuts there reduces their cuts pretty substantially. Well, I don't, yeah,
+
+Matthias Miller  07:00
+I mean, if I think I don't know how he wants to do it, stripe is so wildly expensive, you're basically paying for all kinds of stuff as part of that fee. And there's plenty of people who'd be happy to do it for less than that. That that point you're probably looking at integrating with a payment gateway, I'm guessing, so that you can just swap out the back end provider, but that's all TBD. I mean, yeah, if you can, if you can charge it, if you can even have a quarter, half percent off of that's, that's a lot of, awfully fast, that's awfully fast. But yes, there'll be some kind of, okay. And then if you need to add a payment method, to add a payment method, we'll have a payment link that pops open into whiskey. We take the payment, tokenize it with the merchant processor of some kind and stores a token in the database with enough descriptive information. So here's your card ending in 4569, expires on 1130 you know, 31 and so you could select the payment method from the detail screen. That'll be another drop list
+
+Speaker 1  08:10
+on the payments. Yep. So be cash or check. Probably don't care too much between those. Well, maybe we do.
+
+Matthias Miller  08:20
+Yeah, check. You grab a check number. That's the biggest thing. Yeah, so you can't have a
+
+Speaker 1  08:25
+check other, H, credit card, other, you
+
+Matthias Miller  08:29
+may even always just have a reference number. I kind of actually like this.
+
+Unknown Speaker  08:38
+What do you do if it's cash?
+
+Matthias Miller  08:40
+I mean, just put in whatever you want, like, dropped it off. I mean, you could say office drop off, eight, 625, I
+
+Matthias Miller  09:00
+uh, I liked it visual.
+
+Speaker 1  09:12
+Um, I'm wondering is that part of the reason the mock up so helpful? I
+
+Matthias Miller  09:17
+think it's partially that I also just think we are so deep in the weeds of when we say an RG, we can immediately visualize what it is. It's fair, yeah. I also think it's really hard to put yourself in the end user shoes, yeah. Like, when I actually looked at this, I was like, wow, you're not He's not wrong. This is a really complicated RG, Oh, yeah. And, like, even the sorting, we have to sort by contract, just for lack of confusion. I think even if that's not the order in which permits get applied,
+
+Unknown Speaker  09:50
+gotcha so, that could get interesting. But anyway,
+
+Matthias Miller  09:57
+I don't think it'll be too terrible, but I. Um, okay, so that's the payment side. Do you see any just glaring? I don't know. Am I missing anything obvious?
+
+Speaker 1  10:14
+So security deposit is now not contract specific,
+
+Matthias Miller  10:22
+correct? How does that work? Oh, wait a minute, because you're taking the security deposit off specific contracts, right, aren't you? I think
+
+Matthias Miller  10:36
+you wanted to security deposits to be a very specific event, like go into a button to run them. And so probably what I would do, if you're paying with a security deposit, just add validation. You would just put in and say, this really needs to be an RG. Needs to be an RG of contracts. And then we just validate that if you're paying using it,
+
+Speaker 1  11:22
+um, right? So if the adjustment type is pay from then, just make sure the amounts line up as expected, like we're not going to automatically
+
+Matthias Miller  11:34
+Well, or we, or we,
+
+Unknown Speaker  11:39
+that begs the question,
+
+Matthias Miller  11:40
+you have to at least pay. You have to pay a minimum. It doesn't matter what payment it goes to you, just if you pay from a security deposit in the amount of at least $400 you have to at least pay $400 to that contract, right? Otherwise, where's the money going? That's the only thing we
+
+Speaker 1  11:59
+care about. Yeah. So how does it work? Then, if you like, say you're paying, you paid 500 cash and 400 security deposit, then you set the payment type as cash. Can you do that? Can you pay? Have one payment that's partially security deposit, partially cash. The
+
+Matthias Miller  12:22
+payment method would be just for the would be for the payment amount,
+
+Unknown Speaker  12:27
+yeah, but does so that's where I'm getting confused on your because isn't the payment the total payment amount, the sum of the payment amounts in the ERG, and weren't you saying that?
+
+Unknown Speaker  12:41
+You know, this
+
+Matthias Miller  12:43
+is the cash payment, or this is the, see, I understand your confusion. I think maybe this should be split into sections. What if we had a security deposit section on this side, so the payment amount is literally
+
+Speaker 1  13:10
+what they paid, like the cash or check or whatever, exactly the cash out of their pocket today. Exactly, okay,
+
+Matthias Miller  13:20
+um, see security deposit. We'll see if this is I'm
+
+Unknown Speaker  13:43
+nice,
+
+Matthias Miller  13:44
+could we do something like this so
+
+Matthias Miller  14:00
+it'd be, it'd be something like, I hate this. I say this too much.
+
+Matthias Miller  14:13
+So you still have, you still have this payment amount. I
+
+Speaker 1  14:30
+so over there, customer payment is uneditable. It's the same as the Right
+
+Matthias Miller  14:34
+exactly. This is just for clarity, yes, so
+
+Unknown Speaker  14:39
+I will say our mock ups using Google Sheets. It's kind of slick.
+
+Matthias Miller  14:44
+It is very useful, useful add to security deposit.
+
+Matthias Miller  14:54
+So this is something like $400 and this is maybe something like. $0 and let's throw dollar signs on here, and you're
+
+Speaker 1  15:09
+just going to display both, because we have an RG, it'll be simpler for you to split. But I think so that sounds right.
+
+Matthias Miller  15:15
+And then I
+
+Unknown Speaker  15:25
+Sure, I'll take you up here,
+
+Matthias Miller  15:30
+this guy, I'm
+
+Matthias Miller  15:40
+I think reference number makes a lot of sense. And this wouldn't literally be a it would be a string, string field. I know that's weird, but reference numbers are string fields, so you have a payment. So this, yes, here's your payment. Oh, here's this other security deposit thing over here. Okay, and then this needs to be an RG, yeah, all right, RG,
+
+Speaker 1  16:12
+and RG, in the in that security deposit, like, not an embedded, RG, I'm assuming,
+
+Matthias Miller  16:18
+yeah, you would pop open a, that's a pop up, yep, yep. All right, then payment.
+
+Speaker 1  16:26
+Would we just default it to being one row for each contract?
+
+Matthias Miller  16:30
+I don't know, like or not. I almost think you could make them click the plus button and then select the contract and
+
+Speaker 1  16:37
+say, okay, then how do we do how do we select contracts? Just via the numeric ID. We
+
+Matthias Miller  16:45
+don't have a helper list that we're using right now. We don't, um, I mean, I guess we could auto populate
+
+Speaker 1  16:54
+that kind of wonder if we just auto populate with the type blank and the amount zero. I
+
+Speaker 1  17:06
+if it's behind a button, I don't care. I don't think, because that isn't enough work to force them to go into the button and set the type in the amount.
+
+Matthias Miller  17:24
+I mean, seems same to me like
+
+Speaker 1  17:29
+and then we do away with the comp, the complexity of trying to set the contract, which seems pretty valuable.
+
+Matthias Miller  17:37
+That's fine. I just think, and he might even want to hide this, if I mean is, is there a world in which we could,
+
+Speaker 1  17:55
+in which we could not show the security deposit button unless you permissions or you have a button that says, I need to do security deposit, which then populates CRG. Or, what are you thinking?
+
+Matthias Miller  18:12
+I guess, where you hide the security deposit section,
+
+Speaker 1  18:16
+unless you have a this, this payment effect, security deposit checkbox, and then we show
+
+Unknown Speaker  18:22
+this section.
+
+Matthias Miller  18:25
+What if we would only show this section? Show this section if there is a security deposit. So we, we, we do it like This.
+
+Unknown Speaker  18:42
+That's fair.
+
+Matthias Miller  18:44
+And then this is you
+
+Speaker 1  19:15
+Yeah, I think I like that. Then it's the section is normally just empty, like white space, which CRM to make better use of, with a button for security deposit. Yeah, yeah,
+
+Matthias Miller  19:37
+I like it. Oh, that's elegant. Okay, so then you good with the top part now, thanks. Okay, so then now we have payment details. This thing got massively simplified. I love it. Let's see I should note
+
+Unknown Speaker  19:56
+the virtual RG. I. Yeah.
+
+Matthias Miller  20:05
+Okay, he wants a delimiter. Okay, let's talk about not the implementation, but what we're trying to do, if you have multiple contracts in here, how do we visually distinguish between the contracts? So we could have row level font format. Can we do background color or just text color?
+
+Unknown Speaker  20:35
+I don't know. I will ask the guys to check
+
+Matthias Miller  20:42
+detailed demo. The detailed demo doesn't show the format expression. We have your G button that has the color, but not the there's no background color there.
+
+Unknown Speaker  20:59
+I just messaged the temples tracking. Oh. Hopefully Jonathan will give me an answer soon.
+
+Matthias Miller  21:05
+We we could do zebra stripes have alternating color, pipe lists, pipe strings, pipes.
+
+Speaker 1  21:12
+I mean, couldn't you just, if you have multiple contracts, if we can do background color, you can just do one as a is a light gray, and one is white, like it's just, if you have three, then it just alternates back and forth. Contract one is light gray, contract two is white, contract three is light gray. Yeah, it's
+
+Matthias Miller  21:34
+got to be darkened. I mean, it's got to be a color that distinguishes, that fits and distinguishes with the RG highlight row. That's true. And so that's very doable. But okay, let's do let's do this we have here. And also for the active row, it doesn't really give you
+
+Speaker 1  22:02
+what color? Somehow I'm doubting that we can do
+
+Unknown Speaker  22:10
+a background color.
+
+Speaker 1  22:15
+I'm sure we can do font color, but I kind of doubt we can do back i
+
+Matthias Miller  22:25
+i want to alternate font colors for rows in a table. Needs to contrast contrast with black. It also needs to be readable on this background, on white and on this do you recommend? Is
+
+Speaker 1  22:55
+there any chance that RGB is changing soon with the whole UI rework?
+
+Matthias Miller  22:59
+Probably will, in which case, we just rerun this prompt and find something exactly. So let's go see what it came up with. That's a gray. I mean, you could do blue and dark gray variants. I
+
+Unknown Speaker  23:24
+Yes, hey, let's go. Jonathan says, Yes, we can
+
+Matthias Miller  23:33
+be back and it disappears. I mean, obviously the highlighted row would, yeah, okay, let's do a so what? What are good I'm going to assume we want
+
+Matthias Miller  24:01
+who picks those colors?
+
+Speaker 1  24:03
+Dwayne. Dwayne. We send it to Dwayne. I think, I mean, we can, we can put throw something down, but I won't spend long on it. I
+
+Matthias Miller  24:36
+Okay, all right, that's way better good,
+
+Unknown Speaker  24:40
+because I would love to stay away from that. Yeah,
+
+Matthias Miller  24:45
+yeah. Okay. So we have contract ID, contract view, contract due date. We shortened these column headings, dwf, rent, late fee, added a total due then we have a payment amount. Next due date we added and then we have a breakdown, which is. Just a memo expression that shows this.
+
+Speaker 1  25:06
+I sent you a screenshot of he was just using it on one cell, yeah. It just disappears.
+
+Matthias Miller  25:15
+Disappears on, Okay, sweet. Oh, yeah. So then the big thing is payment amount. We'll get to some of the Okay, next due date, then is only editable on the last row and and then that just calculates. It's going to calculate a new it's an editable expression that calculates the new
+
+Unknown Speaker  25:42
+payment amount. And we'll come up
+
+Matthias Miller  25:46
+with a formula for how that works. Oh,
+
+Speaker 1  25:48
+I see I
+
+Matthias Miller  25:51
+wanna. Oh, it's doing the fourth. Can I make that the first? Okay, sure, if you pay or it's doing the 25th can we put that out to the first? Oh, sure. That puts your total payment out to this. Oh, perfect.
+
+Unknown Speaker  26:07
+Makes sense.
+
+Speaker 1  26:10
+So how does this work? Then, like, if you adjust the main payment amount, like the total payment, and you had already adjusted the next due date, is that just recalculate.
+
+Matthias Miller  26:26
+It just repopulates the whole thing, and your next due date goes away because your due date is directly tied to how much you paid
+
+Unknown Speaker  26:32
+Exactly, exactly. Yeah, okay,
+
+Matthias Miller  26:36
+sounds good. And we're always going to assume, whenever you change the payment amount, we're always going to assume our order for applying payments if you want to do it differently, manually edit, if you want to put everything on one contract and leave one overdue, and the customer service rep, you can sweet talk them into letting you do that. Fine,
+
+Unknown Speaker  26:52
+yeah,
+
+Matthias Miller  26:56
+but you can't. You can't pay part of one month, part of a historical month, and then pay into a future month you have to pay, pay the whole historical
+
+Speaker 1  27:05
+month. Okay? Like it's just, yeah, yeah. That's not how life works. This is not how life works. Yeah. Okay, Mike, I paid off my building, except for the very First month,
+
+Matthias Miller  27:19
+exactly, exactly,
+
+Matthias Miller  27:29
+all right? So,
+
+Unknown Speaker  27:35
+oh, great. Can
+
+Matthias Miller  27:42
+Okay, alternating row colors. Next due date should only be visible for that sort of a contract. If you make a partial payment for month one, you can't make make a payment for month two. The same contract. Next due date is editable and recalculates payment amount based on the target due date. Contract sorted by contract ID, so they're grouped together, even if payments are applied based on oldest due date, first
+
+Speaker 1  28:17
+with the next with thing about making sure you don't partially pay month one and then not month two, I assume that is just a validation on save, as opposed to on changes. It
+
+Matthias Miller  28:32
+could be editability if you wanted it,
+
+Speaker 1  28:37
+but does it, but if you have, if it editability, then you also need to make have on changes to clear,
+
+Matthias Miller  28:43
+and I'm finally save probably,
+
+Speaker 1  28:50
+and I'm open to being convinced otherwise. I'm just, we're going to start having such a web of on changes, because you can add it the total payment amount, which goes and rewrites the RG, or you can edit the next due date, which I don't know
+
+Matthias Miller  29:07
+if a row is only editable. Each row is only editable if all prior months are paid in full, okay? And a row is only editable if there are no future payments on it, and there effectively. Then, if, then you gotta, if you want to change, then you blank out partial payment, then you can blank out the prior payment, then you can blank out the prior payment. Then, well, as soon as you pay in full, the next month becomes editable. Gotcha. So you could just do it off of editability,
+
+Speaker 1  29:45
+yeah, no, that makes sense. And they'll just have to figure out, are we going to have people that get confused, they get themselves stuck, and then, I mean, yes, we are. Thank. Always change the payment amount, rewrite everything. I
+
+Matthias Miller  30:04
+mean, worst case scenario, they hit the refresh button, start over. I mean, how bad is it? I don't know. Yes, there will be people like,
+
+Unknown Speaker  30:13
+but yes, no, I think you're
+
+Matthias Miller  30:14
+right. There's a reason why they're not software engineers. Like, logic is not going to be their strong suit. Like, sorry. Like, it's just fact of it. So we do have to kind of, what was it Dwayne said optimize for was it wasn't optimized for Dummies, but it was something like that we optimized. I mean, there's an element in which we have to dummy proof it.
+
+Unknown Speaker  30:38
+Yeah, it's true.
+
+Matthias Miller  30:43
+Editability cannot edit an amount if there's a future payment applied, or if all prior payments are not fully paid,
+
+Speaker 1  31:05
+here's a something dad sent on our chat today. He said they were reassuring words for him and Josh. I
+
+Unknown Speaker  31:23
+That's a poster anyway,
+
+Matthias Miller  31:29
+that is hilarious.
+
+Matthias Miller  31:37
+Can only edit if all prior payments are paid in full, and no future payments have any payments. I mean, I think that solves the problem. It's about as dummy proof as you can get.
+
+Speaker 1  31:57
+So if all prior payments have been in full, I cool. Oh, I see. So you're saying you can only edit the most recent one at any point in time. Oh, yeah, yeah, yeah, makes sense. Do we need a note somewhere on the record? Just explaining that or not, do we? Will they be able to figure it out themselves? Well? Or we?
+
+Matthias Miller  32:30
+We could add validation changes. We could also add this as valid, let them try to change it and tell them,
+
+Unknown Speaker  32:40
+I almost, I wonder if that's going to be more explanatory to them.
+
+Matthias Miller  32:45
+Probably is actually they try to change it, and they're like, No, you can't do that.
+
+Speaker 1  32:51
+Should it just be a error instead of, like, on change instead of
+
+Matthias Miller  32:56
+unsafe? Yeah, error on being an error on error on change could make sense.
+
+Speaker 1  33:04
+And some of these things, we just code it like this and let them start poking at it and see if it works well enough for them, or if they we need to change.
+
+Matthias Miller  33:13
+This is only for one day only, but it's too funny not to do, huh? Just had to put it somewhere. You can see it. Can you see it
+
+Unknown Speaker  33:20
+barely, because I can't see your
+
+Speaker 1  33:38
+she should send a picture of that dad that would bring him some joy.
+
+Unknown Speaker  33:45
+Yeah, let's do
+
+Unknown Speaker  33:51
+Seth
+
+Unknown Speaker  33:53
+Ellis.
+
+Matthias Miller  33:57
+Seth Ellis, throw Nick in there. Yeah,
+
+Unknown Speaker  34:13
+hilarious,
+
+Unknown Speaker  34:21
+okay,
+
+Matthias Miller  34:27
+it's very funny how personnel it actually is a meaningful compliment for and probably one of the deepest fears types of people who develop software.
+
+Unknown Speaker  34:38
+It's true.
+
+Unknown Speaker  34:42
+They David's great. He's
+
+Matthias Miller  34:44
+great. He's fun. He was one of the best people to work with.
+
+Unknown Speaker  34:46
+He is fantastic.
+
+Unknown Speaker  34:50
+Okay, so,
+
+Matthias Miller  34:54
+dun dun, dun, dun. Okay, so this, I.
+
+Matthias Miller  35:16
+Okay, see you can't, you can't adjust the payment amount if
+
+Speaker 1  35:24
+Yeah, yeah, we got you. Even if you go me, you can't go over. You can't go under. You need to have an exact one on a historical payment. You can never go over on these right, except for the last row, correct?
+
+Speaker 1  35:48
+So anything that's overdue must not be greater than the due amount. Yep, yep, sounds good.
+
+Speaker 2  36:00
+Um, what
+
+Matthias Miller  36:04
+do you call this? I
+
+Matthias Miller  36:25
+so we should have a
+
+Matthias Miller  36:35
+sound like a
+
+Speaker 1  36:43
+so then, in the Whiz key, when someone goes to make a payment, they, what do? How does it work for them? Because we don't have a payment record at that point. Is,
+
+Matthias Miller  37:01
+I'm not sure I would like to. I would like to keep it super stupid and super simple and just we show them what they're paying, and we don't give them a choice, or, or limited choices like you can or, or maybe it's just like you select payments. I mean, maybe you have to do three payments instead of, I don't know. I'll have to talk it through with Dwayne. I just, I hate the idea of, if you thought it was bad to get a rep to manage this screen. Can you
+
+Unknown Speaker  37:38
+imagine a customer? Oh, my word.
+
+Matthias Miller  37:41
+Yeah. And I would much rather, at a minimum, to say, I don't know what I want to do.
+
+Speaker 1  37:52
+I mean, what does it what does the customer expect to be able to do when they go to their portal to pay? Don't they just say, Oh, I owe this much. Yes, let's pay this much, or this this much,
+
+Matthias Miller  38:08
+this much over and that's it. Like you just pay an amount, yeah, exactly. Then we create a payment record and auto populate it, yeah, exactly, yeah. I, I think so.
+
+Speaker 1  38:21
+And maybe we show them the breakdown say, Hey, you owe this much of which, this much is damaged, waiver fee. This much is rent. This much is light fee because, well, you're late.
+
+Matthias Miller  38:31
+Well, you could show a preview. I want to pay all right, this much is due. I want to pay this. Okay, great, boom, like, here's what's gonna happen.
+
+Unknown Speaker  38:39
+Yeah, yeah.
+
+Matthias Miller  38:46
+Sweet. It's good. So can I leave this in your court? I have some things to talk about. Alternating colors for Dwayne. Is that the only thing in reviewing,
+
+Speaker 1  39:00
+reviewing, how we tweaked that, yeah, but okay, I mean, yeah, so are we good to go ahead on our side? Um, basically let me do, or should we
+
+Matthias Miller  39:15
+let me, let me do one final review with him. I'll be talking this afternoon. And then, okay, I would prefer, I prefer to do that, and then we
+
+Speaker 1  39:22
+can see, yep, yep. Okay. I'm guessing this one I'll largely take ownership of. Okay, a lot of the other records I've been shoving off, but this one I kind of want to just take
+
+Matthias Miller  39:34
+this is like, I think this is, oddly, the complexity is actually pretty localized. Yeah, calculating how to distribute it is really the big thing. But it does feel like one of the things that's
+
+Unknown Speaker  39:55
+has really kind of needs to work.
+
+Matthias Miller  39:57
+It does get. It? Yeah, it does. And it's also one of the things where it's not complexity because of a million details you have to get right? It's complete. It feels more inherently complex than the others too.
+
+Unknown Speaker  40:12
+Yeah, I think so.
+
+Matthias Miller  40:13
+So, okay, yeah, awesome. Appreciate it. Sounds good. Thank you very much. Yep, you bet? Oh, is there anything on assist that we should be doing?
+
+Speaker 1  40:25
+What was Drew's reply? Didn't he say he wanted us to go ahead with the
+
+Matthias Miller  40:32
+reconcile stuff? Yeah,
+
+Speaker 1  40:36
+yeah. Yeah,
+
+Matthias Miller  40:48
+I have, I could use a quick break, but I'd have about 45 minutes until I call with Dwayne, if you want to knock out. I think we could do the net impact thing, sure, okay, sounds good. Give me a few and I'll Be right back. Yep, Yep. You
+
+Unknown Speaker  43:41
+Hey,
+
+Matthias Miller  43:42
+hey, all right, I think we could actually get ridiculously close to having tie outs working 45 minutes. Might be a little bit of stretch, but sure, can we at least get the design down a little bit? Because if you is this an accounting impact event type, like basically a well it's not quite that, because do you want this tied out? I
+
+Matthias Miller  44:26
+You could almost just have an event type that's called an accounting tie up, or some something like that, and it's that for the whole record, not for individual payment types, but sorry, what? Sorry, not, not for, okay. There's two ways you could do this. You could say this is a correct. Correction to the sales order, invoiced event for this record and this repeating ID, uh huh, or you could just say this is a correction event for this sales order.
+
+Unknown Speaker  45:21
+Presumably simpler,
+
+Matthias Miller  45:23
+the latter, or what I think it is presumably simpler, because you never have to think about, I mean, first of all, it's just a, we're just tying out this record, like, That's it, yeah, and then you there's no flag that says, Well, if it's this type and it's not a correction event, then
+
+Matthias Miller  45:56
+is there. And I also think, from an accounting perspective, they don't really care. I mean, you could even say you can have line items that say it said that, that says, This is a correction event for this transaction ID. Well, the notes will be, can include this the memo, this is a correction for this transaction, that transaction, that transaction, and tell you the specific Well, actually, we're not going to tell the specific transactions. I thought we were talking about leaking transactions together. I
+
+Matthias Miller  46:44
+The Reconciliation Report is going to know which
+
+Speaker 1  47:02
+you expect it as having an accounting impact event, type of correction and then record type, record ID, repeating RG, repeating ID. We
+
+Matthias Miller  47:21
+don't need repeating ID? Yeah, I don't think so. If
+
+Unknown Speaker  47:31
+we're just looking at trying to get the accounts to line up that
+
+Speaker 1  47:39
+that the sales order, then we don't have to line it up for the RG.
+
+Matthias Miller  47:49
+The issue is that your reconciliation report can no longer you no longer will have the availability of the reconciliation report to say, this deposit or this, this specific accounting transaction needs to be altered. You have to look at the entire record as a whole,
+
+Unknown Speaker  48:10
+right? I
+
+Unknown Speaker  48:25
+Are they going to be sad about losing that
+
+Unknown Speaker  48:28
+granularity?
+
+Matthias Miller  48:39
+Biggest issue is if there's multiple problems and you want to fix one one way and fix it the other way. But I think fix it multiple ways, well, then go fix anything that needs to fix on the source record first, and once everything lines up, you push it across. I think it is the right way to go. I am slightly nervous about losing that granularity. But why?
+
+Matthias Miller  49:19
+Let's go back to why do we have separate events in the first place? One of the biggest reasons is because there are certain things that happen. There's two reasons. One, well, okay, the most fundamental reason are the record affects accounting multiple ways at different times, and we need to account for those time differences. If accounting, if each record only impact accounting at a singular point in time, we wouldn't need anything besides just this record. Here's the impact from. Record, and any updates past the lock period are going to update those records anyway. This is only to corrections for historical periods. I think we're fine. I'm slightly paranoid, but I think we should probably do it like this, because I think it's,
+
+Unknown Speaker  50:31
+I think it's
+
+Matthias Miller  50:35
+right way to do. I mean, I think it's enough simpler, okay. I um, so we start with the where do we want to start? Do we want to start by creating that event type? Would you want to start recording the Reconciliation Report, the differences report? What were the differences report?
+
+Unknown Speaker  51:01
+Probably get that type super fast,
+
+Matthias Miller  51:06
+if we would do the if we could do the Reconciliation Report. Wait, we had a version of that, though, didn't we
+
+Unknown Speaker  51:12
+think so?
+
+Unknown Speaker  51:14
+Probably in that folder,
+
+Unknown Speaker  51:17
+that folders
+
+Matthias Miller  51:19
+name, we dare not mention, yeah,
+
+Matthias Miller  51:27
+did we send it over to
+
+Speaker 1  51:29
+I was just looking for reports from August. I'm not seeing
+
+Matthias Miller  51:37
+I'm not seeing them either. Mismatched by net account. It's not the IFR folder, removing it now,
+
+Speaker 1  51:45
+wait, it's not I put it in my folder. That's crazy. One folder to rule them all, one folder to rule them all.
+
+Matthias Miller  52:01
+Okay, so the only thing,
+
+Matthias Miller  52:08
+but we need a version of this that says that only looks at locked periods, though,
+
+Unknown Speaker  52:20
+right? What if something in the lock period is fixed, no mismatch, and lock period won't be fixed and unlock period but
+
+Matthias Miller  52:38
+not except through a Correction. I so what needs to happen here is I'm
+
+Matthias Miller  53:18
+what kind of macro do we have for locked
+
+Matthias Miller  53:32
+Let's reconcile their clear. Do we have something for i?
+
+Matthias Miller  53:59
+The latest, locking,
+
+Unknown Speaker  54:02
+yeah, date by company.
+
+Matthias Miller  54:10
+And is that the I?
+
+Matthias Miller  54:27
+Count periods.
+
+Unknown Speaker  54:36
+Yeah, latest
+
+Matthias Miller  54:39
+would it be the latest of the
+
+Unknown Speaker  54:46
+Don't we have to look at both closed and locked?
+
+Unknown Speaker  54:48
+I think, yeah, we have a
+
+Unknown Speaker  54:54
+we also have a latest closing date. I.
+
+Unknown Speaker  56:03
+or
+
+Matthias Miller  56:15
+it's not just this, It's i
+
+Unknown Speaker  56:44
+Oh, in case the date,
+
+Matthias Miller  56:48
+well, If it's
+
+Matthias Miller  56:55
+handle, handle the following situations,
+
+Speaker 1  56:57
+we will still need to include it, because we can't update that transaction, because we're going to try to update it to a historical date. Yeah, yeah. handle the following situations. transaction is. locked. Due date is not include, sorry, transaction, existing Transaction is locked. Do one is not include existing Transaction is unlocked. Do one is locked, is locked. What Do we do in this case? Oh, if you, if you want to move it into a historic period, well, the Net Impact is okay. I think we just exclude. I I Think this is actually, I This I'm Wait a minute. I'm no, Basically, don't we include it if either the existing Transaction Date or the new transaction date are in a locked period? I think you're right.
+
+Speaker 1  1:00:21
+Do we want to just say that up in the comment above, like you had given all the scenarios, but it's really one, if either the existing or new transaction data are locked, then we include and only if they're both not in a locked period, then we exclude it, right?
+
+Matthias Miller  1:00:46
+Well, I mean, you could have the transaction might not exist, in which case we don't need to include it. Only include items where either the exists, where either an existing Transaction is in a locked period or the desired, desired accounting impact is in a locked period. Both of these cases, we can't automatically update records. Okay, so then we find the earliest of the two, and if the earliest is less than the latest slack or closing date, then we include it.
+
+Matthias Miller  1:01:36
+And you don't like me. Why Do
+
+Matthias Miller  1:01:50
+only because of this. I'm
+
+Matthias Miller  1:02:27
+of course, we would actually show an error, because that would be too easy.
+
+Unknown Speaker  1:02:32
+Okay, so
+
+Unknown Speaker  1:02:47
+So we only have 27 rows.
+
+Matthias Miller  1:02:53
+It's really interesting. Why did that? What
+
+Matthias Miller  1:03:00
+did that drop so much?
+
+Matthias Miller  1:03:13
+Wait, what
+
+Unknown Speaker  1:03:18
+did he unlock? I
+
+Unknown Speaker  1:03:25
+for the modification history. Check modification history.
+
+Unknown Speaker  1:03:33
+No, okay, so
+
+Matthias Miller  1:03:55
+nobody knows where the errors actually get recorded. Create auto Hang on. No, by the way, a
+
+Unknown Speaker  1:04:08
+bunch of these are getting errors and warnings.
+
+Matthias Miller  1:04:13
+I would love to completely nuke this guy.
+
+Matthias Miller  1:04:21
+TSO payment record should probably use once know about it, don't we have a scheduled task that transaction errors. I
+
+Matthias Miller  1:04:53
+we legitimately believe they worked and. Let's go back to modification history. Don't tell me. He left it unlocked overnight.
+
+Speaker 1  1:05:12
+It hasn't been unlocked recently, like that was two and a half weeks ago. Here he
+
+Matthias Miller  1:05:23
+he locked it again.
+
+Matthias Miller  1:05:31
+Let's do the slow one checks. I
+
+Matthias Miller  1:05:50
+But how do these not i
+
+Matthias Miller  1:06:14
+sales tax adjustment like, Why don't these show up in the errors report. I
+
+Speaker 1  1:06:45
+I'm also running it for sales orders, But I'm ahead of you by 40,000 i
+
+Unknown Speaker  1:07:23
+There's a whole bunch for sales orders.
+
+Matthias Miller  1:07:29
+You're seeing them for sales
+
+Unknown Speaker  1:07:31
+orders, 76
+
+Matthias Miller  1:07:32
+of them. Why am I not seeing what am I
+
+Speaker 1  1:07:37
+what accounting run? I'm running standard accounting create, transaction, mismatch, errors, mismatch. Yeah, that guy,
+
+Matthias Miller  1:07:52
+that's a different one. I don't know what that one, okay, wow, I don't know that's what i Okay, fine. That's perfect. That's what it is okay. So like this one, we'd we'd ex, somebody changed the invoice date, but because the net impact is the same, it doesn't show up in our report, which is what we would expect. This one is going to be updated. This one net impact is the same. Net Impact is the same. Net Impact is the same. This one will get updated. Net Impact the same, updated. Okay, let's go past buildings. Let's go check again. Somebody
+
+Unknown Speaker  1:08:47
+Ronald or
+
+Matthias Miller  1:08:50
+the the Yeah, net impacts. The same, it goes away.
+
+Matthias Miller  1:09:02
+1072, and so jumped to AP, AP, 1224, who knows, but I'm going to bet on
+
+Speaker 1  1:09:13
+the comma after Sherwin Williams turned into an underscore. Okay,
+
+Matthias Miller  1:09:19
+brilliant. I mean, so really, this takes the whole list down to this because, and what we're saying is, if you change the invoice date, I guess we need to confirm that we want this working like this. But because this is already invoiced, like it's closed period, Whoop de whoop you can't do anything about it. It's fine.
+
+Matthias Miller  1:09:55
+This seems too simple. What am I missing? I. I don't know I'm
+
+Matthias Miller  1:10:33
+okay, but we need to Change this report to operate.
+
+Matthias Miller  1:10:41
+Wait a minute, this thing needs to operate based on record ID. See,
+
+Matthias Miller  1:10:54
+here's where the record ID gets us into trouble for the whole record thing. I'm
+
+Matthias Miller  1:11:03
+doesn't it kind of make it complicated when you try to say, Did this get tied out appropriately? Yeah,
+
+Matthias Miller  1:11:20
+I mean, I guess it technically would have to,
+
+Unknown Speaker  1:11:31
+don't you just need to do some of the record of that record if we're just trying to match run count.
+
+Unknown Speaker  1:11:45
+Not missing something.
+
+Matthias Miller  1:11:52
+You look at all individual events for this record that fall into where either side falls into a locked period. And then you group all of them together, you adjust for any corrections, and you look for anyone that has has differences. And then you have a new record button to account for differences, but you can't, very effectively, cross link it back to say which one was problematic.
+
+Speaker 1  1:12:40
+You're saying which transaction specifically, right, right?
+
+Matthias Miller  1:12:44
+It's just blanket.
+
+Matthias Miller  1:12:53
+Didn't we talk about doing linking back and forth, or did we not then that might have been my overzealous specking too. I
+
+Speaker 1  1:13:03
+mean, this is just counseling to work through all your trauma without trying to pin blame to exactly who caused it, or something like that. Exactly.
+
+Matthias Miller  1:13:18
+I don't know that that's more like. That seems more akin to like a sweeping under the carpet. Oh, you had that problem. Deal with it. We don't care where it came from or when it happened. It's all
+
+Unknown Speaker  1:13:31
+better now. It's all better
+
+Matthias Miller  1:13:33
+now, here's your bandage. Oh, man, that's not funny. No, It's not, but it kind of is.
+
+Matthias Miller  1:14:14
+Would it be so terrible to say to have a completely different record type and say that this is a locked period amendment for this other transaction,
+
+Speaker 1  1:14:31
+for a certain transaction, yeah, record, it's not a transaction, no,
+
+Matthias Miller  1:14:37
+it's a it's a on the transaction, the transaction says, I am a locked period correction for this source, source transaction. And then when you pull up the source transaction, you say, hey, look, here's this correction. And you have cross, cross linking. It's, it's at a transaction level, uh huh. Because then. Then if you want to use it for any other purpose, okay, we for whatever reason this thing got, like, we screwed this other thing. It makes it a generic.
+
+Unknown Speaker  1:15:13
+So what if they
+
+Unknown Speaker  1:15:16
+change?
+
+Speaker 1  1:15:20
+A like, what if it's changed? It's fixed, we go into another period, and then it gets changed again. Do we create a second lock for period adjustment? Yeah, sure. Okay, which looks at if it needs to be adjusted,
+
+Matthias Miller  1:15:39
+looks at the net of the source record, plus all other corrections,
+
+Speaker 1  1:15:42
+plus all corrections for this, for that record, uh huh, for that transaction, specifically, yes, yeah, probably throw it past mark and drew tomorrow before doing or not. I
+
+Matthias Miller  1:16:08
+Why could we make it a special transaction type, blocked, period correction that takes a source, source ID, I and
+
+Speaker 1  1:16:28
+do we say, then, didn't we enforce make sure those transactions don't get edited? Like, okay, what I'm meaning is the source transaction. What? Because we don't want them to suddenly unlock. Do we need to worry about them unlocking and then account impact running?
+
+Matthias Miller  1:16:55
+Or does? No, the blood is on their hands. Okay, that's stupid. Like, I mean, yes, I don't know how we fix it. I don't know how we fix it, but, yeah, that is your fault for unlocking the period,
+
+Speaker 1  1:17:15
+yeah, especially now that we've given it to you a tool to fix,
+
+Matthias Miller  1:17:18
+to fix corrections. I mean, yeah, that's exactly what this is. You should know this exactly, yes,
+
+Unknown Speaker  1:17:26
+so you don't do that. So if you go do that, then the blood be on your head and you're going
+
+Matthias Miller  1:17:32
+to get a big fat bill paying some very expensive people to fix your problem.
+
+Unknown Speaker  1:17:38
+Yeah, exactly.
+
+Matthias Miller  1:17:40
+Or you're going to restore for backup,
+
+Unknown Speaker  1:17:44
+which is also expensive, okay,
+
+Matthias Miller  1:17:50
+speaking of Trump unresolved trauma, let's keep going.
+
+Speaker 1  1:17:55
+Okay, makes we're pushing that under the rug. Actually makes me nervous. All Okay, now
+
+Matthias Miller  1:18:03
+makes me anxious thinking about it. Okay, so here is this, the where do we have the Um, it's
+
+Unknown Speaker  1:18:14
+sales tax liability.
+
+Unknown Speaker  1:18:18
+Yeah, okay. Okay. Proposal. I'm
+
+Matthias Miller  1:20:10
+Yeah, you can, you can add a correction transaction for avoided transaction.
+
+Unknown Speaker  1:20:19
+Why? I
+
+Matthias Miller  1:20:23
+We didn't for some weird somebody cleared the invoice date. Somebody invoiced it cleared the invoice date. We avoided the invoice transaction. Then they after the after the locked period, they backdated the invoicing date. Now we have avoided transaction historically, but we can't actually create it. And by the way, this doesn't work if the event never occurred. So we need a way for accounting impact to say, well,
+
+Matthias Miller  1:21:02
+the in some ways it would be Nice if
+
+Unknown Speaker  1:21:19
+the bummer the world is so messy
+
+Matthias Miller  1:21:25
+here, I was in love with my idea. What I would be inclined to do is just create a voided transaction. If the source transaction doesn't exist, we create a voided transaction on the day after the locked period and still create a correction to it.
+
+Speaker 2  1:21:42
+Okay? Argue with me, though,
+
+Unknown Speaker  1:21:59
+at least have notes on it, somewhere or something or not.
+
+Matthias Miller  1:22:07
+Yeah, you could put a note. You could avoid a transaction that says this. I
+
+Matthias Miller  1:22:22
+think what it means, it means is accounting impact would always would create transactions if they're missing and if there are, if, if it doesn't exist, it finds a lock period, throws it voided on here and says this was supposed to be for past period and it's locked. Do
+
+Speaker 1  1:22:48
+you want to try creating it, voiding it, and then creating a correction?
+
+Matthias Miller  1:22:53
+Correct?
+
+Unknown Speaker  1:22:56
+Because corrections have to be linked to a transaction,
+
+Matthias Miller  1:22:59
+correct. Do you want to put on your Josh hat and argue why this is a terrible idea. It's awfully complicated.
+
+Unknown Speaker  1:23:11
+I mean, it feels complicated to me.
+
+Matthias Miller  1:23:15
+Well, here's another simple example, simple solution.
+
+Unknown Speaker  1:23:21
+You can't set invoice date to a large grade.
+
+Matthias Miller  1:23:27
+You have a checkbox on these impact records that says, I am a correction. I am a manual correction, and these don't get touched on the accounting impact import. Okay, so we're breaking the assumption that you can't have multiple you can only have a single non correction transaction. But you can have multiple transactions with the same the same event type, the same record, record and repeating ID. You
+
+Speaker 1  1:24:36
+okay, so what's the reason, again, that we're Where's we really want to link
+
+Matthias Miller  1:24:42
+so it makes it easy when half the record is in a locked period and half of it isn't to know what records we should be looking at,
+
+Speaker 1  1:24:58
+because otherwise you'd have to make sure. That we run the we have to run account impact first to make sure everything is current, and then that what you're thinking or why you're thinking, this
+
+Matthias Miller  1:25:18
+seems way simpler to me. Um, you're not breaking the model. Okay? So if we do it like this, then you have to look at you basically say, what transactions intersect with locked period, and then what's the net impact on all corrections. And then if somebody changes the invoice date to no longer need a correction anymore. You lose traceability. As far as why that happened, you can dig in, but all of a sudden, your correction over corrected, and now you need a correction to your correction, and there's no real audit trail. Why? Except we just
+
+Speaker 2  1:25:59
+corrected you. What's
+
+Matthias Miller  1:26:04
+terrible about okay, what don't you like about about this?
+
+Matthias Miller  1:26:19
+And say this is a correction. I and
+
+Speaker 1  1:26:23
+then that just stays around no matter what, yeah,
+
+Matthias Miller  1:26:29
+and the only thing we have to do is the imports can never touch them. They never get they never ever get touched, ever.
+
+Speaker 1  1:26:39
+And so the accounting imports stay the same, except they don't touch these new guys, yep, and then it's just our logic to look at mismatch that takes these into account, yep.
+
+Matthias Miller  1:26:56
+And sometimes we need to be able to like for the transaction date. We need to look at the original or the earliest of all records, or something like that, I don't know.
+
+Matthias Miller  1:27:14
+Probably need to release NDX calls,
+
+Speaker 1  1:27:16
+but that's what I was wondering. Do we exclude these from the index. Indices or not
+
+Matthias Miller  1:27:23
+depends. We just look at the use cases, see how we use them, and try now,
+
+Unknown Speaker  1:27:27
+yeah, yeah.
+
+Unknown Speaker  1:27:31
+Think that's reasonable. I
+
+Unknown Speaker  1:27:40
+And if you
+
+Matthias Miller  1:27:47
+want to find out how they tie out to each other, well, just go click view source record and look for all events of the same type. I mean, you don't really need to cross link it. In that case, it's good enough. I I
+
+Matthias Miller  1:28:07
+argue with me.
+
+Unknown Speaker  1:28:11
+I I think I like it.
+
+Speaker 1  1:28:22
+I think it's big enough. We need to talk with Mark tomorrow. That sound right?
+
+Matthias Miller  1:28:32
+Well, we're not gonna be able to do anything until then, unless this afternoon, but, but I don't think this really, I don't think, I don't think they care about this. Do they?
+
+Unknown Speaker  1:28:47
+Maybe they don't, just as long as we have a way to create
+
+Unknown Speaker  1:28:55
+directions,
+
+Speaker 1  1:28:57
+correct their numbers, to balance them, they probably don't care.
+
+Matthias Miller  1:29:00
+I don't think so, and I don't think they're gonna they they might care about being less granular. I don't think they care about being more granular, right? And so we add the check box, we handle it everywhere. Then we change this report to handle like, just have a new detail screen button that populates with the with the difference. And make sure we take these and literally we could code this All right, let's see what my schedule is like today. We can have it coded for them by tomorrow. When you invite a little tight, do you try to circle up after Dwayne and see we can code it in 90 minutes? Yeah, okay, I will. Sounds good. Let me take a quick break and Yep.
+
+Unknown Speaker  1:29:54
+Thanks. Yep. Thank you. Bye.
+
+
+Transcribed by https://otter.ai

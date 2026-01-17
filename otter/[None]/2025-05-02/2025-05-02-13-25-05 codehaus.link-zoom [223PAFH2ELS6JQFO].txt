@@ -1,0 +1,461 @@
+Unknown Speaker  02:45
+Let's see. Here we
+
+Speaker 1  02:47
+go. Hey, look at that. All right. Can you hear me? There we go. You hear me? Share button here.
+
+Matthias Miller  02:59
+I got stuff to talk through before you share. Let's go. Alright. So here's the basic problem. I spent a 20 to 20 minute walk. I was thinking this stuff through. We're thinking about this thing wrong. So here's how we need to think about it. We have work orders. We have work orders for sawing, which is one saw in certain lumber dimensions. Each each work order is for a specific saw in certain lumber dimensions. It has items on it. Each gang saw has work orders for a specific can't size and species and whatever else is included. And then scalpy just has the miscellaneous prep that that IT groups by by default. And we need to think about this as when we think about it in this perspective, which is actually the way that this is the real world of what's going on you're you've got a series of work orders, things that need to be processed together, need to be get done, get checked off, and the moment that you do that, then adjusting the number of camps and doing all these other types of things on a specific work order actually makes sense. Okay. Does that do you? And I mean, I have a document here that outlines it, kind of how I'm thinking about it, but do you, do you want to take a look at that? Or do you? Do you agree or disagree?
+
+Speaker 2  04:24
+No, I don't think I disagree with any of the what you said. So then,
+
+Unknown Speaker  04:29
+right?
+
+Matthias Miller  04:31
+So then, functionally, on a work order, it's, it's tied to a specific I go on, it's tied to a specific, specific sizers. Saw you control the sort of the entire work order, not of specific items. And you have a hold
+
+Speaker 2  04:51
+on a second. I'm with you. Control the sword. Okay,
+
+Matthias Miller  04:56
+so you say, I want this, this work order needs to go up here, not down. There. Okay, yep, you schedule work, entire work orders and and then I think, and then I think, you complete entire work orders, and if something doesn't get done, then, then you take it off. You take it off that work order, and you, you put it on a new work order, you split off anything that's done is you put it on a new work order and you mark the first work order complete.
+
+Speaker 2  05:31
+You take it off of new work orders. You said, Well,
+
+Matthias Miller  05:36
+if you, let's say, you said, I needed, I need these cuts. And, well, we got half of them done, but not everything. Well, I mean, either you could say, Okay, go finish them tomorrow, and I'm going to leave it hanging around, it's going to be on your cut list, or if you need to take it off, then you take half your items and you spin it off into a new work order. Mark half the first work order is complete and the next one is scheduled. Still needs to be done. You could do it either way. But the point is, you complete entire work orders, and if you didn't get the whole work order done, then, then either, either you just got to communicate and have the work order still be open and they know what part of it they did, or you need to split it apart. You that part makes
+
+Unknown Speaker  06:24
+sense, I think so.
+
+Matthias Miller  06:26
+Okay. So then for sawing, so, so then, well, and then, and then each work order, I mean, there's, there's these distinctions that I talked about, which is, what makes, how do we automatically like everybody on, on the same on the sewing, all lumber on a sawing, Work Order has to have the same dimensions for the same
+
+Unknown Speaker  06:54
+wait this
+
+Speaker 2  06:56
+when you, When you say all lumber, you referring to the same, same dimensions, right? Okay, yeah. And, but when you say work order, each work order has is for a specific job, right?
+
+Matthias Miller  07:16
+That's correct. That's a good point on selling. It's also customer, okay, right? Thank you. Item,
+
+Unknown Speaker  07:23
+sure.
+
+Matthias Miller  07:25
+Oh, it's the same, yes, it is, it is, it is item. Well, it really is item. And, never mind, we just grouped by item. It is item, right?
+
+Speaker 2  07:37
+Yeah, and you, and you did, and you have that. I mean, like the way you build it already, if it's, if it's the same size and the same recipe, like that high one you did, you had it grouped automatically, which is fine,
+
+Matthias Miller  07:56
+well, on the but on the sawing.
+
+Speaker 2  08:02
+No, okay, but Well, no, you didn't have a group automatically map up if we gave it the same sort order number, it grouped together because it was the same exact size and recipe. All right. I really like that.
+
+Matthias Miller  08:18
+My point is okay. Here, let me see if I can share this screen. Here is on the sawing side. We group it by. We group it by the sawing raw material.
+
+Unknown Speaker  08:38
+Okay, okay, yeah, sure.
+
+Matthias Miller  08:41
+And so all of the this is basically your work order on the sawing side, this saw, this sawing raw material, yeah. And that's where it goes. That's where it goes by default, like you can move it around. But I uh, but that's on the song side, the way it would work on the gang saw you have the can't dimensions and the can't notes, so you group all can everything together based on can't size by default.
+
+Speaker 2  09:15
+No, it needs to be by dimension by dimension first, because when we set up the gang saw at a specific dimension, we like to run jobs of the same dimension, back to back to back to back.
+
+Matthias Miller  09:35
+So you would do the All right, so is it by i So is it by by length, so thickness lumber? It would be lumber,
+
+Speaker 2  09:53
+lumber dimensions. It's thickness and width. First. First
+
+Unknown Speaker  10:01
+and then lumber
+
+Speaker 2  10:02
+length as long as it's then it's thickness, width and length second, if that makes sense.
+
+Matthias Miller  10:17
+Like but if, if you have two pieces of lumber, exact same. Well, why would you do this? That's just dumb. Um, let's say, if you have, if you have two lump two pieces of lumber, okay, if you have, you have lumber of different lengths coming out of the same can't those can all be thrown into the same order, right?
+
+Speaker 2  10:51
+Yes, right, like the 67 and 52 example, yes, yes.
+
+Matthias Miller  10:58
+But if you're doing like a 716, then, as long as
+
+Speaker 2  11:02
+the dimensions are equal,
+
+Matthias Miller  11:05
+right? So, as long as So, but if you have different thickness lumber or different length, can't that has to or different species, obviously, that has to go to a different
+
+Speaker 1  11:16
+work order, right, right? Yes, that's right.
+
+Matthias Miller  11:20
+So, so lumber sickness and width and the can't dimensions and the can't species all have to be the same. On a gang saw work order,
+
+Unknown Speaker  11:28
+yes,
+
+Matthias Miller  11:30
+alright. And on scalpy, the miscellaneous prep is what ties all that stuff together, which is basically species, or it's raw material, whatever it's, it's, it's the scalpy raw material, really, and all of that has to be the same for each scalpy.
+
+Speaker 2  11:47
+Yeah. Scalp is like, so, oh, can I repeat that? All of that needs to be same for
+
+Matthias Miller  11:55
+like on scalpy. We just, we just put in, we put the raw material into the into the miscellaneous prep, yeah, and that's how we
+
+Speaker 2  12:04
+sorry we're not giving them can size. We're just giving them the dimensions, the quantity and the dimensions that we need. And miscellaneous prep. They're providing the raw material. They're providing the cans or whatever they use, right,
+
+Matthias Miller  12:23
+right? So my question is,
+
+Speaker 2  12:29
+and we're not telling them like combo cuts, blah, blah, blah, we're just saying we need this many of this dimension and then miscellaneous crap data. And that's it
+
+Matthias Miller  12:44
+all, right. So, so on the, on the like, on the scalpy, we would group all of the poplar together, and then we'd group all the oak and Hard Mix together, and then all of the mixed and Poplar.
+
+Speaker 2  12:58
+That's actually, that's a very good way to do it for them? Yes, okay,
+
+Matthias Miller  13:01
+so so that then when we, when we generate a new order, or when we schedule, we will try to automatically find, so when you, when you have a new order, we'll try to find an open work order that matches these pieces up here. And if we have a match, we'll add it to an existing work order unscheduled, and if we don't have a match, then we'll create a new work order. And then, and then, same when you're scheduling it, then, and we'll get to that in just a little bit. But then when you're scheduling it, we'll do the same kind of
+
+Speaker 1  13:33
+thing. Okay, good, sure, yes. And then,
+
+Matthias Miller  13:36
+and then, on each each work order then has, I mean, the same as a, I don't have a, you know, work order print out, like, like, if you think of a work order, it has general details, and then it has a list of items. And so each of these work orders would have, would have different lumber items that's tied out. It's tied out to an order and has the order information. We could, we could link in the order information, the single item quantity, the inventory stuff for each row in that work order, all the size or information, waste percentage, all that. Well, that's actually a question. Does the waste percentage? The waste percentage actually makes more sense on a for the whole work order, doesn't it? Or no, or do you want waste
+
+Unknown Speaker  14:40
+I think it needs to be for each item, each
+
+Matthias Miller  14:42
+item, okay, that's fine, makes sense. Yes,
+
+Speaker 2  14:45
+yeah, yes, it does. Because, like, for example, you may be cutting in runners like the inch and five or three and a half or inch of seven by three and a half. And. Some of those may get notched. And there is a much greater requirement of lumber strength, stability, speech specific piece than there is if there's no notches. So if there's a Yeah, so like right the end has a little spit in it, and you notch it, that whole corner breaks is, is gone, and it's, it's a worthless piece of lumber now. So anyway, the waste factor is going to vary that scenario. And you and we do combo butts of inch 516, by three and a half different lengths out of the same can't, some get notched. Some don't this and that.
+
+Matthias Miller  15:44
+Okay, so then sewing section, the only real line item per line item is the raw material info for the sawing. And then miscellaneous prep applies to any type of you know, whatever you have, each item can have its own miscellaneous prep on there. And then, yeah, yep, we would also then have, this doesn't actually matter anymore. That's that's not relevant.
+
+Speaker 1  16:13
+All right. Yep, go ahead. And then. And
+
+Matthias Miller  16:17
+so the the other, the main big thing is, when you're working in the cut list, I propose that we start grouping them by work order, and so the cut, the cut, when you're working on scheduling the cut list, it should pretty much look like what's going to be printed out. We can show the same dimensions, we can show or we can show not the same. Sorry, that's not that didn't come out, right, but we could. We can, if you want to, we can replicate the grouping, if it's not taking up too much space to group work orders together, or we don't have to show the grouping, but we just have work order fields on the left that apply to the whole work order, and then, you know, plumber specific things off to the right, but I don't know. It's barely worth getting in the weeds at this point, because it's such an easy tweak if you want to change it,
+
+Unknown Speaker  17:11
+but Right,
+
+Unknown Speaker  17:14
+I think you have it right. And
+
+Matthias Miller  17:15
+then the big thing is, there's, there's four actions. You can schedule an entire work order. You can Unschedule an entire work order, and then you can also schedule or unscheduled parts of a work order. Okay? And so scheduling parts of a work order just means take these items off, copy it over onto this other work order. And and like, basically copy, copy everything across unscheduled is the same way as just going a different direction.
+
+Speaker 2  17:41
+Yeah, like earlier scenario, where you only get a certain yield out of it because you need less pieces, so then you want to cut the rest out of a different can, right? So you would automatically deduct what you think you're not going to get and create a new work order and get it that way. Yes,
+
+Matthias Miller  17:58
+and I guess there's actually some more. It's, it's a you will also need a split work order and a merge work order. Okay, so it's going to be a little bit more stuff when it comes down to and it, I'm going to need to put just a little bit of how that's going to work when you're actually in there to make sure it's, it's streamlined, because it's, it's no longer, well, actually, I wonder if
+
+Matthias Miller  18:36
+you know what, if We give work order IDs, then we could just have a way to move items to a specific work order. You say, move items and put in the work order ID that it needs to move to. Or if you need to move to a new one, leave it blank and say, say, does it need to be scheduled or not? And or if you schedule a blank one, it just, you don't even have to prompt. You just, boom, split it off, off an exact replica. And that would be, that would be super simple.
+
+Speaker 2  19:15
+So the work order ID would be assigned and early. It would be available, if needed, as a way to as a way to organize,
+
+Unknown Speaker  19:31
+as a way to
+
+Unknown Speaker  19:34
+merge, as a way to merge,
+
+Matthias Miller  19:38
+right, like I would move the schedule.
+
+Speaker 2  19:41
+Sorry, yeah, no, go ahead, yeah, merge on scheduled items, yeah,
+
+Matthias Miller  19:47
+okay, merge, split, whatever, whatever you need to do. Yeah, okay, do.
+
+Matthias Miller  20:00
+I think this is, and I was this, this is getting a little philosophical here, but I was thinking about, we've run into Excel limitations before, but the basic problem with Excel is it's almost like you're it's the difference between 2d versus 3d because all you all you have is like rows and columns and groups of cells. But really, the way we need to think about this is, is that you, and this is how it is in real life. If in real life, you have a work order where you're doing this group of work together, and you have a list of items within that, and it's and you have that multiple, multi dimensional view in real life and excel just can't really reflect that very well. Yeah, and once we do that, then changing, changing can't the can't quantity can then be on the work order itself and and you can, and then we can. That makes it super easy to say no, like we would auto calculate 21 cans, but we actually need 30, or whatever you want.
+
+Unknown Speaker  21:12
+So we can edit the can, quantity,
+
+Unknown Speaker  21:18
+it on which page? Well,
+
+Matthias Miller  21:20
+you would, you can, you can do it. The way it's going to look is like, right here, what I would the way I would expect it to work is like these first columns, like would be work orders. So if you change it on one row, it's going to be the same for all rows. It's going to update everything in that work order.
+
+Speaker 2  21:49
+Say that. Can you say that again? Because, um, just say that again. Man, sure.
+
+Matthias Miller  21:52
+So let's say that the same work order.
+
+Speaker 1  21:58
+Okay, yeah. And so, yeah, so, yeah. So you have
+
+Matthias Miller  22:02
+a set of fields at the beginning that's, that's for everything in that order. And then, you know, lumber specific stuff off to the right. I like, yeah. Then the net where,
+
+Speaker 2  22:12
+yep, where are you putting the work order number in this field? It
+
+Matthias Miller  22:21
+probably, probably at
+
+Speaker 2  22:22
+the beginning. Well, that sales order number matters, but it's it doesn't matter in the the in the management of, like, you know, yeah, it doesn't matter in the way that we manage and distribute the cut list. It just matters to the to the fact that it's attached to that sales order. And hey, it's nice to know. So I would say that sales order number stays off to the very left. I would say put it in here somewhere with sort order scheduled completed, or in between there, sure. So uh, sort order, first, work order, second, because when you change the sword order, well, one or the other. So
+
+Matthias Miller  23:09
+the way I would think about it, and, okay, this is just how my brain thinks about it, the way my brain thinks about it is that you would have, so let's do the report here. So you would have work order ID. You would have you would have the scheduled completed, forgive my terrible typing, and so you would have your work order fields at the beginning. And then once you get to the specific lumber, that's the sales order of that, because you can have multiple sales orders on a single work order. So my and again, this is just what I was visualizing. Is that you would start with work Work Order fields, and then the sales order is lumber specific, and you would have that off to the right once you get on stuff that's specific to the lumber. But if you prefer,
+
+Speaker 2  24:05
+I don't understand what you're saying, but I just think that it's such a useless number in this like it could, it could be hidden in this whole Well,
+
+Matthias Miller  24:16
+if you didn't have to move things around, it could be completely hidden. So the other
+
+Speaker 2  24:23
+and that's fine, but it ought to be off to the very side, right? Doesn't matter, like, I don't think it's just going to scramble. It's just another number to mix up your brain when you're on this page, in my opinion, is, is there
+
+Matthias Miller  24:38
+a different way? Well, hang on, I'm sorry. Let's make this super simple.
+
+Matthias Miller  24:48
+We could just show you a drop list of open work orders. Sorry, that's just dumb. Why wouldn't we? Do that. That's not that bad. When you move it, we would have a list, and it would be it would look something like you would have,
+
+Matthias Miller  25:14
+you, would, you would, you would prompt for the size or slash saw, in case you want to move it. And then underneath that you would and then I think you would do scheduled versus unscheduled. And then you would have a drop list where it would show you titles of titles of existing work orders, and blank equals new work order. And then you would just, and then you could just, so you click move, you say, well, and it would, this is defaulted to where it is now defaulted to,
+
+Matthias Miller  26:06
+all right? So you click the Move button and it pops up a little screen. So like, which size or saw Do you want to move it to? If you want to move it so if it's if it's in Brewer, you move to scallop and vice versa. Do you want to change it to change it to be scheduled or unscheduled? And then which? And then, when you do that, it shows the work orders that matches that criteria. And you can either move it under an existing one, or you can, you leave it blank to move it into a new one, and and then you completely nobody needs to. We'll have the work ID internally. But nobody, nobody cares about the work ID, yeah, so here's what I love
+
+Matthias Miller  26:55
+and here's what I hate, here's what I love. I think this is the right way to structure the the information, I think it'll get us behaviorally where I need to go. What I hate is, well, it's more time, it's a little bit more time, it's a little more dollars to actually get it done, and this finish line is frustratingly one step out of reach. So
+
+Unknown Speaker  27:23
+yeah, yeah,
+
+Unknown Speaker  27:30
+okay, like, how much time? More time are you thinking right now?
+
+Matthias Miller  27:35
+I'm gonna guess that this is more than a couple hours and not more than a day. But what this does also mean is that this is this much less time for us to for me to rip into the production tracker before you show up, right? And so if it would be all the same to you, and it would be possible the following week that would be much better. Well, I don't know I, I'm starting to question whether, realistically, can we actually be ready for production tracker by Wednesday? I think, yeah,
+
+Speaker 2  28:17
+no, I understand that. I, it's, not that I it's not that I am, like I've been, I've been kicking it back and forth. But there's a lot of things that there's a lot of things that I'm giving up, some other things to make it work, to get there, for sure, as much as I like to do it, I don't know that it's the right timing. Let me look at something here calendar. I didn't if we moved it back, Matt, we'll what is a potential
+
+Unknown Speaker  29:07
+track and field?
+
+Matthias Miller  29:10
+Oh, that's right, you have track and field that week. No,
+
+Speaker 2  29:13
+that's next Friday. So then the following week, if I did, like Sunday, like Monday, Tuesday, or something like that. Or, I mean, Tuesday, Thursday, maybe. So I'm sorry, Tuesday, Wednesday, could be the following week. I don't remember. Wasn't that your What was your schedule? Though, I can't remember,
+
+Matthias Miller  29:42
+1920, 21 is that what you're talking No,
+
+Unknown Speaker  29:45
+no, actually, we
+
+Matthias Miller  29:48
+I'm out 12 to 14.
+
+Speaker 2  29:50
+Ah, that's what it is. And I'm out the 15th school picnic. Um, yeah, I. And then the following week. Okay, did we look at the following week? 1920, 21
+
+Matthias Miller  30:10
+we did not. No, we didn't.
+
+Speaker 2  30:14
+That's a that's a possibility for me.
+
+Matthias Miller  30:20
+So I have, I have commitments on they're not super extended, but commitments on Monday and Tuesday, yeah, but because of those commitments, I'm very unlikely I've got another client that's trying to schedule a two day with me, and because I have those commitments, I would think I need to double check, but I would think 19th and 20th are very unlikely that they would schedule in those days. And so you could, we could have the majority of my attention those two days, I think, with little conflict, but I would have to,
+
+Speaker 2  31:10
+well, what if it was, what if it was 20 and 21 Is that any better? That could be better for me,
+
+Matthias Miller  31:17
+right? 2021 that's a potential option. I just need to check in and see check something on my end first.
+
+Speaker 2  31:24
+And I guess, for all intents and purposes, 2122 is also an option, correct
+
+Matthias Miller  31:36
+in the Yeah, following week we're getting into Memorial Day week.
+
+Speaker 2  31:40
+No, it's, I don't, I feel like that's a little far out there. It is. All right, okay. Well, what am I doing here? Let me close. Let me get out of here.
+
+Matthias Miller  31:52
+Here, let me, let me. I can stop my share. So,
+
+Speaker 2  31:59
+so you're seeing. I mean, I think, yeah, I'm, of course, I quick scan in my brain is, like, if it's another day, you're, you're, I think you're charging, what, 250, or 70 an hour, something like that. Yeah, um, okay, like, I don't have, I mean, I just, I don't want to nitpick at nitpick the like, is it worth it or not? I don't want to nitpick away at that idea, whatever the question, you know what I mean, I don't want to live around in that you're adding time to because what you had when we got off was like, I felt like it was pretty good. But if there's it's clearing up. What you're saying is more work is establishing a work order specific. It moves the data around a little bit differently. I think it gets us what we need. Think it does. I What do you think? What do you think that it's gaining us?
+
+Matthias Miller  33:08
+Well, fundamentally, it's gaining us. Well, it's two things in the short term. Okay, if we just said, Look, we're not going to show can't quantity on we're not sure. Go ahead the way. You just use it as it is. The other thing that it's gaining us is, I think, long term, it is going to be more maintainable. It's a closer reflection of reality. But I guess I'm trying to figure out lessons learned it. There were specific details that we were not that we didn't could we have I don't know that we didn't surface until we had something visually in front of us and nailing down every last detail of how this was supposed to work,
+
+Unknown Speaker  34:06
+right, right, right.
+
+Matthias Miller  34:11
+And if we we can change this going forward, the losses are taking all the taking, taking the current structure and moving that data into a new structure down the road, is going to take some time. And I'm not saying it's not worth it, but it will. And also doing this while everything is still fresh in my mind, also gains some efficiency, yeah.
+
+Speaker 2  34:35
+So what then I mean the other thing, and God, Matt is like, okay, so budget, like, where are we right now in the budget, Are we under estimated within that, do you know?
+
+Matthias Miller  34:52
+Let me pull up and see where we're at. I.
+
+Matthias Miller  35:01
+Uh so with the on site, with the IT stuff, with all the, all the revisions and everything that's been going on, we are right around. We're pushing 19 on this, on this first iteration, already. What did we pay you already? You paid eight. Sorry, 10. No, 12, I'm sorry. Well,
+
+Speaker 2  35:24
+and then, and then, when I was there, we had an estimate roll out cut list generator, 12k. What was that? Was that referring to the 12? Was that referring to another additional 12 on top of the 12. You know?
+
+Matthias Miller  35:43
+Well, at that point I thought we were close enough to done that. It was like, Look, I think, I think we're spending most of our time on site. Okay, that we're going to be focusing on the next, on the next thing. Yeah,
+
+Speaker 2  35:54
+I think you, you invoice for the on site. I
+
+Matthias Miller  35:57
+invoice part of the on site. And actually, I don't know. So we're
+
+Speaker 2  36:01
+at 19, Matt, and we're looking at potentially being done with this piece. At what do you think
+
+Matthias Miller  36:15
+so on the on the conservative front? Well, 21 to 21 to 2025,
+
+Unknown Speaker  36:29
+okay, okay.
+
+Speaker 2  36:33
+And then, okay, yeah, no, I mean, it is what it is. Um,
+
+Matthias Miller  36:41
+sorry, man, I mean, I don't, I don't like, whatever. No,
+
+Speaker 2  36:46
+yeah, I'm, yeah, I'm not. Again, I don't want to, I don't want to, like, nitpick it. I don't want to nitpick at this. I don't, I just have, I have to pay attention. Yeah, we have to ask the questions, right? Like, yes, we do. So if that, I mean, if there's any Yeah, does this going forward, then help smooth out some of the other items. Like, you know, maybe, maybe not so much, I guess? Um, yeah. I don't even know who knows, but it is what it is. Um, yeah.
+
+Matthias Miller  37:33
+So here's, here's what I want to do on the production tracker, which we should have done, we should have done more this year, is have fewer assumptions about fewer assumptions that the Excel spreadsheet is actually what we want and and do more groundwork on the upfront, okay, to make sure that we we nail nail some of these things down and flesh out as much of this stuff as possible. Okay,
+
+Speaker 2  38:03
+and you say on the on the assembly tracker,
+
+Speaker 1  38:10
+yeah, yeah, yeah, yep. Um,
+
+Speaker 2  38:14
+so you and I looked at that. Did we look at that at all when I was there, a little bit? Yeah, we did. Yeah. Um, there again, it's like, I mean, we we know the data points that were that we need,
+
+Unknown Speaker  38:35
+but that's taking,
+
+Speaker 2  38:38
+that's just taking information, entering in the right information. That's basically a reporting. It's basically a tool to generate the right reports, right with, with the ability to, hey, how about this guy alone? Hey, how are these guys doing combined? Hey, how are we doing on this specific customer? How are we doing on this specific item? Just have been able to get reports on each specific one. So that shouldn't be,
+
+Matthias Miller  39:13
+and if that's reporting piece, it's quite possible we can make up the difference on right
+
+Speaker 2  39:19
+on there, but then, but then the other, the the cost calculator is down longer term, but the, sorry, I'm not, I'm looking at, I'm looking at this thing, Matt, remember the Yep, where we at you? Anyway, it's, it was just your notes. But again, it's, I'm looking for it here. Sorry that. I guess it was cost, cost calculator. Yeah, no, no, it was
+
+Matthias Miller  39:56
+prints. Were in there. I.
+
+Speaker 2  40:00
+A score calculator. Did we change that to cost calculator? Okay, remember, remember that
+
+Unknown Speaker  40:08
+we have the road map
+
+Matthias Miller  40:10
+here. Score calculator feeds into production, machine times calculation for cost calculation. So then we have the cost calculator. Sorry, I'm
+
+Unknown Speaker  40:18
+okay. I'm
+
+Speaker 2  40:20
+not here anymore. Road Map. That's not the right production machines, time calculations,
+
+Speaker 2  40:35
+the so score was ace. Okay, I think maybe did we then say, like the cost calculator was a pricing tool, but the data that we're using to the data that we're using to tell us the price or the value is largely, or maybe at completely, the same data as we would use to what includes the same data that we would use to assume the score, if you will. I think what we Okay, I think what we said, Matt, or maybe it was, maybe it was a thought or whatever, but it was that if we come up with a cost and that's accurate, then we know this, then we know the score, right? Isn't that right? Right? So okay, I say all that to say that the assembly tracker is reports. But then the next step, that law, that cost calculator, is like the reports without the score or that cost is a little bit well, we have the value, we have the price of the item. So we can start like when we do the the assembly tracker and when we generate the reports, we can attach the item price to the report, and so it gives us some good information on the value generated by each team. The nuance is that lumber prices go up and down, and pallet prices go up and they actually go back down. So right, that's not the,
+
+Matthias Miller  42:44
+I don't know. It's not the best way to do it,
+
+Speaker 2  42:46
+yeah, but it's, it's something, and it's, it's pretty good. Like, we can, I mean, we we know where our camp prices are at, so we can only, well, Camp prices are down 10% this year. So okay, that makes sense. Like, whatever. We always know that in the back of our head. So again, the assembly tracker, as reports is good. It's it just, we're just, we're gonna have to include that price, which is already coming from Sage. And then we'll have a great, we'll have a really good report, yeah. And then the cost calculator as a pricing tool can be a nice, like, longer term, yeah, that's okay, all right. I'm good Matt. I'm good with I'm good with it.
+
+Matthias Miller  43:33
+Okay, and, and on that, on the when it gets Price Calculator, there is stuff like, like, heat treating and and board feet rates based on on, I think there's something with lumber type that we need to start tracking and some other things like that. But yeah,
+
+Speaker 2  43:52
+HT, yeah, there's other, yeah. I and assembly tracker includes item list price and then, yeah, it's good. It's good that that production reports to include that list price was, is a good i history, yeah, moving the history across is part of that. Matt, yeah. I mean, you have your notes, I'm sure you Yeah, that's a big that's a piece of it that's going to help us moving the history
+
+Matthias Miller  44:35
+right. But it's also piece that could, it could also end up getting tricky, depending how it again like because you have two worlds who are colliding. One is, what is the most natural way for the for the new system to structure information? What's the historical information? It may actually be best to have just a. Completely separate historical record and merge that information together in our reporting. So anyway, that's Be that as it may. Yeah, yeah, all right, man. Well, my my goal still is in I don't know like my goal is, I want to be as transparent as possible as I can with, with estimates I do like trying pretty hard to hit them. I also want this to be something that's sustainable and a success long term. And I want this to end up making money for you guys. So yeah, right, however you can make that happen,
+
+Unknown Speaker  45:35
+yeah, yeah, okay, um,
+
+Speaker 2  45:37
+yeah. We don't need George to answer any other questions. I'm right at this
+
+Speaker 1  45:42
+point. That's great. All right, I will well, I don't
+
+Speaker 2  45:50
+want to complicate this any farther. I should change the flight dates. If there is a two day window for you in the week of the 19th, if
+
+Matthias Miller  46:05
+you still have time to hold off. Yeah, I do. Then we could see where we're at by Monday. Okay, I don't, I don't know how late you can or want to push it so, oh
+
+Speaker 2  46:19
+no, I can flex. I mean, at this point I can wait.
+
+Matthias Miller  46:25
+So I don't know. I'm just saying odd chance. And maybe this is just the, this is probably the over optimistic side of me, but if I could knock this out in half a day, that would that might still give us enough time to circle back with George and sign off on it, that it would make sense to take a look at the production tracker by Wednesday. But, but again, I don't want to have a promise, so no,
+
+Speaker 2  46:47
+I think I can change my flights up until, well, I should make the we should make. We should make a decision by Monday, 430 by 430 Monday, 430 Eastern, yeah or five, okay, sounds good.
+
+Unknown Speaker  47:03
+Cool, awesome. I can live with that.
+
+Matthias Miller  47:07
+Sounds good.
+
+Unknown Speaker  47:09
+Appreciate it. Thanks, buddy. All right. Bye.
+
+
+Transcribed by https://otter.ai

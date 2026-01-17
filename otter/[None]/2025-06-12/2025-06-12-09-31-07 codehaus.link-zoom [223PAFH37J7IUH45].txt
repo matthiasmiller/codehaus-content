@@ -1,0 +1,446 @@
+Speaker 1  00:14
+Hey, Mark, good morning. Matthias, good morning. How are you? Oh, I'm doing great this morning,
+
+Matthias Miller  00:27
+right? Well, did you have a chance to play around with the Twilio stuff?
+
+Speaker 1  00:34
+So on the Twilio I got, I heard back from them yesterday, as far as my SMS, it got rejected the second time. And I'm going to have to go back and it's more on my end, on on what's required, on the opt in to be to be approved. And so I'm going to have to go back to the shed app and say, because we had, like, for example, we had a checkbox that was pre checked. It can't be pre checked like and so I'm just going to have to go back and see where we can make some of those changes. They gave me a good list of things that I have to have on there. So now that I have that, then I should be able to to resubmit it and with the correct information. So
+
+Matthias Miller  01:22
+good, awesome. Is there anything else that you
+
+Speaker 1  01:34
+so on the on the Twilio, here's, here's what I found out, Twilio will not work for me, kind of how I thought I could make it work, and here's why in The trying to see so who, where was it. So when you set it up, it's I can either set it to connect to a SIP trunk, or I can set it to connect to where it will connect with, with high level but there are two complete different systems, and I can't set it up for both at the same time. So it's not, it's it's not the end of the world for me, I thought if, if it would work that way. But actually looking at looking at how the calling and stuff works inside high level, it'll probably end up completely replacing the three CX for me,
+
+Matthias Miller  02:53
+sure they do have cross your fingers by the end of the month, they're supposed to have better internal transfers. That's kind of the biggest thing that I've been aware of. And yeah, they have the phone menu. They have mobile app. They've got,
+
+Speaker 1  03:15
+yeah, the one thing, the one thing, I was a little bit on the mobile app. I wasn't able to figure out how to make a call without having well.
+
+Speaker 1  03:38
+So there it did. I was, I was not finding the dialer yesterday, so there is the dialer okay. For some reason, I was like, I couldn't find the soft phone on my mobile app. I was going everywhere and trying to figure out where and what I so Okay, there it is. I have to be on one certain screen to where, if I'm on the notification screen, then the dialer button is right there, and I was probably on one of the other screens that does not show it. And so I was like, going around and around trying to find out how I could use it on the mobile app to just call any number, just by dialing, right? But okay, because that I had found on the on the web, on the web app, I had found that I just wasn't the one thing I was. You know what? Now it's working today. Yesterday afternoon, I was, I was testing it when I when I clicked on the call button at the top, it was giving me an error message that said calling is disabled from soft phone. I. Yeah, but now this morning, I click on it and it brings up the dialer. So I wonder if, if it was something that still had to activate inside, which may be why it wasn't coming up on my on my mobile app yesterday, too.
+
+Matthias Miller  05:17
+If it wasn't, that would make sense. And mobile just didn't have a message of any kind or anything.
+
+Speaker 1  05:23
+It was just wasn't showing the the button or anything, whereas on the web, it was showing the button. But I I'd put my mouse up there and it just show up a message said, calling is disabled from the soft phone. And now this morning, I click on it and it brings up the dialer. So,
+
+Matthias Miller  05:43
+alright, so that might be because, okay, so going forward, the main thing is, if you go forward like an account, once you switch it over to Twilio, you can't switch away from Twilio. And so I think the main question I would have, actually, is a question for potentially because I'm not sure if, is there any disadvantage to using Twilio as the back end, versus using their built in.
+
+Speaker 1  06:36
+I'm trying to think there are maybe some functionalities that that may have been available with the built in versus doing Twilio, but I'm not 100% sure on that. See,
+
+Matthias Miller  06:54
+let me see if I can explain that I
+
+Matthias Miller  07:01
+that would probably be my biggest concern, if you can't use it for
+
+Matthias Miller  07:13
+If you can't if you can't use it anyway, I
+
+Matthias Miller  07:23
+or you can't use The trunk anyway, then just See if this is to
+
+Matthias Miller  08:10
+are you planning to port numbers? If
+
+Unknown Speaker  08:17
+yes, I would port at least 123, 2345,
+
+Unknown Speaker  08:29
+at least six, numbers, probably.
+
+Matthias Miller  08:37
+And are they currently with William a different account, really? No,
+
+Speaker 1  08:42
+no, I'm using there with the Trump provider called Box Telesis.
+
+Matthias Miller  08:59
+Still looks like I've seen a lot of they really need a they really need an AI that's fine tuned on like all of their Facebook posts and all of their support documentation and all their community sites and all that be tremendously useful.
+
+Speaker 1  09:26
+How is the porting process? You'd mentioned something the other day, you would port it to Twilio and then merge it over to
+
+Matthias Miller  09:41
+Yes. So basically, what you do is you put it into your own Twilio account, and then as soon as it arrives in your Twilio account, you submit a let me. Let me. You submit a the highest level, basically client down type of ticket with Twilio saying, hey, this must be,
+
+Matthias Miller  10:17
+this must be transferred into this other Twilio account, and then, yeah,
+
+Speaker 1  10:26
+because that the internal call is essentially just a White Label Twilio account.
+
+Matthias Miller  10:35
+Correct. That is correct.
+
+Speaker 1  10:38
+Okay. I What would, would we have to restart from scratch again, or, like, because we already did Twilio, would you have to restart from scratch again?
+
+Matthias Miller  10:57
+I think I can. I'm pretty sure I can copy basically, yeah, we would have to create a separate company for you, and then I'm pretty sure we can copy most of what we have over. So we'll take just a whole lot.
+
+Speaker 1  11:14
+It's not like there's a there's a whole bunch in there. It's Oh. Was in the process of figuring out some of the automated emails and stuff, but I really haven't built that much into it yet. So I
+
+Matthias Miller  11:43
+else, there's, there's, has, there we go, there's the buy. Why switch ramp ups? Are you familiar with ramp ups? No,
+
+Matthias Miller  12:08
+data for successes,
+
+Matthias Miller  12:16
+so you can I
+
+Matthias Miller  12:25
+so your it has a different ramp up model. So ramp ups are basically how what's your daily text message limit? So you start out at 200 a day, and if you don't get a bunch of complaints, then I mean, basically each tier goes from 200 to 400 to 500 to 800 you know, so they do have a slightly different handling there. They have real time error monitoring. This actually, actually involves error update, opt out.
+
+Matthias Miller  13:07
+So if there end up being a lot of complaints, they'll basically send you a heads up Before Twilio does
+
+Matthias Miller  13:22
+based will automatically turn On. See I
+
+Matthias Miller  13:59
+so it doesn't it
+
+Matthias Miller  14:06
+is, I mean, the primary reason I would probably encourage a switch is just because it is a recommended way of doing it. And if there's not a compelling reason to have it on Twilio, I don't know if I would. I
+
+Matthias Miller  14:23
+I mean managing it's going to be, I mean, it's you give up a little control, managing it if you want some of the highly fine grained control. But they do have, they do have the an IVR that you set up through workflows. You want that. And it's not like transfers work better with Twilio, and those are supposed to be on the road map. Just switch. I.
+
+Speaker 1  15:22
+And we're at the point right now where it's a lot more painless than what it would be down the road.
+
+Matthias Miller  15:30
+That's that is a big reason, if you want to do it anytime in the next two years, then like now would be, that would be the best time. Um,
+
+Matthias Miller  15:44
+yeah, so I don't mind. I don't mind doing the work to set up the second account, if that's what you want to do. That sounds good with you, unless you have any, I don't know if you have any thoughts on direction, on that.
+
+Speaker 1  16:01
+I don't really. And then to set up the ATP configuration that would be done through through go high level instead of, instead of outside, right? That is correct,
+
+Matthias Miller  16:16
+but you'll need the same. Sounds to me, honestly, you've got a better set of requirements for ATP, I do have a document that like this is it?
+
+Matthias Miller  16:45
+That I can send your way, that might, that might. I mean, it's for whatever it's worth. It sounds like you're already longer on your way, but I'm happy to
+
+Speaker 1  16:58
+Yeah, yeah. I think this, I mean, at least what it said in their email, it was, it's quite a bit more extensive than what I had done before. They were even saying something about, let me see if I can pull it up here. So they were even saying to have a checkbox to accept the Terms of Service and the privacy policy. I'm I'm not sure if it's required to have that check box, or if that's just a a better, just just An added benefit, if you, if you have that, I
+
+Matthias Miller  18:00
+it sounds like it looks like we might actually make the switch in the account right now, if you want, okay, do you want me to Go ahead and have
+
+Unknown Speaker  18:18
+him do that? Or Sure,
+
+Matthias Miller  18:26
+so I
+
+Matthias Miller  18:53
+they do have A pretty extensive let me just I
+
+Matthias Miller  19:20
+I just shared a Google Doc that has some of our notes. It has a link, does have a link to the to the high level page.
+
+Matthias Miller  19:47
+There's some specific screenshots in there.
+
+Unknown Speaker  19:58
+Okay?
+
+Unknown Speaker  20:17
+Okay, I'm
+
+Matthias Miller  21:12
+you're not able to Use a PO Box. I'm
+
+Unknown Speaker  21:31
+PO box as
+
+Matthias Miller  21:42
+um, on the ATP registration so you have a does ask for business address, and I think that needs to be the
+
+Unknown Speaker  21:54
+physical address. Physical address correct? I
+
+Matthias Miller  22:06
+i can actually switch it here.
+
+Matthias Miller  22:39
+Don't purchase your Delete phone numbers until this process is complete, about 48 hours. I
+
+Matthias Miller  23:09
+and you may need to reinstall your mobile app, all right, so we'll keep our open for that. But then Monday morning, I guess you're waiting on the shutout. Monday morning, it'd be great to great to get that the ball rolling on that, because again, the ATP is the that's the kicker,
+
+Speaker 1  23:36
+yes, yes. That is, I know it can take in as long as that's not done, then I'm not ready to transition Exactly. Let
+
+Matthias Miller  23:52
+me also see if surely there's I
+
+Speaker 1  24:03
+uh. So the interesting part is I could not I don't believe I could text to my to my cell phone number, but I could text to any of our business numbers, because a business number is in the cell phone. It's a business voip VoIP phone. So I was, I was just trying it yesterday, and I was able to send some images and text messages back and forth from high level to to some of our business phones, but then another phone number that I tried to just error it out, like it wasn't activated or something. So that was kind of interesting. I was like, so that falls outside of the ATP, and so it was not restricted.
+
+Matthias Miller  24:57
+Really interesting. Yeah. It.
+
+Speaker 1  25:14
+So one of the other things we were working on was recreating some of our automated emails I was working on the automation, but I wanted to put the emails in right away as I was doing it. So I started doing some of it, but I have, I have a guy that does most of my, like, my social media, and you can edit the pictures, and so we're changing the color scheme just a little bit. And so I from our old emails is more orangish, and I've transitioned to on my logo to more of a yellow, not as orange. And so I'm wanting him to make some of those changes on the emails that are going out to the to match our new logo color. And so he's going to be, he's actually going to be working on migrating those emails over, recreating them in here. Perfect, good. So I was just, I was working on some of it, and I was like, You know what? But these pictures are not they've got a border on it that's just the wrong color, and I don't have time to do all of this. And I was like, this is something I can get him to work on and just take that off my plate. So exactly,
+
+Matthias Miller  26:38
+uh, sounds. Sounds good. So are there any Are you going to be implementing a phone menu at any point? We're just gonna have it go straight to you and you transfer out. I can't remember what you we talked about
+
+Speaker 1  26:52
+now, how, how is that again? How does your,
+
+Matthias Miller  26:57
+how does your jump, jumping back a little bit to the phone stuff. How does your main line work? Is that around Round Robin to the guys, or is that to you and you? Or is it a no, it's a menu.
+
+Speaker 1  27:09
+It's a menu. It's a menu. And then I have one that like a sales and that just rings everybody at the same time. Yep. And whoever, whoever's the quickest on there is the one that gets it.
+
+Matthias Miller  27:27
+So why don't we? Actually, I
+
+Matthias Miller  27:40
+I want to just walk you through this briefly. Okay, and we can, and if you, if you get phone stuff rolling next week, you could play around with this. You would set it up with an IVR trigger.
+
+Matthias Miller  28:08
+And if I can, I
+
+Matthias Miller  28:29
+let me see,
+
+Unknown Speaker  28:33
+I'm just seeing just a blank screen.
+
+Matthias Miller  28:35
+Oh yes, okay, my zooming. Thank you. First time I should Share something wacky.
+
+Matthias Miller  28:48
+Restart. I
+
+Matthias Miller  29:28
+well, take that back, okay, it's not gonna let me but in your when you create a new workflow, if there's a recipe for for an IVR,
+
+Unknown Speaker  29:39
+okay,
+
+Matthias Miller  29:44
+let's see. Let me see what it's called. Yeah, it's just, it's just called recipe IVR, and that'll give you a good starting point. And then you have a trigger here. I've got one pulled up in my i. Uh, so let me, let me share. I'm sorry. I'm gonna get the Zoom handbooks, um, but you can just walk through it's got, it's got, then things like, if you want to, you can take it all the way down where your very first check. You go see if it's assigned to a salesperson or an individual, and if it is, go ring through to that person, and then, if they don't answer, move it back up to the main loop that says, for sales, press one, or however you have that set up. And then go through the whole process. And then, you know, then you can handle the if sales round robin, or, sorry, if sales ring all. And you can then set an automation then to assign, just sign it to well, just sign it. I think you should be able to then, if you like, if it hits a voicemail to say, go. This is auto created contact, go, go, tag it so that the round robin, like the voicemails, would then get assigned as round robin. If you wanted to do that, I don't, or you could just, if it hits voicemail, send out an email saying to everybody, saying, Hey, here's a voicemail first come for serve.
+
+Unknown Speaker  31:19
+Okay. Okay. Okay,
+
+Matthias Miller  31:25
+it's, it's, it is pretty slick to use a workflow builder to build out the idea.
+
+Speaker 1  31:31
+Okay, very good, very good. I'll, I'll definitely take a look at that.
+
+Speaker 1  31:42
+So one of the, one of the things I was looking at yesterday,
+
+Unknown Speaker  31:52
+if we, if we hook up the shed app through a web hook. Is that Is that how that integration works is through a web hook.
+
+Matthias Miller  32:09
+So the way I have it set up that document that you requested access to shares how all the logic works, okay, and I have, I have a whole automation machine on the back end that we I'll basically give you. We'll put my web whenever you're ready to we'll plug in my web hooks into there to shut up, and then we need to map out shut out events to what stage you want them to pop into once you have the pipeline set up, and then at that point, and I think I don't know how you feel about this, this can probably, this could probably happen sooner rather than later, if you wanted to, because it'll auto close deals as soon as They get closed and shut or once, once it's processed, well, we can control No, that part's not configurable at this point. We can make it be configurable. But once it's processed, or no, once it's signed, something like that, it marks the deal closed. But then progress keeps progressing through the stages, even as a closed deal until delivery and Okay, goes out. Okay,
+
+Speaker 1  33:30
+yeah, good. My, my question on that was, I was, I was looking at how to do that, and then it, it was saying something about, there's a there's a charge per web hook call or something like that from the Shut up. Well, when I was doing it, it was saying that that's a web hook was a premium, and it was just like a penny per or something like that. If, let me see inbound web hook. And it says, this is a premium trigger. Using this trigger will incur additional charges per execution.
+
+Matthias Miller  34:09
+Okay, so I don't, I use, I use APIs for it. Oh, there's no, there's no, well, technically, there is a charge. I'm running a server somewhere at La La Land that's doing all the words, but that's just, it's all, it's all, nothing goes to you. That's all part of the subscription.
+
+Speaker 1  34:29
+Okay, got it. Got it. Because that was what I was looking at. I was like, well, if, and I was like, you know, it's not it's not much, it's not much. And, and I was just, I was just, you know, I wasn't. That's why I thought I'd ask you to see how, how you do the integration, if that's you use that right there, or if you use a different, different way to do it,
+
+Matthias Miller  34:54
+yeah, I basically have a little black box. Lives, lives outside the ecosystem that shovels information back and forth, and I wanted to do it that way for one of the biggest reasons is fail safety, so that web hooks are always captured and and they can, yeah,
+
+Speaker 1  35:21
+so, okay, got it. Got it, okay, yeah, that that is basically what I had come questions that I had, that I had run into, as far as well, maybe let's go into exporting information out of HubSpot. What all can we export out of HubSpot as far as customer communication is concerned. Well, I
+
+Unknown Speaker  36:24
+Well, okay,
+
+Matthias Miller  36:33
+let's talk a little bit. First. Do you think? Well, I mean, anything's always possible. It might be somebody in the Philippines working 24 hours a day to copy paste. No, I'm joking, but the we in the the simplest way I
+
+Matthias Miller  37:06
+Well, there's the it
+
+Matthias Miller  37:16
+is possible to use. Do they here? Let me, let me, let me check something first before I give you too much. Give me one minute to look something up. I
+
+Matthias Miller  39:42
+I think that. Okay, I think We can
+
+Matthias Miller  40:22
+Okay. Okay, um,
+
+Matthias Miller  41:32
+so it looks to me like when you say how easily I think there's a reasonably good chance that I can whip up a Google App Script to suck out a bunch of data from HubSpot with the API. The question is, I'm going to step off screen and grab copy that we're still here. So the the question then is, how do we want to show this in go high level, and we have two options. Basically, the very simple option is we just create a custom field in actually this this week, it might actually be able to do this and then trigger it with a workflow that might be the easiest way To do this. Let me try one. Check something i
+
+Matthias Miller  42:48
+Okay, so if I have a trigger where Content changed, and let's just pick the field like
+
+Matthias Miller  43:22
+change, changed.
+
+Matthias Miller  43:38
+I can't remember what those little those little notes are called that show up in the timeline,
+
+Unknown Speaker  43:51
+in HubSpot,
+
+Matthias Miller  43:53
+in high level
+
+Unknown Speaker  43:55
+in high level
+
+Matthias Miller  43:57
+internal comment i Okay,
+
+Matthias Miller  44:10
+internal comments might not be supported, and then we could do a I
+
+Unknown Speaker  44:26
+could it just be as a note?
+
+Matthias Miller  44:30
+We could? We could add it either as a see?
+
+Matthias Miller  44:40
+Yes, so the easiest way would be if I would get your Google script to suck all that stuff out of HubSpot, and then you can just run a regular import into a field on the contact and if you want to. To push it into notes. You can, you can set up an automation that whenever that field changes, it gets pushed into a new, sorry, a note with the HubSpot, like HubSpot history or something as well. I mean, just as well. Just throws into No, really, it's not in blank. Okay, where you conceivably use a little bit of an API hack to probably what I would do first, just to keep it simple,
+
+Matthias Miller  45:50
+probably the simplest thing would be to import it into a custom field, if you're happy with notes, long term, we could do that potentially post migration, if we have it in a field, we could then add, potentially put together a custom API script that pushes all of those notes over into into an internal comment so it shows up in the timeline. Yeah, but I wouldn't wait to do that until after, after we're surrounded once.
+
+Speaker 1  46:28
+Yeah, yeah, that that would, that would that would work.
+
+Matthias Miller  46:36
+Internal comment is kind of an ideal scenario, because then you see it in the timeline, but you're also only going to need it for a period of time, like it's correct
+
+Speaker 1  46:48
+for most of them, for most of them were, we're not going to, you know, after what, 60 days or so, most of It is going to be not as relevant anymore.
+
+Matthias Miller  47:05
+I would probably, in that case, just have a custom field on the contact with the HubSpot history and
+
+Matthias Miller  47:21
+the main thing we would I would need from you to make that happen would be, let's see,
+
+Matthias Miller  48:16
+okay, so let me. Let me shoot this over to you. I let's see. Seems private, apps, scoops, I'm
+
+Unknown Speaker  48:46
+Yes, yes,
+
+Matthias Miller  49:47
+okay, so I'm sending an email with instructions, and then once, once I've got that, then probably what I'll do. Well, then. And I'll put together a spreadsheet that a Google sheet that you can run that will blank everything out and blank out the sheet and pull in all the conversation history should be pretty sweet. Okay,
+
+Matthias Miller  50:28
+let me just double check that there's not a four.
+
+Speaker 1  51:01
+Hmm, okay, I have. I had already created a private app. What was it for? I don't remember at this point. And so, yeah, I'm familiar. I'm familiar with, with that
+
+Matthias Miller  51:30
+there's also,
+
+Matthias Miller  51:37
+also looking here. Not sure how this works. Is a, there is a $50 a month HubSpot add on. It's got one one star review that says it's absolutely terrible, and it's in Spanish.
+
+Unknown Speaker  51:58
+So Well, if it's in Spanish, I can read it.
+
+Matthias Miller  52:19
+Yeah, it's Conversations, export.
+
+Matthias Miller  52:39
+I'm pretty sure. I'm pretty sure X spring straight from HubSpot does not include actual message content. That's the that's the big kicker, as I recall. It might be, it might be misremembering it, but I recall there they haven't been too friendly with
+
+Unknown Speaker  53:12
+messages receive, and it's what free to export up to 1000 messages per request. Is demasia already to export en distinto question and trigger distant to result.
+
+Speaker 1  53:38
+Okay, said the export many times the results were not formatted in a very friendly way.
+
+Matthias Miller  53:54
+Okay, well, that sounds like that's going to be a problem.
+
+Unknown Speaker  54:02
+Yeah. Yeah, yeah, okay,
+
+Matthias Miller  54:08
+all right. Well, let's target then for you for next meeting. Then I would love to be able to put that together so that you can play around then with that import. And we've got a little room on on getting that, because that's gonna take some involvement for me. So phone system, how to spot conversation expert, and,
+
+Speaker 1  54:29
+yeah, okay, very good. I will work on getting that and when I set that up, then I just let you know when I have it ready for you, right?
+
+Matthias Miller  54:39
+Yeah, just, yeah. Just send me the the app ID. Let me know when you got it ready for me. You
+
+Speaker 1  54:44
+know. Okay. Okay. Very good. Sweet. Thanks. Okay. Thank you. Matthias, just, just a question, yeah. Do you do? You know? Tom. Teaching. Yes, I do. Okay, so just his wife. Is my niece?
+
+Matthias Miller  55:08
+Interesting?
+
+Unknown Speaker  55:11
+I was like, I like, I was going to ask you, because I figured if you live, if you live around there, you probably know them.
+
+Matthias Miller  55:17
+Yeah, um, does that mean you guys come out here periodically to visit.
+
+Speaker 1  55:24
+It's been a while. My sister was my sister was out there recently when, when they had their baby. But I haven't, I haven't been there in a bit. I was actually talking to my brother yesterday. I called him because they live in El Salvador, and so I was gonna, they're gonna be up for furlough. And I call him and said, hey, you know you're gonna be here for about a week. Do you want to make a trip out to Colorado to go for a weekend? And he's like, Oh no. He said, My daughter's coming from Mexico. So it kind of like that weekend we got so we were thinking of just all going out there for a weekend, but it didn't work out. So
+
+Matthias Miller  56:05
+do you have two questions? I don't even know his last name. Do you have a relative Marcus, and who's your brother in El Salvador?
+
+Unknown Speaker  56:16
+My brother in El Salvador is Joseph. And do you Connie?
+
+Matthias Miller  56:24
+Do you know the AGA nods in El Salvador? Oh, yeah. So yeah, Regina is my older sister.
+
+Unknown Speaker  56:33
+Regina is your sister. Okay,
+
+Speaker 1  56:42
+yeah, we lived in, we lived in San Salvador from 2018 to 2020, so, you know, I'm, you know, I'm pretty good friends with Steven and and all of those boys.
+
+Matthias Miller  56:59
+Is a small world
+
+Speaker 1  57:02
+that is funny. I like, I figured you're a Miller. You fit in somewhere, where. But, you know, I did not, I did not expect that, right there. That's funny, though. Yeah, that is, that is cool. So the world is a lot smaller. What you think?
+
+Unknown Speaker  57:28
+Great, very good. Good, awesome. Okay, well, okay,
+
+Matthias Miller  57:35
+be in touch. Okay,
+
+Speaker 1  57:37
+very good. I'll be working on this and I'll shoot it over when I got it ready,
+
+Matthias Miller  57:41
+sounds good. Thanks, Martin, okay, yeah.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,1244 @@
+Speaker 1  00:40
+Yo, Correct, yo, yo. So I'm gonna start off today with a giant
+
+Unknown Speaker  00:48
+disclaimer. Okay.
+
+Speaker 1  00:52
+One, I feel about half Brain Powered, so please forgive me if I am slow today. That's number one. Number two is, do you know how many times I have gone over here to this dev spec and tried to answer some of these questions in the last I don't know how many days, and it's just about enough to drive you crazy that I I have a problem. I have I have a problem. Of I it.
+
+Speaker 1  01:26
+I have, I have squeaky wheel syndrome. Okay, in other words, it's easy to do the thing that squeaks the loudest, rather than the thing that does not squeak the loudest, and really should be done anyway. Rant over. Just know, my brain's a little slow today. I'm not sure why.
+
+Matthias Miller  01:45
+The squeaky wheel problem is also the a little bit of a, it's 80
+
+Unknown Speaker  01:55
+good conversation,
+
+Matthias Miller  01:58
+yeah, well, and it's also a, I don't really like sitting through going sitting down, going through spec and answering questions, feels like going through a checklist, and it feels frustrating or No,
+
+Speaker 1  02:08
+I disagree. So like I wanted to come over here and do this so many times, but it is my compensation method to deal with my own add is to do the thing that's right in front of me screaming a lot, because that means I can get, I can get that thing like that. This is my, this is basically my organizational method to keep things moving forward, yep. But it's there's a huge downfall to it, and that is that when there are important things to do that don't squeak very loud. I out anyway, so let's, let's try to accomplish a lot of these things I know that you really want to talk about. I think you said SMS. And Josh was, was talking to me about that this morning as well.
+
+Matthias Miller  02:55
+Oh, okay. Is that where you want to
+
+Speaker 1  03:00
+start? I want to start about looking at what really needs to be answered so that we keep like, what, what? What do you know that needs to be answered that I'm not answered. And we really need to talk
+
+Matthias Miller  03:12
+about, if we're changing the payments data model, we got to decide
+
+Speaker 1  03:15
+that the payments data model, okay, that is the that's based on the one of the questions I threw in there, correct? Yeah, so let's argue about it.
+
+Matthias Miller  03:27
+So do you guys have people who pay for multiple buildings at one time? Yes.
+
+Speaker 1  03:36
+Okay, so this would be, this would well, but not on the same contract,
+
+Matthias Miller  03:42
+right? So it would have a check every there's three contracts. Say again, one check for three contracts.
+
+Speaker 1  03:55
+I mean, it's, it's, it happens, I don't know that it's, it's not super regular, but it does happen, yes, do they
+
+Matthias Miller  04:06
+rent credit card charges? Were there three for one?
+
+Speaker 1  04:17
+Currently with yes, technically, I guess you could, because the way that RTO pro handles Okay, so the way that RTO pro handles this is that you have okay to put it, to put it in, in our language, You have a contact, which they call an account, that can on there they have an RG of of contracts. And so yes, you could, theoretically, not theoretically, yes, you could. You could say, like that RG of of of contracts on that person's account, all. Has dollar values that are due, that totals down to one single dollar value. And if you click Pay or on the credit card charge, it's going to it's going to split those accordingly. Okay,
+
+Matthias Miller  05:14
+why do you want it on the contract record?
+
+Speaker 1  05:17
+I think it's more of a workflow thing or a visibility thing. Now, you convinced me that we can make it really cool and visible when you're looking at a contract record, because I assume the contract record is probably where most people this is where people are going to be spending any amount of time. It's a workflow it's a workflow thing. So it could, like, I don't know what our options are, as far as a connected record and representing it. Oh, snap. Let me hold on one sec. Let me. Let me take this real quick. I
+
+Speaker 1  06:42
+ah, that's always a fun decision to make. One hauler says I can't get it in, the other hauler says I can get it in. And what is safe and what is ego? And yes, anyway,
+
+Matthias Miller  07:00
+Oh, yes. One
+
+Speaker 1  07:03
+of two things might happen today. No one of three things might happen day. One, building gets set, customer happy. Two, building goes swimming in the lake. Three, building is a pile of sticks well after I hit a tree. That's our three options for today.
+
+Matthias Miller  07:19
+Or it could just stay with the builder, with the manufacturer. Well,
+
+Speaker 1  07:22
+that doesn't, that doesn't seem to be an option today.
+
+Matthias Miller  07:28
+Fair enough. All right, so, but then let's break down your concern further is, do you want to be able to edit payments on the contract screen?
+
+Unknown Speaker  07:37
+Define, edit payments.
+
+Matthias Miller  07:38
+Oh, change the amount.
+
+Speaker 1  07:44
+So there shouldn't be, like, changing of amounts or editing payments is not a normal thing that happens. Like, there's not a ton of okay, let's talk through the way that payments get into into the system. This is, this has taken a giant shift over the last number of years away from manually entered payments, yep. Um, so let's, let's deal with the least used method now, which used to be the most used method, and that is physical payments. Someone's in the check, someone says, sends a money order. You receive that you open the paper, you look at the details you you know, you type in your account number, and you apply that payment to the customer, totally manually. Option two, customer calls on the phone says, I'd like to make a credit card payment, either with something that's stored on their account, or here's my credit card number. That's option two, yep. Option three is automated payments where they are set up. They they transact themselves, and they automatically apply. And option four is customers go to said web, web portal, app, etc, and they make their own payment.
+
+Matthias Miller  09:01
+Okay? So I'm going to assume that option one physical payment is a back office bookkeeper entry process, and that probably there's a special workflow just to do that, right? Yeah, okay. And then I'm also going to assume that,
+
+Speaker 1  09:21
+well, okay, let's actually, let's, let's, let's, let's, let's talk about one thing I don't really like. Like, what I don't want to get into is, there is a payments RG somewhere where you hit a plus button and you, you fill in a line item. Like nobody in in this world is used to that in the RTO side, you might, you might define the amount, whether it's a, you know, customer has multiple contracts or whatever, there's a pay you hit a Pay button, you fill in payment details, and that writes to the RG. And I don't necessarily want to change that, because I know like, like, on, on, on assist side, you know, we have plus and. X buttons, besides RGS, and you can add a row. I don't know that. I want to get into that concept, unless you are the highest What did? What did? What did Seth? Call it the what level do you call the superpower level? Unless you're superpower unless you're at superpower level like I don't think anybody should be necessarily adding or subtracting payments based off of the rows in an RG, okay,
+
+Matthias Miller  10:26
+but let's talk through the process. What? What do you want the user experience to be? So somebody calls in, do you pull up the contact record? Do you pull up their contract?
+
+Unknown Speaker  10:38
+I do?
+
+Matthias Miller  10:42
+You have a cockpit?
+
+Unknown Speaker  10:43
+I think that. I think that you're going to, I expect that our
+
+Speaker 1  10:52
+Okay, let's talk about this, what I, what I've kind of seen in my head, and we can, we can tear that apart. But I expected that the contract record is the central record. You have two you have two records on either side of that, one being the contact record, one being the building record or the product record. Representative, Lee, I am perfectly fine. Obviously we're going to field at some in some way, form or fashion, I expect, on the contract record, who is the primary customer, who's the primary customer? And oftentimes you have little ellipses beside each one of those. You can jump over there to to that, that contact record. And the same thing with the building record, if you wanted to jump to the product record, then you know there would be URLs or links or some way to get over to that one. But the primary record would be the contract record. And we want to field maximum amount of information in some form or fashion about that customer. Now, some of this stuff can be underneath modal windows, if you want to things like that, say, you know, the actual PDF documents for like, whether we put that in attachments, or how everyone handle that stuff. But there's, there's primary information that you need to know about a customer when, ooh, I just thought of a big old, giant weak point. If, if contract record is the primary, like a lot of times, you Yes, okay, let me back up the workflow that most people are used to currently in RTO Pro is the in our language, the contact record is the primary record, and there's fielding on that contact Record for the contracts that are assigned to that customer. If you click on one of those those contracts, it will, it will. You can jump to contract information. There's, there's ways to link out to the the detail screens of each one of those things, but they always have, have done it from the contact record level. And we're proposing. What I thought we were the direction we were going with was we would use the contract record as the primary record. Like this is where you pretty much do most of your your your work. The downfall to that is that if customer calls in and says, Hey, I need to change my phone number, I need to change my address, I needed to change some of those things, we're now jumping like we're changing some of the workflow from what people are used to, going from that over to the to the to the contact record to make some of those updates. And maybe there's a, there's an elegant way to do that. Okay, sorry, I'm jumping around a little bit because I'm I'm processing as I'm thinking about this, but when you're on the contract, like when you when a customer calls in and says, Here's my account number, and you look that up many times, it is to make a payment. It is to ask questions about payoffs. It is asking questions about history, payment history, those are a lot of the customer service level type questions, and so I want to minimize the steps to that type of information as much as possible.
+
+Matthias Miller  14:18
+Okay, so it seems to me taking a completely ignorant approach here, that in order to in order to do this right, you need to like you have to have some kind of take a payment process that encompasses multiple contracts. Like, I want to take a payment of this amount. And so it seems to me maybe I'm wrong, but that the take a payment thing is kind of its own workflow. Mm. Okay, am I thinking about it wrong?
+
+Matthias Miller  15:17
+Like whether it's from a contractor from somewhere else, you pull up a screen, you say, I'm taking a payment for for Freddie. Now, if Freddie only has one building, mean, man, just jumping to his contract seems way simpler, and maybe we want to allow for that in some way. But if Freddie has three contracts and he's like, I got to make a payment. Well, I mean, so, so then it makes more sense to have some kind of methodology by which you could say, oh, well, you got these three. By the way, this one's going to be due in two days. You just want to go ahead and pay that one right away too. And Alright, so that puts your total out to, you know, 1437 19 cents. And you know, you check out the boxes for what, what he's paying for, and it gets added in to payment total comes with a payment total, etc, etc. You can maybe adjust the amount that gets paid for each each contract, or something like that. The other option is, well, let's just give a stupid, simple way to impersonate the client portal, which we could do. We can do internally. We can we can pass authentication from from silver loom to the whiskey, where you could say, you know, log in the Customer Portal, pop it open, has a big red screen impersonating Joe Schmo, don't I don't
+
+Speaker 1  16:56
+like that. Let's explore the idea of a cockpit so it, see it. When you say cockpit, I'm I'm assuming that we could gather a lot of information into a lot of records that are interlinked from each other, but are not necessarily all. There's not a good way to represent them all at one time, and we would build some sort of cockpit to do that is that, am I thinking, right? Maybe let's
+
+Matthias Miller  17:21
+explore what it is, figure out what it takes to see if we want to do it or not.
+
+Speaker 1  17:25
+Well, okay, so the core piece is that that we need to like when it comes to what a customer service representative needs to see regarding a customer who calls in is one we need to see who's the who's the primary person on the account, what's the address, what's the phone number, what's the email addresses, that's that's your your primary information, and then what contracts are assigned to that person, what amounts are due on each one of those contracts, both late fees, damage, waiver fees, monthly payments, etc, and then payment history and notes. Those are the, those are the key pieces that a customer service representative needs to know. They need to be able to if they're talking to that customer, they need to be able to see what some what other people have said in regards to talking with that customer. So all, all in the notes section, we need to be able to see very quickly either. Right now, in RTO pro, you have to select history in order to get to your payment history. Um, I don't 100% love that, because I would love for, I would love for, like, all of that, to be visible at one time.
+
+Matthias Miller  18:37
+Okay, well, so could we do this and tell me if I'm wrong, maybe, maybe this is the wrong way. But could we just have a multi, a big, multi, paid report that we call the customer dashboard, and you pop in the customer name, that's the Ask prompt, and then, boom, like, here's the, here's the and we have custom reports. It comes custom templates or something. Call me a little crazy. And we could even give you, like in silver loom settings. We could actually give you a field that gives you the templates for what should be displayed there. I don't know if we want to do that. I
+
+Speaker 1  19:10
+don't think when that's that's, I don't think that's, but then we would maybe. But the big thing is, the big question then it's going to be, how do we make payments, and how do you write notes in when you start dealing with sub pains.
+
+Matthias Miller  19:25
+Well, okay, so, but I'm assuming you would have something like a new payment button, or something where you could start entering a payment or receive payment, or something like that. Okay, is that two? Is that too obtuse?
+
+Speaker 1  19:52
+In the interest of not ending up in situations where mocking a bunch of things up and then discarding them, I.
+
+Speaker 1  20:10
+Okay, so let me ask a different question. Where are we going to centralize notes regarding this person? Are we going to use the contact record?
+
+Matthias Miller  20:25
+Well, I can tell you, i i
+
+Speaker 1  20:43
+And is it one big, giant blob of notes, or are we going to do some type of RG?
+
+Matthias Miller  20:53
+Do you need any kind of ticketing support?
+
+Unknown Speaker  20:58
+Explain what you mean?
+
+Matthias Miller  21:01
+Like, customer calls in and says, I have a repair that needs to be done on this building. And you basically open it as a ticket, and you have to do a bunch of work on your end before you can resolve the issue. But you keep it open as a case, as a like a client, customer support case kind of thing, we
+
+Unknown Speaker  21:21
+don't have anything like that currently.
+
+Speaker 1  21:28
+Well, we are going to do a we need to figure out where we're going to put the what are we calling this thing, where the when a customer makes a promise or a commitment. The commitments,
+
+Matthias Miller  21:43
+promise, yeah, we we have something for a promise, promise, payment.
+
+Speaker 1  21:47
+So I mean some, some of the some of the whole like that potentially could be expanded to incorporate something like this, if we typed it, then maybe. But it's not something we currently have. And I don't know of a ton of use cases. I don't know that we've had a ton of use cases that we would have used it for. So, I mean, maybe it is. It could be one of those things where, okay, I tend to run smaller RTO companies. The larger size RTO companies. It's not a bad idea. I kind of like the like, especially if we gave it some flexibility to say, you know, a repair needs to be done, or, you know, it needs to be, you know, this or that, or the next thing needs to be done. Obviously there, there's, there would be communication pieces that go along with that out to a hall or some type of repair team or something like that, and holding something open to make sure something gets done is it's not a bad idea. But where were you going with that?
+
+Matthias Miller  22:52
+So where I was going with at night this, this is maybe overkill and too much work for people on the phone. So having said that, you could have a record that basically says it's basically a, I don't know what it is, a ticket record, I don't know, and it has person's name, an optional contract number, a type, which is, you know, phone call. You can have a subtype, then, of like, payment request, or, you know, something like that, attempted, attempted contact, or something like that. And then with a notes field, and then a checkbox for follow up, required who to assign it to internal and then a this was done, resolved and cleaned up. And then, now, when a contract gets closed out, all the contract stuff disappears. But if you have something that wasn't contract related that could still hang
+
+Unknown Speaker  23:43
+around, well, that would be pretty stinking cool.
+
+Matthias Miller  23:47
+What the biggest concern that I have is it's it's not, it's not exactly brain dead simplicity, because it's a separate record. Yeah,
+
+Speaker 1  24:03
+yeah, and, and you would, you would, this would pull a number of different duties to say, this is a note, or this needs, like, for the for the most part, it would have a date, and it would have a user, and it would have the note, and then checkbox that says needs follow up, and assignment, yeah.
+
+Matthias Miller  24:20
+And then if it needs follow up, it would have it would have, and you would you could maybe even have the type indicate whether it needs follow up or whether it needs follow up by default. Go ahead. But
+
+Speaker 1  24:32
+then this would be, this would be, essentially, this is how you would take notes on this customer. So in that regard, then it wouldn't be hard to say, if you were in some sort of multi pain thing, you could concatenate a lot of that information together into a into a screen so you could, you could read it. Yes, the top there's a, you know, leave note. If you click that, essentially you just get a notes box with probably a check, boxes Needs Review and assignment and some of those type. Of things. And if you, if you fill it out, it automatically fills in date and who made it and and boom, it just it puts it in, dude, I kind of like that,
+
+Matthias Miller  25:08
+really. And then you, thank you. It's the best idea you had all day.
+
+Speaker 1  25:17
+Yeah, probably I didn't have many good ones today. So far,
+
+Matthias Miller  25:23
+Tim, you sees that line on me, so I get my revenge by taking that on other people. Tim writes, oh,
+
+Speaker 1  25:37
+thank you. It's best idea had all day. Where would that? Where would that RG live on the contact record?
+
+Matthias Miller  25:45
+Well, you would then, then you would have virtual RG. So then it would be a separate record, but then you have virtual RGS and or a button to view history. So the virtual RG then would just show an RG of all communication, and you can scroll through that see what the communication was for each one of them, but it would live as a separate record and but then you just have virtual orgies in both places that you can easily view communication.
+
+Speaker 1  26:13
+So circling back around to the original question about where we're going to put payments, there are, there are pieces about this at holding payments that is as a separate record that I like. I guess there is a lazy side of me that says it. I have to get better at learning inter record lookups than if you're going to build complex reporting, because now you have a contract record, a contact record, payments record, and potentially notes, records that if you want to combine a lot of that stuff into reporting, I mean, maybe, maybe it is that we build good inner record lookup macros to make our lives easy, but
+
+Matthias Miller  26:54
+it's you're gonna have a hard time getting accounting right. This is probably the biggest driver, on my end
+
+Speaker 1  27:01
+for if you're saying accounting right, if you have, if you have it on the contract record,
+
+Matthias Miller  27:05
+yeah, well, yes. Or you need to, you know, or you need to just give up and say, Look, if you have the same date check number or the same date and payment ID, same person, date and payment ID, you assume it's literally the same payment and you deposit. But then how do you do deposits? Like, I mean, I guess you don't really, I don't know.
+
+Speaker 1  27:34
+Okay, so grab your, grab your paper back there, and and, and something, and make this visual for me. And let's, let's talk specifically about in a record like, obviously, you're probably going to link these through num IDs. And what are the potential risks of having a payment record that could be somebody gets smart and figures out how to disconnect that thing from a contract record
+
+Matthias Miller  28:00
+we could validate against it. Okay? I mean, so I don't know what you're looking for, but you have contract. I forget the symbol, but one to many, sorry, con contact to contract, and you have a one to many to payments. And then you have notes, which may be either from the content.
+
+Speaker 1  28:33
+Okay, so let me ask you this. So if you're going to have separate payment history records, when you look up that customer and you want to see all payments in regards that that customer has made, for every contract that may be assigned to that customer, how are we going to represent that,
+
+Matthias Miller  28:55
+like on the detail screen or in a
+
+Speaker 1  28:56
+report? I don't know. That's what I'm asking. Let's say a detailed
+
+Matthias Miller  29:00
+screen probably, I mean, if we're not using the bottom report,
+
+Speaker 1  29:05
+okay, here's, here's a prime example, I look up a customer calls me and I say, you know, here's my account number. So we look up that person and, okay, I want to see all the payments that I've made on all my contracts forevermore. How?
+
+Matthias Miller  29:24
+Well you have one of two options. One, you have your dashboard. You have a multi paint dashboard. You can see it in there, which is just a sub pain filtered by customer, and it has a contract column and a date and all that information. Two, we have a virtual we have either a bottom pane in the contacts detail screen, or we have a virtual RG in the contacts detail screen that shows all the payment history. Or we have a view payments link in there.
+
+Unknown Speaker  29:54
+Explain virtual RGS to me,
+
+Matthias Miller  29:57
+virtual RGS are basically like a read only RG. We go suck the data from somewhere else.
+
+Speaker 1  30:02
+So you could do some sort of yes virtual RG on the contact record that reflects all all payments, like you could do some big, giant concatenation of all the all the payments for a customer, yeah, okay, the
+
+Matthias Miller  30:18
+biggest bottleneck, or the biggest question comes down to editability, because you can't edit virtual RGS, and so if you need to edit a payment or create a payment, well, that needs to that needs to happen. I mean, that's why we need to nail down the payment workflow.
+
+Unknown Speaker  30:39
+Okay, so let's hypothetically say,
+
+Unknown Speaker  30:59
+turn my camera a little bit. I
+
+Matthias Miller  31:03
+could potentially move to a bit bigger room if you need a bigger whiteboard. No,
+
+Speaker 1  31:10
+I think this is more about me drawing it out so I understand what we're saying, then go for it. Okay, so let's hypothetically say we have contact record. Okay, so obviously you got customer information. So if we did, if, why wouldn't we do a, why wouldn't we do a virtual RG? Then of contracts on the contact record as well. Yes, yes, contact, the contact record becomes the, the primary record. Okay? So if, okay, but here's here, okay, here's my question. If, let's say, for example. Let's say, for example, um, in in those virtual RGS, there could be links. There could be, you know, a link that takes you like, okay, particularly in the the payments RG if you said, Okay, that one right there, that payments, something looks screwy. If every single line item had a link that takes you over to the correct record, yes, and then you can go and do whatever you need to do on that
+
+Matthias Miller  32:08
+record. Now, if you want to pay a little bit extra, it's not terrible, but a little bit extra, we could have a we could have an RG on the contact record and on the contract record that gets set, that you can fill in, you can put notes, and then have a process by which we this is probably too much magic. I really don't like it, but just throwing it out there, where you put in the notes and you save, and then on save, it turns read only, and it gets sucked out and pushed into a through next 30 into a separate note record. But basically, we let you enter notes straight on that screen.
+
+Unknown Speaker  32:58
+I have to understand the use case for it,
+
+Matthias Miller  33:00
+the use case is, what I'm trying to do is reduce friction for the person taking the call, like the less friction there is, and the more context that they have. I got a call. Okay. Boom, boom, boom. Check, check, check, check, check, okay. Or, and then, and then, you actually, I have a different idea that I kind of like better. Okay, sorry, let me explain why I care so much theoretically about this, somebody's on the phone. They're in the middle of things. 100 fires are burning. They just want to be like, okay, like they just called and their cat died, and they're in financial arrears because they have to cremate the cat. Can we please give them a 30 day grace period, and next time they call, please ask about their cat, and then they do it right on the contact record, or right on the contract record, wherever they are, they hit save, boom, Alright, done. And there's no I gotta pop up open another screen. Okay. What was I looking at over here? It was the where was that switch back and forth? Kind of a thing where they lose context. That's the advantage.
+
+Speaker 1  34:35
+It's not connecting. Um, maybe there's some value there, but it's not immediately connecting. So
+
+Matthias Miller  34:40
+you don't, you don't understand what I'm saying, or you don't see the value. No, I think I
+
+Speaker 1  34:44
+understand what you're saying. I guess it goes back to the question of, okay, so, okay, let's, let's answer, let's, let's answer a different. Question are we? Are we keeping or abandoning the idea of doing a cockpit when looking up a customer?
+
+Matthias Miller  35:09
+Well, it sounded to me like you got awfully close to saying that the contact record could be the cockpit.
+
+Speaker 1  35:16
+Okay, how would we represent the RG of notes on the contact record.
+
+Matthias Miller  35:30
+Well, you could have, no matter how it's stored. You could have, well, you could have one of two things. You could have virtual RG, and when you select a row, it shows the contents underneath it. Or you could have a auto generated memo that just shows a big, fat, lengthy, you know,
+
+Speaker 1  35:48
+yeah, the date and the person who left the note, and then the note, and just write down,
+
+Matthias Miller  35:53
+and just do the whole entire history of whatever was said.
+
+Speaker 1  35:58
+Now you couldn't leave, you couldn't leave a note, then there you'd have to click some sort of so the question then becomes, would we mimic the the we could we could mimic the don't 100% love this, because anytime I got to open up a window To see the notes, it means that you lose visibility into other things. So
+
+Matthias Miller  36:26
+okay, I have an idea. Okay, well, okay, sorry, keep going. So that was my thought. But so then, just from the user perspective, that's why it's really nice to have just a blank box underneath with the person's current user's name and date, whether you just click in type and hit save, and then, boom, it grabs the note,
+
+Speaker 1  36:45
+yeah. But I love the flexibility of incorporating, essentially, for lack of better word, tasks, almost like a task directly in that, like you could you that that would be wicked cool. Now I do also like, maybe it is so maybe it is that we do. You, you fill in our, you know, what did you call it? An auto filled memos section. You can't edit the memo section, I'm presuming, at that point. And if you, if you want to make a note, we just have a, why don't we just have a, a, make a make a note, clickable link, right on the contact record. And when you do, it just pops open. The same thing that you would, you know, it pops open the same thing. It's like, here's, here's the, here's the memo box. And it does this need follow up, and who does it get assigned
+
+Matthias Miller  37:36
+to? I mean, that's, that is the that is the technically simple approach, so as long as losing context isn't an issue for people, The other thing you could do is you could have these fields.
+
+Matthias Miller  38:12
+You could have temporary fields on each one that you can fill in when you save it, it pushes into a hidden RG, and then we auto populate. This is, again, this is we're getting to magic. If you think it's fine not to have that on that same screen, then that's definitely the simplest,
+
+Speaker 1  38:33
+okay. The the the workflow right now in RTO Pro is you open up a con account person's name, it shows what contracts are assigned there. You can't see history, and you can't see notes. In order to see those, those types of things, you have to hit more comments. And then it pops open a window, and you can both see and leave notes. And that usually is a floating modal window, so that you can move it around, and so you can still context of the of the of the account, sure so and for like payment history, you got to click a button and that opens up a total of a screen you like. So to have to have all that information centralized in the contact record, where you have the customer's information. You have what contracts are assigned to this customer based on a virtual RG. You have the payment history based on a virtual RG, and you had a auto filled Notes section so you can read the notes. Well, then it's not it's not outside of the current workflow. To say there's a button on there that says, Leave a note, click it, type that. Type, does this need follow up? Or, you know, does it and,
+
+Matthias Miller  39:48
+yeah, but it's, but it'll be a separate screen, right? Yeah.
+
+Speaker 1  39:51
+I mean, I mean, I'm expecting you probably will pop it open in a modal window. Are you thinking it
+
+Matthias Miller  39:58
+would know? If we can, we could do an X 30 button.
+
+Speaker 1  40:09
+Okay? Because the the one that we do like that on the dealer portal is inside of a sub pain reporting. So, okay, um, I
+
+Matthias Miller  40:25
+mean, if it's from the dashboard, you can have a blank note populate within there, within one of the panes, if you do a multi pane report, and then they just hit the Save button.
+
+Speaker 1  40:34
+So okay, I'm almost going back to saying, Okay, why wouldn't we then do it in a multi pain report, where one pains got your contract information. Another paints got your payment history information. Another paints got your your all the contracts that are assigned there. And there's another pain with your Notes section. And then you literally can have two buttons across the top that says, make payment and leave a note. And those you know the leave a note would pop open a little X 30 window.
+
+Matthias Miller  41:02
+Yeah, here, let me kick Sean out. Where is the
+
+Speaker 1  41:08
+big question is going to be. Then, if you left a note, how do you go back and edit it nice and and elegantly and easily and getting back to it?
+
+Matthias Miller  41:17
+Well, I mean, from the dashboard, you can you can, you can you can, I mean, you could within the memo, you can have little links, like a little, if it's your note, you'd have a little edit button that you can click to drill into the note detail screen.
+
+Speaker 1  41:39
+That would work. Well, not if you're okay. How, if you were doing notes in a sub pain, how would you? How would you represent them to be able to also have a link to go back and edit it? Does it
+
+Matthias Miller  41:56
+okay? Here, let's do Sorry, I have a trying to kick Sean out. So, so we have a multi pain, the you have an ask prompt for customer. You have pain for payment history, which would be date contract, or what would be the, I don't know where the contract is, the amount, the payment, breakdown, breakdown, dwf, late, Brent, etc. You have a pain, pain with a new, new note. You could have a
+
+Matthias Miller  42:44
+note note detail screen,
+
+Matthias Miller  42:53
+could you have the note detail like, what if you just have the note detail screen with all history beneath it.
+
+Matthias Miller  43:06
+So anytime you pull up the note, you see all the hit. You see everything, all the note. Context,
+
+Speaker 1  43:21
+okay, pardon my Well, I guess it's very, I guess you're talking about something very similar to what you have on your on your dev section. Here is that? Right?
+
+Matthias Miller  43:36
+It would look kind of struggling.
+
+Speaker 1  43:38
+I'm struggling to, I don't know that. Do we have anything like that? What you're talking about
+
+Matthias Miller  43:43
+in any basically be, I don't know if we do struggling
+
+Unknown Speaker  43:49
+for a mental reference.
+
+Matthias Miller  43:50
+It would be like, it would be something like this, but we're dev the dev section would be read only, and it would just show all the however we want to format. It would just show all the conversation history. And then there'd be little Edit Links beside the ones that you can edit, edit this note that you could click a link, and it would take you into that note, that detail screen for that note. What is the closest? Or is it?
+
+Matthias Miller  44:27
+I mean, it's a little bit like I'm
+
+Matthias Miller  44:45
+I know this gets stored on here, but,
+
+Unknown Speaker  44:50
+well, it'd be a little bit like, it'd be a little like where you
+
+Matthias Miller  44:55
+have an auto generated memo down here. I mean, this is frozen, but still, I.
+
+Speaker 1  45:02
+So this, this would be simple Notes field correct
+
+Matthias Miller  45:07
+you would have so the the notes detail screen would have customer contract type, potentially, I uh, you would have
+
+Speaker 1  45:25
+the only, the only downside is, well, I guess, I guess not. You're not doing simple notes over here in in, like the devs. So it wouldn't have to be simple notes. It could be RTF, right?
+
+Matthias Miller  45:36
+You would want RTF, so you put screenshots and stuff in, yeah. But
+
+Speaker 1  45:41
+I mean, at that point, then you literally for to represent that in a sub pane. Then you could, you could put, like, wouldn't be that hard to build a report that just represented all of that, including a URL to get to that particular I guess it would take you back to the the entire Notes section. And
+
+Matthias Miller  46:04
+then what I'm thinking, though, is on the dashboard, if you can embed the notes detail screen on the dashboard,
+
+Unknown Speaker  46:13
+oh, okay,
+
+Matthias Miller  46:16
+and then the detail screen has the history, and you can also have a payments detail screen. I don't know if you have enough room on the dashboard where you can also take a payment or calculate a payment.
+
+Unknown Speaker  46:39
+Yeah, how would that work,
+
+Matthias Miller  46:43
+I don't know yet. The
+
+Matthias Miller  46:51
+payments would have the customer, it would have a payment amount. It would have a RG of contracts with check boxes or something like that. And then you would then you would have a accept credit card payment link that would save the record and and open up a stripe slash whiskey to accept a credit card, or if we have cards on file, could select The card and let it run in the background. I
+
+Speaker 1  48:18
+but my brain wants to keep going back to saying that the contact record becomes like the the cockpit, because you could, I'm assuming, you could put this whole notes concept that you're talking about as a, as a, as a record. You could put the same concept directly onto the the contact record. And in order to add a note section, you literally just put a plus and a minus behind it and right beside the RG and and you just, it wouldn't be that hard, and
+
+Matthias Miller  48:49
+then you wouldn't use separate records, but you'd only store it on the contact record. Yeah,
+
+Speaker 1  48:57
+because I think if I'm understanding what you're saying, essentially, you would have an RG, maybe visible, like two or three rows, right? You would have your your plus and your minus, and then below here, you could do one one note box for a single, whatever selected row that you're selected on, and below that, you could do a much more concatenated, auto filled memo, and it would always everything would always be visible. Am I right?
+
+Matthias Miller  49:30
+Yeah. But then that means if you pull up a contract, pull up a contract, then you would jump over into the contact record to leave a note. I
+
+Speaker 1  49:42
+don't know that you the only reason I think what I'm saying is that the only reason you would ever go over to a contract record at this point anymore is maybe to get documents or, I mean, because we literally can virtual RG represent. Pretty much everything in a virtual RG on the contact record. I mean, because we really like for the most part, we only need to represent about three or four rows in that RG, we'd have to talk about what would be the critical information that we would have to potentially show or, or maybe it's, can you? Can you do an MRG on a virtual RG? I think we can. I
+
+Matthias Miller  50:44
+that's virtual or cheese, mrgs, prohibit MRG, MRG, MRG, email links, Virtual.
+
+Matthias Miller  51:02
+Where would we have this?
+
+Matthias Miller  51:13
+We Have Seth, if He knows, I
+
+Unknown Speaker  52:20
+I'm gonna run The bathroom real Quick. Okay, I'm
+
+Matthias Miller  55:31
+See If I
+
+Matthias Miller  56:08
+let's Do this. I'm
+
+Matthias Miller  56:34
+Hello, virtual RG, what screen is this one on? Uh,
+
+Matthias Miller  56:55
+current row. There we go. So this is on the I'm
+
+Matthias Miller  57:12
+detail screen. Well, there's a new record. I think the answer is yes. I
+
+Matthias Miller  57:38
+virtual orgy. I
+
+Matthias Miller  57:48
+So, yes, we can do a virtual RG with an MRG expression.
+
+Speaker 1  58:02
+I so then, then you could do a fairly slim version of a of the actual RG and a lot of, a lot of the the columns in the road just be hidden. And, you know, you just select in order to see, like, contract, balance, early cash payoff, a lot of those types of things, you would select the contract in order to see what those are down in the MRG, Yep, that makes sense.
+
+Speaker 1  58:56
+What, if, what? And then, I guess, all payments. Then how would if we did a virtual RG of payments, right below contracts? Is there any this? This is a wild and Willie ask, there's no way to filter that that virtual RG based on the contract you may have selected above, and the other one, probably
+
+Matthias Miller  59:28
+not based on the one you've selected. But we could give you a drop list of contracts to filter the payments.
+
+Speaker 1  59:33
+So if there's none no contracts selected, it would just represent them all. But then you would have a drop list that you selected a particular contract. It would just filter the virtual RG for that, right? Okay, that's cool. I like that. I really like that. I think we're getting somewhere this would all be we could do this all on the contact record,
+
+Matthias Miller  59:55
+yes.
+
+Speaker 1  59:59
+So. And, I mean, then we're down to an RG of notes, and if we can do that on the contact record as well, then we just have to figure out how make a payment works, right? I mean, I presume we're going to have to go, like, making a payment. We're going to have to go off into some other window to make this happen. Like, there's no other way. Is there
+
+Matthias Miller  1:00:35
+not a good way? I don't think
+
+Speaker 1  1:00:40
+so. But once, once you're off into some other x 30 ish type. I don't know what, exactly, what direction you're thinking then, then you can really start to define are you thinking at that point like? I don't know what, what thoughts do you have in that regard? I
+
+Matthias Miller  1:00:55
+think you just have a payment detail screen. I
+
+Speaker 1  1:01:11
+um, okay, back to the back to the virtual RG of payments. There's no, there's no issue with having a link beside in every single row that if you click that link. It takes you out to whatever row that you were, whatever detail, yeah, in order to make any kind of specific edits or to or to see,
+
+Speaker 1  1:01:36
+I mean, I like this. I like centralizing all of this on the contact record, I mean, we're giving a ton of visibility at one time. Which I like? Am I crazy?
+
+Matthias Miller  1:01:53
+I mean, let's push it the whole way through and see If we like it. I
+
+Matthias Miller  1:02:18
+Okay, so let's do okay, the
+
+Matthias Miller  1:02:26
+contract sec. So what would you want to show on the the contract fields?
+
+Speaker 1  1:02:38
+This would be in the MRG of the virtual RG. And this we feeding the contract record. Hold on a second. Let me get, I can tell you. Let me just get. Let me get RTO pro open so I can so I make sure I give I don't miss something. Don't know why I didn't have This open to begin with. I
+
+Unknown Speaker  1:03:55
+Keyshawn is gonna feel that burn. I'm
+
+Speaker 1  1:04:04
+Isha is the one who said it it couldn't get put in. Addison's older brother said it couldn't get put in. They got it in.
+
+Unknown Speaker  1:04:16
+That one's gonna burn. Eshaan said can't get it in. Senior hauler says we can get it in 15 minutes. He had it
+
+Matthias Miller  1:04:27
+in, good, gracious,
+
+Unknown Speaker  1:04:30
+oh, that's gonna burn. That's funny. That is funny. Okay, let me get into a I
+
+Speaker 1  1:04:53
+inactive customers only, Yes, I'm. Contract info. Okay, contract info, that is, is very important. Obviously, we need to field some, some product information. And I don't know, depends on, I guess, how we link like, how much product information we're going to store from the product record, over on the contract record. I
+
+Unknown Speaker  1:05:24
+Why do we need a product record
+
+Matthias Miller  1:05:28
+to track the building across multiple contracts? But
+
+Speaker 1  1:05:34
+there's a one to one ratio between contract and building.
+
+Matthias Miller  1:05:39
+No, there's a one to one ratio between contract and ownership or building product and ownership. Okay.
+
+Matthias Miller  1:06:01
+RTO pro doesn't, doesn't separate them.
+
+Speaker 1  1:06:09
+It's a little bit vague in RTO Pro, how they view No, they do. They do it separately. It is. No, it That's right. That's right. I uh, yeah, you're right. Okay, so obviously, we're going to be storing information from the product record on the contract record, so the pertinent information to know in regards to what would need like when you are talking about your your contract to a customer is, what the contract number is. When was it opened? What type of contract was it? Because we will need to handle some different types to the contract, whether it's rental, rent to own, or is it straight rent, or 90 days savings, cash, some of those types of things we'll need to handle. Payment term is something we haven't really talked about, which is, does that customer pay monthly? Does it pay weekly? Does it pay you know, some of those types of things we will need to handle. Some of that on the contract. Record, for the most part, it's going to be monthly. But there are times when customers pay on a bi weekly basis, or a weekly basis, total, total price of contract, what has been paid so far, remaining contract, balance and early cash payoff. And I think we also ought to represent as well is deposit balance security deposit balance and CRA balance in there as well.
+
+Speaker 1  1:08:00
+Now I mean, some other things that might be valuable to fields that RTO pro currently doesn't, is length of term. They don't tell you how long the term is on that. I don't. They actually do. I'm sorry, I'm sorry, I'm sorry, I'm sorry, I'm sorry, we actually talked about this back in high level design, the total, essentially the total, divided by monthly payment, would give you the total number of payments. So total number, the total total value of the contract, and the total length of contract should, should kind of sit together and then total paid and the rounded number of months that that represents would be, along with the paid amount, and then remaining months left, along with the remaining balance due.
+
+Speaker 1  1:08:58
+So product information, well, here, let me just do this. Let me just do this. Let me just show you this. I'm just going to give you this is representative information, not necessarily core information. Matthias, Matthias, Matthias, Matthias, Matthias. Here you go have a look and see at that in signal,
+
+Matthias Miller  1:09:32
+Open, date, type, term, so
+
+Matthias Miller  1:09:41
+they're doing a multi row their case, but we're
+
+Speaker 1  1:09:47
+breaking this out into an MRG. So it'd be really easy to represent this information. I'm.
+
+Matthias Miller  1:10:08
+Okay, well, let's, let's.
+
+Matthias Miller  1:10:24
+I mean, but not all of this stuff is fielded like we have. I
+
+Matthias Miller  1:11:00
+You just want to default to monthly, yes, so that I
+
+Matthias Miller  1:11:26
+Okay, so then over here On the contact record, um,
+
+Matthias Miller  1:12:18
+okay, What is the contract type? I
+
+Unknown Speaker  1:12:23
+a contract type would handle things like standard rent to own contract.
+
+Matthias Miller  1:12:33
+Is that just contract term? No, not term where contract definition?
+
+Speaker 1  1:12:41
+Probably, so I imagine we standard contract, CRA contract, 90 days, same as cash. If there are other types of same as Same, same as cash type things straight rent to rent will be something else I want to handle, which is, there's really no difference between between that and a regular contract, except for that, it just there's no it just, there's no end term. It just runs. I imagine there's some other types we may get ourselves into at some point, but those are the key ones, or definitions, or whatever you want to call
+
+Matthias Miller  1:13:26
+them. How many of these are mutually? Mutually exclusive?
+
+Matthias Miller  1:13:37
+Explain. I mean, can you can you have CRA? And Did, did Seth ever get an explanation of CRA from you, versus security deposit?
+
+Speaker 1  1:13:52
+Was it one of my to do that I didn't get to I
+
+Matthias Miller  1:13:56
+don't know if it was or not. There's so many loose ends on there, it's driving me completely bonkers. Do you want to have an allow? Allow rent, to rent.
+
+Speaker 1  1:14:15
+So so all of these are, I think I can safely say every definition type is mutually exclusive to the rest. In other words, you can't do you can't do a rent to rent. CRA, you can't do a rent to rent, standard rent, own contract 90 days, same as cash. Can't be a CRA. Well, I in theory, you could do a 90 days, same as cash CRA, because if they roll over into some numbers, they would so yes, they're not all mutually exclusive,
+
+Matthias Miller  1:14:57
+but CRA security deposit and rent to rent would be a. And then just a standard RT and what would you call the standard rent to
+
+Speaker 1  1:15:04
+rent. Rent to rent and security deposit are not mutually exclusive, but CRA deposit and rent to rent would be mutually exclusive because CRA is money down to reduce contract payments. Security deposit is essentially that it's security deposit. It does nothing from a from a month to month standpoint, it just, it's security deposit,
+
+Matthias Miller  1:15:38
+right? Well, here, here's so we have CRA rent, standard contract and same as cash
+
+Speaker 1  1:15:45
+contract definition record to do Dwayne figure out what this needs. Let's lately so
+
+Matthias Miller  1:15:54
+CRA versus you could have a security deposit and a CRA technically, no, okay, you can't have a rent to rent with a security deposit. Security deposit.
+
+Unknown Speaker  1:16:06
+Rent to rent could have a security deposit, yes,
+
+Matthias Miller  1:16:11
+and you could have same as cash with a security deposit and or a CRA Yes, but you can't have a rent to rent with same as cash, correct? So rent to rent is fundamentally different than everything else,
+
+Unknown Speaker  1:16:30
+fundamentally different than everything else. Rent to rent has no ownership,
+
+Matthias Miller  1:16:36
+right? See, rent to rent risk everything else has,
+
+Unknown Speaker  1:16:40
+everything else has, has, has ownership,
+
+Matthias Miller  1:16:44
+okay, and then you have, then you have,
+
+Matthias Miller  1:17:02
+for lack of a better term,
+
+Unknown Speaker  1:17:06
+exit bonus
+
+Matthias Miller  1:17:08
+or exit not bonus, but,
+
+Unknown Speaker  1:17:15
+Oh, you're saying,
+
+Matthias Miller  1:17:16
+Is it always 90 day?
+
+Unknown Speaker  1:17:19
+No, I Yeah.
+
+Matthias Miller  1:17:23
+So you can only have one type of money down, and
+
+Speaker 1  1:17:34
+when you say exit option, in other words, if you don't fulfill the same as cash, then you flow over into something else. Is that what you're saying
+
+Matthias Miller  1:17:40
+the standard, I mean, it's just an early off ramp, really,
+
+Speaker 1  1:17:44
+okay, does that not how people the same as cash option is an early off ramp? Yes, correct. It's a good way of putting it.
+
+Matthias Miller  1:17:55
+So, so it seems to me like you have, you have multiple settings. You have, if contract type, which is RTR or RTO,
+
+Matthias Miller  1:18:16
+which would be the default, then you have a deposit type, CRA or security deposit, which would be optional because they might not have or it could just be, what if they just make two monthly payments? Like, is that different from a security
+
+Unknown Speaker  1:18:38
+deposit? Two monthly okay, you bring up a good point, because we do have to handle this.
+
+Speaker 1  1:18:46
+There are RTO companies that they write their contract as the two months down is two actual months of rent, and you don't. You theoretically don't start your contracts until 60 days or your next payments do not for out 60 days. So it's this, rather than do one payment and a security deposit, they do multiple payments directly applied. So yeah, I think when you are when you're entering a contract, you need to specify how you're handling your money. Whether you know this is going all into a CRA, is it going into security parts for rental parts for security deposit, and then sometimes all money that comes in goes towards rent. Okay,
+
+Matthias Miller  1:19:36
+so you have a deposit type, rental payments, rental payments, CRA, or security deposit,
+
+Speaker 1  1:19:44
+yes, okay, and then you have So to clarify, two of those always can work together. So rental payment, security deposit, CRA. And rental payment. So, so really, we should just call this, you have one rental payment.
+
+Matthias Miller  1:20:04
+We should just call this is deposit. Type the right, right thing. I mean, CRA series, technically not a deposit. Is
+
+Unknown Speaker  1:20:13
+it? No, it is. It's a deposit. Okay,
+
+Matthias Miller  1:20:17
+so is it? I mean,
+
+Speaker 1  1:20:20
+technically termed wise it. It is a who, who? Who is this? And why do they keep calling me? Hold on one second. Let me see what this
+
+Matthias Miller  1:20:31
+is. Customer saying the building's in
+
+Speaker 1  1:20:35
+the lake, Ohio number, but I don't recognize the Ohio number. I
+
+Unknown Speaker  1:20:52
+mark, why is Mark Calling? Hold on One second.
+
+Unknown Speaker  1:21:02
+I'm Have you heard Have you heard the mark Dog story? You're muted, you must have walked away. I
+
+Unknown Speaker  1:24:28
+have you? Have you heard the mark dog story?
+
+Matthias Miller  1:24:30
+Nope, I have not heard the mark dog story. So
+
+Speaker 1  1:24:33
+last week, you know, Josh was in Ohio on Monday, I hung around for Tuesday to talk with Ohio guys. And so anyway, sitting in the conference room, Mark comes flying in there and goes, Can you take me home? I've got some loony that's scaring his wife, looking for some dog, something, something. And so we jump in the vehicle and we fly over to his house. And apparently. There's this she was drunk, for sure, but they they pulled up into Mark's yard just yelling and screaming and cursing, saying they stole their dog and on and on and on. Poor poor Mark's wife was like hiding in the basement because she was so scared. So they call the police. Police come out. The person had left by this point, because once, once a bunch of people started showing up. They they got a little antsy, decided they were going to vacate the area. It's a police found him, talk to him. So apparently they had, I don't know where they're from, but they had lost their dog in the area, and supposedly somebody posted it on Facebook that there was a stray and so they were trying to find this thing. Well, I thought it was all done, so police told them not to come back. And so then this week rolls around. Over the weekend, they're back out there on the road like pointing and yelling and screaming again, poor poor Mark and his family is feeling terrified, and police were called again, and anyway, suppose the dog was found and turned over to the police, and Mark was just calling me to tell me that the dog and these people were finally reunited, and hopefully this saga is Over, but poor Mark's wife, she was scared out of her mind.
+
+Matthias Miller  1:26:25
+Yeah, can you imagine having, I mean, can't say I blame her.
+
+Speaker 1  1:26:31
+Well, yeah, you live in an Amish community where everybody knows each other, and some, some person comes up screaming and yelling and and saying, You stole the stole their dog and you weren't sure what was going to happen.
+
+Matthias Miller  1:26:46
+Yeah, wow.
+
+Matthias Miller  1:26:54
+All right, so it seems to be, if we want to model this correctly, I correctly, then over here,
+
+Matthias Miller  1:27:18
+we have an allow Rent to rent.
+
+Speaker 1  1:27:21
+Go ahead and answer Nick's question right away. Security Deposit, is this auto calculated? No. Is there an override field if allowed increased security deposit is set to Yes. For the most part, it is. It is a completely free form field, except when you have that, you're not allowed to increase security deposit more than equal to one month of rent, like in the case of Indiana. But otherwise, for most states, you can make that security deposit as much or as little deposit as much as or as little as you want.
+
+Matthias Miller  1:27:59
+Do we need to specify number of months, just one month, yeah,
+
+Speaker 1  1:28:05
+equal to one month, pre sales tax and pre Damage Waiver fee. So Indiana, like I think New York is the same way. They do not allow you to take more of a security deposit than what is equal to one month of rent. Okay?
+
+Matthias Miller  1:28:35
+And then this is no correct. CRA is money up front that is used to reduce the monthly payment,
+
+Speaker 1  1:28:50
+right? That is correct. And as far as the calculations on that, I would tell them to go over into assist and find those calculation macros and duplicate them.
+
+Matthias Miller  1:29:20
+Is it reduced from the final payment?
+
+Matthias Miller  1:29:32
+Say it again, how, how is? Is? Is the security deposit written back as a check? Is it reduced off the final payment, or payments security deposit, or CRA. Security
+
+Speaker 1  1:29:42
+Deposit, okay, you're currently talking about CRA in the notes section that you were just writing about, but you're asking about
+
+Matthias Miller  1:29:48
+distinguishing about secure I'm trying to add an explanation of what security deposits are as a I can break into a new paragraph,
+
+Speaker 1  1:29:54
+security deposit can be, can be used for. Uh, almost anything that that, okay, strict definition of a security deposit is, if we repo that building and there was damage from the customer, we use that money to fix the building or pay past due rent, or, in the case of a customer uses the security deposit, they you can use it to cover a month of rent that they want to. You know, they don't have, they don't have money this month. And so can I use my security deposit for that? Yes, you can use security buzz for that. Otherwise, it is applied at the point of payoff as directly reducing the early cash payoff amount. Does that make sense?
+
+Matthias Miller  1:30:43
+And if it's unused until the kind of the term, I mean, do people typically then use it say, Hey, you have a
+
+Speaker 1  1:30:51
+so when, whenever you okay, we haven't really got into payoff workflow yet, but at the point of payoff, I think we should flag the we should flag and say there is an unused deposit. You have to choose whether you're going to use it as part of your payoff or or not use it as part of the payoff. Because a lot of what times what happens is somebody sends in a final payment as a physical payment, and forgot they have a security deposit, and then we end up having to send it back to the customer.
+
+Matthias Miller  1:31:36
+So if I, if I can make some money here, if I get a building and have a large deposit using credit card fees, make the security deposit with credit card fees and then get a check read back to me. I can make 3% on my money over whatever time period. Or I could cost you 3% I get my cash back. You can't get,
+
+Speaker 1  1:32:05
+you can't get any more than what you gave to us, yes, but you can cost the company,
+
+Matthias Miller  1:32:08
+um, three, 3% I can get cash back from that, yeah. Which,
+
+Speaker 1  1:32:13
+by the way, when it comes to credit card fees, we are going to have to have some kind of way of allowing a company to charge to take a credit card. In other words, oh, credit card surcharge we don't have to handle that. Is
+
+Matthias Miller  1:32:27
+that on the contract, though,
+
+Unknown Speaker  1:32:33
+I have no idea where we want, how we want to
+
+Matthias Miller  1:32:35
+do that. Does it have to be written
+
+Speaker 1  1:32:40
+in the contract? The allowance for it, yes, needs to be written into the contract. Most contracts have it in there, a lot like each state. This is a state by state thing, but most states are is, if you're going to charge a fee, it has to be in the contract. So the contract does need to allow for it. In companies that do it should be in their contract.
+
+Matthias Miller  1:33:03
+Well, if it's state specific that has to be in the then you need it tied to the contact contract, like if North Carolina doesn't let you do it, making things up in South Carolina lets you do 1% and Virginia lets you do 2%
+
+Unknown Speaker  1:33:22
+i Okay,
+
+Speaker 1  1:33:25
+I get nervous about the idea of it being on the contract. How do we make sure that that it happens? In other words, I don't want it to get missed. If it's part of contract entry, how do we validate that it doesn't get missed. Like, do we have some type of system setting that says we charge credit card fee, and then if somebody forgets it, then it flags them and says, Hey, your company setting says you charge credit card fees. Are you Did you forget, or are you willfully ignoring? Does the
+
+Matthias Miller  1:33:58
+company okay? I mean, I'm assuming this isn't something to change, like, will they ever I mean, theoretically, conceivably, you could maybe have an override by which somebody says, I'm going to waive your credit card fee, right? I mean, that seems weird, but
+
+Unknown Speaker  1:34:28
+you're saying at the time of taking a payment, yeah,
+
+Unknown Speaker  1:34:38
+it's a good idea to have the ability to override it.
+
+Speaker 1  1:34:55
+I mean, yes, I think we would want to have the ability to override it. So. Um, so does, does a like, how what's your question? Your question is, do we want to field it on the contract? How do we field it on the contract?
+
+Matthias Miller  1:35:18
+My question, my question is, how is this applied? Does a company always use it every time, anytime they can, most times? Yeah. Okay, so does the percentage vary from state to state, state to
+
+Speaker 1  1:35:31
+state? I don't know, because it's not something that that our rent to own company has ever done. I do know that it's a setting in RTO pro global settings. And I think you just put in percentage wise. I think let me just go ahead and find this main menu set up.
+
+Matthias Miller  1:35:58
+So, I mean, I'm just trying to figure out where the setting goes. Like, are there states that prohibit you doing it? Prohibit you
+
+Speaker 1  1:36:04
+doing it? Oh, I'm sure there probably is. I think New York prohibits it.
+
+Matthias Miller  1:36:09
+Are there states that prohibit how much you can charge for it, or that control how much i
+
+Speaker 1  1:36:28
+Oh, yeah. So RTO Pro has it as a global setting to enable a convenience fee to be added to payments. Enter the fee here for a set amount, enter the amount here. Example, five makes it 5% of the total transaction. Enter a percentage here, example, 2% they have it as a global setting. So
+
+Matthias Miller  1:36:52
+here, check this out. Some states allow surcharges, but restrict the maximum amount capped at 2% of the transaction or the actual processing fee, whichever is lower, cannot exceed the merchant's actual processing cost. Allowed up to 3% must be disclosed to the customer before the transaction. 4% surcharging band of return now allowed at the point of sale cannot exceed the merchant's actual cost. Surcharges are not allowed unless cash distance this discount is Wait. Does that mean you do a 2x like 3% surcharge or 3% disc.
+
+Matthias Miller  1:37:55
+I don't understand New Mexico,
+
+Speaker 1  1:37:58
+so Colorado, New York, New Jersey, Nevada, South Dakota, Montana, Minnesota, Kansas, Georgia, New Mexico and South Dakota all have some sort of restriction,
+
+Matthias Miller  1:38:10
+charging more than what it costs. Merchant I
+
+Matthias Miller  1:38:37
+I mean, I think what you what this really means is the convenience fee. I mean you need to, okay, this gets weird because you need to specify the state limit and
+
+Matthias Miller  1:39:02
+you need to specify the credit card fees. But
+
+Speaker 1  1:39:07
+from a software standpoint, do we need to validate for this? Like, why can't we place the responsibilities on the rent to own company doing it? They start charging more than the cost of it, and they get in trouble for it. It's kind of their fault, isn't it? Do we really need to validate
+
+Matthias Miller  1:39:20
+for this? No, we don't need to validate for it, but we need a way to specify it. And on this case, 1% or the processing fee, well, I guess it is a so really, on this, allow credit card surcharge. It's a credit card percent fee percentage in a credit card transaction dollars. So this is IE 2.9% for stripe and IE 30 cents for stripe. Two. Uh, 1% four states, okay, but then here's the issue, the 1% surcharge is based on the subtotal. In this case, we Is that what it
+
+Speaker 1  1:40:16
+said based on the subtotal, not the total transaction.
+
+Matthias Miller  1:40:21
+Well, I mean, or the total transaction, but that's different than a on $1,000 that 1% is 1% But on a, on a you
+
+Matthias Miller  1:41:00
+I look at the but let's say that you have, I mean,
+
+Speaker 1  1:41:04
+part of me wants to make this rent to own company setting, and if you set it, if you set The convenience fee,
+
+Speaker 1  1:41:17
+um, convenience fee info. Consult an attorney before charging convenience fee. Click this button for more information. I'm clicking it. But what's happening? Nothing. Set up state level convenience so they allow for state level convenient convenience fees. Well, why wouldn't we do the same thing? Why wouldn't we make it a company record and do an RG of state level
+
+Matthias Miller  1:41:39
+convenience fees? Well, I think it's, it's state level it's state level caps, so it's more like, okay, here, let me, let me.
+
+Matthias Miller  1:41:56
+Okay, let's do company. Let's go back to the RTO Company record.
+
+Speaker 1  1:42:14
+I mean, at that point you can, you can. What type of caps are there? Not more than? I think the major cap is that you can't do more than what the the actual merchant transaction fee would be. We should know that at the point of the of the credit card transaction. So you could put some sort of validation check box that says, you know, don't allow more than,
+
+Matthias Miller  1:42:39
+okay. So then you have note, if a state limits the convenience fee by 1% you cannot charge more than $10 for $1,000 charge. However, when calculating the convenience fee of a transaction, you need to account for the new For the convenience fee of the overall transaction.
+
+Matthias Miller  1:43:29
+See, I'm
+
+Matthias Miller  1:43:43
+uh, text,
+
+Speaker 1  1:43:53
+yeah, here's, here's the whole other conversation we have to figure out is, how are we going to field those charges in the payment history and how do we gonna Like, how do they get accounted for in accounting?
+
+Unknown Speaker  1:44:21
+I I'm dropping you a screenshot of something I'm.
+
+Matthias Miller  1:45:15
+So they do it. They do state exclusions.
+
+Speaker 1  1:45:20
+Well, they do both. Both set set up state convenient fees, or do state exclusion. So, so it's a number of ways he allows you to set this up. You can do an overall percentage and then say, in line 67 you can say, you know, except for these states. Or you can go to Line 68 and say, check that box. And you can define every single state convenience fee, which is, I don't, I don't see the reason to do both of these. Like, let's just, if you're going to do this, the convenience fee, then define every state you work in and what the convenience fee is.
+
+Matthias Miller  1:45:55
+She also want a maximum dollar for people who just want a $5 convenience
+
+Speaker 1  1:45:59
+fee. That's right, I but
+
+Matthias Miller  1:46:03
+you still want to maximize, you still need to know your merchant fee transfer percentage, or merchant transaction percentage theoretically, so that you can cap because you're not allowed to charge more than what right.
+
+Speaker 1  1:46:17
+So part of me says we give them NRG of states and fees, percentage fees, with a note at the top that says, please consult an attorney, and please consult your state level legislation. And we can, you can do $1 value, you can do a percentage, and if they overcharge for it, it's kind of their own fault. Is it not like why do we have to validate for all of this state this kind of stuff changes, and so I don't want to have to try to stay up compliant with all the state level regulations. When it comes to fees, that's the responsibility your rent to own company. You're, you're responsible for your own compliance. No,
+
+Matthias Miller  1:47:10
+here, let's do this. I
+
+Matthias Miller  1:47:20
+What if we just make it part of the checkbox? I've consulted an attorney and would like to enable credit card convenience, convenience fees
+
+Unknown Speaker  1:47:32
+that turn that, that turns on the RG, yeah.
+
+Matthias Miller  1:47:40
+Okay, so don't you still need to know your merchant rates, because that also is generally a cap, or do you just set your dollar? Like, if I'm allowed to charge the full 2.9% or whatever, and I want to, why can't I, like some states allow up to 4% or or cap, whichever is lower,
+
+Speaker 1  1:48:09
+yeah, but I mean, so you're proposing to do. To say, here's a check box. Charge the max I can charge if your state allows for it. But then how are you going to figure out what the max you can charge is like, how do how do you get that? How do you get a defined rate from the credit card company?
+
+Matthias Miller  1:48:34
+Well, okay, I guess really what you're saying is, if we ignore the purge per transaction fee, and we just want to treat this as a percentage of the target amount. What would that percentage be to calculate the strike convenience fee? I
+
+Matthias Miller  1:49:12
+I guess you would just put into 2.9% which, I mean you could put in 2.988% and squeeze a little bit more out of it.
+
+Speaker 1  1:49:22
+Okay, so stripe charges a a 30 cents fee plus 2.9 Right, correct. What you're saying is so, so Mr. Rent to own company, you get to choose a percentage. Well, okay, unless you did both a percentage and a fee and allow the person to put in the 30 cents per transaction. Like, if you had, if you had the state percentage column and a fee column, you could feel
+
+Matthias Miller  1:49:49
+for both. I mean, that's okay, but should we? Because we could just say, look, you're nickel and diming. Like, just do 2.988% if you really have to. And forget the 30 cents across.
+
+Speaker 1  1:50:00
+I That's my opinion, like, but I Okay, but then I do like the idea of, okay, we we charge a flat fee of, you know, $5 but you
+
+Matthias Miller  1:50:12
+can't if they're making a $50 payment. That's where you have a maximum percentage. Let's just stick with a percentage. Okay, you can have a maximum dollar. I think you need both of these maximum dollar, maximum percentage, and forget the merchant fee. Okay, because some states do limit it to 100 bucks. Some states do limit it to you might limit it if you want a $5 fee on everything. You still can't. Some states you still can't charge more than 1% if you make a that's 10% Yeah, if you make a $50 payment of 500 like, if somebody's making small weekly payments, they're going to hit a hit up against that, they could potentially hit up against that, that limit. So we cap it on $1 and percentage basis. So we choose the lower of the two. So do
+
+Unknown Speaker  1:50:56
+you do the calculation percentage and then the cap value?
+
+Matthias Miller  1:51:01
+It's just, if you're making $1,000 payment, you can charge up to $5 or 2% whichever is lesser.
+
+Speaker 1  1:51:13
+So, okay, I'm confused. What are you proposing? I'm proposing,
+
+Matthias Miller  1:51:19
+okay, um, I'm proposing this. We could eventually consider getting more sophisticated when it comes to stripe payments, but it's not necessary, so we won't. We would add these fields. Note that when okay and we're going to throw this down into I'm
+
+Matthias Miller  1:52:04
+merchant fee caps or convenience fees.
+
+Speaker 1  1:52:12
+So wait, why wouldn't? Why wouldn't we have a column for state, a Type column where you define whether it's straight dollar or percentage. And then, if you say percentage, then it gives you the percentage field, and then you have $1 value cap, or in the case of, if you say just a straight dollar, straight dollar value, then you would, I guess, the cap would be payment value. In other words, you couldn't you the,
+
+Matthias Miller  1:52:44
+I don't know, no, I mean, this is okay. Here's what I'm thinking. Let me get the merchant my idea, my brain idea was, well, you could, you could set the percentages to max out what the fees are, okay, and we still could do that at some point, if we need to. But we're saying here is, I think you need both, based on what I'm very preliminary research that I'm seeing is like, if you say I have a $5 convenience fee and somebody pays $50 you can't charge that much. That's prohibited in most states, and so you have to have so you have the maximum percentage, maximum dollar convenience fee and maximum percentage of the payment that they're making, and you choose the lesser of the two. So if they're making a $50 payment and there's a max 2% fee, then you charge them a buck, because that's all you're allowed to charge them if they're making if they're paying $10,000 then you charge them for $5 because that's what you're charging them.
+
+Speaker 1  1:53:49
+Okay, however, however we do this, just we have to represent the fields to say exactly what we're saying, so that it's because this is one of this is one of those things that I could I could see people having a lot of questions and not understand. And not understanding and getting it wrong. So as long as we name the fields well, then
+
+Matthias Miller  1:54:17
+I mean, like that, maximum additional percentage? Well, like this. I mean, you're, you're, I don't listen. I suppose I'm really up to say I'm too close to to but it's a convenience fee. It's the cap on the convenience fee. The convenience fee that is added on top cannot be more than x dollars. It cannot be more than x percent. What am I missing? Okay,
+
+Speaker 1  1:54:43
+so, how are you defining what the convenience fee is? So I put it lower of the two. So, so if I say I want to charge a 2% convenience fee, I would put that in the max additional percentage, right? I. Yes. And if I said, and I could refine that by saying the maximum additional dollars would be, like, if I have a if I have a certain dollar cap by my state, then, like, I can charge 2% but it can't go over X amount of dollar values. Would I put that dollar value in the additional maximum? Yes. What if
+
+Matthias Miller  1:55:20
+I just wanted to charge $1 then, just then you would leave percentage blank and
+
+Unknown Speaker  1:55:25
+put it put in the dollar. Yeah, so it works as both the fee and the cat.
+
+Matthias Miller  1:55:32
+I mean, yeah, they're both caps. It works as both.
+
+Speaker 1  1:55:39
+I mean, I think, I think we're I think where you and I are passing each other, my brain is thinking of a fee and a cap, and you're thinking of, they kind of work in conjunction with each other.
+
+Matthias Miller  1:55:48
+Okay, well, I mean, if you want to, it makes no difference if it's easier for people to understand, you could say fee type, dollar slash percentage, and you have a fee dollar slash fee percentage, and then or a and then you have a maximum dollar slash maximum percentage. And it's all just semantics,
+
+Speaker 1  1:56:18
+yeah, but you wouldn't you would never have a maximum percent. I don't understand the maximum percentage. It's either a percentage or it's not a percentage. Maybe I'm the idiot I told you I was slow today, so help me. But
+
+Matthias Miller  1:56:33
+states will always limit you on No. State says you can charge $1,000
+
+Speaker 1  1:56:38
+yeah, so it's a percentage with plus $1 value maximum. Okay, right? So if I say, if I say, so, so for no so you have your type. So you pick your type. Is it percentage or is it, is it dollar value? If it's and then you have your fee field, and then I mean to me, that's what I would do right there. I would do state fee percentage and maximum dollar value, fine,
+
+Matthias Miller  1:57:06
+and call it, call it,
+
+Speaker 1  1:57:12
+yeah, so, so in the case of, okay, I just want to charge $1 per transaction, well, then I just put the dollar in the maximum dollar value, and it charges $1 every time, right?
+
+Matthias Miller  1:57:22
+But you should still put the percentage in, shouldn't you?
+
+Speaker 1  1:57:32
+You know what? Let's just Let's make life simple. You are forced to use a percentage and a maximum dollar value. So if you put in 2% and you put no maximum, then 2% on $2,000 is whatever it is, but if your state says there's a maximum cap, then you put the maximum cap in the dollar value. Let's just RTO pro doesn't give anything for straight dollar values, and so it's always percentage. Let's
+
+Matthias Miller  1:57:56
+leave it alone, as it does for a set amount. Enter the amount here. It does,
+
+Unknown Speaker  1:58:05
+what line 60.
+
+Speaker 1  1:58:17
+Oh, so if you add the percentage sign, then it's, then it makes it a percentage. If you just put $1 value, that's a straight dollar value. But
+
+Matthias Miller  1:58:25
+I would argue that's wrong, like, unless you have a minimum payment amount. I would love to go to town with somebody who's who's, uh, do a contract with them who has a fixed dollar amount, and just make a small payment and then get after them because they overcharge me in a different life. So
+
+Speaker 1  1:58:53
+do some states have a maximum percentage? Is that what you were trying to say, I think I'm only catching up to what you were trying to say. Told you I was slow.
+
+Matthias Miller  1:59:02
+Montana can't be more than 3% um, can't be more than the
+
+Speaker 1  1:59:06
+actual cost. Now I'm now I am tracking. Okay, let's go back to your your concept. I'm
+
+Matthias Miller  1:59:12
+so sorry. Oh, good. I don't mind this. I just think fee percentage has to be I think maybe they both have to be required.
+
+Speaker 1  1:59:25
+Okay, go back to your original, my very original. Leave that there for the moment. Just leave what you had there for the moment and and go down below that and give me a proposal.
+
+Matthias Miller  1:59:38
+Which one, the complicated one? Yes, this one.
+
+Speaker 1  1:59:42
+So we have state and we have fee type, so dollar presented, okay, okay,
+
+Matthias Miller  1:59:47
+then I had one before this too. Let me go before this. I.
+
+Matthias Miller  2:00:00
+I know. I don't think I agree. Most people are not going to think about, most people are going to think about, what's the fee and what's the cap you I think you are correct.
+
+Speaker 1  2:00:12
+Yeah, but okay. But if we, if you, if in your checkbox where it says, have you consulted, I have consulted an attorney, and would like to enable credit and convenience fees. I wonder if we just put more information there that says some states have both dollar value maximums and percentage maximums use at you know, I don't know. So I think what we just we need to prompt someone to think about this, and this is going to be one of those things where I'm just going to have to explain to them, to RTO companies, when they
+
+Matthias Miller  2:00:43
+specific percentage, a specific dollar amount and or actual costs, actual merchant costs of processing the transaction. I
+
+Matthias Miller  2:01:06
+Okay, I would do this as a
+
+Matthias Miller  2:01:17
+I do agree in this case, people most likely think about it as a percentage or $1 value.
+
+Speaker 1  2:01:27
+See, I had no idea that there's all these restrictions in some states. And a lot of those states we run, there's people that run RTO contracts, so they need to know this if they're charging convenience fees, they need we need this flexibility. I agree. You need to be able to put in the variables for your state and it work, yep.
+
+Matthias Miller  2:01:50
+But my point being is that if you want to put it in terms that they understand, they're probably thinking about, I mean, you could literally say V type, dollar, slash percent, fee number, and then the maximum.
+
+Speaker 1  2:02:12
+And can Okay, riddle me this, can we? Can we? Can we field based on the type that they select? Okay, so here's if they if they select dollar value, then then you need a maximum percentage. If you select yes percentage value, then then you need a maximum dollar value,
+
+Matthias Miller  2:02:31
+yes and, and all that you if you flip these back and forth, the numbers just swap around. Under the hood, we're gonna store $1 percentage.
+
+Speaker 1  2:02:45
+Yeah, yep, agree, yep, that's the way to do it. That makes sense,
+
+Matthias Miller  2:02:54
+please. Details is two decimals enough for the percentage. Yes. Okay, so this is a you can't
+
+Unknown Speaker  2:03:01
+if you can't get your percentage right in two
+
+Matthias Miller  2:03:03
+decimals, you need to go reconsider your life.
+
+Matthias Miller  2:03:13
+Is that fair using words, or should it be dollar amount?
+
+Speaker 1  2:03:20
+Yes, dollar amount. There you go. Or dollar AMT, if you wanted to get short on letters,
+
+Matthias Miller  2:03:28
+we have lots of room. Okay, okay, so then we have the fee, I think just a fee column, yeah, fee. And this is a edible macro for fee dollar when using dollar amount, otherwise editable macro for fee percentage, and then maximum, and then editable macro for fee percentage using $1 amount, otherwise editable proof For a fee dollar,
+
+Matthias Miller  2:04:18
+and this should be required for
+
+Speaker 1  2:04:27
+Yeah, and if you do not check the box for any convenience fees, then we, the company wide, does not charge any convenience fees. Agree, I don't. Why would you want to? Why would you why would you not want to automatically add the convenience if your company charges a convenience fee, why would you say you don't want to add it to online payments?
+
+Matthias Miller  2:04:52
+Well, okay, you might. You might. There might also be a difference between the stripe and ACH. I.
+
+Speaker 1  2:05:02
+So automatically add a convenience fee. Well, he is giving refinements for when you do it and when you don't do it, like during contract. Close fee must be entered above. Automatically Add a convenience fee to all credit card payments on new rental loads
+
+Matthias Miller  2:05:22
+back to just that's Obnoxious. Do you think it's necessary?
+
+Unknown Speaker  2:05:31
+I really want to force them into a you do or you don't. This
+
+Speaker 1  2:05:39
+is one of those things where we're gonna have to be ruthless about this, because I know that some companies gonna be like but I know I'm gonna charge it on this or I don't want to charge it on Matt and,
+
+Matthias Miller  2:05:50
+well, nobody's forcing you to charge it, so tell your reps to uncheck the box.
+
+Speaker 1  2:05:59
+Contract says, go ahead. So are you saying? Are you saying that this would be a company setting which would auto fill something on the contract record so you could uncheck it on a per contract basis, potentially,
+
+Matthias Miller  2:06:16
+you could check, you could uncheck it on a per contract basis, obviously, with admin privileges, I'm guessing, and potentially on a per payment basis, imagine if somebody says
+
+Speaker 1  2:06:26
+yes, definitely on a per payment basis, we definitely need to negate it in a per payment base, yes,
+
+Matthias Miller  2:06:31
+well, I mean, it's also tied to the contract, by the way. What happens when this gets fund? We need to use live data in this case, because, I mean, we need to store what it was, what we process on each payment, but if the state changes regulation, we immediately, no, that's a nightmare. State
+
+Speaker 1  2:06:52
+changing regulation is on the RTOS company responsibility to stay compliant,
+
+Matthias Miller  2:06:56
+okay, but if you have a contract, if the state reduces the allowable percentage, if it increases the allowable percentage, you can't increase contract percentages. If they decrease allowable percentages, you need to decrease that, right? So we do need to freeze, don't we theoretically need to freeze these fees on the contract.
+
+Unknown Speaker  2:07:26
+Well, wouldn't be in the payment record.
+
+Matthias Miller  2:07:30
+Also the payment record, if you, if I sign a contract, the contract states that there will be a convenience states,
+
+Speaker 1  2:07:41
+ain't no way we need to freeze it on the contract. You're 100%
+
+Matthias Miller  2:07:54
+correct. Okay, so then on the contract record, which then allows you to overwrite it on a contract basis.
+
+Matthias Miller  2:08:05
+Purchase, you have things like, I don't know where this is. Um,
+
+Unknown Speaker  2:08:22
+um, I'm
+
+Matthias Miller  2:08:54
+fee. I'm
+
+Matthias Miller  2:09:12
+and then here and
+
+Matthias Miller  2:09:21
+Then on the payment record, I'm
+
+Matthias Miller  2:10:25
+Oh, well, that was
+
+Speaker 1  2:10:29
+fun. Consult an attorney before charging convenience fees. Click this button for more information. RTOS Pro software does not provide legal advice and makes no representation nor assurance as to the legality the use of its feature or any services provided by the RTO Pro software, including, but not limited to the to convenience fees. These services and features are are provided as is, and you are solely responsible to determine the legality of the use of these services or features. RTO Pro software urges you to obtain legal opinion from your council as the specific regulations in the States, in the states in well, how do you scroll it? You can't scroll it. What the world?
+
+Matthias Miller  2:11:13
+Email him and complain I can't see the whole thing in which
+
+Speaker 1  2:11:15
+you operate. This advice should be updated annually. I we probably ought to say something similar.
+
+Matthias Miller  2:11:26
+Well, you need to come up with that here.
+
+Speaker 1  2:11:29
+Oh, dear attitude dude beside your note section, there for me. What are
+
+Matthias Miller  2:11:38
+we doing to Dwayne TV, please. Come up with the legally,
+
+Speaker 1  2:11:47
+the scary legalese verbiage only. RTO software does not make Any legal blah, blah blah you.
+
+Speaker 1  2:12:23
+When you get done typing, I have a question, I have an answer. Go for it. When I answer a to do. What do you? What indication do you do so that you know that as a note to yourself that you did answer it like when you're when you hit the dude, huh? Send it back to the person that Yeah. But I mean, like, if I go answer that to do, I don't want to, every time I go and type in to do, underscore, DB, I don't want it to keep coming
+
+Matthias Miller  2:12:53
+up. I just do done, or to Seth and just bump the whole thing back to him.
+
+Unknown Speaker  2:12:59
+Gotcha? Okay,
+
+Matthias Miller  2:13:03
+all right. Well, we made big progress. I mean, it's good stuff. Do you feel okay? So we So here's, here's a recap. We figured out a whole bunch of stuff on contract details. But are you comfortable storing notes on the contact record and having that be
+
+Speaker 1  2:13:24
+the cockpit. Yes, I like that. Are
+
+Matthias Miller  2:13:27
+you comfortable with payments as separate records? Yes,
+
+Speaker 1  2:13:32
+okay, because we're bringing that as a virtual RG onto the contact record. Okay, good. And I really like and I really like the as long as we have a filter drop down so we can choose, you can choose your contract and filter the the virtual RG for the payment record. And, dude, I really like the idea of the note section, where you can define the note as a note, or you can define it as a I don't know what, whatever type we're going to we're going to call it. I think that that is genius, because it that means, that means that we can do reporting on assignments. And someone can go, what are my assignments? And go, run a report, yes, and go, Oh, crap. Somebody assigned this over me. Go, look at well,
+
+Matthias Miller  2:14:15
+you can do email notifications. You could do in system alerts. You can, oh, dude,
+
+Speaker 1  2:14:19
+that is, that is yes, yes. That was, that was the best idea you had all day. Thanks.
+
+Matthias Miller  2:14:31
+The one that made it all possible was getting out of bed this
+
+Unknown Speaker  2:14:36
+morning. So how
+
+Matthias Miller  2:14:40
+much more time do you have? I don't know i i Is there anything we can talk through, like not in front of the screen? No, I've got about 45 minutes I can keep going, and potentially a meeting I can skip. I mean, theoretically I have up to all i. All day. Well, I'd really like to spend this afternoon with, well, no tech. You have until you have another almost two hours, right?
+
+Unknown Speaker  2:15:10
+I don't have anything for the rest of the afternoon.
+
+Matthias Miller  2:15:13
+Oh, I thought you did.
+
+Speaker 1  2:15:18
+I said four o'clock, but then I didn't look, I didn't look critically at my calendar. It's my same page meeting with Leann, but she's out of town, so I don't have anything else this afternoon. So you can go until five. I can go, I think it would be really, really valuable is if, if we go down through and just knock out, like if we went through and knocked out a lot of my to do's and just answered some of that stuff, because there's that okay. I just saw one of my answers, and I as I saw I was reading, and I was like, Well, that was not exactly helpful. So sometimes what talking this stuff through at the same time answering it would be super helpful. But
+
+Matthias Miller  2:15:57
+is there? Is there? Would it could be still maintain 95% productivity if I threw up my headphones and went on a walk, we talked stuff through. Or is that going to be counterproductive? I'm just going stir crazy. So I'm I'm either gonna have to, well, let's take this. Take so let's take a
+
+Speaker 1  2:16:12
+break. Take a break you want? You want 30 minutes or an hour?
+
+Matthias Miller  2:16:17
+Let's do 30. I think 30 minutes is good. So 30 minutes
+
+Speaker 1  2:16:21
+you want to do 145, or you would
+
+Matthias Miller  2:16:25
+have two. One. Just go to two. Okay, let's talk at two. Two o'clock. Awesome. I need a break too. Sweet. Talk to you then you.
+
+
+Transcribed by https://otter.ai

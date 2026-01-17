@@ -1,0 +1,146 @@
+Unknown Speaker  00:16
+A E Gotham, do you want to Yes?
+
+Speaker 1  00:28
+So what I want to do is I want to merge, merge some of these keys together. So currently this,
+
+Speaker 2  00:45
+this list here contains rent, CRA fee and security deposit. I want to pull rent out of here and make rent a fee. So I already added it to the fee list, because I was testing how, you know, so I can have as a list item, as a list member of the fee struct, and that was working a lot better, because I really didn't like how I was going to have to say, you know, when I'm repeating through all of the fees, if I run into a rent type, then, oh, it doesn't have a fee associated with it, so just replace it with a string of something else. Like, anytime you have a, you know, seven items, six of them are in a list, and one of them isn't, you know, it just feels like you're doing it wrong. So what I want to do is remove rent from here, make it a fee I have. This is just a report that I made to sort of visualize things. And instead of a period, you'd have your different types of fees, and then you have incurred and paid right underneath the same fee. And then, CRA, um, we never show them. CRA, right?
+
+Matthias Miller  02:17
+Well,
+
+Speaker 2  02:20
+I mean, they see when they sign the contract, but they don't actually get paid at the end.
+
+Matthias Miller  02:30
+I think, I think you probably do need to at some at some level. So here I have a very into proposal. So what if? What if we have a I don't know if I like this or not, but in my mind, it makes the most sense if you're if you're going to put rental under fees, then we've got fees, and we've effectively have some form of holding account. And there will only ever be two types of holding accounts, CRA and security deposit. But realistically, what you're saying is, I think, which, what could be said is, you have, you have a half a dozen transaction types, and users can add fees as a transaction type, because, fundamentally, from an accounting perspective, rentals, rental fees and other fees work the same behaviorally. Okay, you can't forgive rental fees. But besides that, rental fees work like other fees from accounting, from payment perspective, etc, and CRAs and security deposits basically work. You know, besides when you add these rows and how you add them, they work the same. Are you sure? I don't know what you call this. I don't know what you call the two types, but are you sure you don't want to just throw everything into a single list and be able to differentiate between Well, is this a is this a fee? Is it? Is it a some form of holding account, or some form of held finances? I don't know what you call it an inferno?
+
+Speaker 2  04:22
+Yeah, I think it just becomes like transaction type, which I kind of like, I mean, obviously we have to do our work then for handling some of them in a special way, such as CRA, but I would rather have them all in the same list, and then we would just say, okay, you know, we handle we have this stuff for CRA we have the stuff for rent, and then all the other ones, like repossession fee and redelivery fee and all those other kinds of things. Those are just normal ones that we just spit out in the in the Wizkid. And handle them like normal fees. Do you like you like the idea of turning it all into just one big Transaction Type list?
+
+Matthias Miller  05:08
+I think, I think I'm fine. I think I'm fine with that. It's a little bizarre that throughout the rest of the system, anytime you've got a fees drop down, like if you go jump over into a contract definition, if you don't mind. I yeah,
+
+Matthias Miller  05:29
+like RTO contract type? Well, that doesn't matter. That's different. We have a on the P types. It's a little weird. I mean, the underlying field for this is going to be a transaction type effectively.
+
+Unknown Speaker  05:47
+So we won't
+
+Speaker 3  05:48
+be able to add items to list anymore. If you're thinking it becomes a simple lookup, right?
+
+Matthias Miller  05:54
+Doesn't matter, because you don't, you don't arbitrarily add fees. You go create the lookup and you configure it. Jonathan, you gonna hop back over to the to this, to the
+
+Unknown Speaker  06:13
+contract?
+
+Matthias Miller  06:15
+Contract, yeah,
+
+Matthias Miller  06:22
+so Dwayne, do you have any objection if we merge the type and the fee type into a single list where you would have rent all the fees, CRA and security deposit in a single list? I
+
+Unknown Speaker  06:43
+uh, context,
+
+Matthias Miller  06:46
+what's, what's the on the transaction history? Okay, we had broken feed type out into a separate list, because we use fee types elsewhere, and instead, it would simplify Jonathan's life if we threw everything in a single list.
+
+Speaker 4  07:02
+So say, so the RG row would say either rent or it would say other fee or late fee. Or what is that? How you're Are you? Are you
+
+Speaker 2  07:14
+or CRA or security deposit? Yep.
+
+Speaker 4  07:19
+Well, I guess it wouldn't be late fee. Late fees isn't late fee part of the row.
+
+Speaker 2  07:23
+No late fee would would also be its own thing. It would be a type of fee, which it is right now
+
+Speaker 4  07:39
+that potentially makes it really hard to know what I guess are we going to have? Are we going to have, like, as a part of the row? Are we going to have some sort of link to drive it out so you could see exactly in a better breakdown of what that was?
+
+Speaker 2  07:53
+Are we going to Yeah, I'm working on a report right now to visualize that so you can see it broken down by period, and so you would be able
+
+Speaker 4  08:01
+to gotcha Okay, so as long as, as long as you can click something and where like, if each one of these things is going to make themselves their own row, if that's what I'm understanding, correct,
+
+Speaker 2  08:14
+yeah, yeah. That is, yeah. That's how we are approaching this transaction. RG,
+
+Speaker 4  08:18
+that is very different from what people are used to looking at. They don't need to look
+
+Speaker 2  08:23
+at this. RG, yeah, you don't look at this. You don't look at this. RG, it's not going to make a whole lot of sense. You're gonna have to sit here and scribble on, scribble some notes to be able to figure out anything. I'm going to give you a report to be able to see it broken down by period. And that's as deep as users will
+
+Speaker 4  08:37
+go. So, so got it. So you're saying, you're saying, if I wanted to go look at transaction history, you would go to the report. You wouldn't
+
+Speaker 2  08:46
+go to the RG, right, yeah. You would go to a report that looks something like this, for this period, for this fee type, we've got paid. And then this will be down here. You'll see incurred and paid, and then a link to go see the payment if you want to. I'm fine, but I'm fine with that. Then it just makes the underlying data model a lot simpler. And I think that's a better base for the slight added work of, you know, droplets and stuff excluding CRA is when that's not relevant, stuff like that.
+
+Speaker 4  09:19
+And then, so just just, just to clarify when a transaction takes place, I'm gonna say on nine four, the potential that there are a rent, a damage waiver fee, a late fee, other fee, like all of those, would be, that would be like four different rows in the RG, got it? Yeah, yeah, I'm fine with that.
+
+Speaker 3  09:46
+It'd be four rows for when they're incurred, plus a row for each one that's paid. So it could be eight rows. Yeah.
+
+Speaker 5  10:03
+Yeah, sure, as long as as the only, the only concern I have out of this is,
+
+Speaker 4  10:11
+how complicated does this make? User reporting, if you wanted to go build some sort of transaction, something or other, it makes it pretty complicated, doesn't
+
+Matthias Miller  10:20
+it. It's going to be complicated any way we cut it. So either you have a bajillion columns for fee types, and we say, feet, I get it, I get it. The one custom fee to custom fee. Three. I think, I think this makes it as simple as you can, because if you want the balance, we can write helper batteries. Because
+
+Speaker 4  10:38
+what people end up doing is they're going to go copy your your transaction history report anyway, and they're going to work off of that, yep, okay, I'm good. That's good.
+
+Matthias Miller  10:49
+Okay, sounds good. So then, does it make sense to you guys to have Dwayne? That's all we need you for.
+
+Unknown Speaker  10:57
+Thank you kicking me out.
+
+Matthias Miller  10:59
+Bye. Oh, you can hang around. You can listen on
+
+Unknown Speaker  11:04
+them, if you does it make
+
+Matthias Miller  11:05
+sense to you, then to have that be a look at record. Have the type be able to look at record that, and then you can have a macro for allows forgiveness. And is this a fee, something along those lines.
+
+Speaker 2  11:21
+Yeah, yeah. I kind of like that. I feel like a fee, a transaction type does merits its own, and we might want to take a pass back at the contract definition and see if there's maybe anything there.
+
+Matthias Miller  11:39
+Well, the main thing is the underlying list name is going to be really bizarre, but you just use the helper list of filters by the fee check box,
+
+Speaker 2  11:45
+yeah, yeah. That sounds good. And
+
+Matthias Miller  11:49
+then I'm happy with that. I mean, it's, yeah, I'm happy with that,
+
+Speaker 2  11:56
+Okay, sounds good. I really like that report.
+
+Matthias Miller  12:01
+What's that? You're gonna break my accounting Impact Report.
+
+Speaker 2  12:06
+That's fine, all right, but it's a user report, so maybe user reports and no one's there to run it did it? Did it actually
+
+Unknown Speaker  12:20
+break? Okay? Bye, thank you. Bye.
+
+
+Transcribed by https://otter.ai

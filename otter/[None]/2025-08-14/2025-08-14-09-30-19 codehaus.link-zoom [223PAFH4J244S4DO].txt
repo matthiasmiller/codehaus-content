@@ -1,0 +1,95 @@
+Matthias Miller  00:20
+Hey, Jonathan,
+
+Unknown Speaker  00:22
+you Good Morning. Good morning. You.
+
+Speaker 1  00:43
+How close are we to being able to start work on some whiskey stuff for RT? Bill waves up, I'm
+
+Matthias Miller  00:53
+gonna guess a couple weeks, I'm not. I think we're I think we're getting closer. The biggest thing is it depends
+
+Matthias Miller  01:08
+where we're going with the payment with the payment portal. We're debating that right now, but that could actually, we could actually probably start with, depending on what that, if we can probably, within a week, we could actually probably start working on that part. That'd
+
+Speaker 1  01:31
+be nice, because I have a I have a lot of availability right now, we're going to start some big, a big push pretty soon for client scope accounting. Do you hear they're switching accounting systems? Yeah, which is Yeah, thankfully, with the design of product pricing and stuff, we divorce ourselves very strongly from following NetSuite and with much more generic stuff. So that really saved us, I think, but, but there's some really cool things with like generating invoices out of client scope and stuff that we can finally
+
+Matthias Miller  02:11
+start to do after all that work. It's like that we did enter pricing is complex enough, like it's really, really nice to be able to push it in that direction.
+
+Speaker 1  02:26
+Yeah, exactly, fun. Yeah. Have you, I guess maybe you haven't seen kind of the results of the whole product pricing. I don't know if Alice has shown you. Yeah, we have. So I every month, Eric Norman sends me all the invoices, and then I go and reconcile them, you know, update, calibrate my pricing. And I've gotten it down to like, across year to date, I'm off by like, I think a total of like, $30,000 absolute value. So some high, some lower, sure and but inside the threshold of, you know, like, far less than 1% off, which is really cool, and that includes discounts and everything except for, like, uh, variable data usage. But I don't really care about pricing that. But,
+
+Matthias Miller  03:18
+yeah, amazing. That's I've been really fascinated by, I mean, I put I've been thinking lately about, there's a, I don't know if doing told you guys this or not. There was a rent to own company that switched in SV, it's very and one of the things most exciting they really want, one is being able to get customer reports out in a way that they can send to their bank.
+
+Speaker 2  03:56
+I Leanne was at some conference because my headset power. Can I hear you? Leanne was at some conference and the chairman complaining that this customer, the customer reports easily, that would be that's their biggest bank pain point. And so seems like an easy win for us. And then, wasn't it that guy that had switched to NetSuite?
+
+Matthias Miller  04:27
+Yeah, it wasn't. Yeah, it's the NSRA. It's the National Rental Association of America, something like that. She's Leanne's on the planning committee
+
+Speaker 1  04:42
+the this is something that I heard recently that was pretty funny. At nyseley brothers, they have this software for it's like a maintenance scheduling software. They use it for parts or something. I don't know it's some software and they, I think it's called dossier. I think it's what it's called. Well, and they are like, Yeah, we offer SAS. We do, you know, we're hosted, subscribe to our stuff. But what it is is you RDP into their server, and that's so to log in they, I guess, give you credentials, and you RDP into their server that use their software.
+
+Matthias Miller  05:22
+There was some snake oil marketer who was really proud of himself for coming up with that. Well, the rich, have you guys heard the story about the first version of invest Web? No, I haven't like it would literally, it would literally. I don't remember too many of the details. Ellis probably remember a bit of the name. Would remember better than I would, but literally, would spin up a copy of the Windows app and would have hooks in the dialog and other stuff like that, go click buttons and pull stuff out to stuff.
+
+Speaker 1  05:55
+So it was just like a a very thin web page wrapper that would have very manual links back to it,
+
+Unknown Speaker  06:03
+yeah,
+
+Matthias Miller  06:06
+which is one of the, one of the reasons and when, when Dan Daniels, you know, started the rally and cry for the web product, it's like this thing will be native. We will have a business logic and an API, uh, gonna do stateless web development. We're not doing any of this. Can you imagine if every user, every such and every user, would have to have an instance of the best running on the back end, not just every instance, but every, every page for
+
+Unknown Speaker  06:36
+every is that? Is that? What's meant by stateless?
+
+Matthias Miller  06:41
+It is, yes. I
+
+Speaker 1  06:44
+mean, that's just that, just that each user is making a request to an endpoint, and it comes back and and then essentially, session is almost over at that point, like it's, yeah, you're still logged in, but right,
+
+Matthias Miller  06:58
+it's well, and then, I mean, basically it's not really stateless. It says state gets stored in the data store in your session, effectively in the session requests. But no back end process has to any back end process can handle any request at any time for anybody. That's basically
+
+Speaker 1  07:18
+what it means. I see, if that makes sense, I always saw that get thrown around, like the word stateless in talking about refactoring investment, but I wasn't quite sure what that meant, because I'm like, Well, I've seen some of the JavaScript copybook stuff when you definitely use state, that can't be what they mean. And
+
+Matthias Miller  07:38
+it's not really a, I think it's just a, I mean, it's barely even an accurate term. It makes sense. If you don't have the full story of how we got here, why it is kind of a weird term. You can't even well but, but along with that, there were a lot of Java apps back in the day, and still today, when you hit a Java app where you hit the back button and you're back at the same screen, or it says, Oh, you were in the middle of something, but I don't know what it was you need to refresh and start over. And that was also what we're looking to avoid. And that's not common anymore, except on government websites. But back back in the day, it was a lot more common the nicely
+
+Speaker 1  08:25
+brothers software that they switched to at the beginning of this year. It's called nabisoft, and it served like it's a true single page application, where not a single thing has a path to it, and and so it's incredibly RAM intensive. And they had been running it on a shared server where everyone was just RDP into it, and so it was absolutely hammering the RAM. Had to massively upgrade the RAM on their server. And there's no document viewer. You click on something and it downloads it. So everything was just getting downloaded into shared stuff
+
+Matthias Miller  09:07
+and probably no file cleanup. And so I also got to talk with a software company in the shit industry they're using. This guy's spending like several $100 in AI tokens every time he sits down at his computer to code. And I don't know if that's a couple hours or if that's a day, or exactly what it is, but, and they're, they're finally, they've got this groundbreaking thing they're looking to reveal at the shed Expo, and they won't talk about what it is, because nobody's done it, and it's so powerful and amazing. It's amazing. The gap between sales and marketing and reality is sometimes appalling, because, I mean, in this particular case, they're. Miller was just doesn't work if you don't even have really have the things everybody else takes for granted. But we're working on this groundbreaking thing that's going to turn the world upside
+
+Unknown Speaker  10:13
+down. Is Dwayne coming? Or is he? Yeah,
+
+Matthias Miller  10:15
+he's running late. I
+
+Matthias Miller  10:25
+so it's also like, there's another one, another the Coon, coon construction, fnk construction, that came over from code crafters. They're using this dispatch software as well, which is, if there's no API, there's and it's, I would guess it. I would guess that you could probably recreate the app and react in a couple of days, if you wanted to. It's just dropped. It's surprising how many software projects, well, it gives you respect for the quality of architecture and the code quality and the invest on the InVEST side in the development process. Well, he had said a few minutes,
+
+Unknown Speaker  11:39
+let's
+
+Matthias Miller  11:44
+let's just bump it, and we'll see who's available. When he's available.
+
+Unknown Speaker  11:49
+Sounds good.
+
+Matthias Miller  11:51
+Awesome. Thank you guys. Bye.
+
+
+Transcribed by https://otter.ai

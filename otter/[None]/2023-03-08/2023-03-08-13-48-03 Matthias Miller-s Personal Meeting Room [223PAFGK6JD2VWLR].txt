@@ -1,0 +1,347 @@
+Matthias Miller  00:37
+Yeah
+
+Unknown Speaker  01:05
+see
+
+Unknown Speaker  01:18
+by the way
+
+Unknown Speaker  05:15
+What's the problem speakers?
+
+Unknown Speaker  08:49
+Come here Hello
+
+Unknown Speaker  09:15
+sick okay can you hear me wow that was fun. So welcome back
+
+Speaker 1  09:31
+so my audio wasn't connecting so I go go to my computer try to pull it front which unplugged the power cable to it and so then had to restart my computer it's and I'm late because I was headlong down in documenting IMS stuff which I was not in particularly enjoying. Hi, I'm here
+
+Matthias Miller  09:55
+because you can make it Good, good days and say,
+
+Speaker 1  10:04
+Yeah, no doubt, no doubt. I'm think I'm glad of it. All right, what are we talking about today?
+
+Matthias Miller  10:16
+We'll start with anything that you need. Nick Ford.
+
+Speaker 1  10:19
+Okay, so first question, Nick, that whole sales order thing. Where are you at? on that?
+
+Speaker 2  10:26
+I'm where I'm at is that I need to talk to you. With Matthias within hearing, because I tried, okay. In my local dev system, I made the change, so that expound expressions would be evaluated as expressions in the footer. Um, that works fine. Now, the issue is, I'm
+
+Speaker 1  10:52
+with unify that footer thing? I don't. I don't know that's going to exactly work because the well, I don't Sorry, go on. So yeah,
+
+Speaker 2  11:04
+I moved it out of the footer and into a second page on the PDF. But then the issue is when you use include of expressions, it does not eliminate whitespace, where a hidden a hidden images. So if you use if you say, include if so is quote, and then you paste your image, and then you say include end. And then you have another include, if for not so as quote, and you have one that is not a quote, then you're basically going to have a bunch of blank whitespace. Yeah, that was redundant. You have a bunch of whitespace above the flowchart that you had pasted into that template. So
+
+Matthias Miller  11:52
+you're not sure what you're even if you have your include start after the include and
+
+Speaker 2  12:00
+Yeah, same line, no spaces, just pound. Say you had your pound include F pasted an image directly after that include end, and then another pound included immediately after that.
+
+Unknown Speaker  12:15
+And the image in the issue is the images.
+
+Speaker 2  12:19
+Yeah, the expressions worked fine. It's just actually format it nicely in a PDF.
+
+Speaker 2  12:34
+I mean, what we what we really want is not pasting images, what we want is attachments that are included conditionally, but I'm not sure if you can splice PDFs together.
+
+Matthias Miller  12:48
+Now that we really don't have to deal with doing
+
+Speaker 1  12:52
+so this this sounds like it sounds like it. If we're going to do this correctly, we probably need to push it over to wiseguys side of things to make some Josh magic out of it.
+
+Unknown Speaker  13:02
+Something Yeah, what
+
+Matthias Miller  13:03
+are you doing? What are we trying to do here?
+
+Speaker 1  13:05
+So it what I'm trying to make is we want to build conditional flowcharts, or conditional documentation that goes along with the sales order based on shipping types that that may have been selected. So if it's a gravel site prep that they've selected as a shipping type that or site prep, or customer site prep, then we want to give them one type of delivery documentation, if it's just a regular standard delivery, want to give them a different type of documentation. And it's this really nice, fancy imaged flowchart thingy that looks really cool, but we wanted it, they really wanted to go the route of conditional based on options and settings that were selected from the sale. Where this was copied, often sheds directs and sheds directs is just generic, it's like it encompasses everything and it's probably what we're gonna have to do it the same way we're gonna build something that just encompasses everything
+
+Matthias Miller  14:10
+well, are these on separate pages? Or it's at the bottom of the sales order?
+
+Speaker 1  14:17
+Well ideally it would be it would be like the next up you would have your sales order and the sales order runs in the second page and then the third page would be would start this delivery documentation
+
+Speaker 2  14:30
+basically a page break and then a new Yeah, basically a new PDF just paste just on the end of the existing one.
+
+Matthias Miller  14:44
+Very so you might not like me for this but here's an idea. Did you make the template export or the first one you driving the template, do a repeat the list report? And then could you have Have a include if it's a at the very top of the document, if it's the main invoice and you do the main invoice, if it's something if it's flowchart one, then you include that. And if it's flowchart two you include that doesn't make any difference if you do it like that.
+
+Speaker 1  15:16
+So, massage, are you suggesting that flowchart one flowchart two flowchart three would be their own memo fields?
+
+Matthias Miller  15:30
+Well, currently, the flowchart is not a memo. It's in the template, right.
+
+Speaker 2  15:37
+Currently, the flowchart doesn't exist in in in assist.
+
+Matthias Miller  15:42
+It's I mean, but we're planning to put it I mean, your best results, you're going to want it embedded in the template itself. Yeah, definitely. Okay. Here's another question. Can we embed? Can we use like the town reports embed another memo inside? You can't carry? I don't think so.
+
+Unknown Speaker  16:05
+I mean, what I was, well, let's see, we can
+
+Unknown Speaker  16:25
+Yeah, I don't know.
+
+Matthias Miller  16:38
+Gotta be a, you don't want to I'm 95%? Sure. You don't want to go whiskey unless you absolutely forcibly have to, because we tell him sales would repeat so all over the place, and it's gonna, it's gonna make our lives miserable.
+
+Speaker 1  16:50
+So Riddle me this. But I mean, so if if, okay, my thought was that we were going to build this in memo fields. As an I'm not quite following your 100% following you're embedded into the PDF, or into the Salesforce export itself. But why wouldn't we have? Go ahead?
+
+Matthias Miller  17:11
+The reason is, we're going to lose image quality if we put them into memo fields. But if the image quality sufficient, that's fine, then by all means, let's do that.
+
+Speaker 1  17:20
+Or I mean, it's graphic based images. So it's like we're not doing sort of graphic type images.
+
+Matthias Miller  17:30
+I mean, if if that's fine, then we can just then we just have an expression that grabs the appropriate memo, and we fixes all the new line stuff. I mean, how much work Nick to add the fields and dusted and send Dwayne pictures and see if the quality is good enough.
+
+Speaker 2  17:57
+Let's see. This would be several memos to posting deadzone settings.
+
+Matthias Miller  18:10
+Or could you could you just create and so do we already have footers here?
+
+Speaker 2  18:17
+Yeah, that's what I was trying to do. But you run into totally changing how to use one memo because of whitespace issues.
+
+Matthias Miller  18:27
+So can you but so why wouldn't you change the SOP footer to a an RG and with a condition that you evaluate and just concat based? Just concat new lines
+
+Speaker 2  18:48
+I think I would think that would work. We'd have to make sure that the images that are pasted into the memo come out the right size so that they fill up the page. So I decided I did I send you
+
+Speaker 1  19:05
+the did I send you the example document? Yeah, yeah. Okay.
+
+Matthias Miller  19:10
+I think it's gonna be some finagling to get the image size right. Just, I think some I don't know. It's just gonna be the if we know what size we're looking for, we can Well, I mean, it's got to do that.
+
+Speaker 1  19:28
+Well, I mean, if we get the if we get the content working out, finagle the images until it comes out looking, you know, kind of like we're one
+
+Matthias Miller  19:44
+and now if we do this
+
+Matthias Miller  20:05
+Okay, I don't know if you want to do this Nick, but one of the things you could do then is going back to my idea if you want each of the themes are actually not footers or their or your footer is going to be on the same page. The pictures are all supposed to be on separate pages, right? Yeah. Yeah. So maybe you actually want an orgy of additional pages and then end with some kind of unique or G row ID and then you have a repeater G so your main our 20 has a row for the main template and then rows for the attendance and and then you use the are 20 will if you totally are 20 to put all the documents into a single file it will automatically insert page breaks for you
+
+Matthias Miller  21:02
+it's something like this ergy of
+
+Speaker 1  21:31
+where's that? Where's that delivery flow tracking that you created? Can you share that document with what you are creating for delivery? You know, with the little guides on it and you know, the grounds pile and you created you created you created a whole flowchart of delivery process. Oh, can you share that with me, please? We'll find it.
+
+Matthias Miller  21:59
+We're going to rent are we going to run into the same issues then if?
+
+Matthias Miller  22:18
+Something like that. But I don't know if we're gonna run into the same leading whitespace issues are not
+
+Unknown Speaker  22:34
+well, a standard template we always want to include.
+
+Matthias Miller  22:45
+Right, but how are you going to embed the RG with line breaks? Or with page breaks? Do we have a six?
+
+Matthias Miller  23:23
+The only way
+
+Matthias Miller  23:34
+right now are we going to always have an addendum
+
+Speaker 1  23:45
+you mean or that we always gonna have a flowchart that goes along with it
+
+Speaker 1  23:54
+the condition whereby we would not have if there was no building attached to the sales order. Because I want to evaluate based on the shipping type on the sales order. This is the way we're going to evaluate.
+
+Matthias Miller  24:08
+Is there only one Blitzer ever?
+
+Unknown Speaker  24:13
+Oh, well, I mean, is there one flowchart explain what you mean there's
+
+Matthias Miller  24:19
+one per sales order?
+
+Speaker 1  24:22
+Oh, yes. Well, what Yes, one document one document per sales order. Yes.
+
+Matthias Miller  24:32
+Okay, so got it. So and how many different types of Flowcharts are there other two were four or six
+
+Unknown Speaker  24:47
+potentially four.
+
+Matthias Miller  24:50
+Okay, nevermind. So. So, basically, Nick, we would Do an include have a macro that finds the first matching, first matching item, and then do an include if with a line with a page break and the contents if it's not an A?
+
+Unknown Speaker  25:26
+Sure
+
+Matthias Miller  25:38
+that's the idea
+
+Matthias Miller  25:45
+the first strategy or latest or gene matching condition?
+
+Matthias Miller  26:05
+Reasonable.
+
+Speaker 1  26:07
+So my main key thing is spin this thing up in the test system. And then before we ever ever take this thing live, I say we go and build it and test it and test it and test it and test it and get it to work exactly what we want. And then we'll, we'll bring it over into the live system. That way we can evaluate images that way we can evaluate a whole bunch of things. Yep.
+
+Unknown Speaker  26:45
+All right, ready for the next thing? You have?
+
+Unknown Speaker  26:50
+Yeah, I think so.
+
+Speaker 1  26:56
+All right. Next thing, Nick. Here are here is two reports. The first one is the one that I edited. And the changes that I want to make, we're adding a column and adding some visibility, filter, ask prompts. And the second one is the actual standard report I want to make the changes to. And then the next one, I want to do, I got it. I didn't get my I didn't get my notes fast enough. But I think I can just talk you through it.
+
+Unknown Speaker  27:31
+Me go find this thing.
+
+Speaker 1  27:34
+Trans tasks, here is the here's the standard report. So this report is the same is also the report that is linked to the sales order. And to the building record, whenever there's transit tests that are tied to either those detail screens, or to those records. What I really want to do is the include complete, I want to default to true if coming from the sales order or the building record. But if you're coming at it from just the menu, I do not want to default it as true.
+
+Speaker 2  28:15
+Okay, you said when you're coming from Hold on, let me make this when when coming from where you want to have it be true,
+
+Unknown Speaker  28:22
+the building record and the sales order record
+
+Speaker 2  28:25
+only record so record set show completed to true
+
+Speaker 1  28:33
+so when you when you selected just from the menu, then the default would would be false or no default. Gotcha.
+
+Speaker 1  28:50
+And add a grouping to it. I wanted to have this thing where so basically, I want uncompleted transit tasks and completed transit test where so you're evaluating the completion date with the completion date is is is an A then but the the completed ones would be at the bottom and the uncompleted ones would be at the top
+
+Speaker 1  29:26
+and probably use the grouping conditionally with the with the if it's defaulted to true the include complete then use the grouping if it's not alright yeah, yeah.
+
+Speaker 1  29:53
+All I got besides besides the ask on the fun images RG with that us
+
+Matthias Miller  30:02
+What about the plenty of EOG
+
+Unknown Speaker  30:04
+on the building record for lot buildings?
+
+Matthias Miller  30:10
+Waiting to want me for something
+
+Speaker 1  30:13
+you wrote it up? I think you put it assigned off. I don't know, what was the production when, what who, what, when, where and how it was I was I don't think we ever talked about that last time.
+
+Matthias Miller  31:22
+Okay, Joshua got it, he didn't formally sign off on it. I'm sending out an email to make sure that his feedback means he approves that
+
+Speaker 1  31:31
+step. So let's talk about what I think happened with my snafu from last week with reassigning the import. So, and obviously, this is somewhat anecdotal. So without going in messing it all up again, I don't really feel like trying to do that. But so what are
+
+Matthias Miller  32:01
+you doing the test system if
+
+Speaker 1  32:02
+you want, I don't even think about that. So what I attempted to do, bid, Plymouth was already assigned in there. What I attempted to do was to I took fort Wayne's zip codes, and I put and drop them into the the import and put Plymouth to it. Which I think literally just erased all of Plymouth.
+
+Matthias Miller  32:34
+Yes. And the reason it does is because if you want to drop a zip code, tell us you're gonna drop your zip code.
+
+Unknown Speaker  32:41
+Say it again.
+
+Matthias Miller  32:43
+The reason is, if if you ever want to drop a zip code, how else are you going to drop a zip code? So yes, it is the master list of all the zip codes.
+
+Speaker 1  32:53
+So if I want to go and reassign it's much better just go line by line and just change it CTRL C Ctrl V line down and so on.
+
+Matthias Miller  33:06
+Why wouldn't you just copy all your Fort Wayne zip codes and all your zip codes into the important just run that because that's their zip code assignment
+
+Speaker 1  33:17
+that that thing? I don't so I don't I'm not I'm not a miss function just a lack of understanding
+
+Matthias Miller  33:27
+yet and possibly a lack of clear instruction but yeah,
+
+Speaker 1  33:31
+wow. You know, that's this is this is this is how we do software development. We you know, we we do things and doing goes and breaks them.
+
+Matthias Miller  33:41
+Well, what was
+
+Speaker 1  33:45
+that? What was your line, build it fast, break it fast. Fix It Fast?
+
+Matthias Miller  33:50
+Yeah, as long as you can do to fix it fast. We're good. I anecdotal anecdotally stuck my nose into a software company that has a very pricey, pretty pricey SAS subscription, beta, founder mode. And like, literally, the system is broken right now. You cannot use it reasonably. And they're onboarding users. And basically saying, wait until we redo this entire feature in a month and then you can start using it. So you think it's bad here? Like there's a lot of cowboy cowboy shows. rodeos that anyway. Our breaking is pretty low key.
+
+Unknown Speaker  34:42
+Yeah. Yeah, I agree.
+
+Speaker 2  34:45
+I will also note that breakage decreases when you run out of staging.
+
+Matthias Miller  34:52
+Yeah, that's also true.
+
+Unknown Speaker  34:58
+Should I understand what that is? Then
+
+Matthias Miller  35:01
+if we would start doing the basically using the nightly builds
+
+Speaker 1  35:12
+Listen, that there are people that enjoy extreme sports. This is our version of extreme sports.
+
+Matthias Miller  35:19
+There are also people who, who enjoy beating their head against a brick wall and usually there's some kind of diagnosis that goes with it so
+
+Speaker 1  35:32
+well, look, my my what Okay, so here's what I really really like. I the fact that I broke things allows me to figure out how they exactly work. So now I know something
+
+Matthias Miller  35:45
+good.
+
+Speaker 1  35:49
+And it won't be repeated. So it's it probably is one of my main frustration was with other people that I work with is like, can you please just go snoop around and try and figure these things out? Like, I don't want to have to teach you everything, you know, but not everybody works the way I do so Leanne reminds me
+
+Matthias Miller  36:09
+That's true.
+
+Unknown Speaker  36:12
+I don't have anything else
+
+Unknown Speaker  36:20
+I'm good. Thank you guys. Thanks.
+
+
+Transcribed by https://otter.ai

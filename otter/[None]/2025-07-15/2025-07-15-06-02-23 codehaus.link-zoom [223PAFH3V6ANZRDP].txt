@@ -1,0 +1,701 @@
+Unknown Speaker  00:40
+Hey, good morning guys.
+
+Speaker 1  00:50
+How are you good morning?
+
+Matthias Miller  00:56
+Good morning, Richard. All right, well, I am off camera because I'm going to, unfortunately, my Achilles mornings are my Achilles heel. I'm just going to be straight up about it, so I'm here, and I'll be in front of my computer in a few minutes. Yeah, so I wanted to start talking through go high level implementation and migration. And the first, first thing, first things, first, we're going to need to set up ATP registration in go high level. And
+
+Speaker 2  01:39
+I don't I am completely out of the loop. I have no idea what go high level
+
+Matthias Miller  01:44
+is. Alright, go high level is a CRM that we're going to be, that we're going to be using for sales. Okay? So that's going to be tracking contacts and opportunities. It's going to be connected up with hubs, sorry, with with shut up and shut up stuff is going to get pushed across automatically, all all of that, and in talking with Joel. So Joel, Joel's playing point on the project and on. Yells end talking with Joel. It sounds like so so go high level has integrated calling and texting, which means that, basically it gives the salespeople a central way of doing everything, seeing, all communication, calling, texting, emailing, all that stuff from a single single screen. And so Joel, Joel thinks that we can go ahead and get everybody's all phone numbers into go high level and have people start using that and Joel correct me if I'm wrong, but I think the basic plan is we're going to get we're going to get your phone number in first, and get things set up and rolling for you, and then as things progress from there, we'll continue bringing, bringing other people into the system, is that right?
+
+Unknown Speaker  03:21
+Yeah, I think that was kind of the idea.
+
+Matthias Miller  03:29
+So Richard, in order to do that, we need, so we need, we need ATP registration for so that we can, we can text from within, go high level,
+
+Speaker 2  03:48
+what is, what is ATP resolute, registration.
+
+Matthias Miller  03:52
+It's, it's the man I don't even know. It's, it's registration with a government agency to to basically prove that we're not spammers. Um, that's in that we're legit. That's that's the short, short answer. So what we need to do? So there's a number of pieces to it. We are going to need to update the I've got about two to three pages of documentation, but we need to make sure the website has a privacy policy. We need to make sure that the we've got a consent to text form that's unchecked by default on our opt in form, and there might be a handful of handful of other things, but basically I can, I can send all that, all that documentation over. Basically we need to, we to make sure that the website is compliant, and, and and all of that. And at that point. Point? Well, there's two levels of registration. One. One is a brand, what's called a brand registration, which is like for the company, and then the other is a campaign registration, which comes down to, example, text messages that you're sending out. And so once we get so we need to get work through the details of that. And I can, I can send over documentation for what, what all needs to be done. And I've got some in. I can hop on the hop on the computer in just a minute here, and we can go through, go through some of that. So we need that foundationally before we can text out of the system. And then once we've got that set up, the next piece is going to be porting over Joel's number and that particular process the way it works. We'll set up an account with with Twilio, Port Joel's number into Twilio, and as soon as that Twilio completes, that Twilio, that port into Twilio completes, will file a high priority like the highest priority support ticket with Twilio to get them to transfer that into a different account so that go high level gets can use it for for calling, yeah, and that. So in order to do that, that's basically the point at which go high level goes live, and that's it's we don't typically get a lot of control over exactly when that happens, so we basically need to pee everything up and wait until we get a port date for when that phone deck transfer is going to happen, and have everything ready to go at that point.
+
+Speaker 3  07:16
+Matthias, do I need to add Richard as a member on the on the staff?
+
+Matthias Miller  07:21
+Yes, you do. And he, he probably is going to need admin privileges, I would expect,
+
+Unknown Speaker  07:29
+all right, he's in there. He's got that.
+
+Unknown Speaker  07:34
+So in where
+
+Unknown Speaker  07:37
+in the go, high level. Let me send
+
+Unknown Speaker  07:40
+Is there a link to that?
+
+Speaker 4  07:43
+I added you as in staff. Let's See if it sent you an email. I
+
+Unknown Speaker  08:34
+I haven't gotten an email.
+
+Matthias Miller  08:40
+Here you can you can see,
+
+Unknown Speaker  08:49
+codehouse. Welcome to code house. Is that it? Yeah, I
+
+Unknown Speaker  09:16
+Matthias, I had a question about the forms
+
+Speaker 3  09:23
+that we have to the privacy policy and all that, how, what's the best way to get that on the website? Is that something that you put in as a soon as they get on the website? Or is it when they submit the forms? What? What's your thought on that? How's, how is it typically done? What's the best way to get that put on?
+
+Matthias Miller  09:45
+Typically, there's a privacy policy that's on all pages of the website, down at the bottom. And then in addition to that, there is a privacy policy. And I. I don't think it's strictly necessary to have a terms and conditions, but go high level will automatically put in placeholders for you to link to the Privacy Policy and Terms and Conditions when you at the bottom of the forms you create. Okay?
+
+Speaker 3  10:17
+And so you said something about having it unchecked to receive text messages.
+
+Matthias Miller  10:23
+Yes, so
+
+Unknown Speaker  10:24
+assuming, at the end of every form that we have that you can
+
+Speaker 4  10:27
+submit for a request, there's that check box that's correct,
+
+Speaker 3  10:37
+and it has to be unchecked as default. Hmm, that's interesting.
+
+Matthias Miller  10:43
+Yep, they get pretty persnickety about these things.
+
+Matthias Miller  10:55
+So let me go find the i
+
+Matthias Miller  11:04
+Where's The I'm
+
+Speaker 2  11:40
+okay, the URL that it logged me into is shed titans.com,
+
+Matthias Miller  11:46
+yeah, That's right, yeah.
+
+Unknown Speaker  12:45
+Okay, are you guys waiting on me?
+
+Matthias Miller  12:47
+I am. I'm working on Getting some documentation here. I
+
+Matthias Miller  13:43
+I just sent out an email with
+
+Matthias Miller  13:51
+with the whole bunch of things I
+
+Matthias Miller  14:11
+So we could, I think we can also the I yeah, I
+
+Unknown Speaker  14:50
+so with the
+
+Speaker 3  14:52
+checkbox or the confirmation of receiving information from the company, is that something that we can that we can force them to select? That before they can submit the form, or is that not in compliance with everything?
+
+Matthias Miller  15:12
+Well, the checkbox is, the checkbox really is not to receive information. It's to receive text messages, and so they don't check the box, you want people to text from CRM just have to call or email. Yeah, so I don't
+
+Speaker 4  15:27
+not a big deal that way, then I Don't think so. I
+
+Matthias Miller  16:37
+All right, so I don't know what would be most helpful here.
+
+Matthias Miller  16:48
+I can walk, walk you guys through a little bit of what this process is going to entail. So under let's under Settings,
+
+Matthias Miller  17:09
+switch over.
+
+Matthias Miller  17:17
+Okay, so if you go under settings under phone numbers. There's a Trust Center, and this is where, this is where the process starts, which Joel, you and I put in some of this information already. I
+
+Unknown Speaker  17:45
+Are you under
+
+Unknown Speaker  17:49
+the ATP list?
+
+Unknown Speaker  17:53
+Okay, in the Trust Center. I
+
+Matthias Miller  18:12
+under Settings, phone numbers, Trust Center,
+
+Speaker 3  18:15
+yeah, and then it says HP registration isn't available for sub account users, please contact the agency, admin.
+
+Matthias Miller  18:22
+Oh, do I actually need That's right? I keep forgetting. I forget this every single time. Okay, authorized representative, I wonder if I could just put in. I think I should be able to put into your well, what if I put Richard
+
+Unknown Speaker  18:44
+so he can set that up. It's got. There
+
+Matthias Miller  18:47
+you go. Yes.
+
+Matthias Miller  18:55
+All right, so let's do let's see Richard. What's your phone number? 276-780-2518,
+
+Unknown Speaker  19:09
+okay.
+
+Matthias Miller  19:11
+Position is other? I
+
+Matthias Miller  19:24
+All right, I'm gonna need the six digit code from your email,
+
+Speaker 2  19:29
+from email or text, email, email, yeah,
+
+Matthias Miller  19:41
+244577, 244577, all right, all right, so low volume recommended. Use Case stuff is all pretty straightforward. I
+
+Matthias Miller  20:43
+How do leads, consent, and then here's where I'm
+
+Matthias Miller  21:12
+okay, so really, all Right, we're going to have to either add the checkbox to HubSpot, well actually not to HubSpot to just to the website form. I think we said it's Gravity Forms or something like that. Or
+
+Matthias Miller  21:41
+we're gonna have to swap out this this form on the website to be able to
+
+Speaker 3  21:45
+form needs to be updated on the website pretty badly. Anyways, so I
+
+Matthias Miller  22:03
+so I'll go ahead and put this in, but we won't submit it till that's done, because
+
+Matthias Miller  22:14
+what would be the main phone number, I guess we could probably just mix this.
+
+Matthias Miller  22:38
+Okay, so we'll need that. So um,
+
+Matthias Miller  22:49
+and then the
+
+Speaker 3  22:53
+All right, that just get added to the privacy policy. Or do you want that added to each form?
+
+Matthias Miller  23:00
+The checkbox needs to be on each form. And I think the checkbox should, or the checkbox reform should, link directly to the privacy policy. And then, in addition to that,
+
+Matthias Miller  23:20
+privacy,
+
+Matthias Miller  23:38
+okay, so here's language in this link here, which was in the email. There's language I can send to receive SMS notifications. That's terrible grammar, but whatever from your billing solutions, message frequencies vary. Data rates may apply. Text help to this for assistance, you can just place stopped, unsubscribe at any time. So let
+
+Speaker 4  24:02
+me see, make sure I have that I
+
+Speaker 3  25:12
+Oh, it looks like we have to have a checkbox for the text message and also one for promotional stuff.
+
+Matthias Miller  26:10
+Yeah, I think you're right.
+
+Unknown Speaker  26:15
+What should those both be? The same form, in the same in the same place?
+
+Matthias Miller  26:22
+Could man, I might actually not check something here. I just said another client get accepted without that. They had two check boxes. The one was, I accept the terms and conditions, and the other was, I I consent to receive SMS, and I have a third client. It was accepted earlier this year with just the I consent, while Colorado shit was accepted earlier this year just with, with just this checkbox here, which doesn't even have the foot number in it.
+
+Unknown Speaker  27:05
+Oh, they still have the x's in
+
+Matthias Miller  27:06
+there. They still have the x's in there.
+
+Speaker 3  27:10
+So that's on the color of shadow company. Okay, I wondered if we couldn't just do that in one Yeah. Like that. Okay, okay, and if we would put that at the bottom of each form, because they fill out their phone number email,
+
+Matthias Miller  27:34
+I think so.
+
+Speaker 3  27:39
+Well, we can try that first. I'd rather have just one checkbox than two.
+
+Unknown Speaker  27:42
+Yeah, I agree. I
+
+Unknown Speaker  28:16
+I'm going to, all right,
+
+Speaker 3  28:18
+I'll get with the website designer today that and see if we can get that added to the bottom of our form.
+
+Matthias Miller  28:25
+Okay? And then the other thing is, now, I don't know where this actually it was, see consult a legal Professional, but that's not what we need to do. Go
+
+Matthias Miller  29:03
+here,
+
+Unknown Speaker  29:13
+okay, section,
+
+Matthias Miller  29:19
+here, yeah, this, this this piece right here needs to, we need to have some kind of clause in the privacy policy. You should probably use the word SMS in there, just so that when compliance is searching through your privacy policy that they see something like this. Yeah.
+
+Unknown Speaker  29:45
+Notes here for them. Today I'm.
+
+Unknown Speaker  30:12
+Yes, I'm
+
+Unknown Speaker  30:31
+all right, Richard, what questions do you have?
+
+Unknown Speaker  30:35
+Are you lost? Well,
+
+Speaker 2  30:39
+I'm just trying to absorb it all. I'm completely I've been out of the loop so much. I don't have any idea where we're going or what we're doing. All this stuff that you're looking at here, I'm assuming has to be done on the web page.
+
+Speaker 3  30:55
+Yeah, I'll take care of the web page of attic and the check boxes and all that stuff, the privacy policy that updated. I don't have access with the IT stuff. I don't have access to all the phone accounts and then all that stuff.
+
+Speaker 2  31:12
+Because So next, I'm not sure. I'm not even sure where to start. I mean, I see these documents, but
+
+Unknown Speaker  31:20
+Well,
+
+Matthias Miller  31:23
+let's here's what you need to do the place you can start on the phone side. The only thing to do at this point is go sign up for Twilio account if you don't have if you haven't yet. That's really all you can do at this point, because we don't want to port until we get I guess, Joel, I think, I think it would make sense to to get
+
+Matthias Miller  31:58
+like, is there any reason why we wouldn't, I don't know, at least get the form swapped swapped over. And when we get the form swapped over, we can set up a workflow that matches on zip code and pushes them out, sends out an email to the right to the right person with the lead information,
+
+Unknown Speaker  32:27
+or even before they're on go high level,
+
+Matthias Miller  32:30
+as long as long as all the lead information is in the form, yeah,
+
+Speaker 3  32:35
+you can do that even before. I've been working with shut up and I'm running into problems with stores and emails and things. So it's been being worked on. I'm just, I'm not sure where they're at. I may have to find a workaround.
+
+Unknown Speaker  32:51
+Okay, so we are you with jet app,
+
+Speaker 3  32:55
+pretty familiar. Okay. So what I'm having problems with is the store location has an email linked to the store that is the sales person's the lead salesperson's email, and I cannot turn off quote request or quote design information where it emails that salesperson. So if go high level, plays Round Robin and sends it to person A and person B was the store salesperson, person B, still going to get all the information, so I'm the only way I can work that around is change all store information to one email, which seems kind of not smart, but I could. The other thing I thought about doing is taking all of our current stores and turning them to offline stores and creating a brand new online store that has one email that is then linked to go high level and let sales, the current salesperson, continue to use their offline store. Make that basically be the physical location, right? But then the problem being, I'm not sure how to how it looks, then at the back side to take the lead that's been generated, will they have to redesign that shed in shed app? Or will there be a way to give them access to the online store, part of it, and make them a user on that store? Will this Sure? How does all that work? I
+
+Matthias Miller  34:45
+Well, you can grab. You can grab links from other users. I'm pretty sure. Let me try. Let me try something here.
+
+Unknown Speaker  35:08
+Hey, Joel, yeah,
+
+Unknown Speaker  35:12
+I'm just wondering if it would be good idea for me to just be available as much as you need me, but
+
+Speaker 2  35:23
+certain things like opening a Twilio account, there's really no point in me doing it in my name, you know, with my contact information, with me Being on the way out in March, and you're, you've been initiated into this thing from the start. Your depth of knowledge is far more than mine is on this particular thing. If there's if, if there's technical stuff in the background that you know involves our network and our phone system that we currently have, Uma, I'm happy to help. I'm just not sure I feel that loose ends right now with the with the new endeavor, and I'm, you know, I'll be involved as much as you want me to, but I'm just wondering if you really, you know, want me to take the initiative on some of this stuff, because you're going to need the contact information and everything as you go anyway,
+
+Matthias Miller  36:36
+sure if you think
+
+Unknown Speaker  36:39
+that would be better. I'm okay with that?
+
+Speaker 2  36:43
+Well, I don't, I don't feel like you're usurping me or anything. I'm just, I'm kind of, for a year now, I've been facilitating changing over to somebody else anyway, so,
+
+Speaker 3  37:00
+okay, that sounds fair. So then Matthias, we're gonna need to change that contact information back to mine
+
+Matthias Miller  37:07
+to yours. Okay, we can do that. So I'm
+
+Unknown Speaker  37:14
+not trying to
+
+Unknown Speaker  37:15
+get out of anything. Oh, I don't feel that way.
+
+Speaker 2  37:20
+I just feel like I have a huge learning curve on the new endeavor and anything that it relies on the old technology that we've already got I can help with, but I'm not sure that I'm much help other than that, because going forward, it's going to need
+
+Speaker 1  37:40
+somebody else's touch anyway. So yeah, sounds pretty
+
+Speaker 2  37:51
+great. And I'm assuming that would be okay with rich you've already talked to him about. I
+
+Speaker 3  37:56
+mean, he's already wanting me to take your job once he quit, so pretty sure. Okay, okay.
+
+Unknown Speaker  38:07
+Different one, my work number,
+
+Matthias Miller  38:10
+I'm sorry. All right. What's that? 1-276-335-0898,
+
+Speaker 5  38:17
+all right. All right? Richard, well, okay, so then is
+
+Speaker 3  38:26
+it possible to Okay? So I don't think you're going to have to necessarily be here, 316442, for the rest of this meeting, but there's a possibility I'm going to rely pretty heavily on you as far as getting those ports done. Once I get the Twilio account created, because you have the office well, how does that work? Which end is which end initiates the port.
+
+Matthias Miller  38:53
+You send it to
+
+Unknown Speaker  38:57
+the you send it to the new provider. That's
+
+Matthias Miller  38:59
+right, but you're going to need all the old provider information, so at a minimum, Joel, you're going to want to have probably have Richard fill out the forms for you.
+
+Unknown Speaker  39:07
+Yeah, yeah, I can. I can take care of that. Yeah.
+
+Unknown Speaker  39:14
+Okay,
+
+Speaker 3  39:15
+all right. Well, that makes sense, Richard, I just didn't want to do anything. That was what you were wanting to do, or what your job's supposed to be and not, not, right? Yeah,
+
+Speaker 2  39:28
+yeah, no, don't worry about that. Okay, I appreciate the consideration, but it's all good.
+
+Speaker 3  39:36
+Okay, all right. Well, then I will let you get off of here. I will, as soon as I get that information, I don't know what my schedule is going to look like. I live very crazy life. So,
+
+Speaker 2  39:49
+yeah, if I'm throwing an extra heavy load on you, I'm glad to help anyway.
+
+Speaker 3  39:53
+Yeah, no, it's, it's not, it's, I don't know if Matthias knows this or not. This is, this is. Secondary to sales, and sales has been wild right now, so I hope expecting this to be done by the end of August, because I guarantee it will not be done by then.
+
+Speaker 6  40:12
+So okay, well, I guess I'll exit. Hi. All right, blessings. Thanks.
+
+Matthias Miller  40:25
+All right, so shut up thinking through the SHUT UP side. I mean, I can pull up as an example, I can pull up links for quotes that Eric has done.
+
+Speaker 3  40:40
+Okay, can you modify things? Can you change things?
+
+Matthias Miller  40:45
+This will create a new quote if I do, right? No, no, I'm not sure if I want to.
+
+Speaker 3  40:54
+No, I'm just asking, because the only way that that's possible, okay, yes, you can. That's, I'm assuming you have admin access. So we don't give everyone admin access because we don't want
+
+Matthias Miller  41:05
+you, don't want people messing with each other. Let me see. Yeah, I do have, because I can configure web hooks. I know I've got, I know I've got that.
+
+Speaker 3  41:13
+Okay, good is, can you go to lists and on there on the bottom lists? Yep, and go users. I And let me just look at something here. Okay, so I'm curious if can Cody Petersham mess with Julian grabers
+
+Unknown Speaker  41:33
+quotes? Well,
+
+Matthias Miller  41:37
+that's where the sales manager, sales person, archived. I see that example like,
+
+Speaker 3  41:47
+can a salesperson mess with another salesperson's quotes? And that's something I need to talk to shut up about, because add that to another sticking up here, I've been having problems with that. Anyways, a sales manager cannot edit another sales person's thing because they don't have permission to change sales persons. But if the leads coming in as an unassigned then it would be assigned to them. So I think that's, I think it's doable. I just, I'm going to have to just sit down and work around it, and I think probably create duplicate stores for online stores, right? Because right now our wholesale, our consignment dealers, they're getting all our leads. If the store is selected as them, they get the lead, which is not what we want to happen,
+
+Matthias Miller  42:30
+yeah? So now you're, you're gonna, I mean, this is just how it's gonna happen. You don't have any way to control this. But it does mean that whoever that, if somebody goes to one of your wholesale dealers and then go on, goes online, design the quote, then they'll get a phone call from somebody else, which is just what's going to happen.
+
+Unknown Speaker  42:51
+Yeah. I mean, basically with this,
+
+Speaker 3  42:55
+the way we had envisioned that is to have two at this point, two, and eventually add third that deals with all the online leads. So it would be the online sales department if you want to go to official title.
+
+Unknown Speaker  43:11
+Yeah, okay,
+
+Speaker 3  43:16
+all right, I will work through that as I have time. Okay,
+
+Matthias Miller  43:28
+so TSA, we need to work with with the Shut up on their stuff, update the forums, update the privacy policy on the website. Is there? Is there anything else that those are the three next steps. Is that right?
+
+Unknown Speaker  43:47
+Yeah, well, do we have to?
+
+Speaker 3  43:49
+So we have to get the form updated first, and then we can, then we can apply for the ATP Correct. Yep, that's right. Okay, so the form is, the forms, the privacy policy and all that stuff is most important, correct? Could be the first step we take because of that. Okay, let's see center. Okay, it still says that I am not of let's refresh. I'm,
+
+Matthias Miller  44:20
+I'm gonna have to, I'll have to click the button to do the actual ATP. I forgot that it has to be an Agency Admin, so
+
+Unknown Speaker  44:28
+Okay, so you have to take care. Okay, all
+
+Speaker 3  44:31
+right, so I will update forms. I will let you know by email Once the form is updated. I
+
+Unknown Speaker  44:43
+they able to do that today, but I don't know.
+
+Matthias Miller  44:46
+Just let me know. And then, and then, do you have the zip code assignments for i. Who gets which which lead?
+
+Speaker 3  45:02
+No, I have not done any of that yet. The reason being, so, there was about two weeks after me and you at our first meeting that I couldn't get a hold of Richie to have a meeting because there was, there's job changes happening, title changes and things. And it was in limbo for about two weeks, and, well, I'm not going to do any work without getting paid. And so there was no pay agreement on anything for this. So now that, now I can start working on it. So I'm, I feel like I'm pushing you back and making you later, later. I hope you don't have a certain timeline on this, that sales. I'm still 100% sales and adding this on top of it. I'm not sure you know today, like yesterday, I had about 10 minutes that I could have worked on something. So
+
+Unknown Speaker  46:03
+this may be a
+
+Unknown Speaker  46:06
+December, January project, until it gets completed.
+
+Matthias Miller  46:09
+Well, I'll keep pushing. So you can push back.
+
+Unknown Speaker  46:13
+I will do my best to get it done in a timely manner. But okay, so going back to our checklist of things to do, there was zip codes.
+
+Unknown Speaker  46:26
+That was
+
+Speaker 3  46:29
+the zip code we wanted to dedicate it to that store the immediate zip code, correct?
+
+Matthias Miller  46:37
+Yeah, I think that zip code would be the easiest way, and then just assign it to, I mean, we can't assign it to shit out, but we can't assign the lead. You can go high level based on the zip code.
+
+Unknown Speaker  46:50
+I'm wondering if we even need, man, we probably should, because,
+
+Speaker 3  46:59
+yeah, and then we could even, we could even do that for, well, for all of our dealers, yes, what was, what's your recommendation for consignment and wholesale dealers? Do we still assign them a zip code radius for their
+
+Matthias Miller  47:13
+store? Are they getting, are they getting online leads? Well, currently they are.
+
+Speaker 3  47:20
+I mean, if they respond to them, because I have no way of tracking that, well, if
+
+Matthias Miller  47:25
+they, I mean, what I would do is I would set up the email that basically says you have a new lead there. The name is this, go click here to get their information. I mean, are you, are you guys providing and I mean, okay, this is my sales manager hat. But if you're not going to work the leads, I'm going to give them to somebody who does. And the only way you have of knowing that is if they're in go high level,
+
+Speaker 3  47:53
+right? And so do we not do we just not worry about giving them leads at all, because we have no way of tracking that.
+
+Matthias Miller  48:08
+Well, I mean, but if you create opportunities for them, you can say that. Okay, in my opinion, it's perfectly reasonable to say, look, we'll give you our part of our marketing budget, and we'll send you leads, as long as you keep the opportunities up to date. And you do, you make sure that you indicate what happens to these leads, and if that's too much work, no problem, like we don't. I mean, we can, we can send the leads to somebody else, but that's the condition of getting leads. And you would then just on a monthly you can then just pull a monthly report or something, or jump in monthly and just also part of the sales manager's role. Alright, are they actually doing something with these leads? And if not, call them up, be like, hey, where do you think that?
+
+Speaker 3  49:14
+Okay, so here's the deal. Richie does not have a sales manager position assigned. Okay?
+
+Speaker 3  49:27
+So there is nobody that is making contact with wholesale dealers, with our dealers. There's nobody other than Richie to do that. Okay, so my job was supposed to be that I thought, turns out, no, the only thing I'm doing is getting paid a lump sum to put in CRM implementation. Once it's up, I'm out of it. Okay, understanding. And then I get paid a. Salary, very small salary to process orders and maintain shit app functionality. Okay, so I don't know who that person is going to be, but I would agree that that, that that should be done. However,
+
+Unknown Speaker  50:17
+it's not my job so well.
+
+Matthias Miller  50:21
+I mean, we got about three options. One, you can rally for the job. Two, we can ping being rich and say, Hey, we really need it. Or three, I can, I can throw my hat the ring as a fractional sales manager and say what needs to happen. And here's you can have me if you want four, we can throw up our hands and say, well, we're not making the problem any worse than it used to be. Well, I just
+
+Speaker 3  50:56
+don't I just don't understand because of the first conversation we had, and then some of the conversations I had internally with other managers, everybody seemed frustrated that there is no salesperson manager, sales manager, yeah. How hard do I push for the job? I'm very happy with who I am. I me, but I can't take on all that work for no extra I mean,
+
+Matthias Miller  51:31
+yeah, no extra competition, yeah,
+
+Speaker 3  51:32
+extra compensation, and I'm gonna have to have someone relieve some of my duties that I'm doing now, like I'm back out currently, I uh, so I just wanted to let you know that that's what happened with that. Okay, well, we'll just take option four and throw up our hands and see what happens.
+
+Unknown Speaker  51:53
+Okay, that's good.
+
+Speaker 3  51:55
+I mean, he's been, you've talked to him about sales management position. Greg, yep, okay. And I have to, and I've told him multiple times it's needed, and if he doesn't want to do it, then I don't know if there's anything else that we can do, unless you want to attempt something on the back end, on your on your side. I'll leave that up to you. But for me, I've said what I needed to say, and if it doesn't get if it doesn't get fixed, the issues are only going to continue to get worse, and at some point he has to see that right understood, if that's, if that's a reasonable response,
+
+Matthias Miller  52:29
+yeah, I mean, I, I don't think it's, I don't think it's unreasonable. You said, said your stick and you're not running the company, so it's responsibly starts and
+
+Speaker 3  52:45
+ends. So I still have to set up this the way it's going to be run, yep. So I think what I'm going to do is I can make contact with those dealers. There's only 123, and tell them what we're doing and ask them how they want us to handle online leads for their area. Do they want to send them to them in an email form? Do they want us? Is that too much work for them? But I'm going to make very clear that we're going to have to have some type of commitment and because this is our money, this is our marketing money that we're investing, yep, and then tell Richie that the sales manager needs to follow up with that, whoever that, whoever that ends up being, Yep,
+
+Unknown Speaker  53:36
+okay, deal done.
+
+Matthias Miller  53:38
+Deal done. Awesome. Love it,
+
+Unknown Speaker  53:43
+so make a note of that.
+
+Unknown Speaker  53:49
+Okay,
+
+Speaker 3  53:52
+anything else that you want me to work on today? No, I let's
+
+Matthias Miller  53:56
+start with, let's start with little pieces that we can bite off and chew and get some wins going. Like, let's not load you down. Just knock this out and touch base on the next the next piece, in my opinion, yeah, figuring out how those leads will be distributed. That's a great thing to chase down once you've got that. I mean, even having Richard Chase down ZIP Code listings. That'd be a great I mean, if he's literally serious about helping, helping you out in any way you can, chasing down specifically which zip codes go, where could be could be useful. All right,
+
+Speaker 3  54:48
+I'm just my brain is running real fast this morning, I didn't have my coffee yet, so,
+
+Speaker 3  54:58
+all right, I will. Will I know you said nine o'clock, so I'll let you get off here. I will work on the privacy policy, getting that updated. As soon as that's updated, I'll let you know, and that will allow you to authorize the ATP. Is
+
+Speaker 4  55:11
+that correct privacy policy in the form? Yep, okay, the privacy policy.
+
+Speaker 3  55:17
+Let me just make a note here. Look at my notes. So the privacy policy. What we need to update in the privacy policy is that no mobile information, SMS or anything like that will be shared with third party, correct. And then the if we basically take Colorado sheds contact information, I can send, receive, SMS, notification, all that stuff, and put that to the checkbox at the bottom, should be good if they okay. So my question is, was that I'm having a one check one box that they check if they don't check that we can't even email them with
+
+Matthias Miller  55:50
+no you can email them. I could send to receive SMS. You can email them or call them, but you can't text message them.
+
+Speaker 3  56:00
+So we can still send occasional marketing communication through
+
+Matthias Miller  56:04
+Oh. They are because, oh, that is a good point. They are specifically,
+
+Unknown Speaker  56:09
+they haven't specifically set up as to,
+
+Matthias Miller  56:16
+oh, that's crazy. Um.
+
+Speaker 3  56:29
+Because I'm just thinking when I go on a website, anytime I go on a website, that box is already checked as a default.
+
+Matthias Miller  56:38
+I know it is, and so but, and I have no control what you do after it's marked as compliant. But to get it, to get it
+
+Unknown Speaker  56:48
+compliant, it has to be not
+
+Matthias Miller  56:53
+here's here's another. If you look up sunviewbuilders.com, I
+
+Unknown Speaker  57:03
+Sun view builders.
+
+Matthias Miller  57:10
+So here's here's another one.
+
+Matthias Miller  57:18
+If you go on the request to quote that this form also got approved.
+
+Speaker 3  57:26
+Oh, I see that. Get it personalized. Okay? It says I accept to be contacted by SMS, and then I accept the terms and conditions in the privacy policy,
+
+Matthias Miller  57:34
+which is which that checkbox is required to forward,
+
+Speaker 3  57:39
+and that checkbox will that terms and petition in the terms and conditions is the consent to receive marketing and
+
+Unknown Speaker  57:50
+no hold on.
+
+Matthias Miller  57:51
+Well, yeah, there is non percentage for internal marketing purposes. Well, yeah,
+
+Speaker 3  58:03
+the conditions. Let's see what their terms and conditions say.
+
+Matthias Miller  58:10
+It says, just says internal you'll use it to send unsolicited mailings to you. I
+
+Speaker 3  58:23
+It does not have anything in that terms and conditions about email,
+
+Unknown Speaker  58:27
+doesn't. I don't see it. No, it doesn't.
+
+Unknown Speaker  58:32
+So that would be back on their main thing,
+
+Matthias Miller  58:35
+their SMS communications policy is a good one to good one to grab. Actually, that's pretty
+
+Speaker 3  58:45
+Oh yeah. Step number eight in their terms and conditions,
+
+Matthias Miller  58:52
+there's their privacy policy.
+
+Matthias Miller  59:02
+Maybe. Maybe also, maybe also out of the terms and conditions. I
+
+Speaker 3  59:14
+wonder we probably don't have anything like that on our website. I wonder if I should just copy their entire policy
+
+Unknown Speaker  59:24
+and change what I need to
+
+Speaker 3  59:32
+Okay, well, I know we're at nine o'clock. I'll let you go. I'll work on that and see what
+
+Unknown Speaker  59:39
+soon. Well, our project does have some of that stuff.
+
+Speaker 3  59:58
+Oh, right there on our privacy. Apollo. See the information we collect will be used to contact you for marketing purposes and to identify your activity on their website. If I would just modify that slightly to include that that would be acceptable, correct?
+
+Matthias Miller  1:00:16
+Yeah, I would think so. I yeah, I think the big thing is you need to have a checkbox for receiving SMS. You need to talk about message frequency, message and data rates, and potentially help for assistance, but definitely stop that subscribe and you need a link to policy, to privacy policy in terms of conditions, I think. But I think you can actually get away with just the privacy I think you can get away with just the privacy policy on there. That's, I think that's all that CSC, they have two different terms of service. Oh, it's their links are even, aren't even right on that one, like the privacy policy doesn't go anywhere.
+
+Unknown Speaker  1:01:06
+That's an example domain.
+
+Speaker 3  1:01:09
+Oh no. Determine the Service and Privacy Policy don't even exist on that website.
+
+Matthias Miller  1:01:18
+There's gotta be something. Some Click here to view.
+
+Unknown Speaker  1:01:26
+Oh, there it is. They just have a bad website. Yeah, they do have
+
+Matthias Miller  1:01:33
+separate privacy policy in terms of Terms of Service. I mean, if anything, I probably this is just slight preference for swiping things off of CSC versus a third party. But outside of, if you're swiping the whole thing, I don't care about SMS stuff, but up to you,
+
+Speaker 3  1:01:59
+I won't, I won't swipe everything. I'm just, I'm just, I'll pick bits and pieces off of these that I need to update ours to make it compliant, and we'll go from there.
+
+Unknown Speaker  1:02:08
+Sweet, good. And
+
+Matthias Miller  1:02:10
+then text me if you need anything. Okay,
+
+Unknown Speaker  1:02:12
+we'll do awesome. Thanks, Joe,
+
+Unknown Speaker  1:02:16
+yep. Alright.
+
+
+Transcribed by https://otter.ai

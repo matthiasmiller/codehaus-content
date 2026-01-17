@@ -1,0 +1,440 @@
+Unknown Speaker  00:58
+So where are you sitting today?
+
+Matthias Miller  01:02
+I mean, the poor house in Canyon,
+
+Speaker 1  01:06
+fun. So I sent you, I sent you an invite to the data sheet. Now I don't have a I don't have this. Did I I didn't say, Did I not send you the right one? I don't know if I sent you the right one. I think I did. I don't have a I don't have the script running inside there that actually pulls it out, but I've wrote a number of those recently to actually, and I have, I have the report in in assists that are yanking stuff out, and I still have some cleanup to do to make sure it's giving me relevant data, but I am pulling in the num ID from the transit task. I'm assuming that's probably gonna be the easiest way to match this stuff up coming
+
+Matthias Miller  01:50
+back in. Okay, so let me walk you through it. So if you go to open, obviously you've got new file. You can run an import. You get two types that you care about. One's an input list, and that's if you want to run, if you have the same file that you want to do multiple things with. And you just say, basically, you've asked prompts that you can take, and then you have to pass them back into the other absurdities that you're running. It's just like, it's not really.
+
+Speaker 1  02:24
+I mean, the easiest way is, Oh, so you're saying you could run, you could run simultaneous imports at the same time,
+
+Matthias Miller  02:28
+sequential, yes, but yes,
+
+Speaker 1  02:31
+gotcha. And I shouldn't need to. It should be a single import, right?
+
+Matthias Miller  02:35
+It should be, I'm just trying to give you a label. And then here's a single import. You choose the level. So we're going on to transit task. Where do you get it from? In this case, input file. You can also run it on a report or no input report. You can actually put it in a report that it's posted from. What do you want to do with match records? You almost always want to update, but you could also delete or just skip match records.
+
+Speaker 1  03:01
+Definitely Delete. I think we'd only do update. There could be potential for for deletions, but I think if I get my data right, coming across, we shouldn't have to deal with
+
+Matthias Miller  03:11
+deletions. Yeah, I would be pretty cautious about deletions.
+
+Unknown Speaker  03:15
+Agreed, and then the
+
+Matthias Miller  03:19
+question is, what do you want to do with unmatched, unmatched items and skip, yeah, just skip them. Warning, skip probably would actually be the best option. Say that again. Warning, skip would be the best option. Yeah, yeah. Warren, Skip, that'd be about right. So you can then match on the simplest way is just to match on num ID, which we'll get to that in the future. If you want to, you can match on value. And so what's a what's a value from the database, what's a value from your input file that matches? The only thing you have to be careful with here is you have to make sure that there's only one value per record, so it has to be unique to the record that you're importing it. But then you could have an arbitrary value from the database and one arbitrary value from the from the import that you match on. But I
+
+Speaker 1  04:12
+mean, this is why, this is why I brought the num ID. I figured pulling the num ID out is the safest way to match this stuff up
+
+Unknown Speaker  04:19
+Correct. Yeah.
+
+Matthias Miller  04:22
+But then you also have indexes. And then the easiest way to set that up, I'm basically teaching you how to fish, but easiest way then is copy this E definition and change the views call stand if you were to use that or not. I
+
+Unknown Speaker  04:42
+it, Oh, gotcha, gotcha, yeah, yeah, yeah.
+
+Unknown Speaker  04:46
+But we'll do field
+
+Matthias Miller  04:49
+that might be all right, so then we're doing the flat file, because it's going to implement socially.
+
+Speaker 1  04:55
+I mean, I can, I can push it through the through the I can push it as a JSON file. Yeah, which which is, which is the most, which is the most reliable?
+
+Matthias Miller  05:10
+Well, probably
+
+Speaker 1  05:12
+flat file would be with XLS file. Is that
+
+Matthias Miller  05:15
+right? Xls, CSV, something like that. Gotcha, okay,
+
+Unknown Speaker  05:19
+I don't know which is,
+
+Matthias Miller  05:24
+Jason's probably the most. I don't know if it matters. I would say it's either between flat file importing by column label, so that you reorder columns and things don't and it just breaks or something. That's probably what I would say. You can skip certain input lines. So
+
+Speaker 1  05:44
+your column layout by column. So that's saying. So if you reorganize the columns, it's still, it's looking for the label, it's not looking for the necessarily order. Yes, got it.
+
+Matthias Miller  05:54
+So it'd be something like this.
+
+Speaker 2  05:58
+I don't know how it handles line breaks, but I so
+
+Speaker 1  06:12
+if I'm so the CEO, the column, okay, column ID, if you're saying the potential exists, if I have a column, break like that. Like that, it might be better just go put that, take out the column, break and just run it
+
+Matthias Miller  06:27
+flat. I think probably, yeah, okay. I mean, you can even size it down a little bit, just so it wraps it like that. Makes sense. Got it, but I don't know for sure. I haven't tested it so that you can have some as optional. Okay, and then. And so now we say match call ID is actually a number
+
+Unknown Speaker  06:47
+and and then here, but
+
+Speaker 1  06:51
+one more question before you, before you do that, is there, if I push, if I push the entire file, but I'm only looking for ID and say, schedule, date and confirmation is that or do, does? Does it? Does the spreadsheet need to match exactly with my with your columns that you labeled,
+
+Matthias Miller  07:10
+labels need to match, but other columns will just be ignored.
+
+Speaker 1  07:13
+Got it? Okay? So I could push the whole entire thing, but I'm only looking for very specific columns,
+
+Unknown Speaker  07:17
+right? Yeah, okay. Got it. You can treat,
+
+Matthias Miller  07:23
+you can treat other columns as field names. But
+
+Speaker 1  07:28
+because there's really, there's really only a couple things that I should be updating, and that is schedule, date, confirmation and assignee. Like, those are, those are, those are the only things that we're really going to push.
+
+Unknown Speaker  07:52
+So then one important thing here, okay,
+
+Matthias Miller  07:57
+number of header lines you're gonna have one header line. Um, uh, this also is going deep in the weeds, but you can update unmatched records, but you don't want to
+
+Unknown Speaker  08:14
+do that, okay, so if,
+
+Matthias Miller  08:21
+what are valid assignees?
+
+Speaker 1  08:26
+It would be hauler. I think they're called hauler, hauler, hauler name, maybe Active haulers, pipe list. Active haulers, pipe list. I
+
+Matthias Miller  09:03
+Where do you want this thing? Your folder? Somewhere else. Go
+
+Unknown Speaker  09:05
+to logistics. I think there's a dashboard. Yes, drop it in there. I
+
+Unknown Speaker  09:24
+Okay, so then
+
+Matthias Miller  09:26
+All right, so that's the main thing you wanted. What did you just do? I
+
+Unknown Speaker  09:45
+Yes, and then, and
+
+Speaker 1  09:48
+then you're basically, you're doing the change expression is basically matching the field up with the with the column that you're that you're assigning. Yeah, the
+
+Matthias Miller  09:53
+question is, how do you handle it when somebody changed it in the system,
+
+Unknown Speaker  09:59
+while. Between runs, I
+
+Speaker 1  10:07
+want to instinctively say, if we just overwrite it, but is there how? What are the options to handle that? Well, you could
+
+Matthias Miller  10:33
+or you could store a version ID. You could store the original value in your spreadsheet when you loaded it the first time, and then you'd know if there was an edit collision on one of
+
+Unknown Speaker  10:49
+them. You could,
+
+Matthias Miller  10:52
+you could do a replace na where you use the non na version of each of these. I
+
+Speaker 1  11:10
+and then make sure I'm understanding what you're asking so you're saying you're working over here the spreadsheets, doing its thing, whatever the point comes where you push it back in, somebody, maybe on the assist side, made a change, is what you're saying.
+
+Unknown Speaker  11:26
+Is that right?
+
+Speaker 1  11:28
+And and so let's say someone here in the office updated an assignee, and now you're stopping over that. And how would, how does the how does the import know that? What
+
+Unknown Speaker  11:42
+if it was blank? Well,
+
+Speaker 1  11:51
+you're saying if it, if somebody put something in, and now I'm coming in with a blank do we want to overwrite it? I
+
+Speaker 1  12:04
+Uh, okay, so that, in a case like that, if the spreadsheets blank, then I would probably, if there's something else already there, probably probably leave it that would be but I guess then, then it becomes a question of, if you're removing a holler, let's say you're unconfirming and removing a holler, and you're going to blank, then maybe we should use a blank in the spreadsheet so that you're actually, you know, using, I don't know what's
+
+Unknown Speaker  12:38
+your thoughts on that. I mean,
+
+Matthias Miller  12:41
+the only real way to do it, probably the best way to do it, is to have hidden columns where you store these original schedule, date, original signing, original column and original completion date. And if you're importing and it doesn't match what's on the record, then you just say somebody else has modified this. I
+
+Speaker 1  13:24
+Okay, so let's, let's pretend I think what I wanted to know. Then if, if it's if something is in the record, and I come with a blank and I wanted to leave what's in the record, how do you handle that?
+
+Matthias Miller  13:40
+The easy way is just to do this,
+
+Unknown Speaker  13:49
+either either this or I'm
+
+Speaker 1  14:05
+okay, you are recording this so I can come back and reference this. Yeah, so if I'm understanding this condition, not as in a column assignee. So if, if the, if the spreadsheet is not blank, then transit assignee equals column assignee, okay, um, otherwise it's going to leave it alone.
+
+Matthias Miller  14:29
+Right now, is the schedule date always editable?
+
+Speaker 1  14:32
+Schedule date is always editable? Yes, even afterwards, you're saying you're saying in assist, yes. Even afterwards, yes, it is always editable.
+
+Matthias Miller  14:45
+Do you want to do the same thing here?
+
+Speaker 1  14:57
+I. I probably, yeah, I think if I understand how to handle some of these conditions, I got to think through this, and I have a feeling it's going to evolve as I finish out the build on this thing to say, Okay, if you're, if you're adding information, if you, if you're taking away information, do we want to do it from from there, because there's, there's a certain amount of you're working in a disconnected system, and so ideally I'd like to be able to push changes, but to undo changes, I almost want to send them back over there to the system to undo changes, because that way you know that. You know exactly what, because this does affect the whole earth portal. And it's
+
+Matthias Miller  15:44
+like, yeah, well, that's where. That's where having the hidden columns where you have the original value and you know what was actually changed, could be useful, or just tracking a version ID. And
+
+Matthias Miller  16:18
+like you could put something like this.
+
+Unknown Speaker  16:29
+You can even make it like this
+
+Matthias Miller  16:37
+and use this as a version. Now I and if the last activity ID was was changed, and I don't know if you want to do this, would you you could just then fail with an error saying this recommendation modified, and assist.
+
+Speaker 1  16:54
+So, so this would be, so where would I be storing this? Would I be storing this in this on the spreadsheet side,
+
+Matthias Miller  17:00
+you'd sort of spreadsheet, and then you would validate it on the
+
+Unknown Speaker  17:07
+going back in.
+
+Speaker 1  17:09
+So okay, if I'm understanding right over in my over in my logistics AI report, I would store that last activity ID number, yes, yes. And what is that? What's, what's the macro for that?
+
+Speaker 1  17:33
+I've never, I've never. This is a side of things I've never really worked with this, this whole version ID or the activity level thing,
+
+Unknown Speaker  17:41
+Where is my
+
+Speaker 1  17:45
+dashboard? Logistics, AI and C continue. I'm
+
+Matthias Miller  18:05
+That, to me, is the cleanest, because it's not super elegant, because if anybody changes anything, it'll block you, but so is it
+
+Unknown Speaker  18:15
+literally just last activity. Id,
+
+Unknown Speaker  18:19
+no, it's the macro I sent you. I
+
+Speaker 1  18:50
+so basically I would pass that back in, and if the two match, then we can write anything or delete or remove anything we want. Otherwise, otherwise, it errors, right, correct, yeah, I like that.
+
+Matthias Miller  19:04
+Okay, good. I like it. I'm very happy with that.
+
+Speaker 1  19:06
+I'm calling the the column on the column in the spreadsheet will be last activity.
+
+Speaker 1  19:18
+There you go. And so, so if, if, if, if there is last activity. So, anytime I anytime I pull information, if I push something and then I pull something, it's going to update that activity ID Correct, yes, and so, so therefore I can pass things back and forth, both in in removing assignee or schedule dates or confirmations with confidence, knowing that if, if something happened in between there the activity, numbers would match up, not match up, and I would get an error correct,
+
+Matthias Miller  19:48
+and so and so, you just need to have a way to pull like as soon as you push it up, you need to pull it back in. Well, I
+
+Speaker 1  19:56
+probably what I'm going to do is I'm going to sit these things on time. Triggers. So every, say, five or 10 minutes, it's going to it's going to pull, and it's going to push, and it's for, you know, it's, I don't think I'm going to actually, I don't know. I haven't figured out exactly the pushing, the pulling, it's probably going to be on time trigger. I haven't thought about pushing it yet. So you might
+
+Matthias Miller  20:14
+want a manual option to force voice pull and discard changes or something. Yeah, yeah, exactly we preach from machine. Repeating groups, just for future reference. I don't even know if you want to get into it, but you put in a name, which is usually the field name the row match expression, which would be like,
+
+Matthias Miller  20:41
+you do something like this, which rows do you want to skip? Match rows you update match if there's multiple rows in the RG match all whatever unmatched rows do you want to update them or delete them? Unmatch lines, create a new row, and then you just say something like this, and you put in the change expressions for each org.
+
+Unknown Speaker  21:12
+Gotcha, okay.
+
+Unknown Speaker  21:17
+But as far as, as far as for this project, it's it, it's, I'm not handling any RG stuff. It's all single field. So,
+
+Matthias Miller  21:25
+yeah, yeah. Here, I don't think there's anything needed to know here, validation that kind of, kind of showed you here.
+
+Unknown Speaker  21:34
+There's no ask prompts.
+
+Unknown Speaker  21:40
+I mean, we go,
+
+Speaker 1  21:44
+so now when, when? So I am used on the services side. I'm using an import field and like, is there anything specific, like, when, when you put that into an API call. Is there anything specific that for saving the file? It just pushes it to it and handles like assist handles
+
+Matthias Miller  22:09
+it. Yeah, I
+
+Unknown Speaker  22:18
+think you can. I
+
+Matthias Miller  22:23
+here. This is how I don't know if you have anything like this or not. Let's just
+
+Speaker 1  22:38
+so on the on the imports, do you use the import of the update records. One import.
+
+Unknown Speaker  22:59
+Oh, wait, you just dumped me the Whole, watch McCullough,
+
+Unknown Speaker  23:05
+yep, yep, good. I'm
+
+Unknown Speaker  23:20
+so this script is pushing it as a JSON file.
+
+Matthias Miller  23:31
+Correct the message format is as JSON so that we can read it, the actual import data.
+
+Unknown Speaker  23:44
+Is the CSV.
+
+Speaker 1  23:51
+So I don't think this. Google Sheets doesn't handle Python, though, does it? No, I have to do it as as a, as a REST call
+
+Unknown Speaker  24:02
+I'm putting I have it right here. I'm
+
+Unknown Speaker  24:28
+all right,
+
+Unknown Speaker  24:34
+it'll take me about five tries, but I'll figure it out
+
+Speaker 1  24:42
+I'm any, any other pitfalls I should know about.
+
+Matthias Miller  24:51
+I can't think of any you might want to one of the things I've done in the past sometimes is having a Google doc where you you. Well, no, I mean the easy thing to just be doing something like a, you know, file download as a CSV
+
+Unknown Speaker  25:10
+and just manually push it in,
+
+Matthias Miller  25:13
+and then just do the preview. Yeah,
+
+Unknown Speaker  25:25
+it's gonna tell you,
+
+Speaker 1  25:29
+Oh, so you can, oh, so you can preview like it's not writing anything. It just tells you, yep, ah, I did not know I can do that. So then,
+
+Matthias Miller  25:39
+then you can play around with change expressions and conditions and other things
+
+Speaker 1  25:43
+like that, and you confidently know what you're actually writing, right, exactly, bingo. Well, that's that is very helpful.
+
+Matthias Miller  25:51
+And the other thing I would do to
+
+Unknown Speaker  25:54
+good, no, no, go ahead.
+
+Matthias Miller  25:57
+Doing something like. The other thing I like to do too, is something like.
+
+Matthias Miller  26:20
+So basically you have
+
+Unknown Speaker  26:41
+Something
+
+Unknown Speaker  26:53
+is it called i
+
+Unknown Speaker  27:00
+and if you want to do this, but you can, you can push your, I
+
+Matthias Miller  27:15
+guess it doesn't really matter, probably, though, sometimes you can
+
+Unknown Speaker  27:20
+push your,
+
+Matthias Miller  27:23
+your post, your input data here, you're just grabbing it as a CSV. So that's really not, not relevant. But
+
+Unknown Speaker  27:32
+I'm not, I'm not checking with what you're doing.
+
+Unknown Speaker  27:40
+I think you froze up.
+
+Unknown Speaker  27:43
+I think you froze
+
+Unknown Speaker  27:46
+Hello, hello, hello, hello, well, this is fun.
+
+Speaker 1  27:56
+You back again. Heard you a little bit. Oh, there you are. You froze up.
+
+Unknown Speaker  28:05
+You, you are you are blitzing in now, okay,
+
+Unknown Speaker  28:29
+hey, back again.
+
+Matthias Miller  28:34
+So it can be, just be an easy way, if you want to, if you want to troubleshoot what's going on, to grab that import data and stick it somewhere so you can take a look at it and and do stuff with it,
+
+Unknown Speaker  28:51
+like isolate the problem.
+
+Speaker 1  28:54
+Gotcha. Gotcha. Good. All right, sir. Well, this is incredibly helpful. I'm excited to to here. I'll give you a let me. Let me just show you this real quick. Where did I put this? Put this over here.
+
+Unknown Speaker  29:14
+Do I have this open? Yeah, no, yeah. So I've got a lot of data to clean up here yet, but
+
+Speaker 1  29:29
+so like, you click on one of these, boom, you're right there to the person with the mapping right beside it with opening up the person's information. It's just like, this is super slick. And the ability to tie an AI in here and say, okay, so go look at all the data and tell me, you know, based on estimated delivery window to, you know, start and end location. Tell me what's, you know, here's, here's relevant data. Go tell me what's, what's the best scheduling for this. And you. Yeah, it's just super, super easy to the I'm still working on some of the filtering stuff, but ideally what, what I want to be able to do is say where you can dynamically apply filter, so it just gives you just deliveries. Right now, I'm seeing, you know, everything that's in in the list, but be able to dynamically, you know, assign filters to it, to kind of filter it down to, you know, more specific data. That's awesome. But, I mean, this has been the fun part would be then to because I played around with the app style of things. So, you know, just real simple.
+
+Unknown Speaker  30:45
+Let's see here. Hold on a second.
+
+Speaker 1  30:51
+I guess I can't do that, but this, it would just it would give it a give Leanne a way to and Keyshawn a way to both collaborate on the saving information without having to be in a restricted portal where, you know, Keyshawn sees certain things, because I don't want him seeing everything inside of the whole entire assist and and just give them a, you know, along with mapping, give them really good visibility into to what's going on. But the biggest thing, the whole, the whole intent, was to be able to tie Gemini into this and say, here's the rubric for doing this, and go figure it out. Yep, exactly. That's, that's the whole intent of doing this because, you know, copying the the rubric I that grock and I built, and then, you know, feeding in a CSV of data, or an Excel sheet of data, worked really good. That worked really good. I mean, down to the telling me, like evaluating days and exactly how much time that hauler should expect to, you know, to spend in that day, and, like, the whole nine yards, calculating, calculating Start and End, location and timeframe for, you know, to set up. And here I fed it this whole rubric on width and length and how much extra time to say, you know, it should take to set this thing up. Well, that's great now if I can do that in my account, but Leanne uses chat GPT and chat TPT gets grumpy sometimes about feeding in Excel documents. And it didn't like Excel. And so I was like, Okay, fine. I need, I need a platform that both parties can use, that can tie in an AI and, boom, I
+
+Unknown Speaker  32:34
+love it, man, good stuff.
+
+Unknown Speaker  32:39
+All right, sir, send me a bill.
+
+Matthias Miller  32:41
+Yeah, we'll lose Thanks, man. Thank
+
+Unknown Speaker  32:44
+you, sir. Bye.
+
+
+Transcribed by https://otter.ai

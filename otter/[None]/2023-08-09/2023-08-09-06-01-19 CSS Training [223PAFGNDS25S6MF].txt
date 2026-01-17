@@ -1,0 +1,920 @@
+Speaker 1  14:03
+Good morning guys. Morning Good Morning my apologies it's not quite as planned so
+
+Unknown Speaker  14:25
+late anyway
+
+Unknown Speaker  14:37
+right
+
+Speaker 2  14:43
+Am I jumping in the middle of anything because we're doing anything together we're just going and stuff we waited
+
+Unknown Speaker  14:54
+that sitting in silence
+
+Unknown Speaker  15:03
+All right
+
+Unknown Speaker  15:13
+all right, let's see if there's host return screen sharing
+
+Unknown Speaker  15:22
+and start off with
+
+Speaker 2  15:31
+the VGA job and then released from GTK
+
+Unknown Speaker  15:35
+stuff
+
+Speaker 2  15:44
+all right, so we've been in discussion calls with the client about quite a few changes here on the on their system so we've got a good bit of the design already already done but I have some things we need to do some questions for you and some stuff we need to keep working on.
+
+Unknown Speaker  16:09
+First off
+
+Speaker 2  16:21
+they're using the parent but they have a parent and child incidents but they're not using them very much. He would like to be able to show all of the information from parents from sorry from child jobs on the parent job site not all the information so information he would like to see
+
+Unknown Speaker  16:44
+on the parent job so that he can
+
+Speaker 2  16:49
+just open the parent job and be able to click through or scroll through all the information that he wants to see from the different child jobs without needing to open each one of them individually.
+
+Unknown Speaker  17:02
+Be Read Only
+
+Speaker 2  17:07
+anyway curious what you think is the best way to display information from one incident or from multiple other incidents
+
+Unknown Speaker  17:14
+on on the parent incident
+
+Speaker 2  17:18
+is this like a bottom report that displays like left pane lists all the child incidents and right pane shows the details screen read only member memo that pulls stuff in
+
+Speaker 1  17:33
+kind of support something I don't think we support more than that in reports
+
+Unknown Speaker  17:39
+okay
+
+Unknown Speaker  17:41
+so read only memo to me as most hobbyists it's like as far as usability you can see it all you can scroll you don't have to resize anything to see it mm hmm
+
+Unknown Speaker  18:15
+And now we can just
+
+Speaker 2  18:23
+we can do things like show the the incident number and title in bold and then show the different field names in bold with the with their contents after them stuff like that.
+
+Speaker 1  18:40
+Yeah, we decide it needs to be specked out a little bit but we put it into a table or no, there's anyone being wasted
+
+Speaker 2  18:58
+like I think we were frizzy TK doing something something similar for the last check in notes.
+
+Speaker 2  19:35
+So I guess it doesn't look like we have it there. But we have a place that shows the last check in Node sort of check in history or something like that.
+
+Unknown Speaker  20:03
+interesting I thought
+
+Unknown Speaker  20:09
+I thought we're
+
+Unknown Speaker  20:10
+displaying something read only but maybe we just don't have it
+
+Unknown Speaker  20:16
+I think set up right.
+
+Unknown Speaker  20:22
+Anyway, okay.
+
+Unknown Speaker  20:25
+Oops, plenty to look at that
+
+Unknown Speaker  20:35
+and
+
+Unknown Speaker  20:54
+next question
+
+Speaker 2  20:58
+we have he's wanting to switch from due date to a start date. And this is what I kind of think through a little bit. He likes to replace the Due Date field on the incidents with a Start Date field. We already have two other start dates, we have an projected start date, and an actual start date. And projected is based on the whole scheduling thing like when this job would be due to start based on other jobs. And the actual start date is when time is first tracked on the job. So he's wanting to put a target start date in that, that basically is like the duty except, huh, except it's called Target start date instead of due date. I'm a little hesitant to give them three different start dates.
+
+Speaker 2  22:04
+Kind of like I'm just stick with due date. But it doesn't quite fit. I mean, the wording doesn't fit their workflow, whatever they'd like. So just curious, like, is this something we should just hide the due date and show a start date instead on on CGA incidents? Should we try to convince the second one convince them to
+
+Unknown Speaker  22:23
+stick with due date?
+
+Speaker 2  22:26
+Or what are your thoughts? Questions?
+
+Speaker 1  22:30
+I personally think their request is reasonable. You've got a committed start date or a customer start date. You're a you have a target start date and then there's the question are we going to hit that how likely are we to hit that target
+
+Unknown Speaker  22:45
+based on our current schedule and so some of it may come down with better naming so
+
+Speaker 1  23:05
+maybe it's even fine I don't know personally due date if you put a due date that's like in my mind that's where are you going to have this project wrapped up
+
+Unknown Speaker  23:21
+okay
+
+Speaker 1  23:26
+I don't know how do we use any useful due date and standard any kind of standard reports standard
+
+Unknown Speaker  23:36
+anything sounds good question.
+
+Unknown Speaker  24:08
+Okay, I'll plan to look into that
+
+Speaker 2  24:17
+and they're redoing some things on how they work, how the schedule works. And the stages which I think is very helpful for them. We're not showing recommend showing child jobs on the schedule anymore. It's only going to show parent
+
+Unknown Speaker  24:37
+incidents.
+
+Speaker 2  24:40
+So I think that's that's good and then yeah, just their workflow stages are getting cleaned up a bit. Question here they would like a field to indicate whether the machine is physically on site at the shop. up so we're adding a field to the apparent incident and he also liked to add it to the schedule report so they can look at the report and see their scheduled jobs and see which ones have the machine on site what is the best way to make this easily visible on the on the
+
+Unknown Speaker  25:21
+report is always
+
+Speaker 2  25:27
+gonna say like do a green check checkbox or something like that on the report or is it a
+
+Unknown Speaker  25:37
+green yes it's a nice
+
+Unknown Speaker  25:42
+easy way to make it stand out
+
+Unknown Speaker  25:57
+sorry
+
+Speaker 2  25:58
+to tell you is targeting a severe drink and I thought burnt coffee and music
+
+Unknown Speaker  26:04
+earlier when I stopped drinking first of all we haven't turned it on yet sick Second of all, it's tea so just pointed a big target on my back
+
+Speaker 1  26:25
+my proposal would be something like a background color green with a you know is it a white yes or something? It's unsafe normal black on Wait no. If it's not for if they want it red they could do the column red Uh huh.
+
+Unknown Speaker  27:25
+Okay sounds good.
+
+Speaker 2  27:33
+All right, next one here is there wanting to and this might involve some we might need to pull in. Now not hidden or if something for this because it has to do with the scheduled with more but
+
+Speaker 2  27:55
+they need to be able to project the next available start date based on estimated hours. With unlimited amount of hours in a day like they they need to adjust. How many hours are available in a day. Currently. Again, this is where we maybe need to pull in developers and not spend a lot of time on this. No, but I'm currently they're like their techs have a certain number of hours available each day. And that's what goes into the pool of available hours each day. To know how much you know how many man hours are available for the schedule. And he wants to just be able to set that total number separately from all of the the individual
+
+Unknown Speaker  28:43
+employees
+
+Speaker 2  28:50
+it's currently coming from from the from ours on the employee's contact records. But I'm thinking like, it should probably be like a system which we're at posting settings
+
+Unknown Speaker  29:11
+and
+
+Speaker 2  29:12
+yeah, they currently I think they set up a bogus they set up a bogus employee contact to be able to just be able to get more hours in to their schedule. And I forget all the details of why it is.
+
+Unknown Speaker  29:31
+But
+
+Speaker 2  29:34
+anyway, is is this something that you want to dig into now? Or is this something we should just ask the developers to tell us how it's currently working so that we can Yeah, so you don't have to dig into it now and then
+
+Speaker 1  29:48
+follow up later? Yeah, maybe I mean, so bottom line is used to be that we'd have to Sammy oh he's working on the John Deere equipment and Bob always looking at international and so we figured out when Sandy's next there'd be next available and now we're saying well I mean you know anybody can work on anything and let's just find out what the team's available and that's when we're going to start something like that probably best if they did with him
+
+Unknown Speaker  30:45
+okay
+
+Speaker 2  31:07
+oh back to this machine on site thing are we able to run reports to only show the yes and leave like if it's a yes or no can we only show the yes and just leave it blank leave the cell blank if
+
+Speaker 1  31:27
+if no absolutely we got the robot style you can have no text and color you can have sure you're gonna have a progress bar so it's only halfway green green on the left half red on the right you could What else can I throw at you you can have red text and red background or green text and green background so you only see it when you highlight it it's like going through a buffet mostly in Bangladesh and it's like going through goofy Spanish they call them blue fat that's
+
+Speaker 2  32:28
+cool speaking in progress bar I think is one of the progress bar for something like this
+
+Unknown Speaker  32:52
+okay actually this is yeah, they actually notice progress bar it's a
+
+Unknown Speaker  33:01
+drop list of
+
+Unknown Speaker  33:08
+like sub statuses or something
+
+Unknown Speaker  33:14
+so yeah,
+
+Speaker 2  33:15
+combined, we can do progress bars like we're like baseline percentage of a certain percentage it'll fill in certain
+
+Speaker 1  33:23
+percentage of the cell Yes, the only caveat is it has to be started the left and the right sure. That's
+
+Speaker 2  33:36
+cool. And so then is that based on like, you have to fill a field with a percentage
+
+Unknown Speaker  33:44
+or can you
+
+Unknown Speaker  33:45
+base it off of certain boxes have been filled or something like that?
+
+Speaker 1  33:51
+Let's do something like that you can do it off of any expression so let's look let me
+
+Unknown Speaker  34:03
+see Hello Jeff Julian hijack when I drag your screenshare Alright, so you've got a bar image function which is either solid or gradient let's try gradient color. Let's do I mean you can do custom colors I believe let's do
+
+Speaker 1  34:30
+let's do let's do like strike or dusty blue red green blue percent you would do some beaver Stan and then you could I mean if you wanted to, you could do so. Here. This is what the but you could do this space on
+
+Unknown Speaker  35:18
+second session percentage
+
+Speaker 1  35:30
+and then based on your report should be 14 seconds after midnight
+
+Unknown Speaker  35:47
+there you go what percentage of the minute we're through now right for any any arbitrary expression you're not exactly sure how it looks radiant words
+
+Unknown Speaker  36:12
+that's clearly not a gradient salad but
+
+Unknown Speaker  36:31
+yeah I don't know you can do it based on her reading expression oh okay that's good enough
+
+Unknown Speaker  37:02
+all right so
+
+Unknown Speaker  37:14
+all right
+
+Speaker 2  37:15
+not sure if this question for you or for LS but we have so, they have four stages for where am i
+
+Speaker 2  37:36
+so, these are the stages for regular shop job adding quality control is a new one here and then quality control is only for shop job not for truck jobs
+
+Unknown Speaker  37:52
+and is possibly
+
+Speaker 2  37:59
+bended we determine whether or not this would be a separate completely separate report or combining
+
+Unknown Speaker  38:10
+Yeah, he
+
+Speaker 2  38:10
+says he seems to be valuable value in separating.
+
+Unknown Speaker  38:20
+Yeah, that's kinda what I was doing. I wasn't remember anything about it anyway. Yeah. Actually,
+
+Speaker 2  38:32
+this might be again, this might be question for LS with their InterNACHI announcement at work, so we'll actually skip that
+
+Unknown Speaker  38:48
+All right, so
+
+Speaker 2  38:49
+in this one, they for their truck jobs, they are currently they want to track travel time. Like it says here, basically, they, you know, obviously group a few jobs in a general area and go out to them. They track time the old time travel gets reported. And then it's split evenly among the the jobs on that run. Currently, they've been just creating an incident for driving time for that day and track hours on that incident, and then manually split the time between all the the jobs that the
+
+Unknown Speaker  39:35
+tech worked on. But
+
+Speaker 2  39:41
+good, yeah, they'd like to have a more streamlined way of doing that. And with that, they that would that trip or that day would be a cert would be called a service run and then they want to keep track of how many times they've gone to a certain how many different days they've gone to a certain job or machine
+
+Unknown Speaker  40:11
+and
+
+Speaker 2  40:13
+maybe a track that as well as the actual time that average travel time for the machine
+
+Speaker 2  40:29
+so I guess yeah what would be the big ideas of ways to to track time and then split it they split it to between multiple incidents
+
+Unknown Speaker  40:47
+automatically
+
+Unknown Speaker  41:17
+there's always a single tech are there multiple texts
+
+Speaker 2  41:23
+I think it's normally I think it's normally a single tech but I'm sure there would be times like I'm sure to be possible for multiple
+
+Speaker 1  41:48
+and tracking the number of times they've been to a site is not as simple as looking at the number of days they've
+
+Unknown Speaker  41:55
+recorded hours on a on one of these fitness clubs yes
+
+Speaker 2  42:03
+it is that simple. They're fine with simply tracking how many different days anytime was tracked against the incident
+
+Unknown Speaker  42:15
+it seems to me like
+
+Unknown Speaker  42:35
+one potential option is
+
+Speaker 1  42:46
+well okay, we're options one we give them a special code for time tracking we're travel to service and it doesn't work out to NCLB it's a special point um similar to we can have one incident that we share across all texts that's been picked up somewhere maybe it's especially patient or bedtime
+
+Unknown Speaker  43:14
+or number three we paid to have one for all tax number three if we got one for each tax
+
+Unknown Speaker  43:27
+number four is you're gonna have one protected day the only real difference that makes as far as which one you choose is
+
+Unknown Speaker  43:45
+is how easy it is for them to select it in their
+
+Unknown Speaker  43:54
+in their list
+
+Unknown Speaker  44:04
+right
+
+Unknown Speaker  44:11
+so
+
+Speaker 2  44:17
+so we would track time on on that whatever it is. And then we would just look at we look at how much time did he track on his on his travel time today and which service truck jobs the track time once a day
+
+Unknown Speaker  44:37
+and then divide that time out. By that time out evenly? Yeah. Uh huh.
+
+Unknown Speaker  44:53
+And probably have a travel time expression
+
+Speaker 2  45:00
+On the sorry travel home macro on the parent job
+
+Unknown Speaker  45:05
+they would show that travel time for the day
+
+Speaker 1  45:15
+is travel time is that literally eight different drivers related based on hours or is it relative to hours spent
+
+Unknown Speaker  45:25
+he said he they split it evenly
+
+Unknown Speaker  45:27
+okay
+
+Speaker 1  45:32
+okay so bottom line what I would do I think is have a travel time incident type maybe it's too complicated Ellis might push back on me I was might have thought Bobby
+
+Speaker 1  45:51
+I would traveltime incident type for any service jobs you would
+
+Speaker 1  46:09
+then you just need to spec out everywhere else how that works. I mean, huh? On a service job, find that all days have a word for each day, figure out the number of hours of driving time hours for each day and add that so that it's travel time and then improve on the dental job costs.
+
+Speaker 2  46:33
+And are you proposing the one service I will try one travel time incident for everybody? Or one travel time incident per protect per day? What would you see as the cleanest data?
+
+Unknown Speaker  46:56
+Are the techs clocking in and out? Are they on an iPad
+
+Speaker 2  47:07
+Good question. I'm not quite sure I mean, at some point they're clocking in and out or they're tracking their time in the system. But I'm not sure if it's real time or if it's after the if they keep track on paper while they're out driving around and then they don't when they go back to the office to the shop.
+
+Speaker 1  47:31
+It will just have blank timecard entries and blank temporary employees get distributed to service all the service during the day. Mm interesting
+
+Unknown Speaker  47:53
+I'm
+
+Unknown Speaker  48:00
+curious if they
+
+Speaker 2  48:17
+want me to work on that later. I was curious whether they have blank entries
+
+Unknown Speaker  48:22
+already they
+
+Speaker 2  48:25
+don't think they do. I think even like I think they have an incident for you know, even sweeping the shop or whatever. So I think they're doing they're being fairly precise and how they how they track their time. I don't
+
+Speaker 1  48:41
+I don't really care. I think finding something like a Yeah, and they used to travel. I don't really say whether it's really interesting for everybody. As long as it's on our end, we're gonna want to make sure the calculations are fast, but I don't have an opinion on that.
+
+Unknown Speaker  50:35
+Okay
+
+Unknown Speaker  50:58
+let's see
+
+Speaker 2  51:13
+alright so last question for client I'm here occasionally a service tech job will end up being brought into the shop and they want to have a good way to switch
+
+Unknown Speaker  51:24
+between those
+
+Unknown Speaker  51:36
+they want to
+
+Speaker 2  51:37
+read of course retain all of the information about service from service job so I'm not sure again not sure if this is a question for you or LS but
+
+Unknown Speaker  51:50
+should we
+
+Speaker 2  51:51
+just switch the incident type from switch from
+
+Speaker 1  51:57
+service truck to like shop job or whatever they call it
+
+Unknown Speaker  52:07
+routine the fields or create a new incident
+
+Speaker 1  52:28
+but I think they should figure out a way to put it all under one parent and have the child well I don't know if they can do this occasional then yes having two separate incidents would be easiest because I'm gonna assume that our calculation is going to be based on
+
+Unknown Speaker  52:46
+type of incidents that we're not literally going to stop driving time onto there now we're gonna start proposing my work
+
+Unknown Speaker  53:08
+right
+
+Unknown Speaker  53:15
+we were saying if we would actually store that
+
+Speaker 2  53:23
+stick that value there on that incident rather than just display calculation
+
+Speaker 1  53:32
+I mean, we could I'm saying we could do that but that introduces its own set of issues when you need to go back and make corrections and timecards etc I guess yeah all
+
+Unknown Speaker  53:46
+right, you need an update button or something?
+
+Unknown Speaker  54:46
+Okay, well we'll followup with men and
+
+Speaker 2  54:58
+their interest interested In QuickBooks integration again they want to be able to streamline how how the invoicing process works and how they get the information from the jobs
+
+Unknown Speaker  55:17
+into QuickBooks.
+
+Unknown Speaker  55:28
+So they're,
+
+Unknown Speaker  55:30
+they're wanting to pull across some text,
+
+Unknown Speaker  55:34
+some notes,
+
+Speaker 2  55:35
+they're waiting to pull across the shop supplies used and the billable hours
+
+Unknown Speaker  55:41
+for the incident
+
+Speaker 2  55:45
+for each individual incident, so like the parent incident, all the children incident child incidents, whatever time they have, all that stuff gets pulled over as different line items
+
+Unknown Speaker  55:57
+on the invoice are they wanting to produce in batch or one tab at a time?
+
+Unknown Speaker  56:10
+I
+
+Speaker 2  56:13
+don't think we specifically talked about that. But I think I think it would normally be one in one at a time is what I'm gathering.
+
+Speaker 1  56:22
+But that would be something to clarify. I don't know exactly who should be doing this. But I think it's as simple as their cheapest solution, unless you're willing to put lots of money into it is going to be using something like transaction Pro and and then we would just give them an Excel export that exports a file in a format that they've configured transaction pro support and import it in.
+
+Unknown Speaker  57:00
+That's right here.
+
+Unknown Speaker  57:28
+So see again, how, how that works, they
+
+Speaker 2  57:33
+have to export a spreadsheet from App hosting,
+
+Unknown Speaker  57:38
+and then import it into QuickBooks. Then import it into QuickBooks be a transaction okay.
+
+Speaker 2  57:53
+And they could do that either one, one invoice at a time, one job at a time where they can do it in batches then.
+
+Unknown Speaker  58:03
+Yeah, we continue to define how this process works.
+
+Unknown Speaker  58:38
+Okay,
+
+Speaker 2  58:39
+so that would be it would be a few clicks, they'd have to click Export,
+
+Unknown Speaker  58:43
+they have to get that file imported
+
+Speaker 2  58:47
+to QuickBooks via transaction Pro, it's not going to happen automatically, but it will drastically cut down their time from the manual entry that they're doing now.
+
+Speaker 2  59:04
+It will still be some clicks, it won't be all automated. But it would drastically cut down their their time compared to the manual entry they're doing now.
+
+Unknown Speaker  59:13
+Yeah, I mean, if they want if they want automation, transaction protocol or mailing support, and we can create a little widget computer that automates it. That's definitely within within Sure. What about
+
+Speaker 2  59:39
+what about the idea of actually creating the invoice in app hosting, and then syncing that
+
+Unknown Speaker  59:45
+to QuickBooks? Or doing during an event
+
+Speaker 2  59:50
+where you actually create the invoice in app hosting, and then sync the invoice to QuickBooks
+
+Unknown Speaker  59:56
+to duplicate it or create it there? The
+
+Unknown Speaker  1:00:05
+main advantage is it gives you visibility but one of the worst is in posting
+
+Speaker 2  1:00:21
+know I wouldn't be they wouldn't be managing them they're just it would be the place where they get created to make sure everything gets line item
+
+Unknown Speaker  1:00:31
+placed on the line items correctly
+
+Speaker 2  1:00:35
+more seamlessly and then then you were that over but if transaction Pro can take all the data and have QuickBooks generate the correct invoice then
+
+Unknown Speaker  1:00:48
+that's cool too
+
+Speaker 1  1:00:56
+seems to be like it's basically the difference of whether do you use that Excel export to create an invoice would you use the XLS movies and download transactions bro I mean it's especially if you got visibility into what line items are being created if you could preview the invoice I don't think there's any reason not to let them preview this invoice before downloading what they want
+
+Unknown Speaker  1:01:37
+okay
+
+Unknown Speaker  1:02:07
+okay well I think that covers what we had here
+
+Unknown Speaker  1:02:21
+two questions left for LS
+
+Unknown Speaker  1:02:35
+Okay, cool oh and this
+
+Speaker 2  1:02:38
+incident was 8395 Return tracking
+
+Unknown Speaker  1:02:54
+all right, switching gears to
+
+Unknown Speaker  1:03:00
+thank Inc
+
+Speaker 2  1:03:02
+Do you guys want to take a break here before we keep rolling you're good to go for the next 25 minutes
+
+Unknown Speaker  1:03:12
+I'm good I'm gonna have to drop off at the bottom of the hour Yeah, I'm good to go okay.
+
+Speaker 2  1:03:21
+Thinking time tracking is 5729
+
+Unknown Speaker  1:03:41
+Actually before we
+
+Speaker 2  1:03:42
+get into thinking specifically Matthias we are dealing with some really slow argies here on proposals when the proposals get
+
+Unknown Speaker  1:03:55
+to this long editing
+
+Speaker 2  1:04:01
+editing the any of these columns here
+
+Unknown Speaker  1:04:06
+takes a long time
+
+Speaker 2  1:04:08
+so like if I come and gonna change actually any of these the the indentation the name or the order like if I change want to change this to five
+
+Unknown Speaker  1:04:26
+sit here for
+
+Speaker 2  1:04:32
+was that 10 seconds before it before it changes? And then yeah, that's that way for all of them, I think is just because it has something to do with there being so many rows in the RG because it doesn't do that for people who have a new proposal like the FB boards one where we only have 1020 lines doesn't doesn't do that also I've noticed that I noticed that my time cards seem a little slow sometimes so is yeah I'm curious whether it's combination of lots of roads and some data restriction or something like that. I'm not sure what what it would be but it's most painful here's these really long proposals I've noticed that some of my temporary
+
+Unknown Speaker  1:05:30
+well guess what I would start by assuming bits issues it tries to go to the Advanced menu down arrow on the top right
+
+Speaker 1  1:06:02
+we guess it's not just a factor of how many rows it's also a factor row not through the.
+
+Speaker 1  1:07:10
+No, I'm gonna guess it's also related to how many memos you have in here. I mean, it's worth considering whether you need to split these out into separate sub records
+
+Unknown Speaker  1:07:32
+Yeah, sure
+
+Unknown Speaker  1:07:39
+let me try something here. So we're gonna do a report disposals given the unsaved changes No, I mean
+
+Speaker 2  1:07:56
+that little teeny indentation or
+
+Unknown Speaker  1:08:11
+what is the on called
+
+Unknown Speaker  1:08:26
+well
+
+Unknown Speaker  1:08:49
+editable
+
+Unknown Speaker  1:09:05
+Yeah, Bobby something maybe something to do it with every detail screen let me do that. I don't know. Okay.
+
+Speaker 1  1:09:45
+The other option is splitting. Splitting systems like doing what we do persistence building different subsystems that operate proposes. I don't know if that's an option here or not
+
+Speaker 2  1:10:05
+Yeah, and that's what we've actually been talking about doing that sometimes you're like with vtk we're looking at different things we're gonna say this
+
+Unknown Speaker  1:10:16
+kind of cumbersome sometimes so we might do that we might do that yet then
+
+Unknown Speaker  1:10:23
+you don't think there's necessarily a way to speed it up worthwhile ways
+
+Speaker 1  1:10:38
+maybe we could give you an editable report that lets you reorganize things and make it easier perhaps
+
+Unknown Speaker  1:10:57
+look at splitting each row out into a separate record seems like overkill
+
+Unknown Speaker  1:11:16
+we can try
+
+Unknown Speaker  1:11:26
+Yeah, I just don't know.
+
+Unknown Speaker  1:11:29
+Yeah, no, that's fine. It's time to start asking
+
+Speaker 1  1:11:35
+good rates. Seek Alice's that's sure. Okay.
+
+Speaker 2  1:11:47
+Good. I guess that was actually not zt k time that was Gen Z, CSS time. Best 10 minutes there
+
+Unknown Speaker  1:11:58
+in 10 minutes.
+
+Unknown Speaker  1:12:00
+So now looking at zt K.
+
+Unknown Speaker  1:12:21
+Bins All right.
+
+Unknown Speaker  1:12:44
+Okay, this one
+
+Speaker 2  1:12:44
+is a good one, this is talking about schedule. And this is that they would like to use they would like to use the same idea that we use for the email reminders for the check ins check and schedule. Except at this point, they're not wanting to set the check into a specific day, they just want to do actually starting out here, they just want to do the month, a certain month, select a month. And this could be just one month a year, it could be every month, it could be
+
+Unknown Speaker  1:13:23
+quarterly whatever.
+
+Speaker 2  1:13:27
+But they also would like to be able to do have the option to do weeks. So if they at some point want to get a little bit more granular with a check, and then they can schedule them for a certain week of a certain month. So second week of every month or third week of every quarter or something like that. Third week, the first month every quarter.
+
+Unknown Speaker  1:13:57
+So
+
+Speaker 2  1:13:57
+month seems fairly straightforward, which is really super dumbing down the schedule that in the email reminders. Then to bring in week, it gets a little bit more tricky, like what do you do if you select the first week and
+
+Unknown Speaker  1:14:17
+you know, like you're in August?
+
+Speaker 2  1:14:21
+This would technically be the first week I guess, because of Sunday and Monday being the first Sunday, Monday of the month.
+
+Unknown Speaker  1:14:30
+It's got to work around some some things like that
+
+Speaker 2  1:14:36
+will be better just to give them months for now and then if they want to go two weeks then we think through that logic at that point or is it simple enough to get everything to work?
+
+Unknown Speaker  1:14:47
+Well, concern by the you're not going to do this for a long time, but can we please have it?
+
+Speaker 1  1:14:57
+If I'm completely frank with you, you don't know what you want. So we're gonna build you the wrong thing. So you want to build it twice, we would discourage you against it.
+
+Speaker 1  1:15:15
+11 timeframe? Like, can we put it on our radar? Like? Do they think you want it in six months? Or do they know, they won't need it for six months? Or no, they won't need it for a year. And if they know they don't need it for a year, let's bring up a conversation in September, or not September, but June or something? Let's, let's just ask him, okay, like, what are you guys thinking? How's this gonna work? Etc, etc. So that's Response number one, Response number two is? Now let's suppose that we did actually take them at their word and go for it and build it? How are check ins currently? How are these incidents auto created? Do they have a due date?
+
+Unknown Speaker  1:16:03
+Not auto created?
+
+Unknown Speaker  1:16:08
+And
+
+Unknown Speaker  1:16:09
+don't believe they know they appreciate they don't have a due date?
+
+Unknown Speaker  1:16:12
+When do they show up on the unit report that says you need to check ins. Or probably
+
+Speaker 2  1:16:26
+the customers needing check in report that shows.
+
+Unknown Speaker  1:16:40
+So it shows here in this pane,
+
+Speaker 2  1:16:43
+it shows customers who needed to check in but don't have the incident created yet. So it's not actually scheduled. But they're due for one to be scheduled in these different months. And then over here, these are incidents that have been scheduled have been created for these different months.
+
+Speaker 1  1:17:07
+So here's here's my proposal. When you do a check in for a monthly client, we just do you know, the next month, same day next month, right? That's the proposed date.
+
+Speaker 2  1:17:23
+Um, well, they're looking to completely do away with with dates with individual dates at all. It's just this is a check like these customers are should be checked in on in the month of January.
+
+Unknown Speaker  1:17:36
+And then he can
+
+Speaker 2  1:17:41
+the rep can decide when to check in on who in that month.
+
+Speaker 1  1:17:46
+Well, then then what I would do is I mean, there's ultimately a date range and when they want to check in on a monthly one, it's it's the person are pretty versed on a weekly one, it's it's the Sunday before the first Monday or the Friday after the well. I mean, it's the first Monday or the Friday after the first Monday, and that's their date range. And the you know, there's a certain point at which you just show up on their radar, which is I don't know how soon
+
+Speaker 1  1:18:26
+but it would be kind of nice if we could go either. It's either. I don't know. Like can we say that if it's monthly that will?
+
+Unknown Speaker  1:18:47
+Right.
+
+Speaker 1  1:19:15
+And how soon how far ahead? Do they want to? I don't know. It feels to me like, do they have a clear process for how they're going to manage check ins without dates?
+
+Speaker 2  1:19:30
+Well, I think it would be so. So currently this left pane here actually both panes show the month and then it's grouped by week, or subgroups by week. It would change to be still being grouped by month and then subgroup by region. And then each region like the scheduling would happen on per region basis. So everybody in this region gets a monthly check and everybody in this region gets a quarterly check in to the group I'm on subgroup by region and so then he would just okay it's January these four regions are due for check in in January and so he just works through them as he
+
+Speaker 1  1:20:16
+sees best as week simply informational I mean
+
+Speaker 2  1:20:21
+weak will go away at this point well oh you mean the new guy but we want the new week when is that strictly informational know that we're at some point in the future if they want to, to get more granular with their scheduling they can they can start scheduling by week. So then you would have group for month subgroup for week and then a subgroup for
+
+Unknown Speaker  1:20:44
+for Region
+
+Speaker 2  1:20:57
+I guess it's feeling more and more like we should just just hold off on the week for now.
+
+Unknown Speaker  1:21:03
+I think they're implications that they have not even considered.
+
+Unknown Speaker  1:21:08
+Yeah,
+
+Speaker 1  1:21:09
+I think it's fine. If they're ready to move in that direction, I think it's good but I don't think they know what they want.
+
+Unknown Speaker  1:21:17
+Yeah
+
+Speaker 1  1:21:22
+so we'll go back to them gentle we've never seen what we rarely seen. Soccer software workflow prospective business processing, you guys can nail down exactly how this should work and how these things interact.
+
+Speaker 1  1:21:43
+Yeah I would also maybe propose that we push it push whatever page we're on through and then say hey, let's pick it up with the change request and design it out or something I don't know
+
+Speaker 1  1:22:15
+one of the things that would really help us on these types of projects design projects is having like any anything we can do to protect against snow creatures. I don't think I don't know what this this is what happens a lot but
+
+Unknown Speaker  1:22:33
+yeah
+
+Speaker 1  1:22:36
+being willing to go to the plant and saying Yeah, listen, you got a lot of really good ideas. We suggest carving off this portion of it for a future session because it's not going to give you the highest priority highest value stuff.
+
+Unknown Speaker  1:23:24
+Yeah
+
+Unknown Speaker  1:23:36
+and I'm wondering here
+
+Speaker 2  1:23:38
+he was wanting some of these changes to check ins before the rest of phase three. So we should maybe do a phase three a or I guess just a phase three that's just regions and check and changes and some of those higher priority stuff that
+
+Unknown Speaker  1:24:00
+that he wants sooner
+
+Unknown Speaker  1:24:01
+and then the rest of this stuff actually becomes a
+
+Unknown Speaker  1:24:05
+comes after that?
+
+Unknown Speaker  1:24:24
+All right.
+
+Unknown Speaker  1:24:44
+Okay,
+
+Speaker 2  1:24:45
+another thing here in the last couple minutes and it's something we should bring an LS I was thinking about you guys talking about CSS cost some time. Really looking at maybe just using sales items as a lightweight solution instead of inventory management, because they're not actually tracking inventory, and they're not needing to work with, you know, lots and all of that.
+
+Unknown Speaker  1:25:20
+So we're wondering
+
+Speaker 2  1:25:21
+if if sales items might be a better solution for them than the actual skews and inventory management? So do you just off the cuff, you have any objections to
+
+Unknown Speaker  1:25:41
+to using the
+
+Unknown Speaker  1:25:42
+build sales items module?
+
+Unknown Speaker  1:25:47
+Just in in principle,
+
+Speaker 2  1:25:50
+and we will discuss the Mortalis but by bringing it up here for any initial thoughts you have
+
+Speaker 1  1:26:04
+I don't feel like I understand the implications and make a decision one way or the other. We want to do use us because we wanted to manage inventories
+
+Speaker 2  1:26:20
+probably we probably thought that they were keeping more inventory than they actually are. Or maybe there was something I would have to look maybe and see what skews track with the skews record track versus the sales item record
+
+Unknown Speaker  1:26:34
+but probably never do we need any yo and conversions any minute scroll down
+
+Unknown Speaker  1:26:55
+components news.
+
+Unknown Speaker  1:27:17
+Yeah, that Yeah. So well,
+
+Unknown Speaker  1:27:21
+those are questions
+
+Unknown Speaker  1:27:24
+that we'll need to look at. Sidenote,
+
+Speaker 2  1:27:27
+they are they are wanting to switch to the app hosting accounting module. They've talked it through and consider the kind of the cost and there they want to switch to that.
+
+Unknown Speaker  1:27:39
+Okay.
+
+Speaker 2  1:27:47
+ls I guess Ella had a conversation with them a few months back about it. I mean, I think the other option would be like the switching to QuickBooks and then building out integration.
+
+Unknown Speaker  1:27:59
+But I think they
+
+Speaker 2  1:28:02
+they think they want to Yeah, I think the way for them is actually make the switch. So that means doing away with all the classic accounting syncing, and the read only records and all of that, which
+
+Unknown Speaker  1:28:18
+is a plus. Yeah. So anyway, we'll plan to pick it up. Next time.
+
+Unknown Speaker  1:28:37
+It's, Yep, thank you. See you next time.
+
+
+Transcribed by https://otter.ai

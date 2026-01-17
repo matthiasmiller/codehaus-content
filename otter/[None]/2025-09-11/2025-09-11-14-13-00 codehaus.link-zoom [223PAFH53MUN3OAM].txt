@@ -1,0 +1,1472 @@
+Matthias Miller  00:34
+E A right um,
+
+Matthias Miller  00:46
+was very good to go on the report we have. So I think you can just share your screen. We can start implementing and refactoring. Yeah,
+
+Unknown Speaker  01:06
+okay,
+
+Speaker 1  01:11
+think I have my zsp system running. Oh, do you see I got the transaction link? Nice. Took a little bit of refactoring because we had a bit of logic that was EFP specific, but not much, and it's cleaner now than it was so and I created a macro so we can just pass in the level and record ID and boom, you have a report link, so if we want to add it for more once, it's easy anyway. Okay, so it's, was it probably in your incidence?
+
+Matthias Miller  01:44
+It's in the signal,
+
+Unknown Speaker  01:48
+oh, you're ahead of me.
+
+Matthias Miller  01:52
+Did you have a chance to double code the refactor?
+
+Unknown Speaker  01:56
+Now I'm afraid that's I can do that. Then I'm hoping it
+
+Matthias Miller  02:07
+for sure. Why?
+
+Unknown Speaker  02:08
+Trying to remember why I was No, it should be fine.
+
+Matthias Miller  02:12
+Yeah, we can. We can implement in dev. And then you can decide whether it's worse to manually which which way is worse?
+
+Speaker 1  02:18
+Exactly. Yeah, yeah. All right, it just takes me buckling, yep.
+
+Matthias Miller  02:27
+Edit newest impact.
+
+Matthias Miller  02:33
+Okay, so we were not respecting the company impact building subset or non manufactured buildings, so which we don't even use, I don't know
+
+Unknown Speaker  02:58
+if you want to ask
+
+Unknown Speaker  03:03
+is that something we should ask them if we can remove?
+
+Matthias Miller  03:08
+Yes, let's do, let's I'll throw it in the bottom of the job.
+
+Speaker 1  03:15
+For now, let me at least make us respect it. Just, I mean, it makes me feel better. Maybe I shouldn't worry about it. That's fine. I mean, I think it's appropriate too. It doesn't it seems right.
+
+Unknown Speaker  03:31
+Where was that?
+
+Matthias Miller  03:33
+It was in. It was in building manufactured accounting impacts.
+
+Matthias Miller  03:46
+Oh, impacted table rows. Oh, way down in, way down in, okay, this macro can go, I don't know how much you want to try to do
+
+Unknown Speaker  03:58
+where, but we're not well. I It
+
+Unknown Speaker  04:03
+sounds fine. Go ahead, just doing this. I also want to
+
+Unknown Speaker  04:12
+copy my
+
+Unknown Speaker  04:15
+well change request template. I
+
+Unknown Speaker  04:25
+accounting impact,
+
+Unknown Speaker  04:30
+improved reporting for FGI.
+
+Speaker 1  04:38
+Or what are we actually doing? We are
+
+Matthias Miller  04:53
+fixing accounting impact or fixing standard versus. I think there's a few things I can't nail it all down, but basically, we're using standard and actual costs at the correct time and more frequently, creating a actual cost event.
+
+Unknown Speaker  05:19
+Six
+
+Matthias Miller  05:22
+fix, fix events of for actual costs, or for building actual costs. Or, yeah, yeah,
+
+Speaker 1  05:32
+that's good enough. I don't care wrongly about names, just so it's mildly reasonable.
+
+Speaker 2  05:38
+Basically, um, respect, company, impact, building subset, until we make,
+
+Speaker 1  05:56
+moved it out of table rows into building account impact would make sense to evaluate it right away. If we're going to have it, I agree it's working.
+
+Matthias Miller  06:14
+Okay, right? So then next level deeper, I completely rewrote the manufactured building macro. So the basic issue is, we merge these events together on the building built event and on the invoiced event, and when actual costs are applied on the same date. So if you apply costs for two of them on the same same day, then we combine those into transaction, and if the other ones transaction. So do you group these by the date of the transaction, or do you? Do you? Do you do the FTI Row Type? And I decided that it makes more sense. You know what? Let's go ahead and kill the cogs variance account right away too. It's going to make our life easier.
+
+Matthias Miller  07:28
+This guy, no, well, ox, variance, account, no, not. That guy. Wait, cogs, variance, ACC,
+
+Unknown Speaker  07:39
+there, okay.
+
+Matthias Miller  07:49
+Detail screen macros,
+
+Matthias Miller  08:00
+I just change it to use the expense account, cogs. It's called cogs, expense ACC.
+
+Unknown Speaker  08:24
+Oops,
+
+Speaker 1  08:30
+I Oh, I bet there's other references in the same manner to
+
+Unknown Speaker  08:45
+he said, I can just,
+
+Matthias Miller  08:46
+just straight, replace, yeah, you can just, Do you need to replace all Yes.
+
+Unknown Speaker  08:57
+And then
+
+Unknown Speaker  09:02
+that's a double eco
+
+Matthias Miller  09:17
+experience account. That's what we're deleting. But, yeah,
+
+Unknown Speaker  09:21
+did I say expense? Yeah,
+
+Matthias Miller  09:29
+very interesting. They're not wanting to detract variants. I mean, I suppose it's not meaningful, because they're always adjusting their standard discounts or something. I don't know.
+
+Unknown Speaker  09:40
+No idea.
+
+Matthias Miller  09:45
+Okay, right. Okay, so let me, let's maybe walk through a high level. I have a string table that maps into the cost category. Okay, so first of all, even higher level from accounting perspective. Do you understand how these May. Round between accounts buildings do.
+
+Unknown Speaker  10:04
+No, I don't really know much about it.
+
+Matthias Miller  10:06
+Okay, so when the raw material is one, that makes the most sense, and all you need to know is that production, labor and overhead work similarly, but the details are just weird, and it just doesn't make as much sense. Functionally, they're identical. It's just a little harder to explain. You get a truckload of lumber, and that becomes a raw material asset, right? As do your screws and your siding and your flooring and shingles. Then somebody builds it. You mark the building is built. You is built, you find the bomb value, or the raw materials cost. It's the standard cost percentage calculation. You take that much from the FTI source account, which is raw materials, and you put it into a finished goods inventory account for raw materials. Then you deliver the building, which is when it's sold. It's sold. It's when the customer takes possession, and that's when you report revenue for it. You move the you remove, move the same value of the building from the finished goods value into the cost of goods sold as the expense to build it. And then there's nuances, which is like, we use standard costs whenever we can. So if you, if you apply actual costs on or before the data build, and we just use actual costs, who cares?
+
+Unknown Speaker  11:38
+Okay, I gotcha.
+
+Matthias Miller  11:40
+And then, if you, if you apply actual costs after invoice on or after invoicing, we just use actual costs in invoicing. No, we don't actually, if you use, if you apply costs on the date of invoicing, we just, we just use extra costs for the invoicing transaction, and if it's between those dates, then we have adjustments
+
+Unknown Speaker  12:11
+to we have a
+
+Matthias Miller  12:14
+we have an extra cost supply transaction that moves more money from more or less Money from raw material into the finished goods value. Or, sorry, okay, here you build it. Here you invoice it. If you apply actual costs in here we move money from from raw material into tours from finished good value. If you do it after invoicing, then you say, no, let's take more money from our finished good number and apply it to the Cost of Goods Sold. Expensive.
+
+Speaker 1  12:55
+I see. Okay. So before invoicing, it'll go into finished goods. If the value finished goods will change,
+
+Matthias Miller  13:13
+no, it won't. No. Nothing happened. If you define actual cost, nothing happens until you build the building. You haven't built the building yet.
+
+Speaker 1  13:19
+Well, what I'm saying if it's before build, between building and invoicing, right, then you move between the then we move it's between building and invoicing that we then the finished goods account will be changing. The goods are all materials,
+
+Matthias Miller  13:41
+right, raw material from, from the raw material to the finished goods, right?
+
+Speaker 1  13:48
+And if it's after invoicing, then it's going, then it'll be cost of goods sold, will change up or down finished goods and cost of goods sold? Yes, right, right. And if it's not built yet, then we don't then nothing happens. Nothing happens.
+
+Matthias Miller  14:13
+Okay. So I thought it makes most sense, it's okay. So then there's two ways to do this. Do you say, what is the building built transaction? And go throw in all the all the line items.
+
+Matthias Miller  14:35
+Throw, throw in all the line items, read to the types that you have specified, and actually combine on a per type basis, and then do each of the build finish and each of the dates, and then do the the other one. Or does it make more sense to look at? Basically, you look at
+
+Unknown Speaker  14:55
+what are.
+
+Matthias Miller  14:58
+Let's do raw material. Is, let's do production labor, let's do production overhead, and then just name and number them or set them and just know that, because we're sharing repeating IDs and event types and all this stuff, they'll get merged into a single transaction.
+
+Speaker 1  15:20
+Why do they share repeating are these? Aren't those different RG rows
+
+Matthias Miller  15:25
+we use. The only reason we use repeating IDs is we use a date to num on the actual cost applied date. We don't actually use any RG row IDs.
+
+Unknown Speaker  15:38
+Okay, gotcha. I which
+
+Matthias Miller  15:43
+is one of the reasons why we don't call it a record ID and RG ID, because it's not an RG ID, it's a record ID and a repeating ID. Gotcha. So I'm open to be argued with it. It makes more sense the other way, I
+
+Matthias Miller  16:25
+Okay, so I guess another question too, not, isn't a building built date and not building canceled? Do we apply that on the non manufactured building? And if not, should we? I
+
+Matthias Miller  16:47
+No, there is no building on that,
+
+Unknown Speaker  16:52
+because it's not manufactured,
+
+Speaker 2  16:53
+because it's not manufactured. Okay?
+
+Matthias Miller  17:01
+So then we, so then we,
+
+Matthias Miller  17:15
+I'm using a string table to translate.
+
+Matthias Miller  17:24
+To cash the accounts off of the accounting company, so I don't have to look them up multiple times. Gotcha. So I don't know that's an undue complexity or not, but that's what I'm doing.
+
+Unknown Speaker  17:43
+Make sense,
+
+Unknown Speaker  17:46
+so, grabbing all the accounts and then going through the FGI, RG, the cost category, plus the respective accounts.
+
+Unknown Speaker  18:09
+So we're
+
+Speaker 1  18:15
+getting the accounts for the category re netted by plus I'm pipeless
+
+Unknown Speaker  18:25
+filter.
+
+Unknown Speaker  18:29
+I got a whole bunch of stuff going on here for the accounts. Is the amount not blank.
+
+Matthias Miller  18:50
+Okay, so the first question is for this RG row, where should the variance be applied? And so if it's on or before the build date, just put the variance on the build date.
+
+Unknown Speaker  19:08
+Okay, if it was,
+
+Speaker 1  19:13
+if the actual costs are applied and were applied on the invoicing. This Is that intentional?
+
+Matthias Miller  19:25
+I think this greater than, or equal to should be potentially greater than
+
+Unknown Speaker  19:29
+where one or pain,
+
+Matthias Miller  19:41
+because if
+
+Speaker 1  19:44
+actual cost is applied after invoicing, there's no,
+
+Matthias Miller  19:53
+well, this should be something like a there's a. Building costs applied. If we wanted to make this clearer, we would have two events. One for was the building cost applied prior to invoicing or after invoicing. We don't have two events, and so terrible coding. I was hacking it, but I just used blank string.
+
+Matthias Miller  20:38
+So one of the things that would make sense here is to create separate variance events for like add hard coded strings
+
+Unknown Speaker  20:50
+for
+
+Matthias Miller  20:57
+building costs applied before invoicing and for after invoicing,
+
+Speaker 1  21:05
+because if the Okay, so with that, are you thinking an event type?
+
+Matthias Miller  21:11
+This is just an internal map. We can take it as far as an event type, but I don't want to do that, because it's going to screw up historically. Yeah, and so my thought, I mean, at least for internal purposes. I mean, we could also say, and maybe we can simplify this, because you could say, if it's less than the build date, then do that. If it's equal to the build date, then do invoicing. If it's building cost supplied, then we just do a secondary if
+
+Unknown Speaker  21:50
+that's simpler,
+
+Matthias Miller  21:52
+I'm fine with that.
+
+Speaker 1  22:05
+Or should I leave it to me to leave stuff as it was, let me change it over here, like start making it standard. Or what's the cleanest way to work on this
+
+Matthias Miller  22:15
+if you really want to
+
+Matthias Miller  22:22
+rob probably I'm I'm running,
+
+Unknown Speaker  22:33
+running,
+
+Matthias Miller  22:35
+sorry, I'm running it now, and it Looks to me like I'm trying to see which, if this makes a substantial difference, any meaningful difference between in some ways, what would make sense would be to copy this macro and refactor so we can look at the I wonder if part of The reason for the building invoice date was because, wait, but did that? Is that actually how it used to work?
+
+Unknown Speaker  23:13
+See, this is where things just get if
+
+Matthias Miller  23:18
+we look at the old code we had, building built, then we had actual costs applied, and then We had variance applied,
+
+Matthias Miller  23:43
+yes, I
+
+Matthias Miller  24:08
+we had it merged.
+
+Matthias Miller  24:18
+I really don't know if it makes any substantial difference.
+
+Speaker 2  24:22
+Um, in a lot of ways.
+
+Matthias Miller  24:35
+So with this logic here, we are never using
+
+Matthias Miller  24:56
+I usually think would make more sense here. A series of parameters called
+
+Matthias Miller  25:10
+basically B use actual cost for building built.
+
+Matthias Miller  26:08
+Then this would be true if the actual cost date is less than or equal to,
+
+Unknown Speaker  26:29
+I lost my just
+
+Speaker 1  26:35
+realized Doreen had a question. Let me I think I can answer in about 30 seconds.
+
+Matthias Miller  26:50
+There's a previous, there's there's an activity, previous.
+
+Unknown Speaker  27:15
+This is that's not what I want. Um, so
+
+Unknown Speaker  28:00
+what all these fields are,
+
+Unknown Speaker  28:03
+no ID. Probably
+
+Speaker 1  28:05
+it's going to mind that we're we haven't been using the num, ID, um naming we've usually done. We've been doing ID, auto, number.
+
+Speaker 2  28:16
+It's a huge deal. Okay. Answer
+
+Matthias Miller  28:26
+should use an expression, code name or so to validated, whatever the things and if you really
+
+Matthias Miller  28:42
+want if you really want to be thorough, you should do validated listing and database levels.
+
+Speaker 1  29:02
+Yeah, now it's done with an assigning,
+
+Unknown Speaker  29:13
+what it's called, Apple
+
+Speaker 1  29:18
+record ID. This not the essence of record
+
+Matthias Miller  29:28
+ID. Go to modification history and see if you can find,
+
+Unknown Speaker  29:34
+oh, Alice is my local system. That's why
+
+Unknown Speaker  29:38
+that wouldn't make a difference. I negative. Guys.
+
+Unknown Speaker  30:22
+All right? I won't mind if I'm a little terse. I just
+
+Speaker 1  30:29
+realized I should probably get back to him, because he was trying to work on that a while ago. But hey,
+
+Matthias Miller  30:36
+okay, use actual cost. We should use actual cost if, if the building API capacity is less or equal to the building.
+
+Unknown Speaker  30:47
+So are you This is No,
+
+Matthias Miller  30:49
+that's not a parameter that's interesting, okay, that makes an experience event to a series of Booleans. Yes.
+
+Speaker 1  31:02
+So use actual cost for building. The bill is then this guy,
+
+Matthias Miller  31:11
+and then assign B, add or create building cost applied event is the opposite of that
+
+Unknown Speaker  31:25
+not be use, okay,
+
+Matthias Miller  31:30
+and Then assign be
+
+Matthias Miller  31:37
+use, extra cost for building, invoiced. So
+
+Unknown Speaker  31:46
+if
+
+Matthias Miller  31:49
+I mean it just equals building empty actually plus date is less than or equal to, equals less than or equal to invoice state.
+
+Matthias Miller  32:15
+Okay, so the bearing event goes away
+
+Matthias Miller  32:22
+and then line 36
+
+Matthias Miller  32:32
+should be if you use actual costs for building, build
+
+Matthias Miller  32:42
+47 seven,
+
+Matthias Miller  32:52
+if we Create building cost supply. Hang on, this isn't quite right.
+
+Unknown Speaker  33:03
+This was
+
+Matthias Miller  33:05
+okay. This would be,
+
+Matthias Miller  33:18
+if create be, use B, create events. B, create the event. And invoicing uses actual cost. B, create building cost applied, and we use actual costs for invoicing. So
+
+Unknown Speaker  33:45
+and then,
+
+Unknown Speaker  33:51
+so
+
+Matthias Miller  33:54
+you could just say,
+
+Unknown Speaker  34:01
+why for invoicing here?
+
+Matthias Miller  34:05
+Because, okay, if this would actually read better, delete line 12, the Assign, it's actually, we're actually gonna get just Yeah, then use, if not be used. Yes. Okay, so, building, built? Oh, wow. I killed my video. I'm trying to hide building built, if you had, should we use actual cost or building built? Yes or no. Okay, great. Now, so that's event one. Event two is actual cost between the two dates. Well, if we weren't using action costs for building, build and we are for invoicing, well, we need to create this delta transaction, right? And then the next step is delete the V previously applied version. Audience, assign and then just use, if we should use actual cost for invoicing. Then use actual cost for invoicing.
+
+Unknown Speaker  35:09
+Hey, wish assigning range, delete,
+
+Matthias Miller  35:11
+delete. You sign on 85 if statement is as simple as well. This is stupid simple. I knew there was a reason I was driving you through this. If B use actual costs for invoicing, then we use actual cost. Else we don't.
+
+Unknown Speaker  35:30
+And this goes, and
+
+Matthias Miller  35:32
+that goes, and then if, if b use, I think Hang on, okay, but what is the final decision if you apply actual costs on the date of invoicing, do you want to merge these transactions. And I think we said, Okay, let's go see if we can find a building, and just look at a building and I can put my mind at ease with buildings,
+
+Matthias Miller  36:22
+building built date. Sorry, so field building, so field so invoice date. Okay, assign the invoice date has RG building, yeah, category, where building actual cost date
+
+Matthias Miller  36:50
+equals B invoice date and not is an A, B, invoice date. Watch this thing not actually exist anywhere. The anywhere
+
+Matthias Miller  37:08
+the invoice date is confused with
+
+Unknown Speaker  37:12
+the vendor invoice date.
+
+Matthias Miller  37:15
+Okay, so let's do okay.
+
+Unknown Speaker  37:21
+Here's one. Debbie Hall,
+
+Matthias Miller  37:26
+finish goods, cough.
+
+Unknown Speaker  37:28
+Do we have a here?
+
+Speaker 2  37:31
+Let's do this, sort by dates, sort during building.
+
+Unknown Speaker  37:45
+So the
+
+Matthias Miller  38:02
+IFR folder, so I can put it up with 509 11 invoice on action cost page.
+
+Matthias Miller  38:29
+All right, so now you look at accounting transactions, and the building was invoiced, okay? How we used to do it was we had the actual process 7302 was built. Oh, but I want it not built on that date. Okay, well, let's change that, not and building built date does not equal b.
+
+Unknown Speaker  39:11
+This is built in invoice the same day.
+
+Matthias Miller  39:15
+Yeah, you know, I don't know what's going on with it.
+
+Speaker 1  39:19
+That's amazing. It is amazing. Okay, carefully that every time I know right.
+
+Matthias Miller  39:26
+So built on the 15 invoice on 31st cost applied on the 31st what we did is we did have a separate
+
+Unknown Speaker  39:40
+Wait a minute.
+
+Matthias Miller  39:43
+19,
+
+Unknown Speaker  39:46
+that is wrong. 1962
+
+Matthias Miller  39:58
+No, it's not. Because. The cogs. Why did cogs not get applied?
+
+Matthias Miller  40:16
+We have the variance applied to use the finished goods.
+
+Unknown Speaker  40:28
+I don't think that's right. Okay.
+
+Matthias Miller  40:31
+If I go to Tiffany, what's your story? Your invoice on 731 let's go to your transactions. See, we are applying a variance, but not invoicing,
+
+Matthias Miller  40:59
+but we are creating a separate building cost applied event, even if it was invoice on the same day.
+
+Matthias Miller  41:12
+So then I just want to make sure building costs the only time we don't I
+
+Matthias Miller  41:26
+when the building is built, and I'll bet we can actually do this as well. So let's go do another one. Let's tweet this, and let's do it if actual costing is before. Building build date.
+
+Speaker 2  41:47
+Not gonna see my recordings, good, okay, no, and time I
+
+Matthias Miller  42:03
+actual cost was on 930
+
+Unknown Speaker  42:09
+that doesn't make sense.
+
+Unknown Speaker  42:16
+Oh, you know, we have a
+
+Matthias Miller  42:28
+here's another one. I'm gonna bet get that. These are coffee buildings. Thanks, Addison. This was Andy. Let's see how we handle it. We have actual costs applied we are always creating an actual cost applied transaction. We have an actual cost supply transaction that's historical. And
+
+Matthias Miller  43:08
+then we have a building built in that for the full amount. Um,
+
+Unknown Speaker  43:40
+I think it's
+
+Matthias Miller  44:08
+really kind of disturbing.
+
+Matthias Miller  44:15
+We are double moving things.
+
+Unknown Speaker  44:21
+Sounds like I'm going to dance.
+
+Unknown Speaker  44:33
+So
+
+Matthias Miller  44:35
+I think see if we would, if we would always create a building cost apply transaction just never dated before it was built, just using Max state. I mean, it's so bogus when it happens like it's just bad data.
+
+Speaker 1  45:15
+Yeah, you're trying to avoid creating, merging them into the building, the built transaction, like we always have. Why is that? What you suggested?
+
+Matthias Miller  45:23
+Well, okay, Mark liked merging them into the building. Built transaction, okay, okay, I'm not opposed. I'm not some ways it makes it simpler not to but I'm not opposed to it, and it's what it means is no that has the least amount of disruption, because, basically, we have a bunch of building costs applied historically that should be voided or not, a bunch. We have a number that should be voided. We just have a bunch of bad financials really
+
+Matthias Miller  46:08
+okay. So what I would say then building invoice, but what I am saying is,
+
+Matthias Miller  46:20
+let's not merge it with let's please not okay. Building built is simple because just move more over. It's fine, right? Okay, then cost supply, that's simple. And then this one is so this line here. What's this line? Delete the third part of the concat of where you have highlighted text, 108, ish. All right, yes, bad guy. And then, if b use actual cost for building invoice,
+
+Matthias Miller  47:13
+and you can remove the parameter for the cogs variants. Now, okay. And then the next one is, if not B use actual cost for building, invoiced.
+
+Matthias Miller  47:41
+Whatever. Mind Go ahead. Well, if not is in a the invoicing date and not use actual cost,
+
+Unknown Speaker  47:52
+then we
+
+Speaker 1  47:56
+wait and like and not use actual cost.
+
+Matthias Miller  48:01
+Sorry, that's Oh, right,
+
+Speaker 1  48:03
+because we're saying this is after invoicing. So when you then create, okay, okay, yeah, gotcha, and
+
+Matthias Miller  48:11
+then apply it to the to the expense account, on the variance account, because we did the same this guy, FTI cogs, or be cogs expensive, yeah, okay, this actually now makes sense in my head. And I think we broke a whole bunch of we introduced a whole bunch of changes, and I think most of them are good, but boy, is it a little scary.
+
+Unknown Speaker  48:44
+Still, okay,
+
+Matthias Miller  48:47
+Does, does? Does the logic and flow make sense to you now?
+
+Speaker 1  48:52
+More so it's still a lot. Let me add some comments to help me make sense of it. Um, merge actual actual costs are merged into the building built transaction if actual costs are applied on or before
+
+Unknown Speaker  49:22
+the building built eight
+
+Unknown Speaker  49:30
+and then actual costs.
+
+Speaker 1  49:43
+Um, if it's actual, costs are not, not used, not merged into the building, built, transaction and building
+
+Speaker 2  49:59
+and. Do
+
+Speaker 1  50:04
+and were applied the same day the building was invoiced,
+
+Matthias Miller  50:15
+but before, on or before the building was invoiced,
+
+Speaker 1  50:21
+oh, yes, on WordPress, forward invoicing, merge them into, is it?
+
+Matthias Miller  50:29
+Well, I mean, it's basically people are invoicing, then create, create a transaction.
+
+Unknown Speaker  50:40
+Wait, this is a building cost applied,
+
+Matthias Miller  50:42
+yeah, create the adjustment transaction. There are five potential events. You build the building. You applied cost before invoicing. You invoiced it. Sorry if it's four or you applied costs After invoicing. Simple.
+
+Speaker 2  51:00
+You okay,
+
+Unknown Speaker  51:16
+and this guy,
+
+Unknown Speaker  51:26
+this is just the invoice and transaction.
+
+Speaker 1  51:34
+Additionally uses actual cost if actual cost been applied by invoice date, yep,
+
+Matthias Miller  51:48
+and then the last one is green adjustment, if it was invoice and extra cost was applied after the invoice date.
+
+Unknown Speaker  52:03
+Then, now starting to make more sense that like, okay, so this is like I should just simplify these.
+
+Matthias Miller  52:18
+You can see building, build transaction,
+
+Speaker 1  52:25
+use actual cost if actual costs were applied on or before building, yep, and then
+
+Matthias Miller  52:39
+this is basically create adjustment if actual cost was applied between building built date and invoicing date,
+
+Unknown Speaker  52:50
+if actual cost was applied between building built day and invoice, invoice
+
+Matthias Miller  53:03
+replied,
+
+Matthias Miller  53:09
+okay. Now B use actual costs for if it was not we, if we and we are okay. Now this isn't quite right, because if it's not invoice, we should still create this transaction, this one
+
+Unknown Speaker  53:25
+here, right?
+
+Unknown Speaker  53:29
+Okay,
+
+Unknown Speaker  53:33
+now and
+
+Unknown Speaker  53:42
+that's fair.
+
+Matthias Miller  53:44
+Okay, so if we did not use it for the building build,
+
+Speaker 1  53:50
+and we use it for invoicing or and the building hasn't been enforced yet, right? Mm,
+
+Matthias Miller  54:07
+I would always use and then adjust my first so the only thing I don't like about this design is weird issues with what we just described. It would almost make more sense to reverse the order of the booleans. So first you say, do we adjust? Do we have an adjustment after invoicing? Then do we have an adjustment for invoicing, which checks to see if it's invoice? Then do we have an adjustment after? Like do we have in between? Well, the in between can be inferred. And then do we have an adjustment there? Do we use. Am I overthinking it?
+
+Unknown Speaker  55:12
+How are you thinking that simplifies things,
+
+Matthias Miller  55:16
+because going forward, you have to have more conditions to check if this than that, but really you can say that way, and then you reverse, and then you don't have to layer your logic. You just say, so you have a D,
+
+Unknown Speaker  55:39
+create
+
+Matthias Miller  55:42
+X, and X create actual costs after invoicing, which is if it has been invoiced, and the actual cost date is after the invoice date
+
+Unknown Speaker  55:56
+it has been invoiced and
+
+Matthias Miller  56:06
+it's greater than the invoice date, and then you have an assigned B use actual cost for billing invoice.
+
+Unknown Speaker  56:15
+That's this guy here.
+
+Matthias Miller  56:19
+Well, right? Or you could just say, not,
+
+Unknown Speaker  56:26
+right, it
+
+Matthias Miller  56:29
+would be not create actual cost adjustment after the invoicing and
+
+Unknown Speaker  56:36
+no,
+
+Matthias Miller  56:40
+this is just,
+
+Matthias Miller  56:49
+you could okay To simplify, not is any building invoice state and I
+
+Matthias Miller  57:05
+Okay, then you have one called, we create active cost adjustment before invoicing.
+
+Unknown Speaker  57:18
+Wait, isn't
+
+Unknown Speaker  57:20
+No, this
+
+Matthias Miller  57:21
+is wrong.
+
+Speaker 1  57:22
+This is wrong, right? Because we're saying right now, we're saying you should use it for building, built and use it for an invoice at the same time like we're saying you should use it for invoice. Well, up here we are, at least maybe we're not down there. I forget what I did. Oh, here we say not. I think it makes more sense to or this is a this lies
+
+Speaker 1  57:54
+right? Why? Because it's not true that we use actual costs for building invoiced, necessarily, because we may have used it for building built, in which case you don't use it
+
+Unknown Speaker  58:12
+for building invoiced. Yeah, you do.
+
+Speaker 1  58:17
+You do? Because it's Oh, yeah, okay, yeah, you're right. I wasn't quite tracking
+
+Unknown Speaker  58:26
+clearly,
+
+Matthias Miller  58:27
+okay. I am generally happy with, if we just ignore 15 and 19. I'm generally happy with this, except I am not happy with how complicated 5758 is, but, but is that just
+
+Unknown Speaker  58:41
+where? Here?
+
+Speaker 1  58:43
+Oh, never mind. I removed rows so it was 52
+
+Matthias Miller  58:49
+if we would add.
+
+Matthias Miller  59:02
+Maybe it just doesn't matter, right?
+
+Unknown Speaker  59:13
+This sure,
+
+Unknown Speaker  59:15
+does that help or not? Really, I
+
+Matthias Miller  59:18
+think it does. I
+
+Matthias Miller  59:35
+do we need any is, if not, is in a actual cost, any or actual cost date,
+
+Matthias Miller  59:48
+especially on the needs actual cost before invoicing.
+
+Matthias Miller  59:59
+All right? Right? Because that'll be,
+
+Speaker 1  1:00:05
+oh, never mind. I was scared of others are both building, built. We need blank, yeah,
+
+Matthias Miller  1:00:17
+not isn't a actual cost? A, yeah?
+
+Matthias Miller  1:00:25
+It wouldn't really hurt to be explicit with the other ones too. But these, it'll, it'll evaluate if also I don't care. But, yeah, I don't care. Okay, so, yeah, should we use actual cost of building built? Well, if we have an actual cost date prior to the building being built, being built, yes, we should, okay. Should we use extra cost for building invoice? Well, if we have an extra cost or before invoicing date, then yes, you should do. We need a cost adjustment before invoicing. Well, if we have an extra cost and the building wasn't and we didn't use it for being built, and either it's not invoice,
+
+Speaker 1  1:00:57
+or it scope hasn't or or it's not invoice, or we are before invoice date, right? Actual cost is before invoice,
+
+Matthias Miller  1:01:15
+by the way, line 55 VRG row ID should be being repeating repeating ID or something.
+
+Matthias Miller  1:01:36
+Hey, so that if we need active cost adjustment, then if it was invoice, then
+
+Speaker 1  1:01:48
+scroll down. Or Jonathan's wondering if you like event for transaction, or G like calling it event, please be on carrying Jonathan,
+
+Unknown Speaker  1:02:02
+that's fine, okay? And way bigger whales echo,
+
+Unknown Speaker  1:02:12
+way bigger whales than pale at restaurants, thick.
+
+Matthias Miller  1:02:16
+Okay, then scroll down a little bit. The same thing on line 116, I
+
+Matthias Miller  1:02:28
+Okay, and then if it was invoice, and we did not use it for the invoice, then we do the post invoicing thing. All right, cross your fingers. This actually makes some semblance of sense, like this is logical. The only thing we should note is why, in some ways, be nice to refactor out the
+
+Matthias Miller  1:02:54
+maybe an actual cost repeating ID or something as the Assign, and then explain why we're doing it like this. Because we want to merge them into single transactions. Basically, I'm um,
+
+Matthias Miller  1:03:37
+with the merge,
+
+Unknown Speaker  1:03:40
+yeah,
+
+Matthias Miller  1:03:44
+that would call it the actual, actual cost.
+
+Unknown Speaker  1:03:54
+Yeah, that's fair. I was You don't like that. It's the actual repeated mm. Uh,
+
+Matthias Miller  1:04:06
+okay, now I'm happy, except we probably broke a whole bunch of stuff. We're not broke, but
+
+Matthias Miller  1:04:18
+I don't even know that I care about matching it back to what was, I think we should just start using this in the report and tell Mark and drew that we found some issues with it, and we were sometimes with the old logic. We were double, double, applying variances. I.
+
+Unknown Speaker  1:05:01
+It's pretty
+
+Speaker 1  1:05:20
+they didn't save yet or what?
+
+Unknown Speaker  1:05:34
+What am I doing wrong?
+
+Unknown Speaker  1:05:40
+Oh, oh,
+
+Speaker 1  1:05:42
+that's what I'm doing wrong. This is exactly right.
+
+Unknown Speaker  1:05:52
+It's in here.
+
+Speaker 1  1:05:56
+This guy's the one I wanted to rename, because this is the old guy,
+
+Matthias Miller  1:06:01
+no, the new, wow,
+
+Unknown Speaker  1:06:03
+I'm getting myself confused. That over, right?
+
+Matthias Miller  1:06:09
+I mean, it looks me like you're using looks like it's right.
+
+Speaker 1  1:06:17
+I have two things pointing at the same one I don't have. Do you want the old logic I can I didn't save
+
+Matthias Miller  1:06:28
+that we wouldn't hurt to grab it somewhere, but I barely care. I
+
+Unknown Speaker  1:06:45
+this guy.
+
+Unknown Speaker  1:06:52
+This is the old one.
+
+Speaker 1  1:07:02
+It's Oh, because I changed parameters. This guy's gone,
+
+Matthias Miller  1:07:18
+whatever, 11.
+
+Matthias Miller  1:07:27
+Yeah, before you run right over is here on the looking version,
+
+Unknown Speaker  1:07:32
+sweet.
+
+Matthias Miller  1:07:35
+I was like, terrifying, slightly embarrassing. Sweet. It
+
+Unknown Speaker  1:07:42
+helps to have a good rubber duck.
+
+Matthias Miller  1:07:45
+That means that they're a little banana figure how to clean it
+
+Unknown Speaker  1:07:55
+up. It just
+
+Matthias Miller  1:07:59
+can create a lot
+
+Matthias Miller  1:08:06
+of a lot of, I mean, basically any building with a variance, I think was wrong historically.
+
+Matthias Miller  1:08:20
+How did we not catch this?
+
+Speaker 1  1:08:25
+I mean, it's only a sec day, several 1000 buildings,
+
+Unknown Speaker  1:08:30
+only, most of them,
+
+Matthias Miller  1:08:34
+several as in, I
+
+Speaker 1  1:08:52
+What does it mean? Finished goods was too high, and raw materials was too low. Yeah,
+
+Matthias Miller  1:09:07
+cogs may have been off. Mm, hmm,
+
+Speaker 1  1:09:23
+well, okay, so Wow, this is a lot. Yeah, so do we send this to them and say, ask them, or do we go ahead and,
+
+Matthias Miller  1:09:37
+like, just look at the change here. So we have completed building, completed building 709. 175, nine, 173, 96, what's the difference on this building invoice versus what if you go left, what's the actual difference on this first one?
+
+Unknown Speaker  1:09:56
+It's just a comment, because. Instead of production, labor and overhead, it's now they all now say raw materials, cogs
+
+Matthias Miller  1:10:09
+or raw materials. That
+
+Unknown Speaker  1:10:19
+doesn't seem right, we're
+
+Matthias Miller  1:10:25
+doing it with PRG. We have our PRG contacts. I know what it is. Go into the vfti category. Category, right there. Blinds, 9998 need to use vfpa category 108. Does as well.
+
+Unknown Speaker  1:10:46
+Oh, yeah, I
+
+Unknown Speaker  1:10:50
+had some big URL copied. All right, that'll hopefully clean up. It.
+
+Unknown Speaker  1:11:03
+On now we're not finding nearly as many rows.
+
+Matthias Miller  1:11:08
+I am baffled, though, because I would not expect it to be happy with.
+
+Unknown Speaker  1:11:14
+What in the world am I missing?
+
+Matthias Miller  1:11:17
+When this is done running, I want you to run it on this, on the skin that we've opened on the right and see what it says.
+
+Unknown Speaker  1:11:39
+I think I think
+
+Matthias Miller  1:11:42
+on historical buildings, we might have eliminated some of this by stump, by using the build date as the actual cost date. Okay, so here we have 1499875, you scroll right.
+
+Matthias Miller  1:12:01
+FTA, raw materials destination, we called it a we went from calling it variance to not calling it a variance anymore. Can we No?
+
+Matthias Miller  1:12:22
+We just, can we change look, filter accounting impact to blank out notes so
+
+Unknown Speaker  1:12:33
+we ignore notes? Yeah,
+
+Matthias Miller  1:12:41
+I think we have, we have a s, the transaction mismatches, at least. I think there's ignore memo differences. I
+
+Unknown Speaker  1:13:14
+wait, where's.
+
+Speaker 1  1:13:22
+Oh, yeah, probably here,
+
+Matthias Miller  1:13:32
+no, says, deleted, load buildings, model Miller, parses, so if you go into there, go underway. Load buildings model, go into load account, impact model.
+
+Speaker 1  1:13:52
+That's where I was just in search for memo in here.
+
+Unknown Speaker  1:13:58
+Oh, here we go. Load
+
+Matthias Miller  1:14:01
+blank memos if needed. There you go. That's what you want. Okay?
+
+Unknown Speaker  1:14:38
+Right? This is filter.
+
+Unknown Speaker  1:14:53
+I Wow. My brain is
+
+Matthias Miller  1:14:58
+in line. 34 just. Put added to load line 34 sort pipe lists And then load blank.
+
+Unknown Speaker  1:15:22
+Yep, sweet. Yeah. Alexis
+
+Matthias Miller  1:15:42
+mailer, word, anything at all.
+
+Unknown Speaker  1:15:56
+Yeah, it's funny. If you
+
+Speaker 1  1:16:02
+do we have, like, 40,000 buildings before actual cost stuff happened?
+
+Matthias Miller  1:16:07
+Or how old is the actual cost?
+
+Speaker 1  1:16:13
+Because it all, it never finds anything to about 40,000 and then boom.
+
+Unknown Speaker  1:16:18
+I mean, maybe I
+
+Matthias Miller  1:16:23
+this would be fun to see if we've got Mount Vernon says, now a lot of differences.
+
+Speaker 1  1:16:28
+I have a hard stop then right around five or a little bit after but not much sounds good,
+
+Matthias Miller  1:16:38
+like a plane stuffing rest of the day, which all happened, um, pop this open or expand it a bit, so maximize your window. Oh, yes. Okay. So building built 3429 dropped down by 283,
+
+Speaker 1  1:17:08
+and the buildings went up substantially.
+
+Matthias Miller  1:17:12
+So we merged the building costs applied
+
+Unknown Speaker  1:17:22
+because the dates the same as building built.
+
+Matthias Miller  1:17:29
+See, that's what I'm wondering if,
+
+Unknown Speaker  1:17:33
+when, when did we
+
+Matthias Miller  1:17:40
+just for the sake of creating the least amount of churn we always created,
+
+Matthias Miller  1:17:53
+where I kind of wonder the building cost applied. 199, 3053, see here we have one. We're on the invoice date.
+
+Matthias Miller  1:18:12
+You pop into the next row and open that building in a new tab. I'm going to guess the finished goods cost 3055 to 3053 and go into the accounting transactions you probably use 3055 for both of them, historically, 3055 3055 by the delta,
+
+Unknown Speaker  1:18:44
+so we,
+
+Matthias Miller  1:19:00
+I would be inclined never to model the old, to reduce the amount of churn, to never merge it With building built, despite what Mark said this morning. Okay,
+
+Matthias Miller  1:19:31
+that means actual cost. You can just hard code to false and everything's just gonna work
+
+Unknown Speaker  1:19:38
+this guy. Yeah,
+
+Unknown Speaker  1:19:42
+I gonna leave that guy just in there, in case we want to
+
+Matthias Miller  1:19:47
+let's see what that does. It should still produce a lot, but not 3500 Yeah.
+
+Unknown Speaker  1:20:22
+And there you go. But
+
+Matthias Miller  1:20:30
+if we're honest, it's probably going to be most of them, so maybe it's i
+
+Unknown Speaker  1:20:43
+3600 right around,
+
+Matthias Miller  1:20:48
+okay, building built. We're now using Latinos.
+
+Unknown Speaker  1:20:53
+We're not breaking it out.
+
+Matthias Miller  1:21:02
+I am so confused
+
+Unknown Speaker  1:21:05
+that would make two of us.
+
+Unknown Speaker  1:21:09
+We had
+
+Matthias Miller  1:21:11
+it went from a building built event to building costs applied. Event.
+
+Matthias Miller  1:21:31
+Go into this building. It never had a standard cost. I All
+
+Matthias Miller  1:21:56
+right, let's do this too good. In the report. Let's, let's make sure this is right. Should we be filtering? We should be ignoring. Let's add the subset, the account, impact effect. ROI matches effective date or whatever it is.
+
+Unknown Speaker  1:22:34
+What's
+
+Unknown Speaker  1:22:37
+it called? I?
+
+Matthias Miller  1:22:49
+Account impact our line matches effective date.
+
+Unknown Speaker  1:22:53
+And same is getting that way
+
+Unknown Speaker  1:23:00
+that could be new
+
+Unknown Speaker  1:23:11
+in here,
+
+Matthias Miller  1:23:14
+probably just doing it online, to just do an assigned list filter via account impact equals, list, filter,
+
+Unknown Speaker  1:23:38
+okay. It's
+
+Matthias Miller  1:23:43
+not a good report. Makes me buildings which I think don't matter for the sake of this conversation. Mm, hmm. Yeah,
+
+Unknown Speaker  1:24:16
+that definitely is coming down a bit. Now we crank again,
+
+Matthias Miller  1:24:30
+if quick, if push comes to shove, this is actually something we would expect. Let's just do a replace
+
+Speaker 2  1:24:41
+in a and cut
+
+Unknown Speaker  1:24:48
+out like 70 buildings maybe.
+
+Matthias Miller  1:24:51
+Okay, so here now you're building built on 18 for 1878 the cost was applied. Four days later, which is what we would expect, and if you and then the 15
+
+Speaker 1  1:25:13
+be but on invoice, date and invoice be included, shouldn't it? No, no, it was invoiced
+
+Unknown Speaker  1:25:21
+prior, and
+
+Unknown Speaker  1:25:22
+then actual cost is after we invoiced it.
+
+Matthias Miller  1:25:27
+Yes, and you'll see that the cost right account which is correct. That's how it should be. Which is more correct. Now, if you open this report, if you copy this sin and run this report just on this Sten, show accounts only,
+
+Matthias Miller  1:25:58
+no different. There's no difference.
+
+Speaker 1  1:26:02
+Let me sit said this would create a difference, doesn't it? Isn't it just different in a certain date range,
+
+Matthias Miller  1:26:09
+go back to go back to one of the other stuff that we had open like this in for the right that we open in your tab.
+
+Unknown Speaker  1:26:18
+This guy, right on this guy. Okay?
+
+Unknown Speaker  1:26:25
+Uh, something.
+
+Matthias Miller  1:26:32
+Maybe, maybe those are old. Doesn't make sense. What happens if you run, this is 23 what happens, if you would explain it? What happens if you run the full report just showing accounts only?
+
+Speaker 1  1:26:48
+So the accounts only just showing the net? Yes, okay,
+
+Speaker 1  1:26:58
+the amount of trees we burn to calculate all this accounting stuff,
+
+Unknown Speaker  1:27:06
+maybe Colby burn, I don't know what all the
+
+Matthias Miller  1:27:10
+Oh, you want unofficial advice that may not be good advice on where to put your money. Investing in electric utility companies probably is not the worst investment at this point in time.
+
+Unknown Speaker  1:27:25
+Look at data center usage. Oh, yeah, AI,
+
+Speaker 1  1:27:32
+yeah, that makes sense. Well, I wonder if my changes to the filtering stuff broke it for account somehow, because we're not finding anything
+
+Matthias Miller  1:27:47
+that's possible,
+
+Unknown Speaker  1:27:55
+this is what I changed.
+
+Unknown Speaker  1:28:02
+Oh,
+
+Speaker 1  1:28:09
+I didn't really change anything in here. I just changed it. If we're not, if this isn't checked, and I'm filtering by date.
+
+Matthias Miller  1:28:32
+Matches are alive. See if it's don't understand, what would or no
+
+Unknown Speaker  1:28:42
+mission. Just excluding rows.
+
+Matthias Miller  1:28:47
+Go back to this other Didn't we say? Go back to the standard accounting transactions we were looking at.
+
+Matthias Miller  1:28:57
+Are we sure? Though? No, because we are applying this,
+
+Matthias Miller  1:29:20
+reusing the finished goods cost. That's what's so confusing. Here. You would think this one would show up.
+
+Speaker 1  1:29:33
+Did you have the purchase? Did you have the account? Only stuff working? For sure,
+
+Matthias Miller  1:29:39
+the account only stuff was working, but maybe it is actually true that
+
+Unknown Speaker  1:29:44
+this
+
+Matthias Miller  1:29:51
+skin is actually correct, and it's just looking funny to my eyes, which would be wonderful this one. Yeah, yeah, if you go back like, isn't there? Isn't 3055, the the actual cost
+
+Matthias Miller  1:30:12
+standard got it now we right. Wow, how it does so then we expense out to the variance. They are using a variance account here, by the way,
+
+Unknown Speaker  1:30:35
+this is 23 I don't know if that plays any role. I
+
+Unknown Speaker  1:30:45
+Okay,
+
+Matthias Miller  1:30:47
+well, let's go. All right, let's, let's, let's. Then, I mean, I'm happy, because last time it was running, there were no ledger differences. Okay, so that is, that is good, that's working, unless we can prove, find something somewhere that proves it doesn't. So then the only thing that really we should check, let's take another look. Then at right let's take a look at non just the regular kind of impact stuff for all stands,
+
+Unknown Speaker  1:31:21
+not memo, No,
+
+Matthias Miller  1:31:47
+yeah, that must have been a 2023 artifact, Okay?
+
+Matthias Miller  1:32:38
+A Okay, so here, okay. First one we split out.
+
+Speaker 1  1:32:46
+We now applying cost at actual cost after invoicing. We were we're lumping into both building built and invoiced.
+
+Matthias Miller  1:33:00
+So previously, we were playing actual cost as an invoice date.
+
+Matthias Miller  1:33:13
+We backdated it
+
+Speaker 2  1:33:20
+no materials.
+
+Unknown Speaker  1:33:27
+Where are we doing? Built, what am I? What am I missing?
+
+Speaker 2  1:33:39
+Cost i So,
+
+Speaker 1  1:33:43
+okay, we moved raw materials to finish goods, all 1800 including actual cost, which I assume, before actual costs are applied, we move 1500 and then as soon as actual costs applied, we went and update the building, built transaction, right?
+
+Matthias Miller  1:34:11
+No, we invoiced it before actual cost replied. Then after we applied costs
+
+Speaker 1  1:34:18
+and we updated the built and the invoice transactions, right? And now we're saying no, those stay the same because we applied actual costs after those happened. So we're going to add a building cost supplied transaction, which seems pretty sane, I would say.
+
+Matthias Miller  1:34:40
+Now here we had the next one's interesting,
+
+Speaker 1  1:34:50
+collapsing rows because, is it because we're ignoring memo differences? Yeah, well,
+
+Matthias Miller  1:34:56
+and, and these were variance rows within the same transaction. Yeah. Uh, so we're going to see a lot of these in separate line items for variances.
+
+Matthias Miller  1:35:14
+Okay, so, but we, we believe that we have definitively proven, okay. Now let's, let's go. We have definitively proven that the only differences are the only way we could well pick my thoughts.
+
+Matthias Miller  1:35:42
+We think there's a possibility that our decision
+
+Matthias Miller  1:35:57
+okay, that we are breaking out some of the building cost applied out into separate transactions, but we believe that the numbers still stay the same. So numbers shift on a per day basis, but don't shift overall. That's what we believe.
+
+Unknown Speaker  1:36:10
+Yes, yes.
+
+Matthias Miller  1:36:15
+And okay, so the one other useful thing that could be is if we would change our ledger only account to keep the event and look at net differences per event to see
+
+Unknown Speaker  1:36:35
+it doesn't matter.
+
+Matthias Miller  1:36:37
+Building built, we're splitting it out. We're splitting it out.
+
+Unknown Speaker  1:36:42
+It doesn't matter. That's 4862
+
+Matthias Miller  1:36:45
+so here we have applied cost. Okay, the go down to the s2, 2310, 115, 89, up, up down. So we have raw materials of nine, 9004 was removed and added. And I don't see any difference between these two.
+
+Speaker 1  1:37:19
+The building. Invoice numbers are very different. By I mean by the building cost applied amount, right?
+
+Matthias Miller  1:37:33
+We're showing full. Never mind. That's it. Okay? So building invoice, I
+
+Unknown Speaker  1:37:43
+wait, this should
+
+Matthias Miller  1:37:51
+show up in the in the legend, in the other differences. Thing, right?
+
+Unknown Speaker  1:38:03
+Here you're saying,
+
+Matthias Miller  1:38:06
+yeah, if you put in the stand, it's not right on the whole thing. For not sure. I
+
+Unknown Speaker  1:38:33
+i just
+
+Matthias Miller  1:38:38
+have the account. We take the value with the debit minus one.
+
+Matthias Miller  1:38:55
+Change your subset to
+
+Unknown Speaker  1:38:58
+always show the row are
+
+Speaker 1  1:39:06
+you saying that? Yeah, it's coming to sound. Sure, yes.
+
+Matthias Miller  1:39:17
+Let's see what it's not showing anything that's blank and blank. So that's not good. There's something bogus going
+
+Unknown Speaker  1:39:56
+on.
+
+Matthias Miller  1:40:04
+Can you take this onto a building record and set accounting impact and just see? Let's just start debugging why it doesn't I
+
+Unknown Speaker  1:40:38
+very worth
+
+Matthias Miller  1:40:45
+Okay, can we take this to Billy? We were looking at,
+
+Unknown Speaker  1:40:52
+what changes Do I have? Out to
+
+Unknown Speaker  1:41:41
+Oh, because we,
+
+Speaker 1  1:41:50
+because that's it's we're saying it's returning the same as the old one, right? But if we join the pipeless difference. Different. That's why it shows,
+
+Matthias Miller  1:42:06
+okay, sure, so if you run it and you show
+
+Speaker 1  1:42:13
+it's blank, because we're showing the pipeless difference between the two, and we're saying it's any of the same. Okay?
+
+Matthias Miller  1:42:26
+All right. Do we think we're good? Do we think everyone baffled why that wouldn't trigger?
+
+Matthias Miller  1:42:42
+Why would this not trigger a difference?
+
+Matthias Miller  1:43:06
+Okay, so which ones were
+
+Unknown Speaker  1:43:12
+raw materials is where we're confused.
+
+Matthias Miller  1:43:22
+And yeah, okay, search for ABC 50 at 26
+
+Matthias Miller  1:43:37
+we what that? Oh, we didn't. We are changing. How
+
+Unknown Speaker  1:43:47
+is it products versus variance stuff? I mean, sorry, variance versus expense account.
+
+Matthias Miller  1:43:56
+It's it is the difference between whether actual costs applied on the after in Yeah, no, you're right. No, it is. It is it is, because if actual costs were applied after invoice, we would let invoicing handle the cog side of it, or something like that, and now we're using actually past supplied is not expensing it until after invoicing.
+
+Speaker 1  1:44:35
+Okay, fine. I'm happy. Okay, I need to drop in a minute or something.
+
+Matthias Miller  1:44:42
+Oh, go take a look at what tomorrow looks like.
+
+Matthias Miller  1:44:51
+I mean,
+
+Matthias Miller  1:44:59
+How late are you? Working,
+
+Speaker 1  1:45:05
+or 45 probably I'm taking Lavon two lavons Boys hunting. So I have a harder limit than sometimes I'm gonna, I don't know
+
+Unknown Speaker  1:45:22
+how to I know
+
+Matthias Miller  1:45:24
+how to balance this. My proposal is, I think, I think, I think we're at the point where maybe you should just go implement what we have. Thank you. Understand fairly well, and plan on a code review late afternoon, and I don't know what my time with Dwayne's gonna look like. I would just see if we can code review it before Friday night and have Mark just double check.
+
+Speaker 1  1:45:53
+I'm a little I'm gonna feel a little crunch to get this and sales tax stuff done. I think, well, maybe it'll be fine.
+
+Matthias Miller  1:46:01
+That's marker 20 ones. I'll shoot an email so you can leave the office. How's that perfect? Thanks. Awesome. Thank you. Yep.
+
+
+Transcribed by https://otter.ai

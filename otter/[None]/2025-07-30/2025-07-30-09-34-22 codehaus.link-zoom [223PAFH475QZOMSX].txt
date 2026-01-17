@@ -1,0 +1,419 @@
+Matthias Miller  02:15
+I'm gonna move changes to new. from munching at the same time, I'm doing the same so. Just don't hate all right, so then. I'm doing the same so. Just don't hate me from munching at The same time I'm doing the same So good name. me from from munching at the same time, I'm doing the same so. friends, let friends Munch, Okay. All right, let me share my screen jump back in. All right, so we have. typically names. I'm going to move changes to Seth, slash to mm. I'm we're going to put this into the contract entry. Well, this is horrible, but I'm fine, fine. I guess I'm how much of this can we defer these three until future phases. What is this? What are we? What are we on? On the contact record, yeah, yeah, we can we that all of that's not necessarily in this role in the first phase one, right? I don't think so. I mean, I think we could actually probably just defer it until a future phase, Have, but we're storing driver's license ID and state on the contact record correct,
+
+Unknown Speaker  05:08
+yeah, but
+
+Unknown Speaker  05:12
+there really needs to be a memo field there that we can because oftentimes they will send a
+
+Matthias Miller  05:18
+picture of The driver's license I'm aware of three,
+
+Unknown Speaker  05:34
+probably
+
+Speaker 1  05:39
+s3 i because
+
+Speaker 2  05:47
+if it's in a whole packet of documents, literally, you can take a screenshot of it and print it as a PDF and then then attach it right, and
+
+Matthias Miller  05:58
+that would Be attachments for the contact right, not just driver's license.
+
+Speaker 2  06:02
+I mean, I guess you could do it that way. You could, you could do it as part of the attachments for the Yeah, no, that's fine. Doesn't need Yeah, as long as the ignore that. Yeah,
+
+Matthias Miller  06:13
+okay, but you're happy with this. Yeah.
+
+Speaker 2  06:24
+Yeah, what's the, what's the merchant fees as part of the driver's license section?
+
+Matthias Miller  06:30
+Yeah, I don't know where this I don't know why that's in the contact record. It might be on the no, that's just dumb. Thank you.
+
+Speaker 2  06:53
+Because I could just, I could just see, if we wouldn't take it out, one day, we'd be looking to contact her, going, Why is there a merchant fee in driver's license. What's going on here? And then we go set, why is there a merchant fee in the driver's license section? Well, it's in the spec
+
+Unknown Speaker  07:08
+exactly. You said.
+
+Matthias Miller  07:15
+Do as I think, not as I say i
+
+Matthias Miller  07:26
+Um, no, it's not a payment Well, I mean, not unless you want to transfer contract balance from one one to another. But that just seems dumb. Can I increase the due amount on can I use the CRA for contract a to pay for contract B, in which case you'll still have rows so never mind.
+
+Speaker 2  07:55
+No, you can't use a CRA from one contracted to pay the other contract. No, I
+
+Unknown Speaker  08:10
+both okay, I'm
+
+Matthias Miller  08:31
+well, then we should have the Okay. This needs to go.
+
+Matthias Miller  08:42
+I actually, we should go get this guy then and contract entry, all of our contract entry notes, which is down the road. Okay, well, this is in the this is in the product. So thank you. Oh, this
+
+Matthias Miller  09:10
+needs to be moved to the contact record. Oh, never mind. Move to Pro. It's the labels, wrong. So this needs to be to the contact, record, contact,
+
+Speaker 2  09:36
+oh, my goodness. I love this so much. I love this so much. I love this so much. I just made a new note. It makes me so happy,
+
+Matthias Miller  09:48
+isn't it beautiful?
+
+Matthias Miller  09:59
+Okay, do. Shouldn't CRA conversions
+
+Unknown Speaker  10:04
+be payment records.
+
+Unknown Speaker  10:11
+Sorry, say that again.
+
+Matthias Miller  10:13
+Shouldn't CRA be paid payout conversions be linked into the the I the payment record.
+
+Speaker 2  10:29
+Okay, I guess we need to, or do we want to defer this a little bit? This is one of these that I feel like I need to argue with you about, because I hate the way that RTO Pro does this whenever that like they filled everything into the into the payment history, and then there's this whole in and out process that's just is so confusing, and I'm not sure how we could do it more elegantly.
+
+Matthias Miller  11:00
+Okay, there are two balances you need to manage CRA, CRA balance and security deposit balance, right? Yes. And so if you're delinquent and you want to use your CRA, you first have to convert the CRA to a deposit, and then you can use the deposit to pay for your payment.
+
+Speaker 2  11:23
+And when you do that, it goes back to your regular RTO contract. Just want to make sure I make that decision
+
+Matthias Miller  11:30
+type changes to a regular RTO
+
+Speaker 2  11:33
+contract. No, it's no, yes, no, you're correct it. But then you're also your amounts recalculate. Your monthly rent recalculates. The whole thing converts back to a standard contract
+
+Matthias Miller  11:44
+as of the beginning date. So all your payments count as if it had been a standard contract
+
+Speaker 2  11:50
+as, oh, I have no idea. I don't know if we've ever had to convert one.
+
+Matthias Miller  12:00
+Okay. Wayne, think
+
+Speaker 2  12:08
+I need to go ask Francine if we have any examples of a conversion out of a CRA into a regular. And then we need to look at, we need to look at payment history, how that, how that reflects, I needed, yeah, we need to kind of look at some of that. That is a Dwayne think, um, but from a technical development, from a technical standpoint, it does revert to a standard contract with standard payments, yeah, how we're going to do payment history, how we're going to do all of that. I don't know. I need to go think about that, but just keep that in the back of your mind. We need that whole conversion process.
+
+Matthias Miller  12:46
+Oh, yeah. So it may affect payments, but fundamentally, you are taking money that had been flagged as CRA from a CRA, a conceptual CRA account, and you might show it on your balance sheet, as you know, CRA funds or something, right?
+
+Unknown Speaker  13:06
+That's right. That's right. And then you say,
+
+Matthias Miller  13:08
+Okay, I'm moving it out of the CRA into security deposit, right,
+
+Speaker 2  13:13
+which I presume will also show on the on the balance sheet, yep, yep, yep, but it's two different GL accounts.
+
+Matthias Miller  13:20
+But then on a payment, you can say, I want to apply X amount of security deposit to this payment. That's right.
+
+Speaker 2  13:31
+But you cannot. You cannot do the like you have to fully convert the CRA in order to ever use it. It's like you can't piecemeal it until you fully convert it into the deposit account.
+
+Matthias Miller  13:42
+Okay? So, yes. So basically, to be clear, CRA must be converted to a standard contract moving funds into a security deposit CRA can not be used to pay only security deposits can be used to pay
+
+Speaker 2  14:06
+That's right. Now, the only caveat to that is payoff. If someone's doing an early cash payoff, then I don't know how you want to handle that. Do we want to go through the steps of converting it first to a deposit and then pay it out. Yeah, you now just kind of talk about how you know the mechanics of that, but the CRA is used at the point of payoff.
+
+Matthias Miller  14:42
+I mean, basically it, it changes hands from the customer, from being a liability to being used as a payment, that's right, and it transfers ownership from customer to RTO company, yeah, yeah. Yeah, okay, that seems pretty clear.
+
+Speaker 2  15:02
+And one of the to go back to the the payment process, where you're taking a payment, one of the things that we do need to be able to handle is when we, when you want to do an early cash payoff. And RTO has this RTO Pro has this thing where, when you when you're selecting as payoff, and you start through the payoff process, like, they will give you a whole breakdown of kind of report on, you know, here was here was so much, here's the contract balance, here's the early cash payoff, here's deposit amounts, here's, like, it kind of gives you this whole breakdown of information about the account as you're doing the payoff
+
+Matthias Miller  15:43
+if you I
+
+Matthias Miller  15:54
+think it makes The most sense. What does make the most sense. I'm a little worried about calculations being slightly wonky by converting it to a security deposit at time of payment.
+
+Speaker 2  16:14
+No, I don't think that's right. Well, okay, are you off? I don't I think, I think the payoff process is a different process from a conversion from a CRA. So I think you should be able to pay off a CRA and use apply those funds that are in the CRA account as part of the payoff process. I
+
+Matthias Miller  16:37
+think for a payoff, why would you just make a payment for the payoff, dollar amount, and then have a process by which you close out the contract, which would then trigger the transfer of the CRA,
+
+Speaker 2  16:50
+yeah, yeah. The mechanics of that thing, it's good. I think it's going to come down to an accounting question. Yeah. Uh, potentially, because, from the from the customer standpoint, it is, it is literally they have an early cash payoff. They're going to pay that early cash payoff, but the remaining balance of that contract, there still would be a balance on that when they do the early cash payoff. And that is the CRA so how, the mechanics of those combine up together needs to be very understandable. Needs to work for accounting. I don't, I don't think there's any necessarily considerations at the point like from a customer service standpoint, at the point of payoff, it just in payment history. It needs to make sense. In accounting, it needs to make sense. Those are going to be the key needs to make sense points.
+
+Matthias Miller  17:47
+Okay, here's one of the really obnoxious things you need to handle overpayments. Somebody writes a check for the full balance, and then you got to write a check to refund the CRA i
+
+Matthias Miller  18:03
+or you get to the end they overpay and you return their security deposit.
+
+Speaker 2  18:08
+Well, returning security deposit, yes, we need to have a point for that, but you your point about overpayments when the CRA is involved and I RTO Pro does not have a way to handle this, or has not. Historically, I don't know about currently, they have not had a way to handle this. Basically, what we end up doing is, is it's all a internal Calc, an internal thing. We We close the account for the correct amount, make a note in the account that they paid X amount more than what they should have, and then, you know, we go off and do this refund back to the customer that gets sent off to the the RTO owner to issue a check. But we need to do better than that in in here, because it's an accounting we need to be able to handle that.
+
+Matthias Miller  18:53
+So we were eventually going to add a check record, or, like a, I think it was something like a check. I don't remember what we called it.
+
+Matthias Miller  19:08
+I thought we had
+
+Speaker 2  19:15
+a sure because, I mean, we talked about not to file we we have to have some kind of payment writing capability, because we have to pay manufacturers for their for the buildings.
+
+Matthias Miller  19:23
+Yeah, here we go. So we we now have two types of payments. We have incoming payments and outgoing payments. Um,
+
+Matthias Miller  19:46
+uh, let's say that have a system that have RTO software that takes customer payments and. In and may send customer payments out. Do you have them as the same or different records, and what do you call them and, or and, or what do you call the type I
+
+Matthias Miller  20:24
+that's what they think. Oh, it's your transaction.
+
+Matthias Miller  20:42
+So we could change these to be rental transactions where you have a direction inflow and outflow on the outflow, you would have to specify, like you could pay for buildings, for customers, you could pay for pay out of their CRA balance, and then you could have miscellaneous expenses added on that would be tied out to a ledger account or but I almost Think if it might be easier to have a I
+
+Matthias Miller  21:26
+I don't know. The
+
+Matthias Miller  21:33
+nice thing about transaction then is you could theoretically, theoretically, it makes it easier to report on and track I balance balances. But then what do you call it a rental transaction versus an accounting
+
+Unknown Speaker  21:59
+transaction? I don't know, or
+
+Matthias Miller  22:12
+we could have him a single record. We could, I mean, we can show them to the user as one thing, but have it be separate under the hood, where we could just, I could talk to Seth, and we can figure out, I don't
+
+Speaker 2  22:31
+think you care the part, the part that I care about is that we have elegant ways to handle these things, in regards to overpayments and so forth. I uh.
+
+Matthias Miller  23:00
+But I think what you would have is, is a building. You have buildings, you have contracts. You'd have a customer. Well, this would be payee, which would be payee, auto populates with active contracts. Then you would have a CRA balance. CRA amount, dollar, you would have a security deposit balance. And then, I mean, or it could be a payment refund.
+
+Unknown Speaker  23:45
+So you're on outbound payments. I'm confused,
+
+Matthias Miller  23:48
+right?
+
+Unknown Speaker  23:52
+So in regards to in what is this outbound, I'm lost.
+
+Matthias Miller  24:05
+Okay? Customer overpays for any reason, or we need to write a check for the security deposit, or they overpay at the end, and we need to refund the CRA,
+
+Unknown Speaker  24:14
+right? So we need refund process, right? I
+
+Matthias Miller  24:23
+or paying or paying for buildings.
+
+Speaker 2  24:29
+I mean, that's a separate issue than handling this refund process, isn't it?
+
+Matthias Miller  24:39
+So would you just call this contract refunds.
+
+Speaker 2  24:43
+Yeah, and I'm in, I would envision that if you're in a, if you're in a, well, I guess we're at the talk about closing a contract, which I just looked up, how you the RTO pro closes a contract, and I maybe we're going to. Mirror some of this, and maybe we can come up a more elegant way. But I mean, there needs to be a contract closing process, and at the point of close, you need to have an amount that pays it off. But then if you have to have an input amount, and then if there's a difference between those two, you have, it's going to needs to prompt you to generate a refund. How we field that onto the contract or the payment record, or how some of that happens, it needs to, we, we need to generate a refund that is needs to be sent as some type of forward payment back to this customer and is trackable from accounting standpoint and the contract record and the count and the customers, the customer's account, blah, blah, blah. So how you I don't know that. I don't I don't want to necessarily over complicate that. I think it should be very simply, a refund is generated. Here's the dollar amount, here's why there's a refund generated. You send it to the customer, the payment and a note that says, why. And I think it's probably the same thing would be. The same thing would be if we always force the a a on a contract close to use all monies that are on the account. Everything else becomes a refund. So the security deposit, we force you to use it, and if that means, now there's an overpayment, well, then we handle the refund.
+
+Matthias Miller  26:26
+So basically, the way this will work, I think, I think this makes sense at the point of contract closure, CRA turns into security deposit. All security deposit is used for final payment, any remaining, any remaining refund, any remaining, any overpayment, is turned into a refund. But then you still need to handle the case in which, if somebody overpays on a contract at any point, okay, there is no overpaying on a payment. No such thing,
+
+Unknown Speaker  27:22
+right, right?
+
+Matthias Miller  27:26
+And if they say, I meant to pay 400 not 500 then what do you do? You
+
+Unknown Speaker  27:39
+give them a refund.
+
+Matthias Miller  27:42
+So the only thing refund really does is affects
+
+Matthias Miller  27:54
+and but there's a there's a payment refund, which works differently than a security deposit refund, because on a payment refund, you need to break it back and say, Well, we're reversing this dwf, we're reversing this,
+
+Speaker 2  28:11
+okay, so yes, you do need to Payment reversal, process this payment, reverse it and and obviously, you know you need to handle the money. How does the How does that even happen now?
+
+Speaker 2  28:41
+Um, history. Oh, this is a bad one to that's not good. Here's what that has no history either
+
+Matthias Miller  28:53
+come kind of nice, but kind of maybe this is too weird, but to have the payment to allow on the payment to have a type customer payment or refund. And when you have refund, then you can put in, then you can put in amount of security deposit to return. And then if you want to reverse it, reverse the payment. I don't know, though, on a
+
+Matthias Miller  29:34
+payment refund, it could also be kind of nice to just go on the payment record and say, I am refunding this payment as of this date. Here's how. But then you need to know, is it a credit card? Do you are fees going to be deducted from that? Are we going to write a check, which isn't the end of the world?
+
+Speaker 2  29:54
+So in the history in RTO Pro, you can select a row and you can reverse transaction. You. Um, without going and screwing up someone's account, I would have to, I don't specifically remember what all happens with that, but I would think, if it's a credit card transaction, then whatever was paid needs to be unpaid. And if it's a credit card transaction, then you go, it opens up some credit card portal, and you know, you go through that refund process with the credit card provider, great if it's if it's not a credit card transaction. And then the question becomes, do you do you offer on a reversal to say, yes, put it back on the card or No, we're just going to pay it back up by by by check or money order or whatever, probably should be something there. This feels like, you know what? This feels like we could burn a very long time this whole thing. Do we want to do? We want to turn this into a whole nother call?
+
+Matthias Miller  30:56
+Yeah, let's do this. What if you, and I don't know if this is a DB thinker, if it's something else but handle refunds. Handle refunds and we have payment refunds, security deposit refunds, then also handle
+
+Speaker 2  31:14
+No. I think it's, I think it's just two types. It is, let's let we need to handle payment refunds and we need to handle account closure refunds. It's really only in my mind, it's only two because if we, if at account closure, if we force you to use up all monies that are there, everything else becomes a refund. Well, then it's an account closure refund. But you do go
+
+Matthias Miller  31:37
+ahead, if you, if you refund something, what part do you refund? Does this all does do you just refund the rental balance and you say they paid for the late fee already? Anyway?
+
+Speaker 2  32:00
+Okay, that's the part I need to think, because I need to go figure out again. I don't remember if RTO pro gives you options for partial refunds, or do they force you to do full refunds and then go do redo a payment in order to counteract it? I kind of think that's how it was. Do we want to, like, part of me wants to say, if you started getting into partial refunds, then you start getting into this, like, what gets refunded part? And
+
+Matthias Miller  32:33
+the weird thing is that you could be caught up and you issue a refund on the date, on the on the day after. So when you calculate the due date, it suddenly jumps back half a month and you're past due which which is correct, yeah, and you incur late fee. It's just very bizarre that you can go anyway. It's just very bizarre that you could all of a sudden have your due date go backwards and and a refund makes your account overdue. Yeah.
+
+Unknown Speaker  33:03
+Yeah, but
+
+Speaker 2  33:05
+we want to model reality. So if that's the case, that's the case. I mean, like, I don't, there's not really much way around that. If you, if you're on time, and you say, Oh, whoops, I need a refund that. I mean, maybe it is that, you know, applying, I guess we could talk about, how do, how do late fees get applied? Are they automatic, or is there a cycle, you know, at the end of every day that goes and looks for accounts that need late fees. If we did some kind of cycle that looks for late fees and it applied once a day, then backing up an account wouldn't automatically incur a late fee. Yeah,
+
+Speaker 1  33:40
+there
+
+Speaker 2  33:45
+you go, make a To Do. Matthias, think
+
+Matthias Miller  33:52
+we'll get back to it. We will be okay. The this is part of the entry process. Contract signature is part of the contract entry process. Thank you very much. I love being able to defer that setting.
+
+Matthias Miller  34:11
+Rental company, rental contract type and state determine the contract definition. These fields get frozen after the contract start date, only someone With higher permissions, highest with highest,
+
+Unknown Speaker  34:31
+I don't know. Yeah,
+
+Matthias Miller  34:47
+do you? Did you? Do you want to defer this? Or do you like these? Or do you not know what's that the due date calculations? Do you want to come back to
+
+Speaker 2  34:59
+it? I. Uh, we need to come back to that, because I still have to deploy that and test that. And do you want to talk about unless, unless you went and coded that? And we just said, you know, if it's not, if it's not right? And we we go and test it and test it and test it, and we say, No, we need to make some refinements. We could go like it's 95%
+
+Matthias Miller  35:25
+I mean it, yeah, I mean, I think, I mean it's coded. It's slapping it in there. Its biggest cost is having the team understand how in the world this actually works. Yeah.
+
+Matthias Miller  35:46
+Because it's not documented, but we could actually document it. Actually, let's do this. I'm Fine. I'm relatively fine. I
+
+Speaker 2  36:44
+I just need to go. I just need to go find in a an account in RTO pro with a lot of history, and kind of run through and see where to see how that comes out. So I mean, at the moment, I I'm fine. If you want to document and then deploy it, we may need to come back around and refine it.
+
+Matthias Miller  37:11
+All right, so let's do this. We can. I
+
+Matthias Miller  37:31
+in Dwayne's notes,
+
+Speaker 2  37:36
+people are such creatures of habit. Good good customers are creatures of habit. The bad part is I need someone who's not a creature of habit so I can see this due date and next due date wander all over the place. And so far, I keep opening up accounts where they're just good, habitual people.
+
+Matthias Miller  37:55
+That's funny. Okay, how much do you want to deal with payment workflow? How much do I have to pay to pay to move my due date to the first
+
+Speaker 2  38:10
+Yeah, yeah, yeah. That is definitely a thing.
+
+Matthias Miller  38:15
+Well, I mean, this is pretty easy, so we would have a this would be on the payment record. Yeah.
+
+Unknown Speaker  38:34
+I need some coffee. Let me go start the water. Okay, I'm
+
+Speaker 2  38:46
+I'll put my headphones in so that way you can still talk to me while I'm working.
+
+Matthias Miller  38:51
+Oh, this is weird, because if they want to,
+
+Matthias Miller  38:59
+okay to calculate, take the number of months as a fraction of the last due date.
+
+Speaker 2  39:12
+Okay, I'm on my headphones now. I'm gonna go start this coffee so you can still talk to me.
+
+Matthias Miller  39:16
+Okay, so last due date I'm
+
+Matthias Miller  39:39
+fraction and multiplied by
+
+Unknown Speaker  39:43
+monthly payment,
+
+Matthias Miller  39:49
+last month amount,
+
+Unknown Speaker  39:56
+I'm stretching the range of my headphones.
+
+Matthias Miller  39:58
+Really good. Base. Our first target today, if target date is in a future month turned into a fraction middle month, amounts, number of months in between times, repayment. So
+
+Speaker 1  40:20
+So
+
+Matthias Miller  40:31
+then let's do this. I actually think I have this somewhere, chat, GPT, search. I
+
+Matthias Miller  40:48
+uh, today, there's the equipment analysis. Are
+
+Unknown Speaker  40:52
+we having a call tomorrow?
+
+Matthias Miller  40:55
+That's the plan. Yeah,
+
+Speaker 2  40:59
+I probably should be honest with you and tell you my brain is, I think I've hit my limit.
+
+Matthias Miller  41:06
+Okay, do you want to? Maybe we should just unless
+
+Unknown Speaker  41:11
+we want to, like,
+
+Matthias Miller  41:16
+I could. I could jump over with Seth and we can. I can work with Seth for a while.
+
+Unknown Speaker  41:20
+Yeah. Why don't we do that? I
+
+Speaker 2  41:28
+there. There is a limit to how much I can do this in one day. Is and once I read, I feel it. I literally feel it in my head. I'm just like, I can't focus my brain anymore on this. It just doesn't work. So let's tomorrow is
+
+Unknown Speaker  41:47
+what time.
+
+Matthias Miller  41:52
+Let's see we got, oh, we don't have assists, so we're at 911, 30.
+
+Unknown Speaker  42:01
+So 1130 my time, yeah, okay,
+
+Speaker 2  42:06
+um, then I will. We have a one o'clock today, right? Persist,
+
+Unknown Speaker  42:10
+yes, we do all right.
+
+Speaker 2  42:14
+Uh, thank you. I'm going to drop off and let you and Seth, go at it, and we'll
+
+Speaker 1  42:20
+start with a fresh spring tomorrow. Sweet. Sounds good. Thank you. Hi, sir, yep, bye.
+
+
+Transcribed by https://otter.ai

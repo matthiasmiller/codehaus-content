@@ -1,0 +1,770 @@
+Matthias Miller  00:51
+Can you hear me? Yeah, I can hear you. Okay.
+
+Speaker 1  00:54
+Well, we have Bruce, which Bruce is here right now. Rylan must have just ran to the bathroom and because he was sitting here right before I looked down. Not sure, because the Okay, there, he comes back. So I'll introduce you to him and or him to you, Ryland, say hi to Matthias. I'm Matthias. You do. And Bruce is our office manager. It's been here forever, and so I asked him to set in on this, because some of this stuff, I might even think I know how we do it, and I find out that I'm wrong. And Rylan is here as the hopefully we can keep this thing going, and he can kind of be the primary point of contact and and you guys can work together. So Bruce typically listens to me pretty decent. Rylan doesn't. So we'll let you work it out with him.
+
+Matthias Miller  02:17
+I see how this goes.
+
+Speaker 1  02:19
+I know, I know we have, we talked quite a bit about kind of the concept, but as far as moving forward, you're driving the bus. So you you start talking, I'll shut up. Yeah. I mean,
+
+Matthias Miller  02:34
+I think just by way of recap, or, you know, picking up a little bit where we left off. In my mind, the general roadmap is, obviously we've got, well, super big picture. We're not looking to we're looking to tie these pieces together. And for us to really be able to have an intelligent, intelligible conversation with especially with foundation, we're going to have to get pretty specific around what data needs to be moved, where, when and how. And as soon as we've got that done, then we need to hold our feet to the fire to give us a definitive answer we can until then, it sounds like we're not likely to get much progress. So in my mind, the big pieces there's the, I think the big next piece to bite off is really, what, what specifically, how does the information need to flow from which system to where? How do they map across? What's the timing of it? What triggers it and does it? Does it? Does it only go in one direction. Is going both directions, getting as much of that stuff mapped out as possible is, is the next step in this? Once we've got that, then we can start nailing down into the how have that actually happened? How that actually happens? What APIs do we need? Where at some point we're going to make it. Need to make a decision, if we go down, if we do use a data lake of some kind, you know, where does this where does this data actually live? What's the mechanism that it gets pushed across? But, but before we can get any of that down, it's, it's, let's, let's handle the workflow and the flow of information. So I guess the question is, how, what's the best what's the best way to what's the best way to do that we can I'm happy to be involved as much or as little as I as they need to be in the process. And I know you know, honoring your your budget expectations, the do we want to just spend this call here, working on that and getting some of that fleshed out as best as. We can that's sitting like a
+
+Speaker 1  05:03
+that's kind of what I was thinking. And as far as I think, I think we need you to guide the direction, as far as you start talking about mapping stuff out, and I my eyeballs start rolling back in my head, and I think we kind of understand what you're saying. But I don't there's too much of it that we just subconsciously think everybody knows you're probably going to have to draw it out of us.
+
+Matthias Miller  05:32
+Yep. Let me, let me, alright, let me, let me get this. Give me one second. Let me, let me grab some stick. Give me about a minute here to put some stuff together and pull some stuff up, and we can
+
+Speaker 1  05:51
+I would say that what we're trying to do is we're trying to go after the low hanging fruit and keep the stuff that's not right yet, or the stuff that we can't reach in mind as we head that direction,
+
+Matthias Miller  06:05
+Yep,
+
+Unknown Speaker  06:11
+see if we get the most bang for our buck.
+
+Matthias Miller  06:14
+That's mastering the law of that and avoiding diminishing returns is pretty good rule of life and rule of business. Yes, all right, so I'm going to grab some notes here from our conversations.
+
+Unknown Speaker  06:36
+And so this too,
+
+Speaker 2  06:53
+you get us. Didn't see it, yeah, I saw the scribble on last time, but yeah,
+
+Matthias Miller  07:03
+all right, let me All
+
+Matthias Miller  07:10
+right. So,
+
+Matthias Miller  07:18
+all right. So this is I'm just going to grab some of the stuff from the notes that you'd send over. We have in your tracking equipment, yes, equipment and what specific I just have rates in my notes from here, but it would be equipment
+
+Speaker 1  07:45
+rates, rates, new equipment and changes to equipment
+
+Unknown Speaker  07:58
+and operating costs, current operating
+
+Unknown Speaker  08:00
+cost?
+
+Unknown Speaker  08:07
+Yeah, that's all I can think of.
+
+Matthias Miller  08:12
+Cost Codes are there's some in foundation, some in heavy job.
+
+Speaker 1  08:21
+Is that correct? Yes, yes. And they need to sync. And currently, how are they syncing?
+
+Unknown Speaker  08:27
+Bruce, if
+
+Speaker 1  08:30
+we add a cost code and heavy job, how does it end up in foundation? We have to create one. So we're just doing manual entry, right? Okay,
+
+Matthias Miller  08:41
+okay, so this is yeah, but it's normally created in heavy job first,
+
+Unknown Speaker  08:51
+correct?
+
+Matthias Miller  09:02
+Might be a better diagram model for this, but this is going to work for now, yep. So let's see. Jumping back here job setup costs or job setup is both in that, both in heavy job and foundation.
+
+Unknown Speaker  09:21
+Correct? Actually, that
+
+Speaker 3  09:23
+heavy bed, first heavy bed, yeah, and then it's manually pushed to heavy job, and then from there, then it goes to foundation.
+
+Matthias Miller  09:35
+Yeah. Okay, so let's, I wonder this might actually be easier. I'm just going to make so job setup starts in heavy bid to heavy job to foundation.
+
+Speaker 1  09:51
+Does it? Does it ever go from heavy bid to Foundation also? So it goes that path, right there, right okay.
+
+Matthias Miller  09:59
+Okay. A and then, alright, so we're going to, let's go ahead. Let's see cost code,
+
+Matthias Miller  10:11
+heavy job to Foundation, and both of these are manual,
+
+Speaker 1  10:18
+and in when the job is set up in heavy bid, it pushes the cost codes to heavy job.
+
+Matthias Miller  10:27
+Okay, but that's automatic.
+
+Speaker 1  10:31
+It's not automatic, but it's a routine that it's an export routine that we we know we have to do, and we always do that, and that's just part of part of the setup. It's not intended to be an automatic routine.
+
+Speaker 4  10:43
+Okay, now the heavy job to Foundation is a little bit the same way. It's an export, yeah, the manual entry is mid job, and we have to add a cost code, right?
+
+Matthias Miller  10:57
+Okay, export, import for new job manual for mid job changes, right?
+
+Unknown Speaker  11:11
+So the we've
+
+Matthias Miller  11:16
+got, I
+
+Matthias Miller  11:24
+could we get more specific on, okay, on for employee information we are, I
+
+Unknown Speaker  11:44
+actually,
+
+Matthias Miller  11:48
+how much? Let's not get down in there right now. We have so we have employee, we have equipment. Does equipment need to get pushed across anywhere?
+
+Unknown Speaker  12:10
+Yes,
+
+Speaker 1  12:13
+and so new equipment has to be input and, well, we want it. We want an input and foundation, in theory, it doesn't have to be there, but it seems like that's our holding ground. So it has to be pushed from foundation to e3, 60. And also it has to be pushed from foundation to heavy job. And that's just new equipment, and then rates
+
+Speaker 1  12:57
+would need to go from foundation to heavy job. That's the only place it should need to go right. The equipment rates don't need to go to 360 or 360
+
+Speaker 3  13:15
+it brings up another thing. What about material pricing? Foundation to have a job. We can do that, and you can use insights.
+
+Speaker 1  13:26
+You're talking sending the the combined cost of it, just not individual materials. Okay, so Rylan said job cost such as materials subs,
+
+Unknown Speaker  13:46
+we've got a list. What is that?
+
+Unknown Speaker  13:49
+I mean? Labor,
+
+Speaker 1  13:53
+yeah, hauling material, subs, labor, hauling equipment. Equipment, cost is not so critical, because we can put that in there as a specific but it's all kind of part of the same thing. So what we want to be able to currently in in heavy job and in e3 60, we're tracking the specific hours on labor and equipment. But we're not, we're not tracking the specific dollars. So are
+
+Matthias Miller  14:26
+you tracking what, which? E3, 60 tracks what, and heavy job tracks
+
+Speaker 1  14:31
+what heavy job is for, is for Job Costing, and e3 60 is for our equipment maintenance.
+
+Matthias Miller  14:43
+And so you're tracking,
+
+Speaker 1  14:51
+three, 6e, 360 Yes, it's, it's, you have all the operating costs. But currently, if we go into e3, 60. I can tell you exactly how many man hours we have worked on a machine. I can tell you exactly, let's see, man hours. Yeah, I need 360 basically man hours, but I can't tell you the actual cost of those man hours and materials or parts. I'll call it parts there. We don't track parts, as per se in e3 60, all the invoices come to Foundation, and so e3 60 is basically just a glorified time card with diary notes. So if we can get the actual cost from foundation back to e3, 60, including parts, including actual labor cost, and I suppose there's some indirects. If we get that back to found back to e3, 60 from foundation, then at that point in time, we can do a lot more. Drill down the shop. Guys can drill down and see a real number on what what they're spending on a machine. Start Talking replacement time and scheduling and all that kind of good stuff.
+
+Matthias Miller  16:22
+Is there anything that gets and then, do you need any of the time out of e3 60 and heavy job for that costing, or does any of this stuff need to go over into heavy job?
+
+Speaker 1  16:35
+No. E3 60 does not need to go to heavy job. About the only thing that e3 60 and heavy job are going to share is specific equipment. So E, dz, r5 for example, would be a asset number that heavy job foundation and e3, 60 would all share. And so if there's a change in one it needs to change in all of them, or we need to have a routine set up to where it changes and the other thing so e3 60 exports one time per week, back to foundation with the labor hours for the for the week.
+
+Unknown Speaker  17:23
+So
+
+Matthias Miller  17:25
+labor hours from e3 60 back to Foundation, yeah.
+
+Speaker 1  17:31
+The other thing that e3 60 and heavy job would share would be employees,
+
+Matthias Miller  17:40
+right? And those are, do you
+
+Unknown Speaker  17:42
+have any employees? Any 360
+
+Speaker 1  17:46
+that's a true statement, too. So not every employee is in e3 60, because we just put the shop employees in e3 60. But every employee is in heavy job, and they could be a one to one match, right? We could have every one of them in both I sure think so. I don't see a problem with that.
+
+Matthias Miller  18:09
+So you would, you wouldn't have to filter it down. You just would never use the non shop employees in e3, 60, that's correct, and foundation would be your source of truth,
+
+Unknown Speaker  18:21
+correct? Employees, yeah.
+
+Matthias Miller  18:27
+So, I mean really, the realistically new equipment and equipment, slash assets, that's basically the same thing. You're just whether it's new equipment or modifying existing equipment, you're still syncing those codes across,
+
+Unknown Speaker  18:39
+right? Okay? Right. Okay,
+
+Matthias Miller  18:48
+there's all kinds of additional questions here, but
+
+Matthias Miller  18:59
+so do you have any kind of what do you use to identify? I mean, do you do is this manual entry right now from the employees? Yes. Do you have a hold on? Say,
+
+Speaker 1  19:15
+let me back up a little bit. In theory, we could probably do an export from foundation that we would import into e3 60, but it would be a manual export, manual import, and if it's one person that's not even worth it, am I saying that right?
+
+Unknown Speaker  19:39
+Sure, between the foundation and
+
+Unknown Speaker  19:44
+e3 60. I mean,
+
+Speaker 4  19:49
+we get employees from heavy job, not a 360 and e3 60. Well, I don't know how e3 60 does, yeah, I I.
+
+Speaker 1  20:02
+A little unclear on the exact potential, but right now, if there's a change, it's manual, yeah. Okay.
+
+Matthias Miller  20:11
+So if we wanted to uniquely one of the challenges with sinking, I'm going to grab some water. I'm still here. But if you if one of the challenges with sinking is you need to be able to have some form of identification on either side to say, well, this is exactly the same employer. This is somebody different, which means that if which we might actually, now that I think about it, we might have to have this living. It's possible have to have this living outside of this system, because you might not always have, you might not always have that if any of them in either of these would allow custom fields of any kind where we could store,
+
+Unknown Speaker  20:52
+store accounting codes,
+
+Matthias Miller  20:54
+yeah, some way that we could store it, an identifier that I Guess the accounting codes would be perfect, because that would change.
+
+Speaker 1  21:04
+So all of them have the capability of accounting codes. For the most part, we have got it to the point where the asset number or the employee number is the common denominator. So in theory, I'm going to say, in the last what 10 years, anything added in the last 10 years has a single number that is the same across all right,
+
+Speaker 4  21:36
+all software number or a employee ID, yeah.
+
+Speaker 1  21:43
+So we're pretty far along on at least having that the same, but we still have some equipment out there, and we probably still have a handful of employees that are using two numbers, or the employees would all
+
+Speaker 4  21:58
+be the same. I would change the numbering system. But it's not that the the ID number didn't change, right? Like the equipment, yeah, yeah,
+
+Matthias Miller  22:07
+right. As long as you have a, I mean, different, you still have a shared ID. You just have a have a new numbering system for for identifying so then specifically, what employee information? I'm assuming this is where we need to get down. Like, if we really, really want to get down in the weeds, it's like, does foundation break it down by first name, middle name, last name, do all of three of those? Is that how they're fielded in e3, 60, what specific things fields need to be pushed across.
+
+Unknown Speaker  22:48
+We do first, middle and last, and foundation, or
+
+Unknown Speaker  22:51
+in foundation, I don't know, yeah,
+
+Speaker 1  22:53
+and if it's pushed across, we can do it any way we want to, I think, in heavy job Ori 360 as long as that dish, as long as that employee id is the same,
+
+Unknown Speaker  23:10
+yeah, that's the primary
+
+Speaker 1  23:12
+key. Is your it will key in on that and and everything will take it from there.
+
+Matthias Miller  23:17
+So what? What are other things that you need to push across from, from Foundation,
+
+Speaker 1  23:26
+as far as employees, basically just a name, right? What about the rate? We don't push the the specific rate over that just stays, that stays in, that lives in foundation only.
+
+Unknown Speaker  23:40
+It would need to get a heavy job. For a
+
+Speaker 1  23:44
+heavy job is just an average rate, something else. So we just throw in X amount across the board. And that's where that true up would come in. To
+
+Unknown Speaker  23:57
+true up the price,
+
+Speaker 1  24:00
+which the concept there is, is, you know, the foreman, everybody from the foreman up, is in heavy job, and you don't want everybody's wages out there, for anybody from forming up to be able to see exactly what everybody's making, right? So, really, in reality, the name and their their employee id is as long as it's in there. You know, we could get to the point of of saying, Well, this is a truck driver and this is a labor and this an operator. But that's not the way we currently use it.
+
+Speaker 3  24:40
+It would be nice to at least have classifications. Classifications,
+
+Matthias Miller  24:44
+yeah, okay, and and do those classifications map directly across from one to the other, or does that vary based on how the systems think about it?
+
+Unknown Speaker  24:58
+Think what classifications are? Remain
+
+Speaker 3  25:01
+just the truck driver and everything else is what I'm thinking about separated. Well,
+
+Speaker 1  25:06
+what about PW jobs? Or PW jobs have got the
+
+Unknown Speaker  25:11
+like, suddenly,
+
+Speaker 4  25:14
+what do you Yeah, that's not, that's not from the employee records, though. That's
+
+Speaker 1  25:22
+that comes back from heavy job, though, and it ties to the employee when it comes back in,
+
+Unknown Speaker  25:30
+well, because of the earned code, which is that they work that week,
+
+Speaker 1  25:35
+yeah. So I think the only time that's critical is and we do pre daily wage work on some jobs, and on those jobs we we have to specify whether they're operators, laborers, truck drivers. Those are the primary ones, whether it's mode labor, whether it's admin labor. And so when that comes back in to Foundation, Bruce calls it an earn code, earning code, earn code, an earn code, and that keys in on essentially that would override their actual rate. So if they're normally make $10 an hour, and on this prevailing wage job, a labor is $20 an hour, then it comes into a foundation, and Bruce says, Oh, they're getting paid $20 an hour today instead of 10.
+
+Matthias Miller  26:33
+So that's defined by heavy. Heavy job would define that correct. And it gets pushed back into Foundation. And somewhere this is this really needs to, we really need to get more specifics around how heavy weight, how heavy job models that, but
+
+Speaker 3  26:54
+that that comes from heavy bid, that's something that and estimators and we'll give a job the wage rate to start off once we're bidding it, and then once we import it, then it's in heavy job. Okay,
+
+Unknown Speaker  27:12
+agree with that. The Weekly,
+
+Speaker 4  27:15
+you know what, they worked last week, comes from heavy job as far as hours worked. And sure,
+
+Matthias Miller  27:26
+I mean, so, oh, I mean, that's just generic, hours work so you can, sorry, hours work so that you can for running payroll. Or, yeah, right, so on the classification that you need in 360 what I missed that? What? What classification do you need these 360
+
+Speaker 1  27:43
+e3, 60. We don't even using classifications. We're just tracking who it was so that they can get paid. And then what we worked on,
+
+Matthias Miller  27:54
+okay? And then the on the in heavy job, what? What classification do you need in that one,
+
+Speaker 1  28:03
+we'd have to look that one up. Bruce, you'd have to send me. Melissa, burn codes, right? Is that the best place to pull it out of?
+
+Speaker 4  28:13
+But if it's gone by the by the employee file, I mean, as far as PW earn codes and such that can be different, from one job to the next, from one day to the next, multiple ones per day. So it's not the the Rylan is set up as a trucker. You're set up as an operator. That's not a one to one, right?
+
+Speaker 1  28:45
+I put a question mark on that classification. We might want to flesh that out a little bit later, but I don't think it's a big issue. I don't think so.
+
+Unknown Speaker  28:58
+Okay, so,
+
+Matthias Miller  29:01
+so also, there's a, there's a, I'm assuming there's some kind of active, inactive flag in e3, 60, and heavy job for employees or no,
+
+Speaker 1  29:15
+yes and heavy job e3, 60, I want to say yes, but I'll leave a little room for adjustment. And
+
+Speaker 4  29:22
+Foundation, there's a termination date,
+
+Matthias Miller  29:26
+yeah, termination on each of them.
+
+Unknown Speaker  29:30
+And foundation, I don't know if there
+
+Speaker 1  29:33
+isn't heavy job. Just says active or inactive.
+
+Unknown Speaker  29:37
+Heavy job, you can find anybody ever.
+
+Matthias Miller  29:41
+So we're going to need something. To I mean, pretty basic, but you do want to be able to deactivate them once they're gone.
+
+Matthias Miller  29:55
+All right. This needs some more fleshing out. Right?
+
+Matthias Miller  30:05
+So I'm going to assume you've got things like, Well, what do you have have? Like, what asset information is it broken down or equipment? Slash asset information do you have? Is it broken down by your make, model and other types of serial number, types of identification? Yes, yep, all that stuff, serial
+
+Unknown Speaker  30:31
+year, year. Let's see the group.
+
+Speaker 1  30:43
+Yeah, I don't want to say group, but yeah, what's it called? Category? Category? Thank you. Category is what foundation calls it heavy job calls it group. I think.
+
+Speaker 1  31:01
+So that would, you know, make model cereal, where? Where did we buy it? When did we buy it? And there's a sale date or purchase date, purchase date, the sale date, purchase amount, sale amount,
+
+Matthias Miller  31:25
+vacation, purchase amount, purchase date, sale, about,
+
+Speaker 3  31:37
+logical, about depreciation. Do you do anything
+
+Unknown Speaker  31:43
+currently?
+
+Speaker 1  31:46
+That is definitely the majority of it right there. I'm sure there are some other things that
+
+Speaker 4  31:54
+cost rates and billing rates, I don't know.
+
+Speaker 1  31:57
+Yes, they don't go to e3 60, but they need to go to heavy job rates, cost rate, billing rate, slash T and M rate. Foundation calls it billing rate. Heavy job calls it T and M rates.
+
+Speaker 1  32:31
+E3, 60 would have the category group in it also
+
+Matthias Miller  32:37
+p3, 60 calls it
+
+Speaker 1  32:41
+a group. I'm not positive, but it has the option in there to do it the same way, essentially, however we treat it in ether. And heavy job, we can treat it the same in e3, 60, but heavy job, it has the the capability of tracking a lot of this stuff. But we don't care about every job. We just care about the specific machine, such as the asset number and and what it is, so they can put time against it right?
+
+Matthias Miller  33:17
+Exactly? Does this look like? Yeah, good first draft.
+
+Speaker 1  33:21
+I think this up on my end so that I can be looking at it here. Let me,
+
+Matthias Miller  33:35
+let's see.
+
+Matthias Miller  33:41
+And Bruce, do you want join me to share this with you?
+
+Unknown Speaker  33:49
+Yes. What's your email? Fine. B, Wagoner,
+
+Unknown Speaker  34:00
+G, O, N, E, R, at, F, K, C, on, st.com, like that. You can't see Chad's playing on the Oh.
+
+Matthias Miller  34:18
+Oh, got
+
+Unknown Speaker  34:21
+it. Okay, cancel.
+
+Speaker 1  34:22
+Yeah, I'm trying to open e3 60, and I can't, so
+
+Speaker 2  34:26
+you gotta remove Yes, that's correct. Okay, you gotta remove it.
+
+Speaker 1  34:31
+Okay, I won't worry about it. But I pretty easily go into e3 60 setup and heavy job setup and foundation set up and screenshot them, and it shows everything that's there, and then just highlight the ones that we definitely use and the ones that are cherries
+
+Matthias Miller  34:52
+that'd be that that could be quite useful. Yeah, yeah. Uh. So this covers in equipment rates.
+
+Speaker 1  35:11
+So equipment rates, one thing that to mention on that is, is if it changes, so new changes, etc and etc. Anytime there's a change, it needs to go everywhere, yep. And if there's a change, it would always be in foundation. There should never be a rate change in heavy job. Or, of course, it's not even any 360 Sure,
+
+Matthias Miller  35:47
+sure need to go well, it's here. Let's just do this note, rate changes need to be pushed across everywhere anytime the rate changes. I A and I'm assuming a heavy job, then would have a an equipment rate. But you might have like, does that rate get? Well, this, this is where it walks through, would probably be helpful. But,
+
+Speaker 1  36:18
+so, yeah, go ahead the rate and heavy job. It allows all kinds of rates. It allows a base rate, it allows a second shift. Rate, third shift rate, overtime rate, I forget what all they are, a T and M rate, a double time rate, you can do, you can get as carried away as you want. Heavy job does not allow daily, weekly or monthly rates,
+
+Unknown Speaker  36:50
+but
+
+Speaker 1  36:52
+foundation allows hourly, daily, weekly and monthly rates. We only use hourly rates currently for about 98% of everything.
+
+Unknown Speaker  37:07
+But yeah,
+
+Speaker 1  37:14
+I can see the advantage of like a daily rate on on some attachments, pickups. We have a daily rate,
+
+Matthias Miller  37:27
+right?
+
+Speaker 1  37:28
+But the stuff that we're tracking in heavy job, it says hours, even though, behind the scenes, we know that that's for the whole day instead of just an hour.
+
+Matthias Miller  37:41
+Got it so you'll have some stuff that you'll just rent for an hour a day. Yep.
+
+Speaker 1  37:53
+Back up to employees. I just happened to think about an option to track time off. That's that's just a note. I'm not sure where that needs to go or how it needs to go
+
+Matthias Miller  38:10
+is, is that? I mean, not like you're not talking BT, like your literal dates off, I'm out, yes, there's Yeah,
+
+Speaker 1  38:17
+and current, currently, it's a paper that gets filled out as a request, and then it gets placed on a Google Calendar.
+
+Speaker 3  38:28
+Can't you do that? And Foundation did that,
+
+Speaker 1  38:34
+yeah, but there's some issues with that, because HRH, HR, HQ, yes, they can request it, but the only way it can happen is if the specific person requests it, a supervisor can't come in and put it in. So you take somebody that doesn't have internet access, we can't use it. So if we can't use it for everybody, it won't work for anybody. It's about what it amounts to anyway. Just something that we we need to think about.
+
+Unknown Speaker  39:14
+Okay, so this,
+
+Matthias Miller  39:16
+this, we handled this. We handled I cost codes are up above. I think this way of structuring, it makes more sense to me. Do we need to Procore is? Is that long? Like punt it down the
+
+Speaker 1  39:39
+road? I would punt that down the road, because I'm about 99.9% certain that we're not gonna make in any headway there, and if we do, it's a separate one that you know,
+
+Matthias Miller  39:58
+employee and equipment data. Is so employee data. What does this need to go to Foundation, to control board?
+
+Unknown Speaker  40:09
+Yes, that would be phenomenal.
+
+Matthias Miller  40:13
+And do you know, if we can, we know very little.
+
+Speaker 1  40:22
+What? We would like to get to control board from foundation is the first and last name and their asset number or their employee number, if we got that, that that's all that we need.
+
+Matthias Miller  40:36
+And then then automatic activation, deactivation,
+
+Unknown Speaker  40:40
+right? Yeah. Then,
+
+Matthias Miller  40:44
+so Trello access to I'm assuming Trello,
+
+Speaker 1  40:49
+I would say, is probably a, probably one of those that, if it happens to be close, grab it. But what we do with Trello is we just, we have a card in there for the employee, and we have a card in there for the asset. And so if it could add or be or archive, that would be a cool thing.
+
+Speaker 3  41:20
+And I wouldn't spend a lot of time on that, because we don't use it a lot. I mean, it's something that we can track, stuff somewhere that lower people down than just high level can see. But it's, it works right now, but it's kind of a pain.
+
+Matthias Miller  41:41
+I mean, isn't there? Wouldn't it? Wouldn't it be? I mean, couldn't you conceivably have, if this is just for visibility into information, we could have any number of ways that the information becomes available to them without giving them whole access to the system. Isn't that basically what you're after with Trello? With Trello?
+
+Speaker 1  41:59
+Yes, Trello is essentially an online whiteboard. So the board is F and K overall, the individual list would be the individual jobs, and then the cards are the individual assets, or employees. Yes, so basically, we're in and control board will do exactly what I said, but it's not, you know, Trello. I could send you a link to our Trello board, which may even be helpful, so you can pull it up and go, Oh, I see what they're doing. But I can send the link to anybody, and they have access to it,
+
+Matthias Miller  42:46
+right, as long as it's like a private, I mean, it's a it's a link that's like a password, and don't share the link, don't put don't post the link on the internet. But here you go, right? So we could,
+
+Speaker 1  42:57
+even then, the link that I send you will just get you on Trello, and then you have to enter your username
+
+Speaker 3  43:04
+password, and then I can, I can manage users. Sure that
+
+Matthias Miller  43:11
+makes sense. So if control board had a read only login for users, would that give you exactly what you needed? And it will if control board had two things, one single sign on, or some like nice account management, single sign on, or something like that, like trailer or I, maybe that doesn't even matter, but if it had a read only, if it if control board had just had a read only login for users, would that satisfy the requirements,
+
+Speaker 1  43:38
+sort of but it's not with what we're doing, Trello, you can yank it out of your pocket, grab it and click and drag, and it's just there. It's easy. It's intuitive. Control Board, it would take a lot more training for people to be able to use it. There's expense with control board that you don't have with Trello, it you can end up at the same end result. It's just getting there. Is pretty painful if we have to do it all on control board.
+
+Matthias Miller  44:13
+So on with with Trello, the cards are the asset and employee. But what are the what are this you're moving the list or the columns within that right?
+
+Speaker 1  44:26
+You know a magnet board is, yeah, that's what it is. Except it's online, sure. Okay, so, so the the cards, you can drag and drop them between different lists. You can even send them to different boards if you want to, but
+
+Matthias Miller  44:45
+I got that makes sense. So when somebody wraps up a job, they're moving on to somewhere else, you drag them over to where they're going to be. I Perfect. Oh yeah, but if you but if this were, I. Yeah, Okay, makes
+
+Speaker 1  45:04
+sense. There's some double entry there, because control board is where we're really the dispatcher is looking on a day to day basis to see who's going to the to where tomorrow, right? Trello is more of with employees. I don't know that anybody's even using the employees on Trello. It's more tracking the equipment than the employees. If I said, Hey, where's the 200 at I could go to Trello and look at 200 and it would show me what job it's on. In theory, if it's correct and somebody hasn't moved it and forgot to move it on the board, yep,
+
+Matthias Miller  45:43
+yep, okay, that part makes sense. This is
+
+Matthias Miller  45:58
+but really, the employees are the only things that you would really move well, actually, no, I guess you could. You would know. You could know, based off of of control board, where the where the employee and equipment is supposed to be at. Now whether that's actually where it's at is a whole other thing. And so if you, if you had linking, you could,
+
+Matthias Miller  46:26
+you could,
+
+Speaker 1  46:30
+well in theory of Trello, and if Trello and control board were linked, you can move it on One and move it on the other one, that that would be really, really cool. It would, we would use equipment and control board a lot more, and we would use employees in Trello a lot more. So currently, basically, really, Trello in reality, is to manage equipment and control board is to manage employees, but both of them well, control boards designed to do both. Trello is just an online magnet board that you can use for whatever you want to do. Yep, we just hijack the use of it. I
+
+Matthias Miller  47:23
+Sorry, equipment. I got this backwards. I gotta write my head. Used to manage employees, but could be used for both. So I mean, basically what you're saying, what you're effectively saying is that control board is difficult. Difficulty is expensive and hard to use. And if
+
+Speaker 1  47:50
+control board is not is is very reasonably priced for a for two or three users, if we wanted to trot it out across the company, then there would be a lot. I think a read only user is $50 a year. Maybe that's a read only user, but so the price is not out of line, but they can't do anything with it. They can see it, but they can't move it from one job to the other. And plus, in the learning curve on it is just pretty high where, with Trello, we pay for the admin users. But I can invite a I forget what they call it, not an observer, basically a guest. I can invite a guest and they have the capability to to move, move the cards around on the list, it would be a read only user on control board would not be able to do that. Yep,
+
+Matthias Miller  48:58
+makes sense. Alright. I control
+
+Speaker 1  49:06
+board is a small company that they've been very, very good on. If I call right now, one of them will answer the phone and we can start having this conversation right now. They're very open to trying to make their product better and trying to make it work better. It work better for us. If it was if Trello and control board were going to interact, my guess is it would be because control board made it work, not because Trello did,
+
+Matthias Miller  49:35
+yeah, understood. I mean, it seems like if you had a completely perfect world you control board would have an interface that works like Trello does, and and something like something so simple, and it would have some kind of pricing that's comparable to Trello guest pricing, and that would be like dream come true. But, yeah. We have something manageable, and it's not the biggest, yeah, it's not the biggest pain point at the moment, right? Okay, so the information comes in from jobs also is what needs to get pushed as far as jobs, what needs needs to get pushed the control board.
+
+Speaker 1  50:24
+As far as job setup, basically just the location of the job, the name of the job code, job code, yeah, name and code, project, number, location. Location, name and code. And then you know, you can have all the typical stuff, such as owner, site superintendent, project manager, all that kind of stuff you can input all of that, if you want to on heavy bid to where that could all push down. Okay?
+
+Matthias Miller  51:11
+And with this, it's at the point that it goes from heavy bit to heavy job that this would get sent across. Does it also need to
+
+Speaker 1  51:20
+come across from heavy job? It could. It could either go from heavy bid to heavy job, or it could go from heavy bid or from heavy job. Hold on, say, let me back up. It could go from heavy bid to control board. It could go from heavy job to control board or foundation to control board.
+
+Matthias Miller  51:38
+Right? It
+
+Speaker 1  51:39
+is, as long as it gets there. It doesn't matter how it gets there,
+
+Matthias Miller  51:45
+but in some ways, the simplest thing is, I probably, yeah,
+
+Speaker 1  51:52
+that's exactly what I was thinking. Because if everything's living in foundation, as long as the information gets the foundation correctly,
+
+Speaker 1  52:07
+okay? And we don't necessarily, currently, we don't care about the project manager and site superintendent and the owner and all that in there, but that is information that I can see us. You know, if that's low hanging fruit, let's Make it work,
+
+Speaker 1  52:31
+right? Potentially useful, potentially
+
+Matthias Miller  52:36
+Okay. I
+
+Matthias Miller  52:46
+All right. Well, we should, let's, let's clean up some of this. This bottom stuff here, I think this is most of it, equipment, change orders is something to put on the list.
+
+Unknown Speaker  53:09
+Where do change orders foundation
+
+Speaker 1  53:12
+is so change orders are a special kind of problem that we're trying to fix, and historic. I'm going to say the way we've been doing that we're we're changing actively in the middle of changing. And so a change order should, and you guys correct me if I say this wrong. But in reality, we're going to start doing our change orders in heavy bid. So we'll create the change order and that sometimes that's totally additional on the project, and sometimes it is. Instead of doing 100 feet of pipe, we're supposed to do 150 feet of pipe, right? So sometimes it just would update a cost code with quantities. Sometimes it would send out a new cost code as a totally separate cost code. And so once that's approved and it gets pushed out. It needs to go into Foundation project HQ, which we're calling everything foundation here a change order and project HQ, we need to create it in heavy bid. It needs sent to project HQ, then project HQ would want go through the process of getting it approved or rejected. Once it's approved, then it is pushed to Foundation. Position, and then Foundation has to sync it, and so there's multi step process. I don't think we're going to fix that end of it, because that's internal foundation set up. But once it's approved, how does that cost code, or how does that change order get input into heavy jobs so that everything's there, it has to go from heavy bid,
+
+Speaker 3  55:33
+no, it's manual entry into heavy job right now, nothing goes from heavy bid to heavy job with a cops or within change order. But it can, it can, which
+
+Speaker 1  55:45
+is the way we want it to work. We want it to be an export out of heavy bid to heavy job, and then heavy job would send it back to Foundation. We we can do man, but currently we're doing a manual entry on that side and a manual entry on your side. Heavy job that's in the foundation. That's where you get cost codes, right?
+
+Matthias Miller  56:06
+But would, wouldn't you do? You send a project h hQ for approval, and then upon approval, you send it to a heavy job, and then you send it, or, I don't know, go ahead,
+
+Unknown Speaker  56:17
+sorry, computer foundation,
+
+Speaker 1  56:21
+I I'm yes from having been we're just in the middle of trying to change this. Currently, it's all manual entry. We get approved. Well, somebody writes it down over here, and somebody writes it over here and but if we get this, we get this set up and working to where heavy bid will send the new cost code, or the updated cost code information to heavy job. Then heavy job will then send it on to foundation, correct and by foundation, I'm not talking project HQ, I'm talking there's a change order so that when it's approved, cost code change, right? A cost code change
+
+Unknown Speaker  57:10
+that could come from heavy job,
+
+Speaker 1  57:12
+yeah, okay, and we're not even essentially change order would be it could change the budgets. Which we're really not using right now, correct?
+
+Speaker 4  57:28
+Not on change order. I mean, when the job is set up, and so the inputs, the cost code is over from heavy jobs,
+
+Speaker 1  57:39
+yeah, and the budget is attached to the cost codes.
+
+Speaker 4  57:44
+Budget is the cost codes, right?
+
+Speaker 1  57:47
+Okay, so, so we've been theory, got the budget handled, but any changes it needs to run this. No, okay, I'm kind of talking myself in the circle here, but I think I think I understand it better and I'm explaining it, which doesn't mean that I understand it very well.
+
+Matthias Miller  58:09
+Well. It may just mean that there's some complexity here. That's a possibility. Yeah,
+
+Speaker 1  58:17
+the thing is, with it, with a change order, it's doing multiple things. It's just getting it approved as a first step. So you don't send a change order with a cost code and a budget change until it's approved. So essentially, you send out this, let's, let's do it the old way. You send out this piece of paper, and somebody says, Yes, go ahead and do it now. It comes back and says, Hey, we're supposed to go ahead and do the change order. The estimators and heavy bid it at that point in time would initiate the Okay, let's push this over to heavy job. And they're they're not pushing the change order over. They're pushing the changes over to the cost code, or adding a cost code that from there would go back to Foundation, and foundation say, Oh, I'm doing more than I thought it was, or I'm doing less than I thought it was. And they would make the changes, whether it's a new cost code or whether it's a change of quantity on an existing cost code, which would change the budgets
+
+Matthias Miller  59:28
+the way that I would. Does heavybit have any way to track approvals?
+
+Unknown Speaker  59:36
+I don't. It's
+
+Speaker 3  59:39
+it's all supposed to go through heavy job and whatever other products they've got to be approved. So heavy bid, you set it up, you send it on, and then heavy bid never sees it again. Okay, so
+
+Matthias Miller  59:53
+theoretically, you could send it to heavy bid, then send it to heavy job, it's sitting there. Heavy job. Knows it's not approved yet. And then you send from heavy job over to project HQ for approval. And once it gets approved, you go back to heavy, heavy job, approve it, and then it, it updates the the job it pushes to, and then that pushes to foundation. Or no, is that true? Yeah. That true?
+
+Speaker 1  1:00:23
+No, that that if, if you would come to me and say, hey, I want you to do this extra work right over here, that would be an estimating issue, to come up with a price for it. Once they come up with a price, then that would go to project management to create a change order. And that change order would would have a description of the work. Sometimes it's very basic, sometimes it's involved. It would have here's the cost, at least internally, it would have the labor costs, the equipment costs, the hauling materials, all that cost. It would have the markup in it. And then once it's created in our own system, then we would send it to the owner, the contractor, whoever we're working for, then they would get either approve it, modify it, request modifications, or reject it. But let's assume that it's approved and it comes back to us as approved at that point in time, there's two notifications that need to happen. One, it needs to go back somehow or another, we need to notify heavy bid that change order number one was approved so they can now push out the information to heavy job, which will end up with the information in the budget and the updated cost code information and foundation, Well, isn't that and then, and then the other part of that is Project HQ will push the data to foundation that says, hey, we've got to change order. And here's all the information. I'm a little confused on are we? Are we coming together and given the same information twice? Because when we push it into Foundation, and you import it into foundation, it changes the cost and the revenue and everything. You know, I'm
+
+Speaker 4  1:02:45
+thinking, when project HQ pushes it out to the foundation, Foundation's done is updated.
+
+Speaker 1  1:02:54
+And so if we push it from heavy bid to heavy job, heavy
+
+Speaker 4  1:02:58
+job, and then heavy job back into foundation already
+
+Speaker 1  1:03:02
+there. When I think we I think we got a traffic jam there, either that or a head on collusion, collision, that's something that we would need to investigate, because it would be, when it gets sent out, it doesn't treat it any differently from a cost code, from heavy bid to heavy job. And so if we have a routine that says, hey, we're going to send it to heavy job, and heavy jobs going to send it through Foundation, and then we end up in foundation, we got two sets information that it's the same thing that come from two different directions.
+
+Speaker 4  1:03:41
+Well, if it's coming from heavy bid into project, HQ, awaiting approval, and so forth, it gets approved, it goes to foundation. Why wouldn't foundation then send update heavy job?
+
+Speaker 1  1:03:53
+Because it's a in theory, it's a cost code or it's a cost code adjustment. And if we go back up to the top here, where it says cost codes, oh, that, I guess it's down. There we go, yeah, Cost Codes, heavy bid, heavy job, and maybe that's current, and then heavy job to foundation. That's the way that it will work when there's a job set up, yeah. But after the fact, if we, if we do a change order to the job, or does it need to go the other direction? Does it need to go heavy bid Foundation, Project HQ? Foundation, heavy job?
+
+Unknown Speaker  1:04:33
+Well, that's what I'm saying. It does
+
+Speaker 3  1:04:35
+need to do that. But how will Costco get to project HQ without seeing heavy bid or seeing heavy job,
+
+Unknown Speaker  1:04:45
+I don't know.
+
+Unknown Speaker  1:04:47
+I think that's why. I think that's why you're involved here.
+
+Matthias Miller  1:04:51
+I can tell you what scares me. Here's what scares me, the idea there's two things that scare me. Number one, letting the. Problem with letting project HQ push to foundation and just saying heavybit You don't do anything, is now you have a scenario in which you have two ways for foundation to get updated, and we think project HQ is supposed to do the right thing. We think heavy job is supposed to do the right thing. But there is the possibility, on a change order, that project HQ works one way and heavy bid works another way, and now or heavy job works another way. And now we're trying to figure out what went on and why does this not match. So I really just, I would really prefer strictly, from a technical standpoint, I don't know the implications for for project, for everything to flow through heavy job, so that there is always alignment between heavy job and foundation. The The other issue with letting project HQ push to foundation is that is that if we feed information from foundation back into heavy job, now you've got information flowing two directions, and you have the classic confusion of, I mean, it's like the two kids arguing and said with each other, and Mom told me to go mow the lawn and and Dad told me to pull weeds, and all right, what do we mean? Mom told us that we and now who's right? Well, we don't know, so
+
+Speaker 1  1:06:23
+that we definitely need to look into that, because that's, I mean, it just occurred to me, as I was talking through it, that the project HQ is a foundation product, but it's a it's a separate software. That's, you know, they're both foundation products, but one of them is the accounting software. One of them is a project management software. And yes, everything you just said is correct, but that's something we would definitely need to figure out what the trigger is. Is
+
+Speaker 3  1:07:05
+there any way that we can all change orders would be handled this way and projects are handled this way? Would that simplify it or complicate it?
+
+Matthias Miller  1:07:18
+Well, I mean, but still a heavy job. Aren't, aren't the change orders consolidated into the job? Or are they do? They continue to persist as change orders?
+
+Unknown Speaker  1:07:27
+Well,
+
+Unknown Speaker  1:07:31
+yes, we do it both ways.
+
+Speaker 1  1:07:34
+It just depends on what it is, on how it is treated, and I think probably as much of anything, the answer is, we need to figure out what the system is the process and make sure that we're doing it that way. It depends on whether it's a change to an existing cost code, or whether it's a change on the job that adds additional work that is not covered existing cost code. So one way you're one way you're adding a cost code with a budget attached to it. You're adding a cost code with labor dollars, equipment dollars, sub dollars, hauling dollars, etc, you would be adding to the job, or you are modifying a cost code. That the cost code is still there, but you're changing the labor dollars, sub dollars, hauling dollars, equipment dollars, and that that would vary across the board, depending on what is requested to be changed.
+
+Matthias Miller  1:09:01
+All right, well, I mean, so
+
+Unknown Speaker  1:09:05
+yeah, I got,
+
+Matthias Miller  1:09:09
+I will also, also know this is just kind of a guiding principle. There's lots of times when we get into software problem and, oh, wow, should this work? How should that work? And hand the baton back over and say, Oh, this is a business process problem. Let's go figure out the business process and or how to improve it. And once that happens, it's amazing how many things fall into place. Yeah, yeah. It doesn't always happen. But you know, business, business process, business problem, precedes software. So I do need to drop. I wasn't sure how much time to allocate for this, but I wonder if that's not right to get started. I mean, this should give you guys a lot, and I think, I do think there's enough, you know, get a little. Sense working together, that we could get a gain a lot of momentum if we were willing to lock ourselves into a call for, I don't know, 9090 minute it depends. It depends how much of a marathon runner you are. 60 to 90 minutes is about the max without a break. But we could also, you know, block out three, three and a half hours. Do a take a sprint. Take a sprint, take a break, take a sprint and and push through some of this stuff together. But
+
+Speaker 1  1:10:29
+I like the 60 to 90 minutes. 60, it seems, you know, we're right at 70 minutes right now, and 90 minutes by the time we get the end of 90 minutes, we've got more homework to do than we're going to get done in two weeks. Okay, sounds good. So I would say, if we can, we can set another meeting for two weeks from now. Let's just, you know, I'm not going to be here next week, and I feel like I need to stay involved, at least paying attention to it. And probably, if we do it, try and do it every week, that's going to get overwhelming. That
+
+Matthias Miller  1:11:09
+sounds about right? I will. I'll just have it's, it's easier if I don't get my hands in the middle of this because I screw things up. But I'll have Audra reach out and find, find something about two weeks out that that works? Yeah, works for me. And you guys
+
+Speaker 1  1:11:25
+okay? And if there's looking at that list right there, if there's things that you're like, hey, this needs to be this needs to be taken care of. So we can continue on. Highlight it red, yellow, pink, I don't care what,
+
+Matthias Miller  1:11:43
+let's just do. I'm actually going, let's, how about we do this? Let's do, I mean, I think, I think most of the tbds, let's see what. And not all of this stuff, critically, has to be done. But these are definitely things that's not, let's do a yellow if you guys know what you want to do for tracking time off or what can be done currently that could be useful this, this probably requires, requires discussion, to really map out and or screenshots. I think for any of this stuff, it could be really useful to do the screenshots and circles that you were talking about, to draw lines from from here to there. It gets very it gives you some very specific mapping. This is definitely something that could be done, getting more specifics around that. This one we actually have, well enough. I mean, I guess the question, I think the biggest thing so these few tbds, but I think the real thing that would be most useful would be, whether it's a screen share, is the screenshots. And if it would be useful next week for me to hop on a short call and just kind of walk through what I'm thinking on that to explain it, or if you want to do some and have me review it, I really think that's probably the thing that would unlock the most forward movement between now and our next call, and then even on the next call. Then once we get down into job crossing and job setup. These are really deceptively simple, but I know that there's a lot more complexity to what gets pushed I mean, it seems to me like a lot more complexity, what gets pushed across and what appears on the surface?
+
+Speaker 1  1:13:45
+Yeah, I think that would be pretty easy to do, to get some screenshots pulled together so we can share that and give Ryan something to do here for the next week or two.
+
+Matthias Miller  1:13:59
+Rylan, does that make sense?
+
+Unknown Speaker  1:14:01
+Yeah, yeah, I follow you. Okay.
+
+Matthias Miller  1:14:07
+All right, sounds
+
+Speaker 1  1:14:09
+good. I think we made good progress right there. So thank you.
+
+Matthias Miller  1:14:13
+Yeah, you're welcome. Glad to Well, have a fantastic rest of the day and a great weekend. Yeah, you too. Thank you. All right, thanks, yep, bye.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,203 @@
+Unknown Speaker  00:18
+You. John, good noon to you.
+
+Unknown Speaker  00:23
+Sorry. What's that
+
+Speaker 1  00:24
+I said? Good noon. Good noon. 1130 here in 12th. Oh, no wait, never mind, never mind. But it's not 1230 there.
+
+Matthias Miller  00:34
+It's breakfast burrito
+
+Unknown Speaker  00:36
+time over here. All right.
+
+Speaker 1  00:41
+So we have questions for you. I know you weren't expecting questions. I'm shocked,
+
+Unknown Speaker  00:49
+disappointed.
+
+Speaker 1  00:54
+I'm disappointed in my day is ruined. So I have been working on the mechanisms for adding adding rental fee rows, and I've got that working. And before I finish out my payment saving mechanism, I was like, Well, let me get late fees coming over. And then we were looking at the contract definition, and we were wondering about how we're currently specifying them. So right now, we have late fees in an RG, can you ever select more than one late fee here?
+
+Unknown Speaker  01:54
+Can you hear me? Now, I can, yeah,
+
+Unknown Speaker  02:00
+can you hear
+
+Matthias Miller  02:06
+me something? There's no There's back.
+
+Unknown Speaker  02:09
+Yep, you're back.
+
+Unknown Speaker  02:22
+Hmm,
+
+Matthias Miller  02:24
+all right, well, I'll just do this. Um, no, you should not be able to have more than one one fee type row per type,
+
+Speaker 1  02:35
+and how are per account late fees done? Do we just so the idea is that we are not allowed to charge the same customer a late fee on multiple contracts for the same period. Is that the idea,
+
+Unknown Speaker  02:59
+and I think,
+
+Matthias Miller  03:04
+that is the idea can we
+
+Speaker 1  03:16
+so we have some glorious things that come up with that which it's stuff like, um, which contract or which contract do we pick? Do we just pick the most expensive one? Um, what happens if they're late on one and then the other in following periods and the periods don't line up with each other? How do we decide what period is a source of truth? Um, of
+
+Matthias Miller  03:45
+I thought there was a, this is the pain piece. I thought there was a place where we had talked about so we can find it a basis of either calendar month or something else.
+
+Matthias Miller  04:11
+Late Fee, duplicate prevention,
+
+Speaker 1  04:16
+okay, I saw that field like 15 minutes ago, but I wasn't sure what it was For current.
+
+Matthias Miller  04:37
+Like, here's my knee jerk reaction. Can we how painful for you? Is it for you to table this until October?
+
+Speaker 1  04:54
+As in the the perk per account?
+
+Matthias Miller  04:57
+Ones? Yeah, either one or. Even the automated late fee creation. I mean, maybe the per account ones, or maybe the like we're going to be importing sample data.
+
+Matthias Miller  05:17
+Yeah, I guess the perkin, I guess the per Cal
+
+Speaker 1  05:20
+ones, the per contract isn't too complex, and I think it would be helpful for, you know, the actual development, yeah, I think that's pretty straightforward. I I would, I think I would rather not have it in an RG, but, you know, and because all these things like late fee type and maybe, well, actually, I don't know, maybe method applies to the other ones, delivery fee for payment.
+
+Speaker 2  05:59
+Contract definition doesn't have multiple EPS,
+
+Speaker 1  06:03
+does it? No, we Matthias said it wouldn't be. But I'm just wondering how many of these other fee types are going to use anything besides just the fee field.
+
+Matthias Miller  06:20
+See, originally, when we had it was going to be a choice between damage waiver and late fee. We moved the Damage Waiver fee out.
+
+Unknown Speaker  06:32
+Is that this is where it is
+
+Matthias Miller  06:34
+now, yes, um,
+
+Speaker 1  06:38
+and that's just a total amount for the whole account, that's how much, and do they pay that upfront? Or, how does that
+
+Speaker 2  06:46
+work? Your price, that's for the contract, not account. I think, yes, per contract, monthly, yeah, month, yeah,
+
+Speaker 1  06:53
+monthly, or a period, period, amount, yeah,
+
+Matthias Miller  07:00
+raise. I think,
+
+Speaker 1  07:02
+I assume this would be the total amount, and then we just split it out over the course of the contract.
+
+Matthias Miller  07:06
+It's a monthly amount, $4.50
+
+Speaker 1  07:10
+a month. Specifically, monthly, not period correct.
+
+Matthias Miller  07:13
+Well, I mean, I'm sorry, it would be monthly. You're right. If you switch to a weekly period, you're going to pay at about 25 or who knows what I would assume. Well, you're gonna have a different
+
+Matthias Miller  07:41
+how are we handling weekly I thought we had a
+
+Matthias Miller  07:59
+now I Don't remember how weekly contracts were gonna weekly feels like a almost like an afterthought.
+
+Unknown Speaker  08:10
+Well, we also have bi weekly and semi monthly.
+
+Matthias Miller  08:21
+Um, I would assume for now that it's monthly. It might not be right. I don't think we're I think weekly is basically a translation of a monthly contract into a weekly payment, weekly or bi weekly payment amount. So it's more about repayment than it is about contract definition. How you repay it? I would, I think you could, for now, remove, change, okay, but then on the on the rental company,
+
+Matthias Miller  09:13
+and then I think you could make the rental fee, or the late fee settings be a series of fields that are, you know, basically starting with grace period days over to be non RG fields.
+
+Unknown Speaker  09:30
+And then the RG would just hold, it would hold
+
+Speaker 1  09:39
+all these random fee. This is a user owned item, so it hold all the miscellaneous fees, and those would just be, well, that was
+
+Matthias Miller  09:50
+it was never intended to include all of these fees. I mean, it was spec to include leafy and dwf.
+
+Unknown Speaker  09:57
+Okay, so then I.
+
+Matthias Miller  10:00
+And I'm not even sure about the other fee type. This is where part of me is like, okay, the oh, I kind of feel like the data model on fees is broken. And maybe the easiest thing would be we have a we were going to have fees broken down by repayment cycle, and there's nothing here for repayment cycle.
+
+Unknown Speaker  10:38
+Repayment, as in how often your payments
+
+Matthias Miller  10:40
+are, yeah, monthly or weekly. What
+
+Unknown Speaker  10:43
+do you mean by broken down by
+
+Matthias Miller  10:46
+well, so you can, you can specify late fee rules for weekly payments and late few rules for
+
+Speaker 2  10:50
+monthly payments. Ah, I see that makes sense.
+
+Matthias Miller  10:54
+And also fee type is supposed to be broken down between Damage Waiver versus late fee. But given that damage waiver is now handled elsewhere, okay, but do we want to handle damage waiver on a weekly basis? This is where I just feel
+
+Speaker 2  11:17
+like, couldn't you have a late fee, RG, and then another fees, RG. But what we need to handle damage waiver
+
+Matthias Miller  11:32
+for there's a lot more details that a late fee needs than the other fees too. I agree. Here's what I would like to propose. I think I'm I'm very nervous about making all kinds of changes, and this is not the right time to grab pull Dwayne into these types of conversations. What I would like to do is go implement late fee per contract. Assume that it's a monthly payment amount and don't spend an inordinate amount of time making it work. I mean, I'm not sure we talked about freezing these values on the contract. I don't even know that we should do that like I think it's kind of like, if you if, if having late fees is useful, go slack together an X 30 that looks at the contract definition, figures out the late fee stuff is, and throws on the late fee knowing full well that we're gonna have to come back, like, I'm not confident at all in this
+
+Unknown Speaker  12:30
+data model. Yeah,
+
+Speaker 1  12:35
+yeah, that's sort of how it felt to me, as well as doing some other stuff, just with assembling my whole, you know, JSON object that I'm going to be moving back and forth and stuff. And then I, when I came up to actually copying over all these fees, you know, rental fees are mostly straightforward as far as timing wise. But yeah, it just seemed like it wasn't quite clear. So yeah, I will. I'll hold off on on this. And I assume it's after the after the demo is when we hop back in.
+
+Matthias Miller  13:04
+As soon as we come back from the expo, we're gonna have to get our heads together and figure out what's what's right side up and what's not okay.
+
+Matthias Miller  13:21
+Yeah, yeah. I'm feeling a little blind why we actually, why we can't just manually add late fees for testing purposes. But, like, it doesn't, doesn't seem like adding the issue, the actual adding the late fees, incurring late fees, really is requirement for the payments portal. But admittedly, I don't have the full picture either.
+
+Speaker 1  13:45
+The reason why is I wanted something besides just rental fees showing up in my in the portal, just to sort of test that, test that, you know, multiple payments were working, and everything is mapping correctly when I'm saving a payment and applying the payment impact to the contract, and rather than just putting them in manually, I thought we were already copying over enough information that I could Do it in a actual or an actual way, but doesn't seem that way, so I will revert to the the manual method.
+
+Matthias Miller  14:30
+Yeah, sorry,
+
+Speaker 1  14:31
+no, that's fine, yeah, all right,
+
+Matthias Miller  14:38
+yeah, okay, that's your call if it's if it's easy to accent it out, but to throw stuff on there, just be aware it's mostly throw away. And so make your life easy.
+
+Unknown Speaker  14:49
+All right. Cool.
+
+Matthias Miller  14:52
+Thank you. Yep. Thanks. Bye.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,170 @@
+Unknown Speaker  00:49
+Hello Hi there
+
+Unknown Speaker  00:50
+hey good how you doing?
+
+Unknown Speaker  00:54
+I'm good how are you?
+
+Unknown Speaker  00:55
+I'm doing I'm doing good are you able to hear me
+
+Unknown Speaker  01:05
+yeah can you hear me
+
+Unknown Speaker  01:08
+your voice is little bit low now it's good I think
+
+Unknown Speaker  01:12
+you're looking good this might help
+
+Unknown Speaker  01:24
+alright no good okay sounds sounds good all right well let me let me make a new document here here's a little bit what I'm looking for
+
+Unknown Speaker  01:50
+okay
+
+Speaker 1  02:42
+alright so this is the raw data lead in data is driven off of contacts and the can the sales team tracker is driven deals okay and so we're looking for a number of a number of and so we're looking for a looker studio dashboard that can be run probably by date range I'm not sure what all you can do and then split by salesperson and we have here the owner ID I have not checked into what it takes to pull in key when you're making them for this
+
+Speaker 1  04:05
+so we only have owner IDs so we could probably just split by Owner ID for now or we can I'll take a look today and see see what it takes to get the
+
+Unknown Speaker  04:14
+get the link into the under Name. Hold in. Okay. So we're thinking number of leads, leads by date number of leads by source probably the most effective is something right.
+
+Unknown Speaker  04:54
+See If b to
+
+Speaker 1  05:10
+something like this C two, C two c is that like I don't know how we want to handle handle ones that came in, let's just do this. They come in, if they come in on Google, we're gonna group them into there that's that's more like resource
+
+Speaker 2  06:05
+we can, I can identify that by using Facebook, click ID and Google ID in the dashboard. So don't worry about the source. I will mention that. It's it
+
+Speaker 1  06:19
+sounds good. And then average days to get a connection. So we would be looking at the distance between contact creation date. And do creation date.
+
+Unknown Speaker  06:45
+of days, we need to
+
+Speaker 1  06:47
+Yeah, number of days, where we could also possibly use this connection day.
+
+Unknown Speaker  07:04
+Either one would be fine.
+
+Speaker 2  07:08
+Think calculating dates is very easy, because sometimes the numbers are not put in the shoot. We can calculate by the date
+
+Speaker 1  07:23
+number of conversations I don't know that we have
+
+Unknown Speaker  07:32
+we probably have to pull in conversation data which we can do. If I give you a link from that remember exactly what are they haven't structured? They got activity events, I think
+
+Unknown Speaker  07:57
+it's called
+
+Unknown Speaker  08:05
+the backs of cars read a bunch of articles bench going.
+
+Speaker 1  08:15
+And then the call is based off words.
+
+Unknown Speaker  08:29
+I don't know. I'll have to look into that. Okay, go ahead.
+
+Speaker 2  08:38
+Further number of conversations, we need to check most of the time in the lead case we need we have multiple records for the same deal or we have a multiple steps. So we count the steps, how many steps the perform and we can get that
+
+Unknown Speaker  09:02
+and just look based on deal stage?
+
+Speaker 2  09:05
+Yes. Got it. So if if the deal is completed that that have some generic number of steps, there are a number of calls here if we if we need to calculate the exact number of calls done by the salesperson. That's how we need data. We need to call data we need to merge that call data with this lead source or the lead right. We can do that from there
+
+Speaker 1  09:53
+and then the so let me see what what it takes to pour call information into Google Google Sheet
+
+Unknown Speaker  10:05
+Were
+
+Unknown Speaker  10:18
+there other things that you can think of.
+
+Speaker 2  10:22
+One thing I need to know, want to clarify, basically, which date you want to use as a base date, like On which date you want to filter out your dashboard. Is it a start date? Or is it a deal date. Most of the cases, creation date is a base date, most of the time. So if we apply a filter on the top, with the date range, flexible, we select the current month. So it will get only that it created on current month, but it may miss some date dates from the completion. Because if we want to know how many deals are done within a month, let's suppose a daily started on April. But it's in the end of April, and it's done in the May. So we need to identify a rule. So we should we can consider that the deal should be in the May or we should consider that it should be in the apple.
+
+Unknown Speaker  11:44
+Good question. So I would think we're.
+
+Speaker 2  11:51
+But mostly we do, but will mostly we do we create, we use a base date as a creation. But in our calculation in the dashboard, we mentioned some tables where we show the lead, actual lead is coming from the done deal, let's suppose or the deal is done in the mail. But the data is coming from the apple, we mentioned that the lead is coming from the apple. So let's suppose the number of leads done there is 10. And we can show in the next column or the next graph or the some line, how many leads are created in May and completed in May. We can show that on there. And we can show that how many leads previously created, but not completed in current month?
+
+Unknown Speaker  12:45
+Yeah, I think something like that sounds great. Yeah, yes.
+
+Speaker 2  12:49
+So in that case, we mostly create a three page or four page dashboard in which one page is considered to be current current month or a week or a day, we we can start that. Second is our date range for the one year is the most important one yet. And third is the general date range. So in which week, a user can select any date range, from any period of time, they want to see how many leads are created, and how many deeds are done on that specfic period. So it comes to one more thing, how, how much how many times your basic sheets columns are changing. Like this, we these, we need to extract the data from this sheet to a sheet where we connect that to the dashboard. So if the columns are changes in here, or changes or changes in here, so it's it's break up the connection model time. So if we set up generic number of columns, which we want to use in the dashboard, and that will solve the problem, but basically, my question is how many how much all faculties you've changed the name of the dash columns, or the column arrangement?
+
+Speaker 1  14:28
+So I don't know that we need to change it much at all, I think if you wanted to, you could. So just to give you this is all driven by a script and I think if we wanted to we could we could we could simplify this to whatever is useful for you in in your in your dashboard. So this is this is Here's the script automatically determines, you know, here's the context HS object ID what you know, these are the properties. And then anytime it runs, it will read it will recreate res three through however much it'll just delete it and, and put in new putting new information. Okay,
+
+Speaker 2  15:23
+so you're using HubSpot, I think in this shipment right and you're using Google Apps scripting on backend or just
+
+Unknown Speaker  15:36
+Google Apps scripting on the back end.
+
+Speaker 2  15:39
+Okay. So we can do one thing and let me check if that is free to connect the with the HubSpot, the dashboard with the HubSpot so we can directly connect HubSpot to the dashboard to end we can
+
+Speaker 2  16:06
+if that is possible, we can progress that spot then there is no need of this thing
+
+Unknown Speaker  16:18
+Sure I'll share this with you anyway just in case when we take a look here I can also see guess what you can look that up are you planning to look at look at it later and get back to me
+
+Speaker 2  16:41
+okay, let me check it out. Basically we mostly most of the times use connectors to connect the things with the dashboard so we don't need any kind of scripting or that thing so let me check
+
+Unknown Speaker  17:03
+this right now that's data warehouse.
+
+Unknown Speaker  18:15
+If we can connect that to hotspot but
+
+Speaker 2  18:26
+one more thing when we create a dashboard we need to use our email for the company if that is you want to use that within the company Okay, so like it you as you are using this company name to you just create a small dashboard for me but a small page and give me access edit access and I will do all the corrections because if I did that with my email and the migration or the is not possible there yeah and I'm one human will very well. So one one thing is that one is you can create an email for me and just give me the access of that email and I will create all the things and it will work fine.
+
+Speaker 1  19:27
+Okay, this is where the Okay, so So do you want an email or can I just create the look or studio and I
+
+Speaker 2  19:37
+think that is the best email is the best option. Okay because in that giving access and doing access is easy. Right?
+
+Speaker 1  19:49
+Let me Alright, I will get you an email later today. And then then you send it to us and then giving you access you need access to HubSpot with then email as well.
+
+Speaker 2  20:02
+Yes. I will check that detail. Also, Lucas studio is also connected connectable to the hotspot, but how much data they provide how much things they provide in hotspot, Google? Lucas studio, I, we need to check that. Because sometime most of the tools don't provide everything on the connector or the connection base that connection to the apps. So we need to go to the third way like we are already doing, we need to write some scripts to get the data and we use that data.
+
+Speaker 1  20:43
+Okay. Sounds good. I'll get you the email and I'll get you access and yeah, we should have that. Have that later next.
+
+Unknown Speaker  20:55
+Okay. And let me know. Anything else.
+
+Speaker 1  21:05
+Okay, sounds good. I will. And then Robert mentioned something like this runs about 400 Is that Is that right?
+
+Unknown Speaker  21:11
+Yes.
+
+Unknown Speaker  21:16
+All right. Sounds good. Alright, naturally
+
+
+Transcribed by https://otter.ai

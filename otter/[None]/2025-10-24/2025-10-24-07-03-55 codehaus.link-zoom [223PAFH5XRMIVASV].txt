@@ -1,0 +1,185 @@
+Unknown Speaker  00:17
+How to surf. Hello,
+
+Speaker 1  00:22
+sorry you didn't you got just the very, very end of my dizzying walk back the hallway, back to the cold end of the building. Good grief, it's cold back here, 65 degrees. Look at that, man. Okay. First question, yep, when you guys say performance implications, are we? Are we like are we? Does it mean that if we, if you had okay arbitrary number, 50,000 records in the software, and you had data restrictions. What is what does that mean? It's going to take five seconds now to load a contract, or it's going to take 30 seconds now to load a contract.
+
+Matthias Miller  01:12
+Were you involved at all with some of the slowdown when accounting went live? Yeah, okay.
+
+Speaker 1  01:19
+But I mean, it never was like, yes, it was like, it went from being, you know, instantaneous load to I might have to wait two or three seconds
+
+Matthias Miller  01:30
+for something to load, right?
+
+Speaker 1  01:33
+I mean, is that what we're talking about? Are we talking like it's going to be like, What? What? What this one client with RTO smart says where it takes 30 seconds to load a an account. Well, I
+
+Matthias Miller  01:43
+mean, I don't know how to answer that, and I don't know how to answer that entirely.
+
+Speaker 1  01:54
+Yeah, okay, and when you say data restrictions, are you saying it's the the level of restriction that we're trying to implement for the wholesale dealer portal, or is it like
+
+Matthias Miller  02:07
+it's the database the you know this, the lock, stock and barrel restriction that affects every single record in the system, Because everybody's everybody's in the same system, and nobody's allowed to see anything that anybody else
+
+Speaker 1  02:24
+has. So you're talking more like what we did for the wholesale dealer portal, where it's like, maybe it is the wholesale dealer portal. Well, it's it's okay. Josh's explanation was that if that record's not assigned to you, that you don't even know it exists, you can go play around address bar. You can go do like it doesn't exist in your world. Is that what you're talking about? Yes, that is what I'm talking about. Okay, so what if wrote me this? What if we did more of a restriction level, like we're doing with the retail dealer portal, where we're not restrict like if a retail dealer right now decided to go and change the ID on a record in the address bar, they would be able to go see somebody else's record, okay?
+
+Matthias Miller  03:05
+And then you custom build menus.
+
+Speaker 1  03:10
+Yeah, it's all done like the way that we keep them out of each other's stuff is that you built a lot of those CRM macros, those CRM cockpit macros, where it basically takes it, looks up who you are based on active user, and assigns that into the Ask prompt. And we hide the Ask prompt so you can never change the Ask prompt. And so therefore you always end up only seeing your stuff.
+
+Matthias Miller  03:33
+So if you figure out the name of somebody else's accounting company, you can pull their income statement.
+
+Speaker 1  03:41
+Yeah, you'd have like, you'd have to, like, you would have to do it through the address bar. You would have to, you know, the way that the Ask prompts, you know, or in the Ask or in the address bar you you know, if you got really, really smart, you would be able to do that
+
+Matthias Miller  03:58
+address bar. My understanding was that the primary gain for this was from a marketing advantage, so you had a reason to charge people more to put them into but
+
+Speaker 1  04:07
+it's not. And here's, as I thought about this further, and as Leanne and I were talking this morning, I have concerns for someone, let's say, like upward here in town, who runs 14, you know, mid size to smaller size. Maybe manage 14 different RTO companies. They probably have, you know, total contracts. They may be somewhere between 20 and 40,000 contracts that across 14 different companies that they're managing. So and they would want to run that all inside of their, you know, one instance of the software, presumably. So, and
+
+Matthias Miller  04:42
+they have some users who have access to some of them, but not to the others. Well, yeah,
+
+Speaker 1  04:46
+so you would have like RTO owners that want to be able to log in and see their information and see their stuff, but yet we wouldn't want those owners to go off and see other owners stuff.
+
+Matthias Miller  04:56
+Well, for the owners, why wouldn't we the owners of the. World of difference than end users for the owners. So there's, there are a few ways we can do it, if, if you're talking upward, somebody like upward,
+
+Speaker 1  05:19
+but it's also like, it's also companies like J mag, who, like their predominant businesses, is owning their own contracts, but they do some management for some other like partnership management, where, you know, they are, they are co, you know, working together with a, let's say, a dealer that wants to own some of their own paper, and yet that dealer wants to be able to access some of that stuff, and they
+
+Matthias Miller  05:39
+wouldn't. But how would, how much of that stuff?
+
+Speaker 1  05:43
+Well, I imagine they would want to be able to log in and see, I don't know, okay, to be clear, I don't know. It might be just reporting. It might be but then it's like, ideally, my I'm so used to the flexibility of this platform that I'm like, Well, I want to give that flexibility out. Flexibility out to an end client and but that's like that opens up. Well, I guess here's what I'm here's the question I'm trying to get to is, if we treated restrictions on on on, keeping some of this stuff separate inside of of a shared database. Can we treat it like we do retail dealers at this point where it's like, yeah, if you got really crafty and it yes, you could get somewhere else in the software that
+
+Matthias Miller  06:41
+well, you can do even better than that if they don't need to, if the owner only needs to pull certain reports and the owner doesn't need to view details.
+
+Speaker 1  06:50
+But it's more even. So it's more even so like, well, think of it more like a shared like, I have company A and company B and Company C, Company D, inside of one shared database with all of my companies. Think of it like almost full access to the software. But yet the record restriction is, is based on the fact that we're always going to look up whether you're assigned as a, as a, you know, I don't know, for lack of, for lack of better conversation, a way to talk about this, I'm assigned to that sales order, and so then I can see it. But if I got really crafty, I could go change up the company in the address bar based on the Ask prompt, and I could change up the record ID, and I could end up in some other company
+
+Matthias Miller  07:35
+stuff. So the bottom line, the bottom line is you don't know 100% what you actually need when you go to market. You just want the full flexibility when you get
+
+Speaker 1  07:46
+there. It's probably something like that. What I I can very quickly see, depending how I how I position, the product that you get somebody like, Well, I think, I think it's you, let's, let's use somebody like a JMAG, for lack of better, for, for the example, I'm a big RTO company, and yet I have a, I have a dealer that's been, I'm building a story here, because this kind of stuff happens. I just talked to one yesterday. Okay, I'm a little manufacturer. Okay, let's, let's do it this way. Let's use the example I had this conversation with yesterday. I'm a little manufacturer, and I'm working with Heartland, and, you know, it's we kind of like, would like to own our own paper and kind of start to manage our own thing, and, you know, kind of reap the benefits from from the profit margin side, on both sides. And I go to Heartland, I say, Hey, I'm leaving. I'm going to go start owning my own paper. It says, Heartland says, Well, hang on a second. How about you own the paper? Fine, we'll go along with that, but just let us manage it. We'll still manage your customers. We'll still this and, you know, we'll still, you know, we'll still kind of take care of this stuff. And you can log in anytime that you want, and see your customers. You can open up their accounts, and you can go see their stuff, and you can go, you know, and go, go see your own P and L, and you can go see all of your own stuff, but they are kind of like a mini company inside of my other company, my larger size company. I don't want them ever to come over and see my stuff, sure, but yet, I don't, you know, I might have 40,000 contracts in here, and I don't want them to be slow when trying to open up their stuff. And I don't want to be slow when I'm trying to open up my stuff. Are you tracking with me?
+
+Matthias Miller  09:50
+I think the next question would be, do you need this by December? Do you need this by spring? No, I'm, I'm.
+
+Matthias Miller  10:07
+I think there's a potentially a world in which the major 90% of the users can see everything which solves 90% of the performance issues, and some people can only see some stuff, which ends up being slow for them. I don't know completely for sure. The other concern is the other big, you know, one of the big concerns is just, if we always throw everybody in the same system, in the same shared system, like there's just we immediately have that. We have both the complexity of making sure that we handle restricted data right throughout the entire system, which is additional development cost early on, plus the performance bottleneck. Plus, if they ever want to split off their own instance, it's like if we actually give them their own instance from the get go, it's brain dead to say, Oh, you get to go from light shared systems that only slash your client name to, and I don't know how far Josh is wanting to go with this, if it's client name dot only, or if it's only dot their domain, or you know what it is, but we could, we could split you out and tie some kind of benefits to that that They only get when, when they have that capacity.
+
+Speaker 1  11:45
+The other aspect of this is to say, Okay, this is where my mind was going. I before we really ever had this restricted conversation. Restrictive conversation is that, you know, I could also incentivize companies to be in inside of a shared database by passing on some of the cost savings by being inside, like the cost savings of not being out on your own instance, pass some of those cost savings on to the client, put them all inside of a shared database. The secondary benefit to that is that I get a whole lot more data to actually play
+
+Matthias Miller  12:20
+with no but what you do instead? Well, okay, but the problem is that the problem that that's a conversation you have to take it with Josh and Alice, because you're substantially you're tying our hands behind your back when it comes to a server management standpoint, because we can't load balance anymore. We can't we can't add another AWS instance and move some systems off. Everything is in there and and so if you need, if you need cost savings to incentivize that's a whole other conversation. Josh. Josh is in our conversation yesterday, Matt, I think, I think we're getting to the point where I'm the middle man. I'm relaying information back and forth. I don't think it's completely clear. We're, you know, there's this probably ends up needing to be a conversation. You take it more in depth with them, I think.
+
+Speaker 1  13:15
+And I thought maybe that. I thought maybe that was the case. And I started to text Ellis this morning, and I'm like, Well, let me just run this through you in case, you know, I don't want to side on you in this conversation.
+
+Matthias Miller  13:26
+Yes, yesterday, you had told me just just yesterday, you told me it wasn't a pricing issue. Now you're saying you want to pass on the cost savings. You said it was a marketing thing with a shared database, access to analytics. We have solutions for a lot of that stuff. Okay, well,
+
+Speaker 1  13:39
+maybe, maybe I misrepresented my position somewhat, and maybe my position is not fully fleshed out in my head yet.
+
+Matthias Miller  13:44
+Well, I think that's completely possible.
+
+Matthias Miller  13:55
+It's there is, I mean, there's a whole host of i
+
+Speaker 1  14:03
+Well, okay, let me, let me, let me say it this way. What scares me a little bit is a whole bunch of little tiny RTO companies that come along and it's like, well, I don't want to have to say to these, like to put every single one of these little RTO companies out on their own instance, like they're not going to generate enough revenue in order to pay for the costs that are associated with running an instance, you know, if you run, if you have a, if you generate, if you generate sub 100 contracts per year like that, thing doesn't grow very fast, and it doesn't produce enough revenue to Say, you know, to support putting you out there on your own instance of the software, and they're not going to want to pay, you know, what it would actually cost. So getting to the 500 ish range of of contracts really supports, from a numbers standpoint, what it takes to make money. And actually you. Support your own instance. Well, neither do I want to turn away these, these smaller size RTO companies. And so then it's like, Well, okay, fine, we'll put them inside of a shared database one. Well, okay, that now, you know, it sounds like we may end up with a fairly decent size issue if we had a whole bunch of little RTO companies that equals to a whole lot of contracts because of such
+
+Matthias Miller  15:23
+Well, so, so therein, I could make it this is, this is completely and clearly outside of my lane. I could make the argument that any company that sells 100 contracts really isn't they're very likely to be high support and low profit, but I could be completely mistaken
+
+Speaker 1  15:47
+well, and they should, and they should be exactly what I tried to push this guy for yesterday. It's like, Um, no, it doesn't make sense for you to start your to run your own RTO company. It makes more sense for you to own your paper, push it off to a management company and let the management company share the cost of the software and all of those amongst the companies that they run. But again, it's okay. And, you know, let's say hypothetically. Well, no, I know hypothetically, then I could find my own self in a situation where, if I, you know, if I've got 20 management clients that produces, you know, all of these different, you know, medium, small, size, whatever, like, suddenly I could find myself in an issue where, well, no, I guess not. Because you're saying, as long as I don't have to hard separate the companies where, right, and that we don't care.
+
+Matthias Miller  16:38
+You can have 100,000 contracts in there. We don't care. It's the moment that you say, okay, Joey over here can only see these guys, and Sammy over here can only see these, and Sally only has to see that you can see these. And you need something more than just so here, here's what I think, I think you would say again, you know, I'm not, I'm not in your business shoes, but I think, I think what I would say is, is, look, we have a 500 contract minimum, and if you don't have that many contracts, you're probably at a point where it's actually cheaper for you to go get a management company to just run this for you. They're way more efficient, and you'll actually end up with more money in your pocket. They can get access to the software make it all fast and easy. And if you guys grow it to 500 and you want to take it back over for yourself, like, go knock yourself out.
+
+Speaker 1  17:31
+Like, okay, so Riddle me this with hard restrictions. What's my cap, where we really start to see performance issues, where this is unacceptable? Is it? Is it 10,000 mark and and let's, let's hypothetically say, 10,000 contracts
+
+Matthias Miller  17:53
+Josh and Ellis done to understand
+
+Speaker 1  17:58
+that okay? Part of me wants to try to say, Okay, so let's, like, give me some feeling for performance.
+
+Matthias Miller  18:06
+It's, it was incredibly painful in accounting. It took, it took reports from seconds to minutes you weren't in accounting so you you only felt like the secondary pain, and some of it could have been how the data restriction rules were set up. Some of this could be potentially alleviated with coding, I mean, but then this is custom coding for each system, like, can we set specific I don't even know, okay,
+
+Speaker 1  18:41
+well, let me ask you a different question. Yep, what we're designing and doing now, does any of the way that we build data, models and architecture now have any impact on this conversation?
+
+Matthias Miller  18:57
+Yes, we are intentionally adding RTO company or accounting company. I mean, accounting company is all on all accounting fields anyway, but we're making sure that all records have an RTO company on them. And even if they wouldn't, we could still backfill that in the future. But that's that's a definite performance gain to have that stored directly on every single payment, payment, payment type, etc.
+
+Speaker 1  19:22
+So how far along could, like, how? Okay, Let's hypothetically say we got to spring, and we're like, man, we got to go back and solve this issue. How painful is that? Versus saying, let's solve it. Let's figure out the solution now, and build with that in mind as we go. Which is which? Like, if
+
+Matthias Miller  19:41
+you, if you tell my mind, it's, it's not that terrible to look at it in. I don't feel like it's that much. Okay. I don't really know for sure. It's possible it's 10 to 20% more to do it in six months. It's also possible that. Is you'll add that much. I mean, you'll make up that that difference, not needing to think about it as we build out the next phases of the software. Kind of like trying to make Thanksgiving dinner while your kitchen is being renovated. Yeah. So I don't, I'm not that. I don't have a.in the stomach, in my stomach, about
+
+Speaker 1  20:27
+and some of this is, to be honest, some of this is me going, I don't want to have to build complex pricing structures for clients. I want to be like, Look, you have 100 contracts, it's 1% if you have a million contract, it's 1% I don't care. I don't want to have to go like, well, if you are it's below this size, it suddenly goes massively more expensive in order to use our software. It's like, oh, good gracious. I want to come up with a solution that goes, Oh, it doesn't matter. Come here. We have a solution to get you in our software at 1% no matter what size you are. Maybe that's just me being lazy, or
+
+Matthias Miller  21:02
+it's just 1% with the with the with a minimum. I mean, yeah, I mean, but we're, yeah, we're on this side. We are also wanting the software to be maintainable, both from a development and hosting standpoint as well. So it's two simplicities butting heads. I know.
+
+Speaker 1  21:23
+I know. Okay, so it sounds like go have a conversation with Josh and Ellis to get even further into this part of me. I guess it also sounds to me like I should do this sooner than later, so that if we need to really change up the way that we're thinking, that we do that now, versus down
+
+Matthias Miller  21:43
+the road when I didn't say that. But that's fine. Well, I'm making,
+
+Speaker 1  21:48
+I'm drawing my own conclusion. I wasn't saying what you're I wasn't, I wasn't saying that's what you were saying. I was I'm drawing
+
+Matthias Miller  21:53
+my own you're because, from a business model standpoint, or from a
+
+Speaker 1  21:56
+Yes, got it from a business model standpoint, because what I what I don't want to do is, at this point, I feel like I run the risk of marketing in a way that is deceptive. And there's nothing that drives me more credible, incredibly crazy, than software companies. Like, you're going to get it for this number, and you get to get to the point it's like, oh, sorry, we had to change the pricing structure. You're not, you don't blah, blah, blah, so it's gonna be this much. And it's like, well, shed app did that quite a bit back in the day. Yeah.
+
+Matthias Miller  22:36
+Okay, sounds good. I'll shoot out an email and let you guys take it from there.
+
+Speaker 1  22:42
+Very well, cool. Well, enjoy whatever you're doing next week. What are you doing next
+
+Matthias Miller  22:49
+week? I'm going to straighten out some pallets. I'm working with a pallet manufacturer.
+
+Speaker 1  23:02
+Did some sort of family thing. I was like, straighten out some pallets. Is that, like, food for like, family issues, you have to go, Yeah, got it, okay. Sorry, I had invited. If I would have known it was business, I wouldn't have asked you. I for some reason, I thought you were doing some sort of family thing.
+
+Matthias Miller  23:25
+And I was like, gotcha. Gotcha. Well, enjoy the
+
+Unknown Speaker  23:29
+straightening out of the pallets.
+
+Matthias Miller  23:31
+I will. I am actually awesome. Thanks. Bye.
+
+
+Transcribed by https://otter.ai

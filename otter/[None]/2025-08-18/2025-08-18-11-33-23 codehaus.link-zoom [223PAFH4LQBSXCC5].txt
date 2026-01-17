@@ -1,0 +1,710 @@
+Speaker 1  00:48
+Okay, fair warning. Dwayne's pissed today,
+
+Unknown Speaker  00:51
+yay.
+
+Unknown Speaker  00:54
+Yeah, I'm glad you think so.
+
+Matthias Miller  00:59
+It means you care about something. How's that for a well, toxic positivity spin on it.
+
+Speaker 1  01:07
+Josh thought this was a great idea to give marketing company access to assist I don't agree. It has been. It has been nothing but trouble. Well, I don't know about nothing but trouble. It what's the issue? This is okay. In fairness, this has nothing to do with them having access to assist. This has everything to do with this. I don't feel like going through the whole entire story and exploring so let's just, let's just get to some type of solution. Needless to say, with with what, with what was attempted to be done. It we broke a bunch of things in pricing. And it reminds me that we have a fairly delicate pricing model and and let's not, let's not try to repeat that in any form or fashion over here in RTO software, just FYI. But anyway, so, so here's the deal. Do you
+
+Matthias Miller  02:21
+have an input file for me? What do you mean? You're taking sales order IDs from a or do you have a sales order ID we can test with?
+
+Speaker 1  02:31
+Okay, so here's, here's my issue. I i am trying to mimic what, from an import standpoint, what we're doing in in updating builder notes. All I want to do is I want to be able to select the row over on the the first report that I sent to you. And I needed to run and and check the Fill itemization check box on the sales order so that when I update price, I could update so unless there's a better way to do this. I have been going round and round trying to figure out a good way to do this where I can, on a building level report, be able to fire, to be able to re itemize the sales order. So I might be going around my ass to scratch my elbow, and if I am, just tell me, but I thought I should be able to fire an import based off of of I mean, it's very similar to what like the report setup is very similar what we're doing with update builder notes in the in the sales portal. And yet, every single time it's not picking up the so num ID based out of the selected fields in the link action. And so I'm going hysterical. I don't know what I'm doing. That's the problem.
+
+Matthias Miller  03:52
+All right, let's figure it
+
+Matthias Miller  04:00
+out. Okay, sales order.
+
+Speaker 1  04:02
+Oh, we probably don't need the pipe after that. Do we? That doesn't
+
+Matthias Miller  04:05
+matter. Who cares? Okay, building, so mid the
+
+Speaker 1  04:11
+second one, the second URL I sent to you is the, is the is the import.
+
+Matthias Miller  04:22
+Okay, so I'm just going to create a terminal, BIM downloads, so dot txt, and we're going to go in here, which I had open and killed it, preview, choose file, so Id.
+
+Unknown Speaker  04:53
+Wait, what on earth are you doing? How
+
+Matthias Miller  04:55
+did you? Why did you, why did you prop? What do you mean? How did you do
+
+Unknown Speaker  04:59
+that? What
+
+Speaker 1  05:07
+preview? I didn't know you could do that. Choose File. I
+
+Matthias Miller  05:12
+create a blank file. It says 60577, I hit open, and I hit Continue, and then it was prompting me for an Ask prompt. So I deleted that, because you don't need it, because it's passing it in as an input file. Okay, so now I saved it, which nuked it. So I'm going to go in again, and then then the next thing I would check, well, I mean, is that the updated that the updated atomization, itemization,
+
+Speaker 1  05:43
+yeah, if it's not, if it, if it killed the itemization, yes, it, it's the correct it should be correct. Is, is the is 8947 is that? Check the building record. Just double check on that.
+
+Matthias Miller  06:00
+Oh, hang on. I think you have a I actually popped it out. Okay, so,
+
+Speaker 1  06:06
+yeah, that so, yes, correct, yes, it is, it is populate, okay, so, so what did you
+
+Matthias Miller  06:11
+was that actually the, where would I see that 89 right? It is, it completely did nuke it. Okay, I guess it did,
+
+Unknown Speaker  06:25
+so I don't
+
+Speaker 1  06:27
+know. So, so, okay, let's start back from the beginning. Go which which one are you? Which one are you pulling from?
+
+Matthias Miller  06:38
+Okay, let's do this. Open New Tab, 89 Yeah, 8947 sales order price. This one currently shows not that I do a preview, and it completely nixes the itemization and gives a wholesale discount to it.
+
+Unknown Speaker  06:59
+Okay, but why, right? But why isn't it saving
+
+Matthias Miller  07:04
+it? Well, I mean, the preview doesn't save it, so, Oh,
+
+Speaker 1  07:08
+gotcha, gotcha, gotcha, gotcha, gotcha. Okay, I'm tracking now. Yes, that's exactly what I wanted to
+
+Matthias Miller  07:13
+do. Okay, so let's then, don't need my unsaved change. Okay. Side
+
+Speaker 1  07:18
+question, before you go too much further, can you do multi input on an import like this? So let's set it up that so I can, I can select a bunch of rows at one time and do that.
+
+Matthias Miller  07:31
+It will, oh, it
+
+Unknown Speaker  07:33
+will automatically. You don't have to set your import up to do that
+
+Matthias Miller  07:35
+way. No, okay. I mean, the import is set up to do it that way. It pulls it out of the first column. So over here, what we want to do, just a sanity check is, let's do the second stand. What did you change that made it work? I stopped prompting for an Ask prompt an ID. Okay, and you weren't, no, you're just overwhelmed and uneducated for 4325 this one does says 2925 95 so now I'm going to highlight these.
+
+Speaker 1  08:11
+Okay, hold on a second before you do okay, 4325 okay, yeah, calculated price and retail price are lined up. Okay, go. I
+
+Matthias Miller  08:24
+Okay, so now 2595 should go back to 4325 minus wholesale discount. Okay, perfect, so the total isn't changed with the atomization. Does here? Bad about a boom, okay,
+
+Speaker 1  08:41
+and all you do is just remove my Astro. Oh, come on. It can't be that easy.
+
+Matthias Miller  08:47
+Well, you were putting in the wrong answer and ID or something. I don't know what you were doing. Who knows might have actually been you didn't
+
+Speaker 1  08:53
+change my my selected values. Oh, so it was just literally trying to get an Ask prompt. You're trying
+
+Matthias Miller  09:00
+to get an astrom. You didn't need
+
+Unknown Speaker  09:07
+it. Let's not talk about how much time I've wasted on this. Okay,
+
+Matthias Miller  09:15
+there are times I wish I could charge results not for time. Yeah,
+
+Speaker 1  09:17
+is there? Is there a is this the most efficient route to go to do this. So okay, so here's what I'm doing. Okay, come down here to come down here to Clifton Payne, fifth one down. Yes, selected. So fix the price first. Well. So I guess you could do this almost simultaneously, couldn't, you
+
+Matthias Miller  09:41
+can't build an x x 30 list that first updates the building, then updates so I don't
+
+Speaker 1  09:46
+know how to do that. That would that's what I really wanted to do. And and I don't know how to build X 30
+
+Matthias Miller  09:53
+lists. All right, now that I've got done wolfing down my food, I. Let me get me, let me get this disgusting grease off my hands.
+
+Speaker 1  10:05
+And because you would, you would be able, you would be able to fix the price. And then, and then Simon, secondarily, fire the sales order. Yep. Well, that's what I wanted to do, and I didn't know how to do that. Oh, it's and unfortunately, there's probably stuff out there that I that probably could, I could go and copy it in the thought process, but I, I, I didn't know, even know where to start to look for something like that. Okay,
+
+Matthias Miller  10:33
+so let's do this, user folders, shared repricing. So we're going to do buildings. We're going to change this one to the re, re item. My, well, let's just call it sales, sales order, yeah, okay, then we're going to do a new file.
+
+Speaker 1  11:01
+You have to update that in your in your link action. Then it
+
+Matthias Miller  11:05
+should, it should auto, it should auto. Handle when you rename to the interface. It just does it. So then we're going to change the link action here, and we're going to pass in string so building that might Wow building, num id plus tab. Okay, so we're going to pass in both the building and that one, and then we're going to go back into the sales order thing, and we're going to grab that out of column two, because we just moved it around. Makes sense. So far. Got it. Okay. Now we're going to create a new file called Import, save as building, render shared, re, itemize, re, pricing. Okay, we'll do it on the building. And this one runs on the building. Column one is building now, my D number,
+
+Speaker 1  12:12
+and we're gonna have to get some you'll have to get some of the logic from my my columns and what we're doing your report.
+
+Matthias Miller  12:17
+Yeah. Okay, so we go over here to link actions fixed price, and we'll just gonna grab that, and we're going to do that, and we're going to save it, all right, so far so good. I think so makes sense. All right. So then we're going to do this new file import, and we're going to choose Import definition list, and we're going to add import and because you gotta be kidding me, and we're going to paste this one in here, and we're going to add this one in there. I'm gonna do save as and then we're going to do repricing, select, re itemize. Alright, so now we got that. Now we're going to go over here and we're going to Jeremy go ahead next this. Yeah. So then we're going to change this to re itemize dot x 30 list, which you could also have gotten by doing the add the favorites and just copying it out if you're lazy. Yeah, I know that. All right, so then now
+
+Speaker 1  13:32
+and the selected values go back to the is anything changed on selected values?
+
+Matthias Miller  13:36
+Yes, yes, yes, yes, the selected values change. And what I did, what we're doing now is you're passing in
+
+Speaker 1  13:42
+a so you're passing in you're passing in the num ID, and you're passing. So what's the tab? Then that changes your, your that's a second column. Yeah. Okay.
+
+Matthias Miller  13:53
+So now, is there any one of these you want to run it on? Just the next one? Ben,
+
+Speaker 1  13:58
+okay. So, okay, that was Chris. Chris, yeah. Clifton. Clifton Payne,
+
+Matthias Miller  14:03
+okay, Clifton, so he said, All right. Well, there it is. So we're gonna hit here. Let's call let's call it what it is. Is it re itemized building? No, it's, is it reprice building? And
+
+Speaker 1  14:26
+what is it? Yes, reprice and re itemize. I don't care something like that. Don't get too fancy with it. It's just
+
+Matthias Miller  14:34
+okay, oh, wow. It doesn't like my hand. Sorry. It's, that's a Windows leftover. Okay, you
+
+Unknown Speaker  14:46
+had to put a double and in,
+
+Matthias Miller  14:47
+yeah, because Windows, that's the, that's the, that's how you do the alt set up the Alt key, like Alt R to run it, or whatever. Okay, so we are, you sure? Yeah, sure. I am. Bob. Yeah, okay. It says it's done. Now we're going to,
+
+Unknown Speaker  15:06
+where's your guys? Okay,
+
+Matthias Miller  15:08
+right here. He went to 7240 Yeah, and then we're gonna put the sales order 7240 down to 4890 so balance stays the same.
+
+Speaker 1  15:19
+Oh, man. Thank you so much. This is gonna so and all of this I could just, I can literally identify all the buildings I want to do and just hot pick them on. Pam, bam, yeah, bam. All right, so go back. Go back to my go back to my building. Go back to the report, yeah, go back to the subset of this report and open that up so that that reactivate that logic.
+
+Matthias Miller  15:46
+By the way, you can also simplify it with this, instead of not equals, you just do this, which means greater
+
+Unknown Speaker  15:53
+or less than gotcha, yep. All right, so that should give me only buildings that are out of alignment.
+
+Matthias Miller  16:01
+Well, the Clifton disappear. I mean, the other guys disappeared, yeah, so then the
+
+Speaker 1  16:07
+rest of this can just literally be run now, Okay, sweet. All right, that's a lifesaver. I can only, I can only wish to know that much information. Well, now you do well. Now I know how to do it. Now I know how to do it a stacked import list. Yep, exactly. And I was so close. I was so darn close. Oh
+
+Matthias Miller  16:32
+yeah, you were you're good.
+
+Speaker 1  16:38
+Oh well, this is how you learn. If you have not a teacher, then then you trial and error until you learn. Yep, um.
+
+Matthias Miller  17:32
+Okay, well, do you want to
+
+Speaker 1  17:39
+Well, since, since you're, since you're sitting right here, just, literally, just nuke all of those right there. Just highlight them all and nuke them. And then part of my work is done.
+
+Unknown Speaker  17:57
+Lovely, lovely.
+
+Matthias Miller  18:01
+I love it, all right. Well, does that improve your mood?
+
+Speaker 1  18:06
+Yes, thank you. Please, please. Bill insight, for that one charge double. I don't care this is or Bill somebody make somebody pay for this, because this, this thing hacks me off. Anyway, it's, it's partially Josh's fault, so we'll be kind. He broke district level pricing, and it's causing no end of frustration. Got it? Well, it's okay. That's not fair. Yes, he broke district level pricing, but it was due to the way that Mark wanted to do some things, and they are really hung up on this particular rounding methodology when it comes to viewing line item pricing. And it has been so frustrating. I literally had Addison so mad at me the other day because he's like, I cannot get to the price that Wayne wants. You're right. You can't get to the price that Wayne wants because of rounding. You
+
+Matthias Miller  19:08
+guys asked for it now that your sales guys, man or sales manager, whatever his role is these days, is mad because he can't get what he needs.
+
+Speaker 1  19:15
+Hold on. Let me. Let me see what Mark wants. Here one second. So I think
+
+Speaker 1  19:42
+that. Okay, it's never fast enough. Nobody Never mind Enough, enough grouching, enough grouching.
+
+Matthias Miller  20:54
+I told Addison when you were here, I've seen, despite these frustrations, here you have been, I believe, exceptionally patient with these guys.
+
+Unknown Speaker  21:08
+Ah,
+
+Speaker 1  21:18
+okay, in fairness, let me crank up this table, and then I'm gonna I, if I, if I take five steps back, how about I just put the microphone over here if I take five steps back. The truth of the matter is, I got a, we got a five year course in how to manage retail based software while getting paid to do it. Yeah, very true. So now in and I have to remember this, like in all of these frustrations, what? What have I learned? Well, I have uniquely learned how to deploy only software. There
+
+Matthias Miller  21:54
+was a stepping stone that you could not have predicted when you first
+
+Speaker 1  21:56
+started. Could not have predicted. And it's like, also, I don't think there's any way to go about like, how would you, how would you learn that, except through something like this? Either that or you go to work for a software company, and you spend, you know, the next five years working for a software company, which is essentially what I did, and I charged them a lot of money to teach me how to get this done. Yeah, exactly. There you go. I have to, I have to continually tell myself that otherwise, I just get hacked off some days. It's just like,
+
+Matthias Miller  22:28
+well, we all get hacked off some days, not to be too whatever. I was talking with my mom this morning. Friday will be two years that Julia Ruth passed away, and mom went back to church for the first time and all this stuff. And it's just like, she's like, Man, I don't know, something along the lines of like, man, wouldn't it be great to just kind of hit the joy stride all the time? I'm like, Yeah, you find your way back to that. But, I mean, I've had plenty of conversations with her where she's like, You got this God's gonna work this out. It's gonna be okay. Just keep pushing basically, and it's right. I think one of the things I I'm most grateful to have unraveled, but it was also very painful to have unraveled, is somewhere along the way, I drank the Kool Aid because I wanted to believe it to be true, that there's whatever spin you want to take on it, whether it's there's many different ways to spin it, not just around money, but that the prosperity gospel basically is true, that suffering is going to disappear and your life will be easy. How's that for Job's comprar
+
+Speaker 1  23:45
+you know, my opinion is that all those things are true at the same time it
+
+Matthias Miller  23:51
+is true that. I mean, yes,
+
+Speaker 1  23:55
+it's like, we want to make them mutually exclusive, and I'm not sure they are. It's like, yes, you can have joy and you can have diversity. Diversity is that right? How's that word not sound? Right? Not diversity,
+
+Matthias Miller  24:12
+adversity, adverse. It's like It was either that or university. I wasn't sure
+
+Speaker 1  24:19
+which. I knew I had diversity, right? I just had the wrong prefix to it. You can have you can have adversity, joy, poorness, wealth, all of those, all of those things at the exact same time, and still, and still. God is good.
+
+Matthias Miller  24:37
+Very good. That's the bottom line. That's the bottom line.
+
+Speaker 1  24:42
+You know, I was actually, you know, I was thinking about this the other day. I was like, the curse of the entrepreneur is that they are constantly driven to innovate, iterate, chase the next deal like and continue on and and I was thinking about. It. So are you? Do you know? Do you know a guy by the name of Matt peachy here in our area that his wife just passed away? Recently,
+
+Matthias Miller  25:10
+I saw it on Facebook. I'm friends with his friends. Yeah, so
+
+Speaker 1  25:14
+we're close. They're a little bit younger than we are, and I think it was four or five weeks from the from the moment that she was diagnosed with stage four cancer to when she passed away. Wow. And okay. Side note, if I'm going to die, I want to die that way, either, either I want to run headlong and be killed instantly in a car crash or something like that, or, or, you know, you get four or five weeks to live, and it's like, and it's done, it's over. And like this thing of people who go through these long journeys of health issues, oh, Lord, please spare me. But anyway, yep, I don't know, just hit me the other day. I was like, you know, what's the point of this? What's the point of this? It's like, you know, how many weeks after I pass the people who were close to me loved me, they'll move on, and it will be, you know, the the meaningfulness of a human life actually, is very short lived as it is. And it's like, you know, you're, if I pass before Leanne, you know, within, within a couple weeks and a couple months, you know, she's going to be in a much better place, mentally again, and life will move on.
+
+Matthias Miller  26:42
+I'll be missed. I'd say it happens that fast, but she will, yeah, but I mean, it's like, yeah, I get your point.
+
+Speaker 1  26:52
+And so, you know, sometimes I'm just like, you know, why? Why? Why go through especially when I'm really, really feeling frustrated. Like, what's the point? Like, forget it. Life is too short for this crap. Go deal with your own damn building price problems anyway.
+
+Matthias Miller  27:09
+Make the choice live with the consequences at least.
+
+Speaker 1  27:12
+Oh, I gotta tell you funny story. Okay, total side note. Then we get to work, so a couple weeks, part of this whole pricing thing. Anyway, okay, the short story is that they've been, they've been steadily trying to move towards more more of a I feel like it's actually movement towards a more solid pricing model. But anyway, it's still pretty fragile. But So the deal is, Ohio and Indiana wanted to do a price increase and then use that price increase to be able to offer bigger discounts to customers as a marketing tool, whatever. We're not going to we're not going to judge that, but we're just going to move on. And so they went, they went and increased all their pricing, and then figured out, whoops, all of our wholesale dealer pricing works off of that core pricing, and we didn't really their pricing. And so now we're stuck with trying to figure out how to handle them. So they made the right decision to come back and say, put your prices back to where they were before, and do sales order or dealer level surcharges in order to get up to the retail side of the number that you want. Great, good. Anyway, well, this whole rounding thing got introduced and and anyway, it's caused a big, a big issue. But anyway, so the the prices were all increased, and then about the exact same like this whole big conversation took place. The decision was made for Indiana and Ohio to bring their prices back down to what they were before and do dealer level surcharges. And I told Mark. I said, Mark, get Indiana and Ohio on the same page. I'm not doing them separately, and I wasn't quite that forceful that I said, please get them on the same page. And he totally ignored me, and I knew he was going to totally ignore me about it, and so I very conveniently decided to take Leanna away for that weekend. And I told him, Look, I'm so sorry, I can't do this the Indiana pricing update. Oh, Mark's like, well, I'll, I'll just take care of it. And I was like, you watch this is going to be like, he's going to figure it out. He's going to, it's going to be real simple. And because it is, like, there's a fair amount of this knowledge that just lives in my head, on which base definitions and so on and so forth. And so he'll figure it out, whatever. And it'll be, it'll be actually pretty easy. And then he'll probably and then he'll probably come back to me and go hard. I don't know what you're talking about. And the next Tuesday, it was like, I will never, ever do a pricing update again. You will do these again. I am it was so confusing. I messed it all up. I was like, yes, yes. You got to live with your own consequences next time, you'll believe me when I say, please put them together, get them on the same page, to put this thing so I can do this all the same time, because it's just easier to do two districts than it is to do one separately. Anyway, I was just like, yeah, payback is a bitch. I like it when it's it's you. I that I wanted to happen. And I was, I was like, whatever. I got to have a good weekend away with my wife. And he figured it out nice and easy. Who cares? You know, I'll just, I'll just grin and bear it. But then
+
+Matthias Miller  30:14
+this happened, yes, and
+
+Speaker 1  30:16
+I was just like, you see, this is why. This is why, Mark, I told you, please put them together, get them on the same page, delay one or hurry the other one up. I don't care. It's like, yes.
+
+Matthias Miller  30:29
+Well, this has been the mantra from day one, like, yeah,
+
+Speaker 1  30:35
+yes. The mantra is, unfortunately, that Burke order management makes it look too easy. And it's like, it's not until they decide to go do some of these things themselves. They're like, like, okay, for Do you know how long Matthias, I said it was gonna be rant over, and so I'm still ranting. Do you know how long I've asked for certain things to be fixed? And not a big deal. What would that their mantra always will do for us builders? Well, nothing. It does nothing for you builders, it does it aids the people who are actually doing the work in this offer. And we don't really want to do that. We want to go do this other thing. Fine. I'll find other ways around it. I'll build, you know, user reports, and we'll just, you know, we make things work well. The moment Aaron and Mark and Gabe are in the software, suddenly all the things I've been asking for are suddenly getting done and fixed, And it hacks me off.
+
+Speaker 1  31:36
+Yeah, yep, well, Crash Course and running retail based software, I think,
+
+Matthias Miller  31:45
+yeah, exactly. You know, it would be nice if people would be logical.
+
+Speaker 1  31:53
+Okay, okay, please explain Dear Lord Jesus, the Dear Heavenly Father, why, when you created humankind, did you put the decision making center in the emotion side of the brain instead of the logical why?
+
+Matthias Miller  32:09
+Well, I think I have an opinion about this, like I do about most things, whether it's right or wrong. I don't know, but I have the opinion that most decisions are actually really that we actually don't have enough data to make 90 95% of decisions that we're trying to make and without and I mean, I've cited the study. I don't know if you read the study about the guy who basically lost all his emotion and literally became indecisive because he couldn't decide between chocolate chip ice cream and strawberry because it's not a logical choice. And I think, I think emotion is a tool for dealing with the randomness and uncertainty of the world, and if you didn't have it, you'd be, you would be completely paralyzed, because, okay, what's going to happen tomorrow? I don't know. Like, what's going to happen? Like, we like to think that we can't extrapolate enough information to figure out what their outcome is going to be. But there's two problems. Okay, so the first problem is data. The second problem is also that when it comes to fulfillment and purpose, very few of the things that actually give us that and make it worth being human fall into the logic, logic realm as well.
+
+Speaker 1  33:25
+That's a that's a pretty good explanation. That is a pretty good, dang good explanation. I never thought about it that way,
+
+Matthias Miller  33:35
+telling you I go down weird rabbit holes in
+
+Speaker 1  33:40
+my life. I get Okay, Okay, moving on. That makes sense. All right, good. That makes sense.
+
+Matthias Miller  33:50
+Then you have the issue of, of the fall, anything one of the biggest Hold on
+
+Speaker 1  33:55
+Who has the highest word count in there, in the in the in the things so thinking has 19,000
+
+Matthias Miller  34:03
+so we did this one, this one, this one you don't know, you know you were to put,
+
+Speaker 1  34:13
+if you were to put all of zfp stuff together, what
+
+Matthias Miller  34:17
+does it cover? It would, it, would, it would all of zfp
+
+Speaker 1  34:22
+in business, they're complete. But what was it? 60 some 1000 word
+
+Matthias Miller  34:27
+count, proposal, oh, that one. Let's do see MERV is just five. They're at 60 some EBS, that's a live system. Lee Cox, live system, that's a live system, that's a live system, that's a live system.
+
+Speaker 1  34:46
+I suspect that most of these were much more designed than Insight has ever done. But if insight were to do, if you were to guess and and we would have designed insight to the level that we're at right now, we would have done full on. Proposals for everything, any idea on the size of word count,
+
+Matthias Miller  35:06
+I would guess. I mean, I would be shocked if it'd be anything less than 150 200 maybe, don't you think I would think so? Maybe even more than that.
+
+Unknown Speaker  35:21
+We really should have done that
+
+Matthias Miller  35:23
+well. So Alice and I've been talking about this, we believe that there's fundamentally two development models. One is design heavy, upfront, non developer support implemented by junior, like, basically junior devs, yeah, like great B devs overseas, and that's development model one, and it works. And development model two is, is fast, rapid, half baked designs with senior devs. And hopefully, and we're hoping for a hybrid, where there's more documentation rather than less, but you can't. I think there's fundamentally a an approach difference Grade B developers aren't smart enough to figure out fill in the missing pieces, and they're too far disconnected from the business to make good decisions. Smart devs are generally too intellectually curious to be satisfied with what these Grade B does are content doing, which is just point and click development basically like go to so,
+
+Speaker 1  36:28
+so have you do you have a theory on the call, like, if you were to, if you were take two identical companies and you follow both of those development models, who's going to spend more money?
+
+Matthias Miller  36:38
+Well, I think I've had this other theory rolling in my mind for quite some time, but you have to understand that there's two models for planning. One's planning with a known outcome, and one's planning for an unknown outcome and a known outcome. You can define the end game and what needs to happen. You could reverse engineer it and execute it very linearly. And I'm going to guess for those things, the the Bangladesh developer model is probably better. But if you have an unknown slash, iterative slash, moving target outcome, I would almost you almost, I'm not sure if you can do much besides the latter approach, very effectively, because basically what you do in the latter approach, if you have an unknown outcome, it's all about take the next step, and the next step is going to yield perspective that you couldn't have gained, that you don't have at the beginning of the project. And so it's really a cumulative intelligence type of thing where, yeah,
+
+Speaker 1  37:39
+I feel like only it's almost a crossover of those two, though
+
+Matthias Miller  37:44
+there's a bit of a blame,
+
+Speaker 1  37:45
+yeah, there is a bit of a known and unknown out outcome. Yes,
+
+Matthias Miller  37:51
+I think so, but it's still too far. There's too much of a communication barrier, and there's too many gaps in it for us to really technically work with great B developers. Yeah,
+
+Speaker 1  38:05
+plus I, I don't know if I could, I don't know if I could sit down and, like, there's so many times that you and I've sat down and respect something else. We hand it off to them. They come back with the result. And we're like, Whoa. That missed that. And we got to go back and fix that. And then, oh, let's reorient Latin. And I don't know it's partially me. It's partially the fact that I, I need visual input in order for to make, to make good forward progress. Blank sheet conceptualization is really hard for me. Yep,
+
+Matthias Miller  38:37
+that makes sense.
+
+Speaker 1  38:43
+To the point, to the point, I kid you not that there's been times I needed to do so like, write something or do something. And like, I will tell Leanne, can you just, can you just, whatever you've heard me say so far, just puke it out onto a piece of paper. And then once it's on the piece of paper, I'm like, hold on. It just, like, starts to roll, and it's just like, but blank sheet conceptualization is really hard for me. Yep, yep, all right. Where are we starting today? Okay,
+
+Matthias Miller  39:14
+well, what do we want to focus on today? Payments are theoretically underway. Do we
+
+Speaker 1  39:22
+that? Do you and I need to talk about that at all. Well,
+
+Matthias Miller  39:28
+as long as you love the mock ups. I mean, I don't think so. We saw the mock ups. I don't know. I would say not, unless they come back to
+
+Speaker 1  39:37
+us and maybe, which direction are we going? Which Which direction. Okay, you laugh, dude, the the AC unit with the with the max symbol on dude, I laughed so freaking hard. That was a that was hilarious. So which direction are we? Are we officially going?
+
+Matthias Miller  39:55
+Okay, so let's, let's, let's revamp. I. So basically, what we're suggesting is a hybrid. It is an embedded whiskey. So you pull it hit new payment, and it pulls up a split screen. Left pane is a whiskey that basically shows all of the information for the payments screen, but it uses reports so that we so that the only business logic lives in assist.
+
+Speaker 1  40:38
+So is this something? Is this something that Jonathan and company need just to go or is Josh gonna be like, Okay, how do we how do we get to the point where we like
+
+Matthias Miller  40:50
+reading it? I mean, do you want
+
+Matthias Miller  40:58
+a sheet only
+
+Speaker 1  40:59
+I have. And the reason I'm struggling with this because I have no frame of reference for this like we have. We don't do anything like this, per se in assist.
+
+Matthias Miller  41:08
+Well, I think basically what we do is,
+
+Matthias Miller  41:31
+is this the approach that you want to take? Is which? No, I'm sorry. Wow, that was just a dumb that was brain off, mouth on autopilot. Um,
+
+Unknown Speaker  41:53
+no, I didn't know that. Stay standing.
+
+Matthias Miller  42:06
+Do you like here's what I think we should do. If you like this general layout.
+
+Matthias Miller  42:21
+Owner, Seth would be willing, though would be free to
+
+Unknown Speaker  42:34
+um,
+
+Matthias Miller  42:46
+the one thing we have not talked about is the source of truth on late fees. I
+
+Speaker 1  43:08
+Well, we did. We did discuss it ever so bit at one point, a bit at one point. Seth made the comment that the last payment record is the source of truth, and so each payment record builds upon the next. Now that was, that was a fairly sort of passing conversation. So no, we haven't really, we haven't defined the source of truth. You're correct.
+
+Matthias Miller  43:38
+But basically what that means is, we do need to be able to calculate for the you know, what is the upcoming due date, IE, IE, what's the due date after the last payment and does? Does that one incur a late fee or not?
+
+Speaker 1  44:02
+What happens if you make a payment but don't pay pay the late fee,
+
+Matthias Miller  44:08
+right?
+
+Matthias Miller  44:15
+And we're saying you can theoretically, which means that we should probably, is making my head hurt.
+
+Matthias Miller  44:35
+Is it fine to make people go onto the contract to wavelet? Late fees.
+
+Unknown Speaker  44:57
+Wait, I thought at one point that we had an. Oh, no, never mind. Never mind. That's overridable there.
+
+Unknown Speaker  45:14
+I mean, RTO Pro does something very similar. It makes you. It makes you. You
+
+Matthias Miller  45:25
+have to jump out to clear
+
+Speaker 1  45:26
+it. Yeah, you do, well, well, wait a minute. Wait a minute. No, no, you do have a defer or forgive late fee. Resolution, late free resolution, bottom left,
+
+Matthias Miller  45:50
+late fee.
+
+Unknown Speaker  45:51
+We did have something there,
+
+Matthias Miller  46:00
+you're right, and that is on a per right, If you
+
+Matthias Miller  46:13
+shouldn't, it actually be defer, reduce, forgive, I.
+
+Speaker 1  46:26
+Unless you just did straight up some sort of over just call it an override. Hi, Seth,
+
+Speaker 2  46:31
+Hey. How's it going? How's the weekend good? Gotta picked up a piano and a couch and a rocket chair so I felt successful.
+
+Speaker 1  46:40
+Wow. Piano retirement already
+
+Matthias Miller  46:45
+you must have been working out.
+
+Unknown Speaker  46:46
+The four of us picked up the piano.
+
+Matthias Miller  46:52
+Wonderful. The
+
+Speaker 2  46:53
+three of those cost us a grand total of 40 bucks. Whoa,
+
+Matthias Miller  46:59
+nice. That's impressive. Cool. All right, so payment stuff, Josh's suggestion is that we have a multi paying report. Left hand side is a whiskey that basically replicates the detail screen, but uses our 20s and X 30s to avoid duplicating business logic in the whiskey. Okay. And then the right hand side has the Live Updating report that shows payments, so that when you submit the payment, it pops up on the right right pane, okay. Um. Any so basically means all the, all the this types of calculation has to be in a macro that we can somehow invoke through an R 20.
+
+Matthias Miller  48:00
+Gotcha. And
+
+Matthias Miller  48:09
+then we need that takes all your information and
+
+Unknown Speaker  48:12
+but then, how do you do that with on changes and everything? Well,
+
+Matthias Miller  48:21
+when you fill in an amount up here, presumably you would ping the server and say, Okay, what should my breakdown be? And you completely rejigger the breakdown
+
+Matthias Miller  48:38
+when you override the due date. I
+
+Matthias Miller  48:56
+mean, presumably when you added the payment amount or the due date, I guess nothing needs to happen here, but if you update the payment amount or the due date, presumably you would set up send up, here's the string table that I have, and on this row I'm changing the payment amount to this value or Something like that, because the only one changes are for variable due dates, or you have a or do you just have two more service X 30s that you say, given this payment amount, what's the due date? You know, this contract payment amount, what's the due date? Etc. Yeah.
+
+Speaker 2  49:46
+And there's no way we can just run off the detail screen, essentially, like we have to be able to duplicate this without duplicate, right?
+
+Matthias Miller  49:59
+I mean. You mean, just to pull the logic off the detail screens, I'm just
+
+Unknown Speaker  50:02
+trying to figure out how to, trying to find this out is giving me, I don't know, maybe I'm missing something.
+
+Matthias Miller  50:15
+If you really want to, could you have a hidden payment type it's basically a, you know, an Edit Type, and you literally create the payment record. But you've got visibility everywhere. Like to hide it. I mean, it means for every edit you make, you're saving a payment transaction. And then once your payment goes live, you take that ID and pop in the fee, and it becomes visible to people.
+
+Speaker 1  50:51
+Okay, I'm going to ask, I'm going to ask a dummy question, if we're going to, if we're going to do all of this in whiskey land. Do we need a payment record? Or can it all run out of out of contract records?
+
+Matthias Miller  51:14
+Well, it should probably, or there should be some. There needs to be something that ties multiple contracts together, I would think into a single payment.
+
+Speaker 1  51:26
+So the whiskey side of things couldn't tie that information together this exact Okay, so what I'm what I'm asking is, are we gonna is, is the whiskey side creating this payment record redundant? Do
+
+Matthias Miller  51:45
+so you're saying, Should we okay, but somewhere you need to store the I ran this charge at this time for this amount,
+
+Unknown Speaker  51:56
+sure that would be in the payment history, on the contract record,
+
+Matthias Miller  51:59
+and you just duplicate that, and you say, I ran this chart. Here's the idea. I ran this charge to this amount and but only this amount applies to the contract, like when you're paying for multiple contracts.
+
+Unknown Speaker  52:21
+Yeah, see what you're saying. See what you're saying.
+
+Speaker 1  52:32
+I mean the, I mean, I could foresee where, you know, let's say that's hypothetically, say there's two, there's two contracts on this con for this of this account, and when we fire a credit card transaction that pays both of them, we could indicate in the in the payment history, RG, on the contract record, that it was a split transaction. And maybe you link across to the other you know. Or if you're on, okay, back up. If you're on the contact record, we're going to, we're going to do some kind of concatenation of all the payment histories tied to this to make one big, giant payment history. So you can put some of that stuff together. But if you're on the individual contract, we could indicate that it's a split transaction,
+
+Matthias Miller  53:23
+you could have a payment record that includes just this information,
+
+Matthias Miller  53:32
+and then exactly what it does to the contract could be determined on a per contract basis, and it links out To basically view the it's like an authorization record or a charge record or something like that, recreates has an RG on the contract where it links out to that.
+
+Speaker 1  53:50
+I mean, I'm not, I'm not to be, to be clear, you guys know this, this better than I do, but it, it feels to me like we're, we're if we're going the whiskey side of things, it feels a little bit redundant, and maybe I'm just wrong. Tell me if I'm wrong.
+
+Speaker 2  54:12
+So what makes whiskey side for is that for we're saying no one's entering from the detail screen. It's just from the
+
+Matthias Miller  54:19
+whizzy Yeah. And the reason being that we need streamlined, single page entry for credit card processing.
+
+Matthias Miller  54:32
+Sure. So if we were to do that Seth, then we would have an RG, I think what we would say, couldn't you have a
+
+Matthias Miller  54:54
+you would effectively have an RG, of periods on. I mean, it could be some form of transaction events. I don't know exactly what it is, or maybe you have periods, and it's the you have due date, you can override the due date, which just future due dates. You only So basically, what you're doing is, instead of throwing all contracts together into single row, you're splitting it apart
+
+Speaker 2  55:34
+the same instead throw them on one record, we go and find each record, each color we need to put it on. Yeah,
+
+Unknown Speaker  55:46
+are we?
+
+Speaker 2  55:54
+And then it's on the contract that we store most this information that we're storing on the territory road here, right?
+
+Matthias Miller  56:11
+It's really obnoxious that you can defer late fees.
+
+Unknown Speaker  56:22
+Customers don't agree with you.
+
+Matthias Miller  56:24
+No, I understand.
+
+Matthias Miller  56:35
+I mean, the nice thing is, if you wanted to, you could have it be as simple as
+
+Unknown Speaker  57:03
+Wait a Minute,
+
+Matthias Miller  57:17
+then the due date override could be on the D,
+
+Speaker 2  57:26
+just on the contract, on the contract, not even RG, potentially, yeah,
+
+Matthias Miller  57:34
+next due date, next due date, you would overwrite The next due date, and whenever it gets paid, you
+
+Unknown Speaker  57:43
+automatically update it, yeah.
+
+Matthias Miller  57:59
+Okay, what makes it confusing? Let's, let's try to get rid of this, the late fee, the weird late fee resolution stuff.
+
+Unknown Speaker  58:09
+It's probably both due date and and, and
+
+Matthias Miller  58:12
+they do date resolutions, yes, yes. And if it wouldn't be for that, it'd be late. Okay. Why couldn't we have a I have an idea. Under the hood, we have a a
+
+Matthias Miller  58:36
+we have two fees, an incurred late fee and a deferred late fee, where we have a NRG of deferred late fees, I actually kind of like this.
+
+Speaker 2  58:55
+And so good your late fee amount, if it's above zero, if you blank it out, then we blank then incurred stays the same, but deferred is increased,
+
+Matthias Miller  59:11
+yeah, basically what I'm saying is, maybe this is A Well, okay, here's another way to do it. What if late fees isn't in this? RG, what if we have a late fees? RG, and then we have a an original due date, late fee amount and a deferred due date and or like a resolution, and then you just calculate what the late fee is for a given due date, and that way you can close off historical periods, at least conceptually, am I? Am I just making it more complicated by trying to simplify it?
+
+Unknown Speaker  1:00:01
+I'm trying to figure out.
+
+Matthias Miller  1:00:12
+See, I'm not super worried about the payment amount in the calculated due date, because we said that only applies to the last one, that they're editable, but they are editable, so we still have to push up to the server to get it calculated, but that's fine, we can do that.
+
+Matthias Miller  1:00:35
+But when I'm when I'm worried about I
+
+Speaker 2  1:00:58
+was a very random thought that are we going to have to be more careful when we update these systems, because you might have people trying to pay randomly at 11pm Yeah, that was a random thought.
+
+Matthias Miller  1:01:18
+It's true, but it shouldn't be down long and you can Yeah, I don't know. I think
+
+Matthias Miller  1:01:40
+part of what I dislike is the fact that somebody might be throwing be paying three months And what,
+
+Matthias Miller  1:01:59
+when you change it to defer late fees you
+
+Matthias Miller  1:02:29
+No, but this is very simple.
+
+Unknown Speaker  1:02:36
+Saying switching to contract, I think
+
+Matthias Miller  1:02:39
+you still need to have some kind of entry point that says, What are you doing? Well, I'm changing the late I'm forgiving. I'm deferring this late fee. I'm forgiving this late fee. And here's the potentially So, Dwayne, Does this ever happen in partial amounts? Like, okay, can you pay $2 of your late fee this this month and $3 in a few months from now, yeah, and how much am I deferring, and how much am I forgiving? And now tell me what that's going to do.
+
+Matthias Miller  1:03:17
+Now we could work around this by having Dwayne, I'm going to guess you don't want these columns, but we could work around this by having two more columns called
+
+Matthias Miller  1:03:34
+deferred late fee and forgiven late fee that lets people put in custom amounts.
+
+Speaker 1  1:03:42
+I mean this, this is where. This is where. What I what I want now is for you guys to figure out exactly how you're going to do some of this stuff, and then we need to mock it up some in some form or fashion, whether it's straight mock up in whizky, or whether we mock it up in Google Sheets, so that we can really nail down the UI on on this thing, because that's like, I know that you guys are going to get this stuff right. I'm more concerned about how it feels that fair.
+
+Matthias Miller  1:04:17
+Yeah, I'm a little worried about how we're gonna actually get things done. But, well, if we are,
+
+Speaker 1  1:04:25
+I mean, if it makes more sense to maintain the payment record, I'm not, like here, clearly it's not, it's not that. I'm saying you should throw it out. I'm well, it
+
+Matthias Miller  1:04:36
+wouldn't have to be editable, interactively, for sure, if we didn't want it to be, well, you could do everything through the whiskey. So here's the proposal. Then cut, cutting to the chase. Would you want? I'm still going to assume that fundamentally, how you go about paying contracts like is this general user in. Face about what you would expect to see like and we could change this somewhat, where you say, I want to deal with this contract, this this contract, this contract like we could, we could have, you could have a section for contract one, you could have a section for contract two and a section for contract three. In this case, if you wanted to, if you're dealing with three different contracts. Yeah, so we have some more flexibility that we didn't have before. If we if we get the 80 to, ideally, 90% accurate how we feel like the layout should be, then, by all means, like maybe what we should do is create a copy of this as a whiskey I bounce it around, resize it when I'm trying to edit the name, and come up with with a simplified UI that that we're happy with that is cleaner, simpler, whatever have Jonathan mock it up, and then from there, you're suggesting Seth and I get our heads together and figure out how the data model, what the data model should be
+
+Speaker 1  1:06:08
+like. I think so. I don't, okay, correct me. If I'm wrong, I don't know that I'm going to bring a lot of value to the conversation you're currently having. Yeah,
+
+Matthias Miller  1:06:20
+you're right. We won't, you won't, I don't think
+
+Speaker 1  1:06:24
+so. The parts that I can bring value is to how it looks and feels, and the user interface side of it that I, you know, I would be, I'm going to want to have input onto it. But how you got where the big, the big things are that when we think about this, when it comes to how we handle resolutions on due dates and late fees, and I think those are the two big kind of hiccup points, but if I'm hearing you correctly, how we handle those just the goalpost is that it is one either directly handleable through the whiskey, or it's very evident on how to get to where you need to handle it.
+
+Matthias Miller  1:07:13
+Okay. Well, let's, let's see when I mock this up. So it sounds like your biggest concern is complexity, like but I'm not completely sure this might be at a position of irreducible complexity, and if we just get it, it might just be a point of, please just make sure we get it right. I don't know. Okay, okay,
+
+Speaker 1  1:07:35
+that's, does it? Does it make more sense for the two of you to go off and do that now? Or is it because, I mean, I have a big pile of work to do with this whole pricing debacle. So if, if you want to say, I drop off and you guys keep working this, or either that, or we could work on something else, you and me, Matthias, whichever, I don't, I don't really care.
+
+Speaker 2  1:07:53
+I don't have time for a big design thing today. I have other stuff I really have to do. So like, I have time for short things like this, but not at multi hour digging in.
+
+Matthias Miller  1:08:06
+Okay, well, I think we got enough out of you for what we need for now. Thanks. Seth, Yep, thank you, yep. Well, I think it's up to you, Joe Chase pricing, I can, I think in 30 to I think in a little bit of chat GPT sparring, I could probably flush out a bunch of the issues and come up with potentially an alternate approach in lieu of of Seth. I think something like, I think, I think what this allows us to do is something closer like this. And I
+
+Speaker 1  1:09:07
+Well, here's the deal. If I'm going to sit here and watch you work, I'm going to go do other things. So I'm wondering if I just drop off go work on pricing stuff, and you use the rest of this to just kind of pound out a design on this thing for me, the only, the only, the only opinion I probably have on this whole thing is that, how much do we want? How much do I care about making it feel like we're still inside the system, versus even though you're not, per se, inside the system and but like with the whiskey side of things, or do we just straight up make it feel like it's something completely different, like, like other whiskey pages usually are, I
+
+Matthias Miller  1:09:49
+think we could do some level of styling to make it feel relatively similar. Colors are going to help. General fonts are going to help. Help, I would propose, I don't think we want to replicate the scrolling RGS. I think we just want a table that's completely splayed out. I feel like most of that concern is pretty cosmetic,
+
+Unknown Speaker  1:10:16
+but I could be wrong.
+
+Unknown Speaker  1:10:18
+I'm gonna let you do it. Thanks, man, yeah.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,1412 @@
+Matthias Miller  00:28
+So plan for today was to go through a demo of the accounting system, as it stands now single company. So I think, kind of without any further ado, we're just going to do that jump in walkthrough. And I'm also going to pull up a demo system because I think that one might. We'll try and both, but I think that one might have better
+
+Unknown Speaker  00:57
+demo sample data in it than
+
+Matthias Miller  01:01
+this one. So give me a second while this loads.
+
+Speaker 1  01:06
+All right. Can you guys see that? Okay. Yep. All right. So
+
+Matthias Miller  01:15
+let me just make sure I'm not lying about the demo system having having information. I'm sure it's not up to date. I'm sure it's all theirs earlier today. Okay. So this is practically identical to what you'll see in assist.
+
+Unknown Speaker  01:30
+In fact, the only difference?
+
+Matthias Miller  01:36
+Oh, we've turned on accounting, multiple accounting companies in the demo system.
+
+Unknown Speaker  01:40
+Yeah, it's available.
+
+Matthias Miller  01:44
+We don't know if it works. But
+
+Unknown Speaker  01:46
+that's irrelevant. That's irrelevant, it's there. Who cares?
+
+Matthias Miller  01:49
+Who cares if it works, we're gonna start with configuration Chart of Accounts. This is a demo Chart of Accounts. Count name. This report is showing number of transactions last transaction date. Most of these sample transactions are all their variety of dates. This is all made up data. I think if we go into an account, that's probably going to help the most. I guess first of all, there's a concept of parent and child accounts. I don't think that's completely unfamiliar. We have five major types of accounts, asset liability, equity, income and expense. And then each of these have sub accounts. So we have under asset AR bank cash, fixed asset investments and other
+
+Unknown Speaker  02:44
+liability. Oh, come on. Let's do a new account so we can doesn't complain?
+
+Matthias Miller  02:54
+Liability, AP, credit cards, other liabilities
+
+Unknown Speaker  02:57
+sales, tax payable.
+
+Matthias Miller  03:01
+Equity, as retained earnings subtype. Income currently just have sales and service revenues subtype expense and operating and non operating subtypes?
+
+Unknown Speaker  03:14
+are subtypes configurable?
+
+Unknown Speaker  03:17
+No. Do we need them to
+
+Unknown Speaker  03:22
+be configurable? Just asking? I don't know? No, they're not.
+
+Matthias Miller  03:29
+We have a reconciliation process, which I'm actually not super familiar with. But used to reconcile against bank statements, we can poke our head in there and see what we can do.
+
+Unknown Speaker  03:40
+Optional to account.
+
+Matthias Miller  03:43
+Goodness, I don't even know how this works. The option delete this to contact I don't know what
+
+Unknown Speaker  03:49
+that is exactly what you want from a trainer.
+
+Matthias Miller  03:52
+Exactly. You're gonna get the get to get the full scoop here. Description and then Currently, there's just a default class on the account. And there's some other stuff that we've discussed about classes and the accounting process. So for any of that, so that's like the turn of accounts by itself. Oh, and then as far as numbering scheme, the plan is just to prefix the account name with the account number. For quick search. It's not like it's fielded separately. There are budgeting tools. Let's wait to get into that. Any questions just around Chart of Accounts and setting up a chart of accounts I want to see the ledger.
+
+Speaker 1  04:53
+Here's the let's go see what other CEU accounts we got. Let's do the math. by being why Mellon?
+
+Unknown Speaker  05:04
+Is there a date range asked from on the Ask up. Perfect.
+
+Matthias Miller  05:08
+Yeah, you date, range and then all kinds of quick filters or other date ranges, filter by classes for the ledger.
+
+Unknown Speaker  05:18
+Filter by contacts as well.
+
+Matthias Miller  05:25
+So let me go go back into here account subtypes. Actually, nevermind, I lied. Yes, you can configure subtypes errors. I don't think there's really anything besides just the ability to add them. There's no special setting or control
+
+Unknown Speaker  05:39
+for that. Where did where was that?
+
+Matthias Miller  05:46
+Kind of configuration accounts? Got it. Classes are here. So just simple class name and Class Notes field for defining the different classes.
+
+Unknown Speaker  06:00
+Accounting companies. Here's the default company. Here is Joe's accounting.
+
+Speaker 2  06:09
+Open. Open up. Yeah, there you go. Okay, got it.
+
+Matthias Miller  06:14
+There's an ID and Name. And that's basically the extent of the accounting company. Is this where
+
+Speaker 3  06:24
+in our for our organization, we would have affordable barring company vital structures and in the different companies? As an account? Yeah.
+
+Matthias Miller  06:35
+That's right. So you might have something like ABC vs. SD, something like that for your company ID using the appropriate.
+
+Unknown Speaker  06:45
+Okay. Do we see any need to have some sort of notes section as part of that record? Just?
+
+Speaker 2  06:52
+Because, I don't know. I'm just asking. Is there anything we want to detail as far as a company? As far as the company profile itself? In the software? Is there another place that you do kind of a company profile like name, address, etc, etc.
+
+Matthias Miller  07:12
+Oh, like financial like?
+
+Matthias Miller  07:21
+I'm gonna guess a bunch of these settings here.
+
+Unknown Speaker  07:25
+Context of diversity investment.
+
+Matthias Miller  07:27
+Okay, we get migrated default cash bank account, AP liability suspends default account for register. These don't actually,
+
+Speaker 2  07:38
+I saw I saw this. I think I saw this record. I think this is under Admin tab on our system. Yeah. Yep.
+
+Matthias Miller  07:54
+So but some of these, some of these are actually going to be replaced based on the other record that we're adding for, like FGI. The FDA settings record. Then for your context, FGI means finished goods inventory. So part of what we're wanting to do when is is tracking asset accounts for raw materials. And then when a building gets built, deducting that and turning it into finished, finished, good. And then at the point that said that gets delivered, it gets expensed out
+
+Unknown Speaker  08:29
+on the income statement as having been sold. So very high level
+
+Matthias Miller  08:37
+overview of lots of conversations. It's fairly
+
+Unknown Speaker  08:42
+doesn't do justice. But there you go.
+
+Matthias Miller  08:49
+I mean, yeah, I don't know the answer to that. If we need it, we can certainly add it. Yeah. And I don't have more detail about how accounting companies work, because that's not the extent of how they work. So let's go into transactions because that's, there's a register, default register. It's pretty boring. But transaction number contact, debit credit balance.
+
+Unknown Speaker  09:21
+Let's see the record. Drilling into the
+
+Matthias Miller  09:24
+Yep, drill drilling into the record, Transaction Date, a reference status draft posted or void. Linked contact contact can be linked either on the transaction itself or from a line item. I'm going to make this sizes out just a little bit so it wraps a description. Then we have a series of line items with the account, debit and credit amount class amount for that line item. In the notes. There are some additional details that you can provide. You can link the individual into a contact to different contacts you can see This
+
+Unknown Speaker  10:00
+one's for
+
+Unknown Speaker  10:07
+class
+
+Matthias Miller  10:08
+notes, and then it's for Bill Pay, these can be linked out to bills. And we're not going to be using invoice invoice modules that doesn't matter incident ID we're not going to be using so that doesn't matter. And then supporting details. We did not talk about attaching receipt. Well, I guess receipt attachments aren't going to be attached to that transaction. Those are attached to the to the PIO
+
+Unknown Speaker  10:38
+or vendor invoice Pio.
+
+Matthias Miller  10:40
+So that doesn't matter. But any additional notes that you want to provide, you can provide that here.
+
+Unknown Speaker  10:45
+That's the transaction.
+
+Unknown Speaker  10:46
+You want to attach something to this record, you drop it in document archive?
+
+Matthias Miller  10:51
+Well, I don't know how I mean, yeah, you can you can, if you're going to do a lot of it, I probably vote that we
+
+Speaker 2  10:58
+run it out to s3 s3. I mean, I think, for the way we're running, I think a lot of this stuff, a lot of the trends, the documentation, a lot of the documentation storage is happening on other records. So I mean, I don't
+
+Unknown Speaker  11:20
+I don't think
+
+Speaker 2  11:21
+this would be the place. But I mean, as long as we don't, if we get started getting into situation where we start dumping a lot of stuff on here, I'm sure that Josh will have a conversation about it. And we'll we'll find a way to push it out to s3.
+
+Speaker 1  11:33
+Yeah, perfect. Well, marks,
+
+Matthias Miller  11:37
+marks reviewing monthly invoices. So he started seeing storage app posting storage fees showing up and there you go.
+
+Speaker 3  11:46
+Dwayne, you're most of this is already been stored in the accounts payable verification process, right? Yeah.
+
+Unknown Speaker  12:03
+So that's the
+
+Matthias Miller  12:05
+that's the transaction itself.
+
+Unknown Speaker  12:14
+Register,
+
+Matthias Miller  12:15
+the reconcile process. Oh, goodness, I don't know that we actually have anything to reconcile here.
+
+Unknown Speaker  12:28
+This would be bank accounts, credit card accounts, etc, etc. Yeah.
+
+Matthias Miller  12:32
+bank and credit card accounts. Basically. Let's go ahead and turn reconciliation on for this guy.
+
+Unknown Speaker  12:37
+Let's see if we can
+
+Matthias Miller  12:48
+so here you just go through
+
+Unknown Speaker  12:55
+I have not used this
+
+Unknown Speaker  12:59
+I would assume the art would be reconciled. wants to see.
+
+Speaker 1  13:02
+Cleared maybe versus reconciled? I might make sense.
+
+Matthias Miller  13:13
+Let me see if.
+
+Unknown Speaker  13:35
+Okay, well
+
+Matthias Miller  13:37
+trust the trainer. I can chase down a little bit more that process but that's you, okay, once
+
+Speaker 2  13:46
+you wreck it, so how does it work? Then once something's reconciled? Does it actually like if you're in reconciliation mode? does it fall out of out of this report, then as soon as it's if it's reconciled?
+
+Unknown Speaker  13:56
+Well, I'm
+
+Matthias Miller  13:57
+honestly not completely sure. So let's do this as reconciled
+
+Unknown Speaker  14:05
+or nine twos.
+
+Matthias Miller  14:14
+I mean, you can show just Yeah, it is cleared versus reconciled. So I think what you
+
+Speaker 2  14:21
+got, yeah. So if you if you were working on cleared side, and as soon as you clicked it off to the side of a fall back off, and then you could bring it back in again. That makes sense.
+
+Matthias Miller  14:34
+I really need to ask
+
+Speaker 1  14:35
+my bookkeeper, what she's doing on this? Is that
+
+Matthias Miller  14:41
+not unless there's also possibility that let me check my own.
+
+Speaker 1  14:47
+No, we don't have a custom Reconciliation Report. Yeah, let me get details from her because it's got to be a little more streamlined than just what that is. Okay. Counting periods.
+
+Matthias Miller  15:03
+Would you have the ability to close out periods basically locking historical numbers at whatever point so let's say end of year, we can lock lockup period. We don't really have anything
+
+Speaker 1  15:17
+locked here. But yeah. Accounting budgets? Don't know if we let's see, let's go back to 20. Oh, you remember, we have any budgets in here.
+
+Matthias Miller  15:38
+So effectively what this thing is, is just the income statement with
+
+Speaker 1  15:45
+that showing the budget here is you can either do
+
+Matthias Miller  15:53
+an annual budget that gets distributed or you can do
+
+Speaker 1  16:02
+monthly numbers and then there are we don't really have budget set up, but
+
+Matthias Miller  16:12
+that's then we will have the budget.
+
+Unknown Speaker  16:15
+There are budget reports.
+
+Matthias Miller  16:19
+Well, this is currently the main budget report that we'd run.
+
+Speaker 3  16:24
+So what is your, your detail level? Is that on the that's how deep you can go on your chart of accounts? Or what is
+
+Unknown Speaker  16:36
+yes. So
+
+Matthias Miller  16:40
+this would be if you want to only see the top level. Okay. Budget Yeah, just how many layers deep do you want to go? Okay.
+
+Unknown Speaker  17:03
+See where the
+
+Unknown Speaker  17:15
+Okay,
+
+Matthias Miller  17:16
+yeah, the budget reports budget versus actual report. We don't actually. Yeah, that's, that's one of the things that's going to be showing up as part
+
+Unknown Speaker  17:23
+of the first round.
+
+Matthias Miller  17:29
+Let's see, let's delete transactions. Bills, I don't think really matter that much, because we're going to be using the
+
+Matthias Miller  17:42
+sorry, what do you guys call it the PIO but basically the POS system. So then we go into Okay, so then that takes us out basically, at that point that gives us all of that we then go into these
+
+Unknown Speaker  17:56
+reports.
+
+Matthias Miller  18:00
+So income statement, let's do
+
+Speaker 2  18:04
+can I, I'm in the middle of a conference call. Can I call you back as soon as I'm done probably
+
+Unknown Speaker  18:11
+about two o'clock
+
+Unknown Speaker  18:15
+Date Range 1231.
+
+Matthias Miller  18:22
+Okay, so here's a sample income statement for
+
+Unknown Speaker  18:26
+2020.
+
+Matthias Miller  18:33
+And again, we can change the level sorry, I need to drop out I'm getting a lot of background noise right here give me one second.
+
+Matthias Miller  19:00
+Seems pretty straightforward. I don't have that much to add
+
+Speaker 1  19:05
+balance sheet. Once again, I got the balance sheet here. sizes down for my laptop just a bit.
+
+Matthias Miller  19:20
+Again, not just a ton of support shouldn't be a ton of surprises but
+
+Unknown Speaker  19:27
+general ledger,
+
+Matthias Miller  19:29
+ability to filter by dates, accounts, classes,
+
+Speaker 1  19:33
+contacts, journal entries, same thing. Similar thing just slightly different report. Trial Balance
+
+Matthias Miller  20:05
+So this is all the debits and credits for all accounts as of a specific date
+
+Unknown Speaker  20:18
+so rather
+
+Matthias Miller  20:19
+than it's somewhat similar to a balance sheet,
+
+Speaker 1  20:23
+except it's not aggregated into a single number. And it's not just a simple list not a structured list. So
+
+Unknown Speaker  20:44
+I am curious why
+
+Unknown Speaker  20:52
+these numbers don't match. That's strange. Don't know why there's a footer
+
+Speaker 2  21:01
+at the bottom of the star that says debits and credits done but don't match the tools of
+
+Matthias Miller  21:09
+conditional or is that just because of no? Yeah, it's because there's something within the accounting system. So I think somewhere we have a transaction
+
+Speaker 1  21:21
+you probably do. probably find it here pretty quick, if you wanted to. This is No, it's drilled into the sky and get
+
+Speaker 2  21:45
+this right, right here is what I get really excited about having accounting and assist. This is what you can't do on EBMs, or QuickBooks or any other system. So
+
+Unknown Speaker  21:58
+this is this is what I get. This is where I get excited.
+
+Matthias Miller  22:03
+All right, we got two that don't match up. Here is a should be giving. Yeah, it does give a warning on save. But for some reason, we have one transaction here that's off by 1000. We have another transaction that's off by 500. So
+
+Unknown Speaker  22:19
+it's your modification history on this?
+
+Unknown Speaker  22:22
+Ah,
+
+Unknown Speaker  22:23
+yes, indeed.
+
+Unknown Speaker  22:25
+blame, blame Austin.
+
+Matthias Miller  22:28
+That's hilarious. Another thing
+
+Unknown Speaker  22:30
+EBMs doesn't have
+
+Matthias Miller  22:35
+it might actually be something we want to clean up. And maybe something that we want to create a report alert for?
+
+Speaker 1  22:44
+I mean, imagine why you'd want to
+
+Unknown Speaker  22:54
+why do you why you'd want to keep them but
+
+Matthias Miller  23:01
+okay, well, that's Trial Balance transactions is another transactions report going just a bit more in depth incident ideas and relevant for us, but you know, account types, find all equity transactions
+
+Unknown Speaker  23:19
+or transaction lines found. Sure why those are showing up in that case, but
+
+Matthias Miller  23:25
+additional reports accounting summary by contacts. So, again, income by contact expense by contact liability by contact, profit and loss summary by incident ID. So this isn't, you keep
+
+Speaker 2  23:44
+it keeps throwing this contact thing in there. What's the use case for the contact thing? Well,
+
+Unknown Speaker  23:51
+when you
+
+Matthias Miller  23:54
+when you have an expense, then you can link it to your vendor contact.
+
+Unknown Speaker  24:02
+Okay, I gotcha. Gotcha. So,
+
+Speaker 2  24:08
+that probably bears a conversation about what what's currently tied into that contact report. Is that just regular contacts? Or is do should we like when we tie some of this stuff in? Do we need to think about you know, what type of contact list we're actually tying into that?
+
+Matthias Miller  24:25
+What is the contacts list? I think the question is, do vendor invoices also use to be used use that or do they use a different question? They use a different one. So do we need to change vendor invoices to use contacts instead of vendors list?
+
+Unknown Speaker  24:46
+Is this is the
+
+Speaker 2  24:50
+so this so the vendors list is actually a different record type than a contact record. Yes. So yet might want to make A note of that consideration is going to probably be a hiccup point.
+
+Speaker 2  25:17
+And I guess the question really is to ask Josh why he did vendor records as something different than a contact record? And I mean, I'm sure there's probably a reason for. So
+
+Matthias Miller  25:32
+Well, I mean, the other question you can ask is, do the transactions themselves actually have to link to contacts? If they link to a?
+
+Unknown Speaker  25:44
+Well, vendor invoice.
+
+Speaker 2  25:45
+So if you're paying, if you're paying a UfP, Saulsbury bill, with a transaction, I mean, then. Yep. And that's
+
+Matthias Miller  25:54
+always supposed to go through the payments to
+
+Speaker 2  26:01
+I don't know just make making a mental note or physical note that this might be something I need to talk about, just to make sure that I don't I don't have a clear picture how that links through from accounts payable. So
+
+Matthias Miller  26:14
+yeah, I'm off the cuff. I would say the only reason you might want to sign a contract on there is for things like
+
+Unknown Speaker  26:26
+Well,
+
+Matthias Miller  26:28
+Mark for automatic recurring payments, say utility bill does an ACH automatic or utility company that's ACH automatically. Maybe there's a question we're doing on who but does that go through the the Do we still put in a purchase order for those? We're going
+
+Speaker 2  26:43
+to be well go ahead Mark, I jumped on top, you
+
+Unknown Speaker  26:47
+know, that was I mean, that's
+
+Unknown Speaker  26:51
+right now we're just
+
+Speaker 3  26:53
+processing the we're not when I processing prepaid. Any prepaid expenses through that but moving forward we'll our thought our plan is to process all the prepaid through that process as well. So I didn't think about the recurring ones. There's there's no reason those wouldn't be processed shouldn't go through the same process as they're going
+
+Speaker 2  27:29
+sorry, did you ask me a question Leanne was is rattling in here my office getting something out of file drawer?
+
+Speaker 3  27:36
+I, I was asking, like the recurring Is there any reason why those wouldn't follow the same process or also be processed through the accounts payable process we now have.
+
+Speaker 2  27:50
+Yeah, that's our plan. I mean, that's that's what the whole prepaid process is for.
+
+Matthias Miller  27:59
+So in that case, there's a very, very small subset of transactions that we actually want to tie a contact record to. So if we ever want to link them out, we can always in the future switch vendors over to the Contact records and then have a process to go back and copy the vendor name from the linked Pio or vendor invoice over onto the transaction and in the short term, it means that we might not have some of the GO filter by this contact. But what you can do instead is go find me the purchase order for this vendor purchase orders you've been doing was for this order or for this vendor and then let me go into the transactions
+
+Speaker 3  28:45
+so is the contact is basically another way to
+
+Speaker 1  28:49
+filter Yeah. But
+
+Speaker 3  28:57
+why would we use that instead of say the vendor name like
+
+Matthias Miller  29:07
+what it would it would be the vendor name
+
+Unknown Speaker  29:16
+so Is it is it
+
+Speaker 3  29:18
+I'm trying to understand so can can we the way the context work? You're saying that is the vendor name like if we want to look at all invoices, they're all on? We want to look at all transactions for UfP cells vary. We could do that by by vendor name. And then a car or do it by context. Say we have two different contexts that we work with at up sells great. No one does. One type of products the other the other type of products that's not context is not to be used like that. Correct.
+
+Matthias Miller  30:03
+So what I'm so but what I am saying is because of. So currently vendor names are in a different list than contacts are. And so for us to be able to use them to filter transactions by them, we probably have to have Josh do work to move vendors from their own list into the contacts list. And but the other thing I'm saying is, I don't think it's a showstopper between if, if we're willing to forego being able to filter by contacts, we can still, we can still find those transactions by looking at the purchase orders and vendor invoices. And I don't think it costs us that much more in the long term to wait to make that migration if we need to.
+
+Unknown Speaker  30:55
+But okay.
+
+Speaker 3  31:00
+When is the reason why, why those are the different, like the vendor names are right now. They're all contained on our SKU data sheet that we had.
+
+Speaker 2  31:11
+And I don't, I don't know exactly what the reason was for except for that. I mean, we are doing some very specific to on that type of specific things on that type of record. I don't know if you have limitations on your contact records for for some of the stuff he's doing or not. I don't know why it was done that way. And I would say probably, it's just a conversation with Josh to say, you know, I'm assuming from from an accounting standpoint, there's no, you're you're gonna you're gonna say we can't go and just type vendor records into our instead of contexts. Or maybe vendors and contexts. The problem, probably we just need to, well, okay, we're gonna do this is there would there be a way to say, here's our vendor records, and probably there's a very specific reason why they are the way they are, that we create a link out to a contact record. So we have a we have both the contact record and the vendor record, and we have linked them together.
+
+Matthias Miller  32:11
+No, please. I think I think the real real issue is we need to go to Josh and say, Josh, why'd you do vendors? Can we do them as contacts, contact records with the contact with the vendor type? Or something like that?
+
+Unknown Speaker  32:23
+Sounds good to me.
+
+Unknown Speaker  32:35
+Good.
+
+Matthias Miller  32:38
+So I will talk to him about that.
+
+Unknown Speaker  32:45
+Well
+
+Unknown Speaker  32:50
+there's the accounting system.
+
+Speaker 2  32:59
+So go to go to Admin tab. There is some stuff over here that I saw from, what did I see? That was wasn't here? My drawing? Did I make this up in my own head? I thought I had saw some accounting configuration stuff on the admin side.
+
+Matthias Miller  33:26
+Well, there was this one that we were looking at earlier.
+
+Speaker 2  33:30
+No, that's what it was, there was there was stuff put into the app posting settings. That's what I saw. Nevermind. Yeah. Do we have any concern where, okay, where I want to go with user profiles? I want I would like people in my office to do do I want that to I want, I don't know, at some point, we have to have a whole user profile conversation and how, who sees what and how we see where and I really, for 90% of my people, I really don't want them to see accounting stuff. I mean, a very small percentage of people need to see accounting but yet, Josh was going to make a change on an admin level privilege for completing sales orders. And that was going to add a secondary checkout checkbox and then I was going to turn everybody into user level people.
+
+Matthias Miller  34:24
+So there's two levels of controls and then gonna guess these get merged at some level but we do have a permission to view whether whether you can view accounting data or not, but
+
+Speaker 2  34:36
+there's no way to uncheck that if it's an admin level set.
+
+Unknown Speaker  34:40
+Got it.
+
+Matthias Miller  34:42
+So it was Josh gonna give make it Yeah, he
+
+Speaker 2  34:44
+added we added another the one particular control had to do with completing sales orders. That was an admin level privilege. So he's gonna give me a checkbox for that and then I think I can move most people into it Being user level, there is like viewing transmission records on the phone menu system was you have to be a super administrator to see those. So but that's still I can I can pin that on from a user level. So I don't know, at some point, this whole user permissions thing gets, makes my head start to hurt. But Josh said something about your there is there is a push to kind of create this whole rolls thing. So
+
+Matthias Miller  35:30
+yeah, I mean, in the next few years is my understanding. I mean, it's, it's a major headache for investor tools. It's made a major headache for investor tools, users, investor tools, clients. So it's definitely one of those, it is definitely a priority for them to clean it up. It's, it's a question of timing. The other thing that we do have is we do have the restricted data policy, which allows us to, since we're going to be using multiple companies, we can I believe we can use this, I need to confirm with with Alice, but I believe we can use this to hide accounting data from admins as well. So you would have a restricted policy for super admins who should see accounting and then those who shouldn't?
+
+Speaker 2  36:15
+Yeah, I just want to make sure we're really intentional because my office is kind of this weird crossover of needing admin level privileges, but yet, I do not want them seeing accounting stuff. So I mean, we just want to be it. I think it's just a matter of talking through what what hits where, and I'll try a couple things and etc, etc. And we'll we'll figure it out.
+
+Matthias Miller  36:37
+Okay, so do you need anything more from that? Or you'll just play around with it and see if it?
+
+Unknown Speaker  36:41
+Yeah, it's all good. Okay,
+
+Matthias Miller  36:43
+I'll go for now. Good. That's easy.
+
+Unknown Speaker  36:46
+Oh,
+
+Speaker 2  36:47
+except for that app hosting, setting one, because there are settings on there that are going to probably be expanded as we go to multi company that I think are going to be able to be seen by user level people, which gives me some pause. I don't know, if your user level I don't know, if you can change them. Maybe you can just view him. But it's just it's settings that are that are there that I don't know what I have to see. If a person's a user, if they can change any of those settings.
+
+Matthias Miller  37:19
+They should not be not administrators not able to change hosting settings. Okay. Got it. And these settings usually default to being visible. unless we do something special for if you don't have accounting permissions, but reason being settings are meaningless unless
+
+Speaker 2  37:36
+you are able to see account types is irrelevant, unless you can go actually go see the account. So
+
+Unknown Speaker  37:42
+yeah. Good.
+
+Speaker 2  37:58
+Oh, can I see? Can I see the chart of accounts, Import,
+
+Unknown Speaker  38:02
+Import
+
+Speaker 2  38:07
+Data imports and exports import of accounts? Can I see how the data structure is on that?
+
+Matthias Miller  38:14
+Yes, let me one second, let me upload a sample in the year and I could pull it up on a screen share easily.
+
+Unknown Speaker  38:32
+Do this
+
+Unknown Speaker  38:46
+because I'm
+
+Speaker 2  38:47
+suspicious mark that if you know how this stuff is structured inside your spreadsheet, you should be able to lay out 2020 numbers and we can zip them straight in
+
+Matthias Miller  38:57
+actually with my system
+
+Unknown Speaker  39:02
+export accounts.
+
+Unknown Speaker  39:13
+Oh, Dwayne, what
+
+Speaker 3  39:14
+you're, what you're thinking is if we import the Chart of Accounts, import the transactions. Then we will be able to play around with it in here. You got it.
+
+Speaker 2  39:30
+You got it. This, this is why I was pushing to go ahead and start pushing stuff in here because if you're doing all that work to convert 2020 twos numbers to cost base accounting, then being able to shove that stuff in as long as you know the data structure inside of the spreadsheet so it matches up with the import. Then, you know, periodically we can push we can push data in.
+
+Unknown Speaker  39:59
+So there's the format account
+
+Matthias Miller  40:00
+number and I'm seeing here we have an account number. So I'm, I don't know how
+
+Unknown Speaker  40:06
+that's used
+
+Unknown Speaker  40:14
+how are we showing the the level than seeing the first there's a parent account and an account name. But
+
+Matthias Miller  40:28
+so the if you have multiple levels, so you would have, you know, 1000 cash with no parent, the 1030 cash, petty cash with a 10,000 Cash current. And then if you had a third level, then you'd have another one with cash petty cash as the
+
+Unknown Speaker  40:46
+as its parent.
+
+Unknown Speaker  40:48
+And where would that
+
+Unknown Speaker  40:50
+you have? Okay, so you have to parody?
+
+Matthias Miller  40:55
+Yeah, here's, here's an example. So here's a directory category one. Under, there's 1216. Its parent is 1215. Here's 1215. Its parent is 1210. Here's 1210. Its parent is 1200.
+
+Speaker 2  41:11
+This is working backwards to the tree. Yep. So
+
+Unknown Speaker  41:19
+I'm still not quite following.
+
+Unknown Speaker  41:21
+Sure. The
+
+Matthias Miller  41:26
+so here, we would have here let me pull up the label chart of accounts that we can have a visual here is here's this, this one right here receivables, Eric, trade, trade categorize category one. And so in the import, you would put them in order. So you'd have 1200 receivables without apparent a wreck trade with receivables as a parent. And then, because we're thinking about multiples, the customize the categorized with a wreck trade is apparent. in category one, as Eric trade categorize, it's apparent. So each one only specifies its direct parent. And if you have multiple levels, and you would just you'd have to have a row for each of those levels that are that are in there. Got it?
+
+Speaker 3  42:27
+So it I mean, if we're thinking about doing an it I mean, is this something? Could we play around with this as is now if we? So what what do you what we would
+
+Unknown Speaker  42:41
+need is
+
+Speaker 3  42:44
+this file in this format data, me to put data in this and the Chart of Accounts one as well. And then we'd be ready to import.
+
+Matthias Miller  42:56
+Oh, yeah, this one, here's the chart of accounts, you would need the transaction or transaction import. Yeah. Transaction Yeah.
+
+Speaker 1  43:08
+Duplicate sync, it's what I would want.
+
+Unknown Speaker  43:30
+Let me just easier just to pull this straight up in Excel. So zoom in just a little bit too. Alright. So
+
+Matthias Miller  43:48
+the match key, when you're inputting transactions, the match key is
+
+Unknown Speaker  43:56
+what you use,
+
+Matthias Miller  43:58
+if you want to run the import multiple times.
+
+Unknown Speaker  44:02
+So it's
+
+Matthias Miller  44:05
+something that you come up that uniquely identifies this transaction on your end.
+
+Unknown Speaker  44:11
+So how would when you want to run the import multiple times, like what would be an example of how that would be used?
+
+Matthias Miller  44:23
+You have your 2020 numbers work in progress, and you import it and then you say, Oh, I fixed a bunch of stuff. Let me go import it again.
+
+Speaker 3  44:32
+And so if I fix a bunch of numbers would I be using so let's that first one, that draft? If I changed the amount of that transaction? Do I want to leave that match the match key? Same? Yes. So if we don't have that, then it may what would happen if I if we don't have that match key?
+
+Unknown Speaker  45:03
+It would I think it would
+
+Matthias Miller  45:08
+automatically create a new transaction. So you'd have twice as many transactions. It's one of two things, I'm not completely sure, either, it would create a new transaction. And so you'd have double the transactions for 2022. Or it would try to import them all onto one transaction.
+
+Speaker 2  45:27
+So Matthias wouldn't, okay, so your first time push of transactions would have no match key, you would have a match key for that, like your first time you're pushing in. Oh, so you're saying you're saying, you're going to identify that match key. So if you have a whole spreadsheet of transactions, your your create your match key. So every time you push it back in, again, that match key that you created, it's always looking at that match key. And so if you if you change anything in relation to that match key, it's going to change that transaction match to that key. So is this is this like? Is it just a number? Or is it is it? Is it an actual, like the source system ID, that is just the number of that transaction, it's just a number that we are actually creating, right?
+
+Matthias Miller  46:13
+It can be anything, it could be, the source system ID is something that we did just as an example. So you could say, I mean, when we've done QuickBooks migrations, it's been something like, you know, maybe we've done Qb, and then QuickBooks transaction ID 1234. Or any text that uniquely identifies text or number that uniquely identifies that transaction, and makes sense, and it's not meaningful to us at all. It's just, it's meaningful
+
+Speaker 2  46:46
+only if you're Yeah, that makes a God got you tracking,
+
+Speaker 3  46:51
+I think I do is as long as each one of those is unique. And then the so if we, if we do 100 rows of import the first go around, then 150 The next like, we have 50 at the bottom, we would have to every time we add new stuff, it would need to have a match key. So
+
+Speaker 2  47:17
+in the match key is is not necessarily line item transaction base, it's the main record transaction base, right? Because I see you have doubles. So it's the main record, that main record may have multiple transactions on it.
+
+Unknown Speaker  47:30
+So here's
+
+Matthias Miller  47:33
+here's a transaction for July sorry, January 27 draft status. Here's the reference all that's the same. And I don't again, I don't know technically do they have to be all the same? Or do we just grab the first one I don't know. It's it's probably either the first or the last that really met it is only the first of the last that matters. And I'm not sure which there's a contact if it's linked to contact there's a description and then there's the line item. So all of these are the same for the whole transaction and then there's a line item with the account name contact debit credit class notes.
+
+Speaker 2  48:16
+Is the is this is the key field that visibly on the record somewhere so the or is it is it hidden
+
+Matthias Miller  48:28
+you can even grab it in a report but I don't know for sure if it's on a detail screen. I don't think we have a report filter pull it up
+
+Unknown Speaker  48:44
+just do this
+
+Unknown Speaker  48:55
+these we can view batch queue Oh
+
+Matthias Miller  49:05
+mu diagnostic accounting data, it's usually hidden.
+
+Unknown Speaker  49:15
+Got it.
+
+Matthias Miller  49:16
+So these columns are all in line, all the line item columns would be just that line item. And then there's also supporting Transaction Details reconciliation status and the line item length invoice number.
+
+Unknown Speaker  49:32
+I don't think that matters in this context.
+
+Speaker 2  49:39
+So the if I was to go export out of our system what I get all these columns so that that Mark has or do you need something with an actual data index Lee sent to him so he can have the columns.
+
+Matthias Miller  49:51
+Now you'll just get a blank. But what you want so if he wants a sample I can if you want some sample data, I can send it around maybe Hopefully, I do.
+
+Speaker 3  50:03
+So I'm trying to understand why. So, like the first I see there's two lines that are exactly the same, it wants to debit the others to credit. Right? Is that what we're, then there's also? Okay, I thought I saw one that had three lines,
+
+Unknown Speaker  50:24
+surely pull it up?
+
+Matthias Miller  50:28
+Yeah, here's one with three lines.
+
+Unknown Speaker  50:33
+Okay, so there's a, see if you can change some colors.
+
+Matthias Miller  50:40
+So, this one doesn't really make sense. But imagine that you have a very common one would be something like a, let's say you had a stripe, let's say you had an asset account for your merchant account like Stripe. And then you might have
+
+Unknown Speaker  51:03
+a you might have a
+
+Matthias Miller  51:11
+sorry, I'm gonna get I haven't mastered Gabes fancy finger finger counting for debits and credits, but you would you would increase revenue, you would have you would have three entries, one for revenue, one for sales, one for charges, fees, merchant account fees, and then one on the actual stripe, acid account. And and and so if you want to split it out, sometimes your your debit credit might actually be split split out across multiple accounts, not just one. So here's this example here, I don't think is a great example. Like, why would you have a single entry for petty cash? Unless, I mean, maybe there's some notes that you want to include, like, you know, this much petty cash from this source and this much petty cash from that source. But yeah, anyway,
+
+Speaker 3  52:12
+looks like they're, they're moving. So the 225 and 525 total up to the 750.
+
+Unknown Speaker  52:28
+So, here's,
+
+Speaker 3  52:31
+I mean, with with reclassifying 2022 numbers, and
+
+Unknown Speaker  52:37
+all right, kind of where I'm
+
+Speaker 3  52:40
+really bumping my head is, is to try and do all of that in spreadsheets, where I know what I want to see. But there's a lot of limitations on spreadsheets as to once I've, I've detailed my, you know, selected my chart of accounts, and all of those parts, or all of those compile, to compile it into, you know, something that, like an income statement or a balance sheet. So I'm wondering if, if I understand how what seems like would be really helpful is if I understand exactly what the information I would need to provide on the Import, and how that relates to say, the balance of the income statement. And it's, it almost seems like I could take all my information, export it and then we would have it in a form where we could do a lot more with it then.
+
+Matthias Miller  53:46
+Yeah, you could, it would be a little bit of a turnaround, but you could send I don't know who should be the who should be the point of contact here, somebody in Dwayne's office or that we're wanting to get been involved in as needed on support side here too if you guys need but no matter you know, whether whether you send it here or there, you can send it in and then once they import it, they could run a run a transaction report back GL report, income statement balance sheet something like that. Or
+
+Unknown Speaker  54:29
+you know what we need
+
+Matthias Miller  54:32
+we didn't an auto import email address. This is going to scare Josh and scare myself as well but can't give an
+
+Speaker 2  54:40
+arrow careful with careful with it. This is this is nightmare makers.
+
+Matthias Miller  54:45
+It is nightmare makers. I will say it and then regret it later. Just have an email address where we can send it from files inside automation and have it important then you can pull accounting reports off.
+
+Speaker 2  54:55
+I mean, you're essentially looking for the kind of almost the same thing that this data sheet does when the xml export of that other SKU data sheet that they're pushing into the Raspberry Pi. Yeah. But I mean, I don't think you really want to go through the extensive build process to for something like that. I mean,
+
+Speaker 3  55:18
+this is more of a one time. Yeah, well, it's testing. And it's also hopefully, to take the information we have for 2022 into something into a true accrual based set of financial reports.
+
+Unknown Speaker  55:38
+Mark, you just need to spend quite a number of hours at Apple Creek. Well,
+
+Speaker 3  55:46
+I'm just trying to wrap my head around. Could we go back to an income statement? And I'd like to look into that a little more, or do I have until 230? I don't know. I got time. Yeah, I'd like to,
+
+Unknown Speaker  56:02
+I'm going to I'm going to drop off a bit, make a phone call, and then I'll be back.
+
+Unknown Speaker  56:05
+Okay. Okay.
+
+Matthias Miller  56:06
+I'm just gonna do a long range income statement, even if it doesn't make sense and get more data in there.
+
+Unknown Speaker  56:12
+Okay. So there you go. Okay, so
+
+Speaker 3  56:22
+we're starting with revenue, the different categories, and then your, so I know you can select levels and the you can expand levels, like an add on level, is that what?
+
+Matthias Miller  56:33
+You can go into the general ledger, then for that one, and you can see everything? So this would be a general ledger, it's a general ledger filtered by that date range for that account, and then you can see the transactions underneath it.
+
+Speaker 3  56:45
+Okay, how many levels deep? Are we now on? On the income statement? Okay, we are at five. Okay, so five?
+
+Matthias Miller  56:52
+Yeah, we must not have we created some of those on the chart of accounts, but we've never actually put any transactions under them. And so we're gonna do this, we're going to show accounts with zero balances. And that shows you more of what
+
+Speaker 3  57:08
+I see. So I see some negative numbers or like the sales discounts, those are simply entered as negative amounts, or how does that Okay, perfect?
+
+Matthias Miller  57:17
+No, no, those are entered? Well, no, I mean, those are basically debit.
+
+Speaker 3  57:23
+Yeah, just entering it as a debit instead of a credit or. Okay, so you've got income. And then in this example, you've got expenses, I mean, that that the Chart of Account is we can make that whatever we want to.
+
+Matthias Miller  57:44
+That's all based on, it's all based on that first spreadsheet with whatever return of accounts you put together.
+
+Unknown Speaker  57:53
+Okay. So,
+
+Unknown Speaker  57:58
+okay, let's take a look at balance sheet it.
+
+Matthias Miller  58:04
+Going to show all of them here, and if there's zero cash receivables
+
+Speaker 3  58:09
+inventory. Plant, are you showing any? Okay, I see you've got depreciation there, you currently don't have depreciation schedules built yet, do you?
+
+Matthias Miller  58:22
+We don't currently our plan was to create I think our plan was to create a separate asset record where you would define an asset its value linked to a transaction and set instead of the depreciation scheduled that point and then link the depreciation
+
+Unknown Speaker  58:42
+items back to that. Okay, so
+
+Speaker 3  58:46
+the from that table with those feet need to be journal entries or without those show up automatically.
+
+Matthias Miller  58:54
+They would be we would automatically create linked journal entries for
+
+Unknown Speaker  58:58
+that. Okay, perfect. So
+
+Speaker 3  59:02
+I just there's there's several different ways that we, that people do the appreciation, we're I don't know if it's worth getting into these details or not right now. I assume you're just doing a straight line depreciation like 70,007 year, useful life 10,000 per year.
+
+Matthias Miller  59:27
+We haven't even gotten that far. I mean, it could be that we default to that and let you know, I don't even know what depreciation schedules can look like. I'm assuming there's a variable, variable rate.
+
+Speaker 3  59:39
+And we're going deep with that right now. I'll make a note to set that sent details on what we want there. Because there's a few, a few important parts but for what we're doing here as long as the depreciation we want to show is on that transaction import, it'll all just be just fine, right?
+
+Matthias Miller  1:00:07
+Yes, um, basically what we'll want to do is January as of January 1, or whenever you want that automation to start, we should set up the asset records with whatever values as of that specific date and do the schedules from that point going
+
+Unknown Speaker  1:00:21
+forward.
+
+Matthias Miller  1:00:26
+Like, I'm going to guess in 2022, you're going to manually add depreciation ledger entries. And for 2023, we're going to create those asset records. And and from that point, use the automatic depreciation.
+
+Speaker 3  1:00:45
+Yeah, so basically what from a transaction record in 22, we would just need to show depreciation as an expense every month, and then the same amount, like a contra account increasing by the same amount on the balance sheet, everyone, and those would all have to be transactions right? As long as we list them as transactions, so it so
+
+Matthias Miller  1:01:18
+I think that's the right way to do it. I mean, the other way to do it would be to give you a way to import transactions against a I don't know. I think that's the simplest way to do that. Unless you have a reason not to do it like that.
+
+Unknown Speaker  1:01:33
+Yes, um, I'm dropping completely off.
+
+Speaker 4  1:01:35
+I have another phone call. Okay, sounds good. Thanks, guys. Thanks.
+
+Speaker 3  1:01:42
+So yeah, let's just scroll down through the rest of the the balance sheet see what so you've got
+
+Unknown Speaker  1:01:49
+to buy assets then you've got liability equity. And then there is just liability, just equity
+
+Speaker 3  1:02:00
+and the equity or the REIT sorry, the
+
+Unknown Speaker  1:02:07
+Okay, retained earnings, that the retained earnings
+
+Speaker 3  1:02:13
+is coming directly from the income statement for that period right like the 1.281
+
+Unknown Speaker  1:02:20
+or anything
+
+Speaker 3  1:02:26
+we would normally call it net income or income to date or whatever but
+
+Speaker 1  1:02:32
+I don't know the answer to that for sure. Probably.
+
+Speaker 3  1:02:42
+I don't know if while it's obviously just a demo but would it if we look at the income statement for the
+
+Unknown Speaker  1:02:52
+rally It depends if
+
+Matthias Miller  1:02:56
+we look at income statement across all time
+
+Unknown Speaker  1:03:02
+we would see the net
+
+Matthias Miller  1:03:05
+I think 1.2 8 million Yeah, yeah. That's the net income.
+
+Speaker 3  1:03:15
+Okay, well I'm I'm starting to get really excited with with taking that data and and importing it into here. I think the trick will be to format and import it correctly, but it's it yeah, there's a ton of limitations I'm having with spreadsheets trying you know, just simple things like showing multiple levels and I'm sure you understand so I think another thing that would be helpful for me to understand is just to walk through several basic transactions like do a record a sale of $5,000 or Sure. So record income and also any expense just
+
+Matthias Miller  1:04:16
+from the better would you rather do it in a spreadsheet would you rather do it in the
+
+Unknown Speaker  1:04:20
+insist I was
+
+Speaker 3  1:04:25
+thinking in the NSS but if you do it in the spreadsheet, will you use were you thinking then you would take that then
+
+Unknown Speaker  1:04:33
+import it
+
+Matthias Miller  1:04:36
+doesn't doesn't really matter?
+
+Unknown Speaker  1:04:39
+Um Well, let's go
+
+Unknown Speaker  1:04:42
+first and then
+
+Unknown Speaker  1:04:45
+go. So so we've got is this A is accrual based sale? Yeah. Okay, so So we have a
+
+Matthias Miller  1:05:04
+let me take a look what acid accounts we can use. Okay, here's a
+
+Unknown Speaker  1:05:14
+finished good yeah, we'd
+
+Unknown Speaker  1:05:17
+be selling
+
+Unknown Speaker  1:05:21
+a building from finished goods All right, so
+
+Matthias Miller  1:05:33
+I have my cheat sheet is this a debit or credit?
+
+Unknown Speaker  1:05:36
+Yeah
+
+Matthias Miller  1:05:38
+let me get my cheat sheet I don't have
+
+Unknown Speaker  1:05:55
+Okay, so this is a
+
+Matthias Miller  1:05:58
+assets and expenses are on the outside and those are the ones that are opposite what you might think so we are decreasing which means it's a credit and
+
+Unknown Speaker  1:06:15
+for $5,000 and
+
+Matthias Miller  1:06:20
+we are going to I'm going to move this over into
+
+Speaker 1  1:06:25
+test assist that would actually be a reasonable place to actually then we don't have Chart of Accounts we're gonna
+
+Matthias Miller  1:06:36
+we're gonna set up a sample chart of account there's goods as an asset account, we have sales as an income account.
+
+Speaker 1  1:06:49
+We have cogs as an expense account
+
+Matthias Miller  1:06:56
+do we want a
+
+Unknown Speaker  1:07:05
+finished goods we want to run materials
+
+Matthias Miller  1:07:14
+and we'll add more if we need more. Okay, so let's say it's already in finished goods. We want to decrease so it's a credit of $5,000
+
+Speaker 1  1:07:27
+Wait Are we doing the sale or the build just the sale just to say Oh yeah, okay. So then we have
+
+Unknown Speaker  1:07:44
+should we now be income or be what do we call it sales?
+
+Unknown Speaker  1:07:54
+Of $77,000
+
+Matthias Miller  1:08:00
+and then we have cogs of
+
+Unknown Speaker  1:08:08
+no
+
+Matthias Miller  1:08:10
+cogs we want to increase cogs
+
+Speaker 3  1:08:17
+but cogs would be an expense with would that not be?
+
+Unknown Speaker  1:08:30
+I don't have my cheat sheet. But
+
+Unknown Speaker  1:08:33
+finished goods we
+
+Speaker 3  1:08:34
+want to decrease sales should increase and cogs should.
+
+Unknown Speaker  1:08:41
+Count should
+
+Matthias Miller  1:08:45
+be a bit so as cogs only
+
+Unknown Speaker  1:08:52
+when I'm okay.
+
+Matthias Miller  1:08:54
+assets to increase assets sorry. So we're decreasing. So this decreases finished goods. Expenses is just like that. So these two would cancel each other out. And the cost of finished goods is that is the cost the finished goods value is the cogs right.
+
+Unknown Speaker  1:09:16
+Yeah, we're we're taking that value out of Yeah.
+
+Matthias Miller  1:09:20
+So then sales for income a credit is an increase. So now we have sales that but
+
+Speaker 3  1:09:31
+the debit to that would would have to be either to cash as an asset or right
+
+Matthias Miller  1:09:37
+well, let's do a
+
+Unknown Speaker  1:09:42
+Do you have a preference
+
+Speaker 3  1:09:47
+I was thinking we could just do it. Yeah, let's do let's do accounts receivable which would be a liability. Set Yeah, you're right accounts Yeah, that is an asset account
+
+Unknown Speaker  1:10:07
+so then
+
+Matthias Miller  1:10:10
+it's not showing up there for some reason, their accounts receivable right. So then accounts receivable a debit decrease is an asset which means that the debit will increase and so now so this is what a sale should look like. Oops. So now when we go to
+
+Unknown Speaker  1:10:33
+get rid of all this stuff again
+
+Matthias Miller  1:10:37
+so now when we go to the income statement and the balance
+
+Unknown Speaker  1:10:40
+sheet so year to date,
+
+Matthias Miller  1:10:45
+income statement shows we have sales of 7000.
+
+Unknown Speaker  1:10:49
+cogs for five
+
+Matthias Miller  1:10:54
+AR we have 7000. We never built the building so negative five and finished goods, the 1000 of assets with $2,000 of retained earnings.
+
+Speaker 3  1:11:05
+And the retained earnings comes directly from the income statement. So yeah. So can we perfect can we add to this? Can we do like a let's do a purchase of raw materials. We need to add raw materials as an asset
+
+Unknown Speaker  1:11:29
+so this would be
+
+Matthias Miller  1:11:32
+raw materials, assets. So we debit to increase and we buy 5000 Again,
+
+Speaker 3  1:11:41
+yeah, so we bought 5000. And we either have to create an accounts payable as a liability or they cash
+
+Speaker 1  1:11:51
+astute accounts payable. liability accounts payable Alright, so then we have some reason that list isn't updating then we have an accounts payable credit
+
+Matthias Miller  1:12:10
+which increases that by that amount. So there's the purchase now when we go back to the income statement doesn't change, right balance sheet now shows that we have five 7000 and receivable negative 5000 goods 5000 Oh, but here's
+
+Speaker 1  1:12:29
+the yeah never built the building.
+
+Unknown Speaker  1:12:32
+Yeah, that's correct. We added that and our
+
+Unknown Speaker  1:12:40
+sorry, let me go back.
+
+Matthias Miller  1:12:43
+So now we have the raw materials.
+
+Unknown Speaker  1:12:48
+Finished Goods payable is
+
+Speaker 3  1:12:52
+yeah, we have liabilities of 5000. So now if we want to take it one step further, just do a manual process to
+
+Unknown Speaker  1:12:58
+do build the building we move. You do that? Decrease raw materials. Yeah. And it's finished goods.
+
+Matthias Miller  1:13:14
+And now the balance sheet shows 7000 in accounts receivable 5000 In payable 2000 in retained earnings.
+
+Speaker 3  1:13:23
+So where did our Okay, the asset Where did our finished goods go to?
+
+Matthias Miller  1:13:29
+Well, finished goods we built it and then sold it.
+
+Speaker 3  1:13:33
+We had a negative 5000 and we increase it by 5000. So that's why Yeah.
+
+Unknown Speaker  1:13:46
+Good Well, I I think
+
+Speaker 3  1:13:56
+so who would who should I work with some of these some of these examples would be extremely helpful, like the, the, the format on the needed on the import, as well as matching matching financial reports like the income statement or I guess another question, do we have like a, a, a test version? Somewhere where we can play around with 20 playing two numbers that that
+
+Unknown Speaker  1:14:36
+don't affect anything else? We have Thank you. We have a test system here. There's
+
+Unknown Speaker  1:15:02
+What's the downside?
+
+Matthias Miller  1:15:09
+Well, okay, let me let me spit out the options we have, we can decide which way to go, we get, we can do it in the live system. The only possible downside
+
+Unknown Speaker  1:15:20
+is that
+
+Matthias Miller  1:15:28
+you know, if you go back into activity history or some of the, you might see the test data or some of the the account transaction numbers are going to show that we had some test data in here. But we can clear it out. Option two is we have a test version of assist that we have running. The main thing we'd have to do there is I'd actually argue against using that we use that for testing internally. I don't, you know, as, as a matter of principle, I make sense for people like, like Ben, Ben ends up helping you out for him to have access to these financials. But I don't think it makes sense to put them in here because we'll have activity history and other stuff that they will have that the other option that we that we have done for other clients is set up a deploy, copy a blank deploy, copy the system, that's basically just a temporary, temporary, blank system that we can play around with to import, import transactions into area import these types of things into and then once we've.
+
+Unknown Speaker  1:16:44
+And we can blow things away. And
+
+Matthias Miller  1:16:48
+eventually, we'll just get rid of the system completely. So that's it, we basically just spin up another copy of assist the blank copy of assist $50 a month and use that until we're done with playing around with the imports.
+
+Speaker 3  1:17:07
+And once we have those like we want, and then we can import from that copy into the live system. I mean, is that seems like the best option to me and what what do you think? Yeah,
+
+Unknown Speaker  1:17:17
+I'm good with that. Yeah,
+
+Matthias Miller  1:17:19
+we'll do that. That'll get Ben and Dwayne access to that. So they have that. And
+
+Unknown Speaker  1:17:29
+guess
+
+Matthias Miller  1:17:32
+I'm good with, with Ben being the point of contact to help you out with those unless unless it should be somebody in doings office? I don't know what your
+
+Unknown Speaker  1:17:46
+I don't know what's best there.
+
+Speaker 3  1:17:47
+I mean, I could talk with Dwayne, but I don't know, I don't have a preference.
+
+Unknown Speaker  1:17:55
+So
+
+Speaker 3  1:17:56
+the way that would look is I would, I would create the input, send them to Ben, Ben would upload them send a copy back, and we'd go back and forth. And we basically
+
+Speaker 1  1:18:09
+have what the end result that we're looking for. So
+
+Speaker 3  1:18:18
+how? Well, several questions. I mean, first off, first question, when could we get started? And then second question, how much capacity does
+
+Unknown Speaker  1:18:34
+do we have for
+
+Speaker 3  1:18:35
+that right now, because here's where just a little background on where I'm at is we're going to try and just spin them up in in spreadsheets for 2022 just to see what we can do. But we've run into a lot of limitations. I feel like I have
+
+Unknown Speaker  1:18:53
+pretty much all the data might just
+
+Speaker 3  1:18:56
+need a place I need a template or I need something to a place to put it in so that we can do you know create all the different reports and manage them properly.
+
+Unknown Speaker  1:19:11
+Yeah. I mean, then you've got
+
+Matthias Miller  1:19:18
+anywhere from ranging on what projects we've got going 10 to 3030 hours probably that you could devote
+
+Speaker 1  1:19:24
+to help. Not that much. What is it? Yeah,
+
+Matthias Miller  1:19:33
+yeah, you're gonna be dropping off soon, too, though.
+
+Speaker 3  1:19:42
+I'm just trying to gauge what's realistic. We I had we had a goal of having this completed on our site, the end of February, but I think we can push that out a little bit because the end product that I'm seeing here, I believe is going to be like three times as good as what we would have had in spreadsheet So I'm trying to gauge how much? No. Are we thinking a month of work? We could get?
+
+Unknown Speaker  1:20:11
+I mean, it's kind of
+
+Matthias Miller  1:20:12
+No, okay, I can get the system up tomorrow. And if you got your spreadsheets, it's 15 minutes here and 15 minutes, there have been time to run those reports back and forth, maybe 30 Max, and you know, when he's getting started, but
+
+Unknown Speaker  1:20:27
+it's not, it's not a lot of work.
+
+Speaker 3  1:20:33
+But where the where the time is going to come in? I'm thinking is, like, we're trying to figure out like, why why did this transaction appear in the wrong place? Why, why there's what do I need to change on the import? Here's what I'm actually trying to show. What do I need to break that break?
+
+Unknown Speaker  1:20:58
+Well,
+
+Unknown Speaker  1:21:00
+I mean, it'd be, I think,
+
+Unknown Speaker  1:21:06
+I think it would be helpful for
+
+Speaker 3  1:21:07
+you to see what Well, I don't know. I mean, it's all just transactions, right? I was thinking it would be helpful for you to see what what I'm trying to create. But it's it's just, it's all transactions, just debits and credits organized in a certain way. Really?
+
+Matthias Miller  1:21:23
+That's it is all it is. And then it is,
+
+Unknown Speaker  1:21:27
+like you said,
+
+Matthias Miller  1:21:28
+The only thing is, okay, let's look at I mean, something as simple as we're going to march through the months of the year, did our January income statement and balance sheet matchup? Did our February one match up? If not what went wrong? Maybe it's, is it in the first half of the second half of the problems that or, you know, I don't know. Seems like from that standpoint, from from there, it's just a pretty systematic. It's not simple, but systematic.
+
+Speaker 3  1:21:58
+So it sounds like we should start with one company. So we would spin up three tests systems, right for dummies?
+
+Matthias Miller  1:22:08
+If Yeah, if you've got financials ready to go for three?
+
+Speaker 3  1:22:13
+Yeah. Well, when I say ready, I mean, the on the expense side? Yes. On the the income? Not? Not yet. But we're working on that. So. But there's no, we can start with parts of it. Right. Like
+
+Unknown Speaker  1:22:34
+I would probably start with, well, I guess you could.
+
+Matthias Miller  1:22:41
+What do we think my preference, I think we're close enough to multi company support,
+
+Unknown Speaker  1:22:46
+that I would rather
+
+Matthias Miller  1:22:50
+I would rather start with one company and start finessing that in hopes that
+
+Unknown Speaker  1:22:53
+we have. We have
+
+Matthias Miller  1:22:57
+multi company support soon enough that we can do company to company three in that same system, and more closely model what we're hoping to do in the live system.
+
+Unknown Speaker  1:23:11
+But if you guys are ready to go, I mean, it's not like we can't
+
+Speaker 1  1:23:23
+It's not like we can't spit out three systems for you and what's not a problem?
+
+Speaker 3  1:23:27
+Well, let's, let's plan to start with one system. And I guess you tell me when when we can start and as soon as it's ready to do Ben and I just work together schedules and
+
+Unknown Speaker  1:23:41
+are what one works best for.
+
+Matthias Miller  1:23:45
+Okay, you guys can coordinate that. And they'll get in all the details that he needs to help out. And then if I there's anything you need, I can happy to jump in. Should I keep? I'm looking at scheduling stuff. And I can't remember what you'd said in the email. Should I be keeping these time slots open just in case we need to touch base on any of this stuff?
+
+Unknown Speaker  1:24:12
+Or, well, I'm thinking if we're
+
+Speaker 3  1:24:20
+I feel like our time is best spent trying to work this in and finesse this. I don't know by Wednesday, next Wednesday we have I'd say the Monday slot No, the Wednesday like keep that open. Hopefully we'll we hopefully will have something by then.
+
+Matthias Miller  1:24:42
+Yeah, I'll have a system up for you. It only takes about doesn't take 15 minutes here on my end or something. So as soon as we're done with this call, get that set up and spend a little little more time making sure Ben's got what he needs to roll with it and
+
+Unknown Speaker  1:25:00
+You guys can coordinate we can circle back on Wednesday. Okay,
+
+Speaker 3  1:25:08
+good. Well, this is really exciting. It feels like I was kind of at a point where I was stuck with in my spreadsheets. I had all the data, but yeah, I didn't. So I guess Ben, when would you be ready to,
+
+Unknown Speaker  1:25:26
+to? To start? Because
+
+Unknown Speaker  1:25:35
+I could probably start on Friday. And I've got a little bit of stuff on Friday, but I could start Friday. If not, then.
+
+Unknown Speaker  1:25:49
+By Monday afternoon, I probably could. Looking at what I've got scheduled at this point.
+
+Unknown Speaker  1:25:56
+Friday, what what what time slots we work?
+
+Speaker 4  1:26:02
+Mostly, pretty much anytime in the morning, Matthias and I have some other stuff going it too. But I'm open up until that point. On Friday at this point. That's Eastern. Yeah. You're located where? Virginia,
+
+Unknown Speaker  1:26:18
+Virginia?
+
+Unknown Speaker  1:26:24
+Why don't we plan
+
+Speaker 3  1:26:25
+to about like a 10 o'clock?
+
+Unknown Speaker  1:26:29
+Sure. So I'll try to have Yeah, let me get my thoughts
+
+Unknown Speaker  1:26:39
+together. I'll shoot you an email and we can Yeah.
+
+Unknown Speaker  1:26:46
+That'll work. Good. All right. Sounds sounds like playing.
+
+Unknown Speaker  1:26:56
+Yeah. Well,
+
+Unknown Speaker  1:26:57
+this was Yeah. Good. Very good. To see
+
+Matthias Miller  1:27:05
+ya. We're looking forward to getting this thing rolling. Yeah, for sure.
+
+Unknown Speaker  1:27:09
+Okay, well, we'll be in touch. Sounds good. Thanks, Mark. Good bye.
+
+
+Transcribed by https://otter.ai

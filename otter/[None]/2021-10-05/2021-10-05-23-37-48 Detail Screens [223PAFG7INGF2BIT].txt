@@ -1,0 +1,284 @@
+Unknown Speaker  00:03
+Alright.
+
+Matthias Miller  00:06
+So detail screens. I think there's a lot of this stuff that I already got into. But let me go ahead and share my screen again. And talk about this.
+
+Unknown Speaker  00:21
+We have
+
+Matthias Miller  00:25
+the basic layout for detail screens, we actually have a separate training that I did on the did for Tim, on columns and rows. So I don't think I'm going to go into that very, very much here. But the short answer is, is detail screens have some layout controls, in terms of rows and sections and columns, that allow us to kind of reflow the screen based on your your screen size. One thing about detail screens, as of now, detail screens can only be edited by Well, they can be viewed and edited by multiple people at the same time. But the first person to save wins. So let's say that here we say summary is one summary as to, you'll notice that both say that I'm editing this record, I save two first and I come back to one it says this record has been modified, you will not be able to save any changes. So you have to go into you'll have to go over here and open it in a new tab and copy your changes across or just refresh the page and make those changes etc. There, there are long term plans to be able to make to be able to merge changes in when somebody else modifies the record. I don't know that there's a specific timeline on that it could be a year could be three years, it could be I don't know less than that if there's an urgent need for it. But as of now, that's how it works. This is rarely an issue. First of all, you can see when somebody else is modifying it, or when somebody else has it in edit mode. And second of all, I mean, many people just don't spend a lot of time editing the same working on the exact same record, there are situations where we will take part of a record. If it's if there's some kind of automation that modifies a record set modifies. Let's say that you would have here would be a good example. Let's say that you have a integration with your phone system. And every time you get an inbound call it you want to log it on on the contact record, what we may end up doing instead of instead. So you can have an RG on the contact record that says here's a list of the dates and the calls and this call times and all this stuff. But what that means is that if you're in a contact record, and somebody calls, then if you've made any changes to it, you won't be able to save your changes. And there's a high likelihood that if somebody is about to call, you'll pull up the contact record and be like, okay, let's let's let me catch up and make some notes and all that other kind of stuff. So instead of doing that, what we most likely do is push push the call history into a separate record type. So it may be an auto number record type that links back to the contact. And then and then have some other way for the contact to show. Show the calls. This takes us into kind of an advanced piece. But let's go ahead and go here we have something. So I talked about argies that store fields. But we also have the context of something called a virtual RG, where it's not actually tied to any fields. But it pulls information from the database and shows it as if it were just a few examples here. Here you see the incidents, where you have the origination date, type, etc, etc. and a link to a link to open it. This is an example where you can't make any edits to it. But here's an example where you can. Let's see, we're going to let's edit the Alex, that's a good one. Let's edit the client demo user group. So this here that you see here is actually a virtual RG. But it is editable, you can make changes to it. You can add or remove it. Yeah, you can. All of that stuff you can change. But, but the actual information is stored in a hidden RG that you can't see one of the reasons why we did it like this is to allow you to give the indentation in grouping and show in a way that's a lot more user friendly than we would have been able to show otherwise. And also also well there's a lot of technical details in this. So my main point is that virtual orgies can be read only or they can be editable and you can have those types of
+
+Unknown Speaker  04:50
+those types of options. There's well hang on a second. Maybe
+
+Matthias Miller  06:07
+Alright, I'm back. So virtual RG, all of that. So a couple of the major elements in this we have a heading we have a background, that's its own type of of item. I mean the background color here is its own type of item. The heading here is a label and we can adjust font sizes, the font sizes can actually be dynamic, if you want them to, there is a this actually be a great to be a great example.
+
+Matthias Miller  06:40
+There's, it's there's some great, this would be awesome to include in the demo system or not a demo system, but one of the test systems. Those are format expressions. So here's an example of some dynamic font sizes that can be controlled, font colors that are dynamic, you have, you can have labels that show up as red or different colors based on you know, certain requirements. All of this types of stuff, you can actually put background colors and controls which we never do. But you can check boxes, single line and multi line fields we talked about. Let's get rid of this so we can actually read it.
+
+Unknown Speaker  07:21
+Sorry, hang on, I need to take this as well.
+
+Matthias Miller  07:57
+All right, I think that's the end of the phone calls, I actually need my attention. So we have single line and multi line. We do have embedded memos, which we see that they auto grow and grow and collapse. They can also be displayed as single buttons. We also have something called on change buttons. And so this is a bad example. I don't know if we have any better examples. And unchanged button is basically a button that that when you push the button, it does it does it makes a series of modifications to the detail screen.
+
+Unknown Speaker  08:42
+So that one's not not sure what
+
+Matthias Miller  08:48
+I don't have any good examples of that. So trying to think with some good examples are sometimes I mean, we ran into this into the insurance management were to cancel or renew coverage required a series of modifications to different fields. And so creating a button, we created a button that would automatically do make all of those changes all at the same time. It's more advanced. There we have something called report links, where when you click click on it, this would be a good example in the incident. You click on it this actually runs a report that then automatically opens that incident. Other examples of report links would be view incidents. So you can click this to actually view incidents, etc, etc. And then argies which as I mentioned RGS can be either embedded or they can be like this or they can be behind the button. That's the wrong one.
+
+Unknown Speaker  09:53
+There's another one.
+
+Matthias Miller  09:58
+I don't have a Great example. But Sorry, I've got somebody like spitting out right outside my window and I'm not sure what they're trying to accomplish. Alright, so here's an example. So if you if it's hidden behind a button, if it's not embedded, you'll have a button to open it. And it just shows this with an insert, append and delete row icons on it.
+
+Unknown Speaker  10:23
+The
+
+Matthias Miller  10:25
+we also have something called var G's vertical or G's, we rarely use them. They come in different types, but basically instead of, it's just transposed. And so instead of rows, we have columns, etc, etc. They have various Yeah, they can be generic, they can be sorted unsorted data, just like a regular RG various heading row types, again, we rarely use them, they cannot be embedded, so you have to put them behind a button to show them. Here's a good example of an emoji that you can actually see kind of how it works. So you'll see here is the embedded RG that has the row as you move down the value updates to reflect the current row, if you change it, it modifies that row in the RG. So there are times when when the RG is just too dense to actually include all the information. And and this allows you to kind of pull pull out and to get a little bit more screen space for making edits. One other thing I wanted to talk about that kind of missed is on every on most records, we add a link to the activity history. The activity history shows a history of all modifications to all fields across all time. And this can be turned off on a per per record type level. But we like to keep it on just because it gives full audit history on what happened to the record. So you can see here that on February 9, Ellis made some adjustments to and made some adjustments to permissions. I made some adjustments to permissions and this is basically all that you're going to see here. Let's go into a contact record, you'll see that no modification history, I modified the summary because I was playing around with it, I should probably be responsible and clean it up again. So now you'll see I blanked it back out temporary non billable rates. And and here's where we first imported the employee. Number 26. And you can pull up, pull up this and you can get further details. If it was a memo, you can actually see the difference between the old and the new so.
+
+Unknown Speaker  12:54
+So if I do ABC, and then I delete B
+
+Matthias Miller  12:59
+and save and then just blank it out and save. I can go back over here. Let's
+
+Unknown Speaker  13:09
+wait. Okay, I'm not sure why that's not. It might be because it's an executive executive notes. There we go. So by looking at this middle one, where I deleted B, you can pull up the memo diff and it shows be struck out you can see that that was removed.
+
+Matthias Miller  13:32
+If a memo is this is if an RG is embedded in the that you're entered into this for mock ups. If an RG is embedded we have a convention of putting plus and minus minuses right beside it you have to specifically add those additional buttons when they're embedded. Because we don't know where where it needs to go. We have separately we have separate style guides for for what's or what are practice standard practices for these types of things. And we'll get into that. So I guess a lot of that's kind of recap but any questions as far as Oh, I guess one other thing I wanted to point out some of these. So this is not a good example. But some of these when you choose from a list, you have the option here Let's view the incidence.
+
+Unknown Speaker  14:21
+It's probably that's just
+
+Matthias Miller  14:32
+another reason to use less type records is when you're in. So you'll see that assignee is a contact list item incident assignee. So one of the advantages is that you can if this is blank, you can hit this button to create a new one. Yeah, let's get out of here. You can click the ellipsis to create a new one or if it's selected You can click this button to view the contact itself. Or, if you're in read only mode, the whole name will show up as a link, and you can click the name to pull up the contact records. So create some ease of access to that. Any questions on detail screens before we dive into reporting,
+
+Unknown Speaker  15:22
+generate PDF and export to word that exporting the whole the whole incident.
+
+Matthias Miller  15:31
+So those are report links that run a report that select the record. And it is a dead end generate a template. So so you have a the Generate PDF has a here let's do this. This would be awesome.
+
+Matthias Miller  16:00
+Find it first. Center components external.
+
+Unknown Speaker  16:14
+Check this out.
+
+Matthias Miller  16:24
+So this is what the Generate PDF template looks like. The Pound expressions are used to say, this is not actually real text. This is like an expression that I want you to evaluate. So here's the incident title that gets embedded. Then we have the word assignee, and then we embed the incident assignee. We allow custom incident template headers. I don't know the backstory on that, but just some customization that we want to allow people to do. This is a special keyword that says that we want to override the footer on here. And then we include the incident body, which is the actual text of the incident. Then down at the bottom. In the footer, we have the incident ID the in the document version, which is basically the modification date. So when you click the Generate PDF, we run a report that that is tied to this template. Actually, no, we probably just run this template directly. So so so it's a link, the Generate PDF is a link to this template. And the platform, the platform will look at this template, fill in all of the fields, generate the the Word document, and then turn the word document into a PDF and hand it back
+
+Matthias Miller  17:39
+to you. Excel templates work much the same way except you're editing an Excel document instead of editing a Word document. And except that reports themselves can be any report that you can generate on screen can also be exported to Excel. So for example, yes. So if we go back to the incidents for Aaron Abrams, you can export this to excel, which will export this report to Excel to and to a PDF.
+
+Unknown Speaker  18:24
+And all those. Yeah.
+
+Matthias Miller  18:28
+Those are kind of built in templates. Does that answer your question?
+
+Unknown Speaker  18:34
+Yeah, more or less? No.
+
+Matthias Miller  18:37
+I haven't poked around with that. Oh, so you were wondering actually what it does, like what it actually Oh, well, let's answer that. So when you actually run it, you'll see that it runs I mean, you'll see how similar it is to the actual template. So here's the title that we saw. There's the word assignee with the assignee embedded. And then here are the details. And so if we were to actually put in
+
+Unknown Speaker  19:07
+the mirror was broken
+
+Matthias Miller  19:13
+and we generate the PDF again. Then you'll see that crisscross with formatting
+
+Unknown Speaker  19:23
+All right.
+
+Matthias Miller  19:26
+Anything else?
+
+Unknown Speaker  19:31
+Now DEA reports
+
+Matthias Miller  19:37
+Dwayne is on the edge of his seat now. Alright, so for any for most reports, you'll have this option to there's some handful of reports for this maybe turned off but for most reports, you have the option to go into settings and you can pull it report settings. There's also other ways that you can get to report You can go to favorites, hit the star icon, open up user folders, and go to Edit. Well, first of all, you have your user reports. So these are user reports. Most important will be short, if you create your own reports they'll usually be stored in your name may be stored in your personal folder. Or if you want other people to have access to them, you may put them in the shared folder. There are ways to lock down permissions that only you can access your own reports. Or you may choose to show standard reports, standard reports show all the reports that are available in the system. Almost all of the ones that you need, all of the ones that you actually need should be on the menu. But for those who are curious, you can go hunting over this. This actually includes more than just reports and includes imports and other types of templates and XML exports and other types of types of things. But you can go hunting for them there. And if you want to.
+
+Matthias Miller  21:11
+I thought there was a way to create create new ones from here. Oh, yeah, right here new file. If you want to, you can create a report from here. We have different types of components, we can create reports, you can create grass, I don't think we're going to go into grass because we do so few grass around here, where you can create a template directly. Word Excel or XML template. Again, we're not going to go into that because that's basically if if you need to do a mock up of a Word template, you just knock it up in a Word document. And that's good enough. So but for report,
+
+Unknown Speaker  21:47
+there are
+
+Matthias Miller  21:50
+different types of reports, you have a screen report, which is a standard report, you have an editable report, which is like a standard report. But you can actually input information into there. There is an Excel export, which is like a report but but outputs to excel file, you can specify the Excel template, actually, No, you can't. It's just straight to excel. So if you always wanted to export to Excel, you can do that flat file export gets export it as a text file, Jason export, you'll never use PDF export straight to PDF, the Excel merge uses a template and turns it into you have to create create a template and and generates generated based on each record that's in your report. Word merge is the same way, we're not going to get into them right now. Because I think that's beyond the scope of what we want to do XML merge, you definitely don't need to worry about it's more advanced export option. So if you're just doing reporting, most of the time, they'll just do a screen report. Every report needs to run on a swan one specific record type. Now, you can have something called an any level report or a no level report, which means that it doesn't run on any data. And and so we'll get to how you could actually use that. But for now let's do something like County. For fun, you can specify report title for your own reports, you don't need to for client reports we definitely do. Then there is a subset. So what the subsets basically says is look at all of the all of the counties in the database, which counties do we want to show up in the report. Simple as that. And this is an expression, we'll get into how those expressions work. All is shorthand for true. This is a Boolean expression. So it must evaluate to true or false. You could also say true if you wanted to. Although all is kind of the default, the sort expression. If you don't specify a sort expression, it will sort in whatever order it deems best if it's a lookup list like contacts, it will sort by contact name. And I believe if it's anything else, it will sort by the ID, I believe, or it may just show up in an army just show up in a random order. I'm not I'm honestly not sure. So let's let's first get a column in here. Well actually, now let's well we'll get back to this. This is an expression it can be a string expression number expression date expression. If this is a date, then well, we'll get into how to craft sort of store expressions, then you have the option to reverse it if you want to reverse sort the report by default. And you can always click the column headings if you want to, if you want to do that. So then we have columns. So we're going to go over here and we're going to search for all keywords with the name County. Here is county name, which sounds like something that we want. I don't even know if there's any other counties in here and And there is county state, which looks like a good thing. And we'll put in county description these will default county the
+
+Unknown Speaker  25:17
+wasn't it? Okay you desk.
+
+Matthias Miller  25:23
+Alright, and then it will default the column width appropriately however you can adjust it as as you like to make it, make it more manageable. The the widest column will default to being the link, you can control that by going down and selecting selecting the action here and that will cause that specific column to have the link. So if you think here's the heading, so you can adjust the heading if you need to, you can make it wider, or you can resize down here to adjust the size and automatically update up there. A number of decimals useful for numbers. Whether you use commas whether to wrap text, the wrap text is useful when you're reporting on a memo, it will turn it from a plain text field into a formatted text field. So if we were doing a contact report on contacts, let's do this. And you wanted to add a contact notes column. By default, it shows up like that. But if you enable Wrap Text, it will show you formatting including any images or anything else that's included total type, so you could do totaling. So we're going to just do something fun. So here's the length of the county. Name. So this just tells us how many, how many characters are in there. There's no fractional characters, so we could just put in zero there. We can rename the heading to number of letters. And then and then we could say, we want to find what is the total number of letters in all the counties in the state of Pennsylvania, and we'll discover that there are 489 letters. Which isn't really that useful. But there you go anyway, we have a visibility expressions. So you can have some columns that are sometimes shown sometimes hidden. This will often reference ask prompts. So depending on your prompt, you can add a column, a tool tip, which is new.
+
+Unknown Speaker  27:49
+Let's try this. Oh, okay. So
+
+Matthias Miller  28:01
+this is just a textfield that, that explains the column, this
+
+Unknown Speaker  28:07
+the name, the state.
+
+Matthias Miller  28:12
+So you could add additional information about what this actually is, I think this is just simply if, say you have a number field that's really narrow. I mean, this might be something you could do.
+
+Unknown Speaker  28:28
+And you know, you could
+
+Matthias Miller  28:31
+do something like this probably not something that we would encourage you to do. But where you could then show that this is this is a number of letters, if you can't get it all in there, where you might have more of an explanation. You got multiple actions. So you could have clicking, clicking the name, open something clicking the description open something else, this gets really confusing really quickly, generally discouraged against it, we can do we can have a column ID, which is used for more advanced reporting. So if you want to pull different totals from whatever like, like, it's just more complicated. Then we could look. So we could then do, we can do grouping. So we could group by like in a case like this, we could do counties state group by the state, or we can find the left character of the county name and have them grouped by all the A's, B's and C's. So then you can see
+
+Unknown Speaker  29:34
+you know how many
+
+Matthias Miller  29:36
+A's there are and in fact, over in the columns. This works we should be able to do a no we can't. Okay, so if you want to find out the count, you could do have a you'd have a some column that shows you like that there's three at a glance. And yeah, anyway So that's how groupings work, you can have, you can have multiple groupings. So
+
+Unknown Speaker  30:10
+we could do,
+
+Matthias Miller  30:13
+actually, let's do this county state. So you might group first by state, and let's do this grouping as the primary grouping. And then I'll group first by state and then by letter. That's how that gets broken down. Now, you may also choose to do something called totals and subtotals. Only. Is that Oh, I'm sorry, yes. And that will show you that'll summarize and say, and that'll remove all the individual rows. And I'll say, okay, for A's, we have 23 characters. And we have three items. So if you want to see which starting letter is the most popular, we can start by this. And we can say the most popular starting letter is C. And we could do an expression. Sorry, this is we can assign a column ID for the call length and the call count. And then this could be
+
+Unknown Speaker  31:28
+group total call. Count. Yeah.
+
+Matthias Miller  31:43
+This doesn't actually need any contents, because we're just showing it. So this shows them the average, the highest average length starts with n, as an example. So so in this case, we're not let me show show how this works. This is again, kind of an advanced technique, probably not something that you'll get into much, but at least give you a little context for what's possible. So here, we don't have any contents in the column itself. But then we have a total type is an expression and the expression says give me the total for the length, Well, okay, so first of all, we assigned column IDs for so this is column length, and this is column count the symbol length in the count column, and then the expression says, Give me the total the current group total for the length, and divide it by the current group total by the count. We can add decimals, so that we can get fractions. And so then it's 23 divided by 342, divided by seven, etc. And all the way down at the end, we see that the average county name instead of Pennsylvania has 7.3 characters. So that's grouping. Then we have asked prompts asked prompts are used to, as prompts are used to provide filters. So one example we could do here is a they're typically named with a letter V, and then ask this is just a convention, you can name them whatever you want, this is convention, we encourage men length, and this would be a number and put it in a label minimum length, label position. And then we could say, blank equals all which is pretty common in our label, and we'll handle that elsewhere. And you can say that it is or is not required. So we'll put in a four or three, but then we need to actually start respecting it. So jumping back to the subset, instead of all by the way, all of these have a little question mark, or you can hit Shift f2. And I'll pull up the editor for you. So instead of all we would say, if the length of the counting name is greater than or equal to the minimum length, well, actually, let's do this. Well, first of all, let's do this. So if the length of Kenny name is greater than or equal to the min length, so we do that and it runs, and you'll see that all of a sudden, I mean, or average at the bottom should definitely have.
+
+Speaker 1  34:30
+Well, of course, you don't have any threes. Here. Let me let me save this and run it and let's change it to 15. Now,
+
+Matthias Miller  34:45
+so you'll see here that, obviously, the average has jumped way up because we're excluding all of the shorter, shorter ones. But what that doesn't handle, if we go back and rerun it, you can click Up here to rerun it, we blank it out, it says blank is all. But it actually isn't finding any. So what we need to do is go back into subset and say, if this is if is na, which means is blank or. So if if the, if the specified length is blank, then include all of them. Or if the length of the county name is greater than or equal to the min length. You take it, you run it, and then all of a sudden, all of those show up. As far as ask prompts, there's different options that will actually let me let me stop. Like I've heard a lot of territory. Any questions on subset columns or grouping so far?
+
+Matthias Miller  35:53
+Keeping in mind that we'll get more into how to actually write expressions after a while.
+
+Speaker 2  36:01
+That would probably be my main my main question at this point. Yeah. And the other thing that I want to get actually get my hands on and mess around with a little bit.
+
+Matthias Miller  36:18
+Yeah. Yeah. Yeah, if you have any, if you guys have suggestions for what kind of exercises or those types of things that could be helpful. I mean, it could be helpful just for you guys to go back through and like, rebuild this report. or something similar. Mindy, or Dwayne, do you guys have me like, Is it is it I know I'm moving fast. But even if you have to go back and rewatch it, is it is it making sense?
+
+Speaker 2  36:52
+That's what I was just gonna ask if it's possible to go back and rewatch. Yeah. For you. Yeah. This is you have, you're opening up Pandora's box here for me. I've got notes.
+
+Matthias Miller  37:15
+That's awesome. I'll let you watch it if you share your share your notes.
+
+Unknown Speaker  37:22
+The notes are for
+
+Matthias Miller  37:25
+later, Oh, awesome. Okay, good. Good, good, good. Alright, so ask prompts, different types of ask prompts that we have, you can have a string, which is a text, which like, you know, you want to search part of a name or something like that you have a date, a number, a checkbox, you can have a list. A list can be either
+
+Unknown Speaker  37:49
+it can be a,
+
+Matthias Miller  37:52
+Alright, here we go into another rabbit, rabbit trail, it can be a let's do this. It could be it doesn't make sense in this context. But let's make it required. So it shows up here. So so it could be tied to a list in the database, like a contacts, which you can get again, remember that you can use the showfield information on a detail screen to figure out what that list is. That's if you were searching for contacts, you can say if you know contact name equals list what you selected, or the incident assignee equals which you selected. Or this can also be the it can be a pipe delimited list, in which case you'll put it in most likely, for for the extent that we're doing it, you'll put it in quotes. And you'll say a B and C, which you may Yeah, you know, the, the, the example that you might want is V ask group by and then you might have a group by options of name, state and length. And you might then let people you know based off of what you select in the group by you have different grouping, you have the grouping do different things. So you I want to I want to group by lists or state, and then you reference that in your grouping expression, and you change hat groups. And then you can specify a default value, it can be select first, to select the first I think it can be quote, select first quote, to select the first one, it can be, quote, carrot quote to select the first one, or it can be the literal name of the first one. And then that will just be the default value. Yes, that's weird, but there you have it. Now the other fun thing we can do here is if we we can also do conditionality, which we won't do much of, but you can say if we asked group by equals length, then you ask them
+
+Unknown Speaker  40:01
+What the
+
+Matthias Miller  40:03
+what the length is. So when we run this, you notice that the length is missing. But when we end state it's missing. But when we hit length, then we asked what the minimum like this. So we have some some capabilities to do conditionality there. That's primarily tied to I think we may allow it with checkboxes. And I believe this can reference checkboxes and lists. So you can check a box and have things show up or disappear. Or you can select the list item and have it show up and disappear. I think that's the only thing. So those are asked prompts. You'll see those everywhere. And then you can reference these values anywhere in the report, you can use them in a subset, you can use them in the sort order, you can use them in the you can use them in the content. In fact, if we want to, we could do this. Not that it makes much sense. But there you go, you can show it right there. Then we have buttons. Most details, most reports will have to take two kinds of buttons of detail screen button, which is included by default. Well, there's two types of buttons. There's ones that depend on the current row, and ones that do not depend on the current row. So the detail screen is always added, you will rarely need to add other buttons, the only other button that you would typically add maybe a new record button. Or you may call it a new county button or something like that in this case. And it would be a new record type. The parameters we won't get into it's just too complex. But there are ways to say that the new county should default to well not in this case, if it's row dependent, you could have a new county be dependent upon.
+
+Unknown Speaker  41:45
+You could
+
+Matthias Miller  41:47
+you could you could have a new new contact or new record button for a contact that opens a contact and defaults the state to the state of the current county as an example. But that's beyond the scope of this. Sub panes control multiple panes and multi pane layout. So a good example, I believe we have some in the accounting system.
+
+Speaker 1  42:16
+You know many examples in the demo system offhand might be transactions. transactions.
+
+Unknown Speaker  42:27
+left column there in the trial balance. Transaction detail.
+
+Matthias Miller  42:38
+Now this one, yeah, this one right here. So this is a multi pane report, where these are actually, there's a main report here that shows this left list. And then there's a sub report here that shows the child ones. So if you go into we can't view setting this silly.
+
+Unknown Speaker  42:59
+Maybe we can.
+
+Matthias Miller  43:04
+stinker, okay, so we can't go into settings. But that gets set up as you have a sub pane. And based on the current row, you can put in the past another report. Again, this is pretty advanced. Anything that you need to know is that is that this report has asked prompts has a transaction Id ask prompt. So the way the main report is set up, is that it says I have sub panes and run this other report for this transaction ID and then that that is what shows up in here. So that kind of links the two reports together. And this is in that information across. Again, you're actually crafting multiple reports probably don't need it. But you would pass this in as as prompts and we'll get into pads more later as well. Um, advanced. Let's read through the advanced yet. And then we'll leave I think that'll let us focus on expressions for the next session. Most of the stuff you don't really need all that much. I mean, you can dig around here and find out different fonts footnotes, you can add footnotes to it. But now it's getting getting include expressions like today's date. You can have fonts, you know, come on while there's another thing I could go into.
+
+Matthias Miller  44:33
+So here you could do font color, red, and which if you really want to be fancy, then you do if you know if the length is a certain length and you make it red or something like that. Alternating font color, oops.
+
+Unknown Speaker  44:49
+Let's see.
+
+Matthias Miller  44:52
+You can limit the report length, which again, you most likely don't want to do. The biggest thing would be These two rip multiple rows for from repeating root group or multiple rows from last. Now here we are. So if you want to report to pull out from an RG, if you remember, it normally just pulls out the first star g. So let's actually go ahead and open up a context report. And you'll see here that the phone number, here, we're gonna, I'm gonna edit this, and I'm only going to show the phone number because everything else does end up getting so confusing. You'll see here the phone number, there's only one phone number. But what if we want to see multiple phone numbers. So what you do is you go into advanced, and you say repeat repeating group name is contact. No, I'm sorry, it's showing the primary phone. So it's contact phone. And instead of showing the primary phone here, we show contact phone and contact phone type. And you'll see here now that that Abby has two rows, one for her work phone, one for her mobile phone. And so the if you repeat on an RG, it will show you it will show you a row for each row in the RG. If it doesn't have any rows in the RG, it will show you a row with both of those columns blank, you can say I want to find all where the contact phone type
+
+Unknown Speaker  46:18
+is mobile.
+
+Matthias Miller  46:22
+And it will only show you the rows only show you it will show you all the mobile numbers for that. So when you're working with our GS, it's really important to think through the context, do you want to look at the first row, or do you want to look at all rows within the RG. Like which ones you want to have show up on the report. And then when it comes to crafting the expression, if you have a repeating group name, then this will this will evaluate based on the whatever the row is that the report is showing. If you don't have this, then these columns will only show the first one. And so if you pull this up, you'll see that work is the first one and that's the one that gets shown in the report.
+
+Unknown Speaker  47:13
+So
+
+Matthias Miller  47:16
+I don't know not quite sure it's a little confusing, but not quite sure how to simplify it. But we also have a similar thing where you could do a repeat repeating list. And this is the same kind of thing as the list that we have. This is an expression list, we haven't asked prompts you could you could do like ABC. And then and then there's a something called a repeat list item. And so you see that there's an
+
+Speaker 1  47:45
+there's Well, we can even start by repeat. Now sort by count the name. So we have Adams, ABC, we have Allegheny ABC Armstrong ABC.
+
+Matthias Miller  48:02
+And then you might use this to show I don't know, there may be reasons you want to do this. The other reason you might do this is if you have an any level report, you can have an any level report with a repeating list and then use the repeat list item keyword to it'll it'll have a row for each list. And then you can have a subset. So again, in this case, doesn't really make sense, but you could say if it does not equal a so then all the B's and C's show up in the list so so when you do a repeat for less it basically says let's find all of the records that the subset says the report should have. And then let's create a row for each of the items in the repeating list. There's all kinds of nuances and intricacies and things that you can do because this this by itself is an expression so you could actually have this Okay, this one is kind of ridiculous, but we could do a numeric pipe list from one to
+
+Unknown Speaker  49:09
+length. County name.
+
+Matthias Miller  49:16
+So this will this will create a pipe list that's 1234 up until however long it is. So for Adams County that's 12345 so it'll add for Adams County it'll add five rows for Allegheny it'll add nine etc, etc. So it can be dependent on a per record basis what the actual list items are. Or you could say
+
+Unknown Speaker  49:46
+I don't even know don't think we have striking matching here.
+
+Matthias Miller  49:53
+There's yeah other other kinds of strange things that you could do you know, on That and that is the extent of the advanced. So without getting into into expressions, any kind of questions on
+
+Unknown Speaker  50:15
+on any of that so far
+
+Unknown Speaker  50:23
+I don't think so. Kenny,
+
+Unknown Speaker  50:29
+join Monday. Okay.
+
+Matthias Miller  50:32
+Well let's take a quick break, and we'll get I'll see if I can get you guys on board with expressions.
+
+Unknown Speaker  50:43
+Alright what time because
+
+Matthias Miller  50:46
+I think we had like a five minute break.
+
+Unknown Speaker  50:49
+Schedule here.
+
+
+Transcribed by https://otter.ai

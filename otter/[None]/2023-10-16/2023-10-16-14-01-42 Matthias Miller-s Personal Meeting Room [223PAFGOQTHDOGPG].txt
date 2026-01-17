@@ -1,0 +1,335 @@
+Matthias Miller  00:28
+Sir Hello
+
+Speaker 1  00:52
+yep Hey
+
+Unknown Speaker  01:10
+Josh
+
+Unknown Speaker  01:16
+I think it was planning to
+
+Matthias Miller  01:58
+Well, should
+
+Unknown Speaker  01:58
+we just jump in on our stuff?
+
+Matthias Miller  02:01
+Shipping? So I think the main thing? Well, the main things that we've got here, let me share my screen we've been let me see if I can. We're actually honored you want to share your version of clickup with chose stuff? Maybe I can't hear you're muted.
+
+Speaker 2  02:28
+Yeah. Okay, gotcha. And you're on my big screen. So I'm looking at Joel stuff, just share the work breakdown structure and find what is due withdrawal. I can do that.
+
+Matthias Miller  02:42
+Yes. filter down by
+
+Unknown Speaker  02:46
+me. Oh, can I share my screen?
+
+Unknown Speaker  02:50
+You can try that. I think there's a setting somewhere Matthias, you can flip if you ever want to.
+
+Matthias Miller  03:00
+Always allow it? Yeah.
+
+Speaker 2  03:02
+If you find that, because I've been looking for that for a while. It should be there.
+
+Matthias Miller  03:10
+RingCentral allows it by default with their zoom sub account, but let me take a look. Yep. Okay,
+
+Speaker 2  03:18
+let me actually see here. Go by Team tasks. Make sure I have this filtered by group by responsible. Okay. This is a little messy. I haven't gotten it all cleaned up yet. So I'm going to look for job. One well, right at the moment, I only have you accountable for two things. That can't be right.
+
+Speaker 3  03:43
+It might be I might be close. Okay, good. Please. Yeah. Is that right? I'm frozen on. We're Yeah, no progress on cash flow. Since last update. Perceived progress. I mean, well, I don't know. What what scale you're using there for perception, but I'd say 80.
+
+Speaker 2  04:13
+Okay, that's fair. And that's all subjective scale was what I was going. So let me just fly that up to 80. That works. Everything else look correct.
+
+Unknown Speaker  04:26
+So reconcile process depends how we define it. I think functionality. I think we've delivered the functionality they were seeking. There's
+
+Speaker 3  04:51
+considering clean up work, there's I probably put that at 70. Okay,
+
+Matthias Miller  05:01
+Joel, is there a way on that that we can pass through? I was playing around with it, is there a way that we can pass through some kind of parent report values so that when you make modification when there's a record modification that it would refresh the sub pain?
+
+Unknown Speaker  05:23
+Alice, do you have any ideas?
+
+Unknown Speaker  05:26
+Now say that again? Okay.
+
+Speaker 3  05:29
+So we've got the reconcile report, we changed it from flicked to save to instant save. Okay, we added a sub pane that shows starting balance, clear debits and credits ending balance. So Matthias is asking, as we edit and save in the parent pane, is there a way we can flow that through to the sub pane
+
+Speaker 1  06:05
+forcing the sub pane to update itself? Yes, so so it doesn't update itself right now? No, it does not. Well, if you figure out anything in the I mean, if we'd have anything that we I think we reevaluate the sub pain powers on after a save I think we do. So what could we monitor? Like the last activity Id pass in the last activity ID? It'll build too often sometimes when it doesn't need to build but it will, it should refresh every time. Does that sound right? Is it pretty fast? Pretty slow or slow?
+
+Speaker 3  06:53
+Slow? Is his model to build starting boundaries? Use stored
+
+Matthias Miller  06:59
+totals instead of models?
+
+Unknown Speaker  07:05
+Okay to work at it,
+
+Speaker 1  07:07
+does it? Are there any nasty filters that you've got restricted date as an issue to restore totals, but
+
+Matthias Miller  07:13
+Oh? Well, could we pass through a? Can we collect the IDs of all cleared transactions and pass that through to the sub pain as the UID?
+
+Speaker 3  07:40
+Okay, so so it would rebuild every time we declare a transaction? And that's seems pretty reasonable.
+
+Speaker 3  07:57
+Yeah, that would be a fairly easy change, I think.
+
+Speaker 1  08:02
+If and I don't remember if John Allen disallows restricted data, or if he just says, Please don't use this. I mean, knowing him helped us allow it and not just say, please don't use it.
+
+Speaker 3  08:17
+Yeah. So here, it would just start. It would start rebuilding every time we declare a transaction, so but you could still declare a number of transactions and eventually it catches up. Even with models,
+
+Unknown Speaker  08:40
+so how long does it take, I mean, a second, a minute, an hour.
+
+Speaker 3  08:48
+30 seconds. I mean, that's given the current transaction mode, which is not, which is pre launch,
+
+Speaker 1  09:02
+which is one of the things I long term I think we're going to have to do is move to something like current totals, what makes it hard is always up till now. You're filtering, slicing, dicing that you'd want to do like, I want to have a report that slices when dices by, you know, filtered by class or something and just magically work. And suddenly, it's ridiculously fast on, you know, say at the account level, and then as soon as you introduce class, and it just die falls over and dies. Like it dies today.
+
+Matthias Miller  09:36
+Right. So
+
+Unknown Speaker  09:41
+that's kind of where I think we're going long term.
+
+Matthias Miller  09:43
+So well, the starting and ending balance. The starting balance is really the part that kills us. Yes.
+
+Matthias Miller  10:01
+See, this is
+
+Speaker 1  10:03
+looking at the entire account at a time added one entire account at a time, right?
+
+Unknown Speaker  10:09
+As opposed to as some
+
+Unknown Speaker  10:11
+form of filtering on on any given account.
+
+Matthias Miller  10:16
+Its entire account, you could pass in the Could you pass? Could you calculate the starting balance in the parent report, this is a little bit of a cheat, but calculate the starting account in the parent account, pass it in as an Ask prompt along with the cleared you know which transactions have been cleared so you know when to recalculate it and speed up the report about I one. I like cheese.
+
+Speaker 1  10:46
+Yeah, yeah. I think that's pretty decent. Yeah.
+
+Matthias Miller  10:52
+So it means that the parent report takes you know, those extra seconds to load the child report should be fine. Should be fine.
+
+Unknown Speaker  11:05
+And Chase that's pretty good with us
+
+Speaker 1  11:17
+two tasks that are assigned to me, I didn't even remember they were assigned to me. Oh, the due dates already till late. But okay.
+
+Speaker 2  11:25
+Well, and that I, I've been I've been doing some reading and putting some things in and when I hadn't confirmed those with Matthias yet. So I if you want it now, but otherwise, we need to look at those probably. So.
+
+Matthias Miller  11:40
+Mark said that, I don't think that we have to put anything in the project plan. This is more radar type of thing. But Mark said Drew's probably going to put together some proposed changes for additional court accountings reporting as well. Sure. So out of Oh, get that?
+
+Unknown Speaker  11:58
+Okay. You first.
+
+Matthias Miller  12:01
+Remember, I was gonna say that there's a better sections for something. There's a task called bitter sections that should be assigned to Joel, do you know where that's at? Search and see if it's in here somewhere. I
+
+Unknown Speaker  12:16
+think we just looked at it. And no, it is here.
+
+Matthias Miller  12:23
+Yeah, that one's a duplicate. The one that you actually want is the next one down that one. Yes. Yeah. Okay. That looks right. This. This one should be assigned to Joel, I think we're targeting to have it done by the end of the year. And I think it's a joy. I think this is in your court? Yes. I think its status development.
+
+Unknown Speaker  12:45
+Okay. Is it in progress yet? No. Okay.
+
+Matthias Miller  12:53
+But then that would be due by the end of this year.
+
+Speaker 2  12:59
+Okay, great. You'll see 1231 24 is the default end date on a lot of these in case you guys will update that to the end of this year.
+
+Unknown Speaker  13:14
+Whatever is assigned to Seth is should that really be Seth right now?
+
+Matthias Miller  13:20
+No. Anything assigned to Seth is probably documentation. This is me. Okay. Fair. Thanks. Good. Um, Josh isn't here to talk about this. But gussto Well, sorry. Hang on, before we move on. Is there anything else? And I think this is all the
+
+Speaker 1  13:48
+contact types. I think Josh was starting to work on that himself. So
+
+Matthias Miller  13:51
+was he Yeah.
+
+Speaker 1  13:55
+So I think he was planning to do kind of a basic thing and then hand it off to code crafters and say please finish it out. So good. By the way, have you heard at all from affordable barns about the whole I mean, do you think they're fairly satisfied with the with the price and law? I mean, they're pleased with how things are going do you think they're at this point fairly satisfied with the price or have you heard at all
+
+Matthias Miller  14:22
+I have no idea if they're satisfied with the price, but you haven't heard any complaints or anything then I have heard no complaints. Okay, well, great.
+
+Matthias Miller  14:40
+Alright, so this is an update on the gusto. Apparently gusto is really means what they say when they say you're not allowed to do this, because we want to control API usage. So the basic question is, do you want to keep using QuickBooks, in which case we have a shell QuickBooks account that manages liabilities and we pay liabilities out of that we somehow figure out a way to feed that information back and forth. Or do we want to use gusto and hand enter hourly? hourly rates? Every week, sounds pretty painful as well. And then import payroll is a CSV, go ahead.
+
+Speaker 3  15:26
+So what is it that I'm not familiar with the barrier you're referring to?
+
+Matthias Miller  15:34
+gussto has an API, but you can only take an API key from dev to production if you're one of their approved vendors. And you're not if you're not serving mass market. Like if you're just doing it for yourself, you can't do it. We were only doing products that are quote, mass market products.
+
+Unknown Speaker  16:01
+Oh yeah, that's kind of a big deal.
+
+Matthias Miller  16:07
+It's kind of a wrench in the gear Oh, so the good news is there are other I've got folks who record have recommended a few other ones. Amber has used either paychecks or pay Core i don't know how much I believe in that. But it's something to take a look at. There's another one called Oh, it's got some kind of trendy
+
+Speaker 1  16:35
+I think investors switching to paycor
+
+Matthias Miller  16:39
+Okay, which
+
+Unknown Speaker  16:42
+I don't know if that means anything but it means something. It does mean something
+
+Matthias Miller  16:48
+it means something let me do this. Let me see what the other one was that
+
+Matthias Miller  17:00
+see, we're talking about gusto.
+
+Unknown Speaker  17:02
+How much work have you done on gusto?
+
+Matthias Miller  17:08
+Don't think it's a lot of throwaway work
+
+Unknown Speaker  17:09
+Sure. Yeah.
+
+Matthias Miller  17:12
+rippling is one that's come up seems like rippling Okay, here's one person suggesting sure payroll but at least the branding doesn't mean does it
+
+Matthias Miller  17:40
+sounds like pay a lot of money on their branding for it but
+
+Matthias Miller  17:53
+that for knee jerk
+
+Matthias Miller  17:59
+another one for paychecks. So paychecks pay core rippling might be ones to evaluate.
+
+Speaker 3  18:10
+Well, I like how rippling talks about API keys. rippling customers access the rippling API to retrieve and update information on their organization's behalf to build integrations with internal systems and applications.
+
+Unknown Speaker  18:25
+That would be it
+
+Matthias Miller  18:27
+would be rippling smells more of a status first. Or like a a it's like the Twilio and stripe of payroll versus paycor and paychecks are like the corporate behemoths that decided to become
+
+Unknown Speaker  18:48
+Yeah, that's true for sure.
+
+Speaker 1  19:01
+Pay core it's hard to get to the prices but pay core pricing just Google for it. See if we could find anything. Pay course basic is $99 per plan to site dollars per employee. That's not bad. Well, that's basic though. Yeah, but what is basic probably doesn't this doesn't actually do the trick.
+
+Speaker 1  19:39
+Paychecks charges upwards of 39 per month plus $5 per employee.
+
+Speaker 1  20:02
+Okay, here, I found some price. So it looks like it's between the basic as $5, that's probably not enough for you. And then it goes to the base prices start at 101 5200. So and so you'll probably need that 150 or 200 base price, but that's not a big deal. And then per employee is either seven or $8. Between those two. If you have to go up to the complete tier, then it's per employee seven or $8 per month per employee. No, that's paycor. This is a third party website. So if you go up to the complete tier, then it's $14 per employee, so you hopefully avoid that. So
+
+Matthias Miller  20:53
+I think gussto was 40 or 80. QuickBooks is maybe if it was 50 or something if you got the desktop
+
+Speaker 1  21:04
+version. And then what per employee for QuickBooks.
+
+Matthias Miller  21:09
+It was like five ish, okay.
+
+Matthias Miller  21:39
+Okay, well, okay. Sounds good, like avenues to pursue.
+
+Speaker 1  21:45
+Yeah. Sounds fair. It would be interesting as your See, I don't spend a lot of extra time on this. But as you're seeing it, if there are things that would be interesting for code crafters, or for other people who run into that, would we're I mean, I love when we can standardize on solutions that go across the board, but I wouldn't, yeah. Agreed.
+
+Matthias Miller  22:15
+Okay, great. Anything else? I mean, in the broad, broader project overview, I continue to be the bottleneck. So there's, well, me and Mark and drew are kind of the stewards of the project. So trying to keep them as much as I told mark up and playing the game of make it wait on Mark. That's right.
+
+Speaker 3  22:47
+Hey, always knock down your bottleneck and see what emerges Right? Exactly.
+
+Speaker 1  22:59
+Print I'll print a t shirt and send it to you knocked down your bottleneck.
+
+Speaker 3  23:04
+Okay, maybe my phrasing could be improved
+
+Speaker 1  23:14
+Matthias Do you have? Did you see the request about the logic test? And should I tell todich Just to go switch to paper we're ready to do merit interviewing is what's happening what's the test isn't working for code crafters and I don't know why
+
+Matthias Miller  23:37
+why oh?
+
+Unknown Speaker  23:41
+An investor tools will pay you to get it working. So
+
+Matthias Miller  23:46
+what's the God of the email subject?
+
+Speaker 3  23:53
+I think it says logic. Yeah. Part of it. Okay.
+
+Matthias Miller  23:57
+We'll test
+
+Matthias Miller  24:04
+Wednesday, Thursday, let me throw this on. Probably tomorrow's calendar. Sure.
+
+Speaker 1  24:20
+And papers not a deal breaker although we prefer digital. So yeah, let me see what I can do. And all investor tools paying you your higher rate of that you've used for client scope design as far as to make that happen. So
+
+Matthias Miller  24:43
+sounds good. Let me get something pretty
+
+Speaker 1  24:46
+simple but I'm guessing that's what I assumed. But yeah, portal and if you need anything
+
+Matthias Miller  24:54
+I do not have probably Though
+
+Matthias Miller  25:06
+I don't know that I've got access to contractors wait prefixes to CCI?
+
+Matthias Miller  25:21
+Yeah, I'll take a look I'll pull Joey I mean
+
+Speaker 1  25:28
+I could easily give you access. Joel be fine if you would give him admin access to that. Code crafters dot
+
+Matthias Miller  25:41
+Good. Good. Thank you. Yeah. Thanks. Yep. Thanks
+
+
+Transcribed by https://otter.ai

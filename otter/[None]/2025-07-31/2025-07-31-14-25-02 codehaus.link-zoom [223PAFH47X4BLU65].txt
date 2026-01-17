@@ -1,0 +1,1064 @@
+Speaker 1  01:34
+You yo, should Seth be on here? It's up to you
+
+Speaker 2  01:40
+if you want to jump him on. We can, we can? We can kill two birds with one stone, or, or we can educate two people at one time.
+
+Unknown Speaker  01:48
+instances, you can come out like one cent differently from each other. Mm. we can educate two people at one time. I think I think I a myriad of one RG. took a myriad of of options in RTO pro settings and reduced it down to. one RG. And I think I've handled almost well. I'm disregarding some, some of the options they give because I think it's just stupid. But that's my opinion. Somebody wants it, they can, if they want, if somebody wants this table thing, they can. They can pay me to build it because they think it's stupid. Hope I wasn't unclear. Yeah, I wasn't sure if you thought it was stupid or not, until he jumps on you want to. There's a there is another document reference at the top of this. Of this document with or a spreadsheet on EPO calculations that I came across as I was digging on this, and for the life of me, I don't understand what the heck some states are thinking, but we have to support three different early cash payoff methods. I literally built a spreadsheet to see if I could make them be something different, and they all calculate exactly, exactly the same, but New York and California require a particular cash payoff method, but I can't make it digress or diverge from each other. They all calculate exactly the same, so they're called different things, but they calculate the same. Are you on the spreadsheet? Yeah, yeah. So yeah. EPO equals balance times discount is what most people use. It's whatever the balance is left on the contract times a discount, or the cash price percentage, or whatever you want to call it. But then there's this cash price minus rent paid times discount, so rent paid times discount minus cash price, well, that comes out the same. And then there's this California one where it's like remaining payments divided by total payments times cash price, that comes out the same. So I'm befuddled, but like these are three different methods that states require. Or the no, sorry that the bottom two are, are two options that that some states require. It's amazing, but little i Dude, I went round and round with grok. I went round and round with chat GPT. I went round and round with Claude. It tried to throw a whole bunch of scenarios at where they thought, you know, it would come out, where it would be slightly different. I tried all kinds of things. I tried fractional payments, partial payments, big contracts, little contracts, you name it. I tried all kinds of things. It always comes out the same. Seems to me like you should be able to use algebra to prove that they all come out the same. Well, I would like to see somebody who says that it comes out differently according to according to all three AIS, they say, with some rounding Like, seriously,
+
+Unknown Speaker  05:04
+do we need to handle that
+
+Speaker 2  05:07
+well beings that New York and California require a particular cash payoff method? Yeah, we do.
+
+Unknown Speaker  05:20
+So, like,
+
+Speaker 2  05:23
+I built this whole entire spreadsheet to try to try to prove that this might be different, and came out where it's like, always comes out the same. So, I mean, I think we need to handle it, and I guess we would need to prove that how we are calculating, but it's like, it seems, it seems redundant to go have to support three methods that calculate exactly the same way or come out the exact same answer every single time
+
+Unknown Speaker  05:54
+I'm curious about one cent difference,
+
+Speaker 2  05:56
+I could never, I could never get it to happen. Now, in this whole entire conversation, I found out that because of rounding, Google Sheets actually will calculate two cent differently than a calculator will.
+
+Unknown Speaker  06:12
+I hate rounding. I even,
+
+Speaker 2  06:15
+I even went through this whole process try to force it into a particular rounding way. Still couldn't get to do it. I could get it to do one cent different than the calculator. But if, if you go, if you take 231.48 times 12 payments, you will come out with $2,777.78 in a spreadsheet and $2,777.76
+
+Unknown Speaker  06:46
+in a calculator. How about that?
+
+Matthias Miller  06:57
+Fun times. Are you gonna give a setting where people can still choose that
+
+Unknown Speaker  07:04
+the payoff method? Yeah. I mean, we're going to have to,
+
+Speaker 2  07:10
+like, if a state, if a state requires a certain payoff method, we're going to have to support it,
+
+Matthias Miller  07:15
+but none of it calculates the same way. Okay? So the balance, well, it
+
+Speaker 2  07:26
+doesn't calculate the same way. It comes out to the same number every single time. The
+
+Matthias Miller  07:30
+difference is, does You're right? Does come in the balance? Theoretically, if your balance is not a whole month multiplier, as an example. I mean, yeah, I think it's conceivable partial month payments, especially,
+
+Speaker 2  07:50
+I have gone down the road of of putting in, you know, 12.2543 blah, blah, blah, like that. Like multiple fractions to see if I can get it. Nah, nope. I It always comes out exactly the same,
+
+Matthias Miller  08:06
+right? That's because you're not That's because you're not forcing around in your various places. If you would force it to round everywhere you would, it would show up.
+
+Speaker 2  08:21
+Hey, you're the genius when it comes to this stuff. If you think, you can come up with a way that forces it to like, if you like. But here's the question I have, how much difference are we going to come off? Like, how like, how far will this diverge if you forge it around everywhere?
+
+Matthias Miller  08:36
+I mean, zero to 10 cents. I mean, I can't imagine it's going to be more than that in any capacity.
+
+Speaker 2  08:58
+Which this, this gets into this question of I've never really thought about this, but okay, from a contractual standpoint, let's say, for example, if the shed app calculates a contract one cent differently than what only software is, theoretically, the contract balance or the contract amount needs to match what match whatever is on the paper.
+
+Speaker 1  09:23
+Here's an example. Um,
+
+Matthias Miller  09:44
+I threw in rounding everywhere, like monthly payment, weekly payment, bi weekly payment, so you can get it to diverge. So here it's three cents. I mean, I'm gonna. Guess the only way to do this is move it to 60 months and it goes up to seven
+
+Speaker 2  10:05
+and maybe Okay, so then there is a so, then there is a a case to be made, I guess will be you might overpay by or underpay by seven cents.
+
+Matthias Miller  10:18
+Man, it would be nice just to always pay by the method that pays that charges the least, or something.
+
+Speaker 2  10:32
+Okay, well, you're, you're smarter than I am on these things. Obviously, you just created this thing or got it to do things I didn't know how to get to do. So there you go. We now. We know now 10 times more about early cash payoffs than I ever did before in my life.
+
+Matthias Miller  10:50
+Congratulations. Yeah, congratulations. That's crazy though, that it's that close. Are there names for these, or do you just show them as formulas. Um,
+
+Speaker 2  11:05
+unless we can come up with some fancy name for these, I don't know. I mean, probably, probably as formulas. Yeah, that's yeah. I mean, I think that's probably going to be the easiest way to demonstrate it, right? Yeah.
+
+Matthias Miller  11:22
+Yeah, what a life. Okay. Well, I think we should keep going on
+
+Speaker 2  11:29
+this, this whole conversation about payment terms and like, what we want to allow, weekly, monthly, bi weekly, semi monthly, daily, every two months, every three months, every six months. And seriously, oh, my goodness,
+
+Unknown Speaker  11:44
+I don't want to offer
+
+Speaker 2  11:46
+annual RTO. I Dude, I don't know. I don't I think I want to support weekly, bi weekly monthly. We can get into a conversation about semi monthly, because that is differently than bi weekly. Theoretically, I know, but I do think we need to support weekly, bi weekly and monthly, and probably semi monthly. I don't know that one's that. One's a little bit vague to me, but so when it comes to, when it comes to late fees in the RG you want to walk you through this Sure, so tight weekly, bi weekly or monthly, and that would be in your in your first setting account or contract. I think we want to support the idea that you can charge the late fee on the line item on a like one time on the account, or for every single contract
+
+Unknown Speaker  12:50
+fair, and
+
+Speaker 2  12:52
+then the grace period for the the late fee you are configuring. The method is going to be increment per day, which requires a mins and a max. In other words, what's the minimum that you start with? Or, yeah, whatever the minimum, it really only requires a max. I'm kind of wrong on this, because whatever the dollar value is, one day after the grace period, it charges the increment, so it only requires a max,
+
+Matthias Miller  13:21
+but you don't. You don't want to say, start with $10 and charge $2 every day after up to $20 or something.
+
+Speaker 2  13:35
+So what would that be? Then that would be, uh, without be a min.
+
+Matthias Miller  13:40
+Yeah, it'd be a min, and then so day one would be the min. Day two would be plus two plus two plus two plus two.
+
+Unknown Speaker  13:47
+Yeah, that's fair. I'd get in with that, um,
+
+Speaker 2  13:56
+her payment, dollar value is pretty straightforward. It does not require any mins or max. Is just going to charge the per, you know, the one day after the grace period, boom, or the day after the grace period, it charges the full dollar value, and then per payment, percentage, based on the payment, it would never go say, let's say we can charge a max of $20 and we're doing it up by a percentage. So we actually have one of the RTO companies that was set up this way. It would never charge less than $8 and it never charged more than $20 right? And then
+
+Matthias Miller  14:33
+plus the dollars shouldn't say does not allow mins and maxes like that doesn't even make sense. I
+
+Speaker 2  14:43
+You mean for the per payment dollar? Yeah, it does not okay, fine, does not allow. That's fair, and then plus tax, that's that whole conversation about. Is it late fee, plus the tax amount, and that's what you charge the customer, or is a. Uh, sorry, not late fees, not late fees, tax.
+
+Matthias Miller  15:05
+Why would we have a tax column with the three option that we had, non taxable?
+
+Speaker 2  15:12
+Um, so either your late fee is taxable or it isn't, and that is a per state basis, and then you can choose whether you're going to do plus tax or includes tax. Well, but
+
+Matthias Miller  15:23
+like, but we have a why not put those three in a list? Oh, fine. I don't care. I think that's how we expect it out somewhere. I
+
+Matthias Miller  15:43
+well, I thought it was tax, contract definition, tax,
+
+Unknown Speaker  15:52
+we had,
+
+Matthias Miller  15:58
+we had something like, I this is the list we had. It was a tax list, and it's either for the late fee, non taxable, removed from late fee, or add to late fee.
+
+Speaker 2  16:11
+Well, they're not that would make them mutually exclusive, and they and they can't be the taxable. And plus or not, plus is not mutually exclusive. If
+
+Matthias Miller  16:25
+it's not taxable, then nothing happens with the tax if it's taxable,
+
+Unknown Speaker  16:30
+no,
+
+Unknown Speaker  16:37
+you are right. I
+
+Unknown Speaker  16:39
+think you're right.
+
+Speaker 1  16:42
+What am I missing? Yes, it's non taxable. It's $30 nothing with tax.
+
+Speaker 2  16:49
+Shoot me in the foot, because, look, I want to do it plus tax, but yet I don't want to pay the tax. I mean, I want to charge a $5.30 cent late fee
+
+Unknown Speaker  16:59
+and keep the 30 cents.
+
+Unknown Speaker  17:03
+I see how you are.
+
+Unknown Speaker  17:05
+Oh, for Pete's sake, you are 100% right?
+
+Speaker 2  17:09
+So what are we gonna what are we gonna call this tax list?
+
+Matthias Miller  17:13
+I would just say tax, or, yeah, tax. And then let's have tax options. And I don't like those things that I have. I think tax is non tax. You have non taxable. It's a single column now, yeah, tax option, so it's non taxable. You have included in late fee and add delayed fee. Maybe I
+
+Unknown Speaker  17:49
+non taxable. What
+
+Matthias Miller  17:51
+included in late fee or included or
+
+Unknown Speaker  17:57
+added?
+
+Speaker 2  18:01
+I don't know think tank that thing. I don't know what you want to call it.
+
+Matthias Miller  18:10
+I mean included in tax fee would make sense, and added or sip, sorry, included in late fee and added to late tax. Tax
+
+Unknown Speaker  18:21
+included, tax added.
+
+Unknown Speaker  18:26
+There you go. Yeah.
+
+Speaker 2  18:31
+So there's one I just thought about this. There's one big problem. We went inspect. Okay, part of me says we did something dumb. We went and we said on the RG, on the RTO company, that we want to spec, whether it's what did we say, whether it's monthly or it's weekly, I don't think we should. I think it's all monthly terms. Any other payment method is derived from the monthly term.
+
+Unknown Speaker  19:06
+It is, yeah.
+
+Speaker 2  19:08
+So if you go, if you go back to my EPO calculation spreadsheet, so let
+
+Matthias Miller  19:12
+me ping Seth before somebody gets started on that. Because
+
+Speaker 2  19:17
+I think we want to support, I think we want to support all these payment types within the same contract definition. Hence the reason we need an RG of types for the late fees, because we're gonna everything gets derived off of the monthly so the monthly is the is the source of truth. And so if you are, if you are weekly, it's divided by 4.333 if you're divide, if you're semi, if you're bi weekly, then it's 2.167 semi monthly. We'd have to figure out what that calculation is. And so everything is derived off the monthly divided by whatever the divisor is. So.
+
+Matthias Miller  20:00
+Right, and then weekly could theoretically shift?
+
+Speaker 2  20:05
+Well, ideally what I want to say, what I want to say is, I think it would be really, really stinking cool, is if, if this gets stored as a drop list on the contract record, and a customer calls and says, Look, can I move to weekly payments? And it just automatically recalculates. Mm,
+
+Speaker 3  20:20
+right?
+
+Unknown Speaker  20:28
+Yeah, you do need to get set on here,
+
+Matthias Miller  20:32
+but doesn't that mean that in January, in February, you will sometimes have a six week, six day due date for a weekly payment. Well,
+
+Speaker 2  20:53
+at that point, it doesn't really matter what month you're in, it's just everything is in a seven day increment.
+
+Matthias Miller  21:02
+But there you there you have a, I mean, the total contract price, then is, it's always
+
+Speaker 2  21:10
+derived off of the monthly so it's the same no matter what,
+
+Matthias Miller  21:14
+yeah, but no, your payment amount. Okay, so, I mean, that's a question on a weekly do you look at total contract length divided by number of weeks, prepayment amount.
+
+Unknown Speaker  21:31
+Yeah, exactly.
+
+Speaker 2  21:38
+Well, okay, under the hood, how you want to do this? Okay, I went round and round with, with, with grok on this thing. And this is where I came back to this thing. Every everything gets derived off of the monthly, hence the, hence the monthly payment divided by, you know, 4.33 or because that's always, you know, that's by 52 weeks. Now, I know that not every year has exactly 52 weeks.
+
+Matthias Miller  22:04
+Well, I mean, that's herein lies the problem, because
+
+Matthias Miller  22:13
+there isn't a clean conversion. And even even if, I mean, if your monthly payment happens to come out to 512.67 you seven. Then do you?
+
+Unknown Speaker  22:31
+Because you know, okay,
+
+Matthias Miller  22:34
+it gets split. So what you end up doing, I think, is you calculate. You almost have to calculate. I know this sounds weird, but it's almost like you calculate. You you pick a period. It's almost like you calculate from the end of the period. I know that sounds really weird, but you pick, like the point six, seven number, and you establish due dates off of that. And it's just you find a you find you take the remaining balance divided by number of whole or partial weeks, you round up, and you use that as the basis to calculate your payments. So that you have an ED you need a way. If you switch to a weekly payment term, you need a way to get to pay it off in an equal number of equal payment amount every seven days. So I
+
+Speaker 2  23:34
+think what I want to say is that the core calculations happens at a monthly level. How you get to the weekly amount, I think needs just to be defensible. Like we you can like you can explain it and you can defend it. I don't what, what I started to go down was where we recalculate the entire contract based on a week divisor. And that just got hairy, as can be. So if we always worked off of the month to get, and then from from the month you get, you work out to your other methods, okay,
+
+Matthias Miller  24:02
+but does that mean in February that you'll charge slightly less in your weekly payments and you will in if you do the 4.3 No, see, I think, sorry for being obnoxious. I think you're being very simplistic in your thinking here. I So Seth, we're playing around with the idea of late fees. Oh, first of all, fun thing. Did you know that there's three methods of early payoff calculations required by different states, and they all are within generally, 10 cents of each other, but we have to support all three, because they do end up in a different amount.
+
+Unknown Speaker  24:45
+They can basically
+
+Speaker 2  24:46
+funding fun, a fun thing I found when I dove down the rabbit hole trying to fish out for late fees come up with, wait a minute, I gotta I came across this contract early cash payoff calculations. And I went, Oh, you. Got to be kidding me and my original, I originally threw it into a spreadsheet to see if they come out differently, and couldn't get it to come out differently until Matthias was like, Well, yeah, but if you go and round everything, then we can, then we can get it diverge up to seven cents. So Lord forbid that we would overcharge or undercharge someone by seven cents, depending on your calculation method,
+
+Unknown Speaker  25:26
+that'd be awful.
+
+Matthias Miller  25:29
+So now we're on we're now we're on terms. Dwayne thinks based on RTO Pro that terms are always based on monthly terms and payment and weekly and bi monthly is calculated off of that. Now, bi monthly by, sorry, bi monthly makes sense. Bi monthly makes sense. I meant to say, actually bi weekly, that's where we run into issues. Because, I mean, even in, you know, between 29 to 31 days, that's within a margin of error that you're always still going to come up with seven days. But at the point that you get February, we got trouble. And so do you, I mean, if you're going to keep the payment, in my mind, if you're going to keep the payment, weekly payment the same, you basically say, count the number of whole or partial weeks from now to the end of the contract. Take the remaining balance divided by that and get the ceiling. So that's the so we have. We're halfway through. We have seven weeks. We're halfway through the seventh to last week, whatever. So we have seven weeks. We have. We have six $600 left, and so do 600 divided by seven, and we're rounding to, I mean, this is completely obnoxious and dumb, but we're going to say we're running into the nearest 100 to make it simple. So basically, say we're going to calculate payments as if we had $700 left to pay. Because the the month, we're going to say the weekly payment is is $100 so then we go back, back, back, back, back, back, back, back, all right. So now, because it doesn't matter how you slice and dice it, you're going to end up with something at the beginning of the contract, or maybe you do this for the whole contract. You say, What is the? What is the if you divide the entire contract, by number of weeks and round it up, there's going to be this remainder at the beginning of the contract, before or after the contract where it doesn't, it's not going to come out perfectly. So you use that remainder as the basis for calculating your due dates effectively. And if you do that, then you can end up with equal payment amounts through the end, and you just calculate the due dates off of that. Does that make sense?
+
+Unknown Speaker  28:11
+You lost me about seven seconds ago. I mean,
+
+Matthias Miller  28:19
+basically, let me make it. Let me try to make it. Make it simpler. You can't take the exact contract length and turn it into equal pain, equal weekly payments. It's not like sometimes you'll get lucky, but probably not.
+
+Speaker 4  28:39
+And so why can't? Why does it have to be based off months? This is, I mean, I'm sure there's a reason, but I
+
+Matthias Miller  28:50
+Yeah, why not base it off just the total contract value turned into weekly payments,
+
+Speaker 2  28:53
+which is actually, you got to come up with a contract value to start with. Okay,
+
+Matthias Miller  28:57
+so contract value, sure, the contract value is still monthly payment times, term length, right? That's right. Okay, so then we need to find a a weekly amount that we can charge that is the same for the whole period, like, what's the most we can charge on a weekly basis that doesn't exceed the the contract value effectively. And then we'll have a little bit of
+
+Unknown Speaker  29:26
+floating cash to round out somewhere,
+
+Matthias Miller  29:29
+yeah, and in the beginning of the contract we're using, basically using, this is where it gets really janky, but we're using a down payment or something similar, like,
+
+Unknown Speaker  29:41
+I see, yeah, I'm tracking.
+
+Matthias Miller  29:44
+It's, it's, you might have a three day period. Does that three day period happen at the beginning or the end of the contract?
+
+Speaker 2  29:50
+Okay, the alternative to this is we figure out how to create a divisor out of weeklies or, like all these other methods. And this is why I got really, really stuck. I'm like. I want one way to calculate a contract, and let's figure out the all the other increments based off of that one method. Hence, the reason I said monthly is the is, is the method for calculating a contract. Now we need to figure out weekly and bi weekly and semimonthlies and blah, blah, blah.
+
+Matthias Miller  30:18
+But the divisor isn't hard for weekly terms. It's just math. We're just saying, instead of months, it's weeks. And so it's 60 weeks, or 52 weeks, or 104 weeks, or however they sell these things. I don't know how they sell weekly contracts, but if people okay.
+
+Speaker 2  30:41
+So, okay, so here's, here's the question, what is the equivalent of a 36 month or 36 Yeah, 36 month contract. If you break that out to a week, what's the what's the equivalent divisor, what's the like, how does this, how does this break out to weeks?
+
+Matthias Miller  31:00
+Okay, so this is, this is, this is months times equals this times 4.3333 I mean, does it actually come out right? 4036, 48 No, it doesn't. I mean, it shouldn't. Well, it depends. It also depends. No, it doesn't that's stupid. Because, I mean, every day you have a year off, so at a mint on a three year contract a year is generally very used in one day. I
+
+Matthias Miller  31:49
+so how do you handle the extra day? Wait?
+
+Speaker 4  31:54
+You said, every day you have a year off. That's what I was trying not to lose it over what you meant. I'm trying. I was I was laughing curious your guys.
+
+Speaker 2  32:06
+I was laughing at Seth's face. It was like, Wait, did he say that? No, he didn't. What, wait, what? Where I
+
+Speaker 4  32:12
+was trying so hard not to lose it. And then I saw Dwayne looking like he was watching me, like,
+
+Unknown Speaker  32:22
+oh, like, like,
+
+Matthias Miller  32:25
+but yes, you're right. It's three, you know, it's, it's one to two days, depending on if it's a leap year. So what do you do? Yeah, let's multiply it out by by, you know, if you start with a two year, it's a minimum of two days. If you end up with a five year contract. That's up to six days. So you've got almost a week, two days, six days minimum, on 48 by to 60 month contracts that have to be accounted for. So Dwayne on the weekly if you switch to weekly payment, do you just, do you just take due dates? I mean, we could just calculate from the start of the contract, weekly payments from the start of the contract, and no weekly payments.
+
+Speaker 2  33:13
+So if I think I understand what you're saying, you're saying from the start of contract, calculate with the term that we currently have, how many weeks? How many total weeks are there between start point and end point? Take that divide, that divided by the contract balance, and now you have your weekly payment.
+
+Matthias Miller  33:38
+Well, yeah, I mean the other way to slice and dice. It is, let's say you have $100 payment. And so the contract value is, here's the contract value. Then you break this into a this
+
+Matthias Miller  33:58
+is a number of days. So this is months, dollars per month, contract value. Then you have a number of days, which we're just going to do, equals this divided by 12 times 365, we're just going to assume 365, days. And then we turn this into number of weeks. Equals this divided by seven. And then we have dollars per week. We is this divided by this, and then we're going to the discrepancy is, we're going to round this times. I'm
+
+Unknown Speaker  34:46
+number of weeks, G 15,
+
+Unknown Speaker  34:52
+F 16,
+
+Unknown Speaker  34:57
+this minus this
+
+Unknown Speaker  34:59
+here. Like,
+
+Unknown Speaker  35:06
+if you say you
+
+Unknown Speaker  35:25
+okay, if you turn it into
+
+Unknown Speaker  35:29
+I'm so confused.
+
+Unknown Speaker  35:32
+I have a suggestion. Yep,
+
+Speaker 2  35:36
+this is way above my head. I think you and Seth need to argue about this to come up with an effective way to do this. So at this point, I have nothing to add. You're you're way beyond my math skills.
+
+Matthias Miller  35:52
+Are you basically saying that as long as we have a justifiable way of calculating weekly payments, you're fine going to bat with however it is, but it's all based on monthly I mean, presumably it should be a set payment amount, like you're not going to charge half as much in February, or you're not going to dock it 10 cents in February, just because it's February instead of July, With 28 days versus 31 right?
+
+Speaker 2  36:21
+So to me, there's two ways to go about this. One, you can say the monthly calculation is the source of truth, and we derive everything from that. Otherwise, we have to go and we have to figure out and build divisors for weeklies, and like, we have to build divisors for every single one of these so that we can actually defensively calculate a contract amount they thought based off of, you know, every other increment that we want to support, which seems kind of crazy to
+
+Unknown Speaker  36:56
+me. Okay, so I have, I have
+
+Matthias Miller  37:02
+a proposal.
+
+Matthias Miller  37:11
+Well, I'm not sure how this works, but we derive the weekly amount of
+
+Matthias Miller  37:24
+okay, Seth and I can put something together. I don't have to drag you through the weeds.
+
+Unknown Speaker  37:30
+Should we? Should we go back and deal with the actual reason we want to talk about late fees?
+
+Unknown Speaker  37:37
+Yeah, do you
+
+Unknown Speaker  37:42
+want to walk him through it, or you want me to,
+
+Unknown Speaker  37:49
+all right? So I can that way. I know I understand it, something that I
+
+Unknown Speaker  37:59
+that's something you and I haven't even talked about
+
+Matthias Miller  38:01
+yet. There are other fees, okay, so there's types, types of late fees based on payment terms. So we're thinking contract terms are actually still calculated monthly, but payment terms maybe weekly or bi weekly, and based on how often you pay depends how we how we do that. Late fees can be applied on a per contract or per account basis. We'll just have to think about how we fueled it. I'm not sure yet, but if you have three contracts, maybe you just get slapped on the wrist one once, or you might get slapped on the wrist three times.
+
+Speaker 4  38:34
+Grace Period. How many days? So we're not sure yet which way we're doing it. No, it's configured, or it's either way. Okay, yeah,
+
+Matthias Miller  38:43
+grace period. How many days, you know? How many just? When do we apply the late fee? How late do you have to be method so you can do three ways you can incur per day. If you do that, then you'll have, then you can have $1 value. If you have a you have a starting dollar value, you have a daily dollar value, and then you have a max dollar value. You can you can charge per payment, which is just $1 value. There's no min or max. It doesn't make sense. Per payment percent. Then you have a percentage payment. We charge 5% of the payment, but then you need to have a minute max. It can't be less than five, but it can't be more than 30. And then the last thing is tax options, which is the, is it non taxable? Is tax included in the late fee, or is tax added on top of the late fee?
+
+Unknown Speaker  39:40
+So the late fee is taxed?
+
+Matthias Miller  39:43
+Well, you could have $30 late fee. The customer could $30 late fee, and it could be one of two ways. It could be non taxable, or it could be that you are doing, you know, on a 7% tax rate, you're doing 30 divided by 1.07 you're actually the real late fee is 2804, And you're paying the dollar 97 tax out of that
+
+Unknown Speaker  40:05
+good that the tax
+
+Speaker 2  40:07
+added one when we get to accounting, we're going to figure out how we're going to handle that, because that's that extra amount that you're tacking on should not be taxable. That's enough to cover the tax that you're charging.
+
+Matthias Miller  40:19
+Right, correct, I mean. But also when we when tax is included, we'll have to push it as over to accounting as a sales tax liability, and the actual late fee only being $28.03
+
+Unknown Speaker  40:32
+Correct, correct.
+
+Speaker 2  40:36
+Now, the the one piece, the one piece that Matthias you didn't cover, was the the are we changing up what we just specced out this morning about on the rental company record, changing that from like, removing the type for weekly and monthly term types that we were going to put on there because it because, here's the issue Seth, is that we expect that this morning to say we want to support weekly and monthly terms over there, on the on the rent to own company. But if we're going to say that monthly calculations is the source of truth, then we only need monthly terms over there. We don't need both weekly and monthly now, I guess that. I guess that depends Matthias on whatever you and Seth come up with here. So, I mean, I guess the two of you need a wrangle and figure out what's the best method going forward on the calculation method, and that will, that will determine if we're going to make changes to the RTO company.
+
+Unknown Speaker  41:42
+I think this is
+
+Unknown Speaker  41:49
+okay. Here's like, I
+
+Unknown Speaker  42:07
+You said the divisor at the end,
+
+Matthias Miller  42:10
+and that's a discrepancy. Oh, I'm sorry. This is if you divide into whole weeks, we don't divide into whole weeks. We just want a number of weeks so that at the end you get pretty close. So we have a weekly payment. So here, then, there you overpay. I wonder if we truncate,
+
+Unknown Speaker  42:40
+doesn't help,
+
+Unknown Speaker  42:42
+no, it's because of the fractional weeks,
+
+Matthias Miller  42:50
+right? But if you have a this is number of whole weeks, if we do it like this,
+
+Unknown Speaker  42:59
+oh, that way.
+
+Matthias Miller  43:02
+Whole week payments this, times this, and then you have the fractional week dollar amount is, is this? I think it's probably something like that, and we just say if the due date extends past the end of the contract, well, I mean, I don't know it might. It might vary slightly by a day or two past the end of the contract. If you do it like this, I
+
+Unknown Speaker  43:50
+can you hear That rain? Nope,
+
+Unknown Speaker  43:55
+it's flat. Bottom just dropped out. I'm
+
+Unknown Speaker  44:41
+well, I'm
+
+Unknown Speaker  45:00
+Here, this is what we do.
+
+Matthias Miller  45:17
+I don't know the math, but at a very high level, we come up with the highest weekly amount that does not result in overpaying the contract we're paying early.
+
+Unknown Speaker  45:35
+It's not quite right.
+
+Speaker 1  45:39
+Seth. Do you have any How would, how would you think about this?
+
+Speaker 4  45:45
+Not sure. I wish we could have a divisor for weeks. But I yeah, I don't know.
+
+Speaker 1  45:56
+But I mean, the issue is that, okay, what happens when?
+
+Matthias Miller  46:07
+And why don't you want to devise her for weeks.
+
+Speaker 2  46:09
+Duane, I'm not saying, I'm not saying we don't I'm saying, how do you figure that out?
+
+Matthias Miller  46:16
+Well, that's very simple. You calculate the total number of days of the contract, which turns it into a fractional week? No, it's it, yeah. So you have something like this.
+
+Speaker 2  46:34
+Okay, so, so here's the thing, if we can come up with, we come up with divisors like whether you're a 36 month contract or or you're a whatever the equivalent in weeks of a 36 month contract is, as long as those two numbers come contractually, dollar value wise, come out the same, like a total contract value come out the same if you come up with a divisor. But I'm not opposed to going to the divisor route.
+
+Matthias Miller  46:59
+Well, you can't, I don't think you can, you're going to have rounding issues. You can't translate without rounding issues.
+
+Speaker 2  47:10
+Well, this is why, this is why I said, because most RTO companies are going to calculate their the original contract on a monthly basis, but if the customer calls in and says, I want to switch from a monthly basis to a weekly or bi weekly basis. I want to be backwards or forwards compatible, whichever the direction we're going here, we'll call it backwards compatible, so that you can take a monthly contract and switch it down to a weekly or a bi weekly or some monthly because at the end of the day we if whatever the contract was calculated at is what we have to those are the parameters. So if we have a we have a $5,000 building and a contract value of on a 36 month, where is my total contract change? It
+
+Unknown Speaker  48:02
+dropped. 33 like that. $8,333.33
+
+Speaker 2  48:09
+whatever it was originally calculated, that's what we That's the parameters we have to stay inside of.
+
+Unknown Speaker  48:44
+I think we need to actually,
+
+Matthias Miller  48:59
+Maybe we just Start with this. I
+
+Matthias Miller  50:04
+You uh, so then we'd want to what we want to do is, what if we Did something like this?
+
+Matthias Miller  51:01
+Well, it's Really simple as This assigned Father,
+
+Unknown Speaker  51:42
+have you're multiplying weekly payment by weekly payment. I
+
+Unknown Speaker  52:15
+so here you actually we would end up overpaying 45 whole weeks.
+
+Unknown Speaker  52:31
+156, 270 201 200 that doesn't make sense. I
+
+Matthias Miller  53:04
+Is there a way in which I don't think we can do this, but there's not a way in which we can do we can look at the remaining balance. We can't do this.
+
+Unknown Speaker  53:21
+Okay, let's do this.
+
+Unknown Speaker  53:24
+Haha.
+
+Matthias Miller  53:28
+So we have contract start date, 715, 25 monthly payment is $200 total paid is this month terms, is we said 36 so we think it should be, see it's going to wrap up. So we've paid
+
+Unknown Speaker  53:58
+so you wrap up four days short of
+
+Unknown Speaker  54:00
+of the contract. Now, if you
+
+Unknown Speaker  54:14
+is it,
+
+Speaker 4  54:15
+if you do weekly payments, don't you expect if you're you're just gonna have to even a doubt at the end to hit the end of the contract. Like I'm thinking, if you're starting RTO contract for three years and you do weekly payments, or for 36 months you do weekly payments, you just know that it's not going to exactly line up. You're going to have a oddball payment at the end to hit the end date. No.
+
+Unknown Speaker  54:40
+Or how does it work? Well,
+
+Matthias Miller  54:44
+shouldn't you if you're switching to weekly payments because the contract is written in a monthly basis, shouldn't you actually be having them pay more like pay it off early so they're current the whole way through the contract?
+
+Unknown Speaker  55:05
+Yeah, why would you good?
+
+Unknown Speaker  55:07
+Okay,
+
+Speaker 2  55:11
+if you're on weekly payments and you come up, are you always going to pay off earlier than you would on a monthly term? Is that always the case. Well,
+
+Matthias Miller  55:22
+it depends how you structure it,
+
+Speaker 2  55:25
+because it's always the if it's always the case, then why wouldn't if a customer went full term, why wouldn't their last payment do be less than any of the other payments that they ever made? Right?
+
+Matthias Miller  55:42
+Like, I that's, that's what I'm thinking. So you say, so basically what you say over here,
+
+Unknown Speaker  55:50
+let's do this
+
+Matthias Miller  55:57
+so you have number of whole weeks.
+
+Matthias Miller  56:08
+So then you get the weekly dollar amount, which is contract value, which is rounding value, divided by f2
+
+Unknown Speaker  56:20
+Whoa, that's so it's
+
+Unknown Speaker  56:28
+2323 bucks a week. So then by maybe this should be like two decimals.
+
+Matthias Miller  56:51
+So and you'll end up paying it off up to a week early. And the argument would be that the way to defend it is saying, Look, when you're on a monthly payment, when you're on a weekly payment,
+
+Matthias Miller  57:12
+your contract is still on a monthly term, so the only way you switch to a monthly pay a weekly payment is if you stay ahead of those payments just a little bit, and You're going to pay it off a little early. Mm,
+
+Speaker 5  57:22
+little early, is, is the
+
+Speaker 2  57:32
+can you do the math under the hood that that would allow you to to calculate, to say, start a month, start as a monthly contract, good. Go to the weekly. Go back to a monthly, switch to a bi weekly.
+
+Matthias Miller  57:47
+Like, can we just at any given point, you just look at how much been been paid in and use that schedule.
+
+Speaker 2  57:54
+So it does, does weekly and bi weekly, those would experience the exact same problems, correct,
+
+Matthias Miller  57:59
+correct. And bi weekly is just like and
+
+Speaker 2  58:03
+bi monthly is just in half, correct, bimonthly,
+
+Matthias Miller  58:07
+just in half. But if you have an odd, if you have an odd monthly payment amount, you'll round up and you'll pay it off, maybe a day or day early or something. I don't know what it is, half a day early,
+
+Speaker 2  58:23
+as long as, as long as, okay, so if we are always as long as we are always calculating The payment and the remaining balance to get, like, as long as we're not just every single time we're putting up there, whatever we say, the monthly payment is like, it's always recalculating, so that when you get to the if you got to the very, very end on a weekly payment, the last payment should be slightly less than all The rest,
+
+Matthias Miller  58:58
+correct? Well, or it's paid off early. Which one
+
+Speaker 2  59:09
+you would have to be you would have to be ahead to pay it off early.
+
+Matthias Miller  59:13
+Sorry, ahead, whatever. So for weekly, find the number of whole weeks, calculate the weekly dollar amount, pay it off up to one week early, bi weekly. Same thing, except, well, same thing. I'm not even sure if it's it's
+
+Speaker 2  59:38
+Wait. What if we're going to go to a weekly payment? Why wouldn't you just you just take, okay, find your whole weeks and any of any partial weeks, like, if, okay, I don't know what it was, where was like, it's not, if you said that, it's not just simply do. Dividing it by the number of weeks, like, if there are partial weeks left over, just wrap that into like, spread that across the rest of the weekly payments
+
+Unknown Speaker  1:00:08
+so that you have done early. Yeah, you're done early Exactly.
+
+Speaker 2  1:00:15
+Wait, am I just catching up to what you were saying? Matthias, I think I just did. I think I just caught up to what you
+
+Matthias Miller  1:00:20
+were saying. Well, not to what I was saying just now, you're gonna end up with some kind of weird discrepancy towards the end. Your last payment is going to be a little less, or you're going to owe 50 cents at the date of contract end, or something like that.
+
+Speaker 2  1:00:39
+Well, but why? If you find the number of whole weeks from contract start date, the exact number of whole weeks, and divide that by the contract balance, and that becomes your weekly payment, you end up paying off
+
+Matthias Miller  1:00:50
+early. Yeah, exactly weekly. You do the whole week, so you might pay it off up to two weeks early.
+
+Unknown Speaker  1:01:00
+So you're saying we can't just do weekly times two.
+
+Matthias Miller  1:01:09
+Well, I mean, we could do, I think you still want to do it off.
+
+Speaker 2  1:01:12
+Sorry, yeah, yeah, weekly times too. But why could? Why wouldn't you, if you're going to, if you're going to bi weekly, you do the exact same calculation. You find out the exact number of whole weeks divide that. Divide that when I have a contract balance times two, what
+
+Matthias Miller  1:01:25
+if you have a half week when you're gonna you're again, gonna end up with some kind of weird fractional error at some point, even with the weekly one, you will potentially,
+
+Unknown Speaker  1:01:41
+yeah, but Okay, so if
+
+Speaker 2  1:01:45
+I my vote would be that when you go to weekly you do it by an exact whole week calculation, so that it any partials or any weird all of that gets wrapped like spread that across every single Across the end every single weekly payment. So you always pay off early. You actually pay off at a faster time frame on a weekly or a bi weekly basis than you would if you stayed on monthly. The dollar values the exact same, but the the the time frame actually comes out slightly faster. What
+
+Speaker 4  1:02:18
+are you going to do with the random sense, because it numbers aren't going to line up exactly.
+
+Matthias Miller  1:02:23
+You're going to the last payment will also sometimes be less, yeah, okay.
+
+Speaker 2  1:02:31
+The truth of the matter is, I have the data on how many people go full term, and you're talking less than 2% of people. So we're talking about a very, very low number of people who were actually trying to account for we have to account for it, because it has to be right. But everybody, everybody pays off early,
+
+Matthias Miller  1:02:56
+or they don't pay it off. So the I uh, find the okay, but then you're saying you want on the bi weekly why? Why? Why don't you want to do whole bi weekly chunks? What's
+
+Unknown Speaker  1:03:18
+different between weekly and bi weekly
+
+Unknown Speaker  1:03:22
+round? Rounding.
+
+Unknown Speaker  1:03:24
+Oh, okay,
+
+Speaker 2  1:03:27
+really fine, if you, if you want to do, if you want to, if you want to go find bi weekly chunks. Fine. I
+
+Unknown Speaker  1:03:46
+I rounded up, do you mean the nurse? What
+
+Matthias Miller  1:03:56
+if you have something that's if your weekly payment is $54 in 300 or in 330, 7.6 Well, 372, cents, you charge 38 cents. That point the ceiling. Sorry, it's ceiling.
+
+Unknown Speaker  1:04:22
+Okay,
+
+Speaker 2  1:04:24
+I'm glad you guys are smarter math than I am, because I would be
+
+Unknown Speaker  1:04:28
+I, I would have it way out wrong.
+
+Matthias Miller  1:04:35
+So I wonder if we can the only thing that's missing from the Excel sheet that I wish we could show is when the payoff date would occur, or what the final payment No, I mean, the payoff date is pretty easy, so let's, let's go build this thing out so you have a contract start date, 715, 25, you have a contract terms months, which is 260, so. So you have a contract. So then we have a monthly payment, which is $200 you have a number weeks, you have a number bi monthly, which is this times two. You have a number bi weekly, which is, well, your number weeks is this? Well, it's really,
+
+Unknown Speaker  1:05:40
+yeah, there you go. Do
+
+Speaker 4  1:05:57
+you want to increment the years instead of the months? I I
+
+Speaker 4  1:06:07
+guess we're assuming it's a our contract terms are always over years.
+
+Matthias Miller  1:06:15
+I mean, for the sake of this testing, yes. Okay, so then this is truncate this divided by seven. That's the number of weeks. Number of by weeks is the same thing, but divided by 14, all right. So then the so then this is the I the payment, payment terms, the num payments. This is the payment dollars, which would be ceiling of contract con. Contract total is this, times this. So this is the ceiling of contract total divided by this. And we should do this so that we can do this. And it should be rounded to to no factor
+
+Unknown Speaker  1:07:17
+you want round. And then ceiling,
+
+Matthias Miller  1:07:21
+no times 100 divided by 100
+
+Matthias Miller  1:07:30
+so that's the payment, dollar amount. And then you then you have the payment. I
+
+Matthias Miller  1:07:45
+Uh, okay, then you have the total payments, or then we have the the last payment amount would be this, times this. It would be, I guess, something like that, my where my poor brains not
+
+Unknown Speaker  1:08:09
+isn't it?
+
+Matthias Miller  1:08:14
+It's this minus this. It's then I
+
+Speaker 4  1:08:24
+our last payment amount. Are you meaning if there's a fractional
+
+Unknown Speaker  1:08:32
+Yeah, like, yeah, and
+
+Matthias Miller  1:08:36
+then you have the last payment date, the last due date. Due Date equals b1, plus, well, this one doesn't matter. B1, plus this times seven. I
+
+Unknown Speaker  1:09:04
+so they're both six days early,
+
+Matthias Miller  1:09:09
+right? That's true, because you're never going to because we always do full year terms, so that whole issue of being two weeks early doesn't matter. Mm, and then the last due date here would be
+
+Unknown Speaker  1:09:27
+essentially 26 bi weekly a year, base, I mean, but it, if not, it lines up with weekly per year, evenly. I
+
+Matthias Miller  1:09:49
+All right, so Dwayne, here's that works. You can play around with these numbers and see what you think. You have to share it
+
+Unknown Speaker  1:09:55
+back to you because you copied my spreadsheet. Um.
+
+Unknown Speaker  1:10:02
+I did share. It also gives Seth, I
+
+Speaker 2  1:10:04
+don't, I don't necessarily need to play around with it. I mean, this makes sense. I understand what you're doing. And so if you're on weeks, if you're on weeks, or weekly, or bi weekly, you end up paying off six days early,
+
+Matthias Miller  1:10:17
+up to, yeah, up to six days. It might not actually, because, if you like,
+
+Speaker 4  1:10:25
+well, there's, are there 72 month terms ever?
+
+Unknown Speaker  1:10:31
+There are some people who do 70 twos, but at this point,
+
+Unknown Speaker  1:10:34
+because that's where you see up to weeks go up to 120
+
+Matthias Miller  1:10:40
+here, up to you might have up to 12 days early on, on by week. I don't
+
+Speaker 2  1:10:44
+have a problem with that. It's like so at this point, the customer gets to go from a monthly payment, you know, it goes from a $200 payment down to an on a bye week, then 9170 or $100 and or, okay, 9170, they end up paying 12 days early. Or 4360, on a weekly they end up paying five days early. Their RTO company gets the same amount of money, the customer pays the same amount of money, they just end up doing it slightly faster
+
+Matthias Miller  1:11:12
+with I mean, it's kind of like the same. This is kind of really tacky, but you could say the same thing about this is the same as it's not you pay the same amount, but it's kind of like paying off your mortgage. If you pay your mortgage and weekly payments, you pay it off faster. Now it's interest and not whatever. So that's completely
+
+Unknown Speaker  1:11:35
+the question. The question I have is, there's a whole lot of other questions I then have about,
+
+Unknown Speaker  1:11:44
+how do we like?
+
+Speaker 2  1:11:49
+No, I guess not. It's the same thing. EPO is calculated based on a monthly like the contract balance and the contract balance and everything else just works.
+
+Matthias Miller  1:12:01
+This is all this is, is due date cap is, is. So then you take the contract balance,
+
+Speaker 2  1:12:11
+are you I'm good, I'm good with this. This makes, this makes total sense.
+
+Matthias Miller  1:12:16
+So am I right for due date calculations? If you have a floating due date that you that, you calculate the due date as of however, with their contract balance, no, you don't. You have to have a different contract due date calculation. Or do you? No, you calculate your that's not true. You have to have a different if you have a floating due date, you have to calculate your
+
+Matthias Miller  1:12:59
+No you do if you take the balance divided by, okay, so loading due date. You have the balance. They paid $3,000 so then you take this divided by the weekly you take this divided by the weekly payment times seven number days paid.
+
+Unknown Speaker  1:13:33
+You want round? I
+
+Matthias Miller  1:13:37
+don't want to round to the near. I mean, it's as simple as that, on a floating due date, you just use the balance divided by the weekly payment, same as we would on monthly and just use a floating balance, and it might be off by a day or two, depending on these calculations. Okay, here's where I'm just slightly skittish. I am slightly squished squid ish of things like floating balance, weird edge cases with the floating balance off of weeks off by a day. I don't know. Should I?
+
+Speaker 2  1:14:23
+So here's the here's the main thing to keep in mind when we get into conversations like this, if we're not overcharging like some of this is it's customer service questions versus legality questions. So if, if you end up, if we don't end up overcharging the customer, then and we don't under charge. Undercharge the RTO company or under, you know, acquire for the RTO company. Like the if the math works out, how many people are going to be able to sit down and figure this kind of stuff out? It's 99.999% of people, customers are never going to be able to understand these like. They want to see a lesser amount for a weekly calculation. They want to know that if they pay the exact week amount, they're going to end up on the exact same, you know, day, next week, or BI monthly, the same thing. You know that those are the kind of things that they want to know. So as long as we're, you know, if, if, if it's not a legality question, we have a little bit more leeway than we do if it's a customer service, like, if the customer is like, well, I paid such and such and I ended up, you know, a day ahead or a day behind. Well, okay, because, you know, you can explain it. And if the customer is like, well, I'm still happy, fine, go. Move the due date back to where they wanted it to be, right? Just go do it right? So just bear that in mind, because it's when we when we're not in legality questions we have, we have more leeway than we do. Yeah, yeah. Oh,
+
+Matthias Miller  1:15:58
+you're selling. You're selling, you're you're selling to Homer Simpson and telling him that he's gonna gets to pay exactly the same amount every single week. Week he gets to pay less. He does monthly, and he'll even pay it off early. Where do you want to go? You want to go now? Like it's, it's not. Yeah, fine.
+
+Unknown Speaker  1:16:17
+Well, that was fun.
+
+Unknown Speaker  1:16:21
+Well, so
+
+Matthias Miller  1:16:26
+are we comfortable with changing late fees to to getting rid of weekly terms and just having these as see so the contract term is always monthly, but payment terms can be adapted on the contract between weekly and monthly and by in these different settings.
+
+Speaker 2  1:16:50
+Yeah, I guess from a so we kind of backed away from the reason that we wanted to go with the ability to do two different contract definitions for weekly and or monthly, we're backing away from that, which means I have to go to include if language on on to support multiple different PDF exports of the actual PDF contract, which is fine. I'll, we'll figure a way around some of that. If people want to include weekly language into their RTO contract. I do. I do still think it might be good from a validation standpoint to be able to support doing two different types of contract definitions, but I think from a RTO contract RG standpoint, we only need to support monthly calculations there. We don't have to support weekly calculations on the RTO Company record,
+
+Matthias Miller  1:17:49
+so you may want to okay, but to clarify, then, you may have two contract types, one for a weekly payment method and one for a monthly payment method, but under a 36 month term, no, no, we
+
+Unknown Speaker  1:18:12
+need to say with single contract definitions, that's what you're saying, right?
+
+Matthias Miller  1:18:17
+I mean, I think what we're saying is we only have monthly terms, but on the contract, you get to Select Other payment frequencies that use different calculations.
+
+Speaker 2  1:18:42
+Yes, I think you're right. Unfortunately, I suspect there's going to come a day where I'm going to have to maybe not, maybe not, if, if they write a weekly if they write weekly language into their RTO contract, it still calculates by the monthly and as long as that, our numbers can come out right? We'll cross that bridge when we get there.
+
+Matthias Miller  1:19:05
+Well, I mean, if they really need to, we can give them macros to say you have the option to make weekly payments. If so, the payment is going to be in this amount, and you will complete, and you will pay for the building, and their final payment will be this except for the final payment, which will be due on this date, which will be for this amount, resulting in your payment, your bill, bill, your contract, being paid for at this date instead of the other the standard date. And I'm not a lawyer, but it seems like if you really actually have to make it be legally defensible, I don't know. I don't know about RTO
+
+Speaker 2  1:19:40
+law, there may be situations where we have to well on the contract record after it's been created from the contract definition. There may be times where we have to go and edit the contract balance or the payments in order to make that like there may be times where we have to edit some of those things. And. To match paperwork, and we need to be able to handle that.
+
+Unknown Speaker  1:20:11
+Wait one more time. Okay,
+
+Speaker 2  1:20:13
+there have been times RTO Pro lets you do this. Once you've generated the contract, you can go into the actual account, and you can change the contract balance, leaving the leaving the per month payment exactly the same, but the contract balance is maybe slightly more or less than what the actual calculations would give you, because we've gotten handwritten contracts for somebody screwed up the math, and we have to match the math
+
+Unknown Speaker  1:20:43
+so we need to
+
+Speaker 2  1:20:46
+so once, once the once the contract record is created, contract balance and monthly payment need to still be editable. Obviously, it has to be by a higher permission level so that you can straight up match the math on somebody screwing up the math on an RTO contract, because, again, the paper is the legality piece of this thing, so we need to be able to support that. That is hilarious. Oh, yeah. Oh, trust me, we've had some dealers that we get one in, and we're like, I don't know what he's doing, I could, like we would literally sit there for an hour and try to come up with a way to calculate the numbers that he comes up with, and never could get to it.
+
+Unknown Speaker  1:21:30
+No idea. Let me know who they are. I might want to buy from
+
+Speaker 2  1:21:35
+them. Guys. Drop the I need to drop off. This was fun.
+
+Unknown Speaker  1:21:40
+Sounds good. We're we're
+
+Speaker 2  1:21:41
+good to pass, we are good to pass this stuff on into spec and Dev and build, right? I
+
+Matthias Miller  1:21:47
+mean, if you're good, we're good, I'm good. Seth, and I said we can maybe just chat a little bit about what needs to be done. But, yeah, okay, thanks. Awesome.
+
+Unknown Speaker  1:22:02
+Okay, so I think I
+
+Matthias Miller  1:22:57
+Okay, But then we have the on the contract. We also then have payment frequency, just monthly.
+
+Speaker 4  1:23:08
+We currently have the payment terms, but it's just monthly and weekly. It's not really running right now. Sure, I mean it, it exists, but it's not. I do we need to clarify that bi monthly is twice a month as opposed to every two months?
+
+Unknown Speaker  1:23:29
+Is there a term that indicates that?
+
+Unknown Speaker  1:23:34
+No, I don't think so.
+
+Speaker 1  1:23:35
+It's like the perennial in the biannual. Like we need to anyway, whatever,
+
+Matthias Miller  1:23:42
+or what is, is there one of those that has that this? I don't know Anyway,
+
+Speaker 4  1:23:47
+not sure, because biannual could mean the same thing, right? I'm not sure. I assume everyone knows that a bi weekly is not going to be two times a week. No one's going to want to pay every three or four days. That would be so weird. Every 3.5 days, you pay at noon on this day and at midnight this day.
+
+Matthias Miller  1:24:19
+What did we just showed this bi monthly dollar,
+
+Speaker 4  1:24:25
+weekly dollar, bi weekly dollar, like, you'd show all of them, all of them every time.
+
+Matthias Miller  1:24:35
+Yeah, why not? Because somebody might want to say, Well, what's my payment? If I switch, I want to switch to like, well, I want to lower payment. What's bimonth? Well, if you do bimonthly, it would be this, if it's by with me, would be that
+
+Speaker 4  1:24:54
+we could even, do you want to make the columns array? If they're i. Are not the active one, or do we just don't care. We're just assuming you know where to look. I don't know how easily we can or not, but you could make cell text, or wait, this is not necessarily a cell, although it could be. This isn't an RG, this is just a you could have it, put it put it in a virtual RG, we don't. Oh, that way. I
+
+Speaker 4  1:25:29
+don't hate that. If we're gonna display it all anyway,
+
+Unknown Speaker  1:25:41
+then do you need to also share the last payment amount?
+
+Unknown Speaker  1:25:45
+Then you would have a
+
+Speaker 4  1:25:48
+maybe pay off date, final payment amount.
+
+Matthias Miller  1:25:55
+So this would be the monthly the payment,
+
+Unknown Speaker  1:26:00
+the recurring payment,
+
+Unknown Speaker  1:26:04
+and then you have A okay,
+
+Matthias Miller  1:26:14
+then on the payment override.
+
+Unknown Speaker  1:26:22
+I don't know anyway, let's do this.
+
+Speaker 4  1:26:42
+I'm make them enter in here instead of their paper. I
+
+Unknown Speaker  1:27:04
+something Along these lines, I'm
+
+Matthias Miller  1:28:05
+you may have to so then theoretically you might override the payment dollar amount.
+
+Unknown Speaker  1:28:18
+So it's if you switch,
+
+Speaker 4  1:28:20
+if you override the payment dollar amount, then don't, doesn't that have to automatically update
+
+Unknown Speaker  1:28:25
+the contract
+
+Speaker 4  1:28:28
+amount. Or, No, we're just gonna lie, because whoever made the contract can't do math.
+
+Matthias Miller  1:28:37
+I mean, you have to decide whether the contract value like if they said the contract values for $1,000 less than it should have been, make monthly payments as if it were $1,000 more you just paid off. Like, I mean,
+
+Speaker 4  1:28:54
+I don't know. I'm very curious how that actually works, right? Like, if their math doesn't line that part takes priority, is it the amount? It's probably it's probably
+
+Unknown Speaker  1:29:04
+why? Yeah. I mean,
+
+Matthias Miller  1:29:07
+it might depend on a case by case basis, yeah, but it might be the lesser of contract, like if you have a $5,000 contract, but they put too few payments in, or, I
+
+Matthias Miller  1:29:25
+or if their payments are too small,
+
+Unknown Speaker  1:29:29
+I don't know. Yeah.
+
+Unknown Speaker  1:29:39
+Anyway, I
+
+Unknown Speaker  1:30:10
+You say in written contract, right? Yeah,
+
+Unknown Speaker  1:30:22
+for Every. Single base possible.
+
+Matthias Miller  1:30:24
+Okay, so if it's too high, if the monthly payment is too high in the contract, presumably use lower payment or higher payment and pay off early. Okay.
+
+Unknown Speaker  1:31:21
+Okay, all right,
+
+Matthias Miller  1:31:26
+I think we'll leave the I'm not quite sure I'm completely comfortable. Okay, he said, and I think he's right. I think we can spec this out early payoff method, so in the contract definition, This would be on the rent To own financials. I
+
+Unknown Speaker  1:32:21
+i split
+
+Matthias Miller  1:32:56
+and then we'll just have to Just have a list and just hard Code the
+
+Speaker 3  1:33:04
+have have a macro that I
+
+Unknown Speaker  1:33:30
+that good. I'm
+
+Unknown Speaker  1:33:51
+this your comment about ghost driven stuff doesn't like we no longer have this new term length
+
+Unknown Speaker  1:34:00
+language, right? Yes, you just do we need to,
+
+Speaker 4  1:34:13
+just maybe, after all those, after all your comments on, on New term stuff, just just say this design is changing, and then
+
+Unknown Speaker  1:34:35
+I'll Deal with it.
+
+Speaker 4  1:34:41
+So I was also wondering with zfp stuff, is that something we should circle up at on at some point or not right now, but sales tax liability reconcile? Should I push?
+
+Matthias Miller  1:34:56
+Do you want to just. Some time on it tomorrow. There's probably not too much until the afternoon, kind of, well, either early morning.
+
+Matthias Miller  1:35:17
+Well, I mean, more like, I have about an hour from nine to 10 that I could probably do. Is there a good how big of a blog we need?
+
+Speaker 4  1:35:39
+And remember what all there is it's gonna be, could be a couple hours. It's the Configuring payment methods to change when they push to accounting. Let's do this and discrepancy reconciliation. I think the payment methods one, I might almost be able to code it bit on my own and then look at it with you. But I don't, I don't know if I'll remember offhand where all will accounting impact uses payment this is just sales orders.
+
+Matthias Miller  1:36:24
+I have stuff I can move to next Thursday afternoon. This can move in the morning, which means I would be free from one to 430 if you want to.
+
+Speaker 4  1:36:41
+Yeah, I mean that should I think we should be able to cover it in that
+
+Unknown Speaker  1:36:45
+time that gives an exploring?
+
+Speaker 5  1:36:48
+Yeah, exactly. Okay. Okay. Sounds
+
+Unknown Speaker  1:36:51
+good. Awesome. Thank you. Thank you. Thank you. Bye.
+
+
+Transcribed by https://otter.ai

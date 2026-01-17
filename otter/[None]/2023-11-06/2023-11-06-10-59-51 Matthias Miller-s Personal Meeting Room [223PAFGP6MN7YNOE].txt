@@ -1,0 +1,761 @@
+Matthias Miller  01:43
+help nonprofits right? That was my thing. Okay. So some, okay. So are these for you or for your customers, your clients? These are for? This is a certification for for my clients, I mean for myself on behalf of the clients that in mind. Okay, so this is your training material is my training material? Correct? Got it? Yep. I'm doing a bunch of software design and promise I'm getting, I don't know, there's a very slim, slim segment that I'm really happy with. So I'm actually looking into going into strategy, like facilitation to help fund the software. Well, no, just to I mean, the software is all custom. So it's funded. It's just I'm not happy with the business model. I'm not happy with the market I'm not happy with there's a lot of things I'm not happy with on it. So looking to move more into a consulting role, so yeah, it's always fun though. It's easier to help. I don't know. I kind of want to do the opposite. I want to go I want to go to school for software. Oh, interesting. Yeah
+
+Unknown Speaker  03:05
+yeah
+
+Matthias Miller  03:10
+there's a lot that AI is wildly changing. Yeah, yeah. There's like you have to understand Yeah, that's
+
+Matthias Miller  03:31
+right. I'm gonna go away. I'm gonna hop on a zoom call here. Yeah
+
+Matthias Miller  03:44
+you guys
+
+Matthias Miller  04:05
+all right. Hey, Mark. Hey, Drew Dwayne a been right.
+
+Unknown Speaker  04:17
+Mark, you need to turn your camera on
+
+Speaker 1  04:23
+yeah, let me install it on my phone here.
+
+Unknown Speaker  04:29
+download that app
+
+Matthias Miller  04:36
+I'm sure somewhere there's some kind of AI face generation that we could use that with. You know, we put just a little bit just enough of a time delay in your speech so that it could, you know, show your face forming words and stuff
+
+Speaker 1  04:57
+while I was somebody was telling me about this ad or it was for game cameras, like, all of deer on around here used to you were when they can, while it's like a cell camera, you can get pictures sent directly to your phone. And so you can keep track of what the deer are doing in your where you're planning to hunt, you can pattern them and all that. But there was also somebody was selling something that I don't think it was, it wasn't a game camera, but not sure what it was somehow it sent a signal to a phone when ocean or like a motion sensor or something. And God is telling me that it's probably for people, more conservative groups that aren't allowed to have in cameras. So they this would be next. That would be kind of going the other direction.
+
+Matthias Miller  06:13
+Wow. All right. Well, I love that we jump in and get started. And let me let me just run through this. Well, is there are there particular persons you want and Dwayne or that Dwayne does not need to be part of as far as the agenda?
+
+Speaker 1  06:39
+Well, the first two items, one and why number number seven, the entering miscellaneous one we want him to be on but then I don't it's only those two that we need, that we really need to end to be a part of. I don't think the others really
+
+Matthias Miller  07:04
+let me
+
+Speaker 1  07:12
+the only other one that that might would be stripe payments. I don't know if you had a chance to talk with Josh about that or not? I think the stripe payments you're talking about are the manual stripe payments. Alright.
+
+Matthias Miller  07:31
+Alright. Sounds good. Yeah, I think Dwayne might be helpful to Dwayne to be on that, as well. So Dwayne, you put together a little report here, let me all
+
+Speaker 2  07:43
+I did was add added a basically a larger list of being able to drop so IDs in and it searches just those, like if you've got a report from a builder. So you could just like take all the sales order numbers. Now, it I don't know. I don't know if I've ever asked for this before. But is there a way to actually sit? Like, have it be a universal box where we can say you can drop stin? Or sales order numbers and it brings them in? Or would it need to be separate fields?
+
+Matthias Miller  08:18
+Well, Dwayne, for most people, we would say no, no.
+
+Speaker 2  08:30
+No, we all know that. But I mean, the intent, the intent of this thing was to say. So if we're going to use if this thing is going to be usable enough, it would be it would be where, let's say someone in my office gets a list of spins and sales or numbers because, you know, I can see that it could be either, and you wanna be able to punch them all in, hit Continue, and it drops them all in there, and then you go ahead and receive your payments.
+
+Matthias Miller  09:07
+Okay, we have a, we have something that's pretty close. That's only for a single one of single. So by any ID, but we could give you one that has you know, I mean, yes, we can. That's what I'm trying to say. Let me start a new change request. And so this is on AR, and this is streamline receive payments. allows searching by any ID. So Id or Stan.
+
+Speaker 2  09:52
+Probably not. Prefix ambiguous or preferably wouldn't care about prefixes either.
+
+Matthias Miller  10:00
+Well preferably wouldn't care about q, r and n prefixes. But it would care about i n and c and other prefixes, which is the conversation I have with Josh this afternoon.
+
+Matthias Miller  10:20
+You are prefixes saved prefer slash normalize. Okay. Were there any other changes that you made to this thing? Now? Or should I just? It's just it's just that search. Yeah. So
+
+Speaker 2  10:40
+it's Well, unless we come unless you can suggest a better way to bring in relevant information. Because like, if you if you have a big long list of sales orders, and you have a very short list on a piece of paper, it's like, being able to hunt down what you want. A value is it becomes really, really critical.
+
+Matthias Miller  11:03
+Well, yeah, I think that's spear and
+
+Speaker 2  11:05
+chase that be? Yeah,
+
+Matthias Miller  11:08
+it's coming at me.
+
+Speaker 2  11:13
+Good getting a ctrl F on a long list of sales orders is a little obnoxious. Right?
+
+Matthias Miller  11:21
+Well, would you would you want to do it by listing? I mean, do you still want to record the prefix for for SDI? I guess SDI isn't really relevant in this case. So it doesn't really matter.
+
+Speaker 1  11:36
+No, we do record payments. So what I mean, I don't think there's any reason to keep the the SDI prefix di no age, at least not from my uppers coming to the lesson software needs it for some reason.
+
+Matthias Miller  11:53
+We can just search by numeric numeric IDs. So find any, any sales orders matching either the numeric value of the standard and the numeric value of the sales order. And you might get extras. And who cares? You're
+
+Speaker 1  12:19
+not Dwayne or drew, I think you'd also suggest that like, can we shrink the list by looking at somehow get rid of all those old ones that are in there? And I don't know is is sales order date? Is? Yeah, generally the only thing you should the only thing you should see, the only sales orders or invoices on this list should be from the day they've been created. And apply payment until I've been we've created a sale or from the day they've been created until the day they've been
+
+Unknown Speaker  12:57
+fully paid. But like starting out here, I don't know how do we exclude all of that old stuff? That's that's
+
+Unknown Speaker  13:16
+just filled for the most?
+
+Matthias Miller  13:31
+Well, how are you planning to run this process from now until the foreseeable future? I mean, from now until we'll just keep running this process until the new year. It's not like, like, could we? Could we pick something like just August 1, as an arbitrary?
+
+Speaker 2  13:49
+Well, I was I was thinking, like, if we made it a field, you could you could set a default of August the first or something like that, but made it defaulted. Feel
+
+Matthias Miller  13:59
+like a system switch or something? No, well,
+
+Speaker 2  14:01
+no, I was like just an Ask prompt, like a defaulted as the defaults to August 1, or something like that. Yeah.
+
+Matthias Miller  14:11
+But probably
+
+Speaker 1  14:15
+when you're thinking if you can't find it, then then you go back and look at older sales orders. Because that potential exists.
+
+Speaker 2  14:22
+Although we, I mean, if it if you drop the soI D into the search field, and it doesn't come up I mean, that would be where you would then go start hunting for it but instinctively, that's not how I mean, you're going by a cut off date and then scrolling through large list of sins or sales orders, probably not the way I would go about it.
+
+Matthias Miller  14:53
+I don't know. I we could we could only show the cut off well, okay, if you're searching Bye bye. Bye. A number, do we really need the cutoff date at that point?
+
+Matthias Miller  15:16
+Or, alternatively, we make the cutoff date only be visible when you don't have any numbers specified. And that makes it clear that if you search by number, you're only getting numbers otherwise you're getting anything after that date. That would work. I think I can do that. Make sure. So this would be
+
+Matthias Miller  15:46
+Hey, no, nevermind, I can't do it. I mean, either way, we could we could ignore it
+
+Matthias Miller  16:04
+don't know about either either include the the cutoff date, and always respect it. And just know that when you get fined that you have to go change it or just don't include it at all. And just find out using Sid most of the time.
+
+Speaker 2  16:17
+The only the only thing looking at the code that you're in the subset that you have is sales or balances that are greater than zero. The only thing that's a little bit I wonder about is if we should have a checkbox that allows you to flow all sales orders in just in case you want to go hunt for something that, you know, if this becomes someone's kind of default report for doing a lot of work inside of. I'm wondering if we should have a way to disregard the greater than zero and give me all stuff.
+
+Unknown Speaker  16:48
+Yep. And then you'd want to have the date to go with it.
+
+Unknown Speaker  16:56
+That's not a bad idea.
+
+Unknown Speaker  17:01
+In fact, you might want a date range at that point.
+
+Matthias Miller  17:09
+Okay, well, here's a proposal I'd be happy. I mean, that would be reasonably happy with what it would would be if we would do a
+
+Matthias Miller  17:30
+what if we did something like this so Id slash stands or.
+
+Matthias Miller  18:09
+This one is if it's not criteria, this one is it is criteria. So it looks something like going something like we'd clean up the layout a little bit, but something searched by Sid instead, which would be the default and then criteria which will give you a date range and an option to include unpaid sales orders.
+
+Matthias Miller  18:47
+Sounds good to me. Dwayne. love it, hate it.
+
+Speaker 2  18:57
+Okay, truth of the matter is, I'm not 100% convinced that this thing is going to get used a ton for entering and ways of entering payments, but it's worth a try.
+
+Matthias Miller  19:07
+So how do you think people are going to enter payments, they're
+
+Speaker 2  19:09
+just literally going to go to a sales order searches, punch in a single spin or a single sales or open up that sales order and enter the information is what I'm afraid is going to end up happening with it maybe that's maybe that's maybe that's not more natural, my mental workflow then then maybe somebody else's hence the reason I say it's, it's worth a try.
+
+Matthias Miller  19:32
+I mean, what do you think of?
+
+Speaker 2  19:36
+If I was sitting in this seat and somebody handed or you know, I got an email with a list of buildings that received payments on, I'm probably going to my natural inclination is to go grab a sales order, search report, drop in SLI, D, pull up the sales order, move on to the next and repeat, rinse and repeat. That's just me. Somebody else may feel very, very natural about punching in a bunch of sales orders and You know, have a filtered list. So don't don't take all my columns with a grain of salt.
+
+Matthias Miller  20:06
+So who's the person who's gonna be doing it? Let's talk to them.
+
+Unknown Speaker  20:11
+Yeah, that'd be a great idea. I would need to be God.
+
+Matthias Miller  20:21
+You have him on payroll? That's awesome.
+
+Matthias Miller  20:30
+Well, I want to talk to your recruiter. Well, let me know if there's any expansion opportunities.
+
+Matthias Miller  20:43
+Okay, well, the bottom line is, we don't really know, we think this is better than this is a reasonably sound guest that doesn't take us deep down the rabbit hole, we'll spend more time figuring out what we think we want than actually doing it if we go much further than this. I mean, can we do this as a first iteration?
+
+Speaker 2  21:09
+Well, I'm wondering, Is it is it worth making it standard at this point? Do we leave it as, as a user report under Accounts Receivable? And if this thing gets used heavily then then you know, when we start doing collections and or payment entry, okay, that's not true. I mean, the nessa on my team does a lot of this payment entry. And I think if we say, Hey, here's a tool that we think is gonna work a whole lot better for you please go use this punch in your sales order IDs. And if it just magically works, she's probably gonna like it.
+
+Matthias Miller  21:45
+Well, I think the question is the question is that the question that question is, do you do you want to be do you want the freedom to finesse and finagle this thing as as we go along?
+
+Speaker 2  22:04
+At this point, now, you finesse and finagle that as far as I know, you're we're finessing, finagle further than I was expecting. So now, that being said, Well, I mean, if if you go make it, and I say finesse and finagle, I can go drop it back into a user report. And then, you know, fiddle with it, but I don't care.
+
+Matthias Miller  22:24
+All right, yeah, we do. Yeah, bottom line. Okay, I'm probably gonna push it into components just so that we don't have one more thing unnecessarily floating around. And if you clone it, it's up to you. Sure. Just keep in mind that this report doesn't actually work. So
+
+Matthias Miller  22:50
+I mean, the prompts look nice, but okay. We happy?
+
+Speaker 2  22:55
+Don't Don't wonder why the date ranges don't actually work.
+
+Matthias Miller  23:02
+Yeah, exactly. Problem.
+
+Speaker 2  23:08
+Okay, here, here is a is there. I guess if you're, if you're filtering it by by SL IDs, it will make it faster. If you filter with a date range, it will make it faster. The only complaint about this thing is as a big chugging list. It's really slow. But it's I just because it's so long.
+
+Matthias Miller  23:32
+Yeah, probably it's probably got some kind of sorters I don't know. I'm a little, I mean, go talk to Vanessa and let's have her start using it and figure out how to use it uses it and Let's optimize it for a use case. Let's not speculate and what needs to be made fast until we know what needs to be made fast. I mean, we can still I'm still happy to I'm not opposed to saying that you know we do something like a default by default start date of eight 123. There are other ways to
+
+Unknown Speaker  24:13
+I don't know
+
+Matthias Miller  24:24
+can we are you comfortable waiting to optimize until we actually know Okay, good. I'm good.
+
+Unknown Speaker  24:31
+That's fine. We can optimize later.
+
+Matthias Miller  24:36
+I think it's going to be more productive. But as long as people remember to complain when things aren't going well. Dwayne, do people complain when things aren't going well? Okay, so open sales orders. Secondary invoices to mark you can't see this. But is this ready to use? Yes, there's a secondary invoice field and you can put later Anything you want to in there, and there is a on the sales orders page, there's a an exact match secondary invoice number search
+
+Speaker 1  25:12
+that you can find that it won't allow you to do like, you couldn't you can't do a secondary, you can't do use the same invoice number twice. Can you if if a builder would mistakenly enter 123? And then two days later send in another one for 123 Would it allow?
+
+Matthias Miller  25:30
+Oh, yeah. Oh yeah, he can do whatever he wants he can send for that he can send 123. And for the next five years, as far as I'm concerned, now, Dwayne staff is gonna get a little bothered by that. But as far as we're concerned, we don't care if it's just a text field, just the strip text field. And it's completely independent of any other invoice like Sid or anything else. So it's just a standalone. We don't we don't search it unless you're specifically searching for a secondary invoice number and just doing, I'm just not too keen about having builders come up with random IDs and having them I don't know, maybe I'm too cautious. But these are random IDs that may or may not have any rhyme or reason to them, or random invoice numbers. I mean, may or may not have any random any rhyme or reason to them. So I vote to keep them pretty clearly separated from IDs. But if you argue with me, I know can be argued with
+
+Speaker 2  26:25
+if one builder sends 123 Is their sales orders for the next five years. If we search 123, we'll get all of those sales orders. Oh, yes. Do that.
+
+Unknown Speaker  26:39
+All right. Cool.
+
+Matthias Miller  26:51
+Revenue account, let's get to that raw material value that when is this one?
+
+Matthias Miller  27:02
+Is the raw materials cost on here that you guys can fill in on the fields order? Probably recommended, keeping your raw material costs somewhat smaller than 12 trillion, but for example, doing the good with that? Yeah.
+
+Speaker 2  27:24
+Actually, the payments, I wanted as as a column inside of the miscellaneous items. It looks silly. So you can tell the raw material value off of each line item that you're punching in? I'm being obnoxious. I'm just kidding.
+
+Matthias Miller  27:42
+Dwayne is putting on his little Dilbert hat and trying to be well, actually, anyway, whatever. We'll keep doing. The the. Okay, then my proposal on the revenue account? Well, I mean, there's a few ways we can do this. I mean, why don't these items be entered into miscellaneous items in the first place?
+
+Unknown Speaker  28:06
+For miscellaneous sales orders? Yes.
+
+Matthias Miller  28:09
+So what why would we just, you know, select the appropriate income account here.
+
+Speaker 1  28:17
+Like, is there? Where do you select your, your income account?
+
+Matthias Miller  28:26
+Okay, Mark, we have a, we have a miscellaneous items, our G that has description, count unit price, total price and notes. And then there's an account with an approved checkbox. And so so there's two things we could do. First of all, we could we could define this search terms. If you guys remember the search terms that we set up set up for miscellaneous items, where if you put in something like you know, I don't know, you, like we have a search term for site prep right now, that gets mapped to the site work. And so as long as you put something in, in the line item for Site, site prep, then it would automatically get assigned to that account, or you can just manually select the site work account when you're entering it in. So it seems to me like we already have a mechanism. The question is, is the mechanism good enough? Is it reliable enough to handle what needs to be handled?
+
+Speaker 1  29:29
+And the mechanism is waiting Wayne's team has to select the correct GL account or they have to enter the miscellaneous item or items in the correct place to get the correct GL account?
+
+Matthias Miller  29:49
+Well, I think it could be one or both. We have the capability I think, who I don't know who is going to be assigning GL income accounts and setting up those rules and
+
+Speaker 1  29:59
+well either my proposal on this my thought on this was that whoever sending in the the salesperson that sending in these orders will make a checkmark down at the bottom. And that office use only section where they select the correct revenue account, and there's going to be four, maybe five different ones. And that's just they select that. And then that just needs to be part of the entry process when inseam is, is entering sales order.
+
+Speaker 3  30:35
+So in that case, I think what you have here with us, I think would work. Like, because they're just copying down information that they're receiving. And they just need to be able to select it and move on.
+
+Speaker 1  30:47
+Right. Now, what are what are they seeing? Are they seeing that whole long string of GL accounts that be a little overwhelming and confusing? Or? Like, is it is it pretty intuitive? If they see these for like they see building materials selected? For them to to find the right one?
+
+Speaker 2  31:14
+No, I would not call? Is it? Can it be a filtered list of income accounts?
+
+Matthias Miller  31:19
+Well, but it's even more filtered than just income accounts. Could we limit the list to whatever is in whatever is mapped in your default search terms. So you'd have to come up with you have to add search terms for building materials, and such and then we show you a drop list of all the potential accessory items. That would be great you want to use
+
+Speaker 1  31:55
+well, but it I think the mapping is going to be difficult because we're going to just be entering all kinds of random descriptions items in here. I think all we would really need is just a a list of your your four or five options to pick from, then when you enter the sales order, you just see what's been selected, you just pick the matching one from that list.
+
+Matthias Miller  32:28
+What if we would flip this around on the FTA allocation settings? And instead of mapping from search term to account, we would map from account to one or more search terms.
+
+Speaker 1  32:44
+Okay, what is a search term? Like is that in the description of an item
+
+Matthias Miller  32:50
+it's it is a it is something that a salesperson might enter that aligns with this. So it might be site prep with a space it might be site prep with no space, it might be you know, I don't know si ght when they misspell it etc.
+
+Speaker 2  33:17
+At one point you had built you had done ran a report of of accessory items and there was a fair grouping and bunching of similar terms. So really, it would like if we took that list and map them all we we'd be in the 180 percentile probably correct.
+
+Speaker 1  33:42
+Okay, that that would be for salespeople entering it direct. I mean, it could also be here I'm focused primarily on walking customers that add like a shop at the production shop are probably more employees taking you know, buying a bag of screws or 10 two by fours it seems to me
+
+Unknown Speaker  34:12
+sorry, go ahead. Well,
+
+Speaker 1  34:14
+it seems like we don't want to get that mixed in with like, the filter list we had looked at was things like rams or site preps or an extra window or another door magnet that salespeople at a sales location would be dealing with this is is focused entirely on employees or neighbors or another builder is primarily building materials and small like that.
+
+Matthias Miller  34:54
+So here's what we're gonna do then. Filtered dry up list or unwritten sales orders
+
+Matthias Miller  35:12
+and ascending to the kind of company with a list of income list of accounts to be included in a droplets or were handwritten sales orders, ie sales orders not associated with a building drop list to be included in a drop list for miscellaneous items on handwritten sales orders.
+
+Matthias Miller  35:45
+Okay, we'll just give you a new setting on the accounting company that says what the droplets should be for
+
+Speaker 2  35:55
+you go to go to find that list. Was it? Is it so that we would just go to find the list? Yeah. So let me ask a different question. Is the Sales Order Detail screen? Is that a standard detail screen? Or can we widen the RG for buildings miscellaneous and discounts and payments?
+
+Matthias Miller  36:18
+We can make it as wide as you want. It
+
+Speaker 2  36:20
+would be nice to be able to like some of these squirrely fields. People like I didn't see it. So if we can get if we can get wide enough to get most of the fields are all fields. I know we keep adding fields but well, let's go somewhat wider. Let's
+
+Matthias Miller  36:41
+we can we can have just as much fun with this as you like. I mean, you said you're going to be doing dual four K's soon. So.
+
+Matthias Miller  37:00
+Alright, let's see how wide we'd have to go. So there's that one.
+
+Unknown Speaker  37:18
+Whatever whatever you're seeing, we're not seeing
+
+Matthias Miller  37:21
+I'm sorry. You're right. You're not let me debate
+
+Unknown Speaker  37:31
+about that. Which one? Which one's the widest RG?
+
+Matthias Miller  37:38
+Well, I'm trying to turn to expand payments, but it's giving me grief payments is going to be by far the I mean, we don't even want to go.
+
+Speaker 2  37:49
+The payments, one only needs to expand out to payment has right off checkbox. Because the rest of that is governed by the fields that show up below it then. So I would say if you want to make them you know if miscellaneous then like miscellaneous one there's looks about right.
+
+Matthias Miller  38:08
+So then we just change everything 735. What I mean, we just change these to match. I think so. Okay, well, I will clean up the rest of it. The only the only somewhat wonky thing is that when you ya know when you see your three fish this guy, and when you size this guy down. Wait, why is that? Not? Yeah. Anyway. So that's fine. If you're happy, I'm happy.
+
+Speaker 1  38:52
+And I'm happy on that. On that list, you're creating Matthias that's work that needs to be done. And then when that list is created, Drew will just have to put in the GL accounts we want to appear have appear there. Is that
+
+Matthias Miller  39:08
+correct? Yes. Now for for sales orders with buildings attached. What list of what list do you want in that drop down? Do you want anything that's that's in the handwritten list plus anything that might be automatically mapped out? Based on search terms. Do you want a separate list of things to search for? How do you want that to work?
+
+Speaker 1  39:32
+The first option you had anything that's mapped, plus whatever's in the handwritten which currently the these are the only four that we have. I think we'll probably add a few more but
+
+Matthias Miller  39:53
+okay, brilliant. So I think that means that once I It's done. Misleading sales orders is done.
+
+Speaker 1  40:07
+And I would say Dwayne, I've told billers I've just reached out to them told them to start this process. Until then, I think it's worth just entering them and just ignoring the GL account for the first week or so. Assuming Well, Matthias, How soon is this change going to be available? Or that filtered list?
+
+Matthias Miller  40:35
+Depends on the priority. Do you want this before multi sales order payments and checks?
+
+Speaker 1  40:46
+No, it okay? If we do nothing? If we don't do this now, and strange people just skim over it for right now? They'll just all Okay, can we the majority of them go to the vast majority of these go to building materials? Can you set a default? Just for the time being until that's live?
+
+Speaker 2  41:14
+Do a default for non building sales orders? Yeah,
+
+Matthias Miller  41:21
+we can set a Dwayne Okay. Can we sit? Good?
+
+Speaker 1  41:26
+We're making this too hard, Dwayne, what if we until then, that Drew can just send your people a list of rules and just create a list say, you know, it's these it filters says whatever on the on the report here, then go find that then enter this yellow icon code.
+
+Speaker 2  41:51
+So you're saying builders are not going to know for a while what GL account they should be choosing that with? I mean, if we could if we could get that patient in their hand, so they just feed us the GL Account along with what they're sending to us. That would be almost surefire.
+
+Speaker 1  42:07
+Okay, they are are you looking at the sample invoice, or sales or I sent along? Page two, I think of this email the agenda.
+
+Speaker 2  42:20
+So they should have building materials check. So we just need to know what what GL account that ties to.
+
+Speaker 1  42:26
+Yeah, what I'm saying is for the short term, drag and just create a list of if it says buildings and go find this GL account if this building materials find this GL account. And and we can start with that until that list is that we have that filtered list
+
+Speaker 3  42:51
+Do you see? If they type in building materials in that thing, then that's fine, I'm pretty sure was that they
+
+Unknown Speaker  42:59
+start typing building materials in the GL account, it'll it'll come up.
+
+Speaker 3  43:03
+I think that's the only one that's labeled building materials. Yeah.
+
+Unknown Speaker  43:09
+Well, that might not need to do anything.
+
+Speaker 1  43:14
+Oh, you're saying just just start typing whatever this says. And you should be.
+
+Speaker 2  43:19
+We can have if we can have the words that you're the four checkboxes, that all correlates in some reference to a GL account, then we're probably good to go. Because if we start if I I'm typing building materials, got to look at that. I got 123 accounts, all with three different there's Why is there three of them for ABC, ABC, 4021 4024 and 1425.
+
+Matthias Miller  43:54
+asset accounts. No, nevermind. That's Oh, those
+
+Unknown Speaker  43:57
+are all revenue.
+
+Matthias Miller  44:02
+I mean, 324 25 there's one way to find out. Building Materials and see where they land in the list. We got sales revenue. Wait, you know what? I'll get to we've got some inactive accounts in here. See, that's true.
+
+Unknown Speaker  44:24
+So you're saying the list is not filtered for active accounts?
+
+Matthias Miller  44:26
+Yeah, we have an inactive prompt pay discounts, returns and allowances. It would be really helpful just go for the first one the first ones right.
+
+Unknown Speaker  44:42
+The little things
+
+Matthias Miller  44:49
+all right, well. Still gonna go back to priorities priorities is filtering down that list to
+
+Speaker 2  44:59
+pick Uh Yeah, I mean I'm typing in words that are used that you use their mark and deliveries comes up if it filters for active accounts that'd be good. So looks like that would actually work
+
+Speaker 1  45:15
+like that the list you're selecting from what GL accounts does that look at all active GL accounts are only active revenue accounts.
+
+Speaker 2  45:23
+Well, currently, it is looking at both active and inactive but when we
+
+Speaker 1  45:31
+when we make that change what what is what GL account is is looking at is it
+
+Speaker 2  45:36
+around with us but I think you're filtering in all GL accounts are Yeah,
+
+Matthias Miller  45:40
+we are currently Yeah.
+
+Speaker 2  45:43
+Which is probably fine as long as the wording in some way closely matches what what the GL account is named then you start typing that wording and two out of that already came up that way so
+
+Matthias Miller  45:56
+you can rename the other ones to inactive but inactive in the name so obnoxious but it'd be one workaround or we can
+
+Unknown Speaker  46:09
+guys that either drop off Okay,
+
+Speaker 3  46:13
+thank you. Well, my input would be that the only place that inactive accounts would show up is when you go to look up the chart of accounts and you click a button that says Show the inactive accounts. Let's bring them
+
+Matthias Miller  46:25
+for you run an income income statement and accidentally assign something in an active account.
+
+Speaker 3  46:29
+But yeah, right right if you're on an income statement, you could have a show there but anyplace where you're selecting what account to put something and there's no inactive accounts so
+
+Matthias Miller  46:40
+I wonder if we should do something like this manual account and helper lists
+
+Speaker 1  47:12
+you know, the the GL account or the chart of accounts about as good as anybody? Do you mean just entering these words we have here? Are we going to get a lot of bounty Alex accounts. And we're only looking at this short term until we have functionality to just show a filtered list
+
+Speaker 3  47:33
+Yeah, no, I mean it's right now if it's showing the inactive ones, then it can also give them the those discount accounts that we kicked out but once it shows on the active accounts, then yeah, they type those in that's all there's going to be
+
+Speaker 1  48:07
+because we also have well I think some of these we might have in other like in cogs potentially are on the balance sheet it's not bringing in those the possibility doesn't there's not a big chance of getting some out that's on the balance sheet that's about it.
+
+Speaker 3  48:27
+I'm looking here but I don't think so. Okay.
+
+Speaker 1  48:32
+Good. So besides that excluding inactive What does is that that also need to go through development or through an update Yes, it does
+
+Speaker 1  48:54
+so how is that is that change about the same deal is making about as much work as making this filtered list
+
+Matthias Miller  49:10
+it's I don't know that it's exactly the same. Trying to think I think we should
+
+Matthias Miller  49:25
+see we had a
+
+Speaker 1  49:32
+Well, it sounds like removing the excluding the inactive ones. Is could be done you know as soon as we can fit it in. But then that filtered list has to have but not
+
+Speaker 3  49:52
+mark the only possible close problem that I I would see, selecting the wrong one by accident would be FDI buildings like FDI purchases, buildings that would be bought as finished goods inventory. Through new buildings, every everything else is like buildings and building improvements, or building repairs or something like that. So what if you would just
+
+Speaker 1  50:27
+create a wiki document like you did for credit cards and just you know, if they say buildings and go fight this economy, they say building materials and then we could we still want to make those changes, but we could kick that out. You know,
+
+Speaker 3  50:44
+I'm definitely Here's one other thought is that uh, is that a standard document that they're going to be using that when you're showing on the email
+
+Speaker 1  50:57
+you mean this template? Or like this in what it is? Yeah, should you're thinking I should just add it there.
+
+Speaker 3  51:03
+Well, Could you could you just put something like this it's gonna be 40 dot 21 All those numbers are going to start with 40 dot 21
+
+Matthias Miller  51:13
+So what was the whole account number on there under each one
+
+Unknown Speaker  51:22
+we could do that
+
+Speaker 1  51:23
+could I just okay well through why don't you and I look at that when she when you come in and we can make sure that yeah, we get the right numbers. I think that would be fine let's just let's just plan to do that
+
+Unknown Speaker  51:48
+good
+
+Unknown Speaker  51:57
+all right. So
+
+Matthias Miller  52:04
+back to this guy
+
+Matthias Miller  52:12
+update from Joel on these items. Let me have we're meeting this afternoon with me which I check in
+
+Matthias Miller  52:43
+I will I'll get you an update on number three and four.
+
+Speaker 1  52:48
+What about the stripe payment? Have you had a chance to talk with Josh
+
+Matthias Miller  52:53
+i i had sent him some emails about things that are going sideways with those but I don't really know where those are at like ask him again this afternoon.
+
+Speaker 1  53:07
+Oh, okay. Well, there were okay. So the email you send is where you're testing stripe payouts that are happening automatically right? These are the layouts that are connected that are the stripe portal. The stripe API is communicating this assist and assist says oh I have a payment this much and there's Alright Matt to see.
+
+Matthias Miller  53:43
+Yes, and there there are a handful of issues number one, there are some stripe payments that aren't getting linked at all to a sales order number two I think what I can tell me see straight transaction ID.
+
+Matthias Miller  54:19
+Refunds were not handling correctly. And here we have a sales order with a credit card transaction or a stripe transaction that does not have a fee associated with it. Or it was a reef meaning that was a refund
+
+Matthias Miller  54:53
+part of this just straight up comes down to chasing cat like this one doesn't have any and 1023 That's old that was fixed since then that's an issue that Josh fixed Okay, so I believe the two remaining issues at this point are the
+
+Matthias Miller  55:21
+handling of refunds and handling of manually entered stripe IDs slash shed app fees got it?
+
+Matthias Miller  56:10
+Does that mean I can I can touch base with Josh more on that this afternoon. But does that give you what you need on the stripe payments?
+
+Speaker 1  56:18
+Yeah, yeah, that so you'll get an update on two three and four then after you've talked to Josh and Joel on the respective correct
+
+Matthias Miller  56:34
+for labor intensive building amount adjustment, I think that would be fine. We could disallow adjustments after actual costs have been applied. Well, I mean, you can also Oh, good
+
+Unknown Speaker  56:54
+No, I want to go ahead with what
+
+Matthias Miller  56:58
+I mean. I mean, you could still update the standard cost and if actual costs have been applied, then it shows up as a variance afterward. Which isn't I mean, that's I don't know if you guys like it but it seems accurate
+
+Speaker 1  57:16
+and that's it. I'm trying to wrap my head around that you're saying actual costs have been applied the periods been the periods been closed basically then you could well, okay, here's here's the reality I believe is there's no reason why we would ever apply a labor intensive building cost estimate to a building after we've done actual costing, so balance he is doing actual costing until and or 15 days after the close of the period and by then we will always have our women tend to billing adjustments made if if not then we just don't allow it what I wasn't sure about is like does this make any difference between actual costs so we have we have situations where a sub shop builds a building and we say Stop Shop build this building freeze this caused
+
+Unknown Speaker  58:25
+it because it freezes actual and if we do that then
+
+Speaker 1  58:33
+we'll assist does assist look at that freezes actual costs same as after you've why it costs for after you've applied actual cause for a period the reason I'm asking is because the former want the ability to adjust that cost on the ladder
+
+Matthias Miller  59:13
+take a look. See if I can get a good answer to that.
+
+Speaker 1  59:35
+Okay, and to further clarify right now that adjustment is is only a payroll thing. It's just going into payroll. Is there to allow payroll pool to be correct.
+
+Matthias Miller  59:52
+Well, current currently Yes. But then it's also it is also adjusting the
+
+Matthias Miller  1:00:03
+It's also adjusting the standard cost, which means that more of the actual costs will get applied to this building and less to other buildings as well. Which should reflect reality now. So we don't really have
+
+Matthias Miller  1:00:38
+I mean, we could we don't really have a differentiation between whether it's frozen, and the standard cost is frozen, its actual cost or whether it's frozen at the end of the period.
+
+Speaker 1  1:00:56
+Okay, so okay, if if, let's, let's go through these scenarios. Okay, first first. I think that's fine. First question is, based on your email, I thought you said, Okay, you're on your email, you said we're not recalculating the FTI breakdown if someone changes the labor intensive amount. If I would recalculate, it would look like this. Are you saying you have set it to where it now recalculates? Whenever?
+
+Matthias Miller  1:01:26
+No, I just manually recalculated it without saving to show you want to.
+
+Speaker 1  1:01:32
+But you're saying that's an easy change that could easily be done? Right. Okay, so Okay, let's do different scenarios. If if this is for a biller that does not have free standard causes actual costs selected, then of course, we can do just what what you showed on your email. What if that is selected? And you can you override that freeze? And in this case, if this were selected in this example, could you have done can you make so that does the same thing.
+
+Matthias Miller  1:02:15
+But then, but then we need to differentiate whether it's frozen just because it's standard cost or whether it's frozen because we closed the period, which we're not differentiating between right now.
+
+Unknown Speaker  1:02:30
+Well, maybe we're making it to.
+
+Speaker 1  1:02:43
+One, once again, what's happening right now? Because we're not recalculating at all, we just end up with a higher actual cost and it gets distributed, will be distributed equally to all buildings. Right? By trying to apply it to specific buildings, we're able to see whether it's actually a wise business decision to pay more for these some of these buildings and whether we're still making money or not on on those. So I think everything is going to work just fine, other than ones where we free standard costs as actual costs, and that could I would be fine with just leaving that as is for now. And we just have to write rules, because because we have believe we have functionality. Right? Labor intensive calculations that would happen automatically. Not using most of them. And by writing those rules for say, one that says free standard causes actual cause. What would have happened differently here in this building, it would have said, Okay, production labor is 7% an O because of these labor intensive rules. It would immediately calculated the additional 1116 or whatever the amount was, and added that to that standard cost. I believe I'm not you know if that's correct or not.
+
+Matthias Miller  1:04:32
+Yeah, I mean, as far as I know, that should all be working.
+
+Speaker 1  1:04:36
+So what I'm saying is if you set it up to recalculate, labor intensive if someone changes the labor intensive amount, we want it to recalculate unless it's our free standard cost his actual cause, and then we'll work to Build an implement those rules to automatically add labor intensive, starting with the ones that have shops where we've marked for you standard as actual
+
+Matthias Miller  1:05:20
+the other work around I don't know that we want to train dean's office to do too much of this. But the other workaround is to manually clearly FGI, break down, set the labor intensive amount, and then reset it again. Which effectively works around that, that process to?
+
+Speaker 1  1:05:42
+Okay, well, I think I'm fine with just Yeah, I think we're we'll be closer than we are now. We just makes it that it recalculates. Now, what about the timing issue, when, like, there is going to be delay, because we're not doing the ones when, when we're not doing it automatically, there's going to be a delay of three to seven days from when the building is built, until the adjustment is applied. So how would that go got this building? I don't know what day it was built. But let's say it was built on day one. And then it would have
+
+Unknown Speaker  1:06:21
+done a transaction for production labor, or $40.30. Then when the adjustment was made, is your thought that it would make another adjustment?
+
+Speaker 1  1:06:34
+Or another transaction for for the amount only the amount of the adjustment?
+
+Matthias Miller  1:06:41
+No, it would be going it would be modifying the historical transaction.
+
+Matthias Miller  1:06:56
+Because if we were
+
+Speaker 1  1:06:59
+if we looked at our transaction history, like some of those helper reports that you joined transaction history, it wouldn't create a new trade. It wouldn't create a new transaction the day labor intensive amount was added it would be redo the initial transaction. Yes. Okay. Well, that would keep things simple, or more simple, I believe. Because the thinking well, what if that buildings build and then it's sold. And then after we make the adjustment, then it creates all kinds of interesting scenarios. But with what you're saying it would potentially be there that your income statement and balance sheet could shift if you come back and look at it. Two days later. Yeah, I think that approach is is makes a lot of sense.
+
+Matthias Miller  1:08:11
+Alright, so
+
+Speaker 1  1:08:16
+now I'll go ahead and summarize it, I think there's not a ton of development that needs to happen. Go ahead and summarize. So
+
+Matthias Miller  1:08:26
+only allow changing labor intensive amount if the production labor is not frozen, or if slash actual costs have not been calculated, and then recalculate production labor standard cost when changing the labor intensive amount. And then the workarounds would be to add labor intensive rules for sub shops that freeze standard cost as actual cost, or clear the FTA breakdown, set the labor intensive amount and re why we FTA breakdown
+
+Unknown Speaker  1:09:15
+you have that type doper, can you send me a copy that I wasn't taking the this change recalculate the FGI breakdown. Where does that like how much work is that or where do you see that? fitting in?
+
+Matthias Miller  1:09:37
+It's one of those things it's not a lot of work, but it still goes back to would you rather have Would You Rather? Do you want multi payment sales orders? I mean, I think we already have a really good workaround. We, I mean, at least somewhat good workaround. A workable workaround. Let's say that you can you can clear and reapply the FDA breakdown whenever you're applying it labor intensive amount at this point it's not ideal but it works. But where would you like to see this fall in the priorities?
+
+Speaker 1  1:10:06
+Well it's sometime between now and January 1, but I think between now and then we're just going to let it continue doing what what it is now I don't think it's worth the effort to maintain those down and at this point to update the manual update the FBI breakdowns I feel like if we have at first a mid September December we should be Yeah that should okay let me
+
+Matthias Miller  1:10:43
+do December 15 Yeah good though I'm gonna have to drop off the bottom of the hour I think we should be good but still give me a heads up
+
+Matthias Miller  1:11:09
+okay paying vendors next steps on paying vendors already have me This is straight up this is just in my cart. I've been working on multi sales order payouts I was unfortunately well honest truth is I've been pushing pretty hard on accounting stuff being a substantial part of this for the last about three weeks and about Thursday morning I hit a wall and so I ended up taking a few hours off that I would have otherwise been spending on this stuff so next steps for me are basically I have multi sales order payments coming first. I've been working on that today running into some technical issues working in the workflow for multiple multi sales were payouts I probably have I don't know maybe a couple hours left on that and then after that looking to dive into the paying vendors next that was going to be for me to create some kind of mock up report that we can take a look at and poke poke holes in in that and can take a further look but I think at this point that's in that chord
+
+Speaker 1  1:12:30
+so okay mult are the multi sales orders that is recording from a wholesale account recording taking a payment 50,000 and applying it to six different shades
+
+Unknown Speaker  1:12:48
+and then been paying vendors is is working on or is next thing on on the list. So where are we
+
+Unknown Speaker  1:13:06
+so okay for Wednesday you anticipate having some of that at a point where we can test it look at it Wednesday or we're What's your estimate on I will be looking at in this day thinking
+
+Matthias Miller  1:14:07
+there is a chance that I don't think it's going to be well or it could be both paying vendors I gotta at least have a mock up for the paying vendors and by buyer Wednesday call. I think there's a reasonable chance All right probably gonna say about a 60 or 70% chance that I could have something for the multi payment sales order to look at as well.
+
+Speaker 1  1:14:38
+Well, good if we have that if not then yeah, we working on other things
+
+Speaker 1  1:14:54
+so I have to get good. So what about I have another node here updating the The previous handling the r and n thing that was giving us causing some issues on sales orders needing invoicing
+
+Speaker 1  1:15:14
+I'm hoping to start going live with that sales orders meeting invoicing process probably are not tomorrow hopefully why in this day that are in prefixing has that been fixed? Or? We just went back to n using and I believe for the time being. Yeah,
+
+Matthias Miller  1:15:41
+I went back to n and Josh, can you talk through me to are you a little bit about how we want to handle that?
+
+Speaker 1  1:15:50
+Okay. From from your site, do you see anything that would keep us from that should keep us or should concern us about going live with that billing process?
+
+Matthias Miller  1:16:02
+No, I don't see any concerns you know, if we might throw a wrench in the gears if we miss something when we get back to the our prefixes, but until then to Yeah. It's par for the course.
+
+Speaker 1  1:16:21
+Good. Anything else? Or I think that covers what I had. Do you have anything for us?
+
+Matthias Miller  1:16:33
+Let me see. I'm trying to think if I've
+
+Unknown Speaker  1:16:44
+I don't think so.
+
+Speaker 1  1:16:51
+Drew, you haven't connected with Josh yet on ACH payments or haven't gotten that? Any response? Have you gotten that to work?
+
+Speaker 3  1:17:02
+Um, he emailed me What was he saying?
+
+Speaker 3  1:17:14
+His he says that. And he's done this to Dwayne as well. But he says that he can pay through the the end see I checked gateway account. But the Ohio account is not he gets an error. So I guess it's more on a question with Dwayne and just
+
+Speaker 3  1:17:44
+what what Dwayne set up that Dwayne set up the North Carolina, I checked gateway account. And so what's happening is we can pay through the North Carolina accounts, but not the Ohio accounts. So he's just asking him Dwayne, could it be that we have some restrictions on the Ohio account? So Dwayne has not replied, but it would be in Dwayne's core on that issue.
+
+Speaker 1  1:18:26
+So, I would suggest, why don't you do make a test doing like a five or $10 payout? What you can try and do for Ohio, do that for North Carolina and also cast Indiana because that's pretty, pretty basic stuff. But we need to be able to make ACH payments before we Yeah. I'd say if you have time to test both NC and I are North Carolina in Indiana. They just let us know. And then why don't we just I'd say just plan to are you available tomorrow at 10 when we have our weekly call with Dwayne I believe the call to Anna LAN
+
+Unknown Speaker  1:19:13
+um I could be
+
+Speaker 1  1:19:17
+mean Is it is it if it's not if it doesn't work well for you then we can do some other time but I thought no let's do that if you can test just make sure that NC and I n are working and then I'll this three way you end tomorrow at 10.
+
+Unknown Speaker  1:19:42
+That just regular phone call Do you think
+
+Unknown Speaker  1:19:45
+it is yeah. Okay. All right. I can ask Wayne to set up a meeting so that might want to screenshare See let's
+
+Speaker 1  1:20:12
+go ahead and set up a meeting with Dwayne that way you can see you can see what he's seeing if you don't mind okay. Marwan Yes, yep. Okay. Okay anything else Matthias or DREW
+
+Speaker 1  1:20:41
+Oh one Matthias we're planning to or we have gone live with payroll module for affordable barn company both plans so not sure north the other builders cherrystone and whitetail were slated to go live this week but something turned out that we haven't heard for sure yet but they decided to stick with their old system this week yet so. But yeah, affordable is is live so that's good.
+
+Matthias Miller  1:21:22
+That is amazing.
+
+Speaker 1  1:21:26
+That's it is. 69 employees, I think on payroll and everyone's using it. Or host of different payment methods and I'm off calculations and stuff. Yeah. Good. Need to pass that. Yeah, I should send says an email. Just
+
+Matthias Miller  1:21:57
+happy to know that.
+
+Unknown Speaker  1:21:58
+Yeah.
+
+Matthias Miller  1:22:06
+Cool. Sounds good. Well, I will plan the talk 10 o'clock on Wednesday and see exactly how much of the stuff we can get pushed through between now and then.
+
+Unknown Speaker  1:22:21
+Okay, that sounds good. Thank you. Okay.
+
+Matthias Miller  1:22:23
+Yep. Thanks.
+
+
+Transcribed by https://otter.ai

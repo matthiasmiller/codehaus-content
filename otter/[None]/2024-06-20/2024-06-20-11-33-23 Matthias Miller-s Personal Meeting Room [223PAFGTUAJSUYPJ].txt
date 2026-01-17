@@ -1,0 +1,848 @@
+Matthias Miller  00:33
+All right, hello, again,
+
+Unknown Speaker  00:36
+Back again,
+
+Unknown Speaker  00:37
+back again,
+
+Matthias Miller  00:42
+okay, so on the I guess on the deposit side, we left that as leave it just prioritize it based on scheduling it to get to it for did you have
+
+Speaker 1  01:04
+you had estimated like two to 3k on that, I believe.
+
+Unknown Speaker  01:12
+Okay, so number
+
+Speaker 1  01:14
+two was, cancel sales orders. When do transactions automatically reverse? Well, you can just read through that. Tell me what, tell us what. Yeah,
+
+Unknown Speaker  01:27
+so,
+
+Matthias Miller  01:29
+if an invoice is canceled,
+
+Matthias Miller  01:41
+any payments after the cancelation date get voided.
+
+Matthias Miller  01:51
+Payment rows on or after the cancelation date get voided. And any, and if it was invoice on or after cancelation date, the invoicing gets voided. Otherwise, as of cancelation we do a full reversal.
+
+Speaker 1  02:12
+Well, can we take a look at the event log on these? I think Sure. Maybe that's what happened that with the last one, it was canceled before it was invoice, which,
+
+Speaker 2  02:28
+no, not sure, like, let me check out later in invoice cancel
+
+Matthias Miller  02:36
+you. So this one, the transactions did not reverse. It was canceled in 513 it was invoice in January. There were no payments. So I think this makes sense.
+
+Speaker 1  02:50
+I mean this, this on the income statement, this still shows as Revit,
+
+Matthias Miller  02:55
+right, which is what we
+
+Unknown Speaker  02:58
+you would expect. I 92405911,
+
+Matthias Miller  03:10
+this one was invoiced on the 14th, canceled on the 15th.
+
+Matthias Miller  03:21
+We have invoicing on the 14th and the reversal on the 15th, which would mean that it would leave the income statement, unless you run it through the 14th versus the 15th.
+
+Speaker 1  03:37
+Wait, this one is correct. All right, or, yeah. I mean, to me, this one looks correct, right? This, this. So what? What made so this one reversed, and the other one did not.
+
+Matthias Miller  03:51
+Oh, why did this one not? Okay, let's go look at these transactions.
+
+Unknown Speaker  03:55
+Just this one did
+
+Matthias Miller  03:57
+reverse. It reversed in May we reverse as of the cancelation date,
+
+Unknown Speaker  04:04
+all right, well, then I didn't say anything.
+
+Matthias Miller  04:07
+I didn't hear
+
+Speaker 2  04:08
+anything. It wouldn't be, it wouldn't be on an income like all the income statements we've done so far, would not have showed up as being reversed
+
+Matthias Miller  04:18
+correct
+
+Speaker 1  04:21
+transaction. Transactions by contact report, which is not a deal, but okay, then perfect. No, not, no action needed there. So five, we've got the change duplication warning criteria. That was one. I don't, I don't think we need to talk about details on that other than just priority. Is that correct?
+
+Unknown Speaker  04:50
+And then I mean
+
+Speaker 1  04:53
+the forget where we left this interest calculations have all these changes. On live in the standard report
+
+Unknown Speaker  05:08
+is that what you
+
+Matthias Miller  05:13
+have they go on live. I can't remember what we've discussed. Well, we have a user report right now, and I've updated it with the interest rate changes that we had discussed.
+
+Speaker 1  05:26
+Okay, but you also have it have a key or scheduled for a standard report to go live with the next update.
+
+Matthias Miller  05:35
+Not yet. I was waiting to make sure that we've, oh, that we're happy with it.
+
+Unknown Speaker  05:39
+Well, is there to Should we just quickly walk through the steps of how,
+
+Speaker 1  05:49
+how we're going to use it, make sure that it's as far as I know, it's all
+
+Unknown Speaker  05:56
+we're happy with it. So
+
+Speaker 1  06:02
+Drew you would come in like, after the end of, you know, first week or two in July, you'd come in here and you'd say, but you'd select your company, select your account, and then order start date. You do, 441, 2024, let's just walk through this one and just
+
+Speaker 2  06:26
+so change this to four one. Got it
+
+Unknown Speaker  06:31
+for this one.
+
+Unknown Speaker  06:38
+Wait while it cranks.
+
+Speaker 1  06:41
+Makes more sense. So, so you would do this Drew and then, then you're going to come, come down here and, like, if this from the end of the period, you take the 493, 94
+
+Speaker 2  06:49
+and and write a journal entry. It would
+
+Speaker 1  06:53
+be, since you're not paying it out, it increases the loan and it, what's the other
+
+Speaker 2  07:01
+tip? Um, the other side is interest expense, yeah.
+
+Speaker 1  07:08
+And then you come back, run the report again, print it off and
+
+Speaker 2  07:14
+mail it out, yeah. And if it were getting a check, you know, do those steps. Then if
+
+Unknown Speaker  07:21
+it gets a check, how do you create the check? Just,
+
+Speaker 2  07:24
+just write a voice line and check in.
+
+Speaker 1  07:28
+So this part, I can't think of anything else we're needing. Is there anything, you know?
+
+Unknown Speaker  07:37
+No, I think, I think we're good,
+
+Matthias Miller  07:39
+okay. Are you? Are you okay as the cheapskate solution to keep the interest in the income account? Or should we look at
+
+Speaker 2  07:50
+some exact formatting, like, is it actually reading it? Or have you said, Oh, this one looks like, so it is actually reading that.
+
+Matthias Miller  07:57
+I mean, it's, it's going. Let's take a look at the exactly how it works.
+
+Speaker 2  08:06
+Because I'll have to just make sure that I format the name exactly the same all the time, if that's what it is.
+
+Matthias Miller  08:13
+Loc, right. Interest is multiplier, no. Balance. Interest percent. We look at the okay. We look at the last space, we look at the everything from the last space, and the percentage and and then we also put it up here in this note so that you can see what we think it is. Yeah, okay.
+
+Speaker 2  08:40
+So if that says the wrong thing, go fiddle with the name of the account. A little bit.
+
+Matthias Miller  08:46
+Yeah,
+
+Speaker 1  08:47
+I did some math on this one. You you short? No, you either overpaid or underpaid. This guy a typical Excel, miss, take that ellos would would say about software development. Uh, his point is that Excel spray, it's just, it's, it's, it's a reason they're software, and there's Excel, like Excel to a motorcycle, it's fast, exciting and custom software, maybe like pick up truck, where you could do a lot more things better. No, I just noticed it was off a little bit. But I that was because while we were just using it's probably been that way for
+
+Speaker 2  09:34
+oh, you're saying the interest we figured last quarter was off. Yeah, okay, okay, yeah, no, that doesn't surprise me.
+
+Speaker 1  09:46
+So this is, this is a great solution. This is just trivial, I know, but like at the bottom, why are we showing these amounts twice? Oh, I.
+
+Speaker 1  15:00
+While he was working, like during his career, his wife balanced the checkbook, and after he retired, he took over that job with her, and he discovered, to his horror, that she'd always just grounded. She never bothered with the dollars and cents. So she had rounded to the she just always rounded up to the nearest dollar. And he, he spent all kinds of time going through this and making it right, and ended up with at the end of, I don't know how many years, only a few cents. There's more exact but only buy a few stamps.
+
+Matthias Miller  15:41
+That's hilarious. Well, in this case, it comes out the same. I mean, given 5050 odds, each one should round. I mean, it's each interest payment based on odds, and certainly be off by the center. So, and
+
+Speaker 1  16:02
+these, I mean, sure these then add up to the 94 like, if you were to add up the sends, you'd add, okay,
+
+Matthias Miller  16:09
+here let's, let's save it. Let me just sanity check, because why not if we take this to Excel?
+
+Speaker 1  16:18
+Oh, because we could get rid of the rounding and Yeah, down below. Now we just simply do a sum on the 43 or 9394
+
+Unknown Speaker  16:25
+Correct? Well, it's
+
+Matthias Miller  16:31
+not that different when you get monthly interest payments on you have one of these savings accounts that you have to keep open for no other reason than to avoid fees, and you get one penny interest payments every month, or something like that. 493, 94 Yes. Okay,
+
+Unknown Speaker  16:48
+good. I Okay,
+
+Unknown Speaker  16:52
+so we're all set on that, right? Yep, as
+
+Speaker 2  16:56
+long as it becomes a standard report by beginning of July.
+
+Matthias Miller  17:00
+Well, I mean, you're free to use it until then, but Okay, I will let me just shoot.
+
+Matthias Miller  17:17
+I think, let me make let me just make it to myself, or I'm going to Forget
+
+Speaker 3  17:28
+this should go my 22nd Yeah. Okay, so are we down
+
+Matthias Miller  17:45
+here? Yep, on that one. So I think the main question that I have is what my specific priority should be.
+
+Unknown Speaker  17:58
+Agree, let's look at
+
+Speaker 2  18:01
+the list that one. Well, I have one more, one more thing that I'd like to throw in as a possibility in the priorities, um, that error report that I'm getting, I discovered that quite a few things in there are because they're selecting a payment account that doesn't like it might be a parent account or something can well. And then I've also noticed that if the payment type, when they're creating a vendor invoice, the payment type, if the payment type is defaulting for the vendor. It doesn't fill in the payment account. If they select the payment type, it fills in the payment account.
+
+Unknown Speaker  18:51
+Now I don't know,
+
+Speaker 2  18:55
+but anyway, if that could be fixed up and they just never like the the payment account could be there for information's sake, but it would never need to be selected, because more often than not, when they selected, they select something wrong anyway. Well, I don't how many times I select, maybe I select more than I know, but it's like, since we have them mapped, they never should have to touch that.
+
+Matthias Miller  19:26
+So, I mean, if so, if the only thing we do is, when you select a vendor, we also select not just the right payment method, but also the right payment account for that payment
+
+Speaker 2  19:35
+method. We're good, yeah, but I there's no, there's already, I think there's already mapping for when that payment account payment type shows up. It's always supposed to be this account,
+
+Matthias Miller  19:46
+right? But when you but sometimes when you select a vendor on a new vendor invoice, it's not. Why is that wrong?
+
+Unknown Speaker  19:58
+So.
+
+Speaker 2  20:02
+It. Well, okay, sometimes they're changing it because they're like, Well, I don't know what credit card this is, so then they go put it to the credit card's parent account, which makes it never push over and we never find it. But I've noticed, like, I um, so pick something that would have, yeah, yeah, okay. So, according to the mapping that I would understand, that payment accounts should be filled in there.
+
+Matthias Miller  20:35
+Okay, here's the thing happens they go to, if you go to affordable barn company and you choose low, lows Heath, it selects the payment type, but it does not select the associated payment account. If I blank it out, fill it back in, boom. So the one thing that should happen is, when you select the vendor, it should also fill in the payment account
+
+Unknown Speaker  20:59
+based on that payment type, right?
+
+Matthias Miller  21:02
+Based on that payment type. The other thing that we could do is either hide parent accounts. Well, I mean, do we mean we could just hide parent accounts from this list too, like you're never going to want to do that, right?
+
+Speaker 2  21:20
+And we could do that. I mean, it's like the reason for payment types is that they don't have to think about payment accounts. So,
+
+Speaker 1  21:33
+so is there ever a time when they should select a payment account?
+
+Speaker 2  21:38
+I mean, as long as as long as the two are always hooked together. This payment type brings in this payment account,
+
+Speaker 1  21:44
+whether it's defaulted on the vendor or not, right? And it's nothing to do with right? So why? Why does this? Why do we even make this edible, editable, the payment account? I
+
+Speaker 2  21:56
+think it was there before the payment type was but, but shouldn't we just,
+
+Unknown Speaker  22:02
+shouldn't we just make that a read only?
+
+Unknown Speaker  22:06
+That's what I'm thinking. And then
+
+Speaker 1  22:09
+that pushes you to make so that they're set up right, like,
+
+Unknown Speaker  22:13
+right, right. And I think they are.
+
+Matthias Miller  22:17
+So do we care at all about
+
+Speaker 2  22:22
+I out, yeah, there's that mapping
+
+Matthias Miller  22:29
+right this guy right here.
+
+Matthias Miller  22:38
+What I was thinking was i
+
+Matthias Miller  22:46
+Yes, can we go back and update? Sorry, let me check one thing, space, payment, type, I
+
+Matthias Miller  23:05
+uh, let's See on the vendor invoice
+
+Matthias Miller  23:16
+list, change default payment info they save source account.
+
+Unknown Speaker  23:28
+Okay, so
+
+Unknown Speaker  23:36
+this is what I'm wondering. I
+
+Matthias Miller  23:45
+How many of these are? I
+
+Matthias Miller  24:00
+How many of these are not the default.
+
+Speaker 2  24:26
+There's quite a few in that area. How many there are, I'm not sure,
+
+Matthias Miller  24:30
+and if they're not, could we just blanket do an update? And I don't know the answer to this, but could we blanket do an updated forces to
+
+Unknown Speaker  24:44
+be the default? Well,
+
+Speaker 2  24:48
+yes and no. Some of them. The easiest fix is to delete the whole thing, because I've already created a transaction to reconcile. So if there's. Po attached. Then we have to go through the steps to finish. If there's no Po, we just, we just cut it out, delete it, move on. It was the ready to figure it in the company.
+
+Speaker 1  25:13
+So this is why both, two companies said, Why are we seeing things come through on Uncategorized expenses that we know we've already sent AP this that would exist. This is part of it. Yes, because you're saying, well, there's, it's, I'm looking at this payment account, and it's not here, so I just created right
+
+Speaker 2  25:34
+which it doesn't change their financials. It just changes all the stuff that's hanging out in between that's doing nobody any good.
+
+Speaker 1  25:42
+Yeah, how does it not change the financials if, if it's posted to a parent account,
+
+Unknown Speaker  25:46
+it doesn't post, right? It doesn't push,
+
+Speaker 1  25:50
+that's okay. This is because I told him I try to check it out, because the Callum was pretty sure that
+
+Unknown Speaker  25:59
+that he wasn't as bad as I was indicating.
+
+Speaker 1  26:01
+Yeah. Well, he's like, some of these, I know I've sent it, or are they getting lost?
+
+Unknown Speaker  26:10
+All right? Well, here are
+
+Matthias Miller  26:12
+okay. These are a bunch of old ones. I should have excluded those, yeah, but, you know, here's some where there's mismatches
+
+Speaker 2  26:26
+and and well. And another thing, some of it, is they write something for one company, and then they switch companies because, like, Oh, this is supposed to be ABCs bill, not shed times, Bill. And then it doesn't, it doesn't correct. And it keeps the wrong payment type or the wrong like it we actually correct. It doesn't correct everything. So percola transport bill. Oh, it's like
+
+Unknown Speaker  27:04
+a I mean, but here's an
+
+Matthias Miller  27:08
+example. This one doesn't have a payment type at all. Yeah, it's going to apparent account.
+
+Matthias Miller  27:22
+So all right, so, yeah, the company would be other thing. So I mean, let's do this. Let's, let's make sure that the default payment info is based on invoice accounting company, which is based on the payee and based on the payment type, the payment type and the payee, and then the vendors payment type, okay, so If we, if we update, do we have a i
+
+Matthias Miller  28:25
+I have no idea who, who is okay, accounting permissions.
+
+Matthias Miller  28:38
+Do you have a feeling we're going to get ourselves in trouble if we in trouble if we well, maybe we won't. Are you okay if we literally lock down that field, those two fields, the payment account and ACH source
+
+Speaker 2  28:53
+account, yeah, I mean the ACH source account thing we aren't using anymore anyway, but if it's connected to the payment type, it should be just fine,
+
+Speaker 2  29:08
+because the ACH payment type should always pull in the source account as well. Like, those should be together,
+
+Unknown Speaker  29:16
+yeah, okay.
+
+Unknown Speaker  29:21
+Like, where would, where would it get us into trouble if we, if we can't edit them? Just you? Is
+
+Matthias Miller  29:28
+bad, I guess so, an edge case where it's not worth creating a payment. You have some kind of account or credit card that you don't want to have a payment type for, and you want to pay out of there. I mean, the workaround is create an editable report. That kind of what we've been doing for some of these other, you know, changing invoice dates. Um.
+
+Speaker 2  30:00
+Wrong things. Probably what I would do in that case is just create a transaction for it, instead of, right, instead of write a vendor invoice or, or,
+
+Speaker 1  30:10
+should we think about making this information level thing where someone would like Drew's level informations Could, could, edit those and others couldn't run out what?
+
+Matthias Miller  30:29
+Yeah, I'm not sure what. Who is somebody in AP that we could check their permissions on?
+
+Unknown Speaker  30:36
+Shannon Jones, sure.
+
+Matthias Miller  30:42
+I'm I mean, she has administrator access, which so she has access to view and edit accounting data we don't really have. We could give you a permission to edit, I don't know. Maybe we could base it based on whether you permission to edit accounting settings. It's a little it's not really what it's for. But what
+
+Speaker 1  31:10
+do you think it's probably worth it? Maybe just create a transaction in those situations.
+
+Unknown Speaker  31:16
+Yeah, that's probably what I would say. I
+
+Speaker 2  31:25
+I mean, probably, if it's too easy, what they're gonna they're gonna say, Oh, this needs something when it actually wasn't even our credit card and somebody threw a receipt into a personal card or something, right? Some of these are
+
+Unknown Speaker  31:43
+makes sense.
+
+Unknown Speaker  31:45
+The reason it's not on our credit card world. You think
+
+Unknown Speaker  31:53
+that's funny,
+
+Matthias Miller  31:55
+all right, So let me go into
+
+Unknown Speaker  32:14
+well, I
+
+Matthias Miller  32:29
+Well, that's great. It's not working prior steps. Let's try that.
+
+Matthias Miller  32:38
+Okay, so interest calculator needs to be pushed to standard. We're good. I can spec out. Well, no, let's do this.
+
+Matthias Miller  32:55
+Where do you? What what is priority for you guys? Well, let me start with this. I was not planning to do a whole bunch of stuff before I'm heading out of town. What are things that you would that you would like to have done or set into motion before I disappear? I
+
+Speaker 3  33:20
+so
+
+Speaker 1  33:30
+when you say, so are you going to be out until? Like, what time frame are you going to be out just
+
+Matthias Miller  33:39
+I'm out the 21st through the 28th some out the rest of June,
+
+Speaker 1  33:45
+okay, but then you're back in pretty much through July, this or for the most part, in July.
+
+Matthias Miller  33:51
+Yes, correct with, you know, I don't know. I'll be out a few days in July and a little bit of a juggled work schedule, but standard availability in July.
+
+Speaker 1  34:06
+Well, let's first identify the ones that on my list. We had a few. There's some here. And then there's the one that let's, let's create a, I don't know if you want to create a list, or we just do it here, sure. Let's create a list of what I think there's like four or five that we have.
+
+Matthias Miller  34:27
+We just share this All right, so,
+
+Speaker 1  34:35
+okay, let's list drew the one we just looked at. Let's list that first. Okay, okay, and then the second one was that your phase two and three of your just phase two of that blocking the. I
+
+Speaker 1  35:06
+change, does the duplication warning criteria that's probably so little that it's,
+
+Unknown Speaker  35:12
+yeah, I wouldn't put that up here. I don't think I
+
+Speaker 1  35:15
+mean, is that with us? Is that something like a five minute job changing that duplication warning? It's
+
+Matthias Miller  35:20
+more than five. It's more like maybe 30, by the time you go through the ripple effect. But
+
+Unknown Speaker  35:25
+okay, we just want him to do it right. 30 minutes. Then just okay, um, interest calculations were good. That deactivate former employees. From here you're going to write up
+
+Speaker 1  35:47
+spec that out. So I don't think that's, oh yeah, we can list it here. Um, so what else do we have
+
+Matthias Miller  35:57
+the fees? And, I mean, are we, are we planning to put the well, I'm planning, this is in July, fee slash premiums versus write offs or the
+
+Speaker 1  36:11
+and then the asset management changes. Let's, let's get some more
+
+Unknown Speaker  36:17
+here. Let's just Yeah. Is
+
+Speaker 1  36:20
+there someone else that can help you as well? And then probably we've also listed that for July, the speed up general ledger and transaction.
+
+Speaker 1  36:40
+Is there anything else I see we've got that tool update standard pause, I don't know. Is that like you tell us how
+
+Unknown Speaker  36:50
+well
+
+Matthias Miller  36:55
+that one Seth made the change. I need to review it. I'm going to guess we're not going to test it, so it'd be good to do it pretty thorough review.
+
+Unknown Speaker  37:08
+Okay, so, so just
+
+Speaker 1  37:13
+okay, you're saying that one other than review, you believe that one's done, correct? You okay, any idea when that will go live? Probably not until you view
+
+Matthias Miller  37:29
+well, and no, I mean, it'll go live, whether it'll go live, whether or not I review it. The question is, I guess I'm trying to pare down what should be my focus today. And if you're not going to use this before the first, you know, the second week of July, like July eight or something, then I'd probably bump it until after I get back.
+
+Speaker 1  37:53
+Well, there's a good chance we will use it, okay, say, possibly soon as next week, because we apply actual cost to buying all but there's okay, there's no work on Well, I mean, the other option is that we just expect it to be live the 20 go live the 22nd And then we use it, and if we find something wrong we are, I would that's pretty
+
+Matthias Miller  38:29
+painful, cleaning up all kinds of bad standard cost changes for me. So okay, we make it a priority review. Okay, so lockdown, VI, payment accounts, friendly? Well, I can't. No, this is just the list. Is there anything? Let's start first of all with the
+
+Speaker 2  38:59
+list. Well, there's something else that I would want to put in, probably after number six, but before those other two, I think I brought it up before. I don't know. It wasn't anything that we actually put in documentation, but updating the sales tax report to actually giving me the numbers that I need. I is
+
+Speaker 3  39:20
+it
+
+Speaker 1  39:25
+just giving them you in the wrong format? Like it's calculating gross numbers when you need net or the other way around, or,
+
+Speaker 2  39:32
+yeah, and every every state requires different things, like, I was working on Virginia this morning, and they require you to know the gross sales of the state taxes, and then also each county's taxes. So you know, like here, if you go down to Virginia, which is going to be down to. Up further right here, or no, no, they have one thing there. Go up to Virginia, back up to North Carolina. It's North Carolina.
+
+Matthias Miller  40:11
+That's the craziest. So,
+
+Speaker 2  40:12
+okay, where's a couple counties? Anyway, you'll notice that there's a there's a 6.5 rate and a seven rate. That's because some the state rate is 4.75 and the county rates are 2.25 2.5 or 2.0 things like that. And I need to know, like, what was the taxable amount for the for each county? Just all kinds of weird things. So what I'm, what I'm currently doing, is I just just take this fix and then I have a couple columns with some stuff written, and then that gives first. And then from there, I have specifically select my certain things to get specific sums and that kind of stuff. So what I would do is send you the Excel file with everything marked that I need, and you could go from there, I think
+
+Speaker 1  41:29
+so. And I know that we have this as a bigger project, as part of our 24 priorities on sales tax. Am I correct that everything here is still just reporting. I mean, from a very high level. The only thing we're doing there is we're going to create a way to look at Delta what the deltas are, what the difference is between so, so we come to, let's say the end of July, and we say, Okay, what have we? What did we pay? Okay, we'll look at this report and say, What, based on our sales history, how many? What are the sales, the taxable sales we have, and what taxes should we have paid? And then we'll look at accounting and see how much did we pay. And then, you know, if we had two cans, I don't know, for some reason we paid sales tax on two sales orders that were then later canceled. We'll say we now have a credit for these, you know, for the current period, like we don't, we can pay $600 less instead in sales taxes because of the cancelations that we had is that, from a higher level, what we're going to
+
+Unknown Speaker  43:14
+be doing,
+
+Speaker 1  43:16
+or I guess through right now, you're Just paying, I wouldn't say politely, but you're just paying, you're looking at a month worth and just paying whatever it says there.
+
+Speaker 2  43:26
+Yeah, I understand this to be based on sales orders. And so if, if we didn't pay enough last month, say, within a march range, or if we paid extra is not going to affect the April amount due at all on this report, you know. Or if there's a transaction that got written that didn't come through on a sales order or something, I mean, that shouldn't happen, but, like, this is never reckoning with what the sales tax liability account says. That's my understanding.
+
+Speaker 1  44:14
+Sales tax liability right now. It's just every month we just say, Oh yeah, yeah. It is on every
+
+Unknown Speaker  44:19
+sales order. It should be, yeah.
+
+Speaker 1  44:25
+So most likely we're we're paying, we're overpaying on sales tax, because we're always paying the full Sales Order amount. We're not we have cancelations. We're not reaping that benefit. And if we have, if we have somebody short paying us $1,000 we're not reaping that benefit. But it's, it's probably a minimal, okay. The only reason for bringing this up is I'm wondering if we, if we start doing work. Here, should we try to do that all as one project? Just want to hearing is we should first just focus on getting you information formatted in a way that's friendly for that's easy for you to use, and then that other reckoning with sales tax liability is a completely different thing that we should look at later. But I'm just raising question is that, well,
+
+Matthias Miller  45:34
+I can't answer that question. The What should we do? Question, I can answer one of two ways. One is
+
+Unknown Speaker  45:49
+the
+
+Matthias Miller  45:51
+approximate answer, which is, well, let's just keep ignoring cancelations and give through the numbers he needs. But to really answer, what's the best path forward? I think we have to say, what is the end game, and what would it look like to do the full thing? And if the full thing is too big a bite that you to bite off, what's the part? What's a partial approach to that? That would make more sense, but I can't, I don't know if it's worth having that sales tax liability. You know, sinking conversation or not? Yeah,
+
+Speaker 1  46:33
+it's not, at this point. I don't think like I think there's, there's too many other areas where we things we can do to speed up Drew's work and accounting work, or the savings are larger than they are on the syncing with the sales tax liability,
+
+Matthias Miller  46:52
+okay, but then one of the things we could do is for cancelations. And I don't believe we're doing this now, but maybe we are.
+
+Speaker 2  47:00
+Is the show canceled sales, but I'm not sure what it does.
+
+Matthias Miller  47:03
+It shows this canceled sales orders on the date of the original invoicing. So what we need to do is, what we really need to do is to let sales orders be able to show up twice the original and one to two times the original time and the canceled the time and if it's canceled, and this shows either the invoice date or the cancelation date, and this either shows the positive or negative value along with the tax man. I mean, that's what needs to happen if you want to start using that.
+
+Speaker 2  47:42
+I think if that would be simple, that would be like, that much would be great.
+
+Speaker 1  47:50
+But there we're not accounting for for refunds, or people, short paying.
+
+Speaker 2  47:55
+That's just like cancer, yeah, like, that's all that is.
+
+Unknown Speaker  48:02
+You. Uh, correct.
+
+Speaker 1  48:10
+I think what, what Dwayne had been doing some what are the manual process the last few years, the end of the year, like going through this,
+
+Unknown Speaker  48:20
+I feel like,
+
+Unknown Speaker  48:22
+I don't feel like we're leaving that
+
+Speaker 1  48:29
+Well, I guess, how much, how much work is it to do what you just described, at least show the cancel sales orders. If that's easy, that would be worth doing. I would think, I mean,
+
+Unknown Speaker  48:47
+it's quite
+
+Matthias Miller  48:50
+it's quite doable. I mean, so this is, this is include rose for sales tax report include cancelation rows and then sales tax Report make it easy for Drew to get the members he needs based injuries, Excel file simple and we can prioritize from there.
+
+Unknown Speaker  49:35
+Well, Drew, I think it comes down largely to what speeds up your processes the most, right?
+
+Speaker 2  49:47
+Well, if I, if I don't worry about canceled sales orders and just go to bed and sleep, then they're easy to get. The numbers is, is, you know. Speeds things up more than the other one, because I just don't worry about whether canceled orders or not.
+
+Matthias Miller  50:06
+How much do you think you guys are paying a month in canceled sales orders or in over overpayment on taxes because of cancelations?
+
+Speaker 2  50:17
+I mean, it's probably enough to make it worth doing something about. Well,
+
+Speaker 1  50:21
+okay, if we, if we go to the bad, if we look at a year to date income statement, say, for affordable our income, and look bad debt expense, right? That that would and multiply that times 7% like, I don't see how, how often would we be? Well,
+
+Speaker 2  50:37
+that's not going to be all that, and that's not going to be sales, canceled orders, no,
+
+Speaker 1  50:43
+but, but how often? Okay, that would give us what's short eight. But how often are we? How often are we? How often is something being canceled after
+
+Unknown Speaker  51:00
+input? Important.
+
+Speaker 1  51:08
+I mean, very seldom. I think because all the retail sales, it's, it's when the build on site is complete, or the delivery. I mean, it does happen, but it's it's so rare, and the wholesale
+
+Unknown Speaker  51:25
+probably more often, but not
+
+Matthias Miller  51:34
+I'm seeing, maybe the only thing I'm seeing in North Carolina is maybe one in North Carolina for review. In North Carolina, what is tune of canceled? These are these are only. These are only the canceled ones. So the big one is this one Josh Brooker canceled, um invoice in the eighth, cancel on the 30th. So that was all within the same period. So
+
+Speaker 1  52:04
+$1,200 for year to date in North Carolina that we've overpaid sales tax on cancelations
+
+Matthias Miller  52:11
+that we maybe have, but it wasn't even invoiced until, well, the sales order date was on the eighth so this is running off the sales order date.
+
+Speaker 3  52:20
+Um, it is
+
+Matthias Miller  52:23
+in a building, final delivery date. But I'm going to guess this thing, yeah. I mean, it was invoice in the eighth so you shouldn't have paid sales. So it should have been in the February report. I mean, it should be canceled in the same period. Well, I guess it depends when they that is actually, yeah, that is literally the day. So I would be surprised if you pay tax on this one.
+
+Speaker 1  52:47
+Well, I think that amount is so minimal, okay, we need it by end of year, but we don't need it now, like there's a lot of other places where we can save ourselves a lot more.
+
+Unknown Speaker  52:57
+Yeah,
+
+Speaker 2  52:58
+so the other one would be nice to have by July, 20 or 19th or 18th, if it doesn't work, right, right?
+
+Matthias Miller  53:11
+What are you talking about? Drew, okay, let's, let's do that. I was
+
+Speaker 1  53:19
+referencing all of these, like, which of these? Yeah, you're saying sales tax report literally has saved you the most time.
+
+Speaker 2  53:26
+Um, well, not right now, but come the 18th of July. Well, yeah,
+
+Speaker 1  53:35
+I'm saying over a period of months, including all, um,
+
+Speaker 2  53:42
+I mean, I think, like, if, if he's looking at that as being done by the 18th, then I would say that order that they're in right there is fine. Because, like, the sales tax thing will literally do me no good until then. I don't need it until then, but,
+
+Speaker 1  54:03
+but you're saying if Matthias can do one through six ahead of that, yeah,
+
+Speaker 2  54:08
+if, if they're done by the you know,
+
+Matthias Miller  54:12
+well, okay, but if this is the one that saves you the most time, then I don't care when it happens. This is your number one priority, right? I
+
+Speaker 2  54:23
+I mean, yes, and well, does it save me the most time because, because it's not going to save me a lick of time until the 18th, whereas number one, two and three might actually save me, you know, a couple hours till the 18th. Okay, so
+
+Matthias Miller  54:41
+what I'm trying to nail down is between now and when I disappear for a week, I can't do both of these. This one I can do. This one I can do I can't do phase two, friendly way to lock down accounts. So. That one has to do, yeah, by June 20. And this one, this one, I would say, Okay, this is the number one update, standard costs. I'm disappearing. That's disappearing. You're going to use it next week, probably. That is streaming priority, right? Yeah, or no,
+
+Speaker 1  55:26
+well, okay, I say we there. There's a good, yeah, there's a very good chance we will use it. So yeah,
+
+Unknown Speaker  55:35
+kind of, I'm
+
+Speaker 1  55:37
+just, if we don't use it, then I'm I'm kind of setting the stage so that you don't come back and say, well, we got Sure. I won't. The reason we wouldn't use it is, if we apply actual cost resource partner, we say, You know what, our standard costing was pretty much dead on. There's no use messing with it, right? Highly unlike,
+
+Matthias Miller  55:56
+I mean, the chances of you needing to use it is about 70% or something like that. Yeah, 60, which is still greater than zero, we're still still probably better off prioritizing it. Okay, so,
+
+Matthias Miller  56:16
+all right, which of these next ones? So this one's This one's out. I don't think the payroll one is critical to have done before I leave. Interest calculation really needs to be done, but doesn't have to be done before I leave. I can't do the friendly way to lock out down accounts. So duplication warning, you sounded pretty cavalier about. It seems to it sounds to me what you're saying Drew is that if you had to make a list, it would be, it would look something like this. And this is like you could live with the consequences if the duplication warning doesn't happen, right, right? Are we? Are we good on that?
+
+Speaker 1  57:01
+Yeah, now you say by June 20, okay, you're saying today, literally, right? Well,
+
+Matthias Miller  57:06
+I mean, if you need any, yes, I'm trying to establish what I should plan to get done today. Got it? Yeah.
+
+Speaker 1  57:17
+Interest calculation delegate to set that is that only turning that into a standard report, like what we had, or industry, you know, where it is,
+
+Speaker 2  57:29
+um, I think I just have it saved as a favor, right? So I would need to, well, I mean, I sure I could just find it if it's on the menu then, but, but if something about the report changes and it gets moved and my favorite doesn't work anymore than I need something,
+
+Speaker 1  57:47
+but I'm just saying it doesn't make the standard report list. Or are you saying it will, will happen with the update
+
+Matthias Miller  57:53
+guys? No, well, I mean it just, I think this is this does not happen. Have to happen by June 20. No, this is just report
+
+Speaker 1  58:03
+is perfectly fine, so there's no reason on that.
+
+Matthias Miller  58:10
+I mean, this one really doesn't need that much of a priority. Okay, so then we're down to friendly way to lock down accounts, like we discussed, specking out the payroll changes for Seth and finishing up the payment method
+
+Speaker 1  58:30
+we discussed payroll is definitely last of those three. I would vote premiums is is first. But unless you think the locking down account is of a higher priority.
+
+Speaker 2  58:43
+That's probably fine, yeah, yeah, I think so, and
+
+Matthias Miller  58:47
+I'm going to put this up here.
+
+Unknown Speaker  58:53
+So this is I
+
+Matthias Miller  59:12
+and I don't feel like we necessarily have to figure out what these are. Yeah,
+
+Speaker 1  59:26
+now the the asset management changes, those are that's, that's a Matthias or Seth project, for sure. That's not Josh because it touches, probably not vendor invoices
+
+Matthias Miller  59:41
+that it doesn't need to unless he wants to.
+
+Unknown Speaker  59:45
+The only I'm getting a little anxious or a little nervous, to push it out that late before we can start
+
+Speaker 1  59:56
+really setting up those i. Assets getting into the asset management table and starting to depreciate them. But I don't know, I guess what's two months so
+
+Matthias Miller  1:00:13
+well, I mean, let's talk about it. Is this? Should this be earlier on the list?
+
+Speaker 1  1:00:32
+Okay, there's two things we lose. Okay. Up until now, we've never looked at depreciation as an expense until December, so our December always looked horrible, like we listed all the appreciation. So the other thing is, we have, the longer we wait, the more backlog there's going to be to clean up, like, all these expenses going to that, and then trying to figure out, although, there's a lot of work on our site that there's drew correct me if I'm wrong, but there's nothing wrong. Here's what I'm thinking is, once we're ready to start, it'll probably be something like, Okay, send us a list of all the transactions, like a contacts, a transactions by contact report or something for all those assets, all those assets, and then someone will have to start creating assets, creating the asset to the asset management table so that those are ready, so that we can then have AP link each One of those invoices or transactions to the right asset. Right? Does that? That's so so there's a lot of work on our side to get those assets set up. We probably won't be there, but,
+
+Unknown Speaker  1:01:53
+yeah, leave
+
+Speaker 1  1:01:55
+it exactly as it is. If we have it by late July, we won't be ready for it before they think, good, all right,
+
+Unknown Speaker  1:02:12
+so,
+
+Speaker 2  1:02:19
+yeah, except For the end of the year sales tax report. If we're gonna, if we're gonna write something up and put it in, then we might as well include that we want this to show. Like, underpayments or like, how do you say it? But like, right debt, a bad debt, write off we never collected is also a credit to our to our paid tax.
+
+Speaker 1  1:02:44
+And we also wanted to properly handle all wholesale sales, which it does now. Everything budgets, right? I think that's, I think that's simple, as long as we,
+
+Speaker 3  1:03:02
+yeah, yeah,
+
+Speaker 1  1:03:12
+highs is wholesale income. What tax on it. But how does, how do states use that? They
+
+Speaker 2  1:03:25
+just require you to record everything and then, and then there's a deductions point where you put in what's not so it doesn't change your it doesn't change the tax you have to pay, because
+
+Speaker 1  1:03:44
+there's a lot of the way we're doing it now is, is very inaccurate. Like, just right? Like, does that? Like, they don't use that. They don't look at where that, they don't look at that's being sold to jet strike and then use that to see if they're paying sales tax. No.
+
+Speaker 2  1:04:00
+So if we're all there's nothing about who you're paying to that. The only thing with that is it just makes that if something was not taxable, you still don't really want to say, Oh, who cares? Change the amount doesn't matter, because you still want your historical reports to match what you
+
+Unknown Speaker  1:04:21
+Why did they don't?
+
+Speaker 2  1:04:25
+You have a good paper trail of why they changed and stuff we probably, but it's kind of like filing taxes on something and then coming back. Well, actually, we made $100,000 more than that. But, you know,
+
+Matthias Miller  1:04:39
+but you could, you could turn the sales tax liability into a reconcilable account and and use the friendly way to lock down accounts to keep people from making taxable changes.
+
+Unknown Speaker  1:04:47
+Yeah, it
+
+Matthias Miller  1:04:51
+wouldn't handle wholesale right, because that doesn't affect that account. But I.
+
+Speaker 1  1:05:01
+Yeah, I think maybe rather than end of year, I would be more comfortable, say, end of September. It probably should even be bumped. No,
+
+Unknown Speaker  1:05:16
+there's plenty to do between. Yeah,
+
+Speaker 1  1:05:17
+I just don't want to go too late in the year before I get that good. Does that cover everything I can think of? And you can,
+
+Speaker 2  1:05:34
+no probably go over to that other thing and say, Oh, here's something on july 11 that we don't have on our list.
+
+Matthias Miller  1:05:44
+Yeah? Does this cover everything from the agenda? Just a lot edits we talked about, canceled sales orders, yeah, former employees we've got, yeah, interesting. Okay, all right. Well, I'm going to email this out and copy Audrey, and we'll probably need some she'll probably need some input from me too. These aren't kind of incidents, but
+
+Speaker 2  1:06:12
+shall I just send you those Excel files an email when I have them ready, and then you can store them where you want them. Or do you want to come after me when you're ready for them?
+
+Matthias Miller  1:06:24
+If you can preempt them and have them to me by sometime in the second week of July, that would be great, or early, like around eight,
+
+Speaker 2  1:06:36
+I'll have them like, I gotta do sales tax right now. Okay, I'm in the process right now, so end of the week, I need to be have it all done again. So I mean, it would work for me to just send them then, but I can try to make note to send them later. Okay, do
+
+Unknown Speaker  1:07:04
+all right, good.
+
+Matthias Miller  1:07:08
+Do you guys need me in on the call with Joel? Probably not.
+
+Speaker 1  1:07:18
+I don't think so, unless we get stuck with like, figuring out how to make wholesale changes on a bunch of accounts or something, then we might. But no, I think we're good.
+
+Matthias Miller  1:07:32
+I might I realize it's my Zoom call, I might hop on and just be muted and disappear and get stuff done. Okay, good. Sounds good? Thank you. Yep. Thanks.
+
+
+Transcribed by https://otter.ai

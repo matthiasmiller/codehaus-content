@@ -1,0 +1,1607 @@
+Matthias Miller  01:41
+Good morning. Hi Howdy. Howdy.
+
+Unknown Speaker  01:52
+Hey guys.
+
+Unknown Speaker  01:52
+Hello.
+
+Unknown Speaker  02:20
+See If stuff is. There we go. I
+
+Unknown Speaker  02:45
+so we interrupted your mom's Matthias, right? You're it
+
+Matthias Miller  02:52
+1130 Well, I had a late breakfast, so I'll probably grab lunch after we're done here.
+
+Unknown Speaker  03:02
+You Yep. Well, it's
+
+Speaker 1  03:09
+believe your Josh made an update, finally last night that took these sales tax reporting changes live. So Drew looked at them some this morning. But why don't we run through the rest of the agenda, first the paper cut items and anything else we might have, and then hopefully that'll be, you know, like 15 minutes. And then circle back to sales tax. I
+
+Speaker 2  03:44
+thanks. So
+
+Speaker 1  03:51
+if we go down to the paper cut projects one and two, done with the update and through you verified this morning that those are working so good. Thanks. Seth
+
+Unknown Speaker  04:07
+three,
+
+Speaker 1  04:10
+that's the switch debits, credits and sales overpayments. You basically said that's go ahead and make the change, and we're just waiting on a on the next update is that I
+
+Speaker 3  04:23
+haven't done it yet. I was trying to hold off on zfp or on changes at this point, just because I've done so much time with sales tax so far. But
+
+Speaker 1  04:36
+so what? What's Do you have? What you need, as far as you know, what needs done on that.
+
+Speaker 3  04:44
+So we're just basically just switching the underlying fields where they are in the RG and changing labels like no migration actually has to happen. Is that right or not?
+
+Matthias Miller  04:55
+I mean, you need to figure out field breaking.
+
+Speaker 3  05:02
+Is okay, which should be a little messy. I
+
+Matthias Miller  05:08
+would just find some slightly different format so that need to then replicate the old name, yes, and then so do the field rename, swap the positions back to the original swapped positions of the check boxes.
+
+Unknown Speaker  05:24
+And I think that
+
+Matthias Miller  05:28
+should be that simple. But there was another one too, where that's switching the switching them around. But there was another one where the needing to debit customer deposits for a, an, so payment method, that's a different change.
+
+Speaker 1  05:48
+You mean? Are you referencing Yeah, noted here
+
+Unknown Speaker  05:53
+three a,
+
+Unknown Speaker  05:55
+yeah, that's something new. Okay.
+
+Unknown Speaker  06:01
+Should we look at that now?
+
+Speaker 4  06:05
+Possibly so in those payment methods? Well, I don't have it open. But anyway, it wants to automatically assign accounts receivable as the debit Well, I think it currently might say credit or something. But anyway, it wants to automatically assign accounts receivable and when, if the sales order gets canceled and we refund the money before it was actually invoiced, then it's still sitting in a customer deposits. It's not sitting in accounts receivable yet. So we want to hit customer deposits rather than accounts receivable or other way to jump through that.
+
+Matthias Miller  06:55
+Did you have a sales order?
+
+Unknown Speaker  06:59
+Yeah. What's that one,
+
+Unknown Speaker  07:02
+this one? No, it's,
+
+Speaker 4  07:03
+it's the Sarah randaran. Here I got it r2, 4061883,
+
+Unknown Speaker  07:16
+let me share my screen. Let's
+
+Unknown Speaker  07:17
+take a look at it. So
+
+Matthias Miller  07:21
+here it was canceled. We refunded it, and what we're doing is,
+
+Unknown Speaker  07:35
+so that's the first payment. It's
+
+Matthias Miller  07:39
+the first payment. But nothing is happening with payments after the
+
+Unknown Speaker  07:47
+Yuck, um,
+
+Unknown Speaker  08:18
+So currently
+
+Matthias Miller  08:19
+we're excluding payment rows on or after cancelation.
+
+Unknown Speaker  08:30
+So
+
+Speaker 4  08:33
+how should we do this? Then do we want to include those? So Peter, they just have to backdate it before the cancelation date. It could be that
+
+Matthias Miller  08:46
+it's not official date.
+
+Speaker 1  08:52
+I mean, that could be okay. That could be part of our process where we say, if you before canceling any sales order, clear out any money received. You know, like either you move, most cases, you have to refund the money to the customer. Customer paid money down on a shed the next Monday, said, You know what, I don't want that shit. After all, sent me the money back. So we so if we would do that, how would that? Would that mean that we still have to date the refund prior to the cancelation date like on are we?
+
+Matthias Miller  09:46
+I think I'm pretty close to having a way to handle this right. Give me a give me one second here. So let's go look for something where.
+
+Unknown Speaker  09:56
+So
+
+Matthias Miller  09:59
+now is in. And not isn't a so invoice date, and so it is canceled.
+
+Matthias Miller  10:13
+See if Okay. So here we had one that was invoiced in the seventh and as our GSO payment date, where in range so payment date, where you have a payment where so payment date is less than So, invoice date and so payment date, where so payment date is greater than or equal to So, cancelation date.
+
+Unknown Speaker  10:44
+Let's see if that
+
+Matthias Miller  10:47
+well. It looks like this is pretty rare,
+
+Matthias Miller  10:54
+but my guess is I it
+
+Speaker 1  11:04
+so we but isn't this backwards? Like this was canceled,
+
+Unknown Speaker  11:08
+this one was invoiced and was not canceled, but, but it was
+
+Speaker 1  11:11
+canceled on 130 but, yeah, yeah, the payment date was after that.
+
+Matthias Miller  11:21
+So we had a payment, then we reverse it. Why is this never hitting accounts receivable? Why did this never hit accounts receivable? The cancelation ticket took it out of accounts receivable, right,
+
+Unknown Speaker  11:37
+right?
+
+Unknown Speaker  11:38
+Yeah, if it's if it is
+
+Unknown Speaker  11:50
+no so
+
+Matthias Miller  12:01
+my my thought was that cancelation, if it, if it was a receivable, that cancelation should that cancelation would take it, any funds out of AR, put it back into customer deposits. And then any payments after the on or after the cancelation date should be against custom deposits, and we should include them, which seems to me like a reasonable way to handle it. We
+
+Matthias Miller  12:34
+just need to make sure we don't. We need to see what would what accounting impact would change in the process.
+
+Unknown Speaker  12:48
+And let's go Filter by somewhere. We're filtering by effective date, and we want
+
+Unknown Speaker  12:57
+to so if i i
+
+Matthias Miller  13:06
+am a little confused, though, because here we Have the
+
+Unknown Speaker  13:14
+invoicing, accounting impact,
+
+Unknown Speaker  13:21
+if it is an A
+
+Matthias Miller  13:26
+we have our invoicing accounting impact,
+
+Unknown Speaker  13:27
+if the
+
+Matthias Miller  13:32
+we only keep items Prior to cancelation date, which means that we have a
+
+Unknown Speaker  13:47
+Where do we handle that's what it is.
+
+Unknown Speaker  13:56
+No, I
+
+Unknown Speaker  14:09
+like this against payments. I
+
+Unknown Speaker  14:26
+a sweet deposits, so when it's invoiced.
+
+Matthias Miller  14:38
+Now I don't know, I'm a little baffled why there's no I would have expected on this one for it to have wanted to hit AR.
+
+Speaker 1  14:57
+So what, what did happen on this one when it was canceled on. 130
+
+Matthias Miller  15:01
+Oh, they paid in full prior to they paid in in full prior to invoicing.
+
+Unknown Speaker  15:08
+Yeah, yeah.
+
+Matthias Miller  15:12
+So let's try this one. Okay,
+
+Matthias Miller  15:24
+yeah, yes, perfect. So here was the here's the payment in customer deposits. It was invoiced. Make sure my dates are right, 446, it was invoice, in which case this got pushed into AR, essentially a credit to AR. And this is 17 and change minus 16 change. That's a lot change. But anyway, with building revenue and then the reversal on cancelation, we reverse this and which reverse the AR, which I think the simple change is create accounting impact for cancelation rows and make them decrease
+
+Unknown Speaker  16:15
+customer deposits,
+
+Matthias Miller  16:21
+and then just run some reports and see what's which sales orders are going to be impacted. And I think everything would be fine.
+
+Unknown Speaker  16:32
+So
+
+Matthias Miller  16:39
+that makes sense or not,
+
+Speaker 4  16:40
+you're saying decrease customer deposits. You're saying it would do something different than what it does here. Well,
+
+Speaker 5  16:45
+current, currently here, we refunded the whole well.
+
+Matthias Miller  16:57
+So here, let's group by let's group by account so you can see what's happening with customer deposits
+
+Matthias Miller  17:07
+here. Customers deposits still have a 791, 56, balance because we said, Wherever this guy is, we said we're not going to do cancelation. Date was 418, we're not going to create accounting impact for anything on or after the cancelation date.
+
+Speaker 5  17:29
+No, why is this one showing up? I'm not sure, but
+
+Unknown Speaker  17:35
+neither one of those are showing
+
+Unknown Speaker  17:40
+right?
+
+Speaker 4  17:47
+Because the transaction that you have there is for the cancelation, not for the Return Payment,
+
+Matthias Miller  17:57
+okay? So, by the way, what happened here? We canceled it and we kept the
+
+Unknown Speaker  18:08
+money. That's what it would look
+
+Matthias Miller  18:12
+like. That was a profitable building. So the basic
+
+Speaker 4  18:19
+process is roll the check back and never, you know, never recorded on sales, because it's canceled. And so it never got connected, really. So we'd
+
+Matthias Miller  18:29
+have to, we'd have to, and that would show up if we put together reports saying, okay, where, where are there going to be discrepancies? This would show up on that report. And you have to go through and create a reverse payment row to cancel out the check. Well, it's actually, this is pretty simple. So pass our G where anything you have to go through, wait, there are none if canceled, and
+
+Unknown Speaker  19:06
+yes, there are, so
+
+Matthias Miller  19:10
+you'd have to go through this list and make sure there's like 20, but you have to go make sure that you're okay.
+
+Speaker 4  19:17
+This is all with payment dates on or after a cancelation date?
+
+Speaker 2  19:23
+Yes, so simple as this.
+
+Speaker 4  19:28
+So what you're saying is just, we just have to move those payment dates to before the cancelation date.
+
+Matthias Miller  19:34
+No, what I'm proposing is a change in behavior, because I think it's the right thing to do. So here's how I propose it works. If you make a payment prior to invoicing, it's a deposit. When you invoice, deposits become applied to AR, and then if it gets canceled, we reverse that deposits to AR, and that's current behavior. And. Right behavior is now that any payments on or after cancelation don't go anywhere. And my proposal is, because we just reversed AR in cancelation, that any payments on or after cancelation date go back and get applied to customer deposits.
+
+Speaker 6  20:16
+Okay, I have question, yeah, you go back to that sales order, and you read the notes, you can see what what the story is. I'm curious how we would handle this.
+
+Speaker 6  20:33
+Would we would it go in as a negative the 17, 695, would that go in as a negative transaction? I
+
+Unknown Speaker  20:44
+I build
+
+Unknown Speaker  20:46
+buyback. What so
+
+Unknown Speaker  20:53
+did we pay?
+
+Speaker 6  20:55
+Who did we pay? You would have paid cricket Valley for it back. Okay,
+
+Speaker 4  21:00
+so the way we've been doing these is we've been created this chat, this 1693, well, no, the 17,000 should be the
+
+Speaker 4  21:19
+17,000 we go in as customer overpay. We'd go in another line as customer overpayments, and then we create a sales or a vendor invoice to this person to cricket Valley, and we pay them through that. That's how we've been handling this kind of thing, or that's how we're I, that's how I've been doing them and proposing to for it to be done. Because the problem with just creating negatives here is that they end up as things that can be deposited, like negatives that should be deposited because they assist. Thinks they're a regular payment. So it says, well, then it should be deposited. Um, so that's what I would say should be done with this. The 17, 695, should be entered as adjustment for customer overpayment, and then an invoice written, and then the check pays that and all goes back that way.
+
+Speaker 6  22:30
+It just, it scared me for a second when we said we had, we kept, when I saw it was a an RTO building, and we that, and then I had to go read the notes and make sure that it was, it looks like it was handled it just Yeah, yeah.
+
+Speaker 4  22:42
+It's just not, it's just not recorded on the sales or got it, got it. That's kind of what I figured is, because I know there were lots of earlier ones that we didn't, we didn't have a knees to
+
+Unknown Speaker  22:57
+this is about April,
+
+Speaker 4  23:01
+and see like now, being that, being a credit card, that 795, being a credit card, I think that would actually work. The
+
+Matthias Miller  23:10
+credit card stuff was all before,
+
+Speaker 4  23:13
+wait, was it, it was on the cancelation date. But that no, so
+
+Matthias Miller  23:17
+that's we're excluding anything on or after cancelation date. So your customer deposits for this one, which we actually saw on the accounting, impact on the other tab is actually off by $700
+
+Unknown Speaker  23:30
+right, right, yeah,
+
+Matthias Miller  23:32
+so this would fix that, then we'd create another problem.
+
+Speaker 4  23:39
+But so and then so that will make so that payments after the cancelation date will post Yes. Now the other thing is that if we create a refund, in other words, like when I use the payment method adjustment for customer overpayment, that is set to debit accounts receivable. Then I was going to create another one that's called refund the customer deposit that would hit customer deposits account instead of AR, with what you're proposing, do we need two different ones, or don't we?
+
+Matthias Miller  24:27
+Well, because it's a negative amount. Okay, so with let me pull this up. I'm sorry. My water bottle. I got water bottles this morning, and one of them squarely. So did
+
+Unknown Speaker  24:41
+you just set your water broke?
+
+Unknown Speaker  24:44
+Yeah, it did.
+
+Matthias Miller  24:50
+Contractions have been, have been manageable, but I'm here. That's how to get devoted. I am to you guys. I. Wow.
+
+Matthias Miller  25:07
+So in with the accounting companies in the setup, if it's a if it is applied to the sales order balance, then we will automatically switch between AR and customer and deposits based on the date. So because the adjustment for customer overpayment is applied to the sales order balance, you don't have to do and because it's a negative amount, you require a negative amount, it's going to apply the reversal. And everything should just work.
+
+Unknown Speaker  25:35
+Okay, well, then that makes it really nice. If that works.
+
+Matthias Miller  25:41
+I mean, in some ways, it'd be nice if this would show like, ar, ar slash customer deposits or something, but,
+
+Speaker 4  25:50
+yeah, but, but it's the reason that that is automatically set is because it's saying that's where the sales order balance is right, correct. So if it's prior to being invoiced, it will pull from customer deposits. Should if it's after being canceled, it should then go back to where
+
+Unknown Speaker  26:20
+no it's waterproof,
+
+Speaker 1  26:29
+man, but how are you going to so what we're seeing here like the adjustment for Customer overpayment will toggle between the debit account of AR and customer overpayments depending on the the date and whether it's been invoiced or not
+
+Unknown Speaker  26:52
+correct,
+
+Speaker 4  26:55
+because that's not a thing. I can't set that. Oh, this isn't Matthias, yeah, and it's just saying that's where the balance of the sales order is sitting, so that's the one to hit.
+
+Speaker 1  27:05
+But what can you say here when you create these payment types, um, where it goes the credit?
+
+Speaker 4  27:11
+Well, it's actually the other way around. Okay, that's what switch
+
+Speaker 1  27:21
+got it okay, just, I believe so that, that that simplifies things for AR as the people, like, just, it's a customer we're paying, if they don't need to worry whether it was, it was or not, it is.
+
+Matthias Miller  27:37
+Yeah, every everything becomes simple for everyone. Yeah,
+
+Unknown Speaker  27:43
+that's what good development does.
+
+Matthias Miller  27:44
+That's what good development does. And good design makes it even simple for the developer. So we, we pretty much have a Okay, so let me, I'm going to shoot this over.
+
+Matthias Miller  28:01
+Mark. I'm going to amend this so that we can remember it when we get to it. We've got a central point of documentation. So we want to do is start creating accounting impact rows for payments on or after cancelation. Make sure these should be applied to customer deposits rather than AR. Create a report out copies. Actually, I will copy and insight support so Seth has a
+
+Unknown Speaker  28:39
+handling payment after installation,
+
+Matthias Miller  28:44
+Drew, you can get this to for Mark to add to that list. Then AR create a report to show discrepancies, slash changes so that Drew can clean up 2024, and four
+
+Speaker 1  29:03
+Matthias. One thing that, while you do that, if you could also create a report that because we're suspicious that we've a number of these have been handled incorrectly year to date, if you could create a report that says,
+
+Unknown Speaker  29:17
+Here are
+
+Speaker 1  29:21
+customer overpayments, where we selected payment type, customer overpayment after cancelation date, and it put the money back in AR, which,
+
+Speaker 4  29:35
+well, it wouldn't have done anything based on what we Oh. So once this is all fixed, then it should go to the right place again, the
+
+Speaker 1  29:43
+historical ones, you go to the right place and it there should be nothing, no cleanup to do good. Got it?
+
+Matthias Miller  29:52
+Okay? So start creating accounting impact roads for payments, Owner, after, after, sales, order cancelation, you should be applied to customer deposits, right? Other than AR, then create report to show discrepancies, so that you can create 2024, transactions. And this is actually
+
+Unknown Speaker  30:16
+all right. Boom. Good. Okay,
+
+Unknown Speaker  30:27
+so we're done with three then
+
+Unknown Speaker  30:32
+AR issues with over sales orders. I don't leave that for now. We need to spend your time on
+
+Unknown Speaker  30:39
+I don't think there's anything else that, yeah, is there something we should we have covered through? Unless you guys have something. So let's go to sales tax reports. So
+
+Speaker 2  30:59
+we went in and trying to talk about you have already you a few
+
+Speaker 1  31:05
+things on that in C I did not, I forgot to ask Josh about these two items. I have it on the agenda to ask him next Wednesday, uh, whether we can ping tax to our at a given date and we create next place for the air. So that's on that list, a entry point for period date. Well, go ahead, drew you. You were testing this. And this one's,
+
+Speaker 4  31:31
+yeah, I tried to open up the filing report and
+
+Speaker 4  31:42
+the drop down list didn't include any dates. Were you guys gonna put a starting date on? Or where do we enter those dates? Or,
+
+Unknown Speaker  31:49
+yeah,
+
+Speaker 3  31:51
+you need to set as a system switch.
+
+Unknown Speaker  31:56
+Let's just finding.
+
+Matthias Miller  31:59
+Let's just set it here while we're on they don't need
+
+Speaker 3  32:06
+to search for sales tax history.
+
+Matthias Miller  32:13
+What should be what start date do you want? October 1?
+
+Speaker 4  32:18
+Well, October 1 is the first that's going to need paid. So I guess that's where you're starting. Yes,
+
+Unknown Speaker  32:25
+all right, anything that should be,
+
+Unknown Speaker  32:33
+is this a one time thing you for each account
+
+Matthias Miller  32:38
+across the board? We didn't break it down by
+
+Unknown Speaker  32:42
+well, are those?
+
+Unknown Speaker  32:48
+Oh, it's because we're still in October,
+
+Speaker 4  32:55
+which is not complete, yeah. Now, here's a little glitch. New York specifically is quarterly, and the quarter starts September 1, so like New York has only been paid through August,
+
+Unknown Speaker  33:17
+it's they're weird up there
+
+Unknown Speaker  33:20
+that qualifies as weird.
+
+Speaker 6  33:24
+Oh, no, quarterly sales tax would be pretty nice for most states,
+
+Unknown Speaker  33:28
+right? That was starting
+
+Speaker 3  33:29
+September. Yeah, that's weird.
+
+Speaker 4  33:35
+So I mean, as long as I can manually, if it's not that much, I can manually figure it out. If I have a way to come up with New York Sales for September, then I'll just, you know if I have a way of ending the quarter at the end of November. But is it, if it says quarterly, is it going to make me
+
+Matthias Miller  33:58
+shoot we assume that?
+
+Unknown Speaker  34:02
+Yeah, we assume quarterly. It was normal quarterly.
+
+Unknown Speaker  34:07
+So can you just do like,
+
+Speaker 4  34:09
+just do monthly and add all three together, or two in this case? Yeah, but how do I but
+
+Unknown Speaker  34:20
+that's going to be a problem going forward, though.
+
+Matthias Miller  34:24
+Well, you're just a few months delinquent, so September, October, November and December, you go calculate liabilities for September and then October, and then November, and then, well, but it doesn't lump them all together. I mean, the real thing is to add a quarterly basis well. I mean, we could add a quarterly basis here. January, February, March.
+
+Speaker 1  35:20
+How big of a deal would it be to just do it? I mean, you'd have to take your in a normal or in a typical New York quarter. You'd have to pull it for three months and then do three periods and then add them all together. We just
+
+Speaker 4  35:38
+put a new album New York's not that big of a thing. I would guess that would work if they open up nexus in another state that has something stupid like that. Okay.
+
+Matthias Miller  35:53
+I mean, it is completely up to you. It's, I think it's half an hour of Seth's time at most to fix it. Seth, I think all we do is, I mean, you could even have a, you could even have a, have it be as something as simple as a, as a, like a filing, like a, like an offset, like a that's just a number of months, and when you start calculating the first
+
+Unknown Speaker  36:38
+period, just,
+
+Matthias Miller  36:42
+you just jump ahead a month or two or whatever it is.
+
+Speaker 1  36:48
+I mean, if it's, if it's half an hour work or an hour of work, I would say, go ahead
+
+Unknown Speaker  36:53
+and do it back in a year.
+
+Matthias Miller  36:57
+What? What do you think? Seth,
+
+Unknown Speaker  37:00
+I don't mind doing it.
+
+Matthias Miller  37:07
+Am I over optimistic? Is there a simpler approach?
+
+Speaker 3  37:11
+I don't think there's a simpler approach. Basically, what you're suggesting is you add a field, if they're quarterly, to say I would
+
+Matthias Miller  37:21
+write, is quarterly? My might as well, semi annually as well, yeah, which is a frequency, you know, or the names like the worst thing I
+
+Unknown Speaker  37:43
+period, frequency, start, month or something, start,
+
+Unknown Speaker  37:59
+adjust for you, for places,
+
+Speaker 3  38:13
+other fields, filing, frequency is filing start Months confusing.
+
+Matthias Miller  38:20
+I would almost just call it a confusing I mean, it's fine if it has a confusing name, I would almost like it to be a number, so that way offset, you know, offset months, offset by number of months. And it can be a negative or positive number, and
+
+Unknown Speaker  38:52
+sounds good to me, sure.
+
+Matthias Miller  38:56
+Okay, yeah, and then it's just a simple Yeah.
+
+Unknown Speaker  39:03
+End of month, yeah.
+
+Speaker 1  39:05
+Can we go back to the is there a way that we can look at the period before the end of October? Like we can't enter 1030 or whatever? Just does it only go to end of month? Like it, like it should.
+
+Unknown Speaker  39:19
+That's how it is right now. Yeah, well,
+
+Unknown Speaker  39:22
+or a day away from that. So,
+
+Matthias Miller  39:24
+well, here we can. I mean, we can.
+
+Unknown Speaker  39:27
+We can make stuff up. Don't tell, don't tell.
+
+Matthias Miller  39:37
+So which one do you want to look
+
+Speaker 4  39:41
+at? I was just gonna look at the report of the filing report.
+
+Unknown Speaker  39:51
+Let's actually just do this
+
+Unknown Speaker  39:56
+sort of thing that we had. I thought we had thrown in something last time. Oh, the columns for the some of the breakout, oh, the third field, or the fourth field, or whatever it was
+
+Unknown Speaker  40:18
+like section I the
+
+Speaker 3  40:22
+sub panes,
+
+Speaker 4  40:26
+yeah, sub panes we had created, or we had talked about creating extra
+
+Speaker 3  40:31
+Yeah. I those are done. This report here is to is what you'd run to add rows to the RG, because I can't run the filing report, so we have history in the RG,
+
+Unknown Speaker  40:44
+right?
+
+Speaker 1  40:49
+So this is just previewing what was invoice,
+
+Matthias Miller  40:55
+right? So
+
+Unknown Speaker  40:56
+whatever adjustment rose, we're going to have and, yeah, this
+
+Unknown Speaker  40:59
+is
+
+Speaker 2  41:00
+text. Tax,
+
+Speaker 3  41:06
+yeah, and you're not, yeah, we can't run the filing report until we have run that import.
+
+Speaker 4  41:12
+So did you have the Import button on that page now?
+
+Unknown Speaker  41:16
+So right there, yeah. Right there.
+
+Unknown Speaker  41:18
+Yeah. Okay.
+
+Unknown Speaker  41:21
+All right, great.
+
+Matthias Miller  41:25
+If you want to play around in this. In the test system, we could do nine one and then preview tax liabilities go to Ohio, 930 I don't know this is the latest one. This might not have gotten updated last night, but calculate
+
+Speaker 3  41:43
+it got updated about 10 minutes ago. Nice, I think
+
+Unknown Speaker  41:48
+perfect timing,
+
+Speaker 3  41:51
+because I tried to get it to update a while ago, or I saw as we're getting ready for the call. Oh, wait, this hasn't been updated recently.
+
+Matthias Miller  42:00
+So what's there? Taxable subtotal adjustment
+
+Unknown Speaker  42:05
+that's required field.
+
+Speaker 3  42:11
+Can you open the sales order here? Let's
+
+Matthias Miller  42:20
+Yeah, let me rerun it and find out which one it's gonna still be in this list. Yeah, it's anything here, yeah,
+
+Unknown Speaker  42:28
+but why are they
+
+Matthias Miller  42:32
+so sex history, there is no there is no taxable. So we should either, either loosen the validation to allow what we should probably,
+
+Speaker 3  42:42
+I wanted you to put in a zero. I don't know why. It's not
+
+Matthias Miller  42:47
+taxable subtotal adjustment.
+
+Unknown Speaker  42:53
+It's a taxable subtotal. That's a sales tax, history, tax, perceptual, does this work?
+
+Matthias Miller  43:05
+I don't know. It will for now, actually, no, it won't, because
+
+Speaker 3  43:09
+it's happening in the go into the look ROI calc isn't the problem in there or not,
+
+Unknown Speaker  43:21
+if it is current,
+
+Matthias Miller  43:25
+like an NA to zero, here is what you're thinking. Well, you can, you can chase it. We can't. We're not going to be looking for it. Now,
+
+Speaker 3  43:36
+can you just run it? Well, yeah, it's true, but you got a decent number already. So I got a decent
+
+Matthias Miller  43:41
+number. So then, and then, let's go preview sales tax payment transaction, which would be also for Ohio. Transaction. Date is today, additional account, um, because we're going to drive the check over there. And,
+
+Matthias Miller  44:08
+you're getting compensated for your truck Drew.
+
+Speaker 3  44:11
+I thought you were gonna looks like you're gonna fly over there rather than drive
+
+Matthias Miller  44:19
+fair enough helicopter. Why are these
+
+Unknown Speaker  44:25
+amounts all blank?
+
+Matthias Miller  44:26
+Amounts all blank because it's non taxable. Okay,
+
+Unknown Speaker  44:37
+they should still be showing
+
+Speaker 4  44:39
+or because we didn't update the RG, or these
+
+Unknown Speaker  44:42
+ones have the RG, who was messing with my code since I finished it exactly, I don't understand.
+
+Unknown Speaker  44:56
+I mean, do you want i.
+
+Matthias Miller  45:01
+Yeah, I don't, I can't tell you that
+
+Unknown Speaker  45:03
+calcum out. I
+
+Unknown Speaker  45:15
+guess it'd be the model, wouldn't it?
+
+Matthias Miller  45:22
+I anyway. Do you want? Do you want non taxable line items, non taxable sales orders to show up as zeros in the transaction? Or do you want to just exclude them?
+
+Unknown Speaker  45:36
+Or what did you say? I'm sorry,
+
+Unknown Speaker  45:37
+exclude them.
+
+Speaker 4  45:40
+I would probably just exclude them. Okay, well, I mean, they are, when I file, they would be included in the gross sales, but I don't know. I mean, have nothing to do with the tax payment.
+
+Unknown Speaker  46:00
+I'd exclude them. Okay, so I forgot that.
+
+Speaker 3  46:09
+Yeah, I'm trying to remember what I run off of the payment date. If there's anything that matters or not anything else, I don't think so. I
+
+Matthias Miller  46:29
+I mean, for some reason, I mean, I think, I think it's as simple as just excluding, I don't know, however we want to do this, one way or the other, excluding na or zero, and a and zero rows.
+
+Unknown Speaker  46:55
+It's below R, L, I, yeah, there you go.
+
+Unknown Speaker  47:08
+So why did they only have tax exempt stuff?
+
+Matthias Miller  47:12
+Because the Wait, that doesn't make sense, does it? Because
+
+Speaker 3  47:17
+No, that's, I mean, I'm just confused by this place only what vendors who only sells tax exempt, to find out this
+
+Matthias Miller  47:31
+one isn't tax exempt.
+
+Unknown Speaker  47:32
+There's something else going on. Yeah, then what's happening?
+
+Unknown Speaker  47:39
+Yeah, okay,
+
+Matthias Miller  47:42
+so let's go into here and tax our total amount. Let's see what the total amount is. Total amount is blank. We have taxable sales combined tax rate. There's
+
+Unknown Speaker  47:56
+no tax draw information.
+
+Matthias Miller  48:00
+Oh, well, that would explain, right?
+
+Speaker 3  48:02
+We'll go into there and see, right, yeah, there's no, there's Yeah, okay, okay, okay. I mean, we should probably be grumping somewhere else at that point, I wonder. But, well,
+
+Matthias Miller  48:16
+it's actually not a bad thing to gripe here. But
+
+Speaker 6  48:22
+FYI when it looks like when Josh removed the the old fields that he pushed over the names into the new fields, but it did not give you the the percentage breakdown, so some sort of reping ought to be done on a whole bunch of sales orders, which I imagine you're going to get. It's going to make you grow. It's going to get grumpy a couple times over, some of that stuff.
+
+Matthias Miller  48:48
+Well, well, I think, I think the plan was, which I haven't really heard from Josh, if this is working, has anybody heard from Josh? If ping is working,
+
+Unknown Speaker  48:54
+the ping is working.
+
+Matthias Miller  48:56
+I mean, we just need to go through, find all sales orders. What sales orders would it be? Any anything invoiced on or after? Well, it really would be
+
+Matthias Miller  49:16
+anything invoiced or canceled on or after October 1, right? Think so.
+
+Matthias Miller  49:39
+So invoice date is greater than equal to what's the even better. This is what we want, right?
+
+Unknown Speaker  49:56
+Well, except we don't. We don't need it for. Sure we don't need to ping for quotes. Sure, yeah.
+
+Unknown Speaker  50:21
+All right, you still need the switch name there,
+
+Unknown Speaker  50:25
+right? That would be useful.
+
+Matthias Miller  50:32
+And we want to know if,
+
+Speaker 5  50:37
+what's the total. I which
+
+Matthias Miller  50:45
+the macro that gives us the grand total tax amount?
+
+Unknown Speaker  50:52
+So tax, I think
+
+Matthias Miller  50:57
+the macro that sums the
+
+Speaker 3  51:02
+wait the total tax rate, tax refuels, wasn't the one you just had. What was one you just had this
+
+Matthias Miller  51:13
+one? Yeah, it's not a strategic right, okay, yeah, so wouldn't it also be, and
+
+Speaker 3  51:25
+probably so knocked off a one by adding that condition or something not very see
+
+Matthias Miller  51:37
+which one, which one is. I.
+
+Speaker 3  51:45
+That's his messed up test, one, I think, or with been in there for quite a while,
+
+Matthias Miller  51:57
+and stripping this guy feels packed.
+
+Unknown Speaker  52:00
+It's complete so you can't pay.
+
+Unknown Speaker  52:08
+Oh, that's painful.
+
+Unknown Speaker  52:16
+And see
+
+Matthias Miller  52:19
+how many complete sales orders we got, well, that'll be fun if, um, can we you can do an X 30 on these. You can run an X 30 on complete sales orders,
+
+Unknown Speaker  52:35
+correct? I
+
+Matthias Miller  52:43
+Let's do this. So no ID, let's do so,
+
+Unknown Speaker  52:54
+invoice date and
+
+Matthias Miller  52:55
+so cancelation date. So there I
+
+Matthias Miller  53:27
+Okay, so does this look right as far as what theoretically should be? I think so.
+
+Unknown Speaker  53:38
+Recalculating. I leaving
+
+Unknown Speaker  53:50
+you well, the button is not their words on anymore.
+
+Matthias Miller  54:10
+It's some kind of platform,
+
+Unknown Speaker  54:16
+yeah, like
+
+Unknown Speaker  54:18
+all the little boxes don't have labels,
+
+Matthias Miller  54:20
+okay, so let's still try one of these, like this guy, let's go ping him.
+
+Speaker 6  54:33
+Oh, that's fun. You have to ping, and you have to ping and then say, but if there's no address, you will get an error.
+
+Unknown Speaker  54:41
+Oh,
+
+Matthias Miller  54:42
+so what are the plans for shit SDI buildings? Because we were told to include them in a sales tax report,
+
+Unknown Speaker  54:51
+but they don't have addresses always. Well, can
+
+Speaker 1  54:57
+you I mean, I. A technical they're all tax exempt. So can we
+
+Unknown Speaker  55:10
+basically okay? Because, okay, when we ping, we use the ship, tune in, right?
+
+Unknown Speaker  55:21
+Yes, I think we're doing okay.
+
+Unknown Speaker  55:28
+So could we
+
+Unknown Speaker  55:35
+just there's no need to ping. I
+
+Matthias Miller  55:44
+Well, we're not going to know what jurisdiction to put it into.
+
+Unknown Speaker  55:48
+How do we handle other wholesale accounts?
+
+Speaker 5  55:53
+I mean, well, let's try this. Well, most, most, I
+
+Speaker 6  55:57
+think all of the wholesale accounts has some form of entry through the configurator
+
+Matthias Miller  56:04
+here. Here's one that's tax exempt, and so this one we would it's ping, ping him, yeah, but this one is
+
+Unknown Speaker  56:15
+this great.
+
+Unknown Speaker  56:17
+Oh, this one failed too.
+
+Matthias Miller  56:20
+Oh, right, because it's not a valid address. It doesn't have a street number on it.
+
+Unknown Speaker  56:29
+Guessing, of
+
+Unknown Speaker  56:35
+course, we really have an error.
+
+Unknown Speaker  56:42
+But if
+
+Matthias Miller  56:44
+we got any other ones. Indiana
+
+Speaker 1  56:46
+might not have, but if you go to Ohio or North Carolina,
+
+Matthias Miller  56:53
+okay, let's try some of these ones at the tax exempt. So we're going to edit the ping save.
+
+Unknown Speaker  57:02
+It's about oh, 15 seconds.
+
+Matthias Miller  57:13
+Wait, this is what we'd expect to see. No, it's not,
+
+Unknown Speaker  57:17
+no, 80 percentage numbers yet. I
+
+Speaker 3  57:23
+I mean, wasn't that in there already before you hit ping Yeah, yeah, nothing's happened yet
+
+Unknown Speaker  57:34
+hasn't pinged.
+
+Speaker 6  57:41
+Now, in all fairness, I haven't tried pinging a sales tax exempt one, so I have no idea what what's going to happen if it's
+
+Unknown Speaker  57:51
+sales tax exempt when
+
+Matthias Miller  58:18
+see there's like an insight. I
+
+Unknown Speaker  58:20
+all standard,
+
+Unknown Speaker  58:27
+let's do this,
+
+Unknown Speaker  58:30
+external actions. I'm
+
+Unknown Speaker  58:44
+um,
+
+Matthias Miller  58:49
+so tax rate was not editable.
+
+Matthias Miller  58:57
+Why was it not editable? What's the tax rate editability? I
+
+Unknown Speaker  59:01
+think it's public related to tax exempt. Let me see. Yeah, that's what's happening. I
+
+Unknown Speaker  59:24
+Yeah, it's not visible if it's tax exempt.
+
+Unknown Speaker  59:32
+Okay, so
+
+Speaker 1  59:34
+do we have are there two things we need to solve for is one, how to handle tax exempt if we have a ship to address. And the other how to handle shifts, right,
+
+Matthias Miller  59:44
+without a ship too. Yeah.
+
+Speaker 1  59:47
+So the tax exempt ones, how? What do we need to do to handle those properly?
+
+Matthias Miller  59:55
+Well, we can. I.
+
+Matthias Miller  1:00:01
+For a fix today, we could change the X 30 to not try to import if,
+
+Matthias Miller  1:00:14
+if the current field is in A and the incoming, if the current rate is in A and the incoming rate is in a, at least,
+
+Unknown Speaker  1:00:19
+well,
+
+Speaker 1  1:00:20
+I mean, I don't we would use it like, November, mid November, November 20. It's a deadline. Is when we would use it. So what's the, what's the correct fix for, for the tax exempt like, I'm assuming we have to go through an update cycle for that?
+
+Matthias Miller  1:00:43
+Well, potentially, it depends. Okay, what is the best fix? I
+
+Speaker 1  1:00:52
+mean, we're still wanting jurisdiction, state, county, all of that are we not, even if it's tax exempt for reporting. I You just need it on the state or what So
+
+Unknown Speaker  1:01:09
+Seth, do we think?
+
+Speaker 4  1:01:14
+No, yeah, we do need to split out.
+
+Unknown Speaker  1:01:17
+Okay, so you need the jurisdiction to know where to group it on the report,
+
+Unknown Speaker  1:01:23
+great. So if can, we just
+
+Matthias Miller  1:01:31
+open it up to be editable in import, sure which would require an update cycle. What that means, though, is that you can't ping. I don't know if we can do an update tonight or tomorrow night. Well, tonight, really, but you might not be able to ping using October rates. You might be pinging using November rates.
+
+Unknown Speaker  1:01:55
+Is that a problem?
+
+Unknown Speaker  1:01:58
+No, okay,
+
+Matthias Miller  1:02:12
+I think, is there anything? Well,
+
+Unknown Speaker  1:02:16
+okay, let's see. Okay.
+
+Matthias Miller  1:02:24
+So we really can't do much of anything with this, but
+
+Unknown Speaker  1:02:28
+once we get that fixed,
+
+Matthias Miller  1:02:34
+here's something to just email this over to you. I
+
+Unknown Speaker  1:02:44
+Okay, so on the tax exempt, what you're going what is the fix on on that?
+
+Matthias Miller  1:02:52
+So we just need to make sure we we're going to let the pinging texture stump in tax rate, which it's going to be blank, but we just need to make it not give an error.
+
+Speaker 1  1:03:07
+And paying tax star means it will just, will it bring in the rates, or just the jurisdictions on, say, a tax exempt sale,
+
+Unknown Speaker  1:03:17
+I think just the jurisdictions. Okay,
+
+Speaker 1  1:03:20
+so it would look at the address, bring back the jurisdictions, we ignore the rates that it brings back and just stop in the jurisdiction. Then on the feds, direct side, what do we do there? I mean, it am I correct that what we're missing there is a chip to address consistent and all of those,
+
+Matthias Miller  1:03:50
+yeah, most of them, yeah. So
+
+Speaker 1  1:03:52
+could we have so how does Josh currently create those sales orders? Or is this a true, an accurate observation that Josh is currently creating those sales orders through the API with compost using the limited information they're sending out?
+
+Matthias Miller  1:04:16
+Yeah, it's something like that.
+
+Speaker 1  1:04:18
+So in that case, we could just, I think we should just,
+
+Speaker 1  1:04:28
+could we just automatically enter the address like we're not using chess directive. We have been using all of the individual dealers. Now we're just using chess directive, I N, O, H, whatever location they are, and we just, if it's just directive, I n, we just, I don't know, put in an address of, since they're picking up the buildings, we could just put in, like, the builder's address on each like, with that. Wayne, what's your thought? Is there a better way to just to handle these shits, right? Buildings?
+
+Unknown Speaker  1:05:08
+Say, say your thought again.
+
+Speaker 1  1:05:11
+Well, okay, let's Matthias, can you open and yeah, she's direct, like a legacy Sales Order
+
+Unknown Speaker  1:05:18
+has no address. I address,
+
+Speaker 1  1:05:24
+so any of those should so we have no so, so understand that for the dealer, we're calling them sheds right to buy in. I think Josh did some work recently to do that, but then couldn't we? If it's just direct to buy in, we automatically just put in the ship to address for, probably the for shed time in Indiana, because they're the building. They're basically, they're building the buildings, putting them a lot just direct comes and picks them up, like, Could we just stomp in that ship to address?
+
+Unknown Speaker  1:06:07
+Would it come off of?
+
+Unknown Speaker  1:06:10
+It would be driven by your name?
+
+Speaker 6  1:06:15
+Because, because, right now everything comes in says direct Indiana, sheds director of Ohio and sheds direct North Carolina.
+
+Speaker 1  1:06:21
+Well, does it? I mean, I'm still seeing some that come
+
+Speaker 6  1:06:25
+through from other Well, the question would be, are they older? Are they, you know, is this pre? Does it predate when? Because I don't know when, John, When? When was that that we made that change? It was earlier this year.
+
+Speaker 1  1:06:37
+Okay, yeah, like, I'm a shits director of New Hampshire.
+
+Matthias Miller  1:06:46
+Yeah, okay, like all American others, so,
+
+Unknown Speaker  1:06:52
+yeah. But look at the, look at the creation date on the sales order,
+
+Unknown Speaker  1:06:55
+right? This was a,
+
+Matthias Miller  1:07:02
+it was it, but it was created back in 21 but it was invoiced on the 24th or, I'm sorry, in 2024
+
+Speaker 1  1:07:09
+we're going to have still have some of those. So could we,
+
+Speaker 1  1:07:22
+I mean, is that the wrong approach trying to auto populate the ship to address for those legacy sales owners. Could we do something? We almost have to do that to get it put in the right jurisdictions between Well,
+
+Speaker 6  1:07:32
+I guess, I guess the question is, do we populate, do you populate the ship to address, or do you just go ahead and populate the fields based on which district it is coming in. In other words, skipping tax jar and just go ahead and populate the correct counting city and state.
+
+Unknown Speaker  1:07:53
+I mean, that's yeah, we could
+
+Speaker 6  1:07:55
+say it would save the tax jar ping, but because, like the the city, state and county for each one of these builders is not going to change anytime in here, in the near future,
+
+Matthias Miller  1:08:07
+and then you can just assign this as a legacy so on the dealer, you would have a legacy tax,
+
+Unknown Speaker  1:08:17
+city, county, state that you could populate.
+
+Speaker 6  1:08:24
+I mean, it's one way to go about it. I don't know that I like if we if you populate the ship to if you populate the ship to address, well, then whenever you come along and ping sales orders, then you know, aside from the field not being editable, that still has to be resolved. That would work either that you just go ahead and straight up populate the fields based off of something. Is
+
+Matthias Miller  1:08:52
+there an advantage for record keeping on your end, one way or the other, between having the ship to blank versus filled in?
+
+Unknown Speaker  1:09:01
+Not that I can think of, no. Does
+
+Matthias Miller  1:09:08
+it make any difference between whether Josh or Seth does
+
+Speaker 6  1:09:11
+this? Well, what I was wondering is, is, why don't? Can we just, can we write a report that looks for the records, and we just do a one time stomp on this stuff, but we're
+
+Matthias Miller  1:09:22
+going to need something going forward.
+
+Speaker 6  1:09:26
+Well, okay, going forward, yeah, okay. Well, I mean, I guess if you if, if, going forward we, we, I'm ideally, Josh would stump this as part of the incoming compass stuff, income, incoming compass data.
+
+Matthias Miller  1:09:41
+So what you want, ideally, Josh, to do is take the dealer address
+
+Unknown Speaker  1:09:49
+and
+
+Speaker 6  1:09:51
+no, based on, I would say, based on the dealer district. You the master builder for that district. You stop that address in, yeah.
+
+Matthias Miller  1:10:00
+Okay, well, in that case, this becomes a Josh thing.
+
+Unknown Speaker  1:10:07
+Does that sound right? Mark,
+
+Unknown Speaker  1:10:09
+yeah, I'm wondering, like in New York, we have do, are we filing? Are we breaking down
+
+Speaker 1  1:10:17
+chest sales in New York? We're just putting all that on,
+
+Speaker 4  1:10:21
+okay, yeah, all shows direct sales is going to the local the parent company state. Now maybe that's not correct, but that's what it's been
+
+Speaker 1  1:10:36
+so moving forward, we could say based on the dealer, since we only have three, I think, gens rectify and NC or, Oh, based on that stomping the ship. To address question remains, what do we do with historical older dealers? And I think, I mean, there's not that many of them. Could we go in and could we? Could we create a report and just manually have someone enter the ship to addresses on all of the older ones? But
+
+Matthias Miller  1:11:13
+if, in spite of district in the in the master builder, then you handle historical dealers here, we're going to go look at Indiana. We're going to Indiana. We're going to go find Master Builder for Indiana. We're going to stop in that address. Everything's fine.
+
+Speaker 1  1:11:30
+Okay, you're saying you're going to do that historically, and then moving forward, Josh will will automate that on any new legacy sales orders coming in.
+
+Speaker 6  1:11:45
+The only, the only, the only downside of the cleanup is, depending on how you the possibility exists, you're going to sweep up into whatever you're for stomping in historical data. It's not exactly abundantly what is a sheds direct dealer. And so the potential exists that you sweep up in due current because we do have wholesale dealers that don't deliver by default, that there's not a good denotation between that and an SDI dealer.
+
+Speaker 1  1:12:21
+Well, but don't like we all SDI, okay, the legacy sales order thing. Could we use that as like, go find all legacy sales orders?
+
+Speaker 6  1:12:33
+Yes, they would. Sorry, you are correct. It would be all legacy sales orders.
+
+Speaker 1  1:12:37
+So you basically write a report for all legacy sales orders that we have in this correct
+
+Unknown Speaker  1:12:43
+separate them per
+
+Speaker 1  1:12:47
+master builder district, and use that address populate them. And then, I mean, we could do that. And if, if that's the easiest, I mean, would it be an option to make that, that process part of the monthly sales tax calculation, rather than going to Josh and having him try to for new orders ongoing? So this is the cleanup. But then moving forward, when we calculate sales tax. Could that be the first macro that runs where it's just
+
+Unknown Speaker  1:13:28
+take all legacy sales orders
+
+Speaker 1  1:13:34
+and stomping the addresses and now run sales tax? I
+
+Unknown Speaker  1:13:44
+Let's, let's
+
+Unknown Speaker  1:13:46
+do this first, and then we can look at that.
+
+Speaker 6  1:13:55
+Matthias use a, use a column of so Id not so num ID, I
+
+Unknown Speaker  1:14:04
+or I want
+
+Matthias Miller  1:14:08
+it for the import, but Yeah, gotcha, so let's also add the
+
+Unknown Speaker  1:14:15
+so
+
+Unknown Speaker  1:14:22
+to see. Display address or address display, I'm not sure which it is.
+
+Unknown Speaker  1:14:29
+Oh, good point.
+
+Matthias Miller  1:14:41
+And then and the accounting district would be the right district to use right well, actually, you might not have that
+
+Matthias Miller  1:14:56
+building builder district or the so districts. There's
+
+Speaker 6  1:14:59
+also s. A district. You can use it as an so district if you're on the sales order level.
+
+Matthias Miller  1:15:03
+But don't you want? Well, which one do you guys want?
+
+Unknown Speaker  1:15:08
+They should have won.
+
+Speaker 1  1:15:19
+There is a chance that we have for the builder, for Indiana to build something that Ohio has paid for. But, yeah, yeah. But so what you have here is,
+
+Unknown Speaker  1:15:37
+okay, so here is sorry, cranking.
+
+Matthias Miller  1:15:43
+So you're all the Indiana ones.
+
+Matthias Miller  1:15:53
+And some of these cases, we're going to be stumping over
+
+Unknown Speaker  1:15:59
+old now. Yeah, sure.
+
+Speaker 1  1:16:00
+So the ones coming in that we're building for customers already have an address, some of them, like the current ones, but we're just stomping over those,
+
+Matthias Miller  1:16:12
+right? Which means you lose your customer addresses. We could limit this to, we could limit this to no
+
+Speaker 1  1:16:28
+we want to stop over them, because otherwise we're going to be reporting in South Carolina and Georgia, in Florida or whatever, in all kinds of great I mean, I think that's,
+
+Unknown Speaker  1:16:41
+that's correct.
+
+Matthias Miller  1:16:43
+Okay, so the final word on which district is, what accounting district or just invoice district, like, if it was built Do you want the district It was built in, or the district it was it's going to hit accounting in the district It was built in? You built in. So do you want this to be
+
+Speaker 1  1:17:08
+parallel? No, it's going to hit accounting in the district It was built in.
+
+Matthias Miller  1:17:13
+If you have a building built by Hang on, let me make sure this is Yeah,
+
+Unknown Speaker  1:17:20
+let's do this.
+
+Unknown Speaker  1:17:22
+Let's find A real example. I
+
+Unknown Speaker  1:17:47
+potential like I
+
+Unknown Speaker  1:18:11
+I have no idea. Well, while that's running, there it goes. Okay, so
+
+Matthias Miller  1:18:16
+let's do this, sorted
+
+Unknown Speaker  1:18:22
+through the sample. All right, so the
+
+Matthias Miller  1:18:37
+last time this happened, it looks like this hasn't happened in 2024 so pragmatically, it's not an issue. But we have a case here where
+
+Unknown Speaker  1:18:49
+it was
+
+Matthias Miller  1:18:52
+built by Pleasant Valley, sold by the doc doctor
+
+Speaker 6  1:19:00
+I would call, I would say the doc doctors probably not, does not have a correct district, probably Sure. So high probability.
+
+Matthias Miller  1:19:12
+Practically speaking, 2024 there is no practical implication for it, because they're all aligned. And even if there is, I would make the argument that you still want it to match whatever it's hitting an accounting
+
+Speaker 1  1:19:26
+agree. So, so you're, you're saying you can just, but you can just override or any addresses that are existing, or any that are flanked, just populate those, and then the ping wall will work. Yes, then
+
+Matthias Miller  1:19:45
+we should be able, we should be able to do the cleanup. Well, the ping won't work for tax exempt, so that has to still be fixed. Sure. Fix
+
+Speaker 1  1:19:52
+that, do this, and then we should be good to go. Now, moving ahead, what's best? Is it best for Josh to just start stopping these at. In as they come in, or should, should this stopping in these addresses on legacy sales order? Should that be part of when you go to calculate sales tax?
+
+Matthias Miller  1:20:14
+I would just have Josh do it. I mean,
+
+Speaker 6  1:20:21
+okay, the the only, only argument I make against stopping in the addresses and putting this shifts direct as a part of we, I don't remember what our, our tax jar account actually allows for, there is, there's a limit to the amount of things that we can do. Oh, so, for historical data, I would, I would vote to have to fill the sales tax fields accordingly, right? And I know that when, when Josh went to look, he was unclear when, when we started doing this whole ping thing as to what our what the level of our tax jar account actually gives us so but it is three separate tax jar accounts. So I don't, I don't know if it's an issue or not. Well, we're
+
+Matthias Miller  1:21:07
+not going to be calculating more than October.
+
+Speaker 6  1:21:11
+Yeah, but going forward with, with, if we're going to start calculating for every single, if we're going to ping for every she's direct building. I mean, we're the likelihood that we're going to, you know, 2030, 40% more pings than than we're currently running. That's
+
+Matthias Miller  1:21:25
+true. So we could let me that's something that Seth can do, if you guys would like to I guess the question is, wouldn't it make more sense to find out how close we are going to hitting our API quota. If we're way under it, we don't care.
+
+Unknown Speaker  1:21:51
+I'm trying to log in to see if I can find this.
+
+Speaker 6  1:22:00
+Well, this is fun. Their page doesn't work. Yeah,
+
+Unknown Speaker  1:22:08
+that's That's great.
+
+Unknown Speaker  1:22:09
+No, not really
+
+Unknown Speaker  1:22:13
+too close to the election. Yeah.
+
+Speaker 1  1:22:22
+No, there's a very single Diane. I keep seeing that name time and again.
+
+Unknown Speaker  1:22:28
+It's kind
+
+Speaker 6  1:22:31
+of crazy when you go to a rather large size company and you hit log in and you get this page isn't working. App, dot tech star.com, redirected you too many times. Try deleting your cookies. Okay, fine, but I like cookies.
+
+Unknown Speaker  1:23:02
+Well, so we're
+
+Unknown Speaker  1:23:12
+be nice to know which way to go with this
+
+Matthias Miller  1:23:16
+well. So there's a few ways to do it. Well. We're already, you know, pushing hard on sales tax, just don't ping and field it. That's option one.
+
+Unknown Speaker  1:23:28
+It seems to me,
+
+Matthias Miller  1:23:32
+I would be a fan of not. Seems like unnecessary complexity to me, to say if we're going to be well within our quotas,
+
+Matthias Miller  1:23:49
+what is my rate limit?
+
+Unknown Speaker  1:23:53
+Do you have any idea which
+
+Unknown Speaker  1:23:58
+I think we're paying 1100
+
+Unknown Speaker  1:24:00
+a year, yeah, that
+
+Unknown Speaker  1:24:02
+sounds right.
+
+Unknown Speaker  1:24:04
+So is that a
+
+Unknown Speaker  1:24:12
+How much does it cost?
+
+Matthias Miller  1:24:16
+1100 that would be the professional plan. I mean, 10,000 API calls a minute. Seems like we're not likely to hit that in a month.
+
+Speaker 6  1:24:30
+That sounds that number sounds awfully high, but whatever,
+
+Unknown Speaker  1:24:33
+that's funny.
+
+Speaker 6  1:24:39
+I don't know if we, if we hit that, I'm, I'm all in, man, this is, this is,
+
+Matthias Miller  1:24:48
+I mean, I don't think we should do it. And if, if you guys start hitting limits, and let's fix it, sure I like that
+
+Speaker 1  1:24:56
+approach. So what you're saying is, you. You stomp in historically for the historic ones, you stomp in the addresses and fix the tax exemption thing, and then we're all good to go. And then that will get us through through October, and then we'll have Josh do work to stomp in those.
+
+Speaker 1  1:25:34
+Yeah, and if you would run that Friday morning that would i
+
+Speaker 1  1:25:53
+Okay, early as a member. Well, that's why they
+
+Matthias Miller  1:25:56
+would run in front. Oh, gracious, right. Well,
+
+Speaker 1  1:26:00
+wouldn't that be great, like you need to wait till the month is closed, or till the month is done.
+
+Speaker 4  1:26:05
+You're saying to run it now. I thought you were going to ping tax. Joe, nevermind. Well, we're
+
+Matthias Miller  1:26:10
+going to have to wait until November to pay tax anyway, because of I'm guessing. Oh, okay, but your wholesale locations aren't I mean, that doesn't matter. Your jurisdictions aren't going to change. No. Did we actually test this on?
+
+Matthias Miller  1:26:40
+Did we test this on an actual one.
+
+Matthias Miller  1:26:47
+So here we don't have the percentage rates. We ping, we save.
+
+Unknown Speaker  1:26:53
+Oh, come on,
+
+Unknown Speaker  1:27:00
+let's do this.
+
+Speaker 3  1:27:06
+Wait, didn't you? Hadn't you hit ping, it should let you save. If you had ping, hit, I'm confused.
+
+Matthias Miller  1:27:13
+It did not let me save.
+
+Unknown Speaker  1:27:16
+Let me try it. So, hit, ping, hit, save,
+
+Unknown Speaker  1:27:21
+evaluate. So paying or whatever it is,
+
+Unknown Speaker  1:27:24
+yeah, it's true.
+
+Matthias Miller  1:27:41
+This won't allow me to ignore existing errors. I was able to
+
+Speaker 5  1:27:53
+run it from the report. So Debbie. Debbie drops out of the list.
+
+Matthias Miller  1:28:08
+Let's just try running these five for fun to see if this
+
+Unknown Speaker  1:28:19
+editable. Okay, just
+
+Speaker 3  1:28:23
+the validation was just missing checking pings. I thought we want to, don't we? Like if we don't checked ping? Yeah, I thought I had had it in there, but guess
+
+Matthias Miller  1:28:47
+so, can you tell me why this one? Oh, it's complete.
+
+Matthias Miller  1:28:58
+All right, so this case, in this case, then how do you guys want to handle things like this?
+
+Unknown Speaker  1:29:06
+Not a legacy that there's no ship to, or does this actually work?
+
+Speaker 7  1:29:16
+This is going to be fun. Is this miscellaneous sales orders. Yeah, just
+
+Unknown Speaker  1:29:22
+hit the same as billing,
+
+Unknown Speaker  1:29:25
+right? No, it's,
+
+Unknown Speaker  1:29:30
+if it's miscellaneous sales order where they're
+
+Unknown Speaker  1:29:37
+now, what? What criteria are we using for? No, you're right, but
+
+Speaker 6  1:29:45
+if the missing sales order is done through the configurator, all it's going to do is fill the bill to address because we're figuring that we're not actually delivering it, which in most cases you could. It hit the same as billing to copy all the bill to information down the Shift to and then ping.
+
+Matthias Miller  1:30:06
+I mean, so technically, I should be able to do this
+
+Unknown Speaker  1:30:08
+and then, and then ping and save.
+
+Unknown Speaker  1:30:14
+All right, well,
+
+Matthias Miller  1:30:18
+in most cases, normally, I can't now, but, I mean, but how, how are you going to want to do this? Going handle this? Going, okay, sorry, I'm fine. Going late, but if you guys need to wrap it up, I know we're over time. This is taking quite a bit longer, so
+
+Speaker 1  1:30:39
+we do need to wrap it up here on our side. So, okay, we're we've got another meeting scheduled Monday. Is any of this? I guess? Do we need to make so so we have we know what we need to do on everything but miscellaneous sales orders Correct? Or we don't have a shipping address
+
+Unknown Speaker  1:31:04
+correct,
+
+Matthias Miller  1:31:12
+and we can, we can do a workaround for miscellaneous sales orders to copy if, well, you guys need to figure out and, yeah,
+
+Speaker 1  1:31:23
+send through an ID support so that we can see which which ones are blank. And then we need to figure out what we want to do with and Dwayne as well. Like, yeah, then we'll, I mean, is that good if we, I guess if we would have an answer for you before end of the week. You could also include that in the update over the weekend, right? It would be ready to go running.
+
+Unknown Speaker  1:31:46
+Yeah,
+
+Unknown Speaker  1:31:49
+let's we'll
+
+Speaker 1  1:31:52
+take a look at that report, try to figure out what needs done on our site and let you know probably Thursday, Friday. Was that good?
+
+Unknown Speaker  1:32:03
+Yep, okay, good, awesome, good.
+
+Matthias Miller  1:32:07
+Thank you. Yep.
+
+
+Transcribed by https://otter.ai

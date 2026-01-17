@@ -1,0 +1,467 @@
+Unknown Speaker  01:17
+Morning. Good morning. Good morning, Ben. Good morning.
+
+Speaker 1  01:45
+Matthias we got this fancy receive payments page up and it's looking pretty fantastic.
+
+Unknown Speaker  01:51
+Good.
+
+Unknown Speaker  01:56
+But yeah, you're right. You didn't need a big screen.
+
+Unknown Speaker  02:02
+Yep,
+
+Unknown Speaker  02:03
+that works well.
+
+Unknown Speaker  02:07
+Good that you're
+
+Matthias Miller  02:15
+alright. I guess by way of update, I don't know that there's a whole lot I probably should have pushed an update last night, we could have taken a look at some of the accounting impact stuff that we've done, I did not do that. So there's not a whole lot to show off. But I'm working on multi sales order payments, right now should have that done. And then we're also targeting check printing process to be done by end of day, we might might have some questions for you who? Predominantly around how you set the primary payment method for vendors. I guess it could be as simple as if they had bch information? Well, I don't know we can talk about that. Or the via the default payment method, and then what happens when you want to change the default?
+
+Unknown Speaker  03:17
+I think I think that's probably the biggest.
+
+Matthias Miller  03:22
+Yeah, the biggest thing, I think the deposit process and the multi sales order payment process is gonna be pretty similar in terms of how it
+
+Unknown Speaker  03:30
+functions. Yeah. Okay.
+
+Matthias Miller  03:38
+And then, yeah, after the update goes live, I'm gonna have to make some changes
+
+Unknown Speaker  03:42
+and
+
+Matthias Miller  03:45
+pushing, pushing this stuff into accounting. To get that we can kick that off and run it. We also are generating some errors. And so once I've got my head above water, probably sooner rather than later, it'd be good to have some kind of way to bring transparency into that for you guys. And we can take a look at what what are things that we need to clean up so that we can cleanly push stuff across into accounting. So the suspect you're seeing is not making it across right now. But that's more like a something to put on our near term radar. Completely unrelated, not really a current priority, but it looks like Stripe has bank account integration for bank transactions that came out of beta recently, or sometime in the last who knows when so once we get to that, that's an interesting, interesting look for potential integration. So I
+
+Unknown Speaker  04:54
+think that's
+
+Matthias Miller  04:55
+most of what I have. I vote to to take a look at the miscellaneous sales order. And then if we want to talk about check, well, I would probably have some preference for waiting until this afternoon to talk about checking in on workflow. But I'm willing to talk about it now, too, if it's better,
+
+Speaker 1  05:15
+just like some great questions on the reconcile that you might be able to help me with. So I went to reconcile that page. And there's a couple of things that, like, there's still a bunch that aren't showing up. But my reasoning, I went, and I looked for transactions that are not showing up on the reconcile just through a transaction search. And the ones that I looked for, we're not there's nothing came up with that number. So that tells me that I think everything that is that is supposed to go to that account to be reconciled, is present. Now is there just be is there a way? Like what would be the best way to deal with the stuff that is not? In order to be able to reconcile these, like we can go to one of the things that I think is a reason for why they are not present, is because currently, Whitney is pulling a report out that says you know what vendors need paid. And so if a vendor has two or three invoices waiting to be paid, she could enter it into QuickBooks, and make one payment. So the bank statement says the check was for X dollars. And assist knows nothing that those two were connected. Those two, three invoices got thrown together in one check. So I could go to QuickBooks and find that check in QuickBooks and say, Oh, yes, it was three invoices. And I could look for those individual amounts. Possibly, if you entered it that way. Is that? Is that something that I could do? Or is there some other way that we can just quickly kind of have a way to find out if if stuff got put together here. And the other thing we can do is just wait till our payments thing is put together? And you know, once we run start running payments, then we'll Yeah, that will all play around with it.
+
+Unknown Speaker  07:29
+So thinking?
+
+Speaker 2  07:36
+Did we say if Josh can bring the when he does the vendor, he also asked that he shows the check number if he would show the check number.
+
+Speaker 1  07:45
+That would help. Yes. But currently, in order to show the check number, somebody's gonna have to have a way to enter it into CES.
+
+Speaker 2  07:55
+But I think Blaine would know for sure. But I think check number I think she paid she's saying this is a and then she's also entering payment method, like cheque number. I don't know if we have a quick way to see that. But we look at a few invoices that she would have paid and see if he entered that information. Because you're right, yeah, unless she enters that information.
+
+Matthias Miller  08:21
+Well, part of part of the issue too, might be that these aren't getting pushed across into
+
+Unknown Speaker  08:29
+accounting correctly.
+
+Speaker 1  08:33
+Transactions, that's only going to me what got pushed through accounting.
+
+Unknown Speaker  08:38
+Is that right? So
+
+Matthias Miller  08:42
+I say, Yeah, I would, I would expect to see what you should see is a line item for each invoice at this point, based on that it's currently functioning. Now, once we get to handling checks better, hopefully by Friday, then we're gonna have to have a way to pay multiple vendor invoices in the same check in which case that could then get pushed across a single accounting transaction right as the total number as a total check number. So So the real issue I think is is why are these not
+
+Speaker 3  09:21
+getting pushed across? And let me see what
+
+Matthias Miller  09:26
+I know that Josh's process has been failing
+
+Speaker 3  09:36
+create auto transactions for the PIO transactions invoice specified Pio ID does not exist.
+
+Unknown Speaker  09:52
+I mean, one issue that we have,
+
+Speaker 1  09:54
+yeah, that's one there that needs as part of that, too. changing those accounts that we didn't get to the other day when you were changing accounts payment accounts
+
+Unknown Speaker  10:14
+because that wasn't the other company
+
+Matthias Miller  10:18
+yeah so this one will so those those can't get pushed across
+
+Speaker 1  10:27
+yeah I was only looking in the ABC stuff so anything that's not an ABC account
+
+Unknown Speaker  10:36
+to get 189
+
+Speaker 3  10:50
+specific pod does not exist let's stick with that
+
+Unknown Speaker  10:59
+wind up moving forward everything incorrectly as far as we came into account so
+
+Speaker 1  11:05
+yeah, I figure if we try to make ABC work right and once we get the we'll just have to wait
+
+Unknown Speaker  11:16
+you're playing his game
+
+Unknown Speaker  11:18
+you go back and we said yeah oh everything back to nine one
+
+Unknown Speaker  11:21
+Yeah, okay. Yeah, yeah, I'll go back and get him I just had some time to do it yeah,
+
+Unknown Speaker  11:27
+I wasn't sure you'd go
+
+Unknown Speaker  11:32
+let me see if I can
+
+Unknown Speaker  11:45
+Mr case to be cleaned up as is woefully willfully
+
+Speaker 3  12:02
+mapping compass items Thank you very much. You know what, we're just gonna completely start over Alright, so we've got.
+
+Unknown Speaker  13:00
+Was
+
+Speaker 2  13:01
+hoping that something, Josh this morning said that ACH is things we had not realized but it requires to do it as an ACH, the contact has to have any address so he then added he added validation on the context was that if you have a contact and you add ACH information it says hey, by the way you need these two fields and so he takes the foot lane and we want to try it today. Sometime do another name another $10 So going kinda likes changing the test $10 transactions
+
+Unknown Speaker  13:50
+$2 transactions
+
+Unknown Speaker  13:57
+guys, Catholic but he believes it's working so
+
+Unknown Speaker  14:05
+let's see if we can do this
+
+Unknown Speaker  14:25
+we might have to.
+
+Unknown Speaker  14:43
+record ID is a number
+
+Unknown Speaker  15:15
+Isn't Working?
+
+Unknown Speaker  16:26
+Must be a massive for for ya yeah it's cranking a lot of stuff there we go.
+
+Speaker 3  17:58
+Not seeing anything here as to the check number that was an ACH
+
+Unknown Speaker  18:11
+there's somebody that would not be an ACH
+
+Speaker 2  18:20
+that's a checks and payment ID that's that's a check number right there 17 One three so while you could cross reference to the worldly in that range you could either think we were with this
+
+Unknown Speaker  18:40
+go back if we go back to one that was reconciled
+
+Unknown Speaker  18:43
+yeah search for that
+
+Speaker 2  19:00
+we see here which ones were reconciled you can't Can you see which were cleared on the reconciliation report or no on your CSV statement? You could see Yeah.
+
+Unknown Speaker  19:45
+Way to search
+
+Unknown Speaker  19:51
+Yeah, that's
+
+Speaker 3  20:00
+But there's no down for sure nor those
+
+Unknown Speaker  20:14
+two
+
+Unknown Speaker  20:23
+don't be that
+
+Unknown Speaker  20:31
+that's not that's the form
+
+Speaker 2  20:33
+of money 21 Yeah Okay that was that
+
+Unknown Speaker  20:42
+okay
+
+Unknown Speaker  20:44
+now
+
+Unknown Speaker  20:50
+Yeah
+
+Unknown Speaker  21:55
+download transactions go I didn't reconcile it
+
+Matthias Miller  22:02
+I might have deleted all your transactions or avoided them accidentally
+
+Unknown Speaker  22:12
+you're thinking you might have accidentally
+
+Speaker 1  22:18
+a whole time should have shown up because most of them were not even cleared so they wouldn't have walked away anyway
+
+Speaker 3  22:31
+alright so there's that alright that's weird i don't understand what it was because it's not able to see us we should
+
+Unknown Speaker  22:53
+with that
+
+Unknown Speaker  23:02
+I could just send them that so that he can do it
+
+Unknown Speaker  23:10
+that'd be fine why
+
+Unknown Speaker  23:21
+that was
+
+Matthias Miller  23:25
+unfortunately the sole
+
+Unknown Speaker  23:32
+maybe not
+
+Unknown Speaker  23:36
+that's why it took so long because it was avoiding all those transactions
+
+Matthias Miller  24:05
+so here it is. 121 58 It says it should be linked to NASA but it looks like everything was created here
+
+Unknown Speaker  24:24
+a little confused why did the
+
+Unknown Speaker  24:33
+okay this guy feel
+
+Speaker 3  24:46
+specified P or ID does not exist. Let's try this. Let's go ahead and make this thing right now.
+
+Unknown Speaker  25:14
+Thanks
+
+Speaker 2  25:34
+I think but I'm not convinced that the ID column for your vendor invoices is same as no it's not as the Blue Monday I think they just put that in there any other city we've got the vendor invoice ID the same thing there
+
+Speaker 1  26:02
+because this probably was never gone through the system it was Yeah.
+
+Unknown Speaker  27:28
+Okay well that one was successful with warnings
+
+Unknown Speaker  27:39
+there is a Pio out there somewhere
+
+Unknown Speaker  28:01
+structures
+
+Unknown Speaker  28:19
+this one is
+
+Unknown Speaker  28:26
+this transaction needs to be linked to an asset
+
+Unknown Speaker  28:34
+okay I remember talking about this one and we said well we don't have I think we were just going to get it needs to be linked to an asset because of the GL account selected right?
+
+Matthias Miller  28:49
+Well, it would like it to be yes because of the GL account selected
+
+Speaker 2  28:54
+I think we'd set we're just going to switch the GL account to on this one because what was because we don't have a good way to okay, this we should select we said we'll just expense it immediately because this is kind of a it's a flooring stretcher that they're buying that they're going to resell to other shed builders potentially. So it's it's an asset for sale as its finished goods but we are finished goods doesn't track it work very well. So we said let's just select GL accounts. Oh, it was cogs custom cogs something not sure what options we have there. So if we could just change that would that make that okay, but cost of goods sold? Isn't that what leads to like?
+
+Speaker 3  29:51
+That's where it gets switched over to the PIO. Eyes the PIO
+
+Unknown Speaker  29:58
+OD is the POS they'll have
+
+Unknown Speaker  30:02
+Receiving the PMs
+
+Unknown Speaker  30:12
+because the skew
+
+Unknown Speaker  30:18
+it can we change it on the PIO? Does it scale right that is a skew determined
+
+Unknown Speaker  30:27
+I don't see a way to write it
+
+Unknown Speaker  30:30
+so if we would change the skew it would
+
+Speaker 2  30:38
+we can we can do that. Can you show drew where to do that, we'll just do that as soon as we're done with this can't give me the just just print this, this email is to me and then I'll take care of and have it changed. Will that make the error go away?
+
+Matthias Miller  30:57
+Yeah, it's just a warning at this point. But yes, it'll clean it up. We'll have a good way to say we don't we don't want to hear about this again.
+
+Speaker 2  31:07
+Okay, I'll get it cleared up, I just need to ask Garin Watsky to use to make so that it puts it to the right GL account he could just walk between dollars to get that cleaned up so
+
+Speaker 3  31:31
+let's get back to this this is done now All right. Specified Pio ID does not exist new record 189.
+
+Unknown Speaker  32:26
+Ordering
+
+Unknown Speaker  32:39
+I think it's
+
+Unknown Speaker  33:05
+these are errors
+
+Unknown Speaker  33:05
+that are occurring in trust for shoulder so
+
+Unknown Speaker  33:16
+the errors are these when it's trying to push over to county
+
+Speaker 3  33:21
+yes okay and this is would explain why some of these are not
+
+Unknown Speaker  33:40
+I'm so confused
+
+Speaker 3  34:10
+alright so specify PID so then three transactions teaching repeating groups Well, Josh why why are we doing this
+
+Unknown Speaker  34:33
+make no sense to me. I'm
+
+Speaker 3  34:46
+not like the industry, the skin and tree
+
+Unknown Speaker  34:56
+Okay,
+
+Unknown Speaker  35:16
+Here's the short answer.
+
+Matthias Miller  35:19
+Short answer is there's some stuff going on that I gotta figure out if it's just leftover or if it's.
+
+Unknown Speaker  35:45
+Let me make a FreeNAS to myself. Let me troubleshoot it, and
+
+Unknown Speaker  36:08
+I think these are all
+
+Matthias Miller  36:11
+let me let me research it and see what's going on. But the bottom line is there's some vendor invoices that are not making it across into accounting. And I don't have an exact
+
+Unknown Speaker  36:23
+count.
+
+Matthias Miller  36:27
+Well, actually, yes, I do. 35 of them are not making it across into accounting. Okay, that would make a big difference. Like, something you might want to look at?
+
+Speaker 2  36:45
+Yeah, you want to take a quick look at miscellaneous sales orders yet? Are we? Yes. So we entered this one yesterday, just to test my we were just testing the process between builders and Dwayne's office what we need. So Dwayne enters this. Three things that he encountered that we skipped, we need one is paying tax jar interacted with from Sales Order Detail screen, he says if it doesn't paint tax jar unless you come into the configurator it to get to sales tax rate, so he just had to manually enter, which is not. Yeah, I don't know if that makes sense or not.
+
+Unknown Speaker  37:41
+That's a Josh question.
+
+Speaker 2  37:45
+Okay. Can we just take that to Josh? Or I guess
+
+Matthias Miller  37:54
+I would just completely take that up with Josh, if you don't mind. Fine.
+
+Speaker 2  38:00
+We'll do and then the ability to attach original document like we do for entering handwritten said sales orders. Maybe this is a Josh thing as well. I think a lot of those attachments are being pushed to S, is it s3 Because there's cheaper storage or just makes more sense?
+
+Speaker 2  38:26
+Or is that your job?
+
+Matthias Miller  38:30
+I would probably I would push it to Josh at this point. I mean, I could chase it if necessary, but
+
+Speaker 2  38:41
+no, that's. And then the last part, we talked about this and I'm not sure where we ended that at okay. And we left that with saying this is not priority. We'll just live without the secondary noise number. Is that what we said? Okay.
+
+Matthias Miller  39:15
+Must be completely misremembering, I thought I actually added the field but apparently I hadn't.
+
+Speaker 2  39:24
+Well, I think now that we're talking about it, we'd said we'd finally said Well, you said it's not real easy to add.
+
+Unknown Speaker  39:32
+It's
+
+Speaker 2  39:36
+we finally said let's just drop it, everybody's going to have to be trained to always reference the Assist system generated sales order invoice number, but I think it would be worth revisiting that I mean, how hard would it be to have a field right here so More, and then having it go up on the place where we need it most is on the the recording payments. field. So if you record payment? Yeah, yeah, we're gonna have that receive payments that we have that pain, like just simply add another column here that shows them if
+
+Unknown Speaker  40:30
+written Id be Yeah.
+
+Speaker 1  40:35
+I think there was something with we could have the field, but it wasn't going to show it wasn't going to be used for determining
+
+Matthias Miller  40:43
+something. Well yeah the big, big issue was, I think the thing that as I recall, I didn't want to do was be able to match to search by handwritten ID without having a separate field for handwritten ID it Yeah, the likelihood we can't guarantee that there won't be collisions between between IDs. So do you really want somebody searching for 17634 and accidentally hitting a handwritten ID that they buy? I don't know. seems weird to me. So I'm not opposed to that.
+
+Speaker 2  41:27
+You may have a second adding another field for that specific look for only for times when you use it.
+
+Matthias Miller  41:37
+Yeah, only I don't mind having a second field and if we want to be able to search by handwritten ID I don't mind having a search for handwritten maybe if it's separate from the primary from the artist ID
+
+Speaker 2  41:48
+and I think that's how it should be first you would always search by the assist ID if you can't find that thing. Dig deeper and say wow okay, let's see. You probably recognize it and say well this this is a handwritten ID so go search go search that field
+
+Speaker 3  42:10
+I was sure we had something somewhere for this but maybe we
+
+Unknown Speaker  42:29
+okay oops
+
+Speaker 2  42:39
+Okay, so the last one is is Matthias the first year Josh dash items. Yeah. Okay, well good. I think we're we're pretty close to doing that. That's pretty exciting. That pushes all sales orders, channels, all sales orders, the same process. So that will have you know, or AR or deposits receiving payments it'll all go through the same process good.
+
+Speaker 4  43:16
+Is the handwritten Sales Order ID is it numeric or alphabetic alphanumeric
+
+Speaker 2  43:20
+is going to be alphanumeric. And unless you make a strong case for to just be in there
+
+Unknown Speaker  43:28
+you know you can do whatever you want with it.
+
+Unknown Speaker  43:31
+So probably the select people doing what they're doing now. Whatever logically makes Yeah.
+
+Unknown Speaker  43:44
+How much work are we adding to do this? Is this
+
+Speaker 4  43:50
+perhaps I don't know. 30 minutes half an hour.
+
+Speaker 2  43:56
+Perfect. Good. We will talk at one one thing I hope to do for that is review the last two days worth of review sales orders needing invoicing those lists I there was Yeah, they look to be pretty much I didn't see any glaring discrepancies, any discrepancy. So I'm gonna take that process live as soon as we can. But yeah, I'll have that reviewed by then. And then the other thing I talked to Josh this morning the SBI visuals inventory thing is all fixed or in process to be fixed. So which makes it that just rec portion? The orbs Greg be on that invoicing process. So
+
+Unknown Speaker  44:48
+good. Good. Okay, thank you. Awesome. You bet. Thanks man.
+
+
+Transcribed by https://otter.ai

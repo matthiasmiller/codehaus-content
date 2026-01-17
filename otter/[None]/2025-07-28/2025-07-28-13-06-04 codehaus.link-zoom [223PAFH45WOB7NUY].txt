@@ -1,0 +1,1460 @@
+Unknown Speaker  00:37
+Record in progress, Howdy. Howdy, hey, howdy, you at home?
+
+Unknown Speaker  00:48
+Yep, I'm home. I
+
+Speaker 1  01:17
+we are wondering if we should rename the RTO company level. Now that we support RTR proposing rental company as the Name level,
+
+Unknown Speaker  01:30
+where are we talking about? It's going i
+
+Speaker 1  02:00
+i don't have a problem with that. If he wants to do that. What
+
+Unknown Speaker  02:22
+are your thoughts? Call
+
+Unknown Speaker  02:25
+it rental company instead of RTO company.
+
+Matthias Miller  02:30
+I mean, it's probably technically more correct, but yeah, I agree.
+
+Unknown Speaker  02:37
+Yeah, I'm fine. All right. Should I just respond to that?
+
+Unknown Speaker  02:41
+I'm editing.
+
+Matthias Miller  02:51
+All right, so order of priority today is I'm you?
+
+Unknown Speaker  03:12
+Where do you want to start?
+
+Speaker 1  03:18
+I want to start with a non related question. So how does, how does investor tools handle? This is, this is a question related to assist, but I want to, I'm asking it because we're going to run into this in the future. So you have, you have clients that have a bunch of user reports, and you go do a fairly decent change, and you nuke some macros. You change the macros. These macros are used in user reports. User reports break. How do you How does investor tools manage that with clients. I
+
+Matthias Miller  04:02
+mean, there's some level of expectation that you're somewhat on your own with user reports.
+
+Speaker 1  04:08
+But okay, I get that. No, I understand that. But do clients just reach back out to investors tools and say, hey, you know, this is what I had. What did you change? Like? More
+
+Matthias Miller  04:21
+likely they'll take whatever report they started with, do save as make the changes again, and
+
+Unknown Speaker  04:27
+I'll just go from there. Okay,
+
+Matthias Miller  04:36
+but I mean it's also we have just macro rename, or if you're adding a parameter to macro, then you can, I mean, even with parameters, if you you can, you can have the update automatically add parameters for you.
+
+Speaker 1  04:56
+Okay, here's the scenario. Here's the scenario. Um. So Josh learns a great idea, and I agreed that we should go through some of the assist records and clean up stuff we don't use. Well, anytime you say you don't use something, you just don't remember that you're using it, it's most likely the case. And so we went between,
+
+Unknown Speaker  05:22
+say again, you mean going through user reports.
+
+Speaker 1  05:25
+No, this was actually going through detail screens and and so in particular, there was a company record details, a company record in assist that there was some old leftover fields. I had been using them for something that North Carolina wanted, and I should have moved it a long, long time ago, but it brought up this question to mind. So let's say, for example, if I'm doing this in the future, like we're going through a fairly decent sized rework of something to fix. Something like, do you ever publish like, hey, this, you know, if you were using x macro in in user reports, we're now, you know, doing this other thing,
+
+Matthias Miller  06:14
+mean, if it's breaking change, then yes, there's a whole release note process and compliance and QA and all of those people will meticulously review those to make sure that nothing,
+
+Matthias Miller  06:32
+yeah, there's no breaking changes.
+
+Speaker 1  06:35
+So you so investor tools does kind of like a release notes of saying, Hey, this is changing there. Here's what's happening.
+
+Matthias Miller  06:42
+Spire, beware. There's a it's typically a single person team, but there is a team, a documentation team, and one of the responsibilities, I don't know how big the team is, maybe just maybe a handful, if it's if that, but their their responsibility, every single change has to be, has to be tied out to some kind of documentation outcome of some kind. Is it an internal release note, public facing release note, which products does it apply to? Etc?
+
+Speaker 1  07:16
+Yeah, because I mean, granted, I don't. I'm assuming that there will be RTO companies out there that will get as prolific with user reports as as we do. I'm sure there will be. And I guess if they get that prolific with their user reports, then they probably have the knowledge to know how to go figure some of this stuff out as well.
+
+Unknown Speaker  07:40
+Potentially, I don't know,
+
+Matthias Miller  07:41
+yeah. I mean, some of it comes down to developers as well. I mean, it's, I mean, you should know when you're I mean, developers should just think about that as something they do. Think about the fact that there may be user reports that reference this and code accordingly. Now, if you completely take data away, then, well, what can you do but, but even if you do, if you, if you replace one field with something else, you can still add a migration that says or you can even still keep the old macro or the old or replace the field with a macro the same name that gives you the exact same values before it just
+
+Speaker 1  08:27
+so is, am I correct that whenever you do, whenever there's an update done, obviously there is some sort of search and find and replace method for doing standard reports. But there's the same capability you don't, either you don't have or you don't do for user reports potentially out there. So obviously, obviously that there's some kind of process or system in place for standard reports to evaluate them all reports that may be impacted by the change, right? And I don't know is that some type, like, find a replace type thing or, like, how does that work?
+
+Matthias Miller  09:10
+Depends on the type of change. But it's some kind of thing like, again, the automatic types of changes. It's just you make the change and make sure that everything looks sane. And then, typically, there's nightly validation running that makes sure that nothing breaks. And then, yes, if it's more like one off changes where it's not automatic, it's it is Search and Replace, and where do we use it? And well, this should become that, etc,
+
+Speaker 1  09:41
+right? All right, moving on. Where do we want to go from here? One thing that I was thinking about over the weekend, that we have not talked about yet in relation to contract records, is, well, two things, one is. Yeah, and I don't know if this can live with the contract records, gonna live on the cusp the contact record, but have we, we haven't really talked at all about how we're going to field contracts on the contact record, which is not a big deal, because that's driven by the contract record, which we have spent a lot of time working on. And one of the things that we have not talked about on the contract record is how we're going to manage due dates and next due dates and editing of due dates and, and I don't know is that, because we did all that work on the contract record, I'm wondering if we want to kind of go back around to that and handle this thing so that that's not a surprise. You know, a sneak attack on on set at Some point
+
+Unknown Speaker  10:44
+due dates work As expected. Yeah, okay. I
+
+Unknown Speaker  11:21
+I'm yeah, I'm so I'm
+
+Unknown Speaker  12:00
+um, how does how does it work
+
+Unknown Speaker  12:13
+in practice? So
+
+Speaker 1  12:17
+there's two ways that companies work. Some some companies work by a cycle. In other words, they keep everybody on a first and a 15th. Most of us have switched over to due date dependent, no, sorry, payment dependent next due date. So in other words, customer calls in, and if they, if their if their contract started being due on the first, if they paid the exact monthly rent, then obviously they will stay on the first as long as they pay the exact amount. But people being who people are often, you know, they may pay less, they may pay more, and so however, however much they pay depends on where their next due date falls. So if I pay three quarters of a payment, then you would end up, you know, several days short of the first if they were doing the first so, and I don't, however, you want to break up. I don't quite know how, how you would do this mathematically, but basically, based on the dollar amount paid, somehow you're breaking up what a monthly payment equates to from a day time frame. And so depending on how much they pay, you know, it's going to push them out X amount of days into the future. Now that being said, that date needs to always be editable, because there are people that say, I want to stay due on the first and if you come up. Let's say a day or so within you know, let's say the first of the month will oftentimes either move them slightly forward or slightly backwards to keep them on that first okay. Now RTO Pro does this thing where it actually runs reporting on this and like, if, if you are moving people ahead in order to stay on a due date cycle, and this process of moving due dates is, is something that will do, like, even, even when a customer calls in and says, look, if I pay a payment and a half, you know, what will it take to get me back on track? And sometimes, you know, we'll we'll be generous, and we'll say, Okay, well, if you make a payment and a half and you do that for the next three months, we'll automatically put you back on on current so there is this moving a due dates now RTO pro tracks that and calls. It free money. And they have a free money reporting thing where, if you move due dates based on however, that calculation works. And this is where I'm not as good of a mathematician as you're ever as you are. Is like it figures out exactly how much money you gave away based on due dates, due date movements. Does that make sense?
+
+Matthias Miller  15:21
+Gave away or made theoretically correct, like if they would have been due on the third you would have been bringing around the site on the first. So on the cycle payments are those always 15th and 31st or there can maybe be any number of days. I 90s, 16th or something like that.
+
+Speaker 1  15:48
+So, again, I don't know how the math works on this, but like if, if I'm a lot of times, we'll start a contract out on the first a customer will overpay or underpay, and so therefore that target of the next first of the month is is missed. Now, how that? How that calculates based on, you know, some days have 28 months, or some months have 28 days, and some months have 31 days. And, you know, like all that timeframe, the customer like a customer thinks about a certain point in time being due, and most customers like to hit that and stay on that, and they consider that current, or they consider that on track, but based on what someone pays like if I'm due, if I'm doing the first And I overpay, and I end up now due on the fifth of the month, well, if I come in and I pay exactly one month of rent, it's going to move me to the fifth of the month in the next month. And if I do that again, it'll move it to the fifth again. But if I were to pay slightly more than that, then I might end up on the seventh or the eighth. You follow me, yep.
+
+Matthias Miller  17:08
+So do you want to support? I guess what I'm trying to get after is, do you want to support people who do cycle billing to what who do cycle billing,
+
+Speaker 1  17:20
+where it so, how would that work? If I said my company supports a first or the 15th and someone overpays or underpays, like, are we? Are we suggesting automatic movement, and do we just round up between the first and the 15th. Like, if like, you can move between the first and like, Okay, let me back up what we used to do a number of years ago is we used to say, like, we support a first and the 15th. This was back when we used to print out paper and we used to stuff them all in envelopes, and we used to mail them. So we kept everybody on a first and a 15th in order to handle just the physical work of mailing out invoice. We don't do we don't do mailing of invoicing anymore, and so therefore we don't support the first and the 15th thing anymore. We just let people end up wherever they end up now. But when we did the first and the 15th thing, we would always, if a customer overpaid, we'd say, well, you know, you ended up, you know, on the 10th. So we're going to move you to forward to the 15th. Or if they were on the 15th and they ended up, you know, just shy of the first well, we would move them forward. Or if they slightly overpaid, where they ended up on the 16th, we would move them backwards to the 15th. I um, so are you, are you suggesting? No, I really don't like if someone wants to manually do that as a company, they're welcome to do so, but they have to do it manually, right?
+
+Matthias Miller  18:53
+So we're not supporting the cycle due date. Thank you. That's what it was after. Um, I mean, because,
+
+Speaker 1  18:57
+because, then we have to get into this whole rounding conversation about which way do you round, and when do you round that way and and, you know, making sure it's done equitably, so that you're not, you know, you're not losing a whole bunch of money by doing so, because you're always rounding backwards, or you're always rounding forwards instead of backwards. And I don't know, I don't want to get into that conversation. Do
+
+Matthias Miller  19:17
+you mean my my job is? No, I mean my job, if you went, I guess
+
+Speaker 1  19:26
+currently, RTO Pro does not support such a concept, okay, if you wanted to, if you wanted to maintain a cycle, if we always did it manually.
+
+Matthias Miller  19:39
+So basically, what you want to say is given, given, how much people have paid, what is their current? When? What as of, what date were they current? And then their due date is one month out from that?
+
+Speaker 2  19:56
+That's right. Yeah. Uh.
+
+Speaker 1  20:17
+So like, how does that work? Like, if, if I'm if January 1 is my first due date, and you calculate the days between January 1 and February 1, and divide that by the monthly payment. And then, if they make exactly that, you go to February 1. But if you, if you, if you don't go to exactly that, you assign some dollar value to every single day, and you like, that's how many days forward they go. I
+
+Matthias Miller  20:46
+mean, couldn't you just do maybe this is too simplistic, total amount paid divided by monthly
+
+Unknown Speaker  20:56
+amount, turn into a date at a month or total amount I'm
+
+Unknown Speaker  21:24
+you have the
+
+Unknown Speaker  21:26
+here, actually, I want to try Something
+
+Matthias Miller  21:35
+like that. Okay, so you do something like i
+
+Matthias Miller  21:44
+Is it as simple as this? I
+
+Matthias Miller  22:32
+and if you go into the next one.
+
+Speaker 1  22:41
+So the simple thing so you would have basically three and a half months, that's with that, or three and a third months,
+
+Speaker 3  22:53
+the months until due four and three quarter, three and three quarter. Yeah,
+
+Speaker 3  23:03
+and before it's recorded until due. So then you have the whole months equals the months until do assign the partial months equals try equals modulus and months,
+
+Speaker 3  23:27
+and then do something like month, and can be contract start date, The whole month,
+
+Unknown Speaker  23:33
+assign the
+
+Unknown Speaker  23:40
+and then you do the initial date. Plus, this
+
+Matthias Miller  23:58
+isn't this might not be completely right? But
+
+Speaker 1  24:02
+can you, okay, can we build a spreadsheet so that we can go test this and so, so basically, I could, because what, it would be really nice if we could build a spreadsheet, I can hand this to Francine and say, Francine, okay, for the for several payments, let's test this logic and say, you know, here I've got customer, their due date is x. They paid x. And we go build, we build something that to make sure, because this is this has to be right, like this. It might be that simple. I
+
+Unknown Speaker  25:02
+Then we do something like this. Then
+
+Unknown Speaker  25:06
+we have, I'm
+
+Unknown Speaker  25:27
+okay, and then this would be something like assign B, and then we do something like this would be, I,
+
+Unknown Speaker  25:49
+This is too cumbersome. I
+
+Unknown Speaker  26:27
+The contract date you've got the the
+
+Unknown Speaker  27:07
+make it due date and next due date.
+
+Speaker 1  27:15
+Instead of contracting, make that due date and then your your last one last due date.
+
+Matthias Miller  27:36
+Well, and then here is the
+
+Speaker 1  27:37
+what is nbsp
+
+Matthias Miller  27:41
+non breaking space. So the question is, on the whole number of months,
+
+Speaker 2  27:54
+how do you deal how do you deal With I um, what
+
+Speaker 3  28:20
+does it look great. Full Months, partial months, I'm
+
+Speaker 1  29:19
+something like that. Wait, What did you just do? Did you just add it to my favorite?
+
+Speaker 2  29:24
+No, it's my favorites. Oh, that good. Okay. I was just like, what?
+
+Speaker 1  29:32
+Okay, so then I need to go test that, and then we just need to figure out how we're going to field it, and how you what that looks like, like the I think some of that workflow is going to be baked into taking a payment. But this is, this is good. I didn't calculate
+
+Matthias Miller  29:52
+the payment based on target due date. If you have this,
+
+Unknown Speaker  29:56
+say again, you can calculate
+
+Matthias Miller  29:57
+So somebody says, I want to have my due date on first. Oh sure, okay, well, that just go ahead and pay like 20 bucks more
+
+Unknown Speaker  30:05
+and you're good.
+
+Speaker 1  30:09
+I mean, some of those things would be kind of cool. The other one that would also be kind of cool is a checkbox that says, I today is 400 bucks. I'm going to give you 1500 but I don't want my due date to move. I just wanted to, I want the due date to move one month, and you just check it, and it just happens. And it would, you know, it pays the contract balance down, but it doesn't move the due date more than one month. The other thing that we're going to have to talk about at some point is when, like, when customers call in with a large amount of money, they, if the state allows it, you can take the excess and put it into security deposit account, and and how we're going to do that, because, for the most part, security deposit needs to be something that's locked. You can't edit it unless you're a, you know, pretty high admin level, but the ability as a user level to be able to add money to it or pay money out of it if the customer is requesting
+
+Speaker 2  31:32
+it. Good,
+
+Speaker 1  31:40
+sweet, sweet. I knew you'd figure that one out real easy.
+
+Matthias Miller  31:45
+Well, I mean the little nuance is really when it comes to choosing the day of month,
+
+Unknown Speaker  31:52
+which, like,
+
+Matthias Miller  31:55
+if you have, if your full month lands in July, the partial month takes in August. Do you use? That's not, that's a bad example. If, if you paid, in this example, if you pay, if three months takes you into February, and you paid another three quarter month, do you add? If you multiply two three quarters of 28 or three quarters of 31
+
+Speaker 1  32:28
+well and see that's, that's where I think we're going to have to get a little bit more nuanced in the calculations, because ideally, yeah, like I was saying, not every month it has exact same number of days. And so, you know, what are we? What are we breaking it down to. So how did you, what was your let me just go open this up and look At this again.
+
+Unknown Speaker  33:02
+I Okay, So walk me through this. How does this work?
+
+Matthias Miller  33:32
+Okay, so you have the monthly payment in the total paid. Patrick, so yeah, how much you pay divided by the monthly payment. Okay, then you turn that into a whole number in a fraction. So we paid
+
+Speaker 1  33:49
+right, right, and right there is where. How do you figure out how many days? Like, how many days does the fraction equal?
+
+Unknown Speaker  33:56
+So then this is three months, and
+
+Matthias Miller  33:59
+then where's that land, and how many days are in that month? Times? The partial month turn it into days. And so if it lands in the same month, it's right, but you may actually run into scenarios actually.
+
+Unknown Speaker  34:18
+Could you do the sum
+
+Matthias Miller  34:22
+the average number of days between this month and next, it's
+
+Unknown Speaker  34:30
+probably not right either.
+
+Speaker 1  34:33
+Well, I guess what's going on in my head is if, if, if you looked at, I don't know, can can you look at every single month like, depending on how far out IT projects, like, look at every single month in there and and then divide that by how much was paid. So you can actually turn that I don't know, no, that's not right either. I.
+
+Speaker 1  35:18
+Well, maybe it is okay, but if, if, but how? Okay, so, how does this How does this work? Then, how does it work? Then, if you did own a partial payment, like, if, if your your monthly payment is 400 and I paid 250 like, what happens? Then,
+
+Unknown Speaker  35:41
+where all you have is a fraction of a month.
+
+Unknown Speaker  35:44
+Why wouldn't you
+
+Unknown Speaker  35:49
+do this?
+
+Unknown Speaker  36:00
+And then you do,
+
+Speaker 1  36:19
+wait, wait, wait, wait, wait, it's easier than this. It's easier than this, isn't it? If you know the contract term, and you know the dollar value of the total contract, if you divide that by the number of days in that total term, then you have $1 value per day, and you literally can calculate, like you always have a fixed dollar value per day. Like, is that? Is that too
+
+Unknown Speaker  36:52
+is that too simplistic?
+
+Unknown Speaker  36:54
+Or is that think so?
+
+Unknown Speaker  36:56
+Is it too broad brush? I
+
+Matthias Miller  37:30
+and then you just do it. Now, you just do a round or a floor,
+
+Unknown Speaker  37:37
+you trunk,
+
+Speaker 1  37:41
+I would round wouldn't you? I mean, if, okay, this would never be quite right. But if 100 if one day equals $100 and you paid $51 then would you round up? I guess so. If you paid 49 then you ground down.
+
+Matthias Miller  38:00
+I mean, it's completely up to you.
+
+Unknown Speaker  38:03
+Well, explain the floor.
+
+Matthias Miller  38:06
+I mean, where you say, well, it's still $100 per day, so you still didn't pay for that day, like, we don't give you braces, just because, like, you still owed. So if you paid 250 290 you 90, your date, your due date stays on that day even though you're not caught up. Whereas, if you do a floor, then if you pay 290 instead of your 300 a month payment, then, well, your due date moves back a day because you're not caught up. You
+
+Unknown Speaker  39:16
+but I mean, okay, so am I doing this math. Right. Hold on a second. So if I have a $10,000 building, where's the spreadsheet? Spreadsheet? So
+
+Unknown Speaker  39:42
+I have a 10,001 two, 3.00 and I have a five year term. I'm.
+
+Speaker 1  40:01
+What, how did my currency get set to that? How do you change it?
+
+Speaker 1  40:20
+Here we go, United States, please. Thank you very much. Save and reload. Okay, five years. So if I have I
+
+Unknown Speaker  40:52
+here's Another one.
+
+Speaker 1  41:42
+Uh, okay, so here's the math, if, if a $10,000 building on a 60 month contract, that is 1825 days with a contract price, 23,715 42 if you divide 23,715 42 divided by 1825, that's $12.99 per day.
+
+Matthias Miller  42:06
+Here, let me, let me run it through, through my name. Just for fun, you give me $10,000 building. Uh, huh, oh, you're doing the total price, right? What's, what's the month? 60 months, what's the monthly payment?
+
+Unknown Speaker  42:23
+395, 26 which
+
+Matthias Miller  42:27
+isn't going to come out completely, right? The total paid, I
+
+Unknown Speaker  42:31
+don't care.
+
+Speaker 2  42:34
+Okay, so I there's
+
+Matthias Miller  42:49
+a contract total, 23
+
+Speaker 1  42:51
+Yep, that's right. I have 23 715, 60. What did I say? 395 62, you know, 395, 26 You're right. What's rounding?
+
+Matthias Miller  43:05
+It's some kind of weird rounding thing. Okay.
+
+Unknown Speaker  43:20
+So then you have,
+
+Speaker 2  43:30
+if you're like, a week short, 100 bucks short, which is like a week short, i By the
+
+Matthias Miller  43:49
+way, how do you guys handle handle rounding your payments? How
+
+Unknown Speaker  43:56
+do we handle rounding our payments?
+
+Unknown Speaker  43:57
+Yeah, like if, if it doesn't come out to even 60. I
+
+Matthias Miller  44:03
+mean, if you can't evenly divide by 60, why
+
+Unknown Speaker  44:11
+wouldn't you be able? You're saying at the beginning of the contract,
+
+Matthias Miller  44:15
+right? I'm not following your
+
+Unknown Speaker  44:19
+contract set up
+
+Matthias Miller  44:20
+so that you make the same monthly payment. Every single month.
+
+Unknown Speaker  44:25
+Yeah, great.
+
+Speaker 1  44:30
+And that monthly payment back times 60 is what makes the contract price. As you know, the 115 is right. That's what I'm coming out with, 215 days, which is how many months,
+
+Matthias Miller  44:46
+um, it's like, well,
+
+Speaker 1  44:48
+I guess that depends on how well, so I guess it doesn't, no, it doesn't matter. Because if we're saying from from the due date, whatever amount you paid forward, however many days you paid. Eight based on your contract divided by by the number of days in your contract term. I mean, is that that's fair? Isn't it that I feel like that's more fair than trying to figure it out on a per month, like based on a per payment
+
+Unknown Speaker  45:13
+basis? Very obvious way to do it, yes,
+
+Speaker 1  45:18
+but is it? Why am I? Why am I? Why do I feel like somebody's gonna argue with me on this one?
+
+Unknown Speaker  45:26
+What should I be argued with?
+
+Matthias Miller  45:33
+I mean, I'm sure there's some kind of audio company that wants to run it weird.
+
+Speaker 1  45:39
+Okay, in theory. In theory, if you were doing very complex math, and you said, my month, well, okay, I guess where it can be slightly different is because on some months, that pays you more than other months, that moves you further than other months based on the fact that there's different amounts of days in each month.
+
+Matthias Miller  46:04
+Oh, that's a good point. That's a fair point. So one of the things that we could do it
+
+Unknown Speaker  46:08
+is true,
+
+Unknown Speaker  46:11
+which means that you're but does that matter?
+
+Speaker 1  46:19
+This is, this is, this is what's going to happen. Somebody is going to sit down and say, with us with a calculator, and they're going to say, okay, my payment is 390 something dollars, whatever that the dollar value is 395 26 divide that between now and the next due date. Oh, that's 28 days. And so okay, but then if you punch that in and and you run, you know, the amount just does it. And it ends up because on a 28 month day, potentially it puts you beyond the the actual, you know, spot on due date,
+
+Unknown Speaker  46:58
+right. Mm,
+
+Speaker 1  47:10
+uh, now we could say for anything, I guess, we could. We could. We could introduce some variable that says, you know, if you are over or under by X amount. Then, you know, we go to this calculation if, if you pay the exact amount, monthly amount, then we move you exactly forward, whatever the date is, like, whatever the next month date is, exactly what you're on. Yeah, I feel
+
+Speaker 1  47:48
+like this is one of those things that if you sleep on it, You're going to come up with some Brilliant suggestion.
+
+Unknown Speaker  48:02
+I What you Thinking? I'm
+
+Unknown Speaker  49:43
+I think this does i.
+
+Unknown Speaker  50:25
+Here's how you do it. That's right,
+
+Speaker 2  50:28
+you determine the fractional month value for the first month you
+
+Unknown Speaker  50:44
+you calculate off of whole months.
+
+Unknown Speaker  50:50
+And Then
+
+Unknown Speaker  50:55
+let's Do this. I
+
+Unknown Speaker  51:45
+It's something like,
+
+Speaker 3  51:48
+actually closer to this one. I think I'll maybe make something up some of this stuff in here. Okay, so, so what you really do is, I
+
+Matthias Miller  52:39
+then, if they paid on,
+
+Unknown Speaker  52:45
+they paid on the 31st,
+
+Unknown Speaker  52:48
+one of 30. It's just this,
+
+Unknown Speaker  52:54
+okay, then you do,
+
+Speaker 3  53:02
+uh, uh, okay, then here's where we got a
+
+Unknown Speaker  53:20
+first month equals.
+
+Speaker 1  53:40
+I'm talking to grok about this. So calculate total periods covered and Add to Current due date full periods first, Then prorate fractional periods for exact next due date. I
+
+Unknown Speaker  54:45
+so let me do I'm.
+
+Unknown Speaker  57:30
+Right?
+
+Matthias Miller  57:36
+I'm
+
+Speaker 3  58:25
+Let's do something like this. Yeah, it's something kind of like this. uh, Leanne's got a small emergency for me. So if I'm not saying anything or not following it's because I need to go fix this while you work there. That's Okay, and that's fine. I Yeah, it's something kind of like this. Let's do something like this. I I I think it's Something like this.
+
+Unknown Speaker  1:01:06
+If we do seven,
+
+Unknown Speaker  1:01:12
+okay, so basically, what you need to do is when you do is, when you you take,
+
+Matthias Miller  1:01:30
+you start your full month calculations from you take out the partial first month payment, and then you start on the beginning of the following month. And you do X number of whole months, which takes you through whole months. And then you take following month number of days times the fractional balance last you paid on first payment. I
+
+Matthias Miller  1:02:04
+and it lands on eight, four on the fourth the whole way through, as long as you don't do anything, won't be with it.
+
+Speaker 1  1:02:13
+So what's the 12345, on that? What am I looking at
+
+Matthias Miller  1:02:17
+this Is the
+
+Unknown Speaker  1:02:20
+let's do this. I'm
+
+Matthias Miller  1:02:48
+this is one month paid, two months paid, etc, And this is based on your this amount paid. So
+
+Unknown Speaker  1:03:28
+so.
+
+Speaker 1  1:03:29
+So in order to make two full months, you'd have to pay 790, 52 scroll down to three. Wait total. Pay, 1185, 78
+
+Speaker 1  1:03:48
+so what's, what's the, what's the Okay, 395 26 it's 395 26 times three months. Does that equal 1185, 78
+
+Speaker 2  1:04:01
+sorry, the 395 times time is exactly three, it's exactly three.
+
+Unknown Speaker  1:04:08
+So that would be
+
+Unknown Speaker  1:04:18
+okay.
+
+Speaker 1  1:04:20
+So what happens? What happens if you go put in a monthly like, go back to your HITCHER, drop down. So total paid 200 put 200 in. It's
+
+Matthias Miller  1:04:35
+probably not working, right, for less than a whole payment.
+
+Unknown Speaker  1:04:41
+I mean, no, it's not.
+
+Speaker 1  1:04:50
+So we need to figure that part out yet for less than the whole payment, yeah, I
+
+Matthias Miller  1:04:54
+mean, anytime it's less than the whole payment, i.
+
+Unknown Speaker  1:05:05
+Yeah, yeah,
+
+Unknown Speaker  1:05:25
+Like, I'm Like, I'm
+
+Unknown Speaker  1:06:57
+so if The total pain is
+
+Unknown Speaker  1:07:06
+it's basically, I'm
+
+Unknown Speaker  1:07:28
+then it would be based on
+
+Speaker 2  1:07:34
+payment is Less than the first month, then it would Be a
+
+Unknown Speaker  1:08:09
+721-720-9310,
+
+Speaker 3  1:08:20
+129, 310, 323,
+
+Unknown Speaker  1:08:30
+41,
+
+Unknown Speaker  1:08:59
+Are you required was the first month ever? Well, it's based on the end of the month, right? If you don't pay anything, do you have money due immediately?
+
+Speaker 1  1:09:27
+If you don't pay anything? Well, technically, no until you reach your next due date.
+
+Unknown Speaker  1:09:42
+I if I'm answering your question.
+
+Unknown Speaker  1:09:55
+Not sure this change is correct, because I.
+
+Unknown Speaker  1:10:05
+It seems you should always,
+
+Speaker 2  1:10:11
+you should always be a minimum of one month out you
+
+Unknown Speaker  1:10:23
+I like, if I if I paid
+
+Matthias Miller  1:10:39
+It, pay $0 I mean, it does, right, you would be due in August, if you pay,
+
+Matthias Miller  1:10:58
+you know the last due date would Be the next to date should be the ninth, eight.
+
+Unknown Speaker  1:11:21
+Was right, because it was the last due date. Okay?
+
+Speaker 2  1:11:48
+So here you're doing the fifth, you don't pay anything. You pay 100 bucks. You're doing the 13th. You pay one month. You're due
+
+Unknown Speaker  1:11:58
+next to the ninth. I think it's something like this.
+
+Matthias Miller  1:12:07
+So if you if your contract starts on the fifth, is it due on the fourth of the next month?
+
+Unknown Speaker  1:12:13
+No, it's due on the fifth of the next month. I
+
+Unknown Speaker  1:12:46
+That's not what it means.
+
+Speaker 3  1:13:02
+I'm gonna
+
+Speaker 1  1:13:11
+go grab my charger. My computer's about to go Dead. I'll be right back. I'm
+
+Matthias Miller  1:14:19
+i i think i mean there anything out of here.
+
+Speaker 1  1:14:36
+So if you paid 100 bucks on a contract price, 23, 715, 68, so forth, multiplying 395, so that would move you from 705, to 714,
+
+Unknown Speaker  1:14:52
+right? Or if you pay
+
+Unknown Speaker  1:14:57
+put 200 in two.
+
+Unknown Speaker  1:15:05
+722,
+
+Speaker 1  1:15:07
+all right, well, I mean, this is good. And then what I'll do is I'll take this and test it against. I want to see, I want to see real world examples if I put in this information for RTO pro customers. I'm going to see where it lands them out because I can just go back and modify I can go back into payment history, because they feel the due date next due date information in payment history. So I'll just go test a bunch of these to see how close we are and compare notes.
+
+Speaker 1  1:15:47
+You had this book till 430 right? Yeah, so last 10 minutes. That was
+
+Unknown Speaker  1:16:00
+a fun one.
+
+Unknown Speaker  1:16:07
+Unfortunately, we didn't do anything that really helps him. That what nothing
+
+Unknown Speaker  1:16:14
+that really helps him?
+
+Speaker 1  1:16:16
+Yes, is there anything in the last 10 minutes that we can do that will help them? I
+
+Unknown Speaker  1:16:29
+I mean, theoretically, I
+
+Matthias Miller  1:16:44
+uh, I could actually go longer. Seth is doing a call on calculations. I could just have him.
+
+Unknown Speaker  1:17:07
+Do you need to? If you want to,
+
+Unknown Speaker  1:17:13
+I can go longer as well.
+
+Unknown Speaker  1:17:16
+I could
+
+Unknown Speaker  1:17:19
+trying to figure out How to make This work.
+
+Unknown Speaker  1:17:37
+So I
+
+Unknown Speaker  1:18:18
+I'm okay. So do
+
+Matthias Miller  1:18:33
+you want the status to be blank when you when you put a new record, and most of it's going to be handled in the contract entry, so should probably be fine, yeah, because
+
+Unknown Speaker  1:18:44
+it's going to be handled through contract entry.
+
+Unknown Speaker  1:18:48
+Contract ID is that required?
+
+Unknown Speaker  1:18:51
+Yes, I
+
+Matthias Miller  1:19:05
+will users open the contract and expect Live Updating details for calculations?
+
+Unknown Speaker  1:19:13
+No,
+
+Matthias Miller  1:19:15
+because the only thing on the contract is the
+
+Speaker 3  1:19:20
+contract definition, payments will be the only payments and or security deposit adjustments are the only other things that are affecting it. Let's chat. I don't
+
+Unknown Speaker  1:19:39
+understand the question.
+
+Matthias Miller  1:19:44
+If somebody changes the, oh, I don't know, changes it from a CRA or changes the terms in a contract, or anything like that, do people expect to see numbers update automatically? And I think the answer is no, they don't need to. I. Like, the only thing that really needs live updated numbers is when you change payments that were received, right?
+
+Speaker 1  1:20:14
+I would think so, but I mean, so what you're saying is, if you make if some change on the contract were to be made, what you would need to save and refresh
+
+Unknown Speaker  1:20:25
+potentially? Yes, I don't
+
+Speaker 1  1:20:33
+know that I have a problem with that. I think that's fine. I um,
+
+Unknown Speaker  1:20:44
+maybe this is great.
+
+Unknown Speaker  1:20:53
+Spec, RTR.
+
+Matthias Miller  1:20:57
+If this isn't your, how do you how do we convert number of months into weeks?
+
+Unknown Speaker  1:21:02
+I rendering, I
+
+Unknown Speaker  1:21:07
+guess there are no terms.
+
+Speaker 1  1:21:10
+How do we convert number of months into weeks? Do you multiply by 4.23
+
+Matthias Miller  1:21:16
+I meant but I meant down. When you do weekly payments, if you have RTO with weekly payments,
+
+Speaker 1  1:21:25
+well, calculating the calculating weekly payments on an RTO, you have a fixed time frame. With an RTR, you do not have a fixed time frame.
+
+Matthias Miller  1:21:35
+And then an RTR, what you're going to do is you're going to say, Oh, we've got fixed payments in the payment amount, and you're going to say, this is the weekly payment, or this is the monthly payment.
+
+Speaker 1  1:21:46
+Well, if, if someone says, If, okay, if someone says it's $100 a month, and they've been paying monthly, and they say, Hey, I really want to go to weekly well, then you take 100 times 12 divided by 52 and now you have your weekly
+
+Matthias Miller  1:22:02
+payment, same as, same as the trends calculation. I mean, the the same as what we're doing. It's just that our fancy calculation needs to handle instead of full months, it needs to handle full weeks. It's actually easier, because then you literally can turn it into daily rate and multiply it out.
+
+Speaker 1  1:22:26
+Oh, fun. We figured it all out for months, and now we have to go back and figure out make sure it works for weeks too.
+
+Matthias Miller  1:22:33
+No, but yeah, but except weeks are stupid simple,
+
+Unknown Speaker  1:22:38
+right? Because every week has seven days. Hahaha.
+
+Unknown Speaker  1:22:43
+I mean, last I checked,
+
+Unknown Speaker  1:22:48
+the last you checked you are exactly right.
+
+Speaker 3  1:23:00
+I so
+
+Unknown Speaker  1:23:11
+sure I will.
+
+Unknown Speaker  1:23:14
+I will message it right over to you.
+
+Speaker 1  1:23:21
+Funny story, I don't keep the air conditioning on in my conference room all the time, and I had this, had these chocolates in a bowl sitting in there, and got really, really hot. And you can imagine exactly what happened.
+
+Unknown Speaker  1:23:38
+Milky, milky. I
+
+Matthias Miller  1:23:43
+late fees and conveniences are in your
+
+Matthias Miller  1:23:50
+court. Early payoff amount is contract total minus total payments times payoff percentage right say that again,
+
+Speaker 3  1:23:59
+early payoff was contract total, yes,
+
+Speaker 1  1:24:07
+um, well, huh, okay, it's, it's actually times your cash price percentage, not Your payoff percentage, because if you have a 6040 split, you would need to pay 60% of the remaining contract balance.
+
+Matthias Miller  1:24:29
+Right? You pay for the building, not the rental fees.
+
+Unknown Speaker  1:24:37
+Right? Correct? I
+
+Unknown Speaker  1:24:51
+I just got back so you think about
+
+Speaker 1  1:24:57
+so it is a bit of a bit of a misnomer to call it. Payoff percentage or rent? No, it's penalty percentage. That's right. I think that's what we're calling it. Rental fee percentage, right? Percentage. It's a misnomer.
+
+Unknown Speaker  1:25:13
+Rental fee,
+
+Unknown Speaker  1:25:15
+I think we should we had
+
+Matthias Miller  1:25:20
+a split, and you said, I don't want to split. Just split the situation. They are
+
+Speaker 1  1:25:32
+contract definitions. Oh, by the way, wait, there is something I tried saving a new contract definition, and apparently we're still validating on fields that no longer
+
+Speaker 2  1:25:49
+exist. I don't know.
+
+Unknown Speaker  1:25:57
+Yeah, we are calling a payoff percentage. We should call it rental fee percentage. That should we do? We want to call it that. It is a misnomer to call it a payoff percentage, although everybody says that and thinks that and I
+
+Unknown Speaker  1:26:51
+yeah, let's Change that to rental fee percentage. Let's do that. I'm
+
+Speaker 1  1:27:09
+but back to your question, contract price minus amounts paid times whatever the building price percentage of cash price percentage, or whatever that is. Yeah,
+
+Unknown Speaker  1:27:39
+cash register I percent.
+
+Unknown Speaker  1:27:54
+She was going to work with it. I
+
+Unknown Speaker  1:28:13
+use that. Okay? I
+
+Unknown Speaker  1:28:24
+Let's see what else they need.
+
+Matthias Miller  1:28:27
+Minimum down payment is required, right?
+
+Unknown Speaker  1:28:33
+Would you love blank for none? What
+
+Unknown Speaker  1:28:42
+is the minimum? Down payment?
+
+Speaker 1  1:28:57
+Yeah, but you have, I tight percentage of cash, price, number of payments, okay, but how does that? How will that interact with if the contract definition is allowed zero down?
+
+Unknown Speaker  1:29:21
+That's a fair question.
+
+Unknown Speaker  1:29:25
+Why would we move zero down into here?
+
+Speaker 1  1:29:27
+So I'm wondering if we just remove allow zero down, and if someone puts zero is the minimum number of payments, then you allow zero down. If you say one payment, then you're you require one payment. If it's two payments, then you require two payments and data. But then we should really do away with the allow zero now,
+
+Matthias Miller  1:29:51
+but then this. But then does that change between standards and CRA contracts?
+
+Unknown Speaker  1:29:58
+CRA? It's a move. Point.
+
+Matthias Miller  1:30:08
+So this is allows your dollar down, say, again in here, because allows your dollar down in here for no reason at all.
+
+Speaker 1  1:30:18
+Well, I cut like, okay, either we have to figure out how to combine the two into some form or fashion, or we just do away with the column that says, allow zero down and and for in favor of the minimum allowable payment, down payment, whatever it's called. I don't know
+
+Matthias Miller  1:30:37
+the implications. I have a problem with mining them, but I don't know what I'm missing. I mean, does somebody do people say you can do $0 down or one payment, but you can't do both. I mean, if you're gonna let you like to do $0 down, why would you keep keep me from doing $100
+
+Unknown Speaker  1:30:52
+down, presumably.
+
+Speaker 1  1:31:01
+So I'm assuming that we will use this minimum down payment, that when you're doing contract entry, it will auto fill the minimum down payment,
+
+Matthias Miller  1:31:08
+yeah, if it's below, I
+
+Speaker 1  1:31:13
+mean, as long as it's editable, then you know that's for contract entry. But
+
+Unknown Speaker  1:31:18
+I patch.
+
+Speaker 1  1:31:26
+I Okay. I'm in favor of removing the allow $0 down in favor of the minimum down payment.
+
+Unknown Speaker  1:31:40
+That fair,
+
+Matthias Miller  1:31:42
+you move the zero down, and then this would be required.
+
+Speaker 1  1:31:48
+That would be a required field, yes, we are talking about, yeah, we are talking about contract definition. Yes, man, it's amazing what a little bit of sugar in my bloodstream will do feel like my brain power is coming back?
+
+Matthias Miller  1:32:07
+Number of payments we want zero, like full payments, right? 0123,
+
+Unknown Speaker  1:32:17
+inferior decimals, I think
+
+Unknown Speaker  1:32:28
+I require one and a half payments down. That would be silly. Yeah, even. Even number, not even number, whole number, no decimals. Um.
+
+Matthias Miller  1:33:08
+Do you care if you require a row for late fees?
+
+Unknown Speaker  1:33:13
+Say that again.
+
+Matthias Miller  1:33:19
+Sorry. This is just late fees. We are still waiting on NSF fee. Is that required?
+
+Unknown Speaker  1:33:34
+I'm gonna guess No,
+
+Unknown Speaker  1:33:40
+yeah, I think it's required.
+
+Unknown Speaker  1:33:44
+You always put in zero if they don't
+
+Matthias Miller  1:33:49
+charge one dwf is not required. Early termination fee is there, I guess? Or do you want them to put in zero for new dwf? That's weird.
+
+Unknown Speaker  1:34:12
+Damage Waiver fee is not required. I
+
+Unknown Speaker  1:34:31
+price increases,
+
+Unknown Speaker  1:34:35
+rental fee
+
+Unknown Speaker  1:34:42
+at least one row in the I guess one of the
+
+Matthias Miller  1:34:50
+questions is, how thoroughly do you need to have be set up like on something like terms? I would just say I.
+
+Speaker 3  1:35:00
+Uh, like you're that's your own fault if you don't have any terms, and
+
+Unknown Speaker  1:35:05
+why? I mean, you have to have at least one term. But how
+
+Matthias Miller  1:35:09
+many different stuff do you really want to force errors for? Versus just warning, like, because it's, it works, it's just meaningless. Like, you can start setting it up, and then you can't save
+
+Speaker 1  1:35:24
+Am I overthinking? So you're saying Warren instead of error, right? Like, Hey, dummy, you didn't put any, you know, you didn't put any terms in Hey, you know. I mean, so the things that are required are, you know, I think are right? Or are you saying, are you saying, doing away with required, just warn for anything that we think should be.
+
+Matthias Miller  1:35:56
+I think, I mean, I think if it's really clearly broken, I would argue, just to warn in terms, I mean, you're not going to be able to select any terms of me under contract. It's wrong. But, like, why would we stop you from saving?
+
+Speaker 1  1:36:13
+Okay, you're not changing the other things that we required. You're not going to change those are you
+
+Matthias Miller  1:36:21
+that wasn't going to I mean, some of these stuff are very actively required, yeah, minimum payment would be, I think terms is really, again, whatever, if you really want to report, I don't mind doing that,
+
+Speaker 1  1:36:39
+yeah, because you may have started to enter that. And then you've, Oh, I gotta go set up terms. And so you want to save where you're at and move on. And so I'm fly over to that
+
+Matthias Miller  1:36:55
+sort, ascending,
+
+Unknown Speaker  1:36:59
+sort, what ascending,
+
+Unknown Speaker  1:37:01
+the list of terms.
+
+Speaker 1  1:37:04
+And that would be based on the So, if it's 24 Yeah, so 24 be at the which way is ascending? I guess 2420 would be the top and 16th be at the bottom, right. Yeah,
+
+Matthias Miller  1:37:17
+correct. It is weird, yep, because an ascending tower, whatever, it's so weird, ascending,
+
+Unknown Speaker  1:37:24
+when the number goes up going down,
+
+Matthias Miller  1:37:29
+was including tax. Supposed to be part of the type I think so what the minimum price, the balloon payment was going to indicate that it includes tax right, including taxes part of this label.
+
+Speaker 1  1:37:53
+Oh, good question. Hold on. What are we doing in here, in the RTO contract, not terms, you silly, head contracts, North Carolina contract. What do we say in regards to end of lease,
+
+Unknown Speaker  1:38:21
+plus tax.
+
+Speaker 1  1:38:24
+Well, I guess we're going to have to say, Ooh, this really ought to be a some sort of indication, because I don't know, there may be other states out there that may look at this differently. North Carolina is a plus tax, not including tax. But we really ought to make it indicatable, so that if there is a state out there that says you're required to do the balloon payment including tax, that we can check it. So, okay, okay.
+
+Unknown Speaker  1:39:24
+Well, the
+
+Unknown Speaker  1:39:32
+right do you want anything in contact? Contract, definition, do, what? Who do
+
+Matthias Miller  1:39:42
+you want being able to edit the contract definition
+
+Unknown Speaker  1:39:45
+after, after it's been established?
+
+Matthias Miller  1:39:47
+Well, creating or editing? I mean, yeah, either way.
+
+Speaker 1  1:39:51
+Okay, what are we calling? I mean, okay, so I'm entering, I'm a normal user, and I'm an entering a code. Contract definition, am I allowed to or not allowed to? Probably, well, I guess whoever, whoever can edit it ought to be the ones that enter it. And if we're going to go all the way to Super Admins, then that's a little bit prohibitive,
+
+Unknown Speaker  1:40:19
+and we haven't really decided on our levels. Yet are we going to do a super admin and then an admin? Yeah, I would think we probably would have two levels of admin. Would we not?
+
+Matthias Miller  1:40:35
+I could make a fairly compelling argument with two or three types of admins assist admin, which basically can control users but can actually access data, a an admin that has access to like management level animation and a super admin that has super power controls,
+
+Speaker 1  1:40:55
+I think the lowest level of admin should Be able to both edit or generate and edit contract definitions. Okay, so admin level, I guess we call IT admin level, one
+
+Unknown Speaker  1:41:22
+number of days in This cache is optional. Yes, that is correct.
+
+Unknown Speaker  1:41:38
+Actually. I i
+
+Speaker 1  1:41:48
+We don't need to validate that there's rows in the contract type, because we're going to ship it with
+
+Matthias Miller  1:41:54
+two mean, but do you want them to be able to delete the standard and CRA ones? I mean, if they don't want to do CRA, they should be doing it, but you should always have a standard row unless they only do CRA.
+
+Speaker 1  1:42:14
+Okay, so, so I think what he's saying then, if we allow them to delete rows, they could theoretically delete them all, and then, if nobody, they'll put anything back in. We're not going to let them say unless they put something back in. So then the answer to that is yes, we should validate that there are rows in the RG, yeah.
+
+Matthias Miller  1:42:40
+I can't imagine sorting of orders that huge of a deal.
+
+Speaker 1  1:42:59
+It It is not a huge deal
+
+Unknown Speaker  1:43:12
+to theoretically they could remove them. So it's weird.
+
+Matthias Miller  1:43:25
+It is really weird that you wouldn't just use one of the standard
+
+Unknown Speaker  1:43:33
+you're saying, make the standard unable to be deleted,
+
+Matthias Miller  1:43:39
+well, or don't require that they at least have this, either the standard or the CRA one in there.
+
+Speaker 1  1:43:47
+So what is this RG, gonna just receive if we set the record for RTR, yeah.
+
+Matthias Miller  1:43:56
+I mean, there could conceivably be a world in which somebody's like, I don't I want to name my contract type based on the the rental company, just so that I don't actually select the wrong one, just as another sanity check, which is kind of crazy, but you could, I mean, functionally, there's no problem deleting them. In my mind, it's just kind of dumb.
+
+Speaker 1  1:44:18
+The the art, the type rows, yeah, but, I mean, we got to validate that you have to have one in there for it to work. So it would unless we're going to do the same thing that that we talked about for terms, and we say, well, if you don't have one in there, we're going to warn you, but you can save it ain't going to work. I mean, but
+
+Matthias Miller  1:44:39
+whether they use the standard ones or the tested ones, or the tested ones, it doesn't really matter to us. Yeah, I agree.
+
+Speaker 3  1:44:58
+Okay. Anything it seems saying to validate that there are rows since whatever we populate then
+
+Unknown Speaker  1:45:07
+I don't, yeah, Whatever. All right, so
+
+Matthias Miller  1:45:10
+that's contract definition.
+
+Unknown Speaker  1:45:18
+What else do?
+
+Unknown Speaker  1:46:15
+Well, how much more time do you have? No,
+
+Matthias Miller  1:46:22
+I'm I don't know, I feel like an amazing steam.
+
+Unknown Speaker  1:46:27
+This gets cost.
+
+Matthias Miller  1:46:29
+This gets most of the contract done for them. It doesn't really break any new ground for them when it gets them unstuck.
+
+Speaker 1  1:46:39
+So then probably what we need to do on on Wednesday. Do we want to hit late fees on Wednesday?
+
+Matthias Miller  1:46:46
+Do you have details on late fees? I do.
+
+Unknown Speaker  1:46:49
+Okay, let's just do this.
+
+Unknown Speaker  1:46:51
+Well, if you have,
+
+Matthias Miller  1:46:55
+if you have late stuff, late fees handy.
+
+Unknown Speaker  1:46:58
+There's nothing that keeps us from
+
+Unknown Speaker  1:47:04
+chasing them, they're clearly fine.
+
+Speaker 1  1:47:16
+All right, I'm going to share this document with you. Once it's shared with you, if you'll just drop the you can either put it in the spec or not put in the spec. It's up to you. Matthias, you heard now, there anyway, and then I'm going to set this thing to be anyone with the link, so that anyone with the link can do This, open this thing if we wish to.
+
+Unknown Speaker  1:47:53
+That's unbelievable. Um,
+
+Unknown Speaker  1:48:04
+wow.
+
+Speaker 1  1:48:07
+Yes, it is dizzying. And on this stuff I don't even like do, there are questions in here. I don't even want to ask if you're dumb enough to think that if you're dumb enough to say, I don't want to charge every contract and late fee if customer has multiple contracts, well, duh, why would I charge one late fee for all the contracts?
+
+Speaker 2  1:48:33
+This is dumb. You have multiple. That is, that is a meaningful Amish um.
+
+Speaker 1  1:48:47
+We do need to handle the plus tax or or including tax that one we will need to handle,
+
+Matthias Miller  1:48:59
+and we don't care about different late fees per state. It's by state anyway. Do what
+
+Unknown Speaker  1:49:07
+it's it's,
+
+Matthias Miller  1:49:10
+oh, good gracious, okay.
+
+Speaker 1  1:49:12
+I mean, we're gonna, we're gonna, we're gonna force you to set it up by by state anyway. I'm sorry if you have only one state that you work in, well then you're just gonna fill it
+
+Matthias Miller  1:49:19
+out if you always want to get the state from the customer address record instead of the contracts tax zone for late fees, that's not going to be an option, is it? If your contract isn't is legally binding in Texas, you're paying Texas late fees, right? You
+
+Speaker 1  1:49:43
+Why would you if you always, if you want to always get the state for the customer's address record instead of the contracts tax zone for late fees? Check this? Why? Do you need number five if you if you fill out number four?
+
+Matthias Miller  1:50:10
+It sounds to me like sometimes I want to pull late fees off of their address, and other times I want to pull it off of their contract, which just sounds stupid to me. Am I misreading it?
+
+Speaker 1  1:50:24
+Okay, the contract controls what fees are allowed. Whatever state that contract is in is the one that controls the late fees. I don't know any other way to do this.
+
+Matthias Miller  1:50:38
+Okay, so then they have just seems silly. Is a late fee, $1 rate, okay, like the dollar and percentage. Is that a date? Um, it's a monthly dollar. It's a it's a tight you have a daily rate, monthly rate, or a monthly percentage. Is that? What it
+
+Speaker 1  1:50:57
+is? Where are we? Where are we looking? Here, late fee types, number six, I need my glasses. Good Lord, no, you're fine. It's like, I look up, I look up there, and it's as small as what I have down here my screen. It's my own fault. I'm just going to zoom this in a little bit. Okay. Are you down in the monthly fee options? Monthly late fee options?
+
+Matthias Miller  1:51:25
+Okay, explain to me how you have a grace period, but your per day late fee starts before the grace period. Like,
+
+Speaker 1  1:51:31
+am i Where are you seeing that number six
+
+Matthias Miller  1:51:36
+for per day late fees, the per day fee starts at end of grace period.
+
+Speaker 1  1:51:42
+Duh. Like, I don't even, why, why? Why? Like, either you have a grace period or you don't, okay, like, we do have to have a Grace grace period box for the calculation, and it will, I'm assuming it's should be per state, because I think some states have caps on that, or limitations on how, you know, like, they require certain limit certain things. So the late fee, I'm sorry, the grace period needs to be as part of the state setup.
+
+Matthias Miller  1:52:27
+Okay, so then we have contract types, RTO versus RTR, which, that's just fine. I mean, we don't really care beyond that. I mean that you don't have to handle anything. We're not handling least owned and open retails and whatever like. That's fine, right? I
+
+Speaker 1  1:53:05
+I mean, I could see a use case for retail sales. So someone says, I want to buy that building. I'll give you a down payment, and I'm going to pay the balance, you know, at some point, then they don't we want to probably charge them some type of late fee. But
+
+Matthias Miller  1:53:19
+manually enter. That doesn't have to be automatic. Yeah, we
+
+Speaker 1  1:53:23
+can go back and somehow manually. Okay, no, right now rent to own RTR.
+
+Matthias Miller  1:53:32
+Okay, so then the monthly rate be type. There's a per payment type, and I can't see what all the other types are. I
+
+Speaker 1  1:53:44
+hold on a second. I have a question. Yeah, wouldn't we want to? This needs to be a record of its own. This. You don't want to throw this out on every contract definition, do we if we're doing a state setup, this needs to be its own record. No, yes, no. I mean, it would seem to me like it would should be maybe, or maybe it goes into the only settings, like maybe it's, I don't think it should be on the on the contract definition record, because Why would, why would you? Why would you be setting up states on a contract definition record when you already have a state assigned to the contract
+
+Unknown Speaker  1:54:36
+definition? I mean,
+
+Matthias Miller  1:54:38
+you don't have a state assigned to it. This is on the contract Definition. Is what it was saying. What I was thinking.
+
+Speaker 1  1:54:43
+Oh, so, so you're so we would just bake these, all these fields into as part of the contract definition. That is my thought, yes. So we wouldn't necessarily do an RG of states and so on and so forth. You just said, you just define this when you're sitting Okay. Never mind it. Uh,
+
+Speaker 1  1:55:05
+okay. So all these single fields like they're okay, okay, okay, yes, I do remember this. Now I'm sorry, I do remember how you had this set up on there. Ignore me. Is it hot outside for you? It's a little
+
+Matthias Miller  1:55:24
+bit you smooth shake or smoothie from Chick fil A. I
+
+Matthias Miller  1:55:36
+had a molar extraction this morning, so, yeah, yeah. So, okay, like this number 13, what types do they have? They have a per payment. Like, what other types do they have? Wow. I
+
+Unknown Speaker  1:56:02
+mean, I'm assuming a per week make it in here look
+
+Matthias Miller  1:56:09
+probably a per day, given what they said.
+
+Unknown Speaker  1:56:13
+Maybe let me go look at my make it in here to these settings,
+
+Unknown Speaker  1:56:20
+late fee settings. I'm
+
+Speaker 1  1:56:46
+okay, none, per day, per payment, per payment by percentage,
+
+Unknown Speaker  1:56:59
+okay,
+
+Matthias Miller  1:57:01
+then we have per day Dollar,
+
+Unknown Speaker  1:57:05
+and then we have,
+
+Matthias Miller  1:57:08
+then we Have the i
+
+Matthias Miller  1:57:37
+maximum late fee. I'm Yeah,
+
+Speaker 1  1:57:45
+so maximum late fee is, whenever you get into any kind of, any kind of graduated late fee method, you have to have a maximum, because states will cap it like there are. There are red zone companies that say, okay, for example, if I charge a $10 late fee and
+
+Matthias Miller  1:58:09
+$5 a day up until $30 or whatever the number is,
+
+Speaker 1  1:58:13
+yeah, from the point so, from the So, from the point of the grace period, you know, if I say a $10 late fee, well, it might accrue that as dollar per day up to 10 days. And you know, there, there are methods like that, but there always has to be a maximum that you can't know. You can't go over a certain amount. How does the
+
+Matthias Miller  1:58:39
+are you modeling? Here? They have a table for late date.
+
+Unknown Speaker  1:58:45
+Oh, good gracious.
+
+Speaker 1  1:58:50
+Okay, If payment is greater than something, fee for payment above, If payment is greater than something, fee for payment above, If payment is greater than something fee for payment above? Oh, my, what does that even mean? Oh, I guess that's based on a per monthly amount.
+
+Unknown Speaker  1:59:13
+Yeah, it's monthly payment.
+
+Matthias Miller  1:59:18
+I mean, really, it's like this. I
+
+Unknown Speaker  1:59:35
+greater than I'm
+
+Unknown Speaker  1:59:44
+and then you have these columns and.
+
+Unknown Speaker  2:00:00
+Do I really want to support this,
+
+Matthias Miller  2:00:03
+but then your your start at $10 and add $1 a day. Isn't supported in this.
+
+Speaker 1  2:00:11
+Okay? Then we can do weekly late fee options, which is just a repeat.
+
+Speaker 1  2:00:21
+We definitely want to support the the 28 line. 28 only count store door days, store is open, which I guess only count business days.
+
+Matthias Miller  2:00:40
+And how do you count? Anyway,
+
+Speaker 1  2:00:43
+I would count business days. So national holidays would Yeah, federal holidays would not be considered a business day. I think it's just federal holidays. What else would there be? I be.
+
+Speaker 1  2:01:08
+I don't really want to do this table thing. I really don't. I'm surprised because there is, I don't. Okay, so if I set this at per payment by percentage or per payment late fee by percentage, enter the percentage of the payment late fee by percentage, enter minimum payment per day. Okay,
+
+Matthias Miller  2:01:50
+oh, you can get away with the same thing to say there's a base payment fee and a payment fee percentage, and then round one or the other to the nearest x dollars.
+
+Speaker 1  2:02:16
+Yeah, but his this table thing does not make sense. This. Why? If payment is great. So what is this basically a a different level of late fee based on how much your monthly payment is,
+
+Matthias Miller  2:02:28
+yeah, my understanding.
+
+Speaker 1  2:02:30
+So if it's 100 bucks, I might charge you a $10 late fee. If your payment is 200 bucks, I might charge you a $20 late fee.
+
+Matthias Miller  2:02:39
+Well, it's more like, it's more like, I guess. So I don't know why you would have differing amounts. I mean, it's like, it's probably more like, it's more like, I'll charge you a $50 late fee regardless. But
+
+Unknown Speaker  2:03:00
+I don't know.
+
+Matthias Miller  2:03:10
+This just seems like it's very poorly thought through bi weekly and semi monthly or 2x the weekly late fee. Calculate bi weekly and semi monthly fees the same as monthly instead of weekly.
+
+Speaker 1  2:03:33
+I don't see any support for graduated payments in here. I thought there was something like that. What do
+
+Matthias Miller  2:03:39
+you mean graduated payments like row 36 to 43
+
+Unknown Speaker  2:03:44
+No, wait, would you say,
+
+Matthias Miller  2:03:47
+isn't that what 36 to Rose? 36 to 43 are?
+
+Speaker 1  2:03:54
+No, I mean, it's the same thing as up in. It's the same as 19 through 26 but no, so I I was sure there was some states out there that said that they allowed for so many days past due you can charge. So I'm so positive on this. Have to ask Leanne to be 100% sure, but there are some states that regulate that. Say you can have it in your contract to say, so many days past, you could charge, say, $10 but from that point to another number of days, you can charge, you know, $15 and then from there to another number of days with a max number of, you know, $20 I was sure there was something out there like that, let me, I mean, I would rather support that than this, this payment amount and dollar value.
+
+Matthias Miller  2:04:54
+Does my idea of having a base Well, I mean, it seems to me like, why wouldn't you have. Like a, okay, always, always add this much, this dollar amount, then also add this percentage rounded to the nearest n dollars,
+
+Speaker 1  2:05:11
+yes, and there's something, there is something like that out there too,
+
+Matthias Miller  2:05:15
+also add and then also add this daily amount. So the way I would configure it, and I don't know if this might be completely dumb, but would be dumb, but would be like, like you have the minute, you have the minimum late B dollars. You have the late B percentage and round weight, fee percentage to nearest
+
+Unknown Speaker  2:05:40
+X dollars.
+
+Matthias Miller  2:05:45
+And then you have a per day late B dollar. Then you just and then you have a maximum late fee. And then you like, doesn't this handle A lot of scenarios
+
+Unknown Speaker  2:06:03
+for like the I
+
+Speaker 1  2:06:25
+so fixed late fee, that's one option. Variable late fee. Think
+
+Matthias Miller  2:06:31
+of it in parts like a sandwich. So fixed late fee. What's the fixed price of the late fee? You can say $5 so that $5 fee on then you say, Oh, and also throw in 1% based on the payment fee, and route it to the nearest $5 All right, so we got that plus $10 for this guy. That's whatever. And then you have a per day fee. So on day two, you add $5 $10 and then you have a maximum, which is a cap.
+
+Unknown Speaker  2:07:02
+I mean, I don't hate it. I just have to make sure
+
+Unknown Speaker  2:07:06
+that it's, it works.
+
+Speaker 1  2:07:08
+Well, no is, is there? Are there states that allow something like this? I'm asking Garak to go do research for me. Um, I
+
+Matthias Miller  2:07:49
+there is also an option to only have one late fee, regardless of the number of payments. Late payments,
+
+Unknown Speaker  2:07:57
+say it again,
+
+Matthias Miller  2:07:59
+to have the late fee be per account instead of per payment,
+
+Unknown Speaker  2:08:04
+like per contract, yeah,
+
+Speaker 1  2:08:09
+well, I mean, I know that there RTO Pro has settings to say. Hang on a second. Alabama, not limited, not limited. Colorado, $5 monthly, $3 weekly and bi weekly, with a grace period of five days monthly and three days weekly. Connecticut, 5% or $5 minimum of $1 Delaware, 10% or $3
+
+Speaker 1  2:08:49
+Florida, Max $5 Georgia, no late fee allowed at all. So we need to have a we need to have a something that says, cannot charge late fee. Illinois, max of $5 Indiana, $5 monthly, $3 weekly. I don't have a full list of states I
+
+Unknown Speaker  2:10:07
+Um,
+
+Speaker 1  2:10:12
+okay, we got a little bit further, I need to drop off. And I think what I need to do is I need to probably talk to an attorney and say, Can you, can you tell me all the different methods of
+
+Speaker 1  2:10:31
+RTO late fee? There's got to be somewhere that I can go, and it's gotta be somewhere. Gotta be somewhere. Okay, I got more work to do on this yet, but you got you gotta, you got a good glimpse of somewhat RTO Pro, does that fair true? Wednesday, what's our goal for Wednesday,
+
+Unknown Speaker  2:11:04
+well, or do you
+
+Speaker 1  2:11:07
+want to, you want to converse, or you want to confer with, with Seth to say,
+
+Matthias Miller  2:11:13
+I mean, it seems there's a ton of stuff that's in the airport for research, late fees. What was the other one?
+
+Speaker 1  2:11:27
+Oh, yeah, there was the other one on. Was it? It was that whole compliance thing on on credit cards. Yes, exactly. Leanne and I did talk about this, and basically what we came to conclusion at the end of our you and I came to conclusion at the end of the conversation was that we're going to let you do whatever you want, but but by method of checking out with those types of cards. We're going to ask you to select what type of card it is, as the as the representative. And if you, if you, if we turn this on for you, and you decide to do it, then you're taking full responsibility. That being said, we probably do need to figure out how we're going to handle at some point, like, if a company turns this on, how does it work? From an online standpoint, like customers checking themselves out, and probably, probably it's, it's as simple as if they select Credit Card, we we give them a message that says, this company charges a convenience fee of whatever the convenience fee is, if you choose to, if, if you wish to avoid that fee, you have to use a creditor or use a debit or prepaid card, and then
+
+Matthias Miller  2:12:52
+they'll just flip it to run it as a debit. Well, I mean, there's a slight difference too when it comes to convenience, because if the primary method of payment is calling in, then you can charge it on everything going well, actually, it's a different type of fee. And you can, sort of, I don't know, whatever,
+
+Unknown Speaker  2:13:12
+yeah, I have some more to do on that. So that's in my court
+
+Matthias Miller  2:13:18
+setting. By the way, to ask what type of card it is, or do you write it always
+
+Unknown Speaker  2:13:25
+say it again. You
+
+Matthias Miller  2:13:27
+could, you could enable a setting to say, ask what type of card it is, and then you and you have it asked online and in person. And then they can set how it gets handled on each particular one. And they can set it up however they want to. But part of the reason work differently is because the primary method of payment is calling in. Then you can charge a payment online
+
+Speaker 1  2:13:52
+to the way around. The primary method is online. But I think what we do is we ask the customer, is this a credit debit or prepaid card? And if they pick credit card, well, then you know, we can very easily prove that the customer picked a credit card. We can charge them a fee if they picked wrong. I think you have a valid case. And if I from the reading that I did, there is a little bit more leniency when a customer is inputting their own information, as long as there's other options for them to
+
+Unknown Speaker  2:14:23
+choose, right?
+
+Speaker 2  2:14:25
+So, Yep, cool, okay, awesome. Appreciate it. Thank you.
+
+
+Transcribed by https://otter.ai

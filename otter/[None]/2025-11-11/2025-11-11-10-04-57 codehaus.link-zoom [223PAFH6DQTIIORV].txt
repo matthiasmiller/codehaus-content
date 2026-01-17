@@ -1,0 +1,1133 @@
+Unknown Speaker  00:10
+It's all right, you just gave me some time to munch my food.
+
+Unknown Speaker  00:18
+I don't hear you. Is it my fault?
+
+Unknown Speaker  00:22
+You No, I don't think it's my fault.
+
+Unknown Speaker  00:33
+No negative, no joy.
+
+Unknown Speaker  00:36
+You must be able to hear me.
+
+Unknown Speaker  00:50
+Now, there we go.
+
+Matthias Miller  00:57
+Can you hear me? I can see me. All right, yes, yes, yes, yes, yes,
+
+Unknown Speaker  01:03
+I guess I heard some news.
+
+Speaker 1  01:07
+You heard some news? I heard some news. Nice. Yep, correct.
+
+Speaker 2  01:14
+I contemplated for a second here saying that I heard you guys were pregnant, but that would have been,
+
+Unknown Speaker  01:23
+I think that would have been news for me too.
+
+Unknown Speaker  01:28
+It's a weird way to find out.
+
+Speaker 1  01:34
+That would be a very weird way to find out. I'd have some questions on your news sources. Yeah.
+
+Speaker 2  01:43
+Hmm, well, I was, I was surfing some, you know, Dark Web news site, and I found it
+
+Matthias Miller  01:54
+probably talking to a marketer for the US government,
+
+Speaker 1  02:00
+yeah, probably that they're shut down right now. So well, they wouldn't
+
+Matthias Miller  02:05
+know. They don't shut that down, though, until you that big brother's still watching.
+
+Unknown Speaker  02:11
+Listen, I could solve a whole lot of things.
+
+Speaker 2  02:16
+It goes like this, if the government shut down, Congress doesn't get paid either. So there that that that in Warren Buffett's thing about, I forget what the metric was, but if, if the national debt reaches a certain point, then everybody who's currently in Congress is no longer eligible for re election. Those two. Well, we get, we get some things resolved, and
+
+Matthias Miller  02:42
+let's add a third one. If we, if we can, for every new law that gets passed, you have to eliminate at least two,
+
+Unknown Speaker  02:48
+yeah, well, how about 10?
+
+Matthias Miller  02:51
+Well, I, I'm, I'm going to take two. But if you want to go for 10, go for 10. Yeah. Agreed. I
+
+Matthias Miller  03:05
+All right? Well, sorry, I'm our goal. Here was, my brain is like, this is 100 380 degree turnaround. We want to look at calculations, right?
+
+Unknown Speaker  03:24
+Were you? Were you asleep or on vacation?
+
+Matthias Miller  03:27
+Which one deep down another rabbit hole? Good?
+
+Speaker 1  03:34
+Oh, I was gonna say I spent the last week deep down other rabbit holes.
+
+Matthias Miller  03:39
+So Seth was saying he wants to steer clear of clear of me so he doesn't his life isn't as complicated. I said, I'm either the magnet for complexity or or I'm the bottom of the drain, which it is. I hope it's just the latter. I hope it's not the magnet anyway. Is the is, are your changes live in the in zrt?
+
+Speaker 1  04:07
+Oh, do you want to just share your stuff this morning? Yeah, I agree that maybe we could do that. Yeah.
+
+Speaker 1  04:22
+Well, this is I was trying to pin you in here. Burn my tongue. Nice. Okay, I don't think the changes are that different. I've mainly been reworking the core structures that it's more workable going forward, trying to think with the main the contracts report. I'm now we're not including, we are including dwf here, which we hadn't been, yep, which I think is right, because that really is the payment amount. Okay.
+
+Speaker 2  04:57
+Seth, go back. Go back to the contract report. Do. Yeah, here's what would be valuable. Let's just walk through every single column here. Yep, and, and, let's just just talk exactly through what we have and see if we can
+
+Matthias Miller  05:10
+find new holes. Wouldn't it be easier to do this on the contract? Because that shows it's a breakdown.
+
+Unknown Speaker  05:14
+Fine, I don't care. Hopefully,
+
+Speaker 1  05:17
+yeah, so I mean, okay, these guys are all just settings copied from the contract definition. These are what we enter. So this is the actual these are the payment calculations. Here we have effective value rental base, which is the same as effective value for this guy, and then our
+
+Speaker 2  05:36
+contract value, the rental base would be different if it was a CRA correct,
+
+Speaker 1  05:40
+I think so, yeah, yeah, then it would be the effective value minus the CRA subtotal.
+
+Speaker 2  05:48
+That sound right? Well, we'll get to how you calculate CRA subtotal in a bit. But look, yes,
+
+Speaker 1  05:54
+yeah, okay, then contract value, we have the monthly fee total, which that includes DWS.
+
+Unknown Speaker  06:05
+No. Wait, does it?
+
+Unknown Speaker  06:12
+No, it's not no
+
+Unknown Speaker  06:15
+variable in there for true and
+
+Speaker 1  06:16
+false. Yeah. Okay, so that's not including DWS in the value Correct. That's so that's the monthly fee, which would just be rental fee, plus rental tax, I think is in here. I'm pretty sure do we tax should not be, yeah,
+
+Speaker 2  06:36
+we should have. We should have. I don't know if you want to do this by variable, or whether you want to do this by but we want to have both. We want to have one way to calculate with sales tax and one way without,
+
+Unknown Speaker  06:50
+okay, I have a we have this guy, the monthly rental subtotal.
+
+Matthias Miller  06:57
+You mean the contract Dwayne. You mean the contract value with or without tax? Yes, okay,
+
+Speaker 2  07:03
+and whatever, depending on how we reflect it, we should always have a denotation on the for the header of that field, or the saying with, it's with sales tax or without sales tax. Okay.
+
+Matthias Miller  07:19
+Do we want to show both on the detail screen, presumably maximum transparency
+
+Matthias Miller  07:33
+it's carried here, yes,
+
+Speaker 2  07:35
+but part of me wants to say, for the sake of informational clarity, is to to have to show it one way then and then. Give us a button for what you what you call it maximum transparency button.
+
+Unknown Speaker  07:49
+Because the hard part about all
+
+Speaker 2  07:52
+these, the hard part about all these values, is that it gets it can get overwhelming when you start to go through this. Yeah,
+
+Matthias Miller  08:02
+you overwhelming with just a few of the values that
+
+Speaker 2  08:10
+I think it just just to clarify something, I'd have to go back and confirm this. But coming from RTO Pro, I think contract values were pretty much always represented without sales tax. Okay, I'd have to confirm that, but I think from a from a detailed screen view, we should represent contract value without sales tax.
+
+Speaker 1  08:40
+Okay, so then do we going forward for macros and stuff? Do we want to have? But I'm thinking, if we're wanting separate ones for tax, with sales tax, without sales tax, I think we have a contract calc value with a parameter, and then we that's visible sometimes, so it doesn't pop up when you search immediately, unless you check the include expression codes, whatever that checkbox is, yeah. I know you're talking about Yeah. And then we would have a contract value with sales tax and a contract value without sales tax. Yes. That makes it super easy for the end user to or contract value including, excluding, well, probably with or without is going to be shorter. How does that sound?
+
+Speaker 2  09:31
+Yeah, this is, this is one of these things where I need to go double check exactly how this was being represented. We want to be able to easily, be able to calculate both ways. Because oftentimes, from a, if I remember correctly, like I said, I'm going to confirm this, but I think a lot of times on the if you printed out a paper invoice out of RTO print. So it would represent contract values with sales tax, because that's how the the end user goes, Okay, my monthly total is this times, you know, number of payments left. Okay, there's my number. Well, the end the monthly total monthly payment includes sales tax, and so it makes a lot of sense for them to go that number times, you know, my total, my term, and that's what my contract value is. But from a technical standpoint, a lot of times it's we represent these numbers without sales tax, because we don't know what you plan to pay or where you plan to pay off, or what you know what's going to the end value is going to be so
+
+Speaker 1  10:37
+right? Yeah, I think I still want what I was saying, where we have a calculator that has a parameter, but then we have essentially just wrapper macros that's value with tax, value without tax. Yeah, agreed. And then if we just make sure the names are in parallel, then they should be if someone's using one, oh, wait, actually want to go without tax, then it's super easy. Just, just change it all the other macro, and you're good to go. So you're saying we should display without tax on the detail screen, right? Yeah, yeah, I think so. And we'll label it as such. I'm going to just Yes, just contract value, and then in parentheses, without tax. Is that good? Or how do you want to how do you want to display this?
+
+Speaker 2  11:29
+It makes a really long header. Really does it to say parentheses without tax? What's a what's an easier way to say this? Matthias, W, slash
+
+Matthias Miller  11:37
+text, W, o, e, x, c, l, excluding tax, no tax,
+
+Speaker 2  11:47
+non tax. I mean, unless we, unless we would say, Let's include it as I and see tax and exclude B ex tax. I don't know. I'm open to how you I'm open to ways to represent this. I don't know that I have a nomenclature I really want to use
+
+Matthias Miller  12:08
+wo and, I mean W slash, O and w, w slash, seem like, I mean, those are the shortest.
+
+Speaker 2  12:18
+I do. I do think we want the shortest possible okay,
+
+Speaker 1  12:32
+so contract value will be without tax on the detail screen. In here, we're including tax. Is that? Do we want to? Do we want to change it, to exclude tax?
+
+Speaker 2  12:44
+Well, see, this is where I think this report in the future needs to be, whatever you call that thing, where you can add an ex and remove columns as a user. We literally columns here, include, exclude, and so you can turn them on or turn them off as however you would want, would
+
+Speaker 1  13:01
+we default? Do you want to have a default for including or excluding tax?
+
+Speaker 2  13:05
+I would, I would default according to how we're representing on the detail screen, so without tax. Okay,
+
+Speaker 1  13:10
+that sounds good. Search. I'm just making notes to myself so I remember these things. Search contracts should be a user configurable.
+
+Speaker 2  13:25
+Default. I'm opening up RTO pro so I can, I can confirm, confirm the things I'm saying, Yep.
+
+Speaker 1  13:34
+Okay, so contract value. We're tweaking a monthly rental subtotal and Matthias, this is I've got a wrapper macro so in place, so that we can, once we're going to support other payment terms, we can just have an ifs look at the payment terms and go look at the whatever the value should be. So okay, I think it would be worthwhile for us to sit down at some point and just look through the macro structure and see if you have better ideas. But anyway, for the monthly subtotal, we got the rental base, which we talked about already, and divided by the rate divisor and rounded, wait, say that again, rental base divided by rate divisor, yes, okay. And then the Damage Waiver fee, we're just copying from here, yep. And then the monthly tax. Here is the tax on both subtotal, the rental and the damage waiver. If damage waiver is taxable and then the monthly payments, we're just adding those guys together
+
+Matthias Miller  14:49
+on the tax we're doing the tax after you add them together, correct?
+
+Unknown Speaker  14:53
+Okay, that is your distinction there.
+
+Matthias Miller  14:56
+Matthias, yeah. Rounding issues versus taxing. Rent and taxing the base or the dwf, and adding the combined rent together, the combined line, everything still together.
+
+Speaker 1  15:10
+Everything sum to then tags, yeah, well, that's well, let me double check. I'm pretty sure, yeah.
+
+Speaker 1  15:23
+Yeah, we're getting the well, you can op this macro. You can option include Damage Waiver, but sure then if you include it, then we add it together. Well, if you include damage waiver and it's taxable, yep, monthly payment, we're just summing these three, yep, security deposit. We we have a to do to rationalize between one payment or one month down payment. I'm not sure whose comment this is not mine, right now we're using the security deposit if it's there. Otherwise, we're assuming that you're wanting to use a one month payment as a security deposit.
+
+Speaker 2  16:13
+So during contract entry, you can, you can stomp it, or it'll, it'll auto calculate both ways.
+
+Unknown Speaker  16:19
+Yeah, you can stop it in here.
+
+Unknown Speaker  16:22
+Are we sure we want to do it like that?
+
+Speaker 2  16:25
+I don't know. So wait. So wait, we have a contract definition on this. Don't we
+
+Speaker 2  16:39
+remove payments one Okay, so then we don't currently have a way to auto calculate, so it's at this point, it's manual entry Correct,
+
+Speaker 1  16:48
+yeah, except if you don't enter anything, then we're going to use the a one month.
+
+Matthias Miller  16:58
+That's slightly terrifying. Should I not be terrified about that doing? I'm terrified.
+
+Speaker 2  17:03
+Yeah, I think I'm agreeing with you. I think it should be manual entry. When we get to the point where we build portals to actually for an outside individual to enter this, and we need to do more auto calculation. I think we can address it then. So
+
+Speaker 1  17:19
+we're going to just say, if you're, I'm guessing this was based off of what assist does. Probably, yes, the contract is cra Na, otherwise, we're going to use the field, right? But the field shouldn't be, wait, this is not from the that's not field shouldn't be, what is
+
+Matthias Miller  17:43
+security deposit amount visible? If it's not CRA I don't think so. Do we even can you just need the macro and just have it blank on, on hide, right?
+
+Speaker 1  17:59
+I think it was. Again, this is probably vestigial organs from assist,
+
+Matthias Miller  18:03
+yeah, understand, yeah.
+
+Speaker 2  18:08
+Let's Okay, let's go. When you're done there, tell me interrupt your thought. Go for it. So I'm wrong. On RTO Pro, okay, this is just mind boggling to me. Why would you represent the payment without sales tax, but the contract total with sales tax? That makes no sense.
+
+Unknown Speaker  18:35
+It does kind of make sense.
+
+Unknown Speaker  18:44
+I go back, go back to the details. Okay, so,
+
+Speaker 1  18:51
+well, I'm not sure how much of this to do as we go or not. Let me just comment. I'll leave it and comment it out and keep going. Okay? It,
+
+Speaker 2  19:03
+okay, Matthias riddle. Tell me if you were, if you were an individual, which would make sense in your brain, contract value with sales tax or without sales tax?
+
+Matthias Miller  19:14
+Well, I don't, I don't understand why it would be I would expect with sales tax. I mean, I can't imagine. I mean, the only reason I want to know it without it without it kind of depends what I'm using, using it for. Somebody calls up and say, like, how much am I going to pay over the life of the contract? Okay, well, you're going to pay 24 you know, with sales tax number. What's my early payoff? Well, let's take a look. Or how do we break down, I guess even on the early payoff, then I'm going to go into into the EPO and go into the EPO couch and like, Well, so here's how it works. If you do this, then you do this, get out your pencil and your calculator and your abacus, and let's figure
+
+Speaker 2  19:51
+it out. Okay, I guess I'm going back on my okay, this makes no sense. People. Yeah,
+
+Unknown Speaker  20:01
+that's why we're coming along. Yeah, I don't
+
+Matthias Miller  20:03
+think they built it to make sense. Okay?
+
+Speaker 2  20:08
+I'm gonna, I'm gonna back, I'm gonna, I'm gonna read, I'm gonna back up on my statement about not but with representing it without sales, let's represent them with sales tax everywhere. Seth,
+
+Speaker 1  20:23
+a thing everywhere with sales tax, the contract, presumably we should, yes, presumably we should still have a macro for it without sales tax.
+
+Speaker 2  20:32
+Yes, we still need a macro without sales tax, because we are going to want to see it both ways in some reporting. But for the detailed screen, let's represent it with sales tax and make sure that it says,
+
+Unknown Speaker  20:45
+yep, will do okay. Noted that
+
+Speaker 1  20:57
+security deposit cash Dude, this is like for the initial payment, what's due, and this is very much From assist,
+
+Speaker 1  21:14
+do we? Yeah, this needs some thought. But does are we thinking about shipping at all? No, we're not. Or are we not?
+
+Speaker 2  21:31
+Not, not. Hang on a second. Let me think I
+
+Speaker 2  21:43
+I feel like shipping is a bridge I would like to cross whenever we get into the concept of outside, external individuals entering contracts at the point where we're at right now, where we're either sucking in the information from a shed app or the shed suite, or we're manually entering them into the software. I don't even think it's a conversation we need to deal with. I don't think you don't, we don't, we don't ever handle anything with shipping on incoming contracts currently, because the way that we're handling this from from assist side right now is the shipping dollar value is paid as part of the down payment, and so it's shipping should not be something that's involved at this point. Okay, I think, okay. Matthias argue with me if you think I'm wrong,
+
+Matthias Miller  22:51
+the RTO company ever ever responsible for billing the customer for additional hauling charges?
+
+Speaker 2  23:09
+If they do, it's an outlier. Could we handle it as some sort of additional fee if they if they do, an additional one time fee,
+
+Matthias Miller  23:25
+probably that could conditionally be taxable, non taxable, depending on whether shipping is taxable.
+
+Speaker 2  23:30
+Well, depending on if, if you have a shipping fee set up on the contract definition, you could define whether it's taxable or non taxable, and so the question would be assigning it at the point of contract entry, or you just do a regular straight up contract up contract, go back and then apply the fee and pay it, or something like that. I don't know.
+
+Unknown Speaker  23:48
+It's probably fine.
+
+Speaker 1  23:54
+There's also standard contract, same as cash. And insight, are we trying to support that? 90 days? Same as cash. I think
+
+Speaker 2  24:02
+we're we have a con. We have a definition for that. You have that should be part of your your definitions The type,
+
+Unknown Speaker  24:14
+oh, here's the number of days, same as cash.
+
+Speaker 2  24:18
+Yeah, now that is that concept. We haven't even really talked about how we want to handle that from a, from a and probably, I don't think, for the end of the year, I don't know that we necessarily need to handle it. I do think in the future, by springtime, before we go to market, we need a proper way to handle that under the hood, what? What's your unless you think we should dive into that. Matthias, what's your thoughts?
+
+Matthias Miller  24:57
+That seems like you should be able to do a. 90 days, same as cash. I mean, there'll be ways to handle it in some capacity, I'm sure. I mean, yes, I
+
+Speaker 1  25:24
+I don't know how, when? Okay, so we're deciding we don't want to deal with it right now. Correct. Should we make a note on the proposal?
+
+Speaker 3  25:40
+Where
+
+Unknown Speaker  25:46
+January or later? Yeah, do you need it by January? Just throw it in here. I
+
+Matthias Miller  26:08
+can you also throw in minimum down payment?
+
+Unknown Speaker  26:13
+Yes, that's one of my questions.
+
+Unknown Speaker  26:39
+Oh, these guys are slow. Yeah, there.
+
+Unknown Speaker  26:57
+Put it, yeah, yep, I
+
+Unknown Speaker  27:03
+you don't
+
+Unknown Speaker  27:06
+like to downpay men, as long as I'm one of the men. Okay, so,
+
+Speaker 2  27:14
+and to clarify, it's the this is really not a front end conversation on the RTO contract goes in as normal. It's really a closing of the contract question on 90 days, on same as cash numbers. Okay, so
+
+Unknown Speaker  27:37
+this is you're saying it's related to contract closure. It's
+
+Speaker 2  27:40
+related to contract closure. It's not initial contract calculations. Is all going to be is runs exactly the same as regular RTO contract nine days. What about the cash number? Sorry, go ahead,
+
+Speaker 1  27:55
+I think it looked like in zfp cash. Do was zero for if it's same as cash or
+
+Matthias Miller  28:01
+typically, same as same as cash, gets sold as zero to zero down. So it's zero down 90 days, same as cash. But you could technically have a, have a you could technically require a full down payment on the same as cash. Okay, right? Dwayne, since never sold that way.
+
+Speaker 2  28:20
+It's not generally sold as a zero down. It's usually it's regular down payment,
+
+Matthias Miller  28:25
+okay? But they have, they have had some promos where zero down same as cash, right?
+
+Speaker 2  28:32
+Or No, maybe I don't know, okay, essentially, from, from our current operations. Now some other companies may operate slightly different, but 90 days, same as cash. It operates the same way as like an incoming rental owned contract. Makes no distinction between whether it's 2436 4860 month contract, nine days, same as cash. Everything comes in exactly the same. It's all a closure question.
+
+Speaker 1  28:59
+Okay, so we don't have to worry about it. The only question when we're doing figure out how much cash is due is whether you're CRA or standard,
+
+Matthias Miller  29:08
+I think so. Can we just do change this to simple? If there you go, yeah.
+
+Matthias Miller  29:18
+Description, read the macro.
+
+Unknown Speaker  29:24
+Did we just
+
+Matthias Miller  29:26
+it's single payment, payment plus CRA slash the security deposit.
+
+Speaker 2  29:36
+Hey, I have a suggestion for our new if type of functionality we have ifs, we have if ifs and if E. This is a really iffy calculation right here.
+
+Speaker 1  29:51
+Yeah, I've worked in too many iffy calculations in my life. I think it's something that the reviewer gets to put in when they look at someone else's code.
+
+Unknown Speaker  30:02
+It's specifying it as an iffy calculation. Yeah.
+
+Unknown Speaker  30:16
+So it's literally
+
+Speaker 2  30:20
+and is this an editable macro so that if, if it's if we calculate a number and you can stomp on it, not right now, probably should be, what
+
+Unknown Speaker  30:34
+would that change?
+
+Speaker 3  30:36
+Well, what it changes is their deposit. Well, there are
+
+Speaker 2  30:59
+okay in times past, I'd have to think about that, whether you're going to put other money into secured deposit in times past, there have been times where somebody didn't calculate correctly and it was a couple dollars over or under. And so we just straight up override it and consider it the first month of rent, in
+
+Matthias Miller  31:20
+which case that's effectively a rental forgiveness, which we don't support.
+
+Unknown Speaker  31:32
+Isn't it prepaid rental? Would I misunderstand? Or would it be
+
+Matthias Miller  31:38
+an overridden due date? Would they still have to owe it at the end of the contract,
+
+Speaker 2  31:44
+if it's under, yeah, yeah. So essentially it becomes point point eight, 9% of a point eight, nine of a payment, instead of one payment, full payment.
+
+Matthias Miller  31:54
+So it's just a due date override, really, you I mean, I think cash do is basically initial payment, or the initial payment due and and whether or you could call it cash do whatever, but it's not enforced, or it's or we warned, if that's not the actual payment you make,
+
+Speaker 2  32:18
+yeah, I mean, as long as, as long as you can, as long as we're saying we can override it.
+
+Matthias Miller  32:24
+Well, I mean, I think that's a question of contract entry, of what, how do we do with it?
+
+Speaker 2  32:36
+Well, okay, yeah, but fair, fair point. So we haven't really discussed on the how we're going to take initial payment. So in that regard, at the as it stands currently on contract entry, it comes in as we're going to calculate what the what the cash do is. And if you just, I guess, okay, am I being slow? I think what you're saying is we need to handle this in
+
+Unknown Speaker  32:59
+contract entry, right? Okay.
+
+Speaker 1  33:08
+So that's most of the ones on this child screen. When are you all planning to talk about minimum down payment stuff and also the late fees different, or limit late fees until no what was it? Limit late fees to one contract per period. We do that later. Now. Think we had changed the design and then Dwayne wasn't sure what we meant. It's not on the contract definition right now, but we're proposing a checkbox to limit late fees to one contract per period.
+
+Matthias Miller  33:51
+But were you going to choose between period versus calendar month?
+
+Unknown Speaker  33:55
+Wait, I thought we already had that.
+
+Speaker 2  34:02
+We are. We already had a denotation about whether it was by by something,
+
+Speaker 1  34:16
+yeah, and Matthias, and I thought it should just be a checkbox, because that's really what it was, I think, yeah, yeah. We used to have a per account per contract list field, right? And we wanted to just replace it with limit late fees to one contract per period, which would essentially be per account. Otherwise it's per contract. Yep.
+
+Speaker 2  34:42
+Yeah, but there was another denotation about how we calculate late fees. Is it? Is it,
+
+Speaker 1  34:48
+when deferring late fees until end of contract, do we know the
+
+Unknown Speaker  34:53
+incurred or
+
+Speaker 4  34:57
+or what was see? If I can find it, i. I know what you're talking about. Dwayne.
+
+Unknown Speaker  35:15
+Okay, if you go to Line 1290, I
+
+Matthias Miller  35:27
+late fee duplication prevention when fee assessed, when payment due, there's this,
+
+Unknown Speaker  35:42
+a um, we Pro, I think we had that,
+
+Speaker 2  35:46
+yeah, I thought we did too, yeah, here, okay, rental company Gotcha, okay,
+
+Speaker 2  36:00
+Yeah, I think that's fine. Now your your question about making it into a checkbox on whether, whether it's per account basis or per contract basis, I mean as long as, as long as the the field name check, the checkbox, name is clear. What happens if it's checked or unchecked?
+
+Unknown Speaker  36:29
+Is that? Is that clear?
+
+Unknown Speaker  36:31
+One per contract check box?
+
+Speaker 2  36:38
+Well, the only thing that's unclear is, what if you uncheck it, what happens?
+
+Unknown Speaker  36:45
+It wouldn't limit late fees to one contract per period.
+
+Speaker 2  36:49
+Well, if you but it goes to a per account basis correct,
+
+Matthias Miller  36:54
+so it's one, one good.
+
+Speaker 1  36:57
+If you uncheck it, then late fees can apply to any contract you have in the period, if it's checked, then you only get late fees for one contract in the period.
+
+Speaker 1  37:19
+Wait, I mean, so it's essentially limit late fees to one contract per account per period.
+
+Speaker 2  37:24
+Yeah, I understand what you're saying. But how do we, how do we, how do we inform the uneducated user that if I uncheck this, it's going to apply to every contract
+
+Unknown Speaker  37:42
+that's my concern. I don't have a problem with the check box. A
+
+Unknown Speaker  37:45
+little bit late.
+
+Speaker 2  37:53
+Can you are you able to do, are you able to do naming of the field based on on the indication of the checkbox. If it's checked, it's it says,
+
+Matthias Miller  38:04
+No, that's confusing. I'm going to shoot it down right now. Then you don't know if you click it, whether it's which one, like, it's the, it's the, it's the UI equivalent of walking down the hallway and somebody else going like this, like, you don't know which way, like you check it and he's like, Oh, no, does that? Is that the state that it is, or is that the state it's going to be when I uncheck
+
+Unknown Speaker  38:26
+Yes, okay, all right, that's fair.
+
+Matthias Miller  38:34
+Skip late fee if the account already has one this period.
+
+Speaker 2  38:42
+So tell me what was? What was the reason to go from a drop down a per account, per contract to a checkbox?
+
+Speaker 1  38:55
+Remember, it was 20 days ago. I you remember Matthias?
+
+Matthias Miller  39:05
+No, I don't what was the label limit? Late Fee used to be per account or per contract. What was the old label.
+
+Unknown Speaker  39:33
+See if we have it somewhere.
+
+Speaker 3  39:40
+I so these guys are terribly out of date.
+
+Unknown Speaker  39:51
+I don't know I thought we had it, but.
+
+Speaker 3  40:00
+I don't know what we labeled it.
+
+Unknown Speaker  40:12
+Okay.
+
+Matthias Miller  40:19
+Well, I'm I'm not super interested in making this a big hole to die on. If, if Dwayne happy would limit late fees with an option per account or per contract, I would vote to go to that and it's required. Yes, yeah.
+
+Unknown Speaker  40:39
+Okay, good.
+
+Speaker 1  40:55
+Okay, we're done with that one. Perfect. And do you all want to do figure out down payment calculation stuff later. Yes, and RTR
+
+Speaker 2  41:05
+we, what do you mean by What do you mean
+
+Unknown Speaker  41:09
+minimum down payment? I don't think it's fully specified out yet.
+
+Speaker 2  41:13
+Minimum down payment really only comes into play once we start have external contract entry. Okay? So yes, that goes, that gets kicked down the road.
+
+Speaker 1  41:25
+And does that mean that, like this RG should disappear for now, I'm not a fan of having it around if we aren't really using it basically.
+
+Speaker 2  41:42
+Um, uh, sure, I don't have a problem with that, as long as, as long as we don't, as long as don't forget that it's there, speaking more to myself than I am to you. I realize you can see things I can't.
+
+Speaker 4  41:56
+Well, yeah, so we have Sorry. Go ahead.
+
+Matthias Miller  42:00
+Sure. Just put a note in here See, see spec fields in contract definition. That's fine. Now we won't forget
+
+Speaker 2  42:21
+spec spec fields, SPECT fields, fry some of that
+
+Unknown Speaker  42:25
+spec, if any fields,
+
+Speaker 2  42:32
+okay, did we want to? Do? We want to jump back and make sure we got EPO calculations squared. Third,
+
+Speaker 1  42:52
+let's see what we're doing. Yeah, the contract total should be saying, with and without sales tax in here, probably in each of these,
+
+Speaker 2  43:05
+wait, Matthias, you had, you had went and reworked this correct,
+
+Matthias Miller  43:14
+isn't this the reworking?
+
+Speaker 2  43:15
+I think so. But I don't remember what we discussed about sales tax.
+
+Matthias Miller  43:22
+Excuse me, I think, well, I mean, let's look in the definition. Here's macro that spells it all
+
+Matthias Miller  43:39
+out. I it so contract value total, does that include tax?
+
+Unknown Speaker  43:47
+It does right now. It gives us
+
+Matthias Miller  43:51
+the rental balance. It can scroll down. I'm assuming rent paid total includes tax.
+
+Unknown Speaker  43:59
+I would think so.
+
+Speaker 2  44:02
+Is there any, is there any Yes, issues with rounding? When is there any issue with rounding, when calculating these values with tax included, versus calculating them without tax and then applying tax at the end?
+
+Matthias Miller  44:15
+I mean, probably be off. It'd probably be better to calculate it all without tax, and add tax on the end. I
+
+Speaker 2  44:21
+mean that would, that would be my, that would be my instinct on this is you calculate all the contract value, what was paid, any all the CRAs, like all of this stuff, with without tax, and then add the tax at the very end.
+
+Matthias Miller  44:40
+So then CRA needs to be CRA without tax. Currently is cra with tax, no.
+
+Speaker 2  44:51
+CRA should never be calculated well that there shouldn't be every tax be involved with the CRA, because tax, we went through this whole, remember, this whole conversation about. Now, when we represent an EPO total, when there's a CRA involved, that to include the tax, so that you can see an accurate EPO.
+
+Matthias Miller  45:11
+So we should use the with tax, go down to our use of
+
+Speaker 2  45:17
+it, but all your calculations should take place prior to tax at the very, very end, when you get down to a total, then you add the tax.
+
+Unknown Speaker  45:24
+So CRA shouldn't have tax in here. Correct
+
+Unknown Speaker  45:29
+misunderstanding what you're saying.
+
+Matthias Miller  45:33
+We are, we are adding CRA with tax to get the subtotal, instead of removing it without tax to get the payoff amount.
+
+Speaker 2  45:44
+Yes, I remember this, but that would need, that would if we calculated all values without sales tax, then we wouldn't necessarily need to include sales tax in that, in that whole process.
+
+Matthias Miller  45:56
+But what about when we add sales tax on the end? Do we need to add? We need to add tax on line 40 on the EPO sub total, we add tax less the CRA subtotal, which gives us the total payoff amount.
+
+Unknown Speaker  46:13
+Great, shoot me. Now.
+
+Speaker 2  46:23
+I need someone who cares about this detail way more than I do to be like, really persnickety about it.
+
+Matthias Miller  46:29
+I mean, I can. I can convert this if we believe in this number, me or Seth, I don't care who it is. Can convert this to to work
+
+Unknown Speaker  46:42
+without sales tax and only add tax at the very end,
+
+Matthias Miller  46:44
+and just make sure we come up with basically the same number at the end. And
+
+Speaker 2  47:02
+that would and that would, this would inform the tool tips as well,
+
+Unknown Speaker  47:06
+correct? Yeah, everything. So
+
+Speaker 2  47:08
+I think, okay, if we're going to do I think that's the right course of action. And I think that when we do it, we we literally every field needs to say, without tax, without tax, without tax, without tax without tax with the whole way down through until the very, very end. So that nobody's confused about this. I feel, I feel a little bit like your, your your illustration there, Matthias with your wavy hands and wondering which way this stuff is. Yeah. Yeah. Yeah,
+
+Speaker 2  47:47
+I guess what I don't what I don't know, is, if you calculated this all with tax, the way you currently are, and then you side by side, calculated it without tax, what's the difference in the two numbers,
+
+Unknown Speaker  47:57
+pennies?
+
+Speaker 2  48:01
+Do we care about the pennies? No, I don't. I don't care about the pennies. I care more about transparency. So well, consistency and transparency is what I would I would probably say. So keep
+
+Matthias Miller  48:19
+in mind, so does this yield the non taxable value?
+
+Unknown Speaker  48:35
+I mean the very, very engine should yield a taxable value,
+
+Matthias Miller  48:41
+which means that we we're going to need a convert it back into a non taxable subtotal.
+
+Speaker 2  48:48
+Okay, let's talk about consistency. We just decided to represent contract value and rental balance on the detail screen with sales tax, correct, right. So consistency wise, we should represent it would it would stand to logic in my brain that we represent EPO with sales tax in the calculation,
+
+Matthias Miller  49:12
+okay, but then if we calculate it with sales tax, then we have to convert it from a sales tax number, basically divided by 1.07 to get the subtotal that they need to pay. So if you're fine with that, I'm fine with that. It seems
+
+Unknown Speaker  49:26
+like I don't understand, I don't understand what you mean.
+
+Matthias Miller  49:30
+We need to record a non taxable subtotal for payment,
+
+Unknown Speaker  49:33
+for accounting, yes,
+
+Matthias Miller  49:37
+and so we know we'll just pay sales tax on and how to remit sales tax. So we can keep it like this and calculate the taxable total and then just come up with whatever subtotal we need to match that taxable total.
+
+Speaker 2  49:50
+It Okay, so we both understand what we're talking about. Here's the guiding factor, consistency and trans. Currency. So whichever way we represent this numbers, it needs to be defined in the tooltip. That way it needs to be like it needs to say, either with or without sales tax. So it sounds to me like in order for accounting, we need to go back and redo these numbers so that we don't have a sales tax in here, so that we can, I can
+
+Matthias Miller  50:19
+get it done by the time we're done with the call. Probably okay, but
+
+Speaker 2  50:23
+then we just need a every label in here needs to say without sales tax, without sales tax, without sales tax, correct? Okay, I think that's right.
+
+Unknown Speaker  50:38
+Sometimes you'll, you'll be doing that stuff.
+
+Matthias Miller  50:42
+Give me a shot and see where we're at for the time.
+
+Speaker 1  50:44
+Sounds good. One question was, contract value? Do we need to explain a little more? Because we never see this, 684, 31 anywhere else, and it's because this is the rental, the monthly rental, including tax, and we don't have that displayed anywhere,
+
+Speaker 2  51:06
+monthly rental including tax, but not Damage Waiver fee, correct?
+
+Speaker 1  51:11
+And it's not clear, because this guy has a 450 Damage Waiver fee, but it's taxable. So you subtract Damage Waiver of 450 from here, you still don't get the 684 31 which is, I would think is confusing, agreed.
+
+Unknown Speaker  51:31
+How would you represent it?
+
+Speaker 1  51:34
+Well, that was why, back in the day, I had split tax into damage, waiver tax and rental tax, because I thought it made it a little it made it clear for that number. But then, then you said that tax should be always we should never be splitting apart that tax.
+
+Matthias Miller  52:00
+So go ahead. Also why we had had a four column where we had subtotal, tax and total on each line item. We have this over here, that over here. Oh, right, that what you're talking about. Yep, that's it. That's what we're thinking.
+
+Speaker 1  52:17
+That doesn't include, right now, that doesn't include, like, monthly payment that's I'm just ripping through this RG and finding what's due and what The balance is.
+
+Speaker 2  52:37
+So this rental fees section, so then the 1918 62 I'm assuming this customer is past due.
+
+Unknown Speaker  52:54
+So the the
+
+Speaker 2  52:57
+should we rep in this case? If is there damage by your fee on this, on this customer too.
+
+Unknown Speaker  53:03
+There aren't any in the RG.
+
+Speaker 2  53:06
+So this is would it, would it, would it represent there it won a customer that did have, okay, there we go. I just saw you had one.
+
+Speaker 3  53:15
+Oh, I thought I did. I thought I saw one go to your don't know
+
+Speaker 1  53:45
+very best focus. Okay, here you go. Okay, got it. She's fully paid up.
+
+Speaker 2  53:54
+So should we should be if a customer, should we represent a number of periods that are past due. In this case, like this customer owes nothing currently, but on that customer that was like two or three months past due, should we represent that period numbers? The number of periods we can I think it would be valuable, because I mean otherwise, customer calls in and says, How does the how does the customer representative know how many months are past due?
+
+Speaker 1  54:30
+I mean, that wouldn't due date show that. I mean, we don't have it on the screen yet, but the next due date would be, yeah.
+
+Speaker 2  54:39
+But you're also asking the individual look at the due date and then calculate that in their head.
+
+Speaker 1  54:43
+But I think what I want to do is calculate it based off of the due date. Sure have our logic to calculate the due date, and then from there we say, Sure, where is that from today? That's fair. Does that sound right? Yeah, okay. Can. Then and due date stuff is the one of the is one of the things that we need to be building out yet. I think you all had done most of the work to spec it out. I just haven't built
+
+Speaker 2  55:09
+it right, right? It? Well, the whole logic should be reviewed, because,
+
+Unknown Speaker  55:13
+right, there's so much. Yeah,
+
+Speaker 2  55:17
+I'm gonna, I'm gonna be per snickety and tell you to put your numbers in dollar strings, sure, not sometime, sometime before spring of next year. It doesn't
+
+Unknown Speaker  55:31
+I can do that this afternoon. I was working on this display stuff today anyway. So
+
+Speaker 2  55:38
+I mean, for that, for that matter. I mean, it probably be good to represent all of any dollar values with dollar strings.
+
+Speaker 1  55:48
+That means that anytime someone, if someone, tries to pull a macro from here, they can't use it for calculations.
+
+Speaker 3  55:55
+Well, that's not good. Oh, very well,
+
+Unknown Speaker  56:00
+unless Matthias, there's no way that we can is,
+
+Unknown Speaker  56:02
+that's fine. A great.
+
+Speaker 1  56:07
+That's one of the annoying limitations. That's fine.
+
+Matthias Miller  56:11
+I mean, you can use a you can show in the detail screen and use a an underlying help code so that they get the number version, but
+
+Speaker 1  56:21
+a lot of work. I mean, we can do it if we decide that's worth it, but I don't think it's a right now sort of thing.
+
+Speaker 2  56:26
+Okay. Well, here's okay. Then what I'm gonna say is it, let's again, consistency. So in the in the table under rental fees, just add your commas.
+
+Unknown Speaker  56:38
+Yep, that we can easily do. I
+
+Speaker 1  56:47
+just need to change it from calling string to calling comma string in like one place, and we'll be good to
+
+Speaker 2  56:57
+go. I was dreading this conversation, and this this conversation was coming eventually, where it's like, we got to get real into the the minutia.
+
+Unknown Speaker  57:07
+Yeah, but I don't think that's the right now conversation really.
+
+Unknown Speaker  57:16
+Well, that's what I'm saying. We're in the minutia right now.
+
+Unknown Speaker  57:18
+Yeah. It's like, okay,
+
+Speaker 1  57:23
+so are there more things we're needing to look into? I still need to also build in balloon payment stuff. We have the field link, but not the behavior, but we have, I think we have a spec on what we need to do. That's just at the end, right? That's also contract closure sort of
+
+Speaker 2  57:40
+things. And I think you probably ought to throw a notation over in the spec to say that Matthias and I need to go spec out how we want that to work. I don't know that we've ever specked out how we want it to work, have we Matthias? No, okay. It's, yeah, it's under contract closure, yeah.
+
+Speaker 2  58:22
+Hi, okay. Do we have a note in there for CRA conversions as well somewhere? I think we do. Yeah, okay, because that's another thing we have to nail down as well.
+
+Unknown Speaker  58:35
+Man, no. Where do we have it in January, okay.
+
+Unknown Speaker  58:45
+Big, scary warning,
+
+Unknown Speaker  58:47
+yes.
+
+Speaker 2  58:50
+Can we, can we put, can we add a, can we add an image to the database with a scary face to go into the warning message? Probably, I Okay, are there more?
+
+Speaker 1  59:10
+I think what I'm seeing now is that due date calculations are something I need to work on. Are you all wanting to review that before I start getting into that,
+
+Matthias Miller  59:25
+there's a report that we built that doesn't completely accurately calculate it in every scenario.
+
+Speaker 1  59:32
+I think it's close ish, but it has some problems. Yeah,
+
+Unknown Speaker  59:39
+this guy, yeah, it does have some problems.
+
+Unknown Speaker  59:45
+What are the problems?
+
+Unknown Speaker  59:49
+There's a specific data,
+
+Speaker 1  59:50
+something 1231 was having trouble.
+
+Speaker 2  59:58
+Is the, I don't remember what it. Is the Logic sound enough that you can go take a pass at
+
+Unknown Speaker  1:00:12
+it probably question mark.
+
+Matthias Miller  1:00:20
+Well, I mean, it seems a little funky to if we know there's problems with it that to go, yeah, implement it like
+
+Unknown Speaker  1:00:28
+we have to fix it twice.
+
+Matthias Miller  1:00:31
+So why wouldn't we just
+
+Speaker 2  1:00:32
+but is that, is that a, is that a, you need me kind of conversation, or is that a fixing I
+
+Unknown Speaker  1:00:41
+thinking it's probably Matthias and I, but Matthias, does that sound right or not?
+
+Unknown Speaker  1:00:48
+Probably, probably, yeah. I
+
+Speaker 1  1:00:53
+think we large Matthias, for sure, largely understands how due dates should work. It's just a matter of getting them there. We might have questions. I don't know. I don't think Yeah. I think you're right, that it's
+
+Speaker 2  1:01:06
+okay, speaking of you or what are we supporting, initially, fixed or floating, or both. I
+
+Speaker 1  1:01:21
+mean, we're not supporting floating right now, I don't think. But what do we what do we need to support initially? What
+
+Speaker 2  1:01:38
+were you gonna say? Matthias, I don't know. Oh, I thought you made a noise like you were gonna say something I did. Okay. What's what's happening right now, inside of our to pro with all of our companies here, is floating.
+
+Matthias Miller  1:01:52
+What about new guy coming in December?
+
+Speaker 3  1:02:00
+I don't know. I don't know about new guy, new guy.
+
+Unknown Speaker  1:02:06
+Am I thinking correctly that we are doing fixed that Matthias, Right?
+
+Matthias Miller  1:02:18
+The report is fixed? Well, no, I don't remember.
+
+Speaker 1  1:03:08
+Yeah, it's fixed right now. We're just saying what was the last rental fee and incrementing based on the period? Yeah,
+
+Speaker 2  1:03:29
+when you say fixed, that means you have to pay an entire rental payment in order for the due date to move forward.
+
+Speaker 3  1:03:38
+Correct, right? Well, yes.
+
+Speaker 1  1:03:45
+And so which we really okay, how we're logging due dates is fixed, as in, we log that, okay, this period, we have a due date here, and then next month, we log it the same, like if it's the 15th and it's the 15th of the next month, 15th the next month we haven't really built out. So yes, it is fixed
+
+Speaker 2  1:04:08
+right now. So what happens? What happens if my payment is a $200 and I paid $100 right now as it stands,
+
+Speaker 1  1:04:20
+it will just say you're still owe this much for that due date. Okay, so it's fixed, yes,
+
+Speaker 2  1:04:30
+and if I wanted to, as it stands right now, once you have ability to move due dates, theoretically you could say you could manually move that that due date to simulate floating due dates?
+
+Speaker 1  1:04:47
+Yes, I think so. I mean, we'd probably want to add an X 30 button, because, sure, we also have like, payment rows that were deciding what they pay based on their due date. Yeah. We need to make sure we update all if you update, if you want to update a due date, then we need to change all the rows for that due date, plus any subsequent ones, because we don't want you to accidentally move a due date past the next due date. I'm trying
+
+Speaker 2  1:05:28
+to figure out how much of a pain I want to be about supporting floating due dates. Initially, by January, I don't have a I don't have a I don't have a frame of reference for what I'm asking for. So put, put some sort of, put some sort of,
+
+Speaker 1  1:05:48
+what does the entry need to look like from, say, the payment portal? Can we say you don't do anything there?
+
+Speaker 2  1:05:55
+So the way that it, the way that it works in our to Pro is, let's say again, my payment is, I'm doing the first of the month. My payment is 200 if I go in and make $100 payment automatic, the due date just moves up to the 15th of the month. Is how it is how so basically, we take, we take the dollar value and figure out there's a whole bunch fun calculation inside of that whole due date logic to figure out what the dollar per day is, and that that calculation, based on the money that was that that was paid, would is where it moves the due date to.
+
+Speaker 1  1:06:36
+How does it work with late fees and stuff? If there's late fees involved, or maybe that's no impact. So due date is solely based on rental.
+
+Speaker 2  1:06:47
+Correct, only based on rental. Okay,
+
+Speaker 1  1:07:04
+I'm trying to think how we model that then with our events, RG Matthias, do we need to actually shift the due date on rows? Or, how does that work? Or do we calculate? We have a calculated due date based on what you've paid.
+
+Speaker 2  1:07:29
+Let me, let me ask you this. We don't have to answer this question today, like as in, right today, do we? I don't think so, because I'm toying with the idea of saying, hey, Leanne, what happens if we decide to change up our due date logic and say, you have to pay a full month in order any due dates don't move unless a full period has been paid. And if she's like, No way, no how. I hate this then, but then we're gonna go design for it. If she says, I'm open to it, then we can get, we can get pretty far down the road without having to address this logic.
+
+Speaker 1  1:08:05
+Yeah, and it would be super simple for us to go forward and say your due date is literally, have you paid this month's rent? And if you haven't, then this is your due date. That would be dead simple for us to do right
+
+Speaker 2  1:08:19
+now well, and we could also, we could also add a field and a calculation that says amount to pay, to move for due date, to progress, or something like that. You know, it's like, if I paid, if I paid my payments 200 and I paid 100 then you literally would say another 100 moves what you know, moves moves you forward, moves you forward in the contract.
+
+Speaker 1  1:08:41
+Let me talk. We could you. We could show if you're say you're two months three, two and a half months overdue. We could show you a table that says, For this date you owe this much. So say we're in November. Let's say for October, for the October 1, now for the September 30 due date you still owe 100 bucks. And for the October 31 due date you owe, I guess we'd say an additional 200 for a total of 300 I mean that we're literally just summing the RG, it's that's really easy to do.
+
+Speaker 2  1:09:21
+Let me, let me talk with Leanne about it, and let's, let's push that decision off for the moment. Okay, I should be able to nail that down by the end of today. Okay? Because if we, if she, wants to absolutely support floating due dates, then we need to throw it into the spec. We need to design it and figure out
+
+Speaker 1  1:09:39
+how to move forward. Yeah, and that I think Matthias and I would need to think through what the events. RG, looks like. Then, if we're when we're supporting floating, how much, how fluid is, the events are? G, how much do we, yeah, I don't know. Like, we can totally work with it. It's just gonna take some thought.
+
+Matthias Miller  1:10:04
+Yeah, Seth, what I'm what I'm thinking not to get in the weeds, but to get in the weeds. What I'm thinking is essentially due date overrides are just plus or minus x the number of days, and then at any given point, you can calculate a due date based on what happened prior to that in the in the RG, and you use date calculations the whole way through. But anyway,
+
+Speaker 1  1:10:24
+you're thinking, Well, yeah, we can talk about that later. I don't think we need to get into it. Yep, that makes a little bit of sense.
+
+Unknown Speaker  1:10:36
+Cool, good.
+
+Speaker 1  1:10:42
+Okay. So Matthias, should we get our heads together and nail out the due date stuff? Then for Yeah, this the that report where we had due date calculations
+
+Matthias Miller  1:10:54
+we should, which wasn't this was, I guess I gotta drop. I gotta drop for a minute. You guys can either keep going or I'll be right back. Bathroom is calling something.
+
+Speaker 2  1:11:16
+This is this. This is the part that's no fun to me.
+
+Speaker 1  1:11:19
+No, this is the, this is the part that's more fun to me.
+
+Speaker 2  1:11:23
+Oh, well, good. I'm glad you enjoyed this part, because this part just makes me want to just, I'm sorry. It's why I could never be a finished Carpenter, because it's like all the fiddly work.
+
+Speaker 1  1:11:34
+Yeah, I don't what's hard for me is starting with something that's brand new, and trying to figure out where we're going. It's too big and unknown, but at the point where we have a rough structure in place and there's just lots of details to finish out, Oh, that's much easier. I think we're kind of the inverse.
+
+Speaker 3  1:11:55
+That's good, because that's good. Yeah, I
+
+Unknown Speaker  1:12:03
+wonder if there's anything else we should be looking at. I have, yeah, RTO has not been
+
+Speaker 1  1:12:12
+what I was working on. The last week we have had some terrifying stuff Jonathan and I are working on in cls. It's our system for investor tools, the internal system, and we're working on licensing stuff. Oh, fun. So it's absolutely nerve wracking, but yeah, Ellis described it, and it's terrible old code else describes his work in someone else's armpit.
+
+Unknown Speaker  1:12:42
+What the getting
+
+Unknown Speaker  1:12:45
+smelly and hairy.
+
+Unknown Speaker  1:12:53
+Oh, man. Now I just want to ask all kinds of questions, like, What in the world?
+
+Unknown Speaker  1:13:07
+Anyway, it feels good to actually making progress on Did you?
+
+Speaker 2  1:13:12
+Did you swap the sections around in the contract record?
+
+Unknown Speaker  1:13:19
+Sure enough, you did, okay, yeah.
+
+Speaker 1  1:13:23
+All right, we do need to talk about contract entry, that at some point. Is that a January discussion? When is that?
+
+Unknown Speaker  1:13:31
+Yeah, probably.
+
+Speaker 2  1:13:35
+Well, okay, have you heard have Have you heard the high level concept for what we were talking about initially is like throwing it all into a dashboard, every single
+
+Speaker 3  1:13:43
+record. Yeah, yeah. I think I heard that. That's, that's kind
+
+Speaker 2  1:13:47
+of the concept at this point. It's not where it's gonna it's not gonna stay that for the rest of its life. I don't think I would, it would be nice to have a really nice, elegant way to,
+
+Unknown Speaker  1:13:59
+like to do it,
+
+Speaker 2  1:14:04
+if, if I, if I could wave a magic wand, it would be, we would be more set up for we would set ourselves up for success when we go to do external contract entry.
+
+Speaker 1  1:14:19
+What does that look like is that you have a dealer who's
+
+Speaker 2  1:14:27
+so I I suspect, okay, this is what's in my mind. I'll tell you what's in my mind. There will be a time that I know that there will be a time where a dealer hits a portal, probably a whiskey portal, coming off of the client's website. And you know, they're going to be, they're going to ask for building details, customer details, contract detail, like, you'll just, kind of, you'll step through an entire process, fill in all the information. And, you know, and also. Probably fill in like, imagine if you were sitting there with a customer, and the customer says, Well, I want to buy that building. Okay, so let me, let's get your name, let's get your address, let's get your phone numbers, your emails, and so on and so forth. Okay, now you put the product information in. It's the stint number, it's blah, blah, blah. Okay, what's your references? Put the reference information you do, you go through that whole entire all the information that we need in order to generate the contract that would then generate based off of the contract definition template that would be templated there, which would send out to like a Zoho sign, or some kind of digital signing platform and or, or we figure out some sort of in person signing that they could do it right there with the customer. Essentially, I'm an independent dealer. I'm sitting here doing a sale with a customer. I now want to write an RTO contract, and I'm not necessarily connected in with some point of sale software like shed app or shed suite or something like that. We have a number of little dealers like that now that if I could, if I could hand them a tool like that, and it just worked. Like, it was simple. You just enter your details, and it just worked. Boom, it would be, be really cool. Yeah, that's, that's where we want, that's where we probably want to end up. And if we built that thing, well, I could even see internal people using that as a as a contract entry standpoint, but they're like, what if you did that through an admin portal versus doing it through a dealer portal? There's a lot of limitations that we want to remove for the admin side, like you can get around all kind of limitations, but that's where all the limitation stuff that we started putting onto the contract definition comes into play for when you have an extra individual trying to
+
+Speaker 1  1:16:42
+enter a contract, makes sense. So then what they are, all they want is that signed contract, and then they keep track of all the payments and stuff,
+
+Unknown Speaker  1:16:54
+or no, maybe,
+
+Speaker 2  1:16:56
+okay, so, so basically, I'm a I'm a dealer. I'm selling a building. I want to, I'm going to write, I want to write this RTO contract to this RTO company, and get the contract out to my customer to sign. Gotcha.
+
+Speaker 1  1:17:10
+So the deal company is going to make? Yeah, yeah.
+
+Speaker 2  1:17:14
+Gotcha, yeah. I do think it would make a lot of sense if we, if we started heading it like, Okay, this the stage process of going from initial ability to con to do contract entry to a more advanced version of contract entry. The third step to that phase is actually where we can have a software hit an API and generate all that. So like, for example, one of the things I I'm going to want to want to do eventually is to say I want assist to just talk directly to to only and go, it just generates, like, the two systems just Can, can generate that contract together. So, like, what takes place right now on assist, instead of pointing to internal contract generation on assist, it points over the hooked up RTO company generates that contract from that side and passes it back to the
+
+Unknown Speaker  1:18:02
+gotcha assist, yeah,
+
+Unknown Speaker  1:18:06
+gotcha, Yeah, makes sense.
+
+Unknown Speaker  1:18:13
+Is there anything more we should be pursuing now? Or
+
+Speaker 1  1:18:21
+should I drop and start hitting some of the things we've talked about?
+
+Speaker 2  1:18:29
+I think the logical step is due date stuff comes next. We need to
+
+Unknown Speaker  1:18:33
+get due dates squared away. Yeah, I can't.
+
+Unknown Speaker  1:18:37
+I can't think of anything at the moment.
+
+Speaker 3  1:18:41
+I Yeah, oh, he's back. I'm back.
+
+Unknown Speaker  1:18:47
+Is there anything more you want to Matthias, or shall we drop?
+
+Matthias Miller  1:18:52
+Nope, I think we're good. We'll drop. Okay, I'm gonna spend a few minutes trying to knock out this EPO stuff, but
+
+Unknown Speaker  1:18:58
+I'm dropping off, so I'll see you tomorrow. Awesome.
+
+Unknown Speaker  1:19:01
+Thanks, sir, thanks, Seth, bye.
+
+
+Transcribed by https://otter.ai

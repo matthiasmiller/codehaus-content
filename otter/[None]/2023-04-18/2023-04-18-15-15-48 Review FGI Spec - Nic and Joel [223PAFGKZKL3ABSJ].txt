@@ -1,0 +1,665 @@
+Speaker 1  02:46
+In a good is Joel planning to join us I believe is C O he's on another call. Uh huh yeah to explain things I have got
+
+Speaker 1  03:26
+Why don't we do you have any I don't know how do I get into it?
+
+Unknown Speaker  04:08
+Yeah, good
+
+Matthias Miller  04:10
+luck we can I can maybe just ping him and you and I can keep working on whatever stuff we're working on until he shows up unless you get things to shore.
+
+Unknown Speaker  04:17
+Okay, sounds good.
+
+Unknown Speaker  06:34
+Gentleman My apologies. Just quit or add a
+
+Speaker 2  06:44
+a call slipped into the, the narrow window followed by internet issues. So
+
+Unknown Speaker  06:53
+Ah, got it. So it's fine All right, so let me just
+
+Matthias Miller  07:07
+let me maybe it was a domino effect, it was a few minutes late for NEC and so the dominoes all just kind of fell.
+
+Speaker 1  07:16
+Alright, so let me tell you for the sake of
+
+Matthias Miller  07:23
+next day, we'll make even part of a bunch of these calls. So just, I guess my thoughts on this is doing a high level overview and just kind of walking through the spec.
+
+Matthias Miller  07:41
+So, big picture. Whenever we we maintain building records, in assist with for all buildings. And based in that building, we calculate something that is called a manufacturer price, which is a inflation resistant material surcharge, real resistance valuation of the building, which could potentially become increasingly arbitrary with time. And that's kind of the base base value of these. And so what we're wanting to do is, when a building gets built, we want to
+
+Speaker 1  08:28
+Well, okay, so this isn't really big picture,
+
+Matthias Miller  08:32
+what is the big picture big picture is we want to assign finished goods, inventory, values, to buildings, broken down into materials, production, labor and production overhead.
+
+Unknown Speaker  08:45
+And then,
+
+Matthias Miller  08:51
+based on the values of those values, and how they get calculated, we want
+
+Speaker 1  08:55
+to win a building. So the sale,
+
+Matthias Miller  09:01
+the accounting sale of a building happens upon delivery, that's when the chain of change of ownership occurs.
+
+Speaker 1  09:08
+So we deliver it to the customer, delivery to the customer. Correct. And so if a at the end of every month.
+
+Matthias Miller  09:24
+So basically what happens is, during the month we spend money, spend money, spend money, spend money, spend money, spend money, we get to the end of the month and say, Oh, how much money do we spend?
+
+Speaker 1  09:32
+And let me take a take a step back. So how do
+
+Matthias Miller  09:40
+those numbers get calculated? Well, we don't know. These are all projections because we don't know how much money we're going to spend to build this building. And so we come up with percentages and we say we think that production labor is 8% of the manufacturing cost. And that is our estimated standard cost
+
+Speaker 2  10:02
+Okay, so manufacture cost. That is that's all in cost of inputs for this building.
+
+Speaker 1  10:13
+Manufacture cost is a made up, value driven number that is inflation resistant.
+
+Matthias Miller  10:25
+To account for differences in it, I don't know how that it's a magic number, that's how I think of it, I think it's the right way to think about it. It is a it is not, don't think of manufacturing costs in the sense of what you might think of it, what the term actually means. Think of it in terms of, for a building, we're going to come up with a magic number that represents about the level of effort that goes into building this building.
+
+Speaker 1  10:51
+Okay, story points for programming. Yeah.
+
+Matthias Miller  10:59
+And so, so that's the, and that gets calculated based on, you know, there's a manufacturer, cart price, and a retail price for the base building, the shell of the building, and all the accessories that get added in, you add all that together, and you get the total manufacturing costs, you get the total retail break, that's total manufacture price, and the total retail price.
+
+Unknown Speaker  11:23
+And that's
+
+Matthias Miller  11:24
+all independent of what we're doing. That's already happening. Nothing, this doesn't touch that at all. Okay, so when, when a building when a building gets built, we then say, Mark ran his fancy spreadsheets. And based on his fancy spreadsheets, he thinks that for raw materials is going to be 12 and a half percent of the manufacturer price production, labor is going to be 8% of the manufacture price. And production overhead is going to be three and a quarter percent of the manufacture price. And that goes on to the building as a
+
+Unknown Speaker  12:02
+in an orgy of the category.
+
+Matthias Miller  12:07
+Materials production labor production overhead, the standard cost percentage, which is copied from the appropriate place, the dollar amount, which we ought to calculate a checkbox, which we'll get into, and then and that's what gets gets thrown on there immediately. So this is what we think it's going to cost.
+
+Unknown Speaker  12:27
+And then.
+
+Matthias Miller  12:30
+And then at the end of the end of the month, we say, Okay, how much did we spend? What was our what's our inventory, Delta, and divide that out, weighted based on manufacturer price of the buildings? And how much do we spend in labor, we go divvy out that across the buildings, and then we go, do the same for overhead, except it's not monthly, I think overhead whatever overheads like six months or a year or something like that, so that we don't have wild variances in our accounting.
+
+Unknown Speaker  13:00
+And so now,
+
+Matthias Miller  13:02
+at whatever point we can close those out independently based on however frequently they do it, payroll, you could technically close out every week, if you wanted to go to the hassle of it. Because you know exactly what buildings were built, which week. And so now when he's building record, we say we have a, here's the predicted value, here's the actual value. And then there's this third number that we need to keep in mind, which is, but what's the accounting basis for this building? And here's why. If you if you sell a building, if if you build the building, and turn it around and deliver it the next day, you now have to expense out that building, because it's been sold. And so at that point, we say your accounting basis is the standard cost.
+
+Unknown Speaker  13:54
+Because we have to expense it out.
+
+Matthias Miller  14:03
+But the building that you built, that stays on the lot. That one we can say it's worth it's $4,500 now, and when we go finalize numbers at the end of the month, we can say Ah, nope, that one was actually 4269 has its value and then when we sell it, we'll expense it out as that at the actual cost of the building. That makes sense.
+
+Speaker 2  14:36
+Sure, okay. So for stuff like for stuff
+
+Unknown Speaker  14:41
+that we say you
+
+Speaker 2  14:44
+build something and it basically doesn't sit in inventory.
+
+Unknown Speaker  14:50
+You say we
+
+Unknown Speaker  14:53
+we expense that with standard cost.
+
+Unknown Speaker  14:57
+Now in that case, do we Is that?
+
+Unknown Speaker  15:06
+How does that get reconciled with
+
+Speaker 1  15:10
+actual costs? Ultimately, or do we not care? Yeah, so I would think so we have a variance account.
+
+Matthias Miller  15:18
+And then whenever we calculate the actual cost, we apply that to the variance account.
+
+Speaker 2  15:23
+Ah, brilliant. Okay. So that's where the variance. Cool.
+
+Matthias Miller  15:27
+That's where the grants comes in. So what this lets us lets them do is basically as accurate as possible without, I mean, it's a little bit of mind bending complexity, I mean, it's a little bit of complexity, but hopefully not with mind bending complexity.
+
+Speaker 1  15:43
+There's two numbers, the intercrossed extra cost.
+
+Matthias Miller  15:48
+If it's sold me, you know, if it's sold before, you know the extra cost, then you expense it as the standard cost and expense out the variance. And otherwise, you expense out the the actual cost.
+
+Matthias Miller  16:06
+And this is all stored on a per building basis. So the way we determine what a building's value, I mean, what are total finished goods. So this means we can, we should be able to run a report, haven't thought this through all the nuances. And so possibly this doesn't work out in practice, but should be able to run a report and say, show me all the buildings that I have an inventory and be able to run numbers on what the FDI values are on those.
+
+Unknown Speaker  16:43
+Cool, and haven't even thought
+
+Unknown Speaker  16:47
+through whether this is actually relevant. But reaching back a bit to into earlier conversations.
+
+Unknown Speaker  16:58
+Does FIFO LIFO
+
+Unknown Speaker  17:02
+enter into this particular
+
+Speaker 1  17:05
+area of things? Or are we so okay? Are we talking
+
+Speaker 2  17:12
+purely managerial stuff? You're? Or are we talking? Stuff that's actually going to end up flowing back out into
+
+Unknown Speaker  17:25
+the accounting statements? It does flow
+
+Matthias Miller  17:27
+out to the accounting statements, the answer to LIFO FIFO. Is
+
+Unknown Speaker  17:32
+that until we that that's all
+
+Matthias Miller  17:36
+going to become off of be coming off lump sum in raw and raw materials, inventory, asset accounts. And until we implement bill of materials,
+
+Unknown Speaker  17:48
+LIFO FIFO doesn't really matter. I mean, it's, it's going to be
+
+Matthias Miller  17:58
+well, actually, no, it's going to be FIFO. Because we're going to look at our or our initial, we're going to look at our settlement inventory value. We'll do our end of month inventory reconciliation. We'll look at materials that are used. So it'll be it'll be FIFO costs on raw materials that are used for
+
+Speaker 1  18:21
+the period. But those things are lumped and distributed across buildings, whether or not
+
+Matthias Miller  18:30
+that's it. Okay. Let's say that you have a, let's say you build a play house that has a fancy railing. And so you had two of those railings at the beginning of the month, one at the end. So you used one, you bought one at 100. The first one, he bought it at $100. Second one you bought at $200, you used one that's $100 in cost for the whole month. So we take that $100 plus all the other lumber that was used lumber materials, and we distributed across all buildings that were built during that period. So right. If we had bill of materials that we could apply that $100 directly to the Playhouse, but we're not doing bill of materials. And so it's FIFO on what's used scrap scrap and waste gets included in that
+
+Unknown Speaker  19:19
+cost at this point.
+
+Unknown Speaker  19:25
+That makes sense.
+
+Speaker 2  19:27
+So at this point, raw materials costs are simply an input to to this design. That we that comes from Magic systems that
+
+Unknown Speaker  19:43
+we aren't aren't looking at right now. Is that right?
+
+Matthias Miller  19:48
+That's correct. And ultimately, this this system is intentionally not not saying what the numbers are.
+
+Unknown Speaker  19:54
+It's up to
+
+Matthias Miller  19:57
+there's a lot of this that's designed to say We know you're going to change your mind about how you want to do it.
+
+Unknown Speaker  20:05
+And so
+
+Matthias Miller  20:07
+some of these, we're not getting too persnickety about what that actual number should be
+
+Unknown Speaker  20:11
+and how we should come up with it. Cool. Cool.
+
+Speaker 2  20:13
+So the actual raw materials costs appear by magic in our hands, we use them. I'm like that.
+
+Unknown Speaker  20:22
+Alright, so.
+
+Matthias Miller  20:26
+Alright, so then let's go into, okay, so then there's three levels of permissions, can you view these costs, ie, salespeople, when you pull up a building record, you do not need to see how much it costs us to build this. Now your business FTI costs? Well, folks in Dwayne's office, maybe they should be able to see it, but you really like, don't mess with those numbers. And then there's like Master Control, which is me and maybe Dwayne, but we're going to reconfigure this thing. And it's going to be it's a helicopter, helicopter cockpit, and you better reach early implications when you do this. Okay, so cost categories are hard coded. Like, that's just what FTI is, I mean, simple enough.
+
+Unknown Speaker  21:23
+FDA cost estimates. So
+
+Matthias Miller  21:33
+they can't, it's a co op. Here's one of the challenges with insight, it's a co op, not a corporation. And so
+
+Unknown Speaker  21:43
+they wrestle hard
+
+Matthias Miller  21:45
+sometimes to try to all weigh in on the same way of doing things. But then ultimately, at some point, somebody says, but I don't want to do like that. So the raw material percentage, as the basis of manufacture price is defined at a district level, which is Indiana, North Carolina,
+
+Speaker 1  22:05
+and Ohio, basically a regional level. The builder then
+
+Matthias Miller  22:16
+get determines the, what the inventory percentage is and what the labor
+
+Speaker 1  22:21
+percentage is. And the Whoa. Oh, we're gonna keep this is the old one. Huh? Oh, okay.
+
+Matthias Miller  22:36
+So we already have this RG. This is the old one, we're not going to touch it until we migrate. But until then, we're going to have production labor, and production overhead
+
+Unknown Speaker  22:47
+will be on a per builder basis.
+
+Speaker 2  22:52
+Okay, does it matter to us right now, to know what inventory percent means?
+
+Matthias Miller  22:59
+No, it's I mean, I mean, bottom line is we're calculating some other pricing, and it's used for that right now. And we're gonna use new pricing and it's become obsolete. Now, there's this other nifty thing is that there's two kinds of shops, there's master builders, and there's sub shops. And some people say,
+
+Unknown Speaker  23:20
+so, so for some
+
+Matthias Miller  23:21
+shops, we will pay you eight and a half percent. To build this building all day long. You figure out how you get your employees paid out of that, or how much money you want to keep or any of that. And so for these, we have a setting on the building on the on the builder that says
+
+Speaker 1  23:36
+I'm not just setting the labor percentage that I assigned.
+
+Matthias Miller  23:44
+That that's the actual that's going to be the actual cost. And so when we populate the billing record, we say, well, the labor the standard cost is this. And then we say, Oh, we know this, the actual cost over here, it's the same amount as well. And then when we get around to distributing those amounts, we need to exclude those,
+
+Unknown Speaker  24:03
+those buildings.
+
+Unknown Speaker  24:10
+expense. So
+
+Matthias Miller  24:16
+then we have actual cost records, which is based on a district plus year,
+
+Unknown Speaker  24:20
+plus category. So
+
+Matthias Miller  24:27
+and then we and then and then a series of periods within this. So we're in order for Ohio, of the year 2023. The raw material pricing, starting January 1 to march 31. It was this amount.
+
+Unknown Speaker  24:43
+And that is
+
+Speaker 2  24:44
+total, total raw materials costs for this
+
+Unknown Speaker  24:51
+district Year category,
+
+Unknown Speaker  24:54
+or district in the year in this case.
+
+Speaker 1  24:56
+Yep. Go ahead. And,
+
+Matthias Miller  25:00
+and so we have that we have a macro that says, what is the total manufacturer? What is the basis manufacturer
+
+Speaker 1  25:10
+price for all buildings built during that period? And then that then calculates the period cost, which is
+
+Matthias Miller  25:26
+our standard cost, we thought it was going to be 8.5%, but it's actually 7.24%. Okay.
+
+Unknown Speaker  25:35
+What is prorated mean in this context?
+
+Unknown Speaker  25:41
+prorated? I mean
+
+Matthias Miller  25:48
+I think what I mean is no, prorated cost. I don't think prorated means anything. Cool. Can't imagine what you'd be prorating. Okay. And then you have a button that says, Go distribute these and it goes and distributes these. Okay. And we'll get to that process. Then we have financial allocations. This is where things this is basically the settings record that links from district to that links into the accounting system.
+
+Speaker 1  26:34
+Okay, so, here's the effective date.
+
+Matthias Miller  26:39
+Here's the district in North Carolina, Indiana, Ohio, there's the accounting company
+
+Unknown Speaker  26:44
+that it ties into, here are the buildings that this applies to. I believe, I have not thought about how that gets used. And configured, but for sure, there's a
+
+Matthias Miller  27:02
+reason. And then for each of the FDI categories, here's the category. And here's the source and destination for the for the finished goods. So raw materials goes from the raw materials asset into it could go into the FGI. I mean, it could go into a single finished goods, asset account or you know, wherever they want it to go.
+
+Speaker 2  27:31
+Okay, okay. That was one question I had, actually. But so basically, you're talking about
+
+Unknown Speaker  27:40
+in the,
+
+Speaker 2  27:41
+in the transformation from raw materials, so. So we are basically talking input account, which I guess is synonymous with source. And then
+
+Speaker 1  27:53
+finished goods account? Yes. Okay. Well, I mean, they're
+
+Matthias Miller  28:00
+more standard, clearer names to be using. I'm very open to that. I don't.
+
+Unknown Speaker  28:03
+I'm,
+
+Unknown Speaker  28:05
+I'm not sure if there are, but.
+
+Unknown Speaker  28:08
+But it's helpful to. Yeah, cool.
+
+Matthias Miller  28:11
+And then we have the expense account. So labor should be expensed out on sale. Labor should be expensed out here. And variants for this should be expensed out there
+
+Unknown Speaker  28:23
+are for this cost category. Gotcha.
+
+Matthias Miller  28:30
+And then there's a bunch of sales order stuff. And I'm not sure some of this stuff might be duplicated.
+
+Matthias Miller  28:35
+But we have the I don't think it is you might have multiple AR accounts. So on sales orders, what is the AR account? What's the enter an income account?
+
+Speaker 1  28:46
+What is the payments? Based on payment type?
+
+Matthias Miller  28:51
+Where does what's the payment income account payment fee account? What's the sales tax account? Shipping income account?
+
+Speaker 1  29:01
+Now it's not Yeah, what is the income account for the building?
+
+Matthias Miller  29:06
+Based on subsets so you can say this building should go in this income account or this sales order and are linked below and because it's linked to this building should go in this income account or that one should go into that income account?
+
+Speaker 1  29:18
+Accessories, if you have a ramp,
+
+Matthias Miller  29:23
+then maybe that's a separate income account from
+
+Unknown Speaker  29:27
+anything else.
+
+Speaker 1  29:34
+And then discounts, whatever account you want for discounts. Okay. So just to be clear, this sales order section.
+
+Speaker 2  29:47
+Am I right in thinking it doesn't strictly follow fall under inventory tracking?
+
+Unknown Speaker  29:53
+No. I mean, you're correct. All right.
+
+Matthias Miller  30:05
+So because what we want to do, because I mean,
+
+Unknown Speaker  30:07
+the sale
+
+Matthias Miller  30:11
+there's the one piece, I mean, it's let's do inventory tracking a county, but then also when we sell it, let's let's allocate those funds to the appropriate income and expense accounts. Yep.
+
+Speaker 2  30:26
+So we've, up until that point, we've done all the expense, all the structure to get the expense, right. And now here
+
+Unknown Speaker  30:34
+are where allocating income. Yep. That's right.
+
+Matthias Miller  30:44
+building costs, the only thing I didn't talk about was the free standard cost as actual cost is going to be on here. It's getting copied from getting copied as appropriate, which is going to so that magic will be done here and handled elsewhere. On sales orders will have a fee column on the payments for credit card fees.
+
+Unknown Speaker  31:03
+To coordinate with Josh to get in. Maybe he is already I don't know.
+
+Speaker 2  31:10
+And we need to have a way to specify where those fees get
+
+Matthias Miller  31:17
+reflected or maybe we have that already. Yeah. On the payments, based on payments,
+
+Unknown Speaker  31:21
+payment fee account. Yep, yep, yep, yep.
+
+Matthias Miller  31:26
+Okay, and then, the line item on the accounting transaction can link to either Astin or a sales order
+
+Unknown Speaker  31:34
+which we will use for automatic
+
+Matthias Miller  31:36
+reconciliation and will validate this the sum of all stin debits and credits on a transaction or zero and the same for sales orders debits and credits are zero.
+
+Unknown Speaker  31:45
+And steppin is analogous to SKU is
+
+Speaker 1  31:48
+that right? Finished Goods. SKU Yes. Okay. Okay. Yep. Well,
+
+Matthias Miller  31:59
+I mean, serial number
+
+Unknown Speaker  32:00
+you it's a unique
+
+Matthias Miller  32:02
+identifier for this item? Yes, yes. Sorry. Okay. Okay, more like a serial number, then. Gotcha. So each building has a stent, or maybe all buildings have a stun?
+
+Speaker 1  32:12
+It's, it's of infrastructures. So well, actually,
+
+Matthias Miller  32:19
+infrastructure. Got some mornings when unlinking buildings and sales orders basically Here Be Dragons? Do you know what you're doing? And I don't want to think through what the implications are beyond that, but
+
+Unknown Speaker  32:32
+it'd be dragons
+
+Matthias Miller  32:37
+will add linking out to the deposits or payments, and we'd have processed to copy that deposited
+
+Unknown Speaker  32:44
+on date back.
+
+Matthias Miller  32:48
+I have not thought that part through so it's probably going to be something next week we go into accessories. This does need to be coordinated with Josh. So we might just want to have him make those changes. Okay. So then automatic processes.
+
+Unknown Speaker  33:06
+There's two
+
+Matthias Miller  33:09
+major automatic processes. One is, we now have the price, we now have a cost for a period go distributed across the buildings as actual cost. Okay. So we calculate the total cost for the period. Subtracting anything that's mark is free standard cost is actual cost. Then we distribute the cost to all remaining buildings, including sold buildings, weighted by Oh, nevermind. weighted by the building standard cost dollar, I was wrong. It's not the manufacturer prices and standard cost dollar. That's
+
+Unknown Speaker  33:49
+the weighting of this one. I think it's yeah, it's manufacturer
+
+Matthias Miller  33:54
+price to get come up with a standard cost. But for the actual cost, the actual cost is, is weighted based on this the original standard cost that we calculated.
+
+Unknown Speaker  34:03
+Gotcha. And then we push these into accounting then at that point
+
+Matthias Miller  34:21
+we'll have a helper report that shows us what happens what's going to about to happen to the building pricing. Okay,
+
+Unknown Speaker  34:28
+say we push these into accounting.
+
+Matthias Miller  34:32
+I'll get to the accounting system reconciliation. Okay. Okay. So the other big piece is basically now pushing into accounting system. Here's how I think
+
+Unknown Speaker  34:43
+of accounting.
+
+Matthias Miller  34:45
+There's two questions, dear building record, as of your current state, what should your impact be to the accounting system? Well, I've been built but not sold. Therefore, I should take out of raw materials and put into finished goods. Well, I've been sold, therefore I should take out of raw materials, and I shouldn't be putting into an expense account.
+
+Unknown Speaker  35:09
+And, and so
+
+Matthias Miller  35:10
+we query the building, say, What are you, then we go look at all transactions that are linked to this building. And we say, Well, what did you do? Find a difference, apply the Delta, catch it up, we're good to go. And that way, the magic and beauty of this is they say, No, no, no, no, like, there's this other thing that we need to do. This is the accounting impact that should happen when X, Y or Z, it's going to go over to the here. And we can say fine, all we need to do is we need to adjust what the building says its impact should be to accounting you know, adjust the configuration in any way needed. And it'll automatically reconciled
+
+Unknown Speaker  35:46
+update cool.
+
+Matthias Miller  35:52
+Sales Order is basically the same. May we go deep into this but the sales orders the most. This is just the same way of classifying.
+
+Speaker 1  36:08
+Same thing, but for sure. Yeah.
+
+Matthias Miller  36:15
+And then we'll have a special process that will run whenever there is a relevant teams that we detect and then we'll also run it nightly
+
+Unknown Speaker  36:23
+for any other reasons.
+
+Matthias Miller  36:27
+That basically goes and reconciles building
+
+Unknown Speaker  36:34
+building impact. Same thing for sales orders
+
+Unknown Speaker  36:43
+this one is duplicate.
+
+Speaker 1  36:50
+This one is actually this one is. I'm going to do this well this one is.
+
+Speaker 1  37:18
+Alright, and then there's all the manual processes.
+
+Matthias Miller  37:24
+Given multiperiod expense, you buy
+
+Unknown Speaker  37:27
+a AC unit,
+
+Matthias Miller  37:32
+or you you you buy a dozen AC units, and you want to split them and it's not going to be an asset for whatever reason it's going to be expensed
+
+Unknown Speaker  37:41
+out as for the I don't know. I don't know what the right thing oh, well, you
+
+Matthias Miller  37:51
+I don't know what the right scenario is. You got some kind of weird cost that shows up that needs to be expensed out then well, you just use your counting your accounting processes, make journal entries, use a different cost asset account and expense it out across multiple periods
+
+Unknown Speaker  38:06
+as necessary. So
+
+Speaker 2  38:10
+and are we talking? So at this point, we are not talking specific attribution to individual things, this would feed into your overall overhead and then be allocated out. Okay. It's all big bucket stuff.
+
+Matthias Miller  38:30
+FDI inventory and raw materials inventory will enter manually.
+
+Speaker 1  38:36
+No special accommodations required for processing payroll.
+
+Matthias Miller  38:41
+I mean, we will be looking at payroll integration at some point. Probably, or I don't know, even with it's barely worth it, I think but
+
+Unknown Speaker  38:53
+sales tax.
+
+Matthias Miller  38:57
+So this will automatically adjust sales tax liability and it should zero out whenever you pay your sales tax because we should be getting accurate sales tax numbers in there. And if not, then you should have some kind of sales tax. I don't know what the appropriate thing is variance corrections entreated fix it up routing or whatever.
+
+Speaker 2  39:16
+So to be clear, in this manual processes section really has no implications for
+
+Unknown Speaker  39:22
+for development. Okay. Yep.
+
+Matthias Miller  39:26
+Migration we need a report that takes Astin raw material dollar production labor dollar production overhead dollar and import them into new
+
+Unknown Speaker  39:33
+fields. And then
+
+Matthias Miller  39:42
+we'll have the the manufacturing number will stay the same. That's what that's what it was.
+
+Unknown Speaker  39:47
+Sorry insight.
+
+Unknown Speaker  39:55
+So we pulled up a building that is don't know
+
+Matthias Miller  40:05
+they do currently have a finished goods cost so manufacturer prices that magic number I was talking about sales order price should be coming on the sales order. So we're going to add basically add all this stuff in and then push numbers into our new RG and and then change finished goods cost to
+
+Unknown Speaker  40:25
+reflect our new numbers so that'll come at the end of the process
+
+Unknown Speaker  40:48
+so this one
+
+Matthias Miller  40:49
+there's this is already implemented the design billing cost way too weighted by standard cost dollars because some buildings require more
+
+Unknown Speaker  40:58
+work to be created to be built
+
+Unknown Speaker  41:13
+this needs to go up here
+
+Unknown Speaker  41:40
+we're not using classes at this point
+
+Matthias Miller  41:48
+so basically somebody says I want to send my loaded, OSB. Okay, well, here you go. And here's the raw material costs that way that doesn't get expensed out to buildings.
+
+Unknown Speaker  42:01
+Cool. There you go.
+
+Speaker 2  42:05
+Cool. Just one, it's not a very high level question. But what does the how do you define buildings within a period for allocation of
+
+Speaker 1  42:16
+costs? Is it built on? Cool, cool, which is the date it was finished? All right, well,
+
+Speaker 2  42:31
+that does feel like a good orientation to it to understanding the stuff. And I saw you were recording this. Is that
+
+Speaker 1  42:46
+going to be available? Absolutely. I'll make it available. Lovely. Thank you.
+
+Speaker 2  42:54
+You're welcome. And I should go ahead. Well, there's
+
+Matthias Miller  43:00
+just a question from Matthias but it's all of us going to be going into space for the catalog
+
+Unknown Speaker  43:16
+if we could
+
+Matthias Miller  43:19
+the only thing I'm not sure about would be the accounting impact part of it.
+
+Speaker 1  43:25
+But everything else would Yes. Perfect.
+
+Speaker 1  43:35
+So I know you got to get a drop. Yep. Thanks. All right, Johnny. Thank
+
+Unknown Speaker  43:39
+you. Yeah, good one gents.
+
+Unknown Speaker  43:42
+Good luck.
+
+
+Transcribed by https://otter.ai

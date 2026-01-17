@@ -1,0 +1,1307 @@
+Unknown Speaker  06:22
+All right,
+
+Unknown Speaker  06:24
+hey buddy, morning.
+
+Matthias Miller  06:26
+Good morning. Let's go. Let's go
+
+Unknown Speaker  06:30
+this time to put on the face paint.
+
+Matthias Miller  06:34
+Yes, it is face paint or cry.
+
+Speaker 1  06:38
+Not how I feel right now, but good to see you, man. I mean about everything, but that's good to see it.
+
+Unknown Speaker  06:55
+There we go. All
+
+Unknown Speaker  07:00
+right,
+
+Speaker 1  07:02
+John, John's John's here, Matt. So yeah, hit us with, hit us with the good stuff, I guess.
+
+Matthias Miller  07:10
+Yeah, here, let me I should have had my list pulled up here. So, yeah, we have Yeah.
+
+Unknown Speaker  07:26
+Rice, kids jersey,
+
+Matthias Miller  07:30
+why don't we start by pulling up the tracker and state, start looking at the some of the or try or pull up the warnings, and start taking a look at some of them and see what we can get
+
+Unknown Speaker  07:44
+cleaned up. All right there. So Zam
+
+Matthias Miller  08:00
+All right. John, so which one's here? I guess we got some Oh yeah, okay, yeah.
+
+Unknown Speaker  08:10
+All right,
+
+Speaker 2  08:11
+so yeah, good morning. Matt, Hey, good morning. Hey, yeah, see all I got left here. You can see on here, all the repaired stuff, and then that one time that order that for some reasons, not in there anymore.
+
+Matthias Miller  08:26
+All right, so the all the time at, we can get that one off the plate right now the time, at, is an accounting issue that we need to, I think, I think it murmurs in your court to chase down at some capacity, which,
+
+Speaker 1  08:44
+yeah, so shared that with Rick in the email. And I guess, well, Rick gamble. So Rick gamble saying that when an order is filled, but there's a one less because broken one or for some reason, it wasn't the full quantity. Sure, it gets sent, it gets invoiced, because it wasn't the full quantity. It's still in the system, and the way that they are dealing with that is deleting the using that delete code. I asked if there was another way that that could be done, because, based on what Rick Hartman said, Yeah, I didn't want anyway, that's a sage function. Now, I mean, I don't understand that functionality so
+
+Matthias Miller  09:50
+well. So what I would propose is that, if that's, if that's what they want to do on the accounting side, I think, I mean, the main, main question in my mind was, I. Know, is there a What's the justifiable reason for doing it? If that's the case on their end, then will include any, any deleted items with a with an invoice date, and that should, and we'll just expand the list to include those and that should, it should take care of the time at I'll need to push an update for that. But
+
+Speaker 2  10:40
+that wasn't the case, though, with the time that, like the accounts were all right and everything. So would that still be, you know, I mean, like the numbers were all Yeah.
+
+Unknown Speaker  10:55
+Do you hear that? Hear
+
+Matthias Miller  10:58
+what? Yeah. But, I mean, I don't know how to, I think that's a question. Back to Rick gamble. Why? Like if, if the counts are right, why were they they deleted what was back ordered.
+
+Speaker 1  11:17
+So how do we I mean, if there is a cleanup, if we do clean up that, any of that stuff, how does,
+
+Matthias Miller  11:27
+sorry, well, okay, so fundamentally, if this is a standard practice in some capacity to delete orders, then I think the answer is we Need to handle deleted orders in some capacity. Now, you know, just broadly speaking, now, as far as these specific ones, where these specific ones deleted, I don't know, but basically what I could do on my end is I can include, I'll just, I'll just include any deleted orders in the I think,
+
+Speaker 1  12:05
+Rick come over and let's, I mean, if we can get to the bottom of it, that'd be great, sure.
+
+Unknown Speaker  12:12
+All right, I'll see.
+
+Speaker 2  12:22
+And that, that fab one, Matt, that's up top there that I was texting you about. That was Tina, okay, so fabro Rick came back from favron. They needed some 28 inch bummer block. So we didn't get an amount. Usually we do, like anywhere we do 600 1200 stuff like that. He didn't have an amount at the time, so I made 1200 of them. So Tina put an order in for 1200 and I
+
+Speaker 2  13:07
+hung off of that order. The order was nowhere to be found, alright? So I was like, I don't understand, what happened to that order. But I mean, you know, I mean to me, orders don't go away until they're completed, right?
+
+Matthias Miller  13:21
+Yeah. So, so we're part of, part of the issue is we're filtering. Sorry, what was that, Matt? We were jumping over to to the federal thing.
+
+Unknown Speaker  13:36
+We got Rick here now, Matt, so we can
+
+Unknown Speaker  13:39
+all right, I got all the answers.
+
+Matthias Miller  13:41
+Awesome. Can we? Can we start with the meaning of life?
+
+Unknown Speaker  13:48
+That might take a while? Okay,
+
+Matthias Miller  13:51
+so the the on the on the time at
+
+Unknown Speaker  13:56
+Rick, yeah.
+
+Matthias Miller  13:59
+So our, our understanding is that that when the when the full quantity is not produced, the order gets deleted, gets flagged as back ordered, or something along those lines, which, if that's a standard practice, then what I would propose is basically in our system. I mean, we need a way. We need some kind of way to identify that even though it was a deleted order, that there's still that we still need to we still have assembly time for it. So there's two issues. One is, how do we handle this more broadly? So is it good enough just to look should we always assemble something for a deleted order that has been invoiced? So that's a question. One, can we use it as a rule of thumb? Question two is, more specifically, John saying that on the time x, we produce the full quantity. And so why would why would these ones have been deleted?
+
+Speaker 3  14:59
+I. That I don't have an answer to,
+
+Speaker 2  15:03
+yeah, the amounts were all right. I mean, they were made over three days, but the amounts were, it was fulfilled, or, like, still filled the order. Well, someone had to have deleted that org, right? But who? I don't know because and Tina's because, when I tried to put him in originally, it just, there was no order. There was no order at all. So I asked Tina, I said, What happened to the time that or and she looked in her sage, you know, there, and it was there, but it wasn't on mine. So somewhere there's, yeah,
+
+Speaker 3  15:42
+but you, what do you mean? It wasn't on yours, it wasn't on your what? I
+
+Speaker 2  15:46
+don't have a like, whenever I'm logging, whenever I'm or not logging whenever I'm putting stuff in here, inputting stuff, I have to attach it to a sage order, and I have, like, a drop down box. There was no, there was no stage order for the drop down box for time that, but we had in in, say, in her stage
+
+Matthias Miller  16:06
+right? The reason for that is that we, we don't, I just assume it's a deleted order. It means it's deleted, so we shouldn't show it. That's why it wasn't showing up. Over on our side, I was filtering down by either active or completed orders.
+
+Speaker 2  16:22
+So the question is, where did it get deleted from?
+
+Unknown Speaker  16:25
+That's the question.
+
+Speaker 3  16:27
+The My, my, my understanding only, I would imagine a majority of those deleted sales orders are Armstrong. Am I right?
+
+Matthias Miller  16:42
+Let me take a look.
+
+Speaker 3  16:51
+Wow. Or you do partial loans because of special zooming, yeah.
+
+Matthias Miller  17:01
+Okay, so if I look back over, let's look at the date range here. So we had a bunch, so there are a bunch that are Armstrong, some burgers, some cnh. Wow. I steel.
+
+Speaker 3  17:22
+I steal what might be, because Tina and Mike go in and switch loads, you know how we
+
+Unknown Speaker  17:32
+she has to put, yeah. She has to do different, yeah. That makes sense. Yeah,
+
+Unknown Speaker  17:37
+with that. I mean, the only
+
+Speaker 4  17:40
+it Armstrong,
+
+Speaker 3  17:45
+for example, we send them 552 alone. Every sales order for the 40 sixes. However, we will put other items on there which would reduce that 550 so it's only a partial delivery on that well, there might be 20 left on that sales order. Well, we're not going to ship them 20 or add it to another sales order, because basically we send them 552, all the time. So that sales order with 20 left is just hanging out there. So so to get to remove that from like our shipping schedule on that, we'll delete what's left on there. But it's apparent, not necessarily, that we made it and it's sitting around somewhere, that other 20. It's just that, because we ship 552 all the time, we have that one that's left with 20, we're just going to delete it, because we're the next day, we're already sending 552 right? You went out and see what I'm saying.
+
+Speaker 1  19:01
+Couldn't could the quantity be changed? Rather than using delete status for the whole quantity,
+
+Speaker 3  19:10
+they use different po numbers, yeah, so you can't use that sales order if it's a different Po.
+
+Unknown Speaker  19:19
+No. I'm saying like, if the order quantity was 552 and we reduced it to 532
+
+Speaker 3  19:27
+you would have to go back into the sales order and change and change that.
+
+Speaker 1  19:33
+Would that be a cleaner way of handling that
+
+Speaker 3  19:37
+situation? I Well, I'm not it. That'll work, okay, but, but I don't understand what the problem is. Just because it's a deleted item,
+
+Speaker 2  19:51
+yeah, I'm just going to say, because, what if it's deleted item? Especially with Armstrong, there's no labor to track now, because we didn't make what's being deleted.
+
+Matthias Miller  20:00
+Did. But guess what you did? Yes, we did. Because we have, we have Assembly tracker items, and that's what I'm saying. Like, we have Assembly tracker items that we can't link to a sales order because the sales order was deleted. So yes, we are, I mean, not to get sorry, I don't mean to get you, I'm not sure. Like, we have time for some of these that were deleted.
+
+Speaker 1  20:20
+Because, like, if it was a 532 that we made and sent out of 552 we made the 532 and we're trying to track it, but because it's in deleted status, it's not being tied out to the 532 is
+
+Unknown Speaker  20:35
+that right? Right?
+
+Speaker 3  20:38
+So again, I'll go back to my question. Why is it an issue if you have deleted, and I know you're laughing at I
+
+Matthias Miller  20:49
+understand it is a great question, but the reasons issue is just I'm trying to understand when does deleted mean, actually deleted, and when does deleted mean we just didn't finish the whole thing? So if, if deleted is so I'm getting the deleted flag. And I'm just saying this is just me operating off of the assumptions based on what, what I understood at the time, is that deleted just means, well, it's deleted. So there's nothing there. That's obviously not the case. My question would be, if you have a deleted sales order, like, what happens when you actually cancel? Well, sorry, let me take one step back. Big picture. We need to be able to look at a sales order and say, Yes, we need to assemble for this, or no, we don't otherwise, and and for exactly how much. Or we need some kind of reconciliation process, or we can't, or we can't tie out the assembly tracker to sales orders. So we can, we can. We can fudge it and say we'll just give, we give John the ability to we can include all sales orders, even if they've been deleted. And then John has to decide whether this was actually deleted or whether there's actually stuff being built. And he then be able to write off a certain quantity if it wasn't the full quantity, etc. So that's an option. Another option is it? Is it? And I think this is one point of clarification that would be useful for me, is if you have an order that has been invoiced for whatever reason, and let's say the customer rejects the load for whatever reason, and you fully cancel the order when the invoice date come back off the sage order, or the sales order, or would that persist? Do we have any way to know what kind of, for lack of a better term, what kind of deletion This is on a sales order?
+
+Speaker 3  22:53
+Well, see, yeah, I mean, and you made a good point. The same thing is, if we deliver, you know, 30 pallets, and two of them are damaged, and they refuse that, so we're bringing two back. Well, we're not going to invoice them for 30 we're going to invoice them for 28 but let's say it's, it's an item that they're going to order a month down the road, and we got those two out there, we'll probably delete them to get it off the system, off the shipping schedule, because it just lengthens everything. So we did make them. However, two was damaged in route, but we're not able to invoice me for the full amount. We're going to take those two off. It's going to be sitting around. We're going to delete it.
+
+Speaker 1  23:51
+So What? What? How hard would it be to just change the quantity in the sales order
+
+Speaker 3  23:59
+before you invoice it, or even after you invoice it? No, you can't. You can't change it after you you have to change it before you invoice it. Yes, that can be done.
+
+Speaker 1  24:10
+Do we know? But do we have that information before we invoice it?
+
+Speaker 3  24:15
+Yeah, because, for example, again, if, if something sent back or, or we're only sending this many Right, right, right? Yes.
+
+Speaker 1  24:24
+When we invoice it, we change the quantity on the invoice. We
+
+Speaker 3  24:27
+change we we change it. We changed on the invoice. Yes, but we also have to go back and change your sales order before we print the invoice. Sorry,
+
+Speaker 1  24:41
+would that be a difficult step to do? No, I
+
+Speaker 3  24:45
+mean, I, that's I, I do the invoicing. I can just go in. Well, no, I'm wrong. You know what? I cannot if the sales order is in a system, yeah. Mm. Uh, and we do a shipping ticket, we send it. I cannot go back and change that sales order. I gotta go and cancel that shipping. Yeah, you can't I once it's once a shipping ticket is produced. You cannot go back and change the sales order. You have to change the sales order before you create a
+
+Matthias Miller  25:30
+shipping ticket. Yeah, right. Well, even then, for all intents and purposes, if you really again, we're talking if you want to be hyper precise with assembly tracking, you should still track assembly of those two pallets because the Assembly did their job, yeah, yeah, and so. So there's a variety of reasons for production discrepancies, for discrepancies between sales orders and sales order quantities, invoice quantities, assembly quantities.
+
+Matthias Miller  26:08
+But we do know, okay, so, so just strictly looking at this logically, we do know that if we assemble something, it will at some point be invoiced. So, so we can ignore any deleted sales orders that have not been invoiced. We know that Is that, am I? Am I correct on that assumption?
+
+Unknown Speaker  26:33
+Yes,
+
+Matthias Miller  26:35
+okay, so then, so then I don't know. Maybe I'm jumping too fast to conclusions here, but I do wonder if perhaps we need some kind of reconciliation process by which we say we write off a well, we effectively override the quantity on a sales order, for the sake of the assembly tracker, where we say, Yes, we know they ordered 552 but we're only building 500 you know 32
+
+Unknown Speaker  27:11
+or
+
+Matthias Miller  27:13
+or whatever it might be, or in some cases it might be, well, We know that they ordered 552, but, but this was, I mean, it's probably not having for Armstrong, but pick some other customer. We they the say the sales order was for 21 they fully rejected the entire delivery, or they canceled and but we had already invoiced them. I know this is a bizarre scenario, but whatever bear with me, they canceled, and so the real quantity should be zero. We're actually not doing anything for the sales order and just write it off and get it out of here.
+
+Matthias Miller  27:59
+I'm not sure of a scenario where that would actually
+
+Speaker 3  28:01
+happen? Yeah, I yeah, I can't. Well, I will throw something else in there. It doesn't happen often, but sometimes it does. If someone orders 15 pounds, and that's what the sales order is, and 17 are made, and they accept it, right? Change does not occur on the sales order. The change occurs on the invoice. So I'll manually go in there and change that amount to 17. It'll produce an over shipment. You approve it, so based on the sales order, you got 15, but the guys actually produced 17. But if you're going by the sales water, it's only showing up 15. You see what I'm saying. So it can go both ways that happens. Yeah, right.
+
+Speaker 1  29:02
+Is it? Is it? Well, it's not the answer. Maybe in every situation, is it possible, though, the to change that sales order as often as possible before the ticket gets before the invoice gets generated, like
+
+Unknown Speaker  29:20
+I you know,
+
+Speaker 3  29:21
+most of the time, yes, you Well, I'll say for Armstrong, absolutely, you can do that. But if you send something, it gets rejected and sent back wrong stuff made you cannot, right, right, right,
+
+Matthias Miller  29:36
+right, right. Makes sense. I mean, it seems to me like we still need a way to handle it in some capacity. Is there any value in here's how we've handled it. In other types of scenarios, it depends how strict you want to be with this type of thing. But in other types of scenarios where you've had to do overrides like this. Is, allows them, as somebody, to override, allow John to override the the effective quantity for a sales order, and then just require a justification, reason or an explanation. Like, okay, here's what happened to damaged drink shipping or, or, you know, incomplete load, or, or, you know, I don't know,
+
+Unknown Speaker  30:22
+or that we made extra
+
+Matthias Miller  30:24
+or made extra. Now, if it's made extra, or, I mean, in that case, though, it's only made X customer accepted, you know, extra, extra pallets. Now, if it's going into stock, then we shouldn't assign it to the sales order. We should leave it around until the next, the next time
+
+Speaker 2  30:44
+that happens too, Matt, see we'll have customers that if we do make couple extra, say, like High Steel, then I'll have Tina fall and see if it's all right. And it usually is for them. But some of our customers just want what they order. They don't want to pay for any extra. That's understandable, you know. But then then they are sitting around here until the next order. And, you know, and if it's not an order we do every week, then they're sitting here a while so.
+
+Speaker 3  31:13
+But also, you know, you mentioned burger. Burger is always canceling order, yeah, you know, or changing dates, or changing amounts and so forth on the sales order. So if they have scheduled, and Bosch will do it too, yeah, they'll have we'll put a sales order in for this Friday, while we get an email, Hey, now we're not taking we don't have room or whatever. We're not busy. We don't need it. We're not going to leave that sales or just sitting there, you know, because we're not even making it. We're not sent in, so we'll delete it. I mean, those are the scenarios that happen. And it's, it's, it's, it's not unusual.
+
+Matthias Miller  32:04
+But in that case, and that's where I think, if we can fell swoop, ignore any deleted sales orders that haven't been invoiced, that's a pretty sounds to me like that's a pretty nice line. In that case, if they're, if they're jumping one thing to max, and they don't, you know, they don't change their minds. Don't accept the order, whatever or not. Don't accept the order, but don't, don't.
+
+Speaker 1  32:30
+So like the if John, if John, if this, sorry, if the assembly information gets entered before it's invoiced. Mo, like we're it's going to be there, right? It's going to show up in the drop down invoice before the assembly information is entered, which is going to happen sometimes that's unavoidable. Then if there's a discrepancy, then we just need, then we need to have a way of still entering the assembly information.
+
+Matthias Miller  33:08
+Yeah, the way I would, the way I would propose to think about it, is that we included so in the list of we assume that we assume, obviously any active or open sales orders and any invoice deleted orders that were invoiced. We as we start with the assumption that those are going to be assembled for the full quantity. Then on a per sales order basis, give John the ability to say, we said we needed this many, but we actually need we're only this order only only gets this many, or we said it needed this many, but it's actually getting this many more.
+
+Speaker 1  33:47
+So if the if the order gets invoiced before, John ties assembly information to the order, if it gets invoiced before, and the quantity, that's where the quantity might be different. But if, if we would know the invoice quantity, like if John would then know the invoice quantity that needs match to, wouldn't that
+
+Unknown Speaker  34:13
+make it easier?
+
+Matthias Miller  34:16
+Yeah, I mean, my understanding, I'm right, Rick, is that that's a useful piece of information. That's helpful to know, but it still requires human judgment to figure out exactly what went down and I think.
+
+Speaker 3  34:30
+And the thing is, John does the shipping schedule anyways, so he knows, like an Armstrong 552, if we're only sending even though we're constantly making that right. He knows that we're only sending 540 Right, right? I mean, he makes the shipping schedule. The only thing that he would not know, and I mean at that time, is if something gets sent back, or something or. Rejected, and then you know you will not, but no, no, but yeah, you're going to find out anyways, because we're going to talk about it. So
+
+Matthias Miller  35:15
+I mean to me, this seems pretty simple, and I think pulling in the invoice quantity, invoice quantity. I need to check with Rick Hartman to see what, what he could do. See, seems I can't foresee any obvious reasons why that would be be an issue. And so we could show that, show that here. And then we could also, and then I think, I think having some kind of quantity override, in some way to say, well, either quantity override or, I guess, another way to have it is on the sales order itself. Have a flag that says, Look, we're completely closing this out, even if we didn't assemble as much as we needed. That would actually be a better way to do it, just forcibly say, Yes, we did assemble this even though it doesn't tie out, or we're closing this out even though it didn't die out. Does that seem like a are we on the right track there, or is there, are there gaps, things I'm not seeing with that that
+
+Speaker 1  36:25
+seem pretty simple? Matt, or, like, easy enough,
+
+Unknown Speaker  36:29
+yeah, okay,
+
+Speaker 2  36:34
+so then on, so then on the tracker. Matt, so what I'm when I'm putting it in, if, if the amounts different for any reason, there'll be, like, a box I can check, like override, and then put the amount in, and it'll go,
+
+Matthias Miller  36:50
+is that what? It'll probably be most likely, what's going to happen, the way I would propose to do, do it is in that bottom, the bottom screen, where you've got sales orders that aren't, like, like the bottom half of screen there.
+
+Unknown Speaker  37:08
+Oh, sorry, yeah,
+
+Matthias Miller  37:11
+like for these guys give, we'll give you a way to basically forcibly take sales orders Off, off this list. And so we'll, we'll keep the All right. Functionally, my proposal number one, add the invoice quantity to this as another column here, so you can see that. But then give you a way to basically close things out on this list to say, look, we didn't assemble the right quantity. But, but either the customer accepted it, or, you know, whatever happened, we can legitimately close this out,
+
+Speaker 1  37:51
+right? You have, right. Here's quantity order, right? So we have MLS, quantity, assemble, quantity, and what will be the other additional will be additional column that would
+
+Matthias Miller  38:08
+that you would add to that. We've got two approaches that were could work reasonably well. One is, one is just an editable column that lets you override the the quantity, the just the quantity override, basically
+
+Speaker 1  38:22
+like an adjustment, like a plus or minus.
+
+Unknown Speaker  38:28
+It can you throw in there?
+
+Matthias Miller  38:31
+Okay, well, there's, there's three options. Number one, add a plus or minus column. Number two, straight up override. Instead of 552 we do five. We put in 532 so in the first example, you do minus 22nd. Example you do, you do 532 instead of 552 the third way to do it is, don't put a quantity override in at all, and just say that you actually, you actually closed out the sage order.
+
+Speaker 1  39:01
+Well, question is, do we need to, do we need to know that, like, do we need historical and do we need to track when we've made those adjustments or not?
+
+Matthias Miller  39:12
+For the sake of tracking, having a quantity override or a delta, like the plus or minus probably does make the most sense, or provides the most I don't know.
+
+Speaker 1  39:33
+Like, if, yeah, I mean if thing, if we can, if we can just close out without correcting numbers or whatever, to me, that seems like a little more of a possibility of creating some mushroom effect, potentially, right? But you can't go back and really, actually,
+
+Matthias Miller  39:53
+what I don't know reconcile, and the reconciliation is, what sales orders did we assemble? Or more or less than what it asked for. Yeah, what? What putting numbers in requires. Putting numbers in requires somebody that, I mean, you can, you can just close your eyes and put in what number you need to. But it does tend to encourage more of, okay, let's research exactly what went on, and what the number actually should have been, and why it should have been that.
+
+Speaker 1  40:25
+How often does this really happen on a daily or weekly basis, like, where there's a an actual difference in the order,
+
+Speaker 3  40:33
+I would say at least once a week with Armstrong, yeah.
+
+Unknown Speaker  40:37
+Not more, yeah.
+
+Speaker 1  40:39
+But I mean, what do you guys think? Is it? It doesn't, to me, it doesn't sound like a lot of work to do a, you know, put a number in. Hey, we, we shipped 20 less. Or here's that. What do you think? Here's
+
+Speaker 2  40:51
+the thing, Matt, with just using, going back to Armstrong, let's say there's 10 loads on 10 loads, which has 10 POS, right, and 552, a low. Well, let's say, you know, I may make three loads at a time. So if I make, you know, 1656, but now they've called, they've ordered some specials. Now I got to keep two stacks off, so I'll make two less stacks, or not make them, but just two less stacks. Okay, two less we'll ship two less stacks. But on the tracker, if I put 1656 in minus whatever, let's say 1610 or something. Then, then it's going to take off a one two and part of the third Po, so. And then when I continue on to make the other full loads, it's going to start at that partial po right? And then it's going to start taking off. And I think that's where it's that's where it's getting uneven, let's say, for that example, for that example. So that's happening too, right? So if we want to make one of them loads, you know, like you're saying changing the PO quantities, we can definitely do that. But you know, the like with Armstrong, like, we'll cancel full loads for then, like, it just, it just happened last week. It just happened once this week. You know, they ordered nine loads last week, and then they just send, you know, they said, well, our board Mills not been running for, yeah, three days, so we canceled three
+
+Speaker 1  42:17
+loads to do we then carry that po to the next so what do we do? What are we doing with that po that
+
+Unknown Speaker  42:25
+gets deleted, that gets
+
+Unknown Speaker  42:27
+that's a true delete, yeah, yeah.
+
+Matthias Miller  42:31
+Okay. So I have a I have a proposal. I don't know if you guys like this or not, but what if we change the assembly tracking into a two step process? Process number one is just the time entry like we're doing. We have partial work orders until you get done with a batch of however much you're assembling. And then step two of the process is Go, go through all of your sales orders. And you go from the sales orders to tie it back out to your work orders. And so it basically means we're in some capacity treating everything like stock items. You go build stuff, you have temporary inventory, and then you go through the through the sales orders, and you go tie them out to, you know, you go, you go, tie them out to the to what was assembled. When
+
+Unknown Speaker  43:33
+say, can you run over that second step again?
+
+Matthias Miller  43:35
+So this, so the first step is just the assembly tracker, except we wouldn't, when you finish, we wouldn't tie it out to sales orders, okay? And then the second step is, you have a screen that looks something like the bottom half of this screen. I don't know exactly. I haven't thought through all the details. But then you would go through sales order by sales order, and you would say, all right, yep, this thing, this thing, this thing's done. You would tie it out to work orders. And then when the sales order, if the sales order gets changed, anything like that, you're operating, you're tying out quantity assembled. You would think, go into the sales order, or somehow, from the sales order, tie it back out to to the work order, so that I don't, I don't know. I'm doing a horrible job explaining it.
+
+Speaker 1  44:32
+Well, I think it's, I think it's a lot, I think it's a lot of work, right? And so,
+
+Matthias Miller  44:41
+but the fundamental issue is that in in the case of Armstrong, what we had said, I mean, Armstrong is, in some is, is what we would we have been calling a stock item. And I think one of the things we're saying, it may be that we. Need. We had said we can just go filter. We can just filter down the assembly tracker when necessary, like click on the click on the item code, which fills up the assembly tracker for all those items and and just go back into time and assign those work orders to the right sales orders, right? Is that too much work for what we're describing with the order changes and cancelations and other things like that, for Armstrong,
+
+Unknown Speaker  45:34
+you mean a two step process?
+
+Matthias Miller  45:39
+Skip the two steps process. Can we just treat Armstrong like a stock item
+
+Speaker 1  45:46
+and then tie it and then tie it out later? Yep,
+
+Speaker 3  45:52
+you could, I mean, we're constantly making them constantly, yeah. I mean, it's just, it's just basically one item, though, it's just the 40 sixes.
+
+Matthias Miller  46:04
+Well, no, that's fine. We can flag the 46 says stock items.
+
+Speaker 2  46:09
+Like, all their stuff changes. Like, if they're they sometimes they'll just do partial loads. You know, they'll send an order. So what will happen is that they have partial load set up for different sizes. Let's say a 70 by 40 654, that's half a load. So they'll order five loads of full load of 46 and then a half load of this. Well, I'm going to cut a half load of 40 sixes and put the 70s with that, because we don't up there with partial load.
+
+Speaker 3  46:37
+Right word. I hear what you're saying, but with, usually, with those other orders, we're sending the full amount. It's just the 40 sixes that get adjusted. Oh, yeah, yeah. And that's what he's saying. We treat that 46 like a stock item. Am I correct whether it gets that
+
+Speaker 1  46:58
+special? So Matt, if, if John knows that he's on the exact right sales order number. And that's the like, like he was talking about the third load earlier, where he made two less stacks, for example, and then that quantity was changed on that third load. If he's on the if he knows that he's adjusting the right sales order, he can make that adjustment when he does the entry, then it's taken care of my my concern is with Armstrong and having so many different sales orders every week that becomes that could become a little bit tedious for John to make that adjustment on just the right sales order number.
+
+Matthias Miller  47:48
+Well with stock items, so the way stock items work is that you put them in the assembly tracker, but you never tie them out right, right away, right and then, and then they'll show up. The sales order would show up in the bottom pane. This bottom half here, you would click into it and work, work backwards through your assembly tracker to to tie it out to that sales
+
+Speaker 1  48:17
+order, just like you're already doing, right, just
+
+Matthias Miller  48:20
+like we're already doing, yeah, I'm also thinking, just from where I sit, this is no impact on what's the proper workflow or anything like that, but just from where I
+
+Unknown Speaker  48:42
+sit, the the sorry I'm losing it.
+
+Matthias Miller  48:46
+Just, just from where I sit, it makes more sense to put the quantity override directly on the sales order, like in the bottom half of the screen here, rather than putting the override on the work order,
+
+Speaker 3  49:01
+right? I agree. So, because John knows what what's been shift and what I mean, he knows, so it doesn't matter. Then if we got a deleted sales order, say we didn't ship a full amount of the 40 sixes, what I'm hearing you say is you just, you just make an adjustment and you move on, right? Because, actually, what, what you guys were looking for with this, with this tracker, is What's it matter? And that's what I go back and you know, what's the matter? If that was deleted, all you got the information you're looking for. And I don't know how that affects your program, but I'm just saying that if you you should be able to override it and then be done with it. And you got the information you.
+
+Speaker 1  50:01
+See. Well, I mean, the easiest way would be, it was to just take what sage is showing as the number and use that number, because we can peel that right from Sage, and then it makes it easier on our side. But if you know, if the information isn't accurate coming from Sage, then we have to take
+
+Speaker 3  50:20
+another but it is accurate. Coming from Sage, we're making a human is making the change to it, the actual sage is correct. So if he goes in and we make a decision, we can only ship half right, and they don't look, you know? You can make that on there, and it gives you the information somebody that you
+
+Speaker 1  50:45
+need, somebody has to make that adjust, yeah, and if it's on, if it's John, then he has to you, then you always have to, obviously know the sales order number, if it's okay,
+
+Unknown Speaker  50:59
+right? But Armstrong,
+
+Speaker 1  51:00
+or a burger, or somebody like that, orders a lot. Well, I have, has a lot
+
+Speaker 2  51:04
+of match in the drop down box. I have this little sales order numbers, but yes, so I just do that early eight. But with Armstrong, if you do the drop down, let's say there's five loads, all five of them drop down, and I'm logging, I'm I'm putting in three loads. I can only highlight one sales order at a time for all that. Okay, you see what I mean? I can't, I right? Matt, I can't do all three at the same time.
+
+Matthias Miller  51:35
+Um, sorry, run that Baby One More Time.
+
+Speaker 1  51:37
+So if you don't, or Matt, if there's three different order, three truckloads of 552, and just make the three and one fell swoop, and John's entering the quantity of the three. Can he choose three different sales orders to apply that quantity to? At same time,
+
+Speaker 2  51:55
+I can only choose one right in the drop down box.
+
+Matthias Miller  51:58
+No. You can go you can choose three. There's a plus button that lets you tie it out to multiple sales orders that gives you another row to do that. Okay,
+
+Speaker 1  52:10
+but yeah, so if we can do that, it sounds like the I think you guys will you. Are you in a Is that what you would like to do? John, like, Would you like to be able to make the change, make the adjustment on the sales order that would fulfill the order?
+
+Unknown Speaker  52:33
+Like he would make close it on
+
+Speaker 1  52:37
+track, yeah, make the adjustment on that particular sales, or you would make the adjustment when you're doing the entries. You
+
+Unknown Speaker  52:46
+need to figure out how to do that and then, yeah, okay, okay.
+
+Speaker 2  52:57
+Is that so? Is that what I should be doing? That highlighting, like, if I'm making three loads and it covers, you know, whatever I might be making four loads and it covers, I have to highlight or add, like, my understanding was, if I just click the first one, anything over that first one, the rest of the amount would just filter into the next Couple. That's that doesn't
+
+Matthias Miller  53:20
+happen? Yeah, I guess I'm not, I'm not understanding the difficulty with assigning it to more than one. I think that's, I think that's part of the issue.
+
+Speaker 2  53:33
+Well, you I'm saying about signing in the only I thought you can only do one, like in that time, in the one time frame.
+
+Matthias Miller  53:41
+So we are, we are limiting by time frame, which I believe is wrong. I think, I think generally it makes sense that we filter down to make sure that it was assembled prior to the due date. But we're also filtering it down to items that were, we're filtering down the list such that it's assembled between the order date and the due date, and that's creating the problem that we have on the I don't remember the item, but the one we had yesterday is that, or maybe I'm just again, I might be completely talking past you, not not understanding.
+
+Speaker 1  54:31
+Sorry, I didn't. I'm not tracking with you. Matt,
+
+Matthias Miller  54:35
+part of the issue, one of the issues I know we're running into is again, this is just, this is this is me working on making assumptions and working in faulty one and making faulty ones. So this, this one's on me. When you tie out a work order, I had been assuming that the work or the completion date is going to be between the order date and. The Assembly date, which is true in most cases, but not true in all cases.
+
+Speaker 1  55:11
+I mean, yeah, does that? Does that affect? Does that affect the the program, when it gets assembled, versus what one of the order date shows,
+
+Matthias Miller  55:27
+yeah. I mean, we need it. We just need to expand the date range of, I mean, we need to effectively. What we want to do is we want to only auto assign. Sorry, this gets I'm like, here, once we get everything
+
+Unknown Speaker  55:50
+we need to have.
+
+Matthias Miller  55:54
+The reason we did it this way was because we have a whole bunch of open sage orders that we don't want to have automatically applied,
+
+Unknown Speaker  56:04
+yeah, and so
+
+Matthias Miller  56:07
+we we just need to. We do need a cut off point. I mean, it does affect the program. We do need a cut off point. I'm proposing that we just automatically apply it to. Well, I guess I'm, I'm not sure what I'm proposing, actually, but it is, it is an issue, and it does need to change
+
+Unknown Speaker  56:30
+the earliest open order, right,
+
+Matthias Miller  56:32
+right? Earliest open order after, after whatever date that we say. And it's not actually, because not everything's cleaned up. We can't actually go all the way back to June 26 or whatever the date is. It has to be, you know, some, some July date, or something like that.
+
+Unknown Speaker  56:47
+That, right, right, right.
+
+Speaker 2  56:50
+Yeah. So Matt, let me ask you this, like, like, something like Armstrong, where we do all these loads every day, if, okay, so let's just say there's 10 loads, and I make four of them today. All right, it should automatically the drop, my drop down box should automatically have the first load, first, second, third, fourth, fifth, right? I believe so. Yes, right. If I put in, if I and each one is 552, let's say if I put in like, 2208 for four loads, it should take the first four things off. If I do less or more than that, it should go into the next one. But if it comes up to where, like, I gotta cut a couple stacks to get some specials on they want, or, or, you know, they added something else, or whatever, I gotta cut some then it should just keep automatically going with the next order until I'm done with that order, then whatever's left is the Delete. Could that be an option that that's how I'm envisioning this taking place, rather than, like looping, if it automatically just keeps taking off from each order, you know, each load, you know, in order of how they're, how they're, the POS are, then whatever's left. If nothing's left, then, you know, we made everything we did, that's great. But if something's left, that's the number that's going to get deleted at the end. I mean, either by me or Tina or Rick or whoever. I mean that seems, that seems about the easiest way to do it, if we can set it up like that.
+
+Matthias Miller  58:27
+And I think, I think that is the way that this if we convert it into a stock item, I think that is the way that this should work.
+
+Speaker 1  58:36
+So currently, Matt, if he, if we do a work or like, if we do an entry an assembly, this was work was done. This is the day it was done. Say yesterday was 827, John's entering 827, every what date range of orders are you currently putting up there? Because of the history that's not cleaned up.
+
+Matthias Miller  59:00
+So currently, currently, the that, that range that it's automatically putting in there is all orders that span the assembly date, which is incorrect. And that's what I'm saying needs to change. What needs to happen is we need to pick an arbitrary date. I don't care what it is, July 1, July 15, I don't know, and say, and say, we're going to include, we're going to include
+
+Speaker 1  59:28
+all open orders from that date, exactly, yeah, yeah. That's probably the best way to do it, right?
+
+Matthias Miller  59:37
+That's, that's my that's my opinion, yes. And then, if we do that, I mean, it was and so then for stock items, if you have outstanding orders for stock items,
+
+Matthias Miller  59:53
+the main issue that you have with stock items is if, if you make ahead. Yeah,
+
+Unknown Speaker  1:00:03
+there's nothing to time to.
+
+Matthias Miller  1:00:05
+There's nothing to time to, which is fine. The issue is that the next work order that you create will want to automatically assign it to the oldest work orders, or the oldest sales orders, when the previous work order should have been assigned to them.
+
+Speaker 4  1:00:22
+Uh, if
+
+Matthias Miller  1:00:26
+you don't, if you don't tie out your stock sales order first, before you you
+
+Speaker 1  1:00:40
+but on a stock item, we're doing it as a work order entry only, right? Work Order being the the assembly data
+
+Matthias Miller  1:00:52
+we are. I think the plan had been that even with stock items, we were going to go back and tie them out,
+
+Speaker 1  1:01:00
+yes, but when we tie them out, that's, I mean, one way or the other, we have to find the right the right one to tie it to
+
+Matthias Miller  1:01:13
+correct. So the question is, okay, but
+
+Speaker 1  1:01:17
+I mean, it doesn't really matter, does it, like, if, if there's stock items sitting there, and we're and we're, yeah, when we tie that stuff out, does it? I mean, we're going to probably go to the oldest, the oldest one first
+
+Matthias Miller  1:01:36
+we we will. The issue is, if you put a note, if you build a head, so you have a work order that that doesn't get tied out to a sales order, then the customer places sales order. But before we tie out old work order to that sales order, we go create a second work order. Then currently, the way the the automation works is it will try to tie out that one. Yeah, tie that one out. Now the solution for this, I think a very simple solution, is, when you have a work order for a stock item, if there are any prior work orders that have not been tied out, then you don't automatically tie out the work order.
+
+Unknown Speaker  1:02:26
+Yeah, sure. And so
+
+Matthias Miller  1:02:31
+that means that you have to then manually go back, find the old work order, tie that one out, come back to the work order you just did. Tie that one out.
+
+Speaker 1  1:02:38
+You're saying in the sequence, like before you do the new entry, you have to tie out the old entry,
+
+Matthias Miller  1:02:43
+right? Um,
+
+Speaker 1  1:02:48
+well, if it's a stock item, why would we not? Can we just enter it as such, and not tie it out, even though there's a an order, a new a new order, like there was a sage order entered, and so we have a sale for some of those stock items. But because it's a stock item, let's just not tie it to a sales order, and then then deal with the deal with tying them out in another way, at the same but at the same time. Man, it doesn't really matter, because it's a stock item. I mean, if, if the old one stays sitting there and we never use it, and then one day we go down and say, oh, man, whatever happened to those 10 around I mean, historically around here, you know, you just like you don't know they disappeared, whatever, but I don't know if it's worth I mean, I guess if it's if, if it's a stock item, regardless of whether we made it, we did the stock item last week or three months ago, I guess it kind of doesn't matter. We know there's stock items that were as long as we know that there were stock items produced that we never sold. It's, it's, doesn't really matter what the date is on that. I think we're, we've historically, we'd be okay with that.
+
+Matthias Miller  1:04:19
+I think, I think as long as that's that's fine, but me, the implication is that you'll the the scenario where it gets you into trouble, if this ever happens, is, hey, we assembled a whole bunch of stuff back in January, but never sold it. Where is it? Well, actually, you did it. Just got stranded back there. Never got tied out to anything. And so now, because you never chatted out to the two, two connected sales orders, you now, now, when you go to check April and say, Where are the April ones? Those are on wildly different sales orders instead, or, I don't know, something like that, I. So it was fine?
+
+Speaker 1  1:05:03
+Yeah, I don't I think that's fine if we get, yeah, because it's a stock item, we're tracking the stock item, and we're also tracking the sales, and we're tying it together. And we do know, we will know if there was 10 or 100 made or repaired that we actually never invoiced. We you know they should be out there somewhere, at least we have that metric. We know they we know they should be out there, even if they're old now or whatever. I think we're fine with that. Okay? It,
+
+Speaker 2  1:05:44
+yeah, like, what about with the with the repaired stuff as being stock items and stuff, like, if couldn't that just have, like, a blanket, a blanket stop number, and then, like, you know, every time we do repair, it goes into that blanket. And then, like, when we get orders of 40, like for ironhill, you know, Iron Hill is a big one. We use them for, you know, we'll do 40 pallets. If we don't have any in stock, then we make new ones. But if we do have them, then we use them. We that's what we use. So if we had a blanket for them, just where we could put every, every repair thing we do into there, then we have a category of how much we have right. Then when we get the order, you can take it out of there. Yeah,
+
+Speaker 3  1:06:31
+would that mess with the pricing? Though, I don't know how that comes in here, but you might charge like grade A's, yeah, you know, we might sell grade A's to Iron Hill for, say, 10 bucks. Someone else falls in, they want grade A's. We might sell them for 12 bucks. I mean, we change that price? Is that going to affect
+
+Unknown Speaker  1:07:01
+the value? But you don't know who they're for, yeah, but
+
+Speaker 1  1:07:04
+currently the price, but yeah, the price is taken from the last time it was invoiced in sage. That's the price that we're that's the value that we're attributing to the item.
+
+Speaker 3  1:07:18
+But what I'm saying is, if this follows the sales orders, alright? And you repair 100 of them, yeah, and you have that in stock, you got that value, yeah, of what I mean, because if then we put them on a sales order, Brian Hill and sell, you know, 50 for 10 bucks, and you still have, you know, another 50 in stock, but then you put in a sales order, sell to ABC court for $12 is that going to affect that the value of what they're producing,
+
+Unknown Speaker  1:08:05
+not that. I mean, at that point, no,
+
+Unknown Speaker  1:08:09
+okay.
+
+Speaker 2  1:08:10
+I'm saying, if they're all in one thing you can choose, well, who you want to charge what? Right? I'm just saying to make it simple, because it's not like, when we get an Iron Hill order for 40, I can go back into the tracker and be like, Okay, now I gotta do 40. Now we already have it, right, so I can't, I can't redo that,
+
+Speaker 3  1:08:32
+right? So that, and that's what I'm saying, right? That's what I'm saying, because you put a value on there for, say, 10 bucks across the board. Well, if we sell them for 12 bucks to someone else, yeah, that's
+
+Unknown Speaker  1:08:50
+the you should have the right to put whatever price. Yeah, if I
+
+Matthias Miller  1:08:56
+could, if I could jump in here, I think, I think most of this is addressed. So the way that we're planning to handle repairs, we're planning to allow certain items, items to be assembled under one code and sold under another. So repairs are assembled under a blanket code, and then we'll on the Iron Hill, we'll say, we'll tie it back to that, that blanket repair code. Now as far as as far as the pricing issue, I think what we're saying, If I'm and correct me, if I'm wrong, I don't know if I'm wrapping my head around this all correctly, but is that, for the sake of the assembly tracker, it's close enough to track their assembly value off of the blanket item code, but if we wanted to Rick as soon as we tie it out to a sales order, we could use the calculated production value from that sales order to to calculate what was what.
+
+Speaker 3  1:10:00
+Was produced, and honestly, you know, I'm just playing out different scenarios. It's it's not going to fluctuate right at all when it comes to repair, right? So, you know, if you sell for a little less or a little bit more in the scheme of things, it probably is not going to make a difference.
+
+Speaker 1  1:10:24
+Yeah, Mountain Watch, yeah. I think that's what we where we've landed is where, if we're using the last price that was attributed to an item on a sage or on a sage invoice, it's close enough to give a decent, a good value to what is being assembled on the floor. And that's the number. That's that's the number. And we're not gonna, yeah, we're not gonna try to get any cuter than that or whatever. So,
+
+Speaker 3  1:11:02
+but the thing is, getting back to when I came in, it won't stop the sales orders from being deleted. It's just going, you're we're just talking about changing the amount that is assembled, you're still going to have deleted sales orders,
+
+Unknown Speaker  1:11:25
+yeah, for sure,
+
+Matthias Miller  1:11:28
+right? And I think that that still goes down to, and that's I'm very comfortable with making this change. I think, I think we have a reasonable solution between we can show deleted sales orders that were invoiced and assume that that they're delivered, and I think, and we can allow for overrides and Rick, I also want to be be clear on this. I I hope I don't intend to be demeaning with my with my laughing at the beginning. I so I really hope that's not how you took it. I really appreciate it. No, that's alright. So I appreciate you engaging with me on this stuff. But I think we have a good I'm from where I sit. I think it's a great solution from the software side, and from what I understand, you know best I can from, from your side, I think it should, it should fit the bill for what you guys need. Yep,
+
+Speaker 4  1:12:31
+yep. Think so is, is
+
+Speaker 1  1:12:35
+there any other things with tracking John,
+
+Speaker 2  1:12:39
+so then we're saying about the repair stuff. Are you going to clean that up, or am I going to have to go back into them and hit the code? Because in the drop down, I do have a spot in there, thanks. It says SPC repair. It says SPC sample crate, SPC sample power. So, I mean, I can use those two those
+
+Matthias Miller  1:13:03
+so let me, let me show you and Merv both how kind of how that works, and then, and then, I think that should get you Off to the races on that. So let's see. So, so MERV, what we need to do is, there's two things we need to do, or a few things. Number one, do we want to use? Are we comfortable using those repair codes for repairs? Is that what we should be using? Yeah, okay. And so the next thing that we need to do is we need to find in the item data. We need to find the Iron Hill item code.
+
+Unknown Speaker  1:13:55
+Okay, sure,
+
+Matthias Miller  1:13:56
+and we need to tie that back to the to a repair to the repair code.
+
+Speaker 1  1:14:02
+Uh huh. So, can we walk? Is there one walk through? Okay,
+
+Matthias Miller  1:14:09
+John, do you have the Iron Hill item? Do you know that
+
+Unknown Speaker  1:14:13
+it's, it's, it's Iron Hill 12, I believe.
+
+Matthias Miller  1:14:21
+So let's go over to the, we got to start with the, I'm assuming we want to start with the with, well, I guess you can find it here to confirm first. Never
+
+Speaker 2  1:14:34
+mind. So they'll probably see it up top. Yeah, you can put down there. All here, yeah, okay, anything go on the item just to iron 12.
+
+Speaker 2  1:14:50
+It would be, yeah, there it is, 12, right now, see, this is the iron poly. 12 are the new ones we make. But right? But okay, so that's. What it needs to be tied to. So
+
+Matthias Miller  1:15:02
+then in the item data, we need to tie, pull up the iron poly 12,
+
+Unknown Speaker  1:15:07
+yeah, got it.
+
+Unknown Speaker  1:15:16
+Yeah. We got it up.
+
+Matthias Miller  1:15:17
+Merv in the sorry, the items, if you go to the menu, or what used to be called, the items data, but the Items menu, yes, right there. And let's, let's go to the iron poly 12, or the, actually, yeah, iron poly 12, yep.
+
+Speaker 4  1:15:40
+Is continue,
+
+Matthias Miller  1:15:47
+click into that, click the code, and then in the assembled as put in the repair code. That's
+
+Speaker 4  1:16:01
+SPC memory, just repair. It should come on. There you
+
+Matthias Miller  1:16:09
+go, right to repair, and then hit save. Okay, so. And then what this will let you do is, when you have a work order for the SBC 48 by 40 repair. It'll show the Iron Hill the poly twelves in your sales order drop down. Okay, so you can go back in then and say, All right, this, this repair. These repairs were sold as iron poly 12.
+
+Speaker 2  1:16:41
+Yeah. But, I mean, there's, we have a lot of other customers too, that get
+
+Matthias Miller  1:16:45
+these. We'll do that for, I mean, we need to do this for all the customer all the customer codes that, that get these.
+
+Unknown Speaker  1:16:54
+That's a lot, all right,
+
+Speaker 1  1:16:57
+but, yeah, but I mean, again, if, if that's the item. Iron poly 12 is use 4840s
+
+Unknown Speaker  1:17:06
+is that right? Grade A's, great A's.
+
+Speaker 1  1:17:10
+So, yeah, anytime, yeah. So they're assembled as grade A's. They're assembled at a species 48 for the repair, right?
+
+Unknown Speaker  1:17:17
+Yeah. What
+
+Speaker 1  1:17:18
+we don't have here, Matt, is we don't have because there's a grade A's and there's grade B's and they're two different values and C's.
+
+Matthias Miller  1:17:30
+Well, I mean that we need,
+
+Speaker 1  1:17:32
+we should do that A and B, shouldn't we? John, yeah, yeah. Sorry, Matt, we're going to have to, yeah, is that
+
+Matthias Miller  1:17:38
+so? So go into go into the, yeah, the repair, yeah. Well, I mean, I guess are you going to want to have this item code does not exist in Wait, this item code is this item code doesn't exist in sage, right,
+
+Speaker 1  1:18:00
+right. Right. So this is one we made up. So we, if that's okay, we'll just make a couple
+
+Matthias Miller  1:18:05
+different so you can, you can click the ellipsis to edit the three dots to the right. You can do that to edit, edit this one. So this one, you could, this will, this will change all of your existing i Okay, for the old tracker, do we? We wouldn't know what grade they were, would we,
+
+Unknown Speaker  1:18:29
+um, yeah, well,
+
+Speaker 1  1:18:35
+in the old tracker, we know what we would know, we would know what they were sold as, yeah, but we won't necessarily like we don't, we'll know what they were sold as.
+
+Matthias Miller  1:18:45
+That's fine. That's all it matters. So yeah, make this one, but then, yeah, yep,
+
+Speaker 1  1:18:53
+that's what I that's what I would put. Makes sense. Now, save,
+
+Matthias Miller  1:19:00
+yeah, uncheck, no assembly required. I'm not sure why that's checked. Okay, yes, hit save
+
+Speaker 4  1:19:11
+well, and then yeah, go ahead. Well, I guess,
+
+Speaker 1  1:19:19
+yeah. I mean, some of these come in and they're good to go, like, you know, they don't need you don't have to do anything with them. But, yeah, it's the interesting thing here, because when we give I'm going down another trail here. I'm not. I don't want to get off
+
+Unknown Speaker  1:19:40
+the the point at hand
+
+Speaker 1  1:19:43
+anyway, so we also need a 4840 Grade B repair.
+
+Matthias Miller  1:19:48
+So then you'll have to go back and create a new item.
+
+Speaker 1  1:19:54
+So do I go? What I or you can do a,
+
+Matthias Miller  1:19:58
+yeah, go into items.
+
+Unknown Speaker  1:20:02
+Yes and mate and just make one right now.
+
+Matthias Miller  1:20:04
+Just make it. Just yeah, just hit continue without selecting it. No, just hit continue without selecting anything. Oh, wait for that, or that's fine. Hit new item in the top right. Gotcha. Okay?
+
+Unknown Speaker  1:20:23
+Lori glory
+
+Unknown Speaker  1:20:31
+should say, repaired.
+
+Unknown Speaker  1:20:34
+That's it. You might want to put
+
+Matthias Miller  1:20:37
+your I think you might have to put SBC in as the customer. Yeah.
+
+Unknown Speaker  1:20:41
+Here SPC,
+
+Matthias Miller  1:20:43
+and you might want to put in a description as well.
+
+Unknown Speaker  1:20:48
+Yeah, yeah, what did we do? What did we do? I think
+
+Matthias Miller  1:20:53
+it was just 48 by 840. On the other one as I recall.
+
+Unknown Speaker  1:20:59
+Yeah, that's it, yep. Now if I go back to I'm
+
+Unknown Speaker  1:21:18
+gonna change that.
+
+Unknown Speaker  1:21:22
+Can I edit this? Matt, right here?
+
+Unknown Speaker  1:21:25
+Yeah, okay, it's repaired.
+
+Speaker 1  1:21:32
+I mean, that's the part of the description it is needs to be repaired. Was repaired, whatever,
+
+Unknown Speaker  1:21:40
+um, SPC, 4840,
+
+Speaker 1  1:21:47
+that's it. Okay. Now on that iron
+
+Unknown Speaker  1:21:53
+poly, are
+
+Unknown Speaker  1:21:56
+we good? Do we do it? Right? I
+
+Unknown Speaker  1:22:09
+assembled as 4040, grade every pair.
+
+Speaker 2  1:22:14
+It's not always, though, but does that mean always? It's always going to be like this when I do iron poly, 12, because here's, here's the thing, if we, if we run out of repairs, and we don't have any down there, then we make new,
+
+Unknown Speaker  1:22:30
+yeah, can't do that. Well, figure it out. We'll figure it out. It's down below. Wall,
+
+Matthias Miller  1:22:45
+no, no, no amount of hand waving and all this stuff helps when you're muted, I'm not sure what happened? The answer is yes. So if they have an order of 100 making it up 60 of them, you can fill with repairs. You'll go back to that repair assembly order tied out to iron, to to the iron poly 12 sales order, and then the other 40, you'll have a new work order where they assembled 40 new and tie that out to the same sales order. Okay,
+
+Speaker 1  1:23:13
+it doesn't matter if it says assembled as repair. You're saying you can still tie it out.
+
+Matthias Miller  1:23:20
+You can assemble it as iron, probably 12, or as a repair.
+
+Speaker 2  1:23:24
+Okay, but Okay, so you're saying, I need to do that in the tracker.
+
+Matthias Miller  1:23:30
+In the tracker, then, okay, in the tracker, what you should put in, if it's, if it's repairs, you should put it in repairs if, if you're building new you should put it in as iron, probably 12, and and then to tie out the order you if whatever you got from repairs, you would go back to that repair work order where you built them, and time out to the iron poly 12 sales order, to the Iron Hill sales order,
+
+Speaker 1  1:23:54
+right? Because we have all the specs here for the for a new one, right? But we can also use an old so now we can use, we can do either or so that makes sense. Yep. And then this
+
+Matthias Miller  1:24:05
+is exactly the Go ahead.
+
+Speaker 2  1:24:06
+No. I'm saying if I do like the 4040, if I'm using repair for that to put I just, like, just so we're clear. I can't, I can't go in and put that in the tracker, because I won't have time for it, because I'm not
+
+Matthias Miller  1:24:19
+making it right. Exactly the trackers, just for what you're making right, right now, for one thing we should do on this one in this if you drill, drill back, go back to the grade a repair, did we or the Grade B repair? Did we mark both of those as as stock items?
+
+Unknown Speaker  1:24:41
+Um, I don't know if we did.
+
+Matthias Miller  1:24:50
+No, they should be stock items, yeah, like you make them ahead, yep. And then the same for great B, yeah, it's
+
+Unknown Speaker  1:24:59
+an easy way to get. Of that,
+
+Matthias Miller  1:25:02
+draw, click the items, thing, just select it, continue. That's still the A,
+
+Unknown Speaker  1:25:12
+click it, go down,
+
+Matthias Miller  1:25:18
+drop in there, stock item. All right, then heat treated and non heat treated items are going to work the same way. Now, there wasn't anything configured like this whenever as of couple days ago, but when you have a so heat treated items, John, can you remind me that who's, what's the code and what? Who's the customer, where they'll split, I don't know, 20 or 70 treated. 29 it's iron.
+
+Speaker 2  1:25:51
+Oh, seven, polymer, iron, polyno, seven.
+
+Matthias Miller  1:25:55
+Okay, so, so pull up the heat treated one, yep. And then jump in here.
+
+Speaker 2  1:26:04
+You see, that's an interesting point, too, Matt, you're making because, like, like, with the with the iron 12. We're just talking about 4840s you know, they get heat treated as well. So that, yeah, that's a different price. I
+
+Matthias Miller  1:26:23
+nice, yeah, there's no sage code for that. No, I'll let you work that out with Merv. I think MERV got what he needs to work it out if he wants to. So on the on the assembled as just choose iron polyo Seven.
+
+Unknown Speaker  1:26:41
+Okay, gotcha, gotcha, gotcha.
+
+Unknown Speaker  1:26:46
+So what you're Yeah, so we have to
+
+Unknown Speaker  1:26:50
+just type here, yeah, wait, there we go. We're typing got it, RNP, and then you should be able to choose
+
+Speaker 1  1:27:03
+similar as iron poly oh seven.
+
+Matthias Miller  1:27:07
+Yep. Save it. Save it. So then this will let you when you assemble, when you assemble the iron polyo Seven. I mean, then if you assemble a bunch, and you can just put in the assembly for iron polyo Seven. And then when you tied out the sales order, you can split between the heat treated non heat treated
+
+Speaker 2  1:27:29
+items. Yeah, what I started doing with that one, Matt was like, if we're making 40 of them and 30 of them aren't heat treated, I just have them putting the time down for the 10 that are heat treated, and the 30 not heat treated. And I've been putting it in that way under heat created and not all right? That works. That's been working. Yeah,
+
+Matthias Miller  1:27:48
+that's been working. Okay, well, this is another way to do exactly the same. I mean, yeah, handle it too, if, if you like, right? The other thing we need to do then is change sample pallets. So, or if you're going to pull up the sample, sample pallet item,
+
+Unknown Speaker  1:28:06
+SPC, those are great, great. And
+
+Matthias Miller  1:28:12
+actually, if you want to make your life a little easier, you could blank out the item and just put an SBC as the customer, and you can pull up the list of it doesn't.
+
+Unknown Speaker  1:28:19
+Oh, Okay, gotcha, yeah,
+
+Unknown Speaker  1:28:23
+okay, yep.
+
+Matthias Miller  1:28:25
+Then go into here and hit sample palette down below stock item and hit save. So, so John, what this is going to do is you'll still put in time for sample pallets, okay, but it'll record as zero production time, like, basically, almost like it's all downtime, because it's, it's company overhead, okay, yeah, and then you want to do This with sample crate as well.
+
+Unknown Speaker  1:28:59
+Got it? Okay?
+
+Unknown Speaker  1:29:17
+Yep, okay. Makes sense. Yeah. Makes sense, yeah.
+
+Matthias Miller  1:29:22
+Okay, so back to your assembly tracker list. I think what this means, I think this cross your fingers. It should be enough do this, or the warnings. I think this should be enough for Okay, not the fabril, not the time ad that's waiting on me to make a few more changes. Oh, yeah.
+
+Unknown Speaker  1:29:47
+Except for one,
+
+Matthias Miller  1:29:50
+let's go into, let's, let's see what's up with
+
+Unknown Speaker  1:29:53
+this one here,
+
+Matthias Miller  1:29:53
+or here, yeah, or hover over the over the yellow and you can see what it or, yeah.
+
+Unknown Speaker  1:30:00
+Okay, yeah.
+
+Unknown Speaker  1:30:09
+Symbol is
+
+Unknown Speaker  1:30:13
+it because there's not a quantity or
+
+Matthias Miller  1:30:17
+scroll down, it's a partial, and it was never tied out to, yeah, it's never tied out to a sales order or, I mean, it's just a partial that's, that's the only issue that was never tied out. So when, when did we finish this batch of repairs? Or how much, how many did we finish? That's the question.
+
+Speaker 2  1:30:42
+Yeah, I'll have to go back and look. Okay. Yeah, I can look at that. 26 I'll look at that way back.
+
+Unknown Speaker  1:30:50
+Yeah, okay. So sorry. Just come out of that. Yeah, you can come out
+
+Unknown Speaker  1:30:56
+of that. Never mind. So
+
+Matthias Miller  1:30:57
+then the other thing that we need to clean up, so that gets us most of the the items at the top. Like I said, Babel and time at cleanup is on me. I need to push the changes live the next the next thing then to start cleaning up is the sales orders at the bottom of the screen. So I expect, especially around, you know, the beginning of June, that some of this is just because of crossover between the old and the new system, but especially as you go further more recently than that, you know, we should have some way.
+
+Unknown Speaker  1:31:42
+So this, this stuff here, is all flagged too,
+
+Matthias Miller  1:31:46
+in some capacity, yes, just when you thought you had your head above water. John,
+
+Unknown Speaker  1:31:55
+well, we knew. We knew this was here.
+
+Speaker 2  1:31:58
+Yeah, I didn't realize. Thought that other page was all the ones I had to fix.
+
+Matthias Miller  1:32:03
+So, so one thing that would be useful here, and I'm happy to do this, it'd be really useful here to show item codes that are stock items,
+
+Unknown Speaker  1:32:12
+the due dates. John, yeah, June 24 25 to
+
+Matthias Miller  1:32:16
+see what I'm most worried about is like, Well, yeah. I mean, like, yeah. I mean some, some of these later ones.
+
+Unknown Speaker  1:32:36
+So I'll just need to go back into them and see what's what, I guess.
+
+Matthias Miller  1:32:40
+Yep, that's the bottom line. So clicking the so number will show you all work orders for that sales order number. Clicking the item code will show you all work orders for that item code. So like here in the wave 50, like, what went on you click that and it'll, it'll open up this. Let's see, we don't we never. We don't have anything for making the way 50.
+
+Speaker 4  1:33:11
+Okay, so where was I? I went back to the top and I was
+
+Unknown Speaker  1:33:22
+we well, what was that date shoot,
+
+Unknown Speaker  1:33:31
+he's coming back to the same one,
+
+Matthias Miller  1:33:37
+like this fire there's, There's a number of them,
+
+Unknown Speaker  1:33:40
+Not really.
+
+Matthias Miller  1:33:41
+There we go. Uh,
+
+Unknown Speaker  1:34:11
+Louis, and sorry, yeah, Matt.
+
+Matthias Miller  1:34:14
+I mean, I think, I think this is for starters. What we should do is, when did we do we have time tracking on the wave 50. When did we expect it to have been? Have been done?
+
+Speaker 1  1:34:28
+Well, like, I'm not finding anything in these two windows, right? You see what we wear that? Well,
+
+Matthias Miller  1:34:35
+that's, yeah, the bottom one, the bottom one's empty because the top one is so, yeah, like it's not finding any, any, it's not finding any. There aren't any in the system for Wave 50. Okay. So then the question is, well, I mean, let's chase the story on that. Why is that? Um.
+
+Speaker 1  1:35:01
+There's no entries period, but there's orders here.
+
+Unknown Speaker  1:35:05
+Is that what we're is that what we're saying? Yeah,
+
+Matthias Miller  1:35:14
+I mean, there are orders for Wave 50, but we don't have any work orders. We have no record of ever assembling away 50. I 50.
+
+Speaker 2  1:35:25
+All right. Look these. Look up the item. These New Holland ones. You see just the first two there. Matt, yeah. Okay, so 70270 is a 4830 pallet. And then the next one is a bin side. Those four and five. Okay, they wouldn't have an order to tie it to, but we ship their products that we make form in, in those and on those pallets and in those bin sides. So it's the products inside that we're actually is this the order? Yeah, yeah. But we also, we also have to charge them for the pallet and the sides that we're making for them too, because that's also their stuff. So that's why they're on there, I'm sure.
+
+Matthias Miller  1:36:17
+Okay, so how do we?
+
+Unknown Speaker  1:36:20
+Well, that makes sense. They should
+
+Unknown Speaker  1:36:21
+get tied to the earliest sage order for that item,
+
+Matthias Miller  1:36:28
+okay. But can you click on? Well, this is 620 okay, but this is right around the boundary date. So some of this might have been assembled. It was due on the 23rd it might have been assembled. It might be in the old assembly or, yeah.
+
+Unknown Speaker  1:36:42
+No. Now because they were, they were closed for
+
+Speaker 1  1:36:47
+like, a month. Yeah, but we're not, we're not like, we're not at zero on, like, new hot, like, how many do we have sitting here? And how many, well, I don't know, we just, we're not at,
+
+Speaker 2  1:37:05
+see, that's, that's two of the other stock items, like the 48th 40s, that you know, are in stock that we we make ahead, just for these purposes, because we use them to ship their product on. And then also, sometimes they just order, you know, either pallets or bin sides, you know, heat treated or something like that. So
+
+Matthias Miller  1:37:27
+well. In that case, if we make them ahead, they should be stock items, right?
+
+Speaker 1  1:37:30
+So John or sorry, so Matt, if, if I want to find all the every, if there's multiple of this item code in this list. Can I highlight them all?
+
+Matthias Miller  1:37:44
+You could sort by item codes. Well, click the item code header there up just a little bit where it literally says, yep, click that and that'll group. Okay.
+
+Speaker 1  1:38:04
+That was, was that number of John 727, and NH, there's a bunch right there. So ordered 452, 250, quantity ordered. Does this mean them at this 231, dotted. There was a sage order created for that amount. Yeah, we used them as for lack of better term, slave pallets. Um, so we need to go and Okay, now, what's an easy way to reconcile these? Like, here we have order numbers. Here we have quantity order, but we don't have quantity assembled, but we know that this last week, on the 13th, these guys did 208
+
+Unknown Speaker  1:38:58
+um.
+
+Matthias Miller  1:39:00
+But what for? What? So, I mean,
+
+Speaker 1  1:39:02
+right? So we don't know, like, there was a symbol, I'm sure there were assembled previously this year, but that's going back,
+
+Unknown Speaker  1:39:12
+um,
+
+Speaker 1  1:39:16
+I mean, the right way to do it will be to go out there in the yard and figure out how many are sitting here, that that we should be, that should show up as stock. And then try to try to try to eliminate the rest, maybe from latest to earliest. And you just keep going back until we run,
+
+Unknown Speaker  1:39:37
+yeah, whatever.
+
+Matthias Miller  1:39:38
+But out, and then we use the New Hope, right? Is that the way to do it? Probably something like that.
+
+Unknown Speaker  1:39:50
+That's the way to do it.
+
+Speaker 1  1:39:52
+So if I start right now, Matt, I would say I would go out there and I would count what's in stock. And I would attach, yeah, whatever's in stock. I would deduct from the 208, and then if there's say, let's say there's 100 and there's 38 in stock. 170 left. I'm going to take that 170 off of the 826, order the 819, 11, the five, the dotted and here I'm gonna some of these, and then the rest of this order. And these guys here should be assigned to pre June 23 right? And can we do that?
+
+Matthias Miller  1:40:42
+What I was planning to let's see, or
+
+Speaker 1  1:40:49
+at some point, can we do that? Yeah, we're What are you thinking?
+
+Matthias Miller  1:40:52
+What I was going to do is just keep these on the list, and then whenever we have currently, then whenever we have whenever we're comfortable with what we've cleaned up, right? Move the June 23 date to July, whatever it needs to be. And then all those old ones will drop off the list. Gotcha.
+
+Speaker 1  1:41:15
+And just let them, let them. Yeah, that makes sense. They'll just live out there. That gets us, that gets us current, yep. Okay, does that make sense? John, tracking? You tracking with the process?
+
+Speaker 2  1:41:27
+Yeah, yeah. But there again, like, you know, some of that stuff might be for the tech center. Some of it might be be treated like it's just going to be light. It's a little different. It's a little harder.
+
+Speaker 1  1:41:40
+Say About say about them. No, no, but you're saying some of these might have been heat treated, for sure, most of them, but there's not a heat treat item code for this? No. So then what?
+
+Speaker 2  1:41:52
+Why there might? I don't know if there is or not. Well, that's luck. I don't
+
+Unknown Speaker  1:41:58
+know any should, uh, what does that? NH,
+
+Unknown Speaker  1:42:06
+0727070270,
+
+Speaker 4  1:42:12
+yeah. Okay, here we go. Doesn't look like it? No, well, let's just do
+
+Unknown Speaker  1:42:21
+but then, but then the set the
+
+Speaker 5  1:42:24
+Yeah, I'm like, such a base. Going to head out. Are
+
+Unknown Speaker  1:42:29
+you? Are you heading down there?
+
+Speaker 5  1:42:32
+Oh no, that's done. You're leaving. You're leaving for the day. Oh, yeah. Couldn't get older. Dave, I tried to call him against he just feeling any better, I will protect it all together, whatever, great, but sure, alright. I mean, it's just going to be this afternoon. We have
+
+Unknown Speaker  1:42:57
+to
+
+Unknown Speaker  1:43:00
+leave. I mean,
+
+Unknown Speaker  1:43:05
+230 hours,
+
+Speaker 5  1:43:08
+yeah, Don's gonna leave at 330 but, yeah, an hour whatever, yeah, just so you guys know, yeah, that's what we're at right now, radio and stopping them. Did Dave? Did
+
+Speaker 1  1:43:21
+Dave correspond at all today? Yeah, so if worst comes worse, just call him and call him and
+
+Unknown Speaker  1:43:31
+get him down here.
+
+Unknown Speaker  1:43:34
+Maybe. Yeah, alright. So, alright, okay, yeah, yeah,
+
+Unknown Speaker  1:43:46
+man, so I'm not seeing one on this. Matt, right? He treated, no, no. He treated so, yeah, sorry, go ahead.
+
+Matthias Miller  1:43:54
+I'm going to have to, I've got a call at the top of the hour that I need to get ready for. Okay, yeah, so does this? Does this give you what you need? And, I mean, does this give you enough to get rolling at
+
+Speaker 1  1:44:05
+least? Yeah, yeah, it does. This particular one here. If these get sold as this is the only there's not a heat treat item code for that
+
+Speaker 2  1:44:15
+or for boom size. Either problem correct or, I'm sorry, there is an item code for heat treated. There is, I'm sorry, yeah, it's, it's 870,
+
+Unknown Speaker  1:44:29
+it doesn't say ht, and
+
+Speaker 2  1:44:32
+it's a, eight, it's a, it's like an eight digit number. Well, let me
+
+Speaker 1  1:44:36
+find it right here. Sorry, I just, I would like to know, if possible, here six inch bends. Here's 4830, heat treated.
+
+Unknown Speaker  1:44:47
+That's heavy duty, but they're heat treated. Yeah, 7076,
+
+Unknown Speaker  1:44:52
+well, it wasn't sold that way.
+
+Speaker 2  1:44:56
+Yeah. It was Yeah, yeah. Should have been sold that way.
+
+Unknown Speaker  1:44:59
+So. Then we have to, hey, yeah,
+
+Unknown Speaker  1:45:03
+anytime this is where it gets crazy
+
+Unknown Speaker  1:45:05
+here, but that's where we need to tie it to the right
+
+Speaker 2  1:45:08
+thing, right? But here's the other thing I see, when you're putting New Holland product in binsides and 4830s and then you're heat treating them. They're not getting sold as heat treated either, because they didn't order them heat treated, but that's what they go in. So they're just paying for the pallet and the bedside. So sometimes it's heat treated, sometimes they order heat treated, but they get stuff. But yeah, it is. The thing that's the
+
+Speaker 1  1:45:35
+kicker is that we in house didn't ever make an item code to sort of mirror the other item code. You mean, we made it, we made it confusing,
+
+Speaker 2  1:45:47
+right? I'm, I'm sorry, that's what, that's what, no, but I'm just saying we, well, these are New Holland numbers. They're numbers, not ours, but we don't really have a say.
+
+Speaker 1  1:45:57
+What's the what's the other one, and is that New Holland number two? Yeah,
+
+Speaker 2  1:46:02
+right. So we have to get that report right. That's what it is.
+
+Speaker 1  1:46:06
+But the reality is, all the 4830s that got made, if we want to tie it out correctly, we have to tie some to this number, yeah, and some to this other crazy number,
+
+Unknown Speaker  1:46:15
+insane with the bin sign, all right, same with 4840s Okay.
+
+Matthias Miller  1:46:23
+I want to assure you, I've seen this other places. Many times. Putting systems like this in place will surface all kinds of idiosynch of inconsistencies that you just ignored for a long time, and and,
+
+Speaker 1  1:46:39
+yeah, and sometimes it didn't matter and sometimes it wasn't worth the time to to to figure out a cleaner way. So you Yeah, I
+
+Speaker 2  1:46:50
+know. I mean, at the end of the day, everything is getting billed and stuff the right way. Yeah, it's just now that we're trying to track everything. That's the but, yeah,
+
+Speaker 1  1:46:59
+guess who always says it, what junk in, junk out, Rick,
+
+Speaker 1  1:47:10
+all the time. So, all right, we gotta clean up. Just keep cleaning it up. And All right, man, no, we're well. So, so So, back to, back to the current situation. Assembly tracker warnings.
+
+Speaker 2  1:47:28
+You're going to fix the rest of the stuff, right? I just got to go in and fix that one with the amount missing.
+
+Matthias Miller  1:47:34
+Yeah, I'll get the, I'll get the federal stuff for the fabulous I'm
+
+Speaker 1  1:47:37
+hanging out this stuff here, Matt, this is, this is always going to be we're going to find this under assembly tracker warnings. Is that right?
+
+Matthias Miller  1:47:46
+It's on both the Assembly tracker and the assembly tracker warnings. It shows in both places.
+
+Speaker 2  1:47:50
+Gotcha? I just, I didn't realize this was all right. Yeah,
+
+Matthias Miller  1:47:58
+sorry for the bad surprise. Hopefully there'll be some good ones coming, coming soon. Jack,
+
+Unknown Speaker  1:48:04
+a long weekend. Yeah,
+
+Matthias Miller  1:48:08
+this will be here waiting for you when you get back.
+
+Unknown Speaker  1:48:12
+Yeah,
+
+Speaker 1  1:48:13
+wow. I have my batteries going dead, man, wow, we're gonna lose you in a second here. Matt, all right, okay.
+
+Matthias Miller  1:48:19
+Sounds good? You good? Yep, I got time tomorrow. Do you want? Do you want to check in tomorrow? Are you good? Uh, what time would that be? I'm free from 11 to from 11 year time. So
+
+Speaker 1  1:48:31
+boy is it? Uh, I'll shoot you a text if we want to connect at 11. Yep, 11 Eastern, Eastern. Yep, I gotta get charger. All right? Oh,
+
+Speaker 2  1:48:46
+yeah, sorry, okay. I was just doing one this morning, putting stuff in, and I ran into something just wouldn't let me I'm trying to i
+
+Unknown Speaker  1:49:05
+All right, all Right,
+
+Unknown Speaker  1:49:06
+it was in a mermaid.
+
+Speaker 2  1:49:15
+All right, well, I don't, I can do the guys and times and stuff later, but when I tried to put this in
+
+Speaker 2  1:49:34
+Al 29 is what it was, hand station, and I go down here. Now we just got this order. I mean, I we just made these all yesterday, and we're shipping them tomorrow. And there was 84 of them.
+
+Matthias Miller  1:49:52
+Did you every bit your assembly dates? Uh, okay, go ahead.
+
+Speaker 2  1:49:55
+Yeah, I gotta do that. 829, is what it should be. Alright now. Now it's good. This morning, when I did it, it had 34 in the quantity needed, and it wouldn't let me do it. Would put like 34 here, and then the next, next, they put so many on the next order. Now it's right now. So maybe you fixed something, I don't know, but I'm
+
+Matthias Miller  1:50:19
+trying to think of anything I pushed across would have affected this.
+
+Speaker 2  1:50:25
+But, yeah, like I had the 829, but like, 84 is what we did. That's the complete order. And when I did 84 then 34 popped up, and finally, need it. And then, you know, the balance would have been, what, 50. And then they put 50 in the next order. So I didn't save it or nothing, because I knew that was not going to be right, so I don't know it looks good now. So anything
+
+Matthias Miller  1:50:50
+we'll take, we'll take it for when, and if you run into it, let
+
+Unknown Speaker  1:50:53
+me know. All right. All right. Thank you, man.
+
+Matthias Miller  1:50:57
+Thanks.
+
+Unknown Speaker  1:50:59
+Thank you. See ya.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,2237 @@
+Unknown Speaker  01:34
+Hey, whoa.
+
+Matthias Miller  01:42
+Look at that, dude.
+
+Unknown Speaker  01:49
+Check this little cute little thing. Isn't that great?
+
+Matthias Miller  01:52
+That is awesome. That is really cool.
+
+Unknown Speaker  01:57
+Did I show you this one?
+
+Unknown Speaker  01:59
+Ah, yeah,
+
+Speaker 1  02:05
+so having Addison has been having so much fun
+
+Matthias Miller  02:12
+that's killer man.
+
+Speaker 1  02:14
+So I'm the stuff. Over the end of last week, the backdrop and tablecloth came in, and I'm not completely happy with the color on the backdrop, but whatever, I'll just live with it.
+
+Matthias Miller  02:26
+Hey, you gotta start somewhere. Yeah,
+
+Speaker 1  02:29
+it was supposed to be, it was supposed to be a color gradient, almost from the dark blue down to like a light down at the bottom, and it just didn't translate. And so whatever it is what it is to use, what it is, all right, can we're going to build some time to insight for one second, because I want you to look at something, if you will go to Sales tab,
+
+Unknown Speaker  02:57
+building validation, I want to say i Hmm, yeah, go to pigtail,
+
+Speaker 1  03:08
+the tail of the pig. No other items. Row, open up and expand that expression. I have a feeling you're going to tell me that this, this should I think is a there's more efficient way to write this. Can you make your screen just a smidge bigger? How would you write this whole second half of that expression?
+
+Matthias Miller  03:26
+Well, do you want to allow for people adding other types of electrical items?
+
+Speaker 1  03:33
+So I don't if, if the electrical pigtail is there, those listed items are not allowed with it. So I assume that you would do some sort of a sign of not allowed items. But I don't know where I got stuck was to if you have a, if you have a, if you have, I don't know how you would write this. How would you write this?
+
+Matthias Miller  04:04
+Well, I don't think this is terrible. The only, the only issue I have with it is that it's filtering for disallows, not filtering for allows. Mm, if somebody adds a new item, it's going to be allowed by default. That's, I don't think it's a horribly written expression,
+
+Speaker 1  04:31
+okay, so cancel out of this and let so essentially what the rest of these are saying. Only one switch, light switch is allowed with the pigtail only three electrical receptacles are allowed within blah, blah, blah. So when I sent Seth just sent me an email saying he realized that he didn't include the piece that we're just talking about. I think. Yeah. So there is. Uh, these items all are in a group called electrical options. And I don't know, I mean, you,
+
+Unknown Speaker  05:14
+maybe, maybe, maybe, well, I'm trying to get better at at my I'm
+
+Speaker 1  05:23
+trying to get better at writing these things more efficiently. Because I've I've noticed that my sloppy, my sloppy configuration of an expression, has made things slower or faster, depending on how you put together some of this stuff. And I'm trying to get better at this
+
+Matthias Miller  05:40
+Oh, well. I mean speed is not I mean yours is fast enough. I
+
+Matthias Miller  06:03
+Why wouldn't you add a tag like that?
+
+Unknown Speaker  06:09
+Could that could potentially that would be more efficient.
+
+Matthias Miller  06:15
+Wouldn't it be? It'd be simpler to maintain, perhaps, like on your electrical options to say, tag,
+
+Unknown Speaker  06:30
+should we make a tag called, not with pigtail?
+
+Matthias Miller  06:35
+What were the other way
+
+Speaker 1  06:38
+with I like, I like the tagging idea, because that that's that means you can very quickly include or exclude, and you don't have to go rewrite the rule, right, or the other way we say, So, shall we say, included with pigtail, and do it only on The on the trues and not on the falses.
+
+Matthias Miller  07:02
+Yeah. I mean, included with isn't quite right? Allowed with pigtail.
+
+Speaker 1  07:09
+Allowed with pigtail, okay, yeah, let's do that. Allowed with pigtail. I'll add the tags. Yeah.
+
+Matthias Miller  07:27
+I literally have a tag I can
+
+Unknown Speaker  07:31
+Okay, I've added one,
+
+Matthias Miller  07:32
+okay, over here on my
+
+Speaker 1  07:42
+so should we further refine the other ones that Seth wrote to also say, to also reference the tag or no no, because
+
+Matthias Miller  07:51
+The quantity varies from one to one. Okay, Gotcha. Okay.
+
+Matthias Miller  08:05
+With tag, just do this. I'm
+
+Matthias Miller  08:30
+do something like this. If it has a it has a pigtail, and it has a row where the item is in electrical options and it is not tagged allowed with pigtail.
+
+Speaker 1  08:46
+Well, I mean, you wouldn't necessarily need to reference the electrical options anymore,
+
+Matthias Miller  08:51
+yes, because it's going to gripe about things in other groups
+
+Speaker 1  08:55
+well, but the tag is not going to exist in anywhere else, right?
+
+Matthias Miller  09:01
+We're looking for things that are disallowed. So if you have a flooring option, it won't have be allowed with pigtail and it won't be allowed.
+
+Speaker 1  09:12
+Oh, I see what you're saying. Uh, now further, I see that the I see that the note is an expression, can we? Can we write the note to that will tell us which option, which which item it was that actually was this?
+
+Matthias Miller  09:35
+Allowed? Yes. So we would probably be, Do you guys believe in user macros? Here? Do we what so building disallowed electrical do.
+
+Unknown Speaker  10:42
+Uh, Um, yeah, ring doorbells are awesome.
+
+Matthias Miller  11:21
+So if, if it is electrical and does not have a lot of pigtail let me put it in here. And what do you not like about me building invalid items for
+
+Matthias Miller  11:49
+like me. Is it?
+
+Speaker 1  11:51
+Is it because user Mac was not allowed here? No,
+
+Matthias Miller  11:55
+it's just too long. Oh, gotcha tails, except for I
+
+Unknown Speaker  12:05
+just call it pigtail errors,
+
+Unknown Speaker  12:09
+pigtail errors.
+
+Unknown Speaker  12:16
+About that.
+
+Matthias Miller  12:21
+Then here it's
+
+Matthias Miller  13:10
+something like that,
+
+Speaker 1  13:15
+type list to display. Gotcha, so is that work? Is the pipeless to display? Is that essentially some sort of concatenation?
+
+Matthias Miller  13:27
+Yeah, it's, it's, it's a conjunction,
+
+Unknown Speaker  13:30
+gotcha, gotcha, okay,
+
+Matthias Miller  13:37
+theoretically, that should work. All
+
+Speaker 1  13:40
+right, let me make sure I've got all of these in we'll test it here in a second.
+
+Matthias Miller  13:45
+Hopefully we just broke all sales orders everywhere.
+
+Unknown Speaker  13:48
+No, I hope not
+
+Speaker 1  13:55
+so in theory, the electrical pigtail itself would need the allowed with pigtail tag, correct.
+
+Matthias Miller  14:03
+That is true based on how we wrote it. I mean, it would make sense not to require it there. But
+
+Speaker 1  14:29
+yeah, I think I've got them all with it. So now let's go configure a building and see what kind of message we get. Don't I have that open anymore? Apparently, not. I
+
+Unknown Speaker  14:47
+and configurations.
+
+Speaker 1  15:00
+All right, let's try putting an air conditioner with this guy and see what it says.
+
+Speaker 1  15:17
+The following items are not allowed with pigtail electrical options, breaker box and air conditioning, wall unit. Hallelujah. You're a genius.
+
+Matthias Miller  15:25
+Thank you very much.
+
+Speaker 1  15:28
+That's the smartest thing you did all day. Thanks. All right, sweet. Make sure you saved that thing. I assume you have because it worked. I Did because it worked. Yes, you did. I
+
+Speaker 1  16:10
+I'm going to send an email back to Seth that says, All good. I figured it out. And he's going to go look, and he's going to look at the macro, and he's going to go, yeah, there ain't no way that
+
+Speaker 2  16:18
+Dwayne did that. So have
+
+Unknown Speaker  16:24
+to start signing your macros and be like
+
+Unknown Speaker  16:27
+made by Matthias, a comment
+
+Speaker 1  16:34
+that's funny. All right, sir. What craziness are we getting into today? We're going to try to make sure that to make sure that all of this fun. Okay, here's the big questions I have. I see that you went and loaded a whole bunch of transaction history. If I want to go through and take a number of those, well, I already did. A number of those were there. They have a resolution of completed.
+
+Matthias Miller  17:01
+I did not load. I did not load transaction history.
+
+Unknown Speaker  17:07
+Was, wait, what now
+
+Matthias Miller  17:09
+I did not load transaction history or not contract transactions.
+
+Speaker 1  17:16
+Okay, what? What the, what? What, what, what? I was sure I saw transaction history. Maybe it was Jonathan and doing some testing he was doing. Let's take a look.
+
+Unknown Speaker  17:51
+If somebody did, I
+
+Matthias Miller  18:03
+it was his process to incur rental fees.
+
+Unknown Speaker  18:13
+Oh, because what this person would be past due,
+
+Matthias Miller  18:17
+912, today.
+
+Speaker 1  18:21
+So what once I once I loaded in once, once I loaded in contracts. I guess that could theoretically went and incurred a whole bunch of late fees because there's no transaction history. Um,
+
+Matthias Miller  18:46
+I find out how I got added.
+
+Matthias Miller  18:55
+Let's buy an administrator.
+
+Matthias Miller  19:11
+I'm curious About this, then
+
+Matthias Miller  19:21
+shouldn't rental fees. I
+
+Matthias Miller  19:43
+Hey, so Jonathan added a one time process for it. I.
+
+Unknown Speaker  20:00
+Database,
+
+Matthias Miller  20:13
+trigger that runs every night, which triggers it because there's no scheduled task.
+
+Matthias Miller  20:35
+Help? Well, that's the way I didn't
+
+Speaker 2  20:39
+run because i i Okay.
+
+Matthias Miller  20:44
+There's an update piece on save.
+
+Unknown Speaker  20:58
+I mean, I think,
+
+Matthias Miller  21:01
+basically,
+
+Matthias Miller  21:19
+I Gotta clean up this Guy. Um,
+
+Unknown Speaker  21:50
+the contract
+
+Matthias Miller  22:33
+wanted adjustment.
+
+Matthias Miller  22:55
+I Think, basically, do I
+
+Matthias Miller  23:54
+it's A P and it was incurred
+
+Unknown Speaker  24:10
+it's, there we go.
+
+Matthias Miller  24:31
+Yeah, well, I mean, besides, that looks like it's working really well.
+
+Matthias Miller  25:12
+I just found a bug. Contract definitions tell me I'm wrong.
+
+Speaker 1  25:37
+Oh, by the way, our contract definition concept is straight up genius, in my opinion. Okay,
+
+Speaker 1  26:12
+oh, so this is how you're this is how you're creating accounting impact. Currently, you're just hard coding a whole bunch of stuff, exactly. Well, you should just tell me what what you have hard coded, and then I won't go create something that that's not well. I mean,
+
+Matthias Miller  26:27
+everything's coming off the record. So it's just, it's really only hard coding where it goes, Oh, gotcha, um, now we have this bizarre case. Sales tax isn't working very well. We have 336 six barn rental income sales tax payable When the world is this. Um,
+
+Matthias Miller  27:20
+okay, so this guy sales tax payable looks a little just slightly
+
+Matthias Miller  27:33
+sales tax amount.
+
+Matthias Miller  27:43
+Uh, times the taxable tax rate, maybe divided by 100 good might help.
+
+Matthias Miller  27:56
+Okay, so AR, I think the sales tax payable goes backwards. Okay, accounts receivable is an asset, the debit is going to increase it. Rental income is revenue or credit is going to increase it. Sales tax liability, sales tax payable needs to be A i you.
+
+Unknown Speaker  28:28
+I'll be back in one second. Yeah,
+
+Matthias Miller  28:47
+that's a beautiful thing.
+
+Matthias Miller  29:47
+Okay, so let's getting impacted running now i.
+
+Unknown Speaker  30:01
+Sorry, say again,
+
+Matthias Miller  30:03
+accounting impact is running now,
+
+Speaker 1  30:05
+let's see is that. Does that mean that if you pull up a piano or balance sheet, we have fun stuff in there,
+
+Matthias Miller  30:13
+it should mean that, yes,
+
+Unknown Speaker  30:20
+hang on, let me
+
+Matthias Miller  30:34
+it's not fast,
+
+Matthias Miller  30:42
+okay, let's, let's while it runs, let's take a step back and let's talk about big picture, how we plan to do this. In my opinion, we could
+
+Matthias Miller  30:59
+come up with some kind of a mechanism, like, basically, could we not just
+
+Speaker 1  31:10
+so, why is like, why are The tax rates all over the place?
+
+Unknown Speaker  31:19
+I don't know,
+
+Matthias Miller  31:23
+probably getting randomly assigned, but I'm not sure.
+
+Speaker 1  31:26
+So okay, go on with your question. You had, you had a question running, and how do you have a notification? And I don't,
+
+Matthias Miller  31:35
+I am set up to get notification on the gotcha, gotcha, gotcha, gotcha. So big picture, essentially, it's a random right now, by the
+
+Unknown Speaker  31:48
+way, gotcha.
+
+Matthias Miller  31:54
+Big picture to me is, could we not set up a payment record per contract, choosing a random number of delinquent periods ranging from zero to three or something, and then apply that singular payment to All the rental fees up until that date.
+
+Unknown Speaker  32:22
+Yes, sorry.
+
+Speaker 1  32:24
+I don't know why that took. That took me a long time to think through what you said. I literally felt my mind going,
+
+Matthias Miller  32:38
+it's Monday,
+
+Speaker 1  32:41
+yeah, so, I mean, and for, for the, for the sake of this Matthias, I, I feel like, Yeah, I mean, let's, let's, let's, let's have some, like, payment history across most customers can look almost identical. Obviously, they're going to have their own payments. But the the when they went late, like, oh, I guess you could probably, you could probably create some of this from a random standpoint. You don't want all your customers going late on the same month. That would be hilarious.
+
+Matthias Miller  33:11
+But so here's the easy way. Here's where to start.
+
+Matthias Miller  33:20
+Here's your start. We will add late p rows for all period for an arbitrary number zero through through. What if we what if we did a random number negative six to positive six? So statistically,
+
+Speaker 1  33:35
+wait a minute. Wait a minute. Wait a minute. So this would not all go past you at the same time. If we say x number of payments, and then late and then X number of payments, then late again, then the start date of the contract is going to put those, those points of past due all over the place.
+
+Matthias Miller  33:51
+Right thing is that you then need to handle, okay, we could we could we could we could randomly scatter late fees throughout the contract.
+
+Speaker 1  34:04
+I mean, I think your, I think your concept is right. Let's go, let's go in six payments and then incur late fee. Let's go in another four payments and incur late fee. Another six payments incur late fee. You know, let fine like this. This can be somewhat, it'll, it'll it'll look random, but it's actually exactly every customer is going to go past to it at the six month point. But nobody's really going to know that it's go ahead, be
+
+Matthias Miller  34:30
+random.
+
+Speaker 1  34:32
+Let's say that you want it doesn't have to be. Here's the thing, it's dummy data,
+
+Unknown Speaker  34:36
+right?
+
+Speaker 1  34:40
+Okay, so let's, should we just get rid of all these, these incurred fees try
+
+Matthias Miller  34:55
+to get rid of what I'm
+
+Speaker 1  34:57
+wondering, if you just want to, like, shouldn't you wipe all. Is incurred fees out of every RG. Before we start pushing stuff in,
+
+Matthias Miller  35:06
+we'll use this as the basis. We're just adding in late fees.
+
+Speaker 1  35:09
+Oh, this is incurred, okay, sorry, incurred rental fee. Got it so I'm slow. Wait, okay, I'm gonna have to catch up on how this works, but I see where I'm tracking now.
+
+Matthias Miller  35:23
+Sorry. Okay, so my proposal is okay. My plan is we want some delinquent accounts, right? Sure. Is there, like, let's say that we want every customer, on average, to be late one every X number of months. Yeah, what? Okay, so let's so let's start by doing this. Let's do a report of contracts
+
+Unknown Speaker  35:56
+where,
+
+Speaker 1  36:00
+okay, side question, before you go too deep, there's no reason that the sales tax rate needs to be randomly assigned. The sales tax rate is on every contract I stomped it in.
+
+Matthias Miller  36:13
+Okay. Do you want to clean that? Huh? Do you want to clean up? Yeah.
+
+Speaker 1  36:23
+I mean, I think we ought to clean it up. It would look, it would look kind of funny when you're demoing this data, if you got randomly assigned sales tax rates.
+
+Speaker 1  36:37
+Okay. I mean, it doesn't need to be cleaned up this very, very moment we can, we can go through and and build this out, but at some point we should, we should clean it up. We're
+
+Matthias Miller  36:57
+gonna want to think through CRA at some point
+
+Speaker 1  37:00
+I have, I have a random numbers of CRA s in there.
+
+Matthias Miller  37:06
+Oh, so there are, there are CRA amounts on the contract,
+
+Unknown Speaker  37:11
+yes,
+
+Matthias Miller  37:12
+well, maybe
+
+Speaker 1  37:13
+I think I did a handful of them, like, it's just a handful.
+
+Matthias Miller  37:18
+Okay, so here's my proposal. Then,
+
+Unknown Speaker  37:21
+um, so
+
+Matthias Miller  37:24
+then let's do a, let's
+
+Matthias Miller  37:30
+do something like this, where we have a, I think what the best way is to do this,
+
+Matthias Miller  37:57
+we don't have a transaction import.
+
+Speaker 1  38:03
+I don't go to go your standard folder there might be,
+
+Matthias Miller  38:21
+it's matching and contacting, okay. So I think we could just do something like, okay, but then repeating groups, unmatched rows, we keep unmatched lines, we create a new row. I think it's something like, okay, So then I think we do,
+
+Unknown Speaker  39:01
+okay.
+
+Matthias Miller  39:08
+Okay, so we have the contract ID now, let's do something like this. I'm.
+
+Unknown Speaker  40:34
+And we Do. We're I'm
+
+Unknown Speaker  41:13
+B type,
+
+Matthias Miller  41:19
+let's just dumb, The type, adjustment, type,
+
+Matthias Miller  41:40
+due, date, amount, taxable.
+
+Matthias Miller  42:14
+Okay, and This is a concat advanced.
+
+Matthias Miller  42:22
+We have date, string, trans, type, blank, adjustment, type,
+
+Unknown Speaker  42:40
+wow.
+
+Matthias Miller  42:45
+Date string be due. Date string two, TF string be taxable.
+
+Unknown Speaker  43:07
+Okay.
+
+Unknown Speaker  43:16
+And then,
+
+Matthias Miller  43:34
+we're just going to delete things.
+
+Speaker 1  43:56
+Hmm, total side note you should tell you should. You should message Addison and have him share some of the pictures he modeled up for the connection YouTube made together with whoever that was.
+
+Matthias Miller  44:08
+Like, Emil, yeah, as
+
+Speaker 1  44:15
+that child, some days I'm just like, I'm a little dumbfounded.
+
+Matthias Miller  44:20
+He's my kid. Actually,
+
+Speaker 1  44:23
+I'm gonna, I'm gonna go tell him to send me a picture. I'll share it with you.
+
+Matthias Miller  44:27
+Hold on, yep. Wait a minute. Did I just lose my.
+
+Speaker 1  45:31
+You know, you know what the crazy thing about that is, what so he, when he gets, when he's done, he sends them the blender file, which means that when they decide to drop it into scenery, they can, they can put that building in any, you know, any position they want. Like, literally, one building you can use as an asset into all kinds of different sceneries and place it a whole bunch of different directions. Like that is genius.
+
+Matthias Miller  46:01
+It is genius.
+
+Matthias Miller  46:17
+Okay, it lost myself. I don't know what happened.
+
+Speaker 1  46:30
+The funny part is he charged him what he thought was a really high number, and they didn't blink an eye and thought that he was charging a low number whenever, whenever that happens. That makes two happy people.
+
+Matthias Miller  46:42
+It makes two incredibly happy people. That is amazing. You send it to me, Well, if you look at what the value is to them,
+
+Unknown Speaker  46:52
+where I don't see it,
+
+Speaker 1  46:54
+it's not there. Addison, Matthias And Dwayne there's nothing there. There's nothing there. Probably I
+
+Speaker 1  47:32
+on the trans forgiveness reason, that sounds like some sort of God speak right there. Trans forgiveness. Reason.
+
+Matthias Miller  47:47
+It's the it's an indulgence. Basically.
+
+Unknown Speaker  48:00
+No wonder this is the only software you need.
+
+Matthias Miller  48:04
+Okay, what the hang I just Literally, I
+
+Unknown Speaker  48:38
+and I um, I
+
+Speaker 1  49:00
+don't you have a prettier one? You sure? Nope, what about that's not one of your nicest ones, though?
+
+Unknown Speaker  49:15
+That's just the previews.
+
+Speaker 1  49:20
+Oh, but I mean, okay, this is just the preview, so it's like, this picture looks blurry.
+
+Unknown Speaker  49:31
+That's fine.
+
+Unknown Speaker  49:35
+You had some others that you showed me.
+
+Matthias Miller  49:47
+Okay, the trains date is the contract trains i.
+
+Speaker 1  50:00
+Well, I was going to brag on you for this. And this one's not as quite as nice as some of the stuff you showed me before. Well, I mean, I showed you the model before. Oh, you showed me the model you were looking at it. I can't really show you that in 3d and that's true,
+
+Unknown Speaker  50:16
+absolutely. Can't really show Matthias that in 3d
+
+Unknown Speaker  50:21
+Oh, wow. Okay,
+
+Speaker 3  50:23
+once editing on my Instagram, but I can't, like, send them all to you guys. Yeah, just the rendered picture is just not a very great quality compared anyway. I mean, just look at Heritage back or heritage structured stuff in like two months, and you'll see their marketing campaign once they come out with it fair enough.
+
+Matthias Miller  50:52
+All right, so we need period. They entered payment ID.
+
+Matthias Miller  51:20
+We're just going to All right, let's
+
+Matthias Miller  51:37
+try this. All right. So contract, trans, objections,
+
+Matthias Miller  51:52
+the period is blank. Is it supposed to be blank?
+
+Matthias Miller  52:32
+Would add late fees. I
+
+Matthias Miller  52:46
+Well, we're going to put in NA for now. Okay, we have the transaction type.
+
+Matthias Miller  52:59
+Okay, so we don't really need
+
+Unknown Speaker  53:04
+period apparently,
+
+Matthias Miller  53:17
+Here we have the transaction type, late fee. I'm
+
+Unknown Speaker  53:48
+I do eight an amount,
+
+Speaker 2  53:59
+and then how
+
+Matthias Miller  54:07
+do we get the how do we get delete The amount, get it off the contract definition,
+
+Speaker 1  54:20
+it I don't know if he's storing some of that stuff on the on the contract record, or if you have to reference back to the definition, the link definition,
+
+Matthias Miller  54:34
+it looks like we.
+
+Matthias Miller  55:45
+I The due date. We can't get the contract on the contract definition. We can't get the we have the late fee.
+
+Unknown Speaker  56:37
+You want the number of
+
+Matthias Miller  57:19
+transaction due date you want the amount. Know here the amount we need to be taxable. I
+
+Matthias Miller  57:48
+For this reason, payment Id date entered would be this plus I
+
+Matthias Miller  59:04
+help if I repeat the repeating list. We have due date. We do want the period date.
+
+Matthias Miller  1:00:06
+Okay, let's do something like
+
+Unknown Speaker  1:00:24
+at all we have
+
+Speaker 2  1:00:32
+23456, and
+
+Matthias Miller  1:00:43
+okay. I
+
+Unknown Speaker  1:01:19
+I mean
+
+Matthias Miller  1:01:46
+like this guy has 36 payments, ended up with eight. This one is six ended up with 336. Ended up with 736.
+
+Matthias Miller  1:02:09
+Ended up with eight. You probably dial it back just a hair. No need to completely torture these guys. I
+
+Speaker 1  1:02:27
+let me get a lot smaller the front, the front one, the back one. Can be it's fine, but you really only need just a little thing here on the on just to hold the bottom of it.
+
+Unknown Speaker  1:02:39
+I can still bar.
+
+Speaker 1  1:02:42
+Can you Henry. Okay,
+
+Speaker 2  1:03:18
+on t1 find that person i All
+
+Matthias Miller  1:03:36
+right, should we sprinkle some forgiveness in here? Too,
+
+Unknown Speaker  1:03:41
+sure. Why not?
+
+Unknown Speaker  1:03:43
+Let's sprinkle some forgiveness.
+
+Speaker 1  1:03:48
+Um, maybe we should not call it forgiveness. We should cut what, ah, you just, you just said what it was. It was,
+
+Unknown Speaker  1:03:56
+what, indulgences, indulgences.
+
+Speaker 1  1:04:00
+That's what we should call it. We should call it in forgiveness, slash indulgences.
+
+Matthias Miller  1:04:06
+I'm sure you've heard the story about the guy who asked the priest if you can buy indulgences for sins you haven't committed yet.
+
+Unknown Speaker  1:04:17
+I'm not up on my Catholic jokes. No, go ahead.
+
+Matthias Miller  1:04:20
+And so the guy says, Yeah, sure, you can. And so the guy robs and blind. Well then no, the guy says, I want one. And then robs and blind runs off with all the money. Okay, okay,
+
+Unknown Speaker  1:04:40
+that is the joke. Got it the joke. That is the joke, yeah,
+
+Unknown Speaker  1:04:46
+sprinkle in some forgiveness. Is some indulgences.
+
+Speaker 1  1:04:56
+Your your macro for it should be called V. Contract indulgences.
+
+Matthias Miller  1:05:03
+Exactly,
+
+Speaker 1  1:05:06
+some someday, somebody's gonna be go. It's gonna look through the macro list and go, What? What? What are contract indulgences?
+
+Matthias Miller  1:06:08
+Okay, so we have I'm
+
+Matthias Miller  1:06:34
+Um, okay, so this is
+
+Matthias Miller  1:06:41
+in Douglas. Douglas,
+
+Speaker 1  1:06:49
+that'll make that, that'll make for a good you open up transaction history, and you'll see during a demo, and you'll see indulgence, and we'll just smile and say, You got to have you got to have fun when you're developing software, otherwise it just becomes a mental slog.
+
+Matthias Miller  1:07:07
+Yeah, exactly.
+
+Matthias Miller  1:07:20
+We'll just throw a little randomness in here too.
+
+Matthias Miller  1:07:33
+There you go. Are you showing up in there? Oh, no. What is that one? I don't get why these, some of these some of these roads are showing up when they shouldn't. Oh, because I know why. I know why,
+
+Matthias Miller  1:08:00
+because of the random magic that should fix it. Okay, so this takes care of late fees. Then why not go ahead and throw in CRA s while we're at it.
+
+Unknown Speaker  1:08:19
+What do you want to do with the CRA
+
+Matthias Miller  1:08:23
+add a CRA payment at the very beginning?
+
+Speaker 1  1:08:28
+Oh, well, it'll have to match whatever I have in the CRA to begin with. Right, right. So if the contract has a CRA amount currently stored, then that should be, that should be the first part of the first initial payment,
+
+Matthias Miller  1:08:46
+we should have a date as of the contract start date is that the right date to use Correct? Okay, so this should be low late fees. Um, so we're going to do concat. CRA, your macro load. CRA,
+
+Speaker 1  1:09:18
+we should, you know, man, I it we, we should sprinkle in as part of the demo for for only at this at the NSRA, it should be like, Here, watch this, watch this clips. And just be like clips of of us doing this kind of stuff. Because do this, this makes you look like a pure genius.
+
+Matthias Miller  1:09:43
+Most people would just be like,
+
+Speaker 1  1:09:44
+Yeah, you're right, you're right. It would be just like, I don't get it. What are you guys doing,
+
+Matthias Miller  1:09:50
+even doing right? Exactly.
+
+Unknown Speaker  1:09:55
+Yeah, that's fair.
+
+Matthias Miller  1:09:59
+Where did you put the C. A amount. What do you mean?
+
+Unknown Speaker  1:10:04
+Where to put the CRA amount should be stored on the contract,
+
+Matthias Miller  1:10:17
+like the security deposit amount. No.
+
+Matthias Miller  1:10:29
+Um, negative. Why are you negative?
+
+Unknown Speaker  1:10:34
+Whoa.
+
+Matthias Miller  1:10:39
+Wait a bit. I'm not seeing anything with the CRA definition checked. Okay.
+
+Speaker 1  1:10:48
+Hold on. Let me look at my import. Let me go look at my my my data. I was sure that I did some with a CRA, but let me just go double check data for only
+
+Matthias Miller  1:10:59
+some of this in the positive amount,
+
+Unknown Speaker  1:11:06
+okay, Siri, amount. Siri, cash to amount, yeah, okay, go look at I want to do account number 4238,
+
+Speaker 1  1:11:26
+sorry, Contract Number four, whatever We're calling. Contract Number Yeah, contract ID 44238, contract ID
+
+Matthias Miller  1:11:47
+there's no 4238,
+
+Speaker 1  1:11:50
+well, that's fun. Um, okay, fine. I wonder if, okay, try, try looking up lb 0928 or
+
+Matthias Miller  1:12:04
+is it off of it this account?
+
+Speaker 1  1:12:07
+No contract. No. It'd be contract ID.
+
+Unknown Speaker  1:12:10
+Okay, what am I looking at?
+
+Unknown Speaker  1:12:13
+Lb 092811 DS.
+
+Matthias Miller  1:12:17
+I'm looking at completely the wrong ID. I don't know what I'm looking at,
+
+Matthias Miller  1:12:28
+okay, what was the first 14234238, there we go.
+
+Speaker 1  1:12:36
+Go to details. CRH, huh. So obviously that didn't take when I pushed that, because in my spreadsheet, I show that as true, and, okay, well, something didn't take CRA true. It should be an amount of $2,000 should be there. So it obviously didn't store that. Didn't store that is the is, the is the is the security deposit zero or na on that account.
+
+Unknown Speaker  1:13:12
+Yes, interesting.
+
+Speaker 1  1:13:15
+Okay, go back to it and click the CRA button and see if the amount is there. Oh, you can't. Well, that might be why I wasn't able to do it. I
+
+Unknown Speaker  1:13:35
+would. I should have got an error if that was uneditable.
+
+Matthias Miller  1:13:44
+Maybe the import never said it, wow. Well, okay, realistically, we don't want to handle this like a late fee. We want to handle this as a payment, right, correct, although, if we would add it as A paid row, probably won't work.
+
+Matthias Miller  1:14:14
+Well, let's do this.
+
+Matthias Miller  1:14:23
+This seems to me to theoretically be
+
+Matthias Miller  1:14:32
+what we need to import, right?
+
+Speaker 1  1:14:38
+So these are, these are late fee incursions, incurred and forgiven. Yes, okay.
+
+Matthias Miller  1:14:54
+Um. Well, we can, we can, we can figure out how you
+
+Matthias Miller  1:15:20
+okay, let me see where they're at. Okay, so now let's go back over to income statement. Let's see if this thing actually ran.
+
+Unknown Speaker  1:15:43
+Boom,
+
+Matthias Miller  1:15:45
+we're making money now.
+
+Matthias Miller  1:15:59
+Our balance sheet probably looks horrific.
+
+Matthias Miller  1:16:19
+Paid sales tax in a while.
+
+Matthias Miller  1:16:34
+As soon as we get payments in AR or we're only going to be a million in the red I and, and you probably want to have some kind of opening balance equity at the beginning. To put, I don't know, don't you want to do something like this?
+
+Unknown Speaker  1:16:53
+Like, yeah, whatever you're about to do, yes, oh.
+
+Matthias Miller  1:16:59
+Like, it normally would be like an opening balance equity, but I don't know what do?
+
+Speaker 1  1:17:29
+Now, now we're fully on into we can start to taste things
+
+Unknown Speaker  1:17:38
+we would do those
+
+Matthias Miller  1:17:44
+bump all of These by sure three 200 let's do a new account.
+
+Unknown Speaker  1:18:05
+Okay,
+
+Matthias Miller  1:18:07
+okay, so we need the bank. There's an asset, so we need to debit to the bank, business, checking,
+
+Matthias Miller  1:18:27
+a half million to three actually, all we really need to put in is About a million. It looks it looks like
+
+Matthias Miller  1:18:42
+there should be dated back for
+
+Matthias Miller  1:18:53
+earliest transaction i
+
+Matthias Miller  1:19:12
+Okay, all right, well, that'll put that'll put us at this point until we pay sales tax, but That puts us in black at least a little bit. Least a little bit once we get payments in or once.
+
+Speaker 1  1:19:27
+That's why does the business check in showing a negative,
+
+Matthias Miller  1:19:30
+because we have a whole bunch of AR like we're not running all of it. We're not going to be running all of our accounts delinquent. This is with all accounts being delinquent.
+
+Speaker 1  1:19:43
+Sure, the moment, the moment we start paying some of that, then gotcha,
+
+Matthias Miller  1:19:49
+no flip flop a little bit, and we can adjust this journal entry to whatever we want in the initial two. Checking account to get it all that looks sane on the balance sheet.
+
+Speaker 1  1:20:05
+I think, I think the first big client that I on board, I'm going to have you along for the ride to when we get to the accounting side of things. Yeah, all right. So
+
+Unknown Speaker  1:20:20
+now we need to go generate some transactions. Okay,
+
+Matthias Miller  1:20:33
+okay, the other thing we need, okay, so This gets us
+
+Unknown Speaker  1:20:42
+okay.
+
+Matthias Miller  1:20:57
+Okay, so this is um,
+
+Matthias Miller  1:21:07
+here's the feed generator. Hey,
+
+Matthias Miller  1:21:27
+let's go into user folder. Let's
+
+Matthias Miller  1:21:41
+Favorites and Favorites,
+
+Matthias Miller  1:21:57
+so input variables, The header line,
+
+Matthias Miller  1:22:11
+contract, ID, this should be
+
+Matthias Miller  1:22:38
+payment, report, transactions,
+
+Speaker 2  1:22:40
+I it
+
+Matthias Miller  1:23:02
+going accounting? Transactions?
+
+Matthias Miller  1:23:14
+Repeating? Group I
+
+Unknown Speaker  1:23:50
+enter date. I'm
+
+Matthias Miller  1:24:28
+okay, your contract, ID, Trans Day, which really should be entered date,
+
+Matthias Miller  1:24:39
+entered um, we have the
+
+Matthias Miller  1:24:57
+trans type adjustment. Type, due, date, amount, taxable, tax, Rate, payment, ID,
+
+Unknown Speaker  1:25:22
+fine, right? All right?
+
+Matthias Miller  1:25:45
+Call trans due date,
+
+Unknown Speaker  1:25:56
+big D,
+
+Matthias Miller  1:25:59
+adjustment type, ABC,
+
+Unknown Speaker  1:26:06
+456789, all
+
+Matthias Miller  1:26:14
+right, let's leave this looks right.
+
+Matthias Miller  1:26:25
+So for 411
+
+Matthias Miller  1:26:39
+I mean, theoretically this is right date entered is wrong on all of these guys.
+
+Speaker 1  1:26:49
+So what's it going to stop in for a date entered just today?
+
+Matthias Miller  1:26:55
+No, I mean on the historical stuff. So I want to do a contract. And I'm going to do a repeat RG, contract, trans date contract, trans date equals, First of all, contract period.
+
+Matthias Miller  1:27:29
+Okay, so Here's the I'm
+
+Unknown Speaker  1:27:54
+let's do This too.
+
+Matthias Miller  1:28:10
+That will then,
+
+Unknown Speaker  1:28:22
+okay?
+
+Matthias Miller  1:28:26
+What should the date entered be on a rental fee? Is it on the date that it's due?
+
+Speaker 1  1:28:38
+Well, if you unless it's unless you're hitting one of the ones that that incurred late fee. I would just vary it plus or minus of the due date randomly, plus or minus the due date by five days.
+
+Matthias Miller  1:28:57
+It doesn't matter with the late fee. I mean, we can enter it,
+
+Speaker 1  1:29:02
+yeah, but I mean the payment at the point of the late fee needs to be post.
+
+Matthias Miller  1:29:10
+No, I'm saying the date it was incurred, or sorry, the date we enter in, not when we make the payment, but the day that we add the late the rental fee to the contract itself, it should be okay. I'm not 100%
+
+Speaker 1  1:29:33
+sure I'm understanding what you're saying, because you already generated some late fees.
+
+Matthias Miller  1:29:38
+Okay, here it all says it was entered on September the fifth, which is just bonkers. Can we say it was entered on 10 five? You
+
+Matthias Miller  1:29:51
+have a rental fee that's due on 10 five. Can we say it was actually entered on 10 five?
+
+Unknown Speaker  1:29:56
+Oh, so.
+
+Speaker 1  1:30:00
+It does that matter? I don't know. I mean, this is dummy data, duh. We, we pushed a whole bunch of transaction history, and that's when it
+
+Matthias Miller  1:30:13
+was entered, right? But it's gonna, it's gonna toast as
+
+Speaker 1  1:30:21
+Oh, oh, okay. So so the list okay for the rental fee they should incur. They should incur as of the due date. The late fees should incur whatever the grace period is for the contract definition. So one day plus the grace period, is when they should incur. And by answering your question, if
+
+Matthias Miller  1:30:50
+you have a 10 day grace period, okay, if you have,
+
+Speaker 1  1:30:53
+and I'm well, it is, it is 10 day grace period, because both all the contract definitions I set up I did with a 10 day grace period, okay,
+
+Matthias Miller  1:31:01
+but if it's due on the first, then you incur the late fee on the 11th, right, correct. Okay, all right, so this gets us okay now, now we have a late fee that was incurred.
+
+Unknown Speaker  1:31:20
+I gotta make a make a restroom run or ask me a Question.
+
+Matthias Miller  1:31:24
+I'll do the same. We'll see soon. Okay? I
+
+Unknown Speaker  1:34:51
+Wait, how did you? How did you, I don't know, what did you make this thing like a sub? In report. Or is this?
+
+Matthias Miller  1:35:01
+No, this is, this is built into the import stuff.
+
+Speaker 1  1:35:05
+Oh, this is the preview thing. God,
+
+Matthias Miller  1:35:09
+are we good to push in these fees? I mean, it looks good to me.
+
+Unknown Speaker  1:35:15
+You fixed the entered point. Yeah, you did.
+
+Matthias Miller  1:35:20
+So the late fee gets added one to 20 days just avoid overlap with the next period.
+
+Speaker 1  1:35:27
+And you're, are you? Are you fixing? Yeah, you're fixing some of the initial stuff that that Jonathan had pushed in.
+
+Matthias Miller  1:35:33
+We should fix the I can, I can go back and fix the here. This thing would work great to fix the contract trans tax rate equals contract tax rate. Let's just go stomp that in everywhere as well.
+
+Matthias Miller  1:35:54
+Boom, all right, so now if we jump down here, boom,
+
+Speaker 1  1:36:02
+So correct me, if I'm wrong, like, you haven't, you haven't run this import yet, right? No, I haven't yet. So it just basically will, it will even show you detail screens.
+
+Matthias Miller  1:36:11
+Yeah, that's crazy for the changes applied,
+
+Speaker 1  1:36:19
+and it shows them with the changes actually there. Yeah. So how is, how is it doing that like? Because if you went to the actual detail screen, it hasn't done it
+
+Matthias Miller  1:36:28
+yet, correct. So, basically, well, fundamentally, when you edit a detail screen on, on screen, we go load, load the record off from the database. And then we say, all this stuff changed because somebody changed this. Somebody changed this. Now render the detail screen like, what does the detail screen need to look like? And it's exactly the same, same thing. I mean, your your load the record from the database, go, change this, this, this, and this. Instead of the user doing it, we're just saying, Well, this is what the import would do. Now show us the detail screen.
+
+Speaker 1  1:37:02
+I gotta remember that whenever I'm I wish I had remembered that when I was trying to push contract stuff in. That would have been helpful.
+
+Matthias Miller  1:37:11
+All right, so are we good? This is all going to be random, so it's not going to be identical to this, but it's going to be approximately like this when we run it. You good?
+
+Speaker 1  1:37:20
+I mean, I think so, all right, boom, I feel a little bit scared saying yes to something. I'm not even sure I fully understand what you're doing. But yeah, I think I understand.
+
+Matthias Miller  1:37:30
+We just added 452 late fees to 452 contracts. So now the next thing is payments.
+
+Speaker 1  1:37:40
+So basically, so in, I don't know how you're going to account for this, but some, I have some contracts in here that are completed, and if you can like and completed as like early EPO. So if we can automatically calculate that and make that the final payment and everything, that would be stinking cool.
+
+Matthias Miller  1:38:02
+Are they flagged as VP over here?
+
+Speaker 1  1:38:05
+They should be okay. I mean, you make a couple checks. Now I thought, I thought there was stuff that was pushed that didn't actually push through.
+
+Matthias Miller  1:38:12
+So let's go chase down the CRA where the CRA stuff didn't, didn't work.
+
+Speaker 1  1:38:26
+And here's the thing, Matthias, that's a really easy conversation. Somebody's like, well, I want to see how CRS are look. We're like, we didn't handle everything for this demo, so CRA was kicked down the can, down the street. Well, I mean, if you want to try, and if we want to try, want to try and show it, great, but
+
+Matthias Miller  1:38:47
+let's get lost down the weeds on it. But let's Well, or maybe we should just skip it. I mean, do
+
+Speaker 1  1:38:53
+we, do we have, do we have the, do we have the calculations that if we stomp in a CRA will actually produce the correct payment amount.
+
+Matthias Miller  1:39:04
+I'm not sure it'd be really cool to show CRA amounts held on the balance sheet, but yeah,
+
+Speaker 1  1:39:09
+it would be that you're right, even if the payments
+
+Matthias Miller  1:39:14
+were wrong. Okay, so let's go to what did you use to import contracts?
+
+Speaker 1  1:39:20
+I think it's a well, no, go back. Go back to the because Seth had, yeah, import contracts with, with, with previous account number, I think was, was the Yeah, and so that's column s, did I have a mismatch? I wouldn't. I wouldn't have a mismatch. Calm, yeah. Column S, S and T, and T should have been the amount. Yeah, T is calm, yeah.
+
+Matthias Miller  1:39:51
+We see cash doing okay, let's try this. Um, browse new we're
+
+Speaker 1  1:39:55
+gonna do report. And I'll mean, I can, I can give you the CSV for this. If you want it, you.
+
+Matthias Miller  1:40:00
+No, I think we can do it from here. I think the CRA amounts are in here.
+
+Unknown Speaker  1:40:03
+You think so?
+
+Matthias Miller  1:40:07
+Contract, no CRA, cash, due amount. Let's go find everything with a contract ID. Contract is cra,
+
+Speaker 1  1:40:25
+well, the CRA s didn't, didn't actually check, so, right.
+
+Matthias Miller  1:40:30
+But if we, if we look at everything with a Come on,
+
+Unknown Speaker  1:40:35
+all right. Well, I'll shut up and let you chase. Okay.
+
+Matthias Miller  1:40:38
+Okay, there you go. Are these the guys? Yeah, those are the exactly the ones. Okay, well, let's just see if we can manually set them.
+
+Speaker 1  1:40:45
+So how'd you So, what's the deal? Where'd you put? How'd you find that?
+
+Matthias Miller  1:40:49
+I look for ones that have a cash view out set. Side
+
+Matthias Miller  1:40:59
+note, I'm still incredibly proud of myself for finding Addison's copy building, because I was like, I'll bet we can that that copy, oh, you weren't in that wait, you were in that discussion. Part of it. Couldn't figure out why the you couldn't market building is built, and we're trying to figure out where it came from. And so I did a search on FTI numbers to find an exact match on the raw material value for another building, and that's how I found this building. I was very impressed with my not to honk my own horn. But,
+
+Speaker 1  1:41:34
+okay, funny story. So yes, I've been trying to get some reports for out of the shed. App for Leanne for to make sure she has the right numbers for when paying buildings to JCn and I was ready to jam my fingers in my eyeballs with their with their reports. Oh my gosh.
+
+Matthias Miller  1:42:03
+Like I can, hey, if you want, if, if there's any budget for it, I do replicate some of that information in silver limb. I suck it out, pushing the silver limb
+
+Unknown Speaker  1:42:16
+out of the chat. I
+
+Speaker 1  1:42:25
+Yeah, well, okay, the only, the only thing that made me scratch my head a little bit about their their reporter reporting model, is that the user, like it throws a pile of data at you, and then you're supposed to apply filters to it in order to filter it down right? And so you do have the capability to, you know, define which, you know, which dates you want to filter. And it's like, Well, okay, it's, I was ready to poke my eyes out, because it's like, I don't know there's, it feels like there's so much redundancy in some of the stuff that they're doing. And then it's like, it's not easy to understand. It's like, I want to know which of these RTO contracts I should be paying for last month. And if that's difficult to figure out, you've got a problem with your reporting model, right?
+
+Matthias Miller  1:43:18
+But what we can do is go, go. Write automation, sync it with silverland, and you can build whatever
+
+Unknown Speaker  1:43:25
+report you want on top of it. Yeah, I know,
+
+Matthias Miller  1:43:29
+but that's a little different if you're paying out of your pocket versus so how are you?
+
+Speaker 1  1:43:34
+How are you, how are you connecting up to their database to get to get the data out.
+
+Matthias Miller  1:43:40
+I'm logging in via playwright, and then using their internal API that they used within the app.
+
+Speaker 1  1:43:51
+So you can, you can gain, you can gain access to the to the data,
+
+Matthias Miller  1:43:56
+yeah, full access, 100% access to the data.
+
+Speaker 1  1:43:59
+Yeah. Which means that, which means that, oh, that, Oh, dude, that means that writing, writing a a direct import of stuff out of the shed app into only would not be hard,
+
+Matthias Miller  1:44:13
+yeah? Not, not hard at all. You need to store, The scary thing is, you need to store that person's username and password. We need an account with username and password that gets stored somewhere.
+
+Unknown Speaker  1:44:26
+So that's, I
+
+Speaker 1  1:44:28
+mean, it's a little bit janky, because if they ever change the password, you broke it, right? So do they not have, do they not have a like do they not have a better way for accessing the the API?
+
+Matthias Miller  1:44:43
+No, they are. They are so stuck back in the Dark Ages.
+
+Speaker 1  1:44:50
+Yeah, well, can you, can you met you haven't you haven't had anything, you haven't done any of this kind of stuff with with shed sweet. Have you
+
+Unknown Speaker  1:44:59
+no? I'm gonna
+
+Unknown Speaker  1:45:01
+talk about something stuck in the dark ages, dude.
+
+Matthias Miller  1:45:06
+I get anxiety just talking to the guy. I love the guy. He's a very nice dude. Let's just say that his chill CEO style does not match my it
+
+Unknown Speaker  1:45:18
+does not match your add
+
+Matthias Miller  1:45:20
+get some stuff done. He's like, Yeah, we're hoping maybe,
+
+Unknown Speaker  1:45:29
+I'm sure, they have some sort of API, though,
+
+Matthias Miller  1:45:31
+I have no idea. I sure hope. All right, so we're going to do input from, okay, all right,
+
+Speaker 1  1:45:50
+boom, oh, so, so basically a, okay, so the shed app requires an RTO company to have a RTO account on their system. And so you just need a you just need an API user on their on whatever system, and you can extract data
+
+Matthias Miller  1:46:08
+without, without having an RTO contract. Well, no, I mean,
+
+Speaker 1  1:46:14
+you have to have a you have to have an art well, okay, once a, once a RTO company has a RTO account on The Shed app, then they can link that up to any, any or any manufacturer,
+
+Matthias Miller  1:46:30
+Master admin account on your rent to own company. You can get
+
+Speaker 1  1:46:34
+all your client, yeah, exactly, exactly, or basically whatever data. No, it's so okay, I don't fully understand this, but like cricket Valley has a shut up account, they somehow link that to JCM. JCM says this dealership talks to this. And so then that comes over here to the cricket Valley account. And so once you have access to the cricket Valley account, you can suck everything out, including documents. You can get access to the documents.
+
+Matthias Miller  1:47:01
+I'm gonna try to tried it, but probably, I'm 99% sure I could I be completely wrong, yes,
+
+Speaker 1  1:47:10
+but Well, here's, here's the deal we're gonna that's gonna be part of this development. We're gonna figure out how to link up to cricket Valley and the overhaul account in order to suck out contracts automatically. Yes, we are that, and that'll have the court that'll have the core functionality then that we can say we can hook up the Shut up anybody
+
+Matthias Miller  1:47:30
+I know. Boom, dude. By the way, if you want to do some cold calling,
+
+Matthias Miller  1:47:40
+you can. It's pretty easy to find a whole bunch of Shut up users. They're not all visible, but some of them are pretty easy to find. User base. Oh, they all have C names. Their sub domains all have C names over to the shut app. And so you use DNS dumpster. Not have a list, by the way, if you want, but you go, you go buy it. I also have a list of shit companies if you want to do something with it, with it in certain capacity, but you then just, I mean, it's stupid, simple man. Like, it's not rocket science.
+
+Speaker 1  1:48:14
+Okay, we're gonna have to, we're gonna have to be better than that. Like, I don't, I don't want you don't that's just lame.
+
+Matthias Miller  1:48:23
+Well, I don't know exactly how you get better than that. Because, I mean, if you give people a sub domain access to you're gonna have to ask Josh how to mask it.
+
+Speaker 1  1:48:34
+Because, yeah, but I mean, you okay. So, so seriously, you could your sub domain could be, you know, some sort of, you know, X, y1, 2345, dot only, dot,
+
+Matthias Miller  1:48:51
+whatever, right? Or you could see if you could sweet talk Josh into letting hosting it on App, dot only, dot, you know, whatever. And then when on the first the put a middle screen in when they log in with their email, say, which system do you want to log into? You have access to the following
+
+Speaker 1  1:49:08
+ones, which I don't know. We're gonna have to, we're gonna have to come up with something because a like, yeah, something anyway. Go on. Keep moving. It's, it's stuff like that that I just want to bang my head against the wall. It's like, come on, you guys, could be better. But then again, I guess this is, this is the downside of you decided to go build a software and hire some, probably guy from India to code it for you.
+
+Matthias Miller  1:49:36
+Oh, yeah.
+
+Speaker 1  1:49:39
+Are you? Are you doing? Are you doing it yourself? And like, this is the, this is the big benefit of working with developers who've who, I mean, who build enterprise level software that banks use, like, you just can't get you just don't do dumb stuff like this when you work with a bank.
+
+Matthias Miller  1:49:56
+Well, yeah, I mean, admittedly, most people. So in most cases, it's not revealing what tech stack you use. Isn't an issue in most industries, but when you get a bunch of sharks swimming in the water, all in a small pool, trying to eat the fish, I don't know sometimes what it feels like, but who knows. Okay, so now we have those imports. I don't know why those didn't import correctly, but they're right now. Okay. These are now CRA with the cash email. Okay, so now,
+
+Unknown Speaker  1:50:39
+how do we So, was it?
+
+Speaker 1  1:50:41
+Is it? Is it something in the in the initial import? Did I do something wrong? What? Because I mean, if I'm understanding right, that the CRA question mark column in my spreadsheet should be true or false, correct, yes. And so I marked those true. Obviously, it picked up the dollar value.
+
+Matthias Miller  1:51:05
+I mean, I don't want to chase it. If you want to chase it, you send it. You send, send your CSV over to them and say, when I ran the import, it didn't set CRA and Matthias manually updated them. And please, like, what's not what happened?
+
+Unknown Speaker  1:51:23
+Okay, I'll do that.
+
+Unknown Speaker  1:51:27
+Um, I'll do that while you
+
+Unknown Speaker  1:51:28
+start working on transaction stuff.
+
+Matthias Miller  1:51:31
+Okay, so my thought is an easy way to do this would be, Oh, I like this approach. Let's have I don't
+
+Unknown Speaker  1:51:42
+even know what you're talking about. I already like it
+
+Matthias Miller  1:51:50
+for each payment row, ID,
+
+Matthias Miller  1:52:02
+Payment ID is a string. Why Is payment i
+
+Matthias Miller  1:52:24
+a confirmation ID.
+
+Matthias Miller  1:53:49
+Let's See what Jonathan says about linking it.
+
+Matthias Miller  1:54:02
+I'm confirmation that it's auto generated for each payment on a net he cares of capital letters plus
+
+Unknown Speaker  1:54:50
+numbers.
+
+Unknown Speaker  1:55:26
+Are you waiting on me for something
+
+Matthias Miller  1:55:28
+working? Jonathan, Okay, gotcha. You got
+
+Speaker 1  1:55:31
+silent. I saw nothing happening on the screen. I was afraid that I was missing something. I
+
+Matthias Miller  1:57:18
+Okay, so at first, I was like, we could create a massive payment for everything, but that's going to be weird. Um, it's going to show it's going to look funky on your income statement. Um, actually, no stock, because it's just an AR adjustment. Does it matter?
+
+Speaker 1  1:57:38
+You're saying it would be one giant payment on in the transaction, yeah, we
+
+Matthias Miller  1:57:44
+just use one single payment per contract. No, okay, that
+
+Speaker 1  1:57:50
+would look really funny, though, if you pulled up a transaction history, wouldn't it? Uh,
+
+Matthias Miller  1:58:03
+um, it would
+
+Matthias Miller  1:58:13
+Jonathan's hopping on now to talk about it.
+
+Speaker 4  1:58:22
+Yeah, good afternoon. Oh, wow, Dwayne, that is quite the poster behind you. I love it. Oh, right. You're all ready?
+
+Speaker 1  1:58:33
+No, not quite. We're working on it. It's
+
+Unknown Speaker  1:58:36
+that is awesome. That looks great.
+
+Unknown Speaker  1:58:39
+How you like my 3d printed
+
+Unknown Speaker  1:58:43
+stuff, the like the little stand on your table.
+
+Speaker 1  1:58:48
+So funny, funny story here. Check that? Oh, nice. That's awesome. So, so as in it, well, back up a number of weeks ago, when we were talking about design for this thing I had, I had a whole thing mocked up for just doing just the backdrop thing, and my son, Addison, hated it. And and then one morning, Leanne comes to me and she says, I had a dream. I don't know if you told me about this or what, but she's like, it's this, it's this exact setup where all of the stuff that I had, like little icons on my, on my that was going to be on the backdrop, turns into these 3d printed things on the table. And so we went off and bought a 3d printer, just so we can do this.
+
+Speaker 4  1:59:34
+That's awesome. I really like it. It. It gives stuff to, you know, it kind of makes it three dimensional.
+
+Speaker 1  1:59:42
+The whole Yeah, in her words, it gives it gives people something to fiddle with while we stand there and
+
+Unknown Speaker  1:59:46
+talk, yeah, there, yeah. But
+
+Speaker 1  1:59:49
+it is, I'm running the risk of somebody going, Are you selling? What are you selling here? Software, 3d printing, what are we what are we selling?
+
+Unknown Speaker  1:59:56
+Yeah. Me too. Yeah, we've had so much fun.
+
+Speaker 1  2:00:05
+Oh, and just for kicks and giggles, we so this is, this is, this is one of the other ones. And then my son Addison, got really creative, and, like, we printed a whole bunch of our own key chains and everything nice. So it's been, it's been a like, let me tell you you can get you can fall down a serious rabbit hole with 3d printing in it. It's, oh, I know I had the printer sitting at home for a while, and my 14 year old daughter, she would just literally curl up on a blanket and sit there and watch it print. It's that much it is like it's mesmerizing.
+
+Speaker 4  2:00:41
+So Matthias, you're asking about importing payment IDs or payments, yes, about setting the payment ID,
+
+Matthias Miller  2:00:48
+yeah, just to give you, can I give you just brief context, yeah, rather than my thought was, rather than generating Excel files for the import, it would actually be easier just to drive it off of the payments RG, so off of the fees in the off of the contract, and just and then just determine how many months whether they paid paid up, or if they're a few months behind, or whatever. And then just payment IDs based on what's in the system already.
+
+Speaker 4  2:01:16
+Yeah, you don't need to set it. I have a on in it, so you don't need to set the payment ID.
+
+Matthias Miller  2:01:22
+But if I want to, if I want to say, for example, if I want to key it off of a period, like a customer number or a contract, like the copy the contract auto number id plus a period date, could I stop in a custom ID or not? Is it read only?
+
+Speaker 4  2:01:40
+It's editable on new record or blank and in import.
+
+Unknown Speaker  2:01:49
+Okay, perfect.
+
+Speaker 4  2:01:51
+I think it's, yeah, it's eight characters, uppercase letters, plus all the numbers, okay, but it has to be, has to be unique, but yeah, it will be if it's
+
+Matthias Miller  2:02:06
+probably do something like an X pre clicks or something weird, and then some kind of yeah format from
+
+Speaker 4  2:02:13
+there. Yeah. I mean, I'm not, I'm not sold on this format. I just thought it made the most sense giving just starting with a human readable thing. And if you're wanting to import, if you have an actual file, you know, and it has a stripe IDs. I mean, obviously we should have a different field for that, but I think we might already have something for that. So no,
+
+Matthias Miller  2:02:36
+this sounds that's good. That's all I need. I think it should be pretty
+
+Speaker 1  2:02:40
+straightforward. Cool, great. Just don't call the field stripe ID, because I don't know what we're actually importing with yet. Or my bad, my bad? No, no, it's fine. I'm 99.99% sure that we won't be integrating with stripe just because of the
+
+Speaker 4  2:02:55
+cost. Yeah. I mean, that makes sense. I couldn't believe every time like, I see how high merchant fees are, like 3% How can you just charge 3% but hey,
+
+Speaker 4  2:03:12
+Blockchain, Bitcoin just accept Bitcoin payments.
+
+Speaker 1  2:03:15
+Bitcoin have either you have you, either you've been paying attention to the genius act.
+
+Speaker 4  2:03:24
+I know the name, but that's, that's about it.
+
+Speaker 1  2:03:28
+Well, I'm, I am really interested to see where this goes. I don't understand all that's, that's a part of it, it, but there is, there is some crazy interesting stuff. There, there, there. I don't know if it's going to happen or is happening. But in regards to Bitcoin, well, cryptocurrencies and and something to do with gold too, and like Treasury backed gold, or gold backed treasury, treasuries, I don't know it's some, some crazy interesting stuff. Yeah, sorry, I nerd it out for a second there.
+
+Unknown Speaker  2:04:05
+Okay, can happen to the best of us.
+
+Matthias Miller  2:04:11
+All right, I think it doesn't Okay. That's good. Yep, see ya. Bye. All right, so first things first,
+
+Unknown Speaker  2:04:22
+we need a Do you Okay?
+
+Matthias Miller  2:04:29
+Let's talk about initial payment.
+
+Matthias Miller  2:04:39
+Should we add
+
+Speaker 1  2:04:42
+the answer on initial payment is, if there is a security deposit, it should be one payment equal to one payment plus that a security deposit amount. And there is security deposit amounts stored currently on contracts. If it's a CRA, obviously it's the first payment plus the CA, well, whatever the calculated amount of. CRA is equal to the CRA dollars. I don't think, I don't think I did any without a security deposit. I don't remember. Let me look here real quick. I can actually tell you, yeah, I think I did a security deposit on everything except for the CRA s.
+
+Matthias Miller  2:05:16
+Okay, so here's what. Let's start by doing this. I think we're going to take Do you want? Do you want to use convenience fees anywhere?
+
+Speaker 1  2:05:25
+No, nope. Okay, ignore.
+
+Matthias Miller  2:05:34
+So the first payment, payment date,
+
+Unknown Speaker  2:05:41
+same as the contract start date,
+
+Unknown Speaker  2:05:45
+and then trying to
+
+Matthias Miller  2:05:49
+figure out if I want to do the first payment, if I want to start with first payment, okay. What about subsequent payments? Plus or minus the due date by a number of days, unless there's a late fee,
+
+Speaker 1  2:06:01
+yeah, plus or minus five days unless, unless there, unless there's an incurred late fee, and then it should be, I don't care if you just want to go like 12 days after that point to make that payment, just for the sake of ease,
+
+Matthias Miller  2:06:18
+as long as it wasn't forgiven,
+
+Unknown Speaker  2:06:19
+correct?
+
+Matthias Miller  2:06:23
+Okay, so
+
+Speaker 1  2:06:26
+Well, I mean, even if it, even if it was forgiven, in theory, you would, it would be made after it would be made after that. I mean, and if you want to, I mean, well, I don't know how much you want to get into. How far past do they went? I don't, I don't think we you only added single late fees, correct,
+
+Matthias Miller  2:06:46
+correct. I mean, per period, yes, yeah.
+
+Speaker 1  2:06:51
+I mean, I would say, let's not overthink it like we don't. Let's not put anybody in in past due. I mean, well, you haven't, you haven't stored enough late fees in order to put somebody more than one payment past due. So let's just yeah, it will look like a very efficient company, but whatever
+
+Matthias Miller  2:07:08
+the payment
+
+Speaker 1  2:07:12
+now, that being said for some of the newer like, at some point in there you could, I don't know. I mean, how, how? How hard or easy is it, if we just decide to go randomly take some of these accounts, that's after we've got all this done and transaction information pushed in to go, actually, let's go. Let's go, delete a couple transaction lines, add some late fees so that we can make some people appear to be, you know, three months past due?
+
+Matthias Miller  2:07:43
+Well, what I was going to do is going to have a random number generator so we determine what percentage, approximately what percentage of accounts should be past due, okay, and by how many months?
+
+Speaker 1  2:07:57
+Let's say, let's say, let's say, Well, do you want to? Do you want to do 3060, 90?
+
+Unknown Speaker  2:08:10
+Sure.
+
+Matthias Miller  2:08:16
+And then my thought was we would just randomly pick out generating payments.
+
+Speaker 1  2:08:21
+Okay, so let's do this. Let's do let's do like three to 5% I don't know. Let's keep equal numbers 5% 90 plus past 90 days past due. Let's do another 5% at 60, and let's do like 10% at 30, Something like that.
+
+Matthias Miller  2:08:57
+Wonder if I can just do a
+
+Matthias Miller  2:09:04
+okay, if we would have, we basically need up to one payment per due date. So if we would start by creating the payments, We would have,
+
+Matthias Miller  2:09:37
+okay, so then we have share. Shared imports. So this would be the payment generator, payment record generator, and then we're going to do. I'm gonna build a report for contracts we're gonna repeat on
+
+Speaker 1  2:10:16
+by the way, Leanne told me today that she I think they booked an Airbnb. I don't have the details yet on this, but I would say you probably don't need to worry about lodging. Once she I've been she got here when I was in this call, and she's currently in another call. So once I had the details from her, I'll, I'll, I'll get them to you. I'm going to
+
+Matthias Miller  2:10:45
+see about black anvil doing my flyer printing and shipping my books there. I need to get, get those in the mail ASAP, but see if I can sweet talk my brother in law and doing that, that would be wonderful. All right, so, payment record, okay, so we need
+
+Unknown Speaker  2:11:18
+the they also do printing.
+
+Matthias Miller  2:11:22
+I mean, they sub it out. But yeah, yeah, he said,
+
+Speaker 1  2:11:33
+This is your, what? Cousin, brother in law, brother in law, which, who's your brother in law?
+
+Matthias Miller  2:11:39
+Justin stall, Swiss. Stall Swiss.
+
+Unknown Speaker  2:11:42
+Yeah, interesting. Leon Yoder,
+
+Matthias Miller  2:11:48
+he's a business consultant. Slash,
+
+Unknown Speaker  2:11:52
+where are these guys at um
+
+Matthias Miller  2:11:55
+Middlebury, Indiana. Middlebury Indiana, north of the ocean.
+
+Unknown Speaker  2:12:06
+Just like a marketing company, yeah, they
+
+Matthias Miller  2:12:12
+do a bunch of catalogs, other stuff.
+
+Unknown Speaker  2:12:20
+Surprised. Wayne doesn't know about these people.
+
+Matthias Miller  2:12:23
+No, you should. They're great. They're good at what they do. Contract trans dude, okay, so And
+
+Unknown Speaker  2:12:35
+because, I mean, that's like, fairly close to them, yeah,
+
+Matthias Miller  2:12:41
+yeah, like, not far at all better than lugua,
+
+Speaker 1  2:12:46
+black and black. Interesting. I'm going to tell, tell Wayne about these people.
+
+Matthias Miller  2:12:57
+Okay, all right, so hang on, okay. The Transaction Date,
+
+Unknown Speaker  2:14:11
+what brand of Mennonite are they? DMA?
+
+Matthias Miller  2:14:17
+They go to newscher And who else? Forget what the church is called, living, living water. There's, there's a few other BMA. Newswater is probably the most prominent, maybe one or two other. No, I'm bad with these, these names, yeah, um.
+
+Speaker 1  2:15:13
+It's interesting because, like their whole entire website, their feel and everything, even their name would would scream much more of the hipster slant to to marketing. And then it's like, you see some of the head covering. It's just like, it's like, rips me around a little bit
+
+Unknown Speaker  2:15:33
+hip. We'll call them the hipster Mennonites.
+
+Matthias Miller  2:15:39
+Okay, so then the
+
+Matthias Miller  2:16:20
+Okay, can we do something like that, if there's a if there's a forgiveness, when do you want? Can we just say anytime there's a late fee, we take the latest that we take the
+
+Matthias Miller  2:17:27
+we pay it on the date it was the forgiveness was entered. Otherwise we if there's a late fee, we pay it.
+
+Matthias Miller  2:17:42
+I don't know, one to 20 days after that, one to
+
+Speaker 1  2:17:47
+20 days after the late fee incursion, right? I would probably go,
+
+Speaker 1  2:17:56
+I would probably go less than 20 the potential exists that you exceed a month, isn't it? Yeah, you would, there you go.
+
+Matthias Miller  2:18:09
+Okay, so this is assuming we're going to pay everything off, which isn't true.
+
+Matthias Miller  2:18:19
+So this would be, this is now the brand's date.
+
+Unknown Speaker  2:18:24
+Stop it,
+
+Matthias Miller  2:18:28
+and then the payment ID would be the.
+
+Matthias Miller  2:20:15
+All right, so we generate a deterministic payment ID based on due date, payment method. What payment just everything by cash or check or let's
+
+Speaker 1  2:20:38
+just do everything by other. And then do we have, do we have a description on other
+
+Matthias Miller  2:20:44
+CHD tails?
+
+Matthias Miller  2:20:51
+We have a reference number?
+
+Speaker 1  2:20:55
+Is it a string or numeric? It is string, yeah, okay, well, let's just call it. Let's just call it. But okay, we're going to the payment method is going to be other and the the whatever is going to just be, we're just going to call it dummy data, that way, nobody's in question whether it was actual data or not,
+
+Matthias Miller  2:21:26
+let's put sample.
+
+Unknown Speaker  2:21:29
+Yeah, there you go. That sounds better than dummy.
+
+Matthias Miller  2:21:41
+Okay, so now this is payments for everything, which I think is fine. We don't actually have to use these payment IDs. We can generate the payments and not tie anything out to them. Or we can decide right away, do we need anything for?
+
+Unknown Speaker  2:22:05
+Can we
+
+Matthias Miller  2:22:07
+on the EP? Can the EPO be paid out to the last period on the in the RG, right?
+
+Speaker 1  2:22:16
+Well, if, if we're going to do that, then we're going to have to use, well, okay, that's going to depend on the contracts that I marked as paid out early. When that point would be because I just randomly assigned some of these contracts to be closed as as EPOS, and when we got to this point, we were going to figure this out. But because I don't know what, depending on their start date, the EPOS could be somewhat further in the past.
+
+Matthias Miller  2:23:00
+Oh, we might have payments past the Okay. I think that means that we should go generate everything that we want to and then come back and fix up EPOS, right?
+
+Unknown Speaker  2:23:13
+I think, I think so
+
+Matthias Miller  2:23:16
+sounds about right. Okay, so we're going to do save as the payment record generator, and we're going to
+
+Unknown Speaker  2:23:44
+uh from the end word.
+
+Matthias Miller  2:24:05
+We don't want to hit a record. Help suppress points. Just talking about that. I
+
+Unknown Speaker  2:24:23
+Oh, wow.
+
+Unknown Speaker  2:24:29
+What was that?
+
+Unknown Speaker  2:24:35
+Loading flow?
+
+Matthias Miller  2:24:46
+Or something's not working.
+
+Matthias Miller  2:24:53
+Payment Method is a required field. Well, I gave you a payment method. What don't you like about my payment record class? It A, B, Oh, you gotta be kidding me. All right, let's just do this.
+
+Speaker 1  2:25:17
+Wait. You can do that. Just reorder your columns. Yes, sir, payment
+
+Matthias Miller  2:25:24
+amount is a required field
+
+Unknown Speaker  2:25:28
+crumbs. We
+
+Matthias Miller  2:25:31
+don't know what the payment amount is yet.
+
+Unknown Speaker  2:25:38
+Oh, because of
+
+Matthias Miller  2:25:40
+well, I guess we're gonna figure that out, because
+
+Speaker 1  2:25:43
+the sales tax, and if you're paying a late fee, and the dollar value, and if there's damage waiver fee and all that fun stuff
+
+Matthias Miller  2:25:50
+we're not adding, there are no damage waiver fees on any of these. I didn't think about that. Should we should add those in.
+
+Matthias Miller  2:26:08
+Okay, well, let's do the Why do
+
+Unknown Speaker  2:26:11
+you have two late fee generators?
+
+Matthias Miller  2:26:13
+One's the report and one's the Oh, Gotcha, okay, so we have, I I think
+
+Matthias Miller  2:26:55
+okay, so We have, if it does not have this, then We you
+
+Matthias Miller  2:27:08
+and
+
+Unknown Speaker  2:28:07
+maybe,
+
+Unknown Speaker  2:28:17
+all Right, you didn't give me Yeah.
+
+Matthias Miller  2:28:34
+Okay, so it's a damage waiver incurred on the same due date,
+
+Matthias Miller  2:29:44
+okay, the rental fee incurred with damage waiver, amount that we created, the same period Damage Waiver incurred the same due date with the with the amount taxable, based on on that and the the entry the transaction was entered.
+
+Speaker 1  2:30:00
+Week, wait, are you saying, Wait? Are you saying that damage repair fee is or is not taxable?
+
+Matthias Miller  2:30:08
+It's based on the contract definition.
+
+Speaker 1  2:30:12
+Oh, crikey. Let me go look contract definition. They should all be set to taxable. I don't remember if I set them that way, settings contract definitions just for the sake of of what we're doing right now.
+
+Matthias Miller  2:30:30
+It's not set as taxable.
+
+Speaker 1  2:30:37
+Okay? I'm confused on that. We have two different places for Wait, no, that disappeared. Okay, so obviously something updated, and the damage waiver fee is no longer where I had it before.
+
+Matthias Miller  2:30:55
+Well, market I I'm not. I'm very skeptical of, let's just hard code is taxable. I told John, this E thing is so bogus right
+
+Unknown Speaker  2:31:09
+now.
+
+Speaker 1  2:31:10
+Okay, so let's, let's, yes, let's code it as taxable for the time being.
+
+Matthias Miller  2:31:15
+Okay, so then this guy becomes the UWF generator. And dwf.
+
+Unknown Speaker  2:31:34
+There you go.
+
+Speaker 1  2:31:38
+So did you? Did we? Did you do everybody,
+
+Matthias Miller  2:31:43
+if they have a damaged wig fee amount, set?
+
+Unknown Speaker  2:31:48
+What does that mean? I didn't. Did I set any of them?
+
+Matthias Miller  2:31:56
+I don't know. I'm seeing,
+
+Speaker 1  2:31:58
+well, okay, the contract definition, by default is probably going to have it the it's going to be there. But, like, I don't know, how are we defining on the contract record whether it's yay or nay, on on Damage Waiver fee?
+
+Matthias Miller  2:32:21
+I don't know. We have 456
+
+Unknown Speaker  2:32:25
+that are everybody, everybody showed up at damaged
+
+Matthias Miller  2:32:27
+waiver fee, and 36 that are, yay.
+
+Unknown Speaker  2:32:31
+Wait, wait, we'll say it again.
+
+Matthias Miller  2:32:34
+We have 36 that have them, and 400 and some that don't.
+
+Unknown Speaker  2:32:37
+Oh,
+
+Unknown Speaker  2:32:40
+did? I did? I set that in my data, um, Damage Waiver fee amount.
+
+Speaker 1  2:32:52
+I didn't set that. How did it? How did it decide? My original contract push, I didn't push anything in regards to damage, rare fee, so I don't know however, however you got some with and some without. I'm curious.
+
+Matthias Miller  2:33:14
+Well, I'm gonna guess that it just never got set on your yours, so that most of them don't have it, yeah.
+
+Speaker 1  2:33:23
+But how did the ones that get how did the ones, okay, do? Can you, can you filter for just ones that have it?
+
+Matthias Miller  2:33:34
+Sure, you're wondering how these guys got
+
+Speaker 1  2:33:35
+it, yeah. How'd they get it? I It
+
+Unknown Speaker  2:33:55
+looks like it's part of the part of the import, but how?
+
+Matthias Miller  2:33:59
+Okay, well, let's go.
+
+Speaker 1  2:34:03
+Oh, wait a minute. Are they? Are these? All are these? Can you? Can you go back to your report and tell me what state these are all in?
+
+Speaker 1  2:34:19
+No, oh, it isn't okay. They're mostly in Virginia and one, South Carolina,
+
+Matthias Miller  2:34:23
+two,
+
+Unknown Speaker  2:34:28
+oh, whatever. Since you said 36 out of how many?
+
+Matthias Miller  2:34:37
+36 out of about 500 i
+
+Speaker 1  2:34:44
+Well, it's about a 7% rate. That's fine. Just, just go with that for now.
+
+Matthias Miller  2:34:50
+Yeah, all the North Carolina doesn't have any that opted in. That's I don't
+
+Speaker 1  2:34:54
+I don't even know how they I don't even how these, some of these Virginias and South Carolina's gonna even set I don't even know. Happen so, well, I'm
+
+Matthias Miller  2:35:01
+gonna use North Carolina contract definition. Doesn't have it at all. Well, we making stuff up.
+
+Speaker 1  2:35:08
+Go to the Virginia contract definition then, yeah, but, I mean, I did more Virginia's than just than 36 Yeah? See, yeah.
+
+Matthias Miller  2:35:23
+I mean, with all due respect, no, you didn't. So all
+
+Unknown Speaker  2:35:29
+of Virginia and South Carolina have it. Is that what you're saying?
+
+Matthias Miller  2:35:32
+That's what that's what it looks like to me. I'm seeing 491, contracts.
+
+Unknown Speaker  2:35:36
+Okay, well, in short, let's go
+
+Matthias Miller  2:35:47
+through this and assign a $4.50 cent dwf, did I mean, technically it should go on the contract definition. Apparently, that's not.
+
+Speaker 1  2:35:57
+Well, I don't know how that turned into the dollar value there. I think some stuff is being moved around. And because that used to be, that used to say, Damage Waiver fee dollars, they're not, somehow it's just turned into $1 sign. Now, it shouldn't, it shouldn't be that every single, every single CR, well, yeah,
+
+Matthias Miller  2:36:23
+right. No, it shouldn't be, anyway.
+
+Speaker 1  2:36:27
+But I mean, for right now, having all of Virginia and South Carolina and those guys have a really good, you know, attrition rate. So not attrition rate, adoption rate. North Carolina has a has a total attrition rate.
+
+Matthias Miller  2:36:44
+Could we do something like this? Like, how many people get damage waiver? For you, on average,
+
+Speaker 1  2:36:52
+it's somewhere in the neighborhood of 10 to 20% so
+
+Speaker 1  2:37:01
+I would I would say, just go. Add a smattering of North Carolina. Go make like 10% of North Carolina's.
+
+Unknown Speaker  2:37:17
+Let's do this.
+
+Unknown Speaker  2:37:20
+You did Delete Selected Records.
+
+Matthias Miller  2:37:24
+That's not like it's good check, sorry, monthly. I meant to wow good cash. Embarrassing that
+
+Speaker 1  2:37:36
+that would have been a unintended result. Let's go
+
+Matthias Miller  2:37:41
+take a look at these. Monthly dwf is not editable, might not be editable except in import. Okay, so let's do this.
+
+Matthias Miller  2:37:55
+So we're going to do a no input file for contract. Contracts. State, equal. State,
+
+Matthias Miller  2:38:17
+Okay, we're good. Yeah, okay.
+
+Matthias Miller  2:38:33
+No, well, maybe this is the problem, then maybe
+
+Unknown Speaker  2:38:36
+We could have actually done it.
+
+Matthias Miller  2:38:40
+Let's just checking it.
+
+Matthias Miller  2:39:03
+I mean, there you go. It's about 10%
+
+Unknown Speaker  2:39:09
+Good enough. Okay, so
+
+Matthias Miller  2:39:11
+now over here, WF generator. Should we see? 2000 rows to be added? Yeah,
+
+Unknown Speaker  2:39:28
+all right, boom
+
+Matthias Miller  2:39:30
+81 contracts with dwf, um, I'm
+
+Matthias Miller  2:39:53
+trying to think the best way because
+
+Speaker 1  2:39:55
+so how does, how does, how does the sales tax work in the in the transaction history? Does those need to be does sales tax need to be incurred as well?
+
+Matthias Miller  2:40:04
+No, it's incurred as part of the fee. Okay, so
+
+Matthias Miller  2:40:19
+technically it seems like we should be generating the payment amount.
+
+Unknown Speaker  2:40:47
+As part of the as part of the generator,
+
+Matthias Miller  2:40:49
+as part of the generator. So I think then what we want on this report would be
+
+Unknown Speaker  2:41:38
+The total due
+
+Speaker 1  2:41:40
+contract rental fee total to be entered, or is that imported,
+
+Matthias Miller  2:41:48
+not in the transaction? I you.
+
+Unknown Speaker  2:42:13
+What's the second one from the top on the List,
+
+Unknown Speaker  2:42:27
+sure,
+
+Matthias Miller  2:42:32
+actually, all We want is
+
+Matthias Miller  2:42:41
+Hang on,
+
+Matthias Miller  2:44:42
+so that's says about forgiveness is negative amounts and recommended. 490 Jonathan says, rip the human. 491 beyond who's ever lived? Um. Okay, so if contract adjustment equals incurred, we Do contract trans.
+
+Matthias Miller  2:45:17
+Okay, technically,
+
+Matthias Miller  2:45:40
+given Use a refunded, okay, so if
+
+Matthias Miller  2:46:07
+I really hope this is faster than Grog.
+
+Speaker 1  2:46:12
+Well, I think it's the trial and error for this is probably way fat better,
+
+Unknown Speaker  2:46:18
+yeah,
+
+Speaker 1  2:46:21
+well, I'm not, I'm not sure how you I'm not sure how you like you're pulling information from the database to calculate some of this. I'm not sure how you would do
+
+Matthias Miller  2:46:29
+that with grok. You have to view the file until it gets figured out.
+
+Matthias Miller  2:46:40
+Yeah, how you like me now? Oh, okay,
+
+Unknown Speaker  2:46:47
+336, 108,
+
+Matthias Miller  2:46:58
+now, what it's not doing on the amount, though, is, is
+
+Matthias Miller  2:47:22
+it's a First period.
+
+Matthias Miller  2:47:41
+See the CR the top looks like it kind of showing up twice. So weird.
+
+Unknown Speaker  2:47:52
+That's a little weird.
+
+Matthias Miller  2:47:55
+Maybe we should.
+
+Unknown Speaker  2:48:02
+I We should only
+
+Matthias Miller  2:48:12
+do this for rental fee events.
+
+Speaker 1  2:48:15
+So the only, the only thing, okay, what's the CRA amount for the very first one there, the LBO, nine to eight. What's its CRA? Amount, 4000 so it would okay. This is where it's, do we have, do we have a concept in the system for the calculated CRA, like the Okay, what is the financing base, the CRA? What was the original price of this building? 10,000 Yeah, so see there, there the C, that's the CRA of the CRA amount, 3663 78 what you should be summing with the the first payment in order to make for initial payment,
+
+Matthias Miller  2:48:55
+this guy, okay, yeah, that guy,
+
+Unknown Speaker  2:48:58
+not this, not the CRA cash do. All right.
+
+Matthias Miller  2:49:06
+Oh, by the way, on this guy, the contract type should be, wait a minute, is it somewhere that this should be a CRA contract type, I
+
+Speaker 1  2:49:17
+guess it should be, which might be, well, maybe that's why it didn't import correctly.
+
+Matthias Miller  2:49:26
+Yeah, he says that's why they didn't got, let's go. Let's go fix these up while we're here. Because do you get
+
+Unknown Speaker  2:49:42
+your data? Your details right, things actually work. Maybe.
+
+Matthias Miller  2:49:48
+Okay. So then over here, this guy.
+
+Unknown Speaker  2:50:13
+Change your Yeah, change that yeah, that amount, right there needs to change that guy, the CRA cash due amount.
+
+Matthias Miller  2:50:22
+Sorry, thank you, that guy, bingo.
+
+Speaker 1  2:50:29
+Now, did you sum that? Did you sum the period payment with it? Yeah, you don't need security deposit. Wait. Are we not using wait. Never mind. I know what you're saying. I know what you're doing. Never mind ignore me. I mean, we
+
+Matthias Miller  2:50:47
+can make it a little clearer, which wouldn't hurt it wouldn't hurt me.
+
+Matthias Miller  2:50:58
+Okay? But now this guy still is now his first payment is 4212
+
+Unknown Speaker  2:51:05
+the first payment should equal 4000
+
+Matthias Miller  2:51:12
+total monthly payment. Let's go into the transaction history. Yeah, his payment, monthly payments, wrong. Yeah.
+
+Speaker 1  2:51:29
+Oh, because I didn't set so this thing didn't calculate correctly. What happened to be just straight up update calculations. Would it update it
+
+Matthias Miller  2:51:37
+a bit if he's on safe? I wonder
+
+Speaker 2  2:51:40
+if this is going to do it. To do it. What if we do this,
+
+Unknown Speaker  2:52:01
+that the correct amount?
+
+Matthias Miller  2:52:04
+Probably 290, I don't
+
+Matthias Miller  2:52:10
+know where that thing came from. It doesn't look like it.
+
+Speaker 1  2:52:14
+Do you need to hit the update calculations on the on that section?
+
+Unknown Speaker  2:52:18
+Yeah, it shouldn't. What's
+
+Speaker 1  2:52:30
+the what's the length of this contract? 36 months, and what was the CRA 30 650-905-3650,
+
+Unknown Speaker  2:52:41
+9.052 point 05, you said 36 314, 44 is correct, okay.
+
+Matthias Miller  2:52:53
+But then why is he where to get it to 290,
+
+Speaker 1  2:53:03
+Okay, random, randomly assigned the sales tax rates, Again,
+
+Unknown Speaker  2:53:06
+yeah,
+
+Matthias Miller  2:53:36
+292, go for that 44 minus.
+
+Speaker 1  2:53:50
+Wait. Would that be? Is that the monthly subtotal amount to sales tax?
+
+Matthias Miller  2:53:54
+It's pretty close. That's where it was going,
+
+Unknown Speaker  2:53:58
+minus 22.01,
+
+Unknown Speaker  2:54:02
+divide. No,
+
+Unknown Speaker  2:54:03
+it's that's No, no,
+
+Matthias Miller  2:54:09
+salmon still not. But
+
+Matthias Miller  2:54:22
+if you take the 450 you get pretty close. I don't know somebody
+
+Unknown Speaker  2:54:35
+needs to go look at their calculating macros.
+
+Matthias Miller  2:54:38
+Yeah, Jonathan's taking a look right now. Okay, gotcha.
+
+Speaker 1  2:54:42
+Oh, I can't, I can't see when you're talking to Jonathan. So,
+
+Matthias Miller  2:54:53
+10, 451,
+
+Matthias Miller  2:55:01
+He says, 10 451 but it should really
+
+Matthias Miller  2:55:12
+be, wait a minute, the monthly he says, 10 451 effective value is 10, 451, right? Wouldn't the effective value be 6781 95 I don't know.
+
+Speaker 1  2:55:37
+I was assuming that the effective value comes across from the building, from the product, okay, which I'm not even sure what. Why are we even fielding an effective value like it would seem like that should be directly imported from the product.
+
+Matthias Miller  2:55:54
+I think eventually you need to finagle stuff. I
+
+Matthias Miller  2:56:06
+and he's getting the total contract.
+
+Matthias Miller  2:56:40
+The contracting base, contracting rate, the rate divisor would Be 21.6 oh,
+
+Matthias Miller  2:57:18
+wait a minute, this wasn't A great
+
+Unknown Speaker  2:57:24
+Hang on.
+
+Matthias Miller  2:57:35
+And 451, divided by 21.64
+
+Matthias Miller  2:57:48
+uh, this guy divided by 21.6
+
+Unknown Speaker  2:57:54
+which is the three to 1444, yep.
+
+Unknown Speaker  2:58:09
+Um,
+
+Matthias Miller  2:58:11
+so really, let's do,
+
+Speaker 1  2:58:18
+oh, man, I'm gonna need to drop off. Do you want to? Do you want to pick this up again tomorrow?
+
+Matthias Miller  2:58:28
+Yeah, do you want to do another? Where am I at?
+
+Unknown Speaker  2:58:35
+Oh, we have one scheduled for 838 30 and 230 Yeah.
+
+Unknown Speaker  2:58:43
+Okay, okay, sounds good.
+
+Speaker 1  2:58:46
+Amen, if you keep working on this and you need to shoot me a question, feel free to Okay. All right. Thank you, sir. I.
+
+
+Transcribed by https://otter.ai

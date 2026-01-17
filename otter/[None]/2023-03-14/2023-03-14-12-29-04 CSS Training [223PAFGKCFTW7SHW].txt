@@ -1,0 +1,923 @@
+Unknown Speaker  00:20
+All right. So we're different things to work on here. You project discuss scheduling the cinders in depth design we're and then also some documentation stuff
+
+Unknown Speaker  00:51
+so first off, jump into BTK 77 00 Which actually, sidenote do we know for sure that that's just system is going to handle rolling over 2000 incidents? I have no idea
+
+Speaker 1  01:22
+of y2k This is the 2k or the 10k. Exactly exactly Okay, um the client had been wondering about this restricted or about how to set things up or or subcontractor he got an email back from him he was playing around with the policies concern and set one up new incident type and restricted a policy and was using a user account for that anyway, so he was he was seeing that it would would restrict creation but you could view all the other incidents
+
+Matthias Miller  02:24
+and go into the group administration see how you configured the
+
+Speaker 1  02:27
+policy I think it looks like he actually didn't apply the policy there but the policy over here this is how he can figure it mean if
+
+Matthias Miller  02:48
+Yeah, as long as he's fine with the wiki visibility as well. Although I guess if we restrict wiki access as well
+
+Unknown Speaker  02:57
+it's
+
+Speaker 1  03:06
+this this restrict contacts and restrict contacts for time cards
+
+Matthias Miller  03:21
+well, there's a permission that allows you what dictates whether you can view other time cards okay. But what we could also do is we can use report folder permissions to create a cockpit I don't know if we want to do this but we can to only allow access to incidents as well
+
+Unknown Speaker  03:48
+hmm
+
+Speaker 1  03:54
+Okay, so currently, the restricted data policies here is only for incidents and any other records so when they get device records and all of that those won't be restricted
+
+Matthias Miller  04:11
+when they get what device records not unless they not let's see want to create some kind of rules for that? No.
+
+Unknown Speaker  04:25
+Okay, so let's see.
+
+Speaker 1  04:36
+Basically, he needs to apply policy to the user group.
+
+Unknown Speaker  04:48
+Do they
+
+Matthias Miller  04:49
+only need access to the incident screen
+
+Speaker 1  04:57
+that's what it sounded like. Although I mean maybe they would maybe need contacts to assign the correct contact the incident
+
+Matthias Miller  05:10
+do they need to edit the contact or just assign the contact?
+
+Unknown Speaker  05:11
+Right Question
+
+Matthias Miller  05:19
+So here's basically what you need to do
+
+Matthias Miller  05:27
+I'm gonna share my screen a little bit and it's gonna steal from you and you can I'll give it back so here there's a report called
+
+Matthias Miller  05:47
+So here let's do this favorite and favorites so if we go into
+
+Matthias Miller  06:01
+if they don't need access to anything else here let's do this
+
+Matthias Miller  06:30
+we have standard incidents and whatever this guy is
+
+Speaker 1  06:54
+so then when you
+
+Matthias Miller  07:00
+are actually going to do this and then it changed me back then
+
+Unknown Speaker  07:10
+don't want to Oh I can't control that
+
+Unknown Speaker  07:22
+can you actually
+
+Matthias Miller  07:22
+edit my profile and made me not need to change my password sure and then change me to the cockpit group
+
+Unknown Speaker  07:39
+all right all right. So I'm gonna log out my back again oh invalid homepage component well that's great
+
+Matthias Miller  08:02
+try removing the
+
+Speaker 1  08:06
+really there's a better way to do this how about you switch me back and switch back to your administrator yes
+
+Unknown Speaker  08:30
+go back to kisi
+
+Unknown Speaker  08:44
+would be a good
+
+Unknown Speaker  08:52
+valid
+
+Matthias Miller  09:01
+restriction settings maned or
+
+Unknown Speaker  09:10
+companionship words maybe we don't allow multi we allow multi pane reports oh, here's why.
+
+Unknown Speaker  09:30
+Okay,
+
+Matthias Miller  09:31
+I'm gonna change myself back again. Life on the Edge
+
+Unknown Speaker  09:42
+going back in. Still not are you attending sharing your screen for
+
+Matthias Miller  09:51
+joint seems to be back again.
+
+Speaker 1  09:55
+Sure. back to it again. administrator again you should probably just use another email address but cockpit restriction settings Why is that an invalid
+
+Unknown Speaker  10:22
+Hello components
+
+Unknown Speaker  10:30
+I wonder if it's something with no that shouldn't have any impact on that
+
+Matthias Miller  10:59
+I'm confused because somebody this thing should
+
+Unknown Speaker  11:06
+operations nope
+
+Unknown Speaker  11:17
+restriction settings allowed components that's the same we can try making this one the okay May I kick myself out again
+
+Unknown Speaker  11:42
+okay that does that
+
+Matthias Miller  11:51
+on this one here here and this one here on the homepage report can
+
+Speaker 1  12:02
+you add the type.dot.to the homepage report
+
+Unknown Speaker  12:16
+you say add it to the restriction allowed components and the first one there
+
+Matthias Miller  12:32
+to the homepage report actually not the allowed components with the home page report that's
+
+Unknown Speaker  12:35
+on the main screen
+
+Speaker 1  12:42
+starter 20 does not appear there's I have a login for their live system Oh yeah, you might not hear
+
+Speaker 1  13:02
+thanks for Georgie needed there I try to do it quickly here say the homepage report on the oh you're saying give you that give you the homepage
+
+Matthias Miller  13:15
+and at the homepage report to add a pipe dot.at The end
+
+Unknown Speaker  13:25
+okay is there okay? After the art one after the 20 Okay. Okay.
+
+Matthias Miller  13:46
+So then when you log in
+
+Unknown Speaker  13:49
+you can't do ask prompts on there. That's the issue. Okay, change it to
+
+Unknown Speaker  14:06
+try this instead, it's going to be a little clunky but
+
+Unknown Speaker  14:16
+changing it to this
+
+Unknown Speaker  14:31
+all right, then you should have access. So
+
+Matthias Miller  14:37
+the weird thing is it's going to prompt for a search beforehand. So I don't know if we care or I don't know if it's a platform limitation if they fixed it. But then this gives them access only to
+
+Unknown Speaker  14:50
+the incidents report.
+
+Matthias Miller  14:56
+And then we would want to presumably had access to generate report X Word new child modification modification history send email is already allowed
+
+Speaker 1  15:12
+make sense right and then we would use go ahead use restrict data policy to control which incidents yes correct within that so this one would be
+
+Unknown Speaker  15:52
+you would need to
+
+Matthias Miller  15:53
+allow this one
+
+Matthias Miller  16:02
+and that would be the same one new child
+
+Unknown Speaker  16:13
+and this is a no allowed another allowed yes another lab component
+
+Unknown Speaker  16:28
+let's do this
+
+Matthias Miller  16:48
+oh that's the other push
+
+Unknown Speaker  16:48
+created said they wanted to do that to
+
+Unknown Speaker  17:01
+this one
+
+Matthias Miller  17:07
+that activity history
+
+Matthias Miller  17:20
+and this one if they want them to actually I don't know that you should give them access to the don't give them the access to the auto log search that gives them access to well I guess you could nap don't they shouldn't have access to that
+
+Unknown Speaker  17:41
+so then,
+
+Matthias Miller  17:42
+now I can do that and I can do export to word now I can do new child sorry that's all testing nevermind.
+
+Unknown Speaker  17:52
+Of course I can do that
+
+Matthias Miller  18:01
+okay, so generate PDF boom export to Word boom
+
+Unknown Speaker  18:05
+new child
+
+Matthias Miller  18:09
+the user permission needs to have permission to add remove list elements
+
+Speaker 1  18:28
+okay yeah and then do you new child burdensome incident
+
+Matthias Miller  18:44
+and then yes, like you said said the restricted data policy they do not have permission to edit context but I think and so then the question is do they need contact type filtering of any kind
+
+Unknown Speaker  18:55
+but bottom line there you go. Okay
+
+Unknown Speaker  19:17
+so
+
+Unknown Speaker  19:42
+still works let's make sure all of these actually you should all work just fine. So the same sub report Yeah. Boom. Cool. Um, And then basically hear you saying they can't, user won't be able to see that they won't get to see the context.
+
+Matthias Miller  20:11
+Correct. They're not able to pull up the contact record here as as it stands now and like,
+
+Speaker 1  20:17
+if, but they can still see the contact displayed there. They can see
+
+Matthias Miller  20:21
+the contact name from here.
+
+Unknown Speaker  20:25
+But they can drill in
+
+Matthias Miller  20:28
+and they can set a contact, they just can't drill into the contact details screen.
+
+Unknown Speaker  20:48
+Okay
+
+Unknown Speaker  20:55
+cool. Well, that changed me back. Oh, yes. Let's take
+
+Matthias Miller  21:07
+one last look at the configuration, make sure it makes sense to you how it all works.
+
+Unknown Speaker  21:16
+Okay, so.
+
+Matthias Miller  21:23
+So fundamentally, when you change it to a restricted user,
+
+Speaker 1  21:31
+then you get restrictions settings. This indicates what report runs, when you log in. It does not allow you to
+
+Matthias Miller  21:41
+bypass ask prompts or default ask prompts. Then you say these are the reports you're allowed to run? And then this is what detail screens are you allowed to open or see? This is for web services, which this user won't be doing any kind of web service or API integration. So it's really
+
+Unknown Speaker  22:05
+not relevant. Rule sense? Yes. So. Yeah, basically just set the restricted data policy to that one, he set up and add the user. Yeah, I mean, I would,
+
+Matthias Miller  22:32
+I would suggest if if he wants this approach, he should
+
+Unknown Speaker  22:36
+set this user to this user group. Yeah. Okay, cool. And then this is something that should be should be documented somehow. Maybe we should add something to the proposal.
+
+Matthias Miller  23:02
+Something in the living spec, it'd be appropriate. I gotta hop off and go join Ellis on that sales call now. So I'll join back
+
+Unknown Speaker  23:13
+when we're done with that. Thanks, Ben. Thanks, guys. Okay, cool. Let me just make a note here.
+
+Speaker 1  23:41
+Then another question on this. Do so he set up a other incident type? Is there a way to determine if there's a problem within setting up his own incident place, like reporting issues that might come from it or that or is that a question for? Not enough? So I'm going to assume
+
+Matthias Miller  24:07
+the answer is very likely the answer is no. But I don't know what kind of hardcoding we have. And I think not Han would be the best question, you know, best person to ask about that. Okay,
+
+Speaker 1  25:00
+Hey good so Nick here then
+
+Unknown Speaker  25:29
+okay
+
+Speaker 1  25:31
+excellent all right so next off we've got this one that we were working on the other day the product management report we're working on finishing up prospectivity today anyway I should get LLC approved that just needs vendor approval mean find approval so just wanted to see if there's anything that you want to review at all I think it's pretty much the same as what we did just the other day if you're don't feel
+
+Matthias Miller  26:21
+a strong need to
+
+Unknown Speaker  26:31
+I will listen to that
+
+Unknown Speaker  26:48
+and then
+
+Speaker 1  26:55
+it was also this one that Nick had an email about yesterday message some signal about yesterday one that we had written up Amber gotten that approval and then they were they were wondering about three summarizing they were confused about something so we were planning to the low the intersection or in the little billable checkbox project hours job hours you hours
+
+Speaker 1  27:50
+I guess they didn't say what they were confused about
+
+Unknown Speaker  28:03
+here is your actual suspect
+
+Unknown Speaker  28:15
+you guys should see f Nick
+
+Matthias Miller  28:20
+take a look at it once
+
+Unknown Speaker  28:44
+right
+
+Matthias Miller  29:22
+I think you were the one who was originally asking for this sound right
+
+Speaker 1  29:37
+I don't remember. I don't remember the context for it. Like it doesn't
+
+Unknown Speaker  29:43
+there's not even notes here to give a context. I'm not sure I maybe was. I mean, this has to do with obviously with parent child incidents.
+
+Unknown Speaker  30:03
+Feel like
+
+Matthias Miller  30:15
+created on September 22 by Tim
+
+Speaker 1  30:27
+I mean Okay bottom lines take one step back Do we still need this and wanted
+
+Unknown Speaker  30:42
+if you do we
+
+Matthias Miller  30:43
+should dig in figure it out if not, we should just
+
+Unknown Speaker  30:46
+defer it Sure yeah, currently we're really not doing much with child incidents that's probably our answer I think we wanted this I don't even know why we wanted to
+
+Matthias Miller  31:10
+but I think the issue with child incidents was just making sure it actually works as we expect
+
+Unknown Speaker  31:20
+Sure.
+
+Speaker 1  31:40
+Okay, I think some of this was also for catching stuff that wasn't build which hopefully we're doing now with the new approach to billable incidents or unbilled incidents so yeah, I think we probably can offer it it's not obviously not a pain point because you are missing it for the past six months and remember what it was
+
+Unknown Speaker  32:34
+all right so.
+
+Unknown Speaker  33:13
+Okay well
+
+Speaker 1  33:41
+All right cool well next one this will be picking up the discussion we were having last week I think was about systems thinkers, non systems thinkers, how to how to work with people with different approaches and be those who maybe are checking off can be good with more in depth here at a time which we do less it would be better wouldn't have been involved with these but
+
+Speaker 1  34:40
+yeah, actually hired us getting this other one. Discussing brainstorming ideas were good in their scheduling feature. No one take much time, at least to brainstorm a bit. This was what I've been talking about, maybe last week as well, that their their current implementation of their current workflow much different from what they anticipated when we design and build stuff. So big picture Ben and I are playing a call with with Larry, who's the shop foreman, on Thursday morning, and, and go over some of this stuff, and get his ideas on how to improve, but wanted to do a little bit of research on our site as well. And your ability to see big picture and things like that. So with the workflow of wanting to be able to receive jobs, put them on the calendar, and then have them kind of in a pipeline of sorts, until they're ready until the machinery comes in to the shop. And until they're, they're ready to work on it. And then once there, once it's active, once it's there on a lot, then we're gonna be able to actively manage things on the fly throughout the day. So as you're working on all these things here working on these, Steve is running out of work for the day either the PC's working on as almost done, or they ran into problem need another part that's not going to arrive into tomorrow. So the shop foreman wants to look into what which of these pieces in the waiting are ready to work on. And maybe one of these teams that this morning was in the shoes that are coming category, and at lunchtime it arrived that he wants to go to move up to us over here, which presumably needs a new grouping. Let's move it up mark that it's arrived. And then he maybe wants to assign that one to see to work on finish out the day. Anyway things like that. He wants to go to this have easier management right from the report here. So that's high level of what they're wanting
+
+Matthias Miller  37:27
+Can you drill into one of these and take a look at the stages and workflow
+
+Unknown Speaker  37:30
+yes, that yeah, clients answers so figured out how back on here to possibly call back. Oh boy. Let's see here. We pick one of they're not going to be working
+
+Unknown Speaker  38:06
+okay, can you pull up the list of stages?
+
+Unknown Speaker  38:26
+Here's,
+
+Matthias Miller  38:26
+here's the here's how I would instinctively do it. Is you have a field that says What was the date that the equipment arrived? checkbox will stay kind of thing. And then you have a stage for scheduled?
+
+Unknown Speaker  38:59
+Awaiting
+
+Matthias Miller  39:00
+equipment. I don't know if I don't know if this is sorted alphabetically. I guess it probably isn't. So.
+
+Unknown Speaker  39:11
+You have
+
+Matthias Miller  39:12
+a scheduled awaiting equipment in a scheduled I mean it's together and then a scheduled equipment arrived unless they don't schedule it before. Right. Whatever those should be. But you basically update the stages with that. I mean, you could add a note above this for a checkbox for checkbox in the parent incident for whether the equipment has arrived.
+
+Matthias Miller  39:56
+And then on your scheduling report You basically want to see
+
+Matthias Miller  40:09
+do we have a stage for started or anything
+
+Unknown Speaker  40:14
+yeah started
+
+Matthias Miller  40:17
+so you want to you basically want to see these you don't want to see build ERD come ready to build or complete so in the scheduling report you want to exclude those and then you want to see these and I don't know if you want to see pending or not and you want to use sort in reverse order of stages
+
+Speaker 1  40:34
+so you see started first equipment arrived
+
+Matthias Miller  40:37
+next the waiting equipment after that and then pending after that if they want to see pending I don't know if they want to see pending in this report or not
+
+Unknown Speaker  40:57
+pending actually I guess the
+
+Speaker 1  41:06
+pending would be prior to scheduled
+
+Unknown Speaker  41:24
+they'll be replaced then they also had these other ones quality control rate bill.
+
+Speaker 1  42:17
+And then can we within a grouping Can I rephrase this can we do sub grouping by assignee for started but not for the others? Or is it that if we do sub grouping that applies to all
+
+Matthias Miller  42:36
+well what what you would do is you do include assignee on the started
+
+Unknown Speaker  42:41
+main grouping.
+
+Matthias Miller  42:43
+So start a day dash assignee
+
+Unknown Speaker  42:56
+Sure
+
+Unknown Speaker  43:46
+Sure yeah but
+
+Unknown Speaker  43:54
+quality control the enlisted well pro
+
+Unknown Speaker  44:06
+Chairman how to
+
+Speaker 1  44:29
+another idea whose service truck jobs are fairly separate and yet they they interact with the regular job and those are currently done as they can be set based on the service location feel like here, these truck jobs they That was tourist location
+
+Unknown Speaker  45:08
+Yeah, they are still assigned to mechanic. So, I think yeah, I was wondering if maybe we should do a multi pane report has a service structure up not separate for years.
+
+Speaker 1  45:20
+But it seems like it would be best to have it on the same report and group together based on Anik.
+
+Matthias Miller  45:33
+I think for scheduling purposes, it sounds like you need to know do you have one? One question that might throw a wrench in all kinds of years.
+
+Unknown Speaker  45:43
+Do we not have
+
+Matthias Miller  45:46
+don't we auto calculate projected start and end
+
+Unknown Speaker  45:49
+date? Yes. Do we How does that incident jected finish date if parent incident projected
+
+Matthias Miller  46:18
+stage child instead of projected finish date Job Scheduler matrix row date. Jas go to matrix count matrix.
+
+Unknown Speaker  46:34
+Remaining jobs idealist all contacts, list schedule sorting string
+
+Matthias Miller  46:52
+we do need to take into consideration how these are sorted for the sake of.
+
+Unknown Speaker  47:10
+Scheduling the grouping sorted?
+
+Matthias Miller  47:19
+Yeah, do the groupings control the sort order for scheduling?
+
+Speaker 1  47:24
+I mean, presumably, if presumably we should say. I mean, I'm making assumptions.
+
+Matthias Miller  47:38
+Like we can customize the schedule sort order
+
+Matthias Miller  47:47
+if you have something that is scheduled for a
+
+Unknown Speaker  47:49
+date, and maybe it doesn't matter. Like you could
+
+Matthias Miller  48:03
+you could start. Okay, here's here's a situation. Something is scheduled to start on Monday. Something else is scheduled to start the following Monday. The one for this coming Monday isn't here yet. The one for the following Monday is here yet?
+
+Speaker 1  48:18
+is here already. And so mechanic is
+
+Matthias Miller  48:24
+busy. Because of that we take the one for the following Monday, we start working on it this
+
+Unknown Speaker  48:29
+week. But
+
+Matthias Miller  48:33
+that should still not just because but then when we start on it early, does that bump out the
+
+Unknown Speaker  48:39
+the one for Monday?
+
+Matthias Miller  48:44
+Or does it maintain the original order and say Well, we already know that we're going to do the one on Monday first.
+
+Speaker 1  48:50
+So let's do that. I think it all just works.
+
+Matthias Miller  48:54
+Because we have a sort sort order override somehow I don't know how it works. We can override the schedule sort. And it's all based on the scheduled scheduled start date.
+
+Unknown Speaker  49:07
+And so the fact that we're
+
+Matthias Miller  49:09
+starting early and whether the equipment is here does not affect the scheduled date. It just is it's all a matter of when it gets done.
+
+Unknown Speaker  49:18
+Does that sound right? Yeah, hopefully. That would be something for CCI to research about. I think. I remember that. It was it was really painful for them to figure out all the logic for the scheduling here. Yep.
+
+Matthias Miller  49:45
+By the way, do you have a incident for this? Yes. 7502 Okay. So as long as I kind of think it's going to just work
+
+Unknown Speaker  50:01
+but it is something to keep keep in mind
+
+Matthias Miller  50:04
+any questions on any of that? Is that
+
+Unknown Speaker  50:08
+what you're looking for?
+
+Unknown Speaker  50:35
+So like the example of
+
+Unknown Speaker  51:30
+so here's,
+
+Matthias Miller  51:32
+here's what I think the way I understand the logic, what will happen is that in my example, the the finish date for the second. Okay, both of these are week long projects. Hmm, we spend three days working on the second vehicle this week. Because of that, because of the time we've spent and the hours budget, we are going to project that to be done on Tuesday instead of Friday of that week. So the start date will continue the scheduled date will will continue to be the finish date will continue to be adjusted based on the scheduled date. And if you work ahead it just the finish date just moves
+
+Unknown Speaker  52:23
+up that's what I think
+
+Unknown Speaker  52:34
+yeah, okay. Rejected starts
+
+Speaker 1  52:47
+Yeah, I think so. Because the projected start date, actual start date and projected Miss date are all automatically that and then they can on the on the report here, they can move around. Yeah. So Oh, one thing though. This thing of the checkbox was date, minutes arrived. I think they would want the ability to set that on the schedule have an editable column for that schedule report. Should it be a like a drop list instead? Or what's the best way to do that? Like you don't want to
+
+Matthias Miller  53:34
+just have a checkbox on whether it has arrived.
+
+Unknown Speaker  53:38
+If a checkbox works fine on the report. Okay, yep. Okay
+
+Matthias Miller  53:54
+with a note, I don't think it's currently an editable report. Well, it's either checkbox or button I don't know what you
+
+Unknown Speaker  53:59
+prefer. Okay,
+
+Matthias Miller  54:05
+but the report should say when leaving row.
+
+Unknown Speaker  54:37
+Cool
+
+Unknown Speaker  54:46
+Okay, cool. That's good.
+
+Unknown Speaker  55:04
+Good stuff to work with there
+
+Unknown Speaker  55:19
+all right then
+
+Speaker 1  55:29
+okay next item nested under ua zfp deployment which
+
+Unknown Speaker  55:46
+7625 This is as we're working on it already to help them deploy and giving them training and whatnot we realized that
+
+Speaker 1  56:05
+neither vendor is very familiar with these these features so the items here in the billing reports section so we were wanting to see if you could do a quick overview of those those features for us so that we can be better educated let's see me Sure so maybe if you go to you to share your work well hang on one second
+
+Matthias Miller  56:54
+okay, so ours Summary Report
+
+Unknown Speaker  56:59
+let's do this
+
+Matthias Miller  57:20
+our summary report is a report based on date and employee and shows the hours worked on what total hours billable hours and the cost of working at it working on it
+
+Unknown Speaker  57:36
+so just simple
+
+Matthias Miller  57:38
+analysis what do they work on what did they build out what did they
+
+Unknown Speaker  57:41
+not build out the mobile incidents
+
+Matthias Miller  57:53
+not sure the difference between the standard and the C standard
+
+Unknown Speaker  58:06
+Okay,
+
+Matthias Miller  58:07
+billable incidents is just all billable incidents that have a that are either open and have a
+
+Unknown Speaker  58:12
+balance as well as showing ones with missing rates
+
+Unknown Speaker  58:32
+unearned revenue is let's do let's go over to fixed price Why is that not oh let's say that they paid $500
+
+Unknown Speaker  59:04
+Wait
+
+Unknown Speaker  59:11
+Express Billing
+
+Matthias Miller  59:32
+it's price minus total earned
+
+Matthias Miller  59:47
+where we need to change the progress. I thought it was 1% Okay, so this one is we don't actually need this one doesn't matter. We're gonna say this 170 5% done and there is a bug here.
+
+Unknown Speaker  1:00:00
+I'm just gonna go ahead and jump in and fix so
+
+Matthias Miller  1:00:08
+unearned revenue this one should be that one is right fixed price incidents
+
+Unknown Speaker  1:00:15
+that one oh the title is wrong
+
+Unknown Speaker  1:00:45
+that's the issue
+
+Matthias Miller  1:00:50
+okay so so there's three views one is what's shown me anything with unearned revenue. So unearned revenue is is basically
+
+Speaker 1  1:01:01
+what is next price minus total earned total earned is just
+
+Matthias Miller  1:01:14
+basically what is what has what is not done and based on percentage of completion how much of the revenue is entered so, we have $1,000 project with the progress of 75% that means it's 25% incomplete which means that we have not earned $250 off
+
+Unknown Speaker  1:01:35
+of the project and then
+
+Matthias Miller  1:01:41
+if you want to and then you can just view what are all open fixed price incidents or
+
+Unknown Speaker  1:01:45
+what are all incidents
+
+Matthias Miller  1:01:51
+maybe we should do fixed price billing
+
+Matthias Miller  1:02:06
+that makes sense
+
+Unknown Speaker  1:02:10
+so, then yeah that makes a lot more sense
+
+Speaker 1  1:02:17
+worded like that from my perspective then do you have any questions on that? No, I don't think so.
+
+Matthias Miller  1:02:30
+I did just notice though that that is the exact same way in the fuse live system clicking both
+
+Speaker 1  1:02:39
+on earned revenue and fixed prices incidents show seeing exact same page
+
+Matthias Miller  1:02:46
+the title is wrong but the prompt is working.
+
+Unknown Speaker  1:02:52
+So if we were to create a
+
+Unknown Speaker  1:03:03
+So, we had a fixed
+
+Matthias Miller  1:03:03
+price incident for about $1,000 and it was 100% complete and we go into so then if we go into accounting we do unearned revenue and fixed price. So fixed price incidence unearned revenues the first one fixed incidence is wrong is the second one this is the wrong title. This is showing unearned revenue this is
+
+Unknown Speaker  1:03:28
+showing both of them and so we do completed
+
+Matthias Miller  1:03:41
+and open and we copy this incident and we do complete and close and just for fun we're going to actually build both of these to Austin
+
+Matthias Miller  1:04:01
+we did not copy billing information because we also got just for the sake of completeness. We're going to see this this one was paid $1,000 Okay, so now
+
+Unknown Speaker  1:04:18
+we have
+
+Matthias Miller  1:04:20
+only one's an earned this one's completed and open. And if we go here and we say we want to see all incidents, we will also post incident in there as well.
+
+Speaker 1  1:04:39
+So should we go ahead and fix up that idol in the US live system?
+
+Matthias Miller  1:04:45
+I sent a message to your nick
+
+Unknown Speaker  1:04:48
+and then you can update that in the future.
+
+Matthias Miller  1:04:52
+I mean, then you can update the fuel system wherever that's live.
+
+Unknown Speaker  1:04:55
+Okay, sure.
+
+Unknown Speaker  1:05:03
+Okay
+
+Unknown Speaker  1:05:09
+cool so
+
+Unknown Speaker  1:05:21
+Ben Do you think that gives you what you need for high level that's what the clients
+
+Unknown Speaker  1:05:40
+troz
+
+Unknown Speaker  1:05:47
+Boston lost
+
+Unknown Speaker  1:06:50
+Oh, he had a Do you have another sales call? I guess it's possible that I called that. Nope, there we go. Welcome back.
+
+Matthias Miller  1:07:03
+Thanks. I don't know if my computer just flipped or the Wi Fi just flipped or something but it's shut down zoom and whatever, any web pages for a second there. So don't know does it make sense why it might be important to a small business to track unearned revenue? So basically, bottom line is if you're looking at your checking account, and you see you know, I don't know fill in the blank arbitrary number $5,000 sitting there and you have $4,500 of unearned revenue, you had better not spend more than 500 of that. And so it can be a way to manage it's probably most I mean it's just a good way to manage available cash basically. So I don't know if it matters to him at all but
+
+Speaker 1  1:08:05
+and if you have what you need to use good only, he would only be doing time materials that would make that much difference.
+
+Matthias Miller  1:08:12
+Right time and materials you don't have any unearned revenue because you're earning it as you do the work
+
+Unknown Speaker  1:08:17
+you might have. Well
+
+Matthias Miller  1:08:21
+okay, so there's two things. One is when do you earn the revenue and when do you receive cash for it? So if I say I'm going to Okay, Starbucks drink because we have it here. If I say I am going to I want a an iced peach green tea lemonade and here's $5 worth it. Those $5 are unearned revenue. Like that's cash received but you didn't actually it's actually cash in the business but you didn't actually have revenue. So you go make the drink. You hand me the drink, your revenue has now increased because you gave me the drink. And so in that case, it's I prepay you know, you have cash and you know, most times you better examples or sheds or something like that where but in the case of Starbucks, if I say I would like a cup of you know, light roast coffee and you pour me the coffee and you give it to me, and you say that will be $5 You've earned the revenue before you were you receive the cash. And most times in small businesses, small businesses don't really care about that. But once businesses get to a level of scale, they usually start caring, caring about you know, difference between cash received and revenue earned. So, you might say you can get prepaid for time and materials in which case you have cash on
+
+Unknown Speaker  1:09:57
+hand. That
+
+Matthias Miller  1:10:01
+The cash isn't earned but the revenue is but the revenue is earned I mean it is earned as you do it and so you can make an argument that that report should be expanded to not just the unearned income but or unearned revenue but it should also be
+
+Speaker 1  1:10:27
+like, you know basically available cash or or you know, unavailable cash really
+
+Matthias Miller  1:10:35
+so, what what are pre payments? What are pre payments on time and materials that I haven't used? And what is what really what's what's any pre payment that I haven't used? If it's time and materials it's it's what they paid minus the hard cost with the prepaid minus the hard cost and on timing materials it's the it's the sorry I'm fixed price it's the what's what did they
+
+Unknown Speaker  1:10:58
+pay in total versus
+
+Matthias Miller  1:11:03
+versus what's remaining it might actually be better to look at it from a cash position but
+
+Speaker 1  1:11:10
+anyway, I'm getting too deep and I don't think it's realistically worth carrying carrying about
+
+Unknown Speaker  1:11:23
+helpful information Yep. Cool. Okay. Anything else? Loose things No, I don't think so. Okay
+
+Unknown Speaker  1:11:46
+all right. Well, we'll plan to take that to the client and see what other questions they would have. But I guess first we can see what Nick says you can get that knocked out today that would be great.
+
+Matthias Miller  1:12:07
+Well, I don't really see huge
+
+Unknown Speaker  1:12:11
+I think it's just a I don't see this as a holdup. Okay, you just
+
+Matthias Miller  1:12:16
+explain what the report is and say sorry, the title is wrong. We're gonna fix it.
+
+Unknown Speaker  1:12:20
+Right. Yeah.
+
+Unknown Speaker  1:12:30
+Okay, then back to our agenda here. Next priority item is interesting scheduling for symbols actually. Not just in this but also working calls for till the next one. This is I guess maybe more of a scheduling your call time.
+
+Speaker 1  1:13:20
+Next week, we are working on Oak Hill. And Ben and I are doing some prep work and to do some prep work this Thursday and then again, Tuesday as needed. Tuesday afternoon, we had the code house for crypto genetics. And then Wednesday afternoon, we started off with clients. So all three of us with them. Then a follow up call for the two of you. And then second call with their clients. Then Thursday morning for saying we have all three of us working together. And then Ben and I was the client and then you the afternoon we have all three of us follow up and then Fridays. So looks like we actually have that pretty well covered for now. And then somewhere in there we would schedule schedule a fourth call with the client
+
+Speaker 1  1:14:44
+I think we had told told symbols that we did work them in a bowl
+
+Unknown Speaker  1:15:00
+So check
+
+Unknown Speaker  1:15:08
+yeah move ahead of the design so that would be mainly me and then working on that
+
+Speaker 1  1:15:23
+really hard to know how much how much time it's going to take in depth design if we're not dialed in on our estimates well if we are with those we think we are I love design. Um I see Matthias, your first week of April here in the seismic Focus Week. Are you pretty much unavailable for for other stuff there or what?
+
+Matthias Miller  1:15:53
+No, I mean, it's mostly I'm just mostly blacking it out so that for maximum availability and scheduling as little additional stuff as I can, but I'm not opposed to doing
+
+Unknown Speaker  1:16:10
+I mean, are we wanting to do a handoff call
+
+Matthias Miller  1:16:13
+for the in depth design or what I guess what are you looking for?
+
+Speaker 1  1:16:18
+Right No, I was just thinking more like availability for our for our questions to you. And I guess this is also where we need to talk about bringing Ellis in what what level of involvement LS has the new approach well Oh right. That is a good point
+
+Matthias Miller  1:16:44
+What have you said on the new approach is a new approach that you'll bring in depth questions to me and I've got the freedom to cry uncle if I want to defer to Ellis
+
+Unknown Speaker  1:16:54
+or where would it be
+
+Speaker 1  1:17:12
+was that an email or was that just conversation A while back I can find something here
+
+Unknown Speaker  1:17:57
+oh
+
+Unknown Speaker  1:18:20
+you know I don't know this information
+
+Matthias Miller  1:18:24
+must have been by phone because I can't recall it I didn't put anything in my notes for my conversation with Ellis I know in that design questions are now going to like will change request questions for sure going
+
+Speaker 1  1:18:39
+I remember was terrible Okay, well we can April Elsens that somehow I think we don't need a ton of availability especially the first
+
+Speaker 1  1:19:06
+but and yeah, I think that would be worked on that with us you but as far as getting started we could probably even go ahead and get started this April
+
+Speaker 1  1:19:32
+and then probably just have the basically the month of April be focused on. on that. That'd be my, my main priority
+
+Speaker 1  1:19:52
+if it's if it's on par with these other projects go beyond that. If I I see I had like 100 and, like 130 Some hours, which this shouldn't be as big, but we think a lot of time.
+
+Unknown Speaker  1:20:15
+But if I can if I could give 15 hours a week to it, I would be able to make a lot of progress.
+
+Unknown Speaker  1:20:32
+And then Ben's able to give 15 or 20, at least in a week to it as well. And work on some follow up stuff in between that would help to move on to.
+
+Speaker 1  1:20:57
+Okay. So then we could reach out and see about scheduling, in depth design for starting here the first week of April. And scheduling basically would need to schedule some regular calls with them. And schedule some regular calls for Ben and me to work on it together. And then also, make sure we have availability from the class LS answer questions. I guess another thing would be Nick, depending on his availability versus the price analysis availability, we could ask for him in for technical questions.
+
+Matthias Miller  1:21:56
+I think technical questions like that are best to be answered by email. If you have a specific question, can we here's what we're looking to do. Can we do a,
+
+Unknown Speaker  1:22:06
+a, b and c?
+
+Unknown Speaker  1:22:12
+Starting that
+
+Matthias Miller  1:22:12
+with a I mean, if it's a very definitive question, email is a great way to go about it. And if there's not enough information, getting onto a call and then looking more broadly at what are we trying to accomplish?
+
+Speaker 1  1:22:24
+I think that's something that take a look at. Okay. Okay, we can give it a try, you know, or maybe like blue videos or something like that too. Good. Okay. And Cool. Sounds good. Thanks. All right. Thanks, man.
+
+
+Transcribed by https://otter.ai

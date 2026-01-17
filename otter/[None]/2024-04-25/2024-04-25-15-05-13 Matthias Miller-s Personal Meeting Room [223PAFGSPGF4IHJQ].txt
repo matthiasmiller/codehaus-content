@@ -1,0 +1,449 @@
+Unknown Speaker  00:21
+Oh, let me close my door here. Well, what do you think about Walnut Hills?
+
+Matthias Miller  00:32
+I mean, guys good to work with. Yeah. Very. He's the kind of guy who is going to get a foot in the door. And we're going to start making progress. And the first project is not going to be the biggest project, but it's going to be, you know, I, you know, it's a Triple D kind of multi year. Let's build this out. Kind of. That's my sense.
+
+Speaker 1  00:58
+That's, that's also my sense. Did you see that the other high level design canceled and we had not build them yet. I was kind of sad. They're not canceled, they postponed. This is the RV manufacturer, they're going through management changes. And they need to which I have no idea what that means. They need to put the project on hold until that shakes out. So this is why as soon as somebody signs up you bam, ask them for the for the 50% deposit. Yep. So but it'll be okay.
+
+Matthias Miller  01:39
+Alright, so that was the one for early. Yeah, for following,
+
+Speaker 1  01:46
+maybe following? Do you want to move the I don't know how that works for your schedule. Do you wanna move the other thing up or work for NASA tools? Or what
+
+Matthias Miller  01:55
+do you want? Well, I don't know. Is it rigamarole to change stuff? Make room for sure. Okay. I mean, I think we people enroll where it was and like it'll be investor tools or I don't know what it will be. Okay, wasn't there one other something something that we were we have another one in the in the winter possibly
+
+Speaker 1  02:20
+that Well, that one's longer? That's a longer pole we've got several other interesting ones one is the the horse breeders to put it delicately. And the but he still he really really really wants a system but he's struggling to know how to cashflow at which it's fair I mean it clearly he's got a lot of cash flow happening. It's just apparently not software so
+
+Matthias Miller  02:52
+yeah, I mean, who was it? Oh, by the way there's Anyway remember what the what the Oak Hill genetics timeline was as well because they were doing a building they wanted to pay for that in cash because they can instead of doing software something
+
+Unknown Speaker  03:08
+like paying for buildings in cash I don't remember for sure.
+
+Matthias Miller  03:12
+They'll still like working for companies that pay for buildings in cash. Exactly. Okay, so the Walnut Hill let me what's the best way to pull it up walk through it?
+
+Unknown Speaker  03:30
+Yeah, probably.
+
+Matthias Miller  03:35
+I just realized I never heard back and transaction Pro on that. On that one report. Oh here it is. Simple export file with invoice and payments today. We are going to want to take a look at this before we send it out. All right. Screen
+
+Unknown Speaker  04:06
+walnut
+
+Matthias Miller  04:14
+All right. This is just a summary pretty much straight from the sales that we laid this out. I think the primary terms to be familiar with is why is that? Anyway, great. ingredient the difference between ingredient ingredients and formulas. Commission classes is something else we talked about through commissions. And so this is why they're cool
+
+Speaker 1  04:47
+is that people can see weather conditions it's supposed to be
+
+Matthias Miller  04:54
+Yeah, it is. It really is. To login format, using a Google user groups administrators up staff salesperson I'm gonna guess is where it is probably add. It doesn't sound like we need record like record level restrictions. And I'm sure leading that too and just make the report not let you report on. And Jonathan, I were devising a scheme in which by which we could find out which salesperson is building expressions to calculate commissions for other people. And we could sweep out their email address and send them a recruiting offer. Silverleaf settings. We got commission settings, basically for Formula Commission's we're planning to do a search term and on a commission. One question I did have, well, let's keep going contact just putting in contact QuickBooks contacts, QuickBooks invoices, which would be the right here let's do Walnut Hill, drive this guy and let me throw this one in here. And let's make sure that this export should but it's one thing I needed to verify was to make sure that the transaction pro export actually has you we have a transaction ID, payment date payment type payment amount. customer transaction date we have the balance. Balance remaining. Transaction ID, customer customer account number transaction date
+
+Matthias Miller  06:49
+I'm sure the invoice number is somewhere. Okay, but we do have.
+
+Speaker 1  07:13
+And here's the subtotal. Should we be filling in a pricing spreadsheet as we're going here? Or how do you want to do it?
+
+Matthias Miller  07:18
+I wanted to run it past two and then we can export and so then my replicating customer location item in order, basically just out of out of their system. So
+
+Speaker 1  07:31
+how do you link up between an NG customer and a QuickBooks contact? name
+
+Matthias Miller  07:36
+matches? They keep it in sync, we just do a name match. Okay. I don't think I mean, we don't really have any other option
+
+Speaker 1  07:46
+do we want I mean, should we note anything that we should build in time to to to for exception reports or something like that if they things don't match or?
+
+Unknown Speaker  07:56
+Sure.
+
+Speaker 1  07:59
+And does this mean that we will not have our contacts in the system? Or should we no we will
+
+Matthias Miller  08:05
+we need okay. Yeah, fine. solution will include a an exception record of of QuickBooks and contacts and ng customers that are unlinked.
+
+Unknown Speaker  08:27
+And have you talked about how we get our contact records in there
+
+Matthias Miller  08:33
+what do you mean our contact records in there there's
+
+Speaker 1  08:35
+a contact thing right there. Perfect. Yep.
+
+Matthias Miller  08:38
+So here's one design question I wasn't quite sure about Yeah, on the items we want to custom we weren't so for commissions we can get maybe 80% of them just with kind of semi global settings are you comfortable with custom fields on ng items that do not are not reflected in the underlying system?
+
+Speaker 1  09:04
+I think so I think I would call them maybe put them in like a silver lube field section
+
+Matthias Miller  09:16
+excuse me so he's bng fields several fields and we would have commission dollars per person commission Sure. Dollars per cent Okay. Which is going to take care of setting up design and design edge number of decimals. No, this one we answered this. Contact is going to take contacts out to salespeople as well
+
+Speaker 1  09:52
+as customers and salespeople. And so So okay, when we come back through we're gonna have to just know that that tie out with contacts and customers was it takes some time it takes some thought
+
+Speaker 1  10:22
+should we know just in the spec that the that like that the QuickBooks contact is a hidden area is a what would you say a hidden record? That is not that is that is used for linking
+
+Unknown Speaker  10:42
+or I don't know if it's quite the right word, but an internal
+
+Matthias Miller  10:47
+I mean, I would just do this. It's not that's QuickBooks fields not Oh, sorry. Yeah. Sure. I mean, all of this stuff is.
+
+Matthias Miller  11:13
+Sure, it's not 100% clear, but it gets us pretty close. And then this is a Quick Books contact, read only use for linking and do customer read only used linking? Yep.
+
+Speaker 1  11:35
+Should we should we also here have I mean just I mean, obviously, we will but have you know, I? History of orders, order history balance ingredient, I mean, things like that. are just links for them.
+
+Matthias Miller  11:57
+Sorry, this is? Sure.
+
+Matthias Miller  12:18
+And then the item does not actually have.
+
+Unknown Speaker  12:26
+Sure.
+
+Unknown Speaker  12:33
+How does the API look to interact with
+
+Matthias Miller  12:36
+it's pretty simple. It's like an XML or JSON ms or JSON is universally supported bits pretty simple. Sure. XML REST API
+
+Unknown Speaker  12:56
+okay
+
+Unknown Speaker  13:05
+and I'm mostly thinking from a marketing standpoint
+
+Unknown Speaker  13:39
+Do you want to put in account balance
+
+Unknown Speaker  13:48
+Yep.
+
+Matthias Miller  13:54
+We should probably get over here.
+
+Unknown Speaker  14:14
+And he's happy with that.
+
+Matthias Miller  14:17
+So he's really already use tablets. So okay, great. Are you using a good bit? Okay, so for the incidents, the chicken incidents, we need a weekly frequency, we need every end time period. And then we're proposing to on making sure there's one in complete check in which background processes and we're doing that so that the office can leave notes for the next visit?
+
+Speaker 1  14:47
+Yep. How much of that check in stuff can we reuse from thinking do you know?
+
+Matthias Miller  14:54
+I don't think we can use most of it. Yeah. I mean, there's gonna be refactoring and pull And
+
+Unknown Speaker  15:01
+yeah
+
+Matthias Miller  15:04
+and maybe some system switch config stuff. Sure
+
+Matthias Miller  15:22
+just got lazy threw these all in? Yeah, sure. Route management. Did you know that? Have you ever seen Josh's geocoder?
+
+Matthias Miller  15:37
+Visible available in any any system? Okay. I'm not sure why these are rerunning. But anyway. Oh, it's running. Because do goods, everything does a transaction, that transaction failed because of an X interruptible x 30. yield. So, yeah, so we can so the difference for them to do that route management, we get two options, one based on address location, and they do the manual geocode. Or we can do based on zip code, zip code location, which might actually be good enough, there's public domain data that that I've already had a module to pull in Module annex three to plan. So basically, thinking left pane is anything with missing GPS coordinates, a scheduled sheet check in date, and then on the right pane, so you could select something and then on the right pane, it would sort things that are closest to that location. And you can highlight those and say scheduled for the same day. Okay, sure. So it's not, you know, it's our cheap, like, it's definitely cheap. Commission's Commission's report, I don't know there's much in sales goal. Jeff, and suggestion was a was a graph expected as out of the graph, I think be nice as a graph. You know, your your year to date target is a straight line and where you're at. But if it's too expensive, we can negotiate that down. I don't know. exception report notifications, we include an alert if the uploads, Qb and NG.
+
+Matthias Miller  17:29
+Imports imports for all of these important sync contacts with the NG customer list. Oh,
+
+Speaker 1  17:34
+by the way, we're gonna get I mean, this partly with the important thing, we're gonna get detail screen merging probably this year. Oh, really? We need it for the IDN.
+
+Unknown Speaker  17:46
+Suite?
+
+Speaker 1  17:49
+Probably not. So two people can modify a detail screen at the same time, and they can both succeed. Of course, you can't have collisions. So
+
+Matthias Miller  17:59
+long dependencies that that interfere? Right, right. For side effects. Yep.
+
+Matthias Miller  18:11
+mobile support, we repeated it, I guess whatever. paragraph or so provide software to run on premise to sync data from QuickBooks Enterprise. And next gen Y Hill has an on call IT person who can provide support to get configured. So here's my thought, Python script, either GitHub in Python if they want. And if we don't mind if they have a code or exe binary with a config file? My thought is we say, Dear Josh, go do what you're doing for investor tools hosting. And we'll give a command line utility that uploads input files, and then we have a scheduled task that watches for them and runs. And then we ran a command line utility for it basically, in a command line interface for next gen. Yeah, that does the export. So then it's just a batch file or something similar that those EXPORT EXPORT EXPORT, or Python stood exported to a temp file, upload them all to whatever scheduled tasks watches for them all. And it says has a heartbeat, it says I'm done. And then you get scheduled task alerts. If it fails, you have the import files when it fails. And you also have the report alert if it doesn't run. Nice. I'm recommending transaction Pro. And we'll provide a command line utility to import this into silver loom.
+
+Unknown Speaker  19:25
+I presume transaction pros pretty cheap.
+
+Matthias Miller  19:29
+It's a couple 100 bucks a year or something? Yeah. Okay. I believe. Jot that out if you remember more specifics.
+
+Speaker 2  19:38
+Yes. Yeah, that sounds right. 300 bucks. Maybe. There were a lot of different tiers.
+
+Matthias Miller  19:44
+Yeah, the exporter. Please buy now. Hey, go. Yeah, 300 bucks, one time fee per user.
+
+Speaker 1  19:57
+That's one time okay. Yeah, that's that is kind of what I was, I was expecting somewhere between 150 and 300 per user. So
+
+Matthias Miller  20:10
+but you only need a single user running on this. Right?
+
+Unknown Speaker  20:12
+Exactly, exactly.
+
+Matthias Miller  20:15
+Okay, expert utility from there. Here's the, I don't know, do you want to, if you want to, I saw it a little bit.
+
+Speaker 1  20:22
+And it's and it sounds like they're really good to work with too if you run into problems. So
+
+Matthias Miller  20:27
+they are good to work with if you run into problems, but if you want any changes, you have to go through a formal process they're not. And they'll decide whether they do it for free, or whether they'll charge for it. That's fair, that's fair. Okay, background processes. Either be a scheduled task or a well either happen nightly or on save your schedule to task or save. What do you call it save. We're x three on save.
+
+Unknown Speaker  21:03
+X 30 on Save is fine.
+
+Matthias Miller  21:07
+Data migration will happen as part of the nightly export, there's really nothing special that's needed. I guess, users will need to be configured manually. All right, route management by map. I mean, this is basically an idea but you saw all stops for a week, color coded by day of week, Monday, Monday, blue Tuesday, green Wednesday, orange overdue is red, something like that. And you just learn Tuesdays blue or Monday is blue. And so you get very, very fast and we can reinforce this on the whiskey. Sure, somewhere when you're pulling up those stops started under checking incident or something. And then on the right hand side, we show all stops within 25% of their next automatic scheduled dates. So plus or minus a few days for a week plus or minus a week for a month etc and, and then click in move to different day a week. And then you basically scheduled by having a visual like all the blues should all be in an area all the rain should be in an area and it should work really well. So they talked about contracts and green banks contracts are basically locking the price on an ingredient or sometimes a formula with a max quantity and an expiration and green bags are basically you deliver the corn and we use your corn or Yeah, use your corn when we make your product we keep track of how much we're using. So next gen does not have any API endpoints for that so we can't do anything with it. Okay. That's up to the client for them to negotiate that with them if they want the maintenance schedule in the future want to who would like to explore maintenance schedule as described explore maintenance, maintenance, scheduling or maintenance I guess as described in the Cook ranchers ag Co Op case study
+
+Speaker 1  23:04
+it's funny I actually have a client that might be taking that one really
+
+Matthias Miller  23:11
+cool. I find it interesting that he came in the door It's always fascinating. Gave me the door for that and is leaving with something else first. I mean, presumably
+
+Unknown Speaker  23:25
+Exactly.
+
+Matthias Miller  23:26
+Alright, so let me export this and let's start with I'll do this and the
+
+Matthias Miller  23:46
+HL D template
+
+Matthias Miller  23:54
+ballpark price or price estimator and we are going to do.
+
+Matthias Miller  24:38
+Alright, user groups nothing permissions
+
+Matthias Miller  24:46
+we had that but anyway Silverleaf settings QuickBooks contact
+
+Matthias Miller  24:58
+in G Reports is about. These are all reports, notifications, report alerts and ports. mobile support is none third party integration, its custom custom custom background processes and effectively excuse me an import. Alright, so
+
+Matthias Miller  25:32
+QuickBooks contact, I'm going to say the let's go back over to these and just
+
+Matthias Miller  25:50
+customize customer location item, I'm going to say that this is something like a 211 or a three. I don't even know. Context. Okay, this one gets interesting. refactoring. No, not I guess this one isn't yet. So let's just, I don't know if it's a two. Actually, it's more than that with the links. It's a four in the incident is
+
+Matthias Miller  26:28
+that a five to refactor and add these little features or?
+
+Speaker 1  26:35
+Oh, fine. Probably was more intelligent that way. Yeah, that's about right. I was gonna say that the check in is the thing that makes me more thoughtful. So yep.
+
+Matthias Miller  26:45
+Reports. I mean, these are three times I would say we have. So here we have 123456 reports times, so it should be a minimum of 12. There two days each. You think they're two days each? I don't know. I mean, I
+
+Speaker 1  27:05
+think these are just stupid. Simple reports. That one? Yeah, that's fine. Yeah.
+
+Matthias Miller  27:13
+Okay, so this one then is a three day the multi pane route management. I mean, we have we have macros for. I mean, it's just the report. I mean, the geocoding. We have to if we use geocoding. We don't change it clears that latitude and longitude when you modify the address? Sure. This actually, oh, it still wants to rerun the whole thing. So I
+
+Speaker 1  27:51
+don't know if you have any. added other stuff nicely, so I'm fine with that. I'm okay. We're spitballing.
+
+Matthias Miller  27:58
+commissions to sales goals. One exception report wire, and that's padded. But anyway, medication one imports, we've got 123456 12. Six times to server. Yeah. mobile support third party integration. This is where this gets really interesting. I mean, QuickBooks Enterprise transaction Pro is just is there's a question What does Josh want for his little command line utility?
+
+Speaker 1  28:37
+I'm guessing he's gonna go with a monthly so so much upfront, and so much. Okay, if he doesn't have it yet. Is that like a date for him to build? Do you think or so hard to say?
+
+Matthias Miller  28:51
+Well, I guess what kind of protection does he I mean, are we doing any investor tools rent virus scans on it? Are we doing that? I see.
+
+Speaker 1  28:59
+Well, either that or he just says He only takes can X plus X have macro X plus X can't have macros, right? You have to go to em for macros.
+
+Matthias Miller  29:12
+I don't know.
+
+Speaker 1  29:14
+So I think he may just lock down file formats. And say he won't take anything that's not a you know. Not this or that. Sure. I can ask him on that one.
+
+Matthias Miller  29:32
+Okay, comment.
+
+Speaker 1  29:39
+I'll just put a ping in my chat zaimes
+
+Matthias Miller  29:45
+QuickBooks Enterprise admin transaction Pro, so it's maybe a little bit of support and getting an expert from them, but I mean, I don't know shouldn't be that terribly much. Next Gen is is I mean, it depends how much how much modification we want. If we want to just do an X 30 based on the input and just use the raw file format, then it's just a matter of authentication. I mean, goodness, you can have chat GBT, right, this thing for you if you want to like it's that dumb. But so maybe, I don't know if it's three days just to account for fare, turnaround and overhead and other stuff. And then this background process is, I don't know, maybe they I don't know. It's probably overkill. It's padded. Data Migration, neat. Nothing. Route management. Do we want to give him a ballpark of what this might be?
+
+Speaker 1  30:56
+I feel tempted not to and let's see where I mean, unless they think they need it. Do you think they'll ask for it if at this point?
+
+Matthias Miller  31:05
+I don't know. Maybe we can try giving it to them without it.
+
+Speaker 1  31:09
+I think we give it to them without it. And just and say that well, we could do design on that and get you a price if you need a price. Yep.
+
+Matthias Miller  31:25
+All right. So we have and then here where's the we also have hang on contacts module. Whiskey connects module would be 1000. Incidents would be 1000. email reminders, Goodwin's sales app timecard wiki. Invoices. immaterium. s3. We're not using Stripe. We're not using SMS not using snippets inbound email wiki. We're not using any of this as three stripe, SMS and email or whiskey. So I know Josh once and yep. So we
+
+Unknown Speaker  32:09
+are at
+
+Speaker 1  32:16
+40 to 70 or 45 to 65 or 45 to 70, something like that. Now,
+
+Matthias Miller  32:25
+go ahead. Big variables, imports. Now it's possible we petted the inputs to two. I mean, that's the biggest chunk in all of this. Yeah. Okay, okay. And here's another question this one? The
+
+Speaker 1  32:46
+What if I have a rockstar code this? Which actually, I'm not sure I will probably have Bangladesh code it. Let's gonna say what if I have a rockstar code this and it just gets smashed out terribly fast. And then should I have included any? Any time? I mean, should I have included a baseline there? But, well, you and I can talk about that a bit more than
+
+Matthias Miller  33:16
+execution? I? Yeah. Delete
+
+Speaker 1  33:19
+the Oh, no. That's the designed. I don't know. Okay, fine. Okay, we've zeroed out the section 174 upcharge. That's right. Yeah. So I mean, ah
+
+Unknown Speaker  33:37
+I kind of think
+
+Speaker 1  33:50
+let me take a look at what else it is. Take a look at just an example of this. Take a look at like the NG customer screen. I'm trying to understand what that thing is so complicated. It's not I mean
+
+Matthias Miller  34:10
+ng location has an RG that's also not complicated. ng order why was I worried about it? Scotland, alright.
+
+Unknown Speaker  34:25
+It's not
+
+Matthias Miller  34:29
+contacts. You it's also not? Well, the link
+
+Speaker 2  34:34
+order was a little complicated is because we have formulas on there that are aggregates of ingredients and sometimes ingredients as well. So I think that was maybe what was throwing it off in the data model a little funny there.
+
+Unknown Speaker  34:49
+So do you think the import is going to be complicated there?
+
+Matthias Miller  34:52
+Shouldn't be I mean, it's just an RG import. As far as I know, from from what I like if we go into the II order. Get we have the components. Yeah. component component ID and the, I guess the actual quantity, I'm not sure exactly what it is. And so you're just feeding that into the RG. Sure. And you have the formula, which is a single item. The slightly confusing thing is that there appears to also be a Well, I understand the connection to order ID and order LINE ID.
+
+Speaker 1  35:45
+Okay, but to be fair, loving, let's at least go two days on this one. Just to be safe. But contacts. I don't think your context is very complicated.
+
+Matthias Miller  35:59
+Does you want to or one.
+
+Speaker 1  36:01
+Yeah, let's just do two for now. I mean, nothing else. We're getting something because of our all of our content, the incidents, it has me a little nervous. So I think that one's probably what you do. I think that's fine. I think it's reasonable. Because there's also a lot of power they're getting there with the check in feature. Reports. Um, this one's actually too high to pretty sure. Show me the reports.
+
+Matthias Miller  36:29
+Well, we haven't Specht out the reports, but it's reports on these record. It's like scans for these records. Basically,
+
+Unknown Speaker  36:36
+that scan should be half a day.
+
+Matthias Miller  36:40
+Well, then, if it's been let's do it for three days plus a little padding. Yeah.
+
+Speaker 1  36:44
+And route management, I'm fine with three I that's worth something Commission's I'm fine with sales goals exception reports. I'm fine with alerts. Yeah, a little bit extra padding imports. You just never know, I'm just imagining, you know, somebody's going to have to write some parsing code to parse out the I don't know what parse out stuff are, we need to have some facile back and forth. And I think it's totally fair.
+
+Matthias Miller  37:13
+Yeah, I think there's also a slight chance because we're so closely replicating the data model, that it is fair, yeah, that it could also be lower. But I mean, but this is also where you can pitch them on TNM. If you want, if you want a pitch on TNM. And right, they might be quite pleasantly surprised if it's gonna Well, I think that's fair.
+
+Speaker 1  37:40
+I do think I might say, because we are, this is our this is what it is that that, you know, we expect to be in this range, but because of because we are doing integration that always does introduce complexity and variability. That's, that's hard to gauge sometimes. Right. So give a little bit more of a caveat than I normally would.
+
+Matthias Miller  38:04
+I mean, the bottom line is that if we run into issues beyond our control with something not exporting correctly from there, and that we're going to have our time into it. You have to work as we expected it as it should. Yeah. Okay.
+
+Speaker 1  38:24
+For let's add, we don't have anything here for deployment, but I don't know there's just always deployment stuff there. So back and forth, and
+
+Matthias Miller  38:42
+four days. Yeah, let's
+
+Unknown Speaker  38:43
+do four days.
+
+Matthias Miller  38:46
+Yep, there we go. Let's add a comment for deployment. Sure. So we think that nine to 10 weeks, two months.
+
+Speaker 1  39:02
+Yeah. I mean, it's just hard to say, but it's not unreasonable. So now we're, well, we'll just see what Josh wants where he is, but now we're at 40 to 62.
+
+Matthias Miller  39:19
+Yeah, yeah.
+
+Speaker 2  39:30
+Yep. Cool. Cool.
+
+Speaker 1  39:34
+I think that'll do it. The so how much polishing do you want from Tim and Ben?
+
+Matthias Miller  39:42
+I mean, it's only I know that. Like, depends how much you want to you get margin on the project. So just depends on how much you think it's.
+
+Unknown Speaker  39:55
+Is it in our favor, so that looks fancier for them?
+
+Matthias Miller  40:00
+I will I mean, I see. So I think trying putting extra effort. I mean, some of these are pretty. I mean, these are pretty succinct and I just don't have much substance out in the elegance. And so Exactly.
+
+Unknown Speaker  40:12
+Well let someone else do the elegance.
+
+Matthias Miller  40:15
+I would I think it'd be worth having if you can carve out time to even read than to spend a couple hours. Sure. Sure. Yeah. This is fantastic. All right. Good work.
+
+Speaker 1  40:29
+You're a hero. This is fun. I'm really excited to having Jonathan join you. I'm wondering if I'll have him more often join you on the high level designs. And because then he can be the developer bridge between on the in depth design too. So
+
+Matthias Miller  40:48
+John, blow your ears. It doesn't go to your head, but you were fantastic to have on here. So plug
+
+Speaker 1  40:53
+your ears sorry. Too late. Too late. We were pretty. We're pretty pleased with Jonathan around here. So our
+
+Unknown Speaker  41:09
+job isn't to danger. It isn't.
+
+Unknown Speaker  41:11
+We're waiting for you to go full time. I'm giving you a raise when you do.
+
+Unknown Speaker  41:15
+I'm very excited to go full time. Yep.
+
+Speaker 1  41:17
+Yeah, it'll be fun. Good. Thank you, Matthias. So we're at 446. I'm Jonathan. I think you can go work on whatever you want to work on. All
+
+Unknown Speaker  41:28
+right, sounds good.
+
+Matthias Miller  41:29
+Yep. You say
+
+
+Transcribed by https://otter.ai

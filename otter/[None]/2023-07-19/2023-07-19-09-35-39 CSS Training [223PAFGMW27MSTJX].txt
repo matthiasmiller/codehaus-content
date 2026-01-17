@@ -1,0 +1,452 @@
+Speaker 1  00:35
+Hey there. Hey, Alice. How's it going? Not too bad. How about you? Yeah, pretty well. I've been doing our mid year salary reviews for Bangladesh and so I have had too many early mornings
+
+Unknown Speaker  01:11
+Mr. Tam,
+
+Speaker 2  01:13
+again, good to see you. Abandoned I guess so for the first time today though.
+
+Speaker 2  01:22
+All right. So go ahead and jump in. See, I don't think there's anything to discuss on cinders. Unless else. Have you heard anything back from them?
+
+Speaker 1  01:42
+I have not. I'm assuming they're having board discussions. And I'm kind of relaxed. So. So.
+
+Unknown Speaker  01:57
+Yep. Okay.
+
+Unknown Speaker  02:05
+All right.
+
+Speaker 1  02:12
+So yeah, so drive away. And I've got a bunch of emails that I've still haven't responded to, but they stuff might come up in this.
+
+Speaker 2  02:20
+Yeah. screen here. All right. So first off would be actually some to do items in
+
+Unknown Speaker  02:40
+Inc. Three. Okay. And you've had a couple client calls the client already, and you're digging into this? Oh, right. So question here. We're wanting to add this system switch to allow for manual editing of records that otherwise would be import only? Okay.
+
+Speaker 2  03:19
+Do we want to include that at no extra cost? And it's a big part of including it is, for our best our benefit and testing? Just to the question I had while I was thinking about it, and we're gonna go ahead and document it here one way or the other? Well,
+
+Speaker 1  03:43
+I mean, I think no, I think we decide whether we need it. I don't if we need it that we won't ask him hey, can we add this but we might still build it to them? Because that's what we need to deliver their their solution. So
+
+Unknown Speaker  04:00
+sure, okay. Sounds good. It would make things a lot easier for us. And
+
+Unknown Speaker  04:11
+it makes sense. Yeah. Yep.
+
+Unknown Speaker  04:19
+All right.
+
+Speaker 2  04:27
+Next question about the incident and we keep tracking notifications. Actually was more just an FYI. We there was a car that we were discussing this in. But we're including it in phase three, rather than as a change request. Shortly that you had. I don't know that we'd ever we'd ever given the client that number but she put it in there for context since it was in the change request. Okay. Let's see. Alright, so some of this is getting into database data model stuff. Matthias had wrangled through back earlier on. So I'm not sure what the best approach is, but kind of talk through some of this. We are planning to bring in scuze, US excuse module, inventory tracking, they are tracking some, they have some inventory items. Although way they're currently, they're not keep currently. Well, it gets kind of complicated, because a lot of the items that they actually sell, they're not keeping an inventory short, because they do a lot of drop shipping. And then the items like the devices, the printers that they lease are technically in inventory for them. Because it's, it's an item that they shorten their leasing out. So yeah, anyway, we're looking at bringing in some of these different bringing their sales items with some categories of inventory, non inventory. This one is one of their current categories that we can actually disregard migration. And there's possibly going to be some other categories here that would be needed, we need to dig into this more with them. But as part of that, we were planning to have a printer model, be a category, SKU category. And then each each printer gets a device record that tracks the model. And whether it's a transactional item that they're selling, or whether it's a an item that they're keeping and, and leasing out. And then of course, it tracks the customer, it tracks, warranty information, their contract information, page counts, all that good stuff. And then those those device records get grouped together on a this asset group rather record or we're going to have a different name for it, we're still working on the name for it. But this, you know, if if one, whoever the customer is they have this agreement with the customer manager on the this asset group, the NPS agreement, and then they they lump together all the printers or all the devices on to that agreement. We have, we have a printer model that we set on the device here, or whatever the device model is, and then and then the devices get lumped together on to the asset group record. That's just kind of a big picture of how it actually works. We were initially planning to have printer models be a SKU category. And device records be their own custom record type. Okay. As we're working on it, and realizing here in phase three, realizing that devices need to be tracked as inventory. I'm wondering if the device should actually be a, a SKU category of its own.
+
+Speaker 1  09:00
+So the ones tracking and I'd almost wish to have a conversation then with Matthias And Josh, about how we think about inventory records because our inventory management module is really designed for bulk items that are really interchangeable. So you know, I've I've bought, you know, you know 100 pounds of flour or a thing of two by fours you know, 10 10,002 by fours and that you have different batches of it but they so, so 10,000 that I take off, you know 20 here and 2000 there and then buy another 3000 and then take off 400 And, you know keeps track of the inventory there. I am Yeah, I'm less I've wrestling with how well you're discrete items that have serial numbers and things like that fit into our into that inventory management. And
+
+Speaker 1  10:36
+so it is kind of a philosophical question was a design question. It's also a philosophical question, but just how do you? How are we thinking of that? So because we, we got into that a little bit recently with with affordable barns, we're doing a new asset management thing. And so Josh was saying, Well, you know, why is this not just inventory management, but then we pushed into it? Well, these are assets that you own, and they're discrete items. unique items. So so the inventory module, as it stands today is really sent me you could use it for into discrete, you know, unique items, but it's really centered around the idea of lots. Right? And, but even with lots, you can then you know, sell across multiple lots or something. It would make sense if in some ways for their inventory, where they are saying, you know, we've got eight of these inventory items in stock, then in our warehouse, then you might not even know what the serial numbers are, at that point, you may or may not. There is that feels more like a pure inventory thing. Your managed devices, much less so.
+
+Speaker 1  12:13
+But I don't know what all we are taking into this, but something like toner, now that you play pure inventory there. I mean, we don't if somebody wants a, you know, HP black toner, with whatever ID it is, we don't really care which of the boxes we grab. So I kind of think that I kind of think you keep driving forward with the fielding and stuff that you need. And that we're then we need a follow up with a discussion for with them then on on how we do this.
+
+Speaker 1  12:58
+Because I mean, so for example, the fields that you need to track on each device are are essentially the same, regardless of whether we end up thinking that some kind of is a SKU record or not, right. Now, okay, and let's let's think about what a SKU record represent. lets you record though, is a? I mean, would you have the same SKU or different skews for the same print or print items? If you have a specific printer model, you would you have the same SKU for each of them?
+
+Speaker 2  13:45
+You're saying if we use the printer model or the the actual printer device?
+
+Speaker 1  13:54
+If you've got two devices with the same model, are you would you be assuming that one SKU or two skews?
+
+Speaker 2  14:05
+Right? It would pretty surely it'd be two skews. If you're looking at we're talking purely devices, since they are discrete, distinct, like you said, Now the printer model itself, I think, still should stay as a SKU.
+
+Speaker 2  14:27
+Because you would have you could have 100 Different devices with the same printer model. And they're going to be buying in these printer models, these printers with this model. Sometimes, you know, a skate at a time. Sure. Do. We do have some of that mix. Like he mentioned yesterday, like they might have a skit of HP printers sitting out in the warehouse and they go out and they pull one of them to sell to a client to customer and they go out pull it out. They're one two leased to another customer. But while they're sitting in the warehouse, they don't hit inventory. Because that's just how they're operating. So are
+
+Unknown Speaker  15:13
+they want to get to hit inventory?
+
+Speaker 2  15:15
+No, no, not at this point. Because they, when they need to go take inventory, they just go out and do a do an assessment of what they actually have on hand. Because they don't they keep very little actual Stockland Sure. dropship. And they don't want to start tracking, like tracking live inventory, because then they would have to be like receiving all these dropship items. Right, the receiving and, and, and taking them out. So.
+
+Unknown Speaker  15:54
+So do we even want the inventory? Module? What does it gain us?
+
+Speaker 2  16:04
+Sure. They do want? I think they will Okay, actually timeout on this, because I'm just remembering he said yesterday that following up on a conversation that you had had with them about the app hosting accounting module, they are thinking that they will want to go to that point. Okay. They here probably after we have phase three specked out. Sure, possibly by the liquid at the turn of the year is what I'm interested in doing that around the turn of the calendar year. So that, like fruit of our conversation yesterday kind of kept coming up with like, maybe the inventory module he's like, actually want to clarify that, like, they are thinking they are planning that way. Okay. So that affects how some of this other stuff, yes designed. Because, for example, the printers, they, when they lease a printer, they need to track the costs their cost for that printer. And so we're planning to put a standard default printer cost on the printer model. It's been up in HP, whatever, whatever printer, by default, it costs $320. But they can edit it anyway, he's interested in eventually having that default cost and the printer model be the average of those printer models that they that they're buying in where it would tie into the inventory, I'm sorry, the the accounting module with their with their transactions and purchases. So anyway, some of this stuff, I think we have the old sales items, mod right. Distinct skews, so we them is correct, the correct here. But I think we do need something that ties into invoices and accounting.
+
+Unknown Speaker  18:14
+Got it?
+
+Speaker 2  18:18
+Because they're wanting to import all of their, their sales items from classic accounting. Sure.
+
+Speaker 1  18:30
+But then for their lease printers, they also are probably wanting to track them as assets as depreciating assets, are they?
+
+Speaker 2  18:39
+No, they they write them off as a as a loss right away. They create so fast that it's that they they write it off as a loss right away. Rather than trying to calculate depreciation over time.
+
+Unknown Speaker  18:59
+Okay, sure. So
+
+Speaker 1  19:15
+So then from that standpoint, they're not they're not treat, they really aren't treating these devices as assets at all. So are there $0 assets?
+
+Speaker 2  19:33
+Now they will sometimes when they get the printer gets an asset printer gets the end of its contract lease. They will sometimes sell them online or short back that are sold to a thrift store or something like that. Sure. Yeah. There are some you know, in some ways, yes, they're still being treated as an asset. They are then sold. I'm not exactly sure how they handle accounting for that but sure that yeah you're right and overall there it's an interesting take on it I guess with a short lifespan and right
+
+Speaker 1  20:22
+so I guess what I want to say is is basically a to do probably em oh this maybe this top one here are these are these skews are they sale items or so I think I see maybe at just doing a numbered bullet at the top under my under underneath it to me I just
+
+Unknown Speaker  20:50
+use the numbered bullet and then list sales items skews independent record or accounting assets so sales items once you put a note on that one
+
+Speaker 1  21:25
+just yeah just put a note there no individual I you know no individual tracking or no individual records for skews I would just add a note typically for four interchangeable goods
+
+Speaker 1  22:01
+and accounting assets maybe had a note using for AB affordable varn
+
+Speaker 1  22:18
+Yeah, I guess that's it. So so just looking at this here i Okay, there's several other notes that you might want to add they aren't tracking inventory. They don't track inventory in the warehouse
+
+Speaker 1  22:55
+instead of saying tracking it Okay, the first one wants you to say tracking specific devices. I mean, I don't Yeah, this Yeah. Not tracking inventory. Right. Okay, that's helpful. I'm not tracking inventory in the warehouse. And then maybe with a managed devices also added note managed devices are immediately written off as as a loss totally depreciated or something like that
+
+Speaker 1  23:36
+and maybe also lots of drop shipping with never hitting inventory. I mean, given everything I'm seeing here, I just about Don't I know they call it inventory, but I really think what they're wanting to do, but I'm almost leaning towards an independent device record. That which is
+
+Speaker 1  24:07
+now it might be a record of type that might have might be tied to a specific either to a specific SKU or to a specific sales item. And
+
+Speaker 1  24:29
+now, the one thing is in with the inventory management module, module costs $150 a month. So if they really aren't trying to track inventory, there's no reason for them to pay that.
+
+Unknown Speaker  24:54
+But then, okay,
+
+Speaker 1  25:09
+So yes, I'm wondering about using the light weight sales items. And then a customized, you know, device record. If they but then if at any point where they actually want to get to the point of tracking their own inventory, then we would want to you know, we would want to, or be more sophisticated on the accounting side of things than we'd want to that we might want the inventory mod. Module. But as it feels to me like they're trying to keep things really simple. So, so I yeah, I'm leaning towards just having a, I would call the record a printer device, or are these all printers are not?
+
+Speaker 2  26:08
+Not all, there are a lot of printers but they also manage some, some email accounts that are tied to the printer, like, with a printer, you can get a certain code at HP print.com, or whatever, where people can send you can send an email to the printer to print it off. Sure. So is their email account management and also some like, Wi Fi hotspot? Like jetpack? Well, so that's why we're calling in device and then some different types. Got it? Got it? The types are?
+
+Speaker 2  26:54
+Let's see where it was that device types. At this point, we just have three device types, transactional lists for everything that's sold, manage printer and manage other
+
+Unknown Speaker  27:09
+what is.
+
+Unknown Speaker  27:18
+Brands actionable.
+
+Unknown Speaker  27:26
+So could the device record be renamed to be managed device?
+
+Speaker 2  27:38
+Yeah, and then you would, then we wouldn't use it for the transactional?
+
+Speaker 1  27:44
+Well, I'm not sure why we would want records or transactional
+
+Speaker 2  27:48
+still want to keep they still want to keep track of printers that they've sold? Because of like, warranties. Okay, and, you know, future maintenance, they'll see, you know, those customers will call them back to, to maintain or those customers will will be buying ink and toner, ink. Things like that. So they still want to keep track of those devices, or at least some of those sold devices.
+
+Unknown Speaker  28:19
+Okay, well, that's fair.
+
+Speaker 1  28:29
+Device Type, let me think through transactional or.
+
+Speaker 1  28:41
+It's, that's probably fine. I was wondering if we could just call it sold or something like that, or customer owned or something? Do they ever want to track it? Oh, a customer has this printer, even though they didn't sell it?
+
+Unknown Speaker  28:57
+So you kind of cut out
+
+Speaker 1  28:58
+there? He said again? Do they ever want to keep track of a device that they didn't sell? I mean, this customer is using printer x. And we might have to do maintenance on it. Although we didn't sell it to them.
+
+Unknown Speaker  29:13
+Yeah, probably, I think so.
+
+Speaker 1  29:16
+That I almost wonder about calling this. See there's there's two different types of device types. There is a what type of device it is, which is really your sales item, or sales item category. And then then on the I think I would just call it ownership. And one is client owned and the other one is managed or something like that.
+
+Speaker 1  29:50
+Does that make sense? That we're that we're almost answering two different questions. Yep. Oh, what is it and who owns it?
+
+Unknown Speaker  30:27
+The
+
+Unknown Speaker  30:33
+I mean, it could actually be
+
+Speaker 1  30:41
+well, I'd like a drop list because then this explicit choice I was gonna say could almost be a managed checkbox, but I do like having a drop list. But, but it is essentially it's just a, is it owned by us or owned by the client?
+
+Speaker 2  30:55
+And then theory is the distinction between printer and other because, like, other doesn't track that have fielding for page counts. Sure. Sure.
+
+Speaker 1  31:07
+And I presume that if we on the device record will have i on the derive advice record, we will I mean, we'll have a whole bunch of we'll have a variety of fields for different devices and stuff. So like for example, if it is, if the what so here's an email account, one type of device
+
+Speaker 2  31:34
+Yeah. Okay. It's technically a device but they don't manage tons of those yet at this point. So it's your here's what we got in with the Yeah, with the device
+
+Unknown Speaker  31:55
+Sure, and that would that's I mean, that's fine
+
+Speaker 1  32:03
+so so this is not a this is not a managed device is just a device
+
+Speaker 1  32:24
+good so I don't know if I fully believe in that. In the device types list or I'm not quite I haven't really looked at your device record yet. What all we've got there. So I mean, the general ideas is seems right. So
+
+Unknown Speaker  32:44
+okay. Okay, so then for this then we will put this down into
+
+Unknown Speaker  32:58
+Yeah, so
+
+Unknown Speaker  33:00
+conversation
+
+Speaker 1  33:05
+so I'm hopeful that I wouldn't be interested to get probably in this case to get Matthias his take on this then but, but my sense is that that just a separate device record, I think we're gonna be happiest with with an independent device record. But I mean, I might be wrong.
+
+Speaker 2  33:30
+So yeah. Now as we're talking here, and you're asking those questions, I think too, that's not the direction we want to go. Sure.
+
+Unknown Speaker  33:51
+Okay, okay, so then
+
+Speaker 2  34:01
+so then, I guess just an overview, you mentioned about what the device record has. So we have a device details section. That's for all devices, all device records. We have a transactional section that shows just the purchase date and warranty information. Then for for Managed Printer and managed other, we have management details. Like which work that goes with that initial cost, the initial invoice they they create a $0 invoice out to the to the customer Okay? To get you know for their accounting to track it as a as that immediate depreciation immediate loss. Customer contract details, start date nd based charges like a monthly base charge and whatnot and Then down here is a bunch of printer specific stuff. printers can be prepaid. Okay, they can pray for pay for a whole year instead of monthly. Sure, sure. page count collection types, average usage, stuff like that. And then also for the printers, the actual page counts, sure that their meter reads and whatnot. So that's what we're tracking, there's different sections and fields visible based on based on the device type. Okay. So that's the, the angle that I was going with there. Yep.
+
+Unknown Speaker  35:47
+Quick next question here has to do with with the types.
+
+Speaker 1  35:50
+Yeah. So we would there's different ways we can do it. But basically, the simplest way to say is if this was ever managed and keep showing manage fields, so just Yeah, okay.
+
+Unknown Speaker  36:24
+All right
+
+Speaker 2  36:32
+then this we're tracking. So there's a record ID, the device record ID, that's unique. And I think we're going to have that hidden as a hidden field. Sure, there's complex going on here. But then there's going to be an NPS ID NPS stands for Managed Print Services. Okay. And so this is a this idea is assigned specific to each customer so they come in crafters, leases a printer, it gets assigned and MPs ID and then we'll say one or something. Right? And then after code captures is done maybe after a year code fracture is done and the printer still has good life. So they're going to lease it out to somebody else. Sure. If they got a new MPs ID for the for the new customer. Okay. Keep track. We don't want to maintain that.
+
+Speaker 1  37:29
+Now if if but if the client is has if I get a new printer, we don't want to reuse one is that right?
+
+Speaker 2  37:41
+It's just a sequential number four all across our clients say at this point they're not doing anything fancy. Short, I said you know, some places will use somehow incorporate the install date or whatever it's just a plain sequential number there's just
+
+Speaker 1  37:56
+no that's yeah we'll have an RG we'll use an Archie exactly right. And they are it's an orgy of customer plus customer plus ID
+
+Unknown Speaker  38:16
+yeah
+
+Speaker 1  38:20
+and then if you want to you could this is almost implementation detail but will will index the index customer plus ID to auto assign the next the next Seguin number
+
+Speaker 1  38:44
+Yep. Does that make sense? So that makes it we don't have to read through all the all the records to figure out what the next number has. Otherwise you'd have to go through all records for anyway see everything in possibly owned and this way we just do the index get the last number
+
+Unknown Speaker  39:02
+one sure okay.
+
+Speaker 1  39:06
+This is also really neat because it will give us we can do reports of let's look at it so leases so leases bike by a customer and include an active so either include active or include inactive and we've got all the information available
+
+Unknown Speaker  39:26
+right
+
+Speaker 2  39:41
+cool All right. And then this okay, this is what I said mentioned earlier, that they're interested in making the switch. Okay. That he remembered something about you having concerns with sales tax,
+
+Speaker 1  40:01
+sales tax, we can integrate to a third party library for sales tax, we can work with him on the details. And we're doing it for other clients. I hope he knows how much this is going to cost. The I'm willing to do it. But the I've just I just don't know where all we're going to run into.
+
+Speaker 1  40:39
+So instinctively, I kind of view this as a, you know, maybe five to $10,000 upfront for the transition. And then and then 195 a month for the basic accounting module.
+
+Unknown Speaker  41:00
+195 Yeah.
+
+Speaker 1  41:04
+Yeah. So that's pretty pricey compared to compared to, to it to other stuff. And I'm, I'm totally fine. If he doesn't want to take it I just Yeah. So but but it gives full, it gives deep integration, or he can give deep integration. The alternative is, the alternative is sticking with classic or switching to QuickBooks. Now, QuickBooks will also probably cost about as much upfront, but will also have integration costs. So
+
+Speaker 2  41:50
+Right. Classic integration with classic there's that we're doing and would be doing. Yeah, yeah, there's cost there to, to both in the development and also in either we give them a nice sync, or they have to keep doing the semi manual sync that they're doing now, which takes time,
+
+Speaker 1  42:16
+right? Yeah, no, I'm not opposed at all. You know, if we've got the fact that we've got a form of Laurens it's kind of our big anchor, it does really help us keep keep expand. I mean, we this will keep being expanded out. That's good. So yeah.
+
+Speaker 2  42:47
+You remember if you had discussed price tag with him, I don't remember. Okay.
+
+Speaker 2  43:06
+Okay, this is just a terminology question for checkboxes in Oh, sure. Do you have a preference between saying it's the checkbox that defaults to being unchecked or a checkbox that defaults to being cleared?
+
+Speaker 1  43:22
+I prefer checked and unchecked, okay. It ties in so explicitly with the term checkbox. So keeps it pretty simple. I it's it's nothing that I would start a new church over but that's my preference.
+
+Speaker 2  43:45
+Good way to put it. It's a Yeah. Instead of a hill to die on.
+
+Speaker 1  43:53
+Yeah, that's certainly not a conviction. There's some convictions. I pretty much started a church over anyway.
+
+Speaker 2  44:06
+All right. So then I think the other question was on the printer model. Again, this is a SKU versus other record, whether the printer model should be a SKU. But that that was from a week ago and basil information for our call yesterday and for our conversation right now. I think we'll probably want to keep it as a SKU, or
+
+Speaker 1  44:34
+SKU or sales item. Uh, sure.
+
+Unknown Speaker  44:39
+I think a separate configuration record,
+
+Speaker 1  44:42
+right? Yeah, I think I'm going to propose a sales item but I don't know for sure.
+
+Unknown Speaker  44:49
+I'm gonna make a note here.
+
+Speaker 1  45:03
+What a chin sees make some kind of note to have, you know have LS discuss with, or have Matthias and LS discuss. So maybe sometime. Once Matthias is back on one of the CSS calls, we'll both hop on and and I'm guessing as well, either that or one of my separate calls, but it could be CSS calls.
+
+Speaker 2  45:25
+Okay. Yeah. Sounds good.
+
+Speaker 2  45:41
+Need to keep it pop popping up? And was this one? Oh, that's that one from down there. So yeah, that's good for now. One, Inc. So a few minutes left.
+
+Unknown Speaker  45:58
+So where are we? Where are we at with thinking? With phase three?
+
+Speaker 2  46:04
+Yeah. So we just started last week. Got it. We've had two calls the client we're doing calls on Tuesdays and Thursdays with him. Two hours. So we have just two calls with him so far. And made? Yeah, we've made some good progress. We were digging into some, we're starting out with some of the more complex records with the device. asset group record. So been digging in to those? Sure. Not quite sure. On the timeline. It feels like those are the two biggest most complex things. Sure. I guess it depends what we do with accounting integration or accounting switchover? Sure, I guess we need to plan for deciding that too. But anyway, so we're making progress feels like we're making good progress.
+
+Unknown Speaker  47:07
+So the heart of what we're doing
+
+Speaker 2  47:08
+back in the game, but yeah, sure. It's been a year. But yep. Yeah, it feels like we're, we're getting good traction here. Good.
+
+Speaker 1  47:18
+So the heart of what this is about is, is starting to track managed devices. Is that a fair description?
+
+Speaker 2  47:26
+Yes. So phase three is including the sales items or skews? Yes. And then the devices and groups? Sure. And then we'd be adding these email reminders and incident wiki tracking. And then some miscellaneous customizations. Yeah, sure. But the reason we're adding skews or sales items is because of tracking devices, and it all sure does center around that. Yeah. Good.
+
+Speaker 2  48:04
+All right. So a few minutes left. Let's see in look at something quick here.
+
+Speaker 2  48:24
+No, this is still in conversation with a client. So okay. But this is z, GA, we had a call with them last week for the week. Last week, and had some good, good conversation there. They are, they were want this kind of update, they were thinking that they wanted to move away from the parent child incidents. Okay. Because they wanted because it was giving them too much. It felt like it was too much to handle at once. Basically, a big piece that we're doing is we're going to take all the child incidents off the schedule report. So it's sure parents showing up. Yep. And with that, that really helps them. Okay. And then yeah, so adding some additional field adding on the incidents, and then some different workflow stuff as far as the scheduling. So I'm not sure if it's going to be a complete overhaul of the schedule report, or if it's just going to be making some changes were that remains to be seen, but Sure, sure. Anyway, good. I think it's good changes they're fine with staying with the child incidents because the child incidents have been 90% of what they were wanting. Sure. And debris completely overhaul incidents for them was going to be Yeah, was gonna be a big a big job
+
+Speaker 2  49:58
+Okay, quick question on The vtk changes to customer leading check in report. Okay. Okay, so this was a report that
+
+Speaker 2  50:20
+trying to see the context here, we were wanting to give them more editability on the contact tags. And so just want to check here. So this is the updated spec, that it's editable if blank, single selection, Shore tags are selected, they can be edited than via the button
+
+Speaker 1  50:51
+will via via add, or you could just say via and adjacent, I think is what is going to be. So there's gonna be a button next, it won't, it'll actually be I think we'll put it on a child screen that'll pop up. So it's actually just like a little ellipsis button in the editable report itself that they click to edit it.
+
+Unknown Speaker  51:14
+Okay, so it'll be its own column.
+
+Speaker 1  51:18
+I don't quite remember if it if it takes over, you know, a tiny bit on the column, or if it's new column, you could just say, you know, the via a button in an adjacent column, I guess. And then if it's slightly different from that, I don't think they care.
+
+Unknown Speaker  51:39
+Sure. Okay, so let's make a note here.
+
+Unknown Speaker  51:52
+Yeah, yeah.
+
+Unknown Speaker  52:02
+All right. I think that was the only question we had there. And then we reply to that one, and we don't anything else there now.
+
+Unknown Speaker  52:23
+That's a duplicate. And see if there's anything here? Oh, yes, I did send an email about this one.
+
+Speaker 2  52:39
+The hiring you based on the permissions are in CWA? Are we able to hide from hide a whole section on the contact record from a font folder? Yes. Okay. Just tell us what you want. So
+
+Speaker 1  53:11
+he also, I'm trying to if I just wrote an email to myself, he also has some changes, he would like to have to make it easier to see this to see the discontinued reason on the contact record, not just on the vehicle. So we would just display it on the contact record for discontinued people, and then give a button to be able to modify it, and it would actually modify the Wii. I'll write it up for you. Because he just he just mentioned it to me. And it'll be it'll be? I said, it's two, three. And he said, That's fine. They'd like they'd like it. So I'll write that up, then. I've gotten email inbox, a note in my email inbox.
+
+Unknown Speaker  54:02
+Sure. Sounds good.
+
+Speaker 1  54:06
+The the I keep wondering, how do we keep on top of all our client requests? It's a lot to manage, isn't it?
+
+Speaker 1  54:19
+And I think what I'd like to do is keep pushing more of that responsibility on then, especially with you being part time now. It might look a little different, if, you know once your full time. But it may be kind of have you've I mean, have been provide more of the support for existing clients and you drive forward more new stuff, although there'll be overlap, and you'll both be coordinating back and forth. I don't I mean, how does that sound to you? Is that kind of how some of that's happening right now, isn't it?
+
+Speaker 2  54:59
+Oh, Yeah, like vendors, a lot of fielding requests and writing up change requests, and then he'll bump them up. Sometimes they'll send out the email to questions to CCI. Sometimes I'll follow up. Yep. So we kind of tag team one a lot of that stuff. That sounds perfect. I'm the one who usually just makes sure everything or tries to make sure everything keeps moving. And my, my, what do you call it? almost an obsession about following up on loose ends? Yep. And just I see things and keep them going. So
+
+Speaker 1  55:42
+that's that sounds fair. Okay. The, like the sales tax thing for Triple D is bothering me. I think. And I'm trying to think through is that currently in my court? Where's that one at?
+
+Unknown Speaker  55:55
+I will check.
+
+Unknown Speaker  56:15
+He replied, but I don't see my.
+
+Speaker 2  56:30
+Okay, yes, it's ready for input and pricing. If, if it's okay. Got it. Monday that I sent that over there, okay.
+
+Unknown Speaker  56:42
+And then my tag for input or anything?
+
+Unknown Speaker  56:46
+I had sent it in an email. Okay.
+
+Speaker 1  56:49
+That's probably fine. I mean, in some ways, maybe if you're needing action from me on something, also, I mean, the needs input tag, I mean, that way we that'll keep nagging me.
+
+Unknown Speaker  57:04
+So a Yeah, that might not even that might not hurt.
+
+Speaker 1  57:12
+So and I'll try to I'll try to get to those. I'm planning to clear on my inbox today. But and on the days that you all are working together, that will okay, I wonder if Ben and I should sometimes be talking about some of these on days when y'all are aren't working together, if there are things that we can keep moving forward. So so so far, we've had enough work for solute for the team, but but it does feel as if anything, we've got more of a backlog on design than we do on development. And I don't mind loading them up a little bit so that they work a little faster.
+
+Unknown Speaker  57:58
+Sometimes they go
+
+Unknown Speaker  58:07
+okay, well, does that give you what you need?
+
+Speaker 2  58:09
+That gives what we need for now? Yeah. Well,
+
+Speaker 1  58:13
+and thank you for all your work. I made sure I got that said I was on the phone call when I got your email about sim because it's exciting to be at this point in the process. And I'm excited about what we're offering them. I hope they are too so
+
+Unknown Speaker  58:26
+Yeah, exactly.
+
+Unknown Speaker  58:31
+Okay, thank you.
+
+Unknown Speaker  58:33
+Yeah, yeah. Yeah. Yep. Take care.
+
+
+Transcribed by https://otter.ai

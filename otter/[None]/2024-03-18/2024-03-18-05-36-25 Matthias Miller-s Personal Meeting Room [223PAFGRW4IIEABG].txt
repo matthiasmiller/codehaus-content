@@ -1,0 +1,809 @@
+Unknown Speaker  00:54
+Yeah, I don't know. Yeah. Good morning.
+
+Unknown Speaker  00:57
+Hey.
+
+Unknown Speaker  01:01
+You're out there.
+
+Unknown Speaker  01:02
+How's it?
+
+Unknown Speaker  01:04
+You're all bright and early out there?
+
+Unknown Speaker  01:07
+That's right. On
+
+Unknown Speaker  01:11
+our comeback for you.
+
+Matthias Miller  01:12
+Yeah, it was only off for about three hours or so. So. Yeah. That's so weird having the bunch of the county offices closed. There were a few banks that were closed. It's like, yeah, anyway.
+
+Speaker 1  01:34
+You guys haven't had just a lot of snow. Have you? I mean, comparatively, comparatively?
+
+Matthias Miller  01:38
+No. And right where we're at we don't we don't get we don't get that much. But no, not I mean, there have been places with like three feet drinking so
+
+Speaker 1  01:52
+maybe they were just looking for excuses to get their quota days off.
+
+Matthias Miller  01:58
+You got to take a chance when you can probably that's about right. It gets you that it's funny
+
+Matthias Miller  02:14
+good. All right. So main update that I've got is inventory totals appear to be to me to be matching now. And received that vouchered appears to me to be working now.
+
+Speaker 2  02:51
+What was what was it that was not working with RnB.
+
+Matthias Miller  02:55
+So the way the account balance diagnostic works, is we we match it was the fact that on r&d, you've got it's the PIO that generates the the initial input into r&d and then the vendor invoice reverses that. And so because of that it wasn't matching, matching them up. And there were multiple layers of issues. Number one, was when we were generating the accounting transactions, we weren't generating the reversal in the correct amount. We were generating it based off the vendor invoice amounts that are based off the PIO amount and then secondarily with the the account balance agnostic we weren't breaking that apart appropriately breaking the vendor invoice amount apart appropriately did to match match that so
+
+Speaker 2  03:59
+what was it not working correctly? And accounting fix you may go back and correct that like I'm thinking raw materials could have been too low or too high. Because of that or any any expense account?
+
+Matthias Miller  04:19
+Yes. All should have been cleaned up historically. Okay. So,
+
+Speaker 1  04:24
+it really would have been a lot of change to the like if there was tax or if there was like those are the items that were kind of the ones causing problems right.
+
+Unknown Speaker  04:38
+The is like
+
+Unknown Speaker  04:41
+those miscellaneous line
+
+Matthias Miller  04:45
+I think predominantly thinking predominantly it would have been taxed now for some reason you would have issued a Pio with the wrong price.
+
+Speaker 2  04:56
+happened like sometimes we you know, close what it is but we Don't know what it is they're like there's a surcharge or even like if we take an early pay does that probably would have as well should we look at our at DIA received now about your account? Balance diagnostics report riefler is their main Sure.
+
+Unknown Speaker  05:21
+There might be some so
+
+Unknown Speaker  05:23
+we can see what
+
+Matthias Miller  05:26
+I was I found some instances I don't know if I can find it now where it was off by as much as $8,700 Let me see if I can find
+
+Matthias Miller  05:58
+let's see if any of these that was from the well Okay, so here is six one well because there's really not relevant here's where it starts tying out. And here are a bunch from
+
+Unknown Speaker  06:27
+I don't know love that would be reserved.
+
+Matthias Miller  06:29
+Those are recent. So if we go back up to closer to the beginning 531 That's right, we're going to
+
+Speaker 1  06:38
+absorb going out on the other side too.
+
+Unknown Speaker  06:44
+And I was gonna think through how we need to do that
+
+Speaker 1  06:48
+like a bunch of that June stuff was probably just because only half the transactions
+
+Unknown Speaker  06:56
+pulling through correct
+
+Speaker 2  07:09
+so is this the is this where we'd set you know, let's go to I forget the time was it like November or so and just everything that happened prior to November 1, just consider that John is gone. Do you remember?
+
+Unknown Speaker  07:32
+Um, that was with that was with undeposited
+
+Speaker 2  07:40
+couldn't we do this the same thing with this just maybe a little longer, like undeposited funds, I don't think we need to look at it more than starting as of December 1, if we do this for a little larger window like something shouldn't sit in receiving that voucher longer than
+
+Unknown Speaker  08:02
+while you're thinking about more than a month well, two delivery problems
+
+Speaker 2  08:08
+I guess to be saved. Could we do like two months November 1 and beyond? If we do that, let's let's look at one in November like what are the things that have to be fixed or are how do we go about fixing these? Okay,
+
+Matthias Miller  08:25
+so here's a purchase order between 60 and 72 Similar to the vendor invoice 6872 So why is this one not let's take the vendor invoice number
+
+Unknown Speaker  08:56
+can transactions
+
+Unknown Speaker  09:05
+these are both voided why are they voided?
+
+Speaker 2  09:50
+The only all we're trying to do is make sure that we have a legit
+
+Unknown Speaker  09:55
+voucher balance.
+
+Speaker 1  09:58
+No, I mean it kind of goes back To see if we can go through and make sure that we know what is supposed to be legitimately sitting in receivable manager let those sit there create a journal entry that balances out over
+
+Speaker 2  10:22
+everything we leave sitting there we expect to wear out in 24
+
+Speaker 1  10:27
+right we should already have moved out of it
+
+Speaker 2  10:31
+so the ones we're looking at are
+
+Unknown Speaker  10:36
+Sunday go to Saunders
+
+Matthias Miller  10:44
+okay here we have one understand why we have a debit of one cent to fuel PT in six years 872
+
+Unknown Speaker  11:06
+Let's do it let's do this so this would be
+
+Unknown Speaker  11:20
+the invoice Pio purchase
+
+Unknown Speaker  11:30
+not be the r&b account
+
+Unknown Speaker  11:40
+the non r&b account
+
+Speaker 3  11:55
+yes RMD amount be rolled out
+
+Unknown Speaker  12:10
+here we're saying.
+
+Matthias Miller  12:34
+Wonder if the extra percent is unnecessary here but I'm not sure
+
+Unknown Speaker  12:51
+Pio invoice total
+
+Unknown Speaker  13:17
+I don't know
+
+Unknown Speaker  13:25
+this is going to likely require more digging.
+
+Speaker 2  13:32
+So Matthias the report that you built here, this is showing r&b As of now it's not showing r&b As of 1231 Is it this is showing it as of today.
+
+Matthias Miller  13:46
+Is as of today but it can be easily run is as of 1231 but
+
+Speaker 2  13:51
+what I'm thinking is somehow so what we're I think what we're seeing is let's look at if we could look at received not we're trying to establish a legit receive not voucher balance as of 1231. So if we could say let's only look at anything that entered received now voucher for November and December. And those two months worth of what entered received not vouchered and out should also they should all be cleared out now now that we're three months into the year.
+
+Matthias Miller  14:30
+So we do have an issue here where the counting the transaction here never got created because si si went and got voided out might have been this week.
+
+Unknown Speaker  14:47
+Not being connected.
+
+Matthias Miller  14:51
+15 know, somehow with my recent changes, I started sometimes creating invalid transactions. You handle RMB appropriately for vendor invoices. And I need to I need to figure out why
+
+Speaker 2  15:18
+do you think the best way to verify is one look at our list as a focus on getting a list as of 1231. And then once we have that seeing it, and if those have all worked out they haven't didn't need to dig deeper on those because they'll probably still be sitting there. And here, we don't like end of 24
+
+Speaker 1  15:49
+years, so stuff from before 24 Like, I mean, we need to go through, like anything that is still not squared away from 23 will probably still, I mean, there's an issue. Yeah, so what I would say like I'm what I'm thinking with with Accounts Payable is find, I mean, it's just these guys right in here, there's only issues make sure that none of that makes that all those problems are resolved, and then run it as as of 1231 and then that should give us where we're at as of 1231 Because if we run as of 1231 first then we don't know if they're legit or not. You know, like the ones that are saying they're still in because we don't know which ones are all legitimately there and have cleared out in 24 You know, like all of this stuff down in here if we don't do the current one, run it as of today figure out in that timeframe what's still needing to be taken care of this right here. We take care of all those we run it as 1231 and then and we know that everything is is actually appropriately showing up for the
+
+Speaker 2  17:23
+game for that day. So should we you're saying for receiving a voucher we should do the same thing. Focus on making
+
+Unknown Speaker  17:31
+hybridizer today
+
+Speaker 2  17:34
+thank you see then if we turn the clock back 31 Then that's okay. That makes more sense. Yeah, you're than what I was thinking about it
+
+Speaker 1  17:48
+we don't have to fix all the problems like there's a few here that are in that are in in accounts payable that are in February so I mean we should we should look at why but
+
+Unknown Speaker  18:01
+here you're saying the problems in APR only what
+
+Speaker 1  18:04
+well so these are legit. I already looked at those those are all legit attendance this one here I want to look at I need to look at why those are but But as these that don't match is the ones that
+
+Unknown Speaker  18:14
+are you going to worry about those right now when they're okay.
+
+Speaker 1  18:19
+I mean we're looking at this thing trying to make the report work so I'm looking at that the issue but not necessarily don't have to necessarily resolve but
+
+Speaker 2  18:27
+all you have to fix here is like not these four I mean
+
+Speaker 1  18:32
+yeah, okay, yeah, we're pretty close. And what about all these up here? Like this is all all this stuff is stuff that just yeah just ignore because only half the transaction came up
+
+Speaker 2  18:45
+so you started looking at it at 10 right like those and those and
+
+Speaker 1  18:50
+these are actually all just credits that were still sitting on nav so then these are then these I haven't actually opened them but they should be legitimately actually sitting in AP and having you know as of yet have not been paid which seems a little bit weird. But at the same time you might also be looking at it might squares if we fix the problem like here's the problem here's where like these are problems even though there are 24 there's still problems with reporting so if we fix those that might not clear
+
+Speaker 2  19:23
+and then when you come down to like here you're seeing all those that could be looking at those yeah
+
+Speaker 1  19:32
+actually this right here is yeah, that's that's that dreaded
+
+Unknown Speaker  19:42
+pleasant. Oh, you don't need so what's the pricing? I mean, which company is ABC? MC do you do a lot of work on this There
+
+Speaker 1  20:00
+was not much Well, I mean, this is the one that we've always been getting at to sort the problems out of. So we fixed a few things, but we're pretty close everything we fixed when we are dealing with ABC should also be fixed for the others too. But I haven't actually gone and looked at transactions and
+
+Speaker 2  20:21
+so as far as getting an AP balance, you're not far away
+
+Speaker 1  20:30
+you know, and the more we you know, go through our envy we're really not really, I think we probably have just as many problems with just sorting and recording the data as the data being wrong. So the more we figured out how to get our data properly sorted and reported I mean, like with AP I mean we had hundreds and hundreds of stuff that apparently didn't match before and part of that was yeah, lots of
+
+Speaker 2  21:08
+it was a very exciting part about just some of this big boys were putting into like getting your at numbers getting balance sheet starting balances the product cleans up through outstanding issues faster than any yeah yeah.
+
+Speaker 1  21:27
+I mean just like that thing of r&d you know not being canceled out for actually it was a move that has pretty big implications
+
+Unknown Speaker  22:04
+Okay, do you want to take a quick look
+
+Matthias Miller  22:16
+see what all went sideways because of this and if this is actually the full solution to it I believe in.
+
+Matthias Miller  23:57
+Well, here's the bottom line
+
+Unknown Speaker  24:06
+how long this thing was going to take to run What sir? And your invoice should be should be getting close here
+
+Matthias Miller  24:20
+that's the kind of impact errors that are running things sideways due to some rounding, rounding issues
+
+Matthias Miller  24:37
+or maybe if so, this fixed this is fixing. These are really really old ones that I'm going to do well.
+
+Speaker 2  24:54
+How did you even get those ones that were that were that old in accounting or how do they do
+
+Matthias Miller  24:59
+They're not in accounting I'm just running it on all vendor invoices
+
+Speaker 2  25:03
+we yeah we were processing vendor invoices on the IMS side that
+
+Unknown Speaker  25:10
+yeah
+
+Matthias Miller  25:18
+but here we are getting into gin there are some missing counts here
+
+Matthias Miller  25:37
+but I had introduced a new errors with debits and credits not matching but this one this one we've got here that
+
+Unknown Speaker  25:53
+this one we still have
+
+Unknown Speaker  26:00
+we want to do one
+
+Matthias Miller  26:15
+so wonder if that's So probably we actually want
+
+Unknown Speaker  26:26
+to difference
+
+Unknown Speaker  26:48
+okay
+
+Matthias Miller  26:51
+let's Yeah, I mean I don't know that we need to spend a little how much time we need to spend now
+
+Unknown Speaker  27:06
+looks like we have some so we're just going to hard kill we just heard Canada
+
+Speaker 2  27:56
+once you have this report, what are you clear on what you need to do? What you're going to do? Like playing this
+
+Unknown Speaker  28:07
+thing. So is there? Can we export these as Excel?
+
+Matthias Miller  28:14
+Yeah. See, well, if you are actually right here, this download button right here, Export to Excel. Got it. Or you can pop it out and it just shows the main main report here.
+
+Speaker 1  28:41
+That's just so you can calculate, you know, like totals of certain sections of it. So I know what to put into my journal cultures. Calm it's murottal stuff. Yeah.
+
+Speaker 2  28:53
+What are you going to do with the ones in question like to start digging and just
+
+Unknown Speaker  28:56
+figure out what is wrong with us?
+
+Matthias Miller  29:00
+I think I think with I mean, we have we still have unresolved issues with vendor invoice transactions. And so I don't know how much you could do today until we can like to push an update tonight. Right?
+
+Speaker 1  29:20
+Like, once we once we've determined that everything is recording properly then if something isn't correct, it's it shouldn't be you know, numbers or input wrong wrong accounts are selected or you know, something actual data entry was
+
+Matthias Miller  29:44
+Yeah. And once we can confirm that we could push it to the test system if you wanted to, and run the accounting impact update over there. If you'd have to make a change me you can't. It will help you to make changes But if we can sidestep some of the
+
+Unknown Speaker  30:11
+Alright, so
+
+Matthias Miller  30:18
+it looks to me maybe there aren't actually that many of these
+
+Speaker 2  30:26
+What if we're using a parent account or referencing the parent account?
+
+Matthias Miller  30:31
+Yeah this is an issue maybe not when the old maybe the old ones are cleaned up looks like most of the old ones are cleaned up but definitely recently there's been been a rash of these
+
+Matthias Miller  30:56
+but what I'm if what I'm seeing is right there actually aren't that many of these vendor invoices that were affected by rounding errors so maybe well, yeah, maybe a couple dozen I'm not sure. But
+
+Speaker 2  31:17
+the ones where you're making an account or like linked a parent account you just have to open those up change
+
+Speaker 1  31:26
+the parent account ones yes a lot of these well the missing account ones Okay, I just I guess go back to whatever day we went to and then journal the rest from there. Well,
+
+Speaker 2  31:39
+what do you think me how far back do you think we should go?
+
+Speaker 1  31:46
+I mean, I guess once I mean looking at them we could say okay, everything in this you know, we've said we started to toilsome I mean January December 31 And you go back you know we're in November and it's like these are all checking out then we'll just turn it off from there
+
+Matthias Miller  32:33
+okay, so that was that was a long rabbit trail because I got stuck on here. I don't think we actually went through to your point I don't think we actually want the as of date I'm gonna be right back right back well this runs so I managed to stumble on one with a rounding error what if we was run and go to the second one from November and see if we have other types of issues?
+
+Speaker 2  33:52
+Have two big stays individually like open up each one or is there
+
+Unknown Speaker  33:58
+if it's Yeah, I mean, like, like the
+
+Speaker 2  34:04
+ones that are listed to a parent account can you fast change those?
+
+Unknown Speaker  34:11
+No, no. Mistake good maybe. I mean, if it's a credit card you have to make sure you're putting it
+
+Unknown Speaker  34:22
+in there. Well,
+
+Speaker 1  34:25
+I guess you wouldn't have to make sure you're putting in the right credit card and put it in the primary one and then and then when do reconciles move though if necessary, but
+
+Matthias Miller  34:34
+alright, so if we go to November this was a rounding one. Here is a vendor invoice 864
+
+Speaker 2  34:46
+That one matches with is that like if you go two lines up above that, is that the same? You have a credit for the exact same amount.
+
+Matthias Miller  34:53
+Yes. So for some reason, these are not okay. So this was received and 1031 this was invoice so this would have been well attended one two days before
+
+Unknown Speaker  35:13
+there's that one sound and
+
+Matthias Miller  35:14
+raw material there is a one cent and raw materials I wonder okay let's get to it let's take a look
+
+Matthias Miller  35:26
+it is a similar rounding issue
+
+Unknown Speaker  35:40
+why would that well
+
+Speaker 3  36:10
+why would the if we go here and the PIO
+
+Unknown Speaker  36:25
+let's do this
+
+Unknown Speaker  36:53
+it's 6482
+
+Matthias Miller  37:04
+Why is the pill then generating 860 or okay well let's take a look to accounting impact so this one's a gin um because the PIO is the bo total is is it's extremely to the transaction is 864 83 that's been generated
+
+Matthias Miller  37:37
+so it looks to me like your skew total cost
+
+Matthias Miller  37:49
+is funny not funny? We have to handle rounding issues in Pio accounting impact
+
+Unknown Speaker  38:04
+bottom line
+
+Speaker 1  38:09
+currency would go to the 1000s of dollars well,
+
+Matthias Miller  38:13
+but then we'd have it only you guys would only buy things in in whole quantities this whole fractional quantity stuff or you know, I don't know I had somebody reach out to me about some kind of CAD related project and I got started talking to a guy who does computational geometry and he came back and he said, for reasons such as like, like these that we're seeing only like 10 times worse or 100 times worse. He's like, You better hope this person has deep pockets because fractional fractional, computing with fractions and decimals are can be crazy. Alright, so well. I guess there's that another rounding issue in this case because go take a look at the PIO. The Pio said 36 and recruited a transaction for 37. Here is a Pio the let's go see where this stuff what's the vendor invoice?
+
+Matthias Miller  39:56
+Is That's a purchase order vendor invoice I'm gonna guess this is one that
+
+Matthias Miller  40:16
+this is also a separate the original rounding error that we found
+
+Matthias Miller  40:25
+this is this one I mean I kind of wonder if we don't want to fix these accounting impact things change and make these kind of impact changes and then circle back around yeah
+
+Speaker 1  40:46
+I'm sure it's gonna clean up a whole lot more of those that were looked at yeah
+
+Unknown Speaker  40:51
+great All right. So that was
+
+Unknown Speaker  41:01
+all right, let me let me make just a few notes see
+
+Matthias Miller  41:19
+Hey and then so I think that was all just updates
+
+Speaker 2  41:33
+so next step, you're going to make change this report to handle the rounding issues or you can use this report to handle the accounting issue or the rounding issues or you changing how it pushes to accounting to handle it
+
+Matthias Miller  41:49
+there they're rounding their their issues both with accounting and with or both with wait I wonder Yeah, sorry, there are issues both with vendor invoices, how vendor invoices and purchase orders pushed to accounting and that needs to be fixed and then that will fix this report
+
+Unknown Speaker  42:13
+okay
+
+Matthias Miller  42:32
+okay and then you mentioned if we go into accounts Payable
+
+Unknown Speaker  43:41
+there's a problem
+
+Unknown Speaker  43:55
+fortunately partially expel removing those accounts from well now that we have to fix by having a proper way
+
+Unknown Speaker  44:14
+was
+
+Speaker 1  44:21
+was enough to actually look at this here actually I bet this has been put in that has been double entered and the other one never came the status quo status that hasn't been VR remains to be hollering about
+
+Speaker 1  44:44
+I'm pretty sure it's this has been paid. But I remember was a duplicate otherwise. You know, is there another invoice enter because and getting paid so they send the notice and so they enter another invoice.
+
+Speaker 2  45:00
+does this compare very well have been paid in QuickBooks since it's 1231 paid in QuickBooks and Whitney never well it's kind of strange there's no status
+
+Speaker 1  45:36
+just checked with her she made it fun shoot I didn't mean to get rid of it
+
+Speaker 2  45:40
+but did you guys decide about wanting for stolen by foreigners or have you done that we
+
+Speaker 1  45:49
+haven't but that's what's happened
+
+Speaker 2  45:54
+see yeah what is him
+
+Unknown Speaker  46:21
+120 48
+
+Speaker 3  46:38
+All right so tip number 166
+
+Speaker 3  46:58
+So in this case we have some 4650 691 And this guy should be
+
+Unknown Speaker  47:19
+broken apart
+
+Unknown Speaker  47:28
+open your invoice
+
+Matthias Miller  47:49
+well that would probably have something to do with It
+
+Unknown Speaker  48:32
+inverse
+
+Speaker 1  48:39
+now it's different well I wonder if it's not a subscription based thing now where's their billing the same amount every month
+
+Unknown Speaker  48:53
+I wonder if it's?
+
+Unknown Speaker  49:53
+We should probably
+
+Unknown Speaker  50:00
+Got it up in here
+
+Speaker 1  50:05
+so that the check thing or the well maybe that's for both I really don't know but that's just from not having it split out
+
+Unknown Speaker  50:16
+yeah
+
+Speaker 1  50:43
+like that that one I think it was the example that was a screenshot of the the one check item invoice on the check not being less like all the others all just listed as missing just one out of like eight or so
+
+Matthias Miller  51:09
+so this one here we had a career at it and then was this one um
+
+Speaker 1  51:17
+I think so if you look at that check involved are 31 the 178 the invoice for 178 is the one that's that's missing or 176 is what it is
+
+Matthias Miller  51:42
+yeah look this unrelated but come on now there's some Pio issues in here too
+
+Matthias Miller  52:05
+sorry getting derailed let's go
+
+Unknown Speaker  52:14
+Alright, so check with rewind
+
+Speaker 3  52:30
+watching an ad read once every 610
+
+Unknown Speaker  52:46
+Wait Will you repeat what you were seeing here
+
+Matthias Miller  52:59
+there's a 10 cent discrepancy I see that were left paint is showing a 10 cent discrepancy
+
+Speaker 1  53:14
+No it's it's 170 think oh I'm sorry
+
+Unknown Speaker  53:26
+so we have up for 14
+
+Speaker 1  53:36
+More invoices that are paid and the top three or three of them and then that 176 is is the one that for some reason that check is not dealing with that
+
+Unknown Speaker  53:53
+okay, I have a bit
+
+Matthias Miller  54:06
+rounding error same underlying issue maybe not. Let's try
+
+Unknown Speaker  54:33
+see if it likes this guy better
+
+Unknown Speaker  54:40
+yeah. surrounding a shoe
+
+Matthias Miller  54:49
+Okay, so kill lots of birds with a stone. Exactly. It's given a bird
+
+Unknown Speaker  55:02
+Should this not have
+
+Speaker 1  55:05
+now you are showing a lot more than I am in that timeframe
+
+Speaker 1  55:20
+like that are not tied out in some way or another I mean I have
+
+Matthias Miller  55:30
+I just throw things sideways
+
+Speaker 1  55:31
+I have to in January and then February I have about 10 and then the rest are in March I mean like as far as newer today
+
+Unknown Speaker  55:56
+yeah actually let me tell you right back
+
+Matthias Miller  56:08
+so if we go back to
+
+Unknown Speaker  56:11
+okay
+
+Unknown Speaker  56:16
+yeah it was
+
+Matthias Miller  56:24
+on checks nevermind kind of checks back to the original sales orders however line two checks invoice was date and vendor invoice to the checks that were paid by Are we sure that that's right I'm suspicious that this is related to the I don't know
+
+Matthias Miller  56:57
+sorry I forgot about that. So we are taking the
+
+Speaker 3  57:02
+okay got it got it got it got it got it so we
+
+Matthias Miller  57:13
+take the vendor invoice
+
+Matthias Miller  57:35
+blue skies net creating a skies that creating a transaction
+
+Speaker 1  57:43
+revolutionary process so why not for Matt To begin with well there's some philosophy and some some save
+
+Matthias Miller  57:59
+so we have the non Pio David
+
+Matthias Miller  58:14
+is an A word paid by cheque
+
+Speaker 3  58:39
+so Chi Chi but it's not showing the invoice non Pio expense amount
+
+Unknown Speaker  58:52
+is can you trans table
+
+Unknown Speaker  59:02
+so let's go
+
+Unknown Speaker  59:20
+okay, so that part is working. Yeah, chance to kick
+
+Speaker 2  59:31
+the morning again. Hey, so I'd like to know the difference between the price of
+
+Matthias Miller  59:47
+hay. The reason is because these are under AP. AP for this account is zeroing out and we're not critical transaction right
+
+Speaker 1  1:00:00
+yeah I found some others like that
+
+Speaker 1  1:00:12
+now I just pulled up transaction 17693 from that report Okay, vendor invoice I guess yep yeah yep. Um that that non purchase order line is that causing an issue because this one isn't this one's only showing on one side it's not showing it's not showing like two different numbers debit and credit it's just showing one side
+
+Unknown Speaker  1:00:55
+look here
+
+Unknown Speaker  1:01:03
+two to five ad
+
+Unknown Speaker  1:01:24
+your check link
+
+Unknown Speaker  1:01:30
+wait this guy
+
+Speaker 3  1:01:53
+continue on so this would be as this check number
+
+Unknown Speaker  1:02:09
+can anyone 61
+
+Unknown Speaker  1:02:34
+Where am I
+
+Unknown Speaker  1:02:43
+thought I had that
+
+Unknown Speaker  1:02:46
+63 I'm
+
+Speaker 3  1:02:47
+sorry 693
+
+Unknown Speaker  1:02:52
+Yeah go into this transaction let's go
+
+Speaker 3  1:03:14
+disorder so, this one is a Pio purchase
+
+Matthias Miller  1:03:47
+this is another one rounding error I think
+
+Unknown Speaker  1:03:57
+yeah, I can you but
+
+Unknown Speaker  1:04:08
+yeah
+
+Matthias Miller  1:04:18
+because of the rounding error the vendor invoice transaction doesn't exist so we can't match it out
+
+Unknown Speaker  1:04:26
+okay
+
+Matthias Miller  1:04:42
+think next steps perhaps are getting the accounting impact cleaned up and maybe getting it to a point where we can take a look at it for where we can run these reports in the test system And then see what see what it looks like. Just kind of Yeah, just dive back in.
+
+Unknown Speaker  1:05:08
+Yeah. Okay.
+
+Matthias Miller  1:05:12
+I'm not sure yet. Do you want to just play it by ear? It might, I might have some stuff before I can send you an email. That would work. And then we might it might it might not be until this afternoon we can circle back around. But yeah,
+
+Speaker 1  1:05:30
+that should be fine. Okay.
+
+Unknown Speaker  1:05:36
+Sounds good.
+
+Speaker 2  1:05:37
+Yeah, thank you. anymore. The the undeposited funds, that's about the same. Same thing, right. As far as
+
+Unknown Speaker  1:05:51
+those be sales?
+
+Unknown Speaker  1:05:54
+I think. Yeah.
+
+Matthias Miller  1:05:57
+It was the sales orders. So it shouldn't be.
+
+Speaker 2  1:05:59
+That should be more straightforward. How's that? Wasn't Matthias making some changes on?
+
+Matthias Miller  1:06:08
+I was going to Yes, I was going to make some changes on undeposited funds. I mean, I am planning to, but I have not made those yet. To split apart deposits and Stripe payouts in smaller pieces.
+
+Speaker 2  1:06:26
+So So Drew next steps, I mean, just kind of where we're at, you're waiting on the thought you're here as far as you can go with received that voucher any right for the time being until? Or is there there's no work that you could or shouldn't be doing on? Like we're missing an account or you just gotta wait. Um, all right, works. We will
+
+Speaker 1  1:06:55
+given I have given those checking balances to figure out yeah, I'll probably just let them set instead of instead of forging my way through now.
+
+Speaker 2  1:07:10
+So just trying to think as far as timeframe the size, like when when would you expect to have those the account balance diagnostics for pretty much the same fix applies for AP and r&d, right? Yes,
+
+Matthias Miller  1:07:25
+I would expect I mean, I would, I would hope to at least by noon, or sorry, by one today be able to have something in the test system that we can take a look at. Okay.
+
+Speaker 2  1:07:41
+And then hopefully, so by Tuesday morning, I don't know what your schedule looks like to begin with. By Tuesday, you should hopefully be able to do and then you're doing the undeposited funds is next on your list right? Matthias
+
+Unknown Speaker  1:08:02
+Yes, correct. And
+
+Speaker 2  1:08:04
+then any idea on on that so we can just kind of
+
+Matthias Miller  1:08:13
+very likely today possibly not today by tomorrow. And I've got I've got Bangladesh working on that one report you want to Drew so hopefully we can get that done simultaneously and that's not waiting too much on me. Yeah,
+
+Unknown Speaker  1:08:33
+no, that's fine.
+
+Speaker 2  1:08:36
+Well, I think we're then on accounts receivable customer deposits is in my cart to comb through those in once I have that come back with I'll probably need you to run those reports periodically to see then make sure that the changes we made are reflected on that report and then once that report is great then you'll either wait for an accounting update overnight or do it real time and then see if that matches raw materials I just did a check just now that that's everything matches to the penny just like you said it should for all three so good thanks for that and then depreciation not so urgent, but I'll get you working to get file from Matthias on that and then finished goods inventory, they're still
+
+Speaker 2  1:09:43
+I think finished goods inventory is also going to be as deep as class while I'll probably send you a list of here's the buildings here's the actual costs we want to apply for Money Free. I think that's just an upload or any input that you'll need to run. So, yeah, still a lot of work. But I think we've got, I think it's, it's all very doable. So yeah. We're dropping, I mean, no other scheduled calls for this week. But then if I asked you and I just plan to do the next next week, Thursday, call over whatever there is, and I'm sure there'll be some I'm hoping to get a lot of I'm hoping to get this, like the depreciation finished goods inventory to you first of next week. But I'd say let's plan to do the Thursday can't ever be called. And then, by the following week, we'll be back on a regular schedule.
+
+Matthias Miller  1:11:05
+Sounds good? I will. I forgot that I'm going to be out Monday and Tuesday as well. So feel free as long as you've got to meet by Wednesday morning.
+
+Speaker 2  1:11:19
+Okay, out from when, like Wednesday, Wednesday, until Wednesday morning, or Tuesday night? Whatever.
+
+Unknown Speaker  1:11:26
+Yeah. Okay.
+
+Speaker 2  1:11:33
+If you're going to have any availability at all, if we run into snakes or
+
+Matthias Miller  1:11:39
+email on this ship? Well, I mean, really, what would be ideal is probably a few. Leave me a voicemail or something? Or? I'll try to keep my eye open on it. But or, let me let me have have audio keep your eye open, open for emails as well. But feel free to give me a call. I don't I don't mind calls will not answer when I'm busy. But I'll have some flexibility to do that.
+
+Speaker 2  1:12:16
+Okay, well, I'm excited to be on the other side of all of this cleanup. We're right now we're getting into the heart of why we did all of this. Yes, you should soon have. I mean, just for whatever it's worth, Matthias we've reviewed January income statements, you know, with affordable and shared time now. And there's still some, but really the only thing that's that's is the call tower. We need to do actual causing it which we built functionality we've tested but everything is the good part is we can explain where all the numbers are coming from with that, you know, backing data and we trust the numbers and they're starting to see the value in the fruits of, you know, tagging everything, all the GL accounts they've been tagging and labeling everything specifically where it needs to go. So then it's also flushing out a number of things on that process. So good. I'd say it's, there's, I'm happy with where we're at excited to be on the other side of this year. Right close.
+
+Unknown Speaker  1:13:38
+Yes.
+
+Matthias Miller  1:13:40
+I agree. Good. Well, that's good news. I'm hoping it is. They've had a lot of patience to put a lot of resources and wait a long time to get this so. Yeah, without a lot of visible. visible progress on their end. Yeah. Yeah. Awesome. I'll be in touch. Thank you.
+
+
+Transcribed by https://otter.ai

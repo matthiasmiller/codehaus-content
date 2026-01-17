@@ -1,0 +1,497 @@
+Speaker 1  01:26
+You been with us sounds like there was yeah he said we was gonna jump over here sounds good while we wait for him
+
+Unknown Speaker  01:52
+you in the back of a store are you sitting in front of the mirror? It's
+
+Matthias Miller  02:02
+it's the bar of a coffee shop and there's like this little store in the entryway. Gotcha. Or like it's a separate room kind of off to the side.
+
+Unknown Speaker  02:16
+Gotcha
+
+Matthias Miller  02:19
+and yes there is a mirror somewhere I thought there was used to be a mirror somewhere
+
+Unknown Speaker  02:49
+right still not here.
+
+Unknown Speaker  06:11
+Good day. There we go
+
+Unknown Speaker  06:37
+Good morning.
+
+Unknown Speaker  06:41
+Good morning class I think we're Yeah. Been really working on setting up a zoom call. So we can do a screen share
+
+Unknown Speaker  07:01
+I might just hop off here and just
+
+Matthias Miller  07:08
+meeting where you starting? Okay, that's fine. Did the file I sent to you? Did that come through? Okay. Yeah. I'll join. Sounds good. Thank you
+
+Unknown Speaker  07:46
+he was
+
+Speaker 2  07:47
+unsure if it was the same zoom like as last week, so I just sent it to him to make sure I got it.
+
+Unknown Speaker  08:13
+Yeah. Hey, Mark, Mark.
+
+Matthias Miller  08:21
+Before we before we dive in too deep. I do have a quick update for you guys. Seth is working on nailing down the last issues with getting getting the data that we need into the test system. So most of it is there. He says that the see see where it's at.
+
+Unknown Speaker  08:46
+There were
+
+Matthias Miller  08:48
+six company records that didn't make it in any fixing that the employees import, we were having trouble because the new nonproduction hourly wage is required that wasn't in the previous system. So he's he's gonna fix that he's working on fixing that. And there were 280 buildings that didn't make it across, but we don't know which buildings they were. So he's going to look at and see which which ones they were invited to make it across. And then he had not done the the Chart of Accounts and transaction import, which means that financial applications didn't make it in yet. And he's working on on solving that. So there's still a bit of work. He's actively working on getting all that information over but it's still not caught up to the what the old test system had been.
+
+Speaker 2  09:49
+So just does that affect? What we're trying to test? Here are no win
+
+Unknown Speaker  10:00
+Some of the buildings are missing.
+
+Matthias Miller  10:04
+It could but yes, depending what buildings are missing, it could well, if the if we're if we're looking at this is just the cost calculations, are we looking at the standard costing? Are we looking at the actual cost here?
+
+Speaker 2  10:26
+Well, what we're, what we're trying to test is, if you look at this spreadsheet that I said the top section is, is information that we bought from assists, standard costing, and actual costing, where where there was actual costing. And then the bottom section
+
+Speaker 2  10:58
+so the bottom section, or in if you look in row 45, where I entered actual sauce, like 120,000 for materials 30 for labor in 24, four production overhead
+
+Speaker 2  11:23
+so that was just actual cost to test this, I just entered those amounts. And then in row 47, you'll see see the difference that we have to allocate appropriately to those buildings.
+
+Unknown Speaker  11:40
+And then I'm, I'm doing that
+
+Speaker 2  11:43
+in the bottom section. So the only thing that changed? Well, if you look at the first building in the bottom section, row 53
+
+Unknown Speaker  11:54
+the raw materials increase from 3364 90 to 3660 98. With with the date of 531 which is reading off of the transaction date in B 48. And then
+
+Unknown Speaker  12:17
+follow that logic follow through all the way in then if we go to rebuild building in row 59 That one had was was marked yes, for free standard cost is actual costs. So that number remains unchanged 674 85 on on the production labor looking at sell q 59. Q 59. Versus Yeah, I
+
+Unknown Speaker  12:56
+would just be easier if we do share the screen here yeah,
+
+Matthias Miller  13:05
+I'm seeing that. Um, okay, so what's required to test this I think the biggest thing
+
+Matthias Miller  13:19
+is to see if SEC would be available
+
+Unknown Speaker  13:39
+yeah
+
+Matthias Miller  13:45
+let me try this. If we take about 10 minutes, we might be able to get the system in into a place where
+
+Unknown Speaker  13:55
+I'm won't
+
+Unknown Speaker  14:01
+be able to do that. Okay.
+
+Speaker 2  14:08
+So, what I'm what I'm looking to test then, yeah, if you go down to the bottom row 9799. There I'm showing the pinnacles inventory materials variance production. And so if I add those material, variants FDI material and the call to materials variance, I ended up with the same difference I had himself on. So that's it. Yeah, this. These 41 buildings are actual buildings that were built in.
+
+Unknown Speaker  14:50
+were built
+
+Speaker 2  14:52
+at shed time, from 515 to 530. ones with actual sale day or delivery dates Yeah, that information was coming directly from the CES. So what? Yeah, what do we need
+
+Unknown Speaker  15:14
+to test this?
+
+Speaker 2  15:17
+Well, we want to know we want to walk through the functionality of like where do we enter standard pause? How does that Oh, and then not standard cost actual cost and then test test the logic and test the whole process I
+
+Unknown Speaker  15:34
+guess. Well, we can
+
+Matthias Miller  15:40
+I can walk you through it where you would go if that's helpful.
+
+Unknown Speaker  15:43
+Okay. Yeah. Let me
+
+Speaker 3  15:52
+open in another window see it's running if one may
+
+Unknown Speaker  16:06
+well
+
+Unknown Speaker  16:25
+all right so it would be under
+
+Unknown Speaker  16:39
+building costs
+
+Speaker 3  16:49
+you don't have the actual end we're not actually going to be able to do this without that
+
+Unknown Speaker  17:22
+why is there not a
+
+Unknown Speaker  17:29
+actually costs Okay, well, we're gonna go.
+
+Unknown Speaker  18:18
+So this is also a problem
+
+Unknown Speaker  18:28
+there's not a good way to create new abstract class entries.
+
+Unknown Speaker  18:57
+So, bottom line,
+
+Matthias Miller  19:00
+we need to give you a way to add a new actual cost entry. With the new button, it's not in the system, I'll see if I can get it in. So that stuff needs to do an update sometime this morning to get some more things up and running. But that point, so you'll start by going into the accounting go into actual costs and setting up one of these records. And you'd have one for each cost category. So in this case, we're doing raw materials. We are not doing anything for so we want to do 515. And so we're gonna do, we're gonna add one row for the first through the 14th, which we're not gonna worry about. And then we're going to do one for the 15 to 31st.
+
+Unknown Speaker  19:54
+We're gonna save
+
+Unknown Speaker  19:56
+and then at that point, we
+
+Matthias Miller  19:57
+can preview cost adjustments. Let's see what this says.
+
+Unknown Speaker  20:00
+Once you're on Yeah What's your price
+
+Unknown Speaker  20:09
+Oh period cost
+
+Matthias Miller  20:10
+for raw materials space in your spreadsheet is raw material was one twin
+
+Unknown Speaker  20:26
+so if we go back into the preview
+
+Speaker 2  20:36
+you're two cents I also I had to round the largest one take away those two cents and the largest one but it was
+
+Matthias Miller  20:53
+people they told Nick you're gonna have to you're gonna have to watch for that because it's not gonna add up right if you ran into decimals
+
+Speaker 2  21:01
+if you if you compare your number on the stand number about the chance from the top that 10,006 4847 increase mind or decrease it to 45 which is
+
+Matthias Miller  21:20
+yes which is this? Yeah, this number here so this this shows the rounded way bid amount this shows the fix of rounding why does this not yes and you can see here this is my two cents here's the fix of rounding this gets you down to 125
+
+Speaker 2  21:38
+is good
+
+Matthias Miller  21:44
+and then you should be able to apply changes and have it stamped onto those building records at that point
+
+Unknown Speaker  21:51
+what was that
+
+Matthias Miller  21:54
+in and then you hit Apply changes which will stamp these values onto the building records
+
+Matthias Miller  22:07
+I'm trying to think if that I don't remember specifically if
+
+Unknown Speaker  22:14
+let's see if that yeah
+
+Matthias Miller  22:23
+I think that just stores them onto the building doesn't actually reconcile against the accounting system
+
+Unknown Speaker  22:37
+any
+
+Matthias Miller  22:55
+so here is one where Costa wants to apply the building accounting impact report then once again it's under accounting building impacted kind of impact
+
+Unknown Speaker  23:11
+if you just
+
+Matthias Miller  23:13
+have it only show the differences which should show what what impact it should have on accounting the financial allocation record isn't in here and so the accounts are blank right now
+
+Unknown Speaker  23:26
+I'm
+
+Matthias Miller  23:30
+not quite sure why this
+
+Matthias Miller  23:42
+not sure why this stem in particular is wanting to show a an accounting impact but none of the others are
+
+Speaker 3  23:59
+is that so it's 5542
+
+Unknown Speaker  24:22
+Let's try this
+
+Unknown Speaker  24:31
+building different difference. Oh yeah.
+
+Matthias Miller  24:41
+Don't have any existing we have the expected billing accounting impact.
+
+Unknown Speaker  24:49
+Tables they stand
+
+Unknown Speaker  25:08
+That's about the truth
+
+Unknown Speaker  25:14
+in location delivery
+
+Unknown Speaker  25:43
+builds let's just do this
+
+Unknown Speaker  25:52
+straight taking the delivery out
+
+Unknown Speaker  26:19
+okay so there's a nondelivery value
+
+Unknown Speaker  26:23
+so it is for the build
+
+Unknown Speaker  27:10
+you don't have anything
+
+Unknown Speaker  27:19
+yeah yeah we need something today
+
+Unknown Speaker  27:32
+well we should not be
+
+Unknown Speaker  27:55
+so where do we do cable
+
+Unknown Speaker  28:13
+my students
+
+Unknown Speaker  28:34
+let's do this
+
+Unknown Speaker  28:40
+let's see if
+
+Speaker 3  28:53
+buildings in building districts
+
+Unknown Speaker  29:02
+are
+
+Unknown Speaker  29:09
+building builder districts
+
+Unknown Speaker  29:27
+don't understand why it's only showing
+
+Unknown Speaker  29:50
+lists
+
+Unknown Speaker  29:52
+why would we not have
+
+Unknown Speaker  30:01
+Let's go back in here
+
+Unknown Speaker  30:17
+like this one should show
+
+Unknown Speaker  30:37
+delivery
+
+Unknown Speaker  30:46
+let's do this
+
+Unknown Speaker  30:53
+we know it spilled
+
+Unknown Speaker  31:07
+yes sir oh oh
+
+Unknown Speaker  31:33
+one
+
+Unknown Speaker  31:44
+two bottles so this one
+
+Unknown Speaker  31:59
+roll party
+
+Unknown Speaker  32:15
+you're not
+
+Unknown Speaker  32:25
+sure well the process we snap
+
+Unknown Speaker  33:11
+think it's I think it's something like this
+
+Unknown Speaker  33:38
+into
+
+Unknown Speaker  33:40
+the last yeah
+
+Unknown Speaker  34:26
+building
+
+Unknown Speaker  34:28
+understand why
+
+Matthias Miller  34:45
+I think I have enough enough to go on financial impact report is
+
+Unknown Speaker  34:59
+already enrollment
+
+Matthias Miller  35:12
+include CI and allocation for delivery just say there's no allocation actually maybe I better hear this listen try so
+
+Unknown Speaker  35:48
+Now
+
+Unknown Speaker  36:34
+Black brace
+
+Unknown Speaker  36:44
+Yeah
+
+Unknown Speaker  36:55
+Okay,
+
+Matthias Miller  36:56
+so that's what it should be doing when we send an email to net
+
+Matthias Miller  37:12
+haven't take a look at that. But effectively then once you get the allocation set up, you should be able to see the accounting impact which will be used to push these into the accounting system.
+
+Unknown Speaker  37:28
+So, in the report, we should be able to see
+
+Unknown Speaker  37:33
+the change on each well, let's
+
+Speaker 2  37:35
+show all the buildings all the affected buildings.
+
+Unknown Speaker  37:40
+Yes, okay
+
+Matthias Miller  37:48
+this doesn't sorry, let me still isn't fixing the root issue?
+
+Matthias Miller  38:48
+Yeah, okay, Nick and I will have to dig into this more. But the bottom line, this, this will show that it's including too many records at this point. And so it's probably going to show too much. So it's not going to be accurate, we'll take a look at that and get that fixed. But you can at least get a starting point idea of what the kind of impact might look like. Just won't be accurate, completely accurate.
+
+Unknown Speaker  39:19
+So for next steps, should we hold off until Seth has done the import and unique have made the update? And then you're okay.
+
+Matthias Miller  39:35
+Others Well, at least at least until Seth has maybe made the input I think he can still test. You can still test the first part of it for the actual cost calculations. It's just the accounting impact is is going to be off until Nick anomic goes make them fix. Okay. And is
+
+Speaker 2  39:51
+that are you expecting that to change like the next hour or two or more like next week, or what?
+
+Matthias Miller  39:58
+Step is working on the inputs right now, I would optimistically hope in the next hour or two but
+
+Speaker 2  40:08
+yeah, just just shoot us an email and when that's done so Drew, do you can we go through that one more time?
+
+Speaker 1  40:21
+I think so, if it goes back to where that was. So you need to set up
+
+Matthias Miller  40:30
+the actual cost record, this does not have a does not have a new button right now. So I will give you guys a new button, create a new one, and then go create a new actual cost record with the district year and actually add category you will put in a period with an end date, the first period will have an end date prior to what you're testing, the next one will have an end date of the period for testing put in the period cost when you click the links little prompts, instead prompt to save you don't have to make changes save it if necessary. And then here you can preview the actual okay, what it's predicting hit apply that should push it to the building record. At that point you should be able to go to the billing accounting impact and run that for the district only show the differences and continue it'll show you all the non zero accounting changes that need to be made this shows what is in the accounting system This shows what we should be in the accounting system and this shows the difference to be applied to the accounting system
+
+Speaker 1  41:49
+so the the existing debit and credit would be shouldn't be those numbers that we put in that change like those actual thoughts
+
+Matthias Miller  42:06
+it should existing debit and credit at this point is just going to be blank because there's nothing in the accounting system yet.
+
+Speaker 1  42:15
+Right right but what I'm thinking work and and those actual costs are going in there that shouldn't be reflected
+
+Matthias Miller  42:27
+yes at the point that you know I don't know if we put this on the menu maybe we should I can add this to the menu
+
+Speaker 1  42:45
+yeah yeah
+
+Unknown Speaker  42:55
+well
+
+Unknown Speaker  43:06
+maybe we never built that
+
+Unknown Speaker  43:19
+yeah
+
+Unknown Speaker  43:24
+yeah
+
+Matthias Miller  43:32
+check with Nick and see at this point I'm not seeing
+
+Matthias Miller  43:48
+I'm not seeing the accounting reconciliation important here. So it's possible that never got applied. So at this point, there is what I can tell at this point. There is no way to actually apply these to the accounting system and penetrate those transactions but I'm okay with
+
+Unknown Speaker  44:04
+by the way to do that
+
+Unknown Speaker  44:11
+So, should we get a service
+
+Speaker 2  44:14
+and we can put it away? Can we start now or do we need to wait until Seth
+
+Unknown Speaker  44:18
+has done the important
+
+Matthias Miller  44:22
+stuff is working on the on the financials right now? Working on, on pulling in the financials right now. As soon as the financials in the financial allocations I think as soon as those are done you can start playing around with
+
+Unknown Speaker  44:37
+with it well,
+
+Matthias Miller  44:39
+yeah, except we're gonna stump
+
+Matthias Miller  44:47
+I don't know It's better. It's probably better to wait until Seth is done with his stuff.
+
+Speaker 2  44:55
+Okay, so once he's done well, we can start testing the first we can go all Wait until we're ready for
+
+Unknown Speaker  45:04
+the financial.
+
+Speaker 2  45:06
+The accounting impact. Yes. Which is the report with Nick Yeah
+
+Speaker 2  45:18
+good. Yeah. As soon as that does that updated well, we'll test that first part and
+
+Unknown Speaker  45:23
+then yeah you're
+
+Unknown Speaker  45:29
+good. You're part number. Yeah. Okay. Awesome. Thank you. Thanks Yeah.
+
+
+Transcribed by https://otter.ai

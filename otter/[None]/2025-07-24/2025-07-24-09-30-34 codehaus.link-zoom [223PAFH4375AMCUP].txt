@@ -1,0 +1,1175 @@
+Matthias Miller  00:19
+Hey, Jonathan i Good morning. Good morning.
+
+Matthias Miller  00:35
+Hey, Seth, long time. No See, yeah,
+
+Speaker 1  00:38
+I haven't seen you for a solid 23 minutes. That's crazy or something. I'll see you again at the Abyss after lunch, exactly.
+
+Matthias Miller  00:48
+If you want to really fight, we need to eat glass as well for lunch,
+
+Speaker 2  00:53
+doing that was very impressive to be drinking a Lacroix at 1030 in the morning. I respect that.
+
+Unknown Speaker  01:00
+Why? What's the what? What
+
+Speaker 2  01:03
+does it contrast to, like, you know, a coffee or energy drink or something. But I mean this one over here, I see, I see, I see that kind of morning.
+
+Speaker 3  01:16
+It is. It is that kind of morning when, when you have your 20 year old son who's decided to take an interest in actually making you go to the gym, and actually, you know, trying to train by by by this time of the morning, you kind of almost need coffee and water at the same time just To stay keep moving. So,
+
+Unknown Speaker  01:40
+oh, wow.
+
+Speaker 3  01:41
+So what Seth Are you in? Are you in? Are you in Colorado? Are you just Oh yeah. Are you on a zoom call, yeah, Oh, gotcha. We're
+
+Speaker 1  01:51
+in the Zoom we were in a zoom call. We're in a zoom call. Now we'll be in a zoom call after lunch. So since, since I got married, I spent 17% of my work hours calling size.
+
+Matthias Miller  02:07
+Marriage was not what changed
+
+Speaker 3  02:10
+it, though I'm just I'm trying to figure out whether the part that was it the marriage, or the fact that, you know it's 17% or is like that you're tracking this. I'm not sure which, which is, which is weirder.
+
+Unknown Speaker  02:26
+It might be down at 16% let's see. Oh, no, it's 17. 17.32 cool.
+
+Matthias Miller  02:40
+Well, who wants to do we have Seth, you want to, you want to do the honors of, are there fancy things to show off or not? That much happened since last week?
+
+Speaker 1  02:50
+Yeah, I will let Nick share screen. But basically, Nick and Sean and then some Nick and Jonathan have been working on getting calculation stuff going great. So we got some cool progress. It won't be as dramatic as last week, but
+
+Speaker 3  03:09
+come on, you set the bar. So it's like, once you know, once you set the bar, you gotta, you gotta meet it every
+
+Matthias Miller  03:14
+week, Dwayne, you gotta do your part to keep these guys busy.
+
+Unknown Speaker  03:18
+Well, okay, fair enough.
+
+Matthias Miller  03:21
+Fair enough. Notice. I'm throwing it on you. I was just
+
+Speaker 1  03:26
+talking with Ellen. Oh, I hear myself. There we go. I said I was just talking with Allison. I think the name that came up with bottleneck was started with an M and not a D, although there's probably some of both.
+
+Matthias Miller  03:43
+Okay, okay, fine.
+
+Speaker 4  03:51
+All right, so the new record for this week is the contract definition. We're Fielding, term lengths, CRA, security, deposit, all that information that we'll need for calculations over on the contract record, which that we've kept it fairly minimal for what we have in the balance section on the details screen. But if we clear all this out and see you can enter your contract type. We'll just do a standard contract here, term length, and then we are tracking most of our most of these numbers are actually correct. We don't have it fully built out for CRA contracts, but we do have all the numbers for standard contracts. Shipping is to be determined how we're going to handle that.
+
+Matthias Miller  04:46
+Doesn't that need to be contract setting. Shipping is taxable.
+
+Speaker 1  04:54
+It is right now it is a contract setting there. This is on the contract record.
+
+Matthias Miller  04:59
+I. I'm sorry, contract definition doesn't the contract definition. Should the contract definition determine whether shipping is taxable?
+
+Unknown Speaker  05:09
+I think it is, and we're just copying it over.
+
+Matthias Miller  05:12
+Oh, okay, never mind. I'm I'm slow, cool.
+
+Speaker 4  05:15
+No. I mean, we're not currently copying it over. I that shipping was not really spec, so I just threw it onto the contract screen.
+
+Speaker 3  05:27
+The whole shipping thing is probably going to be punted a little bit, because that is, will be, will come much more into a factor if, once we have, let's say a dealer is logging into us to generate the contract, whereas for general contract entry, where all of that is already done, we're just buying a building. All that shipping information is pretty much a moot point, because it's wrapped into the price of the building. So Don't, don't, if I don't start, you know, doing a whole bunch of shipping stuff, don't get excited, because it is something we can punt down the road a little
+
+Matthias Miller  06:03
+bit. Can we? Can we actually just remove shipping these shipping fields for now? Sure. Wayne, do you have an objection to that, or hide them? I um,
+
+Speaker 3  06:29
+I think probably, I guess it might be valuable Matthias to drop a note for ourselves that you and I just needed to talk about where we're going with that whole shipping thing. Like, what's you know, do we have a use case on the front end versus, I mean, because it almost feels like the whole shipping thing could be pushed to phase two or three, right? But before we go and hide before, before we abandon the whole thing and hide it, we want to just probably chat it about a little bit and and make a decision. But if we just, if we decide to punt it, you know, further into the next phase or two, then I'm fine if we want to hide it for now.
+
+Matthias Miller  07:08
+Okay, who wants to put a two to do in the spec for Dwayne and I to chat about, Thanks, Sean. Sean,
+
+Speaker 1  07:15
+thank you. Thank you. Was gonna say we have not put much work at all into shipping at it. I mean, Nick plopped it on the screen, but I don't It's not been we haven't put time into it. So I think the
+
+Speaker 3  07:26
+reason you haven't put much work into it because there was a giant question about it for me to
+
+Speaker 1  07:30
+exactly, but I'm just saying, if we hide it now it's not we haven't wasted anything really. Yeah, yep.
+
+Matthias Miller  07:40
+Good. Well, contract definitions are shaping up. One question of the contract definition is, well, the early I noticed the late fees are, it's an RG, which is probably how I expect it, but it seems weird that we're not. We don't have another column in the RG or something.
+
+Unknown Speaker  08:02
+Yeah, late fees currently aren't being factored in at all,
+
+Matthias Miller  08:06
+but the fielding seems, yeah, the fielding is a little odd, but I'm pretty sure it's at spec. Well, you should talk to bottleneck guy and ask him why worldly does that? Yeah, we're
+
+Speaker 3  08:18
+probably got to get a little bit more complex with the whole late fee thing, because I think there is, there is a progressive late fee as well, in other words, over time, like I think some states allow for, just say, you know, we can charge X amount if it's so many days past due, we can charge another a different amount if it's so many pays day, days past due. So we probably need another to do in for Matthias and I just kind of explore that a little bit. Okay,
+
+Matthias Miller  08:45
+so it sounds like it probably should be an RG, but we might need a number of days.
+
+Unknown Speaker  08:49
+Why would it need to be an RG
+
+Matthias Miller  08:52
+if you have multiple stage progressive fees, yeah, but the
+
+Speaker 3  08:55
+contract definition is per state and the like. So it would seem like it wouldn't need to be, like we're not going to have multiple maybe, I don't know. I mean, I guess unless you the progressive thing with an RG, I
+
+Speaker 1  09:09
+think that's how you do it, wouldn't you. I don't know how I see fielded, if it varies by day that makes by number of days, I think that's what makes sense. Do you just have a minimum number of days or Max, I don't know, but once you cross the threshold, then the percent changes. I
+
+Speaker 3  09:27
+need to go off into RTO Pro and see what all the different ways that you can set up late fees. And then I probably need to go and look at some of the state requirements, because this, it really is governed by the state. And so some states say you can charge flat dollar rates. Some say you can charge percentage, and some do progressive. So we want to be able to handle all of all of the potential possibilities.
+
+Speaker 1  09:48
+So do we have a late fee type and then that changes wet fielding you get or not? Yes, yeah, I would think so.
+
+Matthias Miller  09:55
+And then Dwayne, I would argue, to make them enter this lots of times for you. State to give us the flexibility to adapt for legislative differences.
+
+Unknown Speaker  10:06
+Sorry, I didn't follow that early on. I sound
+
+Matthias Miller  10:08
+like you were hinting at maybe having a shared late fee for the entire RTO company. But given that states have regulations around it seems like we should have the flexibility to define it on a per contract definition basis. My normal late fee. I'm a shark, so I'm always going to charge maximum late fee. Texas allows this amount. Oklahoma allows this amount. Well, I always want to charge the maximum late fee amount. So I need, I need that on the contract definition, so I don't, I don't have to choose the least common denominator. I
+
+Speaker 3  10:45
+This needs you, and I need to chase this around, because it really comes down to, do we want to so if we have, I don't know. I think you and I just need to talk through a few things. Yeah, so we need to do for this. And I think one way or the other, I think we were probably going to end up with not an overall company late fee setting, although I do know that that's kind of how RTO pro handles it. Well they handle they don't even have a contract definition thing like this. So this, this is actually exciting. So that when, if you pick when you're entering a contract, if we have all this stuff defined, we're gonna, we're gonna make somebody's life a whole lot easier that, rather than defining some of this stuff. So
+
+Speaker 1  11:37
+you're saying, currently, they have to define a lot of this on every single contract,
+
+Speaker 3  11:43
+on entry, yeah, great. Some, some of this. Okay, so, like a number of years ago, they came out with this, with this little module where you could go ahead and set your terms. It would auto do, auto, auto calculate your, your monthly payment. But that was, that's only a couple years ago. I still think, I think that every contract currently still you have to define what the late fee will be. I think it's been a while since I did contract entry, so I'd have to investigate some of this stuff. But being able to define all this was just, it's just that we have to remember that we may be looking at an RTO company and saying, You have to configure some of this stuff when they were doing single company settings before I want to talk through that and just make sure we're not getting overly complex for someone.
+
+Matthias Miller  12:41
+Yep, good. The workaround Dwayne is allowing multi state selection on a contract definition. Sorry, we talk. Let me. Let me shut up. Good. Anything else? Well,
+
+Speaker 3  12:52
+if, well, then it's almost a moot point. At that point, if we can do multi state selection, then let's just carry on. The only, the only that's going to get us in trouble there is if we're using multi state selection gets a little bit dangerous in that, not necessarily, I guess you could have a template of a contract that's mostly the same, but it's pretty
+
+Matthias Miller  13:13
+rare, so you might have to customize the template so everything except the Well, but at that point though, okay, so you would need, let's talk about this. We're not here for a design call. We're here for demo. Okay, that's the short answer. Is that we need to talk about this. This is wonderful to see the shaping up. It's wonderful to see the calculation showing up. I apparently am the reason this project isn't moving forward. Dwayne and I are going to be talking through and solving that problem. And we really don't have much more free well. And then Dwayne, let's see how much of the contract definition changes the I guess an update for you guys. We contract? No, I can't even find it. Oh,
+
+Speaker 3  14:00
+yeah. Question, I have a question on contract features to security deposit. What's with the dollar value security deposit? Amount that should be a
+
+Unknown Speaker  14:13
+right, a percent of no
+
+Matthias Miller  14:17
+or what should it be right? Did we say that's a multiple of month payments, or what did we didn't define
+
+Speaker 1  14:27
+it. I don't think we really defined it. I think Nick was looking out of what we do in assist, I'm assuming,
+
+Speaker 3  14:35
+so the Okay, so I don't know that we really have a feel for this and assist. I think what's happening in on the checkout process in the configurator is that, by default, we define a as a security deposit equal to one rent month of rent, and you can increase it or decrease it. I I wonder. I. Okay, Sean put it to do in for this, the whole security deposit amount thing again, and and for Matthias and I this, this is good to see stuff and just start throwing to do's in to talk about,
+
+Speaker 1  15:15
+specifically Dwayne, what note Do you like? What do you want me to note that you want to look at specifically with the security deposit,
+
+Matthias Miller  15:23
+just in general, I can, I can just go in general to do there.
+
+Speaker 3  15:26
+I think the question is, do we want to have a default security deposit, deposit method? I think is, is the is the question, okay, now, okay in the in the case of, do not allow increased security deposits, I'm assuming, is that just going to be underneath the hood where we're saying, If we say, No, you cannot do increased security deposits, then it's automatically equal to one month of rent. Or do we need to also have a definition for that too? Throw that isn't it to do? Because I that may be something that we need to define from another state level to say what the actual amount is that we're, if it's not allowed for increased security deposits, what is the amount that we're what is the cap? So I don't know. I don't know how much seam are going to handle that. So does that? Is that enough information? You clear? It might clear enough? Or am I have I just muddled, muddied the waters? No,
+
+Speaker 1  16:27
+I think that, yeah, I'll write something down, and I think that, um, yeah, hopefully when you look at it again, you'll, you'll remember what I'm talking about here. So yeah. And
+
+Speaker 4  16:36
+also, I think the reason that it's currently in a mount field is that it was the answer to my to do was that it's a a free, really editable field. Other than that, you can't increase it by more than one month's rent.
+
+Speaker 3  16:53
+Yeah, but it's not a contract definition question. It's it happens at the point of contract entry. So it'd be on the contract record, not the definition record,
+
+Matthias Miller  17:01
+back on the death contract definition. That's why it's all in contract definition. But that makes sense. We it was, it was a rough spec anyway, we'll clarify it. Yeah, no harm, no foul. The variability is on the contract. One of the major outcomes of the conversation yesterday is that Dwayne and I did spec out credit card convenience fees. I think we can go ahead and add fielding for that, and they need to be frozen on the contract as well. Dwayne is going to come up with scary, scary legal verbiage about, you know, we are not a lawyer, and you can blow your big toe off, if you care. But that's not our problem, but it's basically an RG under the hood. We're going to think about it as this is the max dollar amount you can charge. This is the max percentage you're going to charge. So when you calculate it on credit card, actually, Dwayne, we didn't talk about ACH convenience fees either. I
+
+Matthias Miller  18:08
+uh, we want to leave it to you before we, oh,
+
+Speaker 3  18:12
+yeah, probably, we probably need to look at ACH convenience fees, although a stupid RTO coming, if you're going to charge convenience fees for an ACH you need to have your head examined, but yes, we probably should.
+
+Unknown Speaker  18:24
+So don't, don't write that down.
+
+Unknown Speaker  18:26
+Shawn, I did not say that out loud.
+
+Matthias Miller  18:31
+So Sean, on the RTO Company record, please add a to do under the convenience fees to for Dwayne and I to nail down ACH convenience fees. I
+
+Speaker 3  18:43
+um, and this just jogged my memory on something. And I don't think Matthias, you and I ever talked about handling NSF checks. Okay, we need to that is going to have to, we're gonna have to handle that in some way. So somewhere there needs to be a note about handling NSFs, all right.
+
+Matthias Miller  19:13
+I'm assuming there's going to be a Yeah. That's all we need.
+
+Speaker 3  19:16
+Yeah. There's fees that go along with how we want to handle it, as far as you know, on Yeah, a whole, a whole bunch of things. And there's, there's a lot of, there's, there's settings that that are going to surround that as well, and on what an RTO company wants to charge, etc, and so on and so forth.
+
+Matthias Miller  19:35
+Okay, well, I think, I think the short answer is, once again, we don't really have this is this is, this is wonderful to see this shaping up. We can continue fleshing out CRA calculations, copying some of the fields over, but we're still we're still well now, so we'll let you know as soon as we get more stuff ready for you to sink your teeth into. What
+
+Speaker 1  19:56
+you said that can be credit card convenience fees is one thing that you have flushed out. Yeah, or not.
+
+Matthias Miller  20:00
+Well, we need to have ACH fees, which could change the data model slightly. So sounds good. Why does it
+
+Speaker 3  20:08
+need to change data model? Why can't we just add to the RG?
+
+Matthias Miller  20:12
+You just want to call them in BRG for type
+
+Unknown Speaker  20:15
+that defines the type, or whether it's ACH or credit card.
+
+Unknown Speaker  20:20
+I'm fine with that.
+
+Matthias Miller  20:22
+But then we're gonna have to, it's the same model.
+
+Unknown Speaker  20:27
+Yeah, we're gonna have to store it on the, on the, on the record. Why
+
+Matthias Miller  20:29
+not just additional fees? Why not additional fields, record fee, type cracker fee and maximum, ACH type fee, maximum.
+
+Speaker 3  20:38
+Okay, well, maybe we do need to talk about it. Let's, let's push it into it to do. We'll dig it a little bit further, but it's pretty in answer to your questions. Question seven, it's really, really close. Probably afterward today, we'll have it. We'll have it nailed down.
+
+Unknown Speaker  20:52
+Sounds good. Awesome. Hey
+
+Unknown Speaker  20:56
+you guys. I will drop off. Thank you. Yep.
+
+Unknown Speaker  20:59
+Thanks. Thanks, guys.
+
+Matthias Miller  21:05
+All right, where do you want to Okay, so the reason for ACH and and in my head, having separate fields, is because we do need to freeze the values. I guess I don't really care. We do need to freeze the values on the contract for both credit card and Ach, in case somebody opts to make an ACH payment, and they're different, but maybe, but an RG also makes it easy to look up, so that's fine,
+
+Speaker 3  21:35
+but I mean it. So when you copy the values from onto the contract record. Are you just gonna, are you just gonna field it? Are you gonna just copy the whole entire RG there?
+
+Matthias Miller  21:49
+Well, only, only the rows for the state. And, I mean, it has to be fielded
+
+Speaker 3  21:55
+somehow. Yeah. I I forgot about the state part that complicates it.
+
+Speaker 3  22:13
+So, so, so always Where's so we have fee, type, fee, maximum, maximum, p
+
+Unknown Speaker  22:24
+max.
+
+Speaker 3  22:25
+I mean, do we just make the Do we just make the whole RG wider and put in and just and set, you know, define as one section as credit card. One section is Ach, and we just make it really nice and wide. Basically, just duplicate all your fields. Let me do this. I might be obnoxious.
+
+Matthias Miller  22:54
+I think actually when it comes to it
+
+Matthias Miller  23:02
+feels like actually adding the type feel like you're suggesting is the most future proof. Because, I mean, could we not? They're like, we have, maybe there's not, maybe you're not going to add other types, but,
+
+Speaker 3  23:16
+but I mean, then so what are you going to do? Double states, so NC, type credit card, NC, type
+
+Matthias Miller  23:27
+Ach, yeah, in your RG, your RG on the on the you'd have an RG on the contract that would just wouldn't have to state column. It would just have these and the ACH versus credit Card field.
+
+Unknown Speaker  23:58
+I'm struggling to have a strong opinion.
+
+Matthias Miller  24:02
+If we do, we can get away with not having ACH convenience fees. That would be wonderful.
+
+Speaker 3  24:07
+Oh, trust me, somebody's going to want it, because that image I sent you yesterday can come stay. Ch, fees, right? Yeah.
+
+Matthias Miller  24:27
+Okay, we're gonna do this until we get the
+
+Matthias Miller  24:38
+convenience fees.
+
+Unknown Speaker  24:41
+Add a and.
+
+Matthias Miller  25:08
+Should we actually have don't We don't we have payment methods? Or are we not going to have a payment methods list? Hold on, why would we have a payment method definition? I
+
+Unknown Speaker  25:20
+uh, because when you make a
+
+Matthias Miller  25:41
+payment, you're going to want to record whether want to record whether it's ACH or credit
+
+Speaker 3  25:48
+card. Sorry, I'm trying to, I'm trying to read the what state limitations there are for
+
+Speaker 3  25:58
+convenience fees on ACH. I h i should have went into AI instead of googling it. Let me see
+
+Unknown Speaker  26:28
+Oh, wow, I'm
+
+Matthias Miller  27:11
+searchers are never paid on debit or prepaid cards.
+
+Unknown Speaker  27:20
+Oh, what?
+
+Unknown Speaker  27:23
+You can't charge a convenience on a debit card. You
+
+Unknown Speaker  27:40
+i Well, that's a real hiccup.
+
+Matthias Miller  28:00
+Most people aren't compliant
+
+Speaker 3  28:02
+with that. Oh, I promise you, how would you even? How would you even? How would you even know somebody hands you a credit card number? How do you know if it's debit card or Credit
+
+Unknown Speaker  28:22
+Card? I
+
+Speaker 3  29:12
+wait. Can we punt this to the credit card provider to set up convenience fees? Um,
+
+Unknown Speaker  30:59
+Oh, my Oh, My, You.
+
+Speaker 3  31:56
+Okay, that's feels like A ton of work.
+
+Matthias Miller  32:03
+I mean, it's actually not that bad,
+
+Unknown Speaker  32:07
+yeah, but is it future proof enough,
+
+Matthias Miller  32:12
+in what way, like with your with other credit card merchant processors?
+
+Unknown Speaker  32:17
+Okay, so my
+
+Matthias Miller  32:19
+other option is, then
+
+Speaker 3  32:21
+we're not gonna, we're not gonna integrate with stripe. So, so it's like, Can we do this with other credit card processors?
+
+Unknown Speaker  32:28
+Well, if not,
+
+Matthias Miller  32:32
+there's been list.
+
+Speaker 3  32:41
+I mean, I would think that we should be able to do the same thing with other credit card processors. 5000
+
+Matthias Miller  32:50
+requests per month, 50,470 pounds. I don't know why we have to go to a foreign country, but it seems to me like, I mean, it seems to me like if, if we're not doing With stripe, yes, there are third party.
+
+Unknown Speaker  33:21
+Okay, Bin dB,
+
+Matthias Miller  33:24
+Bin DB
+
+Unknown Speaker  33:26
+pricing. Okay, gracious, Bin base,
+
+Speaker 3  33:35
+this. This feels like one of these. This feels like a complexity level that that can really cause a hiccup in credit card processing,
+
+Matthias Miller  33:47
+from a consumer or standpoint or a technical standpoint,
+
+Unknown Speaker  33:51
+from a technical standpoint,
+
+Matthias Miller  33:55
+I don't think it's that bad. I think it's like these are literal credit card convenience fees. Yeah, but
+
+Speaker 3  34:11
+okay, here's my here's my problem with it. We have essentially taken some of the compliance onto ourselves at this point, if we, if we try to,
+
+Matthias Miller  34:18
+so then add a funding source list of credit, debit, prepaid, unknown, ACH and unknown and and we just we do the lookup, we figure out what type, and we apply that that rate, and you can do whatever you want.
+
+Unknown Speaker  34:44
+So, so where would this list be used
+
+Matthias Miller  34:47
+in the convenience fee definition
+
+Speaker 3  34:52
+here? Okay, but if we're going to, if we're going to take responsibility to do a lookup to determine. Whether it's a credit or debit card, again, we're taking on the compliance of it. So, so here's here's the question. Class action lawsuit claims that only software is enabling companies to charge convenience fees on credit cards. How do we off shift the risk to say, Nope, the user took responsibility when they set up the settings,
+
+Matthias Miller  35:26
+but didn't, didn't they? I mean, I think that it's, it's you conversation with you and an attorney that basically says, Look, I'm paranoid and and is there a way that I can say, we will in good faith. Or, I don't know, like, what is, you know, how do i What's the mismitigation?
+
+Speaker 3  35:48
+Well, the risk, the risk mitigation is, if you turn on convenience fees, you took full responsibility for the fact that you may be charging debit cards a convenience fee, and that's illegal.
+
+Matthias Miller  35:59
+But then if, but then if you don't give them a way to say, I don't want to charge convenience fees to debit cards, then they can't use convenience fees if they actually have a conscience and want to sleep at night. So the feature becomes useless to ethical people if you don't have this feature. So how do you I mean, what you have to prove is that you're using what the third party vendor reported, and if the third party vendor reports wrong, then you tweet it on them.
+
+Speaker 3  36:31
+Well, unless, unless, as part of taking a payment, we required the person taking the payment to define what type of card it is,
+
+Matthias Miller  36:39
+and then double check that it matches.
+
+Speaker 3  36:42
+Well, yeah, this is, that's what I'm trying to avoid. I got, I don't, I feel like the moment we say we're going to try to validate whether this is a credit or a debit card, if we get it wrong. I mean, okay, the likelihood that this ever gets like that, this ever happens and someone's, you know, sues us for it is probably so stinking low, but it's like it is one of these things where, if we take, if we take on the responsibility of validating whether it's a credit or debit card, and we don't get it right, then are We liable? Well,
+
+Matthias Miller  37:18
+okay, this is an attorney question. Um, so if we go back into here, I mean, I don't, I don't think there's any other answer, unless you know,
+
+Speaker 3  37:32
+I mean, I can tell you that looking at the settings in RTO Pro, they are, there is no, there is no validating for this. I
+
+Matthias Miller  37:52
+mean, this is a but it seemed okay. But okay, do you want to close your eyes and let people keep doing this, because wouldn't it also be problematic if somebody said to you, somebody said to you, they say, Oh, we thought you meant credit when you say credit card, we thought you actually meant, like, just credit funding. I didn't know you meant debit card too. Now you're also liable because you actually knew about the issue. Now, sorry and
+
+Speaker 3  38:38
+Well, what I what I want to say is, somehow I want to off shift this back over to whatever company is using the software and and saying, Look, if you decide to use a convenience fee, then here's what you need to Know. And second of all, here's how you like if you know it's a debit card, here's how you bypass it. You seem to think that it's not that big of a deal to to define whether it's a credit or debit card, and based on what was the first four digits,
+
+Matthias Miller  39:24
+seven digits or something.
+
+Matthias Miller  39:33
+And if you're if you're effectively going out to a third party vendor, who's I uh, keeping things up to date. Then it seems to me like unless we make some kind of stupid programming error on our end and we say, this is hyper, hyper critical. This is a huge liability. This has to be absolutely correct. It needs to stay correct that unless we make a terrible. Error, that vendor would be the one that's liable because it misreported
+
+Speaker 3  40:06
+that information. I mean, I'd really like to avoid. I'd like to avoid, I guess we could say that if we put it as part of the if we put it as part of the setup for convenience fees to say yes or no allowable for convenience fees on debit cards, and then if you say no, it's not allowable, then you have, then you're required to sign up with this company in order to stay compliant. I mean, I kind of hate that, but
+
+Matthias Miller  40:35
+okay, but I don't understand why. For if we really can't get something for 50 bucks a month, like, why can't that be? Maybe it's not. Maybe it's,
+
+Speaker 3  40:44
+yeah, but I mean, it's 50 bucks a month. It's like, is that? I'm assuming that's per per art, per instance of the software?
+
+Matthias Miller  40:52
+Why you could use the same API key for everybody and just do bin lookups everywhere? And if you're using Stripe, which you're not, but if you would be, it's no additional fee.
+
+Speaker 3  41:02
+Well, and I'm assuming, if stripe gives you a capability to wait to look it up, then I'm assuming that just about any credit card process is probably going to give you the same thing.
+
+Matthias Miller  41:12
+I would hope so, but I don't know.
+
+Speaker 3  41:15
+I think, okay, so here's, here's what I think we need to do, let's, let's throw this, let's, let's add a, let's add a checkbox, probably to the RG for convenience fee setup in regards to debit cards, whether you can your state allow, the state allows you to charge convenience fee for debit cards. If you, if you say, if you check it and say, yes, it's allowed, and then you charge a convenience fee, it's on you, you set it up that way. But if, if it says no, then whenever we do credit card processor integration, we'll just have to have it to do to figure this out and how to validate the card. And if we have to, if we can use an eight, if we can use a a, you know, only wide bin lookup type of thing. Okay, then maybe we we use something like that. But if my first choice would be to do it through the credit card processor, the second choice would be to have some sort of
+
+Matthias Miller  42:13
+account, why do you ever allow it?
+
+Unknown Speaker  42:18
+Some states allow it, don't they like what
+
+Matthias Miller  42:24
+merchant most? Most the major payment networks don't allow it, allow it.
+
+Speaker 3  42:34
+So we would, we just automatically default to never on debit cards. Yes, okay, I'm fine with that. And
+
+Matthias Miller  42:43
+if somebody asks you, say, oh, oh, like your state, your state allows it, RTO pro doesn't. So I would, but I would still prefer funding source.
+
+Speaker 3  42:55
+So here's the deal. If here, here we go, if someone comes to us and says, My state allows it. My credit card processor allows it. I want to charge it. Then we just look at them and go, Okay, it'll cost you five grand. And we'll go customize your system. We'll add a
+
+Matthias Miller  43:10
+custom funding source for debit card. We'll add support for it and and you have you if you need them to sign an additional contract that removes liability from you, then, yeah, you have your lawyer draw it up, sort of the $5,000
+
+Speaker 3  43:25
+when we go to do credit card integration, we just have to have a note for ourselves that we have to figure out whether we can do this through a credit card the credit card provider, it seems like if credit card provider processor says you can't do it, then they probably ought to give us a way to validate it,
+
+Matthias Miller  43:42
+or a way to say, can you just automatically, like, can you throw on this charge, if it's allowed? Yeah, should we? Is there? Do we want to clarify the credit card as a like credit What do you mean? Like credit card can mean, mean, dude, is credit card the right term for this?
+
+Speaker 3  44:03
+Yeah, what are the term would there be? I don't know, plastic card.
+
+Matthias Miller  44:13
+No. I mean, like credit card, credit card could mean, like, credit card, debit card, prepaid card, or it can mean credit card versus cash. I
+
+Speaker 5  44:20
+list of
+
+Speaker 3  44:29
+I mean, I'm assuming we are. I mean credit card and ACH seems, seems right. I mean most other things function as a credit card, except for debit cards, like prepaid cards, are they function as a credit
+
+Matthias Miller  44:47
+card, right? But we're not literally meaning credit card. We're meaning we're meaning we can't do it on prepaid either. We're literally meaning only if we can identify it as a literal credit
+
+Speaker 3  44:55
+card. So you can't charge a convenience fee on a prepaid either, I don't think so. I. Are they saying that functions like a okay? How about this? Let's ask, what list of payment types can you not charge a convenience fee on?
+
+Matthias Miller  45:16
+Okay? Give full list of types of credit cards that you can and cannot charge a convenience fee on,
+
+Speaker 3  45:37
+oh, good gracious, you can't charge it on American Express, Discover, allow, only if they feel but equally to Visa and MasterCard, a American Express, this is a mot Field. Mine. Not mind you.
+
+Matthias Miller  47:01
+I ran Out of research credits and chat GPT. I'm
+
+Unknown Speaker  48:26
+well,
+
+Matthias Miller  48:28
+I mean, I think, though, I mean, this is wow. I really wonder how many RTO companies are charging a convenience fee.
+
+Unknown Speaker  48:39
+I don't know
+
+Matthias Miller  48:43
+this is almost enough to say.
+
+Matthias Miller  48:55
+It seems to me like now you need a matrix, if it's this vendor, or if it's this payment network,
+
+Unknown Speaker  49:04
+And it's
+
+Matthias Miller  49:12
+and this funding method in this state, and
+
+Matthias Miller  49:24
+okay, well, do you want to where Do you want to go from here?
+
+Unknown Speaker  49:28
+Hold on, yep.
+
+Unknown Speaker  49:50
+Let me see what Gropp has to say. I'm.
+
+Speaker 3  51:42
+or we just go like, super simplistic and say, Hey, rent to own company. You're on your own. Yeah, if you decide like, if you decide like, we'll give you a state you. think for about just about every state, debit. means we're interesting information. Well that's not helpful. Um, I yeah, I think for about just about every state debit card charges are prohibited, does not define. Grokton defined like payment type cards, like prepaid, etc. I Sorry, you said it does not define prepaid. Hang on. Let me ask. It gave me a whole state breakdown of which states allow and like the whole the whole prohibits and not who doesn't prohibit, and so on and so forth. But let me ask, what? But let me ask about prepaid cards, okay? And then also potentially networks, paper networks, I Oh, no. Elon grock four is slow. All states prepaid card surcharge is prohibited, although prepaid convenience fee allowed if flat, all states allowed, if it's a flat fee disclosed, and there's an alternate channel available, card networks, Visa and MasterCard. Ban surcharges on prepaid cards. Means fees. Okay, under specific rules. This is a mind this is a minefield. Like part of me wants to say, what do I want to say? I want to say, we don't want to get into this, but I'm not sure how we get around it. Well, I think what we the one way we could get around it is when somebody takes a payment, you say, Well, do you want to charge a convenience fee, either on this contract or this payment, or on this payment method, really? And leave it all up to them. And when somebody wants compliance, you write a check for 20 grand, and we fix compliance, whatever the number is you Yeah, all right, can we? Can we? Can we put a giant hold on this whole thing? I want to discuss this with Leanne, maybe get legal advice. Like I feel like this feels like either we go full on and we go full compliance, or Uh and a like, we'll give you essentially what we what we were doing here initially, but if you start charging credit cards or fees on debit cards and prepaid cards, then it is on you, like you take full responsibility. Well,
+
+Matthias Miller  55:14
+you might even in your legal disclosure, you might even indicate that you should seek counsel about which which funding sources, which payment networks, the style of method, whatever like. Don't advise them, but at least disclose to them that there might be issues and have them. I mean, part of it
+
+Speaker 3  55:31
+wants to say, if they check the box to turn on convenience fees, there is a giant legalese disclosure, and it like you have to, I don't know, e sign it
+
+Matthias Miller  55:43
+well. I mean, I wonder if, if maybe it's turned on by an admin and only upon sign, upon a signed sign contract, do you guys keep on file or a signed agreement?
+
+Speaker 3  55:55
+Yeah. So, okay, so here's what I wonder. It's like, do we do we do is, is this something that can be turned on, like, only through an update? And in order to get that turned on, you have to, you'd have to sign a document with us saying you take full responsibility. Like, it's all there, it's like, but only, only someone from from dev, can turn it on.
+
+Matthias Miller  56:18
+Yeah, we could totally do that, but then you still need to figure out what the what the settings are.
+
+Speaker 3  56:25
+Well, at that point, it's, it's just literally ACH and credit card, and it's like, we're not going to validate whether it's a debit card, like validation is on you. You have to ask your customer to say, this is a credit or debit card, and if they say it's a debit card, then you have to negate the fee.
+
+Unknown Speaker  56:47
+Is that obnoxious?
+
+Unknown Speaker  56:53
+Well, I don't
+
+Matthias Miller  56:57
+do you apply it on the and how badly do you? I
+
+Matthias Miller  57:06
+think there's probably, I guess the question is, how many defaults Do you want to set? So you enable it by default. Here you enable it this propagates to the contract. They can turn it on off of the contract. They can turn it off on a specific payment, right? I
+
+Speaker 3  57:24
+Yeah, so what we could do, so you could go through this whole entire process to say, like, okay, obviously we're going to have to have some method when you're checking out, when you're when you're doing a payment, to pick a method. And if you say, you know, if it's customer service in here, and they say it's a check, well then you're going to put a check number, and if it's a money order, well then you can put the money order number, but if you then, but we also have credit card and debit card options, and if it's debit card option. Then, obviously, internally, under the hood, we can say, would never charge a convenience fee. And maybe we say prepaid card as well. We give you, we give you a couple different payment type card options, and if you select it as the user, then the company is responsible. Like, hey customers on the phone, hey, I want to use my card to pay this. Okay, is it a credit or debit card or prepaid? Card or prepaid card? If they say it's a prepaid card, then you select prepaid, you enter them, and you move on. And but the I think that's actually fairly Okay, don't you think,
+
+Matthias Miller  58:36
+yeah. And then we so we have have payment methods that are
+
+Speaker 3  58:41
+shipped. We will need some type of other option there too. But, yeah, this is, this is going to be, I mean, when it comes to on the online portal, you'll really only have credit, debit or prepaid option, and at that point, do we tell the like, Ah, man, then, then it's like, do we tell the customer, hey, if you, if you like, if you select debit card or prepaid card, or, I don't know, like, how do you, how do you handle it when it's a when it's a customer? Well, just
+
+Matthias Miller  59:16
+self report as a debit card. Well, yeah, I mean, why wouldn't you?
+
+Speaker 3  59:23
+I mean, okay, now we're now we're back to the to the now I'm understanding why RTO Pro has the has the has the the checkbox to say, don't charge convenience fees to online portal. Because they're they're basically saying, Okay, that's a minefield. Let's not even turn let's not even turn fees on, only if they call the office. But like,
+
+Matthias Miller  59:49
+Right? Which is which? Which may change it from a convenience for whatever it may, may be that paying online is the standard way. So when you call in, you have to pay extra and go set up an account if you want to. You know, get around because it's not credit card specific. They may be able to do it more frequently, or something I don't know.
+
+Speaker 3  1:00:13
+Okay, you've got enough notes we that we can come back around to this whole conversation. I want to talk to Leanne about it. Maybe we'll get some attorney consult, consultation. I do think this whole thing probably needs to be only turned on by either through dev or through somebody in my office like and they need to, they need to sign something saying they're taking responsibility for it, so that if, if only ever gets sued, then we can present the documentation. Said that the company took on all legal responsibility for the compliance on credit, debit cards and prepaid cards.
+
+Matthias Miller  1:00:47
+I would, in a lot of ways, I would prefer making requiring a system update, because it's one less. I don't know. I guess it's up to you. It's just a layer of friction, like and it's a clear checkpoint. Okay, well, that was fun. No,
+
+Speaker 3  1:01:06
+that was not fun that this is, I imagine we're probably going to find some more things like this. It's like it. I hate this com the conversation of who takes, who takes liability for the compliance of something like this. Because on one hand, I feel like, okay, we have all we have the knowledge over here, and we have the technical capabilities to probably make you compliant, but I don't want the responsibility, right? So, yeah, all right. So do not implement for right now. Make it. Make it. Yeah, you've got to
+
+Matthias Miller  1:01:42
+start with, please, please talk with the an or legal counsel about the direction we want the one slash need to take with This, right?
+
+Unknown Speaker  1:01:58
+Yep, yep, yep, um.
+
+Unknown Speaker  1:02:04
+Um, all right,
+
+Matthias Miller  1:02:22
+okay, well, that was okay, like I said, not fun, but okay, you
+
+Speaker 3  1:02:28
+want to do something fun for a second? Yes, screw all the way to the bottom. Go to Dwayne's notes. Okay, all right, let's do, let's do the first one, the whole RG of notes thing. Yep, read what I have written. There.
+
+Matthias Miller  1:02:56
+Ie
+
+Speaker 5  1:03:00
+due date. I'm dude
+
+Speaker 3  1:03:04
+after, after I told this to Leanne, like ideas were popping up all over the place. The last bullet point, you're probably not going to like me for, but let's talk about it.
+
+Matthias Miller  1:03:14
+Well, I mean, I think the answer is, I mean, with all with coding, we definitely can, and then you just build a report that sucks it in from all the different places. And the simpler we can keep it,
+
+Speaker 3  1:03:30
+the better. I mean, so is this not like if on a, on a, on a contact record, if you, if you, if you say, leave a note, automatically assigns the record, num, ID to it, so that we can it ties to that particular record. If you're on a on a accounting record, or if you're on a product record, or any one of these record types, if you want to leave a follow up note for somebody to go do something with that particular record, the Create note thing on there would assign the num ID to the record so that you can so you know exactly where you're going to go look at it. But like I I know this idea is a little bit half baked on how we could do this, but it was like, if we're only going to do this to the contact record, well then it's only usable for a particular subset of people, it would be we could drastically expand this, if you could do this for a whole bunch of things?
+
+Matthias Miller  1:04:30
+Yeah, I agree, so. But the question is, are you fine popping into a new detail screen so that you have a generic detail screen that ties out to all these different records? I mean, it's kind of like the accounting transactions. We have an assist. What type is it? What's the record ID? Click the link, boom, open it up. So if you're fine with not, you know, not being able to drop the comments directly in on the contact record, and needing to click a link to pop it open.
+
+Matthias Miller  1:04:59
+Great. Yes, we can. Pre populate all these fields based on where you're coming from. I
+
+Speaker 3  1:05:03
+mean, so, so what I think, I think what you're saying is that if you're on the contact record and you want to go leave a note, if we want to follow this methodology, then it is going to open up another screen, a detailed screen, in order to leave a note.
+
+Matthias Miller  1:05:14
+Well, I'm saying it's way, way simpler technically to do it that way, and cleaner to manage,
+
+Unknown Speaker  1:05:20
+right, right?
+
+Speaker 3  1:05:28
+So then the question becomes, then, because this little feature is going to be the next little hang up is that we're going to want to concatenate notes for that contact record on every single detail screen, and kind of the same way we would do for the for the for the contact record.
+
+Matthias Miller  1:05:44
+Well, that's that I'm not worried about, because for any given record, it's basically say, Go find all the associations. So if you're in a contact record, go find all the associated contracts, and find all the notes for that on a on a contract record, wealth only show, show things only tied to the contact and anything tied to this contract on a building. Go find all the contracts, all the related customers. Or, you know,
+
+Unknown Speaker  1:06:10
+let me ask a different question. Come on, hang on one second, these fire trucks. I
+
+Matthias Miller  1:06:18
+have another idea, by the way.
+
+Unknown Speaker  1:06:22
+I do too go for it.
+
+Speaker 3  1:06:33
+Okay, so is there anything on the platform like memo notes for a particular person, like, if you could bracket someone's username and then leave a note that you literally could go pull your notes on any out of any memo section based on that,
+
+Matthias Miller  1:06:54
+you would need to, well, tell me what you're trying to do.
+
+Speaker 3  1:06:59
+Well, essentially, like it would if, if, if we did something like that, then that means that every note section that's usually on every record, you could literally assign something to them by simply bracketing their username and dropping in and regular RTF notes. Now it's not, it's like, super simple, and there's no due dates, and there's no nothing and all of that.
+
+Matthias Miller  1:07:26
+Well, you could do something like, like tagging, like you could do at at something, or, yeah, you could do that, and then, and then you would validate that if you got text in brackets of some kind, then
+
+Matthias Miller  1:07:49
+I mean, it seems a little tricky to we need to think it through, but it would be possible then, probably on change, you would just store it in an RG and Say that you got tagged.
+
+Speaker 3  1:08:00
+What was your idea? I don't
+
+Matthias Miller  1:08:08
+remember. I thought it was pretty cool, but I remember,
+
+Matthias Miller  1:08:16
+what were you talking about? Just before the fire trucks. I
+
+Matthias Miller  1:08:24
+I typed a record ID. Oh, yes, here it is. So, so you could have a macro. So remember the drop list filter, I want to see notes for X, Y or Z. You want to filter, what if? What if, on any given record, you could say, what are the other related records? So you're on a contract, well, you might want to see other contracts by this or you're in a building. You might want to see all contracts with this building. You want to might see all customer records for this building. And so you just select any one of those, and it shows you those notes. And you can flip through these notes. And potentially you could just do a show me everything. It shows you, okay,
+
+Speaker 3  1:09:04
+maybe. But what if? What if, rather than doing like, Okay, so right now, almost, I think I don't know if it's a standard feature, but almost as part of every detail screen, there is a notes section at the bottom. What if we, what if we replace that note section with this whole notes thing that we've been talking about. And so in order to, like, at the bottom, there would be a a auto filled memo section of all notes that are tied to this record. But in order to create a note for it, you have to, you have to click Create note. It ties it out to, you know, your username, and it, you know, you can say it needs follow up and like, essentially, you are creating, almost like a different style of note, method for each detail screen record that, to me, feels way more helpful, because you can assign it off to somebody and add to dues to it.
+
+Matthias Miller  1:09:58
+Okay, so would this be an RG on each. Which would it? Would it will look like a standard flowing memo.
+
+Speaker 3  1:10:06
+Okay, well, the same, the same way we talked about doing. Okay, why wouldn't it be, why wouldn't it just be a, I don't know what I'm talking about, but basically a concatenated for all, all, all, all, RG rows of notes for this record, with this records, num ID,
+
+Matthias Miller  1:10:32
+then how do you but I thought you wanted to add from inside of here. Well,
+
+Speaker 3  1:10:35
+it just be, it would be a URL to say, Add, add a note. And then you, and then it opens up another screen. You add your note, you'd select whether it's a what it is, and it there it is. And
+
+Matthias Miller  1:10:48
+if you want to view all notes for associated contracts, how do you do that?
+
+Unknown Speaker  1:10:53
+If you want to view all notes,
+
+Matthias Miller  1:10:56
+your contact record, you want to view contract notes, you uh,
+
+Matthias Miller  1:11:06
+you wouldn't. You would just pull up the contract records and
+
+Speaker 3  1:11:09
+look at their notes. Okay, okay. This is, this is going to have the same downfall that every other notes section on the platform, does it? Anytime you put notes on sections on any every detail screen, you have the potential of a branching of notes, and you don't centralize, but I think that's okay. And you're saying, Do you want to have a feature of inter linked records to be able to concatenate the whole thing somewhere?
+
+Matthias Miller  1:11:40
+Well, yes, or on the on the contact details screen, when you select a contract, we could show the contract notes underneath it will have a list of you could show a list of buildings for the customer. You could show a list of payments for the customer. They could click the payment be the payment notes. They could click the Select a contract to the contract notes on there. You could select buildings to the building notes on there. And so you could click around on that screen to try what, try to find which notes it's from. But yes, that is the question. Do you want to comprehend? Want a comprehensive I want to see everything about this customer,
+
+Speaker 3  1:12:09
+versus jumping to the detail screen to see the notes regarding that. Right? It's
+
+Matthias Miller  1:12:19
+almost like a research mode. So here's this building, and you can come, you have an entry point from any direction on a building. But
+
+Speaker 3  1:12:28
+so if you did it, if you said, Okay, so if, if you had, I almost want to make you, I almost want to force you to open up another screen to do this kind of thing, where it's and so that way you can, right, so you can group like, because then you could group it by the the details type or whatever. Like, you could say, Here's your, here's your contact notes, here's your contract notes, here's your, your payment notes, here's the like, you could group all the sections, and you literally could just read down through and it's a report. Thoughts, I
+
+Matthias Miller  1:12:59
+think it's fine. I think, I think having some kind of research mode that just says, I agree. I want to dive down a rabbit hole here. Okay, so notes record, we have a
+
+Speaker 3  1:13:09
+dude. I like this because, okay, so essentially, what we've now done is essentially create almost like a chat feature, almost like, like the the notes section, like the the chat feature on a Trello card, almost. It's not quite that nice, but it's getting close, because I can create a note on a contact record, assign it to somebody with a due date. And if, if you read my other note about, you know, having a report of your notes on, on, on your dashboard, it's like, you literally open up your dashboard. Oh, I got, I got a bunch of things here. I gotta go follow up on, dude, that's insanely awesome.
+
+Matthias Miller  1:13:55
+I want this in a six. Do you want to snooze until thing or not? Like a remind me, why
+
+Unknown Speaker  1:14:04
+wouldn't you just change the due date?
+
+Matthias Miller  1:14:07
+Because it'll show it as being due in the future, but you might want to work
+
+Unknown Speaker  1:14:12
+ahead. Sure. I mean, I
+
+Matthias Miller  1:14:15
+don't want to complicate it. So if due date does it, I I mean, is it due date and follow up date? To me, are two different things. Follow up date is, hey, remind me on Wednesday to go call this guy. And due date is, you better have called this guy by Wednesday, and you can call him on Tuesday, maybe, but you better have it done by by Wednesday. It's a before versus after. I
+
+Speaker 3  1:14:48
+want to kind of keep it simple, like if we if you add too many dates, then people are confused about what it means. So due date, yeah, let's just. Let's do, just, just do date and forget this news thing. It's just, let's just do, let's it is. It is what it is. It's like, if there's a due date on it, there's an assignee, and it needs follow up. And it's like, it's simplistic. And
+
+Matthias Miller  1:15:12
+then when you're done, you uncheck, do you just uncheck? Needs follow up?
+
+Speaker 3  1:15:18
+Did you mark it? No, no, no. I want a completed checkbox that logs who completed it and what was the date
+
+Speaker 5  1:15:42
+you do
+
+Matthias Miller  1:15:48
+you want it on a contract definition as well? No,
+
+Speaker 3  1:15:55
+you know what? I wonder if we like this replaces the notes section that we normally have on detail screens, yeah, so, I mean, pretty much everywhere. Now, here is the one question, um, should it should we have? Should it automatic? Should there be a field of who created it, and it auto logs that, yes, so that you could so that you could have so you could go run a report on on everything I've created and go see if it's done.
+
+Unknown Speaker  1:16:26
+Yep. Ah, yes,
+
+Speaker 3  1:16:30
+dude, I like this. We just, we just created a little, a little, oh, okay. And here's the last thing this should be able to be like a standalone, like a note that's not tied to anything,
+
+Matthias Miller  1:16:48
+for what and how,
+
+Unknown Speaker  1:16:49
+well, it's a record, right?
+
+Matthias Miller  1:16:51
+Okay, but like, can you give me a use case?
+
+Speaker 3  1:16:58
+Okay, what's going to happen is, people are going to use this, are going to, I expect, are going to start, if they understand the capability of it, they're going to start using it like a project management right thing. So there's going to be cases where it's like, I don't want this tied to anything. I don't want to tie, you know, I just want to leave myself a note to go do something at a certain time frame so it shows up in my list of things to do.
+
+Matthias Miller  1:17:21
+But in that case, aren't you going to want to want to be be able to select type, which is contract con, contact, contract products, payments, contract definition?
+
+Speaker 3  1:17:33
+I don't think so. You literally put, you just define it in the note, so it's literally so you go to the like, I'm assuming we're going to have some sort of create new note, like, somewhere we need to have a create new note. You can go create yourself a note. You can say, you know, the current
+
+Matthias Miller  1:17:50
+user, huh, can be tied to the current user.
+
+Speaker 3  1:17:57
+So, okay, in your, in your you're saying we have a report of your stuff. And in there is a new a new note button.
+
+Matthias Miller  1:18:06
+Well, new note still, is it we have a contact record
+
+Unknown Speaker  1:18:12
+for each user, typically, yeah, but
+
+Unknown Speaker  1:18:18
+I don't want to run over to my contact record. No, no,
+
+Matthias Miller  1:18:21
+you'd still have a way to create it. I'm just saying then you would pull up your contact record, and you could see all of your your notes just tied to yourself.
+
+Speaker 3  1:18:32
+But for the most part, you'll generate these notes from from detail screens. But if you ever, if like, if you want to, just like, if you want to start using it like your own task list, you can go generate one and make a task for yourself and assign it, you know, assign yourself and the due date, and voila, it shows up in your list of things to do. Yep. Ah, dude, this is insanely awesome. You know, we probably, you know, we probably need to do, we probably need to add reoccurring function to it. Thing to say, can we make this thing recur? Yeah, every, every so often, at such and such day just reoccurs itself.
+
+Matthias Miller  1:19:08
+Yeah. Have you ever seen this one? I have a schedule that literally lets you say, send it these months repeat by the day of month, of the day of the week, and or send it this Tuesday before the third Wednesday
+
+Speaker 3  1:19:29
+of every month. So do we want to go to that level? No,
+
+Matthias Miller  1:19:35
+I don't think so. Let's, I don't think we want, we might not even want recurring for now
+
+Unknown Speaker  1:19:40
+net, let's, let's, let's leave uh,
+
+Speaker 3  1:19:49
+unless we just did really, really simple that said weekly, monthly, and if you. If you say monthly, then you define now, then we get into all of these variables. Let's not, let's leave recurring off for now. Leave recurring off. That's we're going to fall down a whole subset, a sub list of things that we'd have to account for. And then it's, then it's, becomes ornery. If some person starts using this thing is like, man, we really need this. We really need that. We're like, Okay, we'll go and expand it at that point.
+
+Unknown Speaker  1:20:31
+This might be the best idea that You had in a Long time.
+
+Unknown Speaker  1:20:42
+Mm, so I'm
+
+Unknown Speaker  1:21:24
+Oh, assignee needs to be multi selection.
+
+Matthias Miller  1:21:31
+And any of them,
+
+Unknown Speaker  1:21:34
+any of them. What do you mean? I mean,
+
+Matthias Miller  1:21:36
+obviously, assignee, it means, I
+
+Matthias Miller  1:21:43
+What contact types are we using?
+
+Speaker 3  1:21:53
+Probably users. I
+
+Unknown Speaker  1:22:04
+Well, why wouldn't you just use user profiles?
+
+Unknown Speaker  1:22:18
+I don't know.
+
+Matthias Miller  1:22:21
+It's not a pretty. I mean, the user ID is not necessarily pretty.
+
+Speaker 3  1:22:26
+Let's probably make a why wouldn't? Why wouldn't we make Can you add on to the user record a display name, which is literally just concatenation. Now we
+
+Matthias Miller  1:22:39
+could, we could, we could show it as a list of
+
+Matthias Miller  1:22:51
+we've never done it like that. That's why we've always tied it out to contact records, and I'm not sure why. Like,
+
+Matthias Miller  1:23:08
+like, we like, we tie it to user ID here and then,
+
+Speaker 3  1:23:16
+okay, is there a way to is there a way to force someone to create a contact record when they are creating a user record,
+
+Matthias Miller  1:23:24
+we have. We could trigger next 30 that would ensure that you have a contact, that we create a contact for it. We could populate the name and the user profile, user ID. I
+
+Unknown Speaker  1:23:42
+don't know, um,
+
+Matthias Miller  1:23:45
+let me ask Ellis on this.
+
+Speaker 3  1:23:49
+So would this be, would this be a we would create a contact type for what do you want to call them like? We'd have to have a specific contact type the mute filter off of, yeah, where
+
+Matthias Miller  1:24:03
+you'd link it to a user and any user and say, this user can use notes, or can assign notes or create notes, or I don't know what, okay
+
+Unknown Speaker  1:24:09
+in your court. Then it is
+
+Matthias Miller  1:24:11
+in my court, okay? And then is there anything else that we need? I mean, you might want it on the RTO company,
+
+Unknown Speaker  1:24:21
+yeah, it pretty much is every detail screen
+
+Unknown Speaker  1:24:29
+might need an S in your cream. Detail, yeah, it's an it's a new feature. It's a cream, not a detail,
+
+Unknown Speaker  1:24:40
+not a screen. Exactly,
+
+Unknown Speaker  1:24:45
+okay, um.
+
+Matthias Miller  1:25:13
+So then you have notes, assignee or originator, assignee, um,
+
+Matthias Miller  1:25:57
+yeah, and do you need a Do you need a Subject line or a title, or anything, or no, you don't really want that.
+
+Unknown Speaker  1:26:04
+No, it's just, just note
+
+Unknown Speaker  1:26:07
+rich later,
+
+Speaker 3  1:26:13
+because I mean RTF notes. You can, you can do the control D you can add bullet points. You can add all kinds of things so You don't really need subjects, etc. Okay.
+
+Unknown Speaker  1:26:38
+This.
+
+Matthias Miller  1:27:35
+Okay, well, that probably needs
+
+Speaker 3  1:27:40
+to that whole, that whole written up section probably needs section probably needs to move off of my notes to
+
+Matthias Miller  1:27:44
+somewhere else right here. Let's go ahead and just do that. I
+
+Matthias Miller  1:28:10
+All right. Well, this gives them some work.
+
+Speaker 3  1:28:15
+The other stuff, the other stuff on my, on my my notes are not nearly as pertinent. It's some stuff. What you wouldn't need to talk about at some point.
+
+Matthias Miller  1:28:27
+Is there anything, I guess, where? What pieces, where, where am I bottleneck? Um,
+
+Speaker 3  1:28:35
+we probably ought to go look at any, any that to do IDD stuff I'm
+
+Matthias Miller  1:28:42
+gonna have to drop off in 15 minutes, because I only blocked out 80 minutes here. So we're less than that actually. So it's basically enough to get a game plan and figure out what's menu pages. I mean, this could actually be can't, don't, can't you. Isn't this user experience that you can think through menu pages? Yep, user groups, we need to think through permissions records. Let's go refresh so that we get the
+
+Speaker 3  1:29:36
+you like my emojis. I me
+
+Unknown Speaker  1:29:43
+about this too.
+
+Speaker 3  1:29:50
+Okay, this, this whole question. It's this question. Is several places throughout the spec about created, last modified thing. Um. Um, and my question has always been, if we have modification issue, do we need the created and
+
+Matthias Miller  1:30:03
+modified? Not, in my opinion, unless there's a lot of value to you to have that surface, but really
+
+Unknown Speaker  1:30:08
+you can just, I don't.
+
+Unknown Speaker  1:30:11
+Okay, so, so
+
+Speaker 3  1:30:14
+like, and I probably would say anywhere that that question pops up about modified, created and modified, I don't, I don't see the value in it. I mean, argue with me if you feel like
+
+Unknown Speaker  1:30:27
+there's value. No.
+
+Unknown Speaker  1:30:30
+Okay. Auto Set. I
+
+Unknown Speaker  1:30:46
+Yes, right
+
+Matthias Miller  1:30:52
+terms. What is this? When you set up terms x number of months,
+
+Unknown Speaker  1:30:59
+yes, the name is, well,
+
+Matthias Miller  1:31:07
+that's actually not to do IDD. That's him, special considerations. I don't want to think about contract script.
+
+Unknown Speaker  1:31:19
+Once again,
+
+Matthias Miller  1:31:28
+NSFs that we got to get come back to that. Gonna move these up here? Because that's closer to where they belong. I'm
+
+Matthias Miller  1:31:44
+uh, duplicate, duplicate contacts. Do you want to automatically add ID numbers to contact names like Bill Frank number, 124, so that you can have two Bill Franks in the system? Don't you have to do
+
+Speaker 3  1:32:01
+that otherwise? Otherwise you automatically default to validating for a single name, right?
+
+Matthias Miller  1:32:10
+And then as
+
+Speaker 3  1:32:11
+long as, as long as when we if we don't, I don't care whether we do that or not, as long as when any reporting that your name searching. We do it like not exact matches
+
+Matthias Miller  1:32:26
+that you search for. If you do John Smith that you find any
+
+Speaker 3  1:32:30
+all John Smiths are, you know, yeah, because I don't want to get into, you know, an exact match conversation, because names are always these tricky things about getting something right?
+
+Matthias Miller  1:32:41
+When you're creating a contract for somebody you do need to
+
+Speaker 3  1:32:44
+know? No, no, I'm saying when you run reporting, when you're going searching for someone,
+
+Unknown Speaker  1:32:48
+sure,
+
+Matthias Miller  1:32:52
+well, yeah, on a contact search, at least on a contact search report, you would just put in the name and it would find old John Smith.
+
+Speaker 3  1:33:04
+So adding the contract, no where, where would, where would this be be seen when it comes to the contract, or the the account number and the person's name, where would this be seen? And the display name,
+
+Matthias Miller  1:33:18
+it would be here, and in the contract record, when it's linked to a person who would say, your install suits, 1234,
+
+Matthias Miller  1:33:30
+any drop list in the system, basically, which it would be shown. I
+
+Speaker 3  1:33:34
+have no problem with that. No problem with that at all. Okay.
+
+Matthias Miller  1:33:38
+I think all we need to say is, fine. Or yes, we need to add IDs to contact names. And I don't know who this is, but
+
+Speaker 3  1:33:51
+I think it was Seth. And what would be the formatting for it? It would be name. Do you want
+
+Matthias Miller  1:33:57
+last name, first name or first name? Last Name, I um,
+
+Unknown Speaker  1:34:09
+hold on a second.
+
+Speaker 3  1:34:13
+So I have always hated this, but RTO Pro does last name comma, first name configurable. Whenever, when? What do you mean?
+
+Matthias Miller  1:34:24
+It can't be configurable in the client system as a system
+
+Unknown Speaker  1:34:28
+setting. Yeah,
+
+Matthias Miller  1:34:31
+okay. Default to First Name, First Name, Last Name, assuming we can change
+
+Speaker 3  1:34:43
+that's needed. Okay, what's but what's the formatting for adding the the account number to the end of it? Is it? Is it hyphen? Number, 1234, so it'd be pound sign. Yes. Okay. I.
+
+Matthias Miller  1:35:00
+If you have more than one address,
+
+Matthias Miller  1:35:07
+if you have a if you have a mailing, okay, this is just the two Wayne, I think, I think you need to answer this. I don't think that. I don't think I care the
+
+Speaker 3  1:35:15
+normal system, hold on, go. But I think we can answer it really quick. Normal system, ship, with mailing and physical
+
+Matthias Miller  1:35:23
+there should be two address types required if and if you specify more than one address, then you we have to specify the type. But what happens if you do need to specify the type, if there's only one address, and if you specify mailing, do you need a physical address,
+
+Unknown Speaker  1:35:39
+as opposed to,
+
+Matthias Miller  1:35:42
+oh, just having an address on file that you don't know what type it is, or being allowed to just have a mailing address but no physical address,
+
+Speaker 3  1:35:50
+so if you only have one address, I still not sure I understand the question, are you saying, do we want to type or not type? Or what are we
+
+Matthias Miller  1:35:56
+considering? What a require a type if you only have one address in there? Let's
+
+Speaker 3  1:36:01
+just, no, let's just, let's just assume it's the mailing address. Am I wrong? Am I not understanding? I mean,
+
+Matthias Miller  1:36:10
+assume that they're the same mailing and physical, like, Right, correct. Yes. Don't require a type. If you
+
+Speaker 3  1:36:15
+have, if you, if you select it to add a second one, then you need to type both of them,
+
+Matthias Miller  1:36:20
+okay, but if you have one address that's a mailing address, or one address that's a physical address, do you need a mailing address?
+
+Unknown Speaker  1:36:36
+What am I not understanding?
+
+Matthias Miller  1:36:38
+I don't know. This is just, I don't think anything, but you're not going to force somebody to enter a mailing address just because they have a physical address.
+
+Speaker 3  1:36:45
+So most of the time, we only get one address, and so we're only putting one address in the system. If you, if you say you want a second address, then I guess you need to type them the moment you you ask for the second One are or what am I missing?
+
+Unknown Speaker  1:37:05
+Nothing. Okay. I
+
+Matthias Miller  1:37:25
+Okay, well, I mean, this doesn't really my hope is that we could have a little bit of a bigger picture, rather than in the weeds
+
+Speaker 5  1:37:32
+of where I
+
+Matthias Miller  1:37:44
+should we see about picking it up
+
+Speaker 3  1:37:46
+tomorrow? I'd love to, okay, we've got, we've got some, some things like, Well, I think the first order of business tomorrow is to find what like we need to go through and kind of skim through everything and say, Okay, what is the top thing we need to work on? Does Seth need to weigh in on that?
+
+Matthias Miller  1:38:07
+The top thing to work on? Yeah, well, I mean, I think we need to get one of these screens complete, fleshed out so that they can keep working on it. And I mean, but I don't know how much of this actually can be done until we get some of the the to me, the product record, fleshing out, finalizing the product record, the payment record, those are probably low hanging fruit. The contact record is probably low hanging fruit. Contract record probably is the most complex, because it ties into all these other places, notes. Record, we can very easily wrap up and ship off to them.
+
+Speaker 3  1:38:48
+Okay, so order of business for tomorrow is detail screens. Yes, okay, do we need? Is there a particular detail screen that they're working on right now that that is like, please go finish this one first.
+
+Matthias Miller  1:39:10
+Let me ask him. I
+
+Matthias Miller  1:39:23
+Okay, I'll find out. I gotta drop Hey, I'll ping you about tomorrow. Thanks, man, thank you so.
+
+
+Transcribed by https://otter.ai

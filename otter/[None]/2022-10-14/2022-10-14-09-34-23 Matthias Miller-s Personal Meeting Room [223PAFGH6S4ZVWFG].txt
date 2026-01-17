@@ -1,0 +1,395 @@
+Matthias Miller  00:14
+So here's my proposal that effectively any given building record can, at any given stage of a building records life, it can have some kind of impact on balance sheet in some kind of accounting impact balance sheet or income statement. Okay. So if a building is is built, then there should be a debit of raw materials for an arbitrary amount, we'll talk about how that gets calculated are not debit. Sorry, I don't know, a decrease raw materials. Yeah. of finished goods, raw materials, a decrease of some account. And there's some discussion about what exactly that is. It's either a cost of goods manufactured account expense account, or it's a, a an expense, a cruel asset account, but there's a decrease of that an increase of the finished goods equivalent. Yeah. And the other thing, so that's when it's sold, so that puts it in finished goods. And then once it gets delivered, and the delivery is the change of ownership, then at that point, what should be the impact? Well, the impact should it should still have that finished goods impact, but it should now also have, well, no, it should still have an impact on the on the cost of goods expense account. But now it has no impact on the finished goods account. But it does have an impact on these expense accounts. So then, from a software standpoint, what they provide with us is the rules. If this building is in this state, these are the the expenses that need to be debited or credited, or these are accounts that need to be debited or credited. And then from a software standpoint, we say, let's go look at all the billing records. Each accounting transaction gets tied out to a building record. Yep. And let's go, let's go look at all the possible possibly affected accounts. Let's figure out where we're at worse versus where we think we need to be. And we go create a transaction that makes everything you know, adjust everything out so that the sum total of the historical transactions come out with what it should be as of today.
+
+Matthias Miller  02:19
+And, and so that's how it impacts Okay, so that's, that's the question of how do billing records affect the accounting module? Then just a second, could
+
+Speaker 1  02:28
+I see if Joe's available? Yeah, absolutely. I should have done that earlier. COVID House dot link slash resume
+
+Matthias Miller  02:49
+maybe I should switch over to my commonplace.com thing. Resume life I'm scared it will be quite
+
+Speaker 1  03:13
+light screen, but that doesn't always mean anything with RingCentral. So So I think my main question is when do the inventory adjustments happen?
+
+Unknown Speaker  03:36
+Okay, just a second.
+
+Speaker 1  03:37
+I somehow gave the wrong link. Code. What is it code house? There's
+
+Matthias Miller  03:42
+no double. There's no WDS code house that code house that link slash zoom. I don't know if case. It does matter. Okay, I want to switch over my redirect stuff. But that requires migrating a whole bunch of old WordPress stuff somewhere else. And sure, goodness, I would love to be able to define that net posting and have these each record that has protected links. Oh, that'd be slick. And then unprotected links and mail to links. So you do good house that link slash, you know, sales up. And I'm gonna Shawn gets a mail to link redirect with a pre populated template. Anyway. All the ideas that are happening right now.
+
+Speaker 1  04:28
+This is very, very simple, but it's made me happy. Well, first of all, I lost my IMAP account with with Office 365 I deleted it because it just wasn't working. And then I found out Oh, they've changed their Microsoft has changed authentication. So method and so they only allow Oh auth well John headland and Josh knew it but didn't think of telling me so. So I didn't lose them and didn't really I mean, everything's an eye map. So it doesn't really matter that much. But the good news is that I've set up a Hey, Joe, hey, oh, I've set up a rule that I call, I used to filter my kind of my less important emails to another folder, but then I'd never deal with them actually. And then that folder would just grow forever. So I've actually set up, my first filter rule that runs is called mark a red and gray. So it leaves them in the inbox, but it just marks them red and uses a tag to grade them out. And so your eyes, skip over them. But eventually, you'll go through and clear them out. So anyway, that was such a clever hack that I'm just interested in is this pleases punch. So you know, anything from status updates to, here's the time that HUD posted was working on for the day to, here's some, even some of the marketing stuff. Actually, I think I'm going to keep all my marketing stuff flow flowing into my main inbox is grayed out. And then, you know, come about three o'clock in the afternoon when I can't think, okay, now I know what to do. And I knew the idea before, but I couldn't force myself to click over on another folder to do it in another folder. So anyway, that's kind of a clever hack that I'm pretty pleased with. So we'll try it.
+
+Matthias Miller  06:21
+You know what the funny thing is, I actually have a read folder for those types of things. Yeah. And guess what? I'm experiencing the same problem you? Yeah. So, Mark is if you
+
+Speaker 1  06:36
+like, well, and if you so so our I mean, if you if you've got coloring of emails with tags, and I don't know, if your email client does, that makes a huge difference. Greg, them out, lets your heart relax.
+
+Matthias Miller  06:51
+I mean, you just had to scroll up, I can the black ones. I can add another. So I'm still using Gmail web interface. I actually went and rewrote, I wrote, I wrote my own rule parser. Okay, so that I can separate out what are what are list messages. There's four types of messages, lists, messages, calendar events, email subscriptions, and direct messages. And now, like I used to get weird stuff criss crossing one way or the other, it was just really obnoxious. So I wrote my own my own filter for that. And so I can add little gray arrows beside it. You know, for that, to help with that. But interestingly,
+
+Speaker 1  07:35
+that was part of my worst day back in the state so far. It was just, I mean, no, it's just the accumulation of junk. So anyway, for all good. Job. Microsoft switched to requiring Oh, auth for email clients and Thunderbird. Magically, this week started not being able to authenticate and I couldn't figure out what was wrong. Okay. And finally, I found the right blog that said, hey, update on the how to do this. He just switched Oh off, and it was dated like October 8 or something. But they're they've been doing it in stages for new people. Well, John headland pointed me to the article where they talked about it. Anyway. Okay. Anyway, good, good. So. So
+
+Matthias Miller  08:31
+they start from the top and Phil Jolyon, was were Yeah, sure. So we've been talking. So. Apologies. It would be far more efficient for you if it were written out, but it's not. So I'll explain it as best I can. Not surprisingly, most of the discussion has been with assist Accounting has been on what's the actual business process? Basically, what we're coming out to is
+
+Unknown Speaker  08:59
+okay, sorry. What is the overarching
+
+Matthias Miller  09:05
+subject, overarching subject insight is switching from cash to accrual accounting, and from QuickBooks to to app hosting accounting. Okay. Okay. Overarching conversation. With that, not surprisingly, the biggest problem has actually not been the technical side, but it's been the well, from a business standpoint, how does this affect the books? And when should which, what? When should what effect the the, the the which account? And, oh, by the way, we don't actually know what our overhead is. What's an you know, do we do we come up with a reasonable expectation and create adjustments because we're incurring? You know, we could actually. Okay, for example, here's one very specific example. We don't know how much labor goes into a building because we could actually build a building, sell the building, deliver the building, which is the sale event and compensation for the building is actually determined based on production for the entire week. So, we don't know until the following Monday, what the actual labor was, what the true to the penny labor cost was of the building that we sold at the time of sale. And now there's varying schools of thought between Mark and Gabe, between, well, should these numbers be approximately accurate? Which is basically what finished goods inventory? What I don't know, this is about what inventory is anyway? or should there be some kind of to the penny reconciliation. And there's some discussions about that. But, and not everything is fully nailed down. But there's basically I mean, there's, there's a few proposals on the table, one of which is base, basically, you make up percentages for a building. And then maybe at some point, you go back and stop more accurate numbers on the building record, to figure out what those numbers were. And there's a whole bunch of variations off of that. So then, I said, I'm getting nervous, I think we have enough here that we can actually build a data model off of, but I'm getting nervous with our timeline, can I go to Ellis and get his sign off on a proposed design for this. So here is how I would think about it. At any given point of, of a building records life, whether it's, it's signed the contract, built the building, delivered the building, or we have the buildings sitting on the lot, somewhere, waiting for it to be sold. And, you know, perhaps, and a down payment made, and the actual delivery, which is the sale event of the building. At any given point of those in those timelines, there is a set of debits and credits to the balance sheet and income statement that need to happen. That No, it should reflect a certain set of debits and credits to the back to the balance sheet. So the moment it's built, then you decrease the raw material inventory asset. And you increase in Sorry, I'm lazy. I'm a developer, net and accountant. So increase in decrease, but you increase the finished goods raw materials, then you sell it, and you, you still decrease the raw materials, because that's still that's going to remain decreased. For the life of the building. You the sum impact of the building unfinished goods should now be zero, because it no longer is finished goods. And the sum and the the impact on the expense account. The cost of goods sold expense account should should reflect the raw material cost of the building as well. And so, mechanically, how it works is every transaction, every automatic transaction tied to a building has a Building ID to it. At any given point in time, we go to the building and say, building, what should your impact be to the balance sheet and income statement? And it says, well, we should have debited, we should have debited this from this and credited this to that. And then this, that or the other. So we say, okay, that's the end product of this buildings impacted the balance sheet income statement, we're going to, we're going to look at all the prior transactions, we're going to add all of those things up. And we're going to find the difference. And we're going to create a transaction, Delta transaction that gets this building's impact to the balance sheet income statement to match up with what we think how it should impact the balance sheet income statement today.
+
+Matthias Miller  13:56
+Okay. What that lets us do is it lets us do two things, one, if they come back to us in March and say, oh, like we really missed this thing. And we should actually do this not that in the flow of things. We can readjust the rules for how does this building impact the balance sheet and income statement at this point in time, without rewriting the whole architecture? The second thing it lets us do is we can say this building the let's go with with labor, because that's, that's a good example. So this building, we're currently spending 6% of building costs on labor, and so just estimated at 6%. And then later, if they do want to go back ends, they say we ran payroll for this week. Actual labor numbers for this week was X or Y, go stomp those into the building record. We didn't go Stomp them on the building record. And then we say okay, building right Record, what should be your impact on the on the balance sheet income statement? And the building record says Well, I mean, yesterday, when we asked if it was 5%, or whatever I said it, the impact should be $501. And now because we adjusted, it should be $503. And then we just run the Delta, and we do a $2, you know, having T dollar entry for, for whatever needs to be adjusted, and now it's back in sync with with an appropriate impact on the balance sheet income statement. So it allows us flexibility not only on the model of how these funds flow, but also gives us flexibility and being able to to tamper with the the actual numbers, like a building records actual valuation. Sure, sure.
+
+Speaker 1  15:52
+Just on the side door is open. And then there's a button if you want to keep them
+
+Matthias Miller  15:58
+presumed anytime?
+
+Speaker 2  16:11
+Okay, so basically you are looking at so you're tracking cogs and allocating costs? Well, okay, how to put it you've got a dynamically calculated? Hey, here's what we think this should be in cogs, and well and everything else. But that is periodically reconciled essentially, with with actual accounting entries?
+
+Unknown Speaker  16:56
+Correct. Okay. So one question here. How much? Not a bit?
+
+Speaker 2  17:13
+How much do we need to concern ourselves with GAAP? And,
+
+Unknown Speaker  17:24
+basically,
+
+Unknown Speaker  17:26
+is this stuff can we make decisions and say, you know, this
+
+Unknown Speaker  17:38
+represents
+
+Speaker 2  17:41
+reality and is useful for us? And, and use that as the core criterion? Or do we need to concern ourselves with with GAAP compliant accounting? And,
+
+Matthias Miller  18:01
+yeah, like, I think there's an interest, particularly from if I had to make a guess there's a bias from Gabe towards, towards, let's get the detail we want and make it work, detailed and work for us. And there's a bias from Mark towards let's do gap. But there's not there's there's no clear gap expert on this. And one of the things that has been on my list to do is to try to nail down and articulate like write out some of the two processes and approaches they're thinking of taking, and consulting with somebody to actually get some feedback on whether this is the what, you know, some of you actually knows what we're talking about.
+
+Speaker 1  18:52
+Right? Right. Yeah. Excellent question, Joel, one of the fascinating things that we can do because of being in the databases self is that we can easily be tying out, you know, sets of transactions to I mean, it there's a very clear path, I mean, very easy to tie out. Here are the transactions that are explicitly tied out to this building.
+
+Unknown Speaker  19:22
+And so, I mean, I do think
+
+Speaker 1  19:32
+okay, now and once one step further back, here's maybe another question. No, there would be two ways that you could do it when you get better information. One is to one, well, what is this kind of this idea of incremental adjustments? So now, another approach is this Say that, that we will have that we will sometimes void and recreate transactions. And if you do that, then I'm not sure I like that, but but I'm just saying it I'm not sure I'd like one or the other, I'm just saying that that could be a different approach. So we have a preliminary transaction on impact of cost of goods sold. And downs, once we get better information, we, we avoid that one and recreate it and create a new one that with better with better data. The nice thing about but now if you do that, by the time you're done with your books, you have you have a pretty pristine set of transactions. I mean, you've got a bunch of weighted ones, but otherwise, it's quite pristine. So it might be closer to standard, I'm not sure. However, if you do that, then you also need to be thinking through you have to have more business knowledge, I think because you have to have a presumably you'd have one transaction that moves it from from inventory to a to a finished product and then a separate one that moves it from finished product to something else. It's not quite the automated just tell us where you want it and we'll put it there kind of approach.
+
+Matthias Miller  21:28
+When one potential issue, I'm gonna get back to Joe's question, or Joselyn here, but one potential question for that is so with your proposal, are you proposing backdating a transaction like waiting it and backdating a new transaction at that point?
+
+Speaker 1  21:46
+Are you that's? Well, that's a fair question.
+
+Matthias Miller  21:51
+Because then then you're shifting numbers.
+
+Speaker 1  21:53
+I mean, you can't go past your boundary, for example. We're definitely obsessed. Right, definitely not past your boundaries. And,
+
+Matthias Miller  22:02
+Joel, to your to your article here, you know, I mean, cost variances are expected. Right. So the question is, how do you reconcile those cost variances? I mean, I think I mean, this effectively, my approach would effectively eliminate cost variances every, every week for payroll every month for every month for materials every quarter for overhead or something like Right,
+
+Speaker 2  22:29
+right. Right. Yeah. So basically, yeah. Well, and with that whole thing of you know, that last sentence, therefore, significant variances must be reviewed and properly assigned or allocated to the cost of goods sold, and or inventories. I mean.
+
+Speaker 1  22:59
+Sure, which is kind of what we're doing here, isn't it? Yeah. Yeah. in an automated fashion.
+
+Unknown Speaker  23:05
+Yeah. Yeah. I mean, as you said, it's eliminating variances essentially. So well, and and, you know, being fairly transparent about how that is happening,
+
+Speaker 1  23:28
+that that I also like, yeah, yeah.
+
+Speaker 2  23:31
+So, okay. So, intuitively, I like that approach. I cannot speak to how it aligns with GAAP.
+
+Matthias Miller  23:48
+So, yeah. Okay. So so, I mean, that would be an appropriate conversation. Then. I emailed my accountant and she's like, she basically said, I eat cost accounting for lunch. Can you please like, can we please, can you please put together a write up in an article and I want to talk about this stuff? Okay, great. That's good to hear from the guys.
+
+Matthias Miller  24:16
+So when I'm when I'm most concerned, okay, so, so there is. So I guess what I'm hearing from you, Joel, is your biggest concern from this standpoint is we should review our proposal with somebody who understands GAAP to make sure that whatever GAAP requires, or expects fits within the framework of what we're putting together.
+
+Speaker 2  24:42
+Right. That's right. You're right. And I mean, well, okay. And I guess just I mean, we've already talked about about Okay, how do you distinguish it? Financial Accounting? I mean, so what we're looking at here is financial accounting. And with that, yeah, we need
+
+Unknown Speaker  25:18
+well, okay, I'm not sure if we need GAAP. compliant. I don't know if that's even the right word, but I don't know how strict or we need to, to follow GAAP. So that is one question. But then yeah, we've already talked about how
+
+Unknown Speaker  25:48
+financial accounting does not necessarily give you the actual information you want for price setting that sort of thing?
+
+Speaker 2  26:02
+Which I mean, if you're, if your accountant is EAPs cost accounting for lunch, that's a pretty good starting point.
+
+Matthias Miller  26:21
+Yeah. I mean, so doesn't give you the actual information me for price setting. I mean, presumably, because when you're looking at a building, you're looking at, you may have one building buildings with porches require more labor than buildings without porches? I mean, is that part of the reason that there's
+
+Speaker 2  26:42
+there's that there's also weird stuff like, okay, fixed if you build more buildings in a certain period, okay. If you just go all out, you stuff, your inventory. And with buildings, you're going to amortize your fixed cost over more buildings and reduce your, your carrying cost. That may or may not make actual business sense.
+
+Unknown Speaker  27:33
+And, I mean,
+
+Speaker 2  27:34
+I'm going off of a somewhat vaguely recalled story, but without reworking through the details, but yeah, amortization of fixed costs. Anyway, I think there are other stories as well, but
+
+Matthias Miller  28:08
+that the concept I think is familiar to me a little over a week ago, I stayed up until midnight with this guy who makes done is gunning for dunnage I don't remember, which is basically these cloth materials that ship car parts, okay. And his salespeople are paid based on throughput, not based on sales on sales volume. So they get a commission on throughput, which is how much how many dollars worth of stuff can get pushed through the assembly line, its manufacturing business. And so to that point, with your fixed cost, if you're cranking extraordinarily high volume, it's going to look like your overhead is inordinately low and if you go into slow season with the same numbers, then you're going to be losing money on those buildings. Right as you Yeah, right. Okay, makes sense
+
+Unknown Speaker  29:20
+so yeah, I think just generally the core for this is
+
+Unknown Speaker  29:33
+I
+
+Speaker 2  29:35
+do understand we're basically working at financial accounting with with this and it strikes me as appropriate but I can't speak to GAAP Sure.
+
+Unknown Speaker  29:46
+Makes sense. So I don't think I have a good mix yet. I have a good amount of opposing proposal actually.
+
+Matthias Miller  30:06
+Actually I have it set up don't know if this is obviously how accurate this is, but
+
+Speaker 3  30:33
+no, this is I think an old, more goodness, I don't know that it's even worth getting into this
+
+Matthias Miller  30:44
+I think I might have to spell this out more in depth. But then from a software standpoint, there's two pieces, there's three big pieces that I see. Number one, what is the process for, for recording estimated costs on the building, and then having some kind of reconciliation. So you know, building might have been really, we're looking at production overhead, and production, labor production overhead and raw materials. And so we get to establish some kind of percentage rule for that that gets applied. And then we need a process to say, for the buildings in this date range. And this is my intent is that this is a manual accounting process, you go run an accounting report, figure out what your total payroll was, for this company, this date range, distribute payroll expenses, this amount across all of these buildings, and distributes them as a weighted average based on value of the building. And, and so that's the, let's keep the built, let's figure out the building record numbers. Then there's the machinery that says, here's this building record, tell me its impact on the balance sheet. And that needs some kind of record definitions or, or reporting or I don't know exactly what that's going to be. But some kind of way. Either hard coding it relatively in a reporter.
+
+Unknown Speaker  32:12
+Sorry, I let. Okay, what is it that we're assigning here?
+
+Matthias Miller  32:18
+Okay, so part two. So part one is assigning the numbers, the costing numbers to the billing record. Part two is take those cost numbers and figure out given the state of the building, and whatever those states may be, what is its impact? What is it? What is its financial accounting impact? Like, the sum of all of its transactions should be this. Some kind of engine for that, however, that works? And then part three is the reconciliation engine, which is go back and look for all accounting transactions for this building, go add stuff up, figure out what delta and create the Delta transaction
+
+Matthias Miller  33:08
+so you're wondering how the process should work? Well, what I want is I want sign up. What what does it take from you guys to get sign off on this to say, yes, we believe in this model and approach for doing accounting, such that we can nail out the data model and design and we'd be willing to start coding it next week or whenever we're available.
+
+Speaker 1  33:42
+Okay, as a, as a vendor, I think I'm willing to jaw defer to you in some ways to, I'm willing to forge ahead if, if the client has decided this is what they want to do. I mean, I think there are questions on is this, the best way to do it, like the questions of GAAP, etc. But I don't have I don't actually feel like I mean, as as simply as a software vendor, all we're offering is, in your custom software, we will we're not doing anything confusing with back data transactions or anything like that. So I'm pretty comfortable the offer to do this if this is the path they're wanting to take. So, so, so I think it's fair to raise the question of, you know, you may want to discuss this with your auditor or, you know, a senior accountant to make sure that but as a vendor, I don't I don't have any qualms providing for them. So, Joe, well
+
+Speaker 2  34:57
+no, that's that. Sounds good. I mean, especially as a vendor. I mean, we're doing were compensated hourly on this correct, right. Yeah. So yeah.
+
+Matthias Miller  35:20
+Yeah. So, so then if I'm pushing this through the burden is on me. In some sense, well, it's on them, but whatever, as a software designer on me to make sure that this accommodates the remaining options that are on the table, and the options that they want to take would fit within this model, I have a hard time seeing how this wouldn't fit within this model. Because even the reconciliation if we had to push come to shove, we could say, we want to be able to reconcile as of this particular date and time. As long as you know, you can reconcile with them as of date. Anytime after? Well, this gets complicated. I don't know if we even want to offer that. But, you know, whatever the latest reconciliation transaction is you can reconcile the next day right after that if you want to. Yeah, yeah.
+
+Speaker 1  36:22
+Now, one other thing, I think I would note is that from an accounting, we're just, this does not actually affect anything in the accounting system. That's what's interesting about this. So I think all of this will be coded in the US. So because I do not, I mean, just from a security standpoint, I don't want Bangladeshis to know what barns are. Right, that was a nonsensical comment, by the way. But But code crafters is providing an accounting, a generic accounting software, and module and USA, crafters are nationalists and USA is then implementing is implementing a custom barn manufacturing software solution.
+
+Unknown Speaker  37:24
+So the the multiple
+
+Speaker 1  37:27
+companies and things like that happen in Bangladesh, but all of this happens in the US actually. Yeah. The only thing that we'll end up doing, I think is we may end up adding like a foreign ID to the transaction unless we sum. But that's, yeah, I think that's the right way to do it. And but we've done that kind of thing for other things as well, you know.
+
+Matthias Miller  37:56
+There may be some editing restrictions or warnings, or I don't know what records. Okay, so next steps, is, I think it would be useful for me to sit down and knock out the data model. For this as much as I know how sure and then get this into a mini proposal that we can get sent out to them and get their sign off and approval on. Sure.
+
+Speaker 1  38:31
+I have been let me grab my water thus see, I've been talking to grow. He's
+
+Speaker 2  38:38
+been talking to me.
+
+Speaker 1  38:41
+Yes. And he is taking charge of the the generic accounting enhancements that we're needing. So I mean, they'll be coded in Bangladesh, but he's started to drive forward on that along with everything else he drives forward on, which includes, you know, switching our own accounting processes, or vendors. And there's that and cutover and Josiah and Josh both deciding to be just I have two week vacation overlaps with Josh's two weeks sabbatical by about a week
+
+Unknown Speaker  39:24
+there's that there's that too. Anyway so, um, and I needed to write down this design principle, but I think
+
+Speaker 1  39:45
+this year more than any ever in the past, I am thoroughly convinced that the constraint on most software projects is not development resources, but design resources. Oh, Um, I mean, we kind of know it, but I know it know, in a visceral, deeper way than I ever have before. That, you know, it's your it's senior design time, it's stakeholders time, that really is the constraint on, on for on, on software projects.
+
+Matthias Miller  40:19
+You've, you've really hit kind of a double at 20. With that, because senior plus stakeholder are the people who have the greatest amount of responsibility, the least amount of time and design and, and have the have the greatest ability to actually do a good design. And design has the greatest impact. If you want to add 20 to the success of a software project, it really comes down to requirements design. Yes, yes. I mean, there's a lot of things that matter after that, but nothing matters after that if you don't get this right. Yeah, exactly. Right.
+
+Speaker 1  40:55
+I don't know what to do about it. But here's I think part of what I think I am saying, though, is that the primary thing that we the primary service we provide to our clients is actually design. And I don't know how to do better. I mean, I kind of wonder if we need to better sell that one. So the CIO. And, you know, the the two sub things that we offer one is, is lower cost on the development side, which is fantastic. But it's partly because we've optimized on the design side, the other one that we offer is a fantastic platform. But the real thing that we're offering is really, really good design. And then the other two are just kind of the clinchers that just make this a you know, just a ridiculously compelling package.
+
+Unknown Speaker  41:53
+Right? Yeah. Yeah. Agreed. Agreed. Oh, good. Okay.
+
+Unknown Speaker  42:09
+Well, does that give you what you need with us?
+
+Matthias Miller  42:13
+Yes, it gives me what I need. was, there was one thing I think it's all I have on the account.
+
+Speaker 1  42:22
+Sure, yeah. Did you see that? A timber line is connected with
+
+Matthias Miller  42:28
+new light or what whoever saw that is that wild? That's that's the second time isn't it? The second time that we've had a and natural hope, which was a prospect is also very closely connected with new light whether there was a third individual here as well that was a referral source or something.
+
+Speaker 1  42:49
+I think yeah, I think affordable bar wasn't quite a Clyde part of a referral for them or something.
+
+Unknown Speaker  42:55
+I mean, for affordable barn to Okay, well for
+
+Speaker 1  43:00
+multiple I mean, multiple i think i for multiple so Oh, and Matthias I'm, I'm talking at two Anabaptist financial regional meetings in February. So it's, it's it's you know, it's nothing on software at this point. It's one is the the power of business and the kingdom of God, the other one is stewarding something kind of I forget exactly title, but general idea stewarding business family and church. So, but I'm excited about it. And now, I mean, if I would have fewer responsibilities, I really think I could make myself as I could become a circuit speaker for a chef and that would have benefits. I mean, I'll just have to pick and choose. Matthias if you're interested in doing any of this Shayna, Washington is the regional Regional Coordinator for the these meetings and stuff. So he meets with the region with like a local committee, and that kind of thing. So if you ever have if you are willing to travel, and or if they have meetings in Colorado, then you could sometimes send him, you know, for different talks he would consider doing and descriptions. It's not big money, but they paid $500 The first time you do a talk $400 every time after that. And so you know, it's it's $2,000 for today for two days for me. Not two days, because there's like, prepare something. Yeah. So the hourly rate is not necessarily just superb. But on the other hand, they're not saying Hey, could you come for free? Could you come and you know, we'll pay you 40 cents a mile. Which
+
+Unknown Speaker  44:50
+So, right, exactly right.
+
+Speaker 2  44:51
+And do they fund travel? I haven't
+
+Speaker 1  44:55
+even I'm assuming they do, but I don't even know for sure. Oh, So I would I mean, yeah, it feels it will.
+
+Speaker 2  45:05
+You can't get on a plane for and have much leftover. Yeah, right. Exactly. Well, I guess for one talk, but yeah,
+
+Matthias Miller  45:12
+right. Yeah. So you're doing so you're doing two talks twice? Yes. They have. There's two.
+
+Speaker 1  45:20
+There's there's two days back to back in Missouri to different areas. Anyway, kind of stone just from an opportunity to teach. I mean, I've, I haven't had a lot of that. So that that part's fun.
+
+Speaker 2  45:38
+Well, I'm getting your face out there is.
+
+Speaker 1  45:43
+Yeah. And Shane was copying Merle, her and on some of the emails, so there's, there's a way to get I mean, and we've I've got multiple connections with him. But yeah, it certainly doesn't hurt and Oh,
+
+Matthias Miller  45:57
+yeah. Agreed. I really think referrals and in speaking, and is going to be the way to grow in the Anabaptist community. The most effective probably, yeah, I don't know. Yeah. Sidenote, I've been kind of wrangling. So Monday and Tuesday, I'm doing the Pete Vargas workshop, I'm putting together a speech. And for whatever reason I've kind of been stressing out over, I don't even know that I have content for this. And then I realized that I don't know if you remember the predictable profit video that I put back put together back. It's been a little over a year ago. And anyway, at that point, did not the ad budget that they were asking for it was multiple times over what I was willing to put to it. But I realized I had a whole bunch of kind of source material for that. So I'm pretty interested in seeing how that goes. And using some of that materials to put together a talk like that that can be then be taken to different different stages. So yep, interesting. Yeah. Good. Good. Good. Awesome. Ellis, I would like to talk to you about the SFB portal yet. See, Joel, thank you. All right. Have a good one. Yep. Thanks, Joe.
+
+Speaker 1  47:21
+Oh, Matthias. I had, I had told Joel that he can, he can do the same billing that you Josh and I are doing for his accounting expertise. And then I'll that I'll pass it on besides the 20%. So he's smiling on these projects. But, but he deserves to I mean, when you're talking to him, you know, he's he clearly knows what he's doing. Yeah.
+
+Matthias Miller  47:53
+Yeah. You guys Agreed? Agreed. Sir. So x FB my only hesitation with this, I think actually, what I would like to do is go back to Roberto and say, Rebekah, we have a client, here's what they're here's, can we do an initial, whatever this initial call is? Can we do an initial free call on this project? Yeah. And just tell us which scope, you think it's going to be undesigned? Set the design price on that? Probably the biggest question I have is that if I would have known about react when I had if I had known about it, but if I had known react, at the time that I coded it, I probably would have coded their application process differently. Ah, so and so it feels like you have the application process over here that's disconnected. Then you have this new portal that you sign into that's disconnected over over there. Understand you do you refactor or not you refactor not. Do you at what point do you create an account do you create an account to submit an application? Sure. Do you do enough hand wavy stuff that it looks like it's
+
+Speaker 1  49:20
+when they're doing application, do they have an email address to do the application?
+
+Matthias Miller  49:26
+Yes, I believe so. You see with an individual and then yes, their email is required.
+
+Unknown Speaker  49:41
+Great questions.
+
+Matthias Miller  49:51
+We basically just hard code, you know, force the email to be, they would sign up with their name and email and make their email Read Only on the application ensures a match. Yeah, right. Right.
+
+Speaker 1  50:10
+Well, I mean, you having email as your ID is. That's that now. Okay, probably the problem, probably the problem you'll tend to run into is people that are applying who own for businesses and and when applying for themselves as well. They'll be scratching their head and saying, how many email addresses do I have?
+
+Matthias Miller  50:35
+I mean, should we do a user ID and password?
+
+Matthias Miller  50:46
+Or do you have just a default email address for the or?
+
+Speaker 1  51:01
+Okay, to two thoughts. Two possibilities I could possibly see. Is you having a user ID? Yeah. Okay. Either user id plus email address, or just email or email. It could be user id plus password, it could be just email address. But the bet you actually have, I don't know if you actually want to have multiple? I mean, do you want to have multiple accounts tied to one email? I mean, multiple, whatever is tied to one. The interface is much simpler if they have to log in separately for each of their different lines.
+
+Matthias Miller  51:49
+I guess. I think that seems reasonable. Yeah, I think it is. It is reasonable. So if you have multiple emails, I mean, if you want to put all your businesses into the same email, you can. Well,
+
+Unknown Speaker  52:11
+I don't remember the model, What model do we have there? I mean,
+
+Speaker 1  52:19
+when you say if you're wanting to make a contribution, then you have to say which business are you contributing for? Or which application are you contributing for? But maybe you would have to?
+
+Matthias Miller  52:27
+You have to probably have to choose the application anyway. Because, yeah, okay. If they're multi year applications couldn't be theoretically have two applications. Yeah,
+
+Speaker 1  52:35
+I think so. So so maybe it is by email address, and just recognize this May I represent multiple identities or multiple applications?
+
+Matthias Miller  52:49
+You know, replication tied to a member. And in the members, you would just tie it to the members primary email address. Yeah, yeah. Do you?
+
+Speaker 1  53:01
+Are you in their life system or not? Do they have member members with identical email addresses?
+
+Matthias Miller  53:11
+I'm not in their life system. No, I don't have access to that. I don't think they do it on it. Oh sure. I don't know. But we could we could ask how that works. I mean, if if you have multiple email addresses, which you could have is you can have a separate online account lookup record that has an email address and password information and you just link any contacts tied to that email you automatically get access to what are your thoughts on that?
+
+Speaker 1  54:13
+For first of all I'm just looking at sorry I am in their life system I have access. So it's a con I could. These are tied to contacts. And I don't know if email addresses is unique to contact or not. So let me get out of this report because I don't want to look at this one. Let me look at this one. Here we go.
+
+Unknown Speaker  54:39
+Settings. Group, by car by email address, totals only. contact email totals only. And a sum of one. Okay, there are
+
+Speaker 1  55:27
+Okay, interesting. There are many people have multiple contacts. Or it's not unusual. The most common one is someone at an advisor firm has 13 contacts. Now there's also 32 that don't have email addresses, although I have not drilled into those.
+
+Unknown Speaker  55:52
+We do not have you know, they don't have any there. That's fair. That's true. So, yeah, so
+
+Speaker 1  56:02
+I mean, so I think as long as you Okay, so so this means is that an email address? That's just scary, though. If there's multiple ones, you really hope the email address was never entered wrong, because you're seeing you're seeing their applications?
+
+Unknown Speaker  56:22
+But it's probably okay. It was almost makes it wish, I don't know what it makes you wish.
+
+Matthias Miller  56:38
+How would you work around it? No. I mean, I think it's the only way to, you know, another level of security is that
+
+Matthias Miller  56:56
+if you if you had a way to say, what was your, here's an application date, number, whatever, what was the total amount, and if you can enter the total amount? Or you have a confirmation, or,
+
+Speaker 1  57:12
+although See, I think that kind of thing is just what we worked through in design phase with them.
+
+Matthias Miller  57:16
+You can verify, we can verify last for SSN. Or if you want to do that, but
+
+Speaker 1  57:24
+yeah, might not might not be a bad idea. Because it just is pretty sensitive. Worst case scenario is you can log in by email, and somebody, you know, a, I don't know, random person that figures it out, has access to their phone or something and says, Oh, let's see what they've been up to. That social security with would be a pretty safe block. But I think this is the example of this is what design phases for.
+
+Unknown Speaker  57:59
+So
+
+Speaker 1  58:01
+the one thing I would like to ask Josh, I think, before we start is what I mean, what his comments are on the ACH thing. I mean, whether he says, you know, please don't do it, or please, I'd like to provide that for you. Or, as an APA, it's kind of a framework service. Or, please do it. But let's keep it on a separate account, because it will sometimes get blocked, and then it doesn't play, you know, whatever. So I think we should have a discussion with Josh, on the ACH side of things, even before we do with it, because I kind of feel like he may have some fairly clear guidance. Or he may just shrug and say, well do whatever you want to do.
+
+Matthias Miller  58:45
+So processing from a is this from a stripe set aside from a whatever the other.
+
+Speaker 1  58:54
+Yeah, I mean, basically, what vendors? Yeah. What vendors do you recommend? Do you do you want to provide this as a service you have? Do you have components in place that we'd want to reuse?
+
+Unknown Speaker  59:20
+And I'll actually be
+
+Speaker 1  59:23
+I'll actually be seeing him in Colorado. I don't know how responsive he'll be to email he might be he's supposed he's on sabbatical today. He does have
+
+Unknown Speaker  59:33
+Jace is gone.
+
+Speaker 1  59:35
+He comes back from sabbatical on Monday on cutover is Tuesday, and he flies to Colorado for three days for managers meetings for Tuesday through Thursday. So there's that. But if he if he gets a personal email today, it's possible he'll actually respond. Copy me in because then I'll remember to harass him on it too.
+
+Matthias Miller  1:00:00
+Okay all right, here it is. It's gone your way. Perfect. Oh good. Yeah. Fantastic. Okay, well, I'm gonna go. I think go lock myself in a coffee shop and figuratively. Then go see if I can nail down the accounting module and some I've got some other serum stuff to type of work and nail down. Sounds good. Fantastic and good. Good. Good, good. You Yeah, take care.
+
+Unknown Speaker  1:00:39
+All right.
+
+
+Transcribed by https://otter.ai

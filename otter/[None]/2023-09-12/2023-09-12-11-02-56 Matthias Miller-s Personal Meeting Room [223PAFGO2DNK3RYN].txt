@@ -1,0 +1,1184 @@
+Unknown Speaker  00:42
+Hello hello again
+
+Matthias Miller  00:49
+All right, well we'll update since last time we talked I talked through all of the asset management changes with jaw we've got and so he's good with that and am I right? You're not going to be working on this stuff until next Wednesday
+
+Speaker 1  01:10
+um or not thoroughly I'd probably work on it whenever it's available. You know if it's okay, this week, I'd probably work on it yeah, that'd be my guess.
+
+Unknown Speaker  01:27
+Okay, let me
+
+Speaker 2  01:55
+All right, good ol drum company on an email the stuff you can put this on your radar
+
+Matthias Miller  02:09
+Dwayne is not going to be available to join today so we cannot talk about well, at least not right away. So I think it's basically a question of do you have anything else on
+
+Unknown Speaker  02:23
+your list that we should be going over
+
+Unknown Speaker  02:29
+now just that yeah, that's where that was at.
+
+Matthias Miller  02:36
+Mark What was it that you didn't want to go over?
+
+Unknown Speaker  02:42
+Because you've been going over something Yeah,
+
+Unknown Speaker  02:44
+I think you've had
+
+Speaker 3  02:47
+well, there were two parts one was that secondary between result that that sales or secondary invoice ID number
+
+Speaker 3  03:04
+the other drawing a blank right now the other was what we wanted to talk with Dwayne about what
+
+Matthias Miller  03:12
+well it's a handful of things check writing process deposit process
+
+Speaker 2  03:15
+feel like there's one other thing that's on my list what was it
+
+Unknown Speaker  03:29
+see we can pull it up payroll process perhaps
+
+Matthias Miller  03:39
+transaction verification report I don't know if that affects him or not or if that's just you and you and I invoicing process that's what it is
+
+Speaker 3  03:55
+which is the oh the that manual step that we built that we're looking to build in there?
+
+Unknown Speaker  04:04
+Yes
+
+Speaker 3  04:09
+well there what parts of those made sense to do without whiners they're not none of those that
+
+Unknown Speaker  04:19
+I'm gonna check something here
+
+Unknown Speaker  04:34
+pull up some of the invoicing stuff.
+
+Unknown Speaker  04:44
+migrate. So deets.
+
+Matthias Miller  05:01
+Okay, so here's how I'm proposing we calculate the invoice date. If if sales orders canceled, or as a quote, Well, should we assign invoice dates to sales orders that were cancelled?
+
+Unknown Speaker  05:19
+Saying that historic? Should we
+
+Matthias Miller  05:22
+historic historical sales orders that were cancelled? Should those still have a an invoice date?
+
+Speaker 1  05:34
+No, I don't think because if if the invoice date is what drives it going to accounts receivable?
+
+Matthias Miller  05:45
+Well, but if somebody puts if somebody invoices if it gets invoiced, and then it gets cancelled later, don't we need to have a rollback transaction to a separate rollback transaction? We're not going to right.
+
+Speaker 3  06:02
+So the use case is if this were lying, somebody would the share would be delivered, we'd invoice and then the customer cancels? How do we take it back out? But like, how often will it well, it could happen, but how often will it happen with that manual process? In there, because it's it's quite rare that a customer cancels, after it's been delivered, it does happen. But it's it's quite rare. I mean, rare enough that I would be tempted to say that he would just manually undo those transactions. Maybe that's
+
+Speaker 1  06:51
+what what typically have like the customer does that what would happen? I mean, you just bring the shit bags, they're gonna start showing up today? Or? Or do you charge them for something? Or like, do they have a delivery fee to pay? Or?
+
+Speaker 3  07:08
+It's usually just we bring it back. And sometimes we both build another one. If not, we just bring it back. Well, sometimes they might not be able to. They thought they would be able to take the shed. But the space didn't work. Nobody had done their due diligence. And so I would come back and go back into taking glue just put it back into inventory.
+
+Speaker 1  07:41
+So this would be more often because something was wrong with the shirt, not because they just woke up that morning, etc. They don't share
+
+Unknown Speaker  07:49
+more often. Yeah,
+
+Speaker 3  07:50
+I mean, if like what would the manual process be if we went back to like, undo that Transaction Set had moved all the way to accounts receivable? What could do is just go in and wait almost transactions or what
+
+Matthias Miller  08:12
+basically,
+
+Speaker 1  08:14
+basically it just you just go in and you know, he doesn't owe us this money anymore?
+
+Unknown Speaker  08:21
+I mean, we can void? Well,
+
+Matthias Miller  08:29
+you know, what part of it gets voided? And do you? How do you handle refunds?
+
+Speaker 3  08:40
+Like sending the money back the customer deposit? Right?
+
+Speaker 3  08:52
+Well, currently, we don't have a I'm sure there's not a systematic process while there is no system in place. So I'm tempted to think we need to just build to just do it manually, initially, and then if we see the need to create an automated process then later, but are we making it too simplistic?
+
+Matthias Miller  09:25
+Can we I mean, are you okay? If somebody cancels a sales order if we just revert any impact to accounting?
+
+Speaker 1  09:35
+Well, how often is the sales are simply going to be Edit? In other words, oh, we need to have a 10 by 20 bar instead of a 12 by 20. That one would get moved. You just create a new sales order, right? That one would just go to inventory instead of Wow.
+
+Speaker 3  09:58
+The way you can You could also tie a new skin when you take your invoice and the old you say no we don't want this building we want
+
+Speaker 1  10:13
+that sales order would edit would be edited and would that automatically update all the transactions are tied to it
+
+Speaker 3  10:22
+and so if we okay if we just automatically Boyd
+
+Unknown Speaker  10:28
+yeah
+
+Speaker 3  10:30
+what what would be the the trigger point to boil? The voided
+
+Matthias Miller  10:36
+you cancel the sales order
+
+Speaker 3  10:40
+what so okay if we had customer deposits the money in the bank we still have that money in the bank like why would how would that look
+
+Matthias Miller  10:59
+well, should we still record payment? I mean, should we still recognize all payments on the on all canceled?
+
+Unknown Speaker  11:09
+Sales Orders
+
+Speaker 1  11:15
+Yeah, because those didn't go away. It's because it was canceled.
+
+Matthias Miller  11:22
+And when do those go into unearned income or customer deposits or where do they go?
+
+Unknown Speaker  11:27
+Yeah. Do you commonly send it back?
+
+Speaker 3  11:32
+Well, we would Yeah, but it happens rarely. So like could we could we say anything that has happened any payment that payments that have been received, we report those but any future expected transactions boy we will pull off of AR if assuming it logged in a cost of deposit so that was basically well I guess nothing would void then but if the sale had already been made, then would you avoid the sale like on the income statement and just take that sail away take the remaining balance off of AR
+
+Matthias Miller  12:36
+yeah, there's two ways we can do it we could say that we could we can void the original sale or we could create a sale as of the original sale date and then do a reversal as of the cancellation date
+
+Speaker 1  12:59
+and the reversal would simply take away the charges there wouldn't there wouldn't change anything like it would just undo the charges
+
+Matthias Miller  13:10
+it would undo the it wouldn't do anything with the payments and it would just reverse the income
+
+Unknown Speaker  13:25
+did also reverse
+
+Unknown Speaker  13:34
+it wouldn't
+
+Unknown Speaker  13:36
+it wouldn't put the building back into inventory necessarily within
+
+Matthias Miller  13:41
+I think cancellation
+
+Unknown Speaker  13:44
+that's a tween question I don't know how that works.
+
+Speaker 3  13:48
+Should it I mean right now it's a messy manual process is what makes me nervous trying to automate any of those
+
+Matthias Miller  14:05
+Okay, so your preference would be just void out all transactions except for payments
+
+Speaker 3  14:18
+my preference would actually be to just do nothing with cancellations if there is a cancellation all everything needs to be fixed manually at least. Starting out
+
+Matthias Miller  14:36
+Okay, so basically, when we're looking at how a sales order any activity on a sales order prior to cancellation gets pushed into the accounting system. Anything after cancellation does not
+
+Unknown Speaker  14:55
+Yeah,
+
+Unknown Speaker  15:05
+So that means, then,
+
+Matthias Miller  15:08
+I mean, this is strictly for historical purposes, but for historical purposes, it could actually make sense to populate the invoice date for cancelled sales orders.
+
+Unknown Speaker  15:24
+Yeah.
+
+Speaker 3  15:30
+But how much of the historical like? Well, is that, and that would be very helpful if we ever want to redo 23. In assist, right, and assisting. But it has relatively little value we're looking to test from now to the end of the year and then roll out or go live with a genuine.
+
+Unknown Speaker  15:59
+Yeah.
+
+Speaker 3  16:02
+I mean, realistically, I don't see is redoing 23 numbers.
+
+Matthias Miller  16:10
+The other reason is it. It creates consistency across I think it's something that's a minor significance, but it creates consistency between historical and future buildings because future canceled buildings. Well, I guess it may or may not. You might cancel it before or after
+
+Unknown Speaker  16:29
+the invoice date.
+
+Matthias Miller  16:32
+But most likely, most cancellations are going to happen prior to invoicing a customer calls in and says Now I can't I wasn't approved for financing or my dog died or I don't know. And so please cancel. So we cancel the sales order. There's very few that would that would cancel after delivery, which would mean a separate trip out to collect the building. Or, I mean, if if they cancel, you know, I think North Carolina has on some of their online sales they've they've basically done a satisfaction guarantee you can turn down the building upon delivery if you would like but even if that happens the next day that sales order isn't gonna get invoiced because that building came back to the to the shop. So the cancellations after it's literally been invoiced are going to be rare
+
+Unknown Speaker  17:35
+yeah
+
+Unknown Speaker  17:54
+putting this in the wrong place, but me
+
+Matthias Miller  18:00
+okay, and then so if it's a canceled or a quote then we won't assign an invoice date. If it has transit tasks and all transit tasks are complete then we'll invoice it as of
+
+Unknown Speaker  18:21
+the latest completion date
+
+Speaker 3  18:26
+Yeah Or there's should we there's a locations field that like final location something like that. Is that does that do the same thing the same old transit Test complete I know on the modification history there's
+
+Unknown Speaker  18:45
+yeah
+
+Speaker 3  18:47
+the intent of that field the one Josh bill it was for you have a bill Bill like a lot it's not the final location but then you move it to the customer and it's
+
+Unknown Speaker  19:07
+so has so it's really
+
+Unknown Speaker  19:14
+if we have
+
+Speaker 2  19:16
+your Let me spin up I'm gonna move this over into a test system I've been playing around with that we can
+
+Speaker 3  19:27
+I think the key or the one is locked LOC is final destination I think is what what it's called on the modification
+
+Matthias Miller  19:40
+there's also this to
+
+Unknown Speaker  19:45
+it let's go look at this transit. Final. I think it's now to customer this guy. Okay, is that There's a building look building when final delivery day building delivery I think it might have gotten changed with the okay sorry here hang on let me so let's do
+
+Unknown Speaker  20:50
+if
+
+Unknown Speaker  20:58
+so I the way there's transit is final no sorry transit to
+
+Speaker 3  21:12
+light was this added change in the last week or two no
+
+Matthias Miller  21:19
+no it would have been before that where would your modification history be showing up that'd be on a building record and a sales order
+
+Unknown Speaker  21:28
+yeah it's on a building record
+
+Speaker 3  21:36
+the modification history of yeah on a building record is one that's been delivered already
+
+Unknown Speaker  21:47
+every day transit task building
+
+Unknown Speaker  22:00
+nation you
+
+Unknown Speaker  22:09
+think it's luck started loc Keishon is final or something
+
+Unknown Speaker  22:23
+seeing
+
+Unknown Speaker  22:31
+things building final delivery date
+
+Unknown Speaker  22:40
+so FTI string
+
+Unknown Speaker  22:54
+these guys are all to dealers if you like
+
+Matthias Miller  23:28
+I can confirm that with Josh then because this is working out the transit record to kind of think
+
+Matthias Miller  23:40
+okay, so there's a few exceptions here transit tasks
+
+Unknown Speaker  23:47
+this one had a retrieval
+
+Unknown Speaker  24:01
+year so the invoice date was a 16th because there was a site check after that's probably right anyway
+
+Speaker 2  24:20
+so I'm here retrieval again
+
+Unknown Speaker  24:35
+it says it should sound spaced active every day. Is there anyone? Here we're just spot check a few more retrieval.
+
+Matthias Miller  24:50
+Okay, so basically we're saying is we're now adding in waste states for retrievals
+
+Unknown Speaker  25:00
+The build on site which is an unscheduled site check
+
+Unknown Speaker  25:13
+we're signing it okay I mean I think that's
+
+Speaker 3  25:26
+okay so you're mocking up a report or you're putting a report together that shows the proposed invoice dates
+
+Matthias Miller  25:33
+correct and this is specifically what changes if we only look at
+
+Matthias Miller  25:43
+the to customer I look at the delivery to customer
+
+Unknown Speaker  25:54
+I wonder if we have to take a look at let me try this
+
+Speaker 3  25:58
+was unable to find that on a modification history but at the reason I was I had you seen it the last week or so, which is why I was kind of
+
+Matthias Miller  26:15
+Wii U I know I knew we used to have it I mean it was something
+
+Unknown Speaker  26:21
+like that in the past
+
+Speaker 3  26:24
+well as long as we're referencing but yeah we're looking for the same the same concept basically once it's at the end customer
+
+Unknown Speaker  26:49
+the impact of transit canceled
+
+Unknown Speaker  27:17
+see what changes with the crickets
+
+Unknown Speaker  27:35
+build on site to customer
+
+Unknown Speaker  27:46
+looks like this is also better behavior
+
+Matthias Miller  27:55
+because we've cancelled the previous delivery and did a build on site ah we tried to deliberately we do to build on so. Okay. So, if we have okay, if you have a transit task schedule to the customer in that transit task gets canceled. But nothing happened after that. Should that get invoiced as of the sales order creation date? Should that not get invoiced? Historically
+
+Unknown Speaker  28:29
+doesn't matter
+
+Unknown Speaker  28:34
+so the use case for that would be like what would be the situation where that would apply?
+
+Unknown Speaker  28:58
+Let's see if we can find a scenario.
+
+Speaker 3  29:01
+I know like whole buildings are filled on sites are handled a little differently where
+
+Speaker 3  29:12
+they have a built date but then they also need Dwayne's office. It's noted by it with the delivery date which the delivery date moves it okay, what's what's triggering the buildings to come off with finished goods inventory. We need to make sure that that that the logic we're using there a lot that that logic should align with what we're doing for invoicing. That's fair
+
+Matthias Miller  30:06
+Not sure how the transit task is getting updated
+
+Speaker 3  30:13
+there's also a delivery date so whatever moves the building
+
+Speaker 3  30:28
+well okay we're whatever's currently moving the building off of finished goods inventory should we should I think we should match that logic
+
+Matthias Miller  30:46
+so could we just do something like this
+
+Matthias Miller  30:55
+How has the building attached the and
+
+Matthias Miller  31:05
+has the building attached and we use the building's delivery date
+
+Unknown Speaker  31:17
+Don't you like
+
+Speaker 3  31:24
+and that is once the building is delivered or wanted once the hall or in the hauler portal as Mark to build and deliver
+
+Unknown Speaker  31:40
+yeah
+
+Matthias Miller  31:55
+so here is a
+
+Unknown Speaker  32:00
+wholesale building
+
+Matthias Miller  32:03
+what about wholesale buildings? Do wholesale buildings have a delivery date?
+
+Speaker 3  32:07
+Wow. Well, like the ones for Okay, take a look at the ones the ones for ships, right? No, those are automatically invoiced the Monday following the build date which is Josh just in the last two months Josh Bill rebuilt that logic so you probably want it every Monday morning it just changed to seven o'clock every Monday morning at seven the system is currently audit is currently moving the finished goods to AR
+
+Matthias Miller  32:55
+How does FTI work on those?
+
+Unknown Speaker  33:09
+Well that's a nine eight was
+
+Unknown Speaker  33:21
+wasn't built. Got it.
+
+Matthias Miller  33:27
+So in this case, we have a sales order for an unbuilt building
+
+Unknown Speaker  33:37
+two sheds direct
+
+Speaker 3  33:41
+Yeah, we I mean we create an internal sales or we create an internal sales order. They just issue their own like version of here's what we want to buy. Internally, we create a sales order
+
+Unknown Speaker  34:13
+Oh, so
+
+Matthias Miller  34:16
+what about other wholesale bill? I don't know. I feel like I'm operating on very insufficient information, weapons with other wholesale sales orders.
+
+Speaker 3  34:27
+Most of them pick up their own but there's like there is no Yeah, John. He's shaken. Yeah. trigger point. Okay. So we break it down into the main categories of so we have our retail buildings, retail sales, which we saw retail sales. I think you've got that logic.
+
+Unknown Speaker  34:55
+Wholesale.
+
+Speaker 3  34:56
+We break down into two categories. wholesale and See I work with Josh good yeah i j
+
+Unknown Speaker  35:17
+and then the wholesale
+
+Unknown Speaker  35:20
+yeah
+
+Speaker 3  35:23
+most of those pick up their own buildings or take care of their own so there is no
+
+Speaker 3  35:37
+one basically for the wholesale ones we can add a little bit of homework on that but the most of those we can plan to invoice the day after they've been billed
+
+Unknown Speaker  36:09
+let me you're taking this over here and see if we're on the same page
+
+Unknown Speaker  36:32
+yeah
+
+Matthias Miller  36:36
+I mean I don't anticipate you'd have a wholesale SDI building or you probably wouldn't even have any wholesale Would you have any wholesale invoices with that aren't tied to buildings
+
+Speaker 3  36:45
+we do yeah sometimes. So yeah
+
+Unknown Speaker  36:50
+yeah
+
+Speaker 3  36:56
+yeah in that as Josh that's a weekly Monday morning in boys
+
+Matthias Miller  37:07
+couldn't we do that after the day after the company based off of the sales order creation date
+
+Speaker 3  37:19
+no, the sales order creation date is can be you know a week 234 weeks from when the sales orders graded until
+
+Unknown Speaker  37:31
+when we create the sales order our system until we actually build it and they become yeah do when when we build them
+
+Matthias Miller  37:50
+so can we use building built eight on wholesale
+
+Speaker 3  37:59
+Yeah, for wholesale we can. Yeah, we I think that's what we'll use is the build date.
+
+Matthias Miller  38:07
+Okay, so it looks something like give it's canceled or it's a quote and we do nothing
+
+Unknown Speaker  38:14
+if it's a
+
+Matthias Miller  38:22
+if it's a retail
+
+Matthias Miller  38:39
+if it's wholesale
+
+Unknown Speaker  38:49
+okay so.
+
+Matthias Miller  39:18
+Okay, so if it's not wholesale at retail, then we use the delivery day. It is wholesale has a building and it is wholesale, use the building build date, otherwise we use the creation date and we never do cancel their quotes. So that means then
+
+Unknown Speaker  39:33
+that really changes things
+
+Unknown Speaker  39:40
+like this one
+
+Matthias Miller  39:43
+is wholesale. But as of this version that I had, it wasn't built. So therefore it's not invoiced, which is correct here. We had said it was the 10th it's actually the 17th Presumably because there's also wholesale because It was actually built on the 17.
+
+Matthias Miller  40:12
+And so the similar logic would apply. If you have for the needs invoicing, if it's retailing was delivered, then it needs invoicing, if it's wholesale and needs and was built, it needs invoicing, and otherwise, it immediately needs invoicing. Yeah.
+
+Speaker 3  40:36
+So is what is the next step on is are you can you create a report that that's current? And we can review and troubleshoot. Or we can review and verify that, you know, for a week or two weeks, provide feedback, because I think that logic is your logic from high level is great, but I think there's going to be a number of caveats that we'll have to plan for.
+
+Matthias Miller  41:11
+Who's gonna be running that you guys
+
+Unknown Speaker  41:15
+Yeah. Or what was your Oh, no, that's
+
+Unknown Speaker  41:20
+fine. Okay.
+
+Matthias Miller  41:23
+So what would be ideal? If we would?
+
+Unknown Speaker  41:51
+What if we would do just
+
+Matthias Miller  42:03
+I think what we want to do
+
+Matthias Miller  42:10
+think what I probably prefer to do is you're right. It's not do this now. But I give you
+
+Matthias Miller  42:22
+if I take this report and stompin what I believe historical values should be and then give you a report that shows sales orders meeting invoicing.
+
+Unknown Speaker  42:42
+Actually is going to basically be this
+
+Unknown Speaker  42:50
+Yeah, which is going to be pretty similar to this report
+
+Matthias Miller  43:02
+Yeah, and then I send you a link to it
+
+Speaker 3  43:20
+if I could just there's a few certain columns that fields that I'd want to have on that report that would be helpful to us for that but.
+
+Unknown Speaker  43:53
+All right, fire away.
+
+Speaker 3  43:55
+So the billing date, or the built built date? The date Yeah, the build date. The size and description. Obviously for non buildings that wouldn't apply but yeah, the size and the description. The customer name the delivery date, I believe you already have and the the retail total retail value or the Yeah. For Yeah, probably. Three what the customer pays basically. Yeah. We'll do it science description. Customer.
+
+Speaker 3  44:46
+Yeah, I think that and then can you set that up to send? Can you send it up, set it up to send it
+
+Unknown Speaker  45:01
+Daily students sent daily to this starting out to send it to, to me Mark dot t, we will probably start sending it out to districts as well but sent and send us three different reports one for shipping and one for vinyl and one for portable.
+
+Unknown Speaker  45:38
+And then do you want me to?
+
+Matthias Miller  45:47
+Is there going to be somebody in Dwayne's office? That is going to be or somebody somewhere who's going to be saying, Yep, go invoice these? Or do you want me short term to automatically invoice everything that I think should be invoiced? And we fix it up?
+
+Speaker 3  46:06
+Short term, let's just go with this record until we've looked at the I'd say verified or looked at this logic for say a week. I think that will give us enough and then at that point we can turn attorney invoicing or start doing invoicing? Well okay, so if we think about from
+
+Unknown Speaker  46:36
+so, there's
+
+Speaker 3  46:43
+I think what we should do is critique this for a week, see if there's any changes we need to make to the logic.
+
+Unknown Speaker  46:52
+And then after that, start sending those details to Dwayne's office saying, Yes, this is what needs to be invoiced? No this is
+
+Speaker 3  47:11
+because we're because of the fact that we're planning to have it have a manual step in there
+
+Speaker 3  47:23
+I think we want to also because we're Yeah, because of that I don't think we want to start out at any point during it automated just for so when we start doing that, does that mean those buildings are going to be moving actually moving on to finished goods inventory and To Accounts Receivable then
+
+Matthias Miller  47:48
+once once I get my work done? Yes.
+
+Speaker 3  47:53
+Which Okay, so that's a pretty good, it's, we just make need to make sure that it's if we're not careful, we'll have a bunch of brain says hilarity will ensue. It will move.
+
+Speaker 3  48:16
+So, what I'm saying is, I think let's leave the current what's happening currently under the hood, as they move to out of finished goods, leave that leave that process intact. Until we've had a week at least a week's worth of reviewing these reports every day and saying yep, yep.
+
+Unknown Speaker  48:38
+And then once that, once we believe that working correctly then we figure out how are we now going to transition from having it being done automatically by multiple different methods to communicating that to Dwayne's office and having that updated, intentionally outdated.
+
+Matthias Miller  49:16
+So here's, here's why I want to automatically flag them as invoiced because somebody comes in and says this building was delivered on Friday, we just forgot to note it.
+
+Matthias Miller  49:35
+If I do my automated reporting, I can report on do this without getting deep in the weeds, but I can report on all nonbuilding sales orders that were created yesterday. All retail buildings that were built yesterday in all wholesale buildings, sorry all retail buildings that were delivered yesterday. In all wholesale buildings that were built yesterday, I can give you that report. If somebody backdate something, it's not going to show up on your list. And if so, if you're fine with that, I don't mind I'm happy during this, at least during this seven week, seven day period, if you want it to show up on your list, then my proposal is we go find all buildings that need to be invoiced, go ahead and invoice them and just send you a report of what's automatically been invoiced. And then when sending things out to.
+
+Matthias Miller  50:39
+And then when strains office gets involved, we stop automatically doing it and they have to do it manually.
+
+Matthias Miller  50:48
+Do you do you care if backdated items fail to show up in the next week?
+
+Unknown Speaker  50:53
+Ah
+
+Speaker 3  50:56
+well, it was Dwayne's office gets involved? How would we handle backdated items? Then?
+
+Matthias Miller  51:03
+It would just show up on your list of get invoiced. You say there should have been invoice but it never was.
+
+Speaker 3  51:12
+And so what's the difference between that and and the report we're looking at creating short term is it just the short term report is easy to build the long term report the one that catches the
+
+Unknown Speaker  51:27
+light historical buildings that were failed to be updated is it is that report much harder to take more time to build
+
+Speaker 3  51:53
+I think I'm fine with I mean, I'm fine with with them not showing up in the initial seven days. But I'm just trying to understand why. Like, how are we going to catch them once Dwayne's office gets involved?
+
+Matthias Miller  52:10
+Because we'll see that they're built but they don't have an invoice date.
+
+Matthias Miller  52:18
+But we're not assigning invoice dates. So if something shows up that needs to be invoiced, it doesn't have an invoice date. We don't know whether it was backdated or whether it was just something that shouldn't be included on the report.
+
+Speaker 3  52:29
+So once his office gets involved, then you're going to start assigning invoice dates. But they're going to be not, I don't know a bit of a holding pattern. You assign invoice dates, but they don't. They're not actually invoiced until when invoices.
+
+Matthias Miller  52:48
+No, they don't get an invoice date until Dwayne says tweens offices. Yep, we'd like these. And then they're invoiced as at that date. So if somebody delivers on Friday, it doesn't get approved until Monday we get in waste on? Well, this is a question I guess. Do you guys want to invoice on Monday or Friday?
+
+Speaker 3  53:15
+So if something historical is failed, do we want to go back and invoice it as of the historical date? Or as of today's date?
+
+Unknown Speaker  53:26
+As soon as you catch it right.
+
+Speaker 3  53:33
+Now, I think the idea would be as of the historical date. So you're looking at a month or a period and you realize suddenly realized that you fail to invoice, a block of wholesale buildings. I think you'll want the ability to go and invoice them as of the historical date in bullish showing the correct model. Is that what you would do in QuickBooks? Typically for your plans,
+
+Unknown Speaker  54:06
+that would be the right time to do
+
+Unknown Speaker  54:13
+it I mean
+
+Speaker 1  54:16
+you know if you're going to invoice with that doing 30 days and then send them an invoice that is doing 30 days, but it's back to 30 days for PR situation there but as far as accounting, it's up against Greg. That way you're you know, because that that would have been the date that it would have been sold, you know when it was delivered, so you might want to just extend the terms on Yeah. But I think
+
+Unknown Speaker  54:47
+they're gonna be correct
+
+Unknown Speaker  54:55
+okay, so
+
+Unknown Speaker  55:04
+This this this
+
+Matthias Miller  55:11
+should actually be the day after Bill date
+
+Speaker 2  55:21
+also buildings Yeah or No? Or data of which do you want?
+
+Unknown Speaker  55:28
+Let's do the day after the build date
+
+Speaker 3  55:41
+so on that question is for historical. So we're proposing that if this were functioning today, share time gets a list of what asis believes should have been invoiced yesterday Monday based on activity that happened Monday so they'll go through and say yep all agree with all of these joins off as updates them will those be updated as of today or as of yesterday?
+
+Matthias Miller  56:24
+I think by default as of it'll be set to an invoice date of yesterday.
+
+Speaker 3  56:30
+Good Yeah, I think that by marking off but by approving that you're basically you're verifying that you want to invoice it you want to invoice it as of the day you've listed on the report this gets suggested in would propose
+
+Matthias Miller  56:55
+okay and then you would have a just something like an initials column
+
+Unknown Speaker  57:07
+or is it a checkbox or a
+
+Speaker 3  57:12
+tick boxes fine like the accounts payable verification report yeah I think there's a set of practices with a space in between
+
+Unknown Speaker  57:28
+okay good
+
+Unknown Speaker  57:42
+basically well alright
+
+Unknown Speaker  57:59
+so then
+
+Matthias Miller  58:18
+think with a check and deposit
+
+Unknown Speaker  58:23
+maybe go back to.
+
+Unknown Speaker  59:45
+On the
+
+Matthias Miller  59:59
+can this To hear, be linked directly to a deposit transaction in the database, or does this need to be in my mind, that sales order payments, RG indicates what we have received from the customer. And this is the process then for saying we are depositing those into
+
+Unknown Speaker  1:00:24
+an account or no. Now this is for
+
+Unknown Speaker  1:00:32
+loose saying we received it
+
+Unknown Speaker  1:00:35
+saying we received the payment.
+
+Speaker 3  1:00:38
+But what's what's usually going to happen is most. So we're going to have a manual forum on the biller site where they fill out like the way they communicate this information to Dwayne's office saying, I received these three checks in this amount, this check number for this invoice number and then sent that to Dwayne's office. And usually, they're going to do that once a week, and was planned to deposit it that day or the next day. So I think what we talked about is the information they're sending, they could have a deposit date listed on that form, that communicates Hey, I'm going to go to pass this on that date. So Drew, how would you tie that? Like? What is your thought you'd fill out? You'd record the payment. And then
+
+Speaker 1  1:01:45
+and then have a separate module to make deposits.
+
+Matthias Miller  1:01:53
+There to undeposited payments.
+
+Speaker 1  1:01:55
+Right, right. All right, and they could send in that one, four.
+
+Speaker 3  1:02:01
+But what why would you do that instead of like adding, say, another column to this? And with some say departed date?
+
+Unknown Speaker  1:02:15
+I'm sure there's reasons I'm not opposed to doing this. Yeah,
+
+Unknown Speaker  1:02:18
+um
+
+Speaker 1  1:02:33
+I suppose you probably could. Like, I mean, it's, you could put it together in one like that, but it's separate tasks, like, this is your accounts receivables job here, whereas verifying what hits the bank is somebody else's job. So that wouldn't be part of the reason, but it could be there on the same one. There's, here you're sorting through a list of all the available things to be paid. Whereas if you're making a deposit, you'd have much smaller less
+
+Unknown Speaker  1:03:23
+to sort of understand Yeah, it's only the list that
+
+Unknown Speaker  1:03:26
+right that, you know, you have payments for the
+
+Unknown Speaker  1:03:29
+what we call the undeposited funds.
+
+Speaker 1  1:03:34
+You know, it's like you're drawing your list here out of accounts receivable, whereas for depositing, you're drawing your list out of undeposited funds, but like, I guess in a way, it would be nice if you could have a column here, that will be deposited as long as you would also want that you have to have deposit date, but then you also have to have a deposit account, because that's going to be going into
+
+Speaker 3  1:04:08
+your concern is we're trying to do it'll be confusing. We're trying to do too much if we try and put that all in one, which I think
+
+Speaker 1  1:04:17
+yeah, kind of be sorting through a lot of information. It could be done
+
+Speaker 1  1:04:31
+you know, it would make sense probably to do it that way. If you have if you always have you know, if you have a weekly report coming in that says hey, we got these checks, and we're gonna put them in the bank. I think that would make sense. But are you going to be receiving? Like, if they if they if they're writing down dates, or are they receiving check a on Monday and three Receiving cheque B and C on Tuesday and like, because that receiving the check date will determine when it goes from accounts receivable to undeposited funds.
+
+Unknown Speaker  1:05:13
+Oh, yeah, um,
+
+Speaker 1  1:05:14
+you know, so if you have to put in, if you have to put in to account two different dates, A, if you have to enter a deposit date, and the received date, and you have to enter a deposit account, like saying you have to enter more things, whereas if you just have a deposit module, you'll select the account that everything that you're gonna pick is going to go into, and it's all going to be on that date. So you don't have to enter any dates either.
+
+Speaker 3  1:05:49
+That brings up another thing that we need to, it's worth mentioning. So deposit date is obvious. That's like, assuming we deposit on a schedule, say once a week. Again, here, we're just talking about checks and cash. What Laurie suggested is the risk, like the received date, use date that as a project date, but what that it makes your your AR accurate history, if you will. So if, for example, if you have a customer that he's sitting in AR for five weeks, there's a note in AR that says, the dealer collected the check three weeks ago, we just haven't stopped into pick up the check and don't have it in our possession. Then it sits in AR for, let's say three weeks for all of those three weeks. But he actually paid, you know, the same day and entered AR, when we get that j we want to backdate that to the date on the check. So that historically, your AR is correct. And it doesn't look like your that ratio that you that's used is way out of whack for this customer, it actually is logical. All we're doing is we're shifting money in an asset account from historically from undeposited funds to AR so what would happen then is if you go back later and look at look look like just go customer was only an AR for a day, and then undeposited funds for three weeks? Yes, it does cause your financial statements to shift but the only shift is on the balance sheet between your AR and your undeposited funds. Is that how you're used to doing it?
+
+Speaker 1  1:08:04
+Yeah, because then well it depends whether you want to go by the check date. I mean, if there's no record for when you actually received the check, then the check date you can use it would be better to go by the day that you actually received it if you have a way of recording that because that might be if they sent in the mail might be four or five days later just because of the mail but if you have no other record of it then yeah, you can just go out and check date but that would that would keep your ratio of datas to accounts payable accounts receivable correct.
+
+Speaker 3  1:08:50
+But now suddenly you have quite a number of up fields are dates for every payment that you need to enter
+
+Speaker 1  1:09:06
+another thought about that having a separate deposit module would give you also have some way to deal with money going into the account that's not connected to an invoice those random check waiver or like bank fee waivers bounced checks different things like that
+
+Unknown Speaker  1:09:46
+No,
+
+Speaker 1  1:09:47
+we ever because I had marked up a deposit
+
+Unknown Speaker  1:09:55
+entry. Yeah.
+
+Speaker 3  1:09:58
+Yeah. You ever say because that was not, but I think that would mean that still applies.
+
+Unknown Speaker  1:10:05
+Yeah, I mean, that would be separate from this page.
+
+Speaker 3  1:10:11
+But are we okay? So I was expecting that, that this information would all be entered in Blaine's office, but then the reconciliation will be done by say, you will be done on the accounting side, or were you like they would they
+
+Speaker 1  1:10:32
+could? Like, yeah, I mean, there are reports of what is going to the bank could be sent there and they say, Okay, we're gonna deposit these that would work.
+
+Unknown Speaker  1:10:45
+And then you would look at you would use that against the bank state
+
+Unknown Speaker  1:10:50
+bank statement? Yeah. Yeah.
+
+Speaker 3  1:11:01
+So should we would it be helpful if we, what information are we do we need to submit, say, to Dwayne's office so that they have all the informations? I mean, would that be helpful to go through and
+
+Unknown Speaker  1:11:15
+in our list those in order to make entries?
+
+Unknown Speaker  1:11:18
+Yeah.
+
+Speaker 1  1:11:21
+Um, that list that you had you had listed there day
+
+Unknown Speaker  1:11:25
+that I think would work. Amen would
+
+Unknown Speaker  1:11:30
+be?
+
+Unknown Speaker  1:11:32
+Well, the invoice that it goes on?
+
+Speaker 3  1:11:36
+Are we massage, I feel like we're kind of, there's a lot of stuff we need to figure out on our site, we're gonna make sure we're not. I want to make sure we're using your time wisely. He said a day for us like 1000 years are not knowing you made some comment, I'm
+
+Unknown Speaker  1:11:55
+not sure.
+
+Matthias Miller  1:11:58
+But or not be held to liable for things they've said in the past.
+
+Matthias Miller  1:12:06
+Bottom line, from a software standpoint, it's better to separate out the received money versus the, the, here's what we're depositing. And we can tweak the workflow a bit to make it seamless. But conceptually, those are two different things. Something that we need to keep in mind is that the on the bank statement, cash is all going to be lumped together in a single transaction. And checks will all be listed separately, I believe. So I don't know that there's much required to do there. But just something to keep in mind.
+
+Speaker 1  1:12:51
+When other different banks do different, I've got one that if you deposit them all on the same, those give you the deposit, ticket value, you know, so if there were five checks in the law, like every seat for the deposit, will show the different checks. But a bank statement will only show the total as
+
+Matthias Miller  1:13:21
+so do you want to post it in a single accounting transaction? Or do you want it? Or do you want them broken apart? And you guys match them up?
+
+Speaker 1  1:13:33
+Well, I mean, in my mind, the easiest thing would be, if there could be a deposit record that goes by the total, like, it's going to show the total of the deposit. In the bank account, we account for that bank. I'm just gonna show that deposit total. But then if you open up that deposit record, which would act just like like your transaction record, it would say, okay, these payments were what got deposited in this deposit. Right? Would you
+
+Unknown Speaker  1:14:13
+also have that sub group like? So, yeah,
+
+Speaker 1  1:14:19
+you might have some categories like cash. So much in cash, there was so much in checks. You might have some subtotals like that. Yeah.
+
+Speaker 3  1:14:27
+So if the bank, if the bank just gives you a lump sum total of 20,000 checks, and it matches your subtotal for that day, Aaron's happy you're going to move on with Right, right. If it's not, then you want to be able to drill down and look.
+
+Speaker 1  1:14:44
+There was a payment of $500 cash in the bank says Then we got 300 and then you talked to that person. But like that's another thing was it could be nice to have them because it would create a separate transaction record. Are the ties all those together that got deposited on that day or that
+
+Speaker 2  1:15:06
+deposit sure
+
+Unknown Speaker  1:15:21
+yes, no doubt boxcar is going to be right? Good throws
+
+Unknown Speaker  1:15:40
+okay
+
+Unknown Speaker  1:15:54
+so
+
+Matthias Miller  1:16:01
+to wane the catchy well okay so
+
+Matthias Miller  1:16:27
+doing current plans and invoicing process we're going to be sending out for about a week we're going to be sending out emails to mark with buildings that that should be invoiced and he's going to review them. At that point after that point, we're going to start sending out daily emails with checkboxes to each of the district managers to check off which which reports need an invoice date, but don't have one. And they will check them off send it back in and somebody in your office will have a report that they can go through and flag anything that I check off anything that has been checked off on the verification on the on the invoicing verification report.
+
+Speaker 2  1:17:19
+Yeah. Yeah, is that well they set workable
+
+Speaker 4  1:17:28
+so what are the mechanics are like that on the sales? Or what what what controls that report? Or what report what controls does that report can talk to?
+
+Matthias Miller  1:17:40
+Okay, so how it all works under the hood? Is we will have a
+
+Unknown Speaker  1:17:47
+to actually do this
+
+Matthias Miller  1:17:55
+and so proposed invoice date,
+
+Unknown Speaker  1:17:59
+which it's going to be this
+
+Matthias Miller  1:18:13
+Why don't you check. So, no proposed invoice date for canceled, or for cancellations or quotes clearly. For retail buildings. So if a sales order has a building, and the sales order is not wholesale, then we will use the building's delivery date as the proposed invoice date. If it is wholesale, we'll use the day after build. And if it's a non building sales order, we'll use the sales order creation date.
+
+Speaker 4  1:18:49
+you're automatically going to import that date into a field on the sales order represent Correct. Yes. And so what is what are you in what is my office going to be doing then in regards to that?
+
+Matthias Miller  1:19:08
+Then you will have a report that shows all things that have a proposed invoice date but don't actually have a invoice date on there.
+
+Speaker 4  1:19:17
+And then the ones that you say yay, to select it, hit the button and it'll automatically write it. Yeah, it makes sense
+
+Speaker 3  1:19:30
+that that action will then do the dollar transactions moving from finished goods inventory to AR bring the cogs to the income statement. All of those things, right?
+
+Speaker 4  1:19:52
+Yes. Is that they feel gonna be hidden.
+
+Matthias Miller  1:19:57
+No, it's gonna be visible. The invoice date. It's gonna be visible
+
+Unknown Speaker  1:20:01
+is it going to be editable interactively
+
+Matthias Miller  1:20:05
+we have not thought through editability
+
+Speaker 4  1:20:08
+is that is the filling of that date is what's going to change you your your prefix
+
+Unknown Speaker  1:20:17
+yes
+
+Speaker 4  1:20:34
+what do we care do we are we worried at all about accidental fields
+
+Unknown Speaker  1:20:48
+no
+
+Speaker 3  1:20:49
+no I mean now they're automatically coming out of finished goods inventory and
+
+Speaker 3  1:21:06
+no no concerns well what happens if we if they are like what happens if if we mistakenly invoice one a day later this one wasn't done it shouldn't have been invoiced?
+
+Unknown Speaker  1:21:45
+The status was changed back
+
+Speaker 3  1:21:49
+well I mean yeah, well would you be able to just take away just blank out the invoice date and
+
+Unknown Speaker  1:21:59
+yeah, we could we could
+
+Speaker 3  1:22:07
+do that another one of those situations where if that happens you just for now we just plan to manually undo what happened to it?
+
+Speaker 2  1:22:25
+No, it's tricky. It's actually easier to undo it if you undo the invoicing than it is to once you manually undo it
+
+Unknown Speaker  1:22:39
+so you would just undo all of those transactions then. Yeah.
+
+Unknown Speaker  1:22:45
+Okay
+
+Speaker 4  1:23:00
+the only input I have is in the interest of keeping things from like that have I don't know that you should be able to from from the details screen I don't know you should be able to punch in and edit that date. Maybe we have an alternative way to edit it it's somewhere but like kind of like a sale date where you know, because it feels to me like that's fairly critical of a date if it's going to if that date is going to govern whether it's talking to accounting or not then I don't want a dealer accidentally opening up a detail screen a Sales Order Detail screen and punching a date there by accident and we go to writing transactions Yeah.
+
+Unknown Speaker  1:23:52
+Now efficient
+
+Matthias Miller  1:24:24
+I mean, yeah, I mean, I think for now, we're just using whatever that default date is. I don't know if we need a mechanism by which to apply a custom date. I guess we could add an option in a flyout menu that lets you manually override
+
+Speaker 4  1:24:44
+so when when you Okay, in the report, whatever report you're going to call the invoicing report, if you will, I don't know what your what are you calling this thing?
+
+Matthias Miller  1:24:53
+So it was ordered needing invoicing sales orders needing invoicing.
+
+Speaker 4  1:24:56
+Okay, so in that report, I expect that the date fee We're going to auto populate could potentially be editable. If somebody says if a district manager says oh no no no not that day we want to actually invoice on this date
+
+Matthias Miller  1:25:13
+Yeah, how do you want this to work? You want people to approve it on a per row bases? Do you want them to be able to highlight multiple and say yep, go invoice these.
+
+Unknown Speaker  1:25:25
+Yeah, I mean, I was thinking selected records but
+
+Speaker 4  1:25:34
+that I mean, I don't know. I don't think we want to go line by line. I expect that you're gonna get back or important it's gonna be like, it's it feels to me. Obviously without being in real world testing on this it feels to me like there ain't there's not going to be a significant amount of change ever takes place here. It's basically district manager says yep, go ahead. We agree and then select the whole pile and hit invoice unless Mark Do you see a situation where there's going to be a lot of changing of that invoice date?
+
+Unknown Speaker  1:26:05
+No, I agree with what you said
+
+Unknown Speaker  1:26:31
+do that
+
+Speaker 4  1:26:54
+so you're going to x so there would actually be a checkbox you to check that actually governs whether you're writing the date or not, is that what I'm reading?
+
+Matthias Miller  1:27:03
+I think so. Are we gonna have a or are we gonna have a fly out little fly out option for those times when you want to
+
+Matthias Miller  1:27:28
+we could just do that
+
+Unknown Speaker  1:27:36
+on a power per per I'm trying to say per row basis that's hard to say per row per row per row basis.
+
+Speaker 4  1:28:46
+Think my thighs fell asleep are you waiting on me for some
+
+Matthias Miller  1:28:51
+I don't know what I'm waiting on
+
+Matthias Miller  1:29:04
+all right and then we have a Reese Okay, Mark and drew you guys are gonna put put together whatever information we need to receive payments and or the deposit form stuff is that right?
+
+Unknown Speaker  1:29:19
+All right. And
+
+Matthias Miller  1:29:27
+you guys know what you want in the transaction verification report for accounting transactions that are not
+
+Unknown Speaker  1:29:35
+directly they're not automatically created
+
+Speaker 3  1:29:44
+transaction verification for like a like, what type of transactions
+
+Matthias Miller  1:29:51
+somebody in accounting manually interested deposit or creates a creates a journal entry or something like that. doesn't go through APA R, et cetera, et cetera.
+
+Unknown Speaker  1:30:05
+So it's something it's a double check. Or a right.
+
+Speaker 3  1:30:17
+No, it? Is this ad, you sent me an example of this, like, two three months ago?
+
+Matthias Miller  1:30:26
+No probably did?
+
+Unknown Speaker  1:30:46
+Me?
+
+Speaker 3  1:31:11
+On the left, we have, okay, the date and the ID what what is the ID for I mean, it's
+
+Unknown Speaker  1:31:23
+gonna be the transaction
+
+Matthias Miller  1:31:25
+will be the internal transaction ID
+
+Speaker 3  1:31:28
+contact is the contact. That's not who did it? Or is that who made the transaction or? Okay, that's I think what you have here and adding a column for that, basically, who, who made the transaction? I think that would be all that we I think that's all that we would need through what this report is this for visibility for any transactions that are not automatically created, like a journal entry or whatever it is. So that right visibility, and
+
+Unknown Speaker  1:32:22
+now it'd be great.
+
+Speaker 3  1:32:24
+Just yeah, twofold. I mean, I think one is just Dwayne says Good fences make good neighbors. And just visibility into
+
+Unknown Speaker  1:32:37
+what happened?
+
+Unknown Speaker  1:32:40
+Can you think of anything else that should be listed better?
+
+Speaker 1  1:32:47
+I don't know about listed, but sorted by accounts would be fantastic.
+
+Unknown Speaker  1:32:56
+Oh, they're listed by
+
+Unknown Speaker  1:32:57
+their listing by date? Um, can you?
+
+Speaker 3  1:33:09
+You're saying the reason you want it is if something looks odd and say raw materials, right? All right, you can.
+
+Speaker 1  1:33:17
+Right, you're gonna like it's just that account? Um, I mean, I guess depending on whether or if you could just, you know, I love being at the top of the column and reset the order by by that column is probably not something like that.
+
+Matthias Miller  1:33:36
+Well, how often are you going to have GL accounts? And this is going to be a pretty rare, pretty small sliver. And so if you if something looks weird, don't you have to do some more forensics to figure out what they were trying to? Yeah, know where you're wanting to see this within the hierarchy of accounts.
+
+Unknown Speaker  1:34:08
+No.
+
+Speaker 1  1:34:13
+This would work like. So one thing we're trying to do right now is, is look at how does what's coming through compare with QuickBooks. And so this would isolate for us. All transactions that are in there, that did not come up through the system. Because all we're getting is what came through the system at this point, I think, and so what shows if anything's in there, and that's not. This will show us what's in the box that did not come through from abroad. Just orders and so on. I mean, if I'm understanding it right. Yeah.
+
+Speaker 1  1:35:14
+Like, I think we can work with it the way it is, well,
+
+Speaker 3  1:35:17
+well, let's have date range, like you could set start and end date range.
+
+Matthias Miller  1:35:23
+This was this was intended as verification report. So this is anything that came through that wasn't approved already. I mean, if you guys want to report of, I want to see all transactions that are not automatically generated for this date, period, et cetera, et cetera, et cetera. Let's go crazy. Whatever report you need to tie it out to what you're doing in QuickBooks. Or am I missing something?
+
+Speaker 3  1:35:46
+No, that's so how are you intending this to work? Like, would this be a show all of these transactions for all time, and you just
+
+Matthias Miller  1:35:55
+know, this would go out every day, or every week or I don't know how often however, often you decide. And it would be like any other verification report go out to district managers, this just district managers would sign off on it. Or they would say I need more information about what in the world you guys are trying to do here. And then it would go back to Dwayne's office dean's office would check the verification or the you know, the approved checkbox and if something and as soon as it gets approved it falls off the list if they don't deal with it do anything with it it would stay on that list and
+
+Unknown Speaker  1:36:34
+I think I was thinking weekly should be offered an offer Do you think it needs I mean yeah, we can always increase the premiums if we need to but weekly
+
+Speaker 3  1:37:03
+as far as when could we send it out Monday morning with the same time the eight pin verification report goes out? I just say Monday morning at six.
+
+Matthias Miller  1:37:45
+Okay, the only other
+
+Speaker 2  1:37:55
+we're, we're about 10 minutes over and we're spinning wheels. I am at least
+
+Matthias Miller  1:38:08
+Do you guys still want to talk at three?
+
+Speaker 3  1:38:12
+No. My mind's tired. I mean, unless there's stuff that we need to cover, but no.
+
+Unknown Speaker  1:38:21
+No, I don't think so.
+
+Matthias Miller  1:38:26
+Okay, well, I think theoretically, I've got enough stuff to nail down on the deposit process to be required for sales order impacts from this verification process as well.
+
+Speaker 2  1:38:37
+I don't know that. I've got much, much else. much else to go here.
+
+Unknown Speaker  1:38:43
+Do you want me to send that deposit? Markup layout?
+
+Speaker 2  1:38:51
+Yeah, if you don't mind it might have misplaced as well. There go.
+
+Speaker 3  1:38:58
+Okay, and then we will put together the manual deposit payment record form which doesn't really
+
+Speaker 2  1:39:17
+good. Okay. Sounds good. Okay. All right. Thank you.
+
+Unknown Speaker  1:39:26
+Awesome. Yep. Thanks.
+
+
+Transcribed by https://otter.ai

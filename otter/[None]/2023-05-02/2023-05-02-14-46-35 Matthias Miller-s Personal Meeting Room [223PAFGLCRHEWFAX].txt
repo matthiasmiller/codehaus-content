@@ -1,0 +1,350 @@
+Unknown Speaker  00:37
+Yo what's up Alright Josh is simple solution
+
+Unknown Speaker  00:46
+I like simple solutions
+
+Speaker 1  00:49
+if S O sale date is greater than so building field building build date wow how to tell here this guy gets a lot so it was sold after it was built
+
+Speaker 2  01:22
+okay let's test it because your your other macro that evaluates modification history is still there so let's go let's go do a sales order let's run sales order report and let's let's drop let's drop it in there as a subset and then drop the macro and as a column
+
+Unknown Speaker  01:42
+let's do this sales order
+
+Unknown Speaker  01:58
+macro
+
+Unknown Speaker  02:33
+oh goodness
+
+Speaker 2  02:35
+you should have filtered it by a district so that we don't go by you're gonna go through like 30 Some 1000 records
+
+Unknown Speaker  02:50
+do you want to check recency? Sure, just
+
+Speaker 2  02:57
+There you go. That that's gonna be wasn't wrong but 33,000 or 12 Okay 34,035 You
+
+Matthias Miller  03:13
+alright, well this is a quote. So we're not
+
+Speaker 2  03:15
+okay. Let's go back and explain for quotes. Knit is so it's quote
+
+Unknown Speaker  03:23
+knit and
+
+Speaker 1  03:31
+so here we sold on the third was a pickup from a lot
+
+Unknown Speaker  03:37
+we okay but you're gonna have to go we're gonna have to go further than Yeah, but how much but that
+
+Unknown Speaker  03:49
+Okay, so
+
+Speaker 2  03:51
+this this is a little bit Okay, for the most part it'll actually work where it's going to get in trouble there's going to be misses on it. Because Let's hypothetically say you built a lot building it's built today you put it on truck tomorrow you take it down the lot the customer walks in and says I want to buy that you do literally could have a sale three days after
+
+Unknown Speaker  04:13
+the actual build date
+
+Matthias Miller  04:15
+but here we have a building that was built on the 12th it was sold on the third How is this a lot sale
+
+Unknown Speaker  04:26
+okay, we go to the building and let's look at modification history
+
+Unknown Speaker  04:34
+oh this is what was this one somebody screwed up and they made this thing
+
+Unknown Speaker  04:44
+Okay, so this actually was not a lot sale.
+
+Speaker 2  04:47
+No, I know what I know this one this was the this is their office shed. Okay. Okay, okay, go back. So go back and exclude for exclude for district X or make it only district Next
+
+Speaker 2  05:07
+good go to go to building field building is district x
+
+Speaker 1  05:22
+doesn't it like so building feels okay now let's
+
+Matthias Miller  05:29
+this one we looked at this one it says it is it was sold on the sixth
+
+Unknown Speaker  05:34
+it was built on the 27th
+
+Unknown Speaker  05:41
+look at modification history just to see go back to the building I
+
+Speaker 1  05:51
+mean it's definitely not a lot wasn't flagged as a lot building
+
+Speaker 1  06:00
+not unless there were sort of way I can easily pull quotes
+
+Unknown Speaker  06:16
+you're dropping a standard I can't find sellswords beston ah
+
+Matthias Miller  06:28
+no but here's his this ESA was created on the 16th but it was sold on the
+
+Speaker 1  06:35
+oh, I should be talking to you. Okay, so then okay,
+
+Speaker 2  06:42
+go back and refine your macro to say are you doing SOCl data so creation date? Sale dates I do creation date let's try creation date
+
+Unknown Speaker  06:56
+still three seven this thing got built on the 20th during the 19th
+
+Speaker 2  07:12
+Let's look at mod history. I have a feeling this was
+
+Unknown Speaker  07:17
+oh wait
+
+Speaker 2  07:19
+building for a lot yes now okay modified building for a lot to Yes. System said no.
+
+Speaker 1  07:26
+Why did it change it back over use use change it to Yes and it said no I don't know why that's currently tied off.
+
+Speaker 2  07:46
+I mean, so we're down to what seven misses easy way storage is irrelevant Wait a minute give me give me the so dealer on yeah
+
+Unknown Speaker  08:03
+okay, so site check me
+
+Speaker 2  08:04
+request irrelevant. So we really only had two misses vital structures and new house outdoors Coshocton.
+
+Matthias Miller  08:16
+So this one was three
+
+Unknown Speaker  08:17
+seven Hold on 320 Oh, I
+
+Speaker 2  08:27
+know this one. This one was a hiccup of all hiccups and it went from yeah yeah, actually that's that is that was actually a to build and it's your so anyway disregard that one let me see the vital structures one
+
+Speaker 1  08:45
+just this might be the office building is the office the office building so I mean it's
+
+Unknown Speaker  08:49
+it's almost bulletproof
+
+Unknown Speaker  08:59
+well I mean
+
+Speaker 2  09:31
+is there is there is there a way we could what would be another validation level that we could we could come up with what other what other fun things would we share?
+
+Speaker 2  09:58
+Oh, you know what? You could you could also I'd have to pull up a building to look at this and look at the when when it converts out of being a lot building does does it take away the target dealer
+
+Unknown Speaker  10:28
+more More button
+
+Speaker 2  10:32
+now it doesn't new house cause shocked and again so the target dealer stays
+
+Speaker 2  10:47
+that would that would be a way to refine for accuracy
+
+Unknown Speaker  10:52
+where what
+
+Speaker 2  10:54
+so in order to in order to get a building hauled to a lot the target dealer needs to be set
+
+Unknown Speaker  11:06
+so this really should be so
+
+Speaker 2  11:12
+how about this go back and and riff and add in refinement that says and not isn't a building target dealer well you're gonna have to you're gonna have to so yeah yeah
+
+Unknown Speaker  11:39
+I went back to 22 Now we go back to 23
+
+Matthias Miller  11:45
+we still got these three but it gets rid of most of the easy way storage i don't know i mean if you believe in the other one the other one is bulletproof.
+
+Speaker 2  11:54
+Well the other one's not 100% Bulletproof either because if somebody erroneously marked it as a lot sale for some reason and saved it off well it can have its own Iran Iran us ism I'm good with it we
+
+Matthias Miller  12:07
+can get some
+
+Speaker 2  12:09
+we could I mean right the macro put it in and we can well I guess that would allow you to put that macro in and drop it into the sales curve reports so essentially if we say so is LightSail just put that so you just recreate this macro
+
+Unknown Speaker  12:37
+What do What did you just do
+
+Speaker 2  12:43
+what is assign version what does the Assign version V version do?
+
+Unknown Speaker  12:49
+I'm just met two methodologies
+
+Unknown Speaker  12:52
+well how do you
+
+Speaker 1  12:55
+how does that work? We just we just ignore the first one Why are you not Why are you being so cantankerous with your formatting? Okay, so if it's if it's not a quote and it is district x and we have a dealer you and would you please format better?
+
+Unknown Speaker  13:49
+Okay, so if it's not a quote
+
+Matthias Miller  13:53
+and it's a district X building, and we have a target dealer and the creation date is it was created after it was built then it is an SLS so
+
+Unknown Speaker  14:07
+there it is in your report
+
+Speaker 2  14:13
+now let's go tie that macro into the sales curve, break down whatever that that part will have to that's a standard report so Oh, so you'll have to you'll have to do that.
+
+Unknown Speaker  14:30
+I mean, which it's this guy, yeah. The
+
+Speaker 2  14:34
+helper. And then in column A lap 12
+
+Unknown Speaker  14:42
+Got it. Okay. Requests.
+
+Unknown Speaker  14:57
+zfp materials.
+
+Unknown Speaker  16:13
+True Pru client approves
+
+Unknown Speaker  16:17
+you like having a minion for this kind of stuff.
+
+Unknown Speaker  16:21
+I can't tell you how much I like it
+
+Speaker 2  16:31
+okay. Okay, now you want now you want the story on on lead distribution. Okay, so here's the story. So Jean came on board, and he was getting every lead that their type form generated. And he was turning some amazing sales numbers, but he was basically like, swimming as hard as he can. And you know, whenever you're swinging as hard as you can you ignore a whole bunch of stuff while at the same time, you know, working really hard to keep but turning amazing. Like he was on track for $2.8 million in sales. Well, they decided they wanted to make a team out of it. So adding a second and third person. Well, when they came to him, they and this as salespeople are I don't, there are different they think different. They're a different breed. He's like, Fine, if you're going to take away my leads, you're going to I'm quitting. Like, quit and walked away. Whoa, okay. So and then. So the story goes, he basically said, You're gonna take my leads when I'm leaving. So about two or three weeks later on a on a weekly call with Robert. He's like, so he said, What's your opinion? Jean Conte, and I had this nagging little feeling in the back of my mind, he's gonna come back, he's gonna want to come back because the money was good. And he was making sales. And he liked working with them. And I was like, He's gonna come back. So about two, three weeks later, he contacts Robert. And he's like, Hey, have you have you found somebody else yet? I've got these other opportunities. You know, he's, he's playing sales guy, right? I said, and Robert, like, I don't think I want to bring it back. I said, Robert, he is handing you on a silver platter, everything you want. If he comes back now, it's through your door, the way you want to build the team, how you want to do lead lead distribution, you basically sit down with them, and you say, Look, right now, there's nobody's nobody's on the line. It's like, you've already left the job. If you want to come back, here's how you come back. We're gonna we're gonna split leads to two, one. We're going to you're going to work with a team, you're gonna have less leads, you're gonna reap dude, he made him rebuild his own pipeline. Like he started him from scratch.
+
+Unknown Speaker  19:05
+And he came back.
+
+Speaker 2  19:07
+So, right, the, the, what Robert wants to build is he wants to build a three man online sales team out of Apple Creek, where Jean gets two leads the other two get one apiece, and, you know, continue to grow the lead flow, but that's, you know, that's that's how it came about.
+
+Matthias Miller  19:26
+So do you know okay, but but they're still averaging 6% 6% is the average across the board. So I'm gonna say that jeans closing. I don't know what eight nine. Other guys are closing three or four numbers. Most of
+
+Speaker 2  19:41
+those closing numbers were based off when he was still there. He was he was like, nobody, like this is what really, really bugs me. Even Even though Jean was closing, you know, close to him. If he stayed it, I think if he were to stay At his current pace, he would have burned himself out. But I think he would have he probably would have closed $3 million in sales. But out of lead flow, that's only a 6% of the leaves that he was closing. And so it still begs this question like, okay, yes, I know that if you said if you said take all the trash out it and and did it by that number, maybe he is closer to 20 to 30%.
+
+Unknown Speaker  20:28
+Maybe
+
+Speaker 2  20:32
+I don't know how to measure some of this stuff sometimes. But yeah, your question wasn't the how to measure you wanted to know how they came about with their current round robin?
+
+Matthias Miller  20:43
+Bottom line, I'm asking Merson Tori, how many leads you guys think you need to hit your numbers? Tory's saying something like, what was her number 24 to 36. And she like, Is that realistic? Like a week or a week?
+
+Unknown Speaker  20:54
+And Merces like 40?
+
+Speaker 1  21:06
+How many more online leads? I was calculating 40 leads here just to clarify 40 leads total for the week.
+
+Unknown Speaker  21:22
+So okay, here's here's
+
+Speaker 2  21:31
+this is what bothers me, Matthias is that we are paying salespeople to basically comb through trash? I'm not I'm not that's not leveling a finger. And I'm just saying, that's a fair. That's a fair amount of their job.
+
+Unknown Speaker  21:47
+Yep. What if?
+
+Matthias Miller  21:50
+Can we rebuild the CRM so that we can get phone filtering, so we can at least get one layer of trash out of the way? Keep going?
+
+Unknown Speaker  21:57
+What would that take?
+
+Matthias Miller  21:59
+We just need to consolidate the CRM. So I feel like I can actually make changes without like, the stuff is there. We just need, I just need to be comfortable making changes to the CRM now.
+
+Unknown Speaker  22:09
+Well, okay, that's good, keep going, man.
+
+Speaker 2  22:17
+I feel like I feel like you keep kicking at me, like, I'm going like, I'm gonna resist you for doing this, I'm not gonna, I'm not necessarily
+
+Matthias Miller  22:25
+done, we just none of us want to do it,
+
+Unknown Speaker  22:27
+we just need to do it. Now. Granted,
+
+Matthias Miller  22:30
+I've got a deer in the headlights with it. Like I don't even know where to start. By the way, my cleaning crews gonna show up in about
+
+Unknown Speaker  22:38
+five minutes or so I'm gonna have to duck when that happens.
+
+Speaker 2  22:43
+Okay, if we're gonna talk, if we're gonna talk about, if we're talking about like, okay, let's just talk about strictly from the CRM standpoint. I like what the menu items are like, like whether things are together or like, I'm not, that is not what what I'm so much worried about. I want to make sure, like I want I want a way that we can get multiple columns of information. Like imagine. Okay, so imagine Did you have a whole list of of opportunities, right? In one long list? Well, there's only a certain amount of the top that you can see. If you if you make three statuses now and you've got three lists of like, you double the amount of information up at the top. Is that going to make a difference? I don't know.
+
+Matthias Miller  23:33
+Well, here's my proposal for moving forward.
+
+Speaker 1  23:40
+Kind of hesitated to say this. But we pick. Actually, this is not a bad plan.
+
+Matthias Miller  23:48
+We create a new folder, called one world to rule them all.
+
+Speaker 2  23:54
+I like where you're going with this. And then we rebuild it everything into that folder, and then at once Well, we convert
+
+Matthias Miller  24:02
+and we can keep the other ones around for a little bit. If something goes wonky, we have to switch it back. And then after that, we go delete everything in those other papers.
+
+Unknown Speaker  24:11
+Sure, okay. Well, we
+
+Matthias Miller  24:14
+got some time blocked out on Monday. I don't have much time before then. But it's a priority of mine. Where are we meeting tomorrow? We have a sales and marketing call plus. You and I.
+
+Unknown Speaker  24:27
+So I mean, we can if you want to dive into this tomorrow, I mean,
+
+Matthias Miller  24:31
+I'd love to. Let's let's do it. I think I have a phone menu thing. I still need to chase with you sometime. But okay,
+
+Speaker 2  24:41
+are you talking about that? I don't think so. Are you talking about the are you talking about the the purchase order phone menu thing? I don't think I think that's actually in Josh's court. I think he needs to he needs to do some whiskey coding in order to make the phone menu thing work with it. Unless he did it already, which I'm not, I would not have ruled. I don't know. I just we need to find out. I think it's actually a Josh thing because the the Ask prompt. So right now he has asked prompts that work for assigning company and for sales orders and spin numbers, but there's no like universal field for assigning other information into ask prompts based on the wisdom. So I think it's on his side that actually I don't think it's actually on your side.
+
+Unknown Speaker  25:33
+Okay, good. Well, I will,
+
+Matthias Miller  25:36
+I will reply back to Nick's email and say,
+
+Unknown Speaker  25:41
+I don't even know what email it is. I'll find it that it's in between
+
+Speaker 2  25:55
+this is the this is the downside of somebody like me going off and figuring out how to learn how to code and we just get this overload of user reports that make you want to cross your eyes
+
+Unknown Speaker  26:16
+okay. All right. Sounds good. We will talk about again
+
+
+Transcribed by https://otter.ai

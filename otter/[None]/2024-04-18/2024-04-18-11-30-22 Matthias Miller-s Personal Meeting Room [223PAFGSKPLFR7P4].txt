@@ -1,0 +1,743 @@
+Unknown Speaker  04:48
+Good afternoon.
+
+Unknown Speaker  04:49
+Good afternoon.
+
+Unknown Speaker  04:55
+Well, good news and bad news. Good news is we're making progress the bad news is that
+
+Matthias Miller  05:15
+well one bit of bad news we have a rounding error in our book value calculations and our
+
+Unknown Speaker  05:23
+depreciation calculations so
+
+Matthias Miller  05:31
+I made the fix already you can take it live tonight if we want to. Or if we want to just push these changes across I've just pushed the current depreciation numbers through it we can it does mean that we will accurately hit the salvage value items with an end of life and the first four months here
+
+Matthias Miller  06:05
+the the other and I'm just now getting to the point of trying to see let me just run this report and size it down a little bit and doing some some checks on my transactions. There are also some asset transactions in 24 and I have good I don't have good numbers to compare to because some of the assets have an end of life prior to had a sort of life in 24 That's the main issue which aren't included in the in the December 31 balance sheet. And so we have to manually go through and find out which of those assets if we're going to compare balance sheet totals which of those assets should be excluded from the December 31 Balance Sheet well manually go through a change of spreadsheet so I feel like I'm I'm basically down to
+
+Speaker 1  07:07
+cross checking numbers and looking for discrepancies but
+
+Speaker 1  07:17
+I mean here for example we have a
+
+Matthias Miller  07:26
+real estate is not trying out
+
+Unknown Speaker  07:32
+for ABC wasn't missing something to make this wider maybe it didn't
+
+Unknown Speaker  07:53
+not seeing my son
+
+Unknown Speaker  08:08
+so it should be
+
+Matthias Miller  08:14
+I'm expecting to see transactions for 876 MRP 50k
+
+Speaker 1  08:21
+Well almost 462-870-6742 So we have 18 9275320 135 to 25 a four to 20 this one here to 30 Oh 614
+
+Unknown Speaker  08:53
+I don't know why did this one get
+
+Unknown Speaker  09:01
+this one get imported wrong for some reason. Between 660
+
+Unknown Speaker  09:10
+The next one down is to 2660
+
+Matthias Miller  09:15
+we get duplicate ID Yeah
+
+Unknown Speaker  09:19
+2660 Wait a minute to 220
+
+Unknown Speaker  09:29
+Yeah,
+
+Matthias Miller  09:30
+it's a duplicate ID that didn't get should copy the IDS across okay. So if I go over here
+
+Unknown Speaker  09:44
+on the here let me open the one I was importing from
+
+Unknown Speaker  10:19
+Great
+
+Matthias Miller  10:32
+it is what it is for some reason my
+
+Unknown Speaker  10:46
+okay
+
+Matthias Miller  10:50
+I miss my duplicate
+
+Unknown Speaker  11:10
+this should be counted all right
+
+Matthias Miller  11:13
+so I guess
+
+Matthias Miller  11:21
+if there is a way All right so that'll take care of that that's that's where those issues are and I'm pretty sure that takes care of all of that let's take a look at accumulated depreciation make sure I'm looking at the right numbers for those as well
+
+Speaker 1  11:46
+that should then either do you have duplicates right yeah like here
+
+Speaker 1  12:00
+so let me copy this over into special alright and I can use it for minutes which that will make room oh that's why
+
+Speaker 1  12:24
+actually my images will just go kick this off and maybe that would be
+
+Unknown Speaker  12:35
+important message it's actually
+
+Matthias Miller  12:47
+all right, then if we go down to accumulated depreciation 50835 35. So if we go over here
+
+Unknown Speaker  12:59
+Yeah, it's up at the bottom of that what do we have doesn't values their
+
+Matthias Miller  13:08
+real estate values are showing as with an error because it's a division by zero or something like that. So
+
+Speaker 2  13:18
+I wonder if that caused? Well, I can look at what I have on my spreadsheet. I wonder if that caused it probably you're looking at it in Excel and I was looking at it liberal so let me see.
+
+Matthias Miller  13:32
+I'm seeing a five cent difference here and what what we're coming up with because accumulated Wait are accumulated depreciation is also going to be wrong because until this input rent so that's not really
+
+Unknown Speaker  13:46
+I have to wait till this thing finishes.
+
+Unknown Speaker  14:16
+But I have totals here if you want to use those.
+
+Matthias Miller  14:20
+Well, it occurred to me that I have to wait for this to rerun because my accumulated depreciation is also going to be wrong. Okay. We I mean, we can talk a little bit what do you want to do about? You want to wait for an update suggestion, do an update to fix the rounding issue.
+
+Speaker 2  14:41
+Okay, so make sure I understand the asset, the total asset value and accumulated depreciation, you're going to be able to match those exactly right. Yeah,
+
+Matthias Miller  14:50
+for the year and for the year end. Yes. But then
+
+Speaker 2  14:53
+what you're needing the the update Okay, if we don't do the update, and it's the month of depreciation expenses, that
+
+Speaker 2  15:13
+that's where the issue is right? Like those, they won't zero out correctly or correctly. explain the differences between doing the quick fix or waiting for an update?
+
+Matthias Miller  15:30
+Well, I think if we do the quick fix, all we have to do is run it and for anything with an end of life in January through April, we need to manually adjust the depreciated amount to make sure it matches the salvage value. Otherwise, I think it's, yeah, it's a little obnoxious. It's not exactly the right amount, but it's gonna it's only its max four cents, if you happen to hit the flip the coin heads four times. So
+
+Speaker 2  16:09
+you're saying, if we do that, we'll end up with something. It'll hit end of life. And the value in accounting, the accumulated depreciation that shows in accounting will be up to four cents different than the asset management table? Will. Correct. If we break it down? Or if we don't know what it is maybe a piece of furniture that's depreciated in, it'll hit end of life in June. And if we look at all the transactions may or January through June, it'll say render $99.96 of depreciation, the asset management would say 400. Or
+
+Matthias Miller  17:15
+something like that? Yes, I think technically, it might be a I think it could conceivably be off up to five, five cents to get really technical, so
+
+Speaker 2  17:25
+we could find a way to okay, what would it
+
+Matthias Miller  17:33
+Okay, so, a workaround is go do sloppy for everything that doesn't have an end of life. Whenever we push an update, it'll fix itself, and everything will be fine going forward. For everything that. Well, sorry, there's three, there's, there's three options one way for you to Well, sorry, let me finish my statement. For anything that has an end of life. What it means is that accounting will not land on the salvage value will not depreciate, it may go past or it may it may go more or less than, but it won't land on the salvage value. No. conceivable conceivably, we could also write custom depreciation reports. And just do one off, build one off reports that fix the calculation issue and push live numbers without waiting for an update that would also be conceivable approach I guess. Well,
+
+Speaker 2  18:46
+are we going to get we probably won't. Would we use those transactions? Or would we would we apply actual causes afternoon?
+
+Unknown Speaker  19:04
+Well, we
+
+Unknown Speaker  19:04
+probably
+
+Unknown Speaker  19:10
+all struggle early. Probably
+
+Speaker 2  19:12
+not. I'd say if you can have Josh push an update tonight. Let's do that. If not, let's take the other the other approach. I mean, a third or would another approach be just use the numbers we have and then just make you send us a report of the ones that are all there's probably going to be no more than three or four and we just do journal entries to make those match. Is that a bad approach?
+
+Matthias Miller  19:44
+No, I mean, I think that's
+
+Speaker 2  19:51
+well, let's do this. If Josh can do an update tonight. Let's do that. If not, use the numbers that we have and tell us what For the ones that that we need to do journal entries, so that accounting lands on the same lands on the salvage value. Like really, probably just do journal entries to either increase or decrease depreciation on the last month by whatever amount. Does that does that sound reasonable? Okay.
+
+Matthias Miller  20:27
+And then everything else will fix it. So
+
+Speaker 2  20:30
+yeah, just just let us know. You know, whatever. Tomorrow, tonight or tomorrow morning, what? What logically? Okay.
+
+Matthias Miller  20:42
+All right. So total assets in ABC, I'm seeing two 2,460,161.
+
+Speaker 2  20:56
+Yep, that matches exactly with wise to what I have to 2,000,004 6161. Yep.
+
+Matthias Miller  21:04
+The accumulated depreciation of 508 3540. Yep.
+
+Speaker 2  21:09
+And that should be live in accounting, right? I mean, if we were looking at balance sheet, now, it should be.
+
+Matthias Miller  21:17
+The balance sheet won't technically show it like this for everything because you've got some assets that went live
+
+Speaker 1  21:24
+in 24. But you shouldn't. Well,
+
+Speaker 2  21:31
+as of 1231, the balance sheet will show those.
+
+Matthias Miller  21:36
+I mean, if you if you take your numbers and subtract those out, it should match the balance sheet. Yes.
+
+Speaker 2  21:42
+But any assets that went live in 2004, they,
+
+Unknown Speaker  21:47
+like your current balance sheet should match that?
+
+Matthias Miller  21:51
+Well, yes. But you also have some transactions in 24 that are going against these asset accounts by my observation.
+
+Unknown Speaker  21:57
+Got it? Like what?
+
+Matthias Miller  22:03
+I don't know. It's awesome.
+
+Unknown Speaker  22:07
+Can we take a quick look, there are so
+
+Unknown Speaker  22:09
+when you've made journal entries to or what?
+
+Speaker 3  22:11
+No, I mean, they they could possibly be posted in places where they're not supposed to be that's possible,
+
+Unknown Speaker  22:20
+or
+
+Speaker 3  22:24
+well, would they be duplicating something in if this list is, is right now this the assets we have anything we purchased in 24? We might be duplicating?
+
+Speaker 2  22:36
+Oh, on the total assets? Yeah. Yeah. You wouldn't, we wouldn't show we don't show depreciation until we put it in service. And we don't, we don't show accumulated depreciation or date. Depreciation expenses until we put it in sorted. We haven't put anything in service. Other than these, but I could Yeah, something posting to the I'm just surprised we have things posting. Whether they have to pose January 1 Or No? No.
+
+Speaker 3  23:05
+I mean, if you know, if they bought a new, whatever it would go, like since January, if they wanted to fly it's fixed asset account.
+
+Unknown Speaker  23:17
+If it were looking at it as of 1231.
+
+Speaker 3  23:22
+Yeah, he's just saying a current balance sheet, match the upload because it has those transactions, too.
+
+Unknown Speaker  23:28
+But
+
+Speaker 2  23:30
+a 1231 balance sheet will match the numbers we're looking at that
+
+Matthias Miller  23:35
+it will not match the numbers you're reading to me it will match the numbers you're reading to be when you subtract out the 24 assets and 24 the the assets that went live in 24
+
+Speaker 2  23:48
+Yeah, but no assets have gone live and 24 like okay, we might have posted some transactions.
+
+Matthias Miller  23:55
+Yes. Yeah, there were
+
+Unknown Speaker  24:02
+I'm seeing these guys. And
+
+Speaker 2  24:06
+that that's understandable. But if you look at like, what are the dates on these, these are all okay, 1141. Yeah, that's that's what we okay. The assets, it's not accumulated depreciation or
+
+Matthias Miller  24:32
+what we have accumulated depreciation here. Okay. For the sake of this comparison, do you have numbers for what you expect the 2023 balance sheet to show?
+
+Speaker 2  24:42
+Yeah, the numbers I gave to you are what I expect to show on the 23 balance sheet.
+
+Matthias Miller  24:48
+So ABC doesn't have anything in 2024. So let's do set time
+
+Unknown Speaker  24:54
+balance sheet and let's do well structures balance sheet And
+
+Unknown Speaker  25:08
+then there should be I mean I guess I could
+
+Matthias Miller  25:12
+I could run an ABC but because ABC doesn't have anything
+
+Unknown Speaker  25:17
+it really should well I don't know if he
+
+Speaker 2  25:20
+did did you clear out all you cleared out all the 23 transactions
+
+Speaker 3  25:24
+all the companies before he did this would have zero as the fixed asset mounts?
+
+Matthias Miller  25:32
+Yeah, and I went through and made sure all of that
+
+Speaker 2  25:35
+okay, that's you found one that you'd send an email about? Oh,
+
+Matthias Miller  25:41
+did we actually address that? Did you Was that a yes you can void it? Yes. I did void it. Yeah. When's that know what it was this morning? Because
+
+Speaker 3  25:54
+I hope to do an invoice yesterday and it just counting
+
+Matthias Miller  26:02
+but if you look into the invoice if you hooked it to an invoice and the vendor invoice should be generating
+
+Unknown Speaker  26:10
+should be do we need to generate
+
+Matthias Miller  26:15
+the because you hook it to an invoice it was no longer generating an RnB. Do you need the do you need the vendor invoice to push through accounting for 23?
+
+Speaker 3  26:26
+No, not for accounting purposes. But no, okay, I
+
+Matthias Miller  26:34
+I wouldn't the accounting transaction Yeah, for the PIO.
+
+Unknown Speaker  26:42
+So we just need to make sure that our r&d number
+
+Matthias Miller  26:45
+your your RMA number your balance would have shifted by that amount
+
+Unknown Speaker  26:54
+yeah means we need to go back to it well
+
+Unknown Speaker  27:01
+no, because it's technique well I mean
+
+Unknown Speaker  27:06
+yeah
+
+Speaker 2  27:14
+trying to vacation right now other family at home I think after the April 15 tax deadline
+
+Matthias Miller  27:23
+doesn't seem to be working out so well for
+
+Unknown Speaker  27:27
+that shit time assets. Okay,
+
+Matthias Miller  27:32
+let me I gotta pull this up into
+
+Speaker 1  27:35
+let me pull up Anna's reg she gonna do Excel over here and add to my add to all my noise
+
+Unknown Speaker  27:51
+Alright, so you share Alright, so this guy
+
+Matthias Miller  28:02
+alright 1764505
+
+Unknown Speaker  28:12
+I'm showing 18773 ad revenue
+
+Matthias Miller  28:19
+just off from the spreadsheet or off of
+
+Speaker 2  28:23
+Yeah, well go back to your spreadsheet are those formulas still? No, no.
+
+Matthias Miller  28:34
+Okay, so here we are. We should tell time Okay, so what I was seeing here if we look at
+
+Unknown Speaker  28:43
+say these guys oh you did exclude No you didn't you did?
+
+Unknown Speaker  28:51
+Well, actually, if you come over here to column me,
+
+Unknown Speaker  28:53
+I
+
+Speaker 2  28:54
+Oh, I'm column H and you can just add okay, there's there's some that are in 24 Like those last two are 24 but I think it should be the sum total of all the others is what we should be
+
+Unknown Speaker  29:12
+6185808
+
+Unknown Speaker  29:18
+Yeah, it's not your right
+
+Unknown Speaker  29:30
+what is going on?
+
+Matthias Miller  29:36
+We should make sure no such 117 transactions were updated. So these should be okay. Well over here I had this guy. So let's try breaking him down. Piece by piece. So we said buildings. This is basically just copied out in the sorted buildings and improvements
+
+Unknown Speaker  29:55
+is
+
+Matthias Miller  30:01
+662907
+
+Unknown Speaker  30:03
+That matches
+
+Unknown Speaker  30:06
+production equipment and fixtures
+
+Matthias Miller  30:10
+219345 I'm just going to jump down to real estate because that's been the one that's been giving us trouble
+
+Speaker 1  30:25
+real estate again is a real estate Why is did I okay
+
+Speaker 2  30:31
+do you have the there's there were two transactions in that real estate for 2024 You've excluded those right? No
+
+Matthias Miller  30:39
+I did not so
+
+Unknown Speaker  30:42
+these were think there
+
+Unknown Speaker  30:45
+Yeah, it's at the bottom
+
+Matthias Miller  30:49
+it's in the ID
+
+Unknown Speaker  30:52
+for these guys 522 C still not I think this is driving me a little a little bonkers.
+
+Matthias Miller  31:05
+Libre Office is also giving me a little bit of grief
+
+Matthias Miller  31:14
+but I wonder if these are
+
+Unknown Speaker  31:21
+I'm gonna guess before we have 2503 by 22 What's about what 8090 90k So we've got
+
+Unknown Speaker  31:51
+well, okay, Libre Office is not going to recover for me
+
+Matthias Miller  32:01
+it let's let's do this let's go over to this account shut down real estate
+
+Unknown Speaker  32:08
+and let's also do
+
+Speaker 1  32:28
+Okay, so then we will your spreadsheet actually let's do this. Excel has been a little more gracious to me than
+
+Unknown Speaker  32:43
+I don't know we'll give this a shot
+
+Unknown Speaker  32:55
+ya know what I'm wanting is actually maybe we can just do a filter
+
+Speaker 1  33:17
+and let's do the account by filter
+
+Speaker 2  33:25
+Are you still sharing your screen? I can see your oh sorry. But nothing's
+
+Matthias Miller  33:31
+sorry. I lost the libre office when it went under
+
+Unknown Speaker  33:37
+you Why is it not?
+
+Unknown Speaker  33:58
+That's the wrong window. Let's not.
+
+Speaker 2  34:06
+Magazine is what you're wanting a list of all the real estate. While it's probably best if you do.
+
+Matthias Miller  34:12
+Yeah, that is what I meant after. Let's get the column heading in there. See if that helps.
+
+Unknown Speaker  34:19
+No, it's not doing the whole let's try this. So we went real estate.
+
+Matthias Miller  34:32
+There we go. All right, now we're talking. Alright, so here we see. 522 503 is what this is saying if we go down to shed time
+
+Unknown Speaker  34:46
+real estate
+
+Matthias Miller  34:50
+these transactions
+
+Unknown Speaker  35:03
+876
+
+Unknown Speaker  35:11
+Now it's ABC 430 It's closer
+
+Matthias Miller  35:21
+6175 150 579-462-7729 This guy is missing 1200 2700 is missing 656 is missing and so these guys are all 439 27 Those guys are all there
+
+Unknown Speaker  35:50
+these guys these guys are not
+
+Speaker 2  35:59
+that the last one there you don't want the last minute selected that's a 24 Yeah shouldn't have even put those yeah that's
+
+Unknown Speaker  36:07
+fine these guys
+
+Speaker 2  36:11
+91 576 is the total lair is that what we're all for 30 plus nine seven is
+
+Matthias Miller  36:20
+almost positive I knew I know it was around 90,000
+
+Unknown Speaker  36:37
+Why the art of AB
+
+Unknown Speaker  36:55
+I must be pretty my computer's either rare
+
+Unknown Speaker  37:38
+in our routing bots
+
+Unknown Speaker  38:02
+once again
+
+Speaker 4  38:14
+yeah we need to grasp nature data level of a minute
+
+Unknown Speaker  38:36
+okay likes me can you see this guy is the first one that we're missing was it right 112 This guy is a guy that we're missing 1200 to three
+
+Unknown Speaker  39:15
+asset transaction court
+
+Unknown Speaker  39:29
+PVCu work feeling bucks
+
+Matthias Miller  39:41
+okay so we said we're missing this $1,200 One the here it says is the first one was posted one one to me
+
+Unknown Speaker  39:57
+because we
+
+Matthias Miller  40:00
+posted the go the live date these started useful life is in 110 I posted the trend I'm posting the transactions as the wrong date it should be the service j you
+
+Speaker 2  40:19
+know the on the asset itself it should be the date the purchase date or whatever
+
+Speaker 2  40:31
+like the asset hits the balance sheet today we have a part number, pay the invoice
+
+Speaker 4  40:42
+write it whatever
+
+Matthias Miller  40:55
+and then do you want to hitting accumulated well I guess it doesn't matter accumulated depreciation is it fine to have a hit accumulated depreciation at the same time?
+
+Unknown Speaker  41:05
+No So, so I forget what we call it but when we buy the asset
+
+Speaker 2  41:13
+go back to my spreadsheet that I want to see the headers at the top that's what I call like the I think you call I tried to match the names here to your the asset management fields the date there you will have date no cost okay that the date there I was using as the the purchase date. So we say we buy a forklift on like the first 151 2012 and then the that's all that happens then cash goes down the asset property plant and equipment goes up then nothing happens then until we put it in service if we put it in service remind later say on August 15 Then the first on the first of the next month like September 1 accumulated depreciation will it'll hit accumulated depreciation and depreciation expense at the same on that day.
+
+Matthias Miller  42:31
+So is it fine to have this be the transaction that happens on date of purchase the debit the fixed asset account credit the accumulated depreciation and credit owner's equity for the balance
+
+Speaker 2  42:51
+this is for the one like a one time thing where we're importing these right
+
+Unknown Speaker  42:55
+right
+
+Speaker 3  42:59
+okay we want well that's that will be 1231 day when
+
+Speaker 2  43:05
+well we want it the purchase date we want it okay like on this one what date do you have here you have the transaction this is
+
+Matthias Miller  43:16
+this is the wrong date this is based on sort of useful life but we can we can change it well
+
+Speaker 2  43:26
+okay, no sorry. I missed something on that
+
+Speaker 2  43:35
+are these old ones they were bought like this one was bought back in 2013 so it's that's the purchase date we can also say it was started useful life
+
+Matthias Miller  43:49
+Well, I mean just getting very technical let's see why is this one not showing up in here? I'm not sure this is in ABC
+
+Matthias Miller  44:10
+No, it's not here it would be in here. Oh, it's filtered.
+
+Unknown Speaker  44:16
+Okay, let's
+
+Matthias Miller  44:21
+this one here the purchase date. Okay, this one actually did happen to be purchased on that day.
+
+Unknown Speaker  44:29
+You're okay.
+
+Matthias Miller  44:34
+My transaction dates are wrong, my transaction dates or basis or useful life instead of purchase date, which I can fix with another import. And that's that's why these balances are different. I think the question is, Is it okay to say okay to credit accumulated depreciation at the as of purchase date, or do you want a separate transaction created on December 31. Just
+
+Unknown Speaker  45:02
+to catch up the values
+
+Speaker 2  45:07
+Well, if we can end up with it doesn't matter to me. I don't know is there a difference to you when we don't
+
+Speaker 3  45:18
+as long as as of 1231 the accumulated depreciation is at the right point.
+
+Speaker 2  45:23
+Yeah, that doesn't matter. Yeah. Okay go ahead.
+
+Matthias Miller  45:30
+So the real issue here is the reserve balances aren't coming out right is because we've got assets real estate that was bought in December with a start with a startup life in a purchase price 918 Let
+
+Unknown Speaker  45:47
+me just sanity check this
+
+Matthias Miller  45:50
+and went live in January 1, and we dated them as of the first instead of when they were bought. So if I rerun this, we should then have clean balance sheets, theoretically.
+
+Unknown Speaker  46:06
+Theoretically
+
+Unknown Speaker  46:12
+so
+
+Speaker 2  46:18
+that makes sense. Is there anything you need else you need from me on on this like? Do
+
+Matthias Miller  46:34
+I don't think so. The main thing I'm going to be checking is I mean, just checking. It's just checking the balance sheet and the accumulated depreciation for each one making sure that and you had on your balance sheet you blinked. You tried to blank out all the 2024 purchases, is that right? Yes,
+
+Unknown Speaker  46:55
+we did.
+
+Speaker 3  47:01
+Okay, now there were, we were sending this to two places. So Daniel Yoder, and a Paul Lambright.
+
+Unknown Speaker  47:12
+Okay
+
+Speaker 3  47:15
+we'll show you how to land Campbell Hill, Illinois. I
+
+Matthias Miller  47:19
+think that is all that I need. Those are the addresses. I mean, I can give your college I've run into more issues but okay, if you want to do
+
+Speaker 2  47:27
+is circle up again at Mike's re 330
+
+Speaker 3  47:31
+I mean, probably either one. We're not actually gonna send anything to that address. Sorry, we said
+
+Speaker 2  47:40
+so I said if Yeah, if you want to shoot
+
+Unknown Speaker  47:44
+these to you in an email
+
+Speaker 4  47:46
+that way? Yeah. All right. Yep. Sorry.
+
+Unknown Speaker  47:59
+Am I blocking you out?
+
+Matthias Miller  48:02
+Yeah, we're just trying to talk past each other. Sorry.
+
+Speaker 2  48:11
+Okay, so then you're good. You have numbers on what what to validate against or? Yes.
+
+Matthias Miller  48:20
+So make sure those timeouts. And we have this I'm trying to sending sending you updates the afternoon as we go along. Since those timeout I can let you know when those when we got that done. And then I can do the balance sheet. I can do the depreciation, run the depreciation and give you a heads up which asset IDs? Well, I mean, I can also do that it's not that difficult. I can I can find the ones with the end of life
+
+Unknown Speaker  48:53
+and thinking thinking thinking thinking
+
+Matthias Miller  49:01
+it might actually be just as easy
+
+Unknown Speaker  49:06
+to Jerry Rig one that just work works. And
+
+Speaker 2  49:14
+I mean, if it's helpful for one thing I could do if it's helpful for you, I can take my spreadsheet, I know the numbers that Whitney's showing on her and I can take my spreadsheet and create totals of what we should be seeing on the balance sheet if that's helpful but I mean you know, like say like on property planning or billing and billing improvements for ABC you should be seeing X amount on those you should be in May that's helpful but if not then I have always my time but
+
+Matthias Miller  49:47
+it would definitely made my life easier.
+
+Unknown Speaker  49:49
+Yeah. Okay,
+
+Speaker 2  49:50
+I'll get you. Totals per account per company. What I yeah for both accumulated depreciation and the assets, and I'll make sure that those match with the numbers we've given to Whitney, which, yeah, that Yeah.
+
+Unknown Speaker  50:13
+Good. All right, awesome.
+
+Speaker 2  50:19
+Well, one last thing, what what I heard you say is you're going to just jury rate these depreciation expenses. And instead of waiting for the update,
+
+Matthias Miller  50:30
+or I think so. Okay, I think it's, I don't know, when you do that in the hassle of needing to go back and find the right ones and fix them up. I don't know, it just seems easier to do it that way.
+
+Speaker 2  50:43
+Because you'll probably have just three or four assets across all companies that it would only have to it has to be assets that hit end of useful life in the first five months of the year.
+
+Matthias Miller  50:58
+But what I'm, what I'm saying is, it might actually be easier just to change the asset calculation to work all the way across the board. Oh, rather than going back and finding those, okay, and fixing them and calculating those?
+
+Speaker 4  51:09
+I don't know. Yeah. About six, one half a dozen
+
+Speaker 2  51:13
+than the other. Okay, I'll get you totals per company for each of the accounts that we would expect to see on the balance sheet as of 1231, to validate against.
+
+Unknown Speaker  51:25
+Good, good, awesome.
+
+Unknown Speaker  51:27
+You got my update on the build on site question. Right?
+
+Unknown Speaker  51:33
+I still say yes.
+
+Matthias Miller  51:35
+Saying that, that'll be pretty straightforward and roll that out. Do you want to see any? Do you wanna see anything about what's going to be affected by that before we roll it out? Or do you just want to know
+
+Unknown Speaker  51:46
+I'm comfortable with it?
+
+Unknown Speaker  51:50
+Sounds good. Thanks for that. Appreciate it.
+
+
+Transcribed by https://otter.ai

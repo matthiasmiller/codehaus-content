@@ -1,0 +1,839 @@
+Unknown Speaker  00:18
+What do you make? Warning This is? Morning Tim and men morning my internet connection issues sure all right I should be good now
+
+Matthias Miller  02:18
+I was running into a couple technical difficult difficulties but I
+
+Unknown Speaker  02:23
+think I've got it now Whack a Mole just
+
+Matthias Miller  02:28
+not to call you a mole but just as we get you this Tim disappears
+
+Unknown Speaker  02:55
+All right I think I'm here for real now first world problems
+
+Unknown Speaker  03:09
+on our way into the pursuit here co working space
+
+Unknown Speaker  03:15
+sit in a red light that wouldn't change
+
+Speaker 1  03:19
+Hello two cycles before it finally turned green before going on red and treating it as a doing carefully but anyway and I get here and open up my laptop and try to connect to the internet and it's so spotty and keeps cutting out so I have to pull out my phone and turn on the hotspot running off of that now
+
+Unknown Speaker  03:42
+yeah
+
+Speaker 1  03:45
+so like I said first world problems first world
+
+Unknown Speaker  03:49
+problems anyway
+
+Matthias Miller  03:55
+you so you guys have to wait for red lights not not to work for people that run red lights there
+
+Unknown Speaker  04:00
+apparently we
+
+Matthias Miller  04:07
+we have if you guys ever come to this area we have a really weird frontage road system that's just confusing and you know to receive sort of season has started which when you're when you start seeing these random cars parked in the middle of the intersection with you know their light is green but they have no idea of you know, the light where they were at is green but can they still go with the other
+
+Speaker 2  04:32
+lights are green. So that's one time yeah.
+
+Speaker 1  04:45
+All right. Well, um, I don't know what you guys is doing anything before I came on.
+
+Matthias Miller  04:55
+You guys buy a shed before Christmas. You'll get 100 to $300 Gift Card
+
+Speaker 2  05:02
+So that's that was my reason for being like under the $300
+
+Speaker 1  05:07
+so it varies based on your interest rates
+
+Matthias Miller  05:12
+from 10 to over 1012 or 1414 wide I mean clearly to make the most of your Christmas you should get yourself a 14 wide
+
+Speaker 1  05:26
+clearly somebody's somebody's doing marketing and trying to get people to forget the the sage principle of you don't save you don't save money by spending money.
+
+Matthias Miller  05:38
+Oh, well in this case, we just need a little push to get them over the line. So I'm sure a reason a reason to put it on their on their Christmas priority list. That's all
+
+Matthias Miller  05:54
+what are we doing today?
+
+Speaker 1  05:57
+Ben and Nick, Have you guys met Alright, so Nick, Ben is my brother as you probably see from the last name there
+
+Speaker 2  06:11
+was indeed Yes. He is. He just
+
+Speaker 1  06:20
+joined the team in the past few weeks and he's been in Phoenix Arizona for the past four years working with the children youth ministry there just recently moved back to Virginia just getting married in the spring
+
+Unknown Speaker  06:39
+so yeah, he's opened with client support and design and
+
+Speaker 1  06:46
+we'll see what all the bunch of different stuff on the software side and have been Nick is Matthias is nephew. Also you can see a connection here with the last name Yeah, Ellis's son and yeah, he's based out of Kansas there with with Alice and
+
+Speaker 2  07:08
+a lot of coding and has been helping with design and some miscellaneous things the past while too
+
+Speaker 1  07:17
+so introductions side and probably we see more each other weeks so stuff on our docket today
+
+Unknown Speaker  07:36
+based on the screen sharing
+
+Speaker 1  07:49
+and then Ben for context don't remember if I mentioned these calls to you but these are time blocks so we we use for all kinds of stuff software related so sometimes it's working on design questions for Project sometimes it's working on miscellaneous questions we have or anyway it's all kinds of different software stuff time to time set aside for thinking with eyes his brain getting his input on stuff,
+
+Unknown Speaker  08:17
+whatnot so we have
+
+Speaker 1  08:20
+a document here this is where we use time tracking on this 0172 For general discussions and then often when we're working on individual pieces individual projects that will change requests will track time one time on those
+
+Unknown Speaker  08:43
+so nice first item here this is picking up
+
+Unknown Speaker  08:54
+the discussion about handling the inactive list items
+
+Speaker 2  08:59
+we put together some notes or we can have to go and rant by LS
+
+Unknown Speaker  09:08
+so wanted to bring it up again get your get your thoughts based on Alice's feedback there.
+
+Unknown Speaker  09:42
+So you're muted I'm not sure if you've been talking to that but we have been hearing you
+
+Matthias Miller  09:47
+need to yell louder sorry. Not only am I muted in talking to you, I will say my back turn to You mean to you. So you don't even know if I am or not
+
+Unknown Speaker  09:59
+the In the
+
+Matthias Miller  10:03
+whether it's a macro or in the report is an implementation detail. So to get really technical, if you open up report settings, you'll see an Ask prompt column, or ask prompt tab that has all the Ask prompts laid out. That works. But you can also put ASP prompts in expressions like a subset, or you can put it in a shared macro. And that doesn't work. So how are you supposed to know if it works or doesn't? Well, Merry Christmas, there's no 100% certain way to know, there are some general principles of when you can expect it to work. If it is a Okay, here's when it's most likely to be questionable, at least, if there is a certain set of filters that get used across multiple reports such as in a sorry, let's back up
+
+Unknown Speaker  10:50
+when it when is it?
+
+Matthias Miller  10:55
+When is it most likely not to work? Well, anytime you have an ask prompt in a shared core module, it has a higher likelihood of not working. Like context for time cards. Or, for example, time cards, we have I think, a select timecard by a user. And we have a macro. And that's convenient, because it then filters the list of it allows you to use it as a subset very easily the filter report down by active users.
+
+Speaker 2  11:28
+And then this other time, it would be
+
+Matthias Miller  11:34
+likely not to work is if in a client specific project, you have a whole bunch of reports that basically, you have different reports that basically prompt for the same things.
+
+Unknown Speaker  11:45
+And you know, somebody's created a
+
+Matthias Miller  11:50
+developer screen with a macro to share logic between the two. So it's some kind of complicated filtering logic, and you want to use it between two reports, than it would likely not
+
+Unknown Speaker  11:58
+be not to work. I don't know
+
+Matthias Miller  12:06
+that there's really much to do besides
+
+Unknown Speaker  12:11
+add, this is
+
+Matthias Miller  12:12
+horrible. I don't like doing this. But add a dev spec, to confirm with CCI that we can do it or just let them throw up their hands. Just assume that we can do it. Now here's what we do on a core module. Find out whether we can or can't or can't do it on anything that's client specific. Assume that we can and if we can't, then contractors will come back to us during development and say no, we can't do this and we'll negotiate with the client to come up
+
+Unknown Speaker  12:45
+with some other solutions
+
+Speaker 1  12:52
+this would be like I was saying there's no plan to fix this. Yep. Very cool. That plans out so that sounds good to assume that we can be moving forward like we can and then at some point we should actually be able to
+
+Unknown Speaker  13:06
+yes
+
+Unknown Speaker  13:17
+there's a lot of cool things to happen. Well, anyway, there's a lot of cool things coming down the pike.
+
+Matthias Miller  14:04
+Okay, and then you might know that this is this is oversimplified. This may be oversimplified but
+
+Unknown Speaker  14:25
+yep. It's my that's what I would. That's what I would do.
+
+Matthias Miller  14:35
+Next, you have feedback on that
+
+Unknown Speaker  14:39
+perspective as a developer that's good. All right. So then guess all of this really should somehow this needs to go into our CSS training
+
+Matthias Miller  15:24
+well and don't you want something in your template this to say how to handle inactive
+
+Unknown Speaker  15:33
+or think
+
+Matthias Miller  15:49
+about under as promised the second bullet you just do in parentheses until 2024 like add an show inactive and then at the very end
+
+Unknown Speaker  16:06
+do like a
+
+Matthias Miller  16:09
+until 2020 24 This is only used for
+
+Unknown Speaker  16:14
+client specific reports
+
+Matthias Miller  16:19
+and put that behind the second bullet there
+
+Unknown Speaker  16:31
+or I don't know how you want to describe it
+
+Matthias Miller  16:44
+it couldn't even be useful
+
+Unknown Speaker  16:55
+and then include a
+
+Matthias Miller  16:55
+see this incident so that somebody can go hunt down I don't know that we need to document all the technical reasons of why this
+
+Unknown Speaker  17:02
+is why this is the case but
+
+Matthias Miller  17:06
+I think having a unique
+
+Unknown Speaker  17:17
+link to this and sense of yeah
+
+Matthias Miller  17:33
+and then we set a follow up date of January 120 24
+
+Speaker 3  17:45
+So we are saying that it is built in conditional visibility for like as strings is built in but just isn't working correct
+
+Unknown Speaker  17:51
+yeah we can see I
+
+Speaker 3  17:59
+mean you can specify a visibility condition like an ass string I guess it's just not working
+
+Unknown Speaker  18:04
+Yeah, I think so. Okay okay all right and then somehow
+
+Unknown Speaker  18:30
+so I guess we're following up then I'm putting this in the training and whatnot. Do you want to throw something in there now Matthias
+
+Speaker 2  18:43
+yeah exactly incident CSS training get too many top level items designed training
+
+Matthias Miller  19:10
+so we would have two of them one would be under reporting wander to detail
+
+Speaker 2  19:14
+screens ghost rows which allergies drop lists? Yes 696 We're still gonna figure out how
+
+Matthias Miller  19:54
+to bump the incident ID over second. Describe
+
+Unknown Speaker  19:56
+it from the URL Okay so now I'm editing I'm just mapping out the droplist is a system is is a list is a record tide list active items by sea alright so here's this one and then this new place we handle I guess it is Do we not talk about ask prompts more than try this detailed screen database over your technical training as prompts deconstructions reporting I guess we don't just shows how rare it was this again until screens technical reporting dynamic and then this one for the Ask prompts All right sounds good ALL RIGHTY sounds good
+
+Unknown Speaker  24:38
+all right next is a CTK item here
+
+Unknown Speaker  24:47
+well check in notes customers getting second report not a rush not
+
+Speaker 1  24:57
+a super high priority item but they were wondering about out the notes being editable on this report
+
+Unknown Speaker  25:23
+and oh yeah, it's goofy
+
+Matthias Miller  25:31
+it would be amazing to have x 30s and some of our test systems that would update dates so that you can so that the these reports never become outdated
+
+Speaker 2  25:44
+like, Oh, that's interesting. Like update dates on the incidents. Yeah. Yeah.
+
+Speaker 1  25:54
+And does have like five placeholder incidents that just always live there
+
+Matthias Miller  26:00
+because every time you go into thinking you got to go adjust your search but if we would always keep it within a 30 day window this is one of those brainy ideas that
+
+Unknown Speaker  26:13
+only shows up because I'm curiously clicking but
+
+Matthias Miller  26:26
+in the grand scheme of things is a distraction of what we're trying to accomplish
+
+Unknown Speaker  26:38
+fast report is running slow today it's bad when that happens all right, so this was
+
+Speaker 1  26:52
+came from this and then we were talking about KubeCon the client about it but
+
+Unknown Speaker  27:02
+anyway, we're
+
+Speaker 1  27:04
+it started because the check and report here, right here. It's buggy because it doesn't if there's if there are no results in the left pane and the right pane doesn't show up. So anyway, this is a sample report that has actually has the information
+
+Unknown Speaker  27:24
+and we've got
+
+Unknown Speaker  27:29
+Wait a minute, am I
+
+Unknown Speaker  27:32
+rocker here we have chicken notes here.
+
+Speaker 1  27:44
+Oh, he was basically wanting he was wanting a bigger field to be able to enter notes in rather than just a single line here. He was wondering if we could have some way to to have a larger text entry field for the notes
+
+Unknown Speaker  28:03
+rather than here where we get the
+
+Speaker 1  28:08
+run out of space you have to keep scrolling to the right to see all your notes
+
+Unknown Speaker  28:14
+I mean besides
+
+Matthias Miller  28:17
+wider and I'm guessing we don't allow multi line
+
+Speaker 2  28:19
+do it we might have to do line reports.
+
+Speaker 1  28:35
+He was wondering specifically about having like hyping a memo behind a button putting button on report that would open up the memo. Or at least you know the larger multi line.
+
+Speaker 2  28:47
+I mean, why couldn't we do X did Ellis talk about next 30 Okay, there's
+
+Matthias Miller  28:55
+one thing we can do is if you go into settings
+
+Speaker 2  29:06
+actually sorry, hang on, hit the pop out on the bottom right pane for the right pane. Yep. And then hit the Settings and under columns check the multiline other word wrap the Wrap Text No, and then click on Test with the six.
+
+Matthias Miller  29:42
+So you'll get two lines that way you won't get three which we'll get to. Now the other way to do it is an x 30.
+
+Unknown Speaker  29:51
+We make this Wait, can we Have a or do we have a modify selected records that has a ask string text it's right or not? Can't use as props you could theoretically do a I mean, would he want an
+
+Matthias Miller  31:48
+X 30 that would pop up a prompt that would let them edit the notes and stamp it back on there. So I go,
+
+Speaker 3  31:59
+I seem to remember, having tried to do a similar thing to edit notes where you
+
+Speaker 2  32:03
+where you default your ask prompt to the to the
+
+Matthias Miller  32:09
+existing notes and didn't find a good way to do it. But maybe I'm just not creative using a Modify button or using an X 30
+
+Unknown Speaker  32:17
+using an X 30. You wouldn't be able to do it for seemed like
+
+Matthias Miller  32:29
+you'd be able to do it. If you run an import for selected values
+
+Unknown Speaker  32:35
+then do a lookup based
+
+Matthias Miller  32:36
+on the selected values expression and have the selected values expressed with the incident ID and then do it
+
+Speaker 3  32:45
+look it over. I mean, I don't think I tried to run it for selected values. So yeah, that's probably the answer.
+
+Matthias Miller  32:54
+So you can do that. And I would probably argue it probably would be best to move the I don't know if we need to check to see how that interacts with the date field is editable as well
+
+Speaker 2  33:10
+unless he wants to put the date field also be in that same pop up prompt and then was can you
+
+Unknown Speaker  33:26
+just give a summary on that 1x
+
+Matthias Miller  33:27
+x 34 selected values
+
+Unknown Speaker  33:33
+is the technical detail and then and then the details would
+
+Matthias Miller  33:53
+be so the user experience is basically you click a button, you highlight a row click a button and it shows the date it shows the you know optionally the date if he wants to show that or the the current notes and then he would input it and then hit OK and it would save the
+
+Matthias Miller  34:24
+the main question would be how edit collisions work with. If you have a pending change of a date and you click the notes your does not sure if the date would get saved or not. All right
+
+Unknown Speaker  35:03
+my guess is that just giving him the the two columns or two rows here might
+
+Unknown Speaker  35:11
+might give him what he needs but I'll plan to kind of follow up on that with this
+
+Speaker 1  35:20
+the second option if it works is that what level of complexity is that is that something is that a five minute job or is that a
+
+Unknown Speaker  35:30
+two hour two to four hours of developer time everything depending who does it well
+
+Matthias Miller  35:42
+30 to 30 minutes half to for
+
+Unknown Speaker  35:45
+half an hour and a half a day right good next is
+
+Speaker 1  36:35
+the core job plan proposals talking about the added sync with client checkbox
+
+Speaker 2  36:43
+so this was some discussion from a while back and bring it up for next steps or
+
+Unknown Speaker  36:56
+tabling it or whatever needs to happen there
+
+Unknown Speaker  37:13
+so
+
+Matthias Miller  37:25
+we isn't this basically an Ellis and Austin question on priority
+
+Matthias Miller  37:36
+because we can currently exclude entire proposals from going into client
+
+Unknown Speaker  37:40
+system basically attorney priority for like how important it is to
+
+Speaker 1  38:04
+Well, are we even pushing anything to clients systems yet? Sorry.
+
+Unknown Speaker  38:09
+But we want to start
+
+Matthias Miller  38:14
+then currently there is no way to say
+
+Matthias Miller  38:24
+we're going to rename that one column on the client proposal that says go push this everywhere because that's what it does or it go push all proposals because that's what it does.
+
+Unknown Speaker  38:37
+When you push a proposal
+
+Matthias Miller  38:37
+when you push proposals to clients system you'll only be able to push all current live active proposals you won't be able to say keep this proposal at its old state in this one at its new state
+
+Unknown Speaker  38:51
+we won't be able to do it on a per client basis.
+
+Unknown Speaker  38:55
+No
+
+Matthias Miller  38:57
+So if if you have any kind of work in progress anywhere
+
+Unknown Speaker  39:02
+I think you're going to need this yeah
+
+Matthias Miller  39:12
+and I think if this is in place then
+
+Unknown Speaker  39:19
+let me see this I should get this off my plate incidence to product change. I've seen client proposals. Proposals So we're doing we're doing an XML export and import wait a second I might be lying causes a sub domain
+
+Matthias Miller  41:24
+now we do have a way to sync individual proposals
+
+Unknown Speaker  41:29
+and update individual proposals
+
+Matthias Miller  41:32
+I think we're talking about pushing them live every night
+
+Unknown Speaker  41:34
+if they need to be updated rather not why is it so complicated and we don't really want
+
+Unknown Speaker  41:50
+we still would want the ability to withhold
+
+Unknown Speaker  41:53
+certain sections. So, I
+
+Speaker 1  41:56
+think regardless whether we do individual proposals or all proposals,
+
+Unknown Speaker  42:00
+this is still something that we want thanks bend a little bit of context
+
+Speaker 1  42:12
+here we are wanting to the proposals that we that we write out for clients that detailed design proposals, we want to keep those up to date in the years to come. So they can be a we call it living spec of the system, so that we and the clients can reference them to see what does this field do or what is this report supposed to show or how to use this feature that feature so then currently, it's all in cch but we want to be able to send the copy over each client's proposal living spec to their system so they can check it for have it as a reference. So be like a read only version for them.
+
+Unknown Speaker  43:02
+So they can they can see it. Gotcha this is
+
+Speaker 1  43:08
+something it's work in progress but yeah all kinds of details pertaining to that
+
+Unknown Speaker  43:15
+I think what needs to happen is we need a. Don't think we want to use
+
+Matthias Miller  43:59
+be really nice to have a new change request on the
+
+Unknown Speaker  44:01
+menu so this would be CCUSA plant code Cool. Okay. At a standard service, proposals needing sync, JSON export that exports all claim that runs on the RG with a subset it's the following in columns Client proposals needing sync then we would need a add standard service proposal completed sync import that prompts were grant proposal. Okay so let me okay this would be Nick ad word slash import for Josh to sync think we're going to end up winning this as well so what up or not sorry see it come in all right
+
+Unknown Speaker  49:35
+so, this is separate but related
+
+Unknown Speaker  49:38
+this would be yes
+
+Unknown Speaker  49:47
+and then once the basically once this is in place Let me wait for me we confirm with Josh actually,
+
+Matthias Miller  50:45
+I'm gonna vote for the guest. I think we should do this. It gives us control more control on the syncing process without needing to involve Josh
+
+Matthias Miller  50:58
+you can get Allison's feedback if
+
+Unknown Speaker  50:59
+if necessary you're saying or which one for
+
+Unknown Speaker  51:20
+you just throw it up or for the checkboxes
+
+Speaker 2  51:23
+when? Yeah. checkboxes one. Sorry. Nope.
+
+Matthias Miller  51:29
+The one I just wrote up.
+
+Unknown Speaker  51:30
+I think we should go ahead and
+
+Matthias Miller  51:33
+you know, I don't know I don't know if we want to sign off on it. But I think we should go ahead and do it Deepak decouples us from Josh and gives us the ability to control how syncing works in our end without needing to involve
+
+Unknown Speaker  51:46
+I think largely without needing to involve him.
+
+Unknown Speaker  51:49
+Okay. Now that sounds right. Do you want to send it off
+
+Unknown Speaker  51:54
+and just give your direction out there for sure?
+
+Matthias Miller  52:26
+Wait, this goes back to that we don't want to modify records
+
+Matthias Miller  52:35
+will get saved collisions in the middle of the night on client proposal well,
+
+Unknown Speaker  52:39
+those will never be synced.
+
+Matthias Miller  52:48
+Why would we not go ahead and make the shift to sync by sub domain
+
+Unknown Speaker  52:56
+so if you want
+
+Matthias Miller  53:13
+okay, well what else do we have besides working on client proposals and proposals thinking? Is this a reasonable priority to go down this rabbit trail or
+
+Unknown Speaker  53:21
+not? Um, let's
+
+Speaker 1  53:24
+see. Then I have cch thing and then I'm not sure that we have any to do items proposals. The one question though on the checkboxes I think we should clear up would be the default for the checkbox.
+
+Matthias Miller  53:44
+Well, I think it's filled like Ellis is fine. sounded to me like Alice was fine with people thinking to false one of his emails did miss misunderstand it. I don't have it.
+
+Unknown Speaker  53:54
+I don't have an opinion.
+
+Speaker 1  53:56
+Okay, I didn't remember seeing anything so but no I feel like.
+
+Unknown Speaker  54:45
+If we do that we can eliminate the Really this should be it should
+
+Unknown Speaker  55:21
+be all active proposals
+
+Unknown Speaker  55:26
+so we call them active Yeah.
+
+Speaker 1  56:07
+Alright, so I think that's all I needed for this and then at this point I
+
+Unknown Speaker  56:11
+can send us over and also the approval Okay? So then as far as the one you just wrote up, that would be Yeah, if you
+
+Unknown Speaker  56:53
+want to spend some time if now's a good time for you to work on it. We can do that we don't have anything else high priority.
+
+Unknown Speaker  57:01
+No need to discuss right now.
+
+Matthias Miller  57:11
+Okay, can you refresh that? So Nick can take a
+
+Unknown Speaker  57:13
+look? Here's what I'm proposing.
+
+Matthias Miller  57:19
+Instead of saying, instead of saying that we need to sync from a here
+
+Unknown Speaker  57:36
+I guess then we'll need a way to request
+
+Matthias Miller  57:37
+the sink anyway. For starters, Alice was talking about wanting to avoid unnecessarily save collisions on client proposals. So rather than storing the we should sync on the subdomain RG on the client proposal. We would change subdomain to be a lookup record with a needs sake checkbox, and it would say what proposals need to be synced on this subdomain. And you could only ever seek an entire sub domain you could never sink partial subdomains. I can't say I can say test think needs to get all the all of their updated proposals. But I can't say or let's use assists, because they're the ones with lots of proposals. I can always say that assist needs to go update all of their proposals. But But by the way, there's a question whether we actually need the need sync checkbox or not. But anyway, be that as it may.
+
+Unknown Speaker  58:36
+But
+
+Matthias Miller  58:40
+I could never say they should get their CRM proposal but not their IMS proposal where you should update their CRM proposal or not putting up their IMS proposal. And if you need to hold something back from them, then you use these nifty checkboxes that we're adding or you remove the proposal from their system entirely.
+
+Unknown Speaker  58:58
+Sure. Makes sense, Tim? So is there any
+
+Speaker 1  59:13
+like is it what is the specific reason for doing it on a per subdomain basis rather than a per proposal basis?
+
+Matthias Miller  59:25
+Simplicity, okay.
+
+Matthias Miller  59:33
+If you do it on a per subject per proposal basis, then you need to say
+
+Matthias Miller  59:44
+oh, by the way, go delete any any wiki documents for proposals that are not in this list if you want to clean them out. Otherwise, you always know that you have the full list of client proposals that should be in the client system.
+
+Unknown Speaker  1:00:00
+The proposals are getting pushed to the wiki. Okay, yeah.
+
+Matthias Miller  1:00:08
+And I would also like to make it standard practice that we know that these, okay, here's the worst case scenario. I don't want to update this proposal because I'm making lots of wild edits. And then client calls and we're like, we have no. Okay, FP as an example, we don't have access to their system. We have no idea what version you're looking at. It shows here that it's documented that it should be A, B, C, and D. You're not seeing that. Well, why is that? Whereas if we make it a practice that every night, every client gets an updated copy of the living spec, then we always know that it's within 24 hours recent, unless there's a checkbox that's been flagged on the on there, in fact, I would make the argument
+
+Unknown Speaker  1:00:59
+to change
+
+Matthias Miller  1:01:04
+the needs think checkbox to a is this subdomain active checkbox?
+
+Unknown Speaker  1:01:14
+Always thinking, yep. I think
+
+Matthias Miller  1:01:31
+my argument is that the idea of an out of date out of date spec, creates unnecessary mental and operational complexity
+
+Unknown Speaker  1:01:44
+in trying to manage versions are you with me? No, I think that's fine. Again, so
+
+Speaker 1  1:02:10
+this is where all of this is kind of uncharted territory for us. So. Yeah, but I'm not sure that I have a strong opinion. I think we can try it and see how it goes. Yep. Interestingly, there's a topic of documentation. This could take us on a bunny trail. But there's a guy here at pursued who,
+
+Unknown Speaker  1:02:48
+who works for workday. Doing Yeah,
+
+Speaker 1  1:02:58
+they're doing big customization, CRMs. And accounting, you know, they got a bunch of different modules and stuff. Similar to Salesforce. And anyway, so we've chatted briefly a few times. But one last time, we were chatting, he mentioned that, that the clients for them, the clients write up their own documentation of how to use the system.
+
+Speaker 1  1:03:29
+Which I found interesting. And that was, I think, the documentation has to be written up before they deploy it. Like it's part of the deployment processes for the client to
+
+Unknown Speaker  1:03:43
+try out the documentation.
+
+Speaker 1  1:03:50
+So I'd be really interested to pick his brain more like he, he works with like on the deployment side, I guess coming
+
+Unknown Speaker  1:03:58
+through, but
+
+Unknown Speaker  1:04:04
+the deployment is kind of his last hurrah with the project.
+
+Speaker 2  1:04:08
+So anyway, be really interested to hear more of how they do things.
+
+Speaker 2  1:04:15
+Not wanting to steal trade secrets, but at least see what we can learn from how they do it. But that's a bit of a digression. What we're talking about here it's also very good carrot to make it happen. Make deployment happen. You mean are the documentation happened?
+
+Unknown Speaker  1:04:46
+Yeah. Yeah, I would say with this back to this year
+
+Unknown Speaker  1:05:00
+Let's as well kick it off and see what
+
+Speaker 1  1:05:07
+people have to say about it and then go from there
+
+Unknown Speaker  1:05:11
+okay good send that one send us that email
+
+Matthias Miller  1:05:19
+Sir Ken Do we need a argue for lasting data so that we can have visibility into that
+
+Unknown Speaker  1:06:03
+good okay, so Alice
+
+Speaker 1  1:06:08
+actually last successful thing date like the thing fails
+
+Unknown Speaker  1:06:11
+it doesn't have to be yes. Tempted no less Yeah. All right, done all right. Do
+
+Matthias Miller  1:07:48
+we sorry. No, nevermind now. Yes, yes, yes, yes and yes. I like it. Here's why I like it.
+
+Unknown Speaker  1:07:56
+There is no more. Hey,
+
+Matthias Miller  1:07:58
+I need to go push changes across
+
+Unknown Speaker  1:08:04
+anyway, good. Cool.
+
+Speaker 1  1:08:10
+All right. Um, next. So an email come in LS about New Horizons asking for money to change their their card. Yeah. Email can come in to billing, which I didn't get so he asked about sending billing to the code house.
+
+Unknown Speaker  1:08:31
+Which I think it'd be a good idea Ben, can you access that or no?
+
+Matthias Miller  1:08:40
+Access the billing thing or the payments link at the bottom link that Matthias
+
+Unknown Speaker  1:08:44
+just sent.
+
+Matthias Miller  1:08:47
+Let me see. Sorry, I'm jumping ahead of you. Tim. Is that where you were going with it? Yeah. Change payment method I think we're gonna go into new her it would be your new horizons test. Test Yeah. Ben, this is what you will this is the link that you'll need to get to and you'll have to call up Victoria and ask her for a new regulator, ask her for new number, add the card and set it as default number and then possibly go back to the invoices list. And manually
+
+Speaker 2  1:09:45
+go back and pay the invoices. Because it's test 3140 for that one. Might be Yeah, that 130 96 Actually If
+
+Matthias Miller  1:10:00
+you put back the sticks into the invoice itself this one is let's pretend Yeah, you would just once you update it just hit charge
+
+Unknown Speaker  1:10:06
+okay 3140 Is what date is that one loving one so let's see two of them yeah Ron both of those to basically come in here to the change payment method
+
+Unknown Speaker  1:10:52
+receive the card info over the phone for
+
+Unknown Speaker  1:10:55
+for that new horizons test card number of months
+
+Speaker 1  1:11:06
+here CVC and there's Add Card does that replace the existing default or is about to ask does they have to set that just you have to set that one or Ben would be able to
+
+Speaker 2  1:11:18
+I think you should be able to certainly one as default okay okay and then go in and and from here mark them as are charges invoices to for new crisis test
+
+Matthias Miller  1:11:36
+3096 and 31
+
+Unknown Speaker  1:11:39
+Yeah and
+
+Matthias Miller  1:11:42
+if you don't have access let me know and I'll send an email to Josh and get you access to
+
+Unknown Speaker  1:11:47
+okay
+
+Unknown Speaker  1:11:53
+okay so we can just
+
+Speaker 1  1:12:04
+should we reply to her let her know that somebody's gonna be calling her up so she doesn't get a call the blue from person she's never heard of before
+
+Unknown Speaker  1:12:12
+yeah let's see
+
+Matthias Miller  1:12:16
+did I gotta get copyright on that payment change yes
+
+Unknown Speaker  1:12:18
+good house yeah.
+
+Unknown Speaker  1:12:22
+See payment change let me do this. I will send an email Victoria CC billing and include Ben. Payment change Victoria, Ben will be reaching out to you in the next day or two you're all right. We're not on the billing email okay good all right. Excellent. All right.
+
+Speaker 1  1:13:51
+I'm just a few minutes left here. So this Z ch thing that Austin I
+
+Speaker 2  1:14:00
+written up as Austin wrote up, I think I noticed before
+
+Speaker 1  1:14:06
+the open closed filter is not working on the main incident report in cch and I think I caught it initially in Z GA.
+
+Unknown Speaker  1:14:18
+So, Nicholas had done some here to link Nicholas had done some investigating. And then I was thrown out here to discuss discuss it further here. I think how far do we should pursue it? Yeah, either.
+
+Matthias Miller  1:14:41
+If Nick wants to just go fix it, or when it needs to get bumped over to I would probably just say ls this is a confirmed bug. Can you please,
+
+Unknown Speaker  1:14:51
+you know, deploy to your team to fix Sure, and I don't know whether it's it's a Yeah, I think it's just
+
+Matthias Miller  1:15:02
+kind of an embarrassing oversight
+
+Speaker 2  1:15:19
+and this would be a like a core job basically then Right? Yep. Okay,
+
+Unknown Speaker  1:15:33
+then I'll plan to
+
+Unknown Speaker  1:15:39
+following lesson two so yeah, I think
+
+Speaker 1  1:15:46
+that's all the covers everything here. I mean, other than some point we're going to have some we're going to have some stuff to go over in
+
+Speaker 2  1:15:54
+the EBS design. But that's going to be most of a of a call. We get a chance. So brilliant.
+
+Unknown Speaker  1:16:08
+Anything else from anybody else? All right. Very good. Well, then we will
+
+Speaker 2  1:16:24
+set off next time. Okay. Appreciate it. Cool.
+
+Unknown Speaker  1:16:28
+Yep. Thank you. Bye
+
+
+Transcribed by https://otter.ai

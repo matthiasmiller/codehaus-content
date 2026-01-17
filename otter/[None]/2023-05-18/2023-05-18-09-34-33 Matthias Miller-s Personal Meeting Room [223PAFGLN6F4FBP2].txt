@@ -1,0 +1,374 @@
+Unknown Speaker  00:48
+Sir can you hear me? No you can hear me much better
+
+Matthias Miller  00:58
+me see let's try this
+
+Unknown Speaker  01:02
+there we go now I can hear you can you hear me?
+
+Matthias Miller  01:04
+I can hear you
+
+Unknown Speaker  01:08
+not that one okay tell me what you got so far
+
+Matthias Miller  01:16
+alright so I think your scaling is basically done well mostly done me this one as well
+
+Matthias Miller  01:37
+I wouldn't just do this it's just everything
+
+Matthias Miller  01:53
+so we've got oh one thing here we lost our new vendor button here
+
+Unknown Speaker  02:02
+yeah yeah I figured if you like this we can work to figure out how to bring it back is this is that seems about right the whole UI here for picking
+
+Unknown Speaker  02:15
+yeah
+
+Matthias Miller  02:16
+perhaps some clickability things but I think that's pretty close to right yeah then we got the error log which
+
+Matthias Miller  02:30
+Why are you not
+
+Speaker 1  02:33
+oh it broke if you update pulled my changes I think you should have it working because
+
+Matthias Miller  02:41
+I have a sorry I'm in a weird mixed environment here. I was having trouble pulling down latest
+
+Matthias Miller  03:01
+recently actually do
+
+Unknown Speaker  03:08
+this do this
+
+Speaker 1  03:31
+yeah, so you should you should make sure it's quest. Yeah, I push. People you should just do that. Got it
+
+Matthias Miller  03:58
+they're hockey work initially. Today, let me see if there was something else.
+
+Unknown Speaker  04:06
+That's right. It'll, it'll work now.
+
+Matthias Miller  04:09
+Okay. Look at that. Gorgeous. Alright, so then we've got
+
+Matthias Miller  04:24
+the logs, it didn't add a lot
+
+Matthias Miller  04:36
+there we go. And then we've got the Delete log, finish scaling enter new log. That has the confirm which that needs to be wired in. But the basic I mean, the basic flow is there. I think one of the biggest questions is The Export Export scaling Okay, well first of all, Oh, if it's just me, but maybe it just is what it is, seems like a lot of you probably this is what it is mostly duplicated stuff here will somewhat duplicated somewhat. So
+
+Speaker 1  05:25
+I would argue, do my best to be gentle but argue passionately that you want it that way. Because if you make it too meta, it's going to make it impossible for that new guy to figure out what's going on and maintain it. So so the more that you can just do stuff stupidly and and for both are not proposing duplicate stuff, I mean, not being stupid, but like, here, for example, would not have a set of fields array of fields and try to iterate through them, but just go field field field field field,
+
+Matthias Miller  06:02
+like an each one hard coded to go to the next one based on what it should be doing.
+
+Speaker 1  06:10
+So what I would like here, render species when I think this is about right, and we would instinctively do is have it I mean, if you need a list of fields and figure out where to go next fine. That's,
+
+Matthias Miller  06:28
+that's, we can we can remove where is it? I mean, the whole get next field logic. And just
+
+Speaker 1  06:43
+sorry, that's what I'm saying. Like if you go back up to the top, yeah, go down, down, down, down, down, down, down here. Render species render length, Render, whatever would like like these these functions, like what I would not do is trying to put this all into like a render generic field or something and then have a for loop here. It's like otherwise, we're Jonathan Bergen is going to have the worst day of his life trying to step through it to get what's going wrong, like just have a concrete so that you can see what's going on. Does that make sense? Like generally have the code try to look about like what the screen does. Yep. So I'd argue this is about right.
+
+Matthias Miller  07:20
+Okay. And then for the so you, are you then for the export tally, we basically just copy this whole class over. I mean, perhaps log input can go into shared.
+
+Speaker 1  07:30
+I put log input into a shared thing and clone the rest of it. Yeah. Yeah. Okay. And maybe there's stuff within here more more things like log input that we can pull out?
+
+Matthias Miller  07:42
+Well, it was kind of trying to figure out but well, okay, roll label, for example. Like this whole,
+
+Speaker 1  07:51
+where there's kind of this thing of like, you've got a read only version, and an editable version, even just showing the read only version. Like that whole chunk. Maybe, but maybe,
+
+Matthias Miller  08:10
+sorry, like, how do you mean something like this?
+
+Speaker 1  08:20
+Yeah. putty that you've got? Yeah. I don't think it would, I think I just keep it just like this.
+
+Matthias Miller  08:34
+I think my problem is, I so dislike, so much prefer metal and generalization and consolidation. And I have a very strong bias towards that. And I know that not the probably the majority of, well, junior developers for sure don't, but perhaps even
+
+Speaker 1  08:55
+like, if it was invest, I totally agree. I just think it's like, you do not want to make this so that you and I the only people that can maintain this thing.
+
+Matthias Miller  09:04
+Right? It is a little bit of a Okay, let's, let's close your eyes and look away. And you know, I mean, it is what it is kind of thing. Like, it's going to be functional, but it's not anything we're going to write home to her mother's about and brag.
+
+Speaker 1  09:26
+I mean, it's UI code. It's the equivalent of components. It's fair I don't know.
+
+Matthias Miller  09:37
+Necessary. Good. duplicated code.
+
+Speaker 1  09:47
+Highlight an additional more duplicates like this and it'll tell you where it is.
+
+Unknown Speaker  09:59
+Now fine, Got it.
+
+Matthias Miller  10:03
+Okay, sounds good. Sounds good. Do you ever have a lamp that you run on these these things do you
+
+Speaker 1  10:11
+know I mean Patreon generally there's a relatively good job of any of that stuff
+
+Matthias Miller  10:16
+missing semicolons obviously
+
+Speaker 1  10:20
+I think it catches when you start when I would do bad things but otherwise
+
+Matthias Miller  10:25
+the other thing I was playing around with a little teeny tiny beat was just this from I don't know text editor is the great snipping tool because I believe in actually was we would be doing a mini report with rows and columns. And a column would be so be a mini report a rows equals rows and then Oh columns columns is heading colon
+
+Matthias Miller  11:06
+looks like this it's a it's a it's a perhaps a quick tables a fast a better way to do it.
+
+Unknown Speaker  11:18
+Sure. I think you want to be racy of ordering but sure.
+
+Matthias Miller  11:24
+Well, JavaScript are ordered. Okay, see you Oh, thank you duplicate you can't have duplicate headings in this case but who cares
+
+Speaker 1  11:46
+Yeah, it's honestly it's honestly if you do this do it soon. Because I'm getting ready to go to style these things I was planning to so I could do that good.
+
+Matthias Miller  12:01
+Expert looting expert tallies and figure out what I can push without actually so util yard scaling, Okay, moving this one around. Let me Yeah, I can push some of this stuff up yank that I can push this up in separate file that one's not going up. This one export loading well this is start work on export loading and then exports you're scaling
+
+Matthias Miller  12:51
+and I have I'm actually gonna have to search for dat map uses because there's some some places like this where it would make sense to
+
+Speaker 1  13:05
+what if you don't want any of these? I mean, I or maybe you just do it like this? I think yeah.
+
+Matthias Miller  13:15
+Okay, well this one's the only one then which would be this
+
+Matthias Miller  13:32
+and we would have
+
+Matthias Miller  13:56
+then by the way, I noticed that you don't that you put parentheses around single parameters
+
+Speaker 1  14:12
+it's personal preference, I don't care strongly. I feel like it helps me catch up I mean, it helps you quickly read the code better and know that it's a function but what it is
+
+Matthias Miller  14:28
+not widely posted seems unnecessary. superfluous. I get it. Alright, so then this is so this should conceivably.
+
+Matthias Miller  14:53
+See if we managed to while we break this. I mean, it's like it worked.
+
+Speaker 1  15:02
+Okay, so you've got styling on the table wait you haven't pushed
+
+Matthias Miller  15:07
+quickly people now have them on tables and the whole table as a whole they don't just push the oh I also pushed my quickly work to quick table
+
+Matthias Miller  15:29
+switch yard scaling too quick all right
+
+Speaker 1  15:35
+so what is this is buying you I guess it's buying the cell spacing cell padding
+
+Matthias Miller  15:41
+Yeah, class names if you want to do class names by T head I don't know too much I mean like here's where I want to use it is as well which is an over an export uploading where it would really make a lot of sense here
+
+Matthias Miller  16:15
+we've got
+
+Matthias Miller  16:37
+then this one can be blank and we can have a
+
+Matthias Miller  16:45
+booking
+
+Matthias Miller  17:12
+export looting then then you've got Yeah, I don't know okay
+
+Matthias Miller  17:27
+what else there's another question I had
+
+Matthias Miller  17:37
+Oh, sorting I wonder if we should even take a look at some of these surely there's a view for two years yes
+
+Matthias Miller  17:56
+third party expert learning so an expert loading we've got sorting these these are supposed to be sorted in a specific order based on list values. Do you want me just to put that in the contexts find this something like this
+
+Unknown Speaker  18:16
+Ah surely fine
+
+Unknown Speaker  18:27
+yeah, it can't just
+
+Matthias Miller  18:31
+be like that and then my thought is
+
+Matthias Miller  18:56
+sure okay we need to show or hide menu options based on permissions there should be
+
+Matthias Miller  19:23
+to remember how creamy color we should be thing was discussed in the menu.
+
+Matthias Miller  19:44
+Open bookings now
+
+Unknown Speaker  19:56
+think it's
+
+Matthias Miller  20:03
+These two minute check with Tim let's do this Tim, do you remember what determined which icons are available in the mobile app? I'm guessing at some if we're using the fragment here do we need to watch for fragment changes somehow?
+
+Unknown Speaker  20:39
+If we're using the fragment here
+
+Matthias Miller  20:43
+like maybe it's maybe it's not maybe things work differently I'm thinking so if you do home No, it just works. Nevermind how do we how does it How does it detect fragment changes when you use the industry to navigate?
+
+Speaker 1  21:11
+Like why does forward backward there? How are you how are you changing that guy?
+
+Matthias Miller  21:17
+I mean I'm just doing a location that hash equals
+
+Speaker 1  21:28
+as page it could be that we still get my old code in there to reload stuff based on that but I'd be a little bit
+
+Matthias Miller  21:39
+surprised knotless react as a magic about
+
+Unknown Speaker  22:00
+don't know
+
+Matthias Miller  22:02
+okay, fine. Well bottom line is it's working hidden we need to push down a list of the log grades list in the info
+
+Speaker 1  22:27
+Yeah, so how many lists do we have? I was getting ready to add a command to do this and then I was like, I don't think I know of a state so it sounds like we have two of them now. Are there other ones like this?
+
+Matthias Miller  22:39
+I mean theoretically, we might have base grades but that can be inferred from the grades list that's fine
+
+Unknown Speaker  22:48
+so what was that that less you need?
+
+Matthias Miller  22:52
+lower grades
+
+Unknown Speaker  23:10
+Yeah, I can
+
+Matthias Miller  23:21
+it's gonna say your vendors through this one can be a messy table email you said it was going to be a trigger confirm I don't know.
+
+Unknown Speaker  23:48
+Do we have the export written
+
+Matthias Miller  23:52
+you know export I don't know that we do. Well actually, we might know they were working on it. Let's do this. That's the export tally of go to yard tallies
+
+Unknown Speaker  24:09
+just
+
+Unknown Speaker  24:16
+email
+
+Speaker 1  24:24
+No, they just do go back whenever they do. I think whenever the the brackets it means it's not that that's the only thing I've been able to come up with the digits.
+
+Matthias Miller  24:35
+That would make sense. I was wondering why they were adding brackets. I was like, that's interesting. Okay, so no, it's not done. But if we're going to use but if we're going to use did we see that we were going to have an editable macro.
+
+Speaker 1  24:53
+Yeah, I can take care of that. It'd be delightful to have in our 30 to actually run Was that
+
+Matthias Miller  25:03
+when these Thursday they're out?
+
+Matthias Miller  25:15
+Yeah, we'd be delightful. Okay, well, I think I'm gonna have to draw up here. I think what I'm going to I'm going to see if I can, do you have a preference between me doing export loading first or, or export scaling first?
+
+Unknown Speaker  25:35
+No, I think what I'm going to do is just go through
+
+Unknown Speaker  25:43
+it just check
+
+Speaker 1  25:57
+okay, got something that later, I'm just going to, like, at least me like you kind of push through like the bare minimum product, and stuff looks like this. So I'm gonna try to go through and clean stuff up and get stuff solid. And I'll add all the things that were there, like the email, and everything's just random to do this and try to start cleaning stuff up. I think that's the best use of my time at this point. I'm really hoping to get to where we can save one of these things. So I can start adding imports for for those I guess, I guess for the yard scaling? Do we have it to where we think we can save it? And where do we want to be saving it? Okay, what is it? When you click? I'm done with this thing that there's somewhere in there that it's like, it's
+
+Matthias Miller  26:42
+there's a confirm confirm it.
+
+Matthias Miller  26:51
+It's actually two places.
+
+Unknown Speaker  26:55
+That there wasn't a before that.
+
+Matthias Miller  26:58
+There's this one. And then there's also the when you edit a log? It's where is it? In the
+
+Speaker 1  27:12
+how do you want to go IDs for newly created tallies?
+
+Matthias Miller  27:24
+newly created tallies? Do you want to do something like negative IDs assigned client side and then re ID them on safe?
+
+Speaker 1  27:49
+I mean, that will work. I go back and make sure data bridge code clients that handles you saving it and you're getting back a list with a different ID I'll take a look. I'll take a look.
+
+Speaker 1  28:14
+Okay, you don't need to chase that whole idea. Thank
+
+Matthias Miller  28:19
+you if you want to you can.
+
+Speaker 1  28:22
+Other things you'd prefer, you know. Okay, so what I'm thinking is, this is switching topics before validation. If you edit a contact, you have an invalid email, I don't know what it is it blows up on save. What I'm thinking is you pop up a generic, auto generated detail record of like, it's just raw. It's like in TurboTax, when you go through the whole insights wizard, and then you get something wrong and the wizard doesn't catch it. And then right before you submit it as Oh, and it drops you right into the raw form. And it's just like, you just have to figure out what's going on. And so I'm thinking about just if something fails, pop, pop affecting that light box with just like like object key object value, object, key object value object, the object value and the error message along the top. And it's just like, I don't know, you know, the facts. I mean, it'd be like invalid email address, and you have to go down to where it says email, all lowercase, and, you know, fix it, the email kind of thing. But I think that's the only way otherwise, you're going to pull your hair out, like, oh, what happens in this specific record when it fails in front of pop them in the right place in the UI? And whatever? I mean, are you with me?
+
+Speaker 1  29:41
+How do you want to handle like assuming, because we have to assume that we'll get the air after they've exited the record screen?
+
+Matthias Miller  29:51
+Let me with offline editing. Yeah, that's almost certainly the case.
+
+Matthias Miller  30:03
+So you can't have
+
+Matthias Miller  30:21
+Can we pick this up in an hour? Sure. I kind of wonder if there's not a way to based on what record has errors, that we wouldn't just have a hook that restore state to go into wherever that needs to be. But
+
+Unknown Speaker  30:40
+I mean, hey, if you were to do it that way, after that, I guess what I can do is give you a call back when I say fails.
+
+Matthias Miller  30:51
+Yeah, that actually might not be bad. But you have to wire it all the way from the outer level down into here. Or outer level in and you have to do them one at a time.
+
+Speaker 1  31:09
+We're already doing them at a time we deliberately do them one at a time so that when we're there areas, we know what's what went wrong, because otherwise you don't have something command. So it's just like a new one. I think as soon as you encounter an error, you say, rats, and you just stopped saving anything, make them fix that. And then you go back to saving again, the next
+
+Matthias Miller  31:24
+sequence. So vendors always have to get saved before your tallies, for example.
+
+Speaker 1  31:29
+Yeah, if you can give me the list of like the order they need to be saved in that I'll just make sure that database takes care of that. Right now, they're all completely separate. So that is all random. They save whenever they get around.
+
+Matthias Miller  31:40
+The only thing that matters is vendors. Nothing else matters. Okay. Okay. Okay, yeah, let's pick up in an hour. Cool. Awesome. Thanks. Thank you, sir. You
+
+
+Transcribed by https://otter.ai

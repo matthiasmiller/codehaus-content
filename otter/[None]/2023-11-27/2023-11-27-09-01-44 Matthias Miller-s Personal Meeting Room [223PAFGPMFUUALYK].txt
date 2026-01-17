@@ -1,0 +1,881 @@
+Matthias Miller  00:35
+Right. Good morning. Good morning. Good morning. Oh got a weird washed out look here.
+
+Unknown Speaker  00:51
+So winter weather,
+
+Matthias Miller  00:53
+winter weather
+
+Unknown Speaker  00:59
+that might be the cause actually.
+
+Matthias Miller  01:03
+I didn't know it would be that severe, but it was
+
+Unknown Speaker  01:06
+makes a difference
+
+Unknown Speaker  01:08
+every time
+
+Matthias Miller  01:17
+all right. Ben is pleased to be joining us as well.
+
+Speaker 1  01:25
+Yes, he is. He sent a message saying he's gonna be a few minutes late. And he had? Yeah, I think he's on a call with the CWA client.
+
+Matthias Miller  01:37
+All right, got it.
+
+Speaker 1  01:38
+He had told me 1030 He sent a text saying he was on the phone with them.
+
+Matthias Miller  01:48
+So do we want to just go ahead and get started?
+
+Unknown Speaker  01:50
+I think you can go ahead and get started. Yeah.
+
+Unknown Speaker  01:56
+Okay, sounds good.
+
+Unknown Speaker  01:57
+Yeah, that takes it green out with us.
+
+Speaker 1  02:00
+There we go. Whatever it was.
+
+Unknown Speaker  02:04
+It was something
+
+Matthias Miller  02:05
+about that backdrop and color correction or some of their lighting or reflection or I don't know what. Yep. Yep. All right.
+
+Speaker 2  02:18
+Well, anybody want to drive this thing? Or should I go through our agenda items? And happy to take them off?
+
+Matthias Miller  02:29
+She goes, Why don't you? Go ahead. I think we've talked about actually, we talked about you doing the first one and then handing it over to Tim, but sorry, Jim, I think it's sure it's your call.
+
+Speaker 1  02:47
+Yeah, I can do that. Let's see, we had we had targeted some time. Blocks for these things. Right. Was it for you five
+
+Matthias Miller  03:04
+minutes? Yeah, I
+
+Speaker 1  03:05
+think Yeah. So 45 for review. Then 45, half an hour for retrospective and then half an hour for planning a half hour for planning. Oh, yeah. Yeah. So 45.
+
+Speaker 1  03:30
+Okay, so in review, we were working on the vtk accounting, high level design. We were working on the N Hm. customisations and possibly Triple D scheduled board colors. That also working on GTK, phase three B and C work. And then of course working on the continuing the work for easy tally and Simba is so I guess just high level Matthias where are we at with the with the accounting CTK accounting high level design?
+
+Matthias Miller  04:32
+mean I think we had talked about giving them a certain allocating a certain amount of time to them I think we also had talked about well, yeah, ultimately what we need to spec out is I think would be helpful for from them is more details of what we'll be coming across from their vendor invoices. And I think probably what we'll end up doing is creating a temporary database level. That is there. or is docs vendor invoices that then can automatically create our vendor invoices? Otherwise you run into? Well, I think it's that LS, we can use that to about the best how to do this, otherwise, you run into weird import problems, because somebody mistyped something or, I don't know, you know, I
+
+Speaker 3  05:21
+basically what you're saying is we want to, to use an intermediate level, whenever we're sinking. Correct. I'm 100% on board, every time we've done that, I've been happy. And I don't know that I'd ever want I mean, I, I think it's always the right thing to do.
+
+Matthias Miller  05:41
+So we, so we don't have enough, we don't really have details from them as far as what that's going to look like. So I suppose we could spend a little bit more time just assuming that that thing is going to exist, and building out some kind of new records spreadsheet or something like that, that that can be used, or something that can be used to push those across into our vendor invoice records. So probably, we should block out about two hours of my time to sit down and so it was meant to make it pretty.
+
+Speaker 3  06:15
+So so the the high level on accounting there, they're staying in classic for now.
+
+Matthias Miller  06:25
+We're proposing a multi-phase, okay? Yes, accounting thing in classic for now, but then it just basically triaging based on what's the most critical component? Sure. For them and then taking it on from there. Sure.
+
+Speaker 3  06:46
+Long term, do you expect them to come into our system or into QuickBooks or
+
+Matthias Miller  06:50
+they want to come into our system? I think it's possible that we can I think I don't think it's super complex, but we're gonna we're gonna want to write similar thinking that we did for for insight, to push your invoices and things across into the accounting system. Okay, yep.
+
+Speaker 1  07:19
+Okay, so basically, we are, we didn't get as far in that as we were targeting. But that would be a something to work on here. To wrap up the, the next phase? Or yeah, basically wrap up the high level design. And so here, ya need to wrap up high level design. And then, for the for the next steps,
+
+Matthias Miller  07:55
+were they wanting our ballpark on the entire project start to finish a to z?
+
+Speaker 1  08:02
+Um, probably they probably want something. I mean, obviously, whatever we focus on, we probably want to give them a, a ballpark for each of our proposed phases.
+
+Unknown Speaker  08:21
+Okay.
+
+Matthias Miller  08:27
+We can give it a try.
+
+Speaker 1  08:29
+Mm hmm. Okay. And then the other item that we're working on was the NASM work. Where are things? That one what what did we get done?
+
+Matthias Miller  08:46
+They accepted. And so that's basically just needing time on my calendar. I'm just gonna go do it. Because see, yeah, so it needs one to two days. That's one to two days in my time.
+
+Speaker 1  09:04
+All right. And do you want to try to put those like have those like two days blocked out? Back to back, where would you want? No, okay.
+
+Unknown Speaker  09:21
+Any man? Sorry. Man,
+
+Speaker 4  09:29
+was in a call with the CWA client trying to figure some stuff out for him and I noticed that it was about 1050. And the next thing I knew it was after 11 o'clock, so
+
+Unknown Speaker  09:39
+sure thing, all right.
+
+Matthias Miller  09:41
+No worries.
+
+Speaker 3  09:46
+Oh, two notes on. This kind of comes down to lead time but this also may tie into some stuff for you, Matthias. Jonathan is moving back to Kansas, mid December and is going to be a veil. Mobil at least 30 hours a week, and possibly even up to full time from December, and will for sure going full time by, you know, by June or something. But he's at least at three quarter time. So suddenly we're gonna have more US capacity. Nicholas is also available from MIT for about two months from mid December to mid February. school break. So if if there are either shadowing things or more complex things or anything like that, that we want to have happen, that those could be possibilities. I even thought about that with the one lead that came in well, that, you know, we could also consider having that done here. But just tossing that out for where that's helpful.
+
+Matthias Miller  10:51
+Do you want to take his capacity and again, is it's mostly a, you're not looking to fill his capacity, but mostly And FYI, for the sake of looking at what can be done in this next sprint?
+
+Speaker 3  11:01
+I think so. I mean, he's got some things that will need to be happening. And I'm sure I mean, I can always I'm pretty sure we've got work for it. I just I thought about it when you're talking about New Horizons or something like that. Well, if you'd say, Oh, I'd love to have a shadow on this. Then, you know, that could be a possibility, but accordingly.
+
+Speaker 1  11:24
+Cool. Okay, good. And then also talking about ZTE T. We, we made a lot of progress on that in the past six weeks. Testing is almost complete on that. Maybe give it a progress on the yard app as well. Matthias, do you know where things are at with the Upwork? Designer?
+
+Matthias Miller  11:54
+Josh, and we're we've got access issues. I need to talk to Josh this afternoon. Okay, figure out what's going on. So we have the mock up. And I think we're good to go on the on the mockups, but they're still waiting to apply those changes. Okay.
+
+Speaker 3  12:14
+I would almost say let's not, I mean, I don't know how long it's going to take. But let's go ahead and start pushing towards deployment anyway, as far as I'm concerned. I would rather have $50,000 Without a fan of without a nicer yard app and not have $50,000 with with I mean waiting on the yard app. Here I am. I am I think EAGERs a fair word for that check. So let's I would really like to see that happen. Yes.
+
+Speaker 1  12:46
+Yeah. And I think that's what we were planning on. I don't remember if we communicated that to the client or not but planning go ahead and and go for deployment here at basically December 1 And and you only RDAP as soon as we can. Simba is we're working on wrapping that up as well but that we have not gotten to testing as much because of all the work in in EBS. So I think Austin is hitting the testing harder again on that one. Good. We're getting yes getting into that more
+
+Unknown Speaker  13:35
+that's CSP right?
+
+Unknown Speaker  13:37
+Yes. That's that I guess
+
+Speaker 3  13:48
+oh, this here I don't know if you can see it or not but these are leather portfolios that we're handing out to the sim biz members here and are inviting them to sign up for it with code crafter Silverleaf on the inside but I'm pretty pleased with how that's turning out. Nice. See if we can get some leads out of Sim biz.
+
+Speaker 1  14:10
+Cool that's fun. Okay, so then talking about lead times and just to LSU already mentioned Jonathan and Nick's availability which would be great for sim is especially with Austin hitting testing hard Yes. Right. And our target deployment for them here in December
+
+Speaker 3  14:42
+and yeah, I'd really like to at least get the internal system live in December and maybe I mean, maybe a you know kind of internal soft launch and then a full launch in January I'm is I'm I'm guessing we've got some design left on the portal with with them or on the dashboard. The
+
+Speaker 1  15:13
+pool. And there also is some ex FB work that's needed. I think there's one or two or three jobs that are needed here by the end of the year to be some of those things that. Yeah, would be great to have Jonathan and Nick.
+
+Speaker 3  15:34
+Yeah, we should all look at those. I mean, depending on what the schedule is, we may want to do it sooner. So that we have do it sooner so that we're not, because if we wait until they're available, we're in the last two weeks of the year. And then we're, then it's going to start getting tight for deliverable by the beginning of January. So I may have code drafters pursue those unless unless I do Yeah, probably. But but we'll I'll I can work with you on that one. Okay.
+
+Speaker 1  16:06
+All right. So as far as other things as far as availability for from code drafters, they're working on the GTK phase three a right now as well. But do you have an estimate of when how long that'll take them?
+
+Unknown Speaker  16:27
+Now? I'll say that again?
+
+Speaker 1  16:30
+They're working vtk phase three A? Sure. Voting right now. Yep.
+
+Speaker 3  16:39
+Let me just see if I can see offhand where we're at in that one. I have a meeting tonight. So and I've been mostly out of pocket for the last several weeks. But I could probably get a sense of it here just looking at the reports, external projects
+
+Matthias Miller  17:05
+CTK.
+
+Speaker 3  17:40
+It looks to me, like it'll be done in the next in I mean, in the first half of December. It's kind of what it's looking like right here, Jim. That's rough ballpark, but
+
+Speaker 1  17:56
+Okay. Cool. So another project I thought of here was the phase Z GA phase three a that we're working on? Yeah, that one. We're a month late on that one at this point with all the changes and holidays and whatnot. But yeah, we'll need to try to get that one wrapped up and set up else. We have a few more questions for you, I think. And then numbers. Sure. final numbers and whatnot.
+
+Speaker 3  18:28
+So yeah, Matthias that was turning into something like a 40 to $60,000 project, probably, if they move forward, which we hope they move forward. Otherwise, we'll have some heart to heart discussions about design time recovery, but yeah.
+
+Speaker 1  18:49
+Okay, so those are Yeah, that's a review of what we've been working on what we've got available whatnot. From your perspective, ls what are priorities and things that we should be aware of on the code House side?
+
+Speaker 3  19:07
+Um, so my number number one priority is getting? Well. I have three number now you can't have three number one priority. My number one priority from for code crafters, but there's there's two that are really competing. One is getting EBS live. Second one is the successful accounting launch. And I'm ag we need to swap those accounting launch is the number one priority. We just can't fail on that one. That's our biggest client by a longshot. That's for affordable barn insight. And then getting EBS deployed and then getting some Bits Deployed. Although and then probably getting the goods ag proposal out out there, I would probably put next. And I mean, I'm not sure how I would. Because obviously we need to keep supporting clients and stuff like that. But that's as far as big projects. That's probably. Although well, and technically, we should be able to get the goods ag out even. I mean, as far as priorities, this is proceedings, but it'll probably happen before any of the other ones do. So.
+
+Speaker 1  20:32
+Sure, so one of these then. Let's see. Yeah, good. So then as far as that goes, Are there things that you need from from code house or anything that we need to discuss here on on these different items? But is there anything what
+
+Speaker 3  20:56
+Matthias is is on top of inside he knows, then that's not really the rest of us much. Just as far as EBS, and symbols, just everyone pushing forward as much well, especially EBS, everybody, but that's then once that's done, I'll turn my attention to symbols, but everyone pushing forward as much as possible to, to pull that off. So
+
+Speaker 1  21:24
+okay, good. So then that would be those would be our main focus points for for the next six weeks, your next three weeks here.
+
+Speaker 3  21:37
+So now, how long are your Sprint's I'm seeing your retroactive miscellaneous comment there?
+
+Speaker 1  21:43
+Right. And this point, we've been doing three weeks. Got it? I mean, we were still in the trial run stage. Through I think there's a second one that we've gone through. Yep. So feeling it out? Yep.
+
+Speaker 3  22:00
+I mean, one idea, just, it's minor. But one idea about naming sprints, I would consider just naming them by the month. And then once in the months that you've got to just using a and b. So it just it would make it pretty easy. You know, knowing what having a gut instinct don't want sprint, you know, the 14 sprint and or the night sprint is is tough, but if we say it's March a or March B, then that's a much, much easier one. For what it's anyway. Yeah,
+
+Unknown Speaker  22:38
+yeah. Good thought.
+
+Matthias Miller  22:39
+Fellas, these are three weeks sprints. Is there any value synchronizing them with the six week development cycle?
+
+Speaker 3  22:45
+I think so. I think that now what that will mean is that twice a year there, you're gonna have to you're gonna have to adjust for a five week cycle.
+
+Unknown Speaker  22:57
+But I think they're, they're but but yeah, no, I think that would make sense.
+
+Matthias Miller  23:06
+The nice thing is it provides visibility further visibility into cut over to the code House team, which I think exactly. We have insight into but I don't know that it's, it's that target in mind.
+
+Speaker 3  23:19
+Yeah. Yeah. And if you do that, you could almost just take the, the cycle, start date and just always have a and b. So because because the six week cycles, we always it's for specific bugs. So you know, the next cutover is December. So we're currently in I think there was one in early November. So we'd be in we'd be in 2311 be right now because we're the last three weeks
+
+Speaker 3  24:00
+now, what's a little bit weird is that I I'll defer to you or whether you want to tie that tightly to cycle or whether you just want to put it into the month because what's a little weird is that if a cut over let's say cutover is in is in end of October, then you might have your one sprint is going to the 10 B sprint is actually the end of November into December. So I don't know if you for sure want to tie it completely to the sprint or if you just want to I mean sync it to the sprint but still name it by the calendar month. I'll anyway I'll let you all decide that I don't think I have a strong preference.
+
+Matthias Miller  24:50
+Talking about scheduling we should think naming can guess Exactly. You've worked on
+
+Speaker 3  24:56
+it but naming do do somehow tied to the Cal Under so we can. So it's pretty easy to understand what we're talking when we're talking about.
+
+Unknown Speaker  25:06
+Sure. Cool.
+
+Matthias Miller  25:13
+Well, for those purposes, then it would be nice to have. How often do I mean, those are pretty fixed? Aren't they? Ellis the date? Yes. Yes. Completely, completely fixed. So if we would give Tim a schedule for this next year or something,
+
+Unknown Speaker  25:30
+it'd be good. Yep.
+
+Unknown Speaker  25:33
+We take a look at making sure it's scheduled out for the year, but
+
+Speaker 3  25:41
+okay, it's scheduled through July right. Now, we should go ahead and finish out the year. So
+
+Unknown Speaker  25:48
+is there an easy? Is there a link to a report that you can look up?
+
+Speaker 3  25:54
+No. It's a client scope. Unfortunately. I can.
+
+Speaker 3  26:04
+I'll toss you the link. But well, it's a client scope. So I can give? Well as I guess for now, knowing the next six months, seven months is probably all you're going to need.
+
+Matthias Miller  26:18
+I'm sending it in a in an Oh, sorry. That's 23. That's not it's the wrong. Those are the wrong dates. Here. I can send it to the chat here. But the report folder? Yeah. Okay. So December 12, would be the next. Which puts us out it. I mean, it is one two, it's two weeks instead of three basically. Sure. I really want to get on schedule.
+
+Unknown Speaker  26:55
+Okay.
+
+Speaker 3  26:58
+So one question, if we do this, could we move the phone call? This means Mondays and Tuesdays I've cut over a week are my busiest? Well, Monday is my busiest day of every six weeks. So I would go remove this call to say, I don't know if you know, the prior Friday or something, or I'm not quite sure when you'd want it. But
+
+Matthias Miller  27:21
+I would prefer I think it was I was hoping at least I mean, it was looking through Fridays, we weren't able to make Friday's work with our current schedule, but got it. I'm fine with either the Friday before the Friday after. It's better from from your perspective, Ellis.
+
+Speaker 3  27:33
+In some ways before because it lets us prep for I mean, okay, here are the things we're hoping to do in the next three weeks a cycle, but if I don't feel strongly, yeah. Does that work for
+
+Speaker 1  27:48
+you guys? Yeah, I think so. And as as we get into the rhythm of it and build stuff around it more than it.
+
+Unknown Speaker  27:54
+Right.
+
+Unknown Speaker  27:57
+It just becomes I mean, we can schedule it out. Yeah.
+
+Speaker 3  28:01
+The year. Yeah. My Fridays tend to be quieter. So that's great for me, so.
+
+Speaker 1  28:09
+Okay. Cool. Okay, so that's a review us and welcome. We've been working on priorities for the next well for the rest of the year basically. And as far as discussing specific design projects, and this is kind of the part that that would replace the the design scheduling call that we've been doing. Let me pull that still got that in a different dock here.
+
+Speaker 1  28:54
+So we are currently working on Yeah, wrapping up the DJ phase three A. And wrapping up these zt and DSBX. FB changes, bug fixes merge cleanup that don't been an illness if you've been working on that at all, or is that backburner at this point?
+
+Speaker 3  29:19
+I don't know what what we're talking about for sure. So
+
+Speaker 1  29:25
+yeah, that's fine. I don't think there's anything that's urgent. I think there's once one change request that they wanted done by the end of the year that I sure handed off to Ben.
+
+Matthias Miller  29:34
+Last week, I
+
+Speaker 1  29:35
+think, other than that, I think we're fine to let that go. Of course we're working on the landing page and accounting as ETK accounting high level design. You those who keep rolling, they need to get done here soon. So it looks like we're done then we're done. Talking about rolling into some other stuff in December. But at this point, I think we've got lots, we've got plenty to keep us busy in December unless we maybe pull in one of these other things so I guess just to pull this in design projects
+
+Unknown Speaker  30:49
+he's still the same.
+
+Speaker 1  31:25
+So if we look here, then it's basically continuing to wrap up the stuff that we've gotten going with possibly bringing in. But we're also continuing to work on the ZTE K. Phase three, the design. Ben and I split that apart last week, in the phase three, B and three C. Yep.
+
+Speaker 3  31:54
+So, in just one note, as we talk to clients about scheduling, I think we're really discovering this with with the three A is that, you know, at the time it gets handed off to us, then you start thinking of several weeks worth of wealth, you know, two weeks for us to review it and price and get pricing details. But then you're you all often have another several weeks of follow up once we do that, because we tend to unearth, you know, kind of the nitty gritty details of it. So, so just as it just did that does take time. So it almost, I wonder if at some point, we want to change our terminology from here. Is this for pricing to here? Is this for implementation review? Because it really isn't. I mean, what we're doing is not primarily pricing, it's primarily implementation review. And it'll include pricing.
+
+Matthias Miller  32:55
+More developer, I really like, go ahead. I really liked that terminology. And I think it continues to push for breaking things into smaller and smaller phases. Yes, is that we can have low low impact, I think we're, we're increasingly moving towards a more agile approach even on our design development. Sure. Yep.
+
+Speaker 1  33:19
+Okay, any so over here, we also have some things like the the Golden Rule lumber, high level design, and I believe the client said that they want to move forward with that. Is that right then? Yes, you want to go and schedule that?
+
+Speaker 3  33:37
+In Matthias on that one that may be completely non app hosting. And I mean, it may be it may just be spreadsheets and stuff. I'm really not sure yet. I think it's just drilling in and coming up with them and exploring options. There's some specific pain points, pain points that you've got and so
+
+Speaker 3  34:04
+there's a new potential one coming up kings furniture. This is a it's a really simple system. It's currently hasn't a an access calculator that he just wants to take online. So I kind of think it's the kind of thing that seven it could knock off knock off in a few days, or even less. I don't I don't know for sure how we should do that one. Because Because we do need some design on it, I guess. I mean, we need documentation at least.
+
+Matthias Miller  34:43
+So but
+
+Speaker 3  34:47
+but we could at least add it to the list. I don't. I kinda think we don't even involve Matthias on the design side of things. And I wonder how If Ben and I could just do the design on it in one or two phone calls? Well, I mean, unless unless Matthias wants to do those, it's not like two days of advisors time. It's like, two hours of someone's time. I think. So, are you? I'm not trying to take stuff away from you with is but but so would you enjoy getting involved in that one or not? Is the first question.
+
+Matthias Miller  35:24
+If it's a two or if it's a two hour call, and and now I think, you know, in especially high level design, going more in depth than most high levels do because it's so small, I'd be open to it. I think resources is definitely something to consider. Well,
+
+Speaker 3  35:37
+I don't think it's any I mean, the high level design is already done from a one hour phone call. It truly is. This simple. So it is implementation design, I think is going to be an hour of my time and then a few hours for for for Ben to do mock ups for us.
+
+Matthias Miller  35:56
+I I don't have I don't have a strong preference. I think it's a resource question as much as anything. Okay,
+
+Speaker 3  36:03
+man, I almost wonder if you and I well, I don't know how maxed out are you right in December? Do you feel? Do you have a sense? Or do you or Tim have a sense for that?
+
+Speaker 4  36:17
+I don't have a strong sense for that right now. With taking on some of the accounting responsibilities and what that's like that'll probably be starting to get pushed towards me here in December so okay, it's kind of hard to tell but something that's small I don't think should be too much of an issue I had emailed emailed the Elmer and told him that it would most likely be 2024 before we can sure.
+
+Speaker 3  36:53
+So why don't you Why don't you just grab a slot on my calendar this week and one of our normal time slots and you and I look at what all we've got on our plate and then then we might reach out to them but go ahead and put bed Tim put bands in the maybe put band was kings kings furniture or something like that there we go. Yeah, you've got it I'm fine with just leaving it here for now and we can take it from there so
+
+Speaker 1  37:29
+Okay, let's see
+
+Speaker 1  37:40
+Oh, and Matthias on the nh m work for you. Again talking resources. When do you want to prioritize that you want to try to get that in by the end of the year? But are you thinking january february help us know especially this stuff I
+
+Matthias Miller  38:02
+mean they've been no we didn't get formal acceptance until last week but it's been long enough in the works I do have an interest in just getting it wrapped up and on my plate obviously from my perspective that comes after accounting and I'm but as far as I think if we're talking about allocating my Thursday's to these I think it comes after probably comes after I mean it would come after zt and probably after ZTA accounting highly palatable design. So it you know potentially we could look at this Thursday for those two things and next Thursday to start any channel depending on what else we have on our list
+
+Speaker 1  38:57
+to say this Thursday for for Z et and for for the Z TK accounting yes
+
+Matthias Miller  39:11
+and I'm planning to reallocate some accounting budget that Thursday time budget to Thursday because of this call
+
+Unknown Speaker  39:18
+okay
+
+Unknown Speaker  39:31
+okay
+
+Speaker 1  39:39
+good. Anything else that we should be talking about here with elbows on the call?
+
+Matthias Miller  39:48
+I would like to know based on the on the on our total workload. What is our design team lead time? If we don't get any more work, how long until you and you Ben are grabbing your feet up on the desk twiddling your thumbs.
+
+Speaker 1  40:06
+Um, me as long as none of this falls through. I mean, I think we've Well, I am going to full time here in December. But as long as none of this falls through, I think we've got I mean, I'm thinking at least probably February. Like there's a lot here yet.
+
+Unknown Speaker  40:35
+That's kind of my sense, too. So
+
+Matthias Miller  40:39
+that's end of February. So what you're saying through February
+
+Speaker 1  40:55
+I mean, if we count vtk, phase four, count z as be phase two, possible phase three for them. Golden Rule lumbar Halo design. We've got some CWA customizations x and v customizations. course through the CGA QuickBooks syncing design that if Yeah, for all this stuff that gets accepted and coded there's project management and testing deployment I don't know sometime in February then if then if faith builders board pathways and or its machinery goes to end up design, that's that much more.
+
+Speaker 3  41:46
+And the kitchen people what were their names? They see and what had they said they didn't find anything they wanted? But are they are they pushing it out another six months?
+
+Unknown Speaker  41:57
+Key Point components
+
+Unknown Speaker  41:59
+country cattle Yeah.
+
+Speaker 4  42:02
+They're looking at at least middle of next year, not okay. The 2025 Got it. Yep.
+
+Speaker 1  42:13
+So it would maybe be with not counting faith builders and Ed's machinery. I would maybe say beginning of February Well, no, it
+
+Unknown Speaker  42:25
+depends. No,
+
+Speaker 1  42:27
+I think we would safely have worked through the end of February if we're looking at all the the design work remains to be done for Simba is and then thinking as long as they keep saying go on design work and development it seems unlikely we'd get all of that done by No
+
+Speaker 3  42:51
+I think you're right from what I'm seeing with all yeah all right. Good. Good Is that all you need for me
+
+Unknown Speaker  43:07
+i So I'm thinking at this point anything else? Nobody else
+
+Matthias Miller  43:19
+nothing else for me? Yeah.
+
+Speaker 3  43:20
+Oh actually rental and I do like I like that three week Sprint's that seems about right so yeah
+
+Speaker 1  43:30
+the one thing quickly here would be availability be nice to know plans like we had done on our last design phase phase planning call was December people being out do we know at this point
+
+Speaker 1  43:54
+I don't know my plans nailed down yet but I don't
+
+Speaker 3  43:57
+I don't have my plan. I mean probably by the next meeting I'll have better a better idea of what I because I'll probably be out for a few days over Christmas but exactly how that falls I'm positive so likely the week of Christmas kind of spotty.
+
+Matthias Miller  44:18
+We're gonna be out for about a week over that time. Ish. Probably Wednesday to Wednesday or something like that and not completely sure yet. Okay.
+
+Speaker 1  44:31
+Yeah, like I said, I don't have my plan figured out here yet but okay, well, we'll play into
+
+Unknown Speaker  44:50
+want to follow up on that?
+
+Unknown Speaker  45:02
+Okay, very good. Okay, thank you. Good
+
+Speaker 1  45:16
+okay, then going into retrospective anything to discuss looking back over the past three weeks and highs, lows, wins, things improve. Other things to discuss here. So from my side that being out sick a few days, the past week and a half, well, I'll sick and then Thanksgiving. Some of that was anticipated some not. And then also was out a little bit more than I was planning wasn't able to work as much with wrapping things up here in Harrisburg. So I for one wasn't as productive as what I was anticipating do being out more
+
+Speaker 1  46:29
+but I feel like it's been helpful to have the sprint to give us something to shoot for.
+
+Speaker 1  46:40
+Yeah, and a little bit. I'd like to talk a little bit more about the namings and the scheduling. But that'll that can come with planning or the end of our retrospective since we already got that to notes on that. Good and nice.
+
+Matthias Miller  46:56
+Yeah, I also lost half a day last Thursday, because of the week before we break for left because of personal issues that came up. But yeah.
+
+Speaker 2  47:10
+Is that creating any kind of mental block for the planning, I would help to keep track of, you know, estimated at the time that we think we were going to be able to do it versus the time that we actually got to spend is a metric? Or is that really just an acknowledgement that sometimes things don't go as planned?
+
+Unknown Speaker  47:37
+So question?
+
+Matthias Miller  47:46
+Well, I think I think there are two things, I think, I think there has to be an acknowledgement that life doesn't go as planned. And I don't think that there's any kind of planning that we could have done, that would have said, Tim is going to be sick, and I'm going to have something unexpected come out, come up with anything to deal with. I do think though, it's helpful having some kind of context to say, well, this is what we were shooting for. It'd be hit it yes or no?
+
+Unknown Speaker  48:15
+And if not, why? And
+
+Matthias Miller  48:17
+if not, why? Yeah, yeah, that's fair. I mean, the real thing I care about was, was it within our control or not? And if it was, what was it, what do we need to do to fix it? And if not, then most likely, we don't need to account for it. But maybe we do. I don't know.
+
+Speaker 2  48:37
+I think that's fair. I think especially beginning something like this in the planning stages. People can be optimistic about how much can reasonably get done sometimes and so if you're constantly over planning and I'm not saying this is where you guys are at necessarily but I've seen people constantly over plan and then get discouraged. So that would just maybe be a way to shield against discouragement is is that discussion so
+
+Unknown Speaker  49:07
+yeah
+
+Speaker 1  49:12
+I think we did over plan for this last one to a certain extent, I don't think it was wildly over planned but with me Yeah. Me not being able to work as much as I'd planned definitely take a hit but yeah, there's there's what would be a good mean without planning things to death, what's a good way to target some of those those metrics? And then do to circle back and then we say, we plan on X number of hours from Yeah, from each of us on on these things. Do we then have something to track it.
+
+Matthias Miller  50:01
+But I think this comes down to more granular planning. I mean, just work on this in depth design that we think will take three months is not a milestone, that's just go work on it, I think we need to have a concrete goal, we want by this date to have detailed screens wrapped up, or whatever it is. And then that is our goal was EJ Our goal was to should have been work better articulated, we want the accounting high level design complete. And we want, you know, big, big estimates on the big piece. And then based off of that, we can say Did we it's got to be something that where we can go to get to the end and say, Yes, we did or No, we didn't. And then from there, we can say if not, why not. But I would like to go away from ours. Because ours in my mind, are a secondary metric getting things done are the primary metric. Right.
+
+Matthias Miller  51:20
+are another way to say it, you know, measuring billable hours, is a is a management tool, management profitability and productivity tool. That is the how things get done. That should be happening independently of that, what we're trying to do here
+
+Speaker 2  51:41
+Sure, there's always something like sprint points is an idea, which is a sort of a subjective measurement that you make as a team on, you know, like, this piece of this design is going to take eight sprint points, and we think as a team, we have 24 available over three weeks, you know, like just kind of it's very subjective, but it's a way to conceptualize effort.
+
+Matthias Miller  52:04
+Mm hmm. Then having a, we think it's this this many days. So we should plan for at least four productive days, or 32 productive hours that have a 40 hour work week, anything less than that. And then
+
+Matthias Miller  52:31
+and then and so we could use that. And then if you guys are working together is days and appropriate unit of measure as far as unit of work?
+
+Speaker 1  52:47
+Probably if we have a we have a an understanding of how many hours we're talking about in a day. Again, if you're talking about the 32 out of 40. Do we have a certain number of hours out of a day? six out of eight or seven out of eight or
+
+Matthias Miller  53:16
+but I really like
+
+Speaker 1  53:18
+what you're saying as far as the as far as having the the milestones rather than the project accomplishment milestones rather than primary over the hours. And I wonder if some of that mean that yeah, the idea of days or points, would that be something better to bring in a little bit further down the road? Once we figure out some bigger picture of how the how Sprint's are working for us,
+
+Matthias Miller  53:51
+we need to have some concept where you guys are comfortable in some form or fashion that what you're committing to for a sprint or and what I'm committing to for Sprint is actually viable and can be done. And so if if you can do that, well, just by eyeballing it and saying, Yep, we can do that. It's about whatever you're running numbers in your head, and it's about this much work, and it's about X, Y and Z. Great. Then, there you go. That's what you need. If you can't, then we need to figure out a way for you to come up with whatever metric is most makes the most sense to you guys, is it hours and days, is it? Is it weeks, Is it some kind of metric where you can say this is about how much work this is. And this is how much work we'll be able to get done. So we are committed to this milestone. We think this milestone is going to take this long. We would like to get this other milestone done. But that's going to extend her overextend her capacity by 25%. So therefore, we need to cut scope and move that that milestone that that post, you know, in by however far are so that so that all these things line up Hmm If that makes sense yeah
+
+Speaker 1  55:11
+and some of that's not going to be some of it's gonna be hard to do until I'm working full time and then getting into a rhythm there and we can plan for some of that once I once my availability expands that much and I see how how that impacts my productive productivity I can help to
+
+Matthias Miller  55:38
+well the process is the service and the serve getting the right things done. So if in this stage of the process, it's better to do just eyeballing everything this is about right. And next sprint, we'll get a little better a little more accurate and an expert a little better than that's great. In my opinion, Andre certainly we'd love to hear your perspective as well
+
+Speaker 2  55:58
+not 100% agree I think you guys are on the right track you're cool
+
+Speaker 1  56:12
+okay. So then I guess as we plan this call or for this coming sprint, we can look at setting some of those specific targets and keep an eye out for Yeah, for time 10 use as well
+
+Speaker 1  56:43
+okay, as far as needing the Sprint's in this kind of segues into planning so we can hit that unless somebody else has right to say it does anyone else have anything on the retrospective side
+
+Speaker 1  57:03
+yeah so then yeah as far as planning and dates for the sprint the
+
+Speaker 1  57:17
+dates for cutover so these dates that you sent there Matthias
+
+Unknown Speaker  57:34
+these are Is this the start date for each cycle
+
+Matthias Miller  57:41
+Well, I mean it's the boundary it's both okay. So whatever happens on a Tuesday and so the meeting date we'll be aiming for would be December
+
+Speaker 1  57:58
+All right. So these actually no way so yeah, sorry we can
+
+Matthias Miller  58:05
+I can delete these easily from the for everybody or not but those that first set is historic
+
+Unknown Speaker  58:25
+so this is upcoming
+
+Unknown Speaker  58:32
+and
+
+Speaker 1  58:40
+so then we would So December 8, which is just a week and a half away or two weeks away. So to align things do we want to go ahead and just do a two week sprint here
+
+Unknown Speaker  59:02
+to get Yeah, to help realign things and get things synced. Especially considering that the next two weeks are are also chopped up for me with moving so do we do just kind of a mini like yeah, intermediate sprint and
+
+Unknown Speaker  59:32
+and then plan to hit it for real then after that
+
+Matthias Miller  59:41
+I think we have to we don't know what capacity is over the following two weeks. Yeah, based on people's schedules. So until we know that we can't we can't make plans for the following sprint
+
+Speaker 2  59:55
+That seems fair. And it looks like based on what I'm I bought Link from my calendar that January 16 cut off. That's one of those five week cycles he was talking about, I think so I don't know if that affects your sprint planning at this point you might have another two weeks sprint in there somehow if you want to rely on
+
+Matthias Miller  1:00:19
+it I wonder if 123 Go ahead
+
+Speaker 1  1:00:26
+No, I just looking at I was looking at it to here I'll just open the calendar over here on the shared screens we'll look at it together go ahead
+
+Matthias Miller  1:00:34
+and once I voted do it three weeks sprint come back and I don't know how am I going to be back depends if people are back on the 29th or not. I'm gonna be on the 22nd so
+
+Speaker 2  1:00:55
+I don't think that having two week Sprint's is a bad thing necessarily other than it just sort of throws off the mental some of the mental part of the planning right but realistically you're cutting your planning by a third so whatever you thought you could get done in three weeks you're doing two thirds of that so maybe that's not such a bad thing
+
+Speaker 2  1:01:40
+the other potential thing you could do for a five week cycle is make it a five week sprint but I don't know if that feels comfortable either depending on you know how you're planning goes but hmm
+
+Speaker 1  1:02:00
+well with this with that cycle having Christmas and New Year's right in the middle that could be one that makes sense for a five week
+
+Speaker 2  1:02:14
+you're right it could because realistically probably have less than five weeks of work you might have closer to three in there anyway that's makes a lot of sense. Good point
+
+Speaker 1  1:02:29
+so then that would take me December 11 through January 12
+
+Speaker 1  1:02:47
+And then here is where we would start going with we go again for the three of the six weeks to be January 15 through
+
+Speaker 1  1:03:10
+through February 2 And then February 5 through the 23rd.
+
+Speaker 1  1:04:00
+Again, I think targeting something like just playing and go through February like this and see how it goes with the syncing with with the dev cycle and whatnot could be could be good. Now as far as naming them do we say we say it's like do we name it based on Sprint start date or sprint end date
+
+Speaker 1  1:04:34
+because it's not lining up perfectly with cutover date since we're meeting before cutover if we were meeting the Friday after cut, then then we could have our sprint and on cut on cutover and have everything line sorry line up with that
+
+Speaker 1  1:04:58
+but as it is where either We're having a meeting on the last day of our sprint with stuff still to do, possibly, or a few days before the sprint ends. Anyway, maybe that's getting too into the weeds. But
+
+Matthias Miller  1:05:16
+I think for the sake of my opinion, I think for the sake of naming, having a line with the cutover date, even if technically the sprint ends on Friday, and starts on Monday because of cross team communication, that's going to create the least confusion.
+
+Unknown Speaker  1:05:32
+Sure. But again,
+
+Matthias Miller  1:05:36
+I'm very open to opinions.
+
+Speaker 1  1:05:44
+So currently, which like, yeah, do we name it based on the upcoming cutover date or on the past cutover date? We're working toward the upcoming date. So we've got like, we're working toward December 12. Right now. So we'd be starting now.
+
+Matthias Miller  1:06:06
+Let me find documentation for our investor tools, does it? Change? So let me just say this. So the way they named them? Is they have a catalog release, which is month and is your dot month 24 data one for the target release date, so that is the current development. I don't know maybe this is gonna get too confusing. So what, what is, what is being coded right now is for the 2401 release date, because there's two cut overs, kind of between now and then cut over one, it's going to be a staging cut over to it's going to move into production for release. Now I think what would make sense
+
+Matthias Miller  1:07:16
+is do the date of the beginning with an A and B. So this meeting is 24 dot 11 B.
+
+Unknown Speaker  1:07:32
+23, that
+
+Matthias Miller  1:07:34
+11 Or sorry, 23 dot 11 B. Okay. The one in January would be 24 Dotto one.
+
+Matthias Miller  1:07:46
+So it's it would be renamed year, year, month months. Based on the beginning cutover date, I guess?
+
+Speaker 2  1:08:05
+What kind of cross team communication are you going to have where you're going to need to refer specifically to your Sprint's? That's fair?
+
+Speaker 2  1:08:18
+That's fair, it seems intuitive to me to start it at, to name it based on the beginning date of your sprint, I guess when I look back at things in my head, I probably it would make more sense in my mind, but I'm thinking well, 11, you know, or 23 dot 11. A is like, you know, that's the beginning of November. That would make sense to me, intuitively. But it also makes sense to me that maybe we focus more on what makes sense to us if we don't have to be constantly communicating with another team based on their
+
+Speaker 2  1:09:05
+does the work that we do get taken out? I mean, it's in rough terms. I mean, is this design and then their development? And does it get pushed forward into their court when we're done?
+
+Unknown Speaker  1:09:19
+Yeah, yeah, pretty much.
+
+Speaker 2  1:09:24
+So the communication is along the line of lead time. And pipeline.
+
+Matthias Miller  1:09:30
+Yes, and I guess we're not concerned about managing development capacity, in which case it really doesn't matter. I think on this issue Yeah, I think I think that's a fair point. I think we could scratch my my idea of crossing communication. I think it's actually be just as happy that you guys argue about what you think is the best terminology and best way to name them.
+
+Speaker 1  1:09:54
+Okay. We just do the start date. Eat like this one being the 1127
+
+Speaker 1  1:10:08
+we would say 1127 Sprint or something like that? Sure.
+
+Speaker 1  1:10:22
+Alright, at least again, at least to get started, give it something to call it by.
+
+Speaker 2  1:10:28
+Okay. 2311 27 I don't know if you want to put I mean that does that give you a consistent way to consider consistent six number name?
+
+Matthias Miller  1:10:43
+And then is this based on the meeting date? And does the meeting date commenced? The new sprint Friday is the first day of the sprint. Or is Friday the last day? I know technical but
+
+Speaker 1  1:10:55
+no, I think I think normally the meeting date would be the the last day of the sprint. And then to Friday if we're doing meetings on Friday, Friday would be the last day of the sprint and then Monday would start the new sprint
+
+Matthias Miller  1:11:14
+and then our remaining based on meeting or started sprint
+
+Speaker 1  1:11:21
+though starting sorry to sprint, but uh, here we could call this I was just had just put on here today is the start of the sprint. Since this is a weird one but yeah, I
+
+Unknown Speaker  1:11:30
+think today that makes sense. Yeah.
+
+Unknown Speaker  1:11:37
+And then so then this one would be the next one would be 2312 now 2318 12/5
+
+Unknown Speaker  1:11:58
+That's not right. meeting Friday 23 Okay.
+
+Unknown Speaker  1:12:07
+Starting There we go. So just There you
+
+Speaker 1  1:12:09
+go. All right. 24 115 Yeah. I like it. Yeah, I think again, this is all kind of figuring out what works best for us. So if next time we come back in two weeks and scramble it all up again then I guess we can do that too. Okay, so dates for the sprint. We are looking at that this is this is a two week sprint
+
+Unknown Speaker  1:12:56
+Tim has reduced hours
+
+Speaker 1  1:13:03
+so we didn't target too much for this one.
+
+Speaker 1  1:13:16
+Based on planning here, Matthias is Yeah, Matthias is working on accounting. Lunch. Matthias Do you feel like you need extra time? Or actually, yeah, if you're like you've said that you're moving some of today's accounting time to Thursday. So that does impact your availability
+
+Speaker 1  1:13:57
+Do you Do you anticipate that we will be able you'd be able to have the EBS yard app done in two weeks?
+
+Matthias Miller  1:14:04
+Yes, I want you okay need to yep
+
+Matthias Miller  1:14:14
+think reasonable for me is Evie startup wrapped up? And CGA are thinking accounting high level design done with ballpark numbers and and about half of Hm COVID Okay,
+
+Unknown Speaker  1:15:05
+Okay and then other things that we'll be targeting in here would be the z E T initial ployment and the ZTA phase three proposal
+
+Unknown Speaker  1:15:38
+sent to a client
+
+Speaker 1  1:15:48
+and then as far as the symbols deployment that part is that's a possibility depending on on where things are at with testing
+
+Speaker 1  1:16:39
+and then as far as the other things that we can keep working on the ZTE K phase three B things like that but I think these are probably the probably the target array goals to have the next two weeks does that they're pretty good at that
+
+Matthias Miller  1:17:07
+on my end um good
+
+Unknown Speaker  1:17:11
+oh, I guess we also would have the sim is dashboard
+
+Speaker 1  1:17:42
+that yeah, I don't know how how high priority that is, but there'll be another thing that we're working on
+
+Speaker 4  1:17:48
+the symbols client really isn't expecting anything until the second half of December at least that's kind of what I was conveying to them like it might even be pushed into January I wasn't giving them any promises early December so I think we should be careful because looking at this already, especially with Tim you're out at least three days over the next two weeks. Would it be better to just push symbols to the next December or to the 1211 23 1211 Sprint so that we don't run into oh we had this on the sprint so but we didn't get it done because Tim was out Ben had five new client things that came up Case in point this morning. That call was not an error was not foreseen. Would it be better to just bump those into the next sprint and not worry about them with this sprint?
+
+Unknown Speaker  1:19:04
+Yeah probably so
+
+Speaker 4  1:19:10
+feel free to to argue with me there I'm just kind of seeing potential concerns that what we're planning again with yeah
+
+Speaker 1  1:19:24
+yeah, no, I think that's probably good. Cops to shield against them. over ambitious planning
+
+Speaker 2  1:19:40
+I had thrown in I didn't know exactly how to put it so the unknown ones are mine. We got an email that we wanted to toss in for potential time management purposes. Matthias is that going to take your time away for Krista Burkholder and for Hunter Dean more
+
+Matthias Miller  1:20:03
+I'm sorry, can you repeat me again?
+
+Speaker 2  1:20:04
+Yeah, there's software cost increases that you're doing for Christopher folder, get back to us, you said it would take one to two days of your time. And we wanted to account for that during this discussion, so I plopped it in here. And then there was that CSS echo issue. I don't know exactly what it is, I just I typed in the sentence, it says, you know, please do what you need to do to move the database to another location. Are either of those things going to be taking away your time? Does that affect what we just put forward? Here?
+
+Matthias Miller  1:20:34
+PCs echo does. How does that fit into? I think we were we were checking to see if they wanted any change to squeeze in any change requests before end of year. And I thought I could use do that as a meeting. actually moving it back online or moving database location needs to be done. It's not super urgent. I think the Do you have change requests that need to be talked about is? I mean, if they want to get anything in for this year? Should I perhaps bow out of that conversation and have Ben or Tim Chase echo change requests? If you guys have capacity? And is that proper appropriate priority based on the workload that we have?
+
+Speaker 1  1:21:31
+I probably won't, I won't have much capacity in the next two weeks to chase change requests for them. But I guess Ben does has capacity to at least field what their initial desires are and then we can we're interests and then we go from there
+
+Matthias Miller  1:22:04
+I mean, I could, yeah, good. Sounds good. I guess it doesn't work. If Ben's involved we could rearrange things and we could have a
+
+Matthias Miller  1:22:21
+well, a few purchase. And today meetings with echo are quite nice because they're literally around the corner from my house now but that puts it into bins evening if Ben shadows having it earlier in the day is possible. But it's also pretty disruptive to my erase a pretty bit a bit disruptive to my schedule
+
+Matthias Miller  1:23:03
+I don't know. Ben, do you have thoughts on this thing
+
+Unknown Speaker  1:23:18
+I'm just trying to kind of think of what's going to be the best use of my time over the next two weeks with you know, planning on transitioning some of that bookkeeping stuff and whatnot. Right?
+
+Unknown Speaker  1:23:38
+As well as filling in for Tim as much as I can while he's
+
+Unknown Speaker  1:23:44
+out and stuff like that is to also fit me in to shadow I feel like it would be maybe easier if like if we want to get me involved with this. If I have those initial conversations with them and find out what they're what they're looking for so that we can get them kind of indoor pipeline. But I guess how realistic is it for me or for us to see me having enough time as well?
+
+Matthias Miller  1:24:29
+Well, okay, let's flip this around. It is not really our responsibility to make sure they use it their credits. So I don't I don't want to get greedy and try to sidestep the credit conversation. I think a human visit is really important with them because there's been staff changeover I think it's going to help retention and we need retention to pay for the original build but but the But and so what I don't want to have happen is that okay, so what's the upside? Downside? Can we live with the downside upside? You know, the upside of just kicking the kicking it down the road is that? Well, it really completely eliminates the any any concerns? Downside is if they find out about it? And they're like, Oh, well, we didn't know why Why didn't you tell us? Well, that's kind of a that's kind of a downer? If and so. I mean, that really is the potential downside where we get to January or something and we're talking with them about and they're like, man, like, there's so much stuff we want to do. Why didn't you let us know? So?
+
+Speaker 2  1:25:58
+Well, what are the tasks that we're talking about that are going to take time, then it sounds like Matthias you want to meet with him in person. And that would take some of your time,
+
+Matthias Miller  1:26:06
+it would take some of my time, but I also need to meet with them in person to make some changes to their server configuration, which is going to be, I don't know, 15 minutes maybe?
+
+Speaker 2  1:26:16
+Well, if you meet with them in person and find out that they do, in fact have things they'd like to get done by the end of the year, and they also have capacity to do that considering the holidays coming up? Would it then make sense to put it on our Sprint's are like five weeks sprint that starting in the middle of December? And try to prioritize that fairly highly?
+
+Matthias Miller  1:26:39
+Yeah, could we? So could we have? December? So on the 15th? I mean, the realistically, the 15? I don't have any capacity after that. So it's all it would all be unbanned. Right. Second half. That's fair. So
+
+Speaker 2  1:27:04
+well, try to plan a little bit of a placeholder. Like, Option A is if, if CSS or CCS Echo has something, this is what we do. If they don't, then option B is this is what we do during this sprint.
+
+Matthias Miller  1:27:19
+Okay? And hmm, approximately half coded or I could change requests. Okay. And I think for this, in this particular case, not ideal, but let me find out, like maybe I could try with them to meet with them today. Well, we could send him an email and say, Hey, do you have anything like this? Because if so, any, any revisions you'd like like to get in by end of year? If so, we'll basically push them through. And then let's go take a look at next year. And let's meet up next year, and talk about what what additional changes you need? If not well, then that's fine. Nothing to do. So I think we could do, we changed? Hm, one, two? Yeah, exactly.
+
+Matthias Miller  1:28:11
+And if they, if they do, and I wonder if we want to go ahead and schedule a time for me to drop by Thursday afternoon, probably around four o'clock Mountain Time. And if they do, they should have it ready for me then have their list ready for me then. And we can see what we can get done. And if not, we'll set up a follow up meeting in January. or early next year, we should say.
+
+Speaker 1  1:28:45
+You by saying they should have ready. Like they should have their list ready for you to go over like to
+
+Matthias Miller  1:28:52
+Yeah, they should have a list ready of things that they might want to want to look at.
+
+Unknown Speaker  1:29:02
+He is going to reach out to them and ask for that.
+
+Speaker 1  1:29:07
+I'm putting it down for Ben, to reach out since he's the client support. Greg
+
+Matthias Miller  1:29:13
+needs to reach out for then Ben, are you going to mention in the email about me coming on dropping by on? Or should I be scheduling that separately to work on scheduling
+
+Speaker 2  1:29:24
+that on Thursday? If you want Ben just let them know that I'm going to be trying to schedule that on Thursday. And you know, if they have something to talk about, please have it ready, blah, blah.
+
+Matthias Miller  1:29:35
+Perfect. Sounds good.
+
+Speaker 1  1:29:38
+And if they don't do we do we credit them some of the the 2023 hours for towards 2024. If they have stuff that they want to say? They say oh yeah, we have these changes we want to make but they don't have to be done by the end of the calendar year. Do we credit some of the hours or some of the ps use for
+
+Matthias Miller  1:30:00
+Let's take a look and see what they have. Yeah, I'm not too eager to jump too fast to crediting hours before we know to go in depth in that. I mean, I mean, there's else's team have development capacity. I mean, Nick might be able to knock him out as well. I can remember who built the original system. So it seems likely that we as long as we can do the change request design that we'll be able to get the most of those things coded before that anyway.
+
+Unknown Speaker  1:30:28
+Sure. Okay, sounds good. Yes. Good. Ben.
+
+Matthias Miller  1:30:36
+Ben, I do need to get you updated numbers on PSU. I'm somewhat relaxed, because their fiscal year is July to July, but for July to June, but yeah, still needs to be done. And it'd be good to get the money in. Let me actually be better for me to get the money in early next year, then it would be this year.
+
+Speaker 1  1:31:01
+Sure. I see we're okay. We're two minutes over. I want to wrap it up. One quick question regarding Ed's machinery. Do we have anything that we should be working on? For them? What were our next steps at that?
+
+Matthias Miller  1:31:34
+I have not heard back from the barcoo. Pro people. Can somebody audit? Can you put a 30 minute time block to chase down Barco people on Thursday? And then I think as far as some of the questions we had that was in their court as well. So I think we've covered our side of things with that, I think. Yeah.
+
+Unknown Speaker  1:31:59
+Was this Ed's machinery? I was multitasking.
+
+Matthias Miller  1:32:02
+Yeah, that's machinery. Okay, barcode. Okay. Perfect.
+
+Speaker 1  1:32:16
+Okay, good. Anything else? Oh, wait. I have this call going to 1245 Eastern. So 1230 So we actually do have a few more minutes. But we were
+
+Speaker 2  1:32:30
+Yeah, no, that's fair. That gives us our 4530 and 30 if we needed it makes for a long call. But I think that's what I put on there. Sure.
+
+Unknown Speaker  1:32:46
+Okay, but yeah, anything else to discuss at this point
+
+Speaker 1  1:33:01
+I'll plan to follow up with notes from the call here then like I did last time
+
+Unknown Speaker  1:33:12
+seems really productive.
+
+Unknown Speaker  1:33:15
+Agreed. Like it
+
+Speaker 1  1:33:22
+Okay, so then just review, we've got our sprint names. This is the starting out today. The 2311 27 sprint, two weeks, I've got reduced hours before Mathias is going to be Have some of this time taken up with insight accounting stuff, but we're gonna put goals on that. But as far as specific goals, Z T yard app done and deployed in the next two weeks, that's mainly on Matthias and Austin and then Z TK accounting handle design done that's mainly on Matthias And Ben, and you can pull me in as needed as I'm available. And then Matthias be working on an HSM for the sea change requests. And then the T initial deployment is mainly been once that's once we got the go ahead for that pulling me in as as needed or as Abel and then the GA proposal is mainly me and Ben and Ellis. There's not a lot that's really pulling on me but I'm I'm out some and also have a lot of the product management with DBS and symbols and other things to that gentleman right now. So you there we'll play to circle up oh, I guess Audra, you'll take care of putting the next call on the calendar for December 8.
+
+Speaker 2  1:35:08
+Yes, I work on that. Okay, well and I can based on this schedule I can I can try to schedule them out through January February if you guys want so let's do that.
+
+Unknown Speaker  1:35:19
+Okay okay. Okay, great
+
+Unknown Speaker  1:35:30
+Excellent. Well we'll call it a wrap them. Okay. All right. Enjoy the extra eight minutes
+
+Unknown Speaker  1:35:48
+thanks. All right. Have a great day, guys. Thanks, man.
+
+
+Transcribed by https://otter.ai

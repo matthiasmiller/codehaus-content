@@ -1,0 +1,794 @@
+Unknown Speaker  00:26
+Hey what's up Kristen? Mark game
+
+Matthias Miller  01:07
+right
+
+Unknown Speaker  01:19
+did you want to
+
+Matthias Miller  01:21
+jump in? And well actually let me start with this update from Josh talking to Josh about stripe payment fees. And he said absolutely no problem rather than incident they'll get it done so that will that takes care of that
+
+Matthias Miller  01:44
+and
+
+Matthias Miller  01:52
+yeah so. So Mark, did you want to walk me through the through the classes here?
+
+Speaker 1  02:04
+Sure. And Wayne said this morning that he will possibly be on so be left in the office today. So your questions on default classes? How should default classes be assigned to vendor invoices, I believe the most accurate approach is to do this by vendor with the option to do manual override. Here's why I believe this is most accurate. I just pulled some actual examples out of final structures. transactions. So I was showing energyunited Which I believe is a Pilates bottle water telephone Krista Cox studio and airworks, which is all tools. And so here's my theoretical example. I said, okay, that the headers at the top plane, those are the classes so 100 That's just a prefix. But the first one is retail sales, wholesale sales, on site buildings and materials and other those are the four the 100 200 304 other four classes that we're looking at. Thinking that the classes will want so I said well, for the first one energyunited that we plan to do 50% to 40%, wholesale 5% overhead and then 5% materials and other and that follows through all the way down, you get to Krista Cox studio. That would all be I think so something like that marketing to all be for retail. And I don't know that my The details are right here. But I think that's how we That's why think vote by vendor is the correct approach and then airworks rules is just retail or wholesale. You could make it Well, yes and see they're looking at the example of I we expect these default percentages by vendor will change little from time to time. Just curious what what your thoughts are gave Matthias Kristin, are there some examples of when they would change or backing up once that what I would expect we would do is for something like telephone or for phone bills, we would probably look at that as proportionate to Sales like what we budget our sales to be four by three. And then 50% of our sales is going to be retail 40%. Wholesale 5% is on site, buildings and another 5% is materials. And other than I would expect we would portion those like that or look at each vendor come up with type of percentages. So, yeah, just curious to hear what what your thoughts are on that approach? Or what are some examples of when these percentages could change?
+
+Speaker 2  05:46
+Okay, I mean, part of it. Are we talking? I mean, I understand we're talking about how are we going to split up? The, like, SGA expenses into classes? Is that right? It is. I mean, I think, I think the what you described is one method.
+
+Speaker 2  06:16
+It seems like that will be maybe method one, Method two is we split it up equally. Method three is? Well, I'm just talking ideal without understanding, programming, restraint. restraint, or data input restraints. So it was that aside, option three would be per transaction, or split up per transaction? Good. You say,
+
+Unknown Speaker  06:54
+No, I don't think anybody said anything.
+
+Speaker 2  06:59
+And then, GL account by GL account, we use method one, method two and method three. Now that may be prohibitive. So I guess finally getting to your actual question, when would that not work? Because this split it up per percentage of sales.
+
+Speaker 1  07:20
+Let me think, if I think you're option three, I'm saying we option three would be part of this. This just shows the default. And then as part of whoever's reviewing that you can also do per transaction, if they look at an invoice and say, well, for this one, it all needs to go here because of
+
+Speaker 2  07:46
+this. So in other words, we get an invoice from Holmes printing, for a bunch of catalogs, we could look at it and say, Oh, that was that was for wholesale catalog. So we manually input on the categorize or whatever 100% equals wholesale like that.
+
+Speaker 1  08:20
+Almost what I would like what I'm envisioning, is that that these classes are you familiar with the verification report that we're using for accounts payable to approve invoices to be paid?
+
+Unknown Speaker  08:41
+Some good.
+
+Speaker 1  08:45
+So what I'm envisioning gave is that the the, that report would come out with the default classes, going on that verification report and then at that point, person responsible for it would manually adjust, you know, that 5% or so that need to be adjusted.
+
+Speaker 2  09:13
+So you're saying every vendor has a default class like homes printing, by default would be like split up among four classes as percentage of sales
+
+Speaker 1  09:27
+Yeah, or whatever we however we whatever we decide for that vendor. We could weaken them. However we want to
+
+Speaker 2  09:37
+and then the verification report would have beside each item would have like a little a little checkbox, fill in the blank section beside each item where that could be changed like the the homeless training. Let's take the whole training for example. I just got the verification report. And homeless printing is split up 5% rental other income 71% retail sheds, 12% wholesale sheds and I don't know, whatever the balance percent is light bill. So homes premium came in for $1,500 Split up according to those percentages. And then on the verification report, I would have a little box that I would fill in beside fulfill sheds 100%. And then that overrides the default.
+
+Unknown Speaker  10:35
+Like that, yes.
+
+Speaker 2  10:41
+Well, and then the default could be option A, option B, Option C, like split up according to sales split up according to transactions. Or split up equally?
+
+Speaker 1  10:59
+Yes, it could be and it and then I'm thinking that the default could be changed at any time. And from that day forward, it would it would use that percentage.
+
+Speaker 2  11:13
+And then you would set those defaults like initially, and then the guy doing the verification report would be calling you about once a week and saying, all right, I'm sick and tired of changing GL account. 111345. Could you change that to split it equally?
+
+Speaker 1  11:33
+Well, no, this would be on the vendor level. For each vendor, we have Oh, yeah. Bandages?
+
+Speaker 3  11:43
+I think that's where I was gonna button maybe we could do do we need it to be per vendor? Or would it make more sense to have it be split up by the GL account that that invoice is being pointed to? Like instead of just Krista Cox, wouldn't we want to say all advertising is split up in that manner? or No?
+
+Speaker 1  12:12
+mean that would definitely be easier, we wouldn't have a GL account as we as we would vendors.
+
+Speaker 3  12:22
+And then if you do want to change something, we only need to change the GL Account Settings not go through and figure out what vendor what all vendors are tied to that GL and change all them.
+
+Speaker 1  12:38
+What I'm envisioning here is their wood. vendor, percentages per vendor would not be tied to any GL account.
+
+Speaker 2  12:52
+Gotcha. So let's try to figure out what wouldn't work about either approach. If we if we did classes by vendor. That means we would if we had vendors that we bought stuff from that I didn't think this through.
+
+Speaker 3  13:21
+Yeah, if we had vendors that we bought stuff from that aren't always the same category, right? Like, maybe we buy something from Uline, like office supplies, and then we also buy something from Uline. That's shop supplies. If it's broken up by vendor, then we're going to want those two invoices to be split out separately, right? Oh,
+
+Speaker 1  13:50
+you're pushing down into point D there. I was going to Oh, sorry. We can wrap up B first, but I think we should just drop down into D and talk that through. Plus somebody disagrees?
+
+Unknown Speaker  14:13
+Oh, I just now got a, b, c t. Okay.
+
+Speaker 1  14:26
+Right if we if we do that, and we'll get out. We're talking about that anyway, I think so. So the thing how, however, one key part is missing. One key part missing and B is GL account. Here's what happens when we add GL accounts. You will notice that for GL accounts on the balance sheet, we're not showing classes. And Dwayne touched on this and I think he's correct because on the balance sheet like production overhead at that point, we have no way of knowing which class it will be sold as it seems like the correct process is to assign classes to cause Good sold at point of sale what your thoughts are on that like it seems so let's let's take the water for example how much of that water we're going to put some of it into production overhead for the production guys but I think we're how do we try to figure out at that point how much of it is going to be used for wholesale buildings and how much for retail buildings and for all the different classes I think we would be Wow, okay, I'm getting ahead of myself here. But the way we're doing the cogs on the income statement will only be showing the three main big buckets so I guess at that point it doesn't matter. But well in the example below you'll see what happens if we go down to bottle water comes in and we say well the Allah Collins we want $100 of that. Is production overhead $19 For SG and a expenses, my break room or whatever, that's not necessarily correct, but production overhead is gonna show on the balance sheet. The SGA is on the income statement. So in that example the $100 trying to split that up by classes I don't think we can or should but the SGA and a portion of it good or what we need to because that will be sitting up on the income statement when it was eight so
+
+Unknown Speaker  16:58
+many of we if we How did we come up
+
+Unknown Speaker  17:05
+No, go ahead.
+
+Speaker 2  17:07
+I to come up with the $100.19 $25 split
+
+Speaker 1  17:16
+we have separate drinking fountains if you just measure No, I don't know I mean the same process that we use for classes some watches for our GL accounts
+
+Speaker 2  17:26
+so I'm trying to grasp doing doing what we're doing on both the GL account level and the classes and the vendor level I think was
+
+Speaker 3  17:50
+people were only doing it at the vendor level we're not doing it at the GL account level right?
+
+Unknown Speaker  17:58
+We are but. Either Mark
+
+Speaker 3  18:19
+Oh, that ain't drama. Oh, his numbers still hear me we just can't hear it this is kind of what we're working through any BMS right now with departments, right.
+
+Speaker 2  18:36
+Yeah, it is. I understand this, like on a vendor level. I also understand it on the GL account level. I think maybe mark is weeded out like which of the two ie neither one is perfect, because in some situations, one is going to make more sense in some situations, the other is going to make more sense and I don't think there's going to be a good way of trying to do both.
+
+Speaker 2  19:13
+So maybe Mark has done all that homework. Can you figure it out which one is best? I like the just general concept of having defaults, and then the verification report the being able to tweet those. I think that's going to be impossible to improve upon
+
+Matthias Miller  20:07
+Ask mark how expensive a set phone is in his area?
+
+Unknown Speaker  20:11
+Yeah. I think we lose him like twice a call
+
+Speaker 4  20:20
+was supposed to be fixed. We converted him to fiber optic last week. So I was hoping that was fixed. Apparently not. Mark, you still be dropping off? MCTV leaving you down?
+
+Speaker 1  20:32
+That yeah, they have been. But I, I'm not sure I heard that. Another company in town. Meeting MCTV they were having trouble with their servers yesterday. So that's connected. Me she'll hear me? Yes. Maybe you're Yeah, Christian. I don't know how much of how much did you hear of what I was, was saying before I dropped off.
+
+Speaker 3  21:05
+It went silent. I, you and Gabriel said something the same time and then no one talked for a long time. And then we realized,
+
+Speaker 1  21:13
+Oh, okay. Well, I think what, let me see if this is what you're thinking it is. What you're saying is, if it's us, DSG and a break from example. So we'll set the default class percentages at, say 5045 And five. And any thing that comes in on that GL account, whether it's water, coffee, peanut butter, and from a different vendor, is we always want that split up by those percentages. If it's labeled with for that GL account, and then for the then we have the option that the 5% of the time to change that. If if the default is is off, that's that's what you're thinking. Right? Yeah. I mean, that would be the, it seems like that would be easier than doing it per vendor because? Well, it out some vendors like all those different vendors that we get all different things from that from multiple different GL accounts. So I can't think of a good reason not to that approach instead of per vendor.
+
+Speaker 2  22:53
+The only thing I don't know is? Well, either way, do we do it by vendor? Or do we do it by GL account one or the other, they're both going to have shortfalls and is times when the other way would work better. I mean, if there was a way to figure out which of the two gives us the most consistent results most of the time. If that's the one we would want to go with, if we somehow could figure out that doing it by vendor gets it to where we only need to change things 5% of the time and doing it by GL account, we need to change things 10% of the time. I mean, I agree all things being equal, I would want to do GL accounts. But if we have to change twice as often, we'll be able to figure
+
+Speaker 1  23:51
+that out. As I started on that. Converting 2022 numbers will I think that will become evident. Which which is the better? Well it will become evident which is the better as is this something do you need to know now Matthias, which path we take or? No?
+
+Matthias Miller  24:17
+Well, depends if this is the priority is dependent on how big of a priority this is to you. If I believe it was a fairly high priority to be able to default these as a way to streamline streamline the entry process but if that's not a high priority, then I don't need it. I don't need it to move ahead with the cost accounting pieces that we already have in play. But you know, apart from that, it's it's basically whatever you produce.
+
+Speaker 1  24:54
+Well, I would expect we'll have something by end of year we'll know we'll be at a point where we will know by then
+
+Speaker 1  25:06
+Is that still? If we know by then when would you be able to have that? Then?
+
+Matthias Miller  25:20
+Well, that'll give us January to haggle out the details. And to my knowledge, well, I don't know what I don't know how much of next time is going to be committed to the existing accounting changes. So don't know if it's March or April but that's my best current guess.
+
+Speaker 1  25:50
+What, what's your thought? I mean, or should we just take a stab at one or the other and, and go with that?
+
+Speaker 2  26:06
+Um I don't think we're gonna want to try to use, I think we're gonna want this functionality starting out, probably the agree. I mean, I think we could do option A, option B, Option A would be we make our best guess and plan on that going forward. And between now and the end of the year, we discover that we were actually mistaken we run back and hope that there's not already 100 lines of code written or be read simply wait until you've done a week worth of
+
+Unknown Speaker  26:54
+data entry or I guess option C's we just pick one big way that even if we determine in two weeks from now that it's not
+
+Speaker 2  27:13
+the best option I mean, mark with no, I was gonna say with IMS stuff you probably have a really good idea on this that maybe not because classes is completely new territory. It is
+
+Speaker 1  27:33
+I'm looking at all of these transaction exports from Italy realistic to have something by a week from now. Or we can which way makes more sense and we'll be able to have a fairly good answer we can run these transactions one way and then run them the other way and see which make a very good decision if we're good with that if we're good with waiting till
+
+Unknown Speaker  28:17
+14 Does that delay anything on your site and the size of you'll hear me
+
+Matthias Miller  28:37
+Yeah, I don't Okay, I mean, at this point, this is not the bottleneck on the project. So yeah, I don't see any reason why you don't have time. Actually Hang on. Let me make sure I believe in my answer
+
+Matthias Miller  29:00
+Yeah, I don't see this as the bottleneck on the project. I think you've got time to nail down exactly what you want
+
+Speaker 1  29:14
+and if we go with with the GL Account option, which I think we will is this all make I mean, from your perspective, Matthias it's all straightforward.
+
+Matthias Miller  29:44
+On the Okay, so let's see we okay, then even on the overhead versus GL Account breakdown. Current currently that's a sign on a per SKU basis.
+
+Matthias Miller  30:02
+Is that going to change to a vendor? Or does that stay on the skew?
+
+Matthias Miller  30:13
+Or are these are those new GL art? Do we keep our fake GL accounts so that we can categorize those into actual GL accounts between overhead and and SGA accounts?
+
+Unknown Speaker  30:32
+Know those Dwayne Are you still on it what do you think was the you were working with Nick on a workaround on splitting up GL account
+
+Speaker 1  30:48
+to get started first queue and have it show up verification report based off of the vendor invoice is is Do you think we should rethink that and just take the time and rework that whole thing
+
+Unknown Speaker  31:13
+the wire
+
+Speaker 1  31:18
+basically, the path we were taking was if we have a an invoice from the phone company then we're just going to Mabel just going to create four different purchase orders linked them all to the whatever purchase orders, apply the percentages 5040 Whatever those amounts each purchase order linked them all have the same vendor invoice and we call it a day do you think that that our thought at that point was that it's it'll happen rarely enough that it's that's the right thing to do for now. Do you think we should revisit that or do you think we should still pursue that path
+
+Speaker 4  32:10
+I think the last call we had kind of settled on the once it becomes a pain point we we go back and fix it but at this point it's not potentially not enough of a pain point. So fix it once a bit because because it's fix it now or fix it later is about the same amount of development time per se let's fix it once it becomes a pain point. I think that's where we've kind of fallen out last call I don't I don't know that I've changed my mind since then.
+
+Speaker 1  32:43
+The only reason I'm thinking I should actually change my mind on it is just looking at all of these SGA expense type things like marketing marketing breakrooms applies all of those which will want to be the one to split those up into multiple email accounts Well, I guess the other path we could take is is you're working with Nick on on exposing that logic on the verification report and I guess if we get stuck there and can't can't do it there then then we'll be forced to take another look at it but if we can do that then plan on starting with that
+
+Speaker 4  33:51
+Well, I don't know if that's reason enough Nick read my email that I shot back to him on on that it didn't your first stab at it didn't work. So
+
+Speaker 5  34:03
+yeah, I saw it come in but you're gonna pay better attention if I'm not trying to read something else
+
+Speaker 4  34:19
+so to answer your question, Mark, the jury's still out on I feel fairly confident that that Nick potentially is gonna be able to expose all of those those three separate ones. We just don't have it yet. So I don't know if I How confident are you on Nick going back to the drawing board on that.
+
+Matthias Miller  35:00
+Did you catch that? Are you looking?
+
+Unknown Speaker  35:03
+Sorry, what was the question?
+
+Speaker 4  35:05
+I wasn't. I was assuming I said, I just asked if how confident you were to go back and actually Oh, okay. I had understood the
+
+Unknown Speaker  35:16
+Okay, I was getting two things mixed up. No, that'd be very easy to do. It's just I hadn't hadn't caught that we would have multiple GL accounts on one. vendor invoice. Yeah.
+
+Speaker 4  35:33
+So there's, there's your answer market, Nick still feels fairly confident he can he can expose it. So I mean, until, until that logic becomes painful. I'm not. I mean, unless you feel like strongly, we need to go back and actually come up with another way. I mean, we do have a way.
+
+Speaker 1  35:55
+I mean, if you're comfortable with it, I am. It'll, I think it'll increase better feel for what it'll do to increase workload on naval site than anybody else. So if you're comfortable with that, yeah, I'm good with it.
+
+Speaker 4  36:10
+I mean, I'm comfortable to the point where we we actually put it into actual workflow and actually try it. There are some questions as to how will you know, the initial split what's How's never going to know. If it's, if it's a split post vendor invoice, it gets a little bit messy. So if you say it, the verification report goes out, and it comes back and says, Hey, split this one, three different ways, well, then, you know, you got to unassign it from the vendor invoice, go back to the purchase order, fix it into three different purchase orders and come back and redo your vendor invoice. So it there it potentially has some pain points there. But I don't know how much this is going to happen until we kind of put it through workflow it's going to be we don't have a good answer to that.
+
+Speaker 1  36:55
+Well, I like that approach. Because we're doing a lot of this, we're doing it manually, more manually. Start with and then we'll know those become a pain point, we'll know. Have a better idea on why we actually need. So that was a really long answer. Besides, I don't know if that answered your question. GL accounts or
+
+Matthias Miller  37:23
+not? Can you? Can somebody break that down into a shorter summary for me?
+
+Speaker 1  37:37
+When you're more qualified than I am to explain logic,
+
+Speaker 4  37:42
+you want me to break down exactly what we're going to do? Yeah. So the concept is right now you get, you get a phone bill. And we want sorry, let's say a marketing bill, we want to split that between two different GL accounts, or three different GL accounts, it's done at the purchase order level. So in other words, it becomes three purchase orders tied to one vendor invoice, which you reassign the the GL accounts on the vendor invoice to reflect the amount so you want to go to each one. And then the amounts were done are done at the purchase order. Those three purchase orders are then assigned to a vendor invoice, you change your GL account on the vendor invoice and you have your split. It's a very manual way of splitting the invoice into a number of different ways.
+
+Matthias Miller  38:35
+How do classes work with that? If you want to split it in multiple classes, so there is no automatic class class assignments to start with, if you want it split if you have it in two accounts. Okay, so like energy and energy united, you would have 12345 pos to split it into the overhead and to the independent classes of the SGA utilities.
+
+Speaker 4  39:04
+Well, when you say it that way, it just makes my head spin. Yeah,
+
+Unknown Speaker  39:07
+please. No, that's
+
+Matthias Miller  39:11
+that sounds masking.
+
+Speaker 3  39:13
+So I thought we were talking about the the 5% or we're going to have to change it. And that's how we're going to attack that in doing it manually through the invoice process.
+
+Speaker 4  39:25
+Okay, so really this method, the alternative would be that we go figure out a way to do splits on the purchase order or the vendor invoice or some one of those two levels, you're gonna have to figure out how to do a split
+
+Matthias Miller  39:41
+Okay, well, somewhere, we're gonna have to figure out how to do splits. And we're gonna have to figure out how to do splits between multiple
+
+Unknown Speaker  39:48
+multiple
+
+Matthias Miller  39:53
+Yeah, multiple counts multiple classes.
+
+Speaker 4  39:57
+So if if you're going to push are hard to go back and do the split thing that I really think you probably go to Josh and say, Where is the best spot to go start thinking about the split concept? Is the purchase order level is the vendor invoice level, where is the level that you because the way we currently do purchase orders and vendor invoices is a little bit different than say EBMs or QuickBooks in that there's two different separate records, rather than then turning a record, you know, kind of taking a single record down a pathway. So
+
+Matthias Miller  40:31
+I think I have an idea. So the only so class assignments are going to be defaulted. On a on an account on a GL account level, could we say on an invoice to say for all items on this invoice that go into this account, go change the classes allocations to be xy and z instead,
+
+Speaker 4  40:59
+define what you're meaning by classes at this at the purchasing side.
+
+Matthias Miller  41:07
+Similar to QuickBooks classes, similar to EBMs, departments, retail wholesale on site materials and other breakdowns.
+
+Speaker 4  41:17
+So this is a this is this is a breakdown inside of a single GL account.
+
+Matthias Miller  41:22
+Right? Effectively, yes.
+
+Speaker 4  41:32
+So Riddle me this mark. If if we had, are you still expecting that district managers are going to if we had a classes assignment to say, I don't know if a default GL account is on a skew. And we said for this going into the GL account, we want it to you know, to assign a class of XY and Z. Are you still expecting that the potential exists that the district manager may still want to change the core GL account as well?
+
+Speaker 1  42:14
+Well, let's, let's separate this a little bit. So I think, all materials that we're purchasing, as inventory items, I think those we should take those out of the conversation because I don't think this will be affected. That if we, if we haven't puffins are going to be like a phone bill, where we don't actually create a purchase order and send it to the phone company, but we get an invoice I thought was that we'll have a way to skew for own expense, which then by default assigns the elocon for that SKU. But the way we're thinking of it now is it can only assign one GL account and now we're saying wow, this needs to be split to multiple GL accounts.
+
+Unknown Speaker  43:14
+So those
+
+Speaker 1  43:17
+in for the classes are for the this level of reporting to be of any value built they'll need to do some somebody will need to do some some splits at that level.
+
+Speaker 4  44:13
+All right, I feel like we keep we keep coming up against the the this this wall. Either we go back and fix it right or or we give up on the idea
+
+Speaker 3  44:27
+against the peel and invoice being two separate identities thing. Yeah,
+
+Speaker 4  44:31
+well, we're about a separate identity, but I mean, like, I don't, it sounds like we thought we had a workaround, but it actually sounds like we don't agree or agree or disagree with us.
+
+Matthias Miller  44:48
+It sounds like the workaround isn't good enough. I mean, it sounds like it technically could still work.
+
+Speaker 4  44:55
+But I mean, just so creating, like splitting A invoice into three different POS and reassigning a GL Account still doesn't address your classes thing? No.
+
+Speaker 1  45:12
+What? Why would it not Messiah as if we if we say the classes are dead on the if we go the path of classes are set as on the base on the GL Account Why would we need to on the like the invoice level? Write that down. Let's say we have a $300. invoice, we break it into three separate classes 100 100 100 each and then within each of those classes, we break them in each of those GL accounts or we break that into multiple classes.
+
+Unknown Speaker  45:57
+Will that breaking the GL account? Mount into classes? Will that have to be done on invoice level? Or will that be done automatically?
+
+Matthias Miller  46:15
+Well, do you ever need to override the classes on a per invoice level? I think that's the question. If you don't need to do that, then that simplifies things. But if you ever do, then we need a way to handle that.
+
+Unknown Speaker  46:32
+I'm sure we will.
+
+Speaker 3  46:37
+If it's not going to be terribly often, like a handful of times a year, we can probably just do it with journal entries. Although I hate saying those words. But I think the meat and potatoes should really be this geo is always going to be 50% marketing or 50%, retail 50% wholesale. And this deal is always going to be 9010. And the outliers we can reassign are smoothed over as necessary. If they're not going to be really that often. I think we're trying to over engineer almost for something that I'm hoping isn't going to happen regularly.
+
+Speaker 1  47:24
+Well Well, here's the reality, that that level of detail we're talking about. And for us to expect the person responsible in each district to pour over those materials every week and make a bunch of shifts. Unrealistic there. unless something's very obvious. They're not going to change it. Bars halls, I don't know. I mean, I my best guess would be one or two change per week.
+
+Speaker 4  48:24
+My only concern is that but once we start heading down this road of accounting, these kinds of requests are going to come up more often. And I'm a little afraid if we don't go if we don't go design for this thing, and do it now. We've, we've hit situations like this in the past where we go design something and it's like, well, now we got to go back and redesign and do it again. This one smells a little bit like that.
+
+Speaker 1  48:54
+It does, it feels to me like the best thing. The best approach would be that put our heads together and create examples of here's here's some examples of invoices that we want to split amongst these GL accounts and into these classes. And here's, here's the logic behind it. And then bring Josh and Josh and Messiah's and we if you're the ones that then need to tell us do we need to how do we best move forward to accommodate our what we're wanting basically we're wanting an organized way to lit up transactions
+
+Matthias Miller  49:56
+Okay, I have an idea. This is the ideal real world solution. And it's work. But it could be done. So let me if it works skew, specifies a list of breaks the GL account. premise. Bummer.
+
+Speaker 3  50:23
+I think I have one. So are we going to use the dash three digits for classes? Are we using a numbering system for classes like QuickBooks says in any BMS, that's because if we are, and we need to say, Okay, this one time, this telephone bill, we want it to go to these two classes, couldn't we just type the entire GL and including those three digits to get it to break into the classes we want? And if we don't, then the system will go, Oh, she just put in 5000, which is just utilities. And we know that supposed to split half and half.
+
+Matthias Miller  51:05
+I wasn't aware that QuickBooks has the dash suffix, but we could do something like that.
+
+Speaker 4  51:11
+Oh, it sounds like a band aid. Okay, so here's, here's the the real truth of the matter. The vendor invoice record concept was created on a band aids as a band aid solution to start doing accounts payable. It was created a long, long time ago. Now, okay, a long, long time ago, it was created a while ago. And, and for the most part, it really hasn't had any updates or changes to it. And it worked. To me, it feels like let's, it feels a little bit like a we put training wheels on something that really needs to be a an adult sized bike. So let's go turn it into an adult sized bike and ride that thing.
+
+Speaker 3  52:00
+Sure, but does that change how we're going to be able to allocate this, even if we just say, Okay, well, now, it's we don't need to make three different POS, we can make one PIO, we can do multiple lines, each line can have its own GL. How do we then still tell?
+
+Speaker 4  52:16
+What I'm suggesting is that from I'm envisioning from the purchase order purchase orders have a step process to them from purchase order to, to invoice status, and we move we merge those two types of records. Each SKU line item should be able to have a split box where you can split it, it opens up and says where do you want to assign this and you can reassign dollar amounts and dollar values. We can do reporting on that. Probably some type of RG type pop up window. I mean, do it right, let's let's go let's go off and do this. Right.
+
+Matthias Miller  52:51
+Yeah, but so you're maybe getting really persnickety about the details but so you're saying combine the PIO box and vendor invoice into a single record? So
+
+Speaker 4  53:02
+I think correct me if I'm wrong, Kristen, but I think QuickBooks does this as well but the same record that is a purchase order gets transformed into an to an invoice Correct?
+
+Speaker 3  53:13
+Yeah, soon as I receive as soon as you receive items and process it now that's an invoice that
+
+Speaker 4  53:18
+there's a whole there's a whole processing so when you receive items in EBMs and you hit process it turns it into an invoice now you have an invoice now, there's a little bit of a hairiness to this because a number like there's not usually a one to one ratio of vendor invoice coming from the vendor themselves and your purchases so sometimes there'll be multiple purchase orders that hit the same vendor in the same vendor invoice so we would have to quantify for that I forget how EBMs does that. Do you know Kristen? No, you lost me when you go to pay a vendor invoice if you get if you get something from the vendor and you go to pay it and you have a vendor invoice and it has multiple of your POS on it
+
+Speaker 3  54:06
+hasn't happened I pay one view at a time one invoice at a time. If they like shipped me too and they sent one I can combine two POS into one if I want and make it one record.
+
+Unknown Speaker  54:19
+But yeah.
+
+Speaker 4  54:43
+Let me go back to an idea that I just heard, I think Kristin say so you're saying GL accounts with a dash is a separation of your class your class. So you would have say GL account 100 Dash 100 would be you know that GL account and that To the class assignment.
+
+Speaker 3  55:01
+Yeah, Dash 100 is retail dash 200 is wholesale dash 300 Is
+
+Unknown Speaker  55:13
+somebody didn't like that idea.
+
+Unknown Speaker  55:21
+So, listen using that. Sorry, I thought I was muted.
+
+Unknown Speaker  55:35
+But I'm dealing with
+
+Unknown Speaker  55:35
+a bit of a head cold. It wasn't because of what you said.
+
+Unknown Speaker  55:39
+You was kidding. We didn't think that.
+
+Speaker 1  55:44
+So how would you? I don't quite understand your your dash theory on the mean, I understand we have 100 200 300 foreign I understand that. But if we let's take the first one on my example there the SGA utilities, the energyunited. They we don't want it divided as default like to 5045 and 5%. How would you change that? With your like the sell fix system?
+
+Speaker 3  56:32
+Sure. So if we wanted to go 5050, you know, I don't really have GL accounts here that I can use.
+
+Speaker 1  56:45
+Just let's assume the utilities is is 4500 abilities or whatever.
+
+Speaker 3  56:52
+2500. Yeah. So then, when we wanted to split it up 5050, we would put half of the dollar amount to 2500 Dash 100. That would be for their retail class. And then the other 50% of the dollar amount would be on the next line. And that would go to 2500 Dash 200 for the wholesale delineation. When you set up, they're called departments in the BMS, when you set them up. EBMs says, Okay, what GL accounts do you want to be involved in this, and you can go through and pick whatever you want. And what it does is it adds a dash 100 and dash 200 to each of those GL accounts. So it's almost like their little mini GL accounts. So that way, you know, you can see what's going into each one, that's that's how the, the classes or departments work in EMS. And then I can pull a report showing only one class or only the other class
+
+Matthias Miller  58:00
+we don't have to do any coding to support this if we if we allow
+
+Unknown Speaker  58:06
+viruses like red smiling right now.
+
+Matthias Miller  58:11
+The you can just create your own child accounts manually with a dash one a Dash 200 Dash 300 in add the 100% allocation to the respective class.
+
+Speaker 3  58:24
+I can show you how I set it up in EBMs. If you need to see like the inside guts of it, because it's it's actually kind of easy. And then I can say, Okay, well, this GL account, I always want to be 9010 This one I want it to be 4555. And I can change it each month if I want to.
+
+Matthias Miller  58:43
+And when you change it each month it is it's only applied to mean when you when you enter your transaction, then it freezes whatever percentages you had automatically. Is that right?
+
+Speaker 3  58:57
+Yeah, I wouldn't have changed last month it'll change whatever I tell it to change. Honestly, I think if I put that information in January and then I went back and changed my percentages, it would give me a new report with
+
+Unknown Speaker  59:07
+those new percentages.
+
+Unknown Speaker  59:10
+Is that what you're asked?
+
+Matthias Miller  59:12
+Yeah, does it retroactively or your percentages from this point going forward or across all time
+
+Speaker 3  59:23
+if I change it for this month, it changes everything that happened in this month if I change it for last month change it average changes everything that happened
+
+Unknown Speaker  59:29
+last month. Yeah, I mean, I'm happy if you want to if you want to
+
+Matthias Miller  59:40
+walk me through it either, either, either. Now we're or some other time I think.
+
+Speaker 3  59:48
+I don't know if this solves the riddle. It's just it doesn't solve like I can't go into one invoice and go except for this invoice. This invoice. I want to do a b and c. So That's I can't do that anything that's not that I'm aware of at least.
+
+Matthias Miller  1:00:07
+I mean, whether we do this with hyphens or whether we have a class name that basically is, you know, currently we allow things being assigned to a blank class. And really what we need is we need this GL account, and then assign it to the default class distribution, or B, assign it to no class, or C, assign it to a specific class. I mean, whether we do this with a hyphenated or not, what effectively gives us the same thing. And so then on a GL account, you define default class distributions, and then on each line item on a Pio. You can break it down into any I mean, you can reassign it to any gL plus account breakdown that you want, presumably only using non automatic class distribution, but there's no reason why you Well, it really doesn't matter whether how it gets broken down at that point. And the the argument for using the hyphen syntax is that it's a really elegant shorthand for input.
+
+Speaker 3  1:01:17
+Sure, especially in the one off situations, right, if we can get it say, by default, if she says it's 5000, we're going to split it 5020 30. But if she puts in 5000 Dash 100, then we know she wants everything to go there. But I think Dwayne still wants to fix his Pio invoice issue and join I feel like we've dug up like a sore spot that you're just don't be over
+
+Unknown Speaker  1:01:49
+Hold on, let me crawl back out from underneath the bus. And my grumpy over it. Probably I'm being obstinate because I'm a little bit afraid that we're gonna hate this if we don't do it. Like real intentional?
+
+Matthias Miller  1:02:20
+Well, I think the I think the argument for combining vendor invoices with POS I think if there's a way if we if we are willing to subscribe to the idea that we only pay one Pio at a time. If you're talking about a simplifying, we can't do that,
+
+Speaker 4  1:02:36
+that we do a lot of combined POS. There's there's a number of vendors that. And this this goes a little bit by district by district, but there's a number of vendors that actually don't actually send us almost like a vendor invoice, they send us more of a statement. And we'll we'll pay blocks of that statement.
+
+Speaker 3  1:02:57
+So you're just talking about paying them, you don't necessarily need to combine them into one document. Right, like if you're just saying we need to pay them all at once that I can we can do that. Right? Good point, because
+
+Matthias Miller  1:03:13
+because these will be posted to two AP as soon as we receive them. And then we don't care whether we pay multiple at a time. That's that's a bill payment issue. Let's bundle these bills into a single single transaction.
+
+Unknown Speaker  1:03:27
+And
+
+Speaker 3  1:03:31
+I can go on and check off three Burkholder invoices and pay them all at once with one check. Am I still not understanding the
+
+Matthias Miller  1:03:41
+limit? The only the only reason I think she was because we're good.
+
+Speaker 4  1:03:46
+How do you store documentation proving that that that you're that payment?
+
+Unknown Speaker  1:03:52
+We stick a PDF on everyone.
+
+Unknown Speaker  1:03:57
+Ripio.
+
+Speaker 3  1:04:01
+Payment the payment? Well, it's, it's all connected?
+
+Speaker 4  1:04:05
+No, I'm saying. So vendor sends you an invoice it might have three different POS on it. You go you go select those POS in your system, you say pay it with cheque number 1234. That lovely piece of paper that we'd like to keep a hold of and know what we actually were doing with Where do you where does that get assigned to?
+
+Speaker 3  1:04:23
+Yeah, I save a PDF of that and attach it to those POs that I just paid for their invoices now but
+
+Unknown Speaker  1:04:31
+so you have to go and open up each one of those POS and assign it to it.
+
+Unknown Speaker  1:04:34
+I don't personally but yes, someone does.
+
+Speaker 4  1:04:37
+See, whereas right now we can assign that to one vendor invoice record.
+
+Unknown Speaker  1:04:42
+Well, that's something we couldn't figure out right.
+
+Matthias Miller  1:04:46
+You could put it on the payment record and have the PIO be able to look at look it up from Yeah, the POS be able to look at it from wherever we get paid from. I mean, we're gonna be able to trace that step all the way through
+
+Speaker 3  1:05:05
+I do think it's tricky that he has to break up here. So from an invoice into multiple invoices into multiple POS to be able to assign different GL accounts though. That's Yeah, seems messy, I can understand why.
+
+Matthias Miller  1:05:22
+I can't imagine what the process would be to migrate from our current vendor invoices back onto POS. But I really like the simplicity that we'd get out of doing a one to one relationship like that.
+
+Speaker 3  1:06:05
+We're just waiting for back in case anyone's wondering why it's silent. He gave us that give me a second finger. All right. See, it's fine. My
+
+Speaker 4  1:06:13
+landlord came to ask me about something. And so I had to jump away. What was the question?
+
+Matthias Miller  1:06:23
+Well, I mean, the last comment was, you're wondering about uploading this three times, well, okay, you only want to upload it once. You can upload it onto the accounting transaction that that handles the payment. And this is going to be linked all the way back to the POS anyway, and then from the paid PIO, you could do a lookup off of what attachments were there on the payment. There you go. I mean, there's 101 ways to skin a cat.
+
+Speaker 4  1:06:43
+Riddle me this. Here's an idea. What if so, you had a column on the vendor invoice, the normal GL Account hits the default GL Account coming from the SKU level, it shows up on the vendor invoice like our in our current process, a column right after that has a button that says split if you check that button opens up a an RG and you can assign and you can split that SKU item out wherever you want assigned back to our original GL accounts and class whatever dashes whatever silly thing you want to put in there. Okay, skip the silly part.
+
+Unknown Speaker  1:07:22
+Chris is making faces at me.
+
+Unknown Speaker  1:07:24
+I am not
+
+Speaker 4  1:07:27
+but essentially you could split that transaction right on the vendor invoice itself which you'd have to then tie into I mean, you'd have to obviously tie that into verification report but it could I mean, it's it's kind of ugly but it's like it would be like the best of both worlds to be able to do that right at the vendor invoice side unless we're going to rework this thing in some way. Man I'm not opposed to that your debt your your dash, suffix methodology
+
+Speaker 3  1:07:59
+that's it's pretty much the same thing yours is just a drop down which is probably easier because then people don't have to remember things you can just pick
+
+Speaker 4  1:08:08
+Well no, it's not the same thing because if you actually did that on the vendor invoice it would it would remove the need to split into several different POS you could split the single line item on the vendor invoice hmm. Okay. Now, here's the big question, which is and if you've had any look at the vendor invoice record concept, I know there's hidden records and all kinds of fun stuff on that whole thing. Does that does my concept even work inside of that?
+
+Unknown Speaker  1:08:43
+Our current vendor invoice record
+
+Matthias Miller  1:08:48
+let me check because I think we're I can't remember if we're using virtual or Jesus or
+
+Speaker 4  1:08:52
+not Academy are we are using virtual argies Yeah, we don't allow
+
+Matthias Miller  1:09:00
+our GS from virtual or GS. I mean, that's hair raising in itself.
+
+Speaker 4  1:09:06
+And the reason you're using virtual argies is because of the need to change the GL account on the vendor invoice if I'm not mistaken. Is that correct?
+
+Matthias Miller  1:09:14
+Yeah. And have it still be tied back to the PIO? I think I think I kind of think if we if we merge the vendor invoice and the PIO together then we eliminate this issue
+
+Unknown Speaker  1:09:30
+kind of what I'd be in favor of
+
+Unknown Speaker  1:09:32
+I don't know I don't know what what Josh would have to say about that. Mark and gave got real quiet. We're way down in the weeds now.
+
+Speaker 1  1:09:43
+Well, I still think you need to bring forth some real examples of what we actually want out of this. And I think if we break it down really, really simple. It's basically, when we get a vendor invoice, we want to have a default GL Account show up for every line item with the ability to break that line item into multiple GL accounts. And then also the multiple GL accounts off of the GL accounts. breaks it into default classes. And we can change if need be. So I guess that wasn't the very
+
+Unknown Speaker  1:10:38
+synopsis would be we want the ability to take whatever classes first we take classes 123 or four different classes for one line item. And then
+
+Speaker 1  1:10:55
+each of those. Sorry, I think I said classes I meant GL accounts. First, we pick GL accounts 123 or four different GL accounts for every line item. And then.
+
+Unknown Speaker  1:11:21
+MCTV to the rescue.
+
+Unknown Speaker  1:11:27
+Mark, I think we lost you. I don't know if you can hear me or not.
+
+Unknown Speaker  1:11:31
+I'm pretty sure we lost him. It's gonna be a while till he comes back.
+
+Speaker 3  1:11:41
+Anyway, I think we need to fix your weird POS system, because it seems really weird. The more you talk about it doesn't just feel like a lot of extra work to create multiple POS to just be able to split it up.
+
+Speaker 4  1:11:58
+Well, yeah, I would I would agree with that. It's it's a it's a matter of methodology on how we're going to do it, whether we're going to use it inside of wherever they were going to combine vendor invoices and POS or whether we're going to use the existing vendor invoice record. And I guess part of me feels like we're going to chase our tail on this until you talk to Josh about this, Matthias and get his thoughts on it.
+
+Matthias Miller  1:12:21
+So let me see if I could summarize what my conversation with Josh is going to be looking like. So So we want a way to, okay, need to default skews to multiple GL accounts, need to be able to override vendor invoices to multiple GL accounts, and need to be able to link to classes with automatic classes, actually, to multiple GL Account slash classes. Yeah.
+
+Speaker 4  1:13:06
+So are you saying are you saying at the you're envisioning at the SKU level to be able to identify potential, multiple GL accounts and their splits and their classes at the same time as a default on the GL account? With the capability by the time you hit the vendor invoice to change that?
+
+Matthias Miller  1:13:27
+Well, I mean, technically you're good, but in practice, you're gonna say, these GL accounts and let this GL Account determine where the skew where the classes go. But I think I think we're gonna end up needing to have some kind of percentage allocation. I mean, I don't see a way. I don't see the path away from percentage allocation of classes.
+
+Speaker 4  1:13:50
+So it sounds like you're saying some type of GL Account RG on the SKU level. Yeah. And that would and that on that potentially three different columns, potentially of a percentage split a GL account, and the class or the class is governed by the GL account, the dash the dash GL account.
+
+Matthias Miller  1:14:14
+Stephen Miller GL account.
+
+Unknown Speaker  1:14:19
+That would be that would be skew sorry,
+
+Unknown Speaker  1:14:23
+skew everything.
+
+Speaker 4  1:14:27
+And that would still be changeable at the time of paying the bill in some way, shape or form. What about a non defaulted GL Account non defaulted skew where it has a single GL account be able to manufacture at the payment time that delightful fanciness. of GL multiple different split of GL account and skew are in class
+
+Matthias Miller  1:15:03
+I'm thinking, I don't know if I'm thinking correctly or whether I'm in over engineering here, I'm thinking on a SKU level, you have those three columns with as many rows as you want. And on the right, on the vendor invoice, you can effectively have a replica of that exact thing that you can customize an override for any given line item
+
+Speaker 4  1:15:37
+under understood, but what if, okay, maybe I'm aware, we're thinking, but hear me out for a second. So you have a SKU that just has one GL account to it for some reason. And for some reason, you get to the vendor invoice and you're like, Hey, man, we really want to split this into this percentage of the categories of GL accounts and classes and like, basically, create a one off of one of those beautiful splits at the vendor invoice side? Could would, would there be a way to do you had to go all the way back and fix it at the SKU level before you can do it? Or would you be able to recreate it? A one off situation like that at the vendor invoice level?
+
+Matthias Miller  1:16:21
+And one of for one single SKU or one item on the on the vendor invoice
+
+Unknown Speaker  1:16:26
+for a one off situation?
+
+Matthias Miller  1:16:30
+Yep, my thought would be, you have something like, oh, he was, again, technical implementation, but something like a checkbox that says, no, no, no, don't use the default. And then you have a link to our G that's an exact replica of what you'd see in the SKU.
+
+Unknown Speaker  1:16:49
+Yeah. Would that work with the whole lovely virtual RG thing going on there? Now you have to rework it.
+
+Matthias Miller  1:17:04
+You have to? Well, you could depends on manual you want it to be? And you could let them manually do that. So
+
+Speaker 4  1:17:13
+no, I'm saying currently, with the current methodology on the vendor invoice, the whole virtual RG thing, that whole thing would need to be reworked to accommodate this potential design.
+
+Matthias Miller  1:17:23
+The whole thing? I mean, you could have a separate list of you could have a disconnected RG of SKU plus breakdown, and all the skews and breakdowns are all in the same RG and it's less elegant for entry but functionally equivalent. Makes sense?
+
+Speaker 4  1:17:51
+Yeah. I think our heads are around enough for you to take it to Josh and get get his feel on it. And I think you we don't need it. You feel that way as well. You feel like you've got your head around it enough.
+
+Matthias Miller  1:18:04
+Yeah. All right. Actually Did one follow up question, Dwayne. If we were to merge vendor invoices into POS what would we need to keep around? To make sure that? I don't know. What do we do with all that? How do we track all the existing payments that were for multiple multiple POS until we roll this? Well, historically, and this is just leaving massive mess behind the historical data
+
+Unknown Speaker  1:19:22
+I don't know. That's a hard question.
+
+Speaker 4  1:19:36
+I probably would turn around and ask you this the same question because
+
+Unknown Speaker  1:19:45
+that's
+
+Speaker 4  1:19:48
+unless unless you come up with some fancy way to merge this into the new system, or the new methodology or, or I don't know.
+
+Matthias Miller  1:19:56
+We're not going to want AP transaction records. I mean, one possibility would be the simplified Dumb Dumb vendor invoices down substantially move move as much information as possible over to the PIO dumb them down just so that we've got some level of record of which ones got paid together, which ones didn't. And we keep them there but never look I mean, never look at them except for historical purposes it's probably what I do but
+
+Matthias Miller  1:20:27
+okay so well, that was easy
+
+Speaker 1  1:20:39
+so Matthias, I was dropped all my phone cut out, but can you just bring me up to speed on? On? Concept you're you're pursuing?
+
+Matthias Miller  1:20:53
+Okay, so concept we're pursuing is number one, allow? Let me let me actually make some notes as, as I write this out, because I'm gonna want to do this number one, allow accounts to be to be to automatically be distributed to classes by percentage number to allow skews to be to be automatically allocated to multiple accounts by percentage. And I think with that, you can either say assign it to this GL account with the automatic class distribution or assign it to this GL account with this specific class. And then part three is on the vendor invoice allow allow any line item to do a full override of the breakdown into other GL accounts either using that GL accounts, automatic clusters, distribution or overriding the the overriding into a specific class or classes.
+
+Speaker 1  1:22:16
+Okay, one and two made sense. Can you repeat three again, I didn't quite follow
+
+Matthias Miller  1:22:20
+the vendor basically on the vendor invoice in the same way that you can. The vendor in a line item on the vendor invoice could specify the same type of GL and class distribution that you can on the SKU, but just override it for that specific line item.
+
+Speaker 1  1:22:38
+So if you're doing it on the if you forgot failed to do it on the purchase order it overwrite that line item on the vendor invoice?
+
+Matthias Miller  1:22:51
+Well, currently, currently these things are. Maybe I'm thinking about them wrong. My understanding was that the GL account is getting overwritten on the vendor invoice, not Pio.
+
+Speaker 1  1:23:07
+But this, this third part here, how would that be different than that?
+
+Matthias Miller  1:23:16
+The difference would be currently you can only break it into a single GL account. You can only write it to single and this would let you do it to one or more GL accounts either using using any of those either there's their automatic class distribution or a specific class distribution.
+
+Speaker 1  1:23:35
+Okay, so you're saying do step one and two, but on the vendor invoice. Correct? Like one and two. Got it? Yeah, that gives us what did I say? Several weeks ago, that gives us I asked you if you can do have limited flexibility on something I think it was kind of a dumb question. You said, Well, it's like asking if you're a contortionist, but this would almost give us that. That flexibility that what yeah, one one question I have comment on that is
+
+Unknown Speaker  1:24:25
+Josh, just
+
+Speaker 1  1:24:27
+leave he took a change live already on the elec accounts. Basically the source of truth on GL accounts being Ms. on us being on the skew data sheet. That we want wondering if we could we expand to that right now on this new data sheet. We say this skew, we want to have this GL account. Could we expand that? Have Josh expand that to say For this skew we want we now want to have these be different GL accounts, these percentages.
+
+Matthias Miller  1:25:15
+Yeah, that's, I mean, that's effectively what we would be doing, instead of just having a single GL account on the SKU.
+
+Speaker 1  1:25:23
+But why would that? Why would that default be set? Would? Will we still set it on the SKU data sheet, which then uploads into assist? Or would that? down within assists?
+
+Matthias Miller  1:25:37
+I don't know how this beautiful I don't know anything about this new data sheets. So we answer that
+
+Speaker 1  1:25:43
+I'm sure Josh will answer or will ask that question. And you can talk through that.
+
+Speaker 4  1:25:48
+Here. Here's my question. Well, that's probably a Josh's question. But can you can you create our G lines from an import
+
+Matthias Miller  1:25:58
+okay. Yeah, there's a few ways to do it. ways to structure the data
+
+Speaker 1  1:26:15
+with Okay, so earlier we had said that by next week, we want to know if that logic holds true to that default classes by Allah Collins instead of by vendor, like my initial outline. That's still okay. Right? You're just you're going to Josh and having this discussion under the assumption that we're going with with the approach of Allah count determines the default distribution of classes.
+
+Unknown Speaker  1:26:57
+Correct. Okay, got it.
+
+Matthias Miller  1:27:04
+I'm not sure if I don't think we'll ever done this route
+
+Matthias Miller  1:27:14
+Yeah, well, let me talk to Josh. You guys can talk about it on your end and we can take it from there
+
+Matthias Miller  1:27:25
+good, I like it. Okay.
+
+Matthias Miller  1:27:43
+So I think I think my payment question is actually irrelevant in this context.
+
+Unknown Speaker  1:27:58
+Mark? Oh, sure. Yeah. Well,
+
+Matthias Miller  1:28:06
+actually hang on. No, not necessarily. If you enter a PIO and you want to immediately enter it as having been paid. Kristen, do you currently go through the you enter the PIO and then you see when you're entering a Pio for something postpaid, you'll just go through the same process and go issue a payment just like you would normally and backdate it the date it was paid
+
+Speaker 3  1:28:28
+Yeah, I would just as I'm entering what we ordered out also ensure that we received it so what did you receive to order for receipt before then just send your process it
+
+Unknown Speaker  1:28:39
+turns into an invoice that shows up in the vendor invoices to be paid.
+
+Matthias Miller  1:28:45
+Okay, and if for some reason so in this case, we're going to use it let's say that it's something like let's say that electricity gets done through auto pay in that case you would go through that same process and then treat it as a payable and issue back to the payment for
+
+Speaker 3  1:29:06
+Yeah Even if it's not actual materials or you know, even if it's just utilities or ordered one received one
+
+Matthias Miller  1:29:23
+good well I think
+
+Matthias Miller  1:29:30
+let me see what else yet there's anything else
+
+Matthias Miller  1:29:50
+okay, I don't know that I've got anything else at this point.
+
+Matthias Miller  1:29:57
+Anything else from any of your
+
+Unknown Speaker  1:30:02
+No no good here
+
+Matthias Miller  1:30:13
+Good. Awesome. We should
+
+Unknown Speaker  1:30:19
+have a good one. Thank you. Yep.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,29 @@
+Speaker 1  00:02
+For context, I want to talk to you a little bit about database design. And I want you to take what I'm writing and I want you to summarize it for me. Well, actually, I don't want you to just summarize it. I want you to put this together in a way that makes sense and is easy and readable and thorough. When you're designing software oftentimes, there are calculations that depend on each other. Let me give an example.
+
+Speaker 1  00:50
+One of our clients has a sophisticated payroll module with all kinds of information about how the employee gets compensated
+
+Speaker 1  01:11
+on a timecard we need to be able to link that out to know exactly how to generate the payroll reports.
+
+Speaker 1  01:44
+originally wrote this to just look up the employees compensation as of the payroll date, however, we ran into some performance issues. As a result, we changed the design to copy the current payroll settings on to the timecard.
+
+Speaker 1  02:22
+This was not only much more performant but it also significantly simplified the code.
+
+Speaker 1  02:36
+This also protected us from changes in historical payroll data if someone modified historical compensation settings.
+
+Unknown Speaker  03:06
+Here's what we've found.
+
+Speaker 1  03:12
+Linking information between records and accessing this in real time is really helpful for showing calculations and running reports. However, in situations where we want to track historical accounting data, and it's a historical accounting event, or it's a historical event that impacts accounting. We want to know, copy the information across and freeze that information instead of calculating it in real time. This has a few advantages number one. It ensures that there are no shifting historical numbers, which is important for accounting.
+
+Speaker 1  04:26
+Number two it makes it simpler and easier to code. Number three. While this isn't a primary objective, it should happen. After we've taken the best approach, it will often be it will often provide faster performance
+
+
+Transcribed by https://otter.ai

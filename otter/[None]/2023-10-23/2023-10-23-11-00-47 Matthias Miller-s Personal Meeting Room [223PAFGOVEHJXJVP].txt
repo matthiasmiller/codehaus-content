@@ -1,0 +1,767 @@
+Unknown Speaker  00:00
+Good morning
+
+Unknown Speaker  00:27
+nice oh this is Mark
+
+Speaker 1  01:23
+Mark It looks like Matthias might be having a little bit of technical issues right now just dropped off looks like
+
+Speaker 2  01:37
+Ben you're in what in Virginia so you're Northern Virginia so are the leaves about this Proteus like get their prime right now your area as well
+
+Speaker 1  01:50
+um I think they're slowly getting there we had a pretty tough drought again if it was late August early September sometime that kind of affected the wheat changing but yeah, there's still a little bit still changing a little bit I don't think they're quite there
+
+Unknown Speaker  02:15
+I'd say we peaked about a week ago maybe we had well it might we might be right now though. We had our first killing frost this morning so Gotcha. blinder the leaves are going to
+
+Speaker 2  02:35
+buy a lot have fall already but yeah, we had we had a pretty dry ball as well. And I'd say we have one of the callers are probably more vibrant and quieter than they've been 20 years but I don't know my wife or I usually she says I say that about every year so
+
+Unknown Speaker  03:08
+I'm not sure try and remember how it looked a year ago it's kind of tough so always trying to analyze
+
+Speaker 1  03:22
+that's sometimes our kind of goes but yeah, hopefully we're hoping that the drought that we had there at the beginning of the fall didn't kill off too much we were there's some trees that completely lost their leaves by early October because of the drought but yeah, there's still enough around that have decent number of leaves on Earth are changing so hopefully we still get some some pretty are a nice array of colors anyway, but just kind of have to see with that
+
+Unknown Speaker  04:05
+yeah
+
+Unknown Speaker  04:12
+we're still waiting on Matthias or is he? And again, yeah, he
+
+Speaker 1  04:16
+texted me a couple minutes ago and and said to give him about three minutes okay. Yeah, not sure. I think I think his audio was struggling there for a little bit. Looks like he's coming back now. Let's see if this works
+
+Speaker 3  04:42
+all right, let's start. There. Sorry about the office all right. Baby, can you guys
+
+Speaker 1  05:07
+I can hear you, Matthias. I don't know if you can hear us very well.
+
+Unknown Speaker  05:12
+Let me try this better. All right, I think that's better on my end okay.
+
+Unknown Speaker  05:50
+marking your agenda now
+
+Speaker 2  05:59
+well, I threw a whole bunch of stuff together. So yeah, if you want to start somewhere else we can. But this was kind of bubbling through my brain for the weekend and this morning and what I was trying to put together so tell me where you want to start?
+
+Unknown Speaker  06:22
+Yeah. I think
+
+Speaker 3  06:38
+we need to take care of item number one before we get to item number two.
+
+Unknown Speaker  06:45
+No, no, we can start with two.
+
+Unknown Speaker  06:55
+Right. So I Yes.
+
+Unknown Speaker  07:03
+Yeah. Oh, okay, perfect.
+
+Speaker 3  07:13
+So as I think it might be most helpful to start going through some of these some of these pieces and touch base on where they're at. And we can determine priority, a lot of my time has gotten over the last week or two has gotten eaten up by payroll stuff. I think a lot of which, some of the, there's a part of it that was gussto specific that was kind of not necessarily that reusable, but there's a lot of it that that is going to be reusable, no matter what kind of whether we use paycor or rip things. Another one that we're that continue to look at, but and we can talk more about about specifics as far as that goes. So that's where my time has been going. Yeah. And I did spend a little bit bit of time with write off functionality on the sales order level, to handle write offs in a single sales order basis. But we don't have we don't have any functionality at this point to handle multi multi sales or payments and write offs on a multi sales basis. And so and I don't know if so that's, I guess, was kind of where that's where that's at stripe payments, I had some issues that have been running past Josh and is waiting to hear back from him. There are some things that appeared not to be recorded correctly. And and some things that need to be some things that we may need to provide support to Dwayne's team on to be able to provide to do manual strike to manually record stripe transactions that they're running. Which requires negotiation with Dwayne.
+
+Speaker 2  09:37
+Was that on? I'm glad you brought that up that the manual, right was that because of it taking payments through the shared app and needing a way to transfer that information into record. For that an assist, because it's not going to assist. Yeah, because it's not linked to assist.
+
+Speaker 2  10:13
+In that email exchange from last week, I think we're Dwayne had a situation where a customer wanted to move his payment from one sales order to another, or I guess Duane wanted to because
+
+Speaker 3  10:33
+So, I mean, I haven't touched any side of the business process as far as how should AP payments tie into this, and how they gets processed. I know nothing about that. Somehow we're gonna have to account for that. I think my, although I'm aware of is that somebody is running manually running payments, Stripe outside of the platform, and we need to account for that and we want to tie it out to stripe payment IDs so that we can get to the correct settlement.
+
+Speaker 2  11:18
+Yeah, I mean, I think the the basic version of what I what I heard from Dwayne was, right Shadab is integrated with stripe, just like Assist is. So a customer makes a purchase directly on Jet apps a while they may or may not, but if they do, then it the payment, they make a credit card purchase, it's only credit card purchase that we have to be concerned about. If you make a credit card purchase the shed app, then it goes to Stripe account connected to that app, which then what Duane suggested was that we might be on his site basically goes into that Stripe account and looks at the details, and manual records that assist, which will then make so that when that when that app stripe posits that money into our bank account, it shows up if something to match it up with on our deposit sheet. Yeah. I don't know if that makes sense or not.
+
+Speaker 3  12:52
+Yeah, it does. And I also think this is a little bit of a matter of priorities slash trade off time between handing off the dash versus, I don't know, we feel like in our last sprint, we came in very clearly with a specific set of objectives. And the health of them, I feel like in this sprint, we were trying to shoot about six rabbits. And we got derailed on payroll and, and ended up burning a lot more in the sprint working on that, then. I mean, I don't know if it's the right, I'm not saying it's the wrong thing to do. But we did burn up a lot of my resources working on that. And there's a lot of design that I've got coming into this. And I think I also think that perhaps been too accommodating, thinking that I'm gonna go off and design all these things. So and at a minimum, I need to go pull that in. And I think this is something that's better design in pairs, and so and so that's kind of like that's me asking for that. But it's also it's partially Yeah, that somebody can ask me for that. But I also think it's also partially a matter of prioritization. And just sort of, like focusing in on payroll. So, for example, on the specific stripe thing, I did gain access to the stripe accounts, so that I could research I do think Dwayne steam is putting in the wrong stripe IDs which is causing them not to get linked to the payouts but I wanted to research and find out exactly what's going on and if so, then corrected them so that they've got their process down correctly it's a case of pushing on the project a little bit getting getting meeting needing to wait for I mean we we ended up passing around time to give me access to that but then you're getting getting sucked down the rabbit hole and on other stuff we're not having a chance to resurface so I don't know if that answered your question.
+
+Speaker 2  14:56
+Well, on stripe like Yeah, I know, I mean, they're entering it incorrectly, because because I think they're probably they may also be entering the well, because we don't have right off functionality. I believe they're just entering the amount that stripe is coming across to us and not not being accounted correctly. Right fees, but is the transition. We need to get with Dwayne's team and train them correctly. How to record that manually? Or is the transition moving from what we have now to somatic recording, it being recorded automatically with the work Josh is doing?
+
+Unknown Speaker  15:50
+Well, I don't think unless unless there's a well, that's a fair point.
+
+Speaker 2  16:01
+Let me, let me rephrase that. It seems to me like they still they still need to be trained how to enter it correctly when doing it manually. So that the they can see if the automatic process is working correctly or not, and how to fix it if it does, doesn't work. That's my observation. I don't know if that. Would you agree with that? Or is that?
+
+Speaker 3  16:34
+Yeah. Yeah, I mean, I think this can be solved with a 30 minute 30 to 60 minute call with Dwayne, it still comes down to I'm busy fielding fielding requests. So perhaps I'm being too responsive to you and Drew's requests, but I'm also, again, like this morning, getting access to the to the source record, perhaps that's probably something that shouldn't be ended up with? Gosh, I don't know. But it's 15 to 20 minutes for me to get it done. When I have to go get it done in about the time that it might take to? I don't know. I don't know. Like it wouldn't take that long to hand it off to Josh. But is this I'm reaching the point. The issue here is too many. We're not clear on our priorities. I think that's perhaps the biggest thing and we're not protecting our priorities. And I'm not holding, I mean, I'm not really holding anybody holding myself or anybody. But I think I think this conversation that we need to go through on this list specifically is which of these is priority? Which ones do we need to drive forward? And if they all need to be driven forward at once, how are we going to allocate resources to make that possible?
+
+Speaker 2  17:52
+I think I mean, I think you nailed it. Yeah, I would agree with your assessment 100%.
+
+Unknown Speaker  18:04
+So
+
+Speaker 2  18:07
+Well, I think determining the first step is determining what is priority I think is the first step.
+
+Speaker 2  18:24
+So Matthias, what? Well, I guess keep keep going with is with where?
+
+Unknown Speaker  18:31
+Or what what is
+
+Speaker 2  18:33
+the most helpful way to go through this? I mean, I or if you want me to I can I can give my input on which of these I think its priority and start from there.
+
+Speaker 3  18:55
+Please, please do that would be helpful. Okay.
+
+Speaker 2  19:03
+I think the most important piece that we need is the billing management get that tested and working. I spent a fair bit of time with is going through some that showed up and figuring out why they should have that shouldn't have and then I think there are two there were some that for wrong districts that were showing up.
+
+Unknown Speaker  19:34
+I think I think getting that piece working correctly meaning you have a process in place where we're correctly invoicing everyday what
+
+Speaker 2  19:48
+needs to be invoiced? Is is the most critical piece so that our to see revenue here on our end Um, statements on our financial report and that gets pretty involved that billing management because I think Josh also made some changes, he added it's pretty there but it it's not only setting up a new process to prepare for anyone, it's also changing existing processes that move buildings out of finished goods inventory, which have a big impact on our current financial so yeah, I would say billing management is by far is be appears to be the number one number one priority. So any questions or anything to add on that massage? If you want me to just keep going through the others?
+
+Unknown Speaker  21:07
+It would be
+
+Unknown Speaker  21:13
+great thinking. Just more specifically thing doing management?
+
+Speaker 3  21:32
+So, within billing management, there's some support required for me, but is that print predominantly, and you're? There was I requested some more information on some of the issues you guys are running into? Is it predominantly in your work? Are there specific pieces from auditors resignation or report that are required for dealing management companies? Do you think it's okay to just get it?
+
+Unknown Speaker  22:08
+Sorry, I was Matthias, who you ask? You asking Ben and Audra.
+
+Speaker 3  22:15
+Sorry, I'm asking you year in drew from your perspective what's really neat there. Yeah, I mean, if billing management means collect the correctly reflecting revenue in AR, it means that we need to handle some of the we also a sub point of that is the credit and collections management. That's a sub project
+
+Speaker 2  22:43
+Yeah, ya. Well, I think, to your question, Am I hearing correctly that you're asking are there
+
+Unknown Speaker  22:54
+okay, here's here's what I think we still need on billing management is I think we would be ideal if we could work for this Wednesday, but have you and Josh do and I on the call at the same time and just go through some
+
+Speaker 2  23:25
+through step by step through that process, and I think the first step is what would be ideal as we would have a handful of invoice a handful of sales orders. And we actually go through the process of invoicing those on that call see what all you know, see what the transact what transactions happen, what it does to the financial report, what it does to finish goods inventory, how it affects the related pieces in IMS. And then make sure that that process is is understood by all and working like we like it needs to be working and then the second part is troubleshooting a bunch of these uation of what you and I did last week on like we believe shouldn't be here why is it here? How will we be excited most of what we uncovered or in this process issues and not software however since then, I've seen some that I think offer related
+
+Speaker 3  24:55
+What time is your injustice call? Wednesdays how Oh good morning
+
+Unknown Speaker  25:01
+six 630 In the morning at 530 Your time
+
+Unknown Speaker  25:13
+you're asking those in the same same way
+
+Unknown Speaker  25:17
+Yeah, well what would work better? I mean ideally drew would be here and we could screen share as well and just see what we could do Wednesday afternoon or really anytime Wednesday between 12 and 12 to four could could work for Bobby Josh that works for him
+
+Speaker 3  25:46
+I've got to stop a hard stop at 330 on Wednesday but anytime my day on Wednesday is i Far day so anytime up until then and anytime from when Drew gets in to 330 in the afternoon
+
+Speaker 2  26:04
+so they reach out to Josh you're gonna reach out to him see if we could
+
+Unknown Speaker  26:14
+mean I can I can ping
+
+Speaker 4  26:23
+I can change up days to if some other day works better but not least this week I can
+
+Speaker 3  26:36
+I mean, I mean the the it depends how accommodating you really want to be through if if you want to just make sure that it works I can I won't do this a lot and I won't do it for a lot of people but Mark I would do for you. I would be willing to do this 630 Call but it means it would require if you guys want screen sharing it means that Josh would have guaranteed availability but it also means drew would have to have an early morning as well. So I can I think it's up to you guys. I'm happy to to talk with Josh this afternoon and see see what we can do to work out
+
+Speaker 4  27:24
+well I can do that. I mean you're at the office at 630 Mark
+
+Speaker 2  27:31
+Yeah, yeah well let's let's plan to do 636 30 to 730 with Joshua and on that
+
+Unknown Speaker  27:47
+I'd probably just be up there all day then.
+
+Unknown Speaker  27:52
+Okay, good
+
+Speaker 2  28:02
+so and then as far as that I can put together a bit of an agenda for that and try and get it out tomorrow there
+
+Speaker 5  28:20
+hey, I'm not sure if you guys can hear me but Mark I had a question if it will that agenda basically be the billing management work plan that you'd sent us last week in PDF form you had listed a number of tasks you thought needed to get done
+
+Speaker 2  28:39
+oh yeah, this is for sure but.
+
+Unknown Speaker  29:15
+Yeah, I don't Well
+
+Speaker 2  29:22
+yeah, it is it is primarily that most of it is is being the actual going through the actual steps how we anticipate it to work once it's once we're using it. Actually Good. Dwayne's gonna be on the call as well. And then he can see how what it's going to take from his from his side as well and there's a few like all entering the miscellaneous sales orders, which I need to create an invoice template and get that profit have started. Ideally, we would have that but it's not super critical of this, the bulk of this Invoicing is centered around ad sales, so.
+
+Unknown Speaker  30:25
+Okay, thank you.
+
+Unknown Speaker  30:34
+But what I'll probably do is, is I like it said, pull some examples together of
+
+Speaker 2  30:49
+let's let's walk through some examples of the actual invoicing and then some that are showing up on the list that we think turned in active measures on what we think needs to be.
+
+Speaker 2  31:18
+So anything else on on billing management?
+
+Speaker 3  31:28
+I don't, I don't think so. I mean, so next steps are or that call Wednesday morning. But I also think it's impossible to correctly recognize especially okay, we can't recognize revenue correctly without revenue. No, we can't handle AR correctly. Maybe revenue, they are for sure. Without software right off, striking and handling department. So cash management and collections management, still have to be lumped into billing management, if you want to correct everything the way they are.
+
+Speaker 2  32:10
+Yeah, you are correct. Just just billing management alone will make the revenue. It will take care of revenue and cogs. Make the income statement look correct. It won't. Yeah, you're dead on. But I think we need to start with well, they kind of go hand in hand, I still think that billing
+
+Unknown Speaker  32:33
+management. Well, because we're not live because we're not currently borrow books, then? I think we could do one or the other first. I mean, do you feel like one? Do you feel like we should focus on one as your credit first?
+
+Speaker 3  33:02
+No, that's fine. I'm happy with this. And I think I think we're actually way closer to getting this done than we think we are or than we might think we are. But it's a matter of focus.
+
+Speaker 2  33:20
+Well, I think the best thing, the best possible solution or scenario Wednesday morning would be that. Okay, we understand we come out of that meeting and we're ready to go with it. It's just so the next priority
+
+Speaker 2  33:44
+it's a toss up in my mind as to which I think we should I think we the next priority should be credit and collections management and cash management for the deposit functionality right after that. The reason I pause with that is I feel like there's a lot of work a lot of work that will need to happen on accounts payable but I think that that's going to end up being mainly a Josh project. So rather than cash more a Messiah as code crafter so I think happened Carlo oh but yeah, it's a credit and collections built the right off functionality to correctly handle write offs. You said okay, you made mention that you've done work to handle a single write off on sales order but not a multi sales order right off if I understood correctly. Are you saying you have not built out it'd be nice to do a, say a write off for a wholesale or wholesale account across three or five different sales orders.
+
+Speaker 3  35:10
+But we don't really have a way to record payments of a single payment across multiple sales orders. That's the fundamental problem. And you can you can do right out of me see? See if I can find one that's that's got a that's a quote
+
+Unknown Speaker  35:41
+see the straightest one.
+
+Speaker 3  35:47
+We've got the, on the on the sales order, we now have a right off fields that you can under underneath payments, where it has been invoiced, you can issue a write off
+
+Unknown Speaker  36:09
+trying to think where where one would be?
+
+Speaker 2  36:13
+Well, a landmark. I mean, if you're looking at historical ones, here's I have one that were a landmark where they basically short paid they paid us the amount requested minus the fees, would that be a good one to? So I've got n 23081501. thing. So, I mean, what I'd like for you to do if if that Righto functionalities is earned is to raise live is to correct that one take off, I think there's a 10 or $15.24 cent discount that was entered just a zero out the balance. Remove that discount, apply the write off, save it in. And
+
+Speaker 3  37:14
+it's so first thing we need would be a new write off reason which would be a landmark be which would be a minus write off. Is that right?
+
+Unknown Speaker  37:33
+Yeah, that's yeah. And then for the GL, are you setting it right now?
+
+Unknown Speaker  37:42
+While you're testing? Yes, I don't we don't have GL Account mapping yet. So we don't actually have to worry about that. All right, so why do I not have write up? This I'm going to temporarily mark it not let's see how do i
+
+Speaker 3  38:12
+This is a complete sales order. I'm trying to think if I've got a way to
+
+Unknown Speaker  38:21
+Well, here's the other thing you could do is you could go into you could go into the landmark portal and do this apply a payment on one that's not been completed yet.
+
+Unknown Speaker  38:37
+Yeah, there we go. Let me go find.
+
+Unknown Speaker  38:50
+New
+
+Speaker 2  38:57
+can you remember in landmark, is there a way to see? Yeah, you can see there's you can see. What were the columns called was it amount requested in a mountain paid the dealer. Those were the matched and there's
+
+Unknown Speaker  39:13
+Yeah, it was something like that.
+
+Speaker 3  39:18
+Okay, here's one Jeremy Huffman. Let me see if I can find his
+
+Speaker 2  39:27
+Yeah, I think that's what it was. If the amount requested matches the amount paid to dealer than there were no fees. If the amount paid to dealer is more than requested, then they're paying a premium and if it's less than they're keeping back their fee
+
+Unknown Speaker  39:54
+and I lost myself What did I just do? I picked myself out
+
+Unknown Speaker  40:17
+so we're looking for
+
+Speaker 3  40:25
+the husband was an incomplete looks like an incomplete application perhaps or something
+
+Unknown Speaker  40:36
+think Can you change the
+
+Unknown Speaker  40:46
+expense or
+
+Speaker 4  40:48
+change the date range or something? Because there would be a whole list if you had more and I think you need to look at a completed one that way they have paid it out.
+
+Unknown Speaker  40:58
+Got it? Okay, I
+
+Unknown Speaker  41:00
+think that's what we had concluded the other day.
+
+Speaker 3  41:04
+So just come back like a week or something Yeah.
+
+Speaker 3  41:31
+You alright, so here it is. Funded 116.
+
+Speaker 3  41:45
+Okay, there's no there's a mile basically Back to Search winners. Here it is. All right. So then this one has an overpayment of 6140. Okay, why why can I not? So let me see what what stipulations I had on applying the write up.
+
+Unknown Speaker  42:54
+Oh come on
+
+Unknown Speaker  43:04
+I do here
+
+Speaker 3  43:12
+I want to let you edit right off because it has a cent overpayment on it. And here we can fix that. So we can do we're gonna temporarily do a negative payment and then we're going to add a write off
+
+Unknown Speaker  43:33
+so 60 to one minus
+
+Speaker 3  43:42
+6140. Reason Glenmark B and then we're going to bring this payment back but this one should actually be
+
+Unknown Speaker  44:00
+scrolled to the right there just a little bit. Is this the total that we should be showing for the payment?
+
+Speaker 4  44:09
+Can you scroll over a little bit because there was a couple of columns figures. So amount, the dealer is the payment that they got.
+
+Unknown Speaker  44:19
+Okay, so 62 one
+
+Unknown Speaker  44:22
+and then 6140 should be the difference.
+
+Unknown Speaker  44:27
+Even assuming an overpayment
+
+Unknown Speaker  44:35
+So showing
+
+Unknown Speaker  44:35
+your right off needs to be negative. Because it's an overpayment, this is a kickback.
+
+Speaker 3  44:44
+So we need a landmark. Premium. Yeah. And Mark Green premium, which would be a plus one more premium, Boom. There you go. Go Yep.
+
+Unknown Speaker  45:10
+Mark, I can send this over to you sizes down and make it a little nicer for you to see
+
+Speaker 3  45:27
+then you can take a look at what it would look like. Basically, there's a bug right now that you can enter premiums on overpayment. So you have to temporarily temporarily, I just changed the credit card payment or one of the payments to negative amounts out of the out of the premium and then change that back to a positive amount.
+
+Speaker 2  45:57
+You're saying it, not it shows correctly now just doesn't allow. It's the only way to use the system as it is if you're a developer.
+
+Speaker 3  46:09
+Well, you know how to know how to circumvent it. You just need to change it from an underpayment to from an overpayment to an underpayment until the next update.
+
+Speaker 2  46:33
+Okay, now, there's this right off functionality other than for the overpayment and GL Account mapping. Is that is that only visible on the individual sales? Or is it can it be accessed on the oh the what do we call it the payments report where you go to record payments?
+
+Speaker 3  47:04
+I have not added it into the received payments despite okay.
+
+Unknown Speaker  47:14
+Okay, you had it was that and then ordering payment for multiple places see a $20,000 payment from a wholesale account for three invoices. That that part. Basically, those three pieces that are that we still need right? Need to do an overpayment having it appear on your payments and the ability to do multiple apply it to multiple invoice.
+
+Unknown Speaker  48:08
+I think so.
+
+Unknown Speaker  48:20
+Okay, so I think focusing on that getting that working correctly as is, before we add, like creating deposit records have to get that working correctly. First. Once you have that working, I think what would be
+
+Speaker 2  48:42
+the quickest way to getting that up and running would be to take an actual take some actual payments, and then do walk through applying payments for a handful of actual humans. Do you have I mean, when would you expect that to be live and we could end a test that
+
+Speaker 3  49:13
+if we don't need to handle premiums? We can I can easily push an update to the received payments report and we can test that later this afternoon. Well, that requires a different conversation. Well, anyway, let's do some questions on on the if we're going to bump back payrolls, then I think it means canceling canceling a call to research some of the payroll stuff and I would be able to work with through this afternoon on on that if needed.
+
+Speaker 2  49:56
+Well, I mean I don't know we still I guess I'm open to whatever you suggest as far as the reason I push payroll module back as far as they did was we bought it was we really don't need that until January 1, when we start paying people through a different system, obviously we want to have okay, we still need, we still need to nail down a call for provider regardless what approach we take so I don't know what's going what you know now, what's your suggestion Matthias ever you think is best?
+
+Unknown Speaker  51:02
+Well, I think, yes, I can
+
+Speaker 3  51:12
+I think if there's any way that we can remove blockers for you and through on billing management, then we should continue to do that. And actually, what it means is, I should probably push this call to a I think we should still keep it a priority. What do I think?
+
+Speaker 3  51:48
+I'm torn because well, I don't know that I have a good answer for this. Because if we don't pick pick a platform soon, then Josh won't be able to if we this requires more conversation. For me to accurately answer your question, we need to talk about your conversation with Larry and what's your thinking on payroll module, if we're literally thinking that we're going to manually update hourly rates and not going to have much of any, any payroll integration payroll enjoys them. That's that's one thing. If we have manually updating hourly rates, or inputting hourly rates through a spreadsheet, there's not an option, then we needed to, then we're gonna have coordination with Josh, which is going to mean we need to make a decision sooner rather than than label. So if, if our payroll vendor allows us to run an import of hourly rates on a weekly basis, then we're good and if not been where we need Josh, which means we decide that soon.
+
+Speaker 2  52:50
+Well, should we should we do we briefly talked through vendor for accounts payable and payroll management and circle back and and ready to say what and I did get the screenshot from the your plant the right of so. You apply it this, this rate of you apply it the entire you applied this payment 60 to 113, which is an overpayment of 6140 which is taken care of by in the right of there. So this is the individual sales or this is all working correctly. And so, as far as the write off table Drew can go in and other than that book for allowing overpayments Drew can go in and add more right off if we need and do all that, right. Yes.
+
+Speaker 4  54:11
+Yeah. Well, and I, as far as you're talking about the, the book that was just what you change the to 13 to negative wasn't so that you could do the right. Change?
+
+Speaker 2  54:25
+Yeah. Yeah. You just unwisely said it so that it would flake if you tried to overpay on a sales order saying that you never should write?
+
+Speaker 3  54:40
+What the I had not taken into account. It was just an oversight. I mean, the real issue is get why would you have a write off when you don't have a remaining balance?
+
+Speaker 2  54:53
+Got it. Good, so vendors were Accounts Payable so I think that requires a thought the input from Josh because we're we're we were juggling this thing is this list of vendors currently the list of vendors the source of truth lives in it IMS and it's being pushed over to accounting and we need to change that because AP people are reaching out to Insite every day saying hey you know at this vendor like hotel Marriott of wheeling West Virginia or at this vendor have you know as sub and steak or whatever, every time they go to enter whenever there's a new number they're trying to they're pre paid or unpaid they're entering those invoices or credit card receipts or having to add vendors and to do that they have to reach out to Aaron and he adds them on the IMS side doesn't upload we did that coupled with the fact that IMS thinks of them as a universal list of vendors but within accounting pretty sure that we'll have to them as a for a company because while all three companies might purchase lumber from you as lumber they all have a different account number with them and they all have their there's enough differences that I think that need to rework that to handle that correctly and I think that feels like something that layout are challenges to judge and suggestions on what we think or to maintain list on both sides on the IMS side and
+
+Unknown Speaker  57:03
+just long term and then work with him on a solution I would just by suggesting would be that this we make this one of Josh's top priorities
+
+Speaker 2  57:21
+other than you know, the first three billing management cash management of credit and collections management he work on so why should you Matthias is you agree that this is something Gosh garden I guess should we work directly with Josh on this or want to spearhead this do you want to be involved how should we proceed with this?
+
+Speaker 3  57:56
+I would I am very happy with you working with Josh on this and if he needs anything bring him in but if he needs anything he can he can bring me in but I don't see any reason why I need to be involved okay
+
+Unknown Speaker  58:21
+good so let's go to go to payroll management so you well assuming you read through my notes as what me you read through my notes and saw that file or example I sent to you beating reading weekly journal entry to be pushed into accounting. What questions comments or where do we go from here?
+
+Speaker 3  59:06
+Okay, so you were thinking we would only do a gross eight export. So so the accounting the accounting vendor would know anything about hourly rates is that right?
+
+Speaker 2  59:17
+No, no, I didn't know that. Were my example which I didn't clearly lane, assist with export export, the hours work the overtime, the hourly rates, the bonuses
+
+Speaker 2  59:41
+all the all of that information in a format. They export it as a file. And then that would manually be entered into manual to be uploaded into the accounting or the payroll software And then the payroll software would immediately turn around and would immediately create export which would be a custom report that probably we would look to you or Josh or or maybe drew to create like payroll software needs to know if ik things in order to calculate net paid withholdings and all that good stuff then we need to tell payroll module for payroll software what information is important for us back out of the software so that we can word accounting transactions that tell us of all the employer taxes we paid How much should be going to auction labor, how much of it should be applied for salespeople, how much of it should be applied for administrative officers
+
+Unknown Speaker  1:01:14
+Alright, it looks like Matthias lost connection or something like that just a little bit ago, so I gotta wait to see if he can get
+
+Unknown Speaker  1:01:23
+back on here Yeah.
+
+Speaker 4  1:02:26
+Mark while he's going on that asset management thing that we were working on Friday. That all worked out just like we expected. So it's all good to go.
+
+Speaker 2  1:02:39
+Perfect. So you think it was just the nightly update that correct that?
+
+Speaker 4  1:02:48
+No, it's um, well, yeah, that's involved. But we just have to it figures for today's date. So when we go into everything, we just have to figure it in as today's date and then it will figure correctly instead of trying to set it for January 1
+
+Speaker 2  1:03:11
+And that would all work fine. Unless we plan on clearing out all the old data all the old transactions in 20 be true that we can start playing on
+
+Unknown Speaker  1:03:28
+Yeah, I have to look at that then
+
+Unknown Speaker  1:03:42
+was the coffee good with last second yet frozen at the minute
+
+Unknown Speaker  1:03:56
+maybe back up, but
+
+Speaker 3  1:04:05
+I guess holler. I want to start breaking up. So Mark, you don't really care about the technicality, whether this gets imported through a spreadsheet, or whether it's an API integration that pushes it in view. Well,
+
+Unknown Speaker  1:04:26
+can you hear me okay, Matthias?
+
+Unknown Speaker  1:04:28
+Yes, I can.
+
+Speaker 2  1:04:31
+Afterwards listening to Larry's take I would I do have a preference to just do it manually starting out just because. Well, one, that you know, there's there's an API if you do an API and as changes are made to that software, if you do a like read CD ends or File, Import, Export, whatever, then if if slight changes are made to the payroll software, it's not, it doesn't require the heavy maintenance to keep the two in sync as if you do a manual process, more manual or you
+
+Unknown Speaker  1:05:19
+back export the data. And it also allows a stop gap to catch any balls or inconsistencies. If we fully automated all the way through, then
+
+Speaker 2  1:05:34
+my preference would be to start out with a mail, a more manual process. And then if it becomes too cumbersome and always look at automating it, but
+
+Unknown Speaker  1:05:52
+that that would be my suggestion if they're if
+
+Speaker 2  1:06:00
+I was just, you know, they're doing a somewhat manual process with 1000 plus employees. So obviously, it does and work that way, this way?
+
+Unknown Speaker  1:06:25
+Who should be making the decision on your payroll provider?
+
+Speaker 2  1:06:38
+Well, not me because I can't I? Well, I think what would be ideal is if it all requires time, I mean, if if ideal would be if you could bring us two or three options. And whilst the pros and cons about each one, we could collectively make a decision. But FDA, luxury for ideal. And the other thing we could do is just pick one that checks all the boxes and seems to be reasonable and go with it. So.
+
+Speaker 2  1:07:26
+I think at the end of the day, what we'll want to see what that is it does what we need it to do. And it's what price it is and then able to say yes or no and then Alright, with that?
+
+Unknown Speaker  1:07:49
+Yeah, let me
+
+Speaker 2  1:07:58
+mean, is that is that a job? Are you thinking that could be Josh and I think we need to
+
+Unknown Speaker  1:08:09
+elective well, do we know what
+
+Unknown Speaker  1:08:17
+it needs to Well, okay. You've got the zoning requirements.
+
+Speaker 3  1:08:26
+I mean, I think I think it's as simple as they can get what my screen share so that I lost my screen share. That's why the true king can see this, but I think it's as simple as entering the accounting requirements are still the same. It's just we want to use it's it's so important instead of a instead of API access
+
+Speaker 2  1:08:52
+Yeah, that has the payroll software pay out the checks for the right or make the payments
+
+Speaker 3  1:09:05
+and you're planning on how are you planning to handle I mean, you'll push in the the savings the employee investment deduction in that case, which means we have to have them we have to be able to specify deductions
+
+Speaker 2  1:09:26
+Well, that was the one area I didn't know how we would handle that I think we could
+
+Speaker 2  1:09:39
+mean the flat fee is one is easy. The the percentage off of the net pay is
+
+Speaker 2  1:09:50
+Oh, I think I mean are we can we push that information from basically what we what we All we're looking to do is calculate all the gross pay, like, you're out exactly what we're going to pay everybody on the gross pay level, push all of that information to the payroll software and say figure out the withholdings, figure out the employer taxes, take care filing and paying those take care of paying, making the net payments to the employees. Just tell us and when you're done, tell us what you much money went where and then we'll take that information and push it back into the accounting.
+
+Speaker 4  1:10:40
+It would be part of that journal entry coming back. Right. You know, X dollars to this employees investment.
+
+Speaker 3  1:10:52
+Correct. There has to be a tie in. Yes, there has to be tie in there. But that the so we would push it across to the people then as a deduction, and then we would have a corresponding GL entry on our side that handles the employee investment.
+
+Speaker 2  1:11:10
+Yes, I mean, if we could do that, because we would be telling the payroll software oh, by the way, when you're done and you have the net pay calculated, take 15% off of his net pay and put that in his consider payroll software would just be a deduction.
+
+Speaker 2  1:11:46
+But then, if you want to just go through your IFRS accounting requirements, and yeah.
+
+Speaker 3  1:11:54
+So I'm gonna highlight this because some folks have already seen it, we're gonna change this. So context manufacturing company with a unique incentive program, we need to be able to pay employees different hourly rates in a weekly basis. And we need an extra important to push those rates to push those rates as well as bonuses, commissions and deductions from the manufacturing software. We want the payroll provider to calculate tax liabilities on a per employee basis. Take care of respective filing requirements issue the ACH slash check requirements including $1 percentage amount paid to optionally paid to an ultimate count for each employee equivalent to the QuickBooks is it remainder payroll?
+
+Speaker 4  1:12:50
+No, it would just be a
+
+Speaker 4  1:13:00
+well, a deduction deduction like this would just be set to go to a certain account and that in that software, it wouldn't actually be paid out. So remaining account
+
+Speaker 3  1:13:18
+this is a different case. This is where employee where Joe says I want $100 Going to my savings account every month and I want the rest of my paycheck checking account.
+
+Speaker 4  1:13:30
+Oh, you're saying like where it's actually splitting to two different? Yeah, right. Um then you could probably just say just a second account or something instead of alternate.
+
+Unknown Speaker  1:13:47
+Right, right.
+
+Speaker 3  1:14:01
+Alright, let's just say for example, employee Joe wants $100 of each paycheck to be posited into a savings account, while Jane wants 10% of each paycheck. deposited to her savings account. Jane wants to Bill once his entire paycheck deposited into his primary checking.
+
+Speaker 3  1:14:38
+We do not Am I right? We're not planning on the payroll vendor to process 1099 contractors.
+
+Speaker 2  1:14:47
+No. Well, because I understood set to say that although we initially started filling that out in payroll module, that part was not completed in the time being no And I could see maybe six months or a year from now. But yes, the answer is no on that currently.
+
+Speaker 3  1:15:13
+And then the three company information that's the same. We require an Excel imports to update each employee's wages on a weekly basis, either by adjusting wage or creating a Customer Job slash rate. And then scheduling payroll to include regular plus overtime hours. PTO, bonuses, commissions and introductions.
+
+Speaker 4  1:15:40
+Probably had salaries to that. I mean, it could be figured the same, but if they haven't lifted their, you know, whatever they can they know how they were.
+
+Speaker 3  1:15:55
+You Yeah, let's do this. I mean, I'm sure they think of this in terms of salary. So employee name, salary, regular overtime hours PTO, either as gross dollar matters customary plus hours, versus commissions and deductions, requirement, excellent export to retrieve the tax liability on a per diem per employee per pay period basis and retrieve the net payment on a per employee per pay period basis. The reason why we need that is so that for employee investments, I mean, privily investments we need to know. Oh, that's a net payment do we actually have I like tracking this on a per employee basis. But I don't know that we actually need to. It allows us to replicate paystubs. If we want to show year to date numbers on a per employee basis, we have to export at least the employee withholding on a per employee basis that you know, whether it's employee with aluminet, whichever it is.
+
+Speaker 2  1:17:11
+But well, one thing with this change, I think starting out just there was something more basic, I'm anticipating that will continue to provide employers with two pay stubs whatever the payroll software provides the chose the year to date, because all the withholdings and, and all of the date numbers and then other one dated indices, which basically shows rose paying for information. How we got to that? Rather than like okay, we had when we were talking API integration, we'd said we'll we'll pull back in the fields from payroll software that chose the withholdings, those the year to date numbers, I think a more realistic solution, at least for the time being is to plan to just use F, based up the real pay stub that has two withholdings that comes out of the payroll software. And then the other one, which is basically just, which is what it says creates currently.
+
+Unknown Speaker  1:18:29
+So I mean, I think so the bottom line is we need an Excel export to retrieve the liability. And the next for the pay period. We don't technically care whether that's broken down by employer.
+
+Speaker 2  1:18:44
+Well, we yeah, we do because we need to know how much to apply to which department or in our case like production.
+
+Unknown Speaker  1:18:57
+Okay, so we need to retrieve
+
+Speaker 2  1:19:02
+no, keep going. I was just going to guess we spent a few minutes going through that file that I created. It's pretty rough, but just make sure that we're not leaving on turn with this approach.
+
+Speaker 3  1:19:17
+I think I think that takes us to the end of that. So let's get into your
+
+Speaker 4  1:19:24
+Well, tomorrow. There's one thing I would add to that, like for xls. Export would be retrieving the deduction amounts for employee
+
+Unknown Speaker  1:19:37
+because that way if they're doing an internal investment with that we have that amount separate because it's part of his net pay. As part of his net pay is not being paid out of, you know, into a savings or bank account.
+
+Speaker 4  1:20:06
+So, we need to know how much that net amount was that he's investing into that investment account within the company.
+
+Speaker 3  1:20:16
+Except we're actually the ones telling them what the deduction is. So we would already have that amount?
+
+Speaker 4  1:20:22
+Well, yes, except for the ones that are based on a percentage of the net pay. Are there? I mean, if there's only Yeah, I think there's only one isn't there currently?
+
+Speaker 2  1:20:41
+I think so. I mean, if that's a, that's the, you're saying that could be done manually. When you write down manually and?
+
+Speaker 4  1:20:54
+Yeah, when you go and do the import back in, you just, you just say, Okay, this is how much he's putting into this account, you put that into your you make that adjustment to your importing, spreadsheet into assessed be done.
+
+Speaker 2  1:21:16
+But you'd also have to communicate it on the the payroll software, otherwise, the payroll software would withdraw too much money from your game, we break it down to one employee, we have this employee that is $1,000, gross $900, net pay, and 20% of his net pay, he wants to put back into company, we're only going to pay him over 20% or 80%. And we're only going to pay him seven or $20. So the draw or the withdrawal, or whatever that the software payroll software does from our bank account should only be 720. And if we don't communicate it that up front, we import from assist into the payroll software, then the payroll software is going to too much money out of her bank account.
+
+Speaker 4  1:22:07
+Yeah, well, you just set that in the payroll software to do a standard, you know, 10%, or whatever it was deduction from the net pay, you know, you can call it whatever you want. And you just say the company is deducting this match because we have to pay extra insurance or what happened
+
+Speaker 2  1:22:28
+before. Okay, so that could be set directly per employee directly in the payroll software. So you're either a set amount or a percentage off of the net, right.
+
+Unknown Speaker  1:22:46
+Okay.
+
+Speaker 2  1:22:55
+There, then we don't have your ride through, we don't have a
+
+Speaker 4  1:23:08
+I think it's one of those things. It's such a small situation at this point that it's hardly worth investing a lot of time into that one particular nuance.
+
+Speaker 3  1:23:20
+Can we just say that you can do percentage symbols, employee investment, and be done with it?
+
+Speaker 2  1:23:29
+Well, I think you're gonna have the same thing on a fixed amount. If if you said that into payroll module, the payroll module is going to send you that information back for you to push your, like your bad journal entry into accounting, will still need to know Oh, Joe, actually, that we paid Joe actually paid Joe 200 hours more than what payroll module that payroll software knows about. And so therefore, that's not part of the journal entry. So you'll, you'll have to go make a separate journal entry for that 200 hours for Joe and say that the labor expense, it's another $200. And then you increase his note holder account on the balance sheet by $200, as well. I think whether you do it manually or a fixed or whether you do a percentage based or a fixed amount. We'd have to do that. That manually for those handful of employees?
+
+Speaker 3  1:24:43
+Well, the fixed amount, we mean the fixed amount is a fixed amount. So we don't actually have to ask the payroll vendor how much they paid out. That's different so we can export deductions. It's not really worried about that. And
+
+Speaker 4  1:25:04
+I don't think we quite want to throw away the percentage of net possibility because that's essentially what an IRA is. And I mean, really what's happening here is, is this thing an IRA deduction from his paycheck and just investing in the company instead of in some other Ira system? I mean, that's, that's the way that I would pull the, the payroll software into thinking. So.
+
+Speaker 2  1:25:34
+Okay, but you could, well, if we can get deductions
+
+Speaker 2  1:25:48
+coming back, if we can, if we can capture deduction information on the export coming out of the payroll software, Won't we be able to
+
+Unknown Speaker  1:26:01
+take that and put that into accounting? Like if we if we can capture deductions. And we don't care. They need your a fixed amount. All we're concerned about is the total dollar amount of the deduction. Watching that into accounting correctly.
+
+Speaker 3  1:26:28
+Yeah, that's fine. We need to pull those deductions or I'm getting derailed a little bit that we shouldn't be digging. I'm happy
+
+Speaker 2  1:26:40
+I didn't you were breaking up a little. I didn't quite catch everything you said.
+
+Speaker 3  1:26:45
+I just got derailed on a little potential shortcut we can take and I'm happy. I'm happy with the direction we're going. So
+
+Speaker 2  1:26:59
+you have another five minutes or so to just look at the spreadsheet I put together? I do. So I know I send it to Drew and Matthias I don't think I sent it to Ben in order Sorry, I was
+
+Unknown Speaker  1:27:18
+screenshare.
+
+Speaker 2  1:27:20
+So okay, what I'm what I'm trying to show is the green on the left is the assist expert. So bear with me as I try to explain but this assist export I'm seeing lately different from what we give to payroll software, this export is starting out, I think it would make sense for insight to do these calculations and then have to push them back into accounting that could change but if under that assumption, this assist expert would send to never payroll is all said and done. Within assist, then an export would be run that would send to inside Office that would say okay, Aaron Yoder eatin stuff. This is Aaron Yoder been 75% of his time in production, labor, direct labor, and the other 25% in logistics. While Brian Weaver spent 63% of his time there, and 37% in sales. This would send his that we would just tuck that away and keep it sitting there until payroll we get our export from the payroll software that says okay, Aaron Yoder, all we care about from the payroll side is he has a net pay of 975. His employee withholdings were 25 and employer taxes are $36 and then be when we get the assist export we, we dump that into our template, then when we get the export from the payroll software in the blue, we dump that into our template and then that automatically calculates the black there, the net pay for production labor, the employer taxes for production, labor, and all of those and then which flows down to your debits and credits. At the bottom and it would just be a manual step like okay, something's not tying out here, what's what's going on. And then once we have that correct, everything looks good. Then we're just in one journal entry for cells and 31 through e 39. We've got the debits and credits. I know it's not near as enlightened and as we had been talking but I think this would get us up and running much quicker. And but it could actually work quite well for a long time. And then if we decide to automate I think at that point we're at a much better position to know exactly how and what to automate and currently
+
+Speaker 3  1:30:31
+so am I understanding correctly that you would manually each week you would manually create this journal entry for were payroll?
+
+Speaker 2  1:30:39
+Well, manually or through and I mean, that could be done through an import into the accounting system, right? Right, this has all been calculated so So Drew could really he could just use the transaction import upload that into accounting and good to go
+
+Speaker 2  1:31:09
+now, I mean, help us out in the Fed and I'm sure you're thinking you can make this a lot it's a little janky I'm open to to suggestions or that as this is a much it feels to me like a quicker way to well, two things a quicker way to get to where to
+
+Unknown Speaker  1:31:34
+doing payroll and it also allows for manual reset preside or human oversight and supervision just to make sure things aren't going sideways before we automate but what's your Yeah, just here on a feedback
+
+Unknown Speaker  1:32:19
+if any reason not to like this
+
+Speaker 2  1:32:41
+Oh, the one other thing that we need them. So you see no gaping holes or anything wrong with with pursuing this, this option?
+
+Speaker 3  1:32:53
+Yeah, Jamie, do you even need? Probably the only question I have is really a defining question. Where does what start and stop? When when you have a weekly? The assist export. So when people enter time cards, they would have the breakdown of the respective accounts. And we would
+
+Speaker 3  1:33:28
+but beyond that, we're actually not going to store anything on the timecard as far as full amounts. I think I mean, yeah. As long as you guys I think it's important substantially in the soccer settings. If you guys are happy with it operationally, I don't know if there's any reason to
+
+Speaker 2  1:33:58
+Yeah, I mean, starting out with with this, and I would say very good chance that, you know, in six months from now, we'll want to automate it. Or but what are your thoughts through this approach?
+
+Unknown Speaker  1:34:16
+Yeah, I'm, I'm liking the spreadsheet.
+
+Speaker 4  1:34:24
+I think the I think this, I think it'll work. I don't have any good reasons. Why wouldn't I think it would work 30s pretty simply, I mean, I'm thinking probably as time goes on. We'll probably make a few transit. A few changes to the to the spreadsheet here. But I think that's the nice part about is just the flexibility within the spreadsheet to just be able to To make changes, if you want different kinds of information, but you'll still be ending up with this one journal entry to make at the end. And so, you know, if you want something new, something different, calculated and thrown in as a different part in the in the journal entry, you know, it's just adding another line to the journal entry, and you're good to go. So I like,
+
+Speaker 2  1:35:29
+like adding it. Yeah. And, yeah, it could mean, it could mean could require changes to the report, within the report, exporting from the payroll software, which I think that you want to make sure that it has some report writing capability so that we can create some type of custom report for our needs. But yeah, that's a good point that you wrote out through that it gives us the more flexibility without needing to do development on on some of these. The one thing that I did not mention that I think we need to add on the accounting requirements is the the ability to send out paper checks. I asked Larry about this. He said, they just don't allow anybody to do paper checks anymore. And we have a few but not many holdouts that don't want to stay with papertake. So he said while he thinks most of the payroll providers probably have some built for that, so that, Jake, he didn't say now pretty quickly, I mean, and it'd be done.
+
+Speaker 2  1:36:55
+It, he seemed to think that it's possible to, okay, they with pay card, they need to probably with bought any software, they need to have their data entered by Friday noon, and then by Thursday, it's depending on ready posting to some of some employees bank accounts. But is it possible if we have that information into the payroll software Wednesday, that is going to have to take Friday? Probably not. I mean, is is the better approached. I
+
+Unknown Speaker  1:37:38
+break deposit, but if that's not an option, then either have the payroll software, send out checks, or we could
+
+Speaker 2  1:37:52
+what's the other option to where the company could write out the checks, but it still goes through the payroll software tells us what the amount is, but does not withdraw that amount from our bank account.
+
+Speaker 3  1:38:11
+I think the first thing that you should do is have an honest conversation with people who are holding out on it and ask them why they're holding out on it. And if it came down to, like, you need to get paid by ACH. And you're gonna get paid sooner, why not? Is there a reason not to have that conversation?
+
+Speaker 2  1:38:40
+Well, I've asked already in there, there's basically asked that, but didn't i didn't i can i can.
+
+Speaker 3  1:38:58
+Maybe Maybe I'm pushing pushing the hands too far with this, but it could be as simple as their employee. On this date, we're planning to start paying you via ACH. If this is creates hardship for you, please let us know. And we will be waiting for your routing and account number in order to make that payment as of this date. And just again, this may be way too heavy handed but just moving ahead towards it. I guess I don't rep right. Maybe there isn't okay. The reason I could I could see that this might not make sense for somebody is if it's easier if they don't have more good banks, but they have a little bit check cashing service that gives them access to cash that they would not have. They wouldn't otherwise farm so So maybe there are some situations I'm not accounting for it i, anyway, I might be speaking out during group, you remember something?
+
+Unknown Speaker  1:40:09
+Oh, no, not on that. I mean, yeah, I would definitely be the is this if everybody just did Ach, but
+
+Speaker 4  1:40:16
+I would second that probably about any payroll provider would would have that option to send checks. But I'd also be pretty certain to say that they're not going to get in by Friday, if payrolls not processed till Wednesday, like it's going to take longer, and it's also probably going to cost more from that provider than what it would just make your own checks. Since they're physically mailing them out, you know, they might be charging two $3 per check. I don't know. Maybe even more than that. But, oh, the other side to that, I think is possibly the beauty of our little spreadsheet here where we can just make we could, you know, those that are going to be handwritten checks from the, from the shop owner to his employees, we could just line out those in our journal entry. You know, he's writing the checks, so it will happen anyway. And so all we need to do here is just make so that amount, ends up in our checking account, checking the GL accounts, and we're, we're good to go.
+
+Speaker 2  1:41:34
+But how would you how do you deduct? Or how do you make so that the payroll software? If John is one of the holdouts and we pay him $1,000, gross pay? What information do you give to the payroll software so that it does not allowed
+
+Speaker 4  1:41:54
+you to sell your handwriting? But they should have that capability where they will say, just tell us the amount which we would get in our export? And then,
+
+Unknown Speaker  1:42:09
+oh, okay. The software that we're going to pay them that they don't need to process? Well, I mean, that can be done. So I know that I mean, but
+
+Speaker 2  1:42:27
+the issue with these holdouts, mainly as people that are most of them probably take averse and scared of direct deposits in to them right now. They're getting, you know, they're getting a physical check. Every pay day. So changing it, we're changing the better payroll software. Now, they can't get a physical check from Tuesday or Wednesday of next week, then it makes no sense to them, which I think give I mean, if they could provide exactly what you if the provider if we could do what you just said, Do I think that would be that would be the best solution.
+
+Speaker 4  1:43:23
+It's probably one of those things like ribbon. So or it's more than just the nutrients, it's actually the they get a good feeling out of it.
+
+Speaker 2  1:43:34
+Yeah. Well,
+
+Speaker 3  1:43:40
+okay, well, I gotta drop, I will, I will check into into the ability to, you know, only include the idea of handwritten checks as an option. And the requirements, and I'll sort of present a few options. And I think it means there's a bunch of bunch of fields on the timecard that are no longer necessary. I think it's, we've we've clearly established the priority of billing as blue management as the number one priority with the two sub points that you mentioned for the twos. Second and third ones. We'll talk more on Wednesday. And let me I don't know how much time I'm actually going to have to work through the receipt payments presses through maybe we should just come back next Wednesday on receiving payments and then seeing what what can be what can be done.
+
+Unknown Speaker  1:44:48
+Good with me because that's probably about as soon as that
+
+Unknown Speaker  1:44:53
+sounds good. Awesome.
+
+Speaker 2  1:44:55
+The size on Wednesday. We're going to need to skip or 10 o'clock. called that won't work for juveniles. So we'll have I guess we'll have to 637 30 in the morning but then yeah, good.
+
+Unknown Speaker  1:45:12
+Awesome. Okay,
+
+Unknown Speaker  1:45:15
+sounds good. Thanks, guys.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,245 @@
+Speaker 1  00:37
+All right, alright. I'm just going on with the rest of the things in that reconcile work add the comment about the sorting and you commented about hiding the balance as far as I know, I don't think we really need that running balance so I think that should be just fine to just remove that column if that's what's keeping us from sorting by the others so
+
+Unknown Speaker  01:21
+let me note that
+
+Matthias Miller  01:43
+and then was there another question in that email?
+
+Speaker 1  01:46
+Yeah, um the Oh, the contact reference fields. So there's two columns in between your transaction number and your debits and credits that are labeled contact or reference but there's nothing there like in the columns
+
+Matthias Miller  02:20
+are there any they're not going to be there for the posits? Because we don't create a customer for each recontact for each customer.
+
+Speaker 1  02:35
+Was that was that contact? Is that the vendor name? Whatever the contact is, I mean, that's what would be helpful to see but
+
+Matthias Miller  02:47
+let me see if Josh's Company D can even account that is a job for vendors that would be a Josh question to see what it would take to get that filled in and just let him know what you want and he's involved both in the greeting contacts for vendor side of things as well as the accounting transactions for vendor invoices.
+
+Speaker 2  03:26
+You also had want to see if there's a way to go from here directly to the invoice right or do right
+
+Speaker 1  03:38
+because there's there's the transaction number here with the link so you click on that and then it really does not I mean, it shows us the transaction but not anything about who was being paid or anything like that. And then there's in the line detail that gives us a Pio ID but that is not working as a purchase order number right so
+
+Matthias Miller  04:13
+let me show you let me show you changes coming in the next update and I was gonna I forgot to have Josh to this live so apology
+
+Unknown Speaker  04:29
+will slow loading
+
+Unknown Speaker  04:45
+let's go in here
+
+Matthias Miller  05:09
+I mean, this is taking inordinately long. But basically, what I'm adding is on the transaction screen, have a link to the source record that generated this accounting transaction. So for sales order, you'd have a link to pull the sales order, vendor, invoice, vendor, invoice, et cetera, you
+
+Unknown Speaker  05:37
+do me just see if one of these
+
+Speaker 3  05:48
+sure why my computer's being stubborn with this?
+
+Matthias Miller  06:16
+All right, well, if you want to see it, I'm happy to show it to you. If you're fine with that solution. I'm happy to keep moving either way, whatever is good for you might take a minute for me to get this seemed to cooperate?
+
+Unknown Speaker  06:39
+Well, should we continue to go through here?
+
+Speaker 1  06:42
+Yeah, no, that's pretty much it on here. Um, I mean, you made the common man that without having the entering the ending balance, and then showing the calculating the difference? That would be easy. So. And then just the warning about deleting a thing, but nothing really to comment about that deleting reconciled transaction.
+
+Unknown Speaker  07:10
+So what about
+
+Speaker 1  07:16
+the other email had to do? Oh, that's on that receive payments module we already covered. However, that stop one of the things that I thought about which, well, it doesn't even apply anymore, if that whole system is kind of different, but was since there are so many, yeah, 12,000 or whatever on there. If the if the search would bring them to the top, instead of just highlighting them, you know, there'd have to be a specific built in search, probably rather than as defined module, but I don't I think it'd be better to figure out everything else with at once and then you know, and then go from there on that one. But it's more of an ease of use situation and not necessarily a thing that we need
+
+Unknown Speaker  08:24
+is asset management thing. Yeah. So can you show us what you've entered on? Or?
+
+Speaker 1  08:38
+Yeah, if you pull up the Asset Management tab, and get the bar and Spinner
+
+Speaker 1  08:52
+for alarms, that BS one. So it's value is 4415. And that's that book value. And then so it's correct. It's correctly depreciating the amount per month right now, if you go down to the link transactions, then that transaction is what we put in to figure off the previously depreciated amount. So the 3938 is what we calculated to be depreciated as of I think it was 1020 or whatever date we put in. If we put in a date after today, then it does not calculate the debris of the remaining depreciation correctly per month. Somehow it's pulling today's date. So there's probably something in the background to do deal with that. What I discovered is, once we get to that date, you know, if I if I post that transaction as being tomorrow, but if I do it today, say the transaction is tomorrow, after tomorrow, it will recalculate correctly. So you might have done something in there to purposely do that. But would it be right to assume that if we calculate the depreciation for the item as of January 1, that way on January first that calculates correctly from there on out?
+
+Speaker 1  10:57
+Like, that brings up the question, so the guy out, you know, if we dated for 1231, then what if we clear out previous transaction, what's going to happen? And so for that reason, we would we would date 111 24?
+
+Matthias Miller  11:19
+Well, or when we get declaring things out, we just clear out anything before the 31st. But we assume that anything entered on the 31st, we should either manually review or just keep.
+
+Speaker 1  11:35
+Yeah, that would be that would be nice. So that we could start in anytime we're doing. It wouldn't mess with any reports that you say, Okay, we want from the first of the year.
+
+Speaker 2  11:54
+Oh, yeah, no question was, what is the best way to handle that work? It makes us a little nervous to enter all those assets, future date them? And then just expect that, you know, come January first, they're all going to be live and accurate. Although that would be I mean, that would be the ideal, what did not know on the other side of or did you have I mean, the way we entered this is that how you anticipated that we would would handle already used depreciation
+
+Matthias Miller  12:31
+something like that. Yeah. I mean, here you can see the target depreciation value as of January 1, if that helps you any. Assuming no further depreciation applied, I could give you a report to pull that for your own purposes.
+
+Speaker 1  12:53
+So that is assuming that we do not expense depreciation until the first. Correct. So that answers your question mark on whether or not you know, after the next month, is it still gonna say $53 or not? Because you know, it's 53 today, this is what is gonna have to be per month after after we do not pay and we did not expense any depreciation until.
+
+Speaker 2  13:26
+So what we have to do is we would have to our transaction for what's already been depreciated would have to be larger, because we're
+
+Unknown Speaker  13:35
+right, we'd have to calculate it for the end of this year.
+
+Speaker 2  13:39
+I think the ideal would be is if you could well, you're saying you can you using this report, we would do our calculations future date everything as of January 1 entered in review and or consider today.
+
+Speaker 1  13:55
+Is there a way that you Well, I guess maybe this report right here, a way that we can enter it in future dated but see that when we get there it's going to calculate you know, like this depreciation as of one 1.4 And that is going to say, this is what it's going to be when that shows up.
+
+Matthias Miller  14:18
+Yeah, my proposal would be just to give you this.
+
+Speaker 2  14:23
+Now, is it Should we do one one or 1231? Like when does if we did it one one will it still? What day of the month does it calculate the depreciation expense?
+
+Unknown Speaker  14:45
+Is it on the first day?
+
+Matthias Miller  14:54
+It is as of the first day of the month through
+
+Matthias Miller  15:03
+The first of the day after the month that it's useful life ends so it'd be January 1 to like okay let's we can actually I can actually do this if this helps you any no useful life from class that's not what I'm looking for I mean basically if I haven't as of date in January and of useful life is is the is in January it will assume one month of depreciation
+
+Speaker 1  15:52
+yeah so to figure it would go through the through the month that the end of the useful life was correct
+
+Unknown Speaker  16:07
+Yeah, I think there were some that so
+
+Unknown Speaker  16:15
+going to
+
+Unknown Speaker  16:24
+we don't need us for life
+
+Unknown Speaker  16:33
+we can shoot these down
+
+Unknown Speaker  17:03
+email you the link then
+
+Unknown Speaker  17:30
+you have this figured out to work
+
+Unknown Speaker  17:33
+yeah
+
+Unknown Speaker  17:37
+there wasn't anything else on asset management was hopefully
+
+Speaker 2  17:47
+Oh, I don't think so, I had some questions okay, am I an asset management if we have an asset like say a cell storage project where we have within that project we have real estate we have buildings put on the real estate we have property improvements, all very life spans we can or cannot do that on like Okay, on the balance sheet, they would show up in the different property plant and equipment categories like so, we have a self storage lot where we own the property. So, the real estate does not depreciate then we have to portable buildings that we put on we also have property improvements that we like we graded we are we add grout, so, that has a lifespan or we paint part of it basically, we can have within a single asset like a project, we can have different classes right.
+
+Matthias Miller  19:10
+A single asset has a single class. Now it can be split into different expense accounts. But the entire asset has to have the same useful life
+
+Speaker 1  19:27
+or you have to split the buildings in the land as separate assets and that's the Self Storage booster. Why and in self storage and booster buildings and
+
+Speaker 2  19:43
+you know that sort of self storage, Wooster property improvements or whatever, yeah. What would it take to make so that within a project you could have select different asset classes. So
+
+Matthias Miller  20:01
+Well Oh, grab some water, we can keep talking, um, the, as far as the we're gonna go back to the what is the real thing? I mean, technically, each of those pieces would be considered separate assets now
+
+Speaker 2  20:22
+they would like on the balance sheet, the land is going to go into real estate. Buildings are going to go into buildings category, they're they're separated, they're the beauty of having them all together as one project here would be you go to your asset management lists, you open it up and you want to see okay, what is the value of what is the book value of this self storage was your project property
+
+Matthias Miller  20:52
+what I would do is just add an asset group and then on the Manage on the on the manage assets, we would group by asset group and total the total book value
+
+Speaker 2  21:05
+in an asset group. So whenever you have something like that you give it a group name like self storage Worster and then try all your Yeah. Is that I mean is that a lot of development is that pretty straightforward.
+
+Matthias Miller  21:25
+That's pretty, that's pretty straightforward what let me just get written up and.
+
+Speaker 2  21:55
+Okay, and this would, by doing this, we could enter like, the example we were given, we could answer all of those single assets today, and then later come through and group them together. You can take five assets and then later group them together. It has no accounting implications. It's just, it's just organizing your database.
+
+Matthias Miller  22:16
+Org Yeah, exactly. Strictly organization and then easy way to get totals.
+
+Speaker 2  22:23
+Good. I like it. I mean, it's the last. Well, the other thing we had was test ACH transactions we've tested there's an invoice in there for a $10 ACH transaction to Dwayne Burkholder. Bender.
+
+Matthias Miller  22:47
+It's a vendor invoice for $10
+
+Speaker 2  22:49
+Yeah, that we're trying to pay via ACH and yeah, it's under Yep, that's it
+
+Matthias Miller  23:04
+I haven't done anything with ACH it's mostly mostly Josh's cord to you try running it
+
+Speaker 3  23:21
+transfers initiated by invalid token Have we had any successful ones Yes. That one worked. That one worked that one did not work 1023 Whoa Interesting. All right, let's do this. I will
+
+Unknown Speaker  23:52
+connect with one of them as the How did they make it work
+
+Unknown Speaker  24:03
+or let's actually do this
+
+Unknown Speaker  24:21
+which action?
+
+Matthias Miller  24:52
+All right. I think that's I mean, that's should be sufficient information for him to chase it down. I don't have access to what's going Run.
+
+Speaker 2  25:02
+So three, four minutes remaining here. What are to prepare for our Friday morning dev priorities called? What I like to have for you is what? What are the outstanding things we're working on right now? are like what we've covered the last few days, we've covered a bunch of things we've we've gone away from chasing payroll to other things that are more pertinent. And I think we have to include some steps forward. What are the This is much more difficult than what it sounds but what what would be ideal is to have, you know, here's a list of the 10 things you're working on with the TAs. And then basically, from what you've heard from us, in order of priority, what are the here's what you're working on. And here's when we can expect them to be to go live.
+
+Matthias Miller  26:15
+Let me here my proposal would be I work Roger and I work on that tomorrow morning. And could we do a call?
+
+Matthias Miller  26:31
+Maybe around two tomorrow to go over that?
+
+Speaker 2  26:35
+Yeah. And do you have so we've got I've got that call with Josh tomorrow on accounts payable vendors? Yeah, what I'm what I'm trying, I mean, I think we need to, we basically said, unless there's that we want to spend the next spring focusing on accounting things, and nothing else. Unless there's, you know, unless we run out of stuff to do, which I don't think we will. So yeah, what would be ideal as if you would have walked which Yeah, your proposal cover that to tomorrow, here's what you believe needs to happen in this next sprint, here's what we're working on. It's kind of a tall
+
+Speaker 2  27:31
+I feel like we've got a lot of different parts we talked about. I've got a bunch of notes scattered around. Hopefully you have a better handle on
+
+Matthias Miller  27:42
+all of those things that I think we do have a good handle a pretty good handle and I think I just got about the most thorough, thorough list of anybody and so it's synced up with what we have and our change requests and on our end, etc. So I think that sounds like that's that's the best best proposal I've got. So
+
+Unknown Speaker  28:13
+yeah. So to my to normal colon number
+
+Unknown Speaker  28:20
+normal colon number
+
+Unknown Speaker  28:23
+and that yeah, that's the other thing was
+
+Unknown Speaker  28:29
+for Joel
+
+Speaker 2  28:32
+or code crafters income statement like the financial report enhancements an update on one of those,
+
+Matthias Miller  28:44
+it's it's on our list. We've just said that reconcile and other things are more in cash flows are more important than that. And so we have not forgotten we're just slogging through the list one at a time based on the things that we think impact you most. Got it?
+
+Speaker 1  29:05
+Yeah, we realize other things are bigger impact. That
+
+Unknown Speaker  29:12
+cool. Awesome. Thank you. Thank you. Yep, you bet. Thanks.
+
+
+Transcribed by https://otter.ai

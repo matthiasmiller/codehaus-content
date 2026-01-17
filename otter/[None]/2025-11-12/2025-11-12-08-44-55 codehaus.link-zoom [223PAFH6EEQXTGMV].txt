@@ -1,0 +1,788 @@
+Speaker 1  02:31
+Hey, Matthias, Hey, Justin, it's been a minute. How are you? I'm good. How are you, I'm good.
+
+Unknown Speaker  02:39
+So where are you these days.
+
+Matthias Miller  02:41
+I am in Canyon City, Colorado.
+
+Speaker 2  02:43
+Oh, how many years out to Woodland Park?
+
+Matthias Miller  02:48
+It's an hour or, like South, like you can take when we go to Woodland Park, either go up to the springs, or we take Highway nine, maybe just take Highway nine, south to 50. And like
+
+Speaker 2  03:01
+everybody, the Royal Gorge. Yes, we did the we did the thing where we zip lined across it, or whatever it was. I
+
+Matthias Miller  03:08
+have a friend who used to work there, so his word is, don't do that again.
+
+Unknown Speaker  03:14
+Is it what, because of the danger or just because of the
+
+Matthias Miller  03:18
+it's getting badly run? Is it is it badly run?
+
+Speaker 2  03:21
+Yeah, wow. I will say the scariest. Okay, that's good to know, and I'm
+
+Matthias Miller  03:26
+glad. Okay, now that's the Hang on. That's not the official at the official park. There's a, it was, it's an unofficial zip line. It's like a, like the official parks Park zip line. But there's another one that's like an unofficial, oh no, we did the official one. The official
+
+Speaker 2  03:41
+winner, okay, yeah, that's I wouldn't take any other way it was. But while we were there, when we were in queue, in like, just a few steps from the front or whatever, someone did get stuck on it because they have a weight minimum, but that minimum is built for a margin of headwinds and everything else. And I guess they got just the right somebody was just, like, at the minimum and hit a headwind and got stuck. And so the Navajo system, someone clips in and goes out there and pulls them in. But my son, one of my sons, was also right at the minimum. And so we were just, we were just, you know, really crossing our fingers that he would make it all the way across.
+
+Matthias Miller  04:23
+And he did. He was fine. Well, that makes it more memorable.
+
+Speaker 3  04:29
+Yep, sure did guys. For some reason I thought it was 11 and I wasn't paying attention to my calendar.
+
+Matthias Miller  04:35
+It's my fault for scheduling at weird times.
+
+Unknown Speaker  04:37
+It's 11 somewhere.
+
+Speaker 1  04:40
+It's lovely. It's actually not, but sounds
+
+Unknown Speaker  04:44
+good. These fractional hours don't really exist.
+
+Matthias Miller  04:48
+But so next time you come down here, tell me, I've got an office downtown, and I don't know, whatever. So. Dwayne, meet Justin. Justin meet Dwayne
+
+Unknown Speaker  05:02
+Howdy. Howdy. Hi, Dwayne Howdy. Howdy.
+
+Matthias Miller  05:06
+So Dwayne, Dwayne and I and and CO directors team have been working together for in some capacity since about what 2018 No, when did Josh start from? Yeah, not on this project.
+
+Speaker 3  05:20
+On No, no, no. For, for, for, zfp, yeah, that was probably 2018 for, for this one, or I have only been here about for five years, about 2020 I think it's been at first okay with this. So when you first All right, there was, there was a little, there was a little bit bit going on before that, not, not a whole lot, but it's expanded exponentially in the last
+
+Unknown Speaker  05:44
+five years.
+
+Matthias Miller  05:47
+So we've, we've built Dwayne and Dwayne and us share a client that we've built a custom external project for, which is how we got to know each other and and so this summer, Dwayne reached out to us, and I mean, this has been on your mind for a while, but pulled the trigger on building an external project, plus Python, HTML, whiskey front end for just a few things to help manage. So this is all running on invest infrastructure, whatever, and the software is in the shed manufacturing industry, backyard storage sheds. And the specific software is to help manage rent to own contracts. So you've got a company that sells rent to own contracts. Sometimes the manufacturer themselves sell their own sell their own paper, own their own paper. And sometimes you'll have a company that manages contracts, you know, for a lot of different dealers or manufacturers. And so we're building software to help track contacts, track contract definitions, contracts themselves, payment payment history, and then obviously, all the reporting that goes with it. We have, we're using codecrafters accounting module, you know, I'll just do a quick little walk through this. All should be pretty familiar, exactly. Have you seen the anything with the new UI refresh in the last couple months?
+
+Speaker 2  07:24
+I have, yeah, I was designing some of it. Oh,
+
+Matthias Miller  07:28
+sweet, nice. So thank you for your work on it. You're welcome. So dashboards are not okay, like I mean customers is this is all very, extremely familiar the core, core parts of the system are going to be like the contract really is like the heart of it. And all of the fun math that gets comes into early payoffs and terms, and what happens if you have a contract of certain value, and you want to pay it weekly. And I whatever it's, it's just, it's a lot of mathy stuff. Because this is it's a lot of mathy stuff. The fun thing, because I'm geeky, is we do have direct tie outs of these records into accounting, and so based on what happens on the contract, it automatically pushes to accounting. And so you have real time, real time visibility in accounting. And you know, high levels of automation which most companies in this space are doing, maybe getting monthly, monthly numbers. You know, other other, other fun stuff too, like product definitions, allowing us to manage depreciation and other types of stuff like that. So the real thing, so, so this lets us, gets us a big part of the way, the the I don't even know where to. Obviously, can't find anything without just searching for it. So we do have a whiskey to take payments. And so we've modeled it to look fairly similar to the rest of the rest of the system, and it's, it's not, it's nothing super sophisticated, but, you know, it's basic, basic input calculations to figure out which periods you're paying for, which months you're paying for, and what's due and what money goes where. And we push in X 30 back into the main system to update, update the database. The part that that Okay, so that's this is all this is all back end management types of stuff. The big piece that we're looking at is the customer portal, which is what do. What does the consumer see when they log in? And I think the easiest way, probably is I can kind of walk you through some of the stuff that we talked through on that side of it. Any questions? I mean, that's a very fast flyover of the project. Any questions before we
+
+Speaker 2  10:21
+Yeah, two, two quick ones. Number one, and this is, I guess these are irrelevant, if I'm not going to be touching any of this admin side. But just out of curiosity, number one, do y'all have the same interface restrictions, like, the same rigidness as the main platform in terms of, like, we can't change line heights, because that's gonna, you know, or fonts, because it's going to throw off all of these report definitions. So is that still rigid?
+
+Matthias Miller  10:48
+So, I mean, that's data is pretty rigid in in this side of things, Yep, got it.
+
+Speaker 2  10:53
+The other one is, is this a fork of the main thing? Or do you actually receive, like, no, yeah,
+
+Matthias Miller  10:59
+yeah. It's literally the arrangement. Ellis worked out a great arrangement with Dan, and so we're literally, we literally have our own subscription to client scope segmented so they don't show up. Josh runs Surprise, surprise. Josh runs another hosting environment. Have our own AWS servers, load balancing stuff that happens over there. Okay. And then we have our whole infrastructure, our own little cockpit here, where you can see all the systems that we've got, and you can, you can hit a button and kick off an update. Goes to the build server, builds, package pulls, it, buys it, backups, all that, all that kind of stuff. So it really is we actually, we had hosting before investor tools had hosting.
+
+Speaker 2  11:52
+Y'all were the guinea pigs for the hosting. The subtext,
+
+Matthias Miller  11:57
+yeah, exactly, yeah. I mean, we're not very sophisticated, let's be honest. But no, we do. We do our own. I mean, yeah, it's all nothing sport at this point.
+
+Unknown Speaker  12:09
+Okay, yeah, that was the main thought. So then,
+
+Matthias Miller  12:14
+then when it comes to whiskey land, okay, so with the payment portal, we kind of wanted it not to look too jarring, so we did basically model color schemes and other types of stuff. Here's the only logo which mysteriously just happens, the branding just mysteriously happens to match the investor tools blue. It's kind of weird. Wait, really, it's just a coincidence. No, it's, it's Wayne's being accommodating.
+
+Speaker 3  12:44
+So hold on that. That was coincidence. It was coincidence. So this, this is hilarious, because I, when we started working on the branding for for the software, I literally went to chat GPT, and I started throwing some ideas around, and the colors that came back were almost identical, color blue with the with the orange L. And I'm like, Well, this is nice, but this was all modeled like all the branding was modeled pre, pre UI change. And so when we came, when the new UI came along with this blue I was like, well, that is a coincidence.
+
+Speaker 2  13:24
+I can, I can guarantee that it was a coincidence in terms of having no insight into that. When we were picking the colors, it's hilarious.
+
+Unknown Speaker  13:33
+I didn't know that. Okay,
+
+Speaker 3  13:36
+yeah, cuz, I mean all the branding was, like, we built all the branding back when it was that silly baby blue color.
+
+Matthias Miller  13:48
+So then, so then, when it comes to the customer portal, obviously, we want to respect only branding, but it's not like we're trying to match any of the InVEST type of whatever like that's that can go out the window, you know, this color now that you that's glaring, and the customer portal is going to
+
+Speaker 2  14:05
+be, or, I guess this is a question, but I am stating it because I kind of make an assumption, the customer portal is not going to be directly driven by the InVEST platform. Is that right?
+
+Matthias Miller  14:16
+No, it's going to be, no, it's going to be a Python front end that talks back and forth with the invest back end.
+
+Speaker 2  14:21
+So technically, total freedom of interface, even if for whatever you know, for good reason, it'll use a lot of shared elements
+
+Speaker 3  14:31
+or anything well, and there's been some back and forth about carrying potentially, okay, the initial interface the front end for the customer needs to be somewhat branding neutral, because this will actually end up on clients' websites, and so they're going to end up probably running it inside of some branding already. So we want to stay fairly branding neutral. There was some talk about maybe carrying some color stuff on some records inside of the platform. Uh, that we can use to inform the customer front end. But all of that's up for grabs at this point,
+
+Speaker 2  15:06
+so it's essentially going to be white labeled for specific clients. Yes, correct. Got it? Jonathan Fergus,
+
+Matthias Miller  15:16
+go ahead. So awesome, and you're welcome to have this recording and transcript and whatever afterwards you if that's helpful, and all this documentation, Jonathan Bergen is our, is going to be the developer on this, and he's going to be hopping on in a few minutes. Here he was, he could make it right, right off. So, so just a few things. I mean, we, we didn't know exactly like we don't, we don't feel like there's a very, I don't know what how to say it like, not strict rules that we're trying to abide by. So some things that we need on there is some form of payment history, so that they can see when they paid, what was the date and time and amount, and then probably just a link to pull up the receipt. That's probably the easiest thing that may be probably end up being rendered. This is HTML. As a side note, when it comes to frameworks, we do prefer to consolidate. I don't know if there's UI frameworks we like to use, but we don't like, I mean, react and, and I don't know what kind of in jQuery and just kind of boring with our with our framework. So I don't know what you've got that you like to use in terms of frameworks.
+
+Speaker 2  16:28
+I'm very I'm fairly agnostic. I mean, if I'm developing it, then I'll have
+
+Matthias Miller  16:32
+certain opinions. But you're right. Doesn't matter designing, no, that's exactly the adjustment. So we need a pencil icon to edit the address, or some way to edit the address, a way to edit the phone. Proposal was to show text boxes for each of the Save button. But whatever it's you can you can lay that out. We think a checkout style, general checkout style flow for making payments make sense. Allow paying a one time payment amount for any amount I can pay $1 Well, I mean, I assume it doesn't matter. This doesn't affect you. I assume there will be some kind of minimum. But 50 Cent payment doesn't make a lot of sense. Then we need a way to set up auto pay. The customer may actually have auto pay, multiple auto pay plans, some of them we have, like a Swiss army knife, auto pay tool. So you really can, you can really set up some crazy, crazy auto pay, yeah, you know, I don't know monthly, by day of week, so the first year, the last Saturday, which disappeared anyway, the
+
+Speaker 3  17:55
+prerequisite for this is we wanted it as flexible as Google Calendar. And we came up with even more flexibility than Google calendars, out of curiosity.
+
+Speaker 2  18:03
+So is this in use by anyone yet? Not yet. Not yet. Okay, I was gonna ask, what the, what the, you know how complicated people's payment schedules were in real life. So
+
+Speaker 3  18:13
+we this project comes out of a current software in that's used in our industry that has been needing to be redesigned for many, many, many years, and it's very simplistic in its auto pay schedule. So this is, like, so many leaps and bounds ahead of what a lot of people are going to be coming out of that it's like, yeah, like, this is, this is this is one of the coolest tools that is, is going to be great, because it's like so many times what we've ended up doing is, if we wanted to reproduce this concept, we literally had customer service reps putting stuff in Google Calendar to remind
+
+Speaker 2  18:52
+them, wow, to run manual stuff. That is really cool. So the idea of, like, multiple auto pay schedules is, I might have a hey, I want to make, like, there's 100 bucks on the first of the month. I might also want to make it $50 to make a $50 every second Thursday, or whatever, etc. I get my
+
+Matthias Miller  19:06
+Social Security check on this, this, this time of the month. I get this other thing this other time of the month, and I want to get paid as soon as it arrives or something. You know, that's that's thinking, right? Dwayne,
+
+Speaker 3  19:16
+yeah, yeah, yeah. I mean, a lot of the like you, I think what you'll end up seeing is you'll see it like a lot of times. You'll see some, a stack of one off transactions followed by a repeater, just because, you know, let's say a customer's past due, and they're like, Well, I can pay 500 on this date and 500 on that date, and then after that, you know, let's set up for to put this thing on auto pay for every single
+
+Speaker 2  19:40
+month. Oh, right. So an auto pay doesn't have to be recurring. You can make it. You can just schedule a payment for the future. Got it, yep, yep, yep, that makes
+
+Matthias Miller  19:48
+sense, yep. And that's very common for customer service reps to negotiate some kind of, okay, we'll waive your late fees if you if we can come up with a plan to get you back on track within four months. Then. Then we'll waive your late fees, or, you know, some kind of whatever they've they got their little favors they can throw out there to try to get these things. And
+
+Speaker 2  20:09
+the idea is, all of the all the capabilities available to the rep should be available customer facing.
+
+Matthias Miller  20:15
+No, the rep can, the rep can use this with army knife, but there's too many ways to cut yourself with it, like you could set up payment schedules that aren't going to cover your monthly you can set up auto pay so that you always incur late fees. That's kind of dumb, but you can so we need them. So we need to show their auto play auto pay plans. If I can talk, let them cancel it for some but then when they, when they create, then we're going to let them choose a frequency, weekly, bi weekly, monthly, semi monthly, and then we'll, we'll assign minimums So, and I'm not sure how these will exactly get calculated, but basically assigned minimums that they never incur late fees. Um, it'll probably be, you know, we can't translate monthly to weekly and bi weekly and semi monthly. You're going to have a rounding error half the time, so you have to pay a penny more every month or something. But so we'll give them so as far as setting up new ones, we give them fixed options, a minimum amount, and they can always increase ahead, but not before. If the payment is more than the monthly rent, it's the tele customer to pay ahead, but obviously it'll just continue on that schedule. Send the contract early. They'll need to call in to auto pay less than their automatic amount, or less than their than their minimum amount. So they can cancel these complicated so they say, I want to, I want to pay, I want to pay 100 bucks. Two weeks from now, and then, all of a sudden, they see this Black Friday deal that they got to get. They can go log in online and cancel 100 and cancel $100 payment, but they can't. Or weird other, other types of
+
+Speaker 2  22:10
+weird, recurring, yeah, but they couldn't modify. So one of these customer support reps was Army Knife options. They can't modify it. Or, actually, this is a question, again, I always make statements when I mean to ask questions, can they modify, like, the amount of that? Or if it's one of those that does that falls outside of what they could create on their own, it's got to be a phone call or an email. I don't
+
+Matthias Miller  22:30
+think they could ever modify. If they need to modify even their own that they created, they have to delete it and recreate it. Is that correct Wayne,
+
+Speaker 3  22:42
+we would have to think through the implications of allowing to modify something versus just straight up canceling and recreating. I mean, I kind of like the idea that we could do modification, but I feel like we would need to run it through some design scenarios to see what what could go sideways if they start modifying it.
+
+Matthias Miller  23:00
+I mean, basically what you need to do is you need to make sure that it's the minimum based on the period. It's, it's an acceptable frequency, minimum based on the frequency and it's, it's, it's repeating every single interval, not or appropriate number of intervals.
+
+Speaker 3  23:16
+I mean, if we can keep them from doing stupid, I think it would be, it would be great to to let them modify something that was that, would we only say something they set up, or would we allow them to modify something that was set up interactively?
+
+Matthias Miller  23:33
+I mean, I think, I think we can decide later. I think I would, I would vote for, I would vote to to design for, for modifying, by modifying simple payment plans will probably defer implementation till spring or later next year.
+
+Speaker 2  23:49
+Yeah, agreed. Yeah, that makes the most sense to me, because I assume that the support created one is going to be the exception rather than the rule anyway, and that, you know, allowing them to modify something that they created would be, maybe not easy, but somewhat straightforward. Anyway, I see we have a new,
+
+Speaker 3  24:10
+I mean, my my initial, my initial feeling is they can modify, if we wanted to keep this fairly simple, you can modify what you created. You can only cancel and recreate something that was created from from the detail screen.
+
+Matthias Miller  24:24
+Wait, but a modified is really nothing than a we can't we don't let you modify payment plans once they're in motion. So there is nothing besides stop and create a new one. So even so we could even let them modify it, even the complicated Well, you can't modify a complicated one because you don't have those options available to recreate it. You recreate it. So under the hood, it's still just stop and recreate, yeah,
+
+Speaker 2  24:49
+but Right, if they're modifying one of the simple ones that they created, even if that's implemented as a cancel recruit, you know, cancel, create new you.
+
+Matthias Miller  25:00
+Yeah, it should still be shown, shown as an edit, right? Yeah, all right, yep. Okay, got it. We're gonna have okay,
+
+Speaker 2  25:14
+if you can send me this, this document here, yeah, after the call, it'll be great.
+
+Matthias Miller  25:18
+Absolutely, we'll do the ability to download contract files. So we'll have s3 links. Well, that doesn't matter, just that we'll have, what all information. Are we going to have, Dwayne, we're going to have a, probably, a description, a file description, plus download link.
+
+Unknown Speaker  25:37
+Yeah, that's so it's,
+
+Matthias Miller  25:40
+it's stuff like, you know, I want to view original like original contract. What are other things that they might download?
+
+Speaker 3  25:50
+Well, oftentimes it depends on the it depends on how the stack of paperwork comes if it, if it comes in as a whole stack of a single PDF, what would probably be, and there's the contract, the sales order and some other things. I think what will end up happening if those stacks come in as a single PDF, will probably split some of that stuff out, because there's, there is oftentimes stuff that comes in from a manufacturer or dealer that we really don't want a customer being able to see. But sales, or original sales order and contract are going to be the two you predominantly use documents that they're going to want to see again.
+
+Matthias Miller  26:26
+No predominant presumably, there could be a certificate of ownership or something after closure, contract closure
+
+Speaker 3  26:32
+that's going to get emailed to them. We wouldn't necessarily store that on the in a document archive or a document
+
+Matthias Miller  26:41
+attachment, but we want this to be, we do want this to be free form, like it's you can have one to many or zero to many files, right?
+
+Speaker 3  26:52
+Yeah, I think we had talked about putting some sort of indication on the RG what can be viewable by the customer, correct,
+
+Matthias Miller  27:00
+right? But we're not saying, here's the contract specifically, here's the sales order. Specifically, it's, it's an arbitrary number of items, right? Yeah, yeah.
+
+Speaker 2  27:16
+For UI purposes, that could be in the descriptions. It's not there's a fixed for possible documents. It is literally just, there's going to be a list. Of documents, and the labels could be anything, and I shouldn't be, yeah, yeah.
+
+Matthias Miller  27:31
+Ability to contact customer support. We're proposing so in our in our system, we have was something that we call notes, that can be tied out to any it can be tied out to any record in the system. And then it's kind of like a mini, mini product change or incident or task be tied out. And so our proposal, then for support requests, is that we just have an online form that where they can select the contract which would have their list of contracts. Most customers will have one, but some of them might have, you know, they might have multiple contracts open and then a request type things like warranty claim, billing, other, etc, and then some kind of contents where they can put in a message and submit some kind of success page
+
+Unknown Speaker  28:18
+files and they touch Josh,
+
+Matthias Miller  28:23
+there's no reason why we what do you think Dwayne would make sense? Wouldn't
+
+Speaker 3  28:26
+it would make sense, especially if you're if you're doing some sort of warranty request
+
+Matthias Miller  28:30
+images and that kind of stuff.
+
+Speaker 3  28:33
+I guess we need to figure out exactly where we're going to store that and how we're going to on the note, or, well, preferably not on the note, because then you start taking up server storage, preferably,
+
+Matthias Miller  28:44
+no, it's we put an s3 RG on there. Ah,
+
+Speaker 3  28:48
+there you go. I like that idea. I like that idea a lot.
+
+Matthias Miller  28:53
+See, I knew there was a reason we're talking
+
+Speaker 3  28:56
+so. So if we do, if we do, if we do an s3 attachment to every single note record, dude, this just got even better.
+
+Speaker 2  29:08
+A lot of a lot of reps, and I'm and I'm four sentences into describing what I'm seeing. Always wanted a screenshot uploader or whatever it is.
+
+Speaker 1  29:19
+Well, plus the page is feeling the upper right hand corner of the anyway,
+
+Speaker 2  29:25
+yeah, picture. And is this maybe you were about to answer this? Does this then, then become an inbox for the user? Like, what will all of the communication subsequently also take place within the portal? Or does it shift over to email replies and and stuff.
+
+Matthias Miller  29:45
+It'll current plan is it'll shift over to email. I think there is a world in which it could make sense to have build out a ticketing system, but we're not, yeah, okay, if we can figure out hosting first, but we like invest. Be able to figure out ticketing first, which is actually on the radar.
+
+Speaker 3  30:04
+But, I mean, this essentially becomes a quasi ticketing system in some form or fashion, without some of the, I'm sure, some of the cool, fun functionality, but this is kind of our bridge,
+
+Matthias Miller  30:15
+yeah, but we could make, we could give them an easy way to view the submitted requests, if they wanted to as a as a gateway to that right,
+
+Unknown Speaker  30:26
+based on on note record type,
+
+Matthias Miller  30:30
+something like that, or just a field on the note record like like, you know, client can a hidden field that says that they can view it, and we set it on all things that they create.
+
+Speaker 3  30:42
+I mean, stick a note somewhere. I want to talk about exactly how that, the functionality of that I would be. What I don't want to end up is by by accident, somebody leaves a note about a customer and marks it for customers visibility and and they're like, giving all kinds of warnings about this customer. That would be kind of embarrassing.
+
+Matthias Miller  31:01
+Okay, let's do this for design. For design, it might make sense give a way to show Read, read only view of
+
+Speaker 2  31:15
+Yeah, past requests, yeah, that. I think that makes a lot of sense from a from a user like experience perspective, and like you said, as a bridge to an actual ticketing system, it totally makes sense to follow up via email without having to build an entire ticketing system. But I've certainly always, always drawn a lot of my own experience here, but I've always slightly resented when I can't see what I just told them. Yes, agreed, at the very least as an email record, but I still like to see it within the portal when possible.
+
+Matthias Miller  31:50
+Fun, human psychology. Fact, one of the fastest ways to increase tips the waiter or waitress is simply repeating back the order to the person to give them confidence that you heard them correctly.
+
+Unknown Speaker  32:00
+Really. Wish I'd known that when I was a waiter,
+
+Unknown Speaker  32:07
+there's a reason you're not a waiter anymore. He's not
+
+Speaker 2  32:10
+a waiter anymore. Yeah, I did that anyway, just just to impress him, but I didn't. I didn't actually have like a, like an A, B test rates and stuff.
+
+Matthias Miller  32:26
+Okay, I'll put a note down there. We can get back to that. I like that a lot. We're going to want a way for admins, customer service reps, to impersonate, and then we need a way to pull up, some way to visually show, hey, you're impersonating such and such. Yeah, don't do anything stupid, and we're expecting literal impersonation like we're not. I mean, you could go in there and say, Okay, I'm gonna go create a payment plan for you. What? Why would you do that? I don't know. But
+
+Speaker 2  32:53
+okay, so they have full edit access, because people are
+
+Unknown Speaker  32:57
+not exactly right.
+
+Speaker 2  33:00
+They're people, right? What about, what about the like, the provenance of that? Like, Will y'all flag internally that this was made as an impersonated user, or will it always be credited to the to the real user with no indication that an admin actually ran the ran it? Maybe we should,
+
+Matthias Miller  33:19
+is there? There's no reason to make it actually editable. That's, that's actually maybe we should actually maybe we should, we should challenge that. Maybe it should be read only for impersonation. Because payment plans, you can set up server side. I mean, in the in the other thing, payments, you can make through the payment portal.
+
+Speaker 3  33:37
+I think for for first iteration. Let's go read only if we run into a situation where it's like, we really need customer service rep to be able to edit via impersonation. Well, then we'll go back and do that.
+
+Speaker 1  33:51
+But there's no yeah, I
+
+Speaker 3  33:55
+the initial reason for this is so that you can literally pull up and say, Okay, you see that little button right there in the top right hand. Click that and Oh, yeah. Now go here. Yeah. It's like, you can, you can, you can walk a customer through it. I tend to agree. I don't know of a reason why you would want to be able to edit from there.
+
+Speaker 2  34:19
+Yep, yeah, the only thing I can think of, but we can work around it now that we made this decision in advance, is if there were any multi step, like checkout type stuff, where you had to fill out one screen to get to a second one, and the first screen was read only, then the impersonating admin couldn't get to the second screen if they were trying to walk them through everything. But if this is if read only, is table stakes, or whatever is the starting point, then we will just try to avoid that.
+
+Matthias Miller  34:43
+Well, we could also just let them, let them go through the process, but just not give them the button the finish whatever
+
+Speaker 2  34:52
+they're doing, right, right, right, right, yes, although, yeah, yeah. Don't want to belabor anything. But if, if you're doing things like increment, like. When you go to the next page, you do actually make a save back to the API so it's it's not waiting till the final screen to submit. Then you have to make the decision about how you let them through. But still, Yep, I've done something like this before, especially with this, this sort of portal where the customer is not used, not like the online banking, where they're probably checking in a few times a month. This is probably maybe a few times a year, presumably, that a user is logging into this thing. So unfamiliarity is high. Letting the letting the rep be able to describe exactly what the user is seeing by impersonating is great.
+
+Speaker 3  35:32
+You may be correct, although I would probably treat it more like a banking thing, because I mean customers do like from the from the day that we started using customer portals for them to pay their own bills, the amount of phone calls and physical payments has gone down so so drastically. So customers do this like they will visit and pay their their payments this way at a fairly significant rate. Up until, up until this point, we've never had a way to know how many times they're hitting, or when they're hitting, or how you know. One of the things that we do want to have as a part of this is we, which we haven't designed for yet, but is logging interaction time and date so that we can know like when this customer is hitting one for the purpose of knowing, okay, when does our customer actually interact with us for collections reasons, but also just, it would be helpful to know that information just from a usage standpoint, right? Yeah, use
+
+Unknown Speaker  36:31
+analytics and stuff that makes sense, that's not in my in
+
+Matthias Miller  36:37
+my purview. No, it's not that's not your purview. Now it's that's all, yeah, we need some way to display help documentation or something different. We're thinking something or something similar, like, I don't know, basically anything. It's like wiki documents.
+
+Speaker 3  36:56
+Basically. This is really opens of your contract, explanations of how things are calculated, explanation of warranty, yeah, stuff like that,
+
+Matthias Miller  37:09
+Damage Waiver fee, possibly instructions how to use the portal if we need that. I don't know that's and I guess this probably requires some input from you, because this seems to me like also a little bit of a nightmare to design for, like, Oh, we're just going to have a wide open I don't know what.
+
+Speaker 2  37:26
+No, not necessarily. I mean, it's, the main question is whether you want it to be fully integrated into this portal interface, or if it does that slight switcheroo, where it, you know, it's a public facing, or even if it's private facing, but it's delivered by an actual documentation platform, you know, docusaurus, or whatever else is out there, like you said, a wiki backed thing. So, so that's the kind of the first question is, do you want it actually delivered in the same interface, behind login and everything else? Yep. Sorry, is that? Yes, that's a good
+
+Matthias Miller  37:58
+question. Yes, we do want that. No, yes, we do want that. I mean, because we could render any of our wiki pages as HTML, so we won't have a lot of control over that. I mean, the wiki document. I don't know how we want to handle this. Presumably, if you do custom font branding, then you just need to make sure your wiki documents. I don't know. That's not your problem, although it may, I would be interested if you have input on that. Ooh, wait. Let's see if we can use investor tools markdown parsing, and you can put it in Markdown, and then we can render it in any kind of format you want. Should I know what you're talking about? The format that chat, GPT and Claude use for their formatting?
+
+Unknown Speaker  38:42
+Again, should I know what you're talking about? Yeah? Like,
+
+Matthias Miller  38:46
+No, you shouldn't. You should, let me tell you. I mean, like, when you get stuff back and it has these weird hashes and, oh yeah,
+
+Speaker 2  38:59
+if we would based formatting of this stuff, but it's a kind of a subset. Sorry, Matthias, you did the very classic thing that I constantly do, which is to forget how, which is bold, which is Italian, exactly.
+
+Matthias Miller  39:13
+So we could it. Could simplify it from a from a design standpoint, if, if we required people to input it as this. Now it's not intuitive from a user standpoint. So whether we want to do that or not, I think the biggest thing Justin to hear from you is,
+
+Matthias Miller  39:36
+no we could still forcibly override the font family coming back if we wanted to on the entire document, I think probably the biggest input, if you have input of how to handle, how to handle this, when we've got formatted text, if we do go down the route of just literally using these memos, do. You just force the font face to match the theming. Would that be? Do you have a recommendation on which approach to go? Yeah, I would
+
+Speaker 2  40:08
+definitely want was, I would definitely with the customer facing output to respect the rest of the Yeah, the theme for the customer facing stuff, how y'all accomplish that internally, whether it was by stripping out any any font specifications. You know, my recommendation is that the there was so there's, there's a higher hygiene requirement for anything, any content for customers, than there would be for internal stuff. So I would probably lean on reducing the number of formatting options so people didn't accidentally do things like, oh, to make a heading, I just select this text and make it 32 point font. No, you want to give them an actual heading button, or whatever it is, so you can so that we have full control over the content hierarchy and the heading hierarchy and stuff like that. So what I would recommend is that the authoring interface have a subset of formatting tools, whether you choose to pass that through markdown or whatever is totally up to, up to you, but that way, there's a predictable, predictable subset of elements on the customer side, paragraphs, unordered List, ordered lists, couple of heading you deal images with captions or, you know, and so we can sort of design for a narrow set of outputs, and then if we just find it's too narrow, then we can adjust from there. Other thing I was thinking that you'll have to solve is linking between documents. How you solve that? Because you definitely don't want to, you definitely want to be able to link from within one customer document to another, and for that to be easy enough that whoever is writing this documentation, you know, is incentivized to do it. You know, not. It's not miserable to go look up some obscure syntax to do that or whatever else. Those are my basic thoughts on it. And then search, of course, would be nice to have within it. I kind of a nice to have table stakes. I don't think there's going
+
+Speaker 3  42:10
+to be enough documents for a search. Okay. I think you're going to see maybe five, six documents potentially. I don't like when it comes to the customer facing side of this, from a from an RTO contract standpoint, there's not a lot to explain, unless you're going to go like into like, unless you're going to like a document for each paragraph of the contract or something, which would just be obnoxious. I see a handful of maybe five that I would say usable. So search would probably be, you know, redundant.
+
+Speaker 2  42:44
+Okay, that's cool. Is there, is there any nesting to this, or is it going to be like, five top heading documents?
+
+Speaker 3  42:52
+I think it's mostly top heading documents. I do like the idea of being able to interlink like, like, if you're reading through, let's say something about the contract, you know, and reference Damage Waiver fee, then you could reference a damage waiver fee document. You can jump over to that. I think that's great, but I think it's going to be mostly top level documents.
+
+Speaker 2  43:10
+Okay, I will try to go ahead and like design for a deeper hierarchy if, in case, it does come up, but we'll assume that it's just a single, single hierarchy.
+
+Matthias Miller  43:22
+That's fair. Let's this is for Dwayne and I to talk about later markdown versus I'm still trying to, I just want to make sure I wrap my head fully around the limitations of actually sending down formatted text. Matthias, I'm not
+
+Speaker 3  43:44
+opposed to doing markdown. As long as we write some sort of documentation on how to do it, you're gonna you need some explanation to the end client to be able to how to do it. But I mean, anybody who's written some stuff either, you know, there's a number of different platforms that you got into some sort of markdown text. I don't think it's, it's not hard, it's not hard to learn, right? No, it's an explanation on how to do it. Either that or we build out a bunch of sample documents, and they
+
+Matthias Miller  44:10
+can just learn one sample document that illustrates everything that that they could do would probably be sufficient. And with it, with a preview, the cool thing with it, with it being in the platform, it's even if it's not an actual maybe even if it's not how it renders in the portal. We can give you a preview of a preview.
+
+Speaker 2  44:28
+I've been a big fan of how, like GitHub and GitLab are doing it now, where they separate the they have the buttons for toggling between the preview and the editing. And so it kind of does force the no that's a more technical audience, but it forces them to author and markdown, but at any point, they can toggle the preview to go see what it looked like. Yeah, different audience, but, but it seems to be to be clean, so you don't have to have an actual WYSIWYG formatting, formatting environment.
+
+Speaker 3  44:55
+If nothing else, you just tell them to go put it in a document, throw into chatgpt, and tell them to do.
+
+Unknown Speaker  45:00
+For you. Return this back to me and markdown.
+
+Unknown Speaker  45:04
+As a markdown expert, you Yeah, exactly.
+
+Speaker 2  45:14
+Yeah question, I think about the about the authoring interface. Now, if we're, if
+
+Matthias Miller  45:19
+we're going to mark down path. My questions are relevant. So okay, I did interrupt you when you were starting to say something or ask something as well.
+
+Unknown Speaker  45:29
+So I don't remember whatever it was. I don't remember the note.
+
+Matthias Miller  45:33
+So that's right. Okay. And then the last piece is RTO companies specific theming. So we're thinking some kind of logo. Presumably we'll need some kind of design requirements like aspect ratio, minimum aspect ratio, minimum dimensions. We just little it would be awesome if we could have a color palette that where it's like these two here are the colors these need to be contrasting, some something I don't know what that then ends up needing to look like. And maybe what would make the most sense would be to have that be as a page somewhere where the okay is this, where okay we need to determine exactly who it is. But some people who log in have some kind of company settings where they can toggle that and and potentially modify. What do you think of that Twain? Or is that overkill?
+
+Unknown Speaker  46:41
+I didn't fully track
+
+Matthias Miller  46:45
+if a dealer, let's say, let's say we go all the way down to dealer specific branding to be able to give a dealer a login. Obviously they won't have any contracts, but then they have an option for, you know, company branding or white labeling, or company settings or something. And they can go in there. They can edit their their contact info, their sales, their email branding.
+
+Speaker 3  47:03
+No. Well, okay, yeah, you have to think of this as from the level of this will always be in relationship to the RTO to a RTO company, like, if, if a, you know, if a dealer is logging in to generate a contract, well, it's the RTO company's branding. If it, if a customer's logging it's the RTOS branding. I don't, I don't see a scenario where you have to get deeper than the RTO branding.
+
+Matthias Miller  47:26
+Okay, so, but we, we may want to the Okay, would it not be simple? However we authenticate, we can, we can solve that. There's plenty of ways to solve that. But wouldn't it make some sense to give the RTO company a way to pop open the portal and to have a view where they can play around with colors and watch it, watch it refresh, to pick their
+
+Unknown Speaker  47:50
+Yeah. I mean that, yeah.
+
+Speaker 2  47:54
+So the actual modification will happen basically on a screen within the InVEST platform, but it'll be reflected in the customer portal, we need to give them, and I probably need to provide sort of guidance on what the parameters should be, what the what the boundaries should be for, for making sure people don't shoot themselves in the foot with white text on a white background, or
+
+Matthias Miller  48:15
+something like that. Well, yeah, or potentially, I don't know if it's boundaries, or we could even give them a page that saves it into the saves whatever customized colors into that so so that they could again, this depends on the implementation. If we're using something like React, we could give them a page that demonstrates how the colors are used and shows the list of colors and allows them to modify them and and allows them to preview prior to saving. And I don't know if that's that might be a little bit, is it? Yeah,
+
+Speaker 4  48:51
+jump in. I think what would make a lot of sense is if we just have the, have the, have fields for the different color variables on the RTO Company record, and then we let them edit those. We maybe show a little because we can show a little block of color in invest just for a quick preview to prove to them, Hey, we're parsing this. And then you could just hit f5 on your portal page. And then if we load those colors from the RTO company when we, when we go to render a portal page, then they can just see it that way. In my mind, that'd be, I mean, a very, very simple way to implement this.
+
+Matthias Miller  49:28
+I'm fine with that. We just need some kind of delineation of, yeah. Justin, what you said, not shooting in the foot, not white and white, etc.
+
+Speaker 2  49:39
+Also, Jonathan, so are you saying that it would automatically save and then be reflected live so they would actually refresh the live portal to see how it looked?
+
+Speaker 4  49:50
+Yes, yes, we would, when we when we load the portal page, we go and grab the color variables from the RTO company if they've overridden them. And then we use those to render the page so
+
+Speaker 3  50:03
+and I would be even fine if we didn't. We wouldn't necessarily even need to give them an example color on the RTO company page, if, whether we do it in RGB numbers or hex codes, whatever you want to do, if you want to see what it looks like, just go refresh the portal.
+
+Speaker 2  50:18
+Was there any concern that they might that they might pick something either accidentally or whatever, and it's the wrong thing. And then for that brief period before they fix it, customers are seeing like, do you want the preview mode or something?
+
+Speaker 3  50:31
+This is this is going to happen on it's a good point boarding. And so if they go screw around with their colors after onboarding, it's you're kind of taking your life in your own hands.
+
+Matthias Miller  50:40
+You're right. But it also wouldn't be that difficult to generate a preview link that passes the pending colors in Sure. And you can, I almost prefer that, because then we could cache branding on login, and we don't have to be hitting the server constantly on every page load. To me, that solves that's
+
+Speaker 2  51:00
+pretty clever. And then an enterprising kid who knows how to how to inspect elements or whatever, is going to discover that syntax and make their own version. They're going to sit there and modify the query params and see their own, their own version of it. I mean, that's no different than just like right clicking and changing it in the in the Web Inspector, anyway, but they'll think it's fun to show off. Now, that sounds like a good idea. That's very, very easy to do. I mean, then you're not having to do things like render these React components within the InVEST interface, or creating a special pre, you know, preview URL that is popping up or whatever. It's just like you said, sending it to the main platform, but with a with query Param. So that sounds like that.
+
+Matthias Miller  51:50
+Matthias, can I? Does that solve your here? Jonathan, any input on that?
+
+Unknown Speaker  51:59
+Yeah, that sounds good.
+
+Speaker 3  52:01
+Yeah, I forgot. I can't I've never figured out how to share my MacBook from zoom so for Never mind, turn on accessibility. Yeah, I just never have done it. Matthias go to go to big dog lending.com and I'll give you an idea of what we're like. The bar is pretty low to go to make a payment. So
+
+Unknown Speaker  52:26
+this is, shouldn't tell a designer the bar is low. This
+
+Speaker 3  52:29
+is what we're so the other thing Matthias, as I pop this open, one of the things we have to figure out is how to handle privacy policies in terms of service, stuff, documentation,
+
+Matthias Miller  52:43
+where that gets configured. Okay, well, let's, let's, but presumably that's, is that?
+
+Speaker 3  52:56
+But I mean, if from from a branding standpoint, we could do better than this. We're already, we're already worlds ahead,
+
+Speaker 2  53:02
+yeah, I mean, it's hard to have to be pretty intentional, I think, to to achieve something this dated at this point.
+
+Matthias Miller  53:14
+Okay, so we also need a way on here somewhere where they can contact, okay, this is, this is this would be contract specific, but, but who sold them the building? Which would be the salesperson, name, phone, phone and email, Link, dealer, name, phone, email and website, link. And keep in mind with all of this, that this is everything within here, except for maybe we should break this apart a little bit.
+
+Matthias Miller  53:48
+No, this guy, I
+
+Matthias Miller  54:03
+everything in this section is in the context of the contract, this context of the user.
+
+Speaker 2  54:13
+Oh, right. So a single user could have multiple contracts, of course, correct? Now, like, oh, go ahead, sorry.
+
+Matthias Miller  54:21
+Well, unless Dwayne, I think we had potentially talked about, I don't know, you don't want to consolidate. Does it make sense to you to have payment history subset of by contract and have basically have all this stuff subset of by contract?
+
+Unknown Speaker  54:34
+Yeah, I think so.
+
+Speaker 2  54:38
+Payment Methods, I would think, would be at the customer level, but that's
+
+Unknown Speaker  54:42
+a that's a correct
+
+Speaker 2  54:46
+but the actual payment terms in payment history, it's funny. It's kind of funny. I just went through this my I moved within Woodland Park, and so we use core electric cooperative and and so every. Thing is subset by the, you know, the address, the con, the account number, which is linked to a service address. And so I actually kind of like how they did it, which is there were many times from customer support to billing questions and everything to build to build history and everything where you had to choose which which account you were talking about, and I've gone through that there in another contexts where people did a so core did a great job of letting me see not just like the account number, but the service address for that account number every at every point where I had to make that decision. Whereas I've also used other contexts where, like, all state which is like, here's your two drivers policies and the policy number. Which one do you want? Then I'm, well, I haven't I have no idea, based on policy number, which one is, was my Texas policy that I just canceled, and which one is my Colorado one. So I have to try both of them every time, so we'll be conscious of that and going through here, giving them enough info when making those decisions that they can they don't have to consult their contract to figure out what they're trying to do.
+
+Speaker 4  56:03
+Yes. One one note here is we can't either primary and secondary contacts on a or customers on a contract. Do we want to show all payments? So if you're in the context of a specific contract, should we show payments that maybe the other customer made as well? Dwayne, am
+
+Matthias Miller  56:27
+I right that we were only allowing the primary contact to log in, first of all, and second of all, you can only see your own payments, because there are situations when somebody might sell the contract to somebody else and they don't need to see the payments from the
+
+Speaker 3  56:39
+prior Yeah. I think we, at this point, I want to state a primary login, own primary contact login only. I get nervous about a secondary contact having access, and how to control that. And did we? Did we, you know, if the contract transfers, did they make sure they that transfer both contact, yeah, just that's primary contact only, is my feeling. There's a
+
+Matthias Miller  57:05
+whole host of issues, like somebody makes a payment, cancels payment plan, a set to that, and they don't talk to each other. That's customer service train wreck. We do have product descriptions with a serial number and description an internal product ID that could be useful in rendering contracts. We've got other kinds of contract information, okay, yeah, and if you want, we're happy to give you access to the system too, if you want to poke around, okay, cool. At some point, just
+
+Speaker 2  57:37
+quick time check, I'm good for another 1015, minutes. What is art, by the way, what does RTO stand for? Rent to own, okay, got it so that's not a that's not a proper noun.
+
+Matthias Miller  57:57
+Should this is okay. Authentication. Then, to give you an idea of what we're thinking, you have a sign up with an email, verify with it with either an account number or a contract number.
+
+Speaker 2  58:09
+Oh, so this is handling registration as well. That makes sense, correct?
+
+Matthias Miller  58:14
+And actually, yeah. So then send an OTP to verify email, which we then flag, we prompt for two factor we're using phones on file or another phone. Verify the phone and we say, we record that as a valid TFA Require password with upper lower punctuation and digit 12 plus characters. Sign Up partial sign ups within 24 hours may end up being less, I don't know.
+
+Speaker 2  58:41
+I mean, they're in the system, so since that, there's no conflict. If they, I mean, they could always try to try again, and it wouldn't
+
+Matthias Miller  58:47
+be, yeah, maybe they just pop in the browser. They're like, who are you?
+
+Unknown Speaker  58:51
+Yeah, okay, yeah.
+
+Matthias Miller  58:55
+And then on the login, it's, it's email, password, Dwayne, are we planning to do a remember me or keep me logged in for 30 days? Kind of thing
+
+Speaker 3  59:09
+versus straight up to a thing every single time you try to log in? Right? I don't know where the threshold is between security and obnoxious. So I'm open to, I'm open to some thoughts considering
+
+Matthias Miller  59:27
+that people, I mean, people can't view payment methods. People can only make payments directly to the contract. But it's still a big inconvenience. If I were an angry stepson and I got your computer and I would make a, you know, $10,000 it would try $10,000 payment. If that isn't clear, then, you know, go up or down, however much to drain your account. And it'd be really frustrating. That's the extent of, I mean, that's, that is the, that is the, in my mind. And yes, there's receipt history and financial history. There's potentially sensitive information. It on the contract itself, which could require re authentication at any at any point. To me, that's the big. Those are the big. I mean, yeah, address stuff, I don't know. Yeah. I
+
+Speaker 2  1:00:18
+think as a point of comparison, you know, email is maybe one of the most important, you know, things that I have access to, and I know that, like fast mail, at least, gives me a don't ask again on this device. Type of option, just assume is, you know, link just to that browser. So if I try again on same computer, but different browser, I still have to authenticate. I mean, not authenticate. You know, do two FA again? I guess that's the question, because, I mean, question of how long the session stays active is much lower stakes than how long two FA is or whether to FA is required on every login, right, right?
+
+Speaker 3  1:01:03
+So just you were referencing some user experience with, I think, your utilities company, or something like that, right? That you just had what's like this would be very similar to something like that. It's not, it's not banking level, I feel like, but it utilities would be a very good, close sister to the feel of this. So from a from a login standpoint, what are they, what were they doing? I don't think that.
+
+Speaker 2  1:01:34
+I can't remember. I can check and kind of do a little survey, requiring to FA at all is a great is obviously you're already, I think, far, far beyond a lot of what a lot of people are doing, what a lot of banks are doing, even, which is ironic. I remember for a while, Amex had like, an eight character upper limit on passwords for years, which is incredible to me. So just requiring to a at all, I think you're already, already doing really well, recording on it every time does start to get into the nagging arena, just a matter of whether it's worth nagging. I hadn't thought about malicious overpayment as a vulnerability. Something else we can do is if there are highly sensitive transactions, like to modify an auto pay that maybe there's touch points within the app where you re request password, or you re request you have to use two FA to complete certain highly sensitive things. Maybe that's too much. I
+
+Speaker 3  1:02:42
+think that's a little bit too far. I think it I think the main question that comes down to is, do we require two FA to log in every single time, or do we give them an option to say, Remember me, or trust this device for 30 days, or right or something like that? I I kind of my, my gut reaction is, we give them an option to say, you know, trust this device for 30 days, or something like that, right?
+
+Unknown Speaker  1:03:07
+I have appreciated when that's offered for sure, yeah. Well, now
+
+Matthias Miller  1:03:14
+keep in mind, though, that if people are logging in, this is also kind of the thing, that either they only log in every once in a blue moon, or they log in every month. And so 30 days really doesn't give a meaningful but again, on a bank, you'll have to do two FA I mean, most of the most financial sites won't get pretty close to asking you every time, at least the ones I interact with. So
+
+Speaker 3  1:03:36
+30 days is not enough. So do we go to like a 60 days and say, trust this device for 60 days or a 90 days?
+
+Matthias Miller  1:03:43
+Yeah, that can be determined. I think something like this. I think we're clear enough that that's the direction we generally want to go. And on the sign up and this login process is there, is there a checkbox to say, or this that I agree to the terms and conditions? Or is there a statement that says, By logging in, I agree.
+
+Speaker 3  1:04:04
+I think, I think by probably, what I want to say is, by using this website, you agree to the terms and service here, and you give them option to go view the terms and service.
+
+Speaker 2  1:04:16
+Yeah. So two things there is that means that either your Yeah, so there's the display the terms and conditions and the privacy policy and everything as well. And I should make sure that the within the portal, but also here, that there is a, you know, obvious way to view those things and like it fits into the interface where you can view terms and conditions, privacy policy and stuff. It fits
+
+Matthias Miller  1:04:39
+the flow could be very similar to the document,
+
+Speaker 3  1:04:43
+go ahead. Matthias, no, go ahead. Probably on initial sign up or sign in, you probably should check something to say, I agree to these things and then followed by after every time log in after that, it's just a the wording says, by using. Website, you agree to these terms, I think, I think it would be reasonable to say the first time that you try to do this and you're signing up, that you would you would be required to check that you have read them. Is that fair?
+
+Unknown Speaker  1:05:15
+Yep, seems
+
+Speaker 2  1:05:18
+to me not a lawyer, but I've seen that done pretty much every time I've registered for something. So it makes sense, yeah.
+
+Speaker 3  1:05:27
+And then just a note on that is that we store that log, that somehow, somewhere, someplace, that if we ever if somebody said, Well, I never did. And then we can go back and say, Oh yeah, you did.
+
+Speaker 2  1:05:42
+What is the con during sign up? What is the confirmation that the person completing the registration actually owns that account or contract number? Do they have to provide some piece of information that's on the contract?
+
+Matthias Miller  1:05:53
+Their email is the thing that their email has already been associated with the
+
+Speaker 2  1:05:57
+contract got it so they're entering the same email that's on the account
+
+Unknown Speaker  1:06:01
+and then and verifying it or
+
+Unknown Speaker  1:06:02
+contract number. Yeah, right, right, right,
+
+Speaker 2  1:06:04
+verifying Exactly, okay, but I just that was the bit I didn't realize that you already had an email on on file for that contract
+
+Matthias Miller  1:06:11
+that is correct, okay? And if, if that doesn't match there, there's some kind of go call customer service to get this straightened
+
+Speaker 2  1:06:18
+out. Yeah? Okay, perfect. Obviously, we can do a lot more on requirements, but just a real quick question on timeline. What is the timeline for at least the design side we
+
+Matthias Miller  1:06:36
+have, we want to have it built out by sometime from February to spring. And so I don't know what your timeline looks like, like. We're not in a mad rush, but I think something in the next month ish, is that right?
+
+Speaker 3  1:06:51
+Dwayne, I mean, probably I would have said January, January.
+
+Matthias Miller  1:06:56
+You want to build? Yeah, we're live by January.
+
+Speaker 3  1:06:59
+Yeah, because we, I mean, the moment we start moving our our managed clients, into it and side by side with RTO pro short once, soon as we get the bugs worked out from that side, from everything's working side, in order to officially go live, to use the software internally, we will need The Customer Portal. Yeah, so it's January. It's probably January. I
+
+Matthias Miller  1:07:23
+mean, so realistically, we should have the design nailed nail down in the well Justin, how does like a two week turnaround look like for you? Is that?
+
+Speaker 2  1:07:33
+Yeah, that's what I was just looking at. The only thing we're up against, of course, is Thanksgiving. Two weeks from today, is going to be too tight with my other stuff I have, but I was gonna suggest the first of December, but I'm looking at it in two weeks from today, versus December. There's just Thanksgiving, Thanksgiving in the weekend, so that's not much use. But I also, yeah, based on that timeline, much time to build this. I mean, honestly, let's say that I clarify
+
+Speaker 3  1:08:01
+Justin when I say January, it's really, it's really the end of January that were the target timeframe to go Yeah. So, yeah. So sometime mid December, or sometime in December is, is going to make is probably
+
+Speaker 2  1:08:13
+reasonable, yeah. Well, and also, if we're, if we're, if we're doing this stuff iteratively, presumably, unless I'm way off base my first version, hopefully you can start developing from even while we're iterating further right, I feel more comfortable about saying delivery, like having a having a delivery meeting, a design meeting, maybe like December 3, but between now and then, So three weeks, but between now and then, certainly I would want to send screenshots, figma link, stuff like that, so that y'all could be seeing it. But like December 3 would not be a final delivery. That would be like the first maybe, like alpha design, where we can walk through the whole thing interactively and kind of redirect. And then maybe another week, week and a half on, on iterations. So that's not really full delivery until early, mid December. I feel okay about giving out something next week, like real early next week, but then not having something I'm that's, that's buttoned up by like, look, December 3 or so. I mean,
+
+Matthias Miller  1:09:23
+I think that's insane. So, I mean, can we target much? I mean, I mean, December is basically trash after the 17th, anyway, for a few of us. So could we aim for first, first by third and see if we can get those iterations done to have a final by the 17th. Is that? Is that sane?
+
+Speaker 2  1:09:43
+I think so that's yeah. Let's just say yes,
+
+Matthias Miller  1:09:49
+December 3, we'll shoot for that, and we'll be in communication if trouble, trouble arises. Yeah. Yeah, absolutely. Okay, yeah. Good, and I will email this stuff over. I will CC Jonathan and Dwayne on that. I don't know that you need to involve I don't think probably involves Seth as well. He's in on the project anyway, and we can keep everybody in the loop. Yeah.
+
+Speaker 2  1:10:19
+In the meantime, any examples that of things y'all have used you particularly like, or any inspiration that you do want to draw from, like this, you know, please feel free to send me screenshots or or looms, or whatever. Any videos links, I'm also fine, totally Greenfield in it. But if there is something in your head, then feel free to send it.
+
+Speaker 4  1:10:42
+I have like a bit that I could send you. I'm not sure it's anything very revolutionary or anything it's true. So I think, from my perspective, I guess green fielding it would be fine.
+
+Speaker 2  1:10:58
+Okay, I like that too, by the way, Jonathan, I noticed you're working on the same mountain that Bruce usually works from, based on the meetings.
+
+Speaker 4  1:11:06
+Yeah, we all have investor tools zoom accounts for SSS reasons, I think, and they come packaged with some nice mountains so
+
+Speaker 2  1:11:15
+beautiful. Yeah, It must cost a lot of money to carve investor tools on that on that mountain behind you too. I've made that exact joke before. That's awesome, guys. This was great. Thank you. Oh, one last question that I actually had, because we didn't get it at the top, was, what's the actual like, Matthias? Are you with code crafters? Or do you have your own company? And then, okay,
+
+Matthias Miller  1:11:41
+oh, never mind. So I'm with run under the Code house brand. I have my own thing and and do do design and other types of stuff, Project Lead, types of stuff for product owner, types of stuff, for code crafters, for some of these projects. Dwayne Burke, holder management is your current company only ow and loi is the software brand.
+
+Speaker 2  1:12:15
+Okay, so this is the only should I call this like the only project,
+
+Speaker 3  1:12:20
+the Ow, it's the only project you should be working on right now.
+
+Speaker 2  1:12:24
+Well, that case, I'll have a ton next week. Didn't realize that
+
+Speaker 3  1:12:27
+the jokes have gone on and on and on. It's, it's so funny, but it's
+
+Speaker 2  1:12:35
+a great name, but it does. It does suffer from that you have having to spell it every time thing. But it is. It is very, very clever.
+
+Speaker 3  1:12:44
+We haven't. We haven't quite figured out what we should call our fans someday. It would not be appropriate.
+
+Speaker 2  1:12:54
+I already completed the joke. They're not only fans, that's for sure.
+
+Speaker 3  1:12:58
+We haven't figured that one out. So we need to come up with something else besides hashtag that. So guys,
+
+Speaker 2  1:13:03
+this is great. I really enjoyed getting to, getting to meet those of you I hadn't met, I guess Jonathan and Dwayne Matthias, seeing you again. You too. Yeah, we'll talk to, I'll follow up. Are you Matthias, when I should be talking to about, like, the contact, or the shape of this contract and everything, like, Billy, yeah,
+
+Matthias Miller  1:13:24
+oh yes, doctor, yes. Do that me and me, and Allison said, would be the guys to, like, get all that, yep, and then I'll send it link with, with all the project stakeholders.
+
+Speaker 2  1:13:36
+Okay, awesome. All right, sorry to have to run, but I do have to hop into this 10am meeting. So awesome. This is fun. Great to meet you. Likewise. Thank you. Justin, bye guys. All right,
+
+Matthias Miller  1:13:49
+Jonathan, anything else you need from he's going, Oh, he's gone. All right, anything you need, what do you think?
+
+Speaker 3  1:13:57
+Good questions. I mean, I'm excited about this because I Yeah. This is, this is, this is going to be the amount of tools that we want to put in the client's hand to influence what their what the customer experience is going to be. Is, I think, is good. I have, it's nagging thought in the back of my head that there's more that we could do, and especially around the idea of, I think I've shared this with you before, but like, I don't like that RTO companies are kind of like this sort of quiet partner over here that you sell a building to a customer, you write an RTO contract, and it's like, Here, Mr. RTO company, here's the customer and good knowing you like, there's got to be a way that RTO companies can utilize the ongoing customer experience that we have as RTO companies, leveraging that in some way to for. The manufacturers and the dealers and the sales reps that are using the rent to own company, there's kind of, there's got to be a way that we can do this. I don't know how yet, but, like, there's, there's got to be a better partnership here. I mean, because that customer is going to hit that like, the predominant experience with the rent to own company is going to be through the customer portal, and how can we use that to just, I don't know, drive drive traffic, back to the manufacturer, back to the dealer, back to the sales rep. How can we do this in a way that's just like, you know, I'm imagining one day a dealer walks up to you as a rent to own company, going like, Guys, thank you so much. I've got so much repeat business back through the RTO company. How can we do that? I don't know. Would
+
+Matthias Miller  1:15:56
+it make the most sense to have do you want to be looped in on all the correspondence with Justin, and then just you and I get our heads together so we don't muddy up the email chain in terms of feedback. Or do you want him just to talk to me and we we touch base when he's got stuff.
+
+Speaker 3  1:16:12
+I'm going to leave some of that in your courthouse. How much you want to include me on it? I'm going to have a lot of opinions once we start to have stuff, once we start seeing renderings, yeah, you know, some of the, some of the technical back end details, I don't know that I necessarily need to be have a lot of opinion in I am, like I said, I'm going to have opinions once, once we start seeing the product, or where the product is potentially going. Yeah? So it's up to you.
+
+Speaker 1  1:16:54
+Okay, good. Well, do you feel better than you did an hour ago?
+
+Speaker 3  1:17:01
+Yeah, yeah, I'm excited. This is this is good dude. This is this. We have reached the part of this project that I have been just dreading. It's like we with, with with the with the call that we had with Seth earlier in the week. I'm just like, oh, this is no fun anymore. It's now just straight up work. It's like,
+
+Matthias Miller  1:17:28
+it you're not wrong. But do you know how how relatively unpainful the call with Seth was?
+
+Speaker 3  1:17:38
+I just okay, there's been this nagging in the back of my head, like, there's, we're gonna, okay. This is, this is, I'll be, I'll be vulnerable about the fear that I'm having right now is, like, we're gonna go to start implement we're gonna go to start bringing contracts in, and then this isn't gonna, this is, this is not right. This is like, ah, we gotta go fix that. And then back around, okay? And then this, and then it's, and I know there's gonna be a lot of that, but it's like, I just don't look forward to it.
+
+Matthias Miller  1:18:10
+I don't blame you. I don't look forward to it either. I don't know if there's a way around
+
+Speaker 3  1:18:13
+it. There's not, there's not a way around it. It's, it is, literally the only way we're gonna figure out this airplane flies is to push it off the cliff and see what breaks, and we'll fix it and put you know. So it's yeah. I told the end recently, I said I just want to be about four months out in the future for right now, just like, can we just, can we just leapfrog that and just get over there,
+
+Unknown Speaker  1:18:39
+just walk through. Well,
+
+Speaker 3  1:18:43
+burn man, thankfully set I shared some of this with Seth, he's like, I really like this part of a project, like, oh yeah, because I know all the fun stuff about, you know, cool things like notes and auto pay and all of this kind of stuff. Oh yeah. I get, you know, that's just fun. But it's like, get down in there to make sure that you know, how are we going to show this contract number and where are we going to show it? And it's like, I think some of this is also, I'm just, I'm just dreading the moment I have Leanne and Francine and some of these people in here going, I don't like,
+
+Speaker 1  1:19:21
+why did you do that Wayne, why were you thinking? Why did you park here? Why stop throwing rocks at my ivory tower? You little
+
+Speaker 3  1:19:35
+it's funny because, because it's always, then it's always like, Okay, so what's the priority on this? Like, well, you know, somebody's complaining loudly. They don't like where that something is. It's like, Yeah, but do you want, do you want me to move that number or make sure that the customer portals up and running? He's down 19. But welcome to retail software.
+
+Speaker 1  1:19:57
+Welcome to people, dude. Welcome. To people.
+
+Speaker 3  1:20:03
+I don't know that there's any way around it. I've been chatting with grok. I want to, I asked it for to give me some, really, some examples of really good customer portals. Because I don't even, this is the thing. I don't even know what I wanted to look like. I don't want, I don't want, I don't want it to be so lame. RTO pros is so lame. Oh my goodness, it's terrible.
+
+Matthias Miller  1:20:24
+Well, I think the good news is I love Justin's very diplomatic comment. It would take a lot of effort to come up with something that looks as dated.
+
+Speaker 3  1:20:38
+We should have took a moment to show him the actual software. Yeah, it's like, yeah, dated is the word, oh my goodness.
+
+Matthias Miller  1:20:50
+All right, so here's the question for you. We're gonna get to stopping point. You want to break for an hour and show up at the top of the hour.
+
+Speaker 3  1:20:58
+That's fine. But what was the question? I mean, that's just
+
+Matthias Miller  1:21:02
+it. It feels like we're at a good stopping point. Let's just, let's just call it a wrap. Not sounds good. Earn time and we'll be touched. Thanks, sir. All right.
+
+
+Transcribed by https://otter.ai

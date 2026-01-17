@@ -1,0 +1,497 @@
+Matthias Miller  00:24
+Matthias hey let's go in pretty good figure out where to sit here new scenery today yeah the political Starbucks the six o'clock meeting did not this is the way to make the meeting so
+
+Speaker 1  00:57
+also just texted saying he can be a few minutes late so we could go ahead
+
+Speaker 2  01:03
+and good morning by the way I'm jumping right in saying hi
+
+Speaker 1  01:14
+we could take a quick look at a VTd change request I just sent over
+
+Matthias Miller  01:27
+Oh warning when you drag and drop a delivery date to a date in the past Yeah. How do you really want to do that from a UI standpoint
+
+Speaker 1  01:44
+presumably you drag you drag it and drop and then a warning the popup window will be on the window it will be on the screen with that message
+
+Unknown Speaker  01:56
+and you click
+
+Speaker 1  02:00
+Cancel to undo your your change or okay to confirm it bear suitable
+
+Matthias Miller  02:21
+for the production hours fields there's nothing that happens in the wizard you say
+
+Unknown Speaker  02:33
+right I should have clarified that there
+
+Unknown Speaker  02:35
+but please
+
+Unknown Speaker  02:51
+stand under think what would we add a heading to it what are you talking about here on the production hours
+
+Matthias Miller  03:22
+under logistics just add another heading production hours production hours field right underneath that
+
+Unknown Speaker  03:28
+oh we can do that
+
+Matthias Miller  03:31
+i don't know i mean we can do spacing too but
+
+Matthias Miller  03:39
+heading would make sense to me Yeah.
+
+Speaker 1  03:42
+And that would fit that would that would nest in there alright
+
+Matthias Miller  03:54
+Nick will detail details I'll let you know that I have
+
+Matthias Miller  04:21
+you say you'll let me know if something knows that you can know the idea about the section heading and then I added a comment to your own reply with my comments. Good evening
+
+Speaker 1  04:59
+sir The as far as the drag and drop
+
+Unknown Speaker  05:04
+I see you added your comment there
+
+Speaker 1  05:14
+Do you want a separate change written up change requests written up for the whiskey side of things for the drag and drop the thing
+
+Matthias Miller  05:25
+do you have a warning message here?
+
+Speaker 1  05:29
+I do yeah. Which I guess we should say maybe this delivery is now split is scheduled to
+
+Matthias Miller  05:40
+date in the past this delivery will be scheduled for a date in the past
+
+Unknown Speaker  05:50
+or is being scheduled something like that? Yeah
+
+Matthias Miller  05:59
+probably what I would rather do is have you follow up on it and let me throw something on my calendar to go implement it or we can wait until we have
+
+Unknown Speaker  06:20
+the estimate approval. Okay,
+
+Matthias Miller  06:22
+I don't want to I just I want a calendar event it's like 30 minutes or something I don't know. If that okay, it's more of a hassle rolling it out than it is actually doing it. Mm hmm okay.
+
+Speaker 1  06:42
+So you're fine with with not having another change request for that one. Like for your part of that
+
+Matthias Miller  06:48
+Yeah. And then if we want to if we want to build a yeah, anyway, yeah. Good okay. Okay. Morning Austin exam
+
+Unknown Speaker  07:08
+Hi guys. Good morning
+
+Speaker 1  07:15
+right I will go ahead and share my screen here and we've got number of items to put on so we'll just go through and knock them out let's see here first off this one or job here and that input metrics and we've been after we talked about this last we had done some emailing back and forth Nick and Austin and I had been polishing up polishing it up and just want to finish reviewing what we've got so doing the spec here so yeah for all incident types to show that Devon protect black clad the RG ID
+
+Unknown Speaker  08:33
+in time
+
+Unknown Speaker  08:35
+I really need to make a concern about time because
+
+Matthias Miller  08:39
+they can come in here to store this hidden field to store getting back in GMT.
+
+Unknown Speaker  08:50
+Okay
+
+Unknown Speaker  08:54
+okay all reported by the droplets active testers default to the current user
+
+Unknown Speaker  09:18
+the required tester reason
+
+Speaker 1  09:27
+for a drop list was by following items sorted alphabetically or by test testing instructions
+
+Unknown Speaker  09:32
+and firm testing results.
+
+Speaker 1  09:35
+Other proposal discrepancy test data requests for intimate unexpected behavior optional notes plain text field
+
+Unknown Speaker  09:47
+test your input needed
+
+Speaker 1  09:52
+what is the purpose of this one? Yeah. Purpose and behavior Are there is that something that developer that
+
+Speaker 3  10:08
+yes, I believe that is something that the developer sets I'm trying to remember here. I think that's for cases when things go back and forth more than you know, just one dev input and it's fixed then it looks good
+
+Unknown Speaker  10:29
+yeah, that's what that's for
+
+Speaker 1  10:35
+all right. So should we have one to have validation against like closing the testing job if this checklist is a separate input needed checkbox
+
+Unknown Speaker  10:49
+build that
+
+Speaker 3  10:56
+I would hope that the tester would be able if there is validation, the tester should be able to check it like should be editable by the tester because you know, there might be some cases where you know, the dev might check that and then things end up getting resolved and I don't want to have to send it back back to dead before I can close it
+
+Unknown Speaker  11:17
+check that box
+
+Speaker 1  11:33
+resolution required droplist already written up bug fix the new job but this job New Job
+
+Matthias Miller  11:45
+was a little bit intense to input needed Can we have the resolution be required have less tester input needed Hmm If not, right there you go. So it would make my life easier if we would make the developer uncheck dev input needed if even if tester input is needed
+
+Matthias Miller  12:31
+that again if Okay, so So if okay, if it if it we have this weird interplay between actually no dev input needed can be automatic, completely automatic, how would it be completely automatic if we would instead input needed if there are any rows that do not need test or input needed and students have a resolution
+
+Matthias Miller  13:28
+Yeah, so let's let's connect, can I do this or I can just do this as well. So the So okay, so as soon as you add a row that does not have a resolution it becomes dev input needed do we actually want that or do we want to keep the dev input checkbox as well
+
+Speaker 3  15:38
+so a case where we might not want that because sometimes I'm working in a job and I'm like starting to document a bug or two in a job and but I'm not quite ready to send it in yet. But I guess still in those cases, I can still take notes in the incident just not create the rows in the RG yet this is going to pretty much always be for cases where there's multiple multiple bugs in one job or multiple questions in one job. But even in those cases, I don't think it would really be an issue to just have to document your notes in in the memo because you're going to do that anyway so I think I think it could be that way to remove the debit put checkbox
+
+Matthias Miller  16:26
+the advantage of keeping the dev input checkbox is that you actually now have validation that enforces that things get cleaned up they address all the issues instead of it quietly staying in dev input because they overlooked an item or quietly going into demo
+
+Speaker 1  16:57
+you're saying it was still require both the tester and the developer to to handle that news check or uncheck that box
+
+Unknown Speaker  17:09
+yeah
+
+Speaker 3  17:14
+we also don't think if if it's easier it makes validation I'm sure it makes validations a lot simpler just keep the box I mean I don't think it would be a problem just keep the box either
+
+Matthias Miller  17:26
+if we would keep the box and we would validate that
+
+Unknown Speaker  17:52
+yeah
+
+Matthias Miller  17:54
+not have tester input needed and not pester confirmed if it is checked that
+
+Matthias Miller  18:12
+well let's just say this and then here we can I think this is actually just as simple as that if you have any rows that do not require test test to input needed
+
+Matthias Miller  18:58
+don't know do I have anything here okay. I think you can keep going
+
+Unknown Speaker  19:05
+when our tester
+
+Unknown Speaker  19:09
+so if you add a row
+
+Speaker 1  19:10
+with outlets or input needed but also we you add a row
+
+Matthias Miller  19:28
+I mean so your validation here is not going to work
+
+Unknown Speaker  19:32
+if there are
+
+Matthias Miller  19:37
+with that yeah, so if You need a resolution if that's not needed it's not needed in Debian but is not checked well except that still prevents Austin from waiting to check the box
+
+Speaker 3  20:36
+I mean maybe that's just could be a warning instead of a
+
+Unknown Speaker  20:43
+error oh if yeah
+
+Matthias Miller  21:03
+because you're going to add it why wouldn't we just have validation that you can't close out and testing until
+
+Matthias Miller  21:18
+we're warning like the warning
+
+Speaker 3  21:21
+well you should you shouldn't be able to close that testing unless all the rows in this RG have a resolution I think like I think it can be pretty much as simple as that right like like all the rows in the in the RG need to have resolution
+
+Unknown Speaker  21:44
+yeah
+
+Matthias Miller  21:50
+so then down here we actually say
+
+Matthias Miller  22:08
+well actually what if we do this we would say this is if tester
+
+Matthias Miller  22:27
+Yeah, so what's the what's the potential gap in this in this approach? So this should still be the potential gap in this approach is that the developer might forget to start Hello class that's a warning
+
+Unknown Speaker  23:41
+on Save when closing
+
+Unknown Speaker  23:49
+on save anytime
+
+Unknown Speaker  23:52
+Yeah,
+
+Speaker 3  23:53
+so yeah, what you're trying to avoid there's things not having like having an issue a bug that doesn't have a dev input basically. Yeah, like
+
+Matthias Miller  24:03
+they basically they just they miss it. They're not paying attention they completely miss it
+
+Matthias Miller  24:17
+but not getting obnoxious for Austin if he's queuing stuff up you don't want to do that
+
+Unknown Speaker  24:22
+either Yeah, I think that warning sounds good. And yeah, that the error for the closing is perfect.
+
+Unknown Speaker  24:44
+Yeah. Whatever job ID
+
+Speaker 3  24:57
+so you say required for all of you announcements and bug fix in I guess if it's in this job, it should probably automatically set.
+
+Matthias Miller  25:07
+Huh? Well, you can see in this job, we would do a revision. It would be a revision number.
+
+Speaker 3  25:18
+I guess the debit debit setting that because I don't know what that is? Yeah,
+
+Matthias Miller  25:22
+the debit setting. And I would also think that already written that should also should also link up.
+
+Speaker 3  25:43
+I'm trying to think what's what's the use case for already written up? Like you should, maybe it should just be bug fixing other job or enhancement and other job?
+
+Unknown Speaker  25:59
+Maybe? Well,
+
+Speaker 3  26:02
+yeah, I think I understand the differentiation there. Gorgeous example.
+
+Matthias Miller  26:07
+FP ran into their issue. And if we would have encountered that in testing, and we would have said, Yeah, but we don't want to fix it. Well, it's actually not fixed. I guess that's right, though. I mean, I think what we want to distinguish is, is this something that's been done?
+
+Speaker 3  26:30
+Yeah. Or is it originating in this testing job? Yeah, I think I understand it.
+
+Speaker 3  26:47
+Which hopefully, we don't run into that very often. Where we run into a bug in a testing job that's already been documented right now. If I know about it, and I know it's already processed, I mean, I'm not going to mention it in testing job.
+
+Matthias Miller  27:07
+That's, it's that's very true. That's only really meaningful when you have a larger team. Make sense? There are a few
+
+Unknown Speaker  27:22
+time and we've when we was completing it. And we asked her they say, oh, yeah, we know about this other job over here. Yeah. I like it.
+
+Speaker 1  27:47
+Link is going to be auto set. And related. Yes, optional. Drop was blank. Yes. No,
+
+Unknown Speaker  27:56
+kind of. How does that work
+
+Unknown Speaker  27:59
+lately? What? You know what that was?
+
+Matthias Miller  28:03
+Yeah. Is it related to this job or not? I mean, you might be, you might be testing. Let's say we have an account here testing gap accounting changes. And here's what I ran into that I was too lazy to write up. And it's really annoying. If you do an income statement last year, and then drill into GL details, you get an Ask prompt error running the drill in? Well, you might run into that while you're testing because you're trying to test something because they're doing they're gonna be doing income statements for multiple classes. So you might run into that. But it's not really related to the written it's not related to the work of the original job. So that makes sense. Yeah,
+
+Unknown Speaker  28:43
+that makes sense.
+
+Matthias Miller  28:45
+There's, there's like this, there are three, three things we want to look at one did the work, given the work that we did here introduced this issue, yes or no? Did we know about this issue? Yes or no? And right, sorry, it's just those two. Well, no, and then is it a bug fix or an enhancement? Makes sense? Yeah. Yeah.
+
+Speaker 1  29:19
+All right. And then test to confirm is a checkbox Do we need any validation on that? I mean, we've got this validation down here. Yep. So you probably don't need anything.
+
+Matthias Miller  29:41
+Then you can remove my bottom. You paragraphs up and spacing
+
+Speaker 1  29:46
+up there. Good. Deal, the only good good. automatically sorted out was unsorted, which normally we find if we end up with a really nasty testing job that has no 17 different items on it.
+
+Unknown Speaker  30:12
+I hope that doesn't have a little.
+
+Matthias Miller  30:16
+I mean, we could reverse. If it makes it easier. We could reverse sort by date time.
+
+Speaker 1  30:28
+We can also or by, by weather by whether it's resolved or not, or whether it's tester confirmed or not. But actually, that reverse word might actually be better.
+
+Matthias Miller  30:50
+I mean, you're not going to leave unresolved items lingering. At least.
+
+Speaker 3  30:57
+Yeah, I mean, you want I think you always want the most recently created row at the top of the r&g. Because if if an item does if a job does have 17 bugs in it, odds are a bunch of them, there probably aren't going to be 17 unresolved bugs at the same time. Like probably there'll be three or four that are resolved, and then three or four new ones, and then those three or four get resolved and then three or four new ones. So you always want the most newly created row at the top of the RG.
+
+Matthias Miller  31:37
+Yep, like this. Okay, so then the only other question is what kind of metrics and reporting you might like Austin, wouldn't it be cool to know that in your weekly testing summary, I like wouldn't it be cool to put some of this information in the weekly testing summary email?
+
+Unknown Speaker  31:55
+Yeah, it could be cool.
+
+Unknown Speaker  32:01
+Yeah, huh.
+
+Unknown Speaker  32:11
+Trying to think what would be why that would be meaningful?
+
+Matthias Miller  32:17
+There. You can do you? No. Good. No, yeah. I was gonna say, Do you want to know all the reasons? And the number of reasons? Or do you want to know, on the end, or the resolutions?
+
+Speaker 3  32:41
+I don't think the resolutions are actually that helpful in that sort of reporting the the tester reason? The tester reason would probably be helpful. Hmm.
+
+Unknown Speaker  33:03
+Maybe, actually, maybe
+
+Speaker 3  33:05
+it is helpful to have them both. Yeah, cuz I think sometimes you need them both. Yeah. Because I think you need them both. Because sometimes the tester is going to be wrong in what they say in the testing reason, and the resolution will clarify that.
+
+Matthias Miller  33:26
+I mean, you're not going to have that many. Here's what be pretty interesting. You're not gonna have that many. But did you just put a report in there that had a tester? Okay, like maybe Date Time. Tester. Sorry, Date Time reported by tester reason. Notes, developer and resolution. Maybe related
+
+Speaker 3  34:04
+notes notes is going to be ugly. Because I think I think the way I would envision using the notes is making my normal comments in the memo and then just copying and pasting that into notes. As opposed to writing a different note in notes. Well,
+
+Matthias Miller  34:23
+although instead of adding additional notes, why would we just say in your in your memo on top, you just say Cid see dev input 123 with your comments, and you even need more notes. Oh, it's used to document notes or copy the testers question. Oh, I see. Why. Why do we need the notes?
+
+Speaker 3  34:50
+I think we it's helpful just just associate that row with the question in
+
+Matthias Miller  34:58
+in the memo. What wouldn't be used the debit, but Id instead,
+
+Unknown Speaker  35:02
+we could we could do that.
+
+Speaker 1  35:05
+It would be hard to have conversation. Oh, no, I guess you just have your initial notes up in the RG and then you carry on the conversation below.
+
+Speaker 3  35:18
+Yeah. So that way you would, I would you know, you'd you just put, you know your timestamp, and then the dev input ID right after that, and then the comments. And then you could, if that's done consistently, you don't really need that Notes field.
+
+Matthias Miller  35:39
+Here's the thing, the only thing that you lose is you lose the ability to do reporting on the dev input reasons, like you can't drill in and say, I want to know the specifics of this without going and opening up the testing results and going to find, but is that really? I mean, do we really have to do that? On it from a reporting standpoint? I don't think so. But yeah, that that process would be my vote.
+
+Speaker 3  36:14
+That ID, is that just numeric? 123. On within the incident? Or is that something else? Like the person treated? is one the next one is to? Or is that unique for each incident? I mean, unique for each row across incidents?
+
+Matthias Miller  36:34
+It's not kind of incidents, but we can get you the choice whether you want 1234, whether you want to say a five digit number?
+
+Speaker 3  36:46
+I would think like 001002003.
+
+Unknown Speaker  36:51
+Sure, would be
+
+Speaker 3  36:53
+legible and easy to type, I don't think any more than three digits.
+
+Unknown Speaker  37:00
+So you want to clarify that then?
+
+Speaker 3  37:05
+Or even two digits get to three digits either. Like the first one created a 01, next 102, x 103, etc.
+
+Speaker 1  37:30
+Right. So that would be it would start over for every every testing job? Quick question down here validate against removing rows to have a resolution? Should this motion has been an error when we tried to delete or should we simply hide?
+
+Matthias Miller  38:22
+We can't do errors, you know, behind the belief. Okay.
+
+Unknown Speaker  38:33
+Oh,
+
+Matthias Miller  38:37
+we just say no, for my next call. We did you guys have other items you guys were wanting to go through?
+
+Unknown Speaker  38:45
+There are some others. But
+
+Unknown Speaker  38:49
+I think I mean,
+
+Unknown Speaker  38:52
+we're making good progress on this. One resolution circling around to you, then Austin resolutions has required if testers confirmed.
+
+Speaker 1  39:17
+But then that means that the dev could could respond and clear dev input without without setting a resolution. This should be set by the developer, right?
+
+Matthias Miller  39:30
+Well keep it then you need to differentiate between between No Well, I mean, we'll have a warning that keeps the developer from doing that. But if we require it prematurely. How do you know when the developer has seen it or not?
+
+Speaker 1  39:45
+Right. Or how do we know right? If there's an ongoing conversation
+
+Matthias Miller  39:56
+I mean, why would we, if anything? Why wouldn't we just remove the required completely and require resolution? When you? Because when you when you? Well, I don't know, either way, there's a simple way to spec it out and find
+
+Speaker 1  40:36
+Yeah, I was it'd be nice to for the test or not have to not have to. To make that call. Well,
+
+Unknown Speaker  40:45
+yeah, developers should, I mean, the developer should. The tester is not supposed to. So that's why we have a warning for the developer.
+
+Speaker 3  40:58
+I think there there might be cases when the when the tester could, though. Like if, if, if I bring something up, or even ask a question, like, say, if it's unexpected behavior? Well, no, not necessarily. Because so if if the dev thinks they fixed it, and I don't agree, then am I able to clear that resolution?
+
+Matthias Miller  41:28
+You would what happens next? Wouldn't check test your confirmed? You would send it back? Yeah. To them? With information about which I think it's a little clunky, it's not a perfect solution, but it's good enough.
+
+Unknown Speaker  41:57
+So what would we say here, then?
+
+Matthias Miller  42:03
+I mean, if it if you'd rather you can completely remove the required and just require it when you close out testing. All right. And just noted down where thumbs down at the bottom where we had to validate for testing? Yeah.
+
+Speaker 1  42:25
+Yeah, well, it actually, it would probably be better to consider require it right away, because you're going to be more likely to forget the details and the long job it takes a few days. So it'd be better to resolve them as you go along. Okay, um, Austin, do you want to come in here and make notes on on what you'd like to see included in the weekly testing update?
+
+Speaker 3  43:12
+I mean, the report isn't really all that much for me. Oh, sure. I could I could. I'm still thinking through it. And I think other people might have a better idea of what would be most helpful there.
+
+Matthias Miller  43:33
+Yeah, I'm really thinking of philosophy a little bit, I don't know that it's actually helpful to look at it weekly, I think somebody more like quarterly or even every, every three to six months. And here's what we're gonna want to know. I mean, we already have a good sense whether you're doing your job, but what we what we want to know is our developers doing our developers giving good instructions do need to push more on that to which developers are slacking. And you know, certainly think it's, it's useful to look at I mean, it could be useful to look at projects, see which projects had an unusually high number of downsides or issues or and I think it can even be useful for some level of performance measurement for you just to get some kind of idea of like, how many issues are you planning and give you concrete some benchmark and goal of, hey, I want to see if I can find you don't want to get petty with things but I want to see if I can find this many issues. It's so
+
+Speaker 3  44:49
+it doesn't really work that way. But yeah, um, you want in that report? So yeah, you're gonna want I mean, just developer for the for the, the job you want probably the the client code even could be helpful. And then you know, the resolution, the reason the number will be helpful for the Id just because at the ID the way it works, it's going to tell you how many, you know, we're on that particular job
+
+Unknown Speaker  45:32
+the date range
+
+Matthias Miller  45:33
+as a filter Yeah, I think something like this. And I think I think probably next steps is we get spec out the report just a little bit. And then next step is basically pitching to Ellis and say, Hey, Alice, we think this is we've experienced pain with testing instructions in communication. And here's, here's how we can give some transparency to what's actually going on and just make the pitch to him for it. I think. Basically, it's a it's a pitch to him to see the value on using this on the development side to increase the quality of
+
+Matthias Miller  46:37
+specimen in the race. Yeah, but I need a drop off like this, like we were going with this.
+
+Speaker 1  46:54
+Yeah. Okay. Well, we'll plan to ended up a little bit more here and
+
+Unknown Speaker  47:01
+go from there. Cool. Awesome. Appreciate it.
+
+Unknown Speaker  47:06
+All right. Well, it doesn't
+
+Unknown Speaker  47:08
+matter
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,647 @@
+Matthias Miller  00:00
+Okay, so what did it take some time because Ricky asked me a question about why he asked the question, why is can a small website not keep up with volume of streaming video, but YouTube can't. And why is it so expensive that it would take millions of dollars to scale up? And well, well, while I don't have the exact, full, in depth reason in a way that I think I can articulate. I think one of the things that arose from that is like, well, what is actual software because there's two ways that people think about software. What is people think about software from a very technical standpoint? In other words, you have a there there kind of are two types of even programming programming languages that are very linear, very, very, you know, step by step, the whole thing is a step by step. And that's called functional programming. Now, there's another way of programming which is like it will and those functional instructions are the foundation of any programming like I mean, yes, there are other types of expressive languages, expression based languages that are more you know, whatever, but be that as it may, at the core of all language and even you know, here's another interesting way to look at it. If you look at the evolution of software, and the evolution of language, then. Then you have the postcards and then the assembly language and it's like, well, let's do complicated. Let's make shorthand for that. And then that ultimately everything was predominantly linear. And so somebody's said, Okay, well, instead of like, let's not make this completely linear, let's say, We're gonna let you say go to what I mean. Maybe this is from the beginning, go to Step four, and repeat. Okay, well, that's good. That's really complicated. Like, like, how do I keep that in my head? And so then it's like okay, well, we're gonna put names to this go to the part that's named you know, you know, show error on the screen and then the let's go on the you know, let's let's and then when it's done then it can go it can tactic does to go to somewhere else. And so we don't actually had to know the actual location, we can just refer to it by name, and then it's really easy. And then finally said, Okay, well, this is good, but we have to pass information back and forth. And so, in order to do that, we need to have something called parameters. In other words, there's certain types of input and certain types of output that these these things can have and and how do we, how do we define those? How do those get passed, passed around? And then we started creating a convention for that. And then they said, Well, it's actually not quite that simple because now you have two versions that are worked together and, and how do those things tie together? Well, you have something called the class or the class to share some information. And, and oh, by the way, there are some design patterns that are really important when you're working with classes which is which is, you know, you can have I mean, for example, well, first of all, there are some design patterns, resources that are really important. For example, there are some contracts that you're going to keep. In other words, I'm only going to ask you to do this under this, these situations, I'm going to only only going to tell you a certain subset of things and then and then when you're done like you promised that the world will be in this kind of a state when you're done. And the same with classes like this class is responsible for a conceptual conceptual part of the part of the process. Now, this this concept has been in it in the you know, in software development from for a very long time, even before was called this, where it's like, well, what what is the class what classes is often represents some kind of thing. So sometimes it's an abstract thing and sometimes it's a more tangible thing. So for example, your you want to start working with a file on disk, there's a series of operations that need to happen in order for you to do that you need to let the operating system know that you want to open the file you want to tell it what to do as a file doesn't exist and you need to know what what you're planning on doing doing with the file so you don't accidentally do the wrong thing with it. So you can keep yourself from shooting yourself in the foot and then once you do that, then you need to tell what part of the file you want to go to. And then once you're in the right part of the file, then you need to know you need to decide what you're going to either read or what you're going to write or if you do both and then you need to tell it that okay, I'm done doing whatever I need to do the final week
+
+Matthias Miller  04:51
+I'm done with that I'm not going to be doing anything with it and then it closes don't have access to it and and that gives the operating system a chance to go write these things to death so that your information doesn't get lost and and it helps your your operating system manage resources because now because even though it's a small amount it takes there's some bandwidth for it to to be able to keep track of your file and the changes that you're making. And then once you've got that then what's the next piece well, okay, so, so then these are the types of things that you can you can use you can make it read only you can you can look at certain physical piece of information you can query it find out when it was last modified and these are all parts of accessing files, well, oh, look at all these functions that do the same thing. And they're all interconnected and interrelated. Well, this is actually, you know, conceptually. This is a this is a class. And so we're going to create a class called a file that has all of these functions that it can have. Now, how does this actually relate with business? Well, first of all, there's all kinds of interesting things that the that the that are going on under the hood when you're working with the file, but you don't actually need to know when you're working with a file. Like you don't really need to know this information, but it's happening under the hood. So what does the class do? A class helps to hide that information from you so that when you ultimately when you want to work with the firewall, you need to know you need to know the file name, you need to know some things about what you're gonna be doing. And then you need to perform the actual actions. And so here's one of the lessons that we extract from from business is that sometimes there's groups of activities that you're doing together that logically belong to each other. And, and, and you want them to be to be interconnected with each other. And because of that, you can well, and so you can put them all under one roof and and when somebody wants to go and the way that you manage complexity is you look at the points of communication so how do you get at the point of intimate communication? Well, you only share the information that needs to be shared, you try to reduce the number of people that it needs to be shared with. And when you do that, you isolate and eliminate complexity. So you might have a sales department that's really complicated. We have a marketing department that's extremely complicated. And there's all these folks talking to each other. But what you do is you have you haven't you have parts within any part of the business talks as much as it needs to with with other people, but when you try to limit it to a single point of contact, you dramatically reduce reduce complexity. What does this also mean? Well, systems and processes are much more than just step by step instructions. It's about finding the natural order and the natural structure that is that is emerging from within the organization. So now there are some patterns that we have. Well, there's, there's there's some other issues too, which is it's centered around scalability like how do you how do you skill software? Well, at some point, you need to have a you need to have one source of truth for your information like you can't have you can't have to two people out there with with the same name and same social security number and different phone numbers because, well, then what what are they like which number is correct? And so let's say that you have a massive amount of storage and massive amount of information that you're dealing with and you need to synchronize this information across multiple people that are that are wanting to use it how? Well one of the ways that you do is one of the things you can do is you say okay, well, it's perfectly appropriate, appropriate to have somewhat stale information. So sometimes on a news website, just the act of saying that somebody is going to have one second still news, or that somebody's watching a streaming video that's one or two seconds delayed, introduces enough delay and enough of a capacity that it allows the to steer the burden and and speed it up so in other words,
+
+Matthias Miller  09:17
+so why, why is this? When you have only one source of information, that's the source of truth, then you have two dozen people that are going to this one person, and this one person gets overloaded because they only have so much bandwidth. So when the same people then you say, Well, no, that doesn't make sense. So so in the in the case of software, instead of just having one computer to go to, we're gonna have that one computer still gonna be the source of truth, but it's going to share its information with six computers. And each of those six computers will have a copy of the information that's been delayed. And so every second it's refreshing it to get the to get the latest to get the latest information. And and then and then instead of, you know 15 People going to, to 18 people to the first person you now have whatever the numbers are you got you know just a handful of people going to each one so suddenly you've multiplied your capacity because you've introduced some kind of a delay. Now, what does this mean in business? Well in business, sometimes you may have something that is the source of truth like a city or county. And, you know, maybe this is less true in a digital context. But it may be true in a you know, from a procedural standpoint, so there is a master procedure list that gets handed down to from department to department and, and because there's a delay then we're able to allow the
+
+Matthias Miller  10:54
+then then people can go ahead and instead of asking just one person and bombarding one person with all of these questions, they're actually able to go to multiple people and there's multiple sources of information for this now what's the problem with this in any kind of software environment? Well, one of the problems is, is that what happens when you have three copies of this information and, and the source of truth changes so, so three computers have memorized my contact information and it changed the actual contact information? How do they know to update? Well, there's a few ways that they can do this one, you can say, well, we just do this automatically every second. So if you catch it within a second, then you're gonna get stale information. What does this mean in an organization? You could, it may just mean that it takes time to roll out changes and whenever these changes get rolled out, and people get notified, and if you're okay with a delay, you're fine. Now what's another way to do it? Well, you can have a you could have a quick check in that basically says, Hey, I'm here with this information, is it is it still up to date? And if it was, then you then you go, or good? Or you could say, Well, every time we get this information, we're gonna go see if it's is this out of date and if it is, then we're gonna go fetch it ourselves and replace it. So there's, there's a number of ways that you could actually deal with this issue. Or you can have, you know, whatever, when, or you can have this proactive or you can have a proactive state where, where this is when when something is out of date, then it gets pushed down to let it get gets, that actually gets pushed out. Alright, you're gonna have a hybrid approach, which is like, okay, there's a new policy. Now we're going to go to, we're gonna go yank that policy out of the binder and whenever you need a new one, you're gonna come back and you're gonna find a find a new one for us. And so that's how you deal with issues of scalability and how to how to prevent the duplication of information. Now, what you really want to avoid is you what you want. What you really want to avoid is you want to avoid duplication of mystery. You want to prevent the spread of misinformation. And the way that you prevent the spread of misinformation is that having only one source of true information. Now, what what are some other you know, what are some other parallels and equivalents? Well, another federal equivalent is there's something in suffering. There's something in the hardware side, which is short term memory, long term memory Well, what happens when you plug unplug your computer? Well, ideally, all that happens is up against goes down into anything that was open your programs and you know, unless you're like Mac and you Well, I mean, maybe Mac doesn't even do this, but it turned himself down. And as a result of that, you lose all the information that he had open in your progress, but the files on your hard drive are safe. Now. There's some some very specific timing situations where, especially in olden days, if you have power at the wrong time, then you might have a partially written file and you wouldn't and file wouldn't be valid if you might actually lose information on disk. But by and large, we solved that problem. And by the way, we now have batteries, which means that the loss of power is very unlikely, but nonetheless, computer has has a concept of short term memory versus long term memory. Well, what's the benefit of short term? Memory? The benefit of short term memory is that it's super super fast. In other words, like, I mean, if you're dealing with, you know, one of the fastest things, well, you know, as an example, when you have software you might have a million lines. The project that we worked on had upwards of a million lines of code. And, and because of the way this this stuff is interconnected, it was ended up processing. I don't know exact numbers, but maybe five or 10 million lines of code because of how again, how how those technical pieces of information happened through the reading this much information and enough to be a bottleneck, especially at the point that you had, that you had a valid you know, whatever your your CPU, your processor was fast enough, and then the slowdown would become reading all this information on this. Well, what's what's it analogous to? RAM is analogous to this is analogous to your short term memory and and written procedures are analogous to long term memory. So So why do you need them? Well, short term memory is good, because it's really fast that you can remember but the problem is that there can be blessing in your short term memory. And so that's when you need long term memory. Or you might close down the program and and somebody else might come up and, and show like log in and be like, Oh, so you know, the program might restart. What's that analogous to this? That's analogous to somebody else coming in and jumping into here in the process? Well, they might not actually know what's going on but so they need a long term memory so that they can load it into they can do it quickly. And then once it's, once it's, it's, it's it's like it gets replicated. So here's another theory of scalability. In other words, like
+
+Matthias Miller  15:47
+the equivalent of caching is like, you have these, you have these written procedures and they get copied down into people's brains. And so what needs to happen is when these things get changed, you need to push them to people's brains, or people need to check in and that's really where the scalability analogy comes in. So that you need to transfer it to their their for short term, their long term memory. And this is called you know, this is a process called syncing. Now, no thinking is another issue, which is, at some point, you have to have an actual source of truth, like you can't just have some kind of false wish, which is what happens when you have one person that changes one thing and somebody else who changes another thing, how you reconcile those differences you need to know What's the content? What needs this was what needs to go in today? Again, what's the analogy here when you've got when you've got these procedures in, in somebody's head, they might actually start behaviorally doing something different that doesn't match what's actually documented and written down. And as a result of that, it introduces this disconnect between what's actually documented and how it's actually
+
+Speaker 1  16:55
+being executed. So, in that particular case,
+
+Matthias Miller  16:59
+with that particular case, what you need to do and on top of that, might actually have management making changes to these and thus meeting to creating multiple levels of difference where you can't just update so what you need to do is you need to take a look at and compare them. And by comparing them essentially what you do is you look for the differences. You figure out which difference resulted from changes by whom, and then you interleave those changes, and you make sure that the changes still create a coherent whole, which is basically the process that happens when talking about the process. We're not a code review process but in a conflict merge from a software standpoint, one of the ways that you do this is you
+
+Unknown Speaker  17:48
+either assign something as the source of truth,
+
+Matthias Miller  17:51
+and you force people to do that, or you've got some of the processes of reconciliation and thinking and then the less real time, the thinking the greater the likelihood of changes. And then what happens when you've got multiple people trying to change the same process. And if you do both different ways, now you have a conundrum that requires human intervention because you need to actually look at how they're doing it
+
+Unknown Speaker  18:19
+differently specifically,
+
+Speaker 2  18:21
+and be able to reconcile those Okay. So, taking this a bit further you also have to understand that these things are divided in categorized in different ways. In other words, there's things all the way in the very basic granular structure which are called statements and then blocks and then functions and classes and modules and libraries and applications and even application suites. In other words, this whole design process is extremely fractal and
+
+Unknown Speaker  19:00
+Yeah relationships with between statements
+
+Speaker 2  19:15
+Groups. There's their responsibility if you're doing XY or z, if you very similar outside of that. The last thing you want to create is if you create a Swiss army knife, but if you create a dummy knife which should be at the core is this container that holds all of these isolated separate
+
+Unknown Speaker  19:34
+tools and if
+
+Speaker 2  19:37
+you have a tool that grows separately, and you if it evolves into it into a Swiss Army Knife without proper categorization, preferably a unifier then you just have this convoluted mess where it's like
+
+Unknown Speaker  19:54
+maybe it kind of works
+
+Speaker 2  19:55
+but there are some things that just need to be done. But there's, there's not always it becomes a series of tasks, which is a whole other form of programming. It's called scripting. In other words, there's these isolated things that need to be done isolated tasks. And just go do them. And we can support the environment, but they're not really, you know, they're critical for the for that they're not actually part of the they fall under, typically under kind of a different set of some rules. They can be shorter in the linear base
+
+Unknown Speaker  20:35
+doesn't always necessarily tie
+
+Speaker 2  20:36
+elegantly to emerging coal. So along with that, Kevin, one of the things you see with
+
+Speaker 1  20:44
+we were going to present is that procedures which are this one on pass, these are the
+
+Unknown Speaker  20:51
+essentially the
+
+Unknown Speaker  20:53
+scripts, the
+
+Unknown Speaker  20:56
+batch processes, that needs to be run, that supported progress that's
+
+Unknown Speaker  21:01
+going on, but then we also have
+
+Speaker 2  21:03
+the whole itself itself and how those actually functions. So there is another part of development which is, is the code review process, which means that you always have a second device, looking everything and trying to see because essentially what happens is there's balance transfer happening both directions. First of all, you have some risk. But then you also have feedback on investing and have something with a fresh set of eyes. So that's one aspect of it, but it is something else that happens is an actual UA which, again, we're not stringent on this, but I wanted you to be able to have what I didn't execute at least once and then the more you can verify that these things are actually saying it actually gets recorded
+
+Unknown Speaker  21:57
+that everything's recorded. That needs to
+
+Unknown Speaker  21:59
+be reasonably
+
+Unknown Speaker  22:00
+reported. There are some
+
+Unknown Speaker  22:08
+additional pieces that I think it was going to tie into that. Getting
+
+Speaker 2  22:14
+is going to give me a moment to think about a little bit and see what else I came up with. Here is something interesting is usually what a piece of software is, it really comes down to a set of instructions
+
+Unknown Speaker  22:28
+organized in a logical coherent manner
+
+Unknown Speaker  22:31
+to interact with the
+
+Unknown Speaker  22:33
+outside world.
+
+Unknown Speaker  22:36
+Control the defined
+
+Unknown Speaker  22:37
+means
+
+Unknown Speaker  22:38
+with with an exchange of communication with an exchange and storage of information.
+
+Unknown Speaker  22:47
+So, people from the
+
+Speaker 3  22:51
+outside who are providing information, providing something there is a specific
+
+Unknown Speaker  23:02
+set of instructions of how
+
+Unknown Speaker  23:04
+to
+
+Unknown Speaker  23:06
+get that information or that information
+
+Unknown Speaker  23:18
+something useful
+
+Unknown Speaker  23:19
+there's a small black box of outside of
+
+Speaker 4  23:23
+what appears to be happening but there's actually so many layers
+
+Unknown Speaker  23:27
+beneath what actually is happening. And,
+
+Speaker 2  23:33
+you know, this is not not a dissimilar analogy. One of the challenges we face along with
+
+Speaker 1  23:41
+that is that ultimately what you want is a high level level. system the greater picture it's because of missteps. Decisions decision design process because
+
+Speaker 2  24:07
+you lose context.
+
+Unknown Speaker  24:13
+Or you have something that
+
+Unknown Speaker  24:17
+is actually designed in a different context and environment and
+
+Unknown Speaker  24:20
+conceptually, they say it's applicable. But
+
+Unknown Speaker  24:25
+it's actually not
+
+Speaker 2  24:27
+a result, you end up having to shoehorn it in you basically, introduce, you don't have control over changing.
+
+Unknown Speaker  24:35
+So that is analogous
+
+Speaker 2  24:36
+to, say a vendor or something particular vendor you're working with and you don't have the ability to change how they operate. You end up you know, the biology. Example is another way to remind me of the rule of three. I'll get back to that logical example if you form a callus or something around that.
+
+Unknown Speaker  24:56
+And you just let yourself
+
+Unknown Speaker  25:01
+in, but it's interesting,
+
+Unknown Speaker  25:05
+but sometimes you actually
+
+Unknown Speaker  25:07
+somebody processes me but what you need to do is be able to
+
+Speaker 2  25:18
+find a bit of that in a way that you can manage the complexity and again, isolate. You want to isolate whenever you can't isolate, isolate
+
+Unknown Speaker  25:26
+it as much as possible.
+
+Unknown Speaker  25:30
+Isolating, it means
+
+Unknown Speaker  25:31
+reducing, keeping it a very local impacts.
+
+Speaker 2  25:40
+See how much and there's this whole concept of the rule of three which is, well actually, there's also
+
+Speaker 5  25:50
+this concept of refactoring, which What does refactoring mean? Well,
+
+Speaker 6  25:53
+if you look at the total cost of ownership on a software project, its industry standards, they tend to represent the initial why is that? It's because it's actually apparently a static transaction
+
+Unknown Speaker  26:13
+is very, very dynamic space. being applied the speed of innovation it was
+
+Speaker 2  26:24
+10 years ago, we're talking about was perfecting yourself we're talking about. or 15 years ago, when we were talking about was what to window which
+
+Unknown Speaker  26:37
+went from
+
+Speaker 2  26:39
+a static document based web to a
+
+Speaker 5  26:44
+you know, interactive web And now and now we're talking about what what we put out which is the centralized software. So suffers by, by nature,
+
+Unknown Speaker  26:59
+very dynamic,
+
+Speaker 6  27:00
+and as a result of that you have to invest in
+
+Unknown Speaker  27:06
+maintenance, or you're going to or you're going to lose a project and
+
+Speaker 6  27:13
+the cost of maintenance costs represent every year. Well, what does this actually how does this actually translate?
+
+Speaker 2  27:20
+If you really want to be really want to integrate processes effectively, you have to allow room to look yes, it will speed up your process. But you also have to allow to be able to go back and revisit it and edit it and make changes and revamp it and more than just tweaks and edits are times when you will have to restructure entire parts of it so that you can do so that you're gonna continue to adapt. Why is that because business is what type of business but the more static your business, the less you have to do that the more kinetic your business and the more vulnerable you are to moving parts outside of it. Then
+
+Unknown Speaker  28:02
+the more
+
+Speaker 2  28:04
+the more important. This is another another tool set in programming called refactoring. refactoring. Well, refactoring basically is
+
+Unknown Speaker  28:12
+let's actually start with three,
+
+Unknown Speaker  28:15
+three, the rule of three says that before you before you
+
+Unknown Speaker  28:22
+genericized something
+
+Unknown Speaker  28:31
+we should generally implemented about.
+
+Unknown Speaker  28:36
+Doing this you'll create this very
+
+Speaker 6  28:44
+quickly deals with what you idealize would happen but it's not actually grounded in reality so complicated.
+
+Unknown Speaker  28:55
+Because you don't really know what this is more.
+
+Speaker 2  28:59
+You can be useful it doesn't actually work. This is very common with people who are trying to build out a business process when they've actually built out the business. You want to build a high margin business on the front end. So you can
+
+Unknown Speaker  29:15
+actually have the room and space to build the process, because you want to do this repeatedly before
+
+Speaker 2  29:19
+and allow yourself the space to figure this and by the way, there's different skill sets. To innovating to this first number of iterations and finding the common patterns and systematizing it to keeping that machine going. And we're using so. So one of the things you want to do is
+
+Unknown Speaker  29:43
+say hey, this sounds a lot like this thing that we're doing over here. Like is this basically the same thing can be consolidated and they can't be consolidated the same process one of the
+
+Unknown Speaker  30:01
+process, really in other words, basically what you have
+
+Speaker 2  30:09
+when you did this, to make sure that you repeat this over here as well, and the other places oh, by the way, it could be this place. By doing that, you can make sure that things that are very similar and we're pretty similar, but slightly differently. Confusion of trying to create something that works for both substantially different but
+
+Speaker 6  30:30
+substantially similar types of procedures, make sure that we can make changes to one you think, the application. Now,
+
+Speaker 2  30:49
+there's also these questions about what makes a good development environment and what are the things that makes your development environment
+
+Unknown Speaker  30:56
+that makes it really easy to find connections
+
+Speaker 6  30:59
+and find the things that you're looking for. And in any, any type of situation like minimize the amount of time that actually spent
+
+Speaker 2  31:06
+looking for things. Make it as easy as possible actually.
+
+Unknown Speaker  31:12
+A few things one
+
+Speaker 6  31:13
+is a good system for organization. Insert search
+
+Unknown Speaker  31:27
+for your seats and we're not going to wait and
+
+Unknown Speaker  31:31
+really, really
+
+Speaker 2  31:34
+want to know about you prize So there's another very common design pattern that you see which is a tree structure.
+
+Unknown Speaker  31:49
+One of the reasons why
+
+Speaker 2  31:49
+choose structures are helpful and relevant is that they represent the fractal nature of things.
+
+Unknown Speaker  31:59
+Which really is not unlike an org
+
+Speaker 2  32:04
+chart. It's not unlike many of the things that you might have. I don't really know
+
+Speaker 4  32:11
+how this actually plays into an organization. But one of the things that
+
+Unknown Speaker  32:15
+does is well, one of the things that it
+
+Unknown Speaker  32:22
+does is
+
+Speaker 2  32:24
+it really gives you a way to, to versus a list we're list is a linear set of things.
+
+Unknown Speaker  32:36
+It does allow you to
+
+Unknown Speaker  32:40
+easily segment
+
+Unknown Speaker  32:45
+you know, another way of representing the tree structure,
+
+Unknown Speaker  32:51
+so to speak, it does mean that
+
+Unknown Speaker  32:57
+you can, like if you imagine,
+
+Speaker 1  32:59
+wall surfaces all the leaves and if your circles subset any number of related issue and related pieces
+
+Unknown Speaker  33:17
+based on
+
+Unknown Speaker  33:23
+based on the level of specificity, for example,
+
+Speaker 2  33:27
+you might say, there's this one here, that is related to like, here's his script. I want to see where, what might be impacted by changes to this task. And so, you look at things that are closely somewhat related to the less closely less closely less
+
+Speaker 6  33:47
+for free and go expanding after concentric circles. We're able to identify where potential
+
+Speaker 2  34:04
+leads, there's a good chance to serve some kind of practical method. It's not immediately apparent,
+
+Unknown Speaker  34:11
+but it's something worth considering. it's
+
+Unknown Speaker  34:27
+if you take
+
+Unknown Speaker  34:28
+a software system and rewrite it completely from scratch,
+
+Unknown Speaker  34:31
+it's
+
+Unknown Speaker  34:33
+often means depth to the project. And the reason is that
+
+Unknown Speaker  34:38
+there are small pieces of
+
+Speaker 2  34:39
+detail that have significant impact and ramifications. So, there may have been
+
+Speaker 1  34:45
+this one scenario sample of scenarios where something went sideways a series of small fixes
+
+Speaker 2  34:59
+to prevent that problem with
+
+Unknown Speaker  35:02
+doing things is
+
+Speaker 6  35:05
+that there are certain nuances in in that
+
+Unknown Speaker  35:12
+so because it appears to be in detail,
+
+Unknown Speaker  35:18
+you may underestimate the action
+
+Unknown Speaker  35:23
+together. mitigate that
+
+Unknown Speaker  35:26
+as much as possible to mitigate this by mutations. Document. Fixing by doing things a certain way, and then being a fantastic array of data. Managing versus waiting,
+
+Speaker 5  35:56
+simply don't understand perhaps not in the Maybe it's not important for the people who are actually going through that but
+
+Unknown Speaker  36:07
+they need to consider why they
+
+Speaker 1  36:20
+bug fixes are part of the process, and bug fixes, I don't just mean intelligence mean correct ways to fix problems
+
+Speaker 6  36:34
+with systematically. So now there's this there's this final piece, which is
+
+Speaker 7  36:47
+probably one of the greatest skills that comes from position which
+
+Unknown Speaker  36:52
+is managing
+
+Speaker 2  36:57
+work maximum. And, again, different different developers will focus on different things. So if you have a certain type of
+
+Speaker 1  37:11
+you have to understand that certain types of software features, temporary levels of the printer cracy.
+
+Speaker 2  37:20
+If you have the software that's where accuracy or performance or timeliness accuracy are not a major issue, then quality of rebate actually be more important, but when you have situations where we have situations where accuracy actually does matter substantially.
+
+Unknown Speaker  37:52
+That's where
+
+Unknown Speaker  37:53
+attention and care for detail
+
+Unknown Speaker  37:54
+are more important. So
+
+Unknown Speaker  37:58
+again, very pragmatically
+
+Speaker 6  38:02
+when it comes to building out these processes in detail for you,
+
+Speaker 4  38:07
+to place the things that require precision and allow other
+
+Unknown Speaker  38:11
+people to
+
+Unknown Speaker  38:17
+allow other people to do the
+
+Unknown Speaker  38:23
+things so with that, in
+
+Unknown Speaker  38:29
+everything there is this
+
+Unknown Speaker  38:31
+drive for pragmatic
+
+Unknown Speaker  38:38
+pragmatic benefit
+
+Unknown Speaker  38:40
+was actually usually one thing, surely, as a result, we build a machine that doesn't actually have to worry.
+
+Unknown Speaker  38:58
+There's other people who do
+
+Unknown Speaker  39:00
+that. So it's like hierarchy. So what's your engine is a system
+
+Unknown Speaker  39:09
+so if you if you
+
+Unknown Speaker  39:11
+systems are like
+
+Speaker 1  39:13
+yours, and if you have a low amount of momentum in a vehicle, hear I hear all the
+
+Unknown Speaker  39:29
+distractions, like we're
+
+Unknown Speaker  39:32
+just going to give one away
+
+Speaker 6  39:35
+and you're going to look here and you're going quickly,
+
+Unknown Speaker  39:41
+or you're going to
+
+Speaker 6  39:42
+max out Europeans and that's the scenario worst case scenario.
+
+Speaker 2  39:58
+You really want to start later. So how do you do that? I think it's always a work in progress. This is supposed to serve you and make your life easier, not harder to start with the pieces that are most
+
+Unknown Speaker  40:12
+difficult or that person
+
+Unknown Speaker  40:15
+can most easily be offloaded or delegated.
+
+Speaker 2  40:23
+So that's that and then, then there's this process of how do you actually break this down? I think one of the easiest ways to do this sort of process of tactical delegation, which means any number of ways you can do this. So ultimately, what you want to do is you need to have you need to have some kind of recorded storage in some format or another, it can be taxed, can be written or
+
+Unknown Speaker  40:55
+it can be spoken
+
+Speaker 2  40:57
+for TV video. And the it is a trade off between speed of changing Egypt changing it and updating small parts of it, versus Ease of Doing it the first time. Usually it's more work to get it to the first time in a way that allows you to easily get the feature. So it's a trade off. But then there's also this secondary issue
+
+Unknown Speaker  41:28
+that different people have different preferred means of communication. So some people prefer to live on the fly and some people prefer recorded
+
+Speaker 2  41:46
+so you might have live spoken and so simply what you would you can do there if somebody has like spoke smoking, there's a few things you can do. Easiest thing is just to record it and have it transcribed using something like otter. You might have something to utilize written, which may come down to have a chat or text message or email, exchange. You know, may end up being heavyweight and then using that kashrut and restructuring it and reformat it or you may have some leakage occurs live demonstrations. Again, video can be a great way of doing this for feedback, watching them do it practices or doing it yourself can be
+
+Unknown Speaker  42:32
+amazing.
+
+Unknown Speaker  42:34
+What you're looking for, is
+
+Speaker 2  42:39
+you want to translate from a live environment into a recorded environment, that it can get translated back into a live environment accurately.
+
+Speaker 4  42:47
+So keeping in mind that there's these three primary modes of
+
+Speaker 2  42:55
+communication, learning and modeling appropriately, and you'll find that in different types of roles that you'll have proclivities in one direction or the other based on first so for example, if
+
+Unknown Speaker  43:11
+you are
+
+Speaker 2  43:13
+in some form of manufacturing things for your Etsy shop, those types of people may be more inclined to learn by watching collections.
+
+Speaker 8  43:28
+And by doing so, you've built your training process. And
+
+Speaker 2  43:35
+you may actually want to have some kind of mean, here's a simple example. You may actually want to have a physical board that has pictures of the tasks with
+
+Unknown Speaker  43:52
+a QR code that allows you to pull in
+
+Speaker 2  43:55
+specific details for that particular class.
+
+Speaker 1  44:01
+Or you may actually have a print out a series of books that's once you freak.
+
+Speaker 2  44:12
+out people who are some people who again this this,
+
+Unknown Speaker  44:25
+some people may prefer
+
+Speaker 4  44:26
+flowcharts more of a step by step instructions of
+
+Unknown Speaker  44:29
+what to do this, this, this and this.
+
+Unknown Speaker  44:34
+And then,
+
+Speaker 2  44:40
+you know, this is my personal preference because of the ease and simplicity of the tool set.
+
+Unknown Speaker  44:47
+Simply allowing yourself to
+
+Speaker 1  44:49
+complete the inspection. Putting in big categories of steps.
+
+Unknown Speaker  44:56
+It's very easy
+
+Unknown Speaker  45:00
+to read into, style
+
+Speaker 2  45:07
+Here's another really interesting correlation when you consider low level versus measurable languages. Because I think low level languages can be roughly equivalent to unskilled labor, which means that you can I mean, theoretically you can take anything and you can break it down in a unskilled level. But if you were to write let's say in assembly language, it would be surgery ridiculously complicated, but it will prove to be useless. Now that's extreme, but with higher level languages, higher level levels of abstraction, a lot means that there is
+
+Speaker 1  46:01
+some kinds of free understood ideas like that, that
+
+Unknown Speaker  46:10
+allow you to get things done. So what you want to do is you want to tailor
+
+Speaker 1  46:15
+the instructions that you have or the level of knowledge that you
+
+Unknown Speaker  46:19
+expect to have so. By and large, your lower level tasks will
+
+Unknown Speaker  46:32
+include a much higher level of detail
+
+Speaker 6  46:33
+because yet people will text
+
+Speaker 2  46:38
+you. The other responsibilities for your procedures for a marketing director, for example, will be higher level, things that you might actually put in information about or hear the things that need to be done. Specifically, by as part of this,
+
+Unknown Speaker  46:59
+we're just understanding
+
+Speaker 2  47:03
+that, you know, high level languages allow you to say a lot of words or skill your
+
+Unknown Speaker  47:12
+team member that you're listening with
+
+Unknown Speaker  47:13
+more you'll be able to do that. So just
+
+Unknown Speaker  47:16
+tailored appropriately.
+
+Speaker 2  47:20
+Again, there's two things that you're looking to do. One is to unpredictability because people are and the other thing is
+
+Speaker 4  47:32
+to be able to let them go on vacation and somebody else cover for them for people. So instructions are certainly
+
+Unknown Speaker  47:51
+fighting. Argument, vacation you don't really have more than just the basic are going to respond. So those types of responsibilities, if they reasonably can be
+
+Unknown Speaker  48:13
+outside their role, and listen to us more specific language work,
+
+Unknown Speaker  48:17
+and more perversely to work versus high level conversations
+
+
+Transcribed by https://otter.ai

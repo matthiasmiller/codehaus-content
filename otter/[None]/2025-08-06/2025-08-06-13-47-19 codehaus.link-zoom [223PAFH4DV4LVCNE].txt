@@ -1,0 +1,1121 @@
+Speaker 1  01:34
+The I
+
+Unknown Speaker  01:39
+has an event type i. bus must change. A minute and AR and back. All right. Okay, perfect. Okay. You all make progress on ERT stuff. Yeah, we have convenience fees, knocked out, we're working on other fees. Well, which. Nice. Yeah, I Well, do you want me to drive? You gonna drive? You drive first? I have a million and a half tabs open. Very crazy. I also saw Drew had comments in the customer refunds, job incident, whatever that's worth. But anyway, okay, the odds are I may have broken my system if I don't get nearly as possible. Anyway, I I didn't switch my ears. Do you want to start with the report, or don't we? Do we add the transaction type instead the check at the checkbox and Update the x 30s and review the index right. Yields, strands is there for pop ups. There's one. This is event. I would call it event locked period correction or something. I and then probably put it up here. Yes, we only, only showed if the event type is set, Oh, it still updates, sweet. So when you update the x 30s, let's look at
+
+Unknown Speaker  05:11
+this and index calls, right? Yeah,
+
+Unknown Speaker  05:23
+graciously, we have, I
+
+Unknown Speaker  05:45
+Okay, so we have
+
+Speaker 1  05:48
+transactions by event and IDs, and it counts as these two.
+
+Unknown Speaker  05:58
+Oops, sorry, right? It.
+
+Unknown Speaker  06:18
+Not sure how that gets used. I
+
+Matthias Miller  06:40
+I mean, this is fine. I think if it looks at everything, well maybe, well, as long as it doesn't think it's a duplicate the transaction. Well, that's what I'm wondering, each other, yeah, I think you're right. I think this one should look at,
+
+Unknown Speaker  07:03
+should exclude, right? Yeah, I think so. I wonder
+
+Matthias Miller  07:11
+if we're going to want to end up creating two let's Yeah,
+
+Unknown Speaker  07:22
+events with cleared
+
+Matthias Miller  07:29
+What is this? One used for positive pay, probably to lock down editability.
+
+Speaker 2  07:41
+I it's
+
+Speaker 1  07:46
+displayed on the detail screen. Oh, we might use it. I kind of want to open a second catalog instance that I can search something else. YEAH. I
+
+Unknown Speaker  08:06
+so let's look for
+
+Unknown Speaker  08:13
+so what if i
+
+Unknown Speaker  08:25
+I think I
+
+Unknown Speaker  08:52
+for this one we said, now I'm
+
+Speaker 3  09:00
+I don't want to Insert Copied. I just want to insert. Actually do I want? Wait? I like,
+
+Unknown Speaker  09:31
+my Excel skills are
+
+Unknown Speaker  09:34
+apparently not up to par I
+
+Speaker 3  09:52
+has clear transaction as with pay files and.
+
+Speaker 1  10:00
+We have an ask prompt in the report. That's how it's used,
+
+Unknown Speaker  10:05
+just a filter.
+
+Matthias Miller  10:07
+I mean, it seems sane to include corrections, yeah.
+
+Speaker 1  10:19
+So then I want to figure out what this guy does.
+
+Speaker 1  10:28
+Existing impact, existing Oh,
+
+Matthias Miller  10:48
+this is for the historical wait.
+
+Unknown Speaker  10:58
+We don't
+
+Unknown Speaker  11:01
+use this. We should. We don't,
+
+Matthias Miller  11:13
+do we use the PO, win,
+
+Unknown Speaker  11:21
+nope, we don't use either them.
+
+Matthias Miller  11:29
+Fine, then I don't know how to rationalize what it should do. But if they're not used anywhere, let's have a separate commit. I mean, I think this is basically the, I mean, the idea for that one was, don't let people change things that affected historical like, if at a certain point,
+
+Speaker 1  11:59
+is This something we must have started on and left F bait,
+
+Matthias Miller  12:03
+I wonder
+
+Unknown Speaker  12:09
+curious
+
+Unknown Speaker  12:12
+now and will probably get in the way. But
+
+Speaker 1  12:19
+do you think we should be fixing that up, making so it's actually functional.
+
+Matthias Miller  12:27
+What does this kind of, I mean, maybe, but on the other hand, this kind of eliminates the
+
+Unknown Speaker  12:32
+nuke it. Yeah, I know you're not going to complain about nuking rows.
+
+Matthias Miller  12:40
+I'd be kind of inclined just nugget in its own thing, and if we ever need to rationalize it, we bring it back.
+
+Unknown Speaker  12:57
+Suppose about deleted via account impact
+
+Matthias Miller  13:01
+that's going to create a compiler?
+
+Speaker 1  13:04
+Yeah, I would say so it better. So what was this guy calling it's this guy, which I think also maybe is not used anyway. There
+
+Matthias Miller  13:19
+should be an effects.
+
+Unknown Speaker  13:23
+Yeah, that's not used. But
+
+Matthias Miller  13:25
+then there's also an account impact errors for no, there's something that could that checks to see whether it affects a reconciled transaction or something.
+
+Unknown Speaker  13:36
+Oh, this guy, do we use this one?
+
+Unknown Speaker  13:45
+I think we use this one.
+
+Unknown Speaker  13:53
+Yeah, okay,
+
+Unknown Speaker  13:59
+yeah, so we use that guy.
+
+Speaker 3  14:06
+Just created another job.
+
+Matthias Miller  14:10
+I could create a child job. We should almost have a job just for the reconcile, like allow accounting, impact corrections, relaxed period corrections, or
+
+Speaker 2  14:22
+something. Yeah. Like
+
+Matthias Miller  14:27
+we're definitely going past the sales tax liability thing at this point. That's true.
+
+Unknown Speaker  14:36
+So this one is, you said
+
+Unknown Speaker  14:41
+impact. You.
+
+Unknown Speaker  15:01
+Reconciling.
+
+Unknown Speaker  15:09
+Now, why is my plane? Blaine drawing a brink? I
+
+Speaker 1  15:40
+we're just going to call accounting impact to lock corrections for locked periods, perfect. And I wonder if we should break out an incident here. That sound fair. I think It's fair. Yeah,
+
+Matthias Miller  17:17
+oh, that's all good. No worries. This
+
+Unknown Speaker  17:22
+one combusting in again. They
+
+Matthias Miller  17:26
+had a birthday party over lunch, so one of the ladies closed door for me, doors for me, and then meant to open it back up after they were done with party.
+
+Unknown Speaker  17:34
+Gotcha, yeah, like
+
+Unknown Speaker  17:37
+we're capable of doing that.
+
+Unknown Speaker  17:48
+Okay, so we now have
+
+Unknown Speaker  17:50
+our incident. You want me to what
+
+Speaker 1  18:00
+this deleting of macros. Do you care if this is just dropped in the job we're starting
+
+Matthias Miller  18:05
+on just do it in here? Yeah, yeah.
+
+Unknown Speaker  18:10
+Oh, but I want to remove this field for
+
+Matthias Miller  18:12
+now. Yeah, it seems seen.
+
+Unknown Speaker  18:21
+Go,
+
+Unknown Speaker  18:34
+cut the scale.
+
+Unknown Speaker  18:40
+Nuke, Nuke, nuke.
+
+Speaker 1  18:53
+For helping with the work that Josh did last time he was out. I
+
+Speaker 1  19:02
+wish we had a way to just say, hey, what macros are currently unused in this catalog, like unreferenced anywhere,
+
+Matthias Miller  19:10
+yes, and then iteratively run it, yeah. Isn't there a tool for that
+
+Unknown Speaker  19:18
+looks like a Mr. Josh nicely added this.
+
+Matthias Miller  19:27
+This is early on, before you threw up a scan that said, I'm not doing it. I
+
+Unknown Speaker  19:50
+Okay, so we got that now we're bringing back our
+
+Unknown Speaker  19:56
+bring back our fields and. And bring it back on the digital screen.
+
+Unknown Speaker  20:05
+There we go. Okay,
+
+Unknown Speaker  20:10
+now we're
+
+Unknown Speaker  20:12
+looking at hot grease,
+
+Unknown Speaker  20:17
+but a certain LS Miller, this guy, I'm just going
+
+Unknown Speaker  20:22
+to gray out, because we really just nuked it.
+
+Unknown Speaker  20:30
+Okay,
+
+Speaker 1  20:33
+so then our other places we reference this first index is in the Create auto transactions.
+
+Matthias Miller  20:44
+So that should, we should now in the in this one, in the unmatched records,
+
+Speaker 1  20:56
+both of both of these references in here, right, like it should not include corrections
+
+Matthias Miller  21:01
+correct, and we need To make sure the unmatched records expression doesn't void.
+
+Unknown Speaker  21:09
+Right?
+
+Matthias Miller  21:28
+Uh and not yes, everybody,
+
+Matthias Miller  21:38
+yep, this is the single place I'm most paranoid of, and then link transaction should include them, okay?
+
+Unknown Speaker  21:53
+And this one
+
+Matthias Miller  21:56
+mismatch errors. Let's take a look that we might have to rebuild this entire I was
+
+Unknown Speaker  22:10
+that the it was there money
+
+Unknown Speaker  22:18
+somewhere in here? Yeah, I think we should be easier, huh? We do
+
+Matthias Miller  22:22
+want to include corrections. I'm 99% sure. Okay,
+
+Unknown Speaker  22:28
+yeah, because you want it to zero out, Yep,
+
+Unknown Speaker  22:32
+yeah, okay, that sounds right.
+
+Speaker 1  22:37
+So it really is a mix. It really is a mix. We're going to want two different indexes, indices, then we have the one other index as well.
+
+Speaker 1  23:01
+This is only for the effects reconciled transactions,
+
+Speaker 3  23:07
+which don't we say corrections shouldn't corrections be excluded here, right? Because, Huh,
+
+Unknown Speaker  23:18
+why?
+
+Speaker 1  23:20
+Because they're not an automated transaction, not
+
+Matthias Miller  23:37
+what's the message that we show? I
+
+Speaker 1  23:49
+you may not continue because you do not have the permission. Okay, the answer changes to this sales order, whatever the vendor invoice will change reconciled account.
+
+Matthias Miller  24:01
+I think we should look at both. Did you notice
+
+Speaker 1  24:04
+that it will change reconciled accounting? Accounting transactions
+
+Matthias Miller  24:08
+change rates. Okay, well, we probably wouldn't have seen the accounting. So we fix that.
+
+Speaker 1  24:15
+Just drilling this in this will change accounting, accounting transactions
+
+Matthias Miller  24:18
+not the accountings that don't account for anything, but just ones that do account
+
+Unknown Speaker  24:22
+for something. Yeah. Account for some
+
+Unknown Speaker  24:25
+sake, sometimes we wonder, okay,
+
+Matthias Miller  24:33
+okay, I think it should, if you have a correction that was reconciled,
+
+Unknown Speaker  24:42
+then you, if you don't have that permission, then we're just not going to let you that's fair,
+
+Unknown Speaker  24:46
+because, I mean, it
+
+Matthias Miller  24:51
+seems unusual that you have a correction for a reconciled transaction, but, you know, still seems. Possible just
+
+Unknown Speaker  25:19
+because it doesn't hurt to document.
+
+Matthias Miller  25:22
+Hey, exactly?
+
+Unknown Speaker  25:25
+Does it say, hey, we thought this through. Are
+
+Matthias Miller  25:31
+you sure so that we still don't want to for just rename it to account, trans, all event in recon, just so it's in the name that's fair, yeah,
+
+Unknown Speaker  25:49
+I might commit the Field first,
+
+Unknown Speaker  25:51
+sure that there.
+
+Matthias Miller  25:58
+Yep, makes it insane.
+
+Speaker 1  26:03
+I don't mind if the comment goes there, yeah, add the field. Fix it typo, and so it's visible. If
+
+Unknown Speaker  26:13
+we have an event type,
+
+Unknown Speaker  26:17
+I'm just saying, exclude them From the
+
+Speaker 3  26:32
+from I spelled it right for strong. I
+
+Speaker 1  26:44
+then this one would be all and then this one we would split to and by all event and ID and By what right by
+
+Matthias Miller  26:53
+source or original primary I
+
+Unknown Speaker  27:04
+auto, not quite it
+
+Matthias Miller  27:09
+almost is. It's almost not. Yeah, I
+
+Unknown Speaker  27:23
+Well, let's do this one.
+
+Unknown Speaker  27:32
+Thanks, Jim.
+
+Speaker 1  27:46
+This one, I'm not going to be name. I'm just going to split, because I think if it shows up anywhere, I think I want people to think it through.
+
+Matthias Miller  27:55
+I would agree.
+
+Unknown Speaker  28:02
+This guy we're literally using once.
+
+Unknown Speaker  28:16
+Give me a second. Commit a minute later. I
+
+Speaker 3  28:57
+this guy becomes, if one, that's all event and IDs and
+
+Matthias Miller  29:09
+oops, and we have one that's
+
+Matthias Miller  29:18
+here in what do you call it? I source, non correction, that's
+
+Unknown Speaker  29:27
+too long we don't have Yeah,
+
+Speaker 3  29:39
+as we're already with all right, we only have one more character,
+
+Unknown Speaker  29:48
+sure.
+
+Speaker 1  29:57
+Okay, that's completely confusing. And
+
+Speaker 1  30:11
+non c, and then you just know you need to look at this and figure out
+
+Unknown Speaker  30:15
+what it is. I don't know, a
+
+Matthias Miller  30:22
+ridge.
+
+Unknown Speaker  30:28
+Main,
+
+Speaker 1  30:34
+any of these just deserve a comment and subset, then I think that's fine. I John, like I said, it sorts them apart from each other, because I really want them right beside each other. But hey, yeah,
+
+Unknown Speaker  31:43
+what was it? Account?
+
+Unknown Speaker  31:57
+Wow, what did I call that thing? I
+
+Unknown Speaker  32:26
+so
+
+Speaker 1  32:40
+now I need to go think through every or go switch back. Don't need to print just the two.
+
+Speaker 3  32:49
+Like so duplicate invoice descriptors. We said it should not include corrections.
+
+Unknown Speaker  33:00
+So wait. I'm
+
+Unknown Speaker  33:25
+what did we I already forget what we call that. Was it main, yeah, main,
+
+Speaker 3  33:36
+main event ID, so that one's done, and then this one We want to include
+
+Unknown Speaker  33:53
+all Did I do
+
+Matthias Miller  34:28
+Something weird?
+
+Unknown Speaker  34:39
+Okay, what did I do that
+
+Unknown Speaker  34:44
+looks same?
+
+Unknown Speaker  34:53
+Oh,
+
+Unknown Speaker  34:54
+that's not quite intentional. I.
+
+Unknown Speaker  35:00
+He said, That's not quite right. Wow, that was dumb.
+
+Unknown Speaker  35:05
+Paste it in. Where was my fix
+
+Unknown Speaker  35:12
+event and the ID?
+
+Unknown Speaker  35:18
+This one was main. I
+
+Unknown Speaker  35:24
+i That should work now. We
+
+Unknown Speaker  35:41
+just need to update those reports.
+
+Unknown Speaker  35:59
+Here we said by main, right, right, oh, no, this is mismatch, mismatch we Want to include,
+
+Matthias Miller  36:16
+right? We do. I
+
+Unknown Speaker  36:35
+as architecture I
+
+Unknown Speaker  36:44
+what I mean?
+
+Speaker 1  36:50
+At what point does the Transaction Date get switched before the accounting company impact effective date?
+
+Matthias Miller  37:00
+Really old transactions.
+
+Unknown Speaker  37:05
+I mean, at that point, really don't care, but,
+
+Unknown Speaker  37:14
+And then this guy
+
+Matthias Miller  37:18
+is by Main Event IDs. I'm
+
+Speaker 3  37:43
+okay, so all is all main is not the correction ones,
+
+Speaker 1  37:53
+and in duplicate invoice descriptors, we exclude
+
+Matthias Miller  37:56
+really duplicate main
+
+Speaker 1  38:01
+and in positive pay, we don't care. You can jolly well include a
+
+Unknown Speaker  38:07
+correction if you want
+
+Speaker 1  38:10
+create Auto is main and main mismatch. We include all
+
+Matthias Miller  38:22
+that. Action that should Oh, that one should be all, yeah,
+
+Unknown Speaker  38:31
+late record.
+
+Unknown Speaker  38:40
+Hey, Mr.
+
+Unknown Speaker  38:42
+Oh no, all of it.
+
+Unknown Speaker  38:55
+Pretty sure that's all not
+
+Unknown Speaker  38:58
+maintenance of them, all of them I
+
+Unknown Speaker  39:02
+was kind of like, but hey,
+
+Matthias Miller  39:11
+it's almost too easy. I mean, am I missing something? I
+
+Unknown Speaker  39:23
+No, I don't think so, but I'm
+
+Unknown Speaker  39:47
+I feel successful. I've grabbed the last four commands.
+
+Unknown Speaker  39:56
+Okay, so we now have the. Basic Fielding and
+
+Unknown Speaker  40:34
+I should probably Make so that we can i
+
+Unknown Speaker  40:50
+Oh, I can't, So you
+
+Matthias Miller  40:57
+take the event off the label. Nitpicking.
+
+Unknown Speaker  41:06
+Edit it here. I
+
+Unknown Speaker  41:10
+like to use auto. So,
+
+Unknown Speaker  41:22
+okay, we need basically this Report, right? Yes.
+
+Matthias Miller  41:41
+And then,
+
+Speaker 3  42:02
+group, no, it's BBs for us. I
+
+Matthias Miller  42:23
+which will take forever to load.
+
+Speaker 1  42:26
+Yeah, at least maybe this was you that told me just but my sorted by modify time was that you or dad? I don't remember.
+
+Matthias Miller  42:36
+I don't know it was. I've got a similar link, but I wouldn't be able to tell you who told you to do that. Yeah, it's completely random, but I think we have an assistant for our podcast. Well, I'm very optimistic. So
+
+Speaker 1  42:51
+nice. So what's happening with the podcast? Have you been able to start getting some traction again?
+
+Matthias Miller  42:56
+We have. We are we launched our first episode. I mean, we quarter our first episode. But I want to, we want to hire an assistant to do very, very basic stuff, transcribe. Do transcriptions, start running content, start generating blog posts, you know, all this stuff. Great potential at some point, social media reels and stuff like that, so that hopefully it's just a hobby project. I can show up every week. We can just record an episode. Boom, up. It goes, and then it splits, plays out into 1000 different ways. Yeah.
+
+Unknown Speaker  43:31
+So, okay,
+
+Matthias Miller  43:38
+aha. The index broke. Don't by you could just do all I think.
+
+Unknown Speaker  43:53
+Okay, something else is broken.
+
+Matthias Miller  43:59
+The transaction this guy?
+
+Unknown Speaker  44:03
+Oh, yeah.
+
+Matthias Miller  44:13
+All right, so then all we need is, we need
+
+Speaker 1  44:15
+a does this guy replace our current
+
+Unknown Speaker  44:20
+shares? Yes,
+
+Unknown Speaker  44:22
+okay,
+
+Matthias Miller  44:24
+and then on the all you need to do is on the columns where we go ahead, forget ahead of myself.
+
+Unknown Speaker  44:36
+What's our current mismatch one? I
+
+Unknown Speaker  44:45
+but I'm.
+
+Unknown Speaker  45:03
+This one, right? Big mismatch errors, yeah,
+
+Matthias Miller  45:16
+yep, does it have a double or 20? Oh, it worked. Okay, good, sweet. Oh no, it
+
+Unknown Speaker  45:25
+said there was one there already. No, I meant like, sweet. That's
+
+Matthias Miller  45:31
+what we need, sweet, all right, know why? So now we need a new record button that's rose specific. It sets the event fields. It's the correct field, and does a filler, G from pipe list sets the accounting company, sets the date. Date should be. Does not
+
+Unknown Speaker  45:54
+depend on row context,
+
+Unknown Speaker  45:57
+it does.
+
+Matthias Miller  46:01
+I mean, if you, if you add a do a new record link that references row specific, a row specific init expression.
+
+Matthias Miller  46:21
+Do we? Do we literally have to create a it, straight up, can't at all.
+
+Unknown Speaker  46:28
+I don't know. I'm gonna see, I'm not sure that we can.
+
+Speaker 1  46:35
+Might have to create an import, although you want to open into the new record, right? Yeah, what you're thinking?
+
+Unknown Speaker  46:49
+Okay,
+
+Unknown Speaker  46:50
+so what are we needing? Let's
+
+Matthias Miller  46:54
+start by just creating a nutrients. Sure, equals pound. Count
+
+Unknown Speaker  47:02
+No, it's, is it?
+
+Matthias Miller  47:09
+Event, type for, type, list, item, local, account. Bloke, well, I
+
+Unknown Speaker  47:20
+Ah,
+
+Unknown Speaker  47:26
+what's the is that there's
+
+Matthias Miller  47:30
+something in the repeat list. What is the repeat? No, it's, it's something. Something turns the look, RLI, underscore, expected account impact, because that should always be there. But you need pipeless item. You need the first pipeless item out of there.
+
+Unknown Speaker  47:57
+Take your word for it.
+
+Unknown Speaker  48:01
+Not gonna like it.
+
+Matthias Miller  48:03
+That's not gonna be pretty okay. But should, but should you, if you, theoretically, if you create a new record up top and you paste this in parameters, it does reference current, current record, and therefore it should be okay. Of course, it's not row independent. I
+
+Matthias Miller  48:25
+colon, yep, right?
+
+Unknown Speaker  48:35
+This is
+
+Matthias Miller  48:38
+new correction transaction or something.
+
+Speaker 1  48:46
+Okay. Now it does work. So the the validation is just triggered, happy,
+
+Matthias Miller  48:51
+it's, it's, yeah,
+
+Unknown Speaker  48:52
+well, I just
+
+Matthias Miller  48:55
+okay. Then we need to set the accounting transaction company in a similar manner.
+
+Unknown Speaker  49:15
+Yep, do we have this in the ROI
+
+Matthias Miller  49:23
+Yep? It's something like company or something Id, yep area. And then you need a pipe list between the two. We need trans event record ID and repeating record ID also coming out of the RLI, or can both come out of the RLI. You.
+
+Unknown Speaker  50:07
+So what is the first row here? Actually,
+
+Matthias Miller  50:09
+it's just the first,
+
+Matthias Miller  50:16
+first repeat accounting impact. Accounting impact is a list. Is a list. These values should be the same for everything in the list. It's just sucking it out of the first row.
+
+Speaker 1  50:28
+Is this good? Sure, perfect, isn't I don't want to just duplicate it over and over, yep. I mean, it's not a big deal, but it just is. I like this little better. It clarifies. I agree. So. So then record ID, and then this one is record ID,
+
+Matthias Miller  50:47
+yep, and then same thing for repeating. And
+
+Matthias Miller  50:58
+then we set correction transaction to true.
+
+Unknown Speaker  51:11
+Accounts and stuff,
+
+Matthias Miller  51:12
+yeah, wait, yeah, yep,
+
+Unknown Speaker  51:17
+which is going to be
+
+Matthias Miller  51:21
+account trans line, the event account equals philergy from pipe list,
+
+Unknown Speaker  51:27
+isn't it our difference? Then,
+
+Matthias Miller  51:30
+yes, it's the loc. I don't know what we called it. Account, trans line, account, all right,
+
+Unknown Speaker  52:01
+I'm we did a
+
+Unknown Speaker  52:21
+so we need to factor this guy out. We can access him to the button. Yes, correct. I
+
+Unknown Speaker  52:43
+look
+
+Matthias Miller  52:51
+correct, just that correction string table, or needed correction string table, I
+
+Unknown Speaker  53:36
+interaction row I'm we're
+
+Unknown Speaker  54:34
+Oh, okay, so We have this guy now
+
+Unknown Speaker  54:45
+go back to our link action,
+
+Unknown Speaker  54:55
+log account, I.
+
+Unknown Speaker  55:00
+Item
+
+Matthias Miller  55:02
+don't signs around it.
+
+Speaker 3  55:05
+That would probably help. A little picky sometimes, but I know
+
+Unknown Speaker  55:21
+I can't do,
+
+Unknown Speaker  55:23
+oh, that's dumb. Can
+
+Matthias Miller  55:26
+you set debit to a negative amount on a transaction
+
+Speaker 3  55:30
+and have it, Oh, bother, bother, and have it fix it. That would be lovely
+
+Unknown Speaker  55:35
+if I can, but I don't. I
+
+Matthias Miller  55:43
+you can, I almost wonder if it'd be worth
+
+Matthias Miller  55:55
+well, no, but then you can't.
+
+Unknown Speaker  55:58
+That would be so cool. I
+
+Matthias Miller  56:05
+but I can't wait. What does it all change to? Or just it just right? So I'll bother i
+
+Unknown Speaker  56:28
+that means I need to do
+
+Matthias Miller  56:32
+what you need to do. You're not going to like me, not at all. Put it into the notes and then have a repeater G that conditionally sets debit and credit based on the value that's in the notes. Or you can actually put it into debit just and then just have a repeater G that, if debit is negative, set credit to the to the opposite value. That's
+
+Speaker 1  56:58
+easy. Actually, I like that better. Thank you.
+
+Unknown Speaker  57:02
+Thank you. Dwayne
+
+Matthias Miller  57:04
+made an observation. He's like, man, sometimes it takes a while, but if, but you have this amazing ability to get around technical limitations or something like that, I'm not sure if it's good or bad, but
+
+Unknown Speaker  57:20
+what I hate is that I
+
+Unknown Speaker  57:23
+I'm converting it to net. I'm just going to change this sure,
+
+Unknown Speaker  57:35
+because feels dumb, and then I
+
+Matthias Miller  57:45
+Mount, stir,
+
+Unknown Speaker  57:47
+oh, yeah, and then,
+
+Matthias Miller  58:00
+credit, credit amount.
+
+Matthias Miller  58:09
+I think it's repeat RG calling, credit amount. Okay. Is or No, no, this is a different format.
+
+Unknown Speaker  58:24
+I always forget where repeater j is. It's so,
+
+Matthias Miller  58:40
+okay, it's like, that is it on change? Though, do reports.
+
+Speaker 3  58:45
+I think it's similar. I could be wrong.
+
+Unknown Speaker  58:54
+Yeah, it's the same. Okay, yeah.
+
+Matthias Miller  58:57
+So repair, GRG, condition, condition. So condition would be the debit amount is less than zero, and then the credit amount becomes minus debit amount. Mine, oh, sure, that's fine.
+
+Unknown Speaker  59:21
+If we have the condition, then I don't.
+
+Matthias Miller  59:24
+Okay, sweet, theoretically, this should work. Very big
+
+Unknown Speaker  59:32
+theoretical, but I would say, yeah,
+
+Matthias Miller  59:37
+be a mount stir. Oh, you do need a value, because we need to indicate it Sure. Look at Mount stir from I.
+
+Speaker 3  1:00:00
+I have no idea what sort of information I have in my system. So
+
+Unknown Speaker  1:00:20
+why is my link not showing?
+
+Speaker 1  1:00:24
+Oh, it's only I'm assuming we want to show it in the menu,
+
+Matthias Miller  1:00:32
+menu that seems fair. Or
+
+Unknown Speaker  1:00:33
+do you want it just in here? Sorry,
+
+Matthias Miller  1:00:41
+you can show it the row. Can we only show it in the row? I mean, it's row specific, so it has to be, yeah, okay,
+
+Unknown Speaker  1:00:50
+some reason I was thinking we could put it up here. Probably, no, I think you're right.
+
+Matthias Miller  1:01:01
+So what was our Okay, So originally
+
+Unknown Speaker  1:01:06
+we had
+
+Speaker 1  1:01:08
+a debit to accounts payable and a credit to checking. Now we're Ooh,
+
+Matthias Miller  1:01:15
+we expected, we expected a credit to checking,
+
+Speaker 1  1:01:20
+and so we credited checking and debited accounts payable, because that's scroll
+
+Matthias Miller  1:01:25
+down. Did you look at the bottom, the date, the date, the date, the date, the date the date. We need a locked period, date. We need Okay, in the in the model, we have a
+
+Unknown Speaker  1:01:54
+here,
+
+Matthias Miller  1:02:00
+the this guy refactor this to take an account? Well, it's either that we probably refactor that into a latest locker closing date. I
+
+Unknown Speaker  1:02:54
+that's too long.
+
+Matthias Miller  1:02:57
+Just skipped it for accounting company
+
+Speaker 2  1:03:01
+like Right, yep.
+
+Matthias Miller  1:03:10
+And then in the new transaction, you set the date to that date plus one, yeah.
+
+Matthias Miller  1:03:26
+Here, if you do it down below, you could do that.
+
+Matthias Miller  1:03:39
+No, you can't now within pound signs, you can't, but you might, you could probably remove the pound signs. I
+
+Unknown Speaker  1:04:04
+No, I can't
+
+Matthias Miller  1:04:06
+go back in. Might help if you set the right field name,
+
+Unknown Speaker  1:04:17
+weird. Why can't I set a local macro
+
+Matthias Miller  1:04:22
+contact? Transaction duty exactly. I mean, I don't know why.
+
+Speaker 1  1:04:25
+Why can't I set a report macro on a new account. Should be able to define like, define technical limitations. You should be able to define on changes on them,
+
+Matthias Miller  1:04:37
+exactly. Okay. New correction, okay, this should launch for one, one, okay, no, you can't Okay, so you got to find some way around it. Well, why wouldn't you just do well? Anyway, I don't know what.
+
+Unknown Speaker  1:04:53
+Why wouldn't they? What?
+
+Matthias Miller  1:04:59
+Do? Just do a pound sign and copy the macro down. I don't know.
+
+Unknown Speaker  1:05:07
+Do this.
+
+Unknown Speaker  1:05:09
+You could do that. I
+
+Matthias Miller  1:05:11
+don't think it's gonna work. And you need a plus one, by the way.
+
+Unknown Speaker  1:05:18
+That's like, I
+
+Speaker 1  1:05:27
+I mean, that's not that bad to just copy that. To be honest,
+
+Matthias Miller  1:05:33
+it's just obnoxious. But I don't think we get away from obnoxious here. I think we've crossed that line. We've
+
+Unknown Speaker  1:05:42
+crossed that line a long time ago.
+
+Unknown Speaker  1:05:47
+Oops,
+
+Unknown Speaker  1:05:49
+date does not Oh, I don't have a locked period.
+
+Unknown Speaker  1:05:53
+Oh,
+
+Unknown Speaker  1:05:55
+then why are we showing items in here? I
+
+Matthias Miller  1:06:03
+wait, you legitimately don't have a locked period. I
+
+Speaker 3  1:06:09
+guess you probably don't locked No. Just periods. I
+
+Matthias Miller  1:06:25
+uh, well, let's figure out where they're in here.
+
+Matthias Miller  1:06:41
+Then, well, Transaction Date is not so is in a not is in a the latest block or closing date and and
+
+Matthias Miller  1:06:53
+then you gotta close as of some like 430 or something. Yeah,
+
+Matthias Miller  1:07:05
+or just lock as at that time locking is less severe. Menu i
+
+Speaker 1  1:07:23
+What was that date? Well, I'll just do 530, 24 that's good enough. I think 25
+
+Matthias Miller  1:07:28
+Yeah, okay. I think I
+
+Unknown Speaker  1:07:41
+I don't have data.
+
+Unknown Speaker  1:07:43
+I don't have transactions in my system.
+
+Matthias Miller  1:07:47
+Sure, do you have to the
+
+Unknown Speaker  1:07:48
+record open? Maybe
+
+Unknown Speaker  1:08:01
+it was
+
+Matthias Miller  1:08:03
+is this was ABC? No, let's go back to the source record. Go back to the source record. Yep, it
+
+Speaker 1  1:08:13
+is 25 okay. Thank you. I feel vindicated. This must have been one that I made. I
+
+Unknown Speaker  1:08:26
+all right now we should see it.
+
+Matthias Miller  1:08:34
+Wait, what this for? ABC, what did? I didn't.
+
+Matthias Miller  1:08:59
+If it's not we only keep it. We have a lock closing date, and it's after, and it's for that. And you didn't save a correction transaction. Did you
+
+Unknown Speaker  1:09:14
+think so? You sure you didn't open track?
+
+Unknown Speaker  1:09:21
+No records found matching subset.
+
+Matthias Miller  1:09:30
+Okay, well, I gotta drop Can you just quick eval with the I
+
+Matthias Miller  1:09:47
+latest, latest, latest locker closing date is for the.
+
+Matthias Miller  1:10:07
+430 and just double check on the ABC printed, I don't know.
+
+Speaker 1  1:10:18
+I'll backstage, check around a bit, see if I can figure out what I'm doing.
+
+Matthias Miller  1:10:21
+Yeah, sounds good. Thank you.
+
+Unknown Speaker  1:10:24
+Yep, yep, bye.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,1277 @@
+Unknown Speaker  00:36
+Bye,
+
+Unknown Speaker  00:41
+you
+
+Speaker 1  00:41
+crazy life,
+
+Speaker 2  00:48
+oh man, oh man, oh man, oh man, all right, let's go. Let's go make a a fun bar chart that would potentially fit into a dashboard someday, but it is a it's a revenue per month. And I don't know how would we do like, Can you do a simultaneous comparison inside of the bar chart like this, this year's revenue, last year's revenue, and on a per month basis.
+
+Unknown Speaker  01:22
+Yes, siree, Bob
+
+Speaker 2  01:24
+and and I would really like it to be able to click on the bar and that pops up in the window and you can and, you know, all the fun, cool things. I don't even know what I'm asking for. I just want to make it shiny. Can you put some pizzazz in that? Can you jazz that up for me? Don't you love when people say things like that?
+
+Matthias Miller  01:44
+I said, then I do the same.
+
+Speaker 2  01:49
+It's called I have no words for what I'm asking, and so I'm going to say stupid things.
+
+Unknown Speaker  01:56
+Did I hear about what now I
+
+Speaker 2  02:04
+did you hear about the graph that showed the size of a grill fire on The Simpsons?
+
+Unknown Speaker  02:07
+What a charred Bart. But don't, oh,
+
+Unknown Speaker  02:17
+man,
+
+Matthias Miller  02:18
+Tim used to joke. He's like, I can always tell when you're tired, because you come up with your wackiest jokes,
+
+Speaker 1  02:24
+yeah, I feel that. Oh, okay. So what are
+
+Matthias Miller  02:31
+we looking at? Rental revenue.
+
+Unknown Speaker  02:34
+It would be monthly revenue.
+
+Speaker 3  02:38
+Bar level would be.
+
+Speaker 2  02:42
+And to be clear, this would be, this would be rental fees. We're not going to include sales tax, we're not going to include Damage Waiver fee, and we're not going to include any late fees. It's just
+
+Speaker 4  02:52
+rental business, heard or received, received
+
+Unknown Speaker  02:59
+paid, not received. Paid.
+
+Speaker 3  03:06
+Trapped, advanced, repeat Ingrid name this is,
+
+Matthias Miller  03:14
+do you still have a small monitor? Huh? Do you still have a small monitor?
+
+Unknown Speaker  03:21
+Unfortunately,
+
+Unknown Speaker  03:25
+talk to your boss about getting a bigger one. I know you said you would be. She just left the lunch meeting.
+
+Unknown Speaker  03:35
+Do what you
+
+Matthias Miller  03:36
+would, but she just left the lunch meeting. Uh, uh,
+
+Speaker 2  03:44
+no, the problem is I stuck my TV on a rolling stand for a client to use my, my, my, my, my conference room, and then I never felt like dragging it back over here and sitting it back on my desk. And so I mounted up this 32 inch computer screen, and, yeah, I mean, look, you can make it smaller. I don't you actually make, you can make it actually a lot smaller. It's fairly large, right now, okay,
+
+Speaker 3  04:14
+I can literally, x axis is okay. Now we need to, we need an accurate to get the date.
+
+Matthias Miller  04:21
+So we're gonna need a model, again,
+
+Speaker 3  04:26
+low payment date by confirmation ID. And this is a
+
+Speaker 3  04:38
+this is a contract. I know this is a wow payment we have. It's going to be a men contract payment, they or sorry payment,
+
+Speaker 2  04:53
+oh, well, then you get to call and tell and so did you double check against Epsom Connect?
+
+Unknown Speaker  04:57
+Do? Women, oh,
+
+Speaker 2  05:04
+that child. He is so proud of his, of his new he completely, well, not completely. He rewrote a good portion of the, I think I told you about this, of the of the script for email, by facts, and he feels so proud of himself.
+
+Speaker 5  05:20
+I It's
+
+Unknown Speaker  05:24
+just funny to watch.
+
+Matthias Miller  05:28
+Okay, so the x axis is going to be something
+
+Unknown Speaker  05:32
+like which way is x, y.
+
+Matthias Miller  05:36
+It has a tail, so it's up and down. That's how you know
+
+Unknown Speaker  05:38
+it has a tail, so it's up and down.
+
+Speaker 2  05:47
+Ah, that's a good way to remember it retail. So it's up and down.
+
+Matthias Miller  05:53
+I recently was trying to remember the way the back road to a friend's house. I fired up chat TPT, and it's like, how do I know what's the which side street I take and and it came up with this great imagery of like, now I can remember which side street. Okay, so we're going to do a so the x axis is going to be contract Tran. So date, we want to do it, but we're going to start with this, and we can clean it up later, where this is M, M, Mm, okay, so that's the X axis. Must include a column with the chart attribute the y axis, which is the data contract trans amount, which would be a sum,
+
+Unknown Speaker  06:54
+the series.
+
+Speaker 2  06:57
+You should we would want to disregard payoffs. Just to be clear,
+
+Unknown Speaker  07:09
+I think early pay, right, yeah, yeah, early payoff sorry, yeah, we want to disregard early payoffs. I The
+
+Matthias Miller  07:35
+fun thing is that this stuff is so variable in it, how we detect early payoffs is, well,
+
+Unknown Speaker  07:40
+let's do this,
+
+Speaker 2  07:47
+isn't it, isn't it? And not contract. Trans type equals early payoff,
+
+Matthias Miller  07:52
+contract resolution, but you want pay. Payments does not equal early payoff or contract. Trans period does not equal the latest period. We'll just exclude the latest period for early payoff.
+
+Unknown Speaker  08:11
+Yeah, but wouldn't it? Wouldn't that. Wouldn't
+
+Matthias Miller  08:14
+contract. You don't want to include early payoff at at all.
+
+Unknown Speaker  08:17
+Right?
+
+Unknown Speaker  08:20
+Why?
+
+Matthias Miller  08:22
+So your numbers are going to shift,
+
+Speaker 2  08:24
+because we're going to call this thing rent received, or rental income
+
+Matthias Miller  08:31
+or but don't, don't the first 21 months still count.
+
+Unknown Speaker  08:34
+What do you mean
+
+Matthias Miller  08:37
+on a payoff? Okay,
+
+Unknown Speaker  08:40
+wait, what? Wait.
+
+Matthias Miller  08:42
+If you have a payoff, if you have an early payoff, you count the first 21 months, but not the last big fat 22
+
+Unknown Speaker  08:50
+thing period, right? All right, did
+
+Matthias Miller  08:59
+the rental fee? It was paid, and it either wasn't an early payoff or it was not the latest period.
+
+Speaker 2  09:13
+But okay, that's what I'm that's that's what I'm trying to understand. Why? Why not the latest period,
+
+Matthias Miller  09:19
+just when we make the payoff? I mean, the other way to do it
+
+Unknown Speaker  09:21
+is your headphones keep cutting in and out for some reason.
+
+Unknown Speaker  09:24
+Oh, that's, I'm sorry, let's try this.
+
+Matthias Miller  09:37
+All right. So,
+
+Speaker 2  09:39
+so, so what I'm trying to say is that last half inside the parentheses, that's not going to eliminate the last months of rent, last last month of rent on a current contract.
+
+Matthias Miller  09:51
+No, because the current contract is not an early payoff. Got it. Yep, um. Okay, so then should probably also ignore, I don't know why we have ones without a well, sure I do outstanding balances should also also include ones where
+
+Unknown Speaker  10:14
+we should ignore outstanding balances. Yes, indeed, we should.
+
+Matthias Miller  10:21
+Hey, so there's that,
+
+Unknown Speaker  10:24
+voila.
+
+Matthias Miller  10:25
+We need a column this year in a Y axis. Okay, so if year contract, low contract, payment date equals i Okay, this is this here. This is
+
+Matthias Miller  11:11
+um, how do we sort the What's
+
+Unknown Speaker  11:12
+with the little what's with the white lines in it?
+
+Matthias Miller  11:19
+Those are individual
+
+Unknown Speaker  11:22
+data points.
+
+Unknown Speaker  11:24
+Oh, interesting.
+
+Speaker 2  11:29
+Can you, can we? Is it able to hide that data the white line?
+
+Matthias Miller  11:42
+Well, we could do it with a So, okay.
+
+Unknown Speaker  11:49
+Side question, what's the blue
+
+Matthias Miller  11:54
+this year? Blue is this year. Red is last year.
+
+Speaker 2  11:57
+So why do we have stuff out in September? Wait, what's the
+
+Matthias Miller  12:03
+we don't have any data for September, October, November, December. How come or October? It's future, Yeah,
+
+Speaker 2  12:10
+but why is there data for September and January?
+
+Matthias Miller  12:14
+Because that's historical. They're in the wrong order. But,
+
+Unknown Speaker  12:17
+okay, got it?
+
+Speaker 2  12:22
+Oh, okay, I'll just, I'll just be quiet and let you work.
+
+Matthias Miller  12:26
+I mean, it's fine. You can ask questions. I love questions. Just
+
+Unknown Speaker  12:29
+make sure they're relevant questions.
+
+Matthias Miller  12:34
+Just make sure they're not stupid ones. No, just kidding.
+
+Unknown Speaker  12:39
+Whoever said there was no such thing as a stupid question. Was stupid. No.
+
+Speaker 2  12:49
+Whoever said there is no such thing as a stupid question, there was a reason that he liked those anyway. Never mind. I, I'll come up with that quote in a bit. I'm making up the quote.
+
+Matthias Miller  12:59
+So, yeah, man, that doesn't look right.
+
+Matthias Miller  13:14
+Number, not a
+
+Matthias Miller  13:31
+something's wonky for us.
+
+Speaker 6  13:54
+This is great. Yes,
+
+Matthias Miller  14:02
+you total College, okay, yes, So we have,
+
+Unknown Speaker  14:20
+let's do i
+
+Matthias Miller  14:42
+Oh, let's go. Thanks, Mark. I.
+
+Matthias Miller  15:04
+We should save this thing. No, it
+
+Unknown Speaker  15:22
+wasn't.
+
+Unknown Speaker  15:31
+Look at
+
+Unknown Speaker  15:37
+that. This is
+
+Unknown Speaker  15:42
+no this is the
+
+Unknown Speaker  15:57
+whoever, whoever came up with the fun little,
+
+Speaker 2  16:06
+like when, when the chart loads, it like, like it grows as as it loads. Whoever came up with that, that animation, it's kind of
+
+Matthias Miller  16:17
+cool. Compare.
+
+Speaker 1  16:36
+Bum Bum Bum bum. So what happens when you click the bar now?
+
+Unknown Speaker  16:42
+Um, I can't click the
+
+Speaker 1  16:44
+bar. Why can't I click the bar? We probably have to.
+
+Matthias Miller  16:54
+Can I now identify maybe I need to specify an identified report. Well,
+
+Unknown Speaker  17:04
+this year we've been doing better than last year. Look at that.
+
+Matthias Miller  17:07
+Yeah, we up.
+
+Speaker 2  17:11
+I don't know why. Who, who wrote the demo data for this? Let's make this year look better than last year. Go to general go to General. Go to your general tab.
+
+Matthias Miller  17:23
+Should we switch the order of these? What this year versus last year? What do you mean? Switch the order. Have last year be first and then this year?
+
+Unknown Speaker  17:36
+Yeah, yes, yes. Sorry, a little slow there.
+
+Matthias Miller  17:41
+Do you want a different color?
+
+Speaker 2  17:45
+Um, red and blue is fine for now. You're gonna make this thing a user report anyway, right? So I can once, once, once this thing's in here, I can go fiddle around with the fiddle the fidelation.
+
+Matthias Miller  17:57
+Fidelation.
+
+Unknown Speaker  17:59
+Look at that.
+
+Speaker 2  18:03
+So go to your general tab. No where, oh, type, chart type, go to your chart type. Oh, no, okay, I thought. I thought somewhere, when you're creating a chart, it's like chart and Pi is it type
+
+Matthias Miller  18:31
+of graphs it is which is a different feature entirely.
+
+Speaker 1  18:42
+No. Ooh, where did you save this? Where did you save this thing?
+
+Matthias Miller  18:47
+Dashboards, all right, what do you need next?
+
+Speaker 2  18:52
+Well, like, I want to have. It needs, oh, well, your, your, we need to. It needs to, like, I want to be able to click the the bar and it pops out the data points. So, whatever, whatever that takes.
+
+Speaker 2  19:21
+You can't when you put your when you put your mouse on the bar. You can't represent them with you can't represent that value with amount to dollar string. Can you
+
+Matthias Miller  19:35
+probably wait,
+
+Unknown Speaker  19:52
+you're going to make it where you can back it up a year. No,
+
+Matthias Miller  19:56
+this is on the identify report, but we could, oh, never mind. No, no.
+
+Unknown Speaker  20:00
+Okay, I got you
+
+Speaker 2  20:30
+the only, the only thing that we should double, we should make sure we validate these numbers that we don't have something silly in here.
+
+Unknown Speaker  20:39
+Insane. Okay,
+
+Speaker 1  20:57
+which, I guess the this report will actually be that, that validation i
+
+Matthias Miller  21:36
+That's awkward.
+
+Matthias Miller  22:00
+Oh, well, that would probably make the difference. What I
+
+Unknown Speaker  22:10
+want months? Yeah, I do want months.
+
+Unknown Speaker  22:22
+Come on.
+
+Matthias Miller  22:44
+No, not you. I want the
+
+Unknown Speaker  22:47
+we don't have a link.
+
+Matthias Miller  23:02
+I don't need to be so I was joking about that none
+
+Matthias Miller  23:12
+is a default. That's your fault for not making your default.
+
+Speaker 6  23:22
+I Okay,
+
+Unknown Speaker  23:26
+don't let it stop to those grand house all right.
+
+Matthias Miller  23:33
+Wow, that's all that for identify, 84 202,
+
+Unknown Speaker  23:37
+for which? Which? Which? Which month, January, January.
+
+Unknown Speaker  23:42
+80, 420, 2k,
+
+Speaker 2  23:47
+a, W, K, W, A, r, d, awkward moment, you and me. The
+
+Speaker 2  23:58
+funniest part is our pastor did that little jingle from the in the sermon. At one point, I forget he was talking about something to do with, I don't know, was it dating and sex and something and then, and I don't know he was telling some story about somebody that was telling him something, and he just goes, aw, a, W, K, W, A, r, d. Awkward moment. You envy. And I mean literally, everybody just splits laughing because it's Hilarious.
+
+Matthias Miller  24:28
+Attribute must have the attribute, identify value.
+
+Matthias Miller  24:41
+Identify value. What is the attribute? If then one column must have the attribute identify value.
+
+Matthias Miller  25:07
+Well, I mean, This would be
+
+Unknown Speaker  25:22
+bloke,
+
+Matthias Miller  26:20
+in, oh, it should be in a list. Sure it should be. This is one thing that is pretty hard to get right, is when to put quotes, where and why. Okay, so 84, 202, 15, well, that doesn't quite look right. January, 2274,
+
+Matthias Miller  26:51
+436, okay, that was right.
+
+Speaker 2  27:01
+Why do we have? Why is there? Why is there, like, February stuff in there, and
+
+Matthias Miller  27:06
+because It's not, yeah, multiple identify values.
+
+Unknown Speaker  27:24
+How do you know?
+
+Matthias Miller  27:47
+How do you identify?
+
+Speaker 2  27:55
+Oh, dude, that is sick. Once you have this thing working that literally, I can click on a bar that gives me a whole breakdown of whoever's in there. And then, not only that, but you have a contracted ID, so I can literally pop to the contract directly from there, dude that is sick and insane.
+
+Matthias Miller  28:10
+But here's what we're gonna do, the identify we have to Oh, wait, wait,
+
+Speaker 2  28:22
+wait, it's working. You're working just fine, my friend,
+
+Matthias Miller  28:26
+yeah, this year in previous years columns,
+
+Speaker 2  28:31
+sorry, I was looking at the period, and that's, and if I was to say no, that's, I would split the period on, I don't know. Would I put it on other side of something, like somewhere, like, get the period and the amount away from each other so, so that your eye pings on the fact that it's paid on and the amount. Like, do some column rearrangement, so that that makes a little more sense, because you're the first thing you want to say is, oh, the amount what was paid on 1229, why is this in the in the month of January? Well, no, that was the, that was, that was the due date.
+
+Matthias Miller  29:09
+Okay, if we can, can we show it's using the same identify values for January? Can we just have January of this, this year and then January of last year in two separate groups in the in the identify report. Or is that too wonky? Why do you say that? Well, because currently it's showing 2024 here, and then it's showing also we're here. Oh, I said I don't know how to split it by series. That's what I'm a little confused about
+
+Speaker 1  29:47
+here's a quarter call someone who cares.
+
+Unknown Speaker  30:07
+Mentioned.
+
+Matthias Miller  30:08
+So we have a series. We have a series identify, chart identify
+
+Matthias Miller  30:59
+by the way, we have stacked bar graphs, clustered bar graphs.
+
+Unknown Speaker  31:05
+I never understood stacked bar graphs.
+
+Matthias Miller  31:08
+Um, it's really useful if you want to see like, let's say you wanted a stack bar graph of 24 month, 36 month, 48 month contracts. So revenue by contract. So you'd see that
+
+Speaker 2  31:24
+way you're telling me that in the bar you could split it by contract term, yeah, heck yeah.
+
+Unknown Speaker  31:39
+Heck yeah,
+
+Unknown Speaker  31:42
+that would be sick.
+
+Matthias Miller  31:45
+It would be trying to think how this would be,
+
+Unknown Speaker  31:51
+okay, bathroom run. Keep going.
+
+Matthias Miller  31:55
+Well, let me fix the at least get this work goal first. Okay, so I
+
+Unknown Speaker  33:12
+can, can, can
+
+Speaker 2  33:16
+the bar chart be conditional for the type of stacking that you want to do. In other words, you could stack by contract term, and then it would be fun to be able to flip it to stack by inside of a month, what was on time payments versus late payments,
+
+Matthias Miller  33:39
+like further within that or just
+
+Speaker 2  33:41
+No, no, no, no, it No. Well, okay. Well, let, let's get one of these at a time. The but what the other one that we're going to want to do? Maybe it's a separate chart. Maybe it's a maybe it's maybe it's ask prompts within the chart. I don't know, but where the other one I want to do is where it on the bar. It's, you can split this. This split the bar based on payments that were paid on time versus payments that are late, payments or or no, no. Maybe it's, maybe it's, we split the customers according to their past due status. In other words, customers that paid that are, you know, X amount of days past due, or, I don't know, some, some way of splitting your ignore this for now. We'll get to this going.
+
+Matthias Miller  34:38
+I mean, I think, basically, I uh, basically what we do is, if we we it's literally, we give you an Ask prompt to show how to stack these guys. Okay, so then now we need labels on these or
+
+Unknown Speaker  34:54
+colors. Yep, colors.
+
+Matthias Miller  34:58
+So if.
+
+Speaker 2  35:01
+So this is, this is by by term length, right?
+
+Unknown Speaker  35:04
+Yeah, yeah.
+
+Speaker 1  35:14
+Just a number should be. I, uh,
+
+Matthias Miller  35:38
+actually, let's just do this.
+
+Unknown Speaker  36:55
+Yeah,
+
+Matthias Miller  36:58
+hey, something's not quite
+
+Unknown Speaker  37:04
+that's trippy.
+
+Matthias Miller  37:06
+What is going on? 3648
+
+Matthias Miller  37:13
+Why is that not? Oh, well, maybe we should Do this. Probably help. I
+
+Matthias Miller  37:54
+That's weird. Why is that enough? 2024,
+
+Matthias Miller  38:02
+oh, color for the series of last year. Color for the series of
+
+Unknown Speaker  38:12
+this year,
+
+Matthias Miller  38:17
+black, blue, blue, green, blue, green. It's giving me the same one. Okay, well, let's do,
+
+Matthias Miller  38:36
+yeah, I mean, that looks ugly, but look at that. She had a big bump in.
+
+Speaker 2  38:46
+So how do you how do you tell like we got, we had to figure out how to like, if you put your mouse in there, shouldn't identify which term it is,
+
+Matthias Miller  38:53
+yeah. So it should be something like, I
+
+Speaker 2  39:24
+think you spelled something wrong there. Mo, what are mo contracts?
+
+Unknown Speaker  39:29
+Buzz, Oh,
+
+Unknown Speaker  39:34
+gotcha. Gotcha. I
+
+Speaker 1  39:49
+so look at that. Look at that.
+
+Matthias Miller  40:20
+Then, yes, theoretically we could refactor this where you could do a stack by contract by, you know, How late are they?
+
+Speaker 2  40:37
+So let's fix the colors on this, like this is, this is hurting my eyeballs.
+
+Unknown Speaker  41:45
+Probably that helps. Well,
+
+Speaker 2  41:52
+so where so show me to explain what save this thing. I can go fiddle around with the colors so
+
+Matthias Miller  41:59
+you can, you can put in RGB. Like,
+
+Speaker 2  42:03
+no, I get that. But so what's the 123450, so year, one, two, okay, right? You don't have
+
+Matthias Miller  42:10
+12 month contracts, so you don't really need to handle that. Oh, 2436
+
+Speaker 2  42:14
+48 and six month contracts. Got it and so, but then you need to do this for the secondary year as well. Then right, right, yeah, as long as I know how to go, I can play around with colors.
+
+Matthias Miller  42:28
+I think it's pretty, just like that. That's beautiful, yeah,
+
+Speaker 2  42:31
+but you got to distinguish between year one and year two, between this year, last year And this year. Yeah.
+
+Matthias Miller  42:46
+It's this, this
+
+Matthias Miller  42:53
+mustard, mute and in so I don't see what your problem is. Why are you?
+
+Unknown Speaker  43:06
+We don't live in the 60s.
+
+Speaker 2  43:11
+Click your run this thing and click your bar. Because I think, I think it's, yeah, there you go. That's what I was running into. I
+
+Matthias Miller  43:27
+so I was running into issues with it's showing both of them at the same time. But what we could do, so I don't know how you want to handle this, the identify has to show both years. Ooh.
+
+Speaker 2  43:48
+Okay, so then just, let's, let's do the groupings. Let's do the groupings, but let's just make the text bigger and put a, put a color to the background of the grouping and and make it, make it say the year that it actually that it's representing not, not this year and last year. Make it, make it the actual what year it is. And probably add some text that says, I don't know, contracts for or payments for, sorry, payments for, yeah. You
+
+Speaker 2  44:20
+probably want to add the month into month name.
+
+Speaker 2  44:36
+So you can't, you can't, you can't have it identified for both, like for either bar. So it's you're gonna have, it's gonna have to split it,
+
+Matthias Miller  44:43
+not with a series, for some reason.
+
+Unknown Speaker  44:52
+Okay, fine.
+
+Matthias Miller  44:55
+Why do you actually have to have a date? Why don't you just
+
+Unknown Speaker  44:58
+know what I mean? It.
+
+Unknown Speaker  45:02
+It Legal font,
+
+Speaker 2  45:08
+sure, yeah, that's fine. The blue is fine. Not that big. 14 is fine. Even 12 would be fine.
+
+Matthias Miller  45:17
+Unfortunately, you won't be
+
+Unknown Speaker  45:38
+okay
+
+Speaker 2  45:42
+now, save that thing, and let's go do a pie chart of account of the contract terms. So open contracts, a pie chart of by contract term. So I want to know, I want to know, what's the split of my 2436 4860 month contracts
+
+Matthias Miller  46:02
+by value or count
+
+Speaker 2  46:04
+by Count, we'll do count, and then we'll do value.
+
+Matthias Miller  46:10
+So we need a chart,
+
+Speaker 2  46:14
+as Winnie the Pooh would say both. But hold the condensed milkers. I don't know what was it the bread or something? Yeah, hold the bread.
+
+Unknown Speaker  46:22
+Yes, a donut, a dug nut.
+
+Speaker 2  46:32
+The donut is what rounded edges? No, this, this guy. Is that what they're calling it a donut? Yeah? Oh, okay, what's Oh versus a pie chart? Gotcha, I don't know what's a pie chart
+
+Matthias Miller  46:46
+is pie donut has a hole in the middle, and it's apparently what all the cool kids are doing.
+
+Unknown Speaker  46:50
+Okay, fine.
+
+Unknown Speaker  46:53
+We want to be cool kids.
+
+Unknown Speaker  47:02
+Okay,
+
+Matthias Miller  47:05
+all right, so now we have, we have contract ID. We have, we need an X axis, which is you
+
+Speaker 2  47:22
+probably can make that you probably can do this thing with an ask prompt that asks whether you want to do it by count or by by by value.
+
+Matthias Miller  47:29
+Should be able to, well,
+
+Speaker 2  47:31
+okay, here's the deal. If we're going to do it by by value, then we have to do by contract, total contract value, EPO value. But those would be that, those would be the two values that have, well, sorry, contract value, balance value and EPO value. You're going to want to see that chart a number of different ways.
+
+Matthias Miller  48:02
+What do we do with people? We have some unknown contract links.
+
+Unknown Speaker  48:12
+Well, that's not good.
+
+Unknown Speaker  48:17
+Somebody should look into
+
+Unknown Speaker  48:20
+that exactly.
+
+Matthias Miller  48:25
+Why is that not? Oh, because, wait, what?
+
+Matthias Miller  48:45
+Right? I just thought I said, None.
+
+Unknown Speaker  48:53
+Okay,
+
+Unknown Speaker  48:55
+so then here, okay.
+
+Unknown Speaker  48:57
+So now you have, can we? Can we fix the tooltip?
+
+Unknown Speaker  49:00
+Don't want it to say default series.
+
+Matthias Miller  49:11
+Yeah, Let's do this.
+
+Matthias Miller  49:27
+Do you want late? Okay?
+
+Matthias Miller  49:43
+And what do you what old do you want? You said, EPO value,
+
+Speaker 2  49:51
+yeah, contract value, balance value, EPO value. I mean,
+
+Speaker 2  50:06
+if you wanted to make a little bit more simpler, it probably should be balance dollar sign, EPO dollar sign,
+
+Unknown Speaker  50:15
+yeah,
+
+Unknown Speaker  50:46
+okay, you
+
+Matthias Miller  51:07
+If it's a count, that's just one, if,
+
+Unknown Speaker  51:16
+then it's
+
+Matthias Miller  51:25
+we have no idea what the
+
+Speaker 1  51:27
+balance of the contract is. It won't work for those right now.
+
+Unknown Speaker  51:40
+We have no idea.
+
+Matthias Miller  51:50
+So this is contracts
+
+Unknown Speaker  51:55
+open, contracts dashboard.
+
+Unknown Speaker  51:59
+Yeah, fun. And
+
+Matthias Miller  52:05
+then the tool tip is
+
+Matthias Miller  52:34
+what's really this? Um,
+
+Matthias Miller  53:12
+and we should also have some kind of
+
+Matthias Miller  53:28
+let's do something like Well,
+
+Unknown Speaker  53:40
+that didn't work.
+
+Unknown Speaker  53:52
+Can you? Can you?
+
+Unknown Speaker  53:55
+Can you flip flop? It should say, um,
+
+Matthias Miller  54:06
+I like that. Yeah,
+
+Matthias Miller  54:40
+I mean, if we want, if we want to identify, I suggest we go have Seth and whoever else. There's one of their,
+
+Unknown Speaker  54:53
+if you want to, what.
+
+Matthias Miller  55:03
+Uh, Seth can build out or his team can build out identifies if we need the and when you know
+
+Speaker 2  55:10
+for us if we want, I think, What do you mean by identifies,
+
+Matthias Miller  55:13
+like the clicky, clicky clicky thing, for each of these, the
+
+Unknown Speaker  55:16
+clicky clicky thing,
+
+Matthias Miller  55:18
+click the thing, contracts, it is, you
+
+Speaker 2  55:21
+mean, the report that would that tell you what's in there, right? For these, I don't know that ever necessarily need it. We can, we can, we can think about that and talk about that. But do this, you only have one you can do is by EPO right? So I'm really
+
+Matthias Miller  55:37
+EPO calculator. Do I go find our EPO calculator.
+
+Speaker 2  55:43
+Wait, that's, that's a field on the contract, on the contract right there,
+
+Matthias Miller  55:46
+hard coded. It's not implemented. Huh?
+
+Speaker 2  55:56
+You're saying the EPO on the contract is not, is hard coded?
+
+Matthias Miller  56:01
+Yes, I am saying that. Check this out.
+
+Speaker 2  56:07
+Oh, it's 4560 for everything. I wondered why it said 4560 for everything. I was like, What did I do wrong? Why is all my EPO show 4560
+
+Speaker 1  56:17
+now that makes sense. Ah, that's funny.
+
+Matthias Miller  56:23
+That's funny. This is where we need to push something to get some accurate, um, numbers.
+
+Speaker 2  56:30
+Yeah, okay. For kicks and giggles, let's, let's put that let's put that thing in a dashboard. Let's put that thing. Let's put that thing along with the chart thingy in a dashboard, just for fun and giggles.
+
+Matthias Miller  56:44
+Got a dashboard, dashboard, dashboard, we should be prompting for RTO company.
+
+Speaker 2  56:49
+Probably, that would probably be good, but there's currently only one RTO company, so let's not get too bogged down with it.
+
+Matthias Miller  57:01
+We might also want to turn off the automation automatic updates come about Monday. Why do you want random this thing randomly to stop working on Tuesday morning because somebody screwed something up in the
+
+Speaker 2  57:17
+so this, this begs another question that we have not even talked about yet, and that is that, are we going to try to push this thing into some type of live system? So are we just going to lead the test environment thing around it?
+
+Matthias Miller  57:29
+Well, I mean, that's up to you. We could split. We could copy the test system into a new, you know, into a separate system.
+
+Speaker 2  57:41
+Probably should. It would be a little bit janky to have to have it, say, test environment around for a demo.
+
+Matthias Miller  57:51
+I mean, we could. We could also, no, I don't know that we should. We have
+
+Speaker 2  57:57
+a flip flop, put the, put the, put the bar chart on the left and PI on the right.
+
+Matthias Miller  58:01
+That's so hard doing, I know I manage. Okay, good.
+
+Speaker 2  58:10
+Default, default that thing to value so that it just auto populates. Yeah.
+
+Unknown Speaker  58:23
+Wow. We had
+
+Speaker 2  58:26
+to get we had to figure out some other reports could put into this thing just yet, maybe, like
+
+Matthias Miller  58:30
+two more would be perfect. Um,
+
+Speaker 2  58:33
+should we do a past due? Should we do some sort of past due, something or other?
+
+Matthias Miller  58:40
+Um, like an open contracts by term, except in a open contracts by age, like aging.
+
+Speaker 2  58:51
+Well, what I was, I don't know, do we do we have contracts that are past due?
+
+Matthias Miller  58:56
+I believe, I don't know how many we do. I think maybe, theoretically, we do, but I don't know for sure.
+
+Speaker 2  59:17
+Oh, on the right hand side of this thing. Can we put a long one on the right hand side? Or is it that? It that is it only is always go by quadrants, fine. Bottom right quadrant. Pull in my notes. Pull in my my notes, yeah, but I guess it's gonna be about to figure out how to assign it to somebody. I guess you can just automatically assign it to me in my youth. Oh, yeah,
+
+Unknown Speaker  59:44
+yeah, that thing
+
+Speaker 2  59:47
+just hard code it to me for now. Um.
+
+Matthias Miller  1:00:01
+Oh, to what we need to ask. I
+
+Unknown Speaker  1:00:09
+guess you could make a current user. Oh,
+
+Matthias Miller  1:00:12
+it is current user right now. Oh, got it.
+
+Unknown Speaker  1:00:20
+Okay, cool. I
+
+Speaker 2  1:00:23
+get to make that thing a little bit better that and go make a bunch more notes. What should we put in the bottom left for now, I don't know.
+
+Matthias Miller  1:00:34
+What do you have in your fancy?
+
+Speaker 2  1:00:37
+Oh, I know what beginning to pass. Let's do a bar chart of either bar or line chart, I don't care which, let's do bar chart for right now, a bar chart of buildings that were purchased. I guess it would be buildings by by date received, or whatever we want to call
+
+Unknown Speaker  1:00:56
+it, this year versus last year. So buildings when we purchase them.
+
+Matthias Miller  1:01:03
+Building values based on when we purchase them.
+
+Speaker 2  1:01:07
+We want to do it just by account, first, and then we want to do it by value. Second, I
+
+Matthias Miller  1:01:23
+let's do this guy. I'm
+
+Matthias Miller  1:02:05
+we just do purchase date.
+
+Unknown Speaker  1:02:10
+Is that what it is? I don't
+
+Matthias Miller  1:02:12
+know what it's called. Sure.
+
+Unknown Speaker  1:02:15
+Yes, purchase date.
+
+Unknown Speaker  1:02:23
+Let's do this. I don't know
+
+Matthias Miller  1:02:27
+if it's gonna let me do this back, stinker.
+
+Unknown Speaker  1:02:40
+What I'm
+
+Matthias Miller  1:03:20
+Do you want a further breakdown by term? No, we don't do term. It's that's something completely different.
+
+Speaker 2  1:03:36
+No, it's just, it's just, I want to be able to show a bar chart. How many buildings do we purchase each month. And then we want to look at the buildings purchase for each month and the value. Then how, what does that? You know? What is the other words get? You know, what I want. Never mind.
+
+Unknown Speaker  1:04:01
+Probably change this.
+
+Unknown Speaker  1:05:07
+You said I can do straight up RGB in there,
+
+Matthias Miller  1:05:09
+right? Yeah, just the number comma, number, comma, number,
+
+Unknown Speaker  1:05:15
+parenthesis, in parentheses or not in parentheses. No,
+
+Unknown Speaker  1:05:18
+just just got it.
+
+Speaker 6  1:05:20
+Value
+
+Matthias Miller  1:05:26
+we have the
+
+Speaker 2  1:05:56
+it doesn't like that in a validated list string. Why not?
+
+Matthias Miller  1:06:00
+Don't it's not in the list. Just do it as this, remove it outside of that.
+
+Speaker 2  1:06:08
+So okay, so just you're saying, no need for parentheses. Just V years equals two, comma, 59 comma, 30 comma, 246,
+
+Unknown Speaker  1:06:19
+put it in quotes. But yes, got it.
+
+Speaker 2  1:08:32
+I don't know if I'm gonna like your colors or not, but we're gonna try it.
+
+Unknown Speaker  1:08:39
+Sorry. What
+
+Matthias Miller  1:08:40
+do you want counter dollar value
+
+Unknown Speaker  1:08:47
+on the on this thing?
+
+Unknown Speaker  1:08:57
+Now,
+
+Unknown Speaker  1:08:59
+count first, what? Now I understand,
+
+Unknown Speaker  1:09:02
+wait, you want both of them, yes,
+
+Matthias Miller  1:09:06
+but your x axis is going to be bogus.
+
+Speaker 1  1:09:11
+Well, oh, well, oh, um. Yeah,
+
+Speaker 2  1:09:24
+okay, so let's do it by Count. We'll make it. We'll make another one then, and do it by value. And because people can, individuals can swap these in and out, right, right? Yeah. Let's do it by Count.
+
+Unknown Speaker  1:09:39
+First little thing here.
+
+Unknown Speaker  1:10:28
+Okay, that's not the worst thing in the world. Refresh, refresh your chart.
+
+Unknown Speaker  1:10:31
+How about that works? I don't know. I'll keep working on
+
+Unknown Speaker  1:10:39
+redtones, blue tunes, yeah.
+
+Matthias Miller  1:10:44
+I'm not a graphic designer. I suggest you throw this whole here. Let's do this. This is what I would do.
+
+Speaker 2  1:10:50
+Yes, I know. I will throw the whole thing in the chat GPT and come
+
+Matthias Miller  1:10:55
+up with a color scheme for you. Yes, yes. I mean including this, actually, this whole thing.
+
+Unknown Speaker  1:11:01
+Yeah, I will. I
+
+Speaker 2  1:11:09
+read me this. Is it possible to put the notes you can't do a long one along the side. Can you
+
+Matthias Miller  1:11:18
+you can do whatever you want, man, so like the, the
+
+Unknown Speaker  1:11:21
+my notes one, I would love to be from top to bottom, yeah, except on the right hand side.
+
+Unknown Speaker  1:11:29
+Wow, you're picky, man, sorry.
+
+Unknown Speaker  1:11:31
+And then we gotta figure, we gotta so let's do No,
+
+Matthias Miller  1:11:36
+then I know exactly what I'm doing. Just hang on. Just hang
+
+Unknown Speaker  1:11:39
+on. Okay? He's, he knows. He knows, dude, this thing looks
+
+Matthias Miller  1:11:47
+how these little shiny things are so little of the whole project.
+
+Speaker 2  1:11:51
+Oh, man, it's just like it makes it feel legit. Man,
+
+Unknown Speaker  1:12:02
+I'm loving it.
+
+Matthias Miller  1:12:05
+Okay. The one thing we should do here, though, is,
+
+Speaker 2  1:12:12
+um, we will have to figure out, like, okay, so this is great. We I would really love to get some sort of past due chart in here. So if we have, if we have rents and contract breakdowns and product purchased, and if we can get some sort of past do something or other in here yet, ooh, yeah,
+
+Matthias Miller  1:12:35
+well, we can get that.
+
+Unknown Speaker  1:12:42
+Um, um, let's do like, what do
+
+Matthias Miller  1:12:48
+you want for the past due,
+
+Unknown Speaker  1:12:51
+3060, current, 3060, 90.
+
+Matthias Miller  1:12:54
+Do you want to see contracts? Do you want to see dollar amount? Do you see, I assume this is as a chart, dollar value, yeah,
+
+Unknown Speaker  1:13:03
+as a chart, as
+
+Speaker 2  1:13:09
+a hold on a second I have. I shared something with you. How did I do that there? I think it was a line chart. Let's do a line charts. We don't have any line charts yet. Well, okay, so the way that, the way I've done these in the past, is you'd have a model for what was past due last year. No, wait, yeah, but those are stored values. I have no idea how you would do this. How would you come up with a concept of past due last year and past due this year by month? No, you could do this. You're comparing, I imagine you're uh
+
+Matthias Miller  1:13:46
+oof, well, because if you have to do it as of a day of the month.
+
+Unknown Speaker  1:14:02
+I uh, right.
+
+Speaker 2  1:14:07
+Okay. So no, okay, since we're since we're doing this, let's do a projected revenue. So this would be if all contracts paid on time, um, on a per month bar chart, and then we should put a line in there that shows us what what was received on A per month basis. You tracking
+
+Unknown Speaker  1:14:41
+one more time, please. So it
+
+Speaker 2  1:14:44
+goes like this. If you look at open contracts on a per month basis, okay, yes, and you said, if everybody paid, what would be the projected value that. We would receive if everybody paid, and then you put in a line on a per month basis of what we actually did receive.
+
+Matthias Miller  1:15:11
+So if everybody paid, Okay, what about okay? So revenue based on due date versus revenue actually received right correct, which means if they pay early, they're going to cover for some customers who are late, right?
+
+Unknown Speaker  1:15:34
+Sure,
+
+Speaker 2  1:15:37
+I think that's right. I don't it's not an exact science. We just it essentially what, what you're going to end up with is you're going to end up with a bar chart, showing, showing always, should always show higher than what we actually receive. Not always. That's not true. That's not always true. Because if you get, if you get someone who, if you get someone who paid, you know, a whole bunch of money current in a Past Due period, then obviously you may have a month where the line is above the you you actually produce more revenue than than projected, right?
+
+Matthias Miller  1:16:17
+Why wouldn't you do this as a percentage of, like a percentage of revenue collected, or as a bar chart or as a line chart showing, Okay, no, this is simple, a line chart showing rent. Rental charges versus rent paid,
+
+Unknown Speaker  1:16:47
+incurred versus paid, right, right?
+
+Unknown Speaker  1:16:52
+That's exactly what it is
+
+Unknown Speaker  1:16:56
+on a per month basis.
+
+Matthias Miller  1:16:59
+On a per month basis,
+
+Speaker 2  1:17:07
+per month basis, you're so close, man, you just need to do this one more and slap it in here. We have a full on dashboard that just is.
+
+Matthias Miller  1:17:19
+Okay, let me, let me, hang on, let me, let me catch up to my life where I'm at. I feel like I just I am, I am pushing the edges.
+
+Speaker 2  1:17:31
+Here we did. Kill it. Kill it for today. That's fine.
+
+Matthias Miller  1:17:35
+I don't mind taking I just need, like a, if I can have like a 10 to 15 minute break.
+
+Speaker 2  1:17:40
+Well, I'm I gotta be done at four o'clock anyway. So if you want to drop off, if you want to say this is drop off point, we'll pick this up tomorrow. That's fine. We already have a working concept that we can pop up the moment that that what's his face walks in.
+
+Unknown Speaker  1:17:54
+PD, yeah. PD,
+
+Matthias Miller  1:17:59
+um, okay, I'm torn. I really could use a break if you have until, if you have if, but, but I also desperately just want to get this stuff knocked out so it's a little bit of that I'm not willing to give up, but I don't care.
+
+Speaker 2  1:18:21
+Dude, I'm almost giddy. Man, I'm that thing is saved, right? Where is it saved?
+
+Unknown Speaker  1:18:26
+I am almost giddy
+
+Matthias Miller  1:18:28
+in the dashboard
+
+Unknown Speaker  1:18:29
+view, yeah,
+
+Matthias Miller  1:18:32
+I can't wait until you get as soon as you get the
+
+Speaker 2  1:18:35
+dude, just hey, let's hang it up for today. We'll pick this up tomorrow.
+
+Matthias Miller  1:18:39
+All right, sweet man, let's do it. Bring
+
+Unknown Speaker  1:18:41
+it up. I mean, when you're tired, you're tired,
+
+Matthias Miller  1:18:43
+let's I think this calls for celebration. Indeed.
+
+Speaker 2  1:18:49
+If I was there, we go get it, we'd go get a cocktail, man,
+
+Matthias Miller  1:18:52
+dude, this is so awesome, isn't it?
+
+Unknown Speaker  1:18:56
+Is so awesome. Insanely awesome. Three months, dude, that's insane.
+
+Unknown Speaker  1:19:10
+Dude, this is, this is unreal
+
+Matthias Miller  1:19:14
+on a rock solid platform with a really solid data model underneath it, a few tweaks, but you got a good system.
+
+Speaker 2  1:19:27
+I am dude. I am stoked. Like, okay, that this, this dashboard right here is what's going to live right on, like the monitor as people walk by. Yes, indeed, you're gonna have
+
+Matthias Miller  1:19:39
+one of those big monitor stands right,
+
+Unknown Speaker  1:19:41
+yes, sweet,
+
+Speaker 2  1:19:48
+tickle me with a feather. Wait, why is this not giving me 25 I don't understand. Oh, no, wait, duh, because I was clicking on a. Never mind. Ignore ignore me. Ignore me. Thank you. Goodbye. You're amazing. I am just I'm tickled to walk out there and show lean. I will see you at
+
+Matthias Miller  1:20:10
+I'll see you at 939 30 for assist, and 1130 for only, and 1145 for PD,
+
+Speaker 2  1:20:20
+well, you and I want to jump on 1130 to catch up with the team first,
+
+Matthias Miller  1:20:24
+yeah, 1130 the team, 1135 with
+
+Unknown Speaker  1:20:28
+sweet, sweet, sweet, all right, you.
+
+
+Transcribed by https://otter.ai

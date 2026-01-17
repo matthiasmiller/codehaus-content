@@ -1,0 +1,491 @@
+Matthias Miller  01:09
+hello Good afternoon
+
+Unknown Speaker  01:25
+Good afternoon
+
+Matthias Miller  01:39
+great
+
+Matthias Miller  01:47
+we've got go ahead
+
+Speaker 1  01:49
+oh I just we can start with the agenda I sent or we I'm gonna have to drop it 345 But it's fine you have to keep going but I thought the first three items the first one especially was something that came up with land this morning and said we'll just let's take a look at it today so we could cover those first three first what we have learned there that would be ideal
+
+Matthias Miller  02:16
+okay, we pull up a screen shares I can use this if I need to
+
+Matthias Miller  02:32
+invoicing so I think
+
+Matthias Miller  02:50
+so currently, it's possible by doing this overwrite invoice date and you hit enter when you want it to be invoiced as of there's a little
+
+Speaker 2  03:02
+when you hear on the side, only available from sales orders needing invoicing. Yes.
+
+Speaker 1  03:25
+Which link is there? Are there other places where you'll want to do this? Like I would see this as the
+
+Speaker 2  03:33
+I mean, it would make sense to be able to do it from the invoice record but I'm just opening sales orders meeting invoicing to make sure that I can actually do so so your override invoice date. I see Hold on It's still refiguring out the whole load system. So when you it doesn't do anything when I click on it does nothing at all.
+
+Matthias Miller  04:01
+When you click on the second or the menu option well there we go.
+
+Speaker 2  04:10
+So you click on the plus then you click on the override invoice works. And then it updates that that column got it.
+
+Matthias Miller  04:22
+So do you want that just to be straight up, editable all the time from the sales order.
+
+Speaker 2  04:30
+Most of the time when they're asking us to do edits like that it's because you're working in the invoice Sure, you're not you're not working from this window now. Is it problematic to have to go launch another window and open it up? It's one extra step. I mean, you launch it you do a CTRL F you find the building you do it. It's it's doable. The amount of times that we have to do it really are not that often. So like I Do you have to create a solve for me for it? I've got worse things to solve.
+
+Matthias Miller  05:06
+Well, I mean, it's all of let's see. I can make it editable all the time. And the reason I didn't do that was I didn't feel like thinking through what happens when somebody changes historical invoice dates. But just tell them because
+
+Speaker 2  05:27
+why it wasn't that way before. Let's leave it like that for now. Knowing that you can, if it does become cumbersome, we'll just reach out to you and say, Okay, we are doing this on such a regular basis. Let's go ahead and do it. But for now, this works.
+
+Speaker 1  05:43
+I would think this is primarily like builders are going to be communicating at all this report if they want to change the invoice date, no. Are they also communicating it to to you from other? Other Other methods as well in like saying, hey, I need to change the invoice date.
+
+Speaker 2  06:06
+We had some requests like that in the last week. Because I know individuals reached out to me and said, If we can't change the invoicing, Well, where am I supposed to do this? So what's which numbers? They are? I don't have examples for that. I have to go back and ask. Okay.
+
+Speaker 1  06:20
+But moving forward, if they if it's noted on this report, when they send it in, like daily, then we should be good, right? Correct. Okay, good.
+
+Matthias Miller  06:32
+Okay, I'm happy to revisit that just let me know. attachments to deposits that's waiting for Josh said it's done. Or it's in Josh's court, it's supposed to be done. And find out about all the changes until after the
+
+Unknown Speaker  06:51
+as of 30 minutes ago, it wasn't functional yet. So
+
+Matthias Miller  06:53
+it's waiting on an update. So this Saturday, Monday morning? Sure.
+
+Speaker 1  07:04
+Yeah, if you want to just demo the test version two, I know you've looked at and we talked about moving forward, just want to see how
+
+Matthias Miller  07:12
+sure, I'm not sure if that test system is 100%? Well, let's take a look. We can find out for sure if we're Josh's out on this stuff.
+
+Speaker 3  07:22
+There was working, I mean, the test warnings were coming on the test system. Just earlier today.
+
+Matthias Miller  07:29
+We are you Mark, are you talking about deposit attachments? Are you talking about the contact warnings?
+
+Speaker 1  07:36
+I was the contact the contact warnings. Okay.
+
+Matthias Miller  07:41
+So contact warnings we have an interesting situation with because we don't actually know what payment type is. I can distinguish between theoretically ACH and non ACH based on here, let's do this. The fundamental issue is how do you distinguish between we don't we don't have any way to distinguish between payment types. So drew in your testing
+
+Matthias Miller  08:18
+the age in check CC payment with no address did throw the warning CC and no address to throw the warning and should not. So there's a few ways we could do it. One is we can see whether a payment type is tied to an asset versus a liability account. And assume it's a credit card. If it's tied to a liability account. We're basically only enabled this morning for any payment types that are tied to a an asset account. And I think that would do the trick. And then the other way that we determine that it's an ACH is in. I'm just gonna bring it based on whether it has an ACH source account listed in the company. In which case, we assume it's ACH and not, not a check.
+
+Speaker 3  09:09
+So if you will, yeah. I guess. As long as there's not something that is selected as ACH without having ACH payment information. That should work fine. And I think I think we've probably already covered that on all the historical vendors. So that you were the one wedge that we would run into would be shed times expense checking account, which functions the same way like it's debit cards prepaid system, but it's actually a checking account. So that one they would get the warning on and they just have to know that they can just go past the warming and keep going happily
+
+Matthias Miller  10:02
+I mean, the other option, this is a fairly, this would be just a, a just fine option that I'd be pretty happy with as well is on the payment type, add checkboxes for require address and require ACH require banking information then you can just go configure it however you want to and everything's, you know, everyone's happy, happy and you don't train your users to blow past warnings, which is something they generally like to avoid doing. They're there for a reason. Yes.
+
+Speaker 2  10:35
+Because you even though you train them only in one instance, it does not necessarily translate
+
+Matthias Miller  10:42
+our brains or pattern recognizers.
+
+Speaker 3  10:45
+Well, that would I would be well pleased with that idea there. Okay. We might find more uses for configuring payment type things. Yeah. So be careful.
+
+Matthias Miller  10:57
+Be warned. Okay. All right, noted, I will start making a follow up list
+
+Speaker 3  11:06
+for this, are you still gonna be able to get that on the on the update? If you do it that way? We try. Well, the way it was, it should work till the next update comes up if you want to. Yeah,
+
+Matthias Miller  11:23
+just a heads up that you should probably plan that out on Tuesday. So if there was ever any white knuckled fear uncertainty and doubt about what happens when I disappear then this would be the time to enjoy that. So I'm the one piece Well, anyway, okay. So let me require address and require ACH information to payment type detail screen as well as to reconfigure the report for visibility. Alright, so that's that one.
+
+Speaker 1  12:15
+Do a quick demo on a vendor invoice showing land like you know, the warning and how that how that's going to work for people when they're
+
+Matthias Miller  12:28
+what see if we can find the problematic one ah, y'all are too good No, it's also what was again
+
+Unknown Speaker  12:42
+you're gonna have to do the test system to get the warning
+
+Matthias Miller  12:46
+that was a really good point. Wow. Thank you drew.
+
+Unknown Speaker  12:54
+Alright, so pick one
+
+Matthias Miller  13:07
+Okay, so when you try to save it says this vendor is missing a default payment type and IP address, click the ellipsis beside the vendor to edit this information, you go to the vendor and here because it's a test us and we can go have fun and so we're going to do let's make an ACH because that makes more fun things happen and let's do an address Okay, and now on the on the contact, it's going to say it's missing banking information. And we're going to ignore that because we're rebels and then we come back over here and save again and it's going to come back at us again that the vendor is missing banking information you should click the ellipsis and fix it so finally we cave and we say forgive us for we have send and contact name and address needs to be filled in I didn't fill in the address completely I've got slightly different checks for the address but anyway and then now when I save it just saves with no warning so
+
+Speaker 1  14:16
+so we Monday mornings we'd have this warning basically this warning but slightly different criteria that determines that's basically hardwired to the payment types that says I needed address for I need ACH banking information. Yes.
+
+Matthias Miller  14:38
+And if it goes live drill try to shoot you an email you might have to you might have to manually configure these to based on what you want to have happened with him but yeah, yeah.
+
+Speaker 1  14:53
+So can you see that? Does that make sense or do you see anything that should be changed on that for your apt Apr,
+
+Matthias Miller  15:00
+this will
+
+Speaker 1  15:03
+well be used heavily in the beginning. And then it'll still be used long term as we add new vendors just like a double check to make sure that all the information is theirs. So that Dru can go pay the vendor. But yeah, just curious, can you see anything that should be changed or any suggestions?
+
+Unknown Speaker  15:47
+Last Well, it did land drop off.
+
+Speaker 2  15:54
+I did for a moment, a shipment came to the front door, and I stepped out to grab it. So if you ask me something in the last 30 seconds, I was at the front door.
+
+Speaker 1  16:04
+I just asked for your thoughts on this warning system to be used heavily by AP people initially. And but still ongoing, just to make sure that we get all the correct try to make so that all the accounting information that's required? Somebody,
+
+Speaker 2  16:27
+I don't I don't see any any trouble with it. Good.
+
+Speaker 3  16:34
+The thought of doing ignore and save instead of just simply not allowing them to go ahead. I mean, that's kind of, you know, supposing you're missing information. So you can still get it in the system, and we have some time to track it down. Do you see that as a problem? Would you rather have it be just totally blocked from moving head or not?
+
+Speaker 2  17:00
+I think I would have I think I would prefer it being totally blocked. And the reason for that simply is you can't pay it anyway until you have the information. So right. If you don't have the information, you don't have the information.
+
+Speaker 3  17:12
+Right? Yeah. Well, that's, that's you guys have to deal with it. Not me. So I don't want to just lock you out. If you're not okay with that. I
+
+Speaker 2  17:21
+don't think I don't think that should be a problem. Give, you know, assuming that we are able to, you know, reach out to vendors for that information, right.
+
+Matthias Miller  17:36
+So, in this in the case that you don't have the information on hand, you get a vendor invoice, you start entering it, you enter all the information, you hit save, it says Matt can't do it. So you
+
+Speaker 2  17:48
+mean, that's been the case for a long time, because we couldn't add vendor? So that's nothing new.
+
+Matthias Miller  17:52
+Oh, wonderful. I like difficult things that aren't worse than they were before.
+
+Speaker 2  17:59
+So I mean, at this point, we had a long list that we would wait for Aaron to add vendors, you know, that's in the process of being resolved. I feel like this is going to be a much smaller subset, because for the most part, when you're paying ACH, those are going to be reoccurring relationships.
+
+Matthias Miller  18:16
+Absolutely. Okay. So me.
+
+Unknown Speaker  18:32
+Each that it has to do this, like it's more concrete or whatever. Here we go.
+
+Speaker 2  18:39
+I mean, the only other way that you could possibly go about doing that is to set I don't know if that if you could set like an override status that would be possible for like, an admin or super admin or something like that. I don't know what I'm asking. This is the classic architect telling the builder something.
+
+Matthias Miller  19:00
+Well, I mean, I think the question is, and this is the thing about errors, is that there? I mean, I guess we could do that. If you're an admin, it's a warning if you're a regular user, it's a it's an error.
+
+Speaker 3  19:21
+I mean, as long as people don't go just throwing, you know, dubious information in just to get past the Well,
+
+Speaker 2  19:31
+that would be my only concern is I saw, I saw him demoing that we can just do 123 So you know, it's no problem. You just put information in there and it's all good. So like, obviously, that's pointless. And ultimately, if this becomes a pain point, that is what will happen. Yeah. Is that worse, then, I mean, I think I would still prefer that to people. ignoring warnings on a regular basis that could potentially impact a lot of other things. The pain would end up with law, you can't pay 12341234. So, you know, that's not something I would want to train our staff to do. And I would imagine it should be conversations. If that started happening,
+
+Speaker 3  20:20
+well, I'm guessing. Yeah, I mean, people will be talking about, oh, I couldn't get through on this one. And, you know, it happens a lot. And we'd have to figure out what else to do might be a thing to deal with rather than program.
+
+Matthias Miller  20:36
+So, yes, to errors stopped to save.
+
+Unknown Speaker  20:47
+Great, I would say, I would say Correct.
+
+Matthias Miller  20:54
+I'm going to Yeah. And I'm going to throw this in the same ballpark as the other one. I think we're well, is there any automation that? You know, what,
+
+Speaker 2  21:10
+is there any Kanban automation that this is going to impact? Yeah, that
+
+Matthias Miller  21:14
+could all of a sudden, I'm going to do this. If if your edit editing interactively, then it's an error. Otherwise, if it's an editable report, or a
+
+Matthias Miller  21:37
+or an import, which would be for import would include automation, it's a warning. I'm slightly paranoid of accidentally breaking some good presses like that. I think that should be fine. We'll find out soon enough if it's not.
+
+Matthias Miller  22:12
+Okay. So in digital, or Elsa warning, I should really make sure that that actually works as we expect it to but okay, I think we're good on that one.
+
+Speaker 2  22:28
+And just to clarify, this applies only when you've selected ACH as the payment form. This does not apply for vendors where you're doing credit cards or other options.
+
+Matthias Miller  22:44
+Hopefully, by the time this goes live, this will only apply to automatic
+
+Speaker 3  22:53
+Correct? Check and ACH is all that it should be fine to.
+
+Unknown Speaker  22:58
+Just wanted to make sure you
+
+Speaker 1  23:00
+have to have address for a check as well. Yeah. Yep.
+
+Matthias Miller  23:10
+All right. So
+
+Matthias Miller  23:18
+speed issues, I should have pushed an update last night and I, I'm sorry, it's my mind. They will go it will be it should be live Monday, I'm not sure if there's any outstanding issues, but reconcile seems to be the one thing that's been creating issues. So that will not create issues. So basically, Drew, it'll say, when you leave the row, the bottom pane will say reconciliation summary as of specific time, and you got to refresh the entire report, which really isn't that much new, we were going to try to make the bottom one auto updating based on your activity. And that ended up being too complicated. And so you just have to refresh the whole thing to view the summary before you reconcile.
+
+Speaker 3  24:05
+Though it saves each line as you as you're looking, and then you need to refresh to get the new numbers at the bottom. That's great. Don't keep me from doing these. making tons of changes and then having one that throws a glitch that makes it exactly done. So that's better.
+
+Matthias Miller  24:24
+What's what's not to love about it? So I don't know if there's other other speed issues besides that, but
+
+Speaker 3  24:32
+did you look at like loading speed, like, I mean, I know it can be anywhere in the pipe from here to there. So
+
+Matthias Miller  24:42
+the general ledger loading speed.
+
+Speaker 3  24:44
+Right, right. Like, I mean, even just below the chart of accounts, just like the chart takes me.
+
+Speaker 2  24:54
+I don't know. A little, you know, right and that That applies to quite a few other things loading invoices loading vendors, all of it takes noticeably longer is it a problem? I mean, if it keeps increasing at this rate, it'll be a drastic problem but I just tell people right now look, you're on dial up, it's fine
+
+Speaker 3  25:21
+I mean, is it especially like Ledger's where you know we're going to be exponentially adding exponentially it'll seem like adding transactions to these things
+
+Speaker 3  25:38
+I guess people with high speeds are getting noticeably longer than it's mine's not quite as high speed but
+
+Matthias Miller  25:46
+weeds that out total build site says five seconds count back parent
+
+Speaker 2  25:58
+doesn't make any difference that you're doing it in a test environment does it is the real environment take longer?
+
+Unknown Speaker  26:05
+Mine took longer than that one did
+
+Matthias Miller  26:15
+still longer than it should be but let's see what see what this one says. Five seconds Andrew you were saying you were seeing more than five seconds
+
+Speaker 3  26:31
+oh yeah, I would think so. Like go to Oh pull up the Bank Ledger go up to like primary checking bank nothing's gonna be big. I mean for people you're dating
+
+Speaker 3  26:55
+Oh, asset something we're back down
+
+Matthias Miller  27:00
+to 1384 Here it is. Total load speed was six seconds for this one. This was on ABC primary checking.
+
+Speaker 3  27:14
+Wedge and I'm pretty sure I have slower service than your are you running on cable or whatever you're running on?
+
+Matthias Miller  27:23
+I've got probably about half well I don't know I've got somewhere from 100 to 500 megabit I think my actual speed is I mean, it's a little surprising to me check something so DREW Let's see what now we're still part of both part of the same user account
+
+Matthias Miller  28:06
+I don't know. My My inclination again, just by virtue of both time constraints we have this afternoon as well as end of year. Yes, it's bad. Yes, we should fix it. blocking users from saving is much worse than flow loads. And perhaps we should early next year, take a look at what we can do to speed this up. I'm not sure that I don't think we're going to have a great satisfactory solution in the next two days, right? Or
+
+Speaker 3  29:01
+you know for something like well, that's just how it's gonna be or if it's something Oh, yeah, we you know, we can once there's time and nothing else is burning. We can we can fix it.
+
+Matthias Miller  29:13
+But it definitely I would not take a strictly fatalistic approach to it by any means. I don't think it's the way it has to be. Or I wouldn't assume that it is until we prove that it is. So yep. Update some financial reports from code drafters the income statement we got the coding changes back for that we need to make that work to avoid the text wrapping at least more than that. I don't have 1215. I will also see if I can sneak that into this update.
+
+Unknown Speaker  29:58
+The text wrapping Oh, yes.
+
+Speaker 1  30:07
+We do you have anything on the duplicate transactions that invite that you want to look at?
+
+Matthias Miller  30:16
+Well, Drew, did you have a chance to test it?
+
+Speaker 3  30:21
+Yeah. Well, we were talking about the payment types. I thought that's what you were getting at. That no, that only applied to the contact information thing, I guess.
+
+Matthias Miller  30:33
+Yeah. I mean, this is something completely different. This is entering a vendor invoice. Right,
+
+Speaker 3  30:38
+right. Yeah, no, I tested this. I just lost that information on that other side. Because that involves the contact information involves the payment type thing as well. What I found was that if I used a created a transaction to duplicate a vendor invoice, it would give me the warning. But other duplications it would not like a new vendor invoice duplicating an old vendor invoice, it would not, it allowed me to save just fine. A duplication of one transaction over another transaction allowed me to save just fine. And a vendors invoice duplicating a transaction allowed me to save which is really the one that's actually going to happen the most is you know, we'll create a transaction and then later that receipt will come in and we'll go through the AP system. And so that's where the warning should come but now I created a new transaction to duplicate I mean, I was saving them. But I don't know. I don't know if they if that makes any difference or not.
+
+Matthias Miller  32:05
+Well, this one you delete it after you did that this will be deleted after you. Okay, so I mean, I guess here's what should happen. vendor invoice.
+
+Unknown Speaker  32:15
+Screenshots of everything.
+
+Matthias Miller  32:17
+Oh, you did? Okay. All right. I will chase that as well. Chase. Okay, the last thing I was okay, fix income statement. Wrapping, shakes, vendor invoice warnings. Okay. And then let's take a look at our agenda. What else we got? I'm gonna have to keep rolling through this fairly quickly as well. I probably should drop it quarter quarter as well. Updated financial reports. I don't have any more updates. Unfortunately, beyond that. If you want more of an update, please get in touch with Audra. And she can chase down specific updates. I think reconciliation reconciliation reports in history we're putting on the backburner just a bit. Maybe Nick will be able to work on it over over his two month Christmas off of school
+
+Matthias Miller  33:17
+groupings is in Joel's court you have to ask Audra for an update if you knew that cashflows hasn't changed number seven is still in Josh's court
+
+Matthias Miller  33:33
+number eight looks like there's nothing for me to do here. Number nine This is still in my court. Nothing more number 10 Going on live in the next update. Number Be Well, number 10 should go live the next update.
+
+Unknown Speaker  33:53
+Oh wow
+
+Speaker 3  34:02
+if you have a little bit of time I have one thing to look at
+
+Speaker 3  34:13
+I did so just one yes. Okay, so sales order. Oh H 2657. Did we lose
+
+Matthias Miller  34:33
+him here? Or did it go?
+
+Speaker 3  34:37
+Oh yeah. Okay. Just 65769 to three so let's things a little interesting. This payment was on a deposit she like we got the payment ACH the bank You know, that connection is all correct. The the payment is not available when I go to add it to a deposit.
+
+Matthias Miller  35:15
+It's not tied to a dealer. I guess it's not tied to a district.
+
+Speaker 3  35:23
+But I went through all okay, I went through all the districts and I couldn't find it. But maybe it's just not showing up because of that. It's not in that and in order to find the sales order to apply the payment, I had to go all districts to find Yes. Which that would make sense why it showed up there, but
+
+Unknown Speaker  35:44
+this should be a shed shouldn't be sheds direct. Ohio is who? The dealer should be. Guy No, no. Yes. Right. Sorry.
+
+Matthias Miller  36:00
+of direct of Ohio. There you go. This guy? Correct.
+
+Unknown Speaker  36:06
+Is it giving us a 40% discount?
+
+Speaker 3  36:10
+Really would have value in their? Oh, yeah.
+
+Matthias Miller  36:16
+I mean, their wholesale percentage is 60%. What they do pay?
+
+Unknown Speaker  36:26
+Yeah, that I think this is great.
+
+Matthias Miller  36:29
+So that will that's that was the issue on that one.
+
+Speaker 3  36:32
+Yeah, because I wasn't sure what makes him hit the list. So no, no,
+
+Speaker 1  36:37
+no. No, no. Good. So Matthias, are we canceling the call Monday? We keep that?
+
+Matthias Miller  36:52
+Well, do you do need anything? Oh, yeah, not now. Yeah. Well, let's, I mean, I would, I would by all means keep, let's keep it on the calendar. Good, always cancel. I'm going to try to push as much as up through before the weekend. And if there's anything else, outstanding that I'm not thinking about besides what we talked about just now, let me know. We none unless you want to do a call first thing Monday morning. I'd be happy with that as well. And then there's follow up. Could we could we actually do that? Yeah. What's
+
+Speaker 1  37:30
+mean you name the time? We get up earlier than you do? Wow. That's what you measured by a better hour, six o'clock is earlier than your six o'clock is what I meant to say.
+
+Matthias Miller  37:52
+Only because I could I would do a I would just seven o'clock. Eastern.
+
+Speaker 1  38:01
+You. Yeah, let's go here. Well, okay. To be clear, Matthias that? I mean, laters fine as well. I mean, I know. No,
+
+Matthias Miller  38:08
+I mean, I actually, I have been don't tell anybody this. But I've been shifting my schedule pretty early. Don't tell anybody that sometimes it continues later than it should. And that's the main thing. So I would prefer to do that. So that we can circle up and square away anything that needs follow up that day. And please forgive me if I'm five minutes late. But I will I will be there
+
+Speaker 1  38:44
+on the exam. And then we keep the one o'clock for now if we need it. And the other? What about that? You asked for another? Another? Like a one time event? Another option on the reconciliation?
+
+Matthias Miller  39:03
+Oh, that's right. You need a field for that. Can you help me understand? So you want to these are transactions you want to keep? Yeah, around basically.
+
+Speaker 3  39:17
+Yes. So you know, we're gonna have a few checks and things coming hitting the bank in January that were written in December. So we want to we don't want to wipe those out in our grades clean up. So normally, you know, if it's not cleared, you just wouldn't mark it cleared and it would just be blank. But we're going to have oodles of that kind of stuff. I think that we don't want to say
+
+Matthias Miller  39:46
+can we just say that any transactions automatically created from checks with a cleared but not reconciled status we disassociate from the The we dissociate from the underlying check record. And we don't delete any accounting transactions that are not linked to an automatic that were not automatically created.
+
+Unknown Speaker  40:20
+Think I think you lost me.
+
+Matthias Miller  40:23
+Okay, so two things First of all, just business as usual December 31, or whenever you, you go mark those as, as cleared but not reconciled. Then as part of our great as part of the Apocalypse, we, for any of those that are cleared, but not reconciled, we will unlink them as if they were not automatic transactions. Okay. And then in the Apocrypha in the Apocalypse, any transactions that are not linked that were not automatically generated that do not appear to be automatically generated, shall be saved.
+
+Unknown Speaker  41:11
+In a hurry, generate a
+
+Matthias Miller  41:14
+three generation, they will not receive a new.
+
+Speaker 3  41:19
+So by automatic, you're saying like, automatically brought back in and recreated,
+
+Matthias Miller  41:25
+like we will, by automatic, I mean, all the transactions that created from checks or deposits, or building records, or sales orders, or et cetera, et cetera, et cetera. All of those transactions that were automatically created prior to the first of the, you know, that were automatically created as part of the accounting impact would get deleted, but we would keep any transactions for you that appear to have been manually created, including the those that you those cleared transactions that you want to have persist.
+
+Speaker 3  41:59
+Hmm, so I would, I would mark cleared everything that really is not cleared, actually.
+
+Matthias Miller  42:11
+So that there's no, it could be No, it could be cleared or not, whether it's cleared or not, I'm sorry, it could be either one. Another way to say it, here's another way to say it. Go find all automatically created reconciled transactions, and delete them. And for any transactions that are left, go unlink them as if they were manual transactions and keep them around.
+
+Speaker 3  42:42
+But okay, so if it is, if it is something ancient, and was not supposed to be kept around, it could just be deleted, with no detrimental effects, like in 24. Right? deleted
+
+Matthias Miller  43:00
+or voided? Yeah, whatever. Well, I mean, except if it's dated historically, then it's gonna affect your opening balance.
+
+Speaker 3  43:08
+Right? That's what I'm afraid, like, that's why that's why I don't want I don't want anything to be hanging around that that is not preserved supposed to be. Like, because what I'll do is, Oh, got it. Okay. So I'll take the reconcile from QuickBooks that says, okay, all of these checks, the, here's the list of checks that is out that are outstanding, then I'll take that list, and go hunting through our system and find all of those and mark them as these Mustangs is.
+
+Matthias Miller  43:44
+All you're really asking for is a ICER. I will survive the apocalypse checkbox, basically. Yes. And do you want that to be accessible from where
+
+Speaker 3  43:56
+I'm from the reconcile module would be great. You know, kind of like another checkbox just like cleared or, okay.
+
+Matthias Miller  44:08
+I will throw that in.
+
+Speaker 3  44:11
+Now, that sort of thing. Or we'll also like roomie pulling in records from AP and AR and like, those will all have elements like that, that needs to be saved around as well. And I think that's on inventory management, and if we can remember to just bring those accounts over, but that might be something for another time.
+
+Matthias Miller  44:38
+I mean, if you have stuff on AP and AR that you want to we need to talk through on Monday. We don't have time now I gotta drop. Let's talk through on Monday, a specific plan for the apocalypse and how it should happen.
+
+Speaker 3  44:56
+It's gonna take multiple steps because yeah, we were we've been talking Here, what needs to be saved and how and all that so? Yeah, sounds good.
+
+Unknown Speaker  45:07
+And drop off right? Yep.
+
+Matthias Miller  45:09
+Yeah, I think we're good. Thanks again.
+
+Unknown Speaker  45:13
+Thank you, Matthias.
+
+Matthias Miller  45:16
+All right. Anything else until then, I think I've got my work cut out for me. Yeah, I'll probably warn my wife that there might be a few late night hours that we're gonna get this done.
+
+Speaker 3  45:27
+Yeah. Okay. That should be it.
+
+Matthias Miller  45:32
+Okay, sounds good.
+
+Unknown Speaker  45:34
+Yeah, have a good day.
+
+Matthias Miller  45:36
+I will you as well. Yes. All right.
+
+
+Transcribed by https://otter.ai

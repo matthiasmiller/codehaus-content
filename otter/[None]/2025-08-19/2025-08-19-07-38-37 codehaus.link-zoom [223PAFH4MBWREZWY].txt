@@ -1,0 +1,413 @@
+Unknown Speaker  00:13
+You, Jonathan, good morning.
+
+Matthias Miller  00:16
+Good morning. We finally have stuff for you. Let's go. Let's go. Hey, all right, so the interface in the silver loom side is going to be a dashboard prompting for going to have a take, a payment, probably take. Probably the two ways people end up getting to this are from the customer screen, and probably also take a payment screen, which is just a customer search that links to the dashboard instead of the Contact Detail screen, the dashboard itself, then would some of this stuff is not specced out very well at all. So I don't know if you guys are fine with
+
+Speaker 1  01:01
+good so we can have a custom HTML page be a dashboard pane.
+
+Matthias Miller  01:08
+Yeah. So you'll have an auto push report with a redirect to the Whiz key, and we'll pass in probably a customer list MIT and a payment mid if, if there is, if it's, if it's not a new payment, and then use h Mac for for authentication. And there's stuff in the I'm happy to help, but there's stuff in the whiskey framework for H back. Are you familiar with that at all?
+
+Speaker 1  01:39
+Yeah, more or less between the documentation and the power of chatgpt or Claude. I guess we will figure it
+
+Matthias Miller  01:46
+out exactly. I mean, it's, it's not super complicated. We got all the macros we need on both sides, or the Microsoft meeting on both sides. So then left pane is going to be the whizzy. Right pain will be. I think you have to have it be an editable report with no editable columns. It'll be a live updating report. Dwayne would like the dashboard to be proprietary, I think might be anyway or effectively proprietary, but there's no reason for people to edit the dashboard. So that's the silver loom side. This is what we're thinking of, the UI, something along these lines. Visuals are not this is our cloud creation. This would be a link to the main report. Again, you customer would be a link to the detail screen. Obviously customer details here one section per contract with a link to the contract detail here, then you would have the each period each open period, with the subtotal sales tax and total rental fees you can obviously pay part defer Part Damage Waiver fee you can't defer if you pay. Seth, am I right? We do damage. We were fee first, so
+
+Unknown Speaker  03:32
+I'll get to that. No, we cannot hear you. No, we can hear you. Matthias, we just can't hear Seth, no, Seth, we cannot.
+
+Matthias Miller  03:47
+Now, there we go.
+
+Speaker 2  03:49
+Yeah, my headset died on me, so I had to switch headsets. Yeah, I think we pay damage river fee, and then rent, and then late fees.
+
+Speaker 1  03:59
+So this is the internal, the internal page,
+
+Matthias Miller  04:03
+correct? So the external page might actually end up being very similar. You just can't defer pay. Basically, I think mostly we'll be able to defer payments and probably can't, yeah, I don't think we'll let you pay into security depositors. Yeah. Um, we'll get back to some details about the auto calculation stuff. Um, my basic thought is most of this stuff, like if you edit a period total to $555 that you would effectively, I wonder if we want to have some kind of string table version of somewhat painful to think about this, but we want to push as much of the of the business logic into macros as possible. And so I think basically i. I think there could be a world in which you say, here is the current data set. I'm changing this value to that value. Now, give me the updated data set. Now in some cases, like deferring that simple math, like I don't and maybe in where it really matters is you're changing. If you're changing an item, you can propagate that out very easily. But if you're changing a total and you need to rejigger everything that's inside of it, I think ideally that would go server side.
+
+Speaker 2  05:37
+We We can't have a raise of structures yet. Can we?
+
+Unknown Speaker  05:44
+You can, but you can't spit them out of a report.
+
+Matthias Miller  05:50
+I mean, if you can, if you can put, put them into nice well, but we don't have good Jason parsing. I mean, you could, you could all encode it if you wanted to, and come up with a reasonable structure to
+
+Speaker 2  06:04
+thulk, this is one that's worth pushing a bit to see if we can. I think, I guess we're spending some time to try to stay away from a massive string table.
+
+Matthias Miller  06:17
+Well, any I don't think, I Think you could hear, I mean, I
+
+Matthias Miller  06:40
+I don't know how I would approach it, but
+
+Matthias Miller  06:59
+let's see. So if it's an object.
+
+Matthias Miller  07:17
+You could theoretically do something along the lines of details to be determined, and you could also do nested URL encoding, like you could say, I
+
+Matthias Miller  07:42
+yeah, anyway, it's, it's a little, obviously you'll have to share keys, then between client and server, but, but you could, if you had a way to basically early codes. I mean, you basically create an early coded string per line item this, then would have for a period, then you would have period information, and then you'd have an items, one which is the early codes, like an early encoded string of effectively have an array where zero equals early encoded double Early encoded like and just if it makes sense, but then, then you would just have a series of extractions to decode, decode, decode, decode, until you get to, oh, get to where you want to go. The other option too would be a series of i and i config strings, and you nest them by base 64 encoding each, I don't know. Um,
+
+Speaker 1  09:03
+so I don't quite understand why we can't just do a JSON report for these rows. You can,
+
+Matthias Miller  09:07
+but if you need to push the data up, we need a way that the that we can, that we can,
+
+Speaker 1  09:22
+okay sending the data back to the server. That's what you're worried about. Well,
+
+Matthias Miller  09:27
+let's see the server just a little bit. What do we actually need if somebody changes? Well, you have data back up to the server. So basically, we want to say,
+
+Matthias Miller  09:41
+I guess it could be enough if you had a JSON report and you said, I want to here are the parameters. Here's the total payment for everything. Here is the due date for everything. Here is or. I'm sorry on this. No, we don't have a total payment amount here. That's probably going to be an issue. Here's the total payment for the whole payment. No, it's something like this here. Let's Do this. I'm
+
+Matthias Miller  11:05
+oops, okay, and then,
+
+Matthias Miller  12:00
+okay. I think, I think I think you're right. I think you could have so you need to know how things all add up. But you could say, basically, in the report, in the R 20 that you're running. It could be a Jason, Jason report. You're right. You could say, I here for this customer and or payment. Well, grandchild should never be editable for an existing payment anyway. So there's that if you've already processed the payment. But for this, I'm changing the grand total, I'm changing the contract total, or I'm changing a period total, and then it would send back lines with the line items within that respective area, and it would, it would recalculate that. The biggest question would be, when do you how do you handle deferred fees? Like, if you update the total, can we nuke deferred fees within those sections? Uh, maybe that's a question. I mean, that is a question for Dwayne. Does that
+
+Matthias Miller  13:40
+seems Same to you, Jonathan, doesn't seem that complicated. Then, if you do it that way, you have your bunch of stuff you have to pass in the report to tell it what context in which you're changing for what about it's basically calculate, yeah,
+
+Speaker 1  13:57
+yeah. I like that better, and as much as we can do, you know, server side, whether that's, well, I don't want to do any calculations in the whiskey, if
+
+Matthias Miller  14:09
+possible, right? I think we might, we may end up needing to do, I mean, I think some things like totaling might sure that makes sense. I
+
+Matthias Miller  14:28
+mostly because, I'm assuming at some level, we want to, well, yeah,
+
+Matthias Miller  14:42
+six. There's anything else.
+
+Matthias Miller  15:00
+Yeah, okay. Josh is also other observation was that he hopes we use server side templating instead of offline react, so
+
+Speaker 1  15:11
+meaning our standard backpi compiler, right?
+
+Matthias Miller  15:17
+Yeah, thanks, so, but I'm not quite sure how,
+
+Speaker 1  15:21
+but, I mean, we'll have to split that into source, right, like into into the templates or into the integrations folder, right, and team, right? No,
+
+Speaker 1  15:39
+I guess the integration just redirects to our whiskey? No, we have an auto push report that redirects the whiskey. There is an integration. Oh, I see, I see, oh, okay, okay, that makes sense. I didn't realize that we could open external web pages inside of, inside of the application, multi
+
+Matthias Miller  15:57
+report. Well, you have to set a an allowed redirect which whiskeys are by default, and reports have some funky redirect issues because they'll sometimes take over the whole report, but dashboards don't. If we do server side rendering, then effectively what you would be doing is probably just pushing down, re rendering respective parts and pushing them, pushing them down. That is genuinely how we're planning to handle it. And then your sums. Just need to know, you just use whatever you can. Figure all that stuff out. You're smart, but just have the sums and individual parts would then just propagate up. No. Anyway, yeah, I don't know how deep in the weeds you
+
+Speaker 1  16:56
+want to go. I want to wait until I'm in the code and can understand things a bit better.
+
+Matthias Miller  17:03
+Okay, so, and I don't know that the HTML is really elegantly designed. I don't think it's absolutely awful, but I don't know that it's really elegant HTML. Are
+
+Speaker 1  17:12
+we wanting to use this, or is this basically just a Google Sheet for to finish out design?
+
+Matthias Miller  17:18
+Some equality of a Google Sheet. There's some thought put into it, like collapsing periods, you know? I But there's expectation that this changes like we're not. I mean, if Yeah,
+
+Unknown Speaker  17:37
+it's a great logo, yeah.
+
+Matthias Miller  17:39
+So we finally have a logo for Dwayne's awesome RTO company I think really fits the brand. It's also abbreviated dark, which I think is awesome. And then we have, we have a receipt that gets generated, HTML receipt. We might add a email receipt, I don't know. I mean, I think the email receipt might we can trigger a an email merge print. We might have to pop open into a new window and auto push the print like Google does or something, and then new payment takes you back to the search payments, edit payment, then gets you back in here. But if you have an existing payment, we need to talk through editability. But the R Tony should return basically. Can you edit the payment total? Can you edit the payment at all. And can you edit the payment total yes or no? And when you have a credit card payment, everything has to balance out, like, there is no whatever, like, obviously you took their money, so you have to figure out what you're going to do, even if you do something differently with it. So Seth Dwayne was wondering about on the data model side. So one of the big things that simplifies this is that that due date overrides must be done on the contract itself, and late fee forgiveness has to happen on the contract. And so what I was thinking on late fee forgiveness is that we may end up having something like a fee type for a period data was occurred in the amount and the oops. And and then you would be able to forgive it on on the detail screen, on this detail screen with a forgiveness
+
+Speaker 1  19:56
+reasons we can't hear you again. Yeah.
+
+Speaker 2  20:01
+Can you hear me? Okay, yep, I was just saying that was on the contract, right? That's
+
+Matthias Miller  20:05
+what we're thinking of the contract I'm hoping to be argued with. What makes it nice? Some ways, it's nice to have it all on the so this part here, there would be a payment record with this information right here. Okay, we took money and then we'd have an RG on the on the, basically, on the contract that says, here's the underlying payment ID, and here's what part of that was applied to this contract and how. Yeah,
+
+Matthias Miller  20:49
+which might, then, might actually make more sense, go ahead.
+
+Unknown Speaker  20:55
+Then once of payments done. Then when Jonathan, when Jonathan's whiskey thing runs, and it's just it. The overview is from the payment record, and the others are from the contract record. The rows for the payment
+
+Matthias Miller  21:10
+that's what I'm thinking. That's what I'm thinking, and then, and then, and so. And I think you could say, I don't think everything has to be in a single row. I think theoretically you could have, maybe this is too complicated, but you can have a row that says for this period, for this period, we're paying this much to the rental fee. We're paying this much to a late fee, this much to a processing fee.
+
+Speaker 2  21:41
+Mm, um, I mean, doesn't that give us a better paper trail? Otherwise, how do we break it out after you've made a payment? Yeah, I
+
+Matthias Miller  21:52
+mean, I think it gives us a great paper trail. And the nice thing is that you can then, very easily it's dropped, it simple to run, to run any kind of calculation you want right off the contract. Now, the downside is that you can now only edit payments through the whiskey, because if you want to move money from one contract to another, I mean, maybe you can, but here we dragons like whatever Dwayne's. Dwayne's team, if they want to finagle something, maybe they can through an editable report or something, but you really shouldn't be doing that. Yeah. So I just, I mostly want to make sure you're, you agree with that data model or that approach. And the main thing is we need to have some kind of master macro that validates this before we go run the x 30 list to update everything, to make sure that we don't change
+
+Speaker 2  22:44
+because we need to make sure that we're not paying too much on one contract, like we're not overpaying it or something. We need to make sure that we're
+
+Matthias Miller  22:55
+not. Oh, there's so many different things. I don't even really want to think about it, but, I mean, but there is this point in which you could say,
+
+Matthias Miller  23:13
+Yeah, you're right. I mean, that is the argument for saying that if you change each line item, I don't know though, I wonder if we're going to want to have an R 20 that runs that basically validates we push all the information up.
+
+Matthias Miller  23:40
+And it validates like that you're not paying more than this than the total you're not you can't pay a rental fee if you haven't paid dwf yet, or, I
+
+Speaker 2  24:02
+mean, some of that we don't good. Oh, we do have that, I see. I mean, can't we just make so that you can't clear the dwf? But, yeah, somehow we need to force that to happen. But so are you thinking we'll have a defer and forgive on here? Is it just defer? No,
+
+Matthias Miller  24:29
+just defer. Forgiveness. Forgiveness is two reasons. One, forgiveness is a little bit of a unique event. It's not, it does not happen that often, like, and second of all, these poor, these poor data entry people like, we don't want them to die through decision fatigue. Leanne also pointed out that it also does need to be a permission, because there are some people who work in the RTO industry. Because. They come from a hard place and they just want to help people out, and it's just, just because somebody lies to you about a sob story does not mean that you should forgive their fees. So I mean, basically some customer service reps are suckers. There's or agreeable gullible. I don't know whatever it is, which is fine, it's just anyway, that's a very long winded answer to say it's too much complexity and it's too rare and even overriding contract due date. I'm very happy not to have it you run the payment so this literally is adjusting payment totals, and probably doesn't exist. We probably also need a setting as well on this for for fixed term due dates, because it doesn't make it doesn't make sense.
+
+Speaker 2  25:49
+So we would if it's a fixed term, then we display it, but we don't let you
+
+Matthias Miller  25:55
+edit. Well, yeah, I mean, it does. It never changes your next due date. Is your next due date,
+
+Speaker 2  26:00
+right? Right. How does it I'm trying to remember how it works. In fixed term, if you pay like you owe 1000 you pay 1200
+
+Matthias Miller  26:09
+Well, technically, what should happen is you should advance the due date like that. So if you're due currently, you have, I mean, it catches up to the two months out, basically, so because you've paid in full through 3030, days from now, or whatever, a month from now, but you and you've paid 200 into the next period, but it doesn't affect your due date. Your due date doesn't move until you've paid the full balance of what's gotcha, that's $300 Sure. The one thing that we haven't talked about is, what about future periods?
+
+Speaker 2  26:45
+Oh, are we going to let them pay? Well, we have to let them pay. I mean, clearly
+
+Matthias Miller  26:53
+it's but it's very confusing to me, this one
+
+Speaker 2  27:01
+place we can't just show them never ending future periods. Then we talked about just showing one, and they can edit the amount to whatever they jolly like.
+
+Matthias Miller  27:10
+And then it would and then you would still update the next due date, yeah, but it would just show as a payment for that, yeah. And the thing we could do is you could also push it up to the server they if they put in $5,000 right here, oh,
+
+Speaker 2  27:23
+and then it just automatically explodes. Your explodes green, yeah. And suddenly you're paying for seven months. Because, I don't know why, but because,
+
+Matthias Miller  27:38
+just because, I mean, but why not tax refund? I mean, yeah, so if you do that, that's where you should be able rental fees. The question each period when you get it back, should say, can you edit the rental fee? I think I'm not sure, or you say,
+
+Matthias Miller  28:19
+the other thing you could say is, whenever you don't think we want to do this, whenever, maybe we do whenever you pay it in full, the next period pops up. But that's a lot of jumping in noise. In most cases it is. I don't think you want it. I
+
+Unknown Speaker  28:40
+don't think you want it unless you go over.
+
+Matthias Miller  28:43
+How do you want to handle over? Do we need some sort of
+
+Speaker 2  28:46
+do you need a button at the bottom saying, at show next period or something? If they're confused, they paid. They paid. Let's say we're so we're in August. They paid July and August. They want to pay some into September. How do I do that? There's no way to do it. Or do we just tell them that, Oh, you just changed the total on August so that we show September.
+
+Matthias Miller  29:20
+Let's go take a look period security deposit. Can you add a
+
+Speaker 2  29:36
+can we also validate that you don't have an add to and remove from security deposit in the same one. Or can you? Yeah, we can. That's
+
+Matthias Miller  29:43
+really how we want to do this. We go ahead. Why would you? You wouldn't okay. So we could have this be a drop list, if it makes it easier. So this could be a.
+
+Speaker 2  30:03
+Or you could theoretically have a checkbox beside each one, and if it's checked, then the fields are editable and the other one isn't, not at all. I don't know if that's clean or not. Do
+
+Matthias Miller  30:23
+um, let's play around with this a little bit.
+
+Matthias Miller  30:39
+This is not also the grand total to pay. It's not that really should say contract total.
+
+Unknown Speaker  30:53
+Yeah, I
+
+Matthias Miller  31:08
+something along the lines of that. But obviously, which one are we using? We're using the that's completely bonkers focus, but that's the idea. I mean, you could theoretically do droplets as well, but I think
+
+Speaker 2  31:29
+somehow a drop list inside a drop like a collapsed or an expanded section. I don't know why it feels weird to me. It does
+
+Matthias Miller  31:42
+when I thought about even having a kind of back to what we had was a, I mean, you could almost have this be a checkbox that makes this road be a drop list of add to security deposit or remove from security
+
+Unknown Speaker  32:00
+deposit. I like that.
+
+Matthias Miller  32:04
+Okay, this is, well, we know how we want to do it, but we could do something kind of like that at the period it
+
+Matthias Miller  32:16
+doesn't make sense to add it unless I I mean, is it visible if you don't pay in full does it automatically map everything, make everything else pay full rental fees?
+
+Unknown Speaker  32:36
+Dwayne question, maybe, yeah, I think so
+
+Matthias Miller  32:42
+good. Okay, let's do the Okay. Let's make the I'm
+
+Matthias Miller  33:10
+so then you would still need, I guess you could put it the period like over on the right here, add security deposit removed from and then you have the editable fields, I think something like that scene. I like that. I think, okay,
+
+Speaker 2  33:36
+oh, so you're thinking that we, when you make a change on here, we don't necessarily rewrite everything. We're just rewriting whatever we think this will affect.
+
+Matthias Miller  33:54
+Well, that's kind of what I'm okay. You can always propagate out. You just can't propagate back in. And so I think at whatever level you change, you push down everything inside of that
+
+Speaker 2  34:10
+right? And then the totals just update. You just re update totals, right? Then, how do we do, then we, how do we do it? Then, if it's the if the payment has been finished, like they paid it, and now we're just trying to rejigger where they paid it. The main that we can't have the total update,
+
+Matthias Miller  34:36
+yes, the grand total cannot update with contract total. Can't you can write, that is the main thing. So, so
+
+Speaker 2  34:46
+that means just, you're at the point where you have to force where it's just validation, probably it's just
+
+Matthias Miller  34:50
+validation. Like, look, you can't change the Yeah, okay. I. Security deposit, take the total editable there should, or make the actually, it's just as simple to do this.
+
+Unknown Speaker  35:15
+And what's the recalculate button?
+
+Matthias Miller  35:18
+I don't know. Okay, I was just
+
+Unknown Speaker  35:21
+saying I recalculate in the bottom right,
+
+Matthias Miller  35:24
+it can go, okay. Are we
+
+Speaker 2  35:29
+going to have trouble with lag if we have to ping the server and come back? Or will it be very fast?
+
+Speaker 1  35:38
+It's generally very fast. I know, with faith builders, the I've been very surprised at how quick it is there. Okay, especially if it's a fast report, yeah, yeah, like, I would say it's probably like a half a quarter of a second maybe.
+
+Speaker 2  35:59
+So they'll feel it a bit if they enter their number and tab, then I'll take just a tiny bit and then it'll,
+
+Unknown Speaker  36:06
+yeah, yeah. Well, I mean it
+
+Speaker 1  36:14
+depending on which fields can trigger it. I mean, we could be smart about when we actually trigger the on blur to go and recalculate things. And you could, you know, haze it out for that second so it would, you know, feels like it's recalculating to this. That
+
+Speaker 2  36:32
+makes sense. Maybe you could. So think it'll be worth doing things like that to make it feel smoother.
+
+Matthias Miller  36:44
+I almost wonder if this should be I
+
+Matthias Miller  37:13
+this guy should just be $400 more. Like, more like, this. Is
+
+Matthias Miller  37:27
+that weird? Anyway, I don't know. I'm getting in the weeds. Keep going.
+
+Speaker 2  37:35
+Do we want some sort of report that essentially mirrors this so we can debug, or are we going to just do Our debugging here,
+
+Speaker 1  38:01
+for doing the calculations in a report, then we do have a report already, although it would be a JSON, but you can, if you preview them, then it's pretty readable.
+
+Matthias Miller  38:15
+Yeah, I'm
+
+Speaker 2  38:19
+just wondering, when we have weird niggling bugs with numbers, how do we will it be fairly easy to chase down?
+
+Speaker 1  38:32
+I mean, if it's specific stuff that, you know, can't pin it down or whatever. I mean, we can always, you know, log stuff in the whiskey to see, you know, to get more visibility in it. But I if we're doing the if we're doing most of the calculations, or we're doing them all in the report, then it's, I think it's pretty straightforward.
+
+Matthias Miller  38:55
+Basically, what you would end up being to do to replicate it is, run the report, select the com contact and or payment into it, what you're changing, what you're changing it to, and then you could start diagnosing how it gets allocated. And presumably a lot of that stuff ends up being in a macro somehow, I'm not sure. Yeah.
+
+Speaker 2  39:20
+So moving forward, Jonathan starts on whiskey stuff, right? And then do we need to get started on the calculations internally? Or,
+
+Matthias Miller  39:32
+I think so. I think we should spec calculations. I'm a little nervous. This is very loosely spec. I got a nice, pretty screen, but it's, it's incredibly loosely spec. The other thing include convenience fees. This should also have a i.
+
+Matthias Miller  40:00
+Date,
+
+Matthias Miller  40:06
+something like a
+
+Matthias Miller  40:27
+I don't know what the terminology is, but I do think we need something like this that we can say this is
+
+Speaker 2  40:32
+going to be fine Before the convenience fee, well,
+
+Matthias Miller  40:39
+potentially after as well.
+
+Matthias Miller  40:48
+Questions for you, okay, the questions we
+
+Speaker 2  40:57
+had is how to add or remove periods, especially, I mean basically future periods. So I assume we always display all the overdue periods, right? And we're still doing thing where they you can't set a value on last month's payment if I didn't pay the month before in full, except for deferred late fees, except
+
+Matthias Miller  41:23
+for deferred late fees.
+
+Unknown Speaker  41:29
+Um,
+
+Unknown Speaker  41:46
+okay, what's the,
+
+Matthias Miller  41:51
+what's the, what's the surest path to I'm I'm fine, turning you guys lose. I just I am nervous about, I think Dwayne and I are both a little bit nervous about wild architectural surprises. But as long as you guys can ping us when you run into questions and issues and we're thinking this stuff through as we go, I don't think there's any reason not to go hog wild with it.
+
+Speaker 1  42:27
+I think that there is a sizable amount of stuff now that I know sort of how the how the entry point to this is going to work. There's a sizable amount of work that I can do with just, I mean, just getting us to this screen that isn't, that doesn't, it's agnostic of how this is all calculated. And maybe Seth could spend time, I mean, he could copy this into Google Doc, or however he wants to visualize it, to work through how the payments are spit out here. And then we could, you know, I mean, that's probably almost a week's worth of work for each of us, because we have other stuff going on as well. But that would be where I would go.
+
+Unknown Speaker  43:10
+Okay, yeah, that's good.
+
+Speaker 1  43:11
+So besides one question, so the there's going to be a version of this for that customers to get as well, right? Yeah? Would you, would you go move towards having a unified, like, a template for this and just, you know, the session or something, tracking, if it's internal, like external, external, and handling it that way? Yeah, sounds good.
+
+Matthias Miller  43:36
+I think the biggest, the biggest things that are will be variable. I would, I would go that direction. Obviously you're not going to have you can't search new customers, you can't write contracts, you can't change you can't defer fees, you can't handle security deposit. You can't control convenience fees. But we might, we will need to say if you select debit card or credit if you select Credit we're gonna make you choose between credit card, debit card, and when you choose credit card, we will say that this is subject to a convenience fee because it's a credit card. So people can basically run, probably run their debit run their credit card as a debit card. And I mean, people will be able to and just lie about it, not get a convenience fee, but whatever.
+
+Speaker 1  44:24
+And as far as design, I'm thinking that I'm going to keep it very basic, incredibly basic HTML. I mean, obviously a bit of CSS, but I won't let hog go wild and generate 1000 lines for me and then we get Justin to go through it once we once we know, you know how the tables are going to look at how many columns. Then we send it to Justin, and then I do a full, full rework of the CSS. That's kind of what I'm
+
+Matthias Miller  44:52
+thinking. Okay, sounds good. If we do, yep, exactly, I'm happy. Yeah. I don't even know if we need a safe draft here, by the way.
+
+Unknown Speaker  45:02
+Yeah, I was wondering what that even would mean.
+
+Matthias Miller  45:06
+That was Claude getting creative.
+
+Unknown Speaker  45:09
+Let's kill it good. Yeah,
+
+Matthias Miller  45:10
+exactly. We appreciate yourself, your zeal, but and then, and then, for payment processing, please just step in. Just generate random authorization codes and just make it up. And if you want to randomly like, if you end the credit card in a certain number, just say insufficient funds or something whatever, like, do that. Okay, cool. Awesome.
+
+Speaker 2  45:39
+Appreciate it, yep, thank you guys, you bet. Thanks. Bye.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,239 @@
+Matthias Miller  01:19
+Thanks sir hello
+
+Unknown Speaker  01:30
+sure gentlemen
+
+Matthias Miller  01:42
+and Josh says Are we doing a cold call today joining
+
+Unknown Speaker  02:07
+us folks
+
+Matthias Miller  02:27
+these are my new weapons if you make a mistake I'll throw the ball at you right awesome
+
+Speaker 1  02:36
+was it reading this oh yeah there was this newsroom where the first time you made a mistake it that a senior guy cut you had to go pick this up in the middle of the room there was like this desk stand on top of and eat a hot chili it was had a jar full of hot chilies that
+
+Matthias Miller  02:52
+were heard Wow sounds like great culture accountability that's for sure all right, running through these updates the first of all Josh before I forget can we push an update tonight?
+
+Unknown Speaker  03:25
+Sure. Yeah.
+
+Matthias Miller  03:30
+All right. So we get groupings for balance. So the income statement is wrapped up is that right? I believe so. And I don't know what's happened with testing and stuff but but
+
+Matthias Miller  03:54
+then the next step we have cash flow statement
+
+Matthias Miller  04:05
+there's this one I
+
+Speaker 2  04:09
+think is actually done for
+
+Matthias Miller  04:15
+looks like it's done. I mean, it's in code review, which means that they're using it like
+
+Matthias Miller  04:28
+this is going to put this into
+
+Matthias Miller  04:40
+well undergo through the recording I think this will be closed out then. So that means basically Cash Flow Statement next. And so
+
+Unknown Speaker  04:49
+well, actually next. Next, I mean, yeah.
+
+Matthias Miller  04:58
+And This custom warning. I wonder if I should just Should I take a look at throwing this into my queue?
+
+Speaker 2  05:09
+Okay, actually, I think it is ready to go. You milds. So, I just added my review comments today, but but I think the the stuff that I noted, it shouldn't be an issue shouldn't be a functional issue.
+
+Matthias Miller  05:37
+Alright. So that one's gonna go. And so next step groupings for balance sheet and cash flow statement, do you have an ETA for the balance sheet groupings?
+
+Unknown Speaker  05:58
+With what level of confidence.
+
+Matthias Miller  06:03
+Two questions, what level of confidence and what priority? Is it for them?
+
+Unknown Speaker  06:06
+Oh, yeah.
+
+Matthias Miller  06:09
+Well, I kind of think balanced statement is this falls into the let's go to show the builders that were actually doing something, okay. Cash flow statement is not something that they can pull right now. That's my understanding. So I would put this above cash flow statement at this point. Well, more specifically, Joel's out two days this week. If if you sit tell us be heroic and let lots of things drop for investor tools, we could probably might build a give it this week. Otherwise, it'll be next week. That's that's the level of clarity I'm looking for. Oh, I don't think it's a drop everything this week. I think next week is fine. Okay, then you should be able to have an X week drill. Is that fair? Yeah, sure. So we'll update, I'll update this one from next Friday. And then want the cash flow scene after that. Also a little bit of a side note, there was a situation during the reconcile, if you reconcile and the validation errors on transactions, then the whole reconcile blows up. Because we don't have any way to modify, just save just the modified records in an editable report, are in there in the reconcile? We don't have a way to save just the modified. So here's my Enders. If I understood him correctly, I did not try to duplicate it. But if we go to primary checking. And you know, I don't know, you check all of these as cleared and you hit hit save changes. And one of the records has a validation error. He was saying there's no way to I guess he should be able to revert those changes on the any records with a validation error and then save.
+
+Matthias Miller  08:18
+Right. Okay. What kinds of things are causing or validation errors? Well, I'll get to that in a moment here. Let me let me drew reconcile module that basically what happened was he he created a child account did not reassign the the inventory management ledger accounts to the child account and it created invalid trans transactions. And the ones that have already existed were invalid. Got it.
+
+Matthias Miller  09:03
+Into validation errors, you can use discard changes to record or any rows that validation errors. All right. I'll let him know about that. So I mean, theoretically, we should
+
+Matthias Miller  09:24
+that's a whole other thing. If you theoretically, if you create a child account and the parent account has transactions associated with it, we should give a way to reassign those transactions to a child account. Although consideration has to be given for how you handle close periods. And furthermore, we can have zfp specific logic where if you create a child account and the parent account has a has a mapping to one of their builders builder GL accounts, then we show a warning at that point. But I think this is a this is a 2024 were clean up not sure not an immediate issue and I don't even know if it would be a priority then or not but
+
+Matthias Miller  10:17
+then there was there were there's one other email to that I
+
+Matthias Miller  10:31
+don't think I read of a change request for this I'm not sure if I did
+
+Unknown Speaker  10:41
+wouldn't be here
+
+Matthias Miller  10:54
+Okay, no, basically, the biggest thing he was hoping for now sooner rather than later is instead of a simple reconcile flag. Yes. No, to have a reconciled date, a statement date to tie reconciliations I mean, his long term goal is to be able to basically have a reconciliation audit logs so you can say you know, I want to go edit this reconciliation for the statement date or I want to see what was cleared as of this statement date. But the first part he was asking for was to be able to tie these out to statement dates. Sure, sure. Yeah, so I don't know do we want to design the whole thing first before we know what we're biting off? Because conceivably then it could be nice to say for this account, here's the statement date and here's the ending balance I mean, here are the debit the debits and credits, deposits and checks. And then you would just when you reconcile you, you would you basically have to create a new statement entry and then go reconcile as of that statement
+
+Speaker 2  12:30
+right. So you would reconcile two statements rather than okay okay, so this is specifically monthly reconciliation rather than rolling
+
+Matthias Miller  12:47
+Yes, this is based on statement reconciliation not rolling reconciliation Sure, am I rolling you mean just log into the bank account and reconciling from there?
+
+Speaker 2  13:03
+Yeah, so like the personal budget program YNAB. Lets you say hey, here are your clear transactions okay. Now is your cleared balance equal to your bank balance Awesome. Well, you can mark reconciled and everything there all you're clear transactions trying to reconcile transactions and gain some extra lock and and and then tomorrow, you can do the same things
+
+Speaker 2  13:57
+which is different from you know, okay, you get your mom's blood bank balance and your tie out your, your deposits and withdrawals, etc.
+
+Matthias Miller  14:21
+I mean, it's basically what you'd have done would be a reconciliation. That's not for a statement.
+
+Speaker 2  14:26
+That's right. That's right. And I mean, there's something very tidy and very satisfying about reconciling against a statement. The problem is you're then doing a month at a time. I mean, it's and if you if you have a glitch somewhere in that month, you get to go looking for that glitch and your differences in deposits and withdrawals. are helpful in figuring out where that glitch might be. But yeah, you might avoid it entirely if you do it every day or every three days or whatever
+
+Matthias Miller  15:29
+so if we if we do that kind of linking are we going to want to link those by just statement date? Or do we actually want statement records that these get tied out to
+
+Speaker 2  15:42
+I think either statement record or statement our CI on the account maybe
+
+Matthias Miller  15:49
+like a statement RG with a unique identifier for linking or would it would still just be date linking and if you need to change the statement date then we'll give you a way to do that
+
+Unknown Speaker  16:04
+that's fair I like the I wish every Archie had a unique identifier
+
+Matthias Miller  16:11
+but
+
+Speaker 2  16:17
+date probably would suffice I would also at least optionally capture some of the other things that they that they have in the entry in the Ask prompts here of you know starting ending deposits withdrawals or debits credits right
+
+Matthias Miller  17:06
+well okay, so realistically
+
+Matthias Miller  17:15
+I guess it's a claim it's a claim question whether reconciliation whether this is more important than balance sheet?
+
+Matthias Miller  18:01
+All right, let's do that. Let's keep rolling with balance sheets unless something comes back differently. But let's let them speak into that. Sure.
+
+Speaker 2  18:10
+And can you clarify what the not removing cleared items entry in that list above was? Item three.
+
+Matthias Miller  18:23
+Can so not Oh, he had reconciled but didn't save changes. Okay. Okay. Okay. I think it's a warning or a prompt confirmation when he runs saying By the way, you have to save changes to actually apply it or it's just user. I don't know. Yeah.
+
+Speaker 2  18:43
+Well, okay. And there's some there's some other stuff going on here too because I think the latest version which I I'm inferring that he doesn't have here actually runs an import to to reconcile and includes a a note a prefix saying or a preface saying hey, please. You need to save before you reconcile and then we pop up when you hit reconcile we pop up a light box that runs an import it's it's annoying but it's clear
+
+Matthias Miller  19:43
+so I mean, does do you literally have to hit
+
+Unknown Speaker  19:51
+because this will if not modify all records now.
+
+Matthias Miller  19:54
+Is that okay? Right.
+
+Speaker 2  20:00
+So I forget what all the issues were but it was I think probably some of the same kind of stuff that he was seeing it was
+
+Speaker 2  20:18
+really hard to indicate actually that Oh yeah, it's now we've got checkboxes but now we're going from reconciled now we want to take your cleared things and reconciled mark them as reconciled makes sense
+
+Matthias Miller  20:47
+got it so so okay, but we have the technical capacity to have that warning first say saying you need to have said well, I guess we could have asked from it's always visible if you haven't saved but we could also conceivably have a we're using an X 30.
+
+Unknown Speaker  21:13
+Yes to reconcile and currently the preface is just actually if you follow the link to the product change I think there are some screenshots
+
+Matthias Miller  21:36
+Yeah, I don't know if we have to maybe I'm probably falling too deep down the rabbit hole here. Okay right.
+
+Speaker 2  21:47
+And if you scroll up a bit you can see the Preface.
+
+Matthias Miller  21:52
+Oh, got it. Yes
+
+Unknown Speaker  21:58
+okay
+
+Matthias Miller  22:09
+we are definitely bumping up against some of the workflow limitations of our 20s here yeah
+
+Matthias Miller  22:27
+we could conceivably
+
+Matthias Miller  22:37
+All right. Okay, well, fair enough. Then, sure.
+
+Unknown Speaker  22:48
+I guess I mean, we can see what they Yeah, we can see what the next version is that they're wanting. Yep.
+
+Matthias Miller  23:04
+That's fair. All right. And then Josh, I think biggest things on my list are the
+
+Matthias Miller  23:22
+transactions how to handle accounting transactions for vendor invoices paid by cheque. Do you want me to write a write that accounting Impact Report and change yours to exclude vendor invoices that are linked to a check from the vendor invoice report?
+
+Unknown Speaker  23:47
+Or how is it different for checks than for other stuff?
+
+Matthias Miller  23:52
+Well checks would be if checks allow you to pay for multiple vendor invoices in one transaction. Know the check is it will effectively effectively the check should decrease accounts payable. And sorry, increase, decrease accounts payable or decrease the checking account. These would already have been expensed out prior to this. But the vendor invoice well I guess the vendor invoice can know that the main thing is that you would have a single entry to adjust Accounts Payable instead of six accounting transactions if if you pay six checks at a time, vendor invoices at a time
+
+Unknown Speaker  24:47
+and you want that?
+
+Matthias Miller  24:52
+Yes, so that when you're reconciling the bank account that you only see one entry for the payment that you made
+
+Unknown Speaker  25:02
+Yeah, that would be the logical way to do it.
+
+Matthias Miller  25:04
+Okay Jim, I mean you want me to chase that or did you
+
+Unknown Speaker  25:09
+I know nothing about checks. So
+
+Matthias Miller  25:13
+I'm having I'll do that
+
+Speaker 1  25:16
+I can I can call you up and ask you which he is actually click which buttons I should I should take it I'll
+
+Matthias Miller  25:28
+put in my bid for the mechanical keyboard and catch a video see the audio as well to go with it
+
+Unknown Speaker  25:34
+sounds fantastic
+
+Matthias Miller  25:41
+and I think that's all I have on on that gut. The access issue for easy tally, but anything else on the assist project that we should be talking about?
+
+Unknown Speaker  26:04
+Here
+
+Matthias Miller  26:13
+awesome, very good. Thank you. Appreciate it. Thank you.
+
+
+Transcribed by https://otter.ai

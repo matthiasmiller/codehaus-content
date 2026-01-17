@@ -1,0 +1,1016 @@
+Unknown Speaker  00:46
+Good morning with us
+
+Matthias Miller  00:47
+good morning drew remark oh right sorry I'm late I apologize I need to work work on my timing a little better. I just by way of updates I've got the multi sales order payment process put together that we can take a look at.
+
+Speaker 1  01:27
+And I think we should go back and check because the things that we were doing
+
+Speaker 2  01:38
+good Josh, Josh pushed an update live this morning. We had our 637 30 call and then right and he pushed an update live and I think you had some things that you wanted to take away as well. So
+
+Matthias Miller  01:52
+what you probably yes, the URL prefix is back again.
+
+Unknown Speaker  02:00
+Okay, it's working. I mean, it should all be worked out of 20 swimmingly well
+
+Matthias Miller  02:10
+there's there's a few reports that we'll have to fix in some of the user reports between screens but
+
+Speaker 2  02:29
+well, should should we cover what you have first and drew put together a list and if we have time I have one thing I just thought of was at the end look at a few know sales orders needing invoicing few questions came up this morning we're hoping to go live with that made the systems which later today Dwayne would be available to be on at three o'clock Colin just wanted to if all was on the call, just make sure we get everything covered for that but what I'd like to do is troubleshoot if you fellas are saying these should have been Ellen that I'd say do that at the very end of the call so
+
+Matthias Miller  03:13
+so let me show you what I've got for this so under counting we've got multi so payment transactions oh goodness which does not include a new button that's not helpful
+
+Matthias Miller  03:39
+which will include a new button and we'll have the selected district district should also be defaulted from here
+
+Matthias Miller  04:02
+I'm in the wrong place. That's why I meant to go to counting this guy. Mostly so payments pick a district Ohio new record you'd have a that should make it should default the district for you
+
+Speaker 3  04:41
+so is this new record to be like? Are you going to know if you want to make more or what sales orders? Sales Orders are? This would be a you're receiving? You're receiving a payment you have a listing that this payment is for these three sales orders. It's like you've gotten that from your builder. Okay?
+
+Matthias Miller  05:10
+Yeah. So in this case, let's see, we fill this in, save it. And then there's a link to lit a place to link sales orders. And, actually, I'm guessing here we need, you probably want to sales order an ID filter like we do. And so Id slash skin filter, yeah.
+
+Matthias Miller  05:51
+And then you would have So then here, the include amount here
+
+Matthias Miller  06:07
+it should be the include checkbox for the right, that's in a weird place and the method is duplicated, I thought I fix this. For sake of example, let's do this.
+
+Matthias Miller  06:33
+Alright, so here's this sales order you hit include, it would default to the amount, you could change this to 3500, put it right off on it for whatever their whatever the reason and then hit when you hit save, it would say that if if the totals don't match, so the payment is for 10k. Selected sales orders are for 13 895. If you go ahead and say then those would appear in this list with the sales order ID and the amount. And then on the sales order itself, you would have a read only row for the payment that links back out to the to the payment record.
+
+Unknown Speaker  07:40
+Sounds good?
+
+Speaker 2  07:43
+You saying? How do you know when you go to a multi sales order? Versus like you were asking? Yeah,
+
+Speaker 3  07:52
+like like you would if you have this list? Well, yeah, this payment was for X bonds. You would go there first. So this multi sales order payments, module first, and then that would give the link back to the listing. Select which ones go go
+
+Matthias Miller  08:13
+in? Well, why would we just add under receive payments, add a new multi sales order payment button here. So if you search and you don't find anything, it's for multiple that you can drill in from there.
+
+Speaker 2  08:25
+Yeah, would work. So I think we need to change our business process rather than like when we're reporting payments. Like on our deposit sheet we're just seeing if we get a check for 10,000 for three different buildings, we're just breaking that up and saying this building 30 500,005 We say that 10,000 is for these three buildings.
+
+Speaker 3  08:58
+Right? Right. Because we're gonna have to have a record of that 10,000 Total
+
+Speaker 2  09:03
+does that because the people recording the payments right now like Dwayne's office they don't care or the recording 10,000 Do the recording for three multiples but pretty good party so that it matches what we're doing great. Thanks Dave. So
+
+Unknown Speaker  09:22
+yeah
+
+Speaker 3  09:38
+I guess you can decide if you want them to actually list how much is supposed to go to each building or if you know, it was just wishes based system default just go to the oldest ones. You know, just pay off the oldest ones I think. I mean, it's hard to believe Luxury appliances you should notice how much was supposed to go
+
+Speaker 2  10:09
+this way but it could be used for retail sales if a customer buys multiple builds but primarily for
+
+Unknown Speaker  10:16
+wholesale account
+
+Unknown Speaker  10:35
+hang on
+
+Speaker 1  11:09
+I just managed to break stuff with the update for now okay that should do it
+
+Matthias Miller  11:21
+okay so that's that got a few tweaks to make
+
+Matthias Miller  11:33
+see I think that's basically on that part
+
+Unknown Speaker  11:47
+drew we can take a look at your list so the payments
+
+Unknown Speaker  12:23
+What is this report
+
+Matthias Miller  12:27
+is something for the sales team alright so jumping over to
+
+Unknown Speaker  12:54
+get this
+
+Speaker 1  13:02
+devalue contact name no due date model contacting
+
+Unknown Speaker  13:28
+six the vendor balance
+
+Matthias Miller  13:38
+Okay, so one option in this case would be to so the issue with this one is that when you sort we sort within the groups we don't sort by the group
+
+Speaker 3  14:05
+say that another in other terms will always be in that order but you're saying
+
+Matthias Miller  14:13
+they're always in the order Yes, we do find that as you know based on minimum minimum invoice due date. So if you sort by due date it will still be shocking lanes first doing Burkholder second because of the minimum of the due dates. But within that you'll see you know from 11 to 10 count to 11. Okay, so, what we can do is we can show a list of invoices its list of vendors with the earliest discount expiration date of all their invoices, the total discount amount, their balance and And the earliest due date and then add a sub pane that would let you see the specific vendor invoices for that
+
+Speaker 3  15:12
+mean, like it would list all of the ones that that vendor has. Okay.
+
+Unknown Speaker  15:22
+And then you would create a check for one or all of those invoices
+
+Unknown Speaker  15:41
+was your that would give you.
+
+Speaker 3  15:44
+So that would then sort that would be like, what would happen when you do sort by the discount, do them?
+
+Unknown Speaker  15:56
+Right? Like it wouldn't,
+
+Speaker 3  16:01
+if you think that would be great for that part. If you couldn't make that if you sort by due date, it would then just not worry about the vendor grouping and just simply throw the whole works in. Here we could do, like the ending due date, not the not the discount due date.
+
+Matthias Miller  16:24
+I mean, we can do here, we can also do it like this. And anytime you sort, it would throw away the grouping.
+
+Speaker 3  16:39
+And then if you would go back to grouping by vendor, invoice ID, it would come back or what have you, back
+
+Matthias Miller  16:48
+when you when you go through the toggle through the store until it's unsorted.
+
+Speaker 3  16:54
+Okay, yeah. Yeah, that would work.
+
+Speaker 2  17:00
+One sort gives you the source within vendor. The second sorry,
+
+Matthias Miller  17:05
+that's all No, there, there's a setting in the report that says basically, sort within groups or do away with groups. So we can flip that setting here so that when we sort by total, just as an example, it removes the grouping.
+
+Unknown Speaker  17:22
+Yeah. Now if you click on it again, friends back
+
+Matthias Miller  17:29
+do it again, it reverses the order. Do it one more time.
+
+Speaker 3  17:35
+Is there a way what I saw was we already have other ones we only have the invoice ID and we do not have the vendor anymore in the list.
+
+Matthias Miller  17:49
+Yeah, I think the easiest option here would just be always showing the vendor column. And it's written redundant most of the time but that way you still got it when you Yeah, yeah.
+
+Speaker 3  18:12
+Okay, yeah, that would work well, I mean, I still like your idea of the expiration date grouping you know, because you might want to you know, if you're if you're if you're paying that guy anyway, you might want to just throw everything in
+
+Unknown Speaker  18:36
+so I don't know if there's a way to put that in there too or not, but
+
+Matthias Miller  18:39
+we can give you an option to group vendors by minimum due date we're minimum expiration date or earliest due date, earliest expiration date so usually, you would get to that by
+
+Unknown Speaker  19:20
+earliest
+
+Matthias Miller  19:31
+so we it's not set up to do anything but then you would go up in here to flip it, but we could we could absolutely do that.
+
+Speaker 3  19:40
+Yeah, change the expiration date discount. Somehow the discount on there because that's gonna be a little more intuitive. Discount exploration or something like that. Like, there you have it, but in the sort of think it was just saying Oh does a discount okay everyone
+
+Matthias Miller  20:08
+so that filter by company so you'd want to Oh do you want district or
+
+Speaker 3  20:22
+build to well we need a district prompt all the way out at the beginning yeah because I mean you're only paying bills for one company at a time so
+
+Unknown Speaker  20:34
+yeah
+
+Speaker 3  20:47
+because like ABC plant one ABC plant two are not separate at all
+
+Unknown Speaker  20:53
+just to come in have the invoice district during any other
+
+Unknown Speaker  21:04
+build too that's great. These are
+
+Unknown Speaker  21:20
+how do I know? Okay, I think it's
+
+Unknown Speaker  21:34
+Oh, this guy. What is the bill to
+
+Unknown Speaker  21:44
+pay your eight
+
+Unknown Speaker  22:01
+All right, so then
+
+Unknown Speaker  22:13
+let's try rerunning it. Just make sure it looks saying. Yeah, yeah.
+
+Speaker 2  22:27
+One thing we didn't verify, while think we did we put it with but when Aaron's report these, they have to reach a status of unpaid approved in order to appear here, right? Yep. First looks. Looks like fun paying bills here. Well,
+
+Speaker 3  22:51
+when we, when we select and save and and move on with paying these, then it will automatically change that vendor in invoice status to pay them, I'm guessing. I mean, yeah, I
+
+Unknown Speaker  23:04
+haven't really.
+
+Speaker 3  23:06
+We don't really want to. But that's what will the end?
+
+Speaker 2  23:10
+Is that same thing we were talking with Josh about? Ach. Yeah, okay, Josh is going to take care of the ACH portion of it. Okay, on the vendor invoice. That was my understanding, but he's not doing anything with any other payment types like check.
+
+Matthias Miller  23:31
+You know, we should.
+
+Speaker 2  23:36
+Or we, we basically asked him to, if an ACH transaction is made on a specific invoice, if it's successful, then automatically market paid, but also give the option between now and the end of the year for somebody to come in waiting to come in and manually mark the pain which you said he would. We didn't talk about any other theme.
+
+Speaker 3  24:02
+But all the rest of the pain, remember should be the same really, like as soon as I go through this process, let's say that it's paid. This is saved as pay these items, then they should stablish the chance to paid. And this will then go away from this list.
+
+Speaker 2  24:20
+But he just the only thing where you don't have to is the thought that you can initiate an ACH payment from here. Like if you if you say these,
+
+Speaker 3  24:31
+yeah, select those. And then you would say, Okay, here's the ones I want. Now I hit the pay button. And then they would they would initiate that ACH transaction and go through that whole process. If they are ones that the payment type was check. Then we could do it multiple ways. We could, you know, pull up a thing that says okay, what printer Do you want to and that would and you would hit print right there or would throw them in a list somewhere of checks to print, and then somebody else in the different office or wherever it could go in the checks to print and, you know, select them and print them. So I don't know how that, you know, that's likely that they're going to show up in different offices, and you know, one person is gonna want to print somewhere instead of another office.
+
+Speaker 2  25:23
+Do you know what your workflow is going to be on that? Are you going to be taking care of the physical checks? Or would that be in another office? Do we need to build more?
+
+Speaker 3  25:33
+I mean, if it were, if it were within an eRA system and how we function, then it would be nice to have a separate just because we never know. You know, I mean, like, we have standard procedures. But it doesn't give us any options. If you know, somebody's sick, and these checks need to go out.
+
+Unknown Speaker  25:55
+You want basically want to queue?
+
+Speaker 3  25:58
+You can Yeah, you could queue them to be printed. And they would go in another report. And then, and then from there, you would actually print?
+
+Unknown Speaker  26:14
+Should those wait to be marked paid until our printed? party feels like they they almost do it? Because before you print them? Will you know the check number? No.
+
+Speaker 2  26:30
+Okay, if you don't, then then that would have to that status would have to remain unchanged until it's printed.
+
+Speaker 3  26:38
+Yeah, I think you could either way. I mean, QuickBooks first considers considers its pain when you select it, you know, like, if you would select it here, you would say, okay, pay this, which would throw all the checks in this other report to be printed them. They would consider it paid. And it's just a, it's just a check with no number yet. When you have printed the actual print, throws, whatever is the next check number on, you know, so if I'm in here doing this pay thing, and I throw a couple in there and somebody else is doing the same thing, another office and throws a couple in there. You know, an hour later, before we actually print, then it will just take the first one and add the first paycheck number to it at that.
+
+Unknown Speaker  27:32
+And those that check number back into the into the
+
+Speaker 3  27:35
+brand. Yeah, basically a check number just gets applied to that right. It could be either way you can consider them paid once the check was actually printed. I mean, if there would, we could maybe just do it all here. If we had a way of like for the checks, instead of saying pay them we'd put them in a ready to print status or something. And then have a button that is print all the ready to print checks and do something like that.
+
+Matthias Miller  28:11
+I mean, yeah, I mean, I think something like that, like it's some pain on the right, that shows here are the purely unprinted checks. Yeah. And then an option to assign check numbers and print them.
+
+Unknown Speaker  28:31
+Yeah.
+
+Speaker 3  28:34
+Yeah, I think that would work. Because you don't want to have a too complicated, but you need a little bit of flexibility in where somebody can just, you know, if their sole sole job is just to get the checks in the mail. Then they don't have to go through sort anything. It's already a sorted list that's right there. And it's, you know, that when they opened this page, that grouping would be there. They hit the print button.
+
+Speaker 2  29:01
+Now, oh, Chase, really, is a kindergarten question. But when you print checks, you by count people, you buy blank templates that are numbered in sequence always by No.
+
+Unknown Speaker  29:16
+No, the check number is empty.
+
+Speaker 2  29:18
+The check number is applied by the system the system. Okay, so if you were printing it out of two different offices, you could both have a stack of blank checks. And you could so almost always, well there's there's almost never a reason why he shouldn't. But why, other than the last use check plus one wouldn't be your starting check number for the next.
+
+Speaker 3  29:50
+No, I mean, you there probably shouldn't be a way to modify it. Just because is all you know
+
+Unknown Speaker  30:10
+is don't believe it's that way that
+
+Unknown Speaker  30:18
+now I'm not sure how I would have to check if the check has it on or if the if you burnt it on Yeah. It's x miles.
+
+Unknown Speaker  30:35
+Pretty sure it's already there. But
+
+Speaker 3  30:38
+it might be because I know I've already had issues where I think you're right. Because when issues were the systems that one thing and somebody yanked a few checks out or avoided them or whatever, and never told the system the dark tech number like it would default to the last one plus one. But you could just you could you could overwrite that if you want
+
+Speaker 2  31:15
+What about how we're gonna handle payments like pay by credit card? Like when when do those that requires to maximum on your part, like, calling up the vendor paying with credit card? Or? Like how do we define that? is simply a button is it note? Like let's say this MCTV you're paying that 9995 The Default Payment Type on that is pay by credit card What's your call? Yeah, so you're going through this list and you're saying well you're gonna say you want to get we talked about this early on Matthias had we not about scheduling times to creating some of these like a schedule No, maybe that was on recurring payments. So let's go back to the workflow on like, we counted that MCTV we say we want to pay what No, like what is ideal? You would have told them or log on to their website
+
+Speaker 3  32:38
+we'll probably just have to have something that you would just select it as hey
+
+Matthias Miller  32:48
+Willie, here's the mean this is this is here's an example. I mean, I don't know that this is entered correctly, but we have a secondary credit card charge that's unpaid approved. So if that's the case, I think you would just have to go look for credit card charges and their unpaid approve and like just manually go
+
+Speaker 3  33:16
+manually do them yeah, do them because you'd have to go to their to find the phone number to call the guy anyway. Or the company I mean, unless that it would get pulled over to that other sheet but that's kind of cumbersome and Ryan's yeah
+
+Speaker 2  33:40
+you've done that decides how would you market a now?
+
+Speaker 1  33:46
+I mean, you just manually you go pay me like flip it into
+
+Unknown Speaker  33:49
+Yeah.
+
+Unknown Speaker  33:53
+Yeah, it's really simple as
+
+Speaker 2  33:54
+those mean those that colors mean unless we pay by cash, which was a bad policy but
+
+Unknown Speaker  34:07
+I mean, that cop, does that cover,
+
+Unknown Speaker  34:10
+pay by cash to get out and go find
+
+Speaker 3  34:19
+those would be just pay the cash. Yeah. I would say that pretty much covers everything there. Oh, also with this payments thing, are we going to be able to determine like, whether we whether it pays all the invoices for that vendor? You know, let's say we have, you know, we want to pay them all. Will it automatically create one check for the total for that vendor, or will we have to tell it to or how's that Uh
+
+Speaker 1  35:04
+How do you want to talk? I mean, I think
+
+Speaker 3  35:08
+this automatically, everything to the same vendor gets paid on one, one thing. Everything
+
+Speaker 2  35:13
+used to like, yeah, everything's paid.
+
+Matthias Miller  35:18
+So can you select so you could do something like this and hit create checks and it would create checks for? Yeah, yeah, I think for mimco, etc, and then w eight cents and airworks it would just paid it's like it invoices,
+
+Speaker 3  35:39
+right as one check, you know, so like for her works that would go out as a check for what would that be? $102? Yeah, I think that would that would work? Well. I mean, it's gonna be super rare that you want to send somebody to separate checks for separate invoices. Maybe there's somebody that wants that, but
+
+Matthias Miller  36:04
+But then if you do, you would just select these credit checks like this one credit check, it's great.
+
+Unknown Speaker  36:19
+So thinking
+
+Speaker 3  36:22
+automatically all selected invoices to one vendor would be automatically put together. Yeah.
+
+Matthias Miller  36:38
+At some point we might want to put together a list of counting alerts. So you have you know, I don't know what all they should be. You've got multiple checks that are unprinted checks more than a day old. or So stripe payouts is another example. You have a straight stripe payout that was like here, you have a stripe charge and he's never entered, recorded in a sales order.
+
+Speaker 2  37:21
+That you covered that. We talked about that at length this morning with Josh and Dwayne. And when Dwayne is on this afternoon at three, if we have time, I'd like to cover that because basically Josh is going to make a build a whiskey page for them to go to stripe for this is only for stripe payouts initiated from within the stripe portal. Grab that payment information, bring it over to the whiskey page. So that it basically it's like, like all of these others that are not highlighted, like it's tied to the sales order. But then the question came up well, how do we know? Because it's such a manual process. What What if somebody misses one? How are we going to catch that? And we won't really know until we go to reconcile and we're going to say, well, we have a stripe out here like in this case for 2820 94 hitting our bank account. And, but we don't show it in, in accounting. So the thought our thought was, well, we could start with your report here. I think you might be flagging more than that. And just have somebody look at this daily or weekly and say, Okay, this one that's not tied to a sales order, we need to go figure out where it needs to go to and tie it out to a sales order is basically that.
+
+Speaker 2  38:54
+So I think if we, I mean is that are you good with that? Is that or do you have
+
+Matthias Miller  39:01
+the weekly processes? I mean, I think that's completely fine. The only thing that this is flagging in addition to that is Josh still needs to make some changes to handle refunds appropriately and tie out refund transactions and I think once we've got that then this report should be looking okay.
+
+Speaker 2  39:20
+Because we were less concerned about the the shed app process because you're always going to know that that needs to come across manually whereas these other are more random or whatever
+
+Unknown Speaker  39:39
+yeah
+
+Speaker 2  39:47
+good, are we ready to look at? I guess I should ask. I mean, are you good on going way over 30 minutes?
+
+Matthias Miller  39:54
+Like I got time there was some More
+
+Matthias Miller  40:07
+on the reconcile the failed ACH transaction, which needs to be discussed with Josh.
+
+Speaker 2  40:17
+Okay. And we did, we did discuss that with him this morning. I think he the plan is that failed transactions, he's going to take care of that as far as or is there something that has
+
+Speaker 3  40:32
+the whole ACH failing thing? He gave the indication that what shows up on the accounts would be would be something in your field. But he was going to take care of what happens with failed ACH transactions. I thought maybe that takes care of both situations I
+
+Speaker 2  40:59
+was getting the say he would make so that if an ACH fails it it would not wish to account it would not record it. Yeah.
+
+Unknown Speaker  41:12
+I think that's where he was heading.
+
+Unknown Speaker  41:14
+I think so. So that would be
+
+Unknown Speaker  41:21
+okay, and then the routing issues was that was something routing was pulling in what was that bringing in? Oh,
+
+Unknown Speaker  41:33
+yeah, just said that there was wondering if we were writing things correctly, or something.
+
+Matthias Miller  41:43
+I mean, we had an equation what my question was, so if there's no issue probably not a problem and my best guess was how the reconciliation process is going and if you're still running into issues
+
+Speaker 3  41:55
+well, now that we have the vendor and the payment ID we can we can do another run and and see how it goes and see if we run into something
+
+Matthias Miller  42:06
+I like it the tool for selected items, let me
+
+Speaker 3  42:17
+just because we're feeling lazy and don't want to go to calculator I
+
+Matthias Miller  42:21
+can't say I blame you. It wouldn't be that
+
+Speaker 3  42:29
+I mean, it could even be a simple thing like over in the right corner you know, it says nine selected and that kind of thing. You know, could adjust so a song right there. I don't know how thought
+
+Matthias Miller  42:39
+works easiest. The easiest thing would be to have another row like a blank line in another row or something that says selected
+
+Unknown Speaker  42:59
+I mean, is it
+
+Matthias Miller  43:08
+you know, but then where do you show the numbers? It would be under the accounting columns. It would be something like two selected debits one selected credit with the amount and in the statement indifference column would be blank
+
+Speaker 2  43:30
+was it 69? No. There is payment IDs of 6900 I think we're like
+
+Unknown Speaker  43:39
+yeah, it was like for five different different
+
+Unknown Speaker  43:40
+invoices if that was the use case for
+
+Unknown Speaker  43:49
+it sorted by yeah
+
+Unknown Speaker  43:50
+that was and then you can Yeah, that's
+
+Unknown Speaker  43:53
+what we did. You get although
+
+Matthias Miller  43:55
+some like that.
+
+Speaker 3  43:57
+Yeah. Yeah. Let me I mean, unless it would be easier to just throw something in the report that good throws a total per payment ID you know, and then if you would, if you would clear that it would clear that whole payment ID all the records linked to that payment ID we can
+
+Matthias Miller  44:28
+see bubbly do something like Right yeah. Yeah. Right, my accent enough for you here.
+
+Unknown Speaker  44:49
+This would be a
+
+Speaker 1  45:01
+under under oh it was not in the reconcile module vendor okay so if we would do
+
+Unknown Speaker  45:11
+that as I put it in the wrong category
+
+Unknown Speaker  45:15
+what we are talking about
+
+Matthias Miller  45:22
+so this is grouped by let's actually do us record subset and
+
+Unknown Speaker  45:36
+get us in trouble though there's a different way to do this
+
+Unknown Speaker  46:20
+don't know exactly how I would want this
+
+Unknown Speaker  46:29
+you'll see it credit that it would be by transaction take
+
+Unknown Speaker  46:50
+well getting close sort of
+
+Unknown Speaker  46:59
+why is that not
+
+Speaker 1  47:11
+let's try this let's just start with showing how many matching transactions there are which is not working correctly because we're doing this by
+
+Unknown Speaker  47:47
+Alright so
+
+Unknown Speaker  48:36
+what's happening
+
+Matthias Miller  49:12
+because even that's not quite right. Anyway, we could conceivably add a column that would do that it's gonna slow down the report load a little bit but we could
+
+Speaker 3  49:31
+Yeah, I don't know. I mean it's you know if it just if it just is something that shows us some if we select the items, you know, that would be fine too. I mean, I'm kind of hoping it's something we don't have to use at all. Because if we're taking if we can get our our payments, I mean our if this list comes from what's in the bank or count rather than vendors IDs, you know, that will clear that all? Yeah.
+
+Speaker 3  50:14
+So doesn't take a lot of sense to spend a lot of time making something that just to use while we're trying to fix something else and then never need it. But
+
+Unknown Speaker  50:30
+okay.
+
+Unknown Speaker  50:33
+We go by issue.
+
+Speaker 3  50:35
+Yeah, um, I figured out what the routing issue thing was that in the wrong group, it's with the deposits, why things aren't showing up on the sales orders when making a deposit?
+
+Unknown Speaker  50:58
+We
+
+Unknown Speaker  51:03
+understand,
+
+Speaker 3  51:05
+um, so I think you continue there. And then new deposit. Yep.
+
+Matthias Miller  51:16
+So you go ahead and create your deposit
+
+Matthias Miller  51:24
+which this will be filtered in the future? Yeah, update, and then you want to save. And then, once you save, you'll have, we could certainly have a little red label down at the bottom. But once you save
+
+Matthias Miller  51:48
+down here, you get an option to link sales order payments. Oh,
+
+Speaker 3  51:52
+okay. I just record the show up in that box. No. All right. And then you just either include or don't include.
+
+Matthias Miller  52:08
+Yeah. Yeah. And then we should probably also add a search for. So Id slash just in
+
+Unknown Speaker  52:18
+the same thing as with that.
+
+Matthias Miller  52:22
+Yeah. receive payments thing. Yep. And then you just once this thing loads, check these off, save. And then when you come back, you'll see that in here and the totals reflected here. Yeah. And then you can this is where you add the Yeah, the miscellaneous
+
+Speaker 3  52:42
+things. Yeah. Okay. Now, speaking of miscellaneous things, if we throw, if we make a new transaction, let's say we're trying to update According to the Bank Ledger, and we want to put a new transaction in instead of writing a sales order for it, you're going through that whole process is just some you know, maybe it's a bank charge or something. If we enter that new transaction, will it show up right away? Or does it need to go through an update cycle?
+
+Unknown Speaker  53:18
+Sorry, one more time.
+
+Speaker 3  53:20
+So I'm assuming that if we would write a sales order, and non sales order vendors in the greater vendors invoice to the bank for their $5 bank charge that would need to go up, go through, like a nightmare update process in order to show up and accounting, right.
+
+Matthias Miller  53:38
+Yes, sir, we could show you how to kick that off.
+
+Speaker 3  53:43
+Um, well, the other option that we thought was actually would be less work on our end would just we just write a new transaction in accounting, right, equals actually would that show up immediately? Yes. Yeah. Okay. Well, I think that would be the simplest way to deal with that.
+
+Speaker 2  53:59
+So if you're doing a wreck, if you're reconciling the state when you come across a $5 bank charge, you're just gonna write Yes, actually save the new transaction, go back to reconcile maybe refresh that page and then write and
+
+Unknown Speaker  54:10
+it shouldn't be there. Okay.
+
+Speaker 3  54:11
+Yeah. Because that would be simpler than going through the whole vendors invoice.
+
+Speaker 2  54:15
+There's no purpose in writing a vendor invoice. Yeah.
+
+Unknown Speaker  54:20
+Okay. Good.
+
+Unknown Speaker  54:31
+I think we still need to figure out what fields right you just want to see.
+
+Speaker 3  54:40
+Well, what I'm wondering is, what is you currently used to, like what? You know what to say, How does she know what to pay? And is it something that we need to improve on? Or just check with her and she says she's happy with it, and we leave it at that or, like, I'm not sure who is The best person to start with
+
+Speaker 2  55:03
+Well, I think I need to talk to her. Okay, I need to tell her about the transition we're making.
+
+Unknown Speaker  55:10
+Okay
+
+Speaker 2  55:12
+and then ask her what she needs and then we can go back to Matthias and tell him what fields we need
+
+Unknown Speaker  55:23
+I just need to get that
+
+Speaker 3  55:26
+because yeah I mean if she's keying everything in well then you know those those those PDFs of the payroll verification
+
+Unknown Speaker  55:34
+that we're I'm filming
+
+Speaker 2  55:43
+might no I think that's you have anything else two things I have on the sales orders need invoicing report I have two invoices that I like to just look at transit cast or just look at my patient history so
+
+Speaker 2  56:11
+I have one and if you want to take a look at this one this is
+
+Speaker 2  56:31
+it it's m 232310664 And they're saying this was not delivered it was an awful lot sale but has not yet been delivered so
+
+Unknown Speaker  56:56
+alright so
+
+Unknown Speaker  57:18
+and this was on the report this morning is when it showed up
+
+Matthias Miller  57:28
+the building is delivery day
+
+Unknown Speaker  57:38
+though does it does it show deliver to the customer
+
+Unknown Speaker  57:45
+Yeah
+
+Unknown Speaker  57:47
+or is it delivered to the lot
+
+Matthias Miller  58:01
+I mean this one is a transit route that says delivered to the customer
+
+Speaker 2  58:10
+Okay, can we see the modification history on the transit on the transit task and see who who marked the delivered the site take delivery so Randall mark to deliver on 11
+
+Matthias Miller  58:29
+No, no let's take a look at these let's make sure these weren't ever marked as delivered at any point
+
+Unknown Speaker  58:51
+I don't know that the
+
+Unknown Speaker  58:58
+why are these candy green
+
+Matthias Miller  59:10
+now this one has a transit task that's not linked to the sales order. It's a lot hall
+
+Speaker 2  59:17
+I think what happened is it was built delivered to the lot and then three weeks later a customer came through and said I want to buy this building which is that what made it appear
+
+Unknown Speaker  59:33
+Yeah, but why is it what happened?
+
+Matthias Miller  59:53
+Steve bought it flaked out got delivered? Yes. On Thursday whew, he was signed it from Steve the customer to a lot building. And then several days later I guess Tani but but the building that when he changed the transit from going to the from going to the customer to the lot, the building still said it was delivered to the customer.
+
+Speaker 2  1:00:37
+Was it because he didn't properly select the like, what is it building delivered to end customer or there's a selection on examples of tasks that you need to change, like, he thought it was going to go to the customer. Somewhere there's a setting?
+
+Matthias Miller  1:01:00
+No, it's because he didn't update the building record. And I don't know what the right. I would involve Josh, in my opinion, but it seems weird to me that you can reassign a task not to go to the customer not have it be reflected on the billing record. But at a minimum what he should have done is
+
+Speaker 2  1:01:19
+Oh, yeah, so he didn't switch that. He had to deal with that too. What is the
+
+Matthias Miller  1:01:31
+You should have said this is this was delivered to the deep.
+
+Speaker 2  1:01:35
+Yeah, to the dealer. He he just left it as customer, right. Yeah, here, let
+
+Matthias Miller  1:01:40
+me let me see if these two are roughly the same.
+
+Unknown Speaker  1:01:48
+What good used this one.
+
+Matthias Miller  1:02:01
+He also deleted a transit task somewhere, I think, no, we did something else. I don't know. One of these doesn't actually have a transit test link to it. So I'm not sure what that one is. But yes, that's the bottom line, he did not link it back to the dealer and did not block out the delivery day.
+
+Speaker 2  1:02:24
+location types should have been switched back to the dealer.
+
+Matthias Miller  1:02:34
+Yeah, I think this is a convoluted process that should be cleaned up. But it's too likely to the fact that we have two things in separate records that can get out of sync is too likely to fail, but it's not really my my war to fight so but
+
+Speaker 2  1:02:57
+you're saying two records you're referencing to the transit task, and the building or the transit task? And
+
+Matthias Miller  1:03:06
+we have, yeah, these two this in the transit tasks.
+
+Speaker 2  1:03:19
+You're saying it's too prone to just exactly what happened here. So what would be a solution like?
+
+Speaker 2  1:03:34
+Are you saying it would have rather than creating a new transit task, just modify the existing one.
+
+Matthias Miller  1:03:45
+I don't know we'd have to talk through with Josh what the solution is. But it would either be you know, have a way to push it back to the building or you have certain modifications to the transit task, like if you want to change it from if you want to change it not to be to the customer, or you have a customer delivery and you cancel either these, then you click a button and it modifies the transit task and it modifies the building record. And if you change maybe if you change completion, completion date on here, you can't. When you change it here, it changes it on the building record as well.
+
+Speaker 2  1:04:25
+Another thing we should ask Josh, if we had another one in Indiana, where a guy marked completed one day and said I'm going to complete it tomorrow, so you can't do time travel. Let anybody do that. But But I think first step is just I'm gonna go back to play and tell them what happened. Have him take a look and see if he can figure out the workflow process and they have one. One person doing logistics so part of me feels like well, they first need to figure out what works there. And then build automation but get the other one was
+
+Unknown Speaker  1:05:10
+the other one?
+
+Speaker 2  1:05:13
+Okay, the other one they're saying that was delivered is N
+
+Speaker 2  1:05:23
+Oh and 23091355 They're saying this was delivered on 11. Seven
+
+Speaker 2  1:05:42
+what are we showing on the transit task on this? We're showing you live in seven. Was that transit task you were looking at?
+
+Matthias Miller  1:05:53
+Yeah, somebody needs to text Alex and find out if you actually did it or not.
+
+Speaker 2  1:05:58
+So he didn't he didn't mark it completed. No. Modification history just has what is? Can you just sent me that that modification history just then I could was? Yeah, I mean, this is this is the good, the fun part about accounting. Like, it relies heavily on business process. So we can't just know that a building was delivered. Yeah. What I need on that?
+
+Matthias Miller  1:06:32
+Do we have we ever made progress on the event log idea? Like, would it be pretty simple to have? If we gave you a retort? That would you give it a Stan or sales order ID and it would spit out? Even if it did nothing but transaction history for all related records, such as all the transit tasks, the building and the sales order?
+
+Speaker 2  1:07:03
+Well, okay, it would be if we, if we did not have a printing out as paper, I think because we do the only way it's going to be used heavily as if we somehow condensed it down to relevant information on one piece of paper. We created there was there is one credit for shits direct that I think the only way it's going to be used heavily is if you have one piece of paper that has it in some standardized format, or, I mean, I think I just I was thinking about the same thing this week, because it would answer all these questions, but I don't know, I think I think it should be on our radar first part of next year. So that, you know, somebody says, what's with this? They can pull report and it says, knows. Yeah, just shows the pertinent information. And that could mean I'm assuming. If we clearly know what we want it wouldn't be terribly hard to build with it.
+
+Matthias Miller  1:08:09
+Doesn't seem so but the figuring out what you want is the hard part. It's, it would be way easier just to throw probably the most useful for most useful for you or drew or somebody like that. I mean, drew that as much because he could drill into activity history, but for you to just spit out any you know, something else that could be helpful is what's the accounting impact of this building and connected sales order? Yeah,
+
+Speaker 2  1:08:40
+then we get in. I mean, a lot of details on do we show. Like the current today's snapshot, do we show revision history on some we're gonna say, well, we want revision history, like we want to see how building was modified. And on transit tests, we want to see modification, or we want to see history, but then other things we just want to know. Like. It makes it makes me tired. I think we should. Yeah, because of accounting as well. I think we should do that for as part of next year. Is that something you would do? Would it be pushed to Bangladesh or not
+
+Matthias Miller  1:09:23
+being with us? It's probably me.
+
+Speaker 2  1:09:29
+i Okay. I think another thing that's going to be coming first or second quarter of next year is
+
+Unknown Speaker  1:09:37
+redo the whole sales tax thing that we can get into those details later, but make
+
+Speaker 2  1:09:49
+good The only other thing I had was that email you sent the update you'd sent from Joel Financial Reports. I lost that email and I'm not I want it to is I can literally lose emails because they're paper copies. So I could do my big box of trash paper. But think if I remember correctly, you'd sit there our Joe could could show us examples of or like mock ups of what he what he has or what he expects to have, which I thought could be quite helpful or you for that was should I reach out to Joel directly communicate?
+
+Matthias Miller  1:10:44
+Let me see if I can actually find let me see if I can sneak in here and find it.
+
+Unknown Speaker  1:10:58
+Because it's just the income statement.
+
+Unknown Speaker  1:11:02
+Oh, the press account numbers.
+
+Matthias Miller  1:11:12
+Well, I mean, besides the fact it's not showing any numbers.
+
+Unknown Speaker  1:11:16
+Yeah, that's okay.
+
+Unknown Speaker  1:11:19
+Who needs that anyway?
+
+Unknown Speaker  1:11:20
+Maybe because it's 2030 for another transaction somewhere out there. Another vendor invoice that
+
+Unknown Speaker  1:11:33
+somebody keyed in wrong? January 28?
+
+Unknown Speaker  1:11:41
+How did they get 3023?
+
+Matthias Miller  1:11:46
+They're typing on that they clearly don't have a little side keypad deeply, clearly doing it. I guess
+
+Speaker 2  1:11:53
+that's the you don't use the the ones on the side that if you can type two, you
+
+Matthias Miller  1:11:59
+mentioned numbers. But if that would be if I'd be a full time bookkeeper? 100%? I would, I would think I want one of those in the side.
+
+Speaker 2  1:12:09
+When you want to use use the numbers at the top?
+
+Matthias Miller  1:12:13
+Yeah, I my laptop doesn't have anything on the side. So well, actually hang on. No, but I have a keyboard I use most of the time. But I will, I will usually use the ones at
+
+Speaker 2  1:12:24
+the top. You're right. I didn't use because I have to. I just
+
+Speaker 3  1:12:28
+I got to just about never use the ones at the top. But, you know, 90% of what I'm doing is just entering numbers. So like, if I am typing, if there's if it's an alphanumeric thing, then I'll end up using the ones at the top.
+
+Unknown Speaker  1:12:44
+Okay, so we have Okay, what do we have? The amount is? Is year to date, month to date on today, percentage year to date? What, what is the difference between the amount column and the others? And the year to date column?
+
+Unknown Speaker  1:13:11
+I have no idea.
+
+Speaker 2  1:13:13
+But is this in the current system? On the live system? Or is this test system? Canceled system? Oh, it is okay. Wow. So we've got month to date. That makes sense.
+
+Speaker 3  1:13:26
+So, since since we have selected in the filter to do well, what is the selection? Yeah, the report period is through the year, that makes the amount the same as year to date.
+
+Matthias Miller  1:13:39
+I suppose. Let's try this. So this is October versus Let me guess this is October versus year to date versus MONTH DAY.
+
+Unknown Speaker  1:13:52
+And month day would be today's money
+
+Matthias Miller  1:13:57
+is yeah, you know, I don't know why this is probably something that's a I'd be a little hesitant to throw too many rocks at this. But I don't know what's intended here.
+
+Speaker 3  1:14:13
+And I guess we can hide any of those columns we want to we'll
+
+Matthias Miller  1:14:17
+see i I will wait until I mean, this gives you an idea of what work so far good. Probably wait to critique it until it comes back from him.
+
+Speaker 2  1:14:27
+So Joel is doing more work. So basically look at it and dream about it. But do not think until Joe says it's live right?
+
+Unknown Speaker  1:14:37
+I would think so.
+
+Speaker 3  1:14:41
+Got it. Well, that's Yeah, yeah. And the totals are they're nice and Yep. What about the
+
+Speaker 2  1:14:47
+the other thing on that email was the asset grouping.
+
+Matthias Miller  1:14:51
+That's that's good to go. So
+
+Speaker 1  1:14:58
+just going here I put in groups are awesome equipment and save it and there you go.
+
+Unknown Speaker  1:15:13
+Okay
+
+Unknown Speaker  1:15:17
+good. Well I think that covers everything I have kind of I mean do we covered so much now are we sure we we have
+
+Speaker 2  1:15:28
+other than doing like a project update with Audra I'm assuming she's going to do that at one at this point is there really anything else we should cover?
+
+Matthias Miller  1:15:38
+Let me actually see if Would you guys be available to do that now
+
+Unknown Speaker  1:15:44
+yeah
+
+Speaker 2  1:16:26
+you sent that email all the modification history on that building
+
+Unknown Speaker  1:16:42
+oh yeah transit task history
+
+Speaker 2  1:16:51
+you sent it to mark dot t not the files inside
+
+Unknown Speaker  1:16:54
+Yeah Mark that T
+
+Speaker 2  1:17:01
+login I'm suspicious that for vinyl structures they obviously somebody in Epson connect took a look at according to Dwayne took a look at they were doing some troubleshooting and somebody asked him connect looked at how many transactions were being processed through ExIm connect like all the emails that Dwayne said their eyeballs about fell out. They think that that's intended for blow use like a home use you know sending a couple scan mails and they believe that whoever somebody Epson Connect is not being used Breckland slowed the whole thing way down.
+
+Unknown Speaker  1:17:47
+I don't know. It's awesome
+
+Unknown Speaker  1:18:20
+Good morning.
+
+Matthias Miller  1:18:21
+Good morning. How's it going? Good. We were like doing late on on this column that we could go ahead and consolidate against 11 o'clock so
+
+Speaker 4  1:18:36
+good plan just trying to pull up my reports here
+
+Unknown Speaker  1:18:45
+Did you want to share Did you want me to share?
+
+Speaker 4  1:18:48
+I can get there. We're a mother I am okay. All my tabs want to be slow today. rebars okay. Did you get an opportunity to look at the reports that I sent in PDF and see that I was able to add a progress percentages to the packets but not the timeline. Okay, does that is that helpful to you? Yeah.
+
+Unknown Speaker  1:19:41
+Yeah, okay.
+
+Speaker 2  1:19:45
+So you want to just start from the top and yep. Okay. Good way to go. The first one is, I'm gonna say is is it completed I have I have a little bit of work to do for one company yet. So
+
+Speaker 4  1:20:07
+yeah, good. Excited to proceed progress. Okay. And
+
+Speaker 2  1:20:11
+then the implement process rendering and assist. I would say that is that 33% or so because we've implemented one company not but the others are somewhere that so. Okay we're hoping to take that live this afternoon. So I would say that zero right now is great.
+
+Unknown Speaker  1:20:40
+The implement the daily billing process.
+
+Unknown Speaker  1:20:43
+Yep. Okay, sounds good.
+
+Unknown Speaker  1:20:47
+Moving on to stripe accounting impact.
+
+Matthias Miller  1:20:50
+Strip accounting impact is waiting on two things, the manual process and transaction ID changes from Josh. So, okay. I would Yeah, it's 90%. Done. Or at least on my end, but the waiting waiting, Josh. All
+
+Unknown Speaker  1:21:16
+right. I will. I wrote that down in my notepad here. I'll adjust that. Alright, we get
+
+Matthias Miller  1:21:26
+the write off process, I believe is done. was done as far as I know. Okay. And
+
+Matthias Miller  1:21:49
+now isn't it? This isn't Josh's court? We're not worried about that from now.
+
+Speaker 2  1:21:55
+I think that's done it is. It is done. It was.
+
+Matthias Miller  1:22:01
+Okay. market closed. Payments for multiple sales orders. 90% done. List of tweaks from our call today. receive payments Process 90% done some tweaks from today. Daily invoicing process for Dwayne, that's kind of a duplicate also will be zero.
+
+Speaker 4  1:22:29
+Do I need to do something with it? If it's a duplicate or am I just leaving it there?
+
+Speaker 2  1:22:34
+I think we could leave it there because it's it requires this one is for blame. The other one is for me to implement the process. Okay, so I think leaving it good. Okay. Yeah. Okay.
+
+Matthias Miller  1:22:59
+So running as to raw materials, nothing change or to a rounding error. Nothing changed a rounding error. I would put something like March of next year or something i Okay. I think it's wrong and it needs to be fixed. But I mean, if we've got time to get to but nobody's complained up until now. So Okay.
+
+Unknown Speaker  1:23:23
+Sounds good. That'll be helpful.
+
+Matthias Miller  1:23:28
+That was done. Well, I say just mark anything I mean, not aware of anything that needs to be done yet on that workflow that's in Josh's court he's still working on that where he's going to be doing that we cleared up some things from that stripe discrepancy reports I think can be I mean, what we have now works I don't know if we want to do anything better in the future we can probably leave it there and let's come back to it next year if we care bill to for finance buildings is duplicate that should be done right mark? That's the same thing we're talking about. That Jocelyn is about
+
+Speaker 2  1:24:15
+both New York businesses with Yes.
+
+Matthias Miller  1:24:22
+Close to whatever receive payments should allow searching that should be due November. Should we do by Friday? Filter droplets should be due by Friday. Okay. And there's that payroll Did you ever we never chased down lose federal changes. I could get that done by
+
+Unknown Speaker  1:24:55
+loving girl here. Right at the moment.
+
+Unknown Speaker  1:25:06
+Okay
+
+Unknown Speaker  1:25:15
+work orders and permutation
+
+Unknown Speaker  1:25:18
+which payroll changes to be not chase down?
+
+Unknown Speaker  1:25:24
+There is a no, this is the initial. Yeah,
+
+Speaker 4  1:25:30
+the one I, we did chase down that email for Mark, I was able to find it.
+
+Matthias Miller  1:25:36
+So I would put these as being due on Friday, I think I think what's reasonable, we'll give them what I've got.
+
+Speaker 4  1:25:41
+Okay, but the work orders and the conditional formatting, yes. Okay. And do that. And then the two at the top, the better handling for paid vacation, any updates,
+
+Matthias Miller  1:26:01
+no updates, or you can put it out and do that it'll be March of next year kind of be like it's one of those things, it's good to do, but okay, that we can do we can get to a bit critical before then we'll catch issues. Sounds good.
+
+Unknown Speaker  1:26:27
+All right. Any updates left on this? Are we done?
+
+Unknown Speaker  1:26:31
+Work? Done here? Okay,
+
+Unknown Speaker  1:26:33
+well, that's simple.
+
+Matthias Miller  1:26:37
+Anything from our call? So our call between again is going to be that three is going to be about
+
+Speaker 2  1:26:47
+two things one is hopefully, well, if if we get approval from everyone to go live the billing process between now and then we want to talk about making those systems which is I think that really straightforward. Dwayne just wasn't he just wanted to make sure that he's doing all the right things. And then the other thing was look at the strikes your strike discrepancy report and figure out a weekly process for for that so yeah. Sounds good. Awesome.
+
+Speaker 3  1:27:30
+mythos. What do you think your estimated time is on those deposit module and reconcile module updates?
+
+Matthias Miller  1:27:40
+I should be able to get that done today and we should be able to push it up there this afternoon. I think it feels to me like I've just got especially for skipping the call. Like, I've got just a bunch of miscellaneous and wavy niggly little things that need to be chased down. So
+
+Speaker 2  1:28:02
+good. I'm great, I think Oh
+
+Unknown Speaker  1:28:11
+good. Sounds good.
+
+Speaker 1  1:28:13
+Good. Yeah. There we going back three. Yeah, three. Yeah.
+
+
+Transcribed by https://otter.ai

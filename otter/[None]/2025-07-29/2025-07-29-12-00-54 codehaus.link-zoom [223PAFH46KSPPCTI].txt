@@ -1,0 +1,161 @@
+Speaker 1  00:58
+Hey, Sir, Hello, okay, so we have the data structure in place, and kind of the high, I mean, basically the high level design side of things done for a quoting tool. And so one place we could start is just, and we haven't sent that off yet. One place we could start is just walking them through that a little bit with some of the things that we've looked at, I mean, with kind of what we're seeing as far as this process. And I don't know what ordering we want to do things, if we want to kind of get meta, or if we dive into details first. You have any thoughts offhand
+
+Matthias Miller  01:43
+based on historical calls, they seem to like tangibles, yeah, yeah. I think I would probably. I think it's worth opening up with something along the lines of, we might have said this before, but the big challenge here is that we do need we're going from column and row to underlying structure of information, yes, and there's a fair bit that's like finding the structure of The thing more than functionally. How does it work? Or, I mean, it's, you would think of it just as recruiting visuals, but it's, you have to find the structure of the thing. Yes, yeah, yeah.
+
+Unknown Speaker  02:35
+I'm trying to think what a good analogy is of this. I
+
+Speaker 1  02:43
+uh, in some ways, I mean, it's nice. I don't know if it's quite fair to say there's a, there's a piece of machinery here that that is mostly working and need some tweaks. But you you kind of need to pull the whole machinery apart and and understand, to understand everything that it's doing, and then you need to put it back together with a different tools. I mean, well, it's not just a different tool set. It's putting it back together properly.
+
+Matthias Miller  03:13
+Yeah, it
+
+Speaker 1  03:15
+really is. This is a, I don't know how you describe it, but it is a homespun, well, you don't want to be pejorative, but it is, it's, it is kind of, it's a system that's evolved over time. And you know, this tweak has been made, that tweaks been made. And in order to make, I mean, in order to take this into a database, we argue you do have to understand the structure, and you have to be able to to try. Is there any analogy that taught that really gives a clear picture of that?
+
+Matthias Miller  04:01
+This is the poor analogy, yeah, but it's a little bit like you have a checklist or an SOP that people just add to and add to and add to and add to without time and everything's correct, and you can find everything, but it's not necessarily organized or categorized or different things like that, and and when you're just dealing with but, I mean, that doesn't quite capture, it doesn't quite capture the reason why it matters
+
+Speaker 1  04:36
+so much. Yeah. I mean, this is probably also a bad analogy, but it's almost as if you're going from a,
+
+Unknown Speaker  04:47
+well, okay, two analogies are both bad. One is if you are a if
+
+Speaker 1  04:56
+you're used to horse farming and you decide to run. D redo your entire farm to go to, you know, all to automation, then you really have to stop and figure out what all is happening. That's not a great analogy. Try another one. This is if you're used to doing, if someone is used to building, building, how a house from scratch and just and the contractor kind of making changes on the fly to so from one customer to the next, but then you say, We want you to be able to train other people to build houses like you build them. You have to stop and figure out exactly, what all does this contractor know? What all does he do? How does he price things? How does he build things so that you have a system that's reproducible, that can be scaled and modified?
+
+Matthias Miller  06:02
+Yeah. Kind of advocate that's also kind of what their Excel spreadsheet does for them. They think that's how they perceive it, as what it's doing for them. I think it's maybe a little bit of, is there a way that,
+
+Speaker 1  06:39
+and Earl's gonna be on the call too. So, yeah, Earl and the smart other young guy is going to be as well.
+
+Matthias Miller  06:48
+I don't think Earl is. I don't sense a lot of, I mean, I don't want to be pejorative, but I didn't sense a lot of protective, yeah, I
+
+Speaker 1  07:06
+but we don't want to unnecessarily insult either. I guess it's part of what I'm
+
+Matthias Miller  07:11
+saying. Yeah, okay, is there a warehouse analogy that can that could work like it's a little bit like I
+
+Matthias Miller  07:27
+if the only thing you have, you only have all your information just goes in little bins. You have a 64 by 64 grid of little bins that all your screws and stuff go into, yeah, and that's like little pieces of information. And so, yeah, you can say this square of screws go here and whatever, but, but really, you're going from that to saying, well, we're not just going to do that. We're going to have a shelf that's devoted for this. This is going to go into a box. We're going to have one box for each set of these things. It's always going to have this stuff in it. And it really is going from a very simplistic way of organizing and storing information to it's just like, it's the same thing as upgrading your warehouse storage, just storing information, not product and stuff like that.
+
+Matthias Miller  08:35
+I don't know. I don't know. What do you think? Yeah, I Yes, and maybe we don't just need to. Maybe we can just tell them, like, this is part of the like, fundamentally, spreadsheets and software are designed differently.
+
+Speaker 1  08:52
+Yeah, that's what I'm thinking. Yeah, okay, what if we just hit some of the high points of the of the of Well, first of all, kudos to you for all the work you've done on spreadsheets. That's exactly how every business should start. Spreadsheets do have limitations, and maybe just rip through our article a little bit and saying, but when you when we restructure, it's a bunch of work, because what we're doing is we're teasing apart the calculations from the underlying data and figuring out how the underlying data needs to be stored and so that you can report on it, so you can be fed into other places. And so it is a fairly, I mean, this is a it takes work to pull this off,
+
+Matthias Miller  09:33
+okay, so, so here's another way to say it. With an Excel spreadsheet, you've got three things that are entwined, yeah, like so you're teasing apart data from calculations, data and calculations and validation, teasing that apart and then the data, you're teasing it apart from rows and cells into an underlying structure and organizing it. And that's the essence. And I don't think we have to go deeper than. That they know they know this stuff already. It's just a reminder again, yeah, and, but you
+
+Unknown Speaker  10:04
+can almost toss the user interface and as well as,
+
+Matthias Miller  10:09
+yeah. So it's four things. I mean, it's, it's, it's data, calculations, validation, and user interface and and then the data you have to do this part even further into the underlying structure, sure, and it's almost like taking everything apart and rebuilding it from ground up. And the end product might end up looking eerily similar on the surface, but the under, underlying structure is way more scalable and robust than Yeah, yeah,
+
+Speaker 1  10:46
+yeah. That's, I think doing that rather than complicated analogies that break down is probably better. Okay, so this is and we talk to them every several months, but that's not, that's not on us always. Aha. Stiller, 2025, 25 729, high level design summary. Call, okay, so
+
+Unknown Speaker  11:17
+Excel contains a
+
+Unknown Speaker  11:25
+data in table, format, formulas, validation and UI
+
+Speaker 1  11:40
+mixed together, it's these four things. Those were the four that you talked about, right? Yep, to create working software, find underlying data structures and pull those out into separate data records determine formulas and where those need to to be used, Making them adaptable as needed for various use cases, determine
+
+Speaker 1  12:32
+necessary validation and create the create the UI. Anyway, yeah. So good. And this is, this is a bunch of work, because it's all, I mean, because by nature, in Excel, it's all by nature in Excel, this is all intertwined. Yep, we've done a bunch already to determine scope. Yeah, um,
+
+Speaker 1  13:25
+we believe that we can can create from what we see, but we can create a quoting database for you that can
+
+Speaker 1  13:50
+for other quoting database for you that works well, a bunch more design to work out all the details this, but so seen enough that we that we believe a solid solution is Probably is in the 50 to 100k range. Yeah. And remind me again what we had agreed on on the hosting side of things was, did you say 2500 a month or 3000 a
+
+Matthias Miller  14:33
+month? I said 3k okay.
+
+Unknown Speaker  14:38
+We're managing a server on your side.
+
+Unknown Speaker  14:46
+Alternative is 175 a month plus user fees on our servers. Yep, yep. Um,
+
+Unknown Speaker  15:09
+expected maintenance is about, it's about 15% of this annually. Okay,
+
+Unknown Speaker  15:28
+so,
+
+Speaker 1  15:35
+good. Do you think you'll walk them through the proposal a bit first, just to show them at a high level
+
+Matthias Miller  15:42
+I can Yeah, I think that's worth doing things, yeah, everybody wants screenshots all the time, or they always want shots all the time.
+
+Unknown Speaker  15:58
+Yeah, that's
+
+Matthias Miller  16:02
+pretty hard for them to visualize and Sure, sure, I
+
+Speaker 1  16:04
+think part of what it is you're doing, and even if they can't completely visualize it, if they can, I mean, we can go ahead and, you know, if, if they're interested in moving ahead, we will, we will, you know, we'll create screen mock ups and things like that. We haven't done any of that for them, right? We
+
+Matthias Miller  16:27
+had done round one, yeah, okay, we could update them,
+
+Speaker 1  16:34
+right? What's your proposal? Screenshots? Okay, well, that's super helpful.
+
+Matthias Miller  16:47
+All right, walk through the proposal. We'll walk through that little overview, yeah, really, not more than a minute or two, probably. But then walk through the proposal. Walk through pricing, posting, so which parts, which parts do you want me to cover? Which ones do you want to cover?
+
+Speaker 1  17:06
+Yeah, that's a good question. Do we talk about the prices at the very end? Does that sound right? I think so, pricing, and I'll do that one there. And
+
+Speaker 1  17:31
+I'm going to say that I do the overview of the of the intro. I kick off the meeting, do the overview of the intro, and then let you do walk through proposals and screenshots, and then I wrap up with pricing.
+
+Matthias Miller  17:53
+I had another question. It was, will high level design be just kind of spun along as we go. You mean in depth or, sorry, in depth design?
+
+Unknown Speaker  18:07
+Well, I think it's a fair question. I feel okay. What do I feel? I'm I love the flexibility that we have on the
+
+Speaker 1  18:22
+on the RTO side of things. It works great when you're driving. I think I'm a little I'm curious, if I'm curious if we're going to have a level of detail that we would have we would wish we would have had down the road, on the on the documentation side of things, and maybe it doesn't matter, because we've got developers here who know the system, and it's decently doc. I mean, you know, it is kind of halfway between. I don't know if it's halfway or it's it's closer to where we were, say, two years ago, on on In Depth designs versus where we are today,
+
+Matthias Miller  19:05
+I'm really go ahead, sorry, keep going. Keep going. No, no, you keep going. So I'm really scared of putting in spending 15 grand on In Depth design and then discovering that like this seems really backwards, and I don't know how we make ourselves accountable and how we do it, but yeah, in some ways, it would be easier to build out a 20 grand or 30 grand version of the system and have them start pushing stuff in, yeah, and say, Is this right? Like, what are the education? Yeah, and then come back and fill it in. I'm really scared of spending 15 grand on In Depth design. I depth design, exactly. And then, oh, there's
+
+Speaker 1  19:45
+this weird thing, like, right, yeah, I think you're right. I mean, I kind of wonder about doing this one just about like we've done art. I mean, RTO minus, maybe not quite as aggressively. Yeah. How does that sound to you? So, so, so maybe stated another way is that we have now have two different models to do software.
+
+Speaker 1  20:13
+One of them is, you know, one of them is kind of Matthias and Kansas and and I think it's like this. Then we just decide how. I mean, you just, if you get to decide a little bit how much you want to be involved, and we can talk through details. The other one is, you jump in to do the high level, and then it gets handed off to Tim plus bond with ash. And I insert myself in that process too. But those are, those are kind of, kind of competing models for solutions, and the more complex something is, the more we want it here in Kansas, right.
+
+Matthias Miller  20:55
+Sounds about right? Yeah. Um,
+
+Speaker 1  21:03
+oh, sometime I need to give you a five minute description of what's happening with investor tools and accounting. But anyway,
+
+Unknown Speaker  21:09
+oh, you can start recording. I don't know if you want to record five minutes
+
+Matthias Miller  21:15
+for them here. I can. Nobody can, I mean, I don't have an active contract.
+
+
+Transcribed by https://otter.ai

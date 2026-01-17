@@ -1,0 +1,776 @@
+Unknown Speaker  00:31
+Good afternoon. Well, this is Mark.
+
+Matthias Miller  00:37
+Mark. Has to be pretty good. Join some sunshine around here and the leaves are changing color and pretty much, pretty much got Paul going on.
+
+Speaker 1  00:57
+Yeah. So you were out versus this week, were you on vacation or just hanging out with other things?
+
+Matthias Miller  01:10
+It was I was tied up with other stuff. There is a virtual event that I was attending. And it was Pacific time. So I was able to get I got a few things in in the morning. And then yeah, was that for the rest of the day?
+
+Speaker 1  01:29
+I got your email response that Larry can simply assume directly zoom directly. So if you if I just send him that link, that would be what all he would need the HTTPS code has, Link.
+
+Matthias Miller  01:51
+Yeah. That's right. And if I guess if you want, we could also go ahead and add his email to the we could add an email to the to the event on Monday, if that would be helpful.
+
+Speaker 1  02:11
+Well, that might be easier that way, he can just click on the link and it'll be easier for him if you don't mind. It is. So you would basically send them an invite that or to join. Yes, but let's just do that. I'll try and follow up with him. Got that? But yeah, let's just do that.
+
+Unknown Speaker  02:37
+Make sure they've got
+
+Unknown Speaker  02:40
+see there you have an email address.
+
+Matthias Miller  02:44
+Yeah, I'm searching here to do okay, no, I don't have it. It's what is it?
+
+Speaker 1  02:58
+larry.trier@provia.com l a r r Y. Dot, Troyer zero y er at Provia PR o va.com. Alright thanks for sounds good guys
+
+Matthias Miller  03:31
+how much time were you planning that he were you playing a full 90 minutes with him? Or should we
+
+Unknown Speaker  03:39
+know I was hoping I told him for 30 to 60 minutes I was thinking the first part of the call but yeah.
+
+Unknown Speaker  03:55
+Is there a Monday call right? Yeah. It is I think I have like seven versions of emails from most want at least one or two from everyone on a possible solution and what's our most updated like what what are we on today? What should I be looking at?
+
+Speaker 1  04:30
+Putting in your response device. I was I was kind of expecting we would go through your your design outfit. You have a different plan. That Matthias
+
+Matthias Miller  04:44
+No. That's, yeah, that was the that was the plan. Or that was my thought. And then if we can, as long as we're comfortable, what I'm really hoping to do is get if we get signed off on that piece of it even before We've got signed off on the accounting side of things that we can keep, we can keep some of that moving.
+
+Matthias Miller  05:13
+So Mark, I'm going to invite him for the full 90. I mean, I'm going to add him to the event. That's the full 90 minutes. But if you want to just let I mean, as long as he's, he's clear, we're not expecting him to be around for that long.
+
+Speaker 1  05:36
+But that's what I, what I got from your, what you're wanting is it signed off on the design,
+
+Unknown Speaker  05:44
+software design, and that details on how we use it? How often we reconcile those are things that the since you don't need to be a part of those conversations, really?
+
+Unknown Speaker  05:59
+That is correct.
+
+Speaker 1  06:03
+Like, does this proposal fit the bill? And if so, it's sign off, and then guys figure out the small details. find details on microbial software.
+
+Matthias Miller  06:18
+Yeah, and I and to be clear, I don't mind being involved in those but but we really do need to, we really do need to get the ball rolling on development. It's gonna hit the target.
+
+Speaker 1  06:43
+Yeah, I couldn't agree more. I mean, are we even now? Practice on long time already? Is it even? Like, is it realistic, at this point to? Is January 1 Still realistic?
+
+Matthias Miller  07:05
+Well, a couple of weeks. We should I guess it depends on what information we're pushing across. I mean, maybe what should actually happen is that you guys take this discussion offline, or in a set, you know, on your own channels so that I don't become the bottleneck on that. And we start taking a look at putting together the implementation plan. What needs to be migrated across? And what are some of those things going to look like?
+
+Speaker 1  07:41
+But but purely from software development? And do we even have Are we still or is it still realistic for us to think that we can have software built to accommodate or to handle the basics? January 1?
+
+Matthias Miller  07:56
+I think so.
+
+Speaker 1  08:00
+Have you you said you want it to get Josh sign off on this as well? Have you talked to Josh about it at all?
+
+Matthias Miller  08:08
+I have not unfortunately our schedules are not aligned for the last few weeks and so we've we're a little bit behind on catching up
+
+Speaker 1  08:19
+Yeah, that's probably a pretty significant part of it as well i i could see where he says who hears something how are you going to handle this and we say and thought about that or I don't know are you thinking that's there's there's probably no hiccups there I don't not expecting
+
+Matthias Miller  08:46
+there there there might be
+
+Matthias Miller  08:54
+you know, there are definitely some changes that are going to impact him and so if we really do need to push this through it kind of goes back to there may have some impact and priorities. Persist but
+
+Unknown Speaker  09:16
+he was playing to be on
+
+Matthias Miller  09:17
+as easy he's on now. He just okay, just looking at a few minutes
+
+Speaker 2  09:22
+ago. I apologize. Hello, everybody. I apologize. I had we had yesterday afternoon all of a sudden we were advised that we're gonna get visitors from Mexico really quick. So I was entertaining them at lunch. But we're here
+
+Matthias Miller  09:42
+Gotcha. Welcome
+
+Matthias Miller  09:50
+Alright, so I think gave you kind of missed it. But the goal for this call is to answer any questions we have about this After resign and see if see if that actually is a way we can go for this and I think when I can, I don't really care which way we go about this. I'm fine. walking you guys through it talking about how these pieces are structured and tied together? Or if there's a good I'm open to other other approaches
+
+Unknown Speaker  10:41
+I think that would be good.
+
+Matthias Miller  10:45
+Yeah, okay. Okay, so big picture, there's a few kinds of configuration items that were discussed. Number one is cost types. And, you know, when, when you're this is used for building records to break down the different costs and percentages. And the thinking was that, and so here's, here's one question that could be decided is how much flexibility do you need in cost types? Technically, you know, from a, from a big picture. FTI is always these three things. But if you ever want to break down production labor into additional categories, or raw materials, or production overhead into other types of categories, then we'll want an adjustable list of finished goods, cost types. Do you think it probably, you know, it does end up simplifying development in the short term, if we know that this, this is something that we need, but if we don't know, and we're, we think there's greater than 50% probability that we'll have to, we're going to want one to track additional costs tapes going into 2023? I think we should probably do it now rather than later. Any any thoughts on that?
+
+Speaker 2  12:09
+We do have, I'm trying to look it up right now. I mean, the
+
+Unknown Speaker  12:16
+the financials we have, output we have definitely has been in production, labor and production, overhead broken into further categories. I would be a little bit surprised if we don't want to break it down. Further than simply
+
+Speaker 2  12:42
+Is there a difference? If we broke it down into? I'm expecting, you're going to say the question is break it down further or not, it's not going to be critical if it's going to be three or two or six. Is that right? Correct.
+
+Speaker 2  13:11
+I'm sorry, it's taking me so long, but they read now we have about five or six breakdowns on each.
+
+Matthias Miller  13:32
+I think what I'm going to do then is
+
+Matthias Miller  13:43
+gonna go ahead and share my screen. And then these guys, you guys can follow along, I think will be more for Nick's interested in anything.
+
+Matthias Miller  14:09
+That will give you for the sake of being able to to categorize these appropriately. We might, we might actually put some of these costs into categories. So you'd have major categories of raw materials production, labor, production overhead, and you can put whatever subcategories you want underneath that. You could just have a single subcategory that is all raw materials. You can have any number of breakdowns, but the big buckets would. I'm starting to think no, because we're still going to have to do this on an individual basis. I don't think we actually need that. I don't think we actually need any If you're more than that, I think that's wrong. We're just making really hard code those expressions
+
+Speaker 1  15:17
+but are you thinking we, you would still follow the we'd have macro categories and then minor categories within? Like we will, we would always have these three, but then we would have the ability to break down further within each one.
+
+Matthias Miller  15:39
+Trying to think why we would need the market categories, I guess, for finished goods inventory reporting. Yeah, you're probably right. finished goods inventory reporting and other reporting? Where does this
+
+Speaker 1  15:53
+this come in, you know, where we talked last talked about suction overhead by based on the GL account, or that was my understanding based on the GL account. To me, but my understanding was that there's a way to lump all of them together if you create your account correctly, or your GL Account correctly. Now, you might have started out with 10 that are whatever they are, but they are a, like a better word, a subcategory of production overhead. And then if you add two or three more when you when you roll them together, they're all part of that larger.
+
+Speaker 3  16:43
+Right. The way EBMs does it is there's your general ledger account, and then there's dash three numbers. The dash three numbers are isn't the department. Yeah, is it department. So we can with EBMs, I can pull a profit and loss with everything expanded showing the GL and the department code, the dash three numbers, or I can have EBMs, ignore those last three numbers. So maybe if we had, you know, in overhead category that the first three numbers were labor, and the next 100 is labor, and 200 is materials and 300 is overhead. So I can pull that p&l and ignore those last three numbers, which will then just give me the lump total of those three departments. Because they all have the same GL Code, just a different dash three numbers at the end.
+
+Speaker 1  17:54
+I think that's what we want to go on the balance sheet. We don't want to show a 10 or 12 or 20. If different cause types, but we do want the sequel want the ability to break it down further, just like you explain.
+
+Matthias Miller  18:13
+So you guys will be wanting department numbers and appropriate reporting. So I don't know that we currently have that.
+
+Speaker 1  18:23
+Well, is I think earlier, we'd call it classes. Okay. Sure. I think that's the same thing. Right, Chris? Yeah,
+
+Unknown Speaker  18:32
+the departments and classes are the same thing.
+
+Unknown Speaker  18:34
+Got it. Makes sense.
+
+Speaker 2  18:37
+Okay, departments profit centers. Now, the only thing I have to add here is, is what we are wanting to use are departments or classes or profit centers, whatever we want to call them for is something different than breaking down cost of goods like we were wanting to use our classes for breaking our all of our GL accounts up between, we have about four different classes like I don't have the names in front of me, but it's like retail wholesale Site. Site, Bill, actually, I do have a right here.
+
+Speaker 3  19:28
+And those would be the profit centers, right. So your profit centers are going to be sales channels, and then the departments are going to be what QuickBooks calls classes, I think.
+
+Speaker 2  19:43
+The last three digits. I was thinking we're going to use that for I guess we could. We were going to use that for retail portable, shared fulfilled portable sheds on site buildings and other income. Like those are the four we could call it for profit centers. And we want to be able to break up every GL account into one of those four. Or, by a percentage, like we have an expansive $10,000, we want to be able to break that up into four different or three or two or one. But for the other thing we're talking about here, which is breaking up our finish our production, labor production, overhead raw, finished goods, I think we could do the same type of thing. Maybe I'm just not understanding correctly, Chris, and you were imagining, those last three digits are like 100 200 300 400. But then we use that. Like, instead of just having 100 200 300 400, we have 1212132 ones and 401. Or I don't think I'm making a lot of sin. I was envisioning that, we use the first two digits of the GL account, to break up our production labor, for example, to production labor cost of goods, GL accounts all start with five. And we have three different categories under cost of goods, one being raw materials, one being production, labor, one being production overhead. So production labor, or raw material, is 51, certitudes, and 50, threes, the GL Account starting out with, and then production labor is 5450 pies, and 50 sixes. And then production overhead is 5750 and 59. With our
+
+Speaker 3  22:07
+is that in our dash three digits, or is that in our first six?
+
+Speaker 2  22:12
+It's in the first six, the only I'm making way too big of a fuss here. It seems like the simple solution we had a minute ago, we're going to use the last three, we already have those last three being used. With a profit, you're correct if if we want
+
+Speaker 1  22:32
+to use them, while we were talking about to consolidate all production overhead into breakdowns into production over overhead, then we'll need to have another set of numbers to use.
+
+Speaker 2  22:50
+Which unless I'm missing something using 5150, twos and 50 threes starting out.
+
+Speaker 3  23:11
+I think the question is do you want to be able to combine them, if you want to be able to combine them. I mean, I don't know how Matthias is going to build this, I just know how EBMs works. So if I look at AVMS, anything in those last three digits, I can ignore and combine to one big category. That's the department's there's also profit centers, the profit centers are the different sales avenues or the different revenue streams. They work together but they can also work independently. So if you want to have production overhead, as I don't know 53,000, and then on your profit and loss, you just want to look at that total, you don't want to see it broken up into seven or eight different lines, then the way EBMs would work is we'd want to have those dashed three numbers be the way we're breaking it up into seven or eight different lines. That way we can then combine them.
+
+Matthias Miller  24:16
+I mean, is this the equivalent of QuickBooks sub accounts and then merging them, you know, being able to merge them together so you only see the parent account or it's different than that. It's another dimension on
+
+Speaker 3  24:30
+its it's possibly like that I've never really gotten too deep into QuickBooks. So I don't speak as well as I can speak EBMs at this point.
+
+Matthias Miller  24:43
+The specific question I was trying to ask on a building record. Production labor can be Can somebody give me examples of either raw materials production labor and production or production overhead what some of the more specific subcategories might be one of those just so We can talk about something tangible.
+
+Speaker 2  25:02
+Yeah. So production overhead would be here's a few delivery expense, repairs and maintenance, job supplies, machinery and equipment depreciation like that. Yeah.
+
+Matthias Miller  25:17
+Okay. So just to clear. Utilities. Alright, that's great. So just to be clear, on a building record, we're going to have five different percentages, one percentage for delivery expense, one percentage for repairs, and maintenance, one percentage for shop supplies, one percentage for machinery, equipment, and one percentage for utilities. And we'll continue tweaking and adjusting and fixing those numbers, those percentages as we go along. And we're going to store those specific cost breakdowns on the building itself. Is that what you guys are saying?
+
+Unknown Speaker  25:59
+I think so.
+
+Matthias Miller  26:03
+I mean, so
+
+Unknown Speaker  26:08
+if I was thinking
+
+Unknown Speaker  26:09
+we would go ahead.
+
+Speaker 2  26:14
+Oh, I was gonna say, I was, like, in my mind, we have a percentage, for the total finished goods, production overhead. And then we have a separate breakdown, where we break that down into the subs, so that we don't have to, like when we tweak our percentages, we don't have to tweak 20 of them. We're just tweaking three of them every month or whatever. And then maybe once a year, we tweak the second level. I don't know if that makes things overwhelmingly confusing or not. Does that make sense?
+
+Matthias Miller  26:59
+Makes sense.
+
+Speaker 3  27:02
+So you're just gonna have your thinking just the the one big bucket of production overhead, not all the little buckets that are within it, you just want to see production overhead, this percentage on the building.
+
+Speaker 2  27:16
+But in the big bucket, we have a percentage we have we have the the the eight percentages to break that down into the little buckets. But on a monthly basis, or whenever we tweak our percentage. We're not. We don't have to tweak all 10. Like, what should be our percentage for utilities? What should be our percentage for waste disposal? What should be our percentage for ways for rent, what should be our percentage for taxes? What should be our percentage for engineering? That would probably be tweaked, maybe just annually. But the percentage for the big bucket is what we would tweak. I can go into more detail. But I'm afraid I'm already spending too much time here.
+
+Matthias Miller  28:08
+So it makes sense, Kristin. Basically, instead of saying that, instead of saying that delivery expense is 1%, you're saying production overhead is 5%. And delivery expense is 20% of the 5%. Right. So it all comes out the same, it's just how you set it up and define it and allows you to control one without controlling the other. Or with that, while adjusting the other
+
+Speaker 2  28:37
+is in the percentage on the big bucket is fairly important that we keep that pretty close to right and tweet that, you know, maybe not every day or week, but probably every month, the little ones are way less important. At the annual
+
+Speaker 1  28:58
+that makes sense. The The only thing I can think of is are we going to have a good way to look at like whatever the sum of all the little buckets because we'll need to have a quick way of looking at the actual numbers of the sum of all the little buckets to know what to tweak to be the big percentage.
+
+Matthias Miller  29:25
+Literally, we can do that and reports if we're doing actual costs will
+
+Speaker 1  29:31
+prove. My question is should we should we think through that are built for that in the like our GL Account numbering system, kind of like we we've already done for the finances or department that we have obviously another set of numbers within the telecom number that allows us to do that.
+
+Matthias Miller  30:00
+I mean, presumably, yes, you're gonna want an easy way to get those grand totals? And I would, I don't think it pertains to this discussion. I think this discussion handles that completely fine. Just something for you guys to note and make sure that you're that you cover.
+
+Speaker 2  30:23
+Got it? Now, but with EBS with EBMs, the only way we can do what we're doing is Chris, and correct me if I'm wrong, is use the last three digits of your GL account. With what you're doing Matthias, are we going to be limited to the last three numbers? Or we could, for example, start or all of our production labor with 50 to like 50 2000s. And the production overhead, we do 50 3000s, like 52 001 to 200 to 2003204. And then production overhead 53 001. Would that work?
+
+Matthias Miller  31:11
+Well, from my standpoint, I don't really care how you number or name your accounts. Because if you come up with 50 different sub accounts that you want to track expenses, the only thing for me is, well, you guys are gonna have to set up 50 different percentages and 50 different linkings from the percentage into the counts and figuring out how all those things tie out. But as far as the numbering, the numbering and categorization scheme actually doesn't matter here for this discussion.
+
+Unknown Speaker  31:46
+Doesn't matter, it's usually a good thing.
+
+Matthias Miller  31:49
+Okay, so then just to be extremely clear, there will only ever be three categories for finished goods, items, you're going to have raw materials, production, labor, and production overhead. And there will never be any other big bucket for these. Is that correct?
+
+Unknown Speaker  32:10
+For Cost of Goods? No.
+
+Matthias Miller  32:14
+Okay, but what's the Yes?
+
+Speaker 2  32:19
+Well, I just wanted to make sure we're just talking about finish. When you are maybe you said finished goods. Yeah. Finished Goods Cost of Goods. Same thing.
+
+Matthias Miller  32:27
+Yeah. So for any building good, any, there will never be
+
+Speaker 2  32:31
+I mean, unless inflation gets bad enough that we add an inflation category Ha, no, just three.
+
+Matthias Miller  32:37
+Okay. Okay, so
+
+Matthias Miller  32:47
+fantastic. Okay, so I'm going to clean this up as we go. So now we have an FDI cost category, which is those three big buckets. And those you cannot change. And if you need to, you're gonna have to call us up and be like, we're going to need an inflation cat FTA FCI inflation category. And, but then within that, each of those will have to have FTI cost items. And that will have a name and it must be tied out to a specific category. You can name them whatever you want, you can call whatever category they weren't. These are just a set up all the possible cost items that you can track. And so I'm just going to say we're example may have a few high cost items for production, such as. Okay. And we're going to do this down here. Because I think we need to get to that. Okay. Now, so far, so good. Now we need a way to say how do we estimate is an FTA estimated costs? How do we estimate the how do we estimate these numbers? Well, currently, we have a wholesale percentage and inventory, material percentage and
+
+Matthias Miller  34:27
+which raises some questions. Wholesale percentage currently does not include overhead. So when it comes to redoing our finished goods inventory reports, should the values reflected on the FDA reports include overhead or should it only be labor and raw material?
+
+Speaker 2  34:55
+And a little bit lost when we're talking about margin you know, a whole lot more of Are those those two numbers to me the Greek?
+
+Unknown Speaker  35:07
+Messiah, when you say mentioned silver percentage I'm not quite sure what you're referencing to there.
+
+Matthias Miller  35:17
+Okay, looking forward.
+
+Speaker 1  35:21
+Did you? So did you see my my, I guess your question there at the bottom of the table I included on my response? Or is it currently the benefits inventory value in assists reflects material cost and direct labor costs? It's not including production overhead.
+
+Matthias Miller  35:42
+Okay. So material percentage manufacture direct labor percentage. So the wholesale wholesale percentage on the district is this 70%. That's completely unrelated FDI numbers. Is that, is that right?
+
+Speaker 1  36:09
+That? Yes, it is. Got it. All right. Well, that's the only two numbers. The only two numbers we're tracking right now. And for finished goods is serial percentage, which is manager of the retail price, and then the direct labor percentage, which is manufacturer price times a bet percentage, and that that percentage, the way Josh has it now can be set per builder, not not only per district, but per builder, because we have different percentages in history that we're paying.
+
+Matthias Miller  36:55
+Alright, so building in, aha, oh, well, this gets fun.
+
+Matthias Miller  37:09
+Gets a lot. Well, this is why we're having this conversation now.
+
+Speaker 1  37:18
+And yeah, it does get real fun, because I think if we Okay, materials, we're gonna have to start out with a percentage, the end goal is to have a true bill of materials, which most of the framework has been built for that. Once we have tools built to go with it. That'll say, this building uses this many befores this many windows, and it'll pick from the correct skew lots. And that's, that's where we want to end up starting out, we'll we'll need them. Starting out, I don't know that we have a better method than what we're doing right now on materials.
+
+Matthias Miller  38:07
+Okay, for overhead, is overhead dependent on a district or dependent on a build or?
+
+Speaker 1  38:19
+Well, yesterday, I thought about it, but I don't think that's quite right. Gave especially like in a district like North Carolina, I guess, depending on how detailed we want to get because you have employee builders, play shops, and then you also have sub shops that are paid a much higher percentage. So technically part of that, technically shops like that your overheads going to be lower than
+
+Speaker 2  38:50
+we're talking co wiggling co wiggling. I agree, but I don't think we should get into shot level anything in phase one.
+
+Speaker 1  39:04
+So should we revert our good because right now labor percentage. We are using shop level the way we're calculating our finished goods today we are at shop level should we revert that to district level for phase one,
+
+Speaker 2  39:24
+because of the I mean, I may be missing something real simple here but based on what I know, because of the complexity of doing chart level stuff on building records, and financials. I think we have everything gets free level and I mean the value we know unless we move
+
+Speaker 1  39:58
+in, we would say Then we would take an average of the entire district for the labor percentage and an average for the Yeah, duction overhead?
+
+Matthias Miller  40:12
+Well, this is only for, there's only only the control variances. And so we're going to fix up these numbers. I don't think, personally, that it makes much difference whether we do a builder versus a district percentage on this. And this is partially because of Dave's recent idea to separate the subcategory percentages from the parent percentages.
+
+Matthias Miller  40:58
+I mean, I think it works. My vote is totally we need
+
+Speaker 2  41:03
+to. So with that we would need to keep all have our percentages, as per shop updated, instead of like, if we want to update our percentages once a month to try to hone it in to get him just as close as possible, based on history and all that stuff. At that point, we'd be updating 20 shop percentages, instead of three district percentages, right, just for production labor. Sure. And if we did production labor, on a per shop level, does that mean that we should then do production overhead in finished in raw materials also shot level, and we just have them all the same? Like, production overhead. I mean, we'd be really splitting hairs to try to come up with different percentages per shot, they're doing a shot
+
+Speaker 1  42:10
+having to if you do if you do labor, at the shop level, you'll have to do overhead at the shop level because it will really a sub shop that you're paying 15% on labor, you're going to have a whole lot less production overhead then Bill on an 8% employee shop.
+
+Speaker 1  42:39
+But though you're right, how do we solve our if we say, well, what, what we projected our production overhead to be is was too low, we'll have to move it up. Make up for 20,000. We were 20,000. We projected 20,000 too low. So does that mean we move? We were to percent to low? Does that mean we move every shop in that district that much? Or do we guesstimate? They will we'll move all of it up on this one job.
+
+Speaker 2  43:21
+So what you're saying Matthias is from a programming standpoint, you're you don't see more complex complexity with doing everything shot level versus doing district level.
+
+Matthias Miller  43:32
+From a programming perspective? No, I think it's I want to I want to do this with this in mind, but I think so.
+
+Speaker 2  43:42
+So at that point, the upside the downside becomes the upside is we can adjust all the way down to shot level on all three categories. The downside is we have to adjust it all everything down to a shot level. Would that be correct?
+
+Matthias Miller  44:01
+That is That is correct. And the only alternative which I'm not particularly a fan of but for the sake of thoroughness, I will mention is that we could have a district level percentage and only allow you and allow you to override that those percentages on a few specific builders. Actually, maybe maybe I do like that maybe I don't I'm not sure if I like it or not.
+
+Speaker 2  44:33
+Ever I have a mental roadblock with this builder level thing, because it just I may be missing something. It seems really cumbersome to come to the end of the month, for example, and we say okay, How close were we? And then we say okay, it looks like we We're gonna make easy numbers, our projections were $3,000 low. So when we look at the past three months, so we should move over percentage on production labor up to hopefully get a little bit closer. We were $3,000 low when we look at the past three months. So if we do this district level, we're looking at one number and saying, okay, instead of being 10.67, we're going to go to 10.89. And if we have 6% percentages, we're going to say, Okay, we're $3,000 low, and we have this shop at 10.64. We have this shop at 6.89. We have that shop at 7.62. I guess we could see where we
+
+Speaker 1  45:55
+are. I mean, we'll also know our actuals per shop, when we if we do then then
+
+Unknown Speaker  46:09
+we do get right.
+
+Speaker 1  46:11
+Which is it does get a lot more cumbersome. And I think it's a valid question. Do we want to go to that level? And, or no. And I guess, Matthias, if you believe that we can go below our level? The Am I correct that if we say, Good, we want to go there someday the functionality is built. But we don't have the bandwidth to do it right. Now, we could simply put in the same percentages across the board, and get the same district wide effect to get started.
+
+Matthias Miller  46:42
+Yes, but I would say if you're not going to use it for six to 12 months, then let's hold off on building it. Because it's really easy to come up with grand ideas that we think would be amazing and perfect on this side of everything. And the last thing I want to do, I mean, basically what you end up with is, is the dead weight of unused functionality that we need to support. And I just don't see that as a wise use of I'm working on the future.
+
+Speaker 2  47:15
+Well, you're saying my vote would be like you said in the past, what you're saying is, if we don't believe we're going to use it in six to 12 months, don't do it? Well, I think that's easy. We're not going to use it in six to 12 months. But if at month 13. That becomes important. Are we then, I mean, there's other thing programmers always talk about is man, if we build it in to start with, it would have been easy. I heard. I've heard this so much in my 12 year career, it's unbelievable. But now it touches so many pieces, it's almost impossible. But I think co crafters is different, right? Well,
+
+Matthias Miller  48:04
+I mean, everything's everything's a matter of scale and trade off. It really depends on the type of thing that that there is. But in my opinion, there's two things that have to change, we have to start tracking these percentages on the company record into the district, and we need to change the financial allocation to be able to filter buildings by builder. So there's two things that need to change one, we need to change where you assign the percentages. And yeah, it's a little bit of a hassle, but it's just moving some information back and back and forth, copying them onto the each company record. And then number two, when you say go distribute here are the actual costs instead of distributing them across, instead of asking you what time period and what category we asked you three things now what time period, what FGI cost item it was and what builder was it for. And we only look at buildings for that builder and we go distribute them according to that. Simple. So I don't I don't see this as a I mean, yeah, that certainly can't happen. Maybe I'm hyper optimistic here but I'm just not seeing how that how we're going to be painting ourselves into a corner by going this route.
+
+Speaker 2  49:27
+And I don't see enough value coming out of top level stuff. The justify even the the time and the energy is going to take to update everything at shot level
+
+Matthias Miller  49:52
+so the Go ahead, sorry.
+
+Unknown Speaker  50:00
+He was that?
+
+Speaker 2  50:03
+Oh, I was just saying, I don't I don't see enough value coming out of of shot level, even from the standpoint of what it's going to take to keep all that stuff updated.
+
+Speaker 1  50:16
+No, I don't either. At this point, I think we're better off our chances for success are much better if we do district level going into it. And then if you ever want to go build a level we can agree.
+
+Matthias Miller  50:30
+So then the next question is, should we move the building inventory percentage, which is the labor percentage? Does that stay on the? Okay, we've got to two options. Now we already have it on the on the building on the company record. For a builder, do we move that to the district level? And I don't know what the implications are for that, and what the changes? I don't know if there's any kind of compensation or anything that gets controlled by that. And so assign the same percentage and deal with whatever implications of it? Or do we go ahead and estimate the building numbers by that number, and we just fix it up and we know that the percentages are going to shift when we fix up numbers?
+
+Unknown Speaker  51:15
+I'm sorry, I didn't grasp all that.
+
+Matthias Miller  51:19
+Currently, are we saying that that we're not going to have different labor percentages or even yet labor percentages per per builder? No. Are we still gonna keep separate separate labor percentages per builder?
+
+Speaker 2  51:37
+We're gonna pay builders, different labor percentages. Yes, but
+
+Speaker 1  51:42
+for how we how we value finished goods inventory, we're saying there'll be one universal number in a district
+
+Speaker 2  51:55
+Yeah, now is that that that's not going to go ahead.
+
+Speaker 1  52:01
+Your question besides will that affect compensation know the manufacturer price it's all based off of the manufacturer price and it won't affect that okay.
+
+Matthias Miller  52:13
+All right. So the answer is we're going to move what is called currently the building inventory percentage on the company record to I'm going to rename it to inventory labor percentage on the district record and then just to know when doing this make sure this has no unexpected location kitchens and I'm actually going to do this with a TV Josh
+
+Matthias Miller  52:59
+Okay, and then on the district record then we'll add a we already have district record already has the inventory material percentage so all we need to add yet is a we're actually going to put this all in one okay here on the district district record and Tory when they say it was
+
+Matthias Miller  53:39
+so, the inventory date we would have the material percentage
+
+Matthias Miller  54:08
+district records, inventory labor, no inventory
+
+Matthias Miller  54:41
+all right. We just made this whole thing simple. On the district record, as of any given date, we can set the labor percentage material percentage and the overhead percentage. Big bucket sizes
+
+Speaker 1  55:01
+And what that means is seems moving that from that day forward, whatever day we said yes, right, whatever day we said
+
+Unknown Speaker  55:09
+yeah
+
+Speaker 1  55:11
+I think earlier we talked about you don't there there won't be an ability to go set it like today you couldn't set it to 1017 or 10 Three or whatever it would have to be they you said it and moving forward
+
+Matthias Miller  55:27
+Yeah, so you have to be
+
+Speaker 1  55:29
+today forward which would make sense because with the reconciliation process that you have the only time you're going to know that you want to change the change the values is once you have history I mean that that makes perfect sense to me I think that's that's right.
+
+Matthias Miller  56:01
+Okay, so then we have the FTI FTI
+
+Matthias Miller  56:12
+This is estimates or FTA cost categories
+
+Matthias Miller  56:51
+so I'm
+
+Unknown Speaker  57:03
+sitting here
+
+Matthias Miller  57:52
+you know, that might be a better approach if we would have a
+
+Matthias Miller  58:07
+yeah, sorry give me give me a moment I'm catching up to myself here.
+
+Matthias Miller  58:57
+Okay, so So we're 90% Sure we want to go this direction. So then we have a summary section tied out to there we'd have the FTA cost categories, which would be a labor percentage, which would be decimal, zero to two. Number with number with zero to two decimals. We'd have labor material overhead and then we'd have the breakdown would be the cost items section.
+
+Matthias Miller  1:00:27
+Alright, so then we have Okay, so then understanding what I just said underneath that. So basically the way that so you would define let me let me kind of cut to the, to the chase and what FTA cost estimates is you would set the percentages for labor percentage material percentage overhead percentage, and then you would have all the items available to you. And you could set the sub percentages as in percentage of the percent Well, I mean, it would Yes, a percentage of the percentage that should be applied based off of that. And those would also be you know, as of a specific any, any any arbitrary date, you could start adjusting those, those percentages
+
+Speaker 1  1:01:29
+and those, those sub sub whatever, those would always need, the percentage of those would always need to total up to 100% is what you're saying within a category Yes
+
+Matthias Miller  1:01:42
+yep. Okay
+
+Matthias Miller  1:02:47
+so then these we asked Josh about that, I think so, we'll actually I don't know, I don't know that if we do this
+
+Matthias Miller  1:03:06
+okay, so wholesale percentage, I'm just gonna make a note here wholesale percentage. It's not related to numbers. Okay. And then we're going to do future enhancements
+
+Matthias Miller  1:03:34
+if we, we ever want to start tracking costs. Okay. So this actually got pretty simple. Once again, for any district, as of any specific date, you can define two categories of things. One, what's the big bucket percentages? And then within each of those big buckets, what are the items, sub item, percentages, and so on and percentages have to add up to 100%. And there you go. Now we've got the estimating.
+
+Speaker 1  1:04:13
+One thing that you should clarify in here is, where are the what are we basing those percentages off? I think starting out, we should. The labor and the overhead should be percentages of manufacture price and the variables in each of the retail price. We probably should discuss with Josh on a few details there on the retail price, but I think that's what we look at starting out.
+
+Matthias Miller  1:04:51
+You said that the material and labor are percentages of manufacture price
+
+Speaker 1  1:04:59
+and labor In the over know the labor labor and overhead are of manufacture price and then materials are of the
+
+Matthias Miller  1:05:15
+retail price, I'm gonna get that I'm going to get to that when we get down to the estimated building costing section, the automatic process. Okay? But that's that's good to note I'm noting so that we for sure get that so this one's done with that. Alright, so then the actual cost
+
+Matthias Miller  1:05:42
+what I was thinking was we would store actual costs would this actually have to be on a per year basis we could wouldn't have to just automatically
+
+Matthias Miller  1:06:04
+in the period
+
+Matthias Miller  1:06:20
+have fun. And you guys don't want to figure out a way to run both of those off of the same price Oh no. Sorry, it doesn't it doesn't matter. Nevermind Okay, so the actual cost basically what we're going to do is
+
+Matthias Miller  1:07:01
+we'll have a look keep track of start and end dates tied to a cost item for a district we said this would be for cost type. So we're going to actually going to do district year and cost item got it. So this is decimals number Okay, for each district, and each year and each cost item we would track what the actual cost was for that. And basically would start from January 1, and you can pick whatever period end date you want. And you would just say what the cost was for that. And then we would have a
+
+Matthias Miller  1:08:05
+then then you would have and then we would take the period manufacturer total, the period retail total period cost and percentage based off of the respective actually yeah, based on we're gonna have to each cost type
+
+Matthias Miller  1:08:57
+unless you guys can come
+
+Speaker 2  1:09:02
+up until now, we've just been talking about how to putt how to come up with and how to store projected raw materials production labor and production overhead numbers and billing record right
+
+Matthias Miller  1:09:24
+now, we haven't even gotten to the building record it's just how do we configure these things
+
+Speaker 2  1:09:33
+Okay, so, the conversation has been strictly how do we come up with projected raw material? Production labor production overhead, right? Yeah. Okay, and where are we stuck?
+
+Matthias Miller  1:10:00
+Looking at the place where and specifically stack is it would be really nice if we could calculate all of these things off of off of either manufacture total or retail total instead of needing to support both
+
+Speaker 2  1:10:17
+we have a retail number for every single shed we do have the same number but
+
+Speaker 1  1:10:34
+no it's not I would I would also was saying let's calculate everything on the manufacturer price because then as we move to actual bill of materials for building then girls calculation turns I have go away anyway.
+
+Speaker 2  1:11:00
+Now what what are the is the only advantage to using manufacturer number is just like well, what are the advantages of using the manufacturer number over the retail number for production labor and production overhead now that it really has nothing to do with how we pay the shops, like that's completely separate, no. Like we'll continue to use manufacturer number
+
+Speaker 1  1:11:29
+because at least that numbers that the manufacturer numbers consistent, the retail number is not as consistent with numbers we're getting from sheds direct on the retail side we're using which is going to probably close but with the manufacturer number we have full control over the consistency of that number. And it's it's consistent everywhere it's the same number on the same building in every district.
+
+Speaker 2  1:12:07
+So okay, so what you're saying is we don't have a retail number on every building that's we don't know it says what the retail price is on every building we do like if
+
+Speaker 1  1:12:27
+it's 80% consistent or mean in okay so the reason it's not consistent several reasons why it's not consistent it's higher and lower. Higher I think in North Carolina or because of the killers block packages and delivery added into retail price which makes a higher retail price on retail sales and it's a little lower on wholesale sales and then the number that assist is getting from sheds direct is retail number they're getting giving us we don't have any control over that
+
+Speaker 2  1:13:15
+or direct sale we don't know what our real detail number is on that in assists
+
+Speaker 1  1:13:22
+no we don't we take what they give us and I'm going to say it's 85% accurate which is why I would why I want to go with the manufacturer price
+
+Unknown Speaker  1:13:52
+we're gonna use manufacturer price on all of it
+
+Speaker 1  1:13:59
+Yeah, that would be my suggestion then and then as soon as Yeah. Plan
+
+Matthias Miller  1:14:50
+you on board with that? Yeah,
+
+Matthias Miller  1:15:02
+Alright, so basically all I'm saying here is I think
+
+Matthias Miller  1:15:10
+that basically what we're going to do is for each district, give it within a given year, so that we have your boundaries, because we're going to close the books every year. And for a specific cost item, we'll be able to say from this date to this date, the cost was this and from that date to that date, in from that date to the next date, the cost was this and from that date to the next date, the cost was this. And then we weighed those costs against the manufacturer total, to come up with the percentage for that specific date, range. And then we'd have a button that would go push these onto the building record.
+
+Unknown Speaker  1:15:54
+All right, I'm a little bit lost. Are we now? Are we still talking about coming up with projected numbers? Or are we sitting trying to automatically come up with the percentage to use for projections? Is what we're doing here looking at history to come up with a percentage to go forward?
+
+Matthias Miller  1:16:24
+He this is yes, this is where we track costs that go with? Well, no, this is where we track costs, actual costs to update the percentage appropriately?
+
+Speaker 2  1:16:39
+How complicated is it? I thought we were not going to crack? Like, does this not get us into the whole rat's nest of some of these buildings were sold. Some of them weren't? Some of them we? Sorry, I'm trying to suggest this.
+
+Matthias Miller  1:17:28
+So you're saying we actually won't be adjusting historically adjusting numbers, we'll just try to guess accurately enough and readjust for variances that
+
+Matthias Miller  1:17:50
+this is completely ended up being completely unnecessary. Because you're right, Mark marks proposal had excluded this part out of it. From where we left it, I wasn't sure that we had actually decided between your proposal versus Mark's proposal the specifics of that
+
+Speaker 2  1:18:11
+we haven't and the picture I have been my mind, we would not need this we would simply be comparing the picture I have in my mind and mark the picture I have in your mind I think is very, very there's very little difference between the two. But there is a few little differences the picture I have in my mind, we're comparing what we have we have on the balance sheet, the liability we have on the balance sheet with the asset the actual liability we have on the balance sheet with the projected asset on the building records and the difference between those two tells us if we're ahead or behind or by how much does that make sense?
+
+Speaker 1  1:19:22
+Dave I think something that is a value to understand here if I'm understanding the rest of your design correct limit sizes. What you're doing here this information will be from whatever source we get this information will be manually keyed in into these portals or fields and then repeated across that range of buildings right. Right. So deep this is this is simply an Simply but this is a place where, at the end of a given period, we say, Oh, we have $1,000 More in actual costs than what we'd allocated. We need a way to update the billing records, here's where we entered. And then this does the magic to update the billing records for that period proportionately.
+
+Speaker 2  1:20:25
+So you're saying we have we have we projected $2,000. Too much production labor. So here is where we enter that 2000 Hit the magic button, and it puts it It distributes it to the appropriate billing records. Right. Right. Okay, and what is appropriate?
+
+Matthias Miller  1:20:57
+To be determined? We could I think that's actually something that we could pretty safely defer. I think the thing that would be important is that somewhere within that date range, we can adjust the numbers to account for that difference. Whether it's throwing it all onto a building record, or I suppose what we can, what can happen as well. Is we could we, there's any number of ways that you could do it, you could say that with with what I'm proposing, you could actually say that. The difference, if after a building, this gets a little bit complicated, have to haven't thought it completely through. But you could say that when you update pricing, if the building hasn't been sold, then you update the appropriate categories. And if it hasn't been sold, then you apply that to a variance account. Make sense? I would. Go ahead.
+
+Speaker 1  1:22:30
+Yes, it? Does. I was thinking. Yeah, almost I was thinking that we wouldn't even need the option to I was thinking there's four options we would need, we wouldn't even need the variance we would have. You'd say, Okay, there's $2,000, that, more than than what we had projected than what's on building records, I want to distribute it to these buildings. And then you enter $2,000, and you need to enter a start date. Like start build date, do I want to do this for all buildings building? Very first through today, and date. Start and End date when the building was built? And then have the other option is do I do this to all buildings are only two buildings in inventory? Meaning buildings that have not been sold.
+
+Speaker 2  1:23:31
+Now, if you do it to all buildings, I mean, we're creating fanciness Yeah, but I mean, at that point, we're going to be updating Income Statement stuff, too. Right? No.
+
+Matthias Miller  1:23:51
+But but we're going to up up the income statement as of the date that you're making the adjustment, we're not going to be updating historical income statements just clear.
+
+Speaker 1  1:24:08
+Well, I mean, just from I don't think that that last option I have set to do select either built buildings or sorry, only I buildings an inventory or all buildings fill in that range. Personally, I think we could just we would be saved to have start date end date and that's it and it would automatically just apply those to all buildings built but not yet sold in that that time timeframe. And then you're right, then we wouldn't be getting into any fanciness on that wouldn't affect the income statements.
+
+Speaker 2  1:24:52
+I don't think we get enough value out of, of applying late Adjusting building records on already full buildings. That it's worth it. I mean, I like that.
+
+Speaker 1  1:25:14
+All we would need would be a start date and an end date for buildings built in this time period. And then that would give us the option to I think this would be rare. Typically, that timeframe would be the same timeframe that the cost was like the difference was incurred. But if we have some extra, you know, something crazy, we say, well, rather than pile it all on the 50 buildings in this time period, we'll, we'll go back one year, and apply it proportionally to all those buildings as well. That would be the exception, but most times, I think we would just the timeframe that it
+
+Matthias Miller  1:25:57
+heard. So we could say, go make an adjustment for all unbuilt buildings for this cost item, starting with this period. Okay. So first of all, to be clear, you should never go before the beginning of the year. Well, I guess if it's unbuilt buildings, you technically could.
+
+Speaker 1  1:26:25
+So that actually that's that's a good point, because then you'd be breaching back into previous years inventory, which would affect your balance sheet. Yeah, I don't think he's ever or would ever do that. Okay.
+
+Matthias Miller  1:26:41
+But we could say you can pick up it like, you're good.
+
+Speaker 2  1:26:48
+I would like to keep it simple. And let's just, if we apply, we apply it to all buildings that are not so done. I don't see enough value coming out of
+
+Unknown Speaker  1:27:03
+start trying to apply it to different sets. Let's just put it on the buildings and inventory be done. All day we're talking about? Well,
+
+Speaker 1  1:27:19
+you're going to end up with sort of a washed out weighted average, in a sense, because if you're if your production, okay, if your labor let's say your materials spiked dramatically, and the actuals are going out faster than our projections. So we're not getting all of it applied. We're be we're not getting all of it, apply it to the buildings as they're being built. Do we really want to add that increase in material prices to two year old buildings? Now suddenly, the building that we said was cost us X when we when it was built? Two years later, we're saying Oh, no, it cost us $200. More.
+
+Speaker 2  1:28:05
+I mean, if it was if we expected to have $200 I think it would be a bad idea. But
+
+Unknown Speaker  1:28:14
+in reality, we're talking about like, extremely small amounts. I mean, we're going to be honing that percentage every month. And we really shouldn't be ever the off enough that applying into all the existing inventory is really going to make a difference that's worth worrying about and lot of the average is tell us that we'll we'll be putting up as much as down.
+
+Speaker 1  1:29:04
+I think that would be a good question to ask Larry. On Monday is I mean, is there the part that makes? I guess another part that makes me uneasy as I think at the end of the year, we should have after that a building's inventory value. really shouldn't move. But maybe that's just my perception. I'd like to ask or someone if there's, like a concern there. Being able to defend those numbers if we, if we say well, they can, they can always do slightly.
+
+Speaker 3  1:29:45
+I think if we adjust our percentages each month to try to cover whether we are over or under that month, and then at the end of the year, just do one adjustment to all the buildings, then we shouldn't have to do anything else. We're making our end of year adjustment to make the accounts all match up, right. And then starting fresh next year, you're right, though starting fresh next year, we should never, you should never reach back in time and change something in accounting, that's what I've learned is a bad idea. So, but if we make our decision at the end of the year, then there shouldn't be a reason to have to go back. We're all even though by December 31, right.
+
+Matthias Miller  1:30:30
+So, so we're gonna make a proposal, my proposal is we're going to let you choose a period start date, that is within the current year, but not past the beginning of the year, up through the latest period end date. And you can recalculate this number across however many periods you guys want to. And we'll do that for the sake of development. And if you guys decide that's completely unnecessary, you can come back to us and say, that's completely unnecessary. Don't do that. Keep it simple, only single period. And if you need it to go beyond the year boundary, then we'll know that hopefully by Monday, is that an appropriate proposal here?
+
+Speaker 2  1:31:08
+Okay, help me understand you're saying whenever we apply excess or under amounts, like where we over project or under projected, it could be a positive or a negative number. We will choose
+
+Speaker 2  1:31:26
+buildings built but not sold during a period, though we'll just say that we can't say. So let's say we wanted to do an adjustment January 1, or the end of January. At that point, we could choose January, first through January 30. And then we'd apply it to all buildings built but not sold January 1 through January 30. Or we could say all buildings built but not sold. January 1 2019, through January 30 2023.
+
+Matthias Miller  1:32:11
+Yeah, I think the question is, do you want to be able to, to cross those year boundaries. That's one of the questions. In my proposal, what I'm saying is you couldn't cross your boundaries and adjust inventory values historically. But what you could do is you could say, so if you're doing it every month, then when you enter your January numbers, you can only adjust January buildings. When you when you enter your February numbers, you could either adjust the February buildings, or you could say go spread this back across January as well. But you can't do partial periods, you have to either pick February, or January through February, when you get the march, you would enter those those costs for March, then you could say spread it from from spread through March, spread it through February, March or spread through January to March. And if you have to go back historically and make a correction because your February numbers were actually wrong, then you could go back to February. And you could say, Okay, let's fix February numbers. And I don't know if this is good or bad. But you could conceivably say go distribute this across from January through March. But it would have to be a full period that you would distribute. Actually, I don't think I don't think it makes sense. I'm not sure it makes sense to let you do that. You could apply that difference either to piggery buildings or January or February buildings.
+
+Unknown Speaker  1:33:38
+No, January through March.
+
+Matthias Miller  1:33:40
+Not. Not January, March. I don't? Well, no. Yeah, you could know it's all the same. I mean,
+
+Speaker 2  1:33:50
+I would want to be able to, I don't see a good reason to restrict, like, I don't see a good reason to not be able to go to all buildings built and not sold January 1 2017. Through today. Adjusting a production labor number on a built in a building built in 2017 does not affect our financials
+
+Matthias Miller  1:34:26
+or
+
+Speaker 2  1:34:28
+2018 2019 2020, does it? Good.
+
+Matthias Miller  1:34:39
+Well, I'm gonna make another proposal for the sake of keeping this moving because I think we're moving into an accounting process discussion. So my proposal is we're going to let you choose the start of any period across any year through the end of period of any year, and it will update all unbuilt buildings during that timeframe and then you guys can figure out whether Do you actually need that functionality? And whether you guys believe in that process?
+
+Speaker 2  1:35:09
+Okay, and we can make sure I understand you're, you're saying, we can start anytime and and anytime, or are you saying if we want to distributed across buildings that were built in four years, we need to do an extensive for different, like, right numbers on scratchpad? No, we will be biased.
+
+Matthias Miller  1:35:30
+You could take any startup period in any year this year, last year, year before 2017. You can pick an end date, that is the end of a period this year, next year, well, not this year, last year, any other year. So it has to fall on a on a start or end of period. You cannot do it between periods. And you can say go take whatever differences you find in this date range, and go apply it proportionally across unbuilt buildings, weighted by manufacturer number or manufacturer price, unbilled building until building and I'm sorry, unsold buildings.
+
+Speaker 2  1:36:09
+So we can do whatever we want at that point. Exactly. That was a no, no, it wasn't really that.
+
+Matthias Miller  1:36:19
+Well, I'm doing this because well, this is this is the we got to keep things moving thing. Good. All right. Well, we are at the top of the hour. I have five, maybe 10 minutes, but I also know you guys usually head out about this time anyway, do you want to try to tackle FDA financial allocations yet? Or do we need to pick this up?
+
+Unknown Speaker  1:36:50
+I can burn another 10 minutes. Okay, Mark,
+
+Matthias Miller  1:36:54
+you could
+
+Speaker 3  1:36:56
+mark and jump off call with Jason asked for. Okay.
+
+Matthias Miller  1:37:04
+So then we have a separate set of rules, which is the balance sheet income statement cost allocator. And you pick a district you pick an effective date. And you and then you have a an embedded spreadsheet? Where it says basically, debit this account, credit this account? What's the, you know, what's, what's the account to debit? What's the account to credit? Or vice versa? I'm not exactly, exactly sure which order it's going to be. But what's the financial account? What's the contra account, and what's the amount that should be applied and the amount would be applied to the financial account, a negative amount would be applied to the contra account in the transaction that gets created. And this is basically how we would set up the rules for how financial allocations need to happen. And this would be something that's very complicated, probably involves Josh or I or perhaps Nick at some point. But this is what says go look at the building record, go figure out the total number of cost items, you know, out of all the total of all cost items that are production labor, and those all need to be at this stage of the building need to go into you know, this acid account or you know, et cetera, et cetera
+
+Speaker 2  1:38:26
+what are we doing here? Like should I be looking at your your draft like 3.6? Point one something?
+
+Matthias Miller  1:38:34
+Yeah, it's the FDI financial allocations item
+
+Unknown Speaker  1:38:41
+3.6 point 1.4 point oh, SGI financial allocations. Okay. So is this where we are moving money from the balance sheet to the income statement.
+
+Matthias Miller  1:39:08
+This is anytime anywhere is moving any?
+
+Speaker 2  1:39:12
+Okay. Anytime a building moves or a building status changes rather. How it affects financials?
+
+Unknown Speaker  1:39:21
+Correct. Okay, so So let's say a building was built what happens when are you just saying we can we can set the rules then
+
+Matthias Miller  1:39:43
+you set the rules. And you know, this is waiting on you guys to come back to us with all the breakdowns of here's the different states the building can be in and here's, here's the impact on all the statements. What I'm saying here is that we don't actually have to, we don't actually have to know With, we don't actually have to know the specifics of that yet. Because we have a tool that lets us a Swiss army knife tool that lets us make adjustments to the income statement and balance sheet, whichever way that we want to.
+
+Speaker 2  1:40:21
+I mean, any of any account could be debited or credited on the income statement or the balance sheet. Yeah, just a matter of rec.
+
+Matthias Miller  1:40:34
+There's theory. Yeah, that's it, I think it's pretty straightforward. The two caveats are number one, are all buildings going to be in the same class? And are all transactions going to be in the same class?
+
+Unknown Speaker  1:40:54
+Man I was reading when this comes up
+
+Matthias Miller  1:41:03
+No. Okay, well, that you're going to get. Alright, we're gonna give you those a little bit. But for each financial allocation, we're gonna let you look at the building record to tell us what class it should be in. And if a building ever needs to be in multiple classes, then that'll be fun. Never,
+
+Matthias Miller  1:41:41
+okay. And so we can actually have the class, the class, or all transactions going to be in that class, or just some of them
+
+Speaker 2  1:41:58
+all transactions will have a class applied to them. I don't know how deep you want to get into classes right now. Like, I could spool off a few real handy tools to use classes, but that may not be helpful.
+
+Matthias Miller  1:42:20
+So when you have a building record, will all accounting transactions for that building record always be under one class? Or will some of the transactions be in a class and some of them not be in a class?
+
+Unknown Speaker  1:42:41
+To make sure I understand the question. Asker one more time.
+
+Matthias Miller  1:42:46
+When you have when a building record modifies the balance sheet or income statement, will all of those transactions always be within one class? Like you won't have any any any of them that will be in a class and any that will not just have a blank class.
+
+Speaker 2  1:43:15
+So should we talk about just production labor to keep it simple?
+
+Matthias Miller  1:43:20
+We're eventually gonna have to talk about everything, but go ahead.
+
+Speaker 2  1:43:24
+Okay, so production labor, some production, labor could be class 100. And some production labor could be class 200. Because 100 is, is retail is our brand. And 200 is wholesale, which is just direct, and maybe a few other wholesale dealers. But each building all of like, we're going to pay a check at some point or do payroll and some of the payrolls is going to be class 100 And some of those some of it is going to be class 200. But only class 100 will go on to building record a and only class 200 will go on building record B, we're never going to have
+
+Speaker 2  1:44:13
+a look classes on one building the building is either going to be you know, a Democrat or Republican. Does that help?
+
+Matthias Miller  1:44:23
+That absolutely helps.
+
+Matthias Miller  1:44:29
+And then, fun thing about departments, which we do not have time to get to in two minutes. So my proposal is we do that on our next call. And it looks like I don't even know if I have time tomorrow. Or if we have time tomorrow I propose as a next step. We Send out available time slots for tomorrow and Monday and see what we can do to keep working through this.
+
+Speaker 2  1:45:07
+I had it on my list for at 930. Tomorrow. I'm not sure why. Maybe it was.
+
+Speaker 3  1:45:15
+That was the one that we rescheduled to Wednesday is starting tomorrow is that?
+
+Matthias Miller  1:45:19
+Oh, well, we moved into Monday starting tomorrow, Monday, Monday. Monday, we've got Larry joining us in the afternoon. So I could do I mean, I'm actually pretty free Monday, up until up until then, if you guys want to after 10.
+
+Speaker 2  1:45:45
+You must if you want everybody to send out available times tomorrow as well or not necessarily.
+
+Unknown Speaker  1:45:55
+I have tons of availability tomorrow. Monday is a little bit hairy under the availability I gotta drop. Well, we'll send us everybody else. We'll send availability to you.
+
+Matthias Miller  1:46:19
+Friday and Monday. Perfect. Thanks.
+
+Unknown Speaker  1:46:23
+Thanks. Good
+
+
+Transcribed by https://otter.ai

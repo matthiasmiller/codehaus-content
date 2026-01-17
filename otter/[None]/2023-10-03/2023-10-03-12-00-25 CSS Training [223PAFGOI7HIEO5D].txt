@@ -1,0 +1,989 @@
+Unknown Speaker  03:04
+Hey there, either you're always on to them.
+
+Speaker 1  06:41
+Hey there, that's fine oh, by the way, I'm gonna I think I might send out the, we were late on the support contract renewals for October so I'm gonna go, but I've done the calculations for him, I'm just gonna send out the emails myself that way they can grow up at me.
+
+Unknown Speaker  07:02
+So the
+
+Speaker 1  07:06
+we are going to because it's been a bit over a year, we're going to be adding a 4% increase in general. But then also some a number of clients have had other maintenance that that new work that's will also increase maintenance. So goods is going up? Well, there's so small it's going from up from 250 to 295 the weaver lens is going to be going up $1,200 13% And they may be grumpy, but I think I actually lost over $10,000 on them last year. Now some of that may come some of that may come back because we had done a lot of support work for upcoming enhancements because I think we had code house had to build me about $7,000 last year and then and then we just had a lot of time on maintenance stuff. And some of that was for customization we did about $8,000 with a customization for them so but I'm just glad that we've got these contracts because I'm just getting ready to do something like what is it? Yeah, almost 20 over $25,000 worth of stuff so and the spring I had done it 12,000 So you know bit by bit it adds up it's really not a huge profit center. But it does help protect it does help protect us and then we work hard for that money but I thought I'd let you know i I'll I'll just send the emails and copy and support and you'll see you'll see the numbers that way they can gripe at me if they don't like it so and I'm kind of wondering if long term I should more often I mean maybe in the future might have one of you I'll format the most but I wonder if I should long term be sending the emails because I think we're going to be doing fairly regular price increases with those so how should we get them on the catalog on the calendar so we don't forget about it next time. It's it should be in beginning of March beginning of September we should be getting the process going.
+
+Speaker 2  09:35
+We need March beginning September probably setting up a an email reminder. Okay.
+
+Speaker 1  09:44
+Let me just shoot that wiki page that we use for this too.
+
+Unknown Speaker  09:51
+I'll show that to you to
+
+Speaker 1  09:55
+take you into here well then you Say, let's set up email reminders for
+
+Unknown Speaker  10:08
+March one, September one. Okay.
+
+Unknown Speaker  10:16
+Okay, great. That's a good idea.
+
+Unknown Speaker  10:21
+Okay. All right.
+
+Speaker 2  10:28
+Like, plan and
+
+Unknown Speaker  10:37
+good.
+
+Unknown Speaker  10:39
+Good. Go ahead and drive drive where you want to go
+
+Unknown Speaker  10:47
+so
+
+Speaker 2  10:59
+Okay, now looking here, this is VGA, our phase two or whatever we want to call it or working the scheduling stuff. So we've, I think we've pretty much done all that we can right now and we've got this handful of questions for you. Okay. And and then we'll plan to go from there. Alright, so, first off, I'm not sure if it's best to go through an order and we'll take a
+
+Unknown Speaker  11:35
+look at this first.
+
+Speaker 2  11:38
+Okay, so on the incident record, there's some changes some fields we're making. The service location is the one that we're doing. We're receiving certification from a simple list to a biller. And we're talking about how what to do when we change from a shop job to a sorry, from a service truck job to a shop job. The client said it happens really regularly where they go out to inspect a job and then bring it back to the shop. So it starts out as a truck job, you know, one of their towns locations that they've got Are you good with just switching from that location to shop and retaining the the other specifically to track specific location information?
+
+Speaker 1  12:39
+I think we should be quite explicit about what is being read and what is retained and what it means.
+
+Unknown Speaker  12:45
+Okay, so
+
+Speaker 1  12:47
+because otherwise, it's just it's too hard to even know otherwise. So I just just enumerate it
+
+Speaker 2  12:56
+so I was here I'd said if she changed well had from going the same thing going both directions it changed from shop to something else incident retains any non shop fields as read only and it changed from yeah to shop from something else that's what happens and if it changed from shop to something else again retains any shop.
+
+Unknown Speaker  13:24
+So where do I see the list of shop fields or non shop fields?
+
+Unknown Speaker  13:29
+So that would be
+
+Unknown Speaker  13:36
+something you should do
+
+Speaker 2  13:44
+so nothing there. It would be estimated no machine on site is shop specific. service runs is not sharp. And yes. Is that all been I feel like there was something more
+
+Speaker 1  14:17
+okay, well, here's what you do. Just on those fields say visible if just just set the field description correctly on those things. That's what you do.
+
+Unknown Speaker  14:27
+Okay. So basically just say, if visible, is sharp or were previously was sharp. Now,
+
+Speaker 1  14:44
+so the visible service Let's stop. Wait a machine on site. Do you really mean to say that if they switch it from, do we believe it does? So here's why we have to think through each field. Do we really believe that if they switch from shop to field that this checkbox should stay checked or unchecked? What should happen when you switch it?
+
+Unknown Speaker  15:17
+Well, presumably they would want I guess this would probably wouldn't matter as much.
+
+Speaker 1  15:25
+That's my thought. So I kinda think that's one could just say stay visible, a service location is shop.
+
+Speaker 1  15:38
+service runs that one. This will if scheduled checkbox is checked,
+
+Unknown Speaker  15:44
+or
+
+Speaker 1  15:48
+oh, that has nasty visible for parent incidents. And if location is not shop,
+
+Unknown Speaker  15:55
+this should probably be.
+
+Speaker 1  16:06
+Okay, but if the surface location switches to sharp, then I mean, the way this is defined is that you just count the number of days that that you that time was tracked. But that doesn't work anymore.
+
+Speaker 2  16:26
+Right, so we just need to stop like it'd be the number of days time was tracked on while service location was something other than shop.
+
+Unknown Speaker  16:36
+But we don't have that information anywhere.
+
+Speaker 2  16:45
+Here, we just stopped. Stop updating the field. It's not
+
+Speaker 1  16:49
+a field, it's a macro. It's just it's calculated. Let me think what can we do? Because it's based off of time tracking?
+
+Unknown Speaker  17:01
+I mean, that's a mess.
+
+Unknown Speaker  17:09
+On the timecard?
+
+Speaker 2  17:12
+Can we just just change it to a stored field? If they change the service location? Because they're going to want that number? There for billing purposes?
+
+Speaker 1  17:26
+Okay, do they ever switch the other way? This is gonna be really expensive for them. Let me think this through what do I believe
+
+Speaker 2  17:37
+they probably don't switch the other way. Or you don't?
+
+Speaker 1  17:41
+Yeah, you wouldn't think that they do that the only thing would be if they delivered it. And then something wasn't working in a service run. That's a new incident. Right? Is there an episode as a child incident?
+
+Unknown Speaker  17:57
+They could do it as a child incident if they chose to.
+
+Speaker 1  18:26
+We don't store whether we're on on the truck or not on the timecard. Do we?
+
+Speaker 2  18:34
+Not currently, although we wouldn't be talking about one of the questions further down here is is specifically how to track the service runs. And so that's, you talk through how to kind of do that. Okay, you're possibly doing a special incident type for that time Tracking
+
+Speaker 1  20:06
+And if they go to this particular location on the same day you treat it as twice on the same day you treat it as one service run.
+
+Unknown Speaker  20:15
+Yes, I think so. Okay.
+
+Speaker 1  20:29
+I think what I like best, and I don't know how this affects Matthias is eight nine proposal. But I think I like best put the having a service run checkbox on the on the timecard row S SBC run or something and then you could even have a checkbox, we would typically just copy it from the prior row. I think if we're tracking time on a, we're tracking time on a
+
+Speaker 1  21:30
+if we're tracking time on non on non shop job, we don't automatically track it as a service run.
+
+Speaker 1  21:43
+Driving time incidents should automatically be on a service run, obviously. And that would let us look, I mean, easily figured out how many service runs or were
+
+Unknown Speaker  21:56
+your
+
+Speaker 1  21:58
+is the idea? I mean, do we build by service run? Or what is it? Is it mostly informational? Or does it have in billing impact?
+
+Speaker 2  22:06
+So what they do is they they take the Well, it'd be informational and it would have some billion pack, they take their driving time for a day and and split it evenly between all of the jobs they worked on.
+
+Unknown Speaker  22:27
+On a particular run, or Just across entire day.
+
+Unknown Speaker  22:31
+Currently, it's across the entire day. Okay.
+
+Speaker 1  22:35
+Last time, we had explored something more complicated, right? grouping them into a batch.
+
+Speaker 2  22:41
+Well, that was Yeah, I think that goes along with what Matthias had talked about. Or had we? We talked about because we we had talked about it with you some too.
+
+Speaker 2  23:05
+There's currently they're saying this is what they say they're doing currently. So like, basically each Tech, I mean, you're not if you have two trucks going out, you're not going to combine those times. But for each, each truck that goes out all of the time that spent traveling gets split evenly between all the jobs that that truck went to. Okay, and then they do want to keep track of how many times they go out to a specific job. Sure. So there's Yeah, some information on some some billion fusions.
+
+Speaker 1  23:42
+Okay, well, I like to service from checkbox. So unless you are Matthias want to challenge that that's what I'm recommending. And that solves the other problem is because we count the number of days that we have service runs forth. Yeah, service run time tracking. I don't know about doing it historical information. Can we just go have it going forward?
+
+Unknown Speaker  24:08
+Oh, I'm pretty sure it's only going forward. We're Yeah, I don't think we're discussing anything about circle. So this would be this one year
+
+Speaker 2  24:27
+so we would take away this. There wouldn't be dependent on service location anymore.
+
+Unknown Speaker  24:35
+either.
+
+Speaker 1  24:39
+It's either it's a shop shop was scheduled checked. We have service run data for it. We have a value we have a value because we don't really want to show service runs on a shop job. Do we
+
+Unknown Speaker  25:00
+sure yes yeah that makes sense
+
+Speaker 1  25:09
+maybe just in parentheses after the shop say
+
+Unknown Speaker  25:17
+or
+
+Speaker 1  25:24
+there are service runs or something like that
+
+Unknown Speaker  25:40
+yeah, yeah
+
+Unknown Speaker  25:59
+think it's a service run checkbox Yeah.
+
+Speaker 2  26:05
+And is that is that automatically set based on the incident or are they going to be able to
+
+Speaker 1  26:13
+do they manually how much of the their data entry do they do from the incident? How much do they do manually?
+
+Unknown Speaker  26:28
+You mean as far as time tracking
+
+Speaker 1  26:29
+Yeah. All the timecard how much is on the timecard? How much is from the incident?
+
+Unknown Speaker  26:36
+I'm not sure on that.
+
+Speaker 1  26:42
+Well, okay, I think what you what you say is that if you enter an incident ID, we default the when you add a new row, we default the checkbox to the value of the prior row. And if you enter an incident then we defaulted based on the incident type, or location
+
+Speaker 2  27:07
+Do you see if you if you're tracking time without a without an incident you default it to the prior one. Yeah.
+
+Speaker 1  27:18
+Which is technically what what happens the first time you hit plus and every time so we always assume that it's the same as the prior one the prior one for the same day actually.
+
+Speaker 1  27:53
+And I would actually just say when we first added the row when a new row is added
+
+Unknown Speaker  28:04
+with the
+
+Speaker 1  28:07
+we default the you know, we default the checkbox or however you want to say with default the checkbox to the prior row if it is the same day you can say that however you want to
+
+Speaker 1  28:35
+and then also when an incident ID is specified we default the checkbox based on the incidence location
+
+Speaker 2  29:04
+unchecked and that's basically unchecked for shop right? Checked
+
+Unknown Speaker  29:14
+not
+
+Unknown Speaker  29:17
+to ever have once without a location
+
+Speaker 2  29:21
+we're we're treating blank location as not shop. Okay. So that's why Yeah, we're differentiating between shop and not shop. Okay. And should this be something that is?
+
+Unknown Speaker  29:42
+This is actually
+
+Unknown Speaker  29:44
+a location record, or is this just something that's hard coded? An app magically the background?
+
+Speaker 1  29:51
+I forget. Well, it depends on what we've done with the I don't know that you need to spec where Oh well what fields do we have on the service location record right now figuration record service location record
+
+Unknown Speaker  30:10
+location
+
+Speaker 1  30:13
+it's based on location category but I think that's almost the that's almost implementation I don't think we care too much from the client perspective but this does need to go to a new changes to timecard record
+
+Unknown Speaker  30:34
+yes
+
+Unknown Speaker  30:35
+yeah
+
+Speaker 2  30:37
+so you say we we don't need to specify anything on here
+
+Unknown Speaker  30:41
+no I don't think so. No
+
+Unknown Speaker  30:44
+yeah
+
+Speaker 2  30:49
+so any that checkbox the checkbox will be read only
+
+Unknown Speaker  30:56
+No, no, it's modifiable.
+
+Speaker 2  31:02
+Always modifiable we're only if it's blank
+
+Speaker 1  31:11
+always modifiable because that's how you can get it to be I mean, that's how you make so that it's I mean, suppose the incident was incorrectly marked, we default to the timecard you can still go fix the timecard the timecard I mean, we trust the timecard it's it's we're defaulting if it's another field right.
+
+Speaker 2  31:38
+And then so that is that and let me so then this service runs here. If the service is good to check boxes checked and service location is not shot or their service runs food project
+
+Speaker 1  31:59
+this number of distinct service run days you could
+
+Unknown Speaker  32:03
+put the word yeah
+
+Speaker 2  32:05
+distinct days with service one or more service runs
+
+Unknown Speaker  32:14
+timecard as time slots.
+
+Unknown Speaker  32:40
+Okay
+
+Unknown Speaker  32:49
+Okay, so we've got that
+
+Speaker 2  32:58
+so then this I'll go ahead and pop over two
+
+Unknown Speaker  33:15
+and then two or three I think
+
+Speaker 2  33:20
+so then back to this the original question here defaults to sharp warning and then all of this can go away.
+
+Speaker 1  33:37
+I think all that goes away and we just put it on individual fields
+
+Unknown Speaker  33:45
+and
+
+Unknown Speaker  34:05
+sure
+
+Speaker 2  34:15
+okay, that takes care of that. Yep.
+
+Unknown Speaker  34:21
+And
+
+Speaker 2  34:26
+next one, here we are. Oh, yeah. This is the master report that we specked out. Okay. Sure. That is that is ready for you to look over to determine whether you want to scrap the old one start over or? Sure. Yeah. Looks like we have a few things to finish here. Oh, we discussed about auto refresh route. work on a client like that. So Ben was gonna try to do some research on on browser extension for them.
+
+Unknown Speaker  35:06
+Sure. So
+
+Speaker 2  35:11
+let's get back to that. And since we're just talking about tracking service runs this Yeah, just picking up this where we were earlier. As far as time tracking for driving, do you do like my highest proposal here as far as having a especial travel time incident type? And you thinking having one service run incident per, per trip, but they get used, reused from one day to another?
+
+Speaker 1  35:56
+So when you say per trip, so they do two trips, they would have they would have driving time service run two. Right. But are you then splitting that see that that's what that's how I thought we were doing Are you splitting the time then between? So you have driving time service? Run one, you know, three jobs with a little bit driving time in between driving time service run one, in your driving time service run two more jobs? Driving time service run two? So Are you splitting the service will run one only between those jobs? Or across all jobs?
+
+Unknown Speaker  36:37
+Sure. Yeah, it's good question.
+
+Speaker 1  36:40
+Because otherwise, we don't need a we don't need multiple runs. We just need a single driving time incident for everyone all the time.
+
+Speaker 1  36:52
+But I had thought that if you know if, if there's four jobs over in Wichita, then you've got two hours of driving and those four jobs each take 30 minutes. And then if he's got, you know, one job and Sterling, that takes another two hours of driving that one job and Sterling takes all that time. You learn it's a lot more complex.
+
+Unknown Speaker  37:19
+Yeah.
+
+Speaker 2  37:23
+See, the there wouldn't be Yeah, we're getting into edge cases, then because there'll be times when you, you go out and you do one trip, and you hit four jobs like that. And you give them each 30 minutes, and then you come back and you finish out your day with a shorter run of other jobs. And so you want to you want to give those first four jobs or 30 minutes each, and you want to give the next four jobs 15 minutes each. But then there would be times what if you make a second trip out to the same job? Right?
+
+Speaker 1  37:56
+Or, and it just keeps on going? What if you go from area one to area two. And anyway, I guess you'd call that all one sort of one service run there.
+
+Unknown Speaker  38:11
+But no, I think having a
+
+Speaker 1  38:13
+look at that line that all time spent traveling between incidents gets recorded, it is split evenly among the incidents on the run, yet somehow organize incidents under the umbrella of a service run, assign the whole run to the tech within claw driving against a service or at a run. So he's there thinking of distinct runs? Yeah. So the only question is how do you determine
+
+Unknown Speaker  38:41
+which
+
+Speaker 1  38:44
+which incidents are on a given run
+
+Speaker 2  38:55
+and that's where Matthias is idea here of doing it somewhat like using automation for it. So they basically just say, Okay, these are the jobs I'm going through today, I'm going to track time on on travel time incident, a and that night, the software it looks at it and then splits it all out magically. The other option would be to have a travel time incident with a like an orgy of service truck jobs.
+
+Unknown Speaker  39:37
+Right to Know how to get out
+
+Speaker 2  39:39
+you manually link it to those and then it would divvy it out accordingly.
+
+Speaker 1  39:59
+Right The macro verse dumping it out that one is tough
+
+Speaker 3  40:06
+because you are
+
+Speaker 1  40:10
+I mean there's just so many edge cases what if there's an end of day there or right
+
+Speaker 2  40:22
+like if they're out if it's harvest season and they're out working until 1am
+
+Unknown Speaker  40:29
+Oh that too
+
+Speaker 1  40:32
+or they just they don't record time they don't record the last driving time then you have to know well It ends at the end of the day
+
+Unknown Speaker  40:43
+and
+
+Unknown Speaker  40:55
+Okay, here's another idea
+
+Speaker 1  40:59
+What if instead of a service run checkbox, it's a service run drop list
+
+Unknown Speaker  41:16
+and
+
+Speaker 1  41:19
+so there's just a droplets there with service run one and two well 12345 Or one through nine if you want to love sure you'd never do nine jobs.
+
+Unknown Speaker  41:34
+So
+
+Unknown Speaker  41:38
+let me start spewing ideas at you in the chat here
+
+Speaker 1  41:46
+so service run becomes droplist of one to nine one star there's a on timecard there's a current service run drop list at the top I guess at the top I'm trying maybe that's not even necessary well there's a checkbox on service run outside the Archie yet
+
+Speaker 3  42:30
+if checked, it adds a new row with
+
+Unknown Speaker  42:38
+does it add a new row does it change the current row
+
+Unknown Speaker  42:51
+doing the time tracking incident
+
+Unknown Speaker  42:53
+now this is on the on the timecard
+
+Unknown Speaker  42:55
+oh the timecard
+
+Unknown Speaker  43:00
+server checkbox
+
+Unknown Speaker  43:04
+right
+
+Speaker 1  43:18
+so when if you're doing this you are
+
+Speaker 1  43:43
+so is this nicer than a than just you know, incident one through nine? It is because every single row tells you exactly which service run it is that's what I really like about this and now, I still don't know how to divvy out the time yet.
+
+Unknown Speaker  44:15
+There's okay.
+
+Speaker 1  44:37
+So there's some. There's a number of details here on exactly how it's done. Do you actually need an on service run? Maybe you don't need an on service run. So if you're starting to track time, you just click Start Time and then you pick your service run number, service run one and then then
+
+Speaker 1  45:07
+checkbox or just manually select your service or a number I'm not sure which way is better I'm in some ways I like it simpler it's easier to code so it's almost like a checkbox this stuff that we had talked about earlier except instead of checking the checkbox, we just fill in the number of rows number Mm hmm
+
+Speaker 1  45:38
+and then driving time you don't even have to type get used to the incident ID or anything if you want to you can fill in driving time or maybe you just put the description if you just put in driving time into the description or do you think they want to track their driving time specifically
+
+Unknown Speaker  46:06
+I think the
+
+Unknown Speaker  46:14
+probably want to go ahead and track driving time specific
+
+Speaker 1  46:24
+let me think through how but then then you could have just a single incident for driving time or
+
+Speaker 1  46:44
+or even an option with you know the word drive in it or something I wonder?
+
+Speaker 2  48:09
+It does get a little bit confusing, because you could end up like, if you have two trucks going out, you would end up with you know, service service run one, one guy would need to be on service run one, the other would be you'd be on search run to
+
+Unknown Speaker  48:28
+why is that?
+
+Speaker 2  48:31
+Because they're two different trucks going to different places.
+
+Speaker 1  48:36
+But like, I mean, we don't we just care about it on a person by person basis.
+
+Speaker 2  48:43
+Oh, sure. We could do that. Or an incident by incident basis, right? Yeah, it'd be an incident
+
+Speaker 1  48:58
+Yeah, I think it's on the card. We're seeing Jon's time for Tuesday. And so and we need to know what to do with his driving time so we look at his timecard and say well, his driving time for for service run one gets split across his jobs that he worked on on service run one
+
+Speaker 2  49:24
+sure, what if we would take a different angle on it in and actually do more a dispatch approach where you have a service run drop list on the on the incident and you would say you know these four jobs are going out on service run one today
+
+Speaker 2  49:52
+well, then I guess if you end up stopping by another job on the way back or something like that, then you've got to follow up on that.
+
+Speaker 1  50:28
+And oh, okay. I mean, I there are different ways to do it
+
+Speaker 1  50:37
+how are they scheduling? How are they lumping these jobs together? Or how are they making sure that this guy does these jobs? And on this, you know, on a given day, have you? Have you figured that out?
+
+Speaker 2  50:50
+Based on the on the report here? If it's whoops, if we're looking at a service truck schedule, it would show
+
+Speaker 2  51:12
+yeah, they would show they're grouped by assignee, and then by location, so they would just be constantly updating it and moving them moving them around by which.
+
+Unknown Speaker  51:27
+So what is location? Location is
+
+Unknown Speaker  51:30
+location
+
+Unknown Speaker  51:31
+is is like Hutchinson or something?
+
+Unknown Speaker  51:36
+Right.
+
+Speaker 2  51:39
+So if you want for Hutchinson, one for whatever each each town or each general area that they go to.
+
+Speaker 1  51:49
+And if they are, when they're defining a service run, are they wanting to?
+
+Speaker 1  52:04
+Are they ever wanting to lump Hutchinson Wichita into the same service run or not? Because?
+
+Speaker 2  52:13
+Yeah, I mean, they might, they might do it on the same trip might hit multiple service locations in the site. That's what
+
+Unknown Speaker  52:23
+I was thinking, yeah.
+
+Speaker 1  52:30
+Well, I don't know for sure how you want to do it, the the timecard is really where we, we need to have the driving time categorize on the timecard. So that makes me I mean, if you do anything else, and you somehow need to structure create a new thing called a service run, which is kind of what he was proposing. But you do a new thing called a service run and somehow connect them all up there, and then track those historically. So I kind of like the simplicity of the just specify on the timecard. I don't mind if you run a pass fast to see if he's got a better idea. But But in essence, I need to we need to track the driving time. I also well. That's probably fine. I was trying to figure out is there any easy way to default driving so you know, actually have a button that's like start driving time, and we would memorize.
+
+Unknown Speaker  53:39
+But,
+
+Speaker 1  53:40
+but maybe they just remember what the incident number is, and they type it I am, whatever it is. The The other thing is, I'm not sure, I'd have to go back and look at the macros or to find that I think we can have codes that aren't actually incident IDs. So we might be able to have something like drive or driving or something like that. And to try it in the drop list, along with all the other incident IDs.
+
+Unknown Speaker  54:12
+So
+
+Unknown Speaker  54:20
+I was trying to see if they've got the time to
+
+Speaker 1  54:28
+but I'm not positive on I'm not positive. So that might be the easiest thing is to have a generic time tracking incident ID and it all gets lumped into there. If we do that, I think what we would have as an app hosting settings you would specify here incident ID to use for driving time. That'd be an easy way to do it. The other one is then how to allocate that time there's two approaches And I'd be curious to on thises input on which one's better one of them is to actually change up the timecard so that time cards slots are modified out so know when you recorded the information, an hour of driving and you come in the next morning and it's magic that hours magically divvied out to a whole bunch of different people doable it's a little bit complicated not just a little it's really complicated. Matthias enjoys that kind of thing, but he doesn't and I don't the other approach is to somehow apply a multiplication factor where you say service you know for service run one for Bob for you know, June 24 We multiply the hours by 1.3 for billing purposes so that you get the time multiplied out
+
+Unknown Speaker  56:07
+and
+
+Speaker 1  56:11
+I'd be interested in what Matthias is thoughts are between those two approaches
+
+Speaker 2  56:17
+and by the way, either one of them we would need to have the system look at like this thing between the first and last time tracked on the on service or on the travel time incident Right? Like if you
+
+Unknown Speaker  56:31
+owe the travel time if you forget to track
+
+Speaker 2  56:33
+travel time on your travel time incident at the end of the day, then it's going to mess up the like it has to be sandwiched in the incidents have to be sandwiched between travel time right
+
+Speaker 1  56:46
+well that's where I like my droplets of tie of of runs because basically travel time for service run one week across incidents for service run one that's where their lot droplist is so nice because they look at the time card and they can and they should it's pretty visible you see time driving time for one some work on one driving time on one some work on one driving time on to some work on two and then it's just really easy to allocate that driving time across those jobs
+
+Unknown Speaker  57:30
+right
+
+Unknown Speaker  57:36
+yes
+
+Unknown Speaker  58:03
+write
+
+Speaker 2  58:07
+that yeah, that makes sense. And that sounds really simple
+
+Speaker 1  58:16
+so what I don't know, okay, what I don't what I don't love is I think Matthias is say a monkey with a timecard isn't that what they say? Mess with the time cards every midnight
+
+Speaker 2  58:32
+it's not No, I don't have the timecard it's just looking at it's doing it's doing that sandwich thing that I was saying earlier like okay, you look at Gary Vee we're tech tracked X amount of time on the service right and send it today and Y amount of time on these work order incidents today that fell between in the sandwich and then we'll split it out between those incidents and when
+
+Speaker 1  59:02
+How Are you splitting it out? You recorded on the incident is travel time or what do you do you record it on the timecard? Is travel time for that incident?
+
+Speaker 2  59:10
+No, it's already been recorded on the timecard because they track time on the service run incident. So the splitting it out is is splitting it out on to the the travel time the travel time macro on the incidents that they get set with me the cumulative time or the Yeah, the split time
+
+Unknown Speaker  59:32
+I see.
+
+Speaker 1  59:43
+Let me think through if that's fast enough, it's probably fast enough. And then they just look at that macro for the billing purposes.
+
+Speaker 3  59:57
+Right are
+
+Speaker 2  1:00:02
+added, we would probably if we run it nightly, we would probably need to have a little button beside it. Or a little red warning or something beside it if it's not up to date with the button to run the manually run the process to update it. If
+
+Speaker 1  1:00:18
+it's any I'm not sure I think we can just do it dynamically. I don't think we have data. Because it's not, doesn't take that long to say, I mean, any given job doesn't have that many time slots, you know, it's got, normally it has got three time slots, sometimes it's got 15. So it shouldn't be that hard to figure. Now, it's a complex macro, basically, I need Nicholas or Seth around the code, or Matthias or me, not him. Steve can't do it. But
+
+Unknown Speaker  1:00:51
+yeah, I mean,
+
+Speaker 1  1:00:54
+I Okay, I think I understand what you need. I don't think you need to do it nightly, I think we can just do it ad hoc. Okay. Because especially because of the current split, partly because we've added this new drop list. So the droplets really makes things simpler. So I mean, I'd be interested to hear if Matthias likes a drop list and thinks it's adequate to drop list on the timecard itself. If I mean, if we'd want to somehow the drop list on the on the I mean, put it on the incident, we could also do that. The then in your scheduling report, you would see you will see you would just enter your service run numbers there. But then I don't know what to do if you don't have that entered.
+
+Speaker 2  1:02:04
+Well, we just have the Well, no, we couldn't we should have a good way to have it required because they're not going to know.
+
+Unknown Speaker  1:02:11
+Right? Well, I mean
+
+Unknown Speaker  1:02:18
+Yeah.
+
+Speaker 1  1:02:38
+It would be helpful to know whether these people are used how they usually start track their time, how often are they tracking from the timecard? How often are they tracking from incidents? And like when they're on the show when they're doing on the truck? Are they usually a tablet? Or do they kind of come back and record it at the end of the day? Do you know?
+
+Speaker 2  1:03:01
+couldn't remember for sure. But Ben, do you remember?
+
+Speaker 1  1:03:06
+I don't know. That'd be worth recording the overview somewhere
+
+Speaker 2  1:03:11
+so you, Larry and emails if you revise here the next 20 minutes
+
+Speaker 2  1:03:26
+basically, how are they tracking their time travel time and working time for for service truck jobs? Are they doing it on a tablet or their phone or laptop while they're out and about? Or are they just writing it down on paper and filling it out when they get back to the shop?
+
+Speaker 1  1:03:45
+If that's I think it's one question. One of the questions are they usually from the incidents or incidents? Are they just doing it from the timecard itself
+
+Speaker 2  1:03:59
+was the incident only has start stop. So restart stop switch. Sure.
+
+Unknown Speaker  1:04:15
+So
+
+Unknown Speaker  1:04:21
+yeah, they'd be they'd be limited in what they can be doing on Yeah. Okay, so we can see what he says on that. Sure.
+
+Speaker 2  1:04:37
+Sometimes he's pretty quick to respond. Sure. With that, then that traveltime macro on the on the workorder strike incident is it reasonable to give them the ability to override that manually to edit it or give them the option to to add Add or subtract time from that, because he was wanting to be able to override it, Nikki?
+
+Unknown Speaker  1:05:26
+What does that mean?
+
+Speaker 1  1:05:39
+Do we do auto billing? Or how does the billing actually work then?
+
+Speaker 2  1:05:45
+The billing will currently they are basically manually copying everything over from Sure, sure. Okay. But that's part of what they're wanting here is also the QuickBooks integration to be able to manage to automatically push stuff over Yeah.
+
+Speaker 2  1:06:39
+Real quick, how would you phrase that question again? Let's see. So it was wondering how they how they track time for for service track jobs. So part A would be? Do they track time out on the field with a laptop or tablet? Or do they just keep track of it. And it entered into the software when they get back to the shop. And that would be for travel time and, and the actual work time. And then Part B would be when they're tracking time one incident, do they? Do they use the start stop switch buttons on the incident itself? Or do they use the directly on the timecard?
+
+Unknown Speaker  1:07:42
+Yeah, that'll help us FeiFei figure out exactly what she'll be doing here.
+
+Speaker 2  1:08:13
+Okay, so we will, I'll make note here. Oh, as far as the overriding the editability. Alice.
+
+Speaker 1  1:08:22
+Okay, so here's the trick. So suppose what does this mean? If he Oh, if someone overwrites it today, and then there's more time after today, then do we just ignore that extra time?
+
+Speaker 2  1:08:38
+Right. That's, that's the thing. I guess we could just say. I guess we could say it's only editable after the like after it's ready to bill or something like that. So that it's less likely that there'll be tracking additional time on it. There still be time to do might reopen it and track more time on it.
+
+Speaker 1  1:09:02
+Why do they want to overwrite it? I mean, cuz if you ask someone, do you want to overwrite it? They'll say, what's the use case? Do you know?
+
+Speaker 2  1:09:10
+I don't know. That's a good point. But it's the only like, if there are times that they if there is a situation where they don't want to split time evenly. Where they, yeah, they had four jobs in Hutchinson. And three of them were only five minutes. The other one was dropping off a part. And the other one was three hours. They might want to manually override what they would normally assigned to it.
+
+Unknown Speaker  1:09:41
+Sure.
+
+Speaker 2  1:09:47
+But I guess in that case, I mean, jerry rigged it from the timecard where they run numbers.
+
+Unknown Speaker  1:09:55
+Well, it's a mess, isn't it?
+
+Unknown Speaker  1:09:59
+Um,
+
+Speaker 1  1:10:04
+yeah we can say you can override it and then if you override it it's just stuck it maybe displays in red and red or something
+
+Speaker 2  1:10:13
+and it would have like we wouldn't we wouldn't double check that all the time amounts line up no you once you yeah once you start changing it you're on your own as far as as total right and yeah
+
+Speaker 2  1:10:37
+so would it be like an override checkbox that they click that that hides the macro and displays a a editable field? Sure sure. That's simple
+
+Speaker 1  1:10:57
+well either that or you just have the field there as editable Well it's nice make them for forced them to do it that way.
+
+Unknown Speaker  1:11:50
+Yeah, and then I'll just make a note
+
+Unknown Speaker  1:12:02
+sure
+
+Unknown Speaker  1:12:03
+so no valid no validation before
+
+Unknown Speaker  1:12:05
+yeah total time cetera
+
+Speaker 2  1:12:14
+and can add can add editable field be defaulted to the number that was just in the macro yeah it can
+
+Speaker 1  1:12:36
+you could even say the macro becomes editable or Oh yeah, I mean we sometimes
+
+Unknown Speaker  1:12:49
+I don't know for sure how well
+
+Speaker 1  1:12:50
+and it's almost implementation level details but we could
+
+Speaker 2  1:12:54
+write but I do like to I do like to keep as much of that documented here for no I agree. Yeah, at a time auto filled with time
+
+Speaker 1  1:13:26
+what I was toying with is whether you should actually say if checked the macro becomes editable and can be overridden Sure
+
+Speaker 2  1:13:48
+so it would it would still be this yeah
+
+Unknown Speaker  1:13:51
+yeah
+
+Unknown Speaker  1:14:07
+okay,
+
+Unknown Speaker  1:14:08
+okay what's next
+
+Unknown Speaker  1:14:12
+make sure this
+
+Unknown Speaker  1:14:16
+Alright
+
+Speaker 2  1:14:23
+that was yours look at scheduling logic Okay, so need to be able to project the next available start date based on estimated hours in the estimate hours on the incidence in a stage against the unlimited amount of hours in a day. They currently have a daily shop hours or something that a weekly shop schedule and shop schedule override on the employee contact record. And they that determines how many hours are available on any given day of the week to. Yeah, how many work hours are available? And I forget exactly how it is currently, but they're like, they're maxing out their their hours. And they're wanting to be able to Yeah, not have the restriction of a certain number of set hours in the day
+
+Unknown Speaker  1:15:36
+Yeah, I mean, I don't know.
+
+Speaker 2  1:15:39
+Yeah, I'm not I'm not remembering all the details myself. I so I, yeah, I should I should get more information from him. And I should ask Nokia and to give us information about how it currently works
+
+Speaker 1  1:15:56
+do we have any spec at all for what we think it currently has currently or not?
+
+Unknown Speaker  1:16:00
+I don't think so.
+
+Speaker 2  1:16:10
+Unless then, no, he wouldn't. That would have been more complicated than what you could just see from the surface contact here
+
+Unknown Speaker  1:16:28
+so so
+
+Speaker 1  1:16:40
+there isn't a close to that defining mechanics scheduler
+
+Speaker 2  1:16:50
+it's something Yeah, it's like that. But yeah, I get information from him. I guess. It's been long enough since we talked about that detail. Sure. That
+
+Speaker 1  1:17:06
+Do you want to just pull up a detail screen and and show me what what goods is? What goods is displaying right now? Where's this? Where are those schedules? Right now?
+
+Unknown Speaker  1:17:21
+It's on the contact record for
+
+Unknown Speaker  1:17:25
+sure. Yeah.
+
+Unknown Speaker  1:17:28
+And so yeah, you said days and then if
+
+Unknown Speaker  1:17:32
+on specific days you can override it. Yeah.
+
+Speaker 2  1:17:35
+Yeah. Override and based on that. So then that yeah, that sets the number of hours that are available for this mechanic. Sure. Thanks. So anyway, yeah, that's bunny trail. I should have had more information.
+
+Unknown Speaker  1:17:52
+Let me take a one minute break I'll be back Okay.
+
+Unknown Speaker  1:19:10
+Okay, I'm back.
+
+Speaker 2  1:19:12
+Alright, so looking just high level at what they'd like to do for QuickBooks integration. They would like to push certain certain things into QuickBooks. So different fields from from the job from incident and the the billable hours. So combine those all together and push them over to QuickBooks.
+
+Speaker 1  1:19:45
+Sure, I'd like to defer lately to Matthias integrations, one so I think bringing Matthias on all things QuickBooks because I I really view that as a service that that code house provides
+
+Unknown Speaker  1:20:06
+okay
+
+Speaker 2  1:20:09
+so I'll just say we should schedule a call with Matthias clients to talk through that
+
+Unknown Speaker  1:20:17
+sure
+
+Unknown Speaker  1:20:25
+Okay
+
+Speaker 2  1:20:28
+very good and then I have a call here at the bottom of the hour so I should drop with a few minutes to get your
+
+Speaker 2  1:20:46
+things that we couple of existing change requests whether going so slowly so, this was a bug that we noticed in in the billing the billable time for incident report, we put together spec and
+
+Speaker 2  1:21:15
+came down to for Z GA was going to be simpler to only allow parent and child incidents now grandchild etc. And we got confirmation to the client that that is all that they thought they want. So sure
+
+Unknown Speaker  1:21:36
+is this basically what is happening here if it's on a schedule or no this is on the
+
+Speaker 2  1:21:50
+the time and if it has an estimate set and then that has a child and son created with its own estimate the parent job here retains its estimate instead of pulling in the sum of the child estimates
+
+Speaker 1  1:22:10
+and you want to go up to see how we defined it the job spec now the the requirements oh
+
+Unknown Speaker  1:22:27
+so just the sum of all child incidents
+
+Unknown Speaker  1:22:37
+and I should say for parent incidents
+
+Unknown Speaker  1:22:42
+so on the biller
+
+Speaker 1  1:22:57
+so we just we could don't clear the field on the parent incident but we ignore it right
+
+Speaker 1  1:23:15
+they do want to note in the new client requirements
+
+Unknown Speaker  1:23:21
+that
+
+Unknown Speaker  1:23:28
+the
+
+Speaker 1  1:23:34
+that the field will will be temporary I mean the field is retained the the I don't know this the just the what you said the dev spec almost should be in requirements I think if it's if it was specified on the hours
+
+Unknown Speaker  1:23:54
+on the parent
+
+Unknown Speaker  1:24:05
+maybe with a warning that
+
+Unknown Speaker  1:24:15
+sir
+
+Unknown Speaker  1:24:26
+yeah
+
+Unknown Speaker  1:24:34
+does that get lost in a warning as Yeah,
+
+Unknown Speaker  1:24:37
+sure.
+
+Speaker 1  1:24:51
+So if the child jobs don't have estimates they're fine to have estimates on the parent. Right Should we also warn if you're entering a estimate on a child and there is an estimate on the parent
+
+Unknown Speaker  1:25:11
+yeah
+
+Unknown Speaker  1:25:39
+as an estimate specified that estimate will be ignored or something like that
+
+Unknown Speaker  1:26:08
+it's not quite replaced or is it because it is still
+
+Unknown Speaker  1:26:20
+sure
+
+Unknown Speaker  1:26:39
+yeah
+
+Unknown Speaker  1:27:05
+sure that'd be fine
+
+Unknown Speaker  1:27:15
+okay.
+
+Speaker 2  1:27:17
+And then this one are you fine with this being a considered a bug fix for sure should that be
+
+Speaker 1  1:27:28
+added I see we alone but I think we lump it into the proposal but
+
+Unknown Speaker  1:27:35
+yeah
+
+Speaker 2  1:27:40
+okay. Let's make a note here
+
+Speaker 1  1:27:52
+I mean, I don't know if I yeah, I don't know if I care if we listed here or not. So, but I'll probably I mean, I think I'll probably lump the work into here. Okay.
+
+Speaker 2  1:28:09
+All right. Well, I should drop in and see what this one is. If it's a one minute thing
+
+Unknown Speaker  1:28:25
+Oh, actually, this is almost the same thing that's that's actually
+
+Unknown Speaker  1:28:34
+that's actually a cleaner spec.
+
+Unknown Speaker  1:28:38
+Yeah.
+
+Unknown Speaker  1:28:44
+I'd almost vote for that one.
+
+Unknown Speaker  1:28:51
+I don't know.
+
+Speaker 2  1:28:54
+Yeah, that's true. And we just need to make sure but we still need to make sure that that report shows the right thing. But yeah. Okay.
+
+Speaker 1  1:29:09
+So shoot me an email with with the piece that you want me to review and here
+
+Unknown Speaker  1:29:13
+and then
+
+Speaker 1  1:29:18
+and then it's once we think you'll get close to appear then let me know when? You know, we're
+
+Unknown Speaker  1:29:23
+kind of in. Okay.
+
+Speaker 2  1:29:28
+Thank you, sir. Yep. Thanks a lot. Take care. Thanks. Bye.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,122 @@
+Speaker 1  00:00
+The biggest challenge With the CRM integration is the fact that we're not. There's too much complexity then there's too many moving parts. And I think we could simplify this entire thing if we had a few foundational rules. So, first piece of it would be if we'd be able to take the type form change, the Active Campaign changes and push them directly into posting records. And then based off of that, we will be able to make the necessary push the necessary changes out so that case, the webhook would simply go update the database
+
+Unknown Speaker  00:51
+and
+
+Speaker 1  00:54
+everything's fine. Theoretically. cursors the issue what happens when the database is out of sync with Typeform itself? Do you need to have a nightly sync or something that updates it? Maybe I'm not sure. So let's walk through this process. And so then the next step would be which contacts contact records in which which, which insight in which Active Campaign contacts need to be updated. And you essentially query for a list of changes
+
+Speaker 2  01:40
+and so
+
+Speaker 1  01:46
+here is change X, Y, or Z. So here's a new here's one that was his conduct that was created. Here's an inside contact that was created. Here's an insight. Context was modified. Here was an active campaign. Contact, It was added, or modified, and et cetera, et cetera. And then the question is so, so far, so good. The contact is, so then you would simply iterate over these changes. linearly, in sequence of time.
+
+Unknown Speaker  02:42
+And
+
+Speaker 1  02:47
+you would, you would track the Active Campaign IDs that were being modified or synced. So if and you would avoid well, then the question is, does the earliest or the latest win? Or who wins? We could say that it's a bit arbitrary. Who wins practically speaking it probably doesn't matter. Technically speaking, we really do need to have some form of delineation. Logically, the last person wins so we're gonna say the last person wins
+
+Unknown Speaker  03:45
+which means that
+
+Speaker 1  03:50
+you would look for all modified Okay, step number one.
+
+Unknown Speaker  03:57
+Look for all contacts
+
+Speaker 1  04:00
+that are not correctly linked. In Google income. And that process is pretty straightforward. Then using the which means that in the you're looking at the set of changes, you want to keep track of all campaign IDs that were modified within a certain time range. And so you're going to essentially, accumulate a list of active campaign IDs that you need to sync.
+
+Unknown Speaker  04:43
+And
+
+Speaker 1  04:46
+as of a certain date, so you look for all newly created contacts and their campaign, new campaign IDs. Okay, first of all, you look for modified campaign IDs, and you include campaign IDs of those contacts. So first, you create all of them you create all the existing ones, then you the fight all campaign IDs that need to be synced
+
+Unknown Speaker  05:20
+and
+
+Speaker 1  05:23
+you determine for each campaign ID whether it needs to be synced because it was my favorite headphone or when it needs to be synced because it was modified in the contact record if it was synced because it was while you find out the latest what the latest modification was. If the latest modification was from type form, then that wins we're just going to say that's the winner of the latest modification was from the contact record. We're going to say that that's then clearly needs to go in that direction.
+
+Unknown Speaker  06:06
+could conceivably make it more granular
+
+Unknown Speaker  06:09
+and you could say you could say which
+
+Unknown Speaker  06:53
+Whether you're laying in the web hook
+
+Unknown Speaker  06:55
+to push things back or whether you just go push those things back automatically so what you could do
+
+Speaker 2  07:13
+is effectively have a process for determining what this source of truth is.
+
+Speaker 1  07:22
+yeah I mean, I think an effective way to think about this is if you can actually think of the customer contact as a real world
+
+Unknown Speaker  07:35
+or as a
+
+Unknown Speaker  07:40
+entity outside of here
+
+Unknown Speaker  07:45
+that
+
+Speaker 1  07:46
+is updated. Whenever a contact is updated and and
+
+Speaker 2  08:08
+so you have them automatically linked it to that when you enter a an email address that is linked to those people
+
+Unknown Speaker  08:15
+and and then that change
+
+Unknown Speaker  08:23
+automatically gets propagated everywhere.
+
+Unknown Speaker  08:28
+So here's the basic step.
+
+Speaker 1  08:30
+What are where are the orphaned contacts?
+
+Unknown Speaker  08:34
+Go linking out to the appropriate active campaign ID is basically based off of primary email address.
+
+Unknown Speaker  08:43
+Which means by the way that if you
+
+Unknown Speaker  08:46
+create one of these and then tie them out So
+
+Unknown Speaker  09:20
+alright, now, let's try to take
+
+Unknown Speaker  09:22
+this from the top all the way from the top.
+
+Speaker 1  09:28
+Here's the process work for all Active Campaign contacts, where looking for all customer contacts that are not tied out to an Active Campaign contact their primary email address then go see if we have
+
+Unknown Speaker  09:51
+a inactive campaign
+
+Unknown Speaker  10:01
+you know I just went there might
+
+Unknown Speaker  10:03
+be slightly stale and there's just race conditions and fuzziness that are gonna happen and you tie that to active community now. Next up go find me all the Active Campaign IDs that have been modified based off about
+
+Unknown Speaker  10:24
+what you're going to do is you're going to figure out what is the what is the new value? What is the phone number, email and active campaign ID for this and then you take that and you're going to propagate that to all contacts with a link to it and you're going to propagate it to the tag for to Active Campaign contact ID contact. Easy, easy, easy suddenly, this whole thinking thing becomes ridiculously easy. Now all we really have to do is go write this up once we got to run that we can go into minute
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,578 @@
+Matthias Miller  00:38
+Hey, hey, all right, we'll see how up to it each of us feels,
+
+Speaker 1  00:49
+oh man, my brain has rarely been more tired, fair enough. I just met the doing I'm pretty thoroughly confused about when to be including damage waiver or not. Like the report, we display it as monthly payment, and he just said that monthly payments should include Damage Waiver, but we weren't
+
+Matthias Miller  01:24
+much. Just been a silly oversight, I don't know,
+
+Speaker 1  01:29
+but I was searching back through the chat and you had specifically wanted to not include Damage Waiver there because of contract how contract balance is calculated, because Damage Waiver shouldn't be included in contract balance. Sorry, you're welcome to take your headset off and put your jacket on and then resume.
+
+Matthias Miller  01:48
+Yeah, I'm sure. I mean, I agree. It's just, it's, it's, it's weird, because we don't have a good, good terminology for this is, this is the pre versus post. Or this is, you know, what's the monthly payment? I mean, you have the cash portion, rental portion, and then the total payment, and then you have the total payment, sales. I mean, like, I
+
+Speaker 1  02:15
+mean, I think we need to find good terminology for it. Maybe we can't, but it makes it, it makes the code pretty hard to work in when we're not sure
+
+Unknown Speaker  02:29
+it's not. We don't have to resolve that now, but bumping my head against
+
+Matthias Miller  02:37
+so the cash portion, rental portion and the Well, I mean, that's part of the issue, too. We have rental portion, but there's two types of rental portions. There's, like, the whole rental portion, or, like, there's the fractional rentals portion. Contracts, if we go into contract events, what do we call that part of it, cash price amount. So you could have the you can have the cash price payment, the
+
+Unknown Speaker  03:13
+contract payment,
+
+Matthias Miller  03:16
+and the monthly payment, or the cash price payment, total rental payment, and then the, I mean, the
+
+Matthias Miller  03:31
+cash price payment only makes sense for dwf, anyway, so it's fairly useful in most cases. Yeah,
+
+Speaker 1  03:45
+so we don't like calculating EPO. You don't figure in dwf. No, no, because dwf is very much a time thing. So you for every month you have this you pay this much? Yep,
+
+Speaker 1  04:09
+okay, at some point I think it would be worthwhile for us to think through how we want to structure the macros or doing calculating what's a standard monthly payment, and I'm trying to think through naming conventions to make this stuff mildly usable. But I don't think that's the conversation for right now, I think, but I think it'd be helpful at some point.
+
+Matthias Miller  04:39
+Yeah. I mean, if you really want to be verbose, it's monthly payment including dwf, if applicable, and then there's monthly payment excluding dwf. And you could just never refer to monthly payment by itself.
+
+Speaker 1  04:55
+It might be best to do something like that. I don't know. Yeah, either that or you always have a brand. Better and make people think it through, right?
+
+Matthias Miller  05:03
+But even with the parameter, the true false is really confusing. I mean, it's not readable. That's the My biggest Yeah, yeah.
+
+Unknown Speaker  05:13
+Anyway, but we were in the
+
+Matthias Miller  05:19
+middle of solving a fun, interesting problem last time.
+
+Speaker 1  05:22
+Yes, I don't remember what it was, but it was definitely interesting.
+
+Matthias Miller  05:34
+That was, when was that? When were we talking last
+
+Speaker 1  05:39
+I have a time slot tracked with you. Monday from 1226, to 1341,
+
+Matthias Miller  05:47
+well, 26 would be 11. Would be my time? 1126, your time. So Monday, 1126, you
+
+Unknown Speaker  06:02
+need the incident. What
+
+Matthias Miller  06:04
+do you want to share your screen and dive back into the accounting impact stuff or the Yeah, correctly calculate bad debt tax adjustments without incorrectly including sales tax. Ensure bad debt payment only just AR taxable, non taxable, bad debt rose the accounting method to calculate AR balance. And we had, we had come to the conclusion that, I mean, we just have to have fancy logic to handle that. Didn't, didn't we have everything, didn't we say we have, didn't we say that the that the accounting impact is done, but the accounting balance adds up, is not
+
+Speaker 1  06:54
+right, but the, I don't think the accounting impact, we had a report in place, but I don't think it was actually quite working. Okay?
+
+Speaker 2  07:01
+Well, let's see what it's not fast. No, it's not.
+
+Speaker 1  07:11
+I had, yeah, I saved it and then got it going, but it the results looked confusing to me. I
+
+Speaker 1  07:24
+also, this is the this is the other job here that's been breaking my brain. We're at 14 days and 81 revisions so far.
+
+Unknown Speaker  07:35
+Oh yeah, Jonathan has
+
+Speaker 1  07:40
+11 days on it. I have three and a third just doing
+
+Matthias Miller  07:45
+reviews. Oh, good gracious, yeah, painful.
+
+Speaker 1  07:50
+We're cleaning up 15 to 20 years of consulting is mess and client scope,
+
+Matthias Miller  07:55
+licensing energy is the I mean, that's it's Wow. Anyway, yeah, I
+
+Speaker 1  08:00
+mean, there's still a lot more cleanup that could happen. But yeah, anyway,
+
+Matthias Miller  08:09
+okay, so what's the we now have a bad debt expense showing up on these guys, well off by a penny. No, we don't. Oh, we lost it. Yeah, we lost it. Was that correct?
+
+Unknown Speaker  08:27
+909? Whoa, support, calm.
+
+Unknown Speaker  08:35
+So we used to have a one cent bad debt here.
+
+Unknown Speaker  08:46
+Bad debt. We have a
+
+Matthias Miller  08:50
+cleaning up AR. Can we expand those columns just a hair so I can, I guess, so that we can see the column totals
+
+Speaker 1  09:00
+and refresh everything. I don't know how big thing it could be.
+
+Speaker 1  09:10
+There you go. Is this guy. We're no longer this is no longer hitting it.
+
+Matthias Miller  09:22
+What do we choose? Do we change in our logic that made it not hit because we said the sales tax adjustment theoretically should hit it
+
+Unknown Speaker  09:31
+now, right? Guys, before sales
+
+Unknown Speaker  09:34
+tax, I think, or well, he doesn't have tax history.
+
+Matthias Miller  09:39
+Okay, so if you go into bad debt payment, copy right.
+
+Unknown Speaker  09:47
+Let me make sure I'm on the Yeah. I.
+
+Unknown Speaker  10:00
+Can we?
+
+Matthias Miller  10:12
+Can we copy this out and evaluate it on here?
+
+Matthias Miller  10:20
+It's it's using a $0 value
+
+Matthias Miller  10:28
+because it doesn't have
+
+Matthias Miller  10:40
+a okay, but the sales tax
+
+Unknown Speaker  10:41
+adjustment, adjustment that should be zero,
+
+Unknown Speaker  10:46
+this guy,
+
+Matthias Miller  10:48
+can you evaluate? Just this guy? Okay,
+
+Matthias Miller  11:04
+it's still zero. Okay, let's go to him, see what his problem is.
+
+Matthias Miller  11:16
+With so bad attacks we're using, we're doing a replacement, a with so bad debt tax, that's probably not right, 35
+
+Matthias Miller  11:34
+I should probably be as a payment amount that would help.
+
+Unknown Speaker  11:50
+Then, now
+
+Matthias Miller  11:57
+it did not fix it still, yeah, that's right, because it's not affecting sales tax for some reason, yep,
+
+Unknown Speaker  12:08
+wonder why it wouldn't affect sales tax If it's non
+
+Unknown Speaker  12:21
+taxable, it's
+
+Unknown Speaker  12:48
+this is, I guess I'm probably running this on sales orders. I don't
+
+Speaker 1  13:00
+need to what date? So is there a created date?
+
+Speaker 2  13:06
+So what's the system switch? There's no system. It's the accounting company. Yeah, uh,
+
+Unknown Speaker  13:24
+is that going to be faster? I mean, I guess we're just,
+
+Matthias Miller  13:30
+you could do everything after one, 123, oh, that's fair. There's
+
+Speaker 1  13:39
+still going to be a lot, but that should make things a lot faster.
+
+Unknown Speaker  13:45
+Anyway, hey, well, okay, here
+
+Unknown Speaker  13:57
+these different
+
+Matthias Miller  14:00
+can we owe AR is
+
+Speaker 1  14:04
+AR is higher bad debt is higher.
+
+Matthias Miller  14:09
+For payment, where is sales order paid? Right, but no, no, but it's splitting. Sales Order paid 981, 81 and now seeing 981 plus 69
+
+Unknown Speaker  14:35
+where are these numbers magically coming from? Or were we wrong?
+
+Matthias Miller  14:44
+Gonna pull the sales order.
+
+Matthias Miller  14:52
+So what's the bad debt? Actual bad debt, amount, 1015, 50. And then what's the I mean,
+
+Matthias Miller  15:12
+that looks pretty good, 981 the new one is 981 with this 10, six few
+
+Speaker 1  15:21
+we were subtracting the the 69 from the 981, we should have been subtracting from the 1050,
+
+Unknown Speaker  15:30
+right? This looks right. This
+
+Matthias Miller  15:36
+is the old one. Go back up.
+
+Speaker 1  15:38
+Oh, wait, that's Oh, never mind. I'll set this confused.
+
+Matthias Miller  15:43
+We're the tax amount here is negative on the bad debt adjustment. Bad Debt adjustment is positive. The payment amount is negative, is it you?
+
+Unknown Speaker  16:03
+Payment is 1050, account for a customer under Payment,
+
+Matthias Miller  16:08
+go into the let's go into the accounting. In fact, see if it for the for this would be on the sales tax adjustment row, Right?
+
+Unknown Speaker  16:17
+No. What are you
+
+Matthias Miller  16:24
+going into the macro like
+
+Matthias Miller  16:53
+the bad debt adjustment. Scroll down. I'm sorry. Debt total is not a total. That's the bad debt adjustment.
+
+Matthias Miller  17:08
+Bad Debt adjustment does not include the
+
+Unknown Speaker  17:14
+bad the subtotal. It's just the adjustment, isn't it?
+
+Matthias Miller  17:20
+The line 32 should be the grand total. Wait, that's what payment amount is the grand total, right? The bad debt adjustment is the subtotal? Yeah. Excuse me, what do we calculate? Let's calculate tax first,
+
+Unknown Speaker  17:51
+here's the tax,
+
+Matthias Miller  17:53
+and then change the and I don't care how you want to do this, but then we can use that tax to calculate some ways it would make sense to calculate the bad debt subtotal next,
+
+Unknown Speaker  18:13
+which would be the well,
+
+Matthias Miller  18:19
+change the Assign B 39 to the be the subtotal, and then do a sum of so payment, amount minus be bad debt tax,
+
+Matthias Miller  18:37
+or minus so bad debt tax, whichever one you want.
+
+Matthias Miller  18:51
+Oh, then we can make, then the total bad debt, the line 46 becomes equals the total, which is the sum of the subtotal on the in the chat, no bad debt. 46 be bad debt. Total equals, okay, sure,
+
+Unknown Speaker  19:17
+oh, I can't, I can't type.
+
+Matthias Miller  19:24
+Yeah, like that, that should work better. Yeah.
+
+Unknown Speaker  20:06
+Move. So we now have if
+
+Speaker 1  20:23
+493, credit to bad debt
+
+Unknown Speaker  20:29
+on a tax adjustment,
+
+Matthias Miller  20:35
+okay, but the bad debt expense previously should have Yes, like the sales tax. So, yeah, the children are paid. If I 7531 versus 7004 7531 versus 80. I mean, I should be mapping this to make sure it maps. But basically we're saying that the payment, what? Was for the original amount,
+
+Matthias Miller  21:16
+like AR was 8058, 8058,
+
+Matthias Miller  21:30
+minus 5.29 equals 7529 that doesn't match. Why?
+
+Unknown Speaker  21:46
+What are you? What were you massing
+
+Matthias Miller  21:50
+the AR, the net impact to AR on the left, versus net impact of AR on the right.
+
+Matthias Miller  22:01
+On the left, it's 8058, minus 529 528 Yeah, 528 oh, it's an eight, Okay, looks like a nine with my scaling. Oh, sure. 7530 so I guess it's really close, but we're off by a penny.
+
+Unknown Speaker  22:22
+Or is the other one? The other one's at 7496
+
+Unknown Speaker  22:29
+right? Is it 7531 right? 35
+
+Matthias Miller  22:38
+snap. But do we
+
+Unknown Speaker  22:39
+expect AR to be the same.
+
+Speaker 1  22:49
+Weren't there problems in how we were, how AR was coming out?
+
+Unknown Speaker  22:55
+Well, probably
+
+Speaker 1  22:59
+I'm not. I'm not I'm not surprised that the numbers are different. I'm not saying they're right, but I'm not surprised that they're different.
+
+Matthias Miller  23:06
+Now, okay, 7531 minus 493, 7038, so Well, can we look at the sales order and see if yes, we agree.
+
+Matthias Miller  23:28
+So 7531 was the gross
+
+Unknown Speaker  23:32
+payment, and we're saying
+
+Unknown Speaker  23:43
+know something's wrong,
+
+Matthias Miller  23:44
+we're doubling up something, yeah,
+
+Matthias Miller  23:54
+like we're Yeah, we're doubling tax or something. I
+
+Matthias Miller  24:06
+Okay, so on this one, bad debt tax is the negative the total tax amount which is correct. The bad debt adjustment is the subtotal which is correct. So bad debt tax is a positive amount which is correct. Bad Debt subtotal is so payment amount, which is correct, the subtotal. Okay, so let's look at uses of this variable down below subtotal. So the account sales tax liability, we have a debit of bad debt, tax the debit account. We have a debit for the subtotal credit account. We have a credit for the total, then let's go down to the other and just sanity check the other. I'm going to be shocked if there's stuff wrong here. Bad Debt tax is a tax row. That subtitle is that subtotal plus bad debt taxes.
+
+Unknown Speaker  24:54
+Theoretically that looks pretty saying, I.
+
+Unknown Speaker  25:04
+I guess, yeah, let's go to history. Is here,
+
+Speaker 1  25:12
+75 that adjustment was originally 7531 that's the subtotal. Oh, this is one of the ones that was wrong. Bird.
+
+Matthias Miller  25:22
+All right, we already had about 4048, so that one, that one's right. Could you do a count RG column off to the right with a number of bad debt. Rows over unless, yeah, like there and then sales tax, bad debt rose. Sorry, sales right? I'm sorry. Sales tax adjustment, bad debt adjustments, counter G, bad debt sales tax rose. And then let's look for ones that are not Two or more. I
+
+Speaker 1  26:17
+wonder when the lock 2025 books. The number of things we keep finding. I know
+
+Unknown Speaker  26:29
+that's 222222
+
+Unknown Speaker  26:50
+Bree, yeah, is that better? I
+
+Matthias Miller  27:05
+Well, I'm gonna guess with about 95% certainty we're good.
+
+Unknown Speaker  27:14
+I'm curious about this three one.
+
+Matthias Miller  27:19
+Well, we could. I 7090 Wait, what?
+
+Speaker 1  27:27
+7074 negative, they got a payment then, or what? Something. Okay, so, yeah, 319, right off 7090, and then check payment like a month and a half later, still not for the full amount,
+
+Matthias Miller  27:48
+still not for the full amount. But hey, they got something that's hilarious.
+
+Speaker 1  27:55
+Okay, lots of fun. Some of these ones are just fun stories.
+
+Matthias Miller  28:02
+Okay, so then all we have to do theoretically is, okay. So this one we can send over to them. I
+
+Speaker 1  28:28
+Okay, we believe in this guy now we think,
+
+Unknown Speaker  28:41
+Wow, just add bookmarks. Here's suggesting, counting back changes.
+
+Matthias Miller  28:53
+Okay, all right, and now we get to calculate guides. Did we do
+
+Speaker 2  29:08
+what we did this? Right? No, no, we did this roughly.
+
+Matthias Miller  29:23
+Roughly. Well, I mean, that's the whole No, but these are both the same approach proposal. Those two are the same thing.
+
+Unknown Speaker  29:33
+Oh, never mind. Yeah,
+
+Matthias Miller  29:37
+we did not do this one. I
+
+Unknown Speaker  29:47
+gray text is my
+
+Matthias Miller  29:48
+favorite. We're also not doing option one.
+
+Matthias Miller  30:09
+Okay, all right, so now we need a an equivalent balance change report, right with a new accounting balance as of what would be really cool
+
+Matthias Miller  30:31
+would be to have a macro that can catch All the event dates of all write offs and I here, you know, I have a proposal. What if I take, take over this part, and then if you need to run, I could,
+
+Speaker 1  30:52
+yeah, I need to leave in probably not more than 10 minutes. Okay, let me
+
+Matthias Miller  30:59
+share, replace. All
+
+Matthias Miller  31:08
+right, so then here's my proposal.
+
+Unknown Speaker  31:19
+Daters. See now? Significant others.
+
+Matthias Miller  31:25
+Okay, actually, we could do something like this. We could do array to RG to array, so payment date, so
+
+Unknown Speaker  31:42
+payment accounting, counting, date, dot,
+
+Matthias Miller  31:50
+plus RG, two array. So payment date, so payment payment do we want? Do we want the espayment date as well? Do we care? Just one more day to catch we're
+
+Unknown Speaker  32:12
+working with the accounting balance. We don't
+
+Unknown Speaker  32:14
+really care. Okay, so sales tax? Do
+
+Matthias Miller  32:29
+sort items. Oh, we do, and
+
+Matthias Miller  32:40
+nobody says what the default value is for sort items. It's not documented. Does it remove duplicates or not? Why would we document
+
+Speaker 1  32:52
+that doesn't okay? Now we don't like documenting that's just too much, especially not when we're in zfb. We can't complain about documentation right here.
+
+Matthias Miller  33:17
+Okay, so now we have the significant dates, so now we do Loc,
+
+Matthias Miller  33:32
+date, string, current item plus amount to dollar, display, string balance as of current item, items, new line,
+
+Unknown Speaker  33:55
+missing or too many.
+
+Matthias Miller  34:00
+Okay, so we have old balances now, and
+
+Speaker 1  34:13
+old balances meaning that's the accounting total, the accounting balance. I was stretched for a little bit.
+
+Matthias Miller  34:24
+So we're calculating, right? Yeah, it's a list of balances, yeah, gotcha. Then we copy this guy.
+
+Unknown Speaker  34:39
+Hey, now we have shoes.
+
+Matthias Miller  34:45
+We have new balance now. Okay, fine, it's funny. Okay, it must be funny.
+
+Speaker 1  34:52
+Sorry, I've had too many, too many trying to think through complicated things today to get some.
+
+Matthias Miller  35:00
+Jokes. I wanted to I had this joke. It was working on that, something with contempt, contempt with yoga, looking down on people and copying pasting. And it was going to be something about contemplative, but it was, whoa.
+
+Speaker 1  35:20
+That's a break your brain sort of one that is
+
+Matthias Miller  35:28
+okay. So then the invoice total, we don't care about we just care about the payments and write offs as of I
+
+Matthias Miller  35:48
+then, if
+
+Unknown Speaker  36:02
+Can we do it?
+
+Unknown Speaker  36:18
+S, U, M, R, G,
+
+Matthias Miller  37:04
+A and then, if
+
+Speaker 1  37:16
+we be documenting the parallels Between accounting, oh, we should be and counting total. Yeah,
+
+Matthias Miller  38:07
+what happens if you have a write up on a bad debt row? That's terrible. That happened. It shouldn't. We shouldn't have That's just insane, man. That's insane, if you would do that. I bet
+
+Unknown Speaker  38:18
+there's someone that's done it out there.
+
+Unknown Speaker  38:24
+I'm very close now,
+
+Unknown Speaker  38:28
+it's the sort of stuff that happens somehow it wouldn't
+
+Unknown Speaker  38:32
+that's actually, yeah, so, so 86
+
+Matthias Miller  38:43
+uh, adjustment for customer underpayment. I did adjustment. Why is that not so this was effective on 11 211, two, that doesn't look right.
+
+Unknown Speaker  39:05
+So if it's
+
+Matthias Miller  39:11
+oh, well, probably we should do this as well, just guessing
+
+Unknown Speaker  39:19
+probably make a difference.
+
+Unknown Speaker  39:21
+Okay, there are no rows like that. Good.
+
+Matthias Miller  39:25
+We're not insane. All right, 1050, 69, well, here we're saying most of these are tying out to zero. Now let's go some within a fraction. Yeah.
+
+Unknown Speaker  39:47
+Which maybe we need to do our special round stuff.
+
+Unknown Speaker  39:50
+Oh, I wonder.
+
+Speaker 1  39:54
+I need to drop I have, okay, I'm going to go get my head shorn, or at least
+
+Unknown Speaker  39:59
+join.
+
+Matthias Miller  40:00
+Sounds good. Well, hopefully not as badly as I do mine. All right,
+
+Unknown Speaker  40:06
+sounds good. Have my head if I did that.
+
+Matthias Miller  40:10
+It's funny. All right, see you.
+
+
+Transcribed by https://otter.ai

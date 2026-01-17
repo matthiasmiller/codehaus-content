@@ -1,0 +1,284 @@
+Matthias Miller  12:18
+need it? Yep. Mark might be on a bit. Ben won't be won't be on Do you have any I guess any updates before we can spend some time going back through the continuing to go through the proposal unless you get some got anything on your end?
+
+Speaker 1  12:48
+Well, two things, two IOUs, the review that acid management proposal and also the binder, the deposit deposit process, those are two IOUs that I still need to get to you. And then I have one with liens be jumping on he just sent me an email to call when you have this response. But you didn't notify him we're, we're doing a 145.
+
+Matthias Miller  13:30
+I sent him an invite, but here, I'll just let me get the text. Okay.
+
+Speaker 1  13:36
+And then the the other thing, which I think we'll get into that a little bit, but is where I'm trying to wrap my head around this, but the automation part of buying accounting into are both on accounts payable and accounts receivable, where are we going with that? And this kind of from a high level, how does that look? Because we have drew from every Wednesday to start working testing the software, like to get an update on and how that how you see that rolling out
+
+Speaker 1  14:33
+make sure we test as efficiently as as possible. I mean, we I guess that that on both the expenses and the income side, I mean, we I would say start with the Ben says and then one other thing. Oh, I don't know if then If you've had any conversation about what Drew was asking for on on more visibility to sub accounts underneath parent accounts when selecting the kind of the things on I've got to IOUs and then fences cremation.
+
+Matthias Miller  15:36
+See? So Ben had been rid of a change request internally bring it past Joe and Ellis, I think it's reasonable request, we just need to nail it down. The one the one thing we got left so we actually independently got feedback about that last week as well. So from somebody else so that's kind of where that sat in check in with Ben for status updates on that. There's one other thing that drew mentioned which was the contra account having contra sub accounts and currently let's see when they share
+
+Matthias Miller  16:38
+I mean, bottom line is we don't allow we only allow parent accounts to be contra accounts. I don't have any documentation as far as the rationale for that. That's that is current behavior. Did you let rationale for that?
+
+Unknown Speaker  17:07
+Last year
+
+Matthias Miller  23:26
+Mark
+
+Speaker 1  23:30
+I think something happened on my end that phone cut out or something? Yeah.
+
+Matthias Miller  23:36
+Got it. Um, so as far as AR AP, I think where that project has been up until now has has been working things out with Josh to get Josh's pieces in place. And I think what it needs now is coding to get to, to get accounting impact reports built for those so that we can feed those into accounting. So I think the next step is on that is is actually designing those integrations.
+
+Speaker 1  24:13
+Is that, like, who holds the vague on that? Is that you is it Josh?
+
+Matthias Miller  24:18
+It's, it's, yeah, it's me. And I think it's something that we need to as we work through this, I think there's a section in the proposal for it right now.
+
+Speaker 1  24:33
+So how, like, how, how important do you feel that is in the scope of like, let me see if I'm thinking about this correctly. So as we start testing, through can person doing, we can test using, say for the expenses site, the verification report, and manually entering that information. into the accounting module, basically, like we're doing now like this report, and then entering that information into QuickBooks.
+
+Unknown Speaker  25:15
+But it feels to me like, that's pretty vital piece that we'll want to have up and running
+
+Unknown Speaker  25:26
+soon. Because it's, it seems like there are a number of
+
+Speaker 1  25:33
+I'm trying to got what will drive the accounting impact? Like I know on the expenses right now there's obviously doesn't well there's a bunch of different places where it would act accounting on would be you receive product when it hits a P or Yes, simplifying that. It seems like there's a lot of moving parts to that, and it's something that should be testing. Tune kind of a long ramble there. But is that, like, the initial how we can start the initial testing, but then also my thoughts on the integration? Is that my thinking about that correctly, or, or not?
+
+Matthias Miller  26:32
+Well, I mean, I would think of testing in terms of two aspects, one is testing the individual features, which is to test building impacts, you know, building speculations, and on that and go test out AR tries out and, and AP, well, AR sorry, hang on, AR is actually he or should actually already be done. As part of what we've already completed, I think it's only really AP. So then there's let's just go test AP vendor invoices, POS, all that stuff ties together. And then there's kind of the the other form is like, is basically integration testing, let's make sure that all the pieces tie together. And let's make sure this whole thing works as a cohesive whole, and that there aren't any, any gaps in in that process.
+
+Unknown Speaker  27:38
+So when you say AR is, is it's basically completed, like we're seeing it all that we only need to take that part live, or
+
+Matthias Miller  27:56
+isn't that tied into? I mean, that would be tied into sales orders, which we've done. So unless there's something that I say
+
+Speaker 1  28:12
+okay, and what Okay, I think this was talk with Josh about this. Well, I asked him, like, taking accounting pieces live, is that that to verify with you, but I think this was a simplified thought was that if you put something into the testing system, then with the next update, any accounting updates that you that are put into the test system, or test account with the next update, Josh would take those live is that, basically, I mean, is that how, how we'll see updates rolled out.
+
+Matthias Miller  29:10
+Yeah, I mean, we can we can roll out. Sorry.
+
+Speaker 1  29:15
+Well, how should Why would be the ideal method for testing like thinking, Should we be testing in the live system? Or the test system? It's seems like we almost have to test in the live system in order to FDA to work with
+
+Matthias Miller  29:36
+well, the live system has a bunch of I mean, it's sorry, the test system has historical data in it. I don't know when the last time was we grabbed that but it's several months old. If it's necessary, we can have Josh refreshed the test system with a snapshot of the live system. I would prefer to test it in the test system you Same old data if we don't have to have new things feeding in there all the time. Now, if we if if for some reason we need to be, you know, have be dealing with new vendor invoices and things like that, then yeah,
+
+Speaker 1  30:24
+well, no, that makes sense. I mean, one of the first things I wanted to test is the the finished goods, inventory reconciliation, and that information would all be there. So we could go back in to a historical period. Until I
+
+Matthias Miller  30:44
+get it. Yeah, for that, I'd be completely I'd be great with doing that in the live system. Yeah. It's at the point that we start creating accounting transactions and things like that. But I want to be a little thoughtful about how we go about rolling that out.
+
+Speaker 1  31:06
+And when you say accounting transactions, you're saying actually paying a invoice noises?
+
+Matthias Miller  31:15
+Expensive? Yeah, well expensing out, actually expensive outbuildings. For example, on sale, or actually making adjustments to, I guess what might make sense is nailing down our FTI calculations in the live system. And once we've got that nailed down, pushing it across into the test system, and then we can start working through getting those values pushed over into into accounting transactions.
+
+Unknown Speaker  31:55
+Now, when it goes kneels down I'm sorry, good. Go ahead. No, go ahead. What I'd
+
+Matthias Miller  32:08
+really like to avoid is having a whole bunch of accounting information in the live system that we have to go.
+
+Matthias Miller  32:20
+Go remove? Maybe it's fine.
+
+Matthias Miller  32:30
+Either way, I guess.
+
+Unknown Speaker  32:36
+I think I don't really
+
+Matthias Miller  32:37
+care which way we go about it. That's, that's my only concern. Go ahead.
+
+Speaker 1  32:43
+Well, I don't, I would prefer to do it in the test system, if we can just so we don't have it seems to me like trying to deleting the payroll, the timecard information was far enough. But something like this could imagine what could touch all areas. So am I understanding correctly, what you're seeing on the FTA calculation is, figure out what your historical percentages are need to be.
+
+Unknown Speaker  33:12
+Upload that. And then take this for the first five months of the year, and then take that
+
+Speaker 1  33:24
+just snapshot into the test system of that information, and then work off of that on FDI calculations. Or the the FDI reconciliation, like for a period in those first five months of the year.
+
+Matthias Miller  33:38
+Yeah, something like that. Duane just sent me a message saying he doesn't mind double entering that between the test in the live system. So that's, that would be fine too. Creating those rules in the test system, getting them nailed down in the test system, taking them live. I really don't have a lot of skin in the game about how that happens. The only thing I'm trying to keep us from doing is, is what I mentioned earlier about creating unnecessary accounting transactions in the ledger system.
+
+Speaker 2  34:09
+Well, I mean, I say that because me writing writing the rules is not that complicated. And so writing while we're there and let let you guys test and play and have fun. Before we move stuff over, seems like a safer way to go about it. Yay or Nay?
+
+Unknown Speaker  34:30
+I like that approach.
+
+Speaker 2  34:46
+I'm staying on mute because I mentioned peanuts at the same time and I don't want you to hear something that sounds like a cow chewing
+
+Matthias Miller  34:57
+I don't know cows might even be quieter than that. But Oh
+
+Unknown Speaker  35:04
+wow, probably, but I'm gonna stay on mute anyway. Oh, good
+
+Matthias Miller  35:16
+does that answer your question mark?
+
+Speaker 1  35:20
+Well, I think it gets gets us started. So with what Dwayne just said, we probably should do a, what did you call it a snapshot update from the live system to the test system? Is that what you call it? So that we have all the buildings that were built, that we have that built history up to the day, and then we can test our labor intensive building rules and our managers and it those tested there and then also start doing a GI reconciliation, like testing for different periods. there as well. I think that answers that. But then the the integration on integration piece on AR is what does it take to get that live?
+
+Matthias Miller  36:43
+Okay, so let me see if I can find it, you'd sent an email a while back, I asked you the specific question. And you sent an email and I did not file it away anywhere where you can find it easily. The
+
+Unknown Speaker  36:59
+main reason I sent an email
+
+Matthias Miller  37:02
+Yeah, it's been a little while back, it was about how AP should show up on in accounting.
+
+Unknown Speaker  37:21
+I'm drawing a blank on
+
+Matthias Miller  37:23
+single bind should be just one moment. Craft my search here seems to be playable around?
+
+Speaker 1  37:44
+Was it where we were talking about operational events and accounting events?
+
+Speaker 1  38:03
+Some notes here where we were talking about undeposited funds, and we decided to
+
+Matthias Miller  38:10
+No, this is this is an AP balance sheet.
+
+Matthias Miller  38:22
+So after they're received, and before they're paid, they should go be on May 3. I kind of thought there was another thing that we had, but Okay, so
+
+Unknown Speaker  38:36
+let me
+
+Matthias Miller  38:38
+I mean, do you want to spend some time diving into how that should work now?
+
+Speaker 1  38:44
+Not necessarily. I mean, I feel like I think we should probably I wasn't planning your pick beyond 238. I just I was more interested in getting a feel for how does, like, what are the steps between today and integration? And what are the timeframes so that we can kind of plan our testing around that?
+
+Matthias Miller  39:14
+Yeah, we'll steps or we didn't nail down the process A, B, we need to get the get it coated and see, then you can start taking it live. What's the timeframe? I mean, if if we focus on it and hammer it out, we should be able to have that done in in maybe a couple of weeks. Depending what else you've got going along. Implementation Well that is a wild card that's the Nick are gonna disappear. It's possible we might we might be able to grab one of them before they leave. If so, that would be amazing. If not, it's going to be on my account. Under, which is probably going to put, I don't know if it's going to be a month after that timeframe. I don't really know for sure. Because when we can get that scheduled keeping in mind that July, I'm going to be out for a week sometime in July. So
+
+Matthias Miller  40:29
+yeah, it's kind of a little bit made up numbers, but I think reasonable estimates.
+
+Speaker 1  40:38
+So the steps are designed, develop, and then deploy, which if it yourself can be part of that good. If not, June, July, we're looking at like mid August to implement that. Yeah, maybe.
+
+Matthias Miller  41:06
+Got any ideas on how to clone myself that will speed up the process?
+
+Speaker 1  41:12
+No, no idea. How? I mean, looking at at big picture, and all the other parts in accounting. What is it? Is there something that's more important? Well, two questions. First question, do we? Do you feel like we are at a point where we know enough to go and design and develop this? Or you feel like there's parts that need to be tested manually before we can actually design it?
+
+Matthias Miller  41:46
+No, I'm very comfortable moving ahead designing this. I don't have any, any red flags from that. mean, the only other thing that we've got kind of in the works is the is the plaid integration and automation. But I don't I think that's also a pretty high importance. I might, I might put, I might put AP slightly higher, because it's more likely to involve Josh and more senior design in but required, but we're about the same in my mind.
+
+Unknown Speaker  42:35
+Well, I would think we should we should
+
+Speaker 1  42:48
+make that a priority and move that forward. Now. You were talking about AP integration, right? What was that? Both AP and AR integration? Okay.
+
+Matthias Miller  42:59
+So this was a AP. How does?
+
+Speaker 1  43:07
+How does AR integration look like? I think until we well start running. funds through Assist will. Well, we could just manually enter customer deposits. Yes, you right.
+
+Matthias Miller  43:29
+Yeah, we could.
+
+Speaker 1  43:35
+Yeah. Where I would like to get to the like, one of the first
+
+Unknown Speaker  43:43
+milestones that I'm trying to get is where we can get an income statement that
+
+Speaker 1  43:50
+gives us an accurate reflection of here's how an income statement would look for this month. If we were doing it
+
+Unknown Speaker  44:01
+into accrual basis if we were recognizing revenue. And the shirts delivered and then recognizing cogs for those buildings at the same time. That's kind of what I'm what I'm one of the first milestones that I'm aiming for. So
+
+Unknown Speaker  44:32
+what are the best steps to get there?
+
+Matthias Miller  44:39
+Yeah, well, I mean, I think
+
+Matthias Miller  44:46
+I think the the GPS is we talked about for sure. And I think continuing our review through the proposal is also what is time well spent, looking for things that we might not be thinking of right now. I can't I kinda think that's it. And yet, there's almost certainly things we're missing.
+
+Speaker 1  45:16
+So should we plan for for Wednesday to talk about AP integration make that are our priority for them?
+
+Unknown Speaker  45:25
+Yeah, you do.
+
+Speaker 1  45:28
+And then you were breaking up just as you were talking about, or my phone cut out, just as you were talking about Drew's request on, better visibility on doing parent, parents other counseling selecting account. Last I heard you had said that Ben had written up a request sounds reasonable. What's the timeframe on want to implement implementing that? Or developing and implementing that? You do have that already or not?
+
+Matthias Miller  46:07
+I don't, I'm not in touch with Joel is going to Bangladesh? I'm not sure when he's coming back. And I'm not really in touch with the with the Asia development schedule. I think that's kind of asked I'd kind of, well, it's gonna take some back and forth, we need to decide exactly what it is we want to do and how we want to do it. Is Is there a and along with that, there's some gain that you've got through the account numbering scheme, gives you at least a little bit of that. And I don't know if he told Ben this or told you this. But we have also historically, just kind of worked around it by naming sub accounts to include the parent account name. Not ideal. But it's at least a temporary workaround. I don't know, is there
+
+Speaker 1  47:16
+a way we could do that you're thinking this could be? Well, the challenge we have as we're going for five levels deep some areas, I mean, we're we're trying to find a balance of, of storing that information at a grant at a fairly granular level. So that it's always easier to start out with defining transactions at a granular level, and then rolling them up rather than throwing them at at a bit higher level and then later trying to dice them apart. But we're trying to sort of accounts right now is some areas four or five levels deep, and which is making it a little bit just why why this becomes more of a problem and the other, rather than just doing a very wide Chart of Accounts, we're trying to find a balance there. But if we're thinking this is something that we're a month away from, from having developed and implemented, then we could just we just do that we would just have a type of name or arrow, can we use the numbers in that way instead of a could we use the numbers instead of names? Both would probably work.
+
+Matthias Miller  48:51
+Yeah, I mean, the account number, if you use your account number, you'll you'll have implicit mean, you can look at the account number to determine the nesting. I think I'm not familiar, super familiar with with the Convention on account numbering, but I think so.
+
+Speaker 1  49:18
+But is it is it realistic to think that we're probably two to three months away from from that change?
+
+Matthias Miller  49:25
+I don't think it's two or three months away. I think it's a month we let it run its natural course. I also think if it's useful for you guys to push it ahead. I think it's certainly possible to to push it ahead and see if we can shorten the timeline on it.
+
+Speaker 1  49:46
+Well, I think for for next Wednesday, or for this Wednesday, work on AP integration, the design of that and I think it would the other thing that would be helpful would be to look at our chart of accounts and to What we're trying to do, how we're trying to organize that and you might have some ideas on that I think it'd be helpful for you to understand what we're trying to go with that as well. I think those two pieces would be the most things that would be very helpful to cover
+
+Matthias Miller  50:19
+if you'd want to send over the a copy of your current chart of accounts, or unless that's actually in the live system right now it's
+
+Speaker 1  50:30
+no it's not it's I have some updates I want to make on it today or tomorrow yet but I'll try and get it over in the morning
+
+Unknown Speaker  50:59
+if you Messias Dwayne and Ben's
+
+Unknown Speaker  51:13
+Well, we're almost at 230 I mean what what
+
+Speaker 1  51:21
+that and also the those two IOUs that I'll try and get through the Wednesday what what's on your list that we should talk about
+
+Matthias Miller  51:33
+I don't know that I've gotten much how hard should I push on
+
+Matthias Miller  51:49
+Well, let's wait until you get depreciation your depreciation and suspect to me i don't i don't think i've got much on my end
+
+Speaker 1  52:00
+my phone's breaking up. I just got 30% of mind just just shoot me an email with if you have anything. Any better. All right, sorry about the phone issues.
+
+Matthias Miller  52:23
+Not a problem. Some might be on my end as well. Yeah, I think that's good.
+
+Unknown Speaker  52:28
+Yeah, thank you. Thank you.
+
+
+Transcribed by https://otter.ai

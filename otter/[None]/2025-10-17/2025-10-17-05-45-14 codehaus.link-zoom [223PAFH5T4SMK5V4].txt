@@ -1,0 +1,1211 @@
+Speaker 1  09:23
+Evening, Hey, morning, hey, let me
+
+Speaker 2  09:30
+share here quick. All right, um, all right, how sorry, man that's been a scramble
+
+Unknown Speaker  09:42
+this morning. Oh, good my side.
+
+Unknown Speaker  09:48
+Yeah. So where do you want to start?
+
+Matthias Miller  09:52
+I wanted to touch base a little bit on on s3 are we are on the Amazon stuff. What are your What are your thoughts on? Up.
+
+Speaker 3  10:01
+I've asked Amanda to she had some questions about it. Let me pull her in, if that's okay. I asked her to write down all her questions. That's good.
+
+Unknown Speaker  10:18
+Amanda,
+
+Unknown Speaker  10:25
+I might be on the phone right now, but
+
+Matthias Miller  10:27
+that's fine.
+
+Speaker 3  10:28
+So when she said that custom computer is telling her we there's, there's room on the cert, on our server for there's file space there to scan all the prints into. Does that make sense with what you're trying to accomplish or what needs to happen?
+
+Matthias Miller  10:48
+Well, I mean, it's a fine place to store it, but that doesn't give us programmatic access to if, if if all we want to want to do,
+
+Unknown Speaker  11:03
+when you say, would you say programmatic
+
+Matthias Miller  11:07
+like, Okay, if all we want to do is, if we still just want to keep manually assembling prints, that's fine. We can scan them there. So, but in order to, in order to pull the prints, assemble them together, put together a packet, whatever that ends up looking like, and tying it in the silver loom we do need to use. We can't that doesn't really allow us to do that. Is that right? I mean, it's,
+
+Unknown Speaker  11:34
+yeah. I mean, if you,
+
+Matthias Miller  11:40
+I suppose, if you wanted to, we could add a I mean, we that there is certainly a conceivable world in which we could,
+
+Matthias Miller  11:53
+I don't know, set something up. It's just in my mind, it's not cost effective as inexpensive as storage is on Amazon services, and the fact that we have existing integration with it, to me, that's just the logical way to go.
+
+Speaker 3  12:10
+Okay, so, yeah, my understanding that so the integration piece with if it was on our server, would not be fluid, is that what I'm hearing
+
+Matthias Miller  12:21
+that is, that is what? Yes, that is correct, yep. And
+
+Speaker 3  12:26
+so then you'd have to what add other ways to Yeah.
+
+Matthias Miller  12:32
+I mean, I don't know what we would well, I mean, so one of the, one of the ways you could make it work is you um,
+
+Matthias Miller  12:45
+have a process that runs on their server. We have a flag in silver loom that says, hey, I want to generate a packet, or whatever we want to call it, and it goes out, finds the files on the server, puts it together and emails it out to George or something like that, I don't
+
+Unknown Speaker  13:03
+know, oh, but it's,
+
+Speaker 3  13:08
+but you want, but we need real time access, right? Yeah, and we are, and that wouldn't be the case.
+
+Matthias Miller  13:17
+That wouldn't be the case. I mean, okay, well, here is yes, let me check
+
+Unknown Speaker  13:29
+this is
+
+Matthias Miller  13:32
+and is there a service on
+
+Matthias Miller  13:41
+a mean the other alternative is having custom see if custom computer can.
+
+Matthias Miller  13:57
+I mean, there's, there's also, theoretically that the easiest other step would be, well, I guess what's, what's the end goal that we're after here with using custom computer storage space?
+
+Unknown Speaker  14:10
+Wow.
+
+Speaker 3  14:12
+You mean with the prints? Yeah. Amanda, do you have the questions for the around the Amazon Cloud account.
+
+Speaker 4  14:26
+The question thing, well, wasn't so much that I had I take up something. Did I send it to you? No, but about us just utilizing our
+
+Speaker 3  14:33
+server? Yeah, you talk to custom but did you have questions about the Amazon Cloud account? Not necessarily. So you're okay to set you know how to we're going to do yes, if that's what we do. You don't have any questions. You can set it up okay, because we're talking about through that
+
+Speaker 4  14:52
+right now. I was more or less just confirming with custom about, like, the safety and security, because we're kind of responsible also, like, obviously Amazon carries so. Much for security, but then we're responsible too, so I'm gonna make
+
+Matthias Miller  15:07
+so part of the setup that we'll do is so there's, there's a few levels of security. Number one, any Amazon access does require two, two factor two factor authentication. We'll also set up additional access rules so that the only people able to access the data is, I mean, there's, there's layers of security every step of the way. So which, which means, if you want to get in the weeds on security, so there's, there's, there's secure access from the silver loom systems over to Amazon, to the AWS system. But then there's also, there's, there's actually, without getting too deeply in the weeds, like there's an internal there's an internal system, internal silver loom systems that communicate. So there's a security bridge there, which we just covered. And then, of course, there's username and password on these accounts. So the the the weakest link in security. I mean, I can walk through, walk through all of that, that long and short answer is that
+
+Unknown Speaker  16:21
+we have,
+
+Matthias Miller  16:23
+I mean, that it's it. There's not any kind of inherent security issue with it. This type of storage is used for highly classified information that the any of this stuff basically, again, getting down in the weeds. Any of this stuff basically comes down to security, security configurability, which we'll, we'll, we'll set it up so that the bases are covered,
+
+Speaker 4  16:53
+and you feel that's more confident using the Amazon mesh better with silver Miller, Amazon, who's to justify?
+
+Speaker 3  16:58
+Yeah, because if it's Well, Matt can explain that better, but it's okay. No, no, you're, you're, you're welcome to be in the actually, you should, might as well give a couple minutes to so we can finish this piece of the conversation, and
+
+Unknown Speaker  17:12
+you can try and help mark right now, because he's kind of stuck at
+
+Unknown Speaker  17:14
+wave. Do you need to download it so
+
+Unknown Speaker  17:17
+I make contacts? Otherwise, I do need
+
+Unknown Speaker  17:19
+to go now. Well,
+
+Unknown Speaker  17:21
+I should probably I need to pull back. Sure.
+
+Speaker 2  17:23
+Okay, sorry, it's fine,
+
+Speaker 4  17:26
+no problem. I trust whatever he says, and whatever's going to work, I
+
+Speaker 3  17:30
+think we're going to going to need the account. I think we're going to need the Amazon account, right? Matt, is what we're landing. And so, Matt, do you have any instructions for Amanda? Real simple with that. I
+
+Matthias Miller  17:44
+mean, not more than setting up the account. We'll need billing out there at some point. We don't need billing to get in to get started, but we'll need some some billing attached at some point.
+
+Speaker 4  17:54
+So that would be whether you want to use your card. Yeah,
+
+Unknown Speaker  17:57
+use my credit card. We use my credit card for that. So
+
+Speaker 4  18:01
+that's best for me to go through and choose and just fill all that out for you. Is it easier for or is it easier for you to do it?
+
+Matthias Miller  18:10
+Matt, I would guess you have easier access to the information. But if you, if you need help, let's, I'm happy to set up a time and just walk through it with you.
+
+Speaker 4  18:18
+And you know, we'll just your computer. You're going to get the verification number that I'm going to have to enter in, you know what I mean? So we're going to have Miller and I are
+
+Speaker 2  18:27
+going to have to connect with your computer, you know, to make sure that connects. Okay, okay. All right. Good. Thanks, Matt, Yep, thank you.
+
+Speaker 3  18:35
+All right. Matt, so yeah, the end goal again with the prince. Um, it would, it would just be, well, I love to get to some, a couple templates that would always, that we could always so on designing on this, excuse me. Designing new, new products is, is kind of a crapshoot. Here it is. There's multiple people involved. Nobody owns it. The people that are best at designing aren't designing. So that would be like George or myself, and we're not typically doing it. I just did it. I'm just doing a crate for somebody real quick turnaround situation. But anyway, all to say, palettes. There's a there's software called PDS palette design system. It was designed by Mark White. He was at Virginia Tech University. The college was part of that, and this became popular, of course. Dollars marketing was a thing, and then the national wooden pallet container Association got involved. I'm trying to remember, so they adopted it. Or, well, with I'm not, I can't articulate that, but eventually this PDS was owned, somehow owned by by the end of the PCA, or they were involved in such a way that Dr Mark White got shuffled out of the picture. And I don't know there was some, there was some stuff that happened. It wasn't, I don't think was right, but so now that's anyway we have. We're members of nwpca. They're just big enough that, and the only one of their kind sort of organization. So anyway, I'm not a big participant in what they do, but they are, I mean, they, of course, lobby, etcetera, um, palette, design system. It's designed, we, you can, I actually just use it yesterday, for the first time ever, Tina's away, and I needed help with this. Create on the load. It gives you one thing that is very good for is accommodating load, uh, accommodating loads and distributions of the weight, etc. And so designing it gives you, yeah, all the, all the options of designing a pallet. What it doesn't do is crates. Um, here's a, here's a here's a fun, here's a fun little another vision, visionary bunny trail. But like the nobody has a crate design system. And there was a lady that, I mean, it's Cat, cat. I think cat would obviously probably knock it out of the water. I'm assuming cat is more than you need design crates. But maybe that's exactly what we need design crates. I'm not sure. Maybe we just need CAD period, I don't know. But anyway, that there was a lady here, NWPC, a she's part Association. She was here with our part time salesman who works for another company most of the time. Anyway, he's a he's kind of a popular dude in the association as well. So that gives him some some track with people. But anyway, so he brought her here, and she was asking lots of questions about our crate designing and well, did she ask some questions? She was they were digging around. She was digging around the no PCA was looking into, I know they were looking into a crate design software that they could market. Anyways, I didn't. I was my guards were way high and didn't want to get involved. So anyway, we did. It didn't, didn't go anywhere. But all that to say, Matt, well, that's part of it, because do we want to continue this, like paper trail, everything that comes in, make a hand sketch, or do we one day, the PDS is actually really good with I think, well, in all fairness, I think Tina does good with it. But I'm 100% sure that that that the system, PDS software, has capabilities that we are not extracting at this point. And I
+
+Unknown Speaker  23:43
+don't know what those are. So
+
+Speaker 3  23:47
+our current prints are all over the place, as far as the way they're written out, laid out, you know. And to be fair, we have all this crazy stuff. Is there commonalities? Yes, there are. Do we? I would love to see everything on a as much of a common spreadsheet as possible. And then, you know, do we need a couple different spreadsheets? Yeah, probably. So that's what I would love to well, you, what do you think? What are your thoughts? I mean, I'm just, I just want to allow your perspective. Matt, does that make sense?
+
+Matthias Miller  24:34
+Like it does make sense
+
+Unknown Speaker  24:38
+when you're
+
+Unknown Speaker  24:40
+good. No, go ahead. Sorry.
+
+Speaker 3  24:45
+No, you go well when you're here, I can quickly show you, you know, this drawer full of paid papers and all the different you know. I mean, some of these were designed 30 years ago.
+
+Unknown Speaker  25:00
+So maybe more so if we scan everything into a whatever into the file,
+
+Speaker 3  25:12
+I think a big question is, do we want? Is it important at some, some point, to extraculate all the information off of these dated old prints and and and move that data onto other spreadsheets? If that's true, does that all need to be done manually, or can some of that be done digitally with like a Google lens or something like that, right?
+
+Matthias Miller  25:59
+Well, I mean, so my question is going to be okay, if
+
+Matthias Miller  26:09
+you want to take an extremely pragmatic view on this,
+
+Unknown Speaker  26:15
+what's pragmatic? Mean, no
+
+Matthias Miller  26:16
+practical useful
+
+Unknown Speaker  26:19
+is sorry,
+
+Matthias Miller  26:22
+is like, what, what is, what is the end of the day benefit? So there's an obvious one, if everything's in the same format, it lends efficiency out to the to the shop, exactly. And is there any other benefit besides that? Yeah.
+
+Unknown Speaker  26:43
+I mean,
+
+Speaker 3  26:46
+isn't there? The same benefit also comes back on the design side, doesn't it? Like the simple, yeah, repeatability in design process,
+
+Matthias Miller  26:56
+yeah, that's fair. We can take, I'm assuming, with PDS, the customer a wants something, has something. Customer B comes along and says, Hey, we want such and such. And you can say, Oh, yeah. I mean, you don't tell them this, but yeah, we got this thing over here. Like, let's go take it and rearrange it. And boom, it's done. I would agree with that. And then I think, Okay, so that's, that is the benefit. And then, and then, this is just
+
+Speaker 3  27:27
+Matt, sorry, yes, we could, then we could, then, like, aim towards repeating similar designs as much as possible, right?
+
+Matthias Miller  27:43
+Yeah, you could then, okay, now here we go. Here's the real thing. Here's where it really starts getting interesting. Can you, can you use this for well, can we feed this information into silver loom? In some capacity, is there an export of the PDF or PDS raw data in some capacity, where you can feed it into server loom in some capacity and take this and instantly create a quote, yeah, so, and then at that point, yes, it becomes a sales tool. So once, once the market picks up and you're ready to push to have a, have a hunter or a closer in your sales department. You turn him over. You have a you have a design side. You have an inside sales role for designing pallets, designing and quoting. He goes out and he says, he just knocks on doors and says, Hey, look, you got, you got, what you, what are you happy with? What you, what you got. Here's what we have to offer. We're happy to put together designs and quotes on, on what you, what you got. And it's all the promises of, this is the grand vision, but it's all the promises of, hey, look, we have a we have our operation runs like a well oiled machine, and people will be able to experience that working with him, hopefully. And here's how the process works. And let's see what we can do. And it's, it's, you know, on time, delivery every time, and or whatever the promise ultimately ends ends up needing to be. So that's the that's really, I think that's kind of the tipping point where it starts getting really, really interesting.
+
+Speaker 3  29:29
+Yeah, we get into this, templates, spreadsheets, if our prints could be transferred to, to set to like a series of templates or spreadsheets.
+
+Unknown Speaker  29:44
+Yeah, right.
+
+Speaker 3  29:45
+But again, how does that information transfer from Old, old paper, old page, old old layouts, old what? Ever. How do we transfer that from old to newer? Does that need to be one by one? If so, it's if so then, so be it. Oh, sorry,
+
+Matthias Miller  30:10
+there's one other thing I wanted to throw in there. It's also, it also informs your assembly process. And so you could, you could this. This is getting pretty advanced. It doesn't have to be this advanced immediately, but, but you could, you could start doing similarity scoring, yeah, and, and there's other ways to do this that wouldn't maybe that's too sophisticated, but, I would guess in the entry process you're doing okay. So the downside is that getting everything converted over is going to be an extended project. What would be nice is if whoever's going to be doing the design long term, could be part of that process and become a master of, master of that,
+
+Speaker 3  31:13
+right? Yeah, I'm not sure who that, not sure if that person is here,
+
+Unknown Speaker  31:19
+understood. Um,
+
+Speaker 3  31:21
+so first base, trying to get on base here, should we Amazon Cloud account and digitally scan the pages into that and then give you the ability to well a if the place burns down or the office burns down, we still have our data. That's a correct, yep, that's like, and B. Then we have, I'm assuming, what gives you the ability to move to attach those prints to the sage orders and generate at least our guys, instead of going to the drawer and fishing out all these brown papers, they used to be white, but anyway, they hit print rather than do All that. Yeah, and then we update the pages.
+
+Unknown Speaker  32:23
+I think when we update, I think we actually, yeah, we mean, we need to move those into, yeah. We can talk about that some more.
+
+Speaker 1  32:34
+Move it into PDS, yeah. I mean,
+
+Matthias Miller  32:40
+now here's the here's the thing, here's the opportunity in the industry. The Shed space, this, this in the shed space, 3d design is like the Holy Grail. Yeah. Can you imagine a functionality in which you could, your sales guy could sit down with somebody and be like, Hey, let's just throw this thing together for you. And obviously you need a sign off process somewhere in your office before it actually hits production. But hey, let's throw it, throw it together, and let's, let's go get a quote and and with a 3d model, and you can spin it around. You can, I don't know. It's a little might be, it might be overkill. I don't know if there's, but it's interesting.
+
+Speaker 3  33:32
+It is a fascinating thing, because I think that there's, I think there's a there's an opportunity there that for whatever reason, nobody's ever really, I'm not aware of anybody that's been ever very aggressive with create design. I don't know how people are doing it. I'm not sure. I guess probably CAD. You know, it would make sense. Some of our customers have have actually submitted drawings. They've made their own drawing, and then they'll send it to us, and we've built it. That's what's happened here
+
+Speaker 1  34:04
+in the past. Yeah, amazing, but yeah, that's amazing. Yeah, hey, it's crazy. Um,
+
+Speaker 3  34:15
+when we're if we, if we fine tune all of that, then eventually I like to build hardwood houses, because we are not utilizing our hardwoods. Pennsylvania is the number one hardwood producer in the country, and affordable housing is like a whatever that is. I don't know what affordable housing is. I mean, I don't call I don't consider rental spaces, apartments, places that you where you not don't gain any equity. I don't consider that affordable housing, right? I think that's an option. I think affordable housing the shop is calling
+
+Unknown Speaker  34:57
+me Harry. I.
+
+Unknown Speaker  35:00
+Hello, it's Merv. I'm in the conference room,
+
+Unknown Speaker  35:07
+probably later today. Yes, no, no, no, I don't need four by fours, though, George,
+
+Speaker 3  35:22
+I just need one piece. Yeah, I can pick that up later. Yep, yep, thank you, sir. Hey, George. I'm with Matt. If you have any questions, pop
+
+Unknown Speaker  35:32
+over. All right, see
+
+Speaker 3  35:36
+ya sorry. Matthias, Anyway, where was it going with that? I think, I think what I think people need to be able to build and own their own house. And yeah, the building industry, the pricing is going ridiculous. I'm just hearing rumblings. Just just heard couple people looking at winter and saying, Boy, I don't know where the work's going to come from. And I personally don't care if there's a correction, because the the pricing is stupid in my in my opinion, it's gone nuts anyway, I think, in a world where anyway of customization and all that, which is great, but, man, come up with a nice like, maybe, maybe, like, four foot increment type of layout. Do you ever hang on four foot increments and just have very, very common I mean, you can make something really nice with some exposed hardwood. And then just whatever fill in the fill in the gaps with drywall or whatever you do, yeah, put hardwood on the put hardwood on the floor. Put hardwood for your frame, and keep it on the very make it very economical, and just do an economical lap, because now there's this new thing called the barn dominions.
+
+Matthias Miller  37:07
+Yep, those things are going crazy. They're
+
+Speaker 3  37:09
+going crazy, but their states are now starting to clamp down on that too, because people are using that, I guess, where there's zoning issues with housing, they're you're putting up a barn to minim instead, and then using as a rental space. So now townships, etc, start. I heard they're starting to change their laws around that now as well. I don't, I have no idea. I think they're ugly. I don't think there's very appealing at all. I mean, I like a nice barn and I like a nice house, but
+
+Unknown Speaker  37:42
+whatever that is, I
+
+Matthias Miller  37:44
+think the, I mean, the price, the pricing is kind of what gets it's a little bit of a unique style, and some people are going to go for that, but it also is, go ahead.
+
+Speaker 3  37:54
+No, I don't know what the pricing is. I'm just assuming it's too high.
+
+Unknown Speaker  38:00
+Yeah, maybe I don't know. I
+
+Speaker 3  38:02
+don't know. I mean, I heard a guy, I just met a guy last week that's doing them, and he said, he was saying, how, you know, yeah, people, people can still get a lot of money wrapped up in those things. That's fair. I'm thinking, then, okay, so you offer all the all the goodies and all the options and all the goulash, right? Yeah, you're gonna run up, uh, you're gonna get into hundreds of 1000s of dollars, yeah, quickly and double that. So, yep,
+
+Unknown Speaker  38:31
+I don't That's right, sorry.
+
+Speaker 3  38:33
+So back, back again, here, um, are we? Yeah, I think, I think the design stuff is something that we can talk about a lot more when you when you get here, are you a decent ticket? The ticket price?
+
+Matthias Miller  38:51
+I need to take a look at wits. I haven't really started taking a look at what pricing is going
+
+Speaker 3  38:58
+to be. Wasn't real friendly. But
+
+Unknown Speaker  39:01
+no,
+
+Speaker 3  39:05
+there's a Baltimore, if you fly into Baltimore, Southwest is there's a lot of flights in Baltimore. Who do I look at? I was looking at this yesterday. Yeah, they were kind of Saudi Colorado Springs does non stop to Baltimore.
+
+Matthias Miller  39:29
+The the flight times aren't, I mean, it's, it's like I was hoping to get a little, well, I would love an earlier, earlier start from springs and later returned with with Baltimore, you don't get yeah with with that one, you don't I
+
+Speaker 3  39:50
+mean, you're going to have a lot more options from Denver, but yeah, yeah. Anyway, who might
+
+Unknown Speaker  39:57
+speaking to Yeah? Anyway, you know that? Yeah, well, that's fair.
+
+Speaker 3  40:04
+But okay, so on the prints, Amanda will will pursue that account. Then Matt and I'll let that server conversation. We'll put that to rest. I think, right, there's, I don't think there's here's
+
+Matthias Miller  40:22
+here's one thing that could be good to do, and I don't think it. I mean, it might take an hour of my time, but to to set up, set up a sink, and copy all of the prints. Also copy everything from, from Amazon, from it's s3 as their service, but copy everything from s3 onto your on your custom server, and that would give you that would then give you redundancy, a redundant backup. Yeah, so I'd be, I'd be in favor of that. Okay,
+
+Unknown Speaker  41:03
+so start with scanning all
+
+Unknown Speaker  41:07
+prints
+
+Unknown Speaker  41:11
+into or the what Amazon Cloud,
+
+Matthias Miller  41:14
+s f3 is the way we typically refer to it. It's, it's their specific storage service.
+
+Unknown Speaker  41:19
+S3
+
+Unknown Speaker  41:22
+I file.
+
+Unknown Speaker  41:29
+Then we back up
+
+Unknown Speaker  41:37
+those
+
+Matthias Miller  41:42
+into the will set up a daily something like a daily backup or something that just runs every day. Does it automatically?
+
+Unknown Speaker  41:52
+Okay, yeah, that's good.
+
+Unknown Speaker  42:02
+What's that the other thing, oh, no, go
+
+Speaker 3  42:05
+ahead. I was, I'm just, I thought you were saying something. Well,
+
+Matthias Miller  42:10
+the one thing I we don't have to talk about this now I don't know where you where you're really hoping to go. The invoice quantities are, are live? Yeah, I have. I've not updated the assembly overview like we discussed. That's not done yet. I would love to get a bit of a picture for what is a, what is a absolute knock it out of the park when I'm there. And what is a look this is, this is a reasonable saying, man, we're really happy with it. And if we can get some getting some clarity around that would be helpful?
+
+Speaker 3  43:02
+Well, yeah, I'm not sure exactly, because I think there's a couple things here that we should discuss. I don't know how much is required, so if I can jump on the what I was texting you about Wednesday,
+
+Unknown Speaker  43:21
+yep, first
+
+Speaker 3  43:25
+was, is sage now getting some info from silver loom.
+
+Unknown Speaker  43:32
+No, nothing. So that,
+
+Speaker 3  43:36
+So Rick, well, anyway, Rick has his own pricing module. And he has, he has,
+
+Unknown Speaker  43:46
+sort of looking for
+
+Speaker 3  43:52
+data, data that pertains to the items. Anyway. He has, what's that word? Anyway? Anyway, he has information pertaining to items, so like board of footage, for example, in an Excel file which is accurate. And then on, he has some other spreadsheets. He has there's in sage, he can look at item data. Some of the item data in sage includes board footage that was matching the board footage that silver loom is showing us, and it was different from his Excel one. So I thought, How in the world is it matching the silver limb data? Either Rick entered it, it got and he said, George gave him some, some of that information from, from some of the prints. And so then he just Rick entered it into there. But. Didn't think it was a lot of items. So I thought, is sage somehow back, pulling information back across from silver loom. But if, if you're saying 100% no, then that answers my question. Nope.
+
+Matthias Miller  45:19
+There's nothing. Not I mean, and, yeah, he doesn't, doesn't know enough to pull the export himself.
+
+Speaker 3  45:30
+So yeah, Sage is not pulling info from Sora. Okay, so then that answers my question. I now you know pin number two was random calculations in a cut list generator, random, as in the random width material, which sometimes we'll just say, hey, that's rant made out of random, whatever that's for example. Would you see my screen here? Yep, okay, so
+
+Unknown Speaker  46:16
+this is a crate. The base is the base is 65 and three quarter by 123
+
+Speaker 3  46:35
+I don't know what the 63 and so sometimes some material, some parts of the design. Some material is shorter than the measurement. Some is longer based on how we're tying the corners together, etc. Inside dimensions sometimes makes everything get bigger. Anyway, on the random it's like this first line item, one by random width by 63 and 7/8 so the length is 63 and 7/8 random width pieces, the coverage we need is 123
+
+Unknown Speaker  47:19
+inches. Yep,
+
+Speaker 3  47:21
+we a layer. Okay, so in the Saw Shop, we typically don't tell the guys, like, I'm not going to multiply the quantity in the order times the 120 if they order 10, I'm not going to go tell the guys this all shop. We need 1230 feet of random. I'm going to tell them how many layers based on a layer estimated 40 inches of lumber. So what we should have here is, if this, if one item takes 123 inches of material, and that gets sent to the Saw Shop, it would be nice if that would be generated as saying, and I'd say we go point one, point 2.3, all the way up to 10 again, like we allow one decimal point. So this, for example, would be 3.1 layers, because 120 would be three, and the three inches would be point one rounded up to four, four inches or whatever. Anyway, it'd be 1/10 of a layer. Can we build that into this generator?
+
+Speaker 3  49:06
+And number three. That number three there, that quantity of three is not right. I'm not sure who put that there. It needs to say one. And then this would be the coverage that we need is 123
+
+Matthias Miller  49:22
+okay, so would you okay just to make it in really simple kindergarten terms.
+
+Unknown Speaker  49:29
+You're, I was trying to do that.
+
+Matthias Miller  49:32
+Sorry. You're, you're doing it to a guy who didn't grow up in a palette shop. I know it's all good. Our worlds are meeting. So I mean, basically, you're just multiplying the width instead of multiplying the quantity.
+
+Unknown Speaker  49:46
+No, yay, yes.
+
+Speaker 3  49:49
+Sorry, multiplying. Mean, like, if you have
+
+Matthias Miller  49:53
+10 of 10 items, how do you or do you want to do you want to present it in layers?
+
+Speaker 3  49:59
+Do? Yeah, I do. I want to present it in layers in the sole shop. It's easy for them, you know, hey, they know layers about 40 inches. So they can, they can make the pallets that they stack it on is 42 so all they have to do is start at one side, start the other, fill in the middle, then they keep stacking at random. And then once they get 1010, layers on that the job's done. It's an easy way for them to calculate on the floor is going by layer. So I would love for this to be like every every dimension in
+
+Unknown Speaker  50:33
+when it's random width, we in the system, we enter the
+
+Speaker 3  50:42
+random coverage that is needed, which, in this case, it's 123 inches and every and if it's 10 items, then it's 1230 inches total, of course, but then it's divided by 40, or Yeah, Whether you divide 1230 or whether you divide the 123 123 I'd say you divide 123 you need four point you need 3.1 layers at the 40 inch value. So when we send this to the Saw Shop, if it's one item, their cut list is going to say 3.1
+
+Unknown Speaker  51:23
+layers.
+
+Matthias Miller  51:26
+So, I mean, what would make sense to say is 3.1 layers of. Then the demand, I mean, is that what you're looking for 3.1 layers of, and then show the dimensions
+
+Speaker 3  51:35
+3.1 layers. You don't have to say, Oh, we've never used that word, but it's 3.3 point one layers, 3.1 layers. And it would be one inch by RW in capital letters, random width by 63, dash, seven, eight inches, that's what. And then the raw material is, well, that's another conversation that's we've already hashed through that Anyway,
+
+Matthias Miller  52:06
+okay, so let's go over to the cut list and just make, okay? And then if you order, if you order 10 of them, then you would have 31 layers, right?
+
+Speaker 1  52:21
+Yeah, correct.
+
+Matthias Miller  52:24
+Okay, so then let's go over to the can we. Can we find a
+
+Speaker 3  52:32
+Can I not edit it? Yeah, okay, here, let me edit this. Matt, I want to correct
+
+Unknown Speaker  52:36
+fix that 3.1
+
+Unknown Speaker  52:40
+Yeah.
+
+Speaker 3  52:43
+Well, no, this just needs to be one which is one, yeah, one times the 123, okay.
+
+Matthias Miller  52:51
+So how do you do the Hang on, okay. But again, sorry for my how do you how do you calculate the width of a layer.
+
+Speaker 3  53:04
+Again, it's when you say, calculate you mean. Do you mean descended to the cut list. Divide it
+
+Matthias Miller  53:18
+by 40. So layer is always 40 layers, 40. Okay, that works.
+
+Speaker 3  53:25
+And then divide by 40, then round up to the next 10th.
+
+Matthias Miller  53:31
+All right, man, it's early in Colorado, but that makes sense.
+
+Unknown Speaker  53:36
+Yeah, divide
+
+Matthias Miller  53:41
+round up to nearest 10th, and then on the cut list. Then, yeah, okay, so then on the random that's, that's so Okay, now let's go to so then can we, can we just pop open any old cut list?
+
+Speaker 3  54:01
+Yeah, I don't know if this because I don't think we have any of these in the in the system right now.
+
+Matthias Miller  54:10
+Well, that's that's fine. Just pull up a just pull up the sewing, sewing schedule. Click the PDF, the sewing schedule into top right
+
+Unknown Speaker  54:23
+that guy, yep.
+
+Matthias Miller  54:26
+Okay, so here where you would say in pieces, it would say three, and then the second column, it would say layer of and then the random width.
+
+Speaker 3  54:39
+So, yeah, yeah, yeah, yeah, pieces would be three Well, 3.1
+
+Matthias Miller  54:48
+or 3.1 Yep. Well, then the right hand side is just the layer, because it's grouped by the random width, right? So.
+
+Unknown Speaker  55:01
+I say that again, sorry,
+
+Matthias Miller  55:03
+like we have the the the label, all we have to do is just say three and then layers, three layers. Yeah, right, yep.
+
+Speaker 3  55:15
+Like this here, one by random width, by oak, right here under pendu splitter, that should say 40 layers, one by random width, by 48 it shouldn't say it could say 40, I guess. Okay,
+
+Matthias Miller  55:31
+so do you want to? Do you want to use the all? Right? You want to use all we're doing really, okay? Is there something else we can do. We don't have enough room for layers in here. So we can make a fat row, put it on the next line. We could do a 40 L or a. Let's, let's ask which. What are the abbreviations? Yeah. I mean l layers.
+
+Speaker 3  55:56
+Well, we use pieces, PCs for pieces, for layers, it would be, I guess, l y s, do we have room for that?
+
+Matthias Miller  56:05
+L, L Y R, L Y r, yeah, 40 l y r, and then one by R, w by 48
+
+Unknown Speaker  56:15
+Yeah. I
+
+Matthias Miller  56:24
+I mean beam stain to me.
+
+Speaker 3  56:28
+Matt this, this is me splitting hairs. But man, these, these saws I love to see like slaughter, saw, cantex, all quick chop. I love to see those in bold and one size font, one size bigger than the other text
+
+Matthias Miller  56:44
+here. Let's go. Let's play around with it so we can see.
+
+Speaker 3  56:49
+And George doesn't care, but I, I just, yeah,
+
+Matthias Miller  56:56
+I've had very interesting conversations about delegation when you actually care about details about this, and I've there anyway, that's a rabbit hole. Steve Jobs was very over the top with stuff like that. Somehow, he didn't have trouble delegating, but he got in the weeds. Anyway, I that's neither here nor there. Settings.
+
+Speaker 3  57:27
+I don't know if that's good or bad. Am I getting a good compare? Steve Jobs?
+
+Matthias Miller  57:41
+I'll tell you I'm. Going to share my screen, alright, I'm going to tell you what my, my, probably my, my, my spiritual director would tell me, probably it depends on the context, and it's probably not all good and probably not all
+
+Speaker 3  57:57
+bad. Well, I mean, we did go red and yellow on the on the assembly tracker. So you know exactly we, we, I mean, I'm we're trying here. I'm trying.
+
+Matthias Miller  58:11
+We are pillar subtype. This would be this guy, the label font we could make it up to. Let's try, like, next. With 18,
+
+Unknown Speaker  58:25
+418, or 2020,
+
+Unknown Speaker  58:29
+okay, let's try. I like 20.
+
+Speaker 3  58:34
+Oh, let's go. And all caps is that?
+
+Matthias Miller  58:37
+Oh, dude, we can do all caps, all day, every day, every day of the week, until we just can't. There's got to be we could.
+
+Matthias Miller  58:56
+We could even do Okay, look here, this is, this is the, this is the crazy you you probably, you probably got the wrong version of me this morning here. Come on, this guy.
+
+Unknown Speaker  59:09
+Is there a wrong version?
+
+Unknown Speaker  59:12
+Check this out. I'll throw
+
+Speaker 3  59:14
+that back at you. Bad about a boom. That's nice. That's really nice. Take the underline out. Yeah.
+
+Unknown Speaker  59:26
+Yeah, that's great. Look at that.
+
+Speaker 3  59:28
+Minimal underlining. Minimal underlining. You want the underlying, no, I know minimum
+
+Matthias Miller  59:36
+exactly I get it, yeah, I mean, that's just, that's man, that's clean. That just makes me want to go cut stuff exactly.
+
+Speaker 3  59:45
+It's a palette shot, man. We gotta make it live as possible. We gotta bring as much clarity and boldness and life and like exactly. We gotta bring boom to the end of the picture every chance we get the up
+
+Matthias Miller  59:58
+top next. You're going to be asking for is, oh, go ahead.
+
+Speaker 3  1:00:02
+Well, oh, boy, is this what you're saying. No, up top there pieces size, miscellaneous prep. Do you feel like that correlates enough like from top to bottom? I yeah, I
+
+Matthias Miller  1:00:13
+guess we don't have a ton of control, unfortunately, around that
+
+Speaker 3  1:00:17
+well, and that's fine. I'm Yeah, I think,
+
+Matthias Miller  1:00:22
+well, this is, I would argue, there's also a little bit Go
+
+Speaker 3  1:00:26
+ahead. Oh, that's the top of the next page. Okay, yeah, well, that's good. That's perfectly fine.
+
+Matthias Miller  1:00:34
+The next thing you're going to ask for is, can we put? Can we put? Can we fill the system with, with like, 100 great motivational quotes, and every day put something new in the top right.
+
+Speaker 3  1:00:50
+So, so Matt up top, those words say pieces. And the thing with the layers, are we gonna do? Say pieces, layers up there? Or
+
+Speaker 1  1:01:03
+quantity, yeah, or no.
+
+Speaker 3  1:01:07
+That's, I think quantity would be. I mean, if we're gonna keep it to one word,
+
+Matthias Miller  1:01:15
+I mean, I don't mind, we could do piece of slush. Well, let's, let's just try it. Let's see what happens. I'm fine in her beginner. Okay, so that's too long, l, y, r, I said that's what I saw online at least.
+
+Unknown Speaker  1:01:38
+Q, t, y, I'm
+
+Matthias Miller  1:01:41
+going to try throwing layers on these. We might have to rearrange them anyway.
+
+Unknown Speaker  1:01:49
+Use doesn't have to be a string, or that doesn't have to be a number. I'm that.
+
+Unknown Speaker  1:02:13
+What are you? I
+
+Unknown Speaker  1:02:21
+don't know what your issue is.
+
+Unknown Speaker  1:02:29
+What did I do? Oh, there it is.
+
+Matthias Miller  1:02:38
+Yeah, let's see that's two. It ends up being too. Oh, that's because we use the
+
+Unknown Speaker  1:02:45
+this. Oh,
+
+Matthias Miller  1:02:52
+yeah, we're gonna have to,
+
+Speaker 3  1:02:55
+so yeah, well, okay, here, let's talk about the pieces. Um, it's been the it's been the word. It's been everybody thinking around that, if it's a, if we're telling them we need one by 40 by 48 and we say, I need 40 pieces. I mean, it kind of says the same thing.
+
+Unknown Speaker  1:03:21
+You know?
+
+Matthias Miller  1:03:23
+Well, why would we do this? Leave this like it was, yeah, and over here on the size, just do
+
+Matthias Miller  1:03:40
+like, I mean, obviously that's not right, but yeah, that's good.
+
+Speaker 3  1:03:46
+No, that works. If it's random, then yes, if
+
+Speaker 1  1:03:49
+it's random, we'll do it like that. Sure that's good. Layer can you
+
+Unknown Speaker  1:03:55
+do? Can you add an s in there? Is that two? Is that two? Yeah?
+
+Speaker 3  1:04:07
+Layers of Yeah, that's great. Now look at that, yeah, that's great. Now let's dive back down, Matt. What about the date there? Is that? That's good, I guess
+
+Matthias Miller  1:04:18
+date, the sewing schedule. I'm trying to, I'm just trying to, I was trying to remember where that came from schedule. I mean, we could make that. I mean, that should not be smaller. That's, I mean, that should at least be as big as the other stuff
+
+Unknown Speaker  1:04:31
+like that, right, right. I agree.
+
+Unknown Speaker  1:04:39
+All right, yeah, I think that's
+
+Unknown Speaker  1:04:45
+Yep. You like
+
+Speaker 3  1:04:47
+it. Why is that layers of showing up in single head bands? It's
+
+Matthias Miller  1:04:51
+just because I'm throwing in layers of everywhere.
+
+Unknown Speaker  1:04:55
+Sorry, it's all good, yep.
+
+Speaker 3  1:04:59
+No. I want to look at this a little farther here on the I mean, it goes back to the conversation around around multipliers. Is that been, has that been cleaned up?
+
+Matthias Miller  1:05:20
+Cross your fingers, I think so I'm a little nervous about it, but okay, that it's not completely nailed down.
+
+Speaker 3  1:05:27
+But so then let's dive into this. If I go back to if we go back to my screen, you're
+
+Matthias Miller  1:05:38
+gonna have to share again.
+
+Speaker 3  1:05:40
+That's fine. So topan one, that's it's on the page there. So
+
+Unknown Speaker  1:05:47
+what am I doing? Okay?
+
+Unknown Speaker  1:05:59
+So,
+
+Unknown Speaker  1:06:03
+if I refresh, this will that,
+
+Matthias Miller  1:06:05
+no, I didn't take it. I was, I was playing around with the copy. It's, I need to put a little more.
+
+Speaker 3  1:06:11
+Yep, yep. Okay, so I'm gonna get back to the item, topam one, so I get this stuff. Adam, do you see this here?
+
+Matthias Miller  1:06:23
+Yep, or the, oh, no, I can't see your zoom stuff.
+
+Unknown Speaker  1:06:28
+Well, my top, my my
+
+Matthias Miller  1:06:31
+or your tabs
+
+Unknown Speaker  1:06:33
+Information Bar, where we at here?
+
+Speaker 3  1:06:40
+That's another one I want to look at, shoot, miss, go home before we all that. Okay, items
+
+Unknown Speaker  1:06:52
+still don't report. Sorry.
+
+Unknown Speaker  1:06:59
+Two pound one,
+
+Speaker 3  1:07:07
+okay, let's I want to see how this is now. Spell it out. This palette is a 48 by 48
+
+Unknown Speaker  1:07:17
+random.
+
+Unknown Speaker  1:07:22
+A random width top.
+
+Speaker 3  1:07:34
+So it's either there's some spacing in the random allow, like, like, another thing we'll do is, you know, we'll say, oh, we'll say one inch spacing on the random so then, you know, takes a little less material. And so then that'll be on the print, and then that'll be kind of, we'll kind of use that in so for example, if this palette allows for one in spacing, I could see why it says one by 40 by 48 but I'm not sure at this point, because I saw entries done different ways, like where, you know, where there was a quantity and it was more like a layer, or where it was. I think we George was just manually trying to accommodate the cut list in whatever way. I don't know, in some way, shape or form, I'm not seeing everything wasn't done the same way, across the board. So
+
+Unknown Speaker  1:08:41
+wait, I can go down here, right here. What am I saying?
+
+Speaker 3  1:08:48
+I do need to get that answer to that question. Sorry, Matt,
+
+Speaker 3  1:09:08
+Hey, George topean, though the toe pan one, it's on the cut list one by it's a 48 by 48 pallet. Does that have one inch spacing in the random? Because you have in the in, in the cut list generator on the item data on silver limb, it's, it's showing that needing 40 by 48 inches of random 40, well, if you go into item data, it's saying 140 by 48
+
+Speaker 3  1:09:53
+Well, it's not, it's not saying that right now. And item data, it's. So Matt's going to build, we're going to build in a 40 inch calculation for the cut list. George, so all these items will then need to say, we need to write in the amount of random that we need in that dimensions box. So like, if it's a that cost, like a manufacturing one creates, like a 123 well, we need to enter the dimensions 123 and then the quantity is one,
+
+Unknown Speaker  1:10:36
+and then
+
+Speaker 3  1:10:41
+60, whatever. And, yeah, yeah. So this toe pan, I'm going to change this to say one by 48 by 48 if I can here,
+
+Unknown Speaker  1:10:56
+here, um,
+
+Speaker 3  1:11:08
+you always put one there if it's random and right, is that fair? Matt, I think yeah, quantity of quantity is going to be one always, if it's random, and then we'll enter the size. So I'm going to change that. There we go, average, right? And then, and then the we're going to use 40 inches George as a layer. Everybody knows that already. And then when it gets sent to the cut list, the calculation is always going to be divided by 40. And then, like, for 48 it's going to say 1.2 we're always going to round up. So if it's 49 then it's always going to go one, it's going to say 1.3 is that? All right, Matt, can we round up? Like, yeah, oh, yeah, perfect. Always around higher with the random. Yep, makes sense. George is the have you seen anything on the multipliers?
+
+Unknown Speaker  1:12:09
+George, okay, yeah.
+
+Unknown Speaker  1:12:24
+Right, okay, okay, sounds good. Thank you.
+
+Speaker 3  1:12:27
+Yep, Matt, so John's been off. John T has been off. George hasn't had time to play on or look at that, but I want to look at this guy now. So one by 48 by 48 thickness, one width, 48 length, 48 raw material info is one inch by random width by oak. That's perfect. Enable multiplier. No, we're not splitting this. We're planning the one inch to one inch, if, when we buy it, it's supposed to be at least one inch in thickness. And then we can plane that down, or we can plan it and rip it in half, whatever we want to do. So plane it one inch. Sole number one is l and m. L and m is the sole that cuts it to length. There's no splitting there. And then saw number two, pendu splitter, again, not splitting because we're only playing to one inch. Just saw one miscellaneous prep, clean one inch is not accurate that
+
+Unknown Speaker  1:13:43
+definitely doesn't need to be plain. One inch. That was because the
+
+Matthias Miller  1:13:50
+Miscellaneous, because we split, we just copied the miscellaneous prep. That's right.
+
+Speaker 3  1:13:55
+So take that out. Salt to pendu splitter plane. One inch. That splitter is that pendu. It rips it. Then the monster, why it says we have the ability to play. It has a planar head. It has a ripping it has. We can put blades in there to rip it to different widths. So we can plane the top down. We can rip it to different widths, and then we can also split it in half on what we call the monster saw, which is a big band, so it's all in one sequence. So we can plane, we can rip and we can split on one pass through. So I can take a one inch by eight inch I can plane it down to the exact size so it's ready for splitting. Then I can rip it to two four inch pieces. And then at the end of the day, I can take those fours that are one by four and make them each half by four, so I can end up with a. Four, half by fours. If I want to out of a one by anyway, that's what that's all is. So it has the ability. Just because we're doing it on there doesn't mean, doesn't say exactly what we're doing with it, or whatever. It's not a, yeah, it's not a one trick pony. But here we're, yep, playing it one inch. I mean, this is pretty cut and dry, so if I save let's see what happens there on that. I go back to the would that change it here? Matt, yeah, it changed it good. This was saying 40 so l and m. Now that's accurate. The raw materials ran with bug. We're looking for 40 layer. Sorry, go ahead
+
+Matthias Miller  1:16:01
+when you're when you're putting when you're when you're spacing them. George will just reduce the coverage, right?
+
+Matthias Miller  1:16:16
+What? Or was there? Was there a did you mention something about sometimes they're being one inch,
+
+Speaker 3  1:16:25
+oh yeah, yeah. If they're spacing Correct, yeah. If they're spacing, instead of putting in the 48 you know, he's gonna just put in the, I'm just gonna call four. I need 40 inches of random. Or, you know, whatever that number is, if some of it's more. So he might say, hey, 24 inches of random. I love I love it now, because we can, we can do that with one simple, yeah, simple entry. And that would that, oh, you know that that that gets us the material that we we need, um, so that that's entered in the dimension section, which is perfect. This 40 now back there, because
+
+Unknown Speaker  1:17:12
+I felt,
+
+Unknown Speaker  1:17:16
+I feel like
+
+Unknown Speaker  1:17:22
+that, right.
+
+Unknown Speaker  1:17:29
+Seems all fair.
+
+Unknown Speaker  1:17:33
+Oh, it's nine o'clock, Matt, hold it. Do you need to go?
+
+Matthias Miller  1:17:37
+I don't have anywhere I need to be. Yeah,
+
+Speaker 3  1:17:40
+okay, sorry, um, they're good one by 48 by 48 that should now, what's Well, I don't know what that order quantity is, but again, it should. Now wait. You didn't make those changes yet. What am I saying?
+
+Unknown Speaker  1:18:04
+Right? Right? Nope.
+
+Speaker 3  1:18:07
+What's what's interesting is this did not say 1.2 here, so I didn't change this, but I did fix so this is now, right? Okay, yep. I'm not, I'm not compromising this order. Whatever he was doing is, I guess is what I'm saying. But if I go back to sewing cut lists here now, yep, so l and m, again, this, if it's 1.2 and they ordered 40, this should now be a different number. We both agree on that. But again,
+
+Matthias Miller  1:18:39
+right? It should be a 1.2 Yeah.
+
+Speaker 3  1:18:43
+Or well, well, or 40 times 1.2
+
+Unknown Speaker  1:18:47
+whatever that 40 times 1.2 right? 48
+
+Speaker 3  1:18:50
+it'd be 4048 Yep, yeah, that's what that should say. Lumbar. Hold on here. So that's
+
+Matthias Miller  1:19:01
+saying, well, the quantity, if the quantity is always one, it's just, that's just straight up, then multiply the quantity. But no, well, no, it's quantity temperatures. Anyway. Never mind. Well again,
+
+Speaker 3  1:19:12
+the point, my point here, is, then this here should not say if this changes to 48 then this should say 40 here, like, if the reason this one by 48 by 48 is here is because it's taking it out of the material data,
+
+Unknown Speaker  1:19:30
+but we're doing that
+
+Matthias Miller  1:19:36
+well it's gonna say, it's gonna say a layer of one by one by Yeah, right. Or, I mean, it's a one by random width by 48 right? Exactly, you're right.
+
+Speaker 3  1:19:50
+Layer up one by RW by 48 Yeah, yep. Then, then, then you, then the 40 texts should not enter the. This box,
+
+Unknown Speaker  1:20:01
+right? Yes, agreed. Yeah, agreed.
+
+Speaker 3  1:20:09
+So we're on the same page with that. And then when you go down to the splitter here, where it's planning it, it'll be the same thing, because we're just taking the material, and we're just planning it to an even. Anyway, it's going to say 48 layers of one by RW by 48 Same thing here. Yep. It'll be interesting to see how that multiplies working. Because here, this is actually this Conestoga is actually a big one that's being split. Do we have time to look at that?
+
+Unknown Speaker  1:20:48
+Yeah. CW,
+
+Unknown Speaker  1:20:49
+okay. CW, 03,
+
+Matthias Miller  1:21:02
+hey, I'm I need to talk to, sorry. I'm a little distracted by, yeah, looking at flights. I need to talk to bonita. I might need to fly in late Sunday night, yeah, so that we actually have any time together and then leave around noon on Wednesday.
+
+Unknown Speaker  1:21:22
+Yep, yep, that makes sense. Thing.
+
+Matthias Miller  1:21:24
+I'm going to see if there's another kind of crazy idea while we're spur of the moment. But I don't even know how far he is from you guys, but I might see about syncing up with Bruce langeman When I'm in the area.
+
+Speaker 3  1:21:41
+He's not far. I mean, he, I know He lives last. I know last I heard he, he lives right here. Okay, close by. I think he's, I don't know where he lives, but yeah, okay, all
+
+Speaker 1  1:21:55
+right, let's yep, yep, um, keep rolling.
+
+Speaker 3  1:22:00
+This guy here, six, 345, okay. Material, here's where Matt these 7/16, by five and a half. 716, by three. We take that out of random width, out of that one by random width. Okay, so pretty cool, because what we what we do then, is we use random width material to cut five and a half inch pieces and three and a half inch pieces and the way that saws laid out, we can get a pretty good yield if we can grab like it's set up to grab as many three and a halfs and Five and a halfs, like you can optimize on that Ripper, small, yeah, getting that's great. Yep, yep. Anyway, so we're doing 10/16, by five and a half 40 fives. These are thickness, width, length, not a sizer. Raw material is one by random width, but Well, it starts with one by random width, by mixed it should not say 45 here for L and M, it should say one by random width by mixed the L and M is not the multiplier. The the multiplier is the splitter. But is there only one box where it says, enable multiplier Matt?
+
+Matthias Miller  1:23:46
+The multiplier is for the at this point? Yes, the multiplier is okay. You want the multiplier on the
+
+Speaker 3  1:23:59
+on the splitter or a band saw, the pendu splitter or the band saws are the ones that can multiply,
+
+Matthias Miller  1:24:11
+but that's that is what it is. Okay, the multiplier is, when you turn on the sewing multiplier,
+
+Unknown Speaker  1:24:20
+it's saw two.
+
+Matthias Miller  1:24:21
+It's saw two, yep. But, I mean, I put it up up above there, because it also affects all one, like the yield, yield dimensions. So that's, that's the rationale
+
+Speaker 3  1:24:33
+so. But this saw one, miscellaneous prep. I'm going to take this out. Split half inch is no longer applicable.
+
+Matthias Miller  1:24:43
+Okay, but are we doing the same? Are we doing the same layering with this as well, or not?
+
+Speaker 3  1:24:58
+Yes. So. Then the well, we are, we are, no, that's a great question,
+
+Matthias Miller  1:25:06
+but I guess the saw one yield, well, I don't know.
+
+Speaker 3  1:25:11
+No, let's So okay, so work through this here. Saul, one is l and m, so one, your quantity is
+
+Speaker 3  1:25:34
+two. Okay, yeah, so it's going to give us that is a whole another
+
+Speaker 3  1:25:49
+it's another animal. Um, so yes, the yield quantity in Sol one is two, because we're going to split it after saw one, but we're talking five and a half inches and three and a half inches wide dimensions coming out of the 40 inch layers. So we have to,
+
+Unknown Speaker  1:26:13
+yeah,
+
+Speaker 3  1:26:28
+so for this palette, I need four, 7/16, by five and a half by 45 is the length, four at five and a half.
+
+Matthias Miller  1:26:41
+So what we need to say is that saw one yields, don't we need to say saw one yields, random widths. Where does that get cut? Where does that the splitter get is what
+
+Speaker 3  1:26:57
+like? Yeah. So, so the raw material on the splitter,
+
+Unknown Speaker  1:27:08
+wait, don't we have, yeah, the role
+
+Speaker 3  1:27:16
+the raw material for the splitter is the yield of saw one,
+
+Unknown Speaker  1:27:23
+right?
+
+Speaker 3  1:27:24
+So what, what I want from saw one is x amount of layers of one by random width by 45 inch. That's my yield.
+
+Matthias Miller  1:27:35
+So I think what we what we want, is a way to say Star One yield. It's all it's it's almost like, Okay, here's what I would propose. I don't know, here's one way to do it, on these yield in these yield places, we have a drop list where you can choose between pieces or layers. And when you choose Layers, the width just changes to, well, maybe even just or maybe it's a checkbox, but the width could potentially change to coverage, or we could just know that that's coverage, but you need to be able to define that down here on saw One yield as well as the overall item.
+
+Unknown Speaker  1:28:18
+Yield. Yeah,
+
+Matthias Miller  1:28:23
+and then you would so the saw one yield would be based on, on, or what quantity do we have right now, of what's the item quantity here?
+
+Speaker 3  1:28:37
+Well, four, I need four pieces, four, five. That's the saw two
+
+Matthias Miller  1:28:43
+yield. So it's like half a layer, right?
+
+Speaker 3  1:28:47
+Exactly, well, but it's so, but it's split, so
+
+Matthias Miller  1:28:51
+seven, okay. But if you, if you scroll down, then yeah. So we said two. So it's two times 5.52 times 5.5, divided by 40, and that's 20 point point three layers, right,
+
+Unknown Speaker  1:29:08
+right. That's right. So that's
+
+Matthias Miller  1:29:10
+and then boom, that's done. And then the next one like but the actual yield here, so saw one yields random width, but the item does not yield random width, right?
+
+Speaker 3  1:29:26
+But, but the yield of more trans Yeah, mean, the yield of saw one is x amount of layers of one by random width, by 45 inch, and then that's the raw material for saw two, saw two. Yield is four, 716, 540, fives, yeah, but again, you've made the adjustments that we talked about, right? And so what? Need. Can it? Can we do that? Yeah.
+
+Matthias Miller  1:30:04
+I mean, this is, to me, the only change to what we discussed previously is that we need to independently control whether saw one yields random width if it's multiplied and and also be able to yield random width on the main for the for the item itself, yeah, and if we do that, we're good. Okay, I should so this is the here. Let me grab a screenshot of this guy, just so they remember. This is the guy that has the
+
+Matthias Miller  1:30:53
+then I can take a look at that. I like it seems good to me.
+
+Unknown Speaker  1:30:57
+Okay,
+
+Speaker 3  1:31:01
+yeah, then the same thing applies to five, 716, three. So then this sawing one, miscellaneous prep is nothing the raw material and saw one, one by random width that 45 shouldn't be in the raw material. Info, the raw material should be one by random width, by mix, one by random width. The length is up to them on the on M, like the L and M, cuts it to length. So we're not applying a length to the we're not sending a specific length to the I mean, we might be sending eight footers or 10 footers, but the raw material is one by random width by mix. But is that coming? Yeah, that's typed in there. So I'm going to say one by random width
+
+Unknown Speaker  1:32:02
+mix. Mixed.
+
+Speaker 3  1:32:05
+I'm going to try that, and then we're going to say
+
+Unknown Speaker  1:32:15
+so on your quantities, two,
+
+Unknown Speaker  1:32:20
+small two is finished with our Salt, two missing
+
+Unknown Speaker  1:32:25
+salt, two Miller flyers to the ass.
+
+Unknown Speaker  1:32:48
+Well, that's still saying mix, but
+
+Matthias Miller  1:32:51
+it won't push across. I mean, you have to force it across if
+
+Speaker 3  1:32:55
+you want and then and then again. Here's one by random width. Mixed is the raw material. The yield we're looking for is not 800-716-3945 100. The yield we're looking for is layers of random, yep. And then pendu splitter. Here we go, 716, by five and a halfs, here we go. And there's two different orders here.
+
+Speaker 3  1:33:33
+Let's go with the 120 here on the bottom. 120 for 10 for CW 1200, 2716, five and a half, 40 fives, that should say however many layers of random width by 45 because that's the yield. And down here on pen, new splitter, there's the 240 now we got their final quantity. That's the correct yield. But the raw material here sub 16 five and a 45 is one. It's layers of random width
+
+Unknown Speaker  1:34:18
+by
+
+Unknown Speaker  1:34:19
+Yep, one by random, yep.
+
+Speaker 1  1:34:22
+Makes sense. Yes, makes sense. Awesome, awesome.
+
+Speaker 3  1:34:29
+Do you? Does that? Do you need any more notes, right? I mean, sorry,
+
+Matthias Miller  1:34:33
+just i Good. I think, I think so. Okay, it's hopefully I don't wait too long to put it into play, because, right, afraid to lose some threads. But we got this recording. I got the chat. We got I took notes. I feel good. I mean, it makes sense.
+
+Speaker 3  1:34:54
+Yeah. So I don't have anything else other than just like. Okay, you're planning list of objectives. Sorry, let me. Let me run around the circle of my brain for a second on that. Yep, main objectives. I
+
+Unknown Speaker  1:35:24
+we talked about the print thing that
+
+Unknown Speaker  1:35:29
+that's
+
+Speaker 3  1:35:31
+I liked, I love if Amanda, if we could scan a bunch of those prints before you get here. Yep, maybe we can. Um, in the tracking with also, also having the lumber on that report.
+
+Matthias Miller  1:35:53
+Are we there yet? We're not okay. It's on my list.
+
+Speaker 3  1:35:57
+Do you think that'll be done before you get here? It will Well, that'll be awesome. We're actually we limited hours last Friday, which is going to help these guys get incentive and today, again, there's some limited hours, and there's some guys off and like it, it's looking positive that the guys will get an incentive paycheck. They'll get there'll be some incentive pay in their paycheck next Friday,
+
+Unknown Speaker  1:36:23
+yay, that would be amazing. That'll give them a taste.
+
+Unknown Speaker  1:36:27
+Yeah, exactly yes. So,
+
+Unknown Speaker  1:36:31
+oh man, so
+
+Unknown Speaker  1:36:35
+that side of it, um,
+
+Speaker 3  1:36:44
+I'm looking at some notes here, Matt, sorry, no problem.
+
+Speaker 3  1:36:56
+I do have a nice thing we talked about on the print process A while ago, we could talk about that more when you're here. So I have another one on the cost pricing mat that we were that we were working on,
+
+Matthias Miller  1:37:23
+Hmm, do we again? This is just how my brain thinks. But like, what are the things? What are the things that? Well, you had also mentioned organizing some of your computer stuff. And as a side note, if there's stuff that's not I'm able to, I'm happy to bill at a lower rate for things that are not directly silver limb related. I mean, a lot of the print stuff and that kind of stuff. But if there's other tech stuff that's not I can, I can bill at a lower rate. But the way I would think about this is, what are the things that
+
+Matthias Miller  1:38:10
+we're having? Me be with your team, be with inside of operations. That is only possible when I'm there on site, and it's not possible otherwise. Yeah, and
+
+Speaker 1  1:38:27
+I don't know if Yeah, it was, I mean, my mind goes to a workshop, maybe, okay, is that what?
+
+Matthias Miller  1:38:39
+What, along the lines of what, well,
+
+Speaker 3  1:38:41
+on silver loom, functionality and navigation.
+
+Speaker 3  1:38:52
+But again, I mean, people are kind of learn. It's learning by hands on. Learning is kind of what's happening. And it's, it's not a bad way to learn, right?
+
+Matthias Miller  1:39:03
+So I'm not well, it's, they're learning as we grow. So that's the good news, too, right?
+
+Speaker 3  1:39:12
+Um, yeah, I'm not sure, Matt. Do you have any thoughts, like, does anything cross? What is
+
+Matthias Miller  1:39:19
+the biggest question would be, if I don't know if you want to go here, but if you want me to get a deeper insight into the financial processes,
+
+Speaker 3  1:39:33
+and that would be with, well, primarily with Rick, yeah, so that would be the cost and pricing side, which he that could be very, that could be very.
+
+Unknown Speaker  1:39:53
+I mean, there's no reason for us to be doing doing things twice. I. And I'll
+
+Speaker 3  1:40:02
+and I think rickfield would feel the same way about that. So if there's overlap that can be simplified, there definitely are things that can be there's definitely information here that that is readily available that Rick has previously had to and come up with manually and item by item, so I'm not sure what I'd have to wrap my head around this more.
+
+Unknown Speaker  1:40:44
+I think
+
+Unknown Speaker  1:40:47
+maybe the short, the short answer, how to sum it up in a few words, would be a
+
+Unknown Speaker  1:40:56
+using silver limb for a pricing tool as much as is possible.
+
+Matthias Miller  1:41:06
+But even even with that, one of the things that'd be useful for me
+
+Unknown Speaker  1:41:11
+is that,
+
+Matthias Miller  1:41:15
+even that I feel like just doing a walk through on the the existing spreadsheet. Like, yeah, that's, that's very, in my mind, that's very doable, remotely, that's what I that's very doable over zoom. I mean literally, if he sends me the spreadsheet, I know enough at this point, I could probably just figure it
+
+Unknown Speaker  1:41:47
+out how to replicate it, right, right?
+
+Unknown Speaker  1:41:50
+So,
+
+Speaker 3  1:41:52
+would you, would you possibly, would you be potentially able to do that before you come
+
+Matthias Miller  1:41:57
+I mean, potentially, yeah, send it over and I'll take a look.
+
+Speaker 3  1:42:01
+That can be very helpful, if you're doing that anyway, and doing it before you get here would be, yeah, we could look at it. Then having that done before that would be, that could be very helpful.
+
+Unknown Speaker  1:42:14
+Um,
+
+Speaker 3  1:42:19
+so yeah, sorry. I don't want to go down this bunny trail, so I'm gonna hold off for that for a second. But, but yeah, so when we last talked to Rick, he was, he was gonna send that, or maybe he, well,
+
+Matthias Miller  1:42:42
+actually, he was willing to, but he never, but we didn't need it then,
+
+Unknown Speaker  1:42:46
+yeah, actually give me a
+
+Unknown Speaker  1:42:49
+give me a second here, Matt
+
+Speaker 3  1:42:53
+was, I had, I had A copy. I have copies of it. Well, just I Well, yeah, no, you would need the digital one. You would need the digital one. I need the file, right? Digital file, yeah, so let me, let me just have a conversation. That's no problem. I don't think that's a problem. I think that would be good. I think he would be,
+
+Unknown Speaker  1:43:22
+yeah, I think that'll be good. So I'll see about sending that file.
+
+Matthias Miller  1:43:36
+By the way, Amanda can start printing big scanning PDF prints to her, if she's the one doing it to her computer right away, and then, and then, and then, can we? Don't have to she, can we, she can go from there to upload them to into silver loom as a second step until we get the if that matters at all, if that makes any difference. But it won't take much to get that squared away either. What is the,
+
+Unknown Speaker  1:44:13
+okay, yeah, what is
+
+Matthias Miller  1:44:15
+the what is the thing, whether I can help or not, because I'm not suggesting that I can or even should. But what are the things that are creating the most drag for you, where you're feeling like, I don't know.
+
+Speaker 3  1:44:31
+Well, first, it's it. I mean the incentive having the real time daily data from the floor for assembly values, sawing values, and then that mulch, having that real time the morning after, and then taking that and mirroring it against the daily, sorry, mirroring that against the daily. A payroll day after day after day, and then turning that into a percentage number that is there the incentive that is being generated by the guys on the floor so they know if they're plus 1% or minus 1% or zero, or whatever, does
+
+Unknown Speaker  1:45:22
+that make sense? Okay, yep, it does,
+
+Speaker 3  1:45:24
+because that that solves that is a building, the company building, the business man we just had so alongside of that, this is a side, but it's so issues clocking in late, and cigarettes in the wrong places, and trash and all the different things that trash where there shouldn't be trash guys not showing up when they when they're expected to be here, not pulling in. So finally, we had our heads together, and we came up with 21 day challenge, if none of those things happen, where we have a chalk, a little chalkboard out here. So right now we were, we were two days. I don't know if anybody clocked in late this morning, but if they didn't, we'll be at three days if we hit 21 days without any of those issues. I'm getting a food truck out. It skips chicken, which is phenomenal. So we're trying, man, some of these guys, it's funny, like, it's, it's just cool. They're like, man, we never gonna get that chicken truck, you know? And then they're like, talking about pounding this guy or whatever, and names on the board, but we're putting reasons why it went to zero. So promoting this, it's little things that we it's not complicated, but yet, it's just taken so long to get here. But here we are. That's one thing we're doing, this, this, yep, when you ask the question, the incentive program working with appropriate data being shared on the floor to help motivate, let them guys know where they're at. That's the biggest thing right now, that that's the biggest needle mover that we can Yep, accomplish after that, it's knowing that the data is being entered correctly, because bad data entry is driving me nuts. We in inventory, so Inventory spreadsheet for our cans in the lumber yard. And, I mean, they, Oh, my goodness, it's just summed up as, like, we don't know, but like, there's the thing he says, they're 73 in stock, and there's only 45 or there's negative in the yard. There's a negative quantity in the yard. Like, get out of here. Like, anyway. Sorry, but Tina is. Tina is the one that's managing the spreadsheet. So, like, okay, 90 95% chance that she's the one that's making a lot of mistakes with it, yep. And John's making a lot of mistakes with with his side of it. Now, is he still making mistakes? I'm guessing he's still making mistakes if he's if he can learn it and start doing doing it correct, like, if he can be the person, but that's fine. If it's just a big learning curve and he can learn it great, but at some point it's, it's his stupidity to keep like, Yeah, somebody else has to do it, right
+
+Unknown Speaker  1:48:50
+so well is it? Yep, exactly.
+
+Speaker 3  1:48:53
+Well, if we look, if I look at workload right now, and the layout of, how would you not that like our work, our work. Charge, delegate, the way things are delegated. Tina would be the most. She would be the candidate to be the one to do the entries she should have the time to do it. But, yeah, mistakes, man, so she was doing data entry for the cut list last year when we were still working on Excel and making a ton of mistakes, and I just kind of basically pulled her off the project because So George ended up doing all that data entry. I had Amanda working on some of it. Now, granted, she was new, but she was making a lot of mistakes. So, and I'm not talking like complicated entry mistakes. I'm saying like, the wrong number, or like, come on. It's like, what?
+
+Matthias Miller  1:50:00
+Well, fifth grade, it sounds like, it sounds like, to me, the this is, this is the, again, I'm not saying I'm the person to fix this or solve this, but you're experiencing an incredible amount of drag because of mismatched strengths and job expectations?
+
+Unknown Speaker  1:50:23
+Yeah, probably,
+
+Matthias Miller  1:50:26
+I mean, or or something, your expectations in actual performance, it's delivered. There's a gap. Yeah, and I'm not, I'm not. There's no faulting. I'm not trying to say attribute a reason for it, but it is. It's a theme that has continued throughout all our conversations for the last three months.
+
+Speaker 3  1:50:48
+That's right, oh and oh and, by the way, I have reviews for all of these office personnel are due
+
+Unknown Speaker  1:50:57
+this month, okay? And I'm,
+
+Speaker 3  1:51:03
+yeah, praying about it. I don't know in a way, I could, I could. I could shove I could shove it through. Dad's not going to be helpful, so it's Just me in the choir. I could, I
+
+Unknown Speaker  1:51:53
+Oh, good man.
+
+
+Transcribed by https://otter.ai

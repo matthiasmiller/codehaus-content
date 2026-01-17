@@ -1,0 +1,299 @@
+Speaker 1  00:15
+My thoughts, what do you do with all the recordings of us? Do you like store them all and, like analyze them.
+
+Matthias Miller  00:24
+I actually had the intent to do that back in not these calls, but when I was doing calls with Tim and on a regular basis, to assemble that into a knowledge basis, some some kind. But that never happened. What I'm most likely to do is go back and say, less of you guys, but go back and say, What? What did we decide on? X, Y or Z? Poll, exactly. It's been really useful. There been a number of times on the accounting a couple times in the accounting project, in particular, where I went, went back and found a meeting and pulled back what we discuss, that is just this obsession, that extra stuff, which is kind of dumb, because most stuff isn't actually worth Capturing. So welcome to cheap storage. I don't know.
+
+Speaker 1  01:24
+I kind of like these, these card headers in the system with the no color background, just a big, big label. They're not staying. I don't think, well, I mean, we could, we could override it, override it wanted to. I'm not sure why it isn't overridden, but maybe they, I don't know. Maybe it's some kind of hard coded override, which would be weird. All right, fix up rental fees.
+
+Matthias Miller  01:58
+So I made a an X 30 to fix up your auto staying setting the transaction three. I don't remember if this game. I didn't check whether this came through in this update or not, but setting the period to the due date, and then setting the transaction the Can we I don't know if we should. I don't know where you guys want to I don't know what came through in chat. And really, one of you guys want to take note contract trans date should be contract trans entry date. It's just confusing to not differentiate what kind of date it actually is.
+
+Speaker 1  02:37
+That That makes sense. I think I actually changed the label of it to entry date. Because I was like, it kind of makes sense to just call it entry date, but, yeah, I think we should rename the field.
+
+Matthias Miller  02:47
+Tax rate can be set off the contract. We actually have a tax rate on the contract.
+
+Unknown Speaker  02:55
+Oh, we're catching it per row,
+
+Matthias Miller  02:58
+yes, but we're catching it per row. The contract transaction amount was being set to the wrong amount. I'm not sure what it's getting set to, but it should be set to contract monthly subtotal, and contract monthly subtotal should be rounded to two decimals. What
+
+Speaker 1  03:20
+is contract monthly subtotal? I was looking into it, and it seemed like, in some cases, it was the monthly amount. Sometimes it was like the full amount.
+
+Unknown Speaker  03:33
+It should never be the full amount, unless you've paid down to the last month.
+
+Speaker 1  03:38
+So contract financing base is the the total amount that you're going to have to pay over the course of the contract, right? No.
+
+Matthias Miller  03:47
+So herein lies a fair bit of confusion. We get more bogus calculations going on because of this. Okay, you have
+
+Speaker 1  03:56
+the value of the building, right? And that's the effective value.
+
+Matthias Miller  04:00
+That is, in most cases, that's the effective value. Okay. Then there is something called the CRA in which you pay for, it's complicated logic, but you pay for a month down payment, and then the balance goes towards like and then, and then we use the balance to reduce your monthly payment. So we treat it as if it were instead of a 36 month term, maybe a 32 month no. I mean, I'm sorry, instead of pretending it's a what was the purchase price, and I don't have a CRA in front of me, but basically, the financing will finance it for less than what the building is, because we have the CRA that we can use at the end of the contract,
+
+Unknown Speaker  04:42
+I see, okay, um,
+
+Matthias Miller  04:46
+whereas the security deposit typically just reduces the number of months that you will pay, like you'll you'll pay a security deposit. Um, some states don't allow you to pay more than one month of security deposit. Um. So, but then you don't have to pay that at the end. If you pay the
+
+Speaker 1  05:03
+last month, it just gets covered by a secure deposit, right? What about the CRA? Do we just you pay into that in the beginning, it decreases the financing base, and then when the contract is completed, then we beat up the security the CRA and call it good. Is that how it works? Yep,
+
+Matthias Miller  05:26
+we're not handling Okay, well, we'll get we'll get to that. So then rent, rental fees can be taxable. Dwf can be taxable. It looks like we lost our what's a rental company abbreviation? We need a we need our abbreviation on here. Okay, that's better. Now, Dwayne would like a few numbers on here, a total. A full term payments, okay, first of all, this monthly payment is completely bogus. I don't know how we're getting to it.
+
+Speaker 1  06:12
+I think it's running off of the effective value instead of the financing base, correct?
+
+Matthias Miller  06:19
+But why not just basically show this number.
+
+Speaker 2  06:26
+Well, that includes, Yeah, that guy.
+
+Speaker 1  06:30
+So are we only supporting monthly terms, or are we just translating all other payment terms from monthly
+
+Matthias Miller  06:39
+we're yes what you said. So basically, when you translate it, we'll translate it to an amount where your term will complete within one to three weeks before your monthly term would end. Like there's not a clean translation from 36 months to weeks. And so we, we, we adjust, and then round up or something on the period, payment amount, so that if you switch to weekly or bi weekly, it ends on or before the end of your monthly your contract length. Yeah,
+
+Matthias Miller  07:28
+it, we don't have to think about weekly payments until there's there's a spreadsheet somewhere,
+
+Matthias Miller  07:41
+sure if it's in here, maybe,
+
+Matthias Miller  07:52
+oh, I don't know. Maybe it's it was, maybe Dwayne shared it. Maybe Dwayne owns it, but there's a C that talks about the translation.
+
+Unknown Speaker  08:02
+Yeah. Um,
+
+Matthias Miller  08:06
+I lost my contract. Okay, so we would like to have a total monthly payments, which is just so monthly payment is wrong, total monthly payments, which is the payment amount times the term length. So that is 684, 30. Times, 36 and then a remaining balance, which is the total payments minus what's been paid or I or remaining payments might actually be a better term. So what's the total payments minus what's been the payments made, obviously ignoring late fees. And then early payoff amount is basically you take early payoff amount is okay, remaining months, then should take the uh, the unpaid payments divided by monthly payment. And I don't know what rounding we do, probably round up or something like that,
+
+Matthias Miller  09:41
+early payoff amount, then takes, it takes the what is your? What is your? What is your balance on your account? So any. Fees incurred, any unpaid fees that have been incurred, take the remaining value so use that, subtract CRA and security deposit, and then take the remaining periods. Of rent, the future periods of rent times the cash price percentage. So early payoff is basically means you get a discount on all future periods. That's effectively all it is, perfect.
+
+Matthias Miller  10:43
+Um, so then herein we get into fun stuff like, how do we represent early payoff? Um,
+
+Matthias Miller  11:00
+my proposal is that we add yet another transaction type called early payoff. And I don't know if it makes more sense to just have it only have a paid adjustment type.
+
+Unknown Speaker  11:18
+I would think so. Yeah.
+
+Matthias Miller  11:20
+What if we actually had it be a tight rental fee with an adjustment type of early payoff?
+
+Unknown Speaker  11:26
+No, I don't know. Well.
+
+Speaker 1  11:30
+I mean, what we what we could do, maybe this, maybe this would be best, is we add a big old rental fee of the early payoff type, and then we immediately add a a and just add a rental fee payment directly after and is it, and then just note it as an early payoff Somehow, like we could just use our existing structure.
+
+Matthias Miller  12:04
+Okay, so how would you note it as an early payoff?
+
+Matthias Miller  12:16
+In some ways, the period you could have a
+
+Speaker 1  12:32
+well, if it's we would just know it's an early payoff, because there are still some months to go and it's all paid, we could say, Oh, this looks a lot like an early payoff. I mean, what are we wanting to do with it? Are we just wanting to show it in a report basically saying, Oh, it looks like people are doing early payoffs in Illinois.
+
+Matthias Miller  12:52
+We want to push it to accounting in some capacity. We want to know that the contract balance. So the weird thing about an early payoff is that effectively, okay, I mean, most rental payments are for the full rental payment, early payoff. It's like you're covering periods at a discounted rate. So what we could do is have a rental fee incurred for all remaining periods, for the full price. Then have an adjustment, a rental fee adjustment called early payoff, that is the early payoff discount, and then a payment for the balance, for the early payoff amount.
+
+Speaker 2  13:37
+Do you adjust every single row? No, you'll be a one single adjustment for the early payoff discount
+
+Matthias Miller  13:45
+you would have. You would choose the next period, period date, and incur all of the rest of the rent on that period date, and then have a rental fee adjustment the discount and a payment on the rental fee.
+
+Speaker 1  14:10
+I think I like the sound of this better than adding a different type, because it's still rental fee. It's just less than the normal amount.
+
+Speaker 2  14:21
+We still need to add some sort of feeling for an early fee. For the is early payoff discount, right?
+
+Matthias Miller  14:29
+You need an adjustment type to the rental fee, right?
+
+Speaker 2  14:39
+And then the bulk of the payment would just be a paid or would you do?
+
+Unknown Speaker  14:47
+Okay? Then some of our logic, I remember, if there's places we
+
+Speaker 2  14:56
+are looking on a row by row, like is this due date page, that'd be a little. Harder to tell if we fill out the RG,
+
+Matthias Miller  15:07
+well, we could Yes.
+
+Speaker 1  15:13
+Can we say that the contract resolution is early payoff, or is that that's fine?
+
+Matthias Miller  15:21
+So you would, but then you still need some kind of a way, some kind of validation, I suppose. I mean, if, I suppose, if we just ensure that you can never have a early pay about, wow, early payoff resolution. Okay, let's say that we the contract type is, is early payoff. Would would you then just have the final period be rental fee with the early payoff amount, and just have it be a regular rental, rental fee, and just know that the last period is always,
+
+Speaker 1  16:11
+I think I would want to log all of the months. So if you do an early payoff for your six months from the end of your contract, we would add in those six periods, rental fee incurred just with a lesser amount, and then add in the payment rows saying that it's all paid, and maybe a A tag field in this RG saying this isn't, this is an early payoff, because it's, if we've marked the contract resolution as early payoff, we know that the contract ended in early payoff. It's just, if you're looking at the data, a quick way to see, oh, why? Why are these rental fee periods cheaper? Oh, right, it's an early payoff. Or is there something else that we need?
+
+Matthias Miller  17:10
+I think that's could be close. The one thing I forgot to mention is that I think we need a contract resolution date of some kind, um, at least for nice payout and return and retrieval. Maybe it's only for early payoff, but at least for early payoff, I think you need an early payoff date or something. Um, the thing I don't like about what you're proposing is that when you're looking to say, what was the total rent,
+
+Matthias Miller  17:54
+I don't, don't like how under the hood, this has a very payments after the payoff have a different impact on the balance than ones prior to that, and there's no visibility of it within the RG.
+
+Unknown Speaker  18:15
+How do they impact the balance differently?
+
+Speaker 2  18:20
+Because the amounts different. Who knows different? Is that
+
+Unknown Speaker  18:23
+what you Oh, yeah, I'm just the amount being different, okay.
+
+Matthias Miller  18:31
+But maybe, maybe we okay. So if you can give me a macro somewhere,
+
+Matthias Miller  18:58
+and I think that's where I'm going with this is that that's why what I'm not sure about is for reporting purposes. And this might be a question for Dwayne, but what could be useful? That's where having a rental fee, an early payoff adjustment on each period for each month really does give transparency to reality of what's happening. The biggest issue then comes from a reporting standpoint, does that end up being too much noise? So then you basically have a payment. You have a single payment. Then they pay, you know, 20 months. Average payoff is it 22 months? So on a 36 month contract, you have 14 months of payments with early payoff discounts that are lump sum into a single payment. But to me, that's a very logical, logical and transparent that is what's happening.
+
+Speaker 1  19:58
+Yeah, yeah. I. Yeah, I'd like that as well. So that would just be a an additional adjustment type of early payoff that we would what
+
+Unknown Speaker  20:10
+adjustment types do we have now? We have discount there, incurred, forgive and use, paid, refunded.
+
+Speaker 2  20:29
+Added. The only new Adjustment type we have be an early payoff discount. You have a row for the rental fee, for the full amount, and then you have a row the early payoff discount, which would be a negative amount for rental fee the same date, and then we'd have a row for paid for the amount minus The discount, right?
+
+Unknown Speaker  20:59
+Yeah. I like the sound of that.
+
+Matthias Miller  21:04
+Okay, let's run it all right, best. I we will see we can run past away this afternoon. I want to get him to sign off on it, but I it's, I like it. Um, it's
+
+Matthias Miller  21:19
+really at that point, early payoff is pretty easy to tackle then, because it's the first, it's the it's either the period or the entry date, whatever we want to use of when the first early payoff discount shows or, you know, when The early payoff discount shows up.
+
+Matthias Miller  21:42
+Dwayne would also like these reverse sorted
+
+Unknown Speaker  21:51
+with the most recent on top,
+
+Unknown Speaker  21:53
+most recent on top. Okay,
+
+Unknown Speaker  22:00
+see what else was there?
+
+Matthias Miller  22:11
+I think that's basically it. Oh, no. One other thing, I think it would be really useful to have
+
+Matthias Miller  22:35
+a column some kind of maybe it's too much noise, but a net column or a net impact that shows the plus or minus value for Each of these.
+
+Speaker 2  23:00
+It's just a macro that splits the sign based on the type on the adjustment you displayed. I don't know or not, yeah, so
+
+Speaker 1  23:10
+just put it in parentheses, because that's common syntax for negative, right? That's any different.
+
+Speaker 2  23:22
+It's easy enough to multiply. Have a macro beside it that multiplies by negative one if it needs to.
+
+Matthias Miller  23:32
+I mean, it's just this guy. I mean, I expect this guy to be a little obnoxious anyway, but maybe it's not that. Now we're handling it here with there are a few times where I'm wanting to calculate, I've been wanting to calculate the balance in some capacity, and it's just really, maybe they're Macker I don't know about but having seems to me like having that as a building block would be quite useful.
+
+Speaker 2  24:16
+I mean, basically, it's if it's incurred, it's positive, if it's paid, it's negative. And then there's a few other like refund and stuff, but
+
+Matthias Miller  24:24
+right refund and forgiven is negative. The biggest thing then is, how do you want to handle CRA and
+
+Matthias Miller  24:40
+but effectively a CRA would, I think you would
+
+Matthias Miller  24:51
+just leave it blank for CRA, Rose, perhaps, or NA or. For Oh, plus, for paid, minus, for used. It can be used to calculate the CRA balance.
+
+Unknown Speaker  25:11
+That's what I was thinking.
+
+Speaker 1  25:18
+Okay, and you just know, looking at the transaction type that, yeah, it's not hitting the actual balance. CRA, right.
+
+Matthias Miller  25:33
+Good. I think that. Okay. I'll run that past him. Meanwhile, for your info, this has
+
+Matthias Miller  25:46
+been cranking for the last half hour, so
+
+Unknown Speaker  25:51
+you're saying I shouldn't run a system update right now.
+
+Matthias Miller  25:55
+If you can hold yourself back from that for just a little bit, it would be useful we have generated, I don't even know how many rows it is,
+
+Unknown Speaker  26:07
+graciously
+
+Matthias Miller  26:09
+I mean 1000s upon 1000s upon 1000s of transaction rows By payments, this is
+
+Speaker 2  26:20
+going to balloon impact way more than zfp Does yet, right or not?
+
+Matthias Miller  26:28
+Well, keep in mind history, but yeah, I think, I think there's a potential for that, for sure. I think part of the part of the part of the issue here, I can't remember if I turned it off has been error checking.
+
+Unknown Speaker  26:51
+You made a note of that.
+
+Matthias Miller  26:56
+That's massive killer right now, I Think if I
+
+Unknown Speaker  27:12
+let's actually here, I
+
+Unknown Speaker  27:30
+Oh, that's way better, way better,
+
+Matthias Miller  27:33
+almost just Let's do this. Let's do let's only show it in diagnostic mode. Let's just go stop this guy. There's no reason to
+
+Unknown Speaker  27:51
+beat ourselves. Got 70% of the way there.
+
+Matthias Miller  27:58
+So, yeah, I should actually make sure
+
+Unknown Speaker  28:12
+the other ones are
+
+Matthias Miller  28:19
+diagnostic that one doesn't really matter. We haven't gotten to, oh, I should create payment records for these guys. Agnostic mode, let's go just
+
+Matthias Miller  28:39
+we have any clear errors, false. All right, sweet, good, oh, I will, yeah, I'll give you guys.
+
+Unknown Speaker  28:54
+Another sounds good? Yep, thank you. Yeah, yeah.
+
+
+Transcribed by https://otter.ai

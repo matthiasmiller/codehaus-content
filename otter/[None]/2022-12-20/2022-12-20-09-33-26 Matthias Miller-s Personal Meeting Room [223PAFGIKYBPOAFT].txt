@@ -1,0 +1,563 @@
+Matthias Miller  04:54
+Hey Matthias Hey sir.
+
+Speaker 1  04:57
+Sorry I had a call that went till 1030 And then I had a step out for a minute.
+
+Matthias Miller  05:01
+Yep, understand,
+
+Speaker 1  05:02
+okay. Um, how's it going? Oh, making good progress through the EBS thing, we have hit a speed bump trying to wrap our mind around the the whole payments thing how that works. So, the but finally, once that happened, then we're, we're rolling again, is interesting we're starting I'm trying to start a track how many words a minute we can process words an hour we can process. It's in the worst. And the worst times it's about 300 words an hour. At the best, it's about 1500 15 to 2000. So a 20,000 word proposal, I'm going to say takes us at least 20 hours to price. And see important what's happening is we are doing a a implementation level review on this as part of what's going on, which is I'm not grumpy at this point. But at some point, I'm going to tell you, Hey, take that thing up to 15%. And give me and give me three or something or five or whatever. So but we can get there. That's what statistics are for. Yeah. So. So anyway, so that's those are some. But I mean, it's encouraging to start figuring things out. The one thing I think I've talked to some to wrote it up and talk to Tim about, I think the more we can give a high level of their business of their business workflow, the better it helps the developers and long term customer support. So I'm thinking of a band that comes on and five years from now, how does he get up to speed on all these poor customers. So there is something a little bit vulnerable to the client, if we just explicitly outline their entire business process. I mean, that would give me just a little bit of heartburn. But it also gives me a confidence of these guys really know that they're helping me understand what I'm doing. I don't know, how do you feel about the balance between those two? And I guess we can make an internal versus external to if we want
+
+Matthias Miller  07:21
+to. Well, how much do you want it staged? So I've been wondering, what what does the next incremental improvement to high level design look like? What are the prerequisites? One, it's really good when they have their business processes figured out and country kettle worked with ATF for a while. And it would be terrible if they hadn't. But I don't think they actually have it nailed down as well as they think they do. Or maybe it's again, it might be a communication gap. Second of all, is the discovery process, which is what is its what is what faith builders did for their SPE project, where she sent over nine pages of detailing what they're looking for. Yeah. And it was like, she did a third of the work already. Yeah. And a discovery process where somebody like a bank, or equivalent can go through and say we say go give us everything, all your forms, all your everything. And they just put up a an outline, here's the form, here's all the information. And here's the here's the sub table within this form, and this other sub table, this other stuff, like anything that repeats, and and then we can tease it apart and say, well, this information, here's the customer record, here's the order record, here's the and we can we can I quit my job then becomes take that three page outline that outlines the forms instead of the 30 pages. And let me figure out what the data model probably is. And then start having conversations at that point and nail some of the some of the additional pieces down. So you said you're talking about is the nailing down and articulating the business process. So So think of high level design, the design as its multi step process. One, what is your business processes two, what's only information that did you currently have in play three, what is the high level data layout? And then four is a kind of like we tie this whole thing together. And now here's the final package.
+
+Unknown Speaker  09:27
+Yeah, yeah. Yeah, that's right. That sounds about right.
+
+Matthias Miller  09:31
+Now, if we could take it, what gets really interesting then is if we can take phase one, and or phase two within the high level design, and bundle that as a standalone. I mean, there's your $50 engagement that applies to anybody. Yeah, sure. Sure, if we can nail that, but that's, uh,
+
+Speaker 1  09:54
+anyway. Yep. Yep. No, that sounds right.
+
+Matthias Miller  10:00
+So,
+
+Speaker 1  10:02
+but overall quite pleased. I mean, I had a whole bunch of to do's in there and stuff, but overall, so So the one thing I was missing was that oh, that high level business design, you know, I didn't know who a forester was, and what its foresters role was, and
+
+Matthias Miller  10:20
+would be really useful would be a I mean, it really is a customer journey of the business. When somebody comes to the business, I think it's almost always this. Perhaps not with SPE with SPE, there were some internal administrative types of stuff that we wanted to track. But sure, in most businesses, it's a this would have been with like, 30, Triple D? Sure, well, it's not quite it goes a little bit more in depth with inventory management, it changes a little bit. But, sure, here's how the customer shows up. Here's who the customer is, here's what happens. Here's how we fulfill, fulfill, here's how we deliver. And here's any follow up type of thing. Yeah. Good.
+
+Speaker 1  10:59
+Yeah, that sounds right. You could tell the story from the customer standpoint, then you could also tell the story from the product standpoint, in any manufacturing stamp thing.
+
+Matthias Miller  11:10
+It'd be product, or would it be from interest from the internal standpoint? Well. It might be internal.
+
+Speaker 1  11:24
+I don't know for sure. Because part of what I was thinking is, the customer gives the order. I mean, you could say, in the country, the customer may not touch it again, until he receives the order. And in the meantime, you've got the entire production process. Right. So so it's almost two different ways of looking at some some of the same things. But and it might really depend on where it is whether you anyway. So, so So another way to say it is if we first need to know, ideally, we need to know what, but I could for the full customer experience. Secondly, we need to make sure that we understand the full product or in the product is process within the company. And then then there might be pieces of Oh, are there. Let's talk about the people, the people that you have, or the the departments or the roles that you have in the company. Are there. Are there pieces that aren't being covered here that we need to talk about? Yeah. So and some of this is also we're saying this is what it is right now. Is there are there things you want to be doing? So anyway. So the so probably some of that was helpful that the having I it was kind of there but but the kind of the, the high level of this is how the average the percentage sharing thing worked would have been great to have early on kind of as in at a white I mean, at a high level white paper thing. So that when we keep bumping into different in it in different places, we know what we're talking about.
+
+Matthias Miller  13:23
+So, right,
+
+Speaker 1  13:24
+I'm not complaining, I'm just basically just trying to optimize. And the other thing is, it's those, like, that's the workflow, the roles, the forester. I didn't know the difference between a forester and a logger, I mean, those out of the same to me. And then once it was explained, Oh, of course, that makes total sense. So the foresters is equivalent to a realtor.
+
+Matthias Miller  13:50
+Right. I mean, another way to do this would be having a terms like a glossary, that would be really helpful as well.
+
+Speaker 1  14:01
+Yes, that probably would be helpful. Yeah, have a glossary. So and the glossary you may even want to have well, yeah,
+
+Matthias Miller  14:15
+we're certainly
+
+Speaker 1  14:19
+in sometimes a glossary, we may even want to be able to point to specific places like you know, and at some point, we may want to have named a section so we can reference the name sections, you know, see such and such and this is long down the road, but like so you could you see the glossary and it says, Hey, and then this is the page that talks about it. Or maybe you just search for it and find the references then you go from there, I don't know. But we don't have to do everything at once. The eye was first thinking of it looks like I'm processing about six 700 words a minute, an hour. But I think we're I think once we got going, we're probably going to be close to double that most of the time.
+
+Unknown Speaker  15:11
+Okay. Wow.
+
+Speaker 1  15:15
+But I think the long and short of it. i You should except, well, it was bad because you handed this thing to me, I think or you gave me a heads up right before Thanksgiving and cutover. And so that was that made a tougher, but in general, we should just realize that, that the pricing process is it's really an implementation review. I don't know what the Architectural Review, I don't know what you want to call it, but it is also pricing. But we need to think of it as a one month process for a big for a big job. Yeah. You remember the all the nighttime calls that you and I used to do? I'm still
+
+Matthias Miller  15:53
+you know, I was quite happy last night to be sleeping through the time that you were, or whenever, whenever you've been working on these?
+
+Speaker 1  16:02
+Yeah, yeah. So and, and I'm not I think Nokia and I are both pretty happy to do them, as you know, at about one call a week where, you know, I that doesn't feel terrible. Once a week, I loosely once a week he loses sleep and but then it will just take you know, kind of like a month to for us to process a big one.
+
+Matthias Miller  16:24
+Sure. So you would do two plays when? One in your evening one in his week. Right? Yes. And just slog through it. Yeah.
+
+Speaker 1  16:31
+I've toyed with actually trying to slog through it with ahead of time with Nick. But I kind of feel like I'm almost doubling up. Because if we, because at some point now he and I need to have a meeting of the minds, and we're pretty efficient together action. I'm pleased with how it's going, you know, okay. And I'm documenting the detail the implementation details. Does that make sense? Yep, that makes sense. And then does this and then how many hours? Do you think that is? And then he and I say, Okay, we think this? So, I kind of, you know, I don't know for sure how it scales. Although, on the other hand, I mean, if we can only process a, you know, $100,000 proposal a month, that's, that's okay. For us for now?
+
+Matthias Miller  17:24
+Well, I mean, they'll get you to, I mean,
+
+Speaker 1  17:27
+that'll get us a three quarter million or a million sales. So yeah, well, and the next thing is, at some point there, then then half the projects are going to be coded here instead of there. And then that point, then I process it with Nick.
+
+Matthias Miller  17:43
+And you immediately double your capacity. You can do data powers. Yeah. Good. Well, so is this a gonna make some changes? No. This is a just a general. This is
+
+Speaker 1  18:12
+just a general catch up musings. Tim and I will talk through I think maybe it's even on the calendar. Tim and I are going to talk through some of my notes at some point. But But I don't think there's a whole lot that needs to change. But basically, I'm trying to document and hopefully it doesn't feel discouraging to Tim but because I mean, I'm in awe with what you all produce. It's, it's really good.
+
+Matthias Miller  18:36
+And
+
+Speaker 1  18:39
+now, I am totally on board with you making this first phase profitable for you. Let's just do that.
+
+Matthias Miller  18:47
+So yeah, yeah. And
+
+Speaker 1  18:53
+I think that would be an interesting question some time. If the X factor that you use for, for for Tim's time is, you know, is I mean, how that how that works out if that's, if that's the right x factor. And obviously, if it's built out to the client, how you just, or maybe it's another thing is, can there? Can we have 2x factors, one if, if it's a cost for a partner and two if it's billed to the client. So and I don't know the answer to that, but
+
+Matthias Miller  19:34
+anyway, I don't know where
+
+Speaker 1  19:34
+this is all going. It'll just be interesting to see. But let's just keep that as an I don't think I don't think it's a finished question on what the X factor should be.
+
+Matthias Miller  19:47
+So yeah, exactly. Being the the market and or exchange and or,
+
+Speaker 1  19:55
+yeah, this so. So for example, the billing rate that you think of when and you're having to work on a call should compared to costs should should, as someone becomes more senior, should you be hoping to, to change that from, you know, from two to three or something?
+
+Matthias Miller  20:17
+Right. So, anyway, make sense? Um Oh, yeah. Not related but a brainstorm? Yep. Do you have more on that? No, no, that's fine. Okay, what happened? What would happen? If you had a simple repeatable way to build? I think you're gonna think I'm crazy. So that's why I'm telling you to build an email list. Thank you have, okay, what's your big problem in marketing? You don't have a list of prospects? What is what is rosewoods problem gonna have a list of prospects? So here's the idea Anabaptist, Business Connect. And it is a, a improved version of the Anabaptist that builds that tech, etc. It is a, I think the big question is, is there a market for this? But you go down to some, well, maybe you charge 100 bucks a month for the 100k clients, you know, and or the six figure businesses and yeah, maybe it's tiered based on business size. And you have a, it's a business community. It's much like, what I mean, it really is an information business. And if we partnered with rosewood, they would have monthly trainings on marketing. And I would be happy to you know, I don't know if I'm the right guy, but like, somebody has monthly q&a on. I'm not the right guy for all things, operations, but systems perhaps I don't know. And you get access in and you build out a on the community, you have an email forum, you have a fax forum, and you have a you have a perhaps a telegram if that's actually a thing. And then you have a an employee, who is a transcriptionist who takes these takes all the emails that all the email correspondence for a day, send it out to the fax, takes all the fax correspondence for day types of apps, sends it out to the email and the fax and acts as a go between and you become a communication platform for connecting business owners answering answering questions and connecting with each other. And you charge money for it. And then as a result of that you own the list of people who are in that in that mix in you ask them enough demographic information that you can tell whether they're actually viable prospects
+
+Matthias Miller  22:55
+I mean, it's interesting
+
+Speaker 1  23:01
+what you're really okay, so who's out there in the space already?
+
+Matthias Miller  23:10
+Well, it's the internally it's Dave. It's It's Dave Kaufman. Yep. Luke Kipper AF. Gaming. Leon Yoder. Yeah. The twins back King. Yeah, it's all those guys. Yep. Now, the other thing that could happen, by the way is you go to these guys and say, hey, look, let's go in together. And they would you know, if they're willing to all work with each other, it can be a fantastic win. So once it once a month, Matt gets on for any kind of personality disc questions. And Dave gets on for whatever he talks about sales sales questions and Leon about ops and you know, I don't know. I don't know if that could work anyway. externally. It's Michael Hyatt. It's Dave Ramsey. It's Donald Miller probably as the top ones.
+
+Speaker 1  24:10
+Yep. Yep. Yep. Be it's really fascinating. So, okay, here's my proposal. Can we slate this for 2025 or 2024? And in the meantime, can we aggressively in 2023 be pushing to be building relationships, either you or me building relationships and connections basically, trying to build out as much as possible out internal network.
+
+Matthias Miller  25:02
+Yep. And could you? I don't know whether that should be you or me? Well, I think, yeah. I mean, I think it should at least be you. Me as well. I think you should also strongly consider doing one of us. I'm not super jazzed about the idea. But yeah. Doing, like the Ohio trade show. What's the Ohio trade show? It's a let's see. monthly marketing ideas. It is the airworks auction. Maybe it's too deep into Amish land. But this is the one that is the biggest one from what so basically, viewfinder currently is getting all of the leads from a trade show in Indiana, one in Ohio and one in Lancaster. And that's where they're getting their current customers. Wow. And I think there's and then this is the Pennsylvania one. So the air works. All the air works in February. I don't know if we can even get in I it's we can even eat his birthday. And I can practically guarantee you that's
+
+Speaker 1  26:36
+that one's gonna be well, I can't I can't do it this this this year.
+
+Matthias Miller  26:41
+So the Pennsylvania One would be one. Well, okay, but then it would be a question. Could we? What do we want to think about sending Tim for the Pennsylvania one? Would he be the right guy? For a, an appropriate guy to send or should we maybe are doing a roaming go? Just table it?
+
+Matthias Miller  27:06
+I think I have I kind of think I had a roundtable meeting in September, but if I recall correctly, twice in a month. Search round. So I'm only mentioning this because of Yeah, I have a roundtable a couple of weeks before something we could do a couple weeks before.
+
+Speaker 1  27:39
+No, I mean, it's it's it's intriguing. Um, okay. It'd be even more intriguing if we would have the this the the software consultation thing built out.
+
+Matthias Miller  27:56
+But I forgot about that. Actually, um Yeah. The blur? Oh, yeah, let's see blur.
+
+Speaker 1  28:16
+And this isn't, um, this isn't great here. So I have here on marketing, I have one page. One pager, networking calls. And then PowerPoint training for four coaches? Oh, no, I've got four four coaches. But hey. So and then here, I am also going to so where do we put this? So as soon as I had the one pager, I want to start working on marketing calls. And the PowerPoint training I'm pretty interested in I think that one's could be really powerful too. And is that probably needs to come up? Well, do we first try to have the do we build out the software consultation before we start doing marketing? Because or not?
+
+Matthias Miller  29:28
+Let's let's take a look at what software consultation would be. Yeah. First of all, I have a very interesting conversation with a gentleman yesterday and he was talking about the process of growing anything new. And he said in his experience, it's always started with I do it by myself. Yeah, to like, figure out what needs to be done. I do it six, you know, six times and said he has a placement agency and he said he did the first dozen hires and his team did the next 500 or something. Yeah. So and then Once you do that, then you figure out the tasks that are required. And you start handing out you have the assistant shortage or backpack for you. Yep, yep. And then from there, you can continue offloading it further and further. Until, you know, perhaps at some point, it's too much for an assistant and then you start. Well, and then you start hiring contractors. Yeah, yeah. So many pieces. Yes. And then once you have contractors, then you start. I forget what exactly what were you said, but he had an order. I think you hand off the his argument was administration and then sure, operations, and then sales and marketing is one of the last things that you offload? Sure. So
+
+Speaker 1  30:46
+So are you even at a place where you want to be thinking about the sales process?
+
+Matthias Miller  30:51
+Well, I am in this quandary. Yeah. Right now in my life, where the sales and marketing arm for horrible Barnes has been wildly profitable, great, and extraordinarily stressful at times. The marketing less though the marketing is locked in place, and that's sure, basically, as long as they don't cancel its residual income. Sales Team can have the opportunity to do that I certainly didn't negotiate into a percentage, upside. Sure. If I want to continue down that route, or slog it out for another six months, and wait until I can nail down, you know, hire three or four more people before I can nail down 80% of the hiring process into SOPs. And fill out the training etc, etc. So that's where that's at. Yeah. personal goal. Go ahead. Go
+
+Speaker 1  31:53
+ahead. quite heavily committed on the on the on building out your marketing arm right now is what you're saying?
+
+Matthias Miller  32:02
+Yeah, I mean, if I build out their sales team, if I can help build other state sales team, we can scale marketing even further. Sure. Yep. And it's always going to be good for the software side of the business. So and it opens up some really interesting doors. For me, which isn't always good, but nonetheless, it is the case. It can be dilution, but it can also be helpful context. Sure, so.
+
+Matthias Miller  32:32
+So then, the next question could be, so one of the other things that was interesting, I took the day off on Friday just didn't really have any agenda and then sat down and started typing out kind of outlines and questions and things for, for the business membership group. And I've never accurately it's probably the first time that had been that thorough, and not exceedingly thorough, but that through and outlining these things, I think something like that could be very similar for the business for the software research or software consultation. Yeah, sure. Where it's, we're going to do you know, what, what are the questions we asked in the onboarding? What are the, how many? How many demos do we do? How many evaluations? And then how do we make recommendations? And if I sit down and think about it, not from a high wire stuff, but we're gonna build this whole thing, this whole thing, right? Is a process driven business from start to finish? Yes. Yep. And asking questions like, how do we guarantee success? Right? I mean, if you look, how many of these do you have to sell to get started? No, it's ridiculous that PCP only charges $50 a month for premium placements. That puts you puts you on page 14? Yes. Yes,
+
+Unknown Speaker  33:53
+I'm not complaining. I'm gonna keep forward.
+
+Matthias Miller  33:58
+I wouldn't complain either. The guy was really pushing me to advertise. He's like, You didn't renew you have any answering? I'm like, Dude. Anyway. So So then the question is, okay, so that actually looks like a fairly could be a fairly interesting process oriented. Okay. Let's, let's ask these questions. This is the other question that guy had for me last night, three criteria. Can you teach somebody else to do it? On the software consultations? Yes, you can. Yes. Is there crushing demand? Well,
+
+Unknown Speaker  34:35
+I think yes.
+
+Matthias Miller  34:37
+I mean, I don't think people have a know it. But I think yes, if we could get into construction space, if I think of the standard, I had a guy call me up out of the blue and he's like you do software. Can you help me out make a decision? Yeah. And I think there's just this overwhelm of I may need to do something. I just don't know where to go. Right.
+
+Speaker 1  34:56
+Right. Oh, okay. And here's another Place. Here's another way to think about it. You know how Donald Miller own space Dave Ramsey owns a whole space? What if we would? We've said we do custom software, that's all good and fine. But what if we would in the Anabaptist? Community? We own the software space? Software? There you go. Code crafters code house. Yep. And, you know, sometimes I think we should actually even go to EBMs, and some of our other competitors and say, hey, we'd like to know what you're doing. I don't know if we'll go to that one that I think is our bigger competitors. Right away. EBMs knows about us anyway, tell us what you do. And so that, you know, there are times we will, we'd like to refer people to you would you would do what do we get a referral fee? If we do that?
+
+Matthias Miller  35:48
+And I mean, maybe Coonhounds becomes a reseller, at that point. Sure,
+
+Speaker 1  35:53
+maybe. And the, the other thing that's really interesting with a software thing is if the first Okay, two things, first of all, if you can figure out what the right offline software is, for construction, what the right online software is, for construction, what the right this is for this, then you start building up this quiet library of what to do. And yes, sometimes the 995 thing is you just listen carefully, and then you, you copy in a your white paper, tweak the names for it, and you send it to them, and you've made $1,000 an hour. And then otherwise, if it's a big project, you say, at 995, we include up to 10 hours of work. And then and then after that it's you know, $95 an hour or $150 an hour, whatever you want. An interesting thing for that is that that's all your money, I don't take a cut out of that. I mean, you know, now if there's marketing costs on my side, we can discuss but it's not, Dan Daniels doesn't get any,
+
+Matthias Miller  37:04
+he doesn't get any of that. So.
+
+Speaker 1  37:08
+So I think you can protect you, you can protect against losses by just having a maximum number of hours involved. And, and you might at some point early on, you may subsidize a bit as you are, or maybe not at all. But anyway, you could consider subsidizing as you're building up your library of stuff to make it easier for yourself. I mean, I already know there's two sites online that are great resources. And, and sometimes it might just be closed. Go ahead, Capterra, there's this county, or there's another one kind of like them. Right. So, anyway, so I think it is. And I think we, we kind of position this, this is a service we provide, you know, we would love to sell you custom software, but custom software is not the right thing for everyone. And, and you know how to build out support team so. So I think this would be a consultation, then maybe if people want a support contract at that point, there's a you know, either they can pay you a retainer, retainer, you know, retainer gives them access to up to five hours and a and then it's only it's less per hour after that, or they can do one off support.
+
+Matthias Miller  38:35
+at a at a high rate. So the retainer is pretty interesting, especially if, okay, here's the thing about all things software. Yep. If we're going to do training, wouldn't it be interesting to have somebody like Ben or Tim say, I want to teach you guys how to make the most out of QuickBooks? Are you guys really using QuickBooks to the maximum? Yeah, well, let's go find it. Let's maintain a database of who are the users of classic accounting? Who uses QuickBooks who uses what this that and the other? Yep. And and as part of the sport contract, you get access to these? Yeah, sure. I mean, there's and that removes the knee as the I mean, yeah, I'm the genius has to get get it all started removes me from being the genius who has to keep the ball rolling. Sure, sure. Yeah. Hey,
+
+Unknown Speaker  39:22
+could I take a two minute break?
+
+Matthias Miller  39:24
+Yep, totally. Yep. Okay, I'm back. Okay. Oh, I mean, I think just
+
+Speaker 1  41:36
+as far as we're talking about it, I just don't see how putting this on your plate in the next three months is wise.
+
+Matthias Miller  41:45
+I think that I think if I need, okay, here's what I think. I'm not sure execution should happen in the next three months. But I think if there are spare brain cycles when compelled to go invent something, yep. And put my brain to active use, I think this is a reasonably productive distraction. Yeah. Apart from actually pulling a trigger. Yeah. Well, okay.
+
+Speaker 1  42:10
+And the one thing I think, just from your standpoint, I can't imagine anything. No, I can't, I can't imagine other things. But it really fits code house really well. Building the system and the idea of getting retainer out of it, I think is you know, it's just pretty, I mean, you know, if, if eventually it does that, too. I think it's just pretty fascinating.
+
+Matthias Miller  42:35
+So, yeah.
+
+Speaker 1  42:40
+Anyway, so I'm going to put that in as a lower priority item. So this is software consulting.
+
+Speaker 1  42:54
+So I'm going to say my top priority is a one pager because I want to use that for my networking calls.
+
+Matthias Miller  43:05
+And I go ahead I keep bumping that one pager around Sure. Mostly because well I mean, I'm pushing hard on I'm pushing really hard on accounting. I'm pushing hard on the sales team. Yep. And then months like this month additionally if that's not enough, push hard on country you know country Katalin. Hello desires.
+
+Unknown Speaker  43:39
+Yep, totally understand
+
+Matthias Miller  43:42
+not grumpy. Understand. I'm hoping though that next week is going to have some mental space for some of this stuff Sure.
+
+Speaker 1  44:04
+Well, okay, could we spend five to 10 minutes just talking about what the one pagers should be?
+
+Matthias Miller  44:08
+Get? Can we actually I mean, what if you what if we made this a bit of a working session and just knocked out either an outline or draft? Yeah, why not? CCI marketing and then it should be. See where? lead magnets and white papers? Sure. All right, so
+
+Speaker 1  44:34
+just code crafters. one pager, is that fair? Sure.
+
+Matthias Miller  44:41
+So what I was envisioning is kind of a who we are. Identity
+
+Matthias Miller  45:03
+I have a three part sure what we do sure and then we would have a
+
+Speaker 1  45:15
+Can we swap the the Can we put sure we serve to down the low?
+
+Matthias Miller  45:21
+Who we are what we do and who we serve?
+
+Speaker 1  45:24
+Yeah, and I'm not sure who we are and who we are is I mean, okay. Ideally, you're not talking too much about yourself. I mean, you establish yourself as
+
+Matthias Miller  45:37
+an me here's the alternative way to look at it. Yes, yeah I think this is a much better approach. Yeah. Yep. Like yep, yep. Okay, so problem we solve is here I don't know why I have this obsession but
+
+Matthias Miller  46:18
+is that the right term? Yep, fine. We can just throw some of these miscellaneous thoughts over here if we don't like it so how would they describe you know, there's two kinds of clients that we have here and for three different layers of describing how it is some clients come to us because they've well let's start looking at problems I tried to develop another software and didn't work tried to find retail software and couldn't find it
+
+Matthias Miller  47:12
+those are the software limits there's also the underlying which is looking for a competitive edge in the marketplace
+
+Speaker 1  47:27
+also grow they almost all our clients are growing if they're not growing they're not fun to work with
+
+Unknown Speaker  47:36
+yeah
+
+Unknown Speaker  47:41
+yes
+
+Matthias Miller  47:57
+so I mean it's basically so this is not very jazzed up but we help.
+
+Matthias Miller  48:48
+That's one way to say it, okay. Sure.
+
+Speaker 1  48:53
+And just thinking out loud here as businesses grow their systems need to grow with them. And often, initially, the entire business is in the owner in the founders head or the owners head and then
+
+Speaker 1  49:26
+then expands to a to a smaller team that uses
+
+Matthias Miller  49:33
+that uses
+
+Speaker 1  49:37
+paper, three standards, you know, accounting software, off off the shelf software to manage your processes. As business continues, as businesses continue to to grow, they often fail If the businesses often faced problems
+
+Unknown Speaker  50:06
+they find their existing systems not scaling and it's not a great way to say it
+
+Speaker 1  50:14
+doesn't it's and how doesn't it scale they are spending to the too much time they are there are things that are falling through the cracks there are processes that should be automated an orange
+
+Unknown Speaker  50:50
+What about yes
+
+Unknown Speaker  50:57
+yes
+
+Unknown Speaker  51:18
+in can we and what would success look like without even talking about paper
+
+Matthias Miller  51:30
+keep going I mean the successes. Whatever the
+
+Speaker 1  53:10
+second process would really nail the problem at something like these processes. So, so the actually do you want to send me the link here and then I might just
+
+Matthias Miller  53:26
+dump out some stuff
+
+Unknown Speaker  53:36
+Okay
+
+Unknown Speaker  58:22
+mean there's the problem yeah yes
+
+Matthias Miller  59:07
+yeah, yeah. Thank you we just take these Yes. Out
+
+Unknown Speaker  59:19
+move it over at least that's quite sure that's the right word.
+
+Matthias Miller  59:48
+The the other
+
+Speaker 1  59:51
+thing. So there's there's two parts. This is this is feeling heavy for me. And maybe in some ways you touched on that. The other thing is I I started this business because I love to do excellent work and I love to deliver and I'm just overwhelmed with operational problems
+
+Unknown Speaker  1:00:08
+yeah
+
+Matthias Miller  1:00:14
+the of grow have
+
+Speaker 1  1:00:30
+is shaded I'm not sure that's by
+
+Matthias Miller  1:00:38
+don't know is that's kind of a mixed metaphor but well that's not it's a core the joy
+
+Speaker 1  1:01:23
+providing excellent with and seeing exciting growth because I'm not sure the growth is healthy at this point
+
+Matthias Miller  1:01:29
+that's it is and if it's actually growing property I mean growth needs
+
+Speaker 1  1:01:38
+cash so yeah the joy of providing excellent products and seeing exciting growth is overshadowed by the weight of the scaling business of I'm not sure it's scaling of the of the increased
+
+Matthias Miller  1:01:55
+business is overshadowed by the growing workload or by the
+
+Speaker 1  1:02:05
+end if you can if we can all get the chaos the swirl the I mean we talked about overwhelm and the and this the the
+
+Matthias Miller  1:02:19
+anyway the spinning plates and growing workload
+
+Unknown Speaker  1:02:34
+constant demands and growing workload
+
+Matthias Miller  1:02:35
+sure I don't know if I told you this. Amish guys think I'm a no holds barred copywriter
+
+Unknown Speaker  1:02:59
+that's fantastic
+
+Matthias Miller  1:03:04
+yep well that's the problem right there you
+
+Speaker 1  1:03:18
+know Yeah, that's fine. I'm dumped that some of this ends up in the other thing Oh,
+
+Matthias Miller  1:03:27
+sure. And then I'm just going to accept all your changes here
+
+Matthias Miller  1:03:56
+so well can this be one what's the problem we saw what's the
+
+Speaker 1  1:04:20
+okay and can it be less about us? Can the first one be the problem of growing business the surprising problem of growing businesses
+
+Unknown Speaker  1:04:41
+the path to healthy growth Yeah, I mean that some ways path is a little bit or because
+
+Speaker 1  1:05:25
+you will have you will always have headaches guaranteed and so either I'd like either systems that simplify growth or systems that streamline growth
+
+Matthias Miller  1:05:39
+once you take the headache streamline streamline is really
+
+Unknown Speaker  1:05:48
+yeah sure okay and
+
+Speaker 1  1:06:12
+can we first start in by saying without talking about our process itself just saying what basic principles like okay let me just start picking data in one place data connected
+
+Matthias Miller  1:06:33
+clear processes systems
+
+Matthias Miller  1:06:51
+Many many manual tasks
+
+Matthias Miller  1:07:16
+now they're
+
+Speaker 1  1:07:18
+I don't know anyway I might be using systems in multiple ways here but I guess the other way you can say it is just streamlining this growth or growth growth without headache
+
+Matthias Miller  1:07:44
+or scale
+
+Matthias Miller  1:07:52
+growing past the plant No, I think streamline is a good really good word. Yeah I think too Oh okay, yeah.
+
+Speaker 1  1:08:15
+Now the one thing about streamlining growth I don't think most Anabaptist they won't quickly admit that growth is actually their desire and they're they're not trying to streamline growth they're not you know, affordable Barnes is not act while they might be affordable Barnes is on the edge but Triple D for example is not all EBS is they're not trying to say we want to be a you know a you know 100x Where we are today it's just they keep doing an excellent job or they keep growing they keep adding people and just
+
+Matthias Miller  1:08:48
+it's a new job it has this little okay they're not going to post it dollar figures are a little bit proud of they have serial number one of one of John dears you know products they pride themselves in being number being being a leader okay so
+
+Speaker 1  1:09:23
+that takes the emphasis from from growth to the business which systems that streamline the growing business surprising problem of growing business systems that streamline the growing businesses
+
+Matthias Miller  1:09:38
+anyway I don't know. streamline business I don't know that it was wrong. Uh, okay,
+
+Unknown Speaker  1:10:01
+I do feel I do feel strongly but so start with mine and then change if you got something else then
+
+Matthias Miller  1:10:09
+I'll move this over.
+
+Speaker 1  1:10:11
+Yep so I think we describe what you want regardless of whether you need our software or not. Like I suppose there is a an 80% solution because I think that's what we're going to say is here's the vision, here's what you want to have. And then you might be able to accomplish this with retail software and then just good documentation, good processes that supporting processes. But if not, I mean and here's what we provide because some because often the retail software is actually not going to meet that need and the the ERP systems are expensive or clumsy and frustrating etc. and still don't always handle the workflow
+
+Matthias Miller  1:11:06
+well yeah so how are you
+
+Unknown Speaker  1:11:29
+okay so
+
+Matthias Miller  1:11:36
+okay is there a way that we can instead of talking about the process can we say contrast this with people who are past this point? Sure.
+
+Unknown Speaker  1:11:53
+Yes sure.
+
+Unknown Speaker  1:12:04
+Can we just call this the streamline business
+
+Matthias Miller  1:12:07
+Sure So, this is success within wouldn't this logically be the I mean what did you call it business that's a key if you does it make sense a noun or word phrase the
+
+Speaker 1  1:12:39
+Okay, these aren't bad this is just the this is just the adolescents whose pants are too short because it's growing business and adolescent business so you don't want them to start reading this because because I'm wanting them to hand out this this white paper. You don't want to with these poor people have enough inferiority so it's yeah, it should resonate like this is a pain point. Yeah, this is a pain point. But not that
+
+Matthias Miller  1:13:07
+it is
+
+Speaker 1  1:13:13
+but you could put the word in there that says it's it's overwhelming. It is chaos. It is overwhelmed probably not a bad word. The the overwhelm of Business Growth The the the chaotic business sure doesn't sound good
+
+Matthias Miller  1:13:53
+Sure, he was president it's hard. Yeah, right. I don't really care maybe I'm, yeah, go for it. We'll dump this in here as well. So You're more of these that you want to capture above
+
+Unknown Speaker  1:17:06
+centralized first one is taken care of
+
+Matthias Miller  1:17:14
+we should also mention
+
+Matthias Miller  1:17:38
+this could actually be what are your thoughts? Yeah, um
+
+Speaker 1  1:18:31
+What if you would say the business owners experience starts to change as his business is, is systemized and stringy and the processes are streamlined I don't know if that and I think that's probably close enough. I think we can. So did we cover the the opposites of the pain points of above, it's increasingly difficult for new employees to learn everything they need to know increasingly painful when skilled employees leave.
+
+Matthias Miller  1:19:18
+We didn't address that
+
+Matthias Miller  1:19:27
+so but one thing is that
+
+Speaker 1  1:19:30
+business processes are clear. And everyone knows what needs to happen. I don't know. And team members know what needs to happen.
+
+Matthias Miller  1:19:57
+Sure, Yes
+
+Speaker 1  1:20:02
+information is scattered is centralized in one place nice and do we want to or do we want to emphasize that this is a business owner is this everyone that's true so needed information is centralized in one place
+
+Unknown Speaker  1:20:32
+Oh yeah sure the okay time savings see it's not
+
+Unknown Speaker  1:21:52
+only manual tasks and reminders are well that it is also that
+
+Matthias Miller  1:22:11
+I mean the time savings go through so many different layers it's Yeah. Team members spend spend the last time what do they less spend
+
+Unknown Speaker  1:22:23
+on busy work
+
+Matthias Miller  1:22:26
+but what is busy work? It's it's entering information multiple times double checking cross referencing. Yeah, looking things up again. Spinning wheels Yeah. figuring out what's on the schedule today. Yep. Looking up order statuses Sure. Yeah, I think giving practical examples I mean Yeah, go for it well. That's one way to describe Yeah, sure.
+
+Unknown Speaker  1:23:28
+Yes. Yes. Yes.
+
+Matthias Miller  1:23:33
+That's time Yeah, that's it clear
+
+Matthias Miller  1:23:44
+as you drop off in just a few minutes here so I actually have some capacity for brain space for the next call. And I don't like
+
+Unknown Speaker  1:23:52
+to stop to go Go ahead.
+
+Matthias Miller  1:23:55
+I mean, the last piece then is who we are. We're kind of like well, I don't know what this is. Anyway,
+
+Unknown Speaker  1:24:06
+how to get there.
+
+Matthias Miller  1:24:08
+How to get there? Yeah and. We talking about like which businesses benefit It's more from that sir
+
+Unknown Speaker  1:25:01
+Sure yeah or business Yeah, yes.
+
+Matthias Miller  1:25:18
+Yeah Exactly.
+
+Matthias Miller  1:26:40
+What's the rest of the stuff over? Okay, well it's not a one pager. It's a probably about three pager or two pager. Right? That's fine. Do we? Who's a good guy to read through this from a marketing standpoint? Or do we just send it the viewfinder and say, hey, look, you guys want to? Any good? Me personally so great to Edit Copy?
+
+Speaker 1  1:27:09
+Um, I don't know. Well, first of all, do you think we're done actually done? Or do we need about 50% more? I mean, are about 50% there right now?
+
+Matthias Miller  1:27:20
+Well, I mean, we might be consumer sent there. I don't know. Okay,
+
+Speaker 1  1:27:23
+I almost said let's push this off to our next call. Read don't just jump jump in again next time. I kind of think it might be a two pager. Because I think there's more that we could say that'd be really helpful. And, and then we then we decide who to where to take it next. But this is great.
+
+Matthias Miller  1:27:40
+Good progress. I like having an opening.
+
+Unknown Speaker  1:27:42
+Yes. This is great. Yep. Perfect.
+
+Matthias Miller  1:27:44
+Thank you, sir. Good. Awesome. Thanks. Yep. Take care.
+
+
+Transcribed by https://otter.ai

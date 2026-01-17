@@ -1,0 +1,1133 @@
+Unknown Speaker  00:30
+Hello again oh again
+
+Speaker 1  00:39
+All right, let's assume with the imports and export thing that that had spent where do I find how to export the X point four like the financial allocation builder employee timecard and building
+
+Matthias Miller  01:02
+if you go into favorites user folders
+
+Unknown Speaker  01:05
+and then hits Well
+
+Matthias Miller  01:10
+there's one of two ways one you can copy and paste that line into into a new favorite
+
+Unknown Speaker  01:18
+and just run the favorite
+
+Matthias Miller  01:20
+or you can go into it favorites user folders on the Advanced menu there's a show standard
+
+Unknown Speaker  01:28
+and then you can just search for it in there over there?
+
+Matthias Miller  03:27
+All right, so I have a proposal for the
+
+Unknown Speaker  03:32
+vendor issue,
+
+Matthias Miller  03:35
+which is that we create
+
+Unknown Speaker  03:40
+vendors, how do we do
+
+Matthias Miller  03:43
+that we create an AP vendors
+
+Speaker 1  03:48
+contact type and then use the which I'm doing now
+
+Unknown Speaker  04:00
+and then use the Import contacts Well, let me let me maybe I should
+
+Matthias Miller  04:17
+walk you guys through the whole story and process. Here's why importing vendors was not a very good not a simple straightforward answer.
+
+Unknown Speaker  04:32
+We have
+
+Matthias Miller  04:35
+an old way and a new way of representing organizations. The old way is an organization is a completely different type of thing than a contact, an individual contact. And the new way is a contact or an organization is basically the same thing just slightly different Um, and we are working to moving towards the new model. It's makes more sense. It's what we believe in.
+
+Matthias Miller  05:13
+But in order to, and I think it's best switching to that new model, before we get way deep into the accounting system. I don't think it's going to get well I know it's not, it does come down to a question of priorities. But I do know for a fact it's not going to get easier for sure. Making the switch. So. So my proposal is, so I'm communicating with Ellison Josh, to come up with a plan on how to switch these things over. There's two places at this effects. One is with our incident tracking currently, which isn't terrible to switch over but I think it may actually require some coding on our end
+
+Speaker 1  06:07
+let me go check something actually as well. Hello organist organization
+
+Matthias Miller  06:19
+and then the other big piece is that the some of the AP modules and some of the inventory management modules still use the old way which requires Josh's involvement. And this fit fits smack dab into his current sprint priority of Go help make life easy for accounting migration.
+
+Matthias Miller  06:45
+So I guess I'm kind of wondering whether I kind of think making that switch sooner rather than later is the right way to go.
+
+Unknown Speaker  06:53
+I would and we can work around
+
+Matthias Miller  07:00
+on the on the incident side of things doesn't really affect you guys, but we could get around that in the short term just by tagging those incidents using tags instead of organizations and
+
+Speaker 1  07:10
+just temporarily work around it that way. That'd be fine.
+
+Matthias Miller  07:19
+That's the backstory and where we're at what it means for us now my proposal is that we go ahead and use a new AP vendors contact type
+
+Speaker 1  07:32
+import these as a import these is regular contacts. And
+
+Matthias Miller  07:47
+we'll have to populate some kind of first name last name and then override the display name so that it's it matches the
+
+Unknown Speaker  07:55
+your me perhaps get a little better share my screen and
+
+Unknown Speaker  08:17
+so
+
+Matthias Miller  08:18
+we use something like let's see, let's pull up our vendors
+
+Matthias Miller  08:29
+and I don't know whether this
+
+Unknown Speaker  08:30
+is a we actually yeah
+
+Matthias Miller  08:42
+it could be something as silly or as simple as this where we put a P vendor in the first and last name and and do it like that, or we pick the first space and split it out like that. Let's see if there's an there are some some here it could actually be as simple as.
+
+Matthias Miller  09:34
+Just splitting it, okay,
+
+Speaker 1  09:34
+and let's do it. So this would be the display name. First Name, Last Name
+
+Unknown Speaker  09:50
+we just make
+
+Matthias Miller  09:50
+up split out first name last name, even if it's a bit meaningless. In the cases where it's one word or like, Adam, we just use Adam as first name and last name, but override the display name. So it always just shows up as Adam in, throughout the system. So this would mean we would rather than storing these vendors in the system as organizations, which is something that we are hoping is going to go away, we would store them as contacts. Currently, they would still be stored as individuals, not organizations, but when we make the switch, we can then switch these contacts over to be
+
+Unknown Speaker  10:36
+organization type now,
+
+Matthias Miller  10:38
+that was probably rambley and confusing and getting too deep in the weeds.
+
+Unknown Speaker  10:43
+I don't know. So
+
+Speaker 2  10:47
+the beauty about moving to context is you would have Am I correct that context? Could be a vendor, a customer, a company, while a vendor? Yeah. It could be somebody you're buying things from or somebody you're your customer? Could it be employees on Earth? Okay,
+
+Matthias Miller  11:19
+good. We're currently using it for customers. I mean, customers includes leads, employees non production employees, pressure employees, non production employees external contact, which is just a flag for I don't even know what we're using that for haulers are to vendors and sales reps. Most of these, like one of these employees, let's see employee has special handling for payroll module. hauler has got special hauling compensation fields or to vendor has special RTO settings sales rep has special sales rep
+
+Unknown Speaker  11:59
+settings as well.
+
+Speaker 2  12:02
+So can Kenny contact then be multiple? Like you could be a somebody could be a vendor and a customer?
+
+Matthias Miller  12:11
+We don't currently allow that. I think it's reasonable to.
+
+Speaker 2  12:17
+But I think I think we should. And maybe you're planning for this. But I know that in payroll module, we had some powers that we were putting into payroll module, or I don't know, is that part of this? Where we couldn't enter them as employees? Yeah, we couldn't use the same name to enter them as employees because they were already entered this horse, I believe. Yes. So I think they ended up entering them like
+
+Speaker 1  12:51
+John Doe PMP for a while.
+
+Speaker 2  12:56
+This does, does the contact type determined your your accessibility or accessibility but your permissions in the system as well?
+
+Unknown Speaker  13:09
+Or is that that somewhere else.
+
+Matthias Miller  13:12
+Um, I would have to dig in deep as far as a bit deeper as far as what that actually determines. There's some of that,
+
+Unknown Speaker  13:22
+let me see if I can, in most
+
+Matthias Miller  13:24
+of that is tied out to a user account.
+
+Unknown Speaker  13:31
+And
+
+Matthias Miller  13:32
+there is a hauler and dealer user group. So, so predominant, there's a lot of these permissions that would be the permissions will predominantly be controlled by this by the user account. But there are some things like hauler portal and dealer portal that I'm not completely sure how those are handled.
+
+Speaker 1  13:58
+But that is the biggest advantage to having contacts is
+
+Speaker 2  14:11
+you have everybody you have all of those contacts consolidated in one central location rather than
+
+Unknown Speaker  14:20
+an organization here and a holler over here
+
+Unknown Speaker  14:24
+and another table for customers here whatever
+
+Unknown Speaker  14:27
+yes
+
+Speaker 2  14:31
+I know there's we're going to have numerous instances where a contact is going to be more than one light color employee, some vendor customers because like one company like affordable Learn Common may sell things to vinyl structures and then the other way around. Right? And then we also actually also have this a lot where an employee bias is also customary bias to buy floors or advice, what have you from the company?
+
+Unknown Speaker  15:07
+So but how would you overcome that? Or how would you handle that?
+
+Matthias Miller  15:21
+Well, there'll be two ways one is
+
+Unknown Speaker  15:26
+having
+
+Matthias Miller  15:27
+like the AP vendors be a
+
+Matthias Miller  15:36
+sales orders, okay, so as far as purchasing sales orders themselves are not tied out to contacts.
+
+Unknown Speaker  15:44
+And so these are just there's a billing, there's a billing name,
+
+Matthias Miller  15:50
+but it's not actually what we should get something like this is there. Yeah. Well, that's not much better, but so, so that wouldn't affect it. But, you know, for example, on the AP side, we could say we default to only showing you the list of AV vendors. For example, if you're paying a well, okay, the right long term solution is just allow people to be multiple things, I mean, there's it's completely reasonable that a
+
+Speaker 1  16:35
+that holler, in your case, holler is a bug may also be a production employee.
+
+Matthias Miller  16:46
+Now the alternative is when you're in AP to have it filtered down by AP vendors, but have a way to go choose any contact anywhere. And you know, open it up and just go find
+
+Unknown Speaker  16:59
+go find somebody who's not necessarily strictly in that list.
+
+Unknown Speaker  17:07
+So
+
+Speaker 2  17:11
+okay, so you said short term, you have a solution to bring vendors in. And then more long term, you're going to, you're going to talk to Josh and Alice about changing everything over to context. Yes.
+
+Speaker 1  17:35
+Go ahead. Go ahead. How does that affect accounting and
+
+Speaker 2  17:41
+testing that we're doing right now? Does it affect it at all?
+
+Unknown Speaker  17:48
+For the next month or so?
+
+Matthias Miller  17:52
+I don't see it as substantially affecting it.
+
+Unknown Speaker  17:57
+Not enough that I'd be worried about Okay. And then last,
+
+Speaker 2  18:05
+the other question is on vendors as we're calling them AP vendors is that why that instead of just vendors is there
+
+Matthias Miller  18:18
+How would you want to do we have an RTO vendor so it'd be nice to differentiate between those two in some way
+
+Speaker 1  18:30
+that was my thinking but I'm i I'm happy with I don't have much of a I don't know
+
+Speaker 2  18:39
+I mean technically they're both been they're all vendors we're buying products or services from like so that yeah
+
+Unknown Speaker  18:48
+they're in some ways I
+
+Unknown Speaker  18:53
+just call them vendors and just keep our to vendors. I don't know. No big deal. Just call it Yeah.
+
+Unknown Speaker  18:59
+Want to have
+
+Speaker 3  19:03
+people that are in accounts payable or just paid up front. You want those all
+
+Unknown Speaker  19:10
+that's fair.
+
+Speaker 3  19:14
+You know, say you don't have an accountant. Lawyers are just walking in the front. You want the lowest vendor to be in the same list as all the accounts payable.
+
+Unknown Speaker  19:27
+Yeah, yeah. Good point. Yeah. Yeah.
+
+Speaker 2  19:31
+To me a vendor would be anybody that provides goods or services. So
+
+Unknown Speaker  19:45
+then can you
+
+Matthias Miller  19:46
+write up a change request to take a look at the allowing multiple contact types
+
+Unknown Speaker  20:04
+Just trying to take a
+
+Matthias Miller  20:05
+look at a little bit here how invasive that's gonna be that's
+
+Unknown Speaker  20:15
+my biggest
+
+Unknown Speaker  20:29
+okay so
+
+Matthias Miller  20:36
+so really what we want then is a
+
+Speaker 1  20:52
+we save this as a share shared once for us
+
+Unknown Speaker  21:35
+yeah
+
+Matthias Miller  21:49
+okay so I need to I think it's a pretty simple thing probably the easiest way is
+
+Unknown Speaker  21:55
+just to create a an export of
+
+Matthias Miller  22:02
+it'd be a pretty simple thing to create an export of vendors
+
+Unknown Speaker  22:10
+in the format that we need to import them back in
+
+Unknown Speaker  22:19
+and you said to get it get it told over so
+
+Matthias Miller  22:27
+let's go over into vendors and just see if there's anything I mean is there anything that you really need? I guess we do have address
+
+Unknown Speaker  22:34
+their address city fax email
+
+Matthias Miller  22:40
+Are you wanting those things
+
+Unknown Speaker  22:41
+taken across it's not that big of a deal to get it
+
+Unknown Speaker  22:45
+this is probably good
+
+Unknown Speaker  22:48
+yeah insurance
+
+Speaker 3  22:54
+in the end we're never gonna actually write a check out from the from the test systems that run doesn't matter there but
+
+Unknown Speaker  23:00
+yeah
+
+Matthias Miller  23:03
+we'll probably want it moving forward anyway okay so there's city
+
+Unknown Speaker  23:08
+state vendors we got syrup and tree eating countries
+
+Unknown Speaker  23:34
+okay
+
+Unknown Speaker  23:36
+take two tech shown type one would be wrong type types with fax vendor fax number enter is active no gender war and vendor email contact notes vendor notes in there
+
+Unknown Speaker  24:22
+okay, so this is not
+
+Matthias Miller  24:25
+there's still some things that will be stored on the vendor but this is everything that maps across.
+
+Unknown Speaker  24:31
+Oh, and then my see if I can find my
+
+Unknown Speaker  24:40
+first name
+
+Unknown Speaker  24:47
+middle last thing all right. example give this year let me give this a try as you're looking at
+
+Unknown Speaker  25:18
+the interesting let's go ahead and
+
+Matthias Miller  25:20
+make sure that this looks mostly right before we
+
+Unknown Speaker  25:25
+take it across
+
+Unknown Speaker  25:33
+there's a headline sure thoughts on
+
+Unknown Speaker  25:47
+email let's go
+
+Unknown Speaker  25:56
+let's find one that has a
+
+Unknown Speaker  26:06
+rendering announcement I wanted that Bender effects
+
+Unknown Speaker  26:40
+take primary emails
+
+Unknown Speaker  27:10
+interesting
+
+Speaker 1  27:18
+looks like there's a Alright, let's just go for fax numbers just to make sure
+
+Unknown Speaker  27:34
+it's good for the health department. So faxes coming in. There's no phone number.
+
+Matthias Miller  27:43
+Okay, well?
+
+Unknown Speaker  28:04
+mean here you go. Do you want
+
+Matthias Miller  28:26
+do you have do you want this going forward? Do you want
+
+Unknown Speaker  28:30
+us to within MBS
+
+Matthias Miller  28:33
+always copy over the vendors into contacts when we've copied over from the live system is and have it always be up to date based on what's in the live AP system? Or did you want to be the source of truth to be? Or do you want to do the same thing where we, for example, in employees where we, you know, let me simplify my question Do you want to do a one time copy over from the from the current IMS vendors into things you can use for the accounting system and maintain your own list of vendors? If there's new vendors in the future you just add them or do you want to always do a copy over from from that vendor list in the live system into contact records?
+
+Unknown Speaker  29:27
+Without
+
+Speaker 2  29:32
+good well, the lack of the latter sounds like the better option. But what happens if we if we're doing testing and we change a vendor in the live system are we
+
+Unknown Speaker  29:50
+then
+
+Unknown Speaker  29:52
+what's going to happen if let's say we have code house
+
+Unknown Speaker  29:56
+and then you update
+
+Speaker 2  30:00
+The names or the names change to something else, and then we bring it over to it it then inactivated on
+
+Unknown Speaker  30:16
+Woodhouse house would be missing.
+
+Matthias Miller  30:24
+And when you try to pull the transaction accounting transactions in, it wouldn't be able to import all your accounting transactions because it can't find the matching name. So you would have to go back into your export file and fix up anything that references code house to
+
+Unknown Speaker  30:42
+the new name. Ah,
+
+Speaker 2  30:49
+I mean, yeah, so the first option is probably better for the tests, let's see, we just entered anything manually that needs to be
+
+Speaker 1  30:56
+entered there, or what? What's your suggestion?
+
+Matthias Miller  31:30
+Another option
+
+Matthias Miller  31:37
+would be to add a manual step to the before update process where you export a list of vendors from the live system, export a list of vendors from the test system
+
+Unknown Speaker  31:48
+and compare them and look for any any name changes.
+
+Matthias Miller  32:05
+And you would update the test system, manually rename them in the test system. So that your accounting export
+
+Unknown Speaker  32:12
+preserves that alternatively
+
+Speaker 3  32:30
+with the test system, we're just going to be working to simply set the data, right. So we're bringing over the contacts that are for that set of data. If it changes after that
+
+Speaker 2  32:44
+was a matter? Well, I see is probably long term, long term, but doing testing this month, and then another month, so we know Tesla's doing multiple tests were.
+
+Speaker 1  33:01
+So it's been. But
+
+Unknown Speaker  33:10
+I think that
+
+Speaker 3  33:11
+thing of just getting both less being able to compare them have some method of comparing them both less, I think that will help solve that. But that would be a long list.
+
+Speaker 2  33:26
+Yeah, like how are you going to? How would you catch them, if you had two lists,
+
+Matthias Miller  33:33
+you would use a tool like this, and copy both lists in here.
+
+Speaker 1  33:40
+And just see which ones which ones were changed.
+
+Matthias Miller  33:44
+So you would have to go into you go into live system. The vendors show inactive vendors.
+
+Unknown Speaker  33:54
+Copy this out. Since got row numbers we don't want to row numbers. Maybe have to export it to Excel first. Let's see if we if we just don't know if this is going to do the same thing or not.
+
+Matthias Miller  34:13
+Oh, that's a real numbers not mine. Nevermind. And then we'd go into
+
+Unknown Speaker  34:23
+we run a contact report on
+
+Matthias Miller  34:26
+I know this is the wrong thing. But we're going to do our to vendor just so we've got something in here.
+
+Speaker 1  34:31
+Grab these names. Paste it in. And I'll show you looks like
+
+Matthias Miller  34:37
+we don't have cricket Valley Valley in here but it will show you which ones have
+
+Unknown Speaker  34:41
+changed versus not changed.
+
+Matthias Miller  34:44
+I mean I can here we can actually do a little bit of an example but let's say that let's say that somebody fixes the spelling
+
+Speaker 1  34:53
+of that and somebody deletes it. This one and they added let's do that
+
+Matthias Miller  35:15
+there's a Lowe's that went into Fort Wayne
+
+Unknown Speaker  35:20
+and then you can you could go
+
+Matthias Miller  35:21
+down through this list and see
+
+Unknown Speaker  35:25
+this one got deleted that one got added
+
+Unknown Speaker  35:36
+deleted renamed
+
+Matthias Miller  35:42
+and then you just make those changes in the test system beginning to match and then at whatever point that they match up it should say I think this tool says the two are identical and at that point then you know you can safely do that migration without any kind of mix up
+
+Unknown Speaker  36:07
+Yeah, well I think
+
+Unknown Speaker  36:09
+that seems like the best option yeah
+
+Unknown Speaker  36:23
+vendors
+
+Matthias Miller  36:28
+so in addition
+
+Unknown Speaker  36:31
+to are funny or bungled one rage we would need to do a man I'm just gonna send this over to you
+
+Matthias Miller  36:48
+from the live system we need to do this from the test system
+
+Unknown Speaker  36:53
+we would need to do things myself now
+
+Unknown Speaker  37:06
+let's see this would be test number one
+
+Matthias Miller  37:29
+so let's just go ahead and do that
+
+Unknown Speaker  37:32
+now
+
+Unknown Speaker  37:39
+we'll see what goes sideways
+
+Matthias Miller  37:43
+primary emails is not
+
+Unknown Speaker  37:44
+valid All right, thanks
+
+Matthias Miller  37:52
+Ben one more change request the export and import for contacts is not working
+
+Speaker 1  37:58
+it's not working with send you the error message so we're going to change this one to export
+
+Unknown Speaker  38:22
+not to export email
+
+Unknown Speaker  38:38
+yeah this is also a problem nobody
+
+Unknown Speaker  38:52
+says it quite this simple because the.
+
+Unknown Speaker  39:30
+Just do
+
+Unknown Speaker  39:51
+this is right
+
+Unknown Speaker  40:10
+constraint
+
+Unknown Speaker  40:46
+okay so
+
+Unknown Speaker  40:56
+baby or try this
+
+Unknown Speaker  41:11
+oh that's why
+
+Unknown Speaker  41:20
+yeah we didn't want to do that is the same issue with
+
+Unknown Speaker  42:23
+right but in the
+
+Unknown Speaker  42:33
+end for my customer
+
+Unknown Speaker  43:01
+yeah
+
+Matthias Miller  43:17
+this isn't exactly going to work
+
+Unknown Speaker  43:21
+is this guy this should be an employee
+
+Matthias Miller  43:31
+Do you know offhand if these are these employees
+
+Unknown Speaker  43:35
+I don't let's see what this one was was a sales rep and the reason this was a customer
+
+Unknown Speaker  43:58
+this one is non production
+
+Unknown Speaker  44:37
+is like a holler yeah I don't know what we have her as nonproduction employee since falling off So hauling no maybe not yeah also hauling hauling
+
+Unknown Speaker  45:22
+we already fixed this receipt it was a customer
+
+Unknown Speaker  45:46
+now isn't a contact type
+
+Matthias Miller  45:47
+I wonder if what we need to do too
+
+Unknown Speaker  45:55
+is not
+
+Unknown Speaker  46:02
+important the contact type
+
+Unknown Speaker  46:20
+which should give us then
+
+Unknown Speaker  46:27
+we sit here yeah
+
+Unknown Speaker  46:30
+okay
+
+Unknown Speaker  46:37
+that means whatever
+
+Matthias Miller  46:47
+I don't know
+
+Unknown Speaker  46:51
+this gets a bit ugly
+
+Unknown Speaker  47:00
+I receive it
+
+Unknown Speaker  47:05
+good to be able to just bring over just the
+
+Unknown Speaker  47:09
+right verb
+
+Speaker 3  47:11
+like without the contact information just bring the names themselves
+
+Unknown Speaker  47:18
+yeah
+
+Unknown Speaker  47:19
+yeah
+
+Matthias Miller  47:20
+we can do that the main thing is I think
+
+Unknown Speaker  47:25
+because this is all getting pulled off of the okay
+
+Matthias Miller  47:34
+I think the bottom line is we need to compare the bottom line is we can't also we also can't necessarily assigned the contact type for our new ones there's a whole bunch of them that have contact type assigned but we won't have have for new ones so then when we do the comparison report we'll want to compare the
+
+Unknown Speaker  47:53
+the test vendors
+
+Matthias Miller  47:56
+test vendors against the live vendors and then just we'll just have to be careful to make sure that those actually match up we can't really rerun the
+
+Unknown Speaker  48:04
+rerun the diff to see if they match
+
+Unknown Speaker  48:17
+or anything if there's any better way to do this
+
+Speaker 1  48:39
+don't know yeah great thank you
+
+Unknown Speaker  48:54
+so much
+
+Unknown Speaker  49:06
+don't know I think will
+
+Matthias Miller  49:08
+is probably going to be good enough for now and if this keeps being a hassle, we'll just
+
+Unknown Speaker  49:17
+find something better
+
+Unknown Speaker  49:29
+So bottom line you now have
+
+Matthias Miller  49:33
+I think you have everything I need. Let me know if I need to clarify anything but you now have vendors in here.
+
+Unknown Speaker  49:43
+Not in here but in here.
+
+Matthias Miller  49:50
+Now some of your vendors are in here sales reps. Market. spyler was one example of a guy
+
+Unknown Speaker  49:55
+who Wait
+
+Matthias Miller  50:08
+assuming it's the same market spyler you know let's the That's the million dollar assumption
+
+Unknown Speaker  50:18
+there are a few of these that are overlapping
+
+Unknown Speaker  50:22
+but casting that should be just fine right?
+
+Matthias Miller  50:25
+Yeah it should be just fine
+
+Unknown Speaker  50:36
+good
+
+Speaker 3  50:37
+we need the Chart of Accounts list from inventory we want that in a new company in the test environment
+
+Matthias Miller  50:53
+so what you'll need to what you'll need to do is remember that list is inventory
+
+Unknown Speaker  51:12
+I would expect it's excused but I don't know.
+
+Unknown Speaker  51:20
+Because it's part of his views.
+
+Matthias Miller  51:24
+It's on the skew but somewhere there's a mass no Dwayne has sorry. This is where it was. Dwayne has a master report
+
+Speaker 1  51:44
+Okay, so let me go to
+
+Unknown Speaker  52:01
+No, that's not it
+
+Unknown Speaker  52:12
+hmm
+
+Unknown Speaker  52:19
+so we'll need to take
+
+Speaker 2  52:22
+okay, that that list has some I think that's the list where they had manually added some and there were some discrepancies between the two so we just pushed an upload just last week and I think first it added all of those on our SKU data sheet and
+
+Speaker 1  52:43
+upload that to the system so that they would use use those as
+
+Unknown Speaker  53:00
+let's take a look
+
+Matthias Miller  53:01
+let's see there's an easy way that we can find out which one's
+
+Unknown Speaker  53:11
+ledger since a skew
+
+Unknown Speaker  53:21
+field
+
+Unknown Speaker  54:01
+let's do this actually in the x
+
+Unknown Speaker  54:22
+I mean all of these are
+
+Unknown Speaker  54:30
+we do one more thing
+
+Speaker 2  54:39
+is it easier to do it from here or from our master list import them into doing or that we did we had to list like the parent accounts and then the or like if you listed a sub account you had to list in a specific way of What the parent accounts were of that? Will this allow you to do this? Actually, no, this list will only this was just shows you a concatenated, like parent account, all the way down where we were putting it into the accounting system. So we'll have to have the hierarchy.
+
+Unknown Speaker  55:26
+Correct. So
+
+Matthias Miller  55:28
+good?
+
+Speaker 2  55:29
+Well, unless there's an easy way to do that, from this side, we can take our current chart of accounts and put it into that import that the format that Ben needs, or that we had used, like a month or two ago, and put it put all of it in there and
+
+Unknown Speaker  55:51
+import like that. If that were
+
+Speaker 1  55:59
+we're better, it's gonna have to be done like that. Okay,
+
+Speaker 2  56:06
+that's no problem. I mean, it'll take some time on our side. But yeah, that's, that's fine. So that takes care of Charles, good. One question on that.
+
+Unknown Speaker  56:16
+Chart of Accounts is, Drew had been asking for
+
+Speaker 2  56:22
+a way of displaying, like, when you go to select an account, a way of displaying, like the parent accounts, so that because you have raw materials, or let's say, raw materials, listed in multiple places, and you'd come up with a suggestion,
+
+Unknown Speaker  56:38
+has that been?
+
+Unknown Speaker  56:43
+Done already? Or do you know where that where that is going?
+
+Matthias Miller  56:49
+Bend you look into it? I mean, I think it's currently
+
+Unknown Speaker  56:53
+under, underway, but not done. Thanks. So let me look it up here. I know exactly what you're talking about. Just give me a second to talk about the change.
+
+Speaker 2  57:06
+The resolution was to have it like a almost like a concatenated just show the entire string. Right.
+
+Unknown Speaker  57:15
+Right. Very similar to what we are.
+
+Unknown Speaker  57:38
+By as well, he's looking
+
+Speaker 2  57:39
+at that what is the so can you define what is company specific in the accounting? And what is system specific? Like our I know, chart of accounts is company specific. Right. And our plan was to use the same chart of accounts just do a copy and paste to keep those aligned What about contacts? Are those company specific or is that
+
+Unknown Speaker  58:11
+that shared?
+
+Speaker 2  58:14
+Okay, and is that pretty core as to how that functions in there? I would think there would be a lot of advantages to having those not be shared just because it would
+
+Unknown Speaker  58:26
+shorten up the list for each company.
+
+Unknown Speaker  58:30
+For example, we have
+
+Unknown Speaker  58:34
+we buy paint from different Cerulean source
+
+Speaker 2  58:41
+a handful of different ones, you know, because their region specific and if we would have company specific vendor or contacts then it would you know, we would
+
+Unknown Speaker  58:54
+only have that would cut down on
+
+Speaker 2  58:58
+those but then I guess those are also in IMS, which we've determined that IMS
+
+Unknown Speaker  59:04
+is is a system
+
+Unknown Speaker  59:10
+like it's across all continents are system specific.
+
+Unknown Speaker  59:17
+We think that through
+
+Matthias Miller  59:17
+you're gonna have fun with all the leads that North Carolina has in Indiana have imported into the contact list. So it's not filtered out and I'm gonna guess most leads you're not paying much money to
+
+Unknown Speaker  59:34
+the what is the best way to do this?
+
+Speaker 1  59:47
+I mean, if we had multiple contact types, it seems like that would be I would know because
+
+Matthias Miller  59:57
+if you were to filter by company
+
+Matthias Miller  1:00:09
+I think this is a conversation that's going to have to go back to Ellis and Joel.
+
+Unknown Speaker  1:00:20
+I think Ben, this becomes another. Let's go design this and let's write up a change request. And let's pursue it with them. Well, I
+
+Unknown Speaker  1:00:33
+mean, if, or is it something that's not worth
+
+Unknown Speaker  1:00:36
+gazing at this point or even worrying about?
+
+Matthias Miller  1:00:45
+depends a little bit how we would do vendor invoices. If we switch vendor invoices over to using contacts, then yes, I think it does become an issue.
+
+Unknown Speaker  1:01:10
+Thinking
+
+Matthias Miller  1:01:16
+although as far as the core accounting module is concerned, we said most of the stuff is going through AP, so as long as the list and AP in well, not through AP, but through either vendor invoices or.
+
+Unknown Speaker  1:01:35
+But so the vendor starts at
+
+Speaker 2  1:01:39
+the purchase order or the like on the kanban card, which is an IMS thing. And
+
+Unknown Speaker  1:01:46
+so it if we if we list
+
+Speaker 2  1:01:49
+all the vendors there, which we have to, then it probably doesn't make a lot of sense to try and separate them out.
+
+Unknown Speaker  1:02:00
+On the accounting side or the AP side. Seems to me it's more of a nice to have a bit not critical. Something I'd say we can just continue as planned.
+
+Matthias Miller  1:02:23
+Okay. I think it is something you might want to put on your radar in terms of here's how to make life easier for the accounting team.
+
+Unknown Speaker  1:02:35
+You know, moving in that direction, but yeah.
+
+Speaker 2  1:02:46
+Is there anything else that we should know about? That company specific or district specific as it relates to accounting?
+
+Unknown Speaker  1:03:02
+Um,
+
+Matthias Miller  1:03:03
+chart of accounts all account linking
+
+Unknown Speaker  1:03:07
+company specific. I mean, some of the tie outs
+
+Matthias Miller  1:03:16
+in the buildings and stems Well, we're not really mean it's company specific, just by virtue of
+
+Unknown Speaker  1:03:28
+I don't know. Being configured
+
+Matthias Miller  1:03:33
+correctly, so that shouldn't be a substantial concern
+
+Unknown Speaker  1:03:43
+might seem a little
+
+Matthias Miller  1:03:44
+blank as far as what other possible issues there might be.
+
+Speaker 2  1:03:49
+Will be will we run into issues on the on paying vendors?
+
+Unknown Speaker  1:03:54
+So we have
+
+Speaker 2  1:04:01
+things like the payment method, and would assume that set per vendor. And so if all three companies use the same vendor, which there are some vendors that they all buy products from Apple supply if one wants to pay with credit cards, another one's to pay ACH and the other ones to mail a check or
+
+Speaker 2  1:04:27
+there's they have different terms one with one company we have net 30 and other company we have
+
+Unknown Speaker  1:04:35
+like 2% net 10.
+
+Matthias Miller  1:04:45
+Yeah, that's fair. I mean on the vendor. Certainly we have all those vendors settings
+
+Unknown Speaker  1:04:53
+which are things like
+
+Matthias Miller  1:04:57
+whether to compliant compliant combine orders displayed for unnamed of the vendor is a trusted vendor to use freight or the freight vendor, some Pio notes mean I kind of think at that point what you do if it really comes down to it, then sorry, let's go back to Apple supply or Apple outdoor? Well, actually, we
+
+Unknown Speaker  1:05:18
+do have this year.
+
+Matthias Miller  1:05:22
+All right. That's yeah, that's the workaround. If we did, right, yeah, you would have an i N, O, H, and C. And then here, I don't know why we don't have this check. But it seems to me like we should do something like Apple outdoor supply. So it still goes to them as Apple outdoor supply. But internally, we we branch that way.
+
+Speaker 3  1:05:46
+In our work, and then you can set your payment settings and terms and whatever all
+
+Unknown Speaker  1:05:53
+differentiate that. Yeah. Good.
+
+Unknown Speaker  1:06:07
+Kind of interrupted where we,
+
+Unknown Speaker  1:06:10
+we were going with Ben was looking at the status on that.
+
+Speaker 1  1:06:14
+Displaying sub accounts. Yeah, that is that is in the developers court. They should start working on that here before too long. I don't know exactly when. But yeah, that's in the Developer Network and start getting implemented.
+
+Unknown Speaker  1:06:41
+So we would want to be
+
+Speaker 3  1:06:43
+entering that chart of accounts as just the name of the particular count, because that functionality would become Yeah, to string.
+
+Unknown Speaker  1:06:57
+Just for
+
+Speaker 2  1:06:58
+you don't have there's what there's I think three of three smaller items and the developers support. That it's the on the balance sheet. We looked at that Monday, going to
+
+Unknown Speaker  1:07:15
+the other times
+
+Speaker 2  1:07:16
+we provided updates on Monday, you have no idea on are we two weeks or a month, two months on that?
+
+Unknown Speaker  1:07:27
+Do they do you have any idea?
+
+Speaker 2  1:07:35
+What was the finding of us finding or using that exact match in the search, search search? And the other was allowing you to drill down or go to the General Ledger from the balance
+
+Speaker 1  1:07:50
+sheet. Yeah. The general ledger looks like it is coded and just needs to be tested before we would be ready to deploy it.
+
+Speaker 1  1:08:06
+The filters looks like that is we're finishing up with a little bit of wording here on our end, and then it'll go to the developers. Just to make sure that we have Yeah, the wording correct and developers to understand. But, yeah, as far as the timeline, I'm not entirely sure. Not that, you know, what, what else has been? Actually two, two pieces to this. I mean, you're talking to the general ledger. Okay, no, this is the one okay.
+
+Matthias Miller  1:09:02
+I mean, the so as far as the testing, if we update the test system, it'll be you'll have access to the General Ledger changes. The I don't really have almost no context on timeline.
+
+Unknown Speaker  1:09:17
+I think.
+
+Matthias Miller  1:09:26
+Ben, I kind of wonder if we need to come up with just as a way of managing it this especially on these core accounting changes, if there should be if
+
+Matthias Miller  1:09:42
+it might be helpful if you would kind of project manage those and shepherd them through the design process. And then once they are ready for development, get some kind of feedback from the team as far as when they think it's going to be implemented and just kind of follow up and stay in touch with
+
+Speaker 1  1:09:58
+them when you Yeah, words. Yeah, that would be good
+
+Unknown Speaker  1:10:12
+what else? Did we have anything else?
+
+Unknown Speaker  1:10:25
+No, because we shouldn't be able to put and
+
+Speaker 3  1:10:30
+the chart of accounts in that form and import that.
+
+Unknown Speaker  1:10:35
+There's the building information over counting sites that link people there
+
+Unknown Speaker  1:10:55
+think that should be it for that.
+
+Speaker 2  1:11:02
+I'll get you that chart of accounts information and then you can start. Yeah. Prepping that getting that to Ben.
+
+Unknown Speaker  1:11:11
+You have that for
+
+Unknown Speaker  1:11:13
+No, I do. Get that.
+
+Unknown Speaker  1:11:19
+Did you have anything for us, Matthias? Or Ben?
+
+Matthias Miller  1:11:27
+Do you have a follow up from Larry on
+
+Unknown Speaker  1:11:30
+the purchase orders?
+
+Unknown Speaker  1:11:34
+I do. I was trying to I just got an email from him
+
+Unknown Speaker  1:11:37
+earlier today
+
+Unknown Speaker  1:11:44
+yeah, that was gonna send
+
+Speaker 2  1:11:44
+off to you later today. I'm not quite sure that I fully understand it yet. I want to make sure that I understand what he's saying. But yeah, I'll get that that to you should be today yet.
+
+Speaker 1  1:11:55
+And then we would have that and
+
+Unknown Speaker  1:12:09
+anything anything else that you had? I don't think so.
+
+Matthias Miller  1:12:21
+More of an update than anything I need to get with Seth
+
+Unknown Speaker  1:12:24
+soars.
+
+Matthias Miller  1:12:27
+Freezing payroll numbers, and a few of those things. Payroll accounting impact might be. We'll kind of see how that lands. But no, I don't think I've got anything else. And anything from
+
+Unknown Speaker  1:12:39
+you? I don't think so. Okay. Good. Thanks, guys.
+
+Speaker 2  1:12:48
+We'll get to work and be in touch with you once we have. Yeah.
+
+Matthias Miller  1:12:57
+Sounds good.
+
+Unknown Speaker  1:13:00
+Thanks, guys. All right. Thank you. Yes.
+
+
+Transcribed by https://otter.ai

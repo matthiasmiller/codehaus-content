@@ -1,0 +1,692 @@
+Unknown Speaker  01:39
+Hello,
+
+Unknown Speaker  01:39
+two minutes dude. Like Give me a minute.
+
+Matthias Miller  01:46
+A
+
+Speaker 1  01:49
+30 seconds after two o'clock staying off with question mark
+
+Matthias Miller  01:56
+I never know how things are going.
+
+Speaker 1  01:57
+I am so confused on. Okay, let me ask you a question before we dive into this stuff. Yeah. So if I wanted to say that I don't want something to show up on a report until it's 21 days past the date that it was okay, so let's say let's say for example, a building was not built. And if 21 days past its entry point.
+
+Matthias Miller  02:30
+So is in a building built date? And
+
+Speaker 1  02:35
+before you start diving through this, let me get back here. Let's, um, gosh, let's just do this. Let's do this. I'm going to give you a run report. Okay, Ctrl C, where's my I need you to look at my date calculations because I don't think it's right and it's driving me nuts and I'm brainstorming to hurt on it.
+
+Matthias Miller  03:04
+Grouchy on it, well,
+
+Speaker 1  03:07
+Gabe wants this very convoluted way of having some information come into this report and it's driving me crazy. So go to go to settings there's a macro in here in the subset called Lok sales order AR subset
+
+Unknown Speaker  03:23
+okay
+
+Speaker 1  03:30
+so so for the for if it doesn't have a building and its balances greater than zero and it and we don't care if it has an invoice date, then I don't want it to show up in here until that sales order invoice date is 30 days past that point
+
+Matthias Miller  03:50
+we're 30 days past the invoice date is that what it by definition, so it will never be what so it will never be greater than or equal to the invoice date plus 30 Because that's plus 30.
+
+Matthias Miller  04:18
+I mean, we've all had this happen at least once in our life. And then here
+
+Speaker 1  04:24
+of course, this is okay everything needs to be today I would
+
+Matthias Miller  04:28
+do would be assigned be appear on date equals and so this one shows up on invoice date plus 30. This one shows an invoice date plus 30. This one shows up on entry date plus 21. This one entry date was 28. This entry date or Bill date was 21 this bill date and then any Your
+
+Speaker 1  05:04
+that last section I'm not sure. There I need some catch all stuff and I'm not sure how I want to do that yet because there's some stuff that doesn't quite match up all of this. And for right now I'm trying to I'm trying to catch some things as I'm making sure everything's working
+
+Matthias Miller  05:19
+well, maybe it would be easier than the Okay, today is you're gonna do like this. Who cares?
+
+Unknown Speaker  05:26
+What were you doing? You were gonna, you're gonna
+
+Matthias Miller  05:29
+say what's the date it needs to show up? And then just compare today one time at the bottom
+
+Unknown Speaker  05:45
+Oh, no, I've looked at this this stupid logic.
+
+Matthias Miller  05:49
+If the
+
+Matthias Miller  05:57
+wait, I mean, I think it's do you want to show okay if if if the if the balance is greater than zero
+
+Matthias Miller  06:22
+I mean, you never want to show it If the balance is zero, right?
+
+Speaker 1  06:26
+Well, I actually I actually do want to do greater than an equal to zero. I was going back and adding equals two in a minute here.
+
+Matthias Miller  06:33
+So you want zero balance showing up?
+
+Speaker 1  06:37
+I think so. I have to go back and read gapes notes again for right now let's go ahead and add equals to actually probably what I really should have is anything greater or less than zero is money really probably should be
+
+Matthias Miller  06:53
+probably what you want is well or yeah that's probably right. So that we get over payments as well right
+
+Matthias Miller  07:13
+I'm gonna get some I'm wondering I mean, you can simplify this by saying if Okay, assigned we show on date equals this and then today is greater than the show on date and then here you would say you can simplify this further by saying
+
+Unknown Speaker  07:34
+never show and then all this stuff can go
+
+Unknown Speaker  07:46
+Yeah, okay.
+
+Unknown Speaker  07:48
+So that'll simplify it.
+
+Matthias Miller  07:51
+Okay, so then if we, if it's, if it does not have a steppin it's not invoice shorten 30 days. Okay, but why are these identical? Like, can we just say if it's not linked to building short after? One
+
+Speaker 1  08:07
+is if it does have, because oh, one if it does, what else doesn't?
+
+Matthias Miller  08:13
+creation date if it's not invoice 30 days after?
+
+Speaker 1  08:16
+Both invoice date, it was supposed to be creation date. Sorry, got it. Oh,
+
+Matthias Miller  08:19
+that makes sense. Okay. And then if the dealer is wholesale, and it's district X, and
+
+Unknown Speaker  08:28
+it's not built, then
+
+Matthias Miller  08:29
+do it after entry date. Otherwise, the other thing you could do here to simplify this would be replaced and a.
+
+Matthias Miller  08:45
+And then, okay, and you can do the same thing here. With building build date, if it's not built and used to the entry date. You can? No, because oh, well, except he's wanting different numbers in those cases.
+
+Speaker 1  08:59
+No, no, it should be. It's that it's both for accessory invoices, which is the first line it's 30 days for buildings that are not built. It's 21 days for buildings that are built, it's 28 days from there on down. Except when you get down to your you are correct.
+
+Matthias Miller  09:19
+So you could do something like this if you wanted to. So basically,
+
+Speaker 1  09:22
+the replays Na is a small if statement inside of there. Yeah,
+
+Matthias Miller  09:26
+and it just makes it a little. It's sort of fewer conditions and makes it a little easier to read. Yep. So building build date, so then if it's district X, okay, but what's the difference between them it's best district X.
+
+Unknown Speaker  09:46
+I think you can do the same thing,
+
+Matthias Miller  09:48
+which you want with you and delivery date plus 21 Two, it's district X you want
+
+Unknown Speaker  10:10
+Something like that.
+
+Matthias Miller  10:13
+And granted, that's not maybe not the most perfectly clear thing.
+
+Unknown Speaker  10:22
+Yeah, but I like the more simplistic logic.
+
+Matthias Miller  10:24
+So then, but you're excluding What are you doing with SDI buildings?
+
+Unknown Speaker  10:28
+It's a different thing for them.
+
+Matthias Miller  10:32
+So we're excluding that. Yes. So then we can also say if
+
+Unknown Speaker  10:38
+no after this
+
+Matthias Miller  10:57
+Okay, so
+
+Speaker 2  10:59
+exclude zero balance items. So, accessory invoices 30 days after invoicing
+
+Speaker 1  11:12
+date when you started when you started documenting in the code like this, you made my life a whole ton ton easier.
+
+Matthias Miller  11:22
+Makes a lot of sense, doesn't it? It does. Wholesale buildings. The difference the only difference between wholesale wholesale
+
+Speaker 1  11:29
+we never refined we'd never really find for delivery date on wholesale. That's the only difference between wholesale and retail
+
+Unknown Speaker  11:42
+okay
+
+Matthias Miller  11:46
+these look backwards. Don't you want to build a plus 2028 and entry date? 21? Or do you want these 21 and 28?
+
+Unknown Speaker  11:55
+Okay, hold on a second let me go look at this
+
+Matthias Miller  12:03
+GI Joe I would probably do this actually not okay.
+
+Speaker 1  12:14
+Buildings not built sections show only buildings that have been on order for 28 days or more without being built. If they are built, built but not delivered should be so built. Sorry. Ordered but not built should be 28 days. Built but not delivered should be 21 days. And 30 days for miscellaneous invoices. So yes, I probably had some things wrong in there.
+
+Unknown Speaker  12:46
+What did I the other school sale
+
+Matthias Miller  12:52
+I would do like this delivered district deliver retail buildings should be shown after 21 days. Okay. So if if it's been delivered.
+
+Unknown Speaker  13:07
+And
+
+Unknown Speaker  13:12
+it's also well
+
+Matthias Miller  13:17
+and it's not wholesale.
+
+Unknown Speaker  13:20
+Oh, yeah. Okay. Flip
+
+Matthias Miller  13:22
+it like this. And then everything else is 21 days after build or 28 After entry if unbuilt. How's that?
+
+Speaker 1  13:37
+Alright, let's see what this thing produces. Yeah, okay. So I just have to go through and evaluate then click Save and I'll I'll dig through it. That's way more simplistic and I can understand it better myself. So there you go. Awesome.
+
+Unknown Speaker  13:57
+Fun times. Okay,
+
+Speaker 1  14:00
+not not fun times, because I got another one. That's very, but this is this is what's frustrating. It's like, when you're when you're fairly what's the word I'm looking for? Almost a juvenile, but that's not the right word. When you're fairly new at some of this stuff, your code is just not um, I can I can make it accomplish what I want to accomplish. It's just not, you know,
+
+Matthias Miller  14:28
+you could actually consider long as there's no proprietary information, taking this to chat GPT and saying please persist to the best of your ability and simplify the logics to make it easier to read. And it might actually have a same shot at doing it. I wish I would have kept the old ones I could see.
+
+Unknown Speaker  14:54
+Yeah, that's That's very true. They
+
+Matthias Miller  14:57
+are studies are showing that That gap GPT has or AI has substantial benefits for novice programmers and can take multiple years off of their, of their training. Basically, in terms of skill level,
+
+Speaker 1  15:16
+it's it's whenever like, this is what always gets me tripped up is whenever you're doing well date calculations for some reason, I just always struggled to think through. Right? You want something in a timeframe? I don't know why. But anyway, what do we got?
+
+Matthias Miller  15:33
+Yeah. Okay. So they're wanting to mark and drew, I don't remember who is wanting a report for anything where the vendor invoice does not match the PIO. And we don't fully understand how these things all interact.
+
+Speaker 1  15:48
+Okay, which which, what Part D is supposed to match the PIO?
+
+Matthias Miller  15:53
+That what we invoiced actually matches the PIO, I guess, like, okay, here. We have here, there's no Pio attached to that one. Okay, nevermind, but there's not a not a PIO, but that the nine total was 163 99. Like I guess the tax does the tax where's this?
+
+Speaker 1  16:19
+Did you send that you sent this to me? Yes, you did. At some point? Oh, no, you didn't. Okay, where it was in your it? Was it in your email? Probably my email. You just sent it to me now. Yeah. Okay, so let's let me have a look at this.
+
+Matthias Miller  16:41
+So I'm guessing tax would get applied for non Pio?
+
+Unknown Speaker  16:47
+Non Pio invoices.
+
+Speaker 1  16:54
+So, so for one that you're not having a Pio tied to it. What are you calculating for Pio? Total non Pio? What is the 163 99? Is that just a an RG Psalm?
+
+Matthias Miller  17:08
+Yeah, that's an RG some but if it's there is no P associated with it. You should add tax to it right.
+
+Matthias Miller  17:19
+Normally, tax would get distributed to your PO items. Okay, so that that clears off the first item that fixes that, but now we have masterpiece metal roofing, we've got 975. Oh, and then we also need to subtract discounts. Right in that, okay, so let's a non PIO, let's
+
+Unknown Speaker  17:43
+minus VT invoice discounts.
+
+Matthias Miller  17:48
+will format it nicely. Okay. Now let's see what's next. Okay, so then apple out door supply?
+
+Speaker 1  17:57
+Here's here's the only thing I don't quite understand. Why do you want to evaluate a purchaser that does not actually have a Pio assigned to it?
+
+Matthias Miller  18:06
+I don't know make sure you paid the right amount?
+
+Speaker 1  18:08
+Well, that would seem like a that would seem like a person paying the bill problem.
+
+Matthias Miller  18:16
+I don't have more context in that. So.
+
+Speaker 1  18:21
+Okay, I was being a bit snarky, but I mean, I would think it would seem to me that you would only want to evaluate purchase orders that have actual SKU items or something coming across from a purchase order. If you're if you're looking for total vendor invoice. Well peel vendor invoice total discrepancies. You're looking for discrepancies between the PIO and the vendor invoice or what Dave was paid or?
+
+Matthias Miller  18:46
+Yeah, yes. I think it's basically did we pay the right amount?
+
+Speaker 1  18:51
+Well, then why would you not okay, so the purchase the vendor invoice will reconcile itself with the purchase order. So items in what that is, is a evaluation of either the non purchase order expenses or the SKU items that are in there plus shipping plus tax plus discount. And if those numbers are not aligning, you won't get a reconciliation, the invoice will not reconcile. Now, it would seem like if you're looking to actually look for differences, you would be looking for a difference between the total of the vendor invoice and the payment amount. That would make a little bit more sense to me.
+
+Matthias Miller  19:33
+So you're saying the invoice validates that everything checks out? Yes.
+
+Speaker 1  19:37
+If you you see that little right there right above your the RG there the one you have selected says the invoice has been reconciled. That shows up once all numbers record validate.
+
+Matthias Miller  19:49
+Oh, well, I mean, in that case, and then who makes sure that these get reconciled
+
+Speaker 1  19:58
+so AP is not supposed to actually save off a vendor invoice unless it reconciles.
+
+Unknown Speaker  20:09
+Interesting
+
+Matthias Miller  20:12
+well that's basically
+
+Speaker 1  20:16
+now if you're looking for a difference between payment amount and total the invoice that I mean
+
+Speaker 2  20:24
+let me sorry they changed formats here and I'm here let's actually let's try this
+
+Unknown Speaker  20:43
+see if I can find where that thing how that thing gets generated
+
+Speaker 1  20:55
+you ever dropped down to blame somebody you
+
+Matthias Miller  21:03
+I wanted I originally was all politically correct and wanted to call it annotate and my boss was like that's dumb make it emotional call it Blaine
+
+Speaker 1  21:16
+oh man I would I want software fields that are labeled blame I want to put some blame on somebody
+
+Matthias Miller  21:21
+Okay, I'm gonna change this as funny version to I'm gonna get myself in trouble for all this stuff but okay, so instead the invoice total difference total difference and the difference comes from selected product
+
+Matthias Miller  21:49
+Okay, so these columns are completely bogus but now can conceivably this should show all unreconciled invoices correct
+
+Unknown Speaker  21:58
+well it depends on what your what do
+
+Matthias Miller  21:59
+you so you're resolving for Well yeah,
+
+Speaker 1  22:03
+I mean are you are you are you adding in? Are you adding in shipping tax and subtracting out discounts well okay, we're gonna be this you should be able to go into the back end and see what actually produces that reconciliation message. So
+
+Matthias Miller  22:18
+this is based on with this this difference is only for this is only for Pio skews. This is not for well, except it's showing something here. total difference selected product total. Yeah, no, it's for everything. It's the RG amount plus the non Pio expenses minus the product total which is the invoice total minus shipping minus tax plus discounts
+
+Matthias Miller  22:58
+and it's comparing those two and so the so this would be so what we really want is
+
+Matthias Miller  23:10
+so we want the product total this is too easy. Why did I not know about the records reconcile before before now but anyway, this is where we're talking the product total
+
+Speaker 1  23:24
+it's all right even though you may use simplified my code I'll simplify something for you. Awesome.
+
+Matthias Miller  23:31
+The invoice payment amount and then for
+
+Unknown Speaker  23:47
+let's see if this.
+
+Matthias Miller  24:16
+Bum Bum Bum bum. All right, let's see if we believe in this. This one's different because there is a product difference which is the only recent difference that we've got this one here is because of a pain.
+
+Speaker 1  24:30
+Hold on a second hold on. Okay. Can you scroll down to the bottom of that vendor invoice
+
+Matthias Miller  24:37
+oops, sorry, this one yeah.
+
+Speaker 1  24:41
+So but you should limit for June July for paid only or do you want to prepaid approved should we should you should you filter status?
+
+Unknown Speaker  24:52
+I don't know.
+
+Unknown Speaker  24:55
+Well, let's do this group for status then.
+
+Matthias Miller  25:00
+Just add columns it's still sorted by date. Actually no grouping status is fine to non Pio let's do
+
+Speaker 2  25:11
+sprouts Let's kill this grouping. Let's do grouping by the invoice status
+
+Matthias Miller  25:18
+All right, let's do that. Okay, these don't have any status those are old ones I don't know why. Here's a paid one with a payment difference
+
+Speaker 1  25:28
+okay, you're not accounting for the discount of 105 12 Why is it not accounting?
+
+Matthias Miller  25:33
+So because invoice total so what we want is actually
+
+Unknown Speaker  25:39
+product total
+
+Matthias Miller  25:42
+invoice total minus shipping weight the discount gets applied after the
+
+Matthias Miller  25:58
+let's do this new macro Lok VIP payment difference associated pure cost you go I don't need you I don't need you. I don't need you don't need you. I don't need you don't need you. I do need you alright, so payment different so this is some VIP invoice total minus b invoice discounts
+
+Speaker 2  26:36
+minus so this is expected payment and then some the specter payment minus V invoice payment about
+
+Matthias Miller  26:53
+okay and then here and this guy and the
+
+Matthias Miller  27:12
+alright so
+
+Unknown Speaker  27:18
+even about this should not pay a difference. This should be is an A we invoice payment and well you should do in a otherwise we should
+
+Matthias Miller  27:40
+all right. You like me now? Alright, so I don't know why this is showing up. There is no payment difference
+
+Speaker 2  27:52
+in wages total difference. or not is an A or 01 more time.
+
+Matthias Miller  28:07
+All right. So here's an old one for some reason. I don't think we need to care about it. But like the product was 6050. And we paid the whole thing.
+
+Unknown Speaker  28:18
+What's the status? Doesn't even have a status
+
+Matthias Miller  28:21
+doesn't even have a status. It's a really old vendor invoice. So it's not a Well, I
+
+Speaker 1  28:27
+mean, it's not really old. It's less than a year. Well, okay, fine. I mean, ideally, this thing, this thing, wow, we should probably build some Well, this is gonna be good because we can catch some of this stuff that why is this hanging around? It never got a status and what's the deal with it? Well, I'll look at this later. Did you know Okay, so let's look at 9906 Well, we're okay we're not there. We're still not accounting for discounts in some way.
+
+Matthias Miller  28:53
+So here we have a total payment amount was 1408 16. So here's the total I think the issue is sometimes we include the total
+
+Speaker 1  29:06
+now now the total should always be like if if you if you edit that thing and take out the discount right now it will not it will not it'll go unreconciled
+
+Matthias Miller  29:24
+Okay, so 14 product is reconciled, but why is so we didn't take the discount.
+
+Speaker 1  29:33
+Well so what was paid on this fort? amount with the was 14 out of 16. So yeah, we took the discount.
+
+Matthias Miller  29:45
+Other but normally the discount. Normally this doesn't include the discount? Yes, it does. So, I should not think,
+
+Unknown Speaker  29:55
+I think so.
+
+Matthias Miller  29:59
+So should I not be so Tracking the discount. So the invoice total should match the payment amount. Correct. Okay, well let's try this again
+
+Matthias Miller  30:15
+see why have you here? All right, let's take a look at this guy.
+
+Speaker 1  30:22
+Okay, now, so in this case, we go back a cup I'm sorry, go back down 1997 28 And we only paid 8092
+
+Matthias Miller  30:34
+Yeah, in this case, the discount for penis Caeser.
+
+Speaker 1  30:38
+Who did this is this Drew? Hoopoe, mark this paid is a fundamental mental misunderstanding of what in the heck is going on? Oh, for the love of Pete. Well, guess what? We underpaid the vendor. Hallelujah. Okay, so I mean, okay, so backup, this is a fundamental misunderstanding of how the system works. So he looked at the discount and thought that 1997 28 still needed to be subtracted off the 105 12. And he didn't open up the vendor invoice. And actually, look, let's go down and look at the attachments on this thing. Well, I'm blaming him. I'm not sure if maybe it's the way that you wrote something.
+
+Matthias Miller  31:22
+Okay, so where's the discount? 5% discount? 105 12? Yeah. So and then in 1997 28, is the balance that was due, so yes, we underpaid them? Yes.
+
+Speaker 1  31:34
+Now, is that because of the way that he saw information in his windows? Or is that because what we'll
+
+Matthias Miller  31:40
+there was some logic previously to generate checks to include the discount when generating checks. So now we need to go back and say, We're sorry, you can use the rest of the discount
+
+Speaker 1  31:51
+in regards to what you're writing. The total was the total was the total if you don't take the discount from the Okay, in theory, what's supposed to happen if you miss the discount date is you have to edit the invoice, increase the total amount and remove your discount
+
+Matthias Miller  32:11
+Okay, so, all right, that explains all that 920 I'm gonna get guests most of these 840 We're gonna get some most of these through December or that thing has to go clean up and then we have weird things like random
+
+Matthias Miller  32:40
+Alright, let's go to attachments. Let's see what's up with this 170 77
+
+Speaker 2  32:42
+D them Henry
+
+Unknown Speaker  33:01
+Yeah, what about it?
+
+Matthias Miller  33:04
+You wrote a check for 20 Where is that 70
+
+Unknown Speaker  33:07
+were 735 20
+
+Matthias Miller  33:12
+and it should appearances
+
+Unknown Speaker  33:14
+it looks like 735 20 on the JAG
+
+Matthias Miller  33:20
+yeah that's the payments he was saying was 70 which means what
+
+Unknown Speaker  33:25
+the payment amount and let's go see modification history
+
+Matthias Miller  33:30
+7020 Whitney changed it from 5070 to 20
+
+Unknown Speaker  33:36
+So how is it Beckett? How's it back at 70
+
+Matthias Miller  33:40
+More the payment amount the machine and put it in at 70 But but
+
+Speaker 1  33:52
+it looks like she changed the invoice total but she did not change the payment amount. So literally you can alter that you can edit and change that this 735 20 It's what it looks like what are the actual payment amount itself
+
+Matthias Miller  34:06
+with the curiosity The curious thing that I would have is that we should have report for this counting transaction where the accounting trans event type equals been the invoice this would be a non Pio payment count trans record trans event record ID equals
+
+Unknown Speaker  34:46
+it was paid by cheque
+
+Unknown Speaker  34:52
+this would be Chris
+
+Matthias Miller  34:57
+to be okay. So, got it I like that. So then 1333 1376 What's going on? Henry Henry Henry Henry 1333 How do you get 76? Whitney change it to 76 why I have no idea. It says here 1333 1376 It was Miss entered
+
+Unknown Speaker  35:38
+tax was not
+
+Matthias Miller  35:44
+considered non cash adjustment 43 cents
+
+Matthias Miller  35:56
+they charge extra to pay by card
+
+Speaker 1  36:05
+so, and Whitney updated to 3033 when should it be? So we had it in it's 1376 prior.
+
+Matthias Miller  36:15
+So it seems like you just want to put this straight don't put
+
+Speaker 1  36:18
+the negative in front of it. It's a surcharge. Oh, you're gonna do a negative discount, which means it turns into a pot. A double negative makes it positive.
+
+Matthias Miller  36:28
+I mean, how do you want it recorded?
+
+Speaker 1  36:29
+I don't know. But I mean, it's but okay. Oh, so if you do a negative discount that actually adds that that would actually fix your transaction records.
+
+Matthias Miller  36:41
+Yeah, yeah, but it's weird. I mean, I don't know like, Okay, this is beyond the scope of my stuff. I think this is at the point where Okay, drew here is we should probably add a date range filter and maybe a
+
+Unknown Speaker  37:00
+here's a good one
+
+Matthias Miller  37:04
+we have a difference of 195 this is on the 15th So somebody entered this one and there's a there's a discrepancy of 190 $595 per Aaron's changes this is not reconciling now here's a refund payment amount Why is the payment amount net negative here
+
+Speaker 1  37:35
+let's scroll back up to negative 40 399
+
+Unknown Speaker  37:47
+attachments your amount charged your orders cancelled please expect to refund shortly.
+
+Speaker 1  38:00
+And this is this is a series educates on how it should be a negative transactional the payment amount we think so. We think so too.
+
+Matthias Miller  38:12
+Okay, so this is really
+
+Speaker 1  38:13
+we really ought to have a secondary reconciliation on this that says if the payment amount doesn't match the total amount then it flags you
+
+Matthias Miller  38:27
+should it be a warning on save? I thought we have that
+
+Unknown Speaker  38:37
+maybe it's not done correctly
+
+Unknown Speaker  38:52
+let me go try this out
+
+Speaker 2  39:06
+let's see. Looking for space base detail screens vendor invoices. Validate missing warning duplicate invoice warning payment discrepancy warning. Checking open this up over here. So you can see
+
+Matthias Miller  39:36
+this condition here this is wrong. This should be just as simple as this
+
+Unknown Speaker  39:55
+right
+
+Matthias Miller  40:03
+If you have a payment amount and the payment amount doesn't equal the invoice total Euston, we got a problem. Indeed. Okay, well I will fix that.
+
+Unknown Speaker  40:20
+That's good clarification.
+
+Matthias Miller  40:24
+All right, well, I will I will standardize
+
+Unknown Speaker  40:28
+this
+
+Matthias Miller  40:34
+I'm gonna call this vendor invoice reconciliation. So I'm going to call it
+
+Unknown Speaker  40:41
+the report. Yeah, sure.
+
+Matthias Miller  40:45
+Okay, I'll standardize this and let me
+
+Speaker 1  40:49
+see this. Let me see that $3,400 Well, what's the 37,000 on what's the deal
+
+Speaker 1  41:02
+both was born on a 25 Scroll to the top why would why are they under paying it?
+
+Unknown Speaker  41:19
+15 To 75
+
+Unknown Speaker  41:29
+Wonder if the purchaser was never updated go hit the link on the purchase order
+
+Matthias Miller  41:38
+when the purchase order is right in the midst type the vendor invoice total
+
+Unknown Speaker  41:42
+those totals wrong
+
+Matthias Miller  41:44
+so this is 624 pieces. Order quantity we received at the price of 99
+
+Unknown Speaker  41:51
+f
+
+Matthias Miller  41:55
+1987 substantial price difference
+
+Unknown Speaker  41:59
+well no not necessarily click edit and click your more button right and did a show price unit measure pieces that was just never updated all right, wherever this thing is I need to go chase a couple of these this is good stuff to chase this is fun. Wheat All right okay.
+
+Matthias Miller  42:26
+I'll standardize it put it on the menu
+
+Matthias Miller  42:34
+I like it
+
+Speaker 1  42:38
+well, we probably okay so so different the vendor invoice total the payment amount so the difference amount of 105 12 So we should we should we add something to say
+
+Unknown Speaker  42:54
+well, I don't know
+
+Unknown Speaker  43:02
+what was your label before you
+
+Speaker 1  43:05
+know this is good stuff because this is this is this is great to go back and chase and clean up and figure out what the deal is. What's the total difference? What's the what's the fourth from the right column?
+
+Matthias Miller  43:16
+What is this is the the invoice doesn't reconcile total back Yeah. And this is the payment total and then let me do I'm going to change this to be
+
+Unknown Speaker  43:28
+02 and A as well.
+
+Matthias Miller  43:32
+And that way we'll just that way you can pick out very quickly where the problems are.
+
+Unknown Speaker  43:40
+Make sense? Okay.
+
+Matthias Miller  43:42
+Sweet I like it Thanks for your help. Oh the what is your priority on the moving payments from one sales order to another? Do you have a target date for that that you are hoping to see you're not really
+
+Unknown Speaker  43:59
+you're just whenever
+
+Speaker 1  44:00
+Yeah I would say whenever well let's let's look at it this way whenever it whenever it causes a big enough problem that we were really want to go fix it mean I don't think there's anything on fire I mean, that being said, I guess I guess it does happen every so often. And I guess probably if you just manually start deleting something from one sales order or putting in another one it probably creates a mess.
+
+Unknown Speaker  44:32
+Those create a mess.
+
+Speaker 1  44:37
+Well, then I guess you get to decide how much well I guess I guess I would throw it back in Mark's lap then. Mark and Jews laps where it's gonna end up being probably the more of the pain point.
+
+Matthias Miller  44:47
+Sure. Right. Good. Sounds good. Appreciate it. Good. All right.
+
+
+Transcribed by https://otter.ai

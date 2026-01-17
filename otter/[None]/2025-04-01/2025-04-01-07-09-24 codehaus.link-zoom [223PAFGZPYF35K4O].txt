@@ -1,0 +1,1001 @@
+Unknown Speaker  00:54
+Howdy. Howdy happy howdy
+
+Unknown Speaker  00:58
+Happy Tuesday. Happy Tuesday,
+
+Unknown Speaker  01:02
+okay, where's the stupid
+
+Matthias Miller  01:07
+camera? I don't know. Where's the smart one.
+
+Unknown Speaker  01:13
+Hardy, hardy her. All right?
+
+Matthias Miller  01:22
+All right. Well, any rabbits you want to get out and shoot? Before we dig in,
+
+Unknown Speaker  01:32
+get any rabbits want to get out and shoot? No, but I sure could use a good coffee from
+
+Speaker 1  01:43
+choose your choose your spot up there, it was kind of being up there again. Cafe, belay, I've never been there.
+
+Matthias Miller  01:51
+So they're, they're, they're probably the best coffee and Canyon, I would say. How's belay spelled, B, E, l, a, y,
+
+Unknown Speaker  02:08
+cafe belay Coffee Roasters do,
+
+Unknown Speaker  02:23
+where are they?
+
+Matthias Miller  02:26
+They're in front of City Market.
+
+Unknown Speaker  02:30
+Oh, really, and like, literally, was at the grocery store there.
+
+Speaker 2  02:37
+I kind of kicked myself that I didn't make enough time to actually go into, into Colorado Springs. My favorite coffee roaster in switchback coffee in Colorado Springs. Well, it became our favorite because it was like, when we lived in there in Colorado Springs, we would just walk there
+
+Unknown Speaker  02:56
+and wow, it's,
+
+Speaker 1  02:58
+it's a really cool I mean, it was kind of our favorite place to go get some coffee, because it was just couple blocks down, and I don't know about three or four blocks away from us. So we just walk over there, get get some coffee that. And if you ever, if you ever go into Colorado Springs, like, right down to this, like the park in this kind of like downtown, there's a little place called Story coffee
+
+Matthias Miller  03:26
+that's a little walk up, right? Yep,
+
+Speaker 1  03:28
+little walk up trailer type place they
+
+Matthias Miller  03:31
+have, they have a sit down in old Colorado city that's pretty cool. It's got pretty cool vibe.
+
+Speaker 1  03:42
+So anyway, I was kind of bummed I didn't make time to go and actually go into switchback. Yeah, anyway, anyway. Nope, let's dive in. Let's get somewhere so
+
+Matthias Miller  03:56
+big picture for us to be able to get you a good, decent price for what it's going to cost you at some point we are going to have to dig into a data model. Yep,
+
+Unknown Speaker  04:09
+I'd say, I'd say, we dive into that. Okay,
+
+Matthias Miller  04:11
+sounds good. Now
+
+Speaker 2  04:13
+I think either you or Ellis said, for ethical reasons, you don't want to look at RTO Pro,
+
+Matthias Miller  04:21
+yeah, I think that's, that's typically, that's, I think it's, it's fair, yes,
+
+Speaker 2  04:26
+and is it? Do you want to not know, or know if I'm looking at it or not? You just, I'm not going to say, okay, as long as you can say that you never looked at it.
+
+Matthias Miller  04:36
+I think that's the it's the idea, yeah. Okay. I'm
+
+Speaker 2  04:42
+gonna, I'm gonna rely on you to, kind of to charge forward with, kind of breaking down the data model and where you want to like, how you want to focus on this core. I think
+
+Matthias Miller  04:53
+one of the core things to decide is, i. I mean, obviously we have a contact record with a we're going to type of customer and manufacturer. And then for customers, we would have, well,
+
+Speaker 2  05:25
+okay, let's, let's explore this for one quick second, because there's a couple things that really bug me about the current software that we use, okay, and that is that when you are on when you look up a customer, you have to there's a number of navigational pieces that I feel like could be okay. Let me back up. I'm I'm currently looking at one of our sales order records, which is probably not the correct, quite the quite the right record to talk about, but it I really like. This is kind of where my head space went. Is where you have customer information. There you have you have a building there you've got miscellaneous items discount, like, all of this stuff on the sales order. There's a lot of relevance to over it here in RTO, I love the idea of being able to have like on you're looking at one record, like one face of a record, and you could see notes. You could see payments that have been made. You could see contracts that are assigned to it like you could see a whole pile of information without having to go to another layer to find this information. So
+
+Speaker 2  06:40
+uh. So every, every time I've kind of broken this down in my head, I have always kind of thought about if I was to build RTO, it really would be this, like, almost like sales order record type look where I have customer information. I have, like a building, is it or something, is the product is tied into an RG that has a link that you can jump over to that product, where you can have much, much, much information about that product. You made a comment about a contract record. We could talk about that because that may be true too. They may be an RG of contracts on this particular customer, but the payments section is, is like, I love the idea of a nice, big payment section in the bottom right hand corner where you literally, like, when you pull a customer up, you have a lot of information right at your fingertips without having to go, like, in, in our other software to go to the comments section, you have to click a button to go to history section. You gotta click a button to go into contract maintenance, or date, like any of that kind of things. Like you to do anything on this contract besides, pretty much take a payment. You have to go somewhere to see this,
+
+Matthias Miller  07:51
+but I think you still have to go back to, let's figure out the data model. I mean, you can throw everything on a contract record, for example, but the problem you're going to run into is, well, what happens to the customer changes their address? What if it or does the address need to be tied to the contact? What if the customer wants to change their email? Do you? Do you go update the reject or the email and all the contracts and make sure that they all follow suit, etc, etc. I mean, so I'm in favor of finding ways to make this nice and easy to use, but my concern is that if we let that drive the data model, then we're going to have a convoluted data model, and we can get around some of this stuff with things like virtual RGS and you know, reports in the bottom pane,
+
+Unknown Speaker  08:50
+you know.
+
+Speaker 2  08:52
+So when you when you say data model, let's break that down.
+
+Matthias Miller  08:55
+What are the records, record types, and what are the fields on it, and how do they link together? That's, that's the only thing I'm after right now. Okay, you want to start with
+
+Unknown Speaker  09:04
+contact or product or contract. Which one
+
+Matthias Miller  09:08
+I really don't care. It's
+
+Speaker 2  09:11
+you had started on contact record. So let's start on contact record. I
+
+Speaker 2  09:33
+and so this is where, this is where I get a lot of brain cross up between stuff that is generated from the contract and yet is purely person related. Okay, obviously we need you know name, alternate, name, address, you know, city, state, zip code, apartment phone number. I would probably do some of these. I would definitely do an RGS, kind of like your contact record already does where you can, you know, you can do multiple different phone numbers and detail what they are, you know, home, phone, work, phone, etc, etc. I do also think that I believe, also in your contact records, you have kind of this concept for multiple addresses too.
+
+Unknown Speaker  10:23
+Yeah, you do, yeah, let me just pull a contact record up.
+
+Matthias Miller  10:34
+Okay, well, that that makes Okay, and then, but then, I mean, if, if you're always getting some of this information with the contract, I mean, obviously Social Security won't change driver's license shouldn't change, although somebody, well, well, somebody moves. It could, could it could change move states.
+
+Speaker 2  11:00
+Okay, one of the things that's really, really, really, really, really important to our RTO world is is no note taking. And I Where do we like? I guess this is where I'm kind of stuck on on when from the when, like when I pull it a person, like, when I go research a name or contract number, or any of these things, like, where do I land? Where am I going to take my notes? Because the assist records, pretty much everything, has notes fields on it. And what I don't want to get tied up in is I've got notes here, notes there, notes over here. Like,
+
+Matthias Miller  11:39
+how many customers have multiple contracts? Multiple
+
+Speaker 2  11:44
+contracts? I don't know what percentage, but if I was to take a gander at it, 30%
+
+Matthias Miller  11:53
+okay, and how much of your communication is literally related to the customer, and how much is related to individual contract.
+
+Speaker 2  12:03
+It's all individually related to the customer. I mean, they will talk about those particular individual contracts, but okay, RTO Pro does not have a have a concept for a contract record. A contract is synonymous with a cut with a with the customer record.
+
+Matthias Miller  12:25
+So there is no separate customer record.
+
+Speaker 2  12:29
+Well, the customer and the contract record are kind of like the Okay, when I say a contract record, let me think, no, okay, okay, in theory, you have a contract record on in RTO Pro, it never feels like you have a, really have a contract record, because all of that is represented on the customer record. And there are, there are, like, everything in relation to that is kind of driven by the customer record side. So I think there is a concept for art, like a contract record in in RTO Pro, but it never really feels like there is one,
+
+Matthias Miller  13:07
+if you will. I mean, it seems like, in terms of collections, it's possible that somebody, somebody might make three phone calls for for collections on three different payments, but it's also possible that you have a phone call that's specific to single contract. Hey, you can't list this thing on Facebook marketplace. Go fix it.
+
+Speaker 2  13:26
+Yeah? So, well, I think, I think another scenario would be customer calls in and says, I want to make a payment on this contract, but
+
+Matthias Miller  13:33
+not that contract, right? Yeah. So, so this may be a little bit draconian, but again, I think this goes back to logically, where do the notes follow and and if we're if we're wrong, and we need a better way to, well, first of all, if we need a better dashboard view to get access to this stuff. Well, let's figure that out separately. But let's figure out logically where these notes belong. I think there is going to be a point you can't just straight up say you're not going to be happy having notes only living on the contact record. So somebody goes to a contract and says, oh, there's this other side thing over here that we got to figure out about this specific contract, whatever, whatever you're not going to have all of that one that, all of that mixed up in a single notes field in the contact Okay,
+
+Speaker 2  14:29
+let me ask a different question that may inform some of this process. Let's take, for example. Let's take, for example, a customer says, I want to transfer my contract to x person. I'm I'm moving out of the state. I want to transfer my contract to the person who's going to rent my house. Or there is, there is this concept for contract movement. So if we said so in that case, it would seem like contract. And the payments that are tied to it should be able to move
+
+Unknown Speaker  15:05
+to
+
+Speaker 2  15:08
+a new person. That being said, the way that, the way that we've always handled this now, is we just rename the contact record, and we make a bunch of notes and that person get, you know, so that I kind of almost like this idea that contracts and the payments tied to them, and the product tied to that contract could be moved between contract records. But that that brings up this conversation about what notes go with. Where do notes go with contracts? Do notes go with product? No, no, no. I think it's the question of, do notes go with contracts, or do notes go with customers? Product is product. It can be it's always going to be attached to something.
+
+Unknown Speaker  15:58
+What's your thoughts? Well,
+
+Matthias Miller  16:01
+it's not clear to me what to me what kinds of conversations and what kinds of notes you're wanting
+
+Unknown Speaker  16:11
+to keep. Okay, the predominant amount of notes
+
+Matthias Miller  16:17
+and side note some of this could be, could be, could be solved with just having an RG of previous contract holders
+
+Unknown Speaker  16:30
+on the contract record.
+
+Matthias Miller  16:31
+Yeah. I
+
+Speaker 2  16:44
+so read only this. So could if we said notes are always tied to a contract, okay? And if you attach that contract to contact record a its notes are viewable from whatever we're going to view that these things from, but if you, if you move that contract its notes, goes with it. It goes over to, you know, whatever is attached to, boy. This is dangerous because this is,
+
+Matthias Miller  17:18
+well, the other, the other, you could also another legitimate way to do this. Do you mind if I bring Francine in on this? That's fine, by the way. Another legitimate way to do this would be to have a new contract and and effectively do a payoff of the old one with the new contract or something, have a separate contract record. So, so the contract stays with the old one. There's a new one that's basically says, I'm taking over this other contract. And here's the balance, you know, and it zeroes everything out, because I'm assuming, when you do a move, somebody still has to sign documents, like, I can't, I can't go get an RTO contract and then go give, give it to my uncle, head, schlep neighbor who, or who lives in a trash barrel.
+
+Speaker 2  18:12
+Um, you can, it's, it's that, you know, there's, there's documentation that goes along with it.
+
+Matthias Miller  18:18
+But will you ask him for references?
+
+Speaker 2  18:21
+Yeah, so we have a, we have a what's it called contract transfer form
+
+Matthias Miller  18:31
+does, but he has to sign that. As do, as do I
+
+Speaker 2  18:34
+preferably, yes, both parties have to sign it, right?
+
+Matthias Miller  18:38
+So there's, so there's a legal transaction that needs to happen. So it's a new type of contract. And I mean, in some sense, I understand in some sense it's just an amendment and a transfer, but, but conceptually, you could think of this as a new contract type, two contract types, one's one's a purchase and one's a transfer. And when it's a transfer, it points back to the original contract, so that you can link these two together and and see the payments of the old one, payments of the new one. You have the starting balance of the new one, or the balance of what's left, or whatever. And the old one now shows as being, being closed out because, I mean not being due for payment because, well, there's nothing there. And if you want to show this in the Customer Portal, and somebody wants to see historical contracts, they can see their historical contract up until the point of move. But if you want to bring in Francine, feel free. You
+
+Unknown Speaker  19:57
+we're leaning into recreating the.
+
+Unknown Speaker  20:02
+Do not RTO, right?
+
+Speaker 2  20:05
+And one of the things that we are going back and forth imagine, so right now, in RTO pro, you basically have a contact record, which or customer information record, which is what that is. You have a building and theoretically you have a contract record. It's, it's, you don't ever feel like it, it's a contract record in RTO Pro, but there is one there. There's really three records that are that are working together. So RTO Pro has always kept their notes, their comments notes, on the customer record. So the question is, when we go to design, where do we want notes to be tied to? Do we want them tied to contracts? Do we want them tied to customers? Because if here's the question of, if the customer were to transfer their contract, say to somebody else, do we want we've always just kind of renamed the contract with the customer record, which is really an incorrect way to do it. It's you really should create another contact record and move that contract over to it. So if that's the case, then we kind of want those notes to go with it.
+
+Speaker 3  21:10
+So then would we do it with the building? Then so that it follows the building. So then, if it gets triggered,
+
+Speaker 2  21:16
+products are always going buildings, products, whatever. They're always tied
+
+Speaker 3  21:20
+to a contract record. So then the contract record.
+
+Speaker 2  21:23
+So my thought is the contract record is where we should tie things off to from a note standpoint. Because what I the concern is, I don't want like in in assists. We can put notes fields of buildings. We can put them on. We can put notes fields everywhere. The problem, the downside to that is that, well, then where do you put? Where do you centralize your notes? Yeah, and my feeling is, we centralize it on the contract record as that's the binding, the actual binding record, or the actual thing of substance that we're that we always work with,
+
+Speaker 3  21:58
+what's high track record is attached to the building, no. So
+
+Speaker 2  22:02
+building attached to contract. Contract attached to customer.
+
+Speaker 3  22:06
+Okay, so building contract customer. So if we do so, if we attach it to the contract record, and it's at point A customer, a and then we it gets transferred to another customer, it's still going to be that same contract.
+
+Speaker 2  22:24
+Well, propose your idea. Matthias, you had this idea about close out and move like reestablishment of a contract when it when you, when you
+
+Matthias Miller  22:35
+so. So one idea is, so there's two ways we could do this. One, yes, we could just take the entire contract and transfer it over to the new the new contract holder. The The other approach is to basically have two contract types. One, one is the original contract, and then the other is, you'd have a new contract record for the transfer. So you would so customer a comes in, does the contracts, you know, you have a contract record for them. Then they say, I'm moving out of state. I want to transfer this to my neighbor, and my neighbor is going to take over. Then you set up a new contract record. That's a transfer type record, and it says, I'm taking over this other contract over here. And here's my name, here's old documentation, and here's all the notes and, and here's the, you know, here's, here's the remaining, here's the remaining of what needs to be paid, etc, etc. So it's almost like a, I mean, it's almost like a new, well, it's kind of like a new contract, except you have different supporting documentation, and you also have a reduced balance because it was paid down by the by the prior contract holder, and then, and then your notes would follow. So when you pull up this contract and you need to look at history, you could pop over into the original contract and look at all the notes tied to the original contract and the contract and the original customer, but the notes would follow each contract and in in customer.
+
+Speaker 3  24:11
+So then, how would that work with buybacks? Because right now, with buybacks, that's a building, though, so it's not but if we're like it, so Person A buys the building, they return it. It gets bought back. Those notes are no longer attached to it, because then it gets sold. It gets bought back by vinyl structures or whoever, and then it gets resold to another customer, and so we enter it as serial 1234, dash b, or 1234, dash two, because it's the second time we've entered it, so that those the contract notes won't be on it, because it's a completely new entry, but we could be on with final. First account, but we could
+
+Matthias Miller  25:01
+show on the on the new contract, we could show a list of related contracts, which would be either, in the case of a transfer, it'd be the original contract, or the case of a buyback, it would be prior, all prior contracts, where you could click through into there and look at the notes on those historical contact contracts.
+
+Speaker 2  25:21
+I guess, I guess, okay, so there's really, I guess there's to me that I am envisioning this, there's, there's, there's two predominant things. There's, there's two physical things that we, like customers can have a branch of contracts and buildings and buildings can have a a branch, a fairly large size branching of contracts and customers. Contracts will always be have a a will always have a one to one ratio of a particular building in a particular customer. But buildings can have a branch of them, like they there can be, you know, several different contracts that maybe and customers that that would be assigned that building. And the same thing with customers. Customers could have multiple different contracts and buildings that would be assigned to them. So I think when, when we discuss this, I It's like when, like on any given building that you may ever go and look up, you always want to be able to follow the those threads and or or branches that that are tied to it. And the same thing with a customer, we always want to be able to be able to follow that branching that's tied to it. Does that help at all?
+
+Matthias Miller  26:35
+I mean, it might be at the risk of being dismissive, I don't think the branching is the issue. I think the issue is logically, where does the information, where does the information? What is the what are the notes about, and where do they belong? So if the majority of the conversations, I'm assuming the more majority of the conversations are not I'm building rapport with this customer. Ask about their pet, pet, dog, scruffy. And I'm also assuming that most of the conversations are not about, oh, this building has a cute little feature in the back corner that I need to talk to them about. I'm going to guess most of the conversations are with the customer. Are about dear customer. How are payments going? How's the contract going? And it's all predominantly contract related. So that's my argument for putting notes on the contract basis. On the basis of the contract I we can give visibility from any of the other records into these notes, if necessary. Okay, again, so I could be thinking about it wrong, but
+
+Speaker 2  27:49
+I think what you're saying is that buildings should always have historical contracts that were tied to it, and customers should always have an RG of historical contracts that were tied to it. You can always follow, like, if we stored notes on the contract record, then from either side that you come from this, you can always land and find the notes that were that were tied to either side of this
+
+Matthias Miller  28:11
+correct. And if you really need a button that shows you all contracts and all notes, or or a section on this on the screen that shows you all that stuff in a conglomerate. We can absolutely do that.
+
+Speaker 2  28:22
+Yeah, you could do a sub pane of concatenated notes that are signed off to the contracts. Yeah, there's
+
+Matthias Miller  28:27
+1,000,001 ways to do it. My argument is that conceptually, I'm going after what is reality in terms of where are the notes logically tied to? Thanks? Francine,
+
+Speaker 2  28:42
+yeah. I The longer we talk, the more I think I agree with you that the contract should house the notes.
+
+Matthias Miller  28:50
+So what do you think about okay, and then the advantage of having separate contract records is that you can then, well, there's two advantages. One, from a customer portal standpoint, it's very clear these are the payments you're allowed to see. These are not the payments you're allowed to see. And here are your historical contracts. And here's how this contract was, you know, ended. What was it a retrieval? Was it a transfer? Was it a, you know, whatever? Did you pay it off? And so that's, that's my argument. We've, we've had issues in assist, as an example, with the stins, where we tried to reuse stints. And we are now coming back around and saying, We don't actually, we are going to, we actually want secondary stands that link back to the original stint, so that we can handle retrievals more appropriately. So I'm, I'm open to be art. I mean, I'm quite open to, I feel fairly strongly about it, but I also want, wanted to make. Comes for you guys. And yeah, because
+
+Speaker 2  30:02
+we would have something very, very similar potentially happening inside of RTO to this whole buyback thing. So in the in the case of the RTO company, said we're going to bring a building record into the software, and whether it's a stin, or whether whatever we're going to call it, we're going to rent that out to a customer and then retrieve it, and the the builder will then buy it back. So we're going to sell it back to the builder. They can then turn around and re rent that building right back to us again, to where we buy it back again, then from them again, from them, which means that we have to have a I don't I want to make sure that we design a conceptual way that we can that same building always is tied to that same record that we could cash sale it back out to a, a, you know, a manufacturer that we originally bought it from, but then turn around and buy that same exact building back into The into our inventory, right?
+
+Matthias Miller  31:01
+Understood, I would agree,
+
+Speaker 2  31:08
+yeah, so I Okay, back to the original conversation. Then I think that so maybe, maybe it is just hearing me for a second. Maybe it is that whenever, whenever you interact with a customer's account, you're always interacting with a contract record. So in other words, you can have on the like, if you look up a customer, you always end up on a contract record, because that contract can be tied off to, you know, a number of different customers. So you potentially could have a an RG of of customer contact records on it as well as an RG on that. Or maybe it's not an RG, but I don't think we would ever have a the building would be tied to that contract record. There's never going to be an RG of buildings, because you would never have more than one building tied to the one contract. There's always a one to one ratio there of buildings.
+
+Matthias Miller  32:06
+So, so if you do a, if you do so, you're thinking, you're leaning towards single contract for the entire type of contract and transfers are handled. Um, um, transfers, keep the same contract record.
+
+Speaker 2  32:32
+Okay, so I guess, for the sake of helping my brain sort this out, I guess I kind of think of this as a primary record. What is the primary record that we're going to interact with? Right?
+
+Matthias Miller  32:44
+I think you're right. Okay,
+
+Speaker 2  32:48
+so the key, the key argument, and then, is that, do we? Is the primary record, the contract record, or is it the contact record?
+
+Matthias Miller  32:56
+Why? I think it's the contract record, I would agree. Okay, so we're on the same page there. The next question is, on a contract record, do you when it gets split out into a when it gets transferred to another customer? Do you keep the same contract record and just maintain lots of history about, well, I mean, just know that these are the note that at this point the contract got transferred. So all notes prior to this were sort of prior customer. And you keep a list in our g of historical customers and potentially the dates, and you know that this payment was, you track on each payment, what which customer made the payment.
+
+Speaker 2  33:45
+Why wouldn't? Why wouldn't you have we keep the same contract record. We have an RG of historical customers on there at the whether we label the top RG as the first RG as the as the primary, or whatever, you already have this concept for primary row and the RG, um, so the top customer is the primary customer. And anytime you make a payment, it all references that top RG is that is that customer as that customer made those payments? Um, I imagine we could come up with some sort of concept to reference that way in the notes as well. Like, I don't know if you have something for that or not. Where it's like, you know, in the same right now, you have a control D assigns a your name and date. And maybe I don't know if you if there's a concept for assigning a primary customer to that note, you know, prefix. I don't know,
+
+Matthias Miller  34:42
+I think about that.
+
+Speaker 2  34:47
+I mean, if nothing else, what's going to end up happening in the notes? Then, you know, you're just going to put a, you're going to put a line item in that says, you know, transfer of customer, and you're going to, you know, highlight it, etc, or whatever. I. Mean, you can, you can, in theory, in in RTF notes, you can, you know, you can, you know, have the ability to highlight something or or change it, or, you know, whatever you know, we we can come up with a way to work around it, if, if, but it would be kind of cool if, you know, if you came in and you hit Control D, and it automatically assigned the primary, it your name, date, name, and the primary customer at the time. So, like, literally, you could scroll down through a list of notes and you could see exactly, but, I mean, that's total side side note. Yeah, it's not possible.
+
+Matthias Miller  35:38
+I mean, there are other ways you could do this, where you could have the notes be tied to the customer, and then have a read only view that shows you all the historical customer notes. But I just, and I think the platform, I don't know if this is the platform supports this or not, but we could also, when you change the customer automatically, potentially, I think this, this is supported now, when you add a new customer and save the record, it would add a like yellow highlighted line customer transfer to.
+
+Speaker 2  36:15
+That'd be cool. Yeah. Okay. So then one of the other things that we're going to have to talk about that I know we don't necessarily use it so much, but I know that other RTO companies do, but RTO Pro has this concept for what's called commitments, and it's, I mean, for the lack of better word, they have almost like an RG on the on the record of commitments, where you can assign a date, a Time, a note field of what the customer said, and there is reporting based off of it. That's, you know, that tells you whether or not the customer kept their commitments. Now, the question I have is, well, I guess that commitment, a commitment, RG, like that should probably live on the contract record.
+
+Matthias Miller  37:02
+Well, I mean, what are the commitments for? Says, I'm
+
+Speaker 2  37:05
+going to pay on on Friday, so you would put a commitment record in that says, date time, you know, there's, there's a, there's a column for the date and time that you input that sure Correct. You have a column for the date of the commitment, and then a notes field for what are they committing to? And, you know, go ahead your turn off.
+
+Matthias Miller  37:35
+I mean, the idea is, oh, here, uh, boy, why are you so late on your building? And he says, Oh, I just fell on hard times, but I'll pay you on Friday. So you go ahead, put it in for with or without the dumb accent. It's
+
+Unknown Speaker  37:52
+been a while since you exercised that touchified accent. It
+
+Matthias Miller  37:54
+is. It has been far too long. So you have a you have a so again, you have a customer, you have a date, and you have a commitment, which is just text and then a well, you have a due date and a complete check box plus date, right?
+
+Speaker 2  38:22
+Yeah, e okay, like I said, I don't use this a whole lot because it's not something we've ever really done. We've always kind of handled this stuff in notes. But RTO has this a broken commitment report, and I don't know whether it's tied to payments, or if there's, like, if it's if it's tied out further than just checking the box off and saying yes they did, or No they didn't. I, I kind of feel like, if you're gonna implement some kind of commitment, RG, then it should be tied out to a little bit more specificity. Well, okay,
+
+Matthias Miller  38:58
+the big thing that we care about is payments, right? Sure. So why not just say, basically, have a snooze for overdue items. And it's just, we know they told you, you're gonna put notes in the notes anyway, and then just say, snooze overdue until x and on Friday, it pops up on the overdue report again. And so you have, you have overdue needing follow up, and then you have the overdue talk to customer, and they gave us a date and a plan. And, I mean, you don't need commitments. You just need to know that. Like, yeah, it'd
+
+Speaker 2  39:38
+be kind of cool that, if you know, we can have a function inside of that, that commitment, RG, that says, This is a payment commitment, and then if they maybe you tie $1 value to it, or maybe, maybe it's something else, but that if they do make a payment, whether online or wherever else, it automatically just kills that commitment. It's like it checks it off as done.
+
+Matthias Miller  39:57
+Okay, are you completely clear? On the business process side of this and how all that stuff works. Like I
+
+Speaker 2  40:03
+said, I don't, we don't use it a whole lot. So in JCM, they were kind of using it like their notes section, much more of just like they the customer calls in and says, Oh, I'm gonna, you know, and so they would put that in commitments, and they weren't putting anything in more comments. So we always have leaned more towards more comments. They've leaned more towards using these commitment like RG on the contact record. So no, I don't have I'm not 100% confident on on this. I am now hypothesizing how, if I was to use it, how I would use it. Well, I
+
+Matthias Miller  40:39
+could tell you how well it works to build software without a business process. And I would make a very strong argument that, no, we should not build this out until you know exactly how the team is going to be using this, and that this is actually a real pain that they feel in collections. Am I wrong?
+
+Unknown Speaker  41:05
+So you're probably right. So one of the Okay, let me, let me, let me, let me, let me, let me, see if I can pull my thoughts together and hear what I'm saying.
+
+Speaker 2  41:22
+We have always taken more of a, what I would call straightforward approach that says, if you call us up and you tell us something, we're going to put it in notes, and the next time you call us up and tell us something, we're going to reference our notes and we're going to, we're going to, you know, use it for to inform the conversation. Aside from that, if you say you're going to call on Friday and make a payment, and you call instead, you know, two weeks later and make a payment, we prefer to, you know, we, we kind of treat this whole your commitment side of this and holding you accountable to a commitment and your payment side of this like we always kind of treated those separately. If you're not paying, you're not paying, we're going to, we're going to work through a collections process and repo. You now, if we're going to pick up that the phone and we're going to call a customer before we we're going to call that customer, we're going to look at notes and we're going to say, okay, so they said such and such and such and such, you know, and and that informs the conversation some I like I said, we don't necessarily use this commitment thing, but it's something that I know other companies use.
+
+Matthias Miller  42:21
+Okay, so let's but you're if you're looking something much more specific than commitments, or I mean, or maybe maybe more nuanced than what just a blind, ignorant person thinks about commitments. Commitments could be anything commitments could theoretically be. I'm going to clean this thing out and make sure my and get my dog out of there. Well, that's not what we're talking about. This is a commitment to pay. And so really what it is, is a soft adjustment on a due date, and I promise you that by Friday, I'm going to get caught up on my payments. And that is a very if that's how it's fielded and how it's used, then that's a very easy binary, did they make the payment by that day or not? And did they meet their commitments? And then at that point, you could start you don't really need text. You just need to know we're extending out your we're doing it for lack of a better term, soft due date. Go ahead.
+
+Speaker 2  43:21
+Yeah. But okay, so here's, here's the, if you think about this from some of the other things that we talked about, if you had a commitment thing and you could then drive SMS messaging off of it that says, you know, customer says, I'm going to make a payment on Friday. And, you know, Friday morning, an SMS message goes out that says, hey, following up on the commitment that you made to make a payment today. It
+
+Matthias Miller  43:42
+could be kind of cool. Well, I mean, okay, so you could say, you could, you could slightly rename it, here's, here's my, here's my new proposal. I
+
+Matthias Miller  44:11
+it's just promised payments, but Francine, I am going to pay you $150 by Friday. Great. Were you going to pay the rest the next 100? Well, by next Tuesday? Okay, I'll put it in your notes. And now this is not, this is a real thing. And then they, they pay 100 bucks on Friday, and we say, whoa, whoa, whoa, whoa, whoa, you did not, I guess, really what you want to know is,
+
+Speaker 2  44:52
+I mean, shoot you if you tied this into the probability scoring, yet probability of payment, you know, if x. Amount of of broken commitments. Obviously your probability of payment goes down. For payment goes down.
+
+Matthias Miller  45:05
+You know what this is? If you're, I don't know if you've ever heard the concept of sales being, being promises made, promises kept, but this is, this is the exact reverse, and it's basically a scoring model. How good are you on your word? I I can if, if, okay, I still, I'm still going to say.
+
+Speaker 2  45:32
+So I think what I'm hearing, I think what I'm hearing you say is that use it for a very specific, targeted thing. Don't make it open ended. So if it's always a promised payment, RG, and we build things around it, like scoring and SMS and so on and so forth, then it forces the the the customer service rep, to say, okay, my customers making commitment, commitments go over here. And in theory, I imagine that you could do some kind of cool thing of, you know, if you put a commitment in, it automatically writes a note into the art, into the the notes stuff as well, so that it, you know, it's in both places. But it's like, if my customers making a payment or promising a payment, it goes into commitments. If they're telling me a story, it goes over here in
+
+Matthias Miller  46:16
+comments. Well, yes. And furthermore, the beauty, beauty of this is now when you pull up your your Who do I chase down today? Well, if it's four o'clock in the afternoon and they said they were going to pay today, well I'm going to go chase it down and say, How's that payment coming along? Can I help you move that through? Or if, if it's Thursday and they said they were going to pay tomorrow, I'm not going to do that. I'm going to rip through everything else. They are 10 days overdue, but I don't care. They said they were going to call tomorrow. We'll see if they're good on their work tomorrow. Yeah.
+
+Speaker 2  46:50
+And you can build a lot of reporting around that as well. Oh, my goodness, yes. And valuable reporting. Okay, I think we beat this horse long enough I like it.
+
+Matthias Miller  47:00
+You don't like horses until they're beat, okay? So then we have
+
+Unknown Speaker  47:08
+see how you got there. But that was not the intent,
+
+Matthias Miller  47:13
+okay? References, okay, so let's do Ooh.
+
+Unknown Speaker  47:18
+References, where do they go on the
+
+Matthias Miller  47:20
+they go on the contractor related to the contract?
+
+Unknown Speaker  47:23
+Very true, yep.
+
+Matthias Miller  47:25
+So we have documentation.
+
+Speaker 2  47:29
+I want to reference this. RG, like, I think we talked very briefly about this. Where is this contract maintenance? Right here. I'm looking at something else here.
+
+Unknown Speaker  47:46
+What?
+
+Unknown Speaker  47:48
+Holy cow, I've never seen this before. Uh, oops, what did I just do? No way. RTO pro finally initiated something like change our GS or change history.
+
+Speaker 1  48:04
+Um, oh, well, I need
+
+Speaker 2  48:07
+to go find out if Francine knows this. Uh, what is this? Under contract? Info? No, see, this is, this is how bad it is if you can't go find the whole, like, the whole list up here it is. It's under maintenance, I have to, I literally had to search to find where you put in references stuff and all that. Okay, yeah. I mean so RTO pro carries this whole concept for date of birth and social security numbers, and I really kind of want to put in, like, part of me wants to say, we put in an RG that allows you just to encapsulate all of this stuff. Like you can do, you know, you can define what the RG row is, and it just like, I hate this specific fielding stuff,
+
+Matthias Miller  48:58
+by the way. How do you handle this? So it's just
+
+Matthias Miller  49:07
+because you don't ever want to report on it and you never want to use it for
+
+Speaker 1  49:13
+what do you mean? I know you hate it, but
+
+Matthias Miller  49:20
+I am not convinced you're gonna be happy with the loosey goosey throw stuff in there, but let
+
+Speaker 2  49:27
+me give you okay. So we have on the contact record. You have, obviously the customer name and alternate name and mailing address, a, you know, city, state, zip, whatever, all of that stuff's on a contract record, that you're on a contact record. Then you have, they have primary date of birth, alternate date of birth, primary driver's license, alternate driver's license, primary security, alternate social security number. You can do, display social security number. Members. What does that even mean? Does not display, I don't know what that is, emails, alternate emails. And then obviously there is, there is triggering. That's a part of some of these things like primary email and secondary email that you can tie into invoicing. There is opt out cell phone stuff. We're gonna have to handle that, if we're getting to SMS messaging as well, and how we're gonna handle that. So all of that is is in there, and probably we have to support it in some form or fashion.
+
+Matthias Miller  50:32
+Okay, so aren't you saying that there's multiple I mean, this is the Oh de moment, so apologies. It's Tuesday morning. But alternate Social Security, that just means an alternate customer, like two people, two party contract, yeah,
+
+Speaker 2  50:46
+so correct. Then, if there's two names on the contract, one goes in the primary the other one goes in the well,
+
+Matthias Miller  50:52
+I mean, so shouldn't we really do it like this, primary customer, secondary customer, and all of your opt out stuff should be tied to the customer and their phone number. So in the contact record, we should have a we should have a customer DNC or customer opt out or SMS opt out,
+
+Speaker 2  51:25
+that can be manually checked or automatically checked based on text message. Opt Out
+
+Matthias Miller  51:30
+Right exactly. And then here you would have, and then maybe, maybe you have MRG fields for primary customer. Primary,
+
+Unknown Speaker  51:44
+wait, what's an MRG field?
+
+Matthias Miller  51:47
+It's, it's when you have a when you have fields that show this for the selected row.
+
+Unknown Speaker  51:55
+Oh, gotcha, yep.
+
+Matthias Miller  51:58
+Primary Email, primary phone, primary mailing address, and then secondary, wow, this is email, secondary phone, secondary mailing address.
+
+Speaker 2  52:17
+But I mean, you already have, I mean, on our contact records and assist. I mean, you can always
+
+Matthias Miller  52:22
+just a read only view so you can see it. Yeah, okay,
+
+Unknown Speaker  52:25
+yep, okay,
+
+Matthias Miller  52:32
+right? MRG, uh,
+
+Matthias Miller  52:53
+it makes sense. So that takes care of that. Now the question is, where do you want to handle I mean, we could also show on the customer. We Well, date of birth, SSN, driver's license. Driver's license is the one that can't change. Um,
+
+Matthias Miller  53:27
+logically, date of birth and SSN could live with the customer and you could go ahead. Well,
+
+Speaker 2  53:36
+okay, just, just a side note before you leave this whole social security number and driver's license, probably those need to be PII fields, right? Yeah, so that you know they're they're predominantly hidden depending on your user level, right? I
+
+Matthias Miller  54:09
+So, is it okay? I mean, are you fine putting that information on the on the on the customer record, the date of birth, SSN, and I guess here we would have a primary deal, state, primary deal number, secondary deal, state, secondary deal number.
+
+Speaker 2  54:33
+So I guess, I guess, I guess I'm having a little argument in my head about what a a contact record should be. A contact record should be a contact record. If you have alternates, they should have a secondary contact
+
+Unknown Speaker  54:45
+record correct.
+
+Speaker 2  54:47
+So if you have a two person tied to a contract, each of those should be their separate contact record correct.
+
+Matthias Miller  54:57
+And how do you want to hand. So the basic question is, if somebody moves state, changes states, somebody's in in Virginia, they do an RTO contract that they moved to North Carolina, and they do an RTO contract. How do you want to? You want to, don't do you want to keep the driver's license? Well, I guess you could also have an RG of driver's licenses with an effective date in a state and a number or a or a it could actually be simpler than that. It could be an active one. Okay, so give birth. So then we have driver's license.
+
+Speaker 2  55:33
+See, now you're coming back around to what, where I said, it's like, give me one RG, to rule them all. And we just, you can put in references, you can put in you can put in driver's license
+
+Matthias Miller  55:42
+like, but you don't, you don't actually, well, I mean, I get it, but you don't actually want that. Because,
+
+Speaker 2  55:47
+no, you're right it. You're correct. But So if, but if we're saying, if we're saying, every person gets their contact record, then you don't need alternates, do you, or secondaries or, well,
+
+Matthias Miller  56:03
+you have a secondary you need to show a, I mean, you have a need to have a primary and secondary customer, yeah, but the
+
+Speaker 2  56:10
+primary and secondary customer is based off of the contract record, based those two, those two you have, I'm assuming you have an RG of customers on the contract record that you can label as primary and secondary.
+
+Matthias Miller  56:21
+I was planning to marry the primary customer. Well, primary and secondary together,
+
+Speaker 2  56:27
+but you just, but you also just said that every person gets their own contact record.
+
+Matthias Miller  56:33
+I think what we're arguing, what we're are arguing about is, do, do you have two customer rows, one for the primary, one for the secondary, that have overlapping effective dates. Or do you have one row with the primary and secondary customer
+
+Unknown Speaker  56:54
+name, right?
+
+Speaker 2  56:56
+I don't know. I mean, I could be I could be convinced either way. I I guess, if, okay, are you, are you going to do primary and secondary on a on a single contact record? Are you doing them on separate contact work? You
+
+Matthias Miller  57:10
+have a second, you have you have separate each contact is a person, yeah, and so, so if it's husband and wife, for example, you figure out who's the primary and then the other ones, the spouse is the secondary, and you have a contact record for each one. Yes, correct. So you don't have there are no alternate fields except primary customer and secondary
+
+Speaker 2  57:29
+customer, and the primary and secondary customer that is on the contract record, correct? And is that but okay, now go back to explain to me, now that we got that clear, explain to me what you mean by a all in the same row. You said,
+
+Matthias Miller  57:43
+Well, I mean, so my argument would be in your list of customers, you have one row on on March 1 2025, primary customer is Joe Schmo, and and, and alternate customer is is Jody show, and then on 415, primary customers, John Smith and and all their customers, Judy Smith,
+
+Speaker 2  58:09
+so I'm assuming, I'm assuming this would just be like filtered lists, two, two columns of filtered lists of primary and secondary customer, or just customers. Okay, yeah, I think I'm tracking,
+
+Matthias Miller  58:21
+I mean, because, because, okay, I mean, this is a little extreme, but, well, not, not necessarily extreme. Husband or the dude buys a man cave and the wife buys a she shed. The the wife is the primary one on the she shed and, yeah, and it's swapped on the man cave. I mean, it's perfectly reasonable,
+
+Speaker 2  58:41
+yeah, the only, the only thing I'm going to say at some point in this conversation is that while I think all of this is great, we need to keep in mind on data entry, on this stuff and making it easy to data entry.
+
+Matthias Miller  58:58
+So my my thought on that is probably something along the lines of, well, here let's we could document this a little bit, data entry, flow, ask prompts for All kinds of information. Find Similar contacts, show new button goes into contact screen. Ideally,
+
+Speaker 2  59:27
+if it was, if it was my choice, to have some kind of data entry, it would be that you basically have a single page you work through. And whenever you hit import, apply, save whatever you want to do, it goes off and creates all the relevant records. So you have, like this data entry screen where you know, you start with, who's the primary, who's, who's who's the primary, who's the secondary, what's the building? What's the building information, what's the contract and the contract information dotted like you go down through this whole like data entry page, and when you go it just creates all the records. Yes,
+
+Matthias Miller  1:00:00
+okay, but I have a question, are you going to be the one doing data entry?
+
+Unknown Speaker  1:00:09
+I mean, I've done a lot of data entry my in my life.
+
+Matthias Miller  1:00:11
+Will you be will you be doing data entry?
+
+Unknown Speaker  1:00:15
+Will I be doing it? No, I mean, I
+
+Matthias Miller  1:00:17
+mean, so if this is required for the sake of the end user, sure. Let's take a look at it. I mean, how many contracts does? Is it going to be significant if you save 60 seconds on every contract entry?
+
+Speaker 2  1:00:37
+Yes, okay. I mean, if you're entering, if you're entering, well, okay, refresh. Let me refresh back up. If we build really nice ways to do this from other softwares or from applications, etc, etc, where you're getting other people to do the data entry, then it's not nearly as important. And I think if we it is one of these, it's one of these things that we need to think through critically. Because if you're entering, you know, 30 contracts in a day, you know, and you can, and you can feel like you're like, it's a smooth, fast input process, um, then it, it, it's, it's can be much more joyful. Like, if you've got a big stack of contracts, like you can it everything just works smoothly and straightforwardly. RTO runs you through, like, when you load existing contracts, it runs you through a page, kind of like a page system where you, you put in the customer's, you know, name, and then account number, and then you, then you go, create a building, and it's like, it is very okay. It's been a while since I've done it so but it was always very hiccup, and you always had to kind of remember where you were and not get confused about what you were doing, and if there was a just, I think all I want to say about this, I don't really want to, just want to dig deeply into this, but like, it is something that we are going to have to think through and try to make very, very streamlined when for the end user, who's who's inputting data, but like when you're putting 3040, 50 contracts in in a day, you want that thing to be smooth and streamlined. So
+
+Matthias Miller  1:02:18
+okay, but there's a difference between a manufacturer or salesperson or a back office person, if you have a really good, hyper efficient, I love repetitive work and I eat spinach for lunch, kind of a person, I don't argue that you should make your life easier, but there is diminishing returns at that point of doing a ton of development to make it hyper, hyper like, okay, as an example,
+
+Speaker 2  1:02:53
+okay, let me, let me send. Let me send a different way. If, if you, if you said, if you could teach a process that says, okay, in order to load contracts, you start, it starts with this content, this particular record. You input the data, and then there's a there's a button that says, go create this next thing, and then you go create that next thing, and then you create this next thing. Like, there's a logical flow of the record creation to have the whole thing come together. Then fine, what? What I don't want to have somebody do is like, you go create this one and then you go over. Then you go over and open up that screen and create that one, and then you got to link, you know, then you manually link that one into that RG and like, that's what I'm a little concerned
+
+Matthias Miller  1:03:30
+about. Well, okay, so okay, I get your concern. I think that the piece that's tricky is that the contract has its arms stretched out and it's touching these two other things. And so you have to create the contact first, then the building, and then the contact, then the con, then the building, then the contract, and the contract goes and pulls all these things together. So but what we could do
+
+Speaker 2  1:03:58
+so, When? When? When we handle this was some type of whiskey page like on in the it's totally possible.
+
+Matthias Miller  1:04:05
+My only argument is that if you save some if you're paying somebody 20 bucks an hour, and you save a half an hour a day, that's $2,000 a year that you're spending on them, taking just a little bit of extra time, spending one extra minute entering 30 contracts a day. So
+
+Speaker 2  1:04:19
+I get that. But the my argument to that is that it's not about it's not about the person who's been using this software for five years. It's about the person that I want to onboard and I want to sell it to. And if you can lay out a, if you can sit down like, if you, if you're doing a demo with a with a prospective RTO client, and they're like, Okay, so what's contract entry like? And it's like, you pull that up and it's just like, it is. It basically walks you through it. It just the feel of it feels way like To me that's more of a sales pitch than it is necessarily. The guy who's doing this for five years just punching in data. Let me
+
+Matthias Miller  1:04:57
+talk it back to you. We're. Link the software to people like you. And even though you're not going to be doing the one and me, and even though we're not, yes, exactly, we're not doing the data entry, we need to want, we want it to look easy. Because if it's not easy, they're going to sigh and think about how terrible it is, even if it, even if, practically, logically, it's really not that bad. You are catching on. Okay, fine. Talk about shiny marketing stuff. These are the kind of types of this line of thinking, the logic, the logical, analytical, ROI type of thinking sometimes gets me in trouble. As you can tell. I mean,
+
+Speaker 2  1:05:36
+I'm sorry. It's like, Look, I've, I've done, I've done data entry for, I don't know, five, 710, years. I don't know. And I mean, I hated it, because it was like, it's mind numbing work. So if you can sell the mind numbing work to people who make decisions, which are people like me now, and you're demoing a software which are going to be people like me look Demi like they're not going to have their data entry person on the demo. I'd be at some point, but it's like, it's gotta be, it's gotta feel like, oh, wow, I could get into, you know, entering some contracts.
+
+Matthias Miller  1:06:09
+Well, if you do a whiskey then, then you have a go upload the contract in the in the right pane, and go start entering stuff in the left pane. And, like, the first thing you do, I mean, okay, I mean, literally, you're talking whiskey flow,
+
+Speaker 2  1:06:24
+yeah. Even better if you have a an actual PDF document, not an image based PDF document, if you could say, oh, here, upload the contract and it like, loads all the fields and like, do you agree? Yes, no, yes, no. Like, well, that would be better. Well,
+
+Matthias Miller  1:06:39
+it would be
+
+Unknown Speaker  1:06:43
+okay. I've said enough on this. I think you got my point.
+
+Matthias Miller  1:06:47
+Okay, my
+
+Speaker 1  1:06:50
+I know I made, I make your heart hurt. See,
+
+Matthias Miller  1:06:53
+there's a part of me that markets, and then there's part of me that's just operations to the core. I don't know who I am, all right, so we have references, we have wait, we have documents. All right, do you like the contract? I feel like this needs some sections. Oh, we need to know. We need,
+
+Matthias Miller  1:07:26
+let's do customer.
+
+Speaker 2  1:07:40
+Oh, and okay, I definitely like the idea on the contract record having some MRG fields, like, for, maybe it's MRG fields for the customers, maybe it's MRG fields for the building that's attached to it, but definitely MRG fields for, for a bunch of these RGS, so that it is exposed, like, when you open it up. You have information about that customer and about that building and etc, etc, on that contract detail screen. Okay,
+
+Matthias Miller  1:08:08
+let's do this. So then here building, and then
+
+Matthias Miller  1:08:17
+do you do you want to store physical location of the build of the buildings, or or not?
+
+Speaker 2  1:08:25
+Okay? Before we answer that question, one of the things, well, I guess this goes back to the multiple different types of addresses on a contact record, but you will have mailing address and physical address, right? And theoretically, physical address would be the location of the building,
+
+Matthias Miller  1:08:39
+okay? I mean, we could just do this. Then physical, AD, physical.
+
+Matthias Miller  1:08:54
+Okay, so then this is a, this is basically,
+
+Speaker 2  1:08:58
+oh, can I can I say one more thing, yes, this, it's not, it's not rare, and it's not, it's not, not rare, and it's not, it's not necessarily rare either. But one of the things that we get, we run into every so often with customers, is they say, Hey, I'm, I'm, I'm moving to Florida for I'm going to be in Florida for a couple months. Can you just forward my mail there, like anything you send to me? Can okay, what's the potential of putting some sort of date, expiration date on an address? I mean, this gets into, this gets into the invoicing side of things. So in other words, like if it costs, if a company does physical invoicing, you would want to know a time frame on an address that you would use. I don't know if you can is that some do you have any kind of concept in this on the contact record for that? It's fine if you don't, it's just means that you know somebody like you. We. I mean, we don't have, there's nothing like that in RTO pro either. It's just, let's
+
+Matthias Miller  1:10:03
+not solve it now. But, I mean, well, you could use a commitment in RTO Pro, but let's not okay. So we have a contract I've noted, and we'll get back to it, contract over an overview section, which has the customers and customer contact information at the building, and any, any additional, you know, additional building information, then you have the payment sections, which has the payments. I'm going to assume there's some kind of balance, like, is there starting balance, total payments or so? I don't know how that works.
+
+Speaker 2  1:10:38
+RTO Pro has, for lack of better words, an RG of of buildings that are on the account and that the initial RG on that is found by contract info on their on their navigation. That contract info tells me the date. It tells me some things about the building, like the stin number there, or the model number or something of the bill. Something of the building, whatever identifying numbers of the building, primary identification number, tells me what the contract number is for this customer, open date, what type or term are of this contract, the total of that contract, what's been paid, what's due, what's the early payoff, along with a time frame that's tied to that as well. So like, for example, the total says, I'm looking at a particular contract, $8,206.94 but the 48 month contract, they've paid $1,196.85 which equivalents to equivalents? Is equivalent to seven months, which means there's 41 months that are still due with an early payoff of 35, 1005,
+
+Unknown Speaker  1:11:49
+something like,
+
+Matthias Miller  1:11:55
+something like this.
+
+Matthias Miller  1:12:03
+And, yeah,
+
+Speaker 2  1:12:10
+yeah. And, you know, depending how you you would expose that, I would want to put timeframe to that. You know, how many months? How many total months of the contract? How many? You know, obviously, this can be a calculation of, you know, 1196 85 may not necessarily be exactly seven months and maybe slightly more, slightly rest less, and we just do some kind of rounding for it, but an approximation of total, total amount of total months, paid months, and still do months and then an early payoff, like the like, that kind of information is always helpful when you're talking to a customer's customers like, Well, what I used to own as well, sir, you still $7,010.10 which is about 41 months with An early payoff of $3,510.05 great.
+
+Matthias Miller  1:13:02
+Okay, something like this. And this would be like something like that. Contract type is something like CRA, etc, etc, contract term, contract total, payment, amount is calculated. I can't type
+
+Matthias Miller  1:13:40
+something like it. And so here you could also say, would you want to have a Do you want any breakdown on the payment of what gets applied where? Or do you just want to that just gets calculated here?
+
+Unknown Speaker  1:13:59
+Okay, what do you mean?
+
+Matthias Miller  1:14:02
+This payment of $500 reduced the early payoff amount by x, or I don't even want to mention it. So
+
+Speaker 2  1:14:15
+I mean, no, it's worth mentioning because it goes to, how are we going to expose some of this stuff on, like, in a payments RG, like a his a payments history of the customer needs to be very, very clearly labeled into, you know, what went into? Like, if I paid 100 bucks, how much of that went to late fees? How much of that went to, you know, to the contractor. How much this and how much like right now? The way that RTO Pro does this is they have an RG of payments, which is a receipt column. It identifies a receipt number to that particular line item, which is something that we'll need to do as well, because customers will ask for receipts. Based on a certain payment, we need to be able to generate some kind of PDF of a receipt. But when it was paid, when it was due, when its next due date is, and probably to some degree, I probably just need to break some put some of this into like a spreadsheet, so that we can talk somewhat about this, because it is very like a very comprehensive breakdown of how a payment was applied. Is very, very necessary, because you get into these conversations with customers about, well, I paid $175.48 Well, well, you know that should go? Well, no, sorry, ma'am, that you paid. You know, if
+
+Matthias Miller  1:15:38
+you read the contract, do what? If you read the contract, if the salesperson did their job, whatever, whatever. Yeah.
+
+Speaker 2  1:15:45
+I mean, well, that that payment was 14 days late. And you know, which means that, you know, $10 of it went into to late fees, and there was $11.86 of tax. And you know, they're $4.20 of damage waiver fee, and you know, all of that kind of stuff. Yeah.
+
+Matthias Miller  1:16:04
+I understood this is, this is where payment records anyway. I I understand why people want to have payments on here. I also understand why payment records are nice.
+
+Speaker 2  1:16:22
+I mean, you've done some really cool stuff with on the accounting side, with accounting impact, and I'm not sure, I'm sure you're going to draw a lot of it from a lot of inspiration from that. But the key to understand is that a customer representative, when sitting with a on a phone call with a customer needs to have very detailed information on historical payment and how it was applied, and where this went and that went, and ways to communicate that to a customer.
+
+Speaker 2  1:17:00
+Oh, and total side note, we will need a way to to PDF, print payment history, because we do it quite often. I mean, there's no way to do this. There's no way to do this in RTO Pro, and so we end up a lot of times, just taking a screenshot of the of the payment history and sending it to a customer, because the customer's like, I want to see my payment history. Okay, sure, screenshot, drop it in an email. Like, there's got to be a better way so
+
+Matthias Miller  1:17:27
+well, I mean, if we do receipts for each one, then we could also have to to all payment receipts for current, for customer prompt, which if there are multiple or just, yeah. I mean, you could just send them 10 paid well, maybe this is overkill. If they made 100 payments, it's not gonna be 100 payments. If they made 12 payments, just send them a 12 page PDF with a receipt on each page.
+
+Speaker 2  1:18:02
+No. Okay, so I forgot about this, that RTO Pro does have a way to to actually print this. I forgot that they do. Do you want to see one?
+
+Matthias Miller  1:18:16
+I mean, sure, Bob,
+
+Speaker 2  1:18:18
+it's just a payment history report. Oh, you know what? I won't be able to I'm sitting on the v2 cloud. I can't share the v2 cloud, so it's fine. So it's basically a, it's called a payment history report. It gives some customer information, company information, you know, the contract information, that same information that we had talked about a little bit before, contract number, type, term, due date, and so on and so forth. And then it's just, it's a breakdown of the payment history. RG, so we'll need to do something like this that you can very easily print to PDF payment history documentation and email it to the customer. Ideally, ideal, because I some of this stuff is like I said, I haven't been in here in a very, very long time. They long time. They actually have an email button that you can just directly attach it to an email and email it out to the customer.
+
+Unknown Speaker  1:19:14
+Um, okay,
+
+Matthias Miller  1:19:29
+well, this is shaping up very nicely.
+
+Matthias Miller  1:19:41
+References are on the document storage. That's welcome. Call status would be
+
+Matthias Miller  1:19:55
+and then somewhere here i.
+
+Speaker 2  1:20:10
+Okay, I gotta type your man manually, type your email. This stinks, uh. Matthias.miller@codehouse.com
+
+Unknown Speaker  1:20:17
+is that right? Yeah,
+
+Speaker 2  1:20:18
+they're right. Let's, let's try sending an email. Let me see if I get this thing. Hey, look
+
+Speaker 2  1:20:39
+at that. You should have got a payment history from crooked Valley. I cricket,
+
+Unknown Speaker  1:20:44
+Valley
+
+Unknown Speaker  1:20:49
+cricket, Crick, Valley cricket, cricket, I
+
+Matthias Miller  1:21:06
+donde ista me.
+
+Matthias Miller  1:21:15
+Oh, that's beautiful.
+
+Matthias Miller  1:21:22
+I totally know what the R type is. I totally know what the m term is.
+
+Unknown Speaker  1:21:28
+What's club
+
+Speaker 2  1:21:31
+this, this RTO Pro does other things besides RTO, like club memberships and some of those types of things. And so got it.
+
+Matthias Miller  1:21:41
+What are other charges? Late fees? Okay,
+
+Speaker 2  1:21:47
+they dump a lot of they dump a lot of things into other charges, which they kind of made this the other charges they they kind of encapsulated a whole bunch of things for the for storage, building RTO contract that's always late fees. And we may need to come up, you know, at some point, we may need to come up with other types of fees that may need to be charged as part of the contract that go into the contract record. It's probably a little bit further down the line, but it is something that we will need to handle on some other things, like, let me think, let me think of one. I'm trying to think if there's any service fees that that some RTO contracts RTO companies do, but, I mean, there are other service type fees, which, you know, we'll probably end up doing a more generalized fee type field at some point. But I do think hand for the sake of the customer, one of the things I really want to do is change that other to an actual late fee field, just because when you, when you send this out to the customers, like, what are the other charges? And they're like, man, that's your late fees. And, yeah, exactly
+
+Matthias Miller  1:23:05
+way if you were, so what's pF, so it's does. Mmk, one, one, birds. I primary
+
+Speaker 2  1:23:23
+form of payment, I think so. I think that that was MasterCard, MasterCard, MasterCard check was k1 is we often use payment type one for depending on how this contract comes in whether we got the the initial down payment, or whether we're subtracting initial down payment off the amount we pay back to the builder. We use one as the, as a, as the when entering the new contract.
+
+Matthias Miller  1:23:53
+Okay. I mean, should there be a,
+
+Speaker 2  1:23:59
+yeah, we're gonna need it. We're going to need a, you know, form, a payment field.
+
+Matthias Miller  1:24:04
+I mean, I do have a payment method, but don't, don't we? My point is, don't we need to try a contract total and and, like a contract, like a manufacturer down payment, or, like a down payment to manufacture?
+
+Speaker 2  1:24:19
+No, because that's more internal, and you don't really want to expose that to a customer on how we did that. And I mean, if we come up with a way to do it, but not expose it necessarily on a printout, it may be
+
+Matthias Miller  1:24:31
+valuable. We need it internally. Yeah,
+
+Unknown Speaker  1:24:36
+very, very true.
+
+Matthias Miller  1:24:39
+I mean, at some point, or maybe it's here.
+
+Speaker 2  1:24:43
+I mean, okay, so there's a number of things that I would love to track as part of that contract. Like, for example, there are going to need to be some sort of accounting light type features as part of the software. Like, what did we pay to that, that manufacturer and premium? What did we you? Know, how do we handle the initial down payment? What did we pay? You know, invoicing, like accounts payable side of the saw, there needs to be some, some sort of accounts payable side of the software that that we can track, what do we owe out to manufacturers and and so forth. I mean,
+
+Matthias Miller  1:25:21
+I wonder if some
+
+Speaker 2  1:25:30
+of that, some of that I just described there, is, is on the building record or on the product record that we'll need to, that we'll need to handle. Well,
+
+Matthias Miller  1:25:37
+it's not because it's that's unique to that could change from time to time. You can it's part of the content. It's part of the contract.
+
+Unknown Speaker  1:25:51
+Sure,
+
+Speaker 2  1:25:54
+not necessarily, okay, that's more of that's more of an accounts payable building side of this conversation that, like, how much do we pay in premium on that building? Yes, we definitely want to track that. It needs to be on the building record. It needs to be, you know, we need to have a list of unpaid and paid buildings that that need to be, you know, it paid out to manufacturers. But it's not necessarily contracts are more customer tied information versus
+
+Matthias Miller  1:26:21
+okay, but my point is, if you're reusing this, the building record for every purchase, well,
+
+Speaker 2  1:26:27
+then I would definitely want a to be able to track, you know, the amount of total amount of premiums we ever you know that if we sold that building back, if we repoed that building and it sold it back to the manufacturer, and then we bought it back again, there's going to be another premium that we're going to end up paying on that and being with paying on that. And being able to track some of that stuff is going to
+
+Matthias Miller  1:26:45
+be valuable. I agree, and forgive me for being I mean, maybe I could be completely wrong on this, but to me, the reason you buy a building and the reason you sell it back is always because of a contract. You got a contract, you lost a contract, and and and then on the building record, yes, we can say, here are all the contracts. Here's everything that we paid. Here's what we paid for it. Here, here is the buyback, and here are the premiums that we paid out for it.
+
+Unknown Speaker  1:27:13
+I see where you're going with this, but it's, it's
+
+Matthias Miller  1:27:16
+everything really is the contract is a triggering event for building purchases and buybacks. See,
+
+Speaker 2  1:27:22
+this is why I like working with you guys to build software, because you always consistently bring us back to this concept of, let's model reality.
+
+Matthias Miller  1:27:35
+I'm the I'm the Steve stitzman of software. I It's funny.
+
+Speaker 1  1:27:50
+Steve Stutzman of software, you should totally tell him that. That's hilarious. I'll
+
+Matthias Miller  1:27:55
+tell him I was working with a client you said, we always bring you back to the reality, to which I replied of the Steve stitts After shoot,
+
+Speaker 2  1:28:11
+okay, hold on a second. I gotta get, I gotta get logged out here because I'm fighting with somebody over something, and how do I get logged out? Log Me. Okay. There it is. Sign up, okay, okay, back to back to this. I think I was, I think I was fighting with the bank over getting some some information. Sorry about that bank. I didn't mean to kick you out. I
+
+Matthias Miller  1:28:40
+I mean, I don't know that this is really
+
+Matthias Miller  1:28:56
+It's something like, like this. I
+
+Matthias Miller  1:29:04
+so you have, I
+
+Matthias Miller  1:29:31
+and then you have the buyback.
+
+Speaker 2  1:29:40
+Well, so we need to have a concept for cash selling a building. And whether they were cash selling that building off to a customer somebody, or we're selling it back to manufacturer. We need, I think it would same logic. So we need some sort of some way of selling that building, right? Record back to somebody by cash and and there's a lot of things that need to take place at that point that you know, when we get into the depreciation side, if you know, if we sell that building off, then it becomes end of life, and it zeros out any depreciation on it, and so on and so forth, blah, blah, blah. But we do need a way to cash sale that building so the
+
+Matthias Miller  1:30:20
+cash sells out to the manufacturer, to the customer, to a third party. Yes, any, any of those, any of those.
+
+Speaker 2  1:30:28
+So I don't know if we, we made some type of sales order record or, I don't know how you want to go about that, but we do need to have a way of applying some type of customer information to some type of, some way of, yeah, I don't know. I don't know where you want to go with this. It needs to be very like, it's not going to be used very often, but it's, it's used enough in because of the sale of, of RTO buildings, of repo buildings, you know, whether you sell them back to the manufacturer you're selling them. You know, cash sale off to the, you know, at, at some customers lot or dealers lot? Yeah,
+
+Matthias Miller  1:31:03
+little side note. Um, two side notes. One, do you think it would be there's a company, there's a company that only sells repos? Do you think if? Do you think manufacturers would be mad if a company got in with RTO vendors and got all their repos.
+
+Unknown Speaker  1:31:27
+No So,
+
+Speaker 2  1:31:32
+so they would, they would broker a deal with RTO vendors to say, I'll buy every I'll wholesale by repo that you, that you come back out, you know, come up with some percentage discount and say, I'll buy it from you. Yep, man, I would sign up for that in a freaking heartbeat,
+
+Matthias Miller  1:31:45
+dude. This is the one. That's the one niche. So, okay, you've got the Erics of the world who can do phone sales, but bargain barns, you know, I mean, like, not as a company, but as an idea, is is probably one of the easiest things to sell on Facebook marketplace and a sell site unseen over the phone.
+
+Speaker 2  1:32:11
+The hard negotiation on this one is going to be for the RTO side, is, what kind of discount is a fair discount? What's a, you know, what's, what's what's the, what's the discount amount that someone like that's going to be? I do think there is a another concept out there that would say, you know, you have okay, if I was to, if I was to go, if I was to be, if I was really good at sales, and, man, I will sell anything. And I would go to an RTO vendor, and I would say, look, I want to buy, I want to wholesale by any inventory you want to sell to me at it at 40 or 50% Yep, and but if you say, You know what I'm you know, I don't have enough money back on this building. I can't, I can't justify giving you a wholesale disc discount on this thing for that amount. But I'm going to give you a way to say, I'll pay you a 10% commission. I'll give you access to my any, any of my inventory you want to sell it for 10% commission, bingo.
+
+Matthias Miller  1:33:11
+Well, or you could say, look, I will split whatever I've got in the building. Here's the inventory, whatever I got in the building, I'll split with you 5050, or some, some kind of percentage like that. Percentage like that, where it's a win, win. So the more I can sell it for it, the more I get. And if I have to discount to move it, and there's a floor, you can never sell it for less than I have to make 10% off of the building, or something like that. Or it's not worth it for me.
+
+Speaker 2  1:33:39
+Most of, most of repo buildings are a game of controlling losses and so, you know. So, like, nobody makes money on repos from from an RTO company standpoint. So there are, I mean, some, every once in a while you make a little bit, but it's always about, how much, how much can I how little can you lose? How Little can I lose, right? So this is where I'm like, Well, this would be really kind of cool if you had a network of online salespeople that could you maintained a real time inventory of repo buildings, and they came back and sat on a lot and said, I will pay you a 10 or 12% commission, because you're going to pay that to some sales lot anyway, just sell it. So rather than, rather than bring it back and sit it on X, Y, Z lot, I'm going to sit it on a storage lot. I'm going to give access to this guy, this guy and this guy and this guy of online sales, and they got a customer that's like, Hey, I'm looking for a building. Let me look at, okay, look down across this inventory. I got just the thing over here. You know, it's in your area, blah, blah, blah, and you could just, you know, sell that building, boom. I listen,
+
+Matthias Miller  1:34:44
+man, we, we need to continue the conversation. This is the I had 100 conversations. I had a conversations with about 100 150 dealers earlier this year. And And of all the things that I came across, this is by far the one that was like, I think this one has lagged. Yes, and you could actually build a company around
+
+Speaker 2  1:35:03
+it. Well, there's this other concept that I think, that I think I could get on board with, and that is that. So let's take true point, for example. Yeah, is, are you familiar with Gene? Gene nor Rick gold mine, um, somebody like this. Who wants to sell anywhere in the country this? It's not necessarily goldmine. It's not necessarily the greatest to represent this case. But let's take Okay, let me say Eric huntsberger, right? He wants to, he wants to do his own marketing. He wants to sell all over the country, coast to coast. And if you know, you could join a platform that is tied to these particular online salespeople, like I could take every single inventory that's in true point, and I could link it to this platform. And if he sells it, he gets X commission, and my dealer gets, say, a 1% commission, you know, because they're going to grumble. Dealers are going to grumble about the fact that, you know, you just stole a building right off my lot, and now I can't, well, okay, it's free money. I'm going to give you 1% and I'm going to and I'm going to replace that building as fast as I can, and but you know, at the same time, I'm going to move inventory, because this guy over here is really aggressive. He's selling buildings that crazy. He goes to his dashboard, he types in, I got a customer in in Salisbury, North Carolina. He types in, Salisbury, North Carolina, and there's a whole bunch of inventory that of all these connected shed dealers. So
+
+Matthias Miller  1:36:32
+I have a model for this too, by the way, and it's a, well, yeah, I don't know quite how to do it, but it's almost like the Consumer Reports for sheds, and it basically goes like this, Look, dude, I know that the moment you sign on with somebody, you're going to get blasted with phone calls, because these guys are super competitive, and it's moving more and more like into the Used Car sales territory, and let me be your third party trusted advisor, and I'm going to help you figure out what building you want, and I'm going to help you get the best building for
+
+Unknown Speaker  1:37:09
+the best list of sheds. Well,
+
+Matthias Miller  1:37:13
+kind of, sort of, but, I mean the fact, the fact of the matter is, it kind of puts a knot in my stomach, but, but, but. But then, like, I don't know how to at some point, I want control of the entire sales process and everything, because I don't trust anybody else not to fumble it across the finish line, and I don't see, I think it's better to have control over the over the whole process, anyway, from a from a business standpoint, and so that's where the trusted advisor thing kind of breaks down.
+
+Unknown Speaker  1:37:54
+Hmm,
+
+Matthias Miller  1:37:56
+anyway, but, but I'm fascinated to hear you excited about the RTO thing, and maybe I need to spend some time fleshing out what that could actually look like,
+
+Speaker 2  1:38:05
+well, but okay, I do think that if there was an, and this is the hard part on the whole API side of things to say, because what would be really, really cool is you build a platform that you could jack into the shed app, you could jack into the shed suite, you could jack into assist, you could jack into all these different softwares. And if a building's labeled as repo and your manufacturer agrees, like you have two options on there, I can sell it for a commission, or I can, I can buy it out wholesale and then sell it. Or or, sorry, I can, here's the here's the wholesale percentage on this building, and here's the commission percentage. Take your pick, either or either or Yeah. And it's like, I'm a, I'm a, I'm a dealer. And I say, you know, okay, that that commission percentage is okay, better than or maybe it's just a single thing. It's like, Oh, this one you can buy on a wholesale or this one you can buy is sell it for a commission. I don't know, maybe you get it, but it's like, where, as a sales rep sitting there, I could go to some dashboard, I could type in a location, and I could see used it, or I could see repo inventory from a bunch of different builders. One time, I'm sitting on my on my phone with the customer, and I'm like, Man, I could get you, I could get you a really good deal in this used building for this manufacturer in your area. You interested? Well, yeah, and then you can send them a URL of that, and it would just, you know, it would show them pictures. It would show them and it's like, boom, I'd be, I'd be so stoked about that as a manufacturer and
+
+Matthias Miller  1:39:37
+a salesperson. Well, I don't want, I don't want this is the greedy part of me. I don't want the dealers to have access to this. I want this to be its own thing, exclusive with the RTO company. So that manufacturer, when you sell an RTO building, it never comes back to you, ever and and we go through inventory. For you. And then we, we just push specific buildings. I think it's much more compelling to say, hey, look like you build an email list of people who are looking who are bargain hunters for sheds, and you, you create a little bit of a buying frenzy. It's the Robert Cialdini like I'm selling my car and I book five appointments for 10 o'clock Saturday morning. At the moment, everybody shows up. Ah,
+
+Speaker 2  1:40:21
+hold on. A second. You have a dashboard. RTO comes report. I'm about to pick up this building, and you're networked in with enough sales people that they see there's a there's a repos hitting the board, okay, what is it? Okay, here's the details on that building. Okay, What? What? Approximately, What shape is it in? Well, here's what we know about it. You
+
+Matthias Miller  1:40:43
+here's the picture. Well, or No, you wouldn't have pictures at that point. You wouldn't have pictures at that
+
+Speaker 2  1:40:47
+point, but there's a repo about to hit the board, and like a salesperson, you could jump on there and you could say, Okay, I'm putting a claim on this thing. And literally, if you could figure out a way to say, and then you deliver it straight to that that guy, exactly. It's like driver's out there to pick up that building. Is it ready? Can this thing be immediately resold? Yes, it's empty. It's ready to go like you Okay, driver gets a notification that says, Okay, you're picking up this building, and I've already got it sold, and it's going to this location 10 miles down the street, or 30 miles down the street. Eliminate
+
+Matthias Miller  1:41:17
+the salesperson and make this be like an auction. And so you get everybody signed up in an area who wants to buy a shed, cheap El, cheapo. Maybe you even rent email lists from from shed manufacturers. And you you send out a blast saying, Hey, we got this building coming up, and the auction starts. The auction is open for one hour, starting at this time. And the time is whatever time it takes to pick up the building, drive down the road, get good enough pictures and put out a condition, or put out the condition, and boom, buying starts and like, literally, you go, I mean, ideally, why? It's all contingent on having enough people interested in it, and you could potentially allow salespeople to also bid on it, but put customers and salespeople in on the bidding war. And if a customer wants a bargain of a building, like you got to be it's going to be here, Johnny on the spot, you start bidding and, like, literally within two hours, you can have your building.
+
+Speaker 2  1:42:19
+Yeah. But see, okay, shits for sale tried to do something like this. It wasn't necessarily this concept, but it was like, this idea that you could go manufacturers could link in their inventory, and customers could go there and buy their own building, blah, blah, blah. And I don't think it's been that successful. I do really like the idea where it could be open to online sales people, and it's like, I'll pay you X percentage for this building. It's been reput. It's now sitting on my lot. It's ready to be sold. And you know, as a as a RTO company, you basically create a storage lot, right? Every our every repo within a certain area comes back to that storage lot. It goes up for sale. And maybe you give your dealers access to sell those repos, or maybe you'd only give it to certain people, like you could have control over it. But it's like anybody can sell this building, and it's like as soon as, as soon as you know, the idea is to turn that inventory as fast as possible for the best as possible.
+
+Matthias Miller  1:43:15
+All right, so let's Okay, have an independent company that goes to an RTO company and says,
+
+Unknown Speaker  1:43:24
+hang on a second. Did you stop my time?
+
+Matthias Miller  1:43:27
+Yeah, you're not paying me for all this stuff.
+
+Unknown Speaker  1:43:31
+Like, if I'm gonna, if I'm gonna help you design this thing I want to
+
+Matthias Miller  1:43:37
+cut so. So here's, we want all your repo buildings sitting on here, and here's our promise to you, we are going to aggressively sell this thing. And there's two ways we're going to do this. Number one, we're going to put it out to every single, single dealer in the area, and we're going to say, Look, you guys can sell this thing for this price. And also, we are going to market this thing specifically, and we're going to put a salesperson on it, and we are going to try to move it as well. And our promise to you is, and maybe there's even an incentive program where the faster we move buildings, the bigger cut we get. And it's all about speed of inventory move? Well, it's not just that. It's a combination. Anyway, we are well past our hour and a half. Did you it's 930?
+
+Unknown Speaker  1:44:39
+10, 3011, is an hour and a half, right?
+
+Unknown Speaker  1:44:43
+Well, 11 o'clock, my time.
+
+Matthias Miller  1:44:44
+We started at a little after nine Eastern, and the hour and a half would have been at 1039
+
+Unknown Speaker  1:44:51
+No, it's 930 we started at 930 didn't we?
+
+Matthias Miller  1:44:55
+Well, it was nine 910, well, 930 You're right. No, we didn't talk that long at the beginning. Who cares? Whatever. Anyway. Anyway, I guess the question is, let's, let's, let's reel this thing in a little bit. I'm very interested in continuing this conversation, by the way, but some
+
+Speaker 2  1:45:20
+really cool concept. If you can, like somebody's going to have to get the salespeople on board and make it very, very attractive to do so, because what, what you don't want to do is you don't want to create some platform that's really, really slick and cool. But yet people aren't kind of bought into it. Because ideally, what from an RTO company side would be really, really exciting is that I don't have to deal like if my stagnant inventory, or my non performing inventory, the longer it sits there, the longer it costs me money, the more you know it's like, the faster I can turn this stuff, the better. And I think that you could really get RTO companies on board with this idea, if you knew, if, if you could say, look, I we guarantee a 90 day turnaround time, like a building will not sit here more than 90 days, it'll be gone, right? Like, if I knew that in 90 days, that if I pull a building, that if I pull a building off a customer's lot, if I knew, almost guaranteed that in 90 days, that thing was going to go back out to a customer somewhere, either re rented or cash sold. I probably wouldn't even take buildings and send them back on lots I create a storage lot.
+
+Matthias Miller  1:46:30
+Yeah. Okay, well, good feedback. Maybe I got to chase this. I you know, me, million one ideas. It
+
+Speaker 2  1:46:46
+is. It is a really cool idea. I think there's some technicalities to it that would be like, because you'd want to make it really, really slick and smooth, and it's got to be real time, you know what? What you don't want to as an RTO company, what I wouldn't want to do is, I wouldn't want to do is, I wouldn't want to go put it on a sales lot and link it to something like this without those systems talking sold. I don't want somebody accidentally double, double selling it.
+
+Matthias Miller  1:47:12
+Right when you could, you could, you could have anywhere, there's ways to deal with it. But yes, okay, so,
+
+Unknown Speaker  1:47:21
+um, schedule, nine. Next call.
+
+Matthias Miller  1:47:33
+So I think signal. Let's see what you said.
+
+Speaker 2  1:47:40
+So I'm out for EOS conference this the rest of this week, and I think that Audra was talking about somewhere in the 14th through the 18th, and I think that my preference is the 16th and 17th. 16th.
+
+Matthias Miller  1:47:57
+Dwayne RTO, do you want to do?
+
+Speaker 2  1:48:01
+Sorry, I'm going to rephrase that, because not the 17th. I've looks like we have Easter programs coming up for our church, and I'm doing a bunch of sound stuff at that point. So I would vote for the 16th. Okay? And I'm pretty much wide open on the 16th.
+
+Speaker 2  1:48:28
+Was it sounded like next week is full for you? Is that right? It is pretty full.
+
+Matthias Miller  1:48:35
+I've got, yeah, just
+
+Matthias Miller  1:48:44
+and then would you want to Oh, and then the 24th I'm out.
+
+Matthias Miller  1:48:54
+We should have one more time slot somewhere.
+
+Unknown Speaker  1:48:59
+23rd 30th,
+
+Matthias Miller  1:49:02
+I'm at a good bit on the 20 week. The 21st 30th, we could potentially do. 28 schedule is up in the air.
+
+Speaker 2  1:49:16
+30th for me. Wednesdays. Wednesdays are usually open for me. So I would vote for a Wednesday.
+
+Matthias Miller  1:49:35
+Okay, well, Audra is under the weather. I vote. I've got too many juggling priorities at this point, commitments at this point to throw something on the calendar specifically. So if you're pretty open, give give us. I mean, by Friday sometime, I would expect we should be able to get invites out and set things down if you're. Or,
+
+Unknown Speaker  1:50:00
+yep, like I said, Wednesdays are usually open for me.
+
+Matthias Miller  1:50:04
+All right, good stuff. Well, this is fun. I'm excited. I'm excited for this. This is great conversation. So or great, well, it's, I mean, the product project, exactly this specific way I feel.
+
+Speaker 2  1:50:17
+I feel a little bit like Tony Stark in one of the Iron Man movies, where he's down there putting his acceler, his particle accelerator, back together, and he's like, we're back in hardware mode. So it feels good to be back in hardware mode. I
+
+Speaker 1  1:50:30
+love it. Love it. Love it. All right, cool.
+
+Speaker 2  1:50:33
+It's been a, it's been a a while since you and I really banged away on something like this.
+
+Matthias Miller  1:50:40
+Jasmine. It has been good, sweet, awesome. Appreciate it. Thank you, sir, bye.
+
+
+Transcribed by https://otter.ai

@@ -1,0 +1,296 @@
+Unknown Speaker  01:09
+A Hello,
+
+Unknown Speaker  01:21
+what? in King and. with local. nice, it's, it's a block and a half away, which is two blocks, which is both wonderful and a bad thing at the same time. But I figured that I was gonna say, what was it? 730 to one on calls. It's probably fine, right somewhere. I think that would probably be forgivable. That RTO call you went alone time on we did. I mean, we really needed it. So it's amazing. It is amazing, but weren't planning on it. But yeah, good progress on it, at least respectable progress is just a lot of hard stuff. Yeah, exactly. Okay, well, I think the biggest, the biggest first step with this thing is, amount owed is such a weird term, but I'm not sure where all we use that. Certainly the one that takes the parameter we're fine. We know that's not used anywhere in in whiskey land. What and Jonathan quickly search around and see if these are used anywhere. Or do we not really know how many different I don't know is access to some of the whiskeys, but I don't know if I have some. Do we know what all different whiskeys we had for zfp, ADC facts, he does not have access to them. So let's do there's also a dealer, assist. Portal, hold Git, stash, assist, all our portal, I have three. So then grab Rni. So amount owed, right? Yeah, shoot it to you. I You. Yes, it is so amount of those, ODE is used, Ray, so I think maybe I would do I can we just okay? Do you want to share your screen and pull up? Yeah, sorry, I'm not on a big screen, so you have to just do it, do window. But can you pull up where? So about ODE and amount owed as of they're used in Catalog or in components, I guess
+
+Speaker 1  05:05
+we use it so balance. We have an so balance, the same thing as so amount owed.
+
+Unknown Speaker  05:12
+That's interesting. Then
+
+Speaker 1  05:19
+on, change on emit
+
+Unknown Speaker  05:25
+has a write off. Be here. If
+
+Speaker 1  05:37
+there's no entered amount, then we do the amount owed. Right? Right, okay,
+
+Unknown Speaker  05:47
+and then
+
+Unknown Speaker  05:50
+SDI accounts receivable, which, that's the as of.
+
+Unknown Speaker  05:58
+And then, right, so we can SDI invoice.
+
+Speaker 1  06:07
+We have an amount owed column. I'm going to guess that's why it's called amount owed. I bet we created it there and we've used it elsewhere since.
+
+Unknown Speaker  06:20
+Maybe not. That's a hypothesis, the hypothesis, um,
+
+Unknown Speaker  06:38
+okay, so,
+
+Speaker 2  06:42
+um, we have three
+
+Unknown Speaker  06:49
+balances
+
+Speaker 3  07:01
+that there's an accounting, like a total prior fire. There's a displayed as, like the total shown
+
+Matthias Miller  07:17
+before invoicing and the
+
+Speaker 3  07:21
+on the customer balance and the accounting balance $0 before invoicing, The most standard times I
+
+Matthias Miller  08:04
+total value. Okay, where are you? Like, sorry, I am here. Let me share my screen.
+
+Unknown Speaker  08:15
+I'm cheating. I
+
+Unknown Speaker  08:23
+Oh, I see I'm
+
+Speaker 1  08:47
+collectible, balance. I
+
+Unknown Speaker  09:10
+here I'm
+
+Unknown Speaker  09:26
+see what it says. I'm
+
+Unknown Speaker  09:47
+total, total,
+
+Matthias Miller  09:54
+unless the order itself is voided. But typically the. Typically, in our case, Uber the worded when it's when
+
+Speaker 3  10:12
+it's canceled. I need no plans to reinvoice that. Change your answer?
+
+Matthias Miller  10:23
+Let's go down to your list. Displayed, balance,
+
+Matthias Miller  10:34
+outstanding balance, tech doping, balance, amount due. You see we do amount normally not effective balance. That sounds like a really big term, collectible balance, no
+
+Unknown Speaker  10:54
+adjusted balance. I
+
+Matthias Miller  11:26
+was a total could actually be no except that were totally see what a total. It's not, it's nothing to do With, I don't know, it's
+
+Matthias Miller  12:02
+kind of I don't really like those. I
+
+Unknown Speaker  12:49
+here's another idea. What About? What about Uber balance? What
+
+Unknown Speaker  13:40
+anything Here stand out to You? You
+
+Unknown Speaker  14:22
+you're muted. You're sorry. I was
+
+Speaker 1  14:39
+wondering about we can't just call it AR balance and accounting balance, can we? Because we're saying that's essentially what the difference is. But does that get confusing?
+
+Matthias Miller  14:49
+Technically, it's not AR. I mean, it's used for ar, ar, but it's technically not even AR until it's always
+
+Speaker 1  14:57
+that's that way. Yeah. Because we want to share the balance before it's invoiced. Right?
+
+Matthias Miller  15:19
+You could, okay, here's, here's another option,
+
+Unknown Speaker  15:29
+the unpaid total.
+
+Unknown Speaker  15:38
+So bounds, I
+
+Unknown Speaker  15:51
+there's
+
+Unknown Speaker  15:56
+the total minus I'm
+
+Speaker 1  16:07
+all right, this payments plus write offs. Yeah, but do you? Would you expect so unpaid total to return zero after It's canceled,
+
+Unknown Speaker  16:25
+right? Not really, not really,
+
+Speaker 1  16:39
+remaining payments. No,
+
+Unknown Speaker  16:51
+here's another idea. We can't do that. We could. We could call this
+
+Unknown Speaker  17:02
+wait. Amount owed is zero prior to invoicing. Where do we want to balance? You said we want to balance before invoicing.
+
+Unknown Speaker  17:18
+It's i
+
+Speaker 1  17:25
+No, it's not zero. If you try to specify a date, it's zero.
+
+Unknown Speaker  17:34
+That's wacky, or you
+
+Unknown Speaker  17:45
+isn't that weird?
+
+Speaker 1  17:54
+Well, okay, is invoicing or payment? Are they ever future dates? Probably not. I I shouldn't be normally. It just feels weird to say isn't a or like. It feels like you'd rather if it's blank, you convert it to today, no,
+
+Matthias Miller  18:19
+and then just say orders and quotes aren't going to be invoiced. Is what orders and quotes won't be invoiced, but you still have to show a total in the printout. Oh, that way.
+
+Speaker 1  18:38
+So the comment saying amount owed to zero priority Invoicing is not right. It's zero priority invoicing if you're looking at a specific date,
+
+Unknown Speaker  18:48
+I have an idea.
+
+Unknown Speaker  18:55
+Yes, correct.
+
+Matthias Miller  18:58
+So what if we refactor this out into macro so payments? And write offs as of,
+
+Unknown Speaker  19:07
+okay, is that,
+
+Matthias Miller  19:11
+and this is correct as it stands,
+
+Speaker 1  19:16
+emits and write offs. Is that, if you have payments or get negative or they're positive,
+
+Unknown Speaker  19:26
+it would be as a it would
+
+Matthias Miller  19:31
+be without the minus and with the minus Here, I think. And then you would your new factor, this change so amount owed to just stop here you.
+
+Unknown Speaker  20:43
+It the ODE and odaz of would no longer be linked, right?
+
+Unknown Speaker  21:01
+And we can rename this one to so
+
+Unknown Speaker  21:06
+that's not used anywhere. I
+
+Matthias Miller  21:09
+mean, it has a macro, so it's, it's, it has a parameter, so it can't be used in, okay, was
+
+Unknown Speaker  21:32
+what do you call this low standard term? I
+
+Unknown Speaker  21:48
+That seems pretty
+
+Unknown Speaker  21:55
+straightforward. I
+
+Speaker 1  22:16
+so the problem we were running into with our other change was that we were adjusting the total.
+
+Matthias Miller  22:31
+What was if you passed an NA and it wasn't invoiced, you would use zero as the basis.
+
+Speaker 1  22:40
+Oh, yeah, that would be very problematic, actually,
+
+Unknown Speaker  22:44
+yeah, yeah,
+
+Unknown Speaker  22:58
+some of this
+
+Matthias Miller  23:00
+out, all right? Out? Yeah, I've been dropping about probably 15 minutes so they can make it back to the office.
+
+Speaker 1  23:17
+Yeah, should we? Should I start on this now? Do you want to look at anything else first?
+
+Matthias Miller  23:22
+I mean, I'm happy with this. I think this covers it. But is there, do you think there's something? I think at some point it would make sense to go to Josh and say, Josh, we really should rename so amount ODE and so balance. But why
+
+Unknown Speaker  23:40
+do we straight up, have a wrapper for a mount ODE?
+
+Matthias Miller  23:45
+I don't know, maybe. Why wouldn't we just use it's
+
+Unknown Speaker  23:49
+only a question of which it might be a question which came first. I
+
+Speaker 1  24:07
+And I think what all, because I feel like that I should test this pretty carefully then, but I'm not right. I'm just scared about breaking things again. I'd really rather not, but I
+
+Matthias Miller  24:26
+I think the main thing to test is that make sure that on a sales order that so balance so amount on a quote or on a
+
+Unknown Speaker  24:38
+just before invoicing. Yeah,
+
+Unknown Speaker  24:41
+the numbers, right? Yeah.
+
+Matthias Miller  24:49
+I understand the Peter. I'm not quite sure what the beauty says. Just push through. Yeah. I.
+
+Speaker 1  25:01
+And I have a job written up to add unit tests, which I have 50 for now, but
+
+Unknown Speaker  25:06
+I think it's fine,
+
+Speaker 1  25:10
+yeah, but it is at least in the queue and there's visibility if we do want to push forward at some point. Yeah.
+
+Unknown Speaker  25:23
+A word and invoice, non, un invoiced, so
+
+Unknown Speaker  25:32
+quote words.
+
+Speaker 1  25:41
+You should share screen and start earlier doing just wrap it up, because I think it's fairly straightforward
+
+Unknown Speaker  25:49
+here. I'm not gonna be
+
+Matthias Miller  25:58
+able to review between now on the weekend, for not I can, I can, I can, after I can, I would actually have some time at five Central. Probably okay. So why not? I'm happy to turn you want to do that? That's good. Yeah, I should
+
+Unknown Speaker  26:14
+have it done before then I think, are you
+
+Unknown Speaker  26:17
+gonna have time? Holly, are you working?
+
+Speaker 1  26:22
+If we can have it reviewed in 10 or 15 minutes, it's fine, okay, sounds good. I don't want to. I won't work much longer than that, but that'll be fine.
+
+Unknown Speaker  26:31
+All right. Thanks. Hey.
+
+
+Transcribed by https://otter.ai

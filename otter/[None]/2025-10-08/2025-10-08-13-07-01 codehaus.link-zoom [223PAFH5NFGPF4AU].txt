@@ -1,0 +1,509 @@
+Matthias Miller  00:20
+Long time. No, see exactly. It has been a little while.
+
+Unknown Speaker  00:25
+What have you been
+
+Matthias Miller  00:28
+up to? Getting ready for benefit auction, comedian who balanced a ladder and eight foot ladder on its chin. No, it's pretty cool. And juggle while doing that,
+
+Unknown Speaker  00:47
+wow,
+
+Matthias Miller  00:48
+and letting my wife go climb the Manitou incline, which is like 20 750 steps up.
+
+Speaker 1  00:54
+And anyway, getting very is that in springs,
+
+Matthias Miller  01:00
+Manito springs, or man, yeah, well, I mean, yeah, it's the old Rome horse cog. You know where the train used to go.
+
+Speaker 1  01:09
+Okay, yeah. So is that pretty close to investor, Jules? Because I think yes, hearing about, okay,
+
+Matthias Miller  01:16
+like 30, I don't know if it's 30 minutes in the office. Maybe, I don't know what it is, but something like that, right? Yeah. Nice. And then just getting married, and I don't even know what high level designs and all these other tips or everything
+
+Speaker 2  01:29
+else, so, yeah, yeah, yeah,
+
+Speaker 1  01:32
+okay, let me just share screen, because that would give us a little bit of context. Basically, I built this, oh, he changed it.
+
+Unknown Speaker  01:45
+Did he change it? I
+
+Speaker 1  01:47
+had built it so that when you you go into unpaid invoices, it shows you a list of invoices. And then I had a pay selected, and you would like, select your invoices, and then hit pay and boom, and pay them. But they want to be able to see, like, the total number, like the total of the invoices and stuff, which makes sense, like, it's totally fair, but it's and so Duane wondered if we could, like, have a confirmation message or something, but I couldn't think of a way to do that, given we're doing running an import on selected values, which is just an input file. So my best suggestion at this point is to add just a hidden Boolean field to the sales order. And I don't know exactly what you call it, but it's essentially a flag to say the dealer is wanting to pay this. I mean, not saying they are, but it's and then you'd have a report that would subset, based on that there should be, like, a draft payment. And then, when you then, you have a link action in there to confirm the payment. And then take all of those, like, we'd have totals and stuff on that report the balance. It takes all of those create a row for each of them. I mean, we'd prompt for the payment method and then add a row to each one for the payment method and amount and date. That sound good.
+
+Matthias Miller  03:21
+Yeah. And what's the name of the checkbox?
+
+Unknown Speaker  03:25
+Well, that's what I'm trying to figure out.
+
+Matthias Miller  03:37
+So it's not, it's a it's
+
+Unknown Speaker  03:41
+draft dealer payment,
+
+Matthias Miller  03:44
+yeah, or draft or wholesale dealer, draft invoice or wholesale dealer, include on draft invoice,
+
+Unknown Speaker  03:56
+oh, yeah, I UK, just be
+
+Unknown Speaker  04:07
+Old, so wholesale dealer, include on draft,
+
+Unknown Speaker  04:16
+that's long. Okay?
+
+Speaker 1  04:22
+Capitalization is nice. Otherwise it says, still sow
+
+Unknown Speaker  04:27
+so
+
+Unknown Speaker  04:34
+include on draft payment
+
+Speaker 2  04:41
+or invoice. Okay?
+
+Matthias Miller  04:51
+Well, I mean, we could also say, Well, I guess that is a fair question. Or we think of these as, yeah, right, I think you.
+
+Unknown Speaker  05:00
+Service payment.
+
+Matthias Miller  05:04
+Wholesale dealer wants to pay that. What you want to call it
+
+Unknown Speaker  05:12
+pending payment.
+
+Speaker 1  05:19
+And so then, if pending payment is checked. Then we include them in the draft payment sub, or probably another, just another
+
+Unknown Speaker  05:32
+pain here. And then
+
+Speaker 1  05:37
+you go in there and you click, pay all invoices, or pay Yeah. Pay all invoices. Pay. Yeah, pay all invoices. And then goes and does that and unchecks the checkbox.
+
+Matthias Miller  05:48
+And then if you really want to show the confirmation in there, you can do a ask front that look goes up to the database and grabs the balance and sums it up.
+
+Speaker 1  05:59
+We could, I don't think I care, because we can show them a total, yeah, that's fine. You can show them totals at the top,
+
+Unknown Speaker  06:05
+yeah.
+
+Speaker 1  06:08
+And I think that's good enough, and I build that. And Dwayne says he wants the confirmation that we can add it fairly easily.
+
+Matthias Miller  06:19
+And are you going to show all open invoices and something like, you know, pending payment or draft payments, or, I don't know, what are you going to group them together and have an option to add or remove them?
+
+Speaker 1  06:37
+What I was thinking is that you run out of the unpaid invoices, you select the ones you want to include, and then they changes the grouping. I guess it could all be in this pain unpaid invoices. I think he wanted to add a pay invoices, but
+
+Matthias Miller  06:59
+invoices, invoices is grouped between what and what
+
+Unknown Speaker  07:08
+you would group.
+
+Speaker 1  07:14
+I was initially thinking of the draft payment as a separate sub pane. So in here you have grouping by you could have grouping by the new check box, but you wouldn't be able to pay unless you go to the draft payment pane. Otherwise you have to tell them they need to refresh the totals. Might be wrong, right? You
+
+Matthias Miller  07:44
+you would have, oh, sorry, I'm slow. You have all invoices on the left in the middle pane there. And then are all, yeah, all sales orders, all invoices in the middle pane. And then you have kind of like a invoice view on the far right pane. You
+
+Speaker 1  08:04
+No, the far right, right now is, is like the invoice export,
+
+Unknown Speaker  08:12
+okay, right,
+
+Unknown Speaker  08:15
+so I was thinking we
+
+Matthias Miller  08:18
+selected row,
+
+Unknown Speaker  08:21
+Yep, yeah. I
+
+Speaker 1  08:23
+was thinking we add an option on the left on their quote, unquote menu for draft payment, and then that shows any that are marked to be included.
+
+Matthias Miller  08:39
+But why wouldn't you? Doesn't the report modify, but doesn't the Modify button? Isn't that going to be hard to jump back and forth to say, oh, I want this one. Oops, I don't want this one. Not that, I guess.
+
+Speaker 1  08:52
+Yeah, you're probably right. So you have you that if you don't do that, then you have them all in this unpaid invoices. You group
+
+Speaker 2  09:10
+by the checkbox, yeah, you have totals, and
+
+Unknown Speaker  09:17
+you just tell them does if you does a grouping refresh every time you save No, it
+
+Matthias Miller  09:27
+doesn't No, not an editable report. But if you use the Modify button, you can have an add to payment button.
+
+Speaker 1  09:38
+I see, I see, okay, that's what I was missing, because I was thinking of it as an editable column.
+
+Matthias Miller  09:46
+No, I think you just modify selected records, uh huh, and that forces a refresh of everything everywhere.
+
+Speaker 1  09:54
+Yeah, that makes sense. So then you have
+
+Matthias Miller  09:59
+a. Now let's find that
+
+Speaker 1  10:13
+incident. I wish we would have settled on this design the first time instead of the third time. Well, I will know the
+
+Matthias Miller  10:25
+I'll just do this out there. Yeah, this is very much a just go or Dwayne just go work with Seth, get done. It's true. And you'll you're just going to have a lot of rework so and I think also one, one lesson to note working with Dwayne is the more that you can do mock ups of what it's going to look like.
+
+Unknown Speaker  10:53
+Yeah,
+
+Matthias Miller  10:55
+the better outcomes you'll have with him.
+
+Unknown Speaker  10:58
+Yeah, although i i it.
+
+Speaker 1  11:03
+I think our main problem was the was not confirming with drew the deposit workflow. That's because that's where I lost most of my time, because I made that work. And I I actually like that design. I still kind of like that design, but knowing their workflow, it does make sense. They don't want to do it, great. But I kind of wish we could tell them that, literally, just make them deposit the check separately, or the like, if you get a check from a dealer, just anyway. But we can build for them. This will work just fine, right? Can fine. Okay, add a field, hidden field to sales orders.
+
+Unknown Speaker  11:49
+So,
+
+Matthias Miller  11:51
+so wholesale dealer
+
+Unknown Speaker  11:54
+pending payment.
+
+Matthias Miller  11:57
+Do we need to get Dwayne sign off on the UI? It wouldn't hurt. I wonder if he's available to jump on my Zoom. A proposed change to the UI for ping.
+
+Speaker 1  12:16
+I'm pretty sure he'll like it, but it wouldn't it'd be good to
+
+Unknown Speaker  12:19
+check.
+
+Unknown Speaker  12:28
+So we have this hidden field,
+
+Matthias Miller  12:29
+field invoices, report groups, by oops, by the this new field,
+
+Unknown Speaker  12:42
+draft payment,
+
+Unknown Speaker  12:50
+To be groupings of, okay,
+
+Unknown Speaker  12:58
+groupings of draft payment
+
+Unknown Speaker  13:01
+and
+
+Unknown Speaker  13:03
+what you'd call the other one,
+
+Matthias Miller  13:06
+just okay. But keep in mind, though, this is, this is the other question I wanted to drill into, because bear in mind that these are wholesale dealers. They're thinking about this in a very different frame of mind.
+
+Unknown Speaker  13:21
+So they're thinking, I mean, it's, it's, I
+
+Matthias Miller  13:28
+mean, is it a pay now and and
+
+Unknown Speaker  13:31
+leave unpaid?
+
+Matthias Miller  13:35
+What's, what's the, what's the when they're sitting in the chair, what
+
+Unknown Speaker  13:41
+pending payment I see
+
+Unknown Speaker  13:42
+and
+
+Matthias Miller  13:46
+pay later, or I thought about pay now and pay later. Almost like the,
+
+Matthias Miller  13:59
+like don't, almost like the pay these but don't pay these Invoices to Pay, okay, I hate the link language, but like the grouping. Title One is, pay these invoices. Grouping. Title two is, do not pay these invoices.
+
+Unknown Speaker  14:20
+That's not quite
+
+Unknown Speaker  14:30
+leave these Invoices Unpaid, unpaid.
+
+Matthias Miller  14:34
+I like that because there's not a shadow of a doubt of what the system does. I new.
+
+Unknown Speaker  14:53
+Because, hey,
+
+Unknown Speaker  14:55
+what do you call the one that sets that field? Though? I.
+
+Matthias Miller  15:05
+Add the payment removed, removed from payment, and then a
+
+Unknown Speaker  15:11
+finalized payment. I Yeah, I like that.
+
+Unknown Speaker  15:27
+I like it
+
+Unknown Speaker  15:33
+that's pretty snazzy
+
+Unknown Speaker  15:35
+as solid so
+
+Matthias Miller  15:39
+button sets the new field, refreshes The refreshes the report,
+
+Unknown Speaker  15:51
+update the groupings.
+
+Speaker 2  15:59
+Button clears, yep,
+
+Speaker 1  16:10
+I think we want to, do you want to show grand totals on the thing or not? Is that going to confuse them? I wouldn't do grand total. I wouldn't. Yeah, that's kind of what I thought. Yeah, analyze payment. We can
+
+Matthias Miller  16:23
+get a calculator if we need.
+
+Unknown Speaker  16:26
+Takes All marks,
+
+Speaker 1  16:32
+all SOS sales, sales orders. Let's just set invoices, marks on invoices in the pay these invoices
+
+Unknown Speaker  16:43
+being as paid
+
+Unknown Speaker  16:47
+prompts or payment method versus Ach,
+
+Matthias Miller  17:06
+Mark invoices, pay these props for payment method, check versus a CH
+
+Speaker 1  17:11
+right, adds a payment row For the balance,
+
+Matthias Miller  17:17
+for the balance, and clears the balance. Once and clears the new hidden field. You can have a field change that, if the balance is zero, writes it out. Yeah,
+
+Unknown Speaker  17:38
+that's back.
+
+Speaker 1  17:42
+Instead. Consider using a field change expression that layers
+
+Matthias Miller  17:47
+this, wow, there's this new field if, if the balance is zero, okay,
+
+Unknown Speaker  18:00
+I like this.
+
+Unknown Speaker  18:14
+As we can see what Dwayne thinks of it.
+
+Matthias Miller  18:19
+I'm Yeah,
+
+Speaker 1  18:21
+I think given the use case, this will work well for Drew no question about that. Yep, this, it's just exactly like it's been happening, basically, yep, and I think it'll work well for the dealers. So I think so green was saying this is by far the most contentious, that's the right word. Part of the whole portal is that everything else is pretty simple, but how the payment stuff works is what they're going to really care about.
+
+Matthias Miller  18:52
+Well, I had this thought too. I wonder if we should have a preference preface at the top, something like to get started. I mean, this may be over the top, but it may not be, but you know, select the Invoices to Pay and click Add to payment. To pay invoices later, select those select invoices and click Remove from payment.
+
+Unknown Speaker  19:26
+And then,
+
+Matthias Miller  19:31
+once you're and then important, your payment will not be recorded until you
+
+Unknown Speaker  19:38
+click Finalize payment. Something like that.
+
+Matthias Miller  19:50
+Now you sound like this weird software who has convoluted instructions because the workflow isn't 110% obvious and clear, which is kind of where we're at. So.
+
+Unknown Speaker  20:00
+Well, it's true. Yeah, important.
+
+Speaker 1  20:17
+You want to use first person payment not be recorded until
+
+Matthias Miller  20:24
+if we don't care, you select finale.
+
+Matthias Miller  20:41
+Theoretically you're not supposed to by saying UI guidelines, but I have a hard time Carry exactly i
+
+Unknown Speaker  21:03
+Okay.
+
+Speaker 1  21:20
+And I guess a modify the finalized payment would just run a simple x 30, right? It takes a dealer, and subsets based on that. And that's the fields.
+
+Matthias Miller  21:37
+I mean, yeah, all it takes is, yeah, exactly. Just takes the dealer, runs it for anything with that Well, I mean, obviously the usual change expression, you're not going to have any zero balance exactly,
+
+Unknown Speaker  21:52
+and then, and
+
+Matthias Miller  21:55
+then they'll be able to see your, I guess you could have a success message if you really wanted to to say you can view your Is there a way that they can view this in their recent
+
+Unknown Speaker  22:05
+payments?
+
+Speaker 1  22:08
+We have a they have a paid invoices, or a paid invoices thing report that will group by the payment method and the date, yep, and we can't break it down much more from there, because we don't have, actually, payment
+
+Matthias Miller  22:25
+records, yeah, and we're not doing multi. So payments,
+
+Speaker 1  22:30
+yes, I need to get drew to nuke that multi. So payment,
+
+Matthias Miller  22:36
+yeah, I have to do it myself, but
+
+Speaker 1  22:40
+I'm happy to let you do it. I'm too terrified to do it myself.
+
+Matthias Miller  22:44
+I have half a nerve just to be able to do it. I mean, it's just please, you know, please export the you just export those, those payment records. Actually, you could probably an easier way to do it would be to create a deposit record and then write an X 30 that looks for multi, so payments, clears that field and attaches it to the
+
+Speaker 1  23:13
+deposit. There's only one multi, so payment.
+
+Matthias Miller  23:17
+There's only one multi, so payment, so but then you have the advantage that you can, I mean, you just triple check your x 30, right, do all the payment rows.
+
+Matthias Miller  23:39
+But there probably actually is no it's even easier than this, because the multi so payment probably already has a deposit
+
+Unknown Speaker  23:49
+Record. They linked deposits.
+
+Matthias Miller  23:57
+Deposit more you would do a hazard, G, deposit, assist, deposit, multicom. No, the multi so payment.
+
+Unknown Speaker  24:20
+Get linked to deposit? Do they
+
+Unknown Speaker  24:26
+Well, yeah, they do here, because this one's 252,
+
+Matthias Miller  24:30
+wait, it's linked to deposit already.
+
+Unknown Speaker  24:34
+Are they all two? Yes,
+
+Matthias Miller  24:39
+check the total. 717, 602 seven, 600
+
+Unknown Speaker  24:44
+the deposit, 7176, yeah, yeah, yeah,
+
+Speaker 2  24:48
+you can literally just nuke it. Just nuke it, and you're good,
+
+Unknown Speaker  24:58
+like, right now. Just. Or should I just go to the
+
+Matthias Miller  25:10
+technically, I mean you, you might want to empty the in some ways. It'd be better to empty the multi so payment fields on the payments
+
+Unknown Speaker  25:21
+that way, yeah,
+
+Speaker 1  25:28
+straight up, just new, remove it and let it happen naturally.
+
+Matthias Miller  25:35
+I mean, that's, that's kind of what I wondered.
+
+Speaker 1  25:38
+Then the only vestigial organ we'll have is the notes, and then we can just that. Can be an Easter egg. It can be an Easter egg.
+
+Matthias Miller  25:47
+I love it, dude. Let's go. Let's go unlock a bottleneck that is
+
+Unknown Speaker  25:53
+very happy. Okay, if you're going to, if you
+
+Matthias Miller  25:58
+don't mind, you want to update the test system.
+
+Unknown Speaker  26:02
+Just me. Maybe do sanity check.
+
+Unknown Speaker  26:05
+Sanity check.
+
+Matthias Miller  26:07
+Just make sure the deposit,
+
+Unknown Speaker  26:11
+Okay, that's fair. Just compare the
+
+Speaker 1  26:12
+deposit reference. Let me see if I have let me just look at my local system. Do I have
+
+Matthias Miller  26:18
+a bit? You
+
+Unknown Speaker  26:21
+do? It's be open. I know exactly.
+
+Unknown Speaker  26:25
+I think I probably do
+
+Unknown Speaker  26:29
+multi So, yeah, same one,
+
+Unknown Speaker  26:33
+good. Do it. I love it
+
+Matthias Miller  26:37
+makes me happy, sweet.
+
+Unknown Speaker  26:38
+I'm going to do this today, because it'll make me happy too.
+
+Matthias Miller  26:42
+I will. I'll find some kind of way to celebrate. Get yourself a coffee or something. Yep, exactly. Okay, cool. Thank you, sir. Goodbye.
+
+
+Transcribed by https://otter.ai

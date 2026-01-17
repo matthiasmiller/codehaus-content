@@ -1,0 +1,386 @@
+Matthias Miller  01:02
+Annex, well, look at, look at that. Good afternoon.
+
+Speaker 1  01:07
+I walked over here and I saw Dwayne's screen, and he was going to show me what you all were working on. I was,
+
+Speaker 2  01:12
+I was going to try to show her this before, before we jumped on, and she was being slow so,
+
+Speaker 1  01:16
+and I was like, what this looks amazing. And then I looked at the top, and I was like, if only assist could look like Claude,
+
+Matthias Miller  01:31
+that's hilarious. You will get one pretty part of the system. I mean, this payment processing might be the only pretty part, but you'll get one pretty part.
+
+Speaker 2  01:46
+Well, so Matthias in, do your best to walk her through exactly what we're looking at how this would work. Because I was, I was about to bring her up to speed, but then you said, you're jumping on and so,
+
+Matthias Miller  01:57
+oh, I should have, I should have done. I could almost, man, I should have done a little mock up how this thing would actually look, because I could actually embed this into a let's
+
+Speaker 1  02:09
+actually do this. Oh, and to be clear, Matthias, I am very comfortable using assist, and it doesn't have to look pretty for me. I just know it's going to be a much harder sell for other people. If you know, the prettier it looks, the happier. And you know,
+
+Matthias Miller  02:25
+trust me, I've been far too deep the rabbit hole of selling in this industry and having some very brutal conversations in various places. I think
+
+Speaker 1  02:36
+I don't know if, if you are, if you and Dwayne have talked about this, but in the shed industry, we had a lot of problems with people being very
+
+Speaker 2  02:46
+this comes, this conversation comes from Matthias. So, no, well,
+
+Speaker 1  02:49
+I mean, it doesn't come from just Matthias. It comes from other people too. Oh, his, Matthias is the same this
+
+Unknown Speaker  02:54
+conversation with with Steve
+
+Unknown Speaker  02:56
+Miller. Oh, yeah, very
+
+Matthias Miller  02:58
+so what my, one of my, one of my, one of my business mentors basically told me, Look, you need to go to the shed Expo, and you need to, you need to give them a truth serum, like lay out the honest to goodness, truth about where this industry is at, and these call out some of the BS around just hiring for glitz and glamor and image. And I, yeah, good.
+
+Speaker 1  03:21
+I think that would be great. I'm just not sure if you're gonna hear
+
+Matthias Miller  03:25
+I don't, I don't think they will. I mean, I think the goal is like, is there the 5% that actually will sure, and they'll love me for
+
+Speaker 2  03:33
+it. Just, just, just, you know, roll a Lambo in there and have the conversation in front of the Lambo, and then maybe they'll listen
+
+Matthias Miller  03:39
+to you. I did think about splashing a picture of me in front of a Lambo and having that, you know, the booth, and then being like, Ah, gotcha. Um, anyway,
+
+Speaker 1  03:48
+see, this is what we're talking about, you thought. And I actually drive this, you know, whatever, right?
+
+Matthias Miller  03:55
+Exactly. I mean, I'm here for fun. Anyway, I think there's way more interesting problems to solve than driving a Lambo. But hey, so Okay, well, this is not working. So I don't know exactly it might be Claude forbidding me to do this probably actually is. But the idea is that we would have within assist. You would have a split pane. Left pane is this screen, and then right pane is a report of payments. Go back to your plot screen. There you go. So then you have have general customer information, payment amount, payment method, reference number, include convenience fee, and then it breaks it down by contract. So Dwayne and I and Seth had a little bit of a mini bang our heads against the wall session. I think the key to this is let the people adjust people. There are three things that can that can impact how a payment gets applied. Number one, first of all, which contracts Do you want to apply it to so that. Is something that should change here. We should have a way to say, just forget about this contract altogether. But then it's adjusting late fees, which basically comes down to, I want to forgive this much. I want to defer this much. And then here's the reason why, second of all, security deposits, I want to add to or remove from security deposit. Removing from then lets you apply it to your fees. And I want to adjust the payment amount. That's not relevant, but I want to. I want to, I have a floating due date, and so I want to pay more and move my due date out where I want to set the due date to the 21st and go calculate the payment date like that, if we just give controls to say, those three controls on a on a payment, to a contract. From there, we can then automatically determine all day, every day, how that payment should get applied.
+
+Speaker 1  05:54
+So you were thinking about creating this as a decisions that have to be made with every incoming payment, rather than a store base setting.
+
+Matthias Miller  06:07
+So it
+
+Speaker 2  06:13
+is governed by the store. So in other words, if there's, if there's late fees here, get back up a little bit in regards to late fee, we're going to, in regards to due date, we're going to, we're going to calculate what the next due date is. If you're on floating due dates, overriding the the next contract due date would allow you to stop in whatever, whatever the next one is. Same thing with security deposit. Security Department is, is based on when you contracted, but you can add to or take away from that security deposit based on if a customer is like, here's 1000 bucks. How, you know, Mike payments, 200 well, you can either put that in the bank, one, we can put the security deposit, the state allows, and or, or three. You know, you can, we can pay your rent ahead, so it allows you to handle some of those types of things. But as far as, what was your What was your thing about the Late. Late fees are calculated and they're put there. But the being able to override them and say, No, we're going to defer this when we're or forgive it, or, you know, it allows you to handle all of those things that you have to kind of jump around in RTO to do to, you know, to actually kill a late fee if you're actually forgiving it, you can do directly here. Are you tracking? I am. I'm
+
+Speaker 1  07:23
+just not sure that much power is going to be something that you want in the hands of some of your entry level well team
+
+Speaker 2  07:30
+members, I presume that we can permission based it. So
+
+Matthias Miller  07:33
+as we were talking, it occurred to me that these columns for forgive and defer security deposit column, and even the override next contract due date should, maybe, there should maybe be almost like a an unlock button, even if you have permissions Go ahead. Well,
+
+Speaker 1  07:50
+I mean, I was thinking more of a sense of like, let's just say you have someone that's new, they're going to have an entry level ability. And when you get into these special use case scenarios, most of the time, those questions are going to be sent up the line like, I'll let you talk to our customer specialist, The Late Late Fee person, the person who's handling some of that, and then that person would have more choice. And I'm really thinking about it from the standpoint of you decision fatigue and like, learning a lot of things right out the gate coming in. You want to make payment taking as simple as possible on your base store settings, and then go to the next level of, yes, we can have flexibility now at this level, and maybe even a third level of that's an administrator. You know, I think I might be able to do this, but I'm going to have to get a supervisor to do that sort of situation. And the biggest reason is, I have had team members who come from difficult places who just end up feeling really sorry for every single person, even if the person's lying to them, and then they start forgiving things, and you don't catch it until way down the road. You know, if you don't make that available, it just smooths that process out.
+
+Matthias Miller  09:02
+Understood, there are some people who are much, much more naturally forgiving and accommodating for any number of reasons. Yes. So I would propose at both end, because I think if it's true that 95% of the time you don't want to handle this, I think there should be a, basically an unlock advanced features kind of a thing that that lets, yeah, because we want to keep it simple for the standard
+
+Speaker 2  09:35
+use case. The only, the only thing that, my only opinion on this is that late fees, it would be nice to override them, which would automatically be a deferment.
+
+Speaker 1  09:49
+In other words, yeah, that could be in a standard thing. You could zero them out, and that would
+
+Speaker 2  09:53
+just so in the in the case of payment frequency, total due if, if you, if. Wherever the late fee is going to represent itself in this which we're probably gonna have to give a little bit more information in the breakdown, kind of like, we had some of that stuff in that RG, like, What's the rent, what's the tax, what's the late fee, what's the damage? Like, we'll have to get, we'll have to break some of that stuff down, unless you're going to do that in some other breakdown sort of fashion. But if it would be kind of cool. Is wherever you represent the late fee, if it would be overridable, and that would be a deferment. The forgiveness is where you would actually pop open the section down below and over and forgive something.
+
+Matthias Miller  10:32
+So this, something like this, would be, I mean, late fees or something up here would be editable, yeah. And I mean, you could even say that forgiveness has to be done on the contract record, couldn't you?
+
+Unknown Speaker  10:48
+You have to explain more. So
+
+Speaker 2  10:50
+this is that. So this would just right right now, in order, in RT approach, in order to go, actually get rid of a late fee on account, you have to go, you have to basically get into their contract correctly. Just
+
+Speaker 1  11:01
+you overwrite it with a zero, and as soon as you're done writing the payment, it'll show back up on that screen. To forgive it, you have to truly forgive it.
+
+Speaker 2  11:08
+You have that's what we're saying. Do we want to have that extra step or give them the capability to forgive it? Here I was shooting for, I want to make this as easy like I don't want to have to go I was shooting for, I don't want to have to go back into the contract record to do this. I want to be able to do to do deferments. And forgiveness is hell of a whole thing right here in one big but you don't necessarily think so.
+
+Speaker 1  11:27
+I mean, I think deferments here is, is great, but if you, if you are going to have an option to forgive it right here, you know, permanently remove it in some way that needs to either be admin level or password so
+
+Speaker 2  11:39
+that. But so that, but so then the question, the question then exists, if we're going to,
+
+Unknown Speaker  11:43
+if we're going to push that, why would you not just go into the record to do
+
+Speaker 2  11:46
+it? Well, no, I'm just going to say, if you're going to do that, then we really should put the movement of a due date on the contract record as well. Like if you're going to, if you're going to take those admin levels off of this payment screen and push it over the contract record, both late fees and due dates could go over there.
+
+Speaker 1  12:12
+So because I'm assuming that that means, then that it's not working like the current software, using RTO Pro, where, if you move a due date, yeah, it'll show lost revenue on your report. But in actuality, they're still going to pay those funds at the end of the
+
+Speaker 2  12:29
+contract. Yeah, it works the same way, same thing. It's the same thing. So, but when you actually, when you actually hard to move a due date back, say, forward or backwards, you have to do the same thing. You kind of go into the contract record on in RTO Pro to move that actual due date. You can't do that during a payment process correct. So do we want to mirror that workflow, or do we want to make it slightly easier and say, Yes, you can. You can defer and forgive late fees. You can move due dates directly on while you're doing payment screen.
+
+Unknown Speaker  12:59
+I also have a strong feeling about I
+
+Speaker 2  13:01
+was going, I was going for that level of editability right here, like you can do all of that. It's like if, if you're making a bunch of changes to the account, you can do that one spot, one time, one click Done, rather than have to go back into something to go and back and update it.
+
+Speaker 1  13:18
+I don't feel like it makes that big of a difference. You
+
+Unknown Speaker  13:22
+have an opinion on this.
+
+Matthias Miller  13:29
+Not, not you're gonna, you're gonna have to get me mad and worked up to give you a good opinion. Like the the the like, if it helps you, if it legitimately helps you, sell this thing. Be like, look, we've thought about everything, and this is so shiny and glitzy that you could just do it right here. Boom. Like, Well, why not? Like, let's just do it, but functionally from a purely pragmatic return on investment, I don't believe in, I believe in simplifying this for you know, 95% of the use cases, and bury all the advanced cases,
+
+Speaker 2  14:01
+yeah, so, so that that would be, and it simplifies the data model for you to go put this stuff back on the contract record. Yeah, due dates and and late fee forgiveness, doesn't it? Yeah?
+
+Matthias Miller  14:11
+I mean, it certainly, yes. Certainly reduces complexity of the whiskey
+
+Speaker 1  14:15
+well, and I think we want to do that too, though, because while it's nice and people like you who can hold a lot of things in their brain at one time that they like having all the things on one screen. But for people who don't run that way, less is better, they just get lost with all the things. I don't know what I'm well,
+
+Speaker 2  14:32
+guess what? If somebody's like, Man, I wish we would have, I wish you guys would have done it that way. And they were like, Well, we talked about it, and we can go back to it. Let me build you a special one. Ah, hey,
+
+Matthias Miller  14:41
+it's money exactly.
+
+Speaker 1  14:43
+I don't think it's worth that the value of it is high enough to to
+
+Speaker 2  14:47
+indicate that All right, there you go. You can simplify the data model. Okay,
+
+Matthias Miller  14:51
+so Well,
+
+Speaker 1  14:52
+typically your simplicity, simplicity, simplicity. So we do need security
+
+Matthias Miller  14:55
+deposit. We don't need to override the next contract due date. We don't need forgiveness here. Miller, and if you're deferring, you don't need to justify the reason. That's right, I do you like to and we need a checkbox on the on the contract to include or exclude contracts.
+
+Speaker 2  15:14
+What? How about so are you planning? One of the things that we had talked about is representing every single month that's due as its own line item. It's not something you currently have here.
+
+Matthias Miller  15:25
+Oh, that is a good point. I missed it. I meant to have a see because of the fees, because the fees, because there are multiple types of fees. I wonder if we could put this into a single table that would have the rental fee. Like, what if we had rental fee for the period? Could we group these together by period and then have line items for rental fee? So
+
+Speaker 2  16:00
+basically, from it, from a table standpoint, you're mirroring what we were doing on the payment record
+
+Matthias Miller  16:05
+very well, except we're, we're including rental fee detail. No, we're not. Let me see if I can. Let me see if I can. Break this up for you. Let's, let's remove, override next contact due date, the forgive column. Are you just?
+
+Unknown Speaker  16:23
+Are you just doing this in HTML code?
+
+Matthias Miller  16:27
+I'm just, I'm doing in clouds editor, Yeah, yeah. And then I
+
+Speaker 3  16:49
+insurance on the
+
+Matthias Miller  17:14
+oh, I Okay, so my idea is this, what if we would? This is this is going a little bit of a different approach. But what if we had a row above this, that for rental fee, and a row both is for dwf, and you would group it together by period?
+
+Unknown Speaker  18:11
+Sorry, say that again. I can hear you. Yeah, Madison's talking.
+
+Matthias Miller  18:22
+The the big issue is that processing fees, the other fees, all get lumped together. But really, be nice if they would just be thrown in here so that you can adjust individual fees straight from the screen, and everything's represented the same way. Let me just make this change and show you what I'm thinking. It's easier to do that than Explain. Well, let's, let's try
+
+Unknown Speaker  18:48
+again. Let's try again. Awesome. Thank you.
+
+Matthias Miller  18:59
+Please. Like something like this. And not all of these should be editable. Okay, sorry. One more thing, please make the to pay column editable. Let's publish this so you can so we can look at it while it's running. So something like this. This shouldn't say fees and adjustments, but whatever.
+
+Speaker 2  20:06
+For whatever reason it does not like to want to connect to my headphones. Okay?
+
+Speaker 2  20:29
+How would you represent every each month that's due, okay, period, I see 531, 25 wait. Would it be? Could we? Could you just roll that up and, like, and then have, like, a little drop down that popped it open if you wanted to defer stuff.
+
+Matthias Miller  20:46
+Oh, yeah. And then you
+
+Speaker 2  20:49
+do each each row, it says, you know, 531 25 and then 631 25 and 731 25 and it's just basically, you know, you know, dollar value that's doing if you wanted to actually pop it open and see the breakdown for every single, you know, the whole breakdown for that that, that month, then, then, and also where you would be able to defer stuff, right? And that would, that would let you stack a bunch of single rows if the customers really passed due. Yeah. That'd be kind of cool.
+
+Matthias Miller  21:26
+Okay, so what I'm wondering though about is, do we want something? Is it fine to have this much separation between the multiple contracts. Do we need to
+
+Unknown Speaker  21:45
+be that this much separation? What do you mean? I mean,
+
+Matthias Miller  21:48
+it's fine if you have almost, yeah, it is,
+
+Speaker 2  21:54
+yeah. I mean, I'm assuming that the whole, I mean, I would represent at the very, very bottom, a total amount that you're paying at the that you know, right beside the Process Payment button, you
+
+Matthias Miller  22:20
+if You wanted to collapse the others when you click one,
+
+Speaker 2  22:44
+you know, it'd be really interesting, actually. What, what if we, what if the primary collapse you you can collapse the contract down to single row, like, so it would put all the contracts really close together, and the total due for that contract. And then you could expand it, you know, and if you expanded it, then it just automatically, like, why don't we? Why don't we collapse it just at the contract level,
+
+Matthias Miller  23:07
+if you want to make only the contract would be collapsed? Well, it
+
+Unknown Speaker  23:12
+depends on how you're gonna represent monthly amounts. You
+
+Matthias Miller  23:33
+You see you could make Go ahead. No bad. Uh,
+
+Matthias Miller  23:50
+couldn't you add a you could have a row for security deposit, add to security deposit, remove from security deposit, within here now and it wouldn't have a period, and then it's really a contract, a non period specific contract row, yeah, but then you could have a you used security deposit up here that shows in the contract you would have the contract number frequency,
+
+Speaker 2  24:32
+yeah. Oh, but yeah. It just depends on which it has to be at a contract level with where you're adding it to. So yeah, you're right. I was, I was going to say you did it for the entire thing, but that's not true. It's contract based.
+
+Matthias Miller  24:53
+You could have a use security deposit, adds the row with an add to a remove from drop list, and then you would set. The amount to pay, and it's all there inside. And then you could have a grand total, and make this grand total editable, which recalculates the entire payment grid,
+
+Speaker 2  25:16
+except for, except for certain things, like you wouldn't want to, you wouldn't want to, you wouldn't want to recalculate the amount of damage waiver fee, because that's, that's a fixed amount. You pay it, or you don't
+
+Matthias Miller  25:26
+pay it, right? No, I mean, you would. You can't. Okay, here, let's remove this and just have, let's add another sample for periods that it collapses.
+
+Speaker 2  25:35
+Annie, can you do we have, we can't defer a damage waiver fee? Can we no damage. Mayor fees don't get deferred. It's either paid or you don't set a
+
+Matthias Miller  25:45
+room for security deposit with a drop list of either blank or move from security deposit or add to security deposit with an editable and editable amount, but not A defer, defer option rental fees, dwf cannot be
+
+Matthias Miller  26:20
+deferred.
+
+Matthias Miller  26:29
+I'm what did we do before the days of AI?
+
+Unknown Speaker  27:13
+Indeed, what did we do before the days of AI?
+
+Speaker 2  27:26
+I know, I know one thing it can write. Can write code faster than any human, yeah,
+
+Matthias Miller  27:36
+yeah. You know what? The human problem becomes worse, like it just, it just amplifies human problems. Like, if you can't fix human problems,
+
+Speaker 2  27:50
+this is, this is this is why eventually they're just going to try to to exterminate us. Because we're just, we are the
+
+Matthias Miller  27:59
+well, hopefully it'll recognize a disaster that happens when it's in charge. So do you want? Do you follow Internet Marketing at all? Yeah. Have you seen the whole hormozi Lunch book, lunch stuff, the what her the Alex verbose book, loan stuff, no, okay, this is not
+
+Unknown Speaker  28:36
+what's the deal with it?
+
+Matthias Miller  28:39
+Some folks claim that he generated $100 million off of his lunch. Hit sold a million copies in like 24 hours, or something. Yeah,
+
+Unknown Speaker  29:12
+what's his what's his stick?
+
+Matthias Miller  29:16
+Um, well, first, there's a lot work your butt off. He has a lot of reasonable, good stuff to say. It's just, you can't really, I don't know.
+
+Unknown Speaker  29:40
+I don't know what this
+
+Matthias Miller  29:46
+I'm. Imagine bringing your side project to law. Well, I don't know if I have to drag you through the weeds on this. I can, if you want to. No, I
+
+Speaker 2  30:14
+need to finish up some things yet. But yeah, you were Yeah, you
+
+Matthias Miller  30:17
+were ahead. Yeah, it's, it's, it's, like, here's the general idea, yep, yep. And then you have the grand total, you have the payment frequency, which you don't actually need anymore, because it's up top there. Got the next due date, which will adjust the last payment amount. And I mean, this is then pretty drop dead simple. So if you want to, so we could add it. Do you want a checkbox to include or exclude contracts or not? You just want people to zero out the contract amount?
+
+Speaker 2  30:54
+So this would be so basically, well, okay, if the period, if the period can be like the 1030 there, if that's editable, where you can literally zero the whole entire thing for that period, well, then you wouldn't necessarily need to
+
+Matthias Miller  31:10
+this guy, right? Yeah,
+
+Speaker 2  31:12
+because then you basically just zero out the periods that you don't want to pay. And that would effectively negate that contract
+
+Matthias Miller  31:20
+well over the grand total.
+
+Unknown Speaker  31:22
+Or, yeah, well, okay, that's, that's fair, too.
+
+Matthias Miller  31:27
+See, I love this. This makes me happy. This is simple, like,
+
+Matthias Miller  31:38
+it's simple,
+
+Speaker 2  31:41
+okay, well, keep, keep, keep picking at it, because this is, I'm liking this, you know, side note, total side note. You should tell the UI engineers at whoever's, whoever's redoing the UI on the platform. All you got to do is just round the corners on your boxes. Any, any boxes just round the corners and you, you just instantly, instantaneously, look more modern.
+
+Matthias Miller  32:04
+I mean, yep, just round all the boxes. See, see, we rounded the boxes.
+
+Unknown Speaker  32:16
+Any anywhere there's a drop list, or,
+
+Matthias Miller  32:21
+yeah, you're right. All right,
+
+Speaker 2  32:22
+sounds good. I don't know why, but it's like just slightly rounded corners. Makes it look more modern.
+
+Matthias Miller  32:28
+Well, hey, back when we back in Kansas, we weren't going after slightly rounded corners. Faster you can take the corners, the better. So, all right, I
+
+Speaker 2  32:44
+Oh, okay, you should tell, you should tell Ellis to put out a, put out a an article on what it would cost to go to rounded corners on the platform.
+
+Matthias Miller  32:57
+We had, we had clients so upset because they were like, You should have rounded corners anyway, $42
+
+Unknown Speaker  33:05
+million later, you have rounded corners.
+
+Matthias Miller  33:10
+Okay, so sorry, I have to, I will let you go, I promise you. But there's a website called this, with apologies for the abbreviated language. Then it's a coding site that has every possible imagination of every like, horrible thing that ever happened, including like, like boolean values which should be true false, but then sometimes they had a third value, which was truthy,
+
+Unknown Speaker  33:41
+truthish,
+
+Matthias Miller  33:42
+truthish, which does not work very well in software. I think. What is that?
+
+Unknown Speaker  33:47
+Fail,
+
+Matthias Miller  33:48
+fail, Okay, sounds good. Uh, eight o'clock Eastern. Is that what we're doing tomorrow works for me, if it works for
+
+Speaker 2  33:57
+you. Um, let me know. Let me just make sure to computer, Google, you're getting slow. It's a sad day when it takes five seconds to load a screen and we start yelling about it being slow. Tomorrow, tomorrow, tomorrow, tomorrow, tomorrow, yep, 8am all
+
+Matthias Miller  34:23
+right, yep.
+
+
+Transcribed by https://otter.ai
