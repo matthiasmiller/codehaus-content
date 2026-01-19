@@ -1,0 +1,719 @@
+Matthias Miller  00:26
+Hello, I think I have a solution, but I don't know if it's gonna work. What's your solution? You have an alternate key that you match on, and if it's blank in the import, then you use the Oh, it's not quite the latest date. You'd have to set a well, you can use the latest data. You blank out the RG every time you said, Well, you
+
+Speaker 1  01:06
+need to create a different record as the dates different. Why? I think, why? Well, either that or we need to use
+
+Matthias Miller  01:16
+date to numb for the reading repeat list item. Do?
+
+Speaker 1  01:25
+You're saying on the accounting impact side, yeah, sorry, we need to change the structure of the record. Then if we want to do that right now, we were expecting one date per record. Okay, so could we not terribly hard to switch. Well, okay, but it's also not terribly hard, but just, I mean, I think updating the x 30 might be even simpler, wouldn't it? Okay?
+
+Matthias Miller  01:53
+So the main thing that you need to do is have a way to say, Oh, wait, though, you need to be hard, something that you can
+
+Speaker 1  02:06
+shove the Yeah, it has to be a system switch. Probably system switch, if you run an X 30, do they get saved? Well,
+
+Speaker 1  02:29
+I wonder if we do just want to change having a date in the RG, and then you just do backstate From the RG, and the import has to be an X dirty list that first know. What would it be?
+
+Matthias Miller  02:43
+Well, your main record changes run first, I think, and
+
+Speaker 1  02:48
+so you would get, but you can't, I don't think you can do the entire G and use, oh, you can't RG stuff. I'm pretty sure there's validation against it. Okay, let's take a, let's take a giant step back if we had to.
+
+Unknown Speaker  03:09
+Well,
+
+Speaker 1  03:16
+what? Okay, if we had to, you don't even store the date on each row, and we just infer it. But how do we match what? What is our key for the record? I mean, it would have to be, that's our problem.
+
+Matthias Miller  03:37
+Yeah, I guess you could have multiple keys. We don't have any kind of line number that we import. Do we local variable or something?
+
+Speaker 1  04:07
+It's still assigned to Aaron maybe. Yeah, it is. It's not the assignee as I'm just always sure I'm wanting to find accounts receivable, not Eric Bowman. When you hit a twice, it thinks, oh no, you definitely wouldn't want to do your bump and you want to go to just want to jump down the list of A's for now,
+
+Matthias Miller  04:28
+exactly like, why wouldn't you Like the force, yeah, if there is an input line,
+
+Matthias Miller  04:44
+what do you mean? Input, line, variable,
+
+Speaker 1  04:49
+index, 30s. You're saying in X, 30s. Okay, there's nothing unique to these files.
+
+Speaker 1  05:11
+Well, I mean, do we tell them if they import them twice, it's their fault. And yeah, and then we flag possible we flag possible duplicates. That feels a little Okay.
+
+Matthias Miller  05:33
+Well, I think that's reasonable to say if they import it twice, it's their fault. And just create a new record every time, right? And you just, anytime you're missing the date, you just grab the grab the latest one. It assumes that you don't have multiple liabilities. You know that the date is that the other fields aren't unique. Does that make sense? Not quite checking, okay, I have a crazy idea. Yeah, tell me you hate me later. Create an X 30 that runs off the R 20. The R 20 runs off a really big fat string field. And you copy and paste the Excel contents in, and then it adds the line numbers or dates or anything it needs to do. And then you run the import mm.
+
+Matthias Miller  06:43
+So you don't instead of uploading, instead of uploading the Excel file, you copy and paste it into a big ass prompt.
+
+Matthias Miller  06:56
+Okay, that gets fed into an X and into an R 20. The R 20 stubs in the date.
+
+Speaker 1  07:05
+I mean, at that point, how is it different than stuffing it, just stuffing it all, doing it, putting the contents in a string table every time
+
+Matthias Miller  07:22
+you could hang on, okay, this is an unsorted RG, think so, which means you could basically have a match expression that never matches, forcing a new record creation. And then you could you okay, it's as long as we don't have to, as long as we can always create a new record.
+
+Unknown Speaker  07:52
+It's safe, right, right?
+
+Matthias Miller  07:54
+Yeah, I think we do that. I think we tell them we need we do that. And if you Yeah, if, if we need to validate against it, we could look for rows that have a date in it and look through an NDX Find field, and if it exists elsewhere,
+
+Speaker 1  08:17
+the same rental company, then at least Yeah, or accounting company, yeah.
+
+Matthias Miller  08:23
+Accounting company either warn them or just block the, I don't know, blocking the imports a little severe.
+
+Unknown Speaker  08:28
+It's a little severe. We just, I don't know. Is there any time they would ever have some scenario where they get two different files?
+
+Matthias Miller  08:43
+Well, couldn't you also have a record validation that checks to see whether it's an exact duplicate file? It's a little prone to breaking,
+
+Unknown Speaker  08:59
+very prone to breaking.
+
+Unknown Speaker  09:06
+Why doesn't QuickBooks have more reasonable data? It's not that bad. It's just, I
+
+Matthias Miller  09:19
+don't know, right but, but you don't expect, you don't expect the date, plus all the other four columns, interesting columns, like the numb and the contact and the type, you don't expect that to be in the name, never duplicate, or which, yeah, exactly. You don't expect that to duplicate.
+
+Speaker 1  09:39
+No. So do you just add an index by those four well accounting company plus those,
+
+Matthias Miller  09:49
+and then just do a fine, there's one out there. And then you add a checkbox to the x 30 that says, I.
+
+Unknown Speaker  10:00
+Basically existing, yeah, I know I'm being dumb, but I want to do it.
+
+Matthias Miller  10:07
+Yeah, being dumb, but I want to be dumb.
+
+Speaker 1  10:12
+Hey, I think that gives us enough to at least import it. The right thing is we also have to change the record structure. Now, I mean, it's not that bad, but that's really we need to wait for an update. Yeah, again, I was very
+
+Matthias Miller  10:29
+confused looking at it by how we're mapping, how we have QuickBooks accounts that are basically ignored, which is fine
+
+Unknown Speaker  10:38
+books accounts.
+
+Matthias Miller  10:42
+There's a report has a payroll item and an account so
+
+Speaker 1  11:03
+I don't quite so this is, like, three months old, so I'm also a little I think, why do we have the item to account? Because you had said we should have a ghost account. Category then,
+
+Matthias Miller  11:24
+but now. Why do we even have that? Why not just item two?
+
+Speaker 1  11:29
+Why isn't it just category to account, literally,
+
+Matthias Miller  11:35
+right? Well, we Why not item to account? Because I'm here.
+
+Unknown Speaker  11:40
+No, there's, well, sure,
+
+Matthias Miller  11:44
+here this, I mean, because I'm taking the item currently and mapping it to category and then looking at the category to get the account, why not change the QuickBooks sync to repeat on item
+
+Speaker 1  12:07
+you're saying, just have it's just going to be a Huge RG, with a lot of duplicated accounts, right? That's missing category makes more sense, I think. Or the can't we just map a QuickBooks account? Okay, that's fine. The financial account. Would that do it on here? And then the no change? Or how do QuickBooks Accounts change? You open the open the record.
+
+Unknown Speaker  12:57
+The account column. Can that not map, is
+
+Matthias Miller  13:04
+that what they're using to do their import?
+
+Unknown Speaker  13:07
+Not sure. But I thought that their categories are it looks awfully similar, but it may not be quite
+
+Matthias Miller  13:21
+I wouldn't know without I mean, notes are broken apart. You've got
+
+Speaker 1  13:29
+exactly they thought that was the only you know though I tried to dig into their spreadsheet, someone was getting also confused by all the different connections.
+
+Matthias Miller  13:41
+List, please. Non production, payroll, expense, payroll,
+
+Speaker 1  13:53
+okay, it's a little different. There was also like, what is it? Sale, like, taxes or something, payroll taxes. So one of the categories,
+
+Matthias Miller  14:04
+yeah, but payroll taxes would be payroll liabilities, wouldn't it? They had
+
+Unknown Speaker  14:14
+that linking to different accounts, didn't they? The categories, payroll taxes, and insurance expenses, one of their categories.
+
+Speaker 1  14:31
+You look at, is it the second file in the incident, then the import formula is one. Oh,
+
+Speaker 1  14:47
+is it the QuickBook transaction? Yeah, QuickBooks Transactions tab. I was very confused by all this linking, but. Have, like, a payroll items equals labor expense accounts column and
+
+Matthias Miller  15:09
+Okay, so we have, I don't see your file now, I'm trying to get it open. First of all, really like it. I should probably open it libre office, but I've been import with no formulas, right? But we have,
+
+Speaker 1  15:26
+there's a should be. Which file Did you open?
+
+Matthias Miller  15:32
+Probably not. The right one. This, this
+
+Speaker 1  15:35
+go up to the top, the second one at the very top.
+
+Unknown Speaker  15:38
+Yeah, that guy.
+
+Speaker 1  15:43
+I think this is trying to show all their mapping stuff, but I found it confusing
+
+Matthias Miller  15:50
+you. Yeah, sure, I want to view it. No, I don't need Xcode. Are you kidding me? Guy, all right, so
+
+Matthias Miller  16:01
+I still can't or maybe you're still opening it up. There you go. There we go. Here's the import formulas. I go to the quick transactions, one
+
+Speaker 1  16:14
+arrow item. So if you go to the far right, maybe I was looking at stuff I wasn't supposed to be, but farther to the right, or as it wasn't helpful, there's like, yeah, those columns like
+
+Unknown Speaker  16:29
+blue labor accounts, wait,
+
+Unknown Speaker  16:34
+because I think those, that's what we had based our categories off of those three columns, BV, BX and Bz.
+
+Unknown Speaker  16:43
+Okay, so we have the account here, direct labor,
+
+Unknown Speaker  16:49
+if, if something
+
+Matthias Miller  16:55
+good, gracious, it's ridiculous. Okay, so here let's go to Import formulas. So I would expect direct labor,
+
+Matthias Miller  17:18
+non production account is there a way
+
+Matthias Miller  17:32
+right? Because they have the breakdown. That's the that's the part of the issue, right?
+
+Matthias Miller  17:46
+I'm not sure where the other percentage goes to. I wonder
+
+Speaker 1  17:52
+if we're gonna have to drag Aaron through this figure out what he's wanting, or maybe we can interpret it.
+
+Unknown Speaker  18:00
+Um, I think, what do I think?
+
+Matthias Miller  18:18
+Labor expense accounts bonus so we check the labor expense accounts, and then we look to see because each person has different a different labor expense account. Jesse James goes to management wages. But if we go down to James, he's salaried, non production, which is just production. There's nothing indicating that he goes to nothing here, indicating that he goes to management wages. So how are we going to how are we going to get him into management wages? Is there that a
+
+Speaker 1  18:58
+contact level setting? I mean, we don't have it, but I wonder if we need it,
+
+Matthias Miller  19:04
+be sure we don't have it. If we do, I
+
+Unknown Speaker  19:09
+think we did. Oh, we have it. Let's go. Okay.
+
+Matthias Miller  19:17
+So here, James, James Morrison. Morrison, whether by George Dupree,
+
+Matthias Miller  19:29
+okay, so that's in the case of, when did we say that would happen? That is on anytime you have a bonus.
+
+Matthias Miller  19:45
+Non production commissions, holiday pay, hourly rate. All these are labor expense accounts.
+
+Matthias Miller  19:57
+So then I. There's that one taxes and insurance. Go see how taxes and insurance works. If it's federal unemployment, I'm going to guess these.
+
+Matthias Miller  20:17
+So any of these guys go to payroll taxes and insurance. So it is based on, they are basing it off of items.
+
+Speaker 1  20:27
+Yeah, hey, which? That's why we built out that category, item to category mapping. I think,
+
+Matthias Miller  20:32
+right, I'm pretty sure, yeah. So then, so then, really, the big thing that needs to happen over here is, does the we actually Need to if the category Is payroll, labor expense, if
+
+Matthias Miller  21:23
+then We need to
+
+Matthias Miller  21:40
+be contact. Concat or G, contact amp.
+
+Matthias Miller  22:01
+Actually, let's do this
+
+Speaker 1  22:17
+so we don't need to do so. Labor expense doesn't need to be fielded in the on the financial company. Is that what we're thinking?
+
+Matthias Miller  22:26
+Yeah, what we're thinking, okay, so then here, what we would do is,
+
+Matthias Miller  22:45
+this would be an account name plus tab, plus rounding. Yep, we are, we're gonna have to, we're gonna have to round.
+
+Unknown Speaker  23:00
+Oh, man, probably my life.
+
+Matthias Miller  23:06
+Okay, so that gives us
+
+Matthias Miller  23:17
+the 02 Yeah. Okay, so then this is the
+
+Matthias Miller  23:46
+we just is this sort? Is this RG sorted?
+
+Unknown Speaker  23:50
+Let me just amp Connect.
+
+Unknown Speaker  24:04
+Yeah, okay, because percentage to the top.
+
+Speaker 2  24:56
+Okay, all right, so. The
+
+Matthias Miller  25:43
+The other option, yeah, I Think so it's pretty sane. Yeah.
+
+Matthias Miller  26:27
+Okay, then this is basically A
+
+Unknown Speaker  26:57
+mean, but not franchise. Yeah, exactly in a different way than that would often be okay. So
+
+Matthias Miller  27:23
+boy, it seems ugly, but
+
+Unknown Speaker  27:37
+Also, Doc, slow, I,
+
+Unknown Speaker  27:49
+let's give you
+
+Matthias Miller  28:07
+Yeah, evaluate anyway, I don't care about Slow. Slow is for lazy people.
+
+Matthias Miller  28:19
+Well, there's no account showing up. That's not good
+
+Unknown Speaker  28:28
+thing at law somewhere, if
+
+Speaker 1  28:41
+you roll not really rate. Most of them are not to category. Oh, I bet the finance, the kind of company is that configured like they're not set to any accounts
+
+Matthias Miller  28:55
+we're getting as a contact record, though. Oh, for late for some of them, yeah. I mean, we should be seeing labor.
+
+Matthias Miller  29:10
+Use the initial values we throw in. Difference,
+
+Matthias Miller  29:25
+I wait plus beat this string table plus x equals, yeah, that should be right.
+
+Unknown Speaker  29:50
+Let's take these guys out. We only have one row. We're.
+
+Unknown Speaker  30:02
+Seam sketch and
+
+Matthias Miller  30:34
+Okay. Aileen rage I
+
+Matthias Miller  30:44
+Right? Let's just do this.
+
+Speaker 1  31:05
+Um, B category Hang on, isn't your lookup and string table flipped like a lookup and stream table gets finds the text in the first Yeah,
+
+Unknown Speaker  31:47
+up name two a little bit.
+
+Matthias Miller  31:59
+Okay, come on dude, give up so you can run again.
+
+Speaker 1  32:05
+You sound like a prison guard or something exactly.
+
+Matthias Miller  32:10
+Okay, direct labor. Oh, let's go. Okay. So who's the guy who split? J, no,
+
+Unknown Speaker  32:18
+wasn't Adam Miller, or was like one of the very first ones you looked at James. No, James only had one, but I think Adam Miller had two.
+
+Matthias Miller  32:31
+Adam, you're split. Adam was Adam on here. I think there direct labor. Okay, what's his problem now?
+
+Unknown Speaker  32:44
+But wait, look, it is in two different 10 and 52 are those the right?
+
+Matthias Miller  32:52
+Yeah, let's go. 52 is a five. Okay, so we think this is a superior way of doing it. Do Okay, so still the question remains. I guess one of the questions was, do they want it broken down by payroll item, or do they just want to group by category by person? Yeah, like, do they want to, I know they want to break it down by person.
+
+Unknown Speaker  33:24
+I mean, they gave a sample transaction,
+
+Unknown Speaker  33:32
+yes, early on, I mean,
+
+Matthias Miller  33:36
+so they basically went this, but they just want it
+
+Speaker 1  33:39
+actually they're Oh, but this wasn't really what they wanted. They wanted it personal account or, yeah, contactless account.
+
+Matthias Miller  33:49
+Really what I think we should be doing here is this, I
+
+Unknown Speaker  34:24
+like that. Something's not quite. What do you hate? Just blank.
+
+Unknown Speaker  34:41
+Wait, what did I just
+
+Unknown Speaker  34:47
+do? B, contacts and cat would be contacts?
+
+Unknown Speaker  35:00
+All right, prison guard again. Okay, so here we have, now.
+
+Matthias Miller  35:07
+We don't have the, I guess we could put the category in there. That would be useful. I think. I mean maybe for other reason not to, no reason not to. I wish it'd be, I wish you could drag this bottom vein that'd be so useful, labor, expense, payroll.
+
+Unknown Speaker  35:25
+What if you had created report?
+
+Unknown Speaker  35:31
+Rock. I mean,
+
+Speaker 1  35:34
+we're just about this guy. Well, I said this guy's a repeat, yes,
+
+Matthias Miller  35:38
+not for long. He's not. I why
+
+Speaker 1  35:43
+edit a report when you can just hijack it so sweetly? Exactly,
+
+Matthias Miller  35:59
+evil, evil, evil, okay,
+
+Speaker 1  36:03
+hey, there's only like 70 reports in there. Okay, it was,
+
+Matthias Miller  36:09
+I mean, this is about what looks about, right? I think so, gay, so they do what they
+
+Speaker 1  36:25
+had been linking it to some like payroll contact. Do they want to link the last line to that or not? Oh, is it just a payroll contact? Yeah, if you open that, go to the incident. I guess I could just show you a
+
+Matthias Miller  36:38
+memory checking. Oh, payroll. CBC, yeah, where do you intend to define that? I don't know.
+
+Speaker 1  36:50
+I mean, you could put it on the on the accounting company if they want that. I'm not. I don't know how big a deal it is or not. Should we I don't know why they need do they need it
+
+Matthias Miller  37:04
+just it's on this? I mean, I don't know. I mean, we're not gonna have it on this other stuff anymore. Well, now, because
+
+Unknown Speaker  37:17
+we're giving them better, we're giving it out to the employee.
+
+Speaker 2  37:20
+Yeah, think so, but
+
+Unknown Speaker  37:28
+it means thinking they could just ask for this they wanted.
+
+Matthias Miller  37:32
+I'm playing, playing somewhat dumb.
+
+Speaker 1  37:36
+I mean, this looks pretty good, so I need to fix or I need to delegate it to change how I might just do that X 30 working the way we want. Yeah, it's a little tricky.
+
+Unknown Speaker  37:57
+I mean, it's essentially always create a new record Warren, if we think there's duplicates,
+
+Speaker 1  38:06
+right, and give them an Ask prompt to let them be dumb as they want to great. And move the date into the arch, into the RG, yeah. And do some special stuff to I mean, just
+
+Matthias Miller  38:25
+do a this guy. I mean, I guess we could go ahead and just do this right away. No, it's not.
+
+Speaker 1  38:44
+Out, and then I just do a rename on the date and boom, this macro will work. Yeah.
+
+Matthias Miller  39:03
+Oh, but this is Oh, you see, but then
+
+Speaker 1  39:05
+our totals are weaker. But are you sure you don't want to just wait until we have the changes live and do that isn't going to be easier
+
+Matthias Miller  39:18
+or not. This is where it would be a lot easier to push them into separate records. Yeah,
+
+Matthias Miller  39:37
+you have a hidden field in.
+
+Matthias Miller  40:01
+I mean, you basically assign a number to the Import batch through a hidden ask prompt.
+
+Unknown Speaker  40:08
+Oh, What? What? Not tracking.
+
+Matthias Miller  40:14
+Well, actually, it's okay. Here's how you do this. Again, you can hate me come up with different design, but you have a hidden field say. It says pending import. And when you first kick off the x 30 list, you go clear them for everything, just to make sure you're completely sane, yeah. And you set that for all new ones. You key off of that plus date to match. And then when you're all done, you go clear it on everything
+
+Unknown Speaker  40:49
+off of that plus date. So
+
+Matthias Miller  40:52
+when you when you import a row, Yeah, but how do you handle the blank rows? That's what I was trying to figure out. Well, you use my copy and paste into an aspirin.
+
+Speaker 1  41:07
+Well, I mean, if you do an X 30 list, can you dump them all on one record and then go create a new record for the ones that should have one is that terrible, and then go delete the rows that don't match like we store a hidden date.
+
+Matthias Miller  41:38
+Okay, when you import could you have an auto number that says, This is the Well, no, why wouldn't we just this is really obnoxious. Let's just create a helper macro like, basically, what are all the dates? And then create a helper macro that says, give me the accounting impact by date. For this date, you just filter the rows and the accounting impact. Then a little bit of refactoring, and we're good.
+
+Speaker 1  42:13
+So you're saying, keep the import stuff as is, yeah, so we are exactly just modeling files from that Seems fair.
+
+Matthias Miller  42:31
+Okay, so then it would look something like.
+
+Matthias Miller  42:50
+A role RLI date, and this is a and then this Guy, we go in here, and then
+
+Matthias Miller  43:16
+door. And then this would be
+
+Matthias Miller  43:30
+date, and then we could still go new partial
+
+Speaker 1  43:41
+that still relies on the contacts and categories, right? Yeah.
+
+Matthias Miller  43:58
+Okay, let's do this too.
+
+Matthias Miller  44:15
+Less likely for bizarre like, yeah, okay, so then we have not dates. Okay, so date date, the date equals date. That's date, date to them, date to them, All right, so that this guy becomes a
+
+Unknown Speaker  44:43
+Yeah, date. It's
+
+Speaker 1  44:48
+that's not an RG field right now, so you just need to it's use something like,
+
+Matthias Miller  44:57
+let's do the contact ID. Thing right now that sort items, I don't know what the defaults are.
+
+Speaker 1  45:07
+Remove Duplicates just I would just say true. I don't know what the defaults are.
+
+Matthias Miller  45:13
+Okay? And then it's like
+
+Speaker 1  45:17
+the data. Yeah, arrays are beautiful.
+
+Matthias Miller  45:25
+Well, except there's one weird condition that doesn't really work, but I'm not sure what it is. There's some weird substitute items. Has items. There's some weird i don't know what it was, where I've had to jump back and I should write it up. And I never do okay? I mean, there you go, in a nutshell. So that's written, that's done. I like it, that's good enough.
+
+Speaker 1  45:48
+And then we'll go this week, we'll get the record restructured and import updated, and then next week they can have it. I mean, we'll see what bugs we find, but you want to give them that, should we show that report? I actually could show it on Thursday. That's fine, or either one I don't care.
+
+Matthias Miller  46:08
+Maybe nice to can we go ahead and just create the accounting company mappings for ABC? Probably, I mean, I don't see a problem. Do you see any reason to use, not use the default? Oh, we don't have a default account. Okay, that's great, yeah, cuz they have something else weird, set primary checking.
+
+Matthias Miller  46:36
+Well, we'll just say. How do you want to define the payroll account? Do you need a payroll section.
+
+Unknown Speaker  46:42
+We have that there. We could put it in there.
+
+Matthias Miller  46:46
+Seems reasonable.
+
+Unknown Speaker  46:49
+I thought we were going to use the bank. Why can't we use the
+
+Matthias Miller  46:53
+we can't select it, but I don't know why. Wait a minute. Are you sure liabilities don't get broken Down by I'm thinking logically now. You
+
+Matthias Miller  47:24
+I'm sorry to be the bearer of bad news. There need to map items. Well, we need to think through how. I mean, how does this work? Like?
+
+Matthias Miller  47:54
+Do payroll liabilities get mapped according to percentages as well? I don't know.
+
+Matthias Miller  48:10
+And what about? What about liabilities, taxes, insurance, indirect labor.
+
+Matthias Miller  48:26
+This is just payroll liability. So that's those are literally coming from the same place, but taxes and insurance is
+
+Matthias Miller  48:48
+it Well, I would think
+
+Matthias Miller  49:02
+we have two ways to do this. One on the employee record, define not only where the labor expense comes out, but also where the tax and insurance comes out of
+
+Speaker 1  49:21
+is that? How are they doing it? I'm a little confused. Well, I don't know. I'm sort of breakdown.
+
+Matthias Miller  49:37
+I mean here payroll taxes and insurance.
+
+Unknown Speaker  49:43
+It's not just using the same percentages, is it?
+
+Matthias Miller  49:47
+Well, that's what I'm wondering. But I don't know if it is. Okay, Adam, see, Adam here,
+
+Speaker 1  49:56
+what's 5% of 7496 No.
+
+Matthias Miller  50:00
+Minutes, probably about that, yeah, I mean, about
+
+Speaker 1  50:11
+370, 4.8 Yeah, it's, that's what. I think that's what it is. If you look at the that got 7496 like three lines up that, yeah, that's, that's what that 375 is, I think.
+
+Matthias Miller  50:29
+I mean, it's slightly annoying, but there's another way to say, to do this that, which would be to say, if the labor expense comes out of this financial account, pull the tax out of that financial account, which to me, makes a lot more sense than saying it's not like you're gonna say, Oh, well, this guy should be,
+
+Speaker 1  50:53
+yeah, well, isn't that just you have in the RG, you have a a payroll expense account and a tax account or something
+
+Matthias Miller  51:02
+like that. Yeah, you map from payroll account too, yeah. I mean, just in the RG, it's just another column of the RG, you mean on the contact? RG, yeah, contact. RG, you can, it's just weird that, I mean you'll never, you just, I just can't imagine that will, you would on the, on the on the on the accounting company, you would say, if it wages coming out of this, should be taxed out of that, because it's not like you're ever going to say, I want to, I want to pay labor expense from from Production overhead, but I want to tax it from production labor or whatever your numbers are.
+
+Speaker 1  51:45
+Yeah, okay, so we need to add, what do? We need to add an RG on, on the accounting company.
+
+Matthias Miller  51:54
+We should probably, we should probably confirm with Mark how he wants to handle it. I but that would be, that would be, my thought would be, to do that okay in some ways,
+
+Speaker 1  52:17
+and that would reduce errors. Yes, entry errors. Thing is entry yours. So would it and you just have a helper list, then that probably shows all accounts linked to employees for the company.
+
+Matthias Miller  52:37
+Well, either that or do it vice versa, the content the employee would show up.
+
+Unknown Speaker  52:42
+No, that makes more sense. Yeah, I like that better. Yeah, that makes more sense. Good.
+
+Speaker 1  52:53
+Okay, well, I'll work on the data and X 30 thing, or either me or Nick. I don't know one
+
+Matthias Miller  52:59
+of us, but if we do that, and if we literally only have three categories as a side note, then we don't need an RG, because you're not going to map those across. So all you need yet is a hard coded field for what is the let's see
+
+Unknown Speaker  53:14
+liability we need to do note holders.
+
+Matthias Miller  53:18
+Oh, no. Holders. Okay, fine. I think,
+
+Speaker 1  53:22
+I think that's the main reason that's that's fine. I didn't create categories for the note holders. I thought I'd let them set that up. Yeah,
+
+Matthias Miller  53:37
+that's fine. Okay. It will be easy. They said it's actually it would have been a lot easier if they could have thoroughly specified the requirements. We should
+
+Speaker 1  53:54
+have talked with them more, probably well, and Plus, they also gave us one input file that was the simplest of all the ones I've seen so far.
+
+Matthias Miller  54:04
+Okay, that's their fault. I also think there's a little bit of the hand wavy. This is waxing slightly philosophical. I've had conversations with friends of mine about, I don't know there's this person who's selling weeds, and it looks like very compelling, but everybody's like, rotten, and they've got great numbers of group and all this stuff and whatever. Yeah, it's the human instinct. This is how one of my friends said it over the weekend. He's like, we all have the fundamental sin of, or one of the sins of the ways to describe the sin of the fall, was reaching for what you already have. And I think the temptation to short circuit things. Like, well, at this point, tell you the way I intended, but there's, there's a fundamental temptation to short circuit things, and it's kind of like, here's the Excel file. It'll explain everything. Yeah, I've watched my hands of the matter. It's gonna work. No, it won't. Yeah, yeah. Thanks. So anyway, Mark's better about it. Aaron's new. We get to train him. Yeah, exactly, if needed.
+
+Speaker 1  55:07
+Yeah, okay, I have the CRT migration stuff pretty close, I think. So you could probably update the best systems. Well, I want to double check a bit more, but at this point, the migration something we should run once. I can't easily find a way with how payments work. It's really hard to run it more than once, okay, without, without numbers going too high. Well, the payment amount, sure with how I have it set up right now, I maybe I should have done it differently, but I'm just taking a simple input file and doing most of it in the x 30 with three RGS, because that was validation I had. I don't care. I mean, it's just, we're just gonna throw data across, yeah, yeah.
+
+Matthias Miller  55:56
+And if we need to, we can create an X 30 to nuke exactly, redo the migration Exactly. Well, that's exciting,
+
+Speaker 1  56:05
+which I still there's still a lot of things left, like the making the waterfall logic stuff work. I haven't really looked into that at all. And then shifting, making the balance RG caching work, and then pushing stuff there, making reporting stuff run off of there instead of off of the event searching. But okay,
+
+Matthias Miller  56:32
+but there's a world in which, if we did this carefully, step by step, we could actually just do a series of renames, reporting, auto update.
+
+Speaker 1  56:44
+Yes. Okay, good thing. So yeah, although I really want to make sure we have all the data migrated, we don't somehow lose that, right? Just a name change without the like, isn't there, like a macro rename or something migration, something where you can rename the reference data, yeah? Maybe, yeah. It's migration to the macro and expressions replace a single expression code with something else that should be that wasn't perfect. Yeah. And then you
+
+Matthias Miller  57:23
+could actually run reports send us to compare the events RG against the if you wanted to sanity check your your whole round trip. Oh, yeah, if it matters, yeah.
+
+Speaker 1  57:35
+Once I'm getting a little more into the calculation side, I might want to just look over it with you and figure and figure out what the best I guess you're going to be busy the next few days, aren't you?
+
+Matthias Miller  57:47
+I mean, I might have some time here and there. Dwayne's going to be I. I've only found one person ever who's competed for me for ability to engage with the brain for extended periods of time, and I would argue that that person wasn't needing to use their brain as much as me, so I will have times when he's tired,
+
+Speaker 1  58:07
+yeah, stuff, okay? Because I just want to make sure that we we get calculation design right, right, especially for reporting, like, what makes the most sense is it actually exactly like our current events or G, I think probably, I think it's pretty
+
+Matthias Miller  58:28
+I think it's pretty close.
+
+Speaker 1  58:33
+Where are you thinking we cash our waterfall numbers for balances? Do those end up in the itemization? RG, I mean clearly when you invoice, then yes, we cash the tax amount. But I'm thinking when you like, when you pay, and we want to get your balances, then does any of that happen in itemization, or is that all in the balances? RG, and then the balance, and then you have macros from the invoices, RG to look at the balances. RG to say, what are my or even from the itemization, RG to see, say, what's my? It's, it's, it's all balances. It's all okay. My argument with that is that balances is a calculated cash Yeah, and there is like, I said, Yes, exactly. Okay, that's what I was thinking. But I wanted to make sure so we have our we have invoices, we have itemization, we have payments. Yep, that's our source of truth. That's, that's the model of reality. Then from there, we calculate a cash balance as RG, which that does any waterfall logic needed related payments. And then from there we are, we can then create macros from any of the above three RGS to say, I don't know if we'll want it from payments, but from atomization or invoices to say, what's my balance do? Right?
+
+Matthias Miller  1:00:01
+Are we pushing security deposit and CRA into the balances? RG, are we leaving that out for now?
+
+Speaker 1  1:00:13
+I don't know. I'm not quite sure how to model them. They're a little weird,
+
+Matthias Miller  1:00:20
+right? If input, I mean, there's a sense in which it's kind of nice to be able to just run off the RG and say, Is this single RG right now? It says, What is this thing? And in a lot of ways, if it's just for reporting purposes, how terrible is incur security deposit, and you pay security deposit, because presumably we'll have to have some kind of well or a balance adjustment plus or minus. I mean, that's all it is, just throwing it in as tight Well,
+
+Speaker 1  1:00:57
+would you know you wouldn't ever encourage security deposit in the event, in the quote, unquote events, or G balances or G I don't think I'm planning to an itemization, but I would have thought then you just have special handling, and you really only care about payments to security deposit, whether it's payment to or payment from mm.
+
+Matthias Miller  1:01:22
+Uh, right, I mean, so it's basically just rose in the itemization or in the in the balances to plus or minus the CRA or security deposits.
+
+Speaker 1  1:01:31
+Yeah, there's no right that makes, that makes more sense than incurring a security deposit for an itemization standpoint. Yes, we will, because if you want to pay $100 to your security deposit, then yeah, we're just going to create an invoice for you with a security deposit row. But for balances, I don't we don't care about that from a balanced perspective, we only care what's been paid in or paid out. Is my Take That's insane.
+
+Unknown Speaker  1:02:01
+Okay? Think so.
+
+Speaker 1  1:02:07
+I think that I have enough to keep moving forward. I'm pretty pleased at progress so far. I think it's hopefully going to be less than we thought it might be.
+
+Matthias Miller  1:02:18
+Yeah, I mean, I uh, I have a little AI thing another weekend project. I'm sucking all my otter transcripts into a GitHub thing so that I can ask Claude to say, this is what I'm looking for in content. What would be some good content pieces out of my conversations on Zoom? There's two things to that. One, the differentiate, differentiation between, between optimizing for data entry versus reporting, that was really interesting. And then also the whole statement from Dwayne, where it's like, it feels right, like, that's a really interesting statement. So, yeah, yeah. I mean, it genuinely has this the whole way through we're talking about this, it just, it feels right, like it's just yeah, I don't know, like Yeah, yeah, so good excited. Okay, thank you. Thanks for Yep.
+
+
+Transcribed by https://otter.ai
