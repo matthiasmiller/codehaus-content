@@ -1,0 +1,131 @@
+Matthias Miller  00:20
+Hey, I guess. What questions do you have? I'm trying to work my way through the list, but yeah, I don't
+
+Speaker 1  00:32
+think there are many directly marked for you. But is it messages to feel a little things that need to be cleaned up.
+
+Matthias Miller  00:45
+Just run through some of these to do's,
+
+Unknown Speaker  00:47
+yeah, so
+
+Matthias Miller  00:50
+go ahead. So job milestones, I think we'll add an operation name that is a list field, and we'll import it as a string into the list field, and that's what we'll use to map.
+
+Speaker 1  01:03
+Okay, so no no record store, just in
+
+Unknown Speaker  01:08
+Yeah, because yeah,
+
+Matthias Miller  01:15
+cruise, you can't have multiple crews linked to the same workplace, and you cannot, needing approval based on our latest discussion, based on my notes, project managers can approve. So I'm assuming we should let managers do as well. Media
+
+Matthias Miller  01:41
+schedule, end date, which I SPECT out this is in your court, but I think just do a filler G from pipe list with the IDs, and then just do a repeat RG to copy stuff into the in there.
+
+Speaker 1  01:52
+Well, yeah, that part's simple. But when do we do it? Is that, when just on it,
+
+Matthias Miller  02:00
+I would do a, oh, goodness,
+
+Matthias Miller  02:10
+oh, that's obnoxious, because can we use shared it on changes in field? Change expressions? Don't think so.
+
+Matthias Miller  02:26
+I almost wonder, okay, we want to be able to do this through next 30 so that we can. I haven't thought this through. It seems like we want to share logic between when you push changes from after editing the template in this yes, yeah, that makes sense. And so I think what you almost end up having to do is a hide the task RG, and have like a basically a load Task button, and you can't save until you click it.
+
+Speaker 1  03:04
+What about a database trigger that runs when the record is created, and just runs the x 30?
+
+Matthias Miller  03:18
+And then you would basically edit collision, but whatever you would basically tell it to, just tell them to save and then trigger the background. Yeah.
+
+Speaker 1  03:28
+I mean, I don't know any Import button is easy enough it it feels a little clunky that we have to tell them click a button
+
+Matthias Miller  03:39
+or the I mean, the other option is duplicating the I mean, there's going to be slight difference in logic and that we're not going to update everything.
+
+Unknown Speaker  03:57
+Well, yeah, let's, let's do
+
+Matthias Miller  03:59
+hang on. How are we creating these jobs? Aren't these created from from job pack?
+
+Speaker 1  04:08
+That's a fair point. It would just be part of it x 30 list. Yeah, nice. Okay, I forgot how these are created. So Subsequently, we also should not have any way for a user To create a new job from a report. Yes, I
+
+Matthias Miller  04:56
+is. Um, I did not think about this, but for imports, we don't
+
+Matthias Miller  05:09
+want to bring all historical jobs across. Is
+
+Matthias Miller  05:17
+it a minimum? Do we? Do we get the minimum job pack job ID or something,
+
+Unknown Speaker  05:32
+yeah, or we could do it, yeah?
+
+Speaker 2  05:40
+I don't really ever I mean, yeah,
+
+Matthias Miller  05:48
+is this still an issue? Yeah, so due date gets set.
+
+Unknown Speaker  06:10
+Yeah, so we have that in
+
+Unknown Speaker  06:19
+the Oh.
+
+Matthias Miller  06:25
+And I think somewhere here we have a
+
+Unknown Speaker  06:29
+job pack.
+
+Matthias Miller  06:46
+Um, here I'll make a note to spec this out. How
+
+Unknown Speaker  07:01
+do you mean everything should be driven off the milestone?
+
+Matthias Miller  07:09
+I mean, why? Why does due date? Okay, days plus or minus? They said, this needs to be a field, but they said, If you can't override that, then this should just be read only. And that's true unless, and if you know, because when you the reason for this is when you update a template and it makes this go past due on an existing job, you still need approval. That's it.
+
+Speaker 2  07:41
+Um, and
+
+Matthias Miller  07:48
+then the due date is auto. I would say it's just auto calculated. Am I wrong?
+
+Speaker 1  07:57
+Auto calculated by days plus days. Yeah, that one that is Yeah.
+
+Unknown Speaker  08:22
+This is,
+
+Unknown Speaker  08:32
+we should clarify this, because you can I
+
+Matthias Miller  08:45
+presumably, if you just add a row, okay, I'm going to nix this override stuff. Yeah.
+
+Matthias Miller  09:01
+Then completed date. Okay, so then that takes care of that spec job, pack, import. I'm going to spec this out a little bit more based on the SQL we're using, update existing. So it's just the that I'm planning to do. I'm really questioning whether anything needs to be editable here on the jobs dashboard. Except maybe No, yeah, I'm happy
+
+Unknown Speaker  09:28
+for it not to be editable.
+
+Matthias Miller  09:41
+Okay, and then I'll spec this as well. Try to leave your to do and M in there this notification stuff in the department, we're going to have to add Department,
+
+Unknown Speaker  09:54
+Department linking. Good. Great, great, awesome, thanks, Nick, enjoy lunch, yep, yep, bye.
+
+
+Transcribed by https://otter.ai
