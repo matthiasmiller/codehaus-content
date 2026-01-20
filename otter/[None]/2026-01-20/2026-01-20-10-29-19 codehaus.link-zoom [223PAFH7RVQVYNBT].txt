@@ -1,0 +1,545 @@
+Matthias Miller  00:03
+He's gonna hop on here. Let's run the CRA thing passing. I like that. That makes sense. It's clear my head hat works.
+
+Matthias Miller  00:16
+I love CRA termination,
+
+Unknown Speaker  00:19
+yeah, CRA termination. I like to say, right termination.
+
+Speaker 1  00:23
+So then we have bad debt charge us angry.
+
+Speaker 2  00:29
+This is, this is why we look, we're gonna, we're gonna compress about four weeks into four weeks into it. Okay, well, let's you can take time to stop for lunch.
+
+Speaker 3  00:46
+Speaking of which, Krista, Krista testing. Do you want a heaven? When she sent me, do you want a heaven cheese? It sounded so good. I don't know why.
+
+Speaker 2  00:57
+Want a ham and cheese on sourdough sandwich for lunch, and I said,
+
+Matthias Miller  01:04
+yes. Okay, so while we're waiting for him to hop on bad debt, the way I'm thinking about it is at the point that you resolve and close out the contract, we create a bad debt.
+
+Speaker 2  01:19
+Okay, I'm going to argue on with you on this one, because bad debt needs to sit. It needs to be a two step process. When you initially close the contract and you in the in the customer has remaining balance on the contract that was not fulfilled, we're closing it because we're repossessed it. We're writing it off, whatever that amount initially needs to stay in AR for a period of time, and then at some point, you need to go and write it over to bad debt.
+
+Matthias Miller  01:47
+So on contract closure, we need some kind of way to say we still think this is collectible,
+
+Speaker 4  01:53
+and so it's going to show off who has the authority to
+
+Matthias Miller  01:57
+write off bad debt. Say it's almost like, I think it should be a customer service rep decision, where it's a customer
+
+Speaker 2  02:07
+service practice. I think it's more of an accountant level decision, because at some point the accountant is going to go look this AR is not correct. Like we have, we have stuff in here that's that the contracts are closed, and maybe it is that we build, that we build accounts receivable reporting that reflects this stuff and and at some point the accountant goes, Look, okay, we are not collecting on this. Look the the collections team has spent X amount of time this person spent X amount of time we are we are
+
+Matthias Miller  02:33
+literally going to see is the one who knows not to collect. They're going to be like, okay, collection scene, you have to try to collect for at least 90 days, or 180 days, whatever the thing is, they cannot close it out before that at the point of 90 days or 180 days, it is their discretion. Do you reasonably think you can collect this debt if not click this button and it gets pushed to bad debt? Well, I don't
+
+Speaker 2  02:53
+think we should be. I don't think we're going to validate on time frame. I think it really needs to come down to somebody needs to physically go write that off out of accounts receivable, into bad debt.
+
+Matthias Miller  03:04
+Okay, Seth, we are, we are going to, there is no CRA conversion anymore. It's CRA termination. And the key pieces that you need to know is is, let me share my screen, but the key pieces you need to know, number one is on a CRA we should never allow we should never incur more. We should never incur more monthly rent. We should never incur monthly rent to the point that the incurred cash price of rent, that the remaining cash value on the building goes below, below the CRA balance,
+
+Unknown Speaker  03:53
+right? Okay, okay, makes sense.
+
+Matthias Miller  03:56
+Now, on the on the CRA termination, here's basically what happens.
+
+Speaker 2  04:01
+Still argue with that, but we love that. I still, I still agree with that.
+
+Matthias Miller  04:05
+How, because you're going to so you're going to let people pay rent on the CRA, and then are you going to refund them the rent that they overpaid on the CRA?
+
+Speaker 1  04:16
+You pay $1,000 into your CRA. That has to be an EPO. $1,000 you can't pay. I mean, I suppose there is a world in which you can, no, I mean, contractually, we said go to
+
+Speaker 2  04:33
+the termination side of this conversation. We still need to argue about that.
+
+Matthias Miller  04:38
+Okay, well, Dwayne, Dwayne's wrong. I need to convince him. Maybe a good luck. Sounds good. Good. Anyway, that was okay. Okay, so when? So then you have this thing, you have a confirmed checkbox, thing that you have to type, type into. I don't care whether this is a memo. I think this probably is a memo on the detail screen or something. You could even have a confirm be a detailed variable that that you know, makes the confirm button knock up. I don't care whether this is a detailed Change button. I don't care whether it's a x 30 button, but make them type confirm. Make sure they actually type it. Don't let them type. I'm an idiot. I it when they click that,
+
+Speaker 5  05:25
+if they type, I admit it, you could just reply with noted, please type,
+
+Matthias Miller  05:31
+self, confess idiocy. Let me, let me. Let me clarify some of these technical details that I don't you can show this as a map. You can edit, ask prompt or X 30x, 30, or detail button. Really don't care when this gets clicked. Okay, so here's what happened when this gets clicked. Clears the CRA amount with contract calculation, forcing everything recalculated well to a new amount. Note the new amount. This is what I want to talk to you about. Is based on the remaining. Is based on the remaining, the based on the new remaining. New contract balance divided by the partially the unpaid slash partially paid remaining periods. I'll get to that. So then, basically we just transfer it into security deposit, $0 payment and updated the payment amount. Now, here's, here's the tricky thing you just got. Okay, you do a CRA contract, normal monthly price, $100 a month. You save 50 a month. Well, you now owe back. I mean, you you owe increased. You now owe rent on the CRA portion. And so we're going to look at partially paid, unpaid or periods, and we have to distribute it across that.
+
+Unknown Speaker  07:12
+Oh, I see
+
+Matthias Miller  07:13
+you're not going back to 200 you're going back to so you're, whatever it is, 300
+
+Speaker 5  07:19
+so if you had a CRA contract, and you switch to security deposit. Halfway through, you pay the you pay what you had, the essential discount you had gotten, yeah, like, if you do it literally, halfway across the remaining half of the contract, if you do it literally, okay, so then your monthly payments would be higher. Than it would have been a security deposit for the second half and so that it evens out to the same as it would have been.
+
+Matthias Miller  07:48
+Okay, yep. So the real question that I'm wrestling with, a little bit that I thought you might want to be involved in, is, how do we store this, or how do we calculate this? Like, it doesn't seem right to me. We can't just, every month, recalculate the monthly amount because of rounding issues. It's gonna we're gonna get jitters in the right amount. So it's almost like a, maybe we want a separate field, like a CRA recovery amount.
+
+Speaker 5  08:25
+Oh, in the, oh, you're just saying a separate field completely. Maybe. I was thinking, Yeah, I think that's reasonable. I was thinking. I was still thinking in the like, invoice model, how does it work?
+
+Matthias Miller  08:42
+I mean, invoice model, we just, we've invoiced for the past. What's invoices invoiced? That's, that was the that was the rent, right? And to continue, right, we now have a new rent due. I mean, it's so
+
+Speaker 5  08:55
+what if? What if you have an A partially paid period? Does that stay the same as it is? And we only hike it up, yes, but we hike it up. Okay, so then do we just manually go in and edit the invoice, or not manually, but your x 30 goes in and says, Oh, this one's not fully, not paid off. We're gonna hike this one.
+
+Matthias Miller  09:14
+Yeah. Okay. I mean, it's theoretical situation. What person is going to default, is going to terminate their CRA default in their potentially default in their contract, and be paid ahead, like it's a nonsensical scenario, but just
+
+Speaker 5  09:30
+for the same that's not necessarily paid ahead, that's partially paid, which is different, because you may well have Historical
+
+Unknown Speaker  09:37
+invoices stay the same.
+
+Unknown Speaker  09:39
+Oh, okay, that was my question. I'm sorry.
+
+Matthias Miller  09:48
+So meaning future periods, perfect, perfect. The historical invoices all remain unchanged.
+
+Speaker 5  09:57
+Okay, that feels so much more sane. Yes, yes, yes. And so,
+
+Matthias Miller  10:03
+and I don't know how you want to model this, if the, in some ways, what could make sense is almost like a an offset to The prorated offset to the CRA discount like
+
+Speaker 5  10:42
+it's something so that field are you thinking is, is that a monthly, is that a is that just the sum, amount we need to recover over the remainder of the contract? That's up to you, how you want to model it. I really, I think I like having just being a lump sum, like we need those $1,200 we need to or whatever.
+
+Matthias Miller  11:04
+What if we did something I love that I like this.
+
+Speaker 4  11:09
+Sure recover $1,000 over
+
+Unknown Speaker  11:15
+five months. Yeah, and
+
+Matthias Miller  11:19
+then you can turn that into your calculations, I think that's pretty clean. It's or it's not CRA recovery, it's Dwayne. If you had to, you had to have a term for the difference between the $200 a month, normal payment and the $300 a month. Let's catch up payment. That differential basically
+
+Unknown Speaker  11:43
+understand this catch up thing that you keep talking about.
+
+Unknown Speaker  11:48
+Okay, you have a contract.
+
+Unknown Speaker  11:52
+It's worth $18,000 normally, okay with the
+
+Speaker 2  11:59
+CRA Well, here, I'm working math over here. Okay, okay, so let's say a $5,000 building, $2,000 CRA $3,000 cash product, reduced cash price. 138 89 reduced rent. And 231 would be regular rent. Okay, okay, those are the numbers. They paid 10 months. We're converting at the point of 10 months with six months past dues for 16 months in Okay, so when this, when this payment goes from 138 89 to 231 48 the difference between those two numbers is what you're
+
+Speaker 1  12:30
+talking about. 138 89 they paid 138 89 for 10 months.
+
+Unknown Speaker  12:34
+Correct, 1388, 9013.
+
+Matthias Miller  12:37
+8890 and, and what's the normal price?
+
+Speaker 2  12:42
+Normal monthly rent is 230 No. Monthly rent is 231 48
+
+Matthias Miller  12:46
+231 48 and what was the contract term? 36 contract value is total
+
+Unknown Speaker  12:55
+contract you mean regular contract value? Yes. 231 31.38 times 36 would be 830-333-8333,
+
+Matthias Miller  13:10
+28 Okay, less the CRA amount that gives us 6944 remaining contract value, remaining contract balance. Oh, okay, they are. Wait, how much have they paid? They paid 10 months in their their past due, six months, 833, 34 Wait, no, that's still the balance. Okay, so then the remaining balance. They have 26 months left
+
+Speaker 2  13:37
+at reduced at reduced numbers, the remaining balance, 24, months remaining at 36 1114, okay,
+
+Matthias Miller  13:45
+but their monthly payments going to jump to 260, 709, right? 231, 48 No, that was their original monthly payment. Right? Their rent was 1388, for the 10 months. That's what we invoice. Then, right? The full contract value, normal price, is 833, 28,
+
+Unknown Speaker  14:06
+this is where. This is where you and
+
+Matthias Miller  14:08
+I go. No, let me show you. So this is, this is what we invoice, them on a monthly basis. We said, We know you're going to we have this money. We know you're going to give it in a CRA we're not going to chart like you have a lower monthly payment and but this is the full contract value. Now, because it's a you default it on your CRA you have to pay the full, full contract value. We're going to take the difference here, and we're going to, we're going to, this is what's left of the rental balance at the point of default, normally on normal payments. If you had been running a normal life, you would have had it would have been this, minus 231-223-1480, normally, your balance was 6000 would have been 6000 1848, if you didn't have a CRA, but because you had a CRA, you weren't paying as much. Your actual contract balance now is 6944 38 you're going to have to pay that over 26 months, which takes us to a new monthly payment of 260, 709,
+
+Speaker 2  15:14
+yeah, but that's not the way that RTL Pro was doing this.
+
+Unknown Speaker  15:18
+But you told me you want to get the terms the same
+
+Matthias Miller  15:21
+for them to pay within 36 month term. That's what you have to do. Or you have to say you got you bought yourself some extra months. You can keep going at the 231 48 a month, and it's going to be a 40 term for you know, I don't know what this comes out to. Let's actually find out. So the remaining balance is this divided by 231 48 you're actually at 30 terms. You get four extra months.
+
+Speaker 2  15:53
+Okay, again, the simple math that people have been used to, okay, the simple math that people have been used to is at the point of conversion, the 24 months times 20, sorry, 2026, months. 26 months times the new 231, four, the what was the original 231? 48 that is the new contract balance.
+
+Matthias Miller  16:17
+That's what they've been using it. So at the point of conversion. Point of conversion, they're taking the 231, 48 times remaining months times 26 Yeah, so they are writing off so you get reduced rent during the CRA portion,
+
+Unknown Speaker  16:35
+even even though you're never
+
+Speaker 3  16:38
+you're getting reduced rent from the CRA portion, and if I default, I get
+
+Matthias Miller  16:44
+it back as a security deposit. So I could, I could run a contract with CRA, demand that it be terminated right at the end, and throw my hands, oh, well, I guess I just paid off with security deposit and give me my security pass back,
+
+Speaker 4  17:16
+like this insanity that is not the contract balance you don't just get to keep, if you donate your CRA, you genuinely get to keep the reduced rent, even though you're not going to pay it towards it towards EPO.
+
+Unknown Speaker  17:30
+That's the only problem. But, yeah, sorry.
+
+Speaker 2  17:36
+Well, okay, I'm at, I'm at, my knowledge. Okay, that's fine. Okay, that's fine. I'm at my knowledge depth, but I'm going to have to get more input on this to actually give you a final
+
+Unknown Speaker  17:49
+answer on this, because
+
+Speaker 2  17:51
+you have, you have now thought that this thing way deeper, 10 times deeper than I've ever thought about CRA s, yes, and I'm a little bit afraid of committing to a direction here, because I'm not sure, I'm not sure which way is correct. Understand what you're saying.
+
+Matthias Miller  18:09
+There is no gold standard. I mean, this is a chase and Phillip type of question, isn't it? Or no, okay, when you did this guy, this guy's payment.
+
+Speaker 2  18:22
+He jumped up. Well, here, this is, this is actual math. Here, this is actual math.
+
+Speaker 1  18:28
+He jumped up to the what the original the original payment?
+
+Speaker 2  18:32
+$5,000 building divided by 21.6
+
+Unknown Speaker  18:35
+is 231, 48 Yeah, my
+
+Speaker 2  18:37
+understanding of CRA is at the point of determination that becomes the new payment per month. It goes back to what they that becomes the new payment per month. Yeah. Now how you reconcile the rest of this is, is super like, we can't go, we can't go higher than what the original amount was. But then
+
+Matthias Miller  18:57
+you have to extend the terms, which is what RTO pro probably does right now. Anyway, you're still, you're still saying you're you're past your point of idea.
+
+Unknown Speaker  19:06
+Start talking to, I need to talk to people who have probably thought about this a little bit deeper. I just
+
+Matthias Miller  19:16
+don't understand how. I mean, in some ways, it is a bit of a good point, because you don't expect any of these people already folded, so it's highly unlikely that you finish up the contract, but it does seem like a great way to screw people over and get them to terminate the CRA. And like, Oh, hey, can I I mean, could I terminate CRA? And just like, go up to a higher payment and you get free money. You
+
+Matthias Miller  19:43
+and then a point of 36 month, part point you dispute, and you say, look, the terms are 36 months. I've been here, 36
+
+Speaker 2  19:49
+months unless, unless we literally force them into Harvey contract. And we said, we do not allow you to at the point of CRA termination. You. Have three options.
+
+Unknown Speaker  20:02
+One, you re put a building,
+
+Speaker 2  20:05
+and you pay past due balance with the CRA with with the CRA balance, and you move on. Two, you recontract it. Or three, the customers returning the building, and so they may be current. So then you're just giving the back the CRA,
+
+Matthias Miller  20:19
+and it's all good, but at that point, there is no CRA termination. There's just contract termination, just terminating a CRA contract and a means by which you can effectively create a payment that settles out the old building and reapplies it to a new contract. You
+
+Speaker 3  20:45
+I just, I'm gonna have to ask. I'm gonna have to get some more information tabled. Yeah, I thought we'd have direction, and then we keep
+
+Matthias Miller  20:53
+you keep arguing. Is, is Jonathan free that we could get just a quick glimpse into that? Sorry.
+
+Speaker 2  21:02
+Seth, I thought we had, I thought we had a direction here, and then
+
+Speaker 5  21:06
+that's fine. I'm happy. Fun watching you argue. It's kind of entertaining. Actually, I
+
+Matthias Miller  21:15
+had a fun time. I'm working on a working on a paper on a sorting algorithm I wrote 15 years ago. I got a very good argument with Gemini last night because it was insisting that I was doing something wrong. I was like, No, I'm not. Here's what caves is like, yeah, actually,
+
+Speaker 2  21:34
+but here's a little here's my little afraid Matthias, but I'm a little afraid that you are raising questions that nobody has thought
+
+Unknown Speaker  21:42
+about, and then
+
+Speaker 2  21:43
+we're going to be stuck in this conundrum of going, okay, because I get, I guarantee Chase doesn't know. I Philip, May, he may be the one that actually may have thought this thing through.
+
+Matthias Miller  21:58
+Well, in my mind, it's fairly simple question, do you stick to the monthly payment with an extended term? Or do you, well, there's three options. Do you stick with the extended payment, or the new payment, or, sorry, the original payment with an updated term? Do you increase the payment, keep the same term, or do you invoice them for background immediately and try
+
+Speaker 2  22:17
+to take there is another option in I guess there's an option in the world where you you essentially are writing off collectible revenue from a period of time.
+
+Matthias Miller  22:28
+You expense it out and just write it off as a loss. But that doesn't make sense if they continue to pay that just feels wrong, like why you gave us money you promised at a minimum, it seems like we should take security deposit and apply as much of it as possible to background.
+
+Speaker 2  22:45
+Although the extended term is actually that actually is not a bad idea. I have this sneaking suspicion that the extended term is exactly because essentially what we're saying at that point is that 231 at 231 48 what we were giving you in that time period for the 10 months was the fact that we allowed you to pay 138, 89 with the expectation that you were going to keep this current and you were going to pay off, paid off early. You didn't do those things. So then now we have to look at this as the original contract amount and the original terms. And you were just short paying every single invoice loan that, which means we extend the term. That's actually the right that's it.
+
+Speaker 5  23:22
+I move that. We switch conversations, and you all can keep arguing later, unless Dwayne really wants to pay us to listen to you argue.
+
+Matthias Miller  23:29
+But if that's if you, if you literally are convinced, then as soon as we're done with Jonathan, then we can get the standard off to set. Okay, that's a dozen. We're trying to figure out scope of okay, like, so, so current blockers right now, read only data imports dependent on SAS data migration and your rework. Me helping with imports. That's like the biggest thing for getting read only stuff. It's tantalizingly close, but so far away. Do you guys have a sense of where that's at.
+
+Speaker 5  24:04
+Data structures in place. I think you could work on imports. I working on balance, balance RG Yeah. So we don't have all the all the balances and stuff will be wrong for a bit here, but you, I mean, the RGS are all in place. They're all linking together correctly. I think you could totally do your import stuff.
+
+Matthias Miller  24:30
+But then, I mean, realistically, for Jonathan and you to do all that rework, is that, like an end of week or next week sometime I'm
+
+Unknown Speaker  24:38
+hoping for this week. I don't know for sure, but I'm happy with how it's going good
+
+Speaker 6  24:45
+from my side. Yes, seems reasonable. I I was working on the like getting the payments to apply before users decided to change it. So I've been working on some of the more generic. Stuff with the portal, like getting my components in place and figuring out that kind of stuff, just so that once I'm ready to dive back into payments, that I've got things lined up.
+
+Speaker 5  25:13
+But the payment side has become super simple, I think, and that essentially you just have to make sure that someone doesn't pay more than is remaining for a row. And I'll have macros, I'll say current balance for an invoice, and what then you just have to say, Well, you can't pay more than that on that invoice, and that's it. Yeah, anything up to that?
+
+Speaker 6  25:34
+That sounds good, because all the complexity before was coming from figuring out allocation and how to move forward and all that stuff. And that's all that's all happening on the balance side now, yeah, so, so now it should be pretty I mean, there's still, we still need to refactor stuff because, you know, I had been initiating the payments from Portal side and then have driving us through the components step by step from the portal. So it'll be need to be refactored, but it is, you know, so much simpler now, and I've already thought through all the different permutations of different payment methods, new method. We have a tokenized yet or not, that kind of stuff. So sweet.
+
+Matthias Miller  26:19
+Okay, so then the next big remaining pieces are customer portal and payment portal and auto pay for well, really, really, really, payment, payment portal and auto pay are like the super big ones. What's what is that looking like?
+
+Speaker 6  26:40
+So payment portal, meaning the internal one, right, correct? Because, okay, so the internal one is, I mean it, before we refactored the like, the big events, RG refactor, it was working, to the point where you can allocate it manually, saying, I want to pay this much to this contract. Select the payment method or add a new one. Click pay, and it actually runs the payment to clear and and it updates the contract. And so it was fully operational. Obviously it's going to need a bit of touch up now on the payment side. But I mean, it's the whole body is there, and I'm and I'm pretty happy with how it's built right now, with its capability to be refactored so and then auto pay, auto pay, I think, should be pretty straightforward now, it's the way I'm doing it is just with a a scheduled task that runs, that runs it for each rental company, because each rental company has their own whiskey instance, and we need to run external Wave API to that URL, so we run it once for one scheduled task for each rental company. And I think it'll be pretty straightforward now, but it's good to know that that and the internal one are the biggest priorities.
+
+Matthias Miller  28:19
+Why is there a separate whiskey instance per rental company.
+
+Unknown Speaker  28:23
+We talked about that that's branding and stuff. It
+
+Matthias Miller  28:25
+has to name, but we don't need a separate rental whiskey instance.
+
+Speaker 6  28:32
+What do you mean? C name like it serves it into a different URL, like
+
+Matthias Miller  28:37
+a or not a separate scene. I mean, like we would use, my thought was we would use C names that that all go to the same instance, and so it's the same whiskey instance rent. No, we there has to be a one to one between whiskey instance and silver loom. But you could just look at the request host to figure out which rental company you're serving up for for the solid interface the
+
+Speaker 6  29:08
+I see so we would determine, we would When you go to log in, we say, you know, basically like the left part of the URL prior to whatever path you're requesting. We somehow know that that belongs to a specific rental company. Probably specify that in the config ini file, and then we use that to load the details correct. Okay, okay, that makes sense that. I mean, that's different than what I've been thinking that we have a separate instance for each one, but that's not, I mean, it's, I don't think that that has big implications, yeah.
+
+Matthias Miller  29:52
+I mean, otherwise, we end up paying, I don't know, I think for versioning. I mean, we technically wouldn't have to do this if we had kept all the versions in sync. I think for versioning purposes, you do want it synced up with doing it. Actually, we talked this through a little bit but, but I think we want to avoid the whiskey instance be for each rental company within, within the let me, let me run it past, past doing. But I'm pretty sure it is the direction we want to.
+
+Speaker 6  30:30
+Yeah, that sounds right. And so then the auto pay would run to, like a just run to any of the, any of the URLs.
+
+Matthias Miller  30:47
+Well, I'm assuming we would have a, we would have a non branded um name, like something like only dot Wisby, dot silverlot, io,
+
+Speaker 6  31:00
+yeah, the way that we had been doing it is with our recent ones, is like, it'll be like, test Triple D, dot, whiskey, dot, server loom.io,
+
+Matthias Miller  31:12
+so I would assume somewhere that would be like, in the system switches and stuff. When we asked for the whiskey URL, that's the URL that we would specify, and that's the URL that the auto pay would go to, and then for the random portions of it that would be on the rental
+
+Speaker 6  31:30
+company contact record, that's where it is now, and that's what I had been doing the URLs based off of but I think it makes sense to use the system to Switch one you know, for that we have used historically, for whiskey stuff. Use that for the kind of the generic
+
+Matthias Miller  31:46
+API makes sense to me. Sounds good. Okay, so auto pay is also largely in place. There's some some tweaks based on that design change, right?
+
+Speaker 6  31:57
+Yeah, well, I'll, I haven't, I haven't done any of the work on redesigning the events. RT, so we say it's in place. I look, I yeah, I think it's pretty straightforward. And there doesn't, there won't need to be that many components still, but sure, yeah.
+
+Matthias Miller  32:21
+And so we think, we think, without working nights and weekends and doing crazy stunts, that by the end of the month, we could have those two pieces up and running reasonably. Or is that an unreasonable
+
+Speaker 5  32:37
+you're saying auto pay and internal payment, internal portal, basically
+
+Unknown Speaker  32:42
+in the month, yeah, admin admin
+
+Unknown Speaker  32:45
+portal, admin portal. And
+
+Speaker 2  32:48
+so what? Okay. Do you have any do you have any sense, Jonathan, of what verifying our integration with explore pay looks like? Did they give you any indication on what that process looks like. Is that a time consuming process, or is that
+
+Unknown Speaker  33:04
+pretty much a it should be like a day or so?
+
+Speaker 6  33:07
+It's a good question. I hadn't looked at any of their like support scripts or whatever they call them, or verification scripts. I could look at that and see and start thinking about that,
+
+Speaker 2  33:22
+because that that is a component to this right to to actually like because I'm willing to accept, I'm willing to accept that we would not have ability for customers to make their own own online payments in order to make the jump, But obviously in order to make the jump, the internal portal will all need to be running.
+
+Matthias Miller  33:49
+So really, what that would look like then is do whatever they made it sound like it's kind of a self assessment more than anything else, like we fill out the form and they sign off on it. But I don't know if that's where that's at.
+
+Speaker 6  34:02
+Okay, the file they sent is absolutely cursed. Everything is cut off, all the text. Maybe, if I wouldn't Excel, it'll work better anyways,
+
+Unknown Speaker  34:15
+absolutely cursed.
+
+Speaker 2  34:18
+I think, I think that's the most emotionally punctuated thing I've ever heard you say, Jonathan,
+
+Matthias Miller  34:30
+well, okay, so let's, I think, I think it's very clear to you. Then, I mean, let's move that direction. Figure out, if you don't mind, it's a little bit of time. Don't, don't don't, you don't fall that deep down the rat. But it'd be useful to have some context from you of what you think that approval process could look like. It seems like if we can get our side of the processing, or our processing is at the point that we could do that, because that's an external dependency, getting that, getting that sub. Than sooner rather than later, really could be advantageous to us?
+
+Unknown Speaker  35:05
+Is it if, if,
+
+Speaker 2  35:08
+hypothetically, if we got to the other month and we were live with internal portals? Is it reasonable or unreasonable to think that customer portal Give me, give me a time frame, like, are we talking mid next month? Are we talking end of next month before a Customer Portal would be ready to be used?
+
+Speaker 6  35:32
+I would say end of next month. There's just a lot of things, a lot of things to add, and there are always, always things that come up along the way that you didn't think of in design. And those things tend to bring up things that you didn't think about before. And so you have to think about them. And, yeah,
+
+Matthias Miller  35:51
+let's think of it not in days, but as payment cycles. So that's only one or two payment cycles, you know,
+
+Unknown Speaker  35:59
+payment cycles that have a week or a month, or
+
+Speaker 2  36:01
+I'm thinking of it in how many days I have to stall? RTO Pro,
+
+Unknown Speaker  36:08
+actually, we're
+
+Speaker 2  36:09
+playing a stalling game with them right now. It's like we're coming up with any question and every question we can ever come up with in order to stall. And because I told, I told Francine, give me 30 days, which it sounds like you're going to come in from an internal side before the third days are up, which is great. It's but I just want to have a concept of how long we will be until customers can again be making their online payments.
+
+Speaker 6  36:35
+Yeah, yeah. I think maybe once I do the admin portal and auto pay, then I'll have a good idea. I mean, I'm really liking the rate at which I'm getting through Justin's mock ups and adding stuff and figuring out how to integrate his stuff. You can tell from his design, he thought through a lot of things, but there is just a lot of a lot of stuff to work through. The authentication part ended up being a lot more meaty than I thought it was going to be, but the other pages are sort of the opposite.
+
+Unknown Speaker  37:13
+So good. That makes sense.
+
+Speaker 1  37:16
+All right. Awesome. That's helpful. Anything else? Oh.
+
+Speaker 6  37:21
+Matthias, if you want to, at some point we could, you could call me and we could work to set get the instance of the whiskey up and running. Yeah, it's, it just, it takes a bit working with Ellis and sort of batting stuff back and forth on things that come up. So not too we could
+
+Speaker 1  37:44
+work on that setting, which was the instance
+
+Speaker 6  37:47
+for the test system. It sort of is running, but it is always lagging behind.
+
+Speaker 4  37:53
+And so you mean, do anything deployment before we do that? So should we do deployment system before we do
+
+Matthias Miller  38:00
+link up the whisk. Yeah, we're gonna, we're gonna probably well, and I wonder if you just want to bypass to get to your live, your, I mean, take the test system as a live, yeah, to a live system. So if you're as long as you're not super worried about it, what might make sense, what we're thinking on our end is we'll, we'll work on the imports into the test system, and then at some point we'll, I guess, cut that across to a live system and new Dwayne's awesome RTO company, not dark.
+
+Unknown Speaker  38:37
+Yeah. Well,
+
+Speaker 2  38:39
+what listen this is, this is the we're going to figure out we're, we're playing a tax fraud game with the dark company. Let's go. It's a whole lot of depreciation over there while you know, no, I'm just kidding.
+
+Unknown Speaker  38:56
+Sounds like some good financial engineering going on.
+
+Matthias Miller  38:59
+Yes, yeah. Mark actually. Mark Troy actually recommended this book on financial engineering, so we're using
+
+Unknown Speaker  39:09
+that as a handbook the
+
+Speaker 2  39:11
+financial intelligence. I think he got that one from Leanne. I'm pretty sure I think Leanne recommended to him.
+
+Matthias Miller  39:18
+We had a good talk about that one. So our plan is, our plan is, get the import style in and feel good, generally good about it. Cut that across to the live system. I think in my mind, it makes the most sense to, like, if we're going to do whiskey, like, let's just go ahead and unless there's a need on your end, like, when I just wired the whiskey at that point to the live system. And, yeah, sure, I guess. I guess. The other question is, do we need a test instance of the wizki
+
+Unknown Speaker  39:47
+long term? Yes, yeah.
+
+Speaker 6  39:51
+Is there any Matthias? Is there any way that you could have it auto update that you can
+
+Matthias Miller  39:55
+think of? It's so easy to update you want me to update it now?
+
+Speaker 6  40:00
+Well, so I don't have access to this because I don't have the VPN. And so Josh is probably, I don't know, maybe five or six harasses away from doing he said he's going to add away, like, sort of like a light user, I'm guessing, to this admin side of it, checkbox. What's that?
+
+Matthias Miller  40:22
+Why would we just do a billing system checkbox
+
+Speaker 6  40:24
+with a chronic Yeah, that would be nice. That would be really, really nice, because now we have, the way we're working with it is we don't do a single instance for the test and live systems. We actually have discrete things so we can test them. And so that would work really well with with this, that would be amazing.
+
+Matthias Miller  40:46
+Let's do Okay, so, how do see, I mean, really, all that we would do is, like, add an update.
+
+Unknown Speaker  40:51
+Was there's an update?
+
+Matthias Miller  40:55
+Yeah, and we need a link to the How does he key these off? He's got an application, a whiskey name, probably a whiskey Name field, yeah, this stuff, where's the I'll shoot him an email.
+
+Speaker 6  41:18
+Yeah, it'd be great. Because, I mean, about, I don't know, five to 10% of the time I needed I and I change as well. But a lot of the time it's just, I need an update. So, I mean, very nice,
+
+Matthias Miller  41:30
+send me his message on signal. It's just a button click for me. So okay, genuinely, as long as I'm at my computer, I don't mind, like, about, it's, I can't really, but okay, it's it
+
+Speaker 1  41:48
+good. Sounds good. Thanks, Seth, Jonathan, I think it's appreciate.
+
+Matthias Miller  42:00
+It, okay, Simon, I think the jury's out on the CRA if Dwayne truly believes in just continuing the original monthly payment makes our life dropped it simple. And I think,
+
+Speaker 2  42:16
+I think you're I think the extended terms is correct, okay, I actually think that maybe I'm just slow in understanding it all right. Thanks, Chris. That makes more sense to me than than increasing the monthly rent or or invoicing for a difference or anything like that just to extended terms. And it means that, you know, you might have, you might, instead of having 26 remaining months. You now have 30 remaining months.
+
+Matthias Miller  42:44
+It's most easily explainable if you're optimizing for understandability by the lizard brain. That is the most terms, yes, yeah,
+
+Speaker 2  42:56
+yeah. It's not really extending terms. It's just, it's re recognizing original terms, and that you've, you've underpaid all the original stuff.
+
+Unknown Speaker  43:09
+So let's move forward on that.
+
+Speaker 2  43:13
+Let's do extended terms. I think that's that's defensible, that's understandable. I can explain that. I think Anybody can understand that. I
+
+Unknown Speaker  43:33
+note. I
+
+Matthias Miller  43:56
+Okay, this one Dwayne and I still need to argue about, but make sure we never allow the customer to pay down the cash price of the building, pass the CRA balance. Yeah, I do understand what you're saying there, but let's do this. Let's do so CRA termination. I should have put it to you. Seth, in there. I wonder how long we've got until this thing starts literally crashing on us because of memory usage or something. Okay. CRA termination is ready to code then,
+
+Speaker 5  44:37
+I mean ending wrapping up pretty work stuff because depends on that. But yes,
+
+Unknown Speaker  44:45
+right, yep,
+
+Unknown Speaker  44:51
+okay, sweet, that's all we needed. Thank you.
+
+
+Transcribed by https://otter.ai
