@@ -1,0 +1,233 @@
+Matthias Miller  00:14
+Hello, I think, I think my biggest concern is probably, well, there's two big concerns. One, speed, others, activity history, right? And so the way I would do it is temporary field, push in a string table, figure out a unique key, make sure the rows exist. Do repeat RGS to update everything.
+
+Matthias Miller  00:42
+Or potentially so this is a non RG string field, non RG string field to store the this the string tables.
+
+Speaker 1  00:52
+I think, I think the unique ID or incurment is an invoice place, itemization, row ID, yeah. And I think for a payment, it's invoice itemization payment, all three. I mean, you could theoretically get rid of the invoice ID, but I think I want to store all of them. Yeah, it makes reporting easy.
+
+Matthias Miller  01:16
+I think it's, that's, that's great. I think it's, I think it's great. The caveat to that, if you wanted to, is you could calculate the I mean, theoretically you could, you could, I don't think this is any better, but theoretically, theoretically, you could filter the string table into basically add, modifies and deletes. But I don't know that that's going to be any faster than just ripping through and updating everything. The other thing you could do, oh, go ahead. I'm
+
+Speaker 1  02:02
+just still trying to figure out how you add. I'm not used to working with RGS and field change.
+
+Matthias Miller  02:13
+You're not gonna like me for this, but go ahead. Actually, no. Do this have? Can you have a temporary string table in the RG, can you sort the RG? Can you sort the string table such in the same order as existing rows?
+
+Unknown Speaker  02:49
+What happens if a row gets deleted, you
+
+Matthias Miller  02:53
+leave it blank, and you come back through and you really, oh, well.
+
+Matthias Miller  03:06
+But isn't it fairly easy to do a Deleter G before you do anything else, just to delete old rows. I mean, if the if the invoice ID is invalid, payment ID or the well, itemization ID, I
+
+Speaker 1  03:23
+probably you nuke any of those rows. Then you've got to make sure you sort any new rows to the end, right? So after that. The end of your stream table. Yeah,
+
+Unknown Speaker  04:06
+wish I could do an array of structures.
+
+Speaker 1  04:17
+So I'm just not sure, because we have it all built out next 30s. It's super easy to do, but I think I can make it work. How
+
+Matthias Miller  04:34
+would you do it? If you if you were rebuilding it every time,
+
+Speaker 1  04:39
+I just make the RG and then throw everything in a string table. Let's do, I was going to do a filler G from pipe list with a string table, and then, boom,
+
+Matthias Miller  04:50
+it won't resort if you do that between field changes.
+
+Speaker 1  04:57
+Now fill it, put everything in string table. In the RG, or like a tablet, that's what I was thinking. But then your activity history is going to be nasty, like, really bad.
+
+Matthias Miller  05:13
+Okay, so building the fill. RG, I think that's still a fine approach that keeps populating it simple, building that that, I think the complexity is building that in the right order and so effectively.
+
+Unknown Speaker  05:37
+So here's RG sorting happen?
+
+Matthias Miller  05:41
+I It's been 20 years since I've written RG sorting, so I can't tell you.
+
+Speaker 1  05:54
+I mean, essentially, you do a pre pass, you nuke any rows that aren't linked to valid RGS. RG rows, well, but you could still have rows in there that aren't No.
+
+Matthias Miller  06:06
+Do this, you load the string table, yeah, then,
+
+Matthias Miller  06:22
+then you you add, you go ahead.
+
+Speaker 1  06:28
+Can't you do figure out which of those rows don't exist, like you have a key. That's the it's invoice plus itemization plus payment every time, like, even for just atomization rows, you can do that. You have your key, you add do, and then you do, like a different pipeless you can cat existing keys with new keys. Here.
+
+Unknown Speaker  07:05
+I think, I think I can do it.
+
+Matthias Miller  07:08
+It's just that you load your string table with keys in the left. You do a cat RG, advanced,
+
+Matthias Miller  07:25
+were you? Well,
+
+Speaker 1  07:32
+I don't know exactly how I'm going to do it, but I have enough, I think so it's essentially you important part is those keys. And then from there, you just say, Do I have a row for this? Well, I think you you figured out which keys you have in the stream table, but you don't have in the RG, and you add those to the end of the RG, yep. And then you go and you set, would you store the string table inside the RG, or would you have it out of the RG and then do a lookup? Is that gonna get slow
+
+Matthias Miller  08:14
+a lookup? I think it's gonna be way easier to do it inside the RG, because you then you can do repeat RG to pull the current item out. I think what I would do
+
+Speaker 1  08:24
+when you delete you first delete rows that aren't in in your list of
+
+Matthias Miller  08:30
+Yes, and then delete rows. Then you sort the string table based on RG row, num ID, and put new ones at the end, and do a filler G from pipeless on that, and then
+
+Speaker 1  08:43
+maybe history RG row, that what you're saying, yes,
+
+Matthias Miller  08:50
+that way, that way it lines. It should line up with existing rows. Okay, so
+
+Speaker 1  09:08
+delete rows where keys don't exist, and then sort string table.
+
+Unknown Speaker  09:23
+Paste, no, but you don't want to sort by, you don't want to sort by Rg ID,
+
+Speaker 1  09:32
+because these aren't going to be in order. So it's not RG ID, it's just we need to, I need to get the sort to line up with the RG, whatever case, either good. I think what you do is you do a you get the ideas from your stream table that are not in the RG, and then you can cap the keys in the RG and the keys that are not in the RG.
+
+Matthias Miller  09:58
+And then you do a filler G for. Pipe list with a list, you know, mapping that across, yeah,
+
+Speaker 1  10:05
+yeah, I think it's pretty close. I mean, I think I'll, I'll get something in place, and then I'll look at it. It's not quite right, but I think I have enough to solve it.
+
+Matthias Miller  10:19
+Yeah, I think generally, just to recap, delete, delete rows without keys, yes, build a new list of keys.
+
+Unknown Speaker  10:36
+So RG keys plus green table, ease, not energy, right?
+
+Matthias Miller  10:56
+Something like that.
+
+Speaker 1  11:14
+Mean, does your filler G from pipe list, are you filling a key like a string key.
+
+Matthias Miller  11:24
+What I would do is I would add a step to be that sorts the string table based on the same order as the keys. Personally. How would you do that? It
+
+Matthias Miller  11:42
+would be a concat or G advanced of invoice id plus itemization id plus payment ID, so you have an array, array of keys. Oh, wow, that just majorly failed ink pen. Oh, no.
+
+Matthias Miller  12:05
+The you would have, you would build an array of those three keys in the RG. You'd build the new keys as a pipe list, and then you would sort the string table based on the index of that key in the pipe list, and now your string table has the RG rows, first new rows at the end. You throw push that in, and then it's just a straight from there, it's easy. From there, it's all downhill.
+
+Speaker 1  12:33
+Yeah. Okay, I'm curious what sort of if this is going to think saves laggy or not, although people are editing these things manually, either,
+
+Matthias Miller  12:44
+most of these are going to be triggered through x 30s, generally. And presumably, there's some kind of trigger somewhere, I don't know where that says, Man, I don't even know if we need to calculate, recalculate the string table most of the time. I
+
+Speaker 1  13:03
+what I currently have is I have a checkbox, just a simple Boolean field, and I'm manually flagging it. Okay, fields are edited. I don't know if that's the best way to do it. Yeah, I don't know either, but the risk there is that someone adds a field and forgets to set the flag.
+
+Matthias Miller  13:26
+No, okay, but all you have to do is add a can Edit Row, can delete row, can can add row that checks that, and nobody's going to forget each of the RGS do.
+
+Speaker 1  13:43
+So you're saying, Oh, I see, so you have to check the Boolean or extra Boolean field version. Okay, okay, yeah, I like that. That's easier.
+
+Matthias Miller  13:56
+That's bulletproof. Yeah,
+
+Unknown Speaker  13:59
+look at you being all smart. Oh, shucks.
+
+Matthias Miller  14:04
+I'll write that on
+
+Speaker 1  14:08
+my wall. Okay, well, I think that gets me what I need. It's not my favorite thing ever, but
+
+Matthias Miller  14:15
+it'll work. I know I haven't figured out a way to get you past your philology from pipe list aversion, but I've become friends with the the beast, I suppose.
+
+Speaker 1  14:26
+Yeah, you do what you have to do. Okay, yes.
+
+Matthias Miller  14:33
+Question on CRA stuff, I'm going to throw you on the other other
+
+Matthias Miller  14:42
+bye. Um, Dwayne and I are still in the middle of arguing about this but, but I'm right this time, he's right this time we're thinking about when it comes to auto pay and the portal. I'm not quite sure where we're in, but. Something along the lines of basically getting pre approval, the chart to pay the sales tax on the last payment, and when you're making the last payment manually, we'd say, well, do you want to pay the monthly rent? Do you want to go ahead and pay the full contract off? I think what makes sense, we went round and round, but we would incur the CRA payout either when you pay off the last month or or, I mean either way, when you when, anytime you pay off the last month, whether you fully pay off the contract or not, we incur the invoice for the payout
+
+Matthias Miller  15:42
+that we still need to talk about it. Never mind.
+
+Speaker 1  15:46
+Okay. How do you think incurring invoices should work? Is that another case where we should have Okay? Normally, we'll probably just have a schedule. What we Okay, the design we had in place was you had a scheduled task that sets a field, and then we have a trigger from there go see, does this contract need we add an invoice, right? There's going to be, like, I want to have all the logic for what invoice needs to be incurred when, in one place, or I'd love that, yeah, where, what you just say, what, where am I at this on this contract? Am I at the point where I need an, a CRA conversion, or that sort or, I guess, CRA payout, whatever it is, invoice, anything that's automated, that is just in 1x 30, and then we just check a check box and boom, that happens. Does that sound right or not?
+
+Matthias Miller  16:47
+Yes, with the one caveat that you need to be able to tell that thing how much money you want to pay in some capacity,
+
+Speaker 1  16:56
+okay, like if you want to, is that if you're wanting to add, like a security deposit or something paid a security deposit, or what,
+
+Matthias Miller  17:09
+if you're paying ahead or floating due dates, or if I'm paying $50 I have $49 due, or I'm paying two and a half months worth, oh, don't know or does that happen as part of the payment process? I mean, I think when you Yeah, I see you have to incur future invoices to have invoices far enough,
+
+Speaker 1  17:33
+yeah, yeah. Remember Jonathan and I had worked on that some I'm trying to remember where we had ended up. I think How had we done it? I don't remember if we ended up going with separate, with the same x 30 but different helper reports. Remember, was is that?
+
+Matthias Miller  18:03
+If you want to centralize logic the most sane thing to me,
+
+Speaker 1  18:21
+Well, okay, what I had update contract. Let me just share screen as I and my random mumblings would make more sense. We did a bit of work to consolidate the increment repeat list into one macro. So I just need to figure out where we're using that. I think we had another upper wonder. If it's, I bet it's this guy
+
+Matthias Miller  18:55
+where most the core logic is in a macro. And, yes,
+
+Speaker 1  19:00
+okay, here, okay, this was based off of payment intent. We were figuring out how much you were intending to pay, and if that was above a certain amount, then we automatically, we had an optional parameter for this guy, for the number of periods, bad, which then creates so if it's empty, then we do our we just say, Are there any upcoming fees, right invoices we need to incur? Yep. Otherwise, get all our unlocked rentals periods and give us the first two items, or whatever, however much you're wanting to pay, right, right? So I think, I think we actually have it fairly nicely. The unload
+
+Matthias Miller  19:55
+rental periods is really what you need to modify to say that, yes, yes.
+
+Speaker 1  20:00
+Yeah, it just needs to have some special handling for, like, CRA payout, and I don't know what all there might be other things too. Are there other things I can't I mean, like, what about we have something for paying to security deposit, but that's really easy to just do manually too, but that is a little different. Like, if you want to pay $100 into your security deposit,
+
+Matthias Miller  20:28
+if you want to pay it in, that's not automatic. That's that's separate paying out the security deposit.
+
+Unknown Speaker  20:35
+I mean, that's just a payment thing about
+
+Matthias Miller  20:37
+Yeah, I think so.
+
+Speaker 1  20:40
+So okay, then I think I'm, I'm happy with where we're at because we have it fairly centralized with this model,
+
+Matthias Miller  20:53
+with the unlocked rental periods, though, you still ideally be putting the CRA payout as part of the final period. Or could that be something that's past the last period, even though it's not technically read.
+
+Speaker 1  21:09
+I mean, I think you renamed the macro, and then, yes, it can be. It's just an unlogged invoices, unlocked contract invoices, and boom, there we're good to go. Okay?
+
+Matthias Miller  21:21
+And then you just know that sounds good, yeah, I think so. And you just know you ought to apply the CRA towards that. Yes, yes, okay, yeah. Sounds good. Continue ordering here. Okay.
+
+Speaker 1  21:33
+Sounds good. Thanks. Have fun. Thanks. Can.
+
+
+Transcribed by https://otter.ai
