@@ -1,0 +1,257 @@
+Matthias Miller  00:01
+Don't, I don't, right? It's just that, when you have a CRA what did that? That's fine. That's right.
+
+Unknown Speaker  00:07
+Of course, that isn't a game done today. Yeah, exactly.
+
+Matthias Miller  00:21
+Damn. Okay, so Dwayne says you're not gonna get oh, you're not. Can you hear me?
+
+Unknown Speaker  00:32
+Definitely not. I have no idea that you just asked if you if I can hear you. No, I can hear you. Oh, you can't. You can't. You can't hear me. Yes, I can. Sorry, there's loads of snark in there. You're not gonna get anything done today. Seth, I've spent my whole day in meetings between you and some other people. Are not my whole day, but at my day. Okay, so here's between you and investor tools. Yeah, exactly. I was telling Dwayne just a little bit about support, about tickets, but anyway, not much. Hopefully we'll have some bleed over here that's good. So,
+
+Matthias Miller  01:20
+okay, so you cannot auto pay and Customer Portal nowhere. Can you actually make final pay, a final payment for the last month on a CRA you have to do as an EPO, okay?
+
+Unknown Speaker  01:43
+Okay. So that means on auto pay. We force stop the last on the last payment, right?
+
+Unknown Speaker  01:51
+So you can't auto pay your EPO. You have to go.
+
+Matthias Miller  01:55
+You just get this. Well, in fact, we can make this simple, and we could never incur the 3036, month invoice, if, well, no, because you want to leave fees.
+
+Unknown Speaker  02:17
+Okay, is EPO always a manual process or, like, it's a separate right now button, or x 30 or something,
+
+Unknown Speaker  02:26
+you can do an EPO online
+
+Matthias Miller  02:29
+in the admin portal, Customer Portal, Customer Portal, yeah, okay,
+
+Unknown Speaker  02:33
+so, so, but we reached the last
+
+Unknown Speaker  02:36
+we just know what the EPO amount is, and then just run the charge. Yeah, so there's no good, there's no CRA payout sort of thing. Or is there? Oh, there
+
+Matthias Miller  02:49
+is on the EPO. If you're using the CRA towards the EPO, then you do CRA payout towards the payment. Okay?
+
+Unknown Speaker  03:01
+This is all basically what we talked about before.
+
+Matthias Miller  03:05
+Yes, right? It's just Yes. It's just one process, the EPA process. Do we
+
+Unknown Speaker  03:13
+want to warn? Do we want to warn, when setting up auto pay on a CRA contract, that the last and final payment is an APO and will not auto close the contract.
+
+Unknown Speaker  03:25
+What do you want to wear
+
+Unknown Speaker  03:27
+when setting up auto pay for for the CRA contract? We could,
+
+Unknown Speaker  03:38
+I think we're gonna have to update Nick's auto pay logic, because right now, I think it'll just run it to zero. We don't really have any differentiation between security deposit and auto pay. Which, how does the standard contract work? Do you have $500 in your security deposit? What does closure look like? Can they? Can they just run their auto pay to the end
+
+Unknown Speaker  04:01
+and then we write a check back for security deposit. Do you
+
+Unknown Speaker  04:15
+want to always stop auto pay when the balance reaches security deposit?
+
+Unknown Speaker  04:23
+If you're going to stop auto pay, then we got to figure out some way of notifying customer service that's happening. Because what's what really should happen at that point is we should either one, we should trigger a notification of the customer that says you have reached the end of your auto pay and you have a security like, give them a bunch of information, or we're going to note about customer support through it or something. I get really nervous about stopping auto pay, and then I get really nervous about trying to handle all those situations as well.
+
+Matthias Miller  04:49
+Well, I mean, auto trigger a note when the contract balance reaches zero and it's
+
+Unknown Speaker  04:55
+open that that is if you keep auto pay running. Yeah. Well, either way, and then you and then you refund,
+
+Matthias Miller  05:02
+well, you have to do something. I mean, it's some kind of what shouldn't have to
+
+Unknown Speaker  05:07
+they, if they set if they if they do an EPO online, or if they set up an auto pay that runs into zero, you should be able to handle this.
+
+Matthias Miller  05:15
+But you need to email them the certificate. Is that Sure. Need a customer approval to email them the certificate. No.
+
+Unknown Speaker  05:36
+So many variables in this, which is probably why RTO approaches just gave up and said, You can't do this variables. Well, okay, so in a perfect world, if you have a security deposit, then it would pay down your contract to the point of security deposit pay off, right? That would be perfect world. But what happens when? So if you set that up as a customer, and we say, Hey, by the way, you're sending an auto pay, your last and final payment will actually come from the security deposit that you have in here. What happens if they come in in the meantime and come in and actually up, you know, add money to their security deposit? Well, now all those that information changed, and I mean, part of me wants to say security deposit on the account. You go to set up auto pay, and it says, it gives you a note. It says your, here's your schedule, here's the last and final payment coming out of security deposit. Good, good. Same thing with interactively on the admin side. I mean, at that point we could, we could show it in the schedule of payments. We could show the last payment coming out of security deposit
+
+Unknown Speaker  06:43
+at whatever point it reaches.
+
+Unknown Speaker  06:46
+If you said that schedule, and then you say the customer says, no, no, don't do that, then okay, fine, put a stop.
+
+Unknown Speaker  06:53
+Dated, right? What's up? Why would they not want to use the security deposit?
+
+Unknown Speaker  07:00
+I don't know of any reasons people do funny things. Go ahead,
+
+Unknown Speaker  07:08
+can you open a contract? You go to the auto pay section on the contract.
+
+Unknown Speaker  07:19
+So, yeah, that schedules down there. So if we in that in our little preview there, that's really what Jonathan's running off of.
+
+Unknown Speaker  07:37
+Okay, so if we do, oh,
+
+Unknown Speaker  07:44
+and I'm just thinking, what if our that virtual RG there, if, if our amount, you run it down to a balance of zero, you have a column for from security deposit or something like that. That's just an amount. And so we will run it down to zero, but then we automatically on your last payment or two, however big your security deposit is, use that. I don't know.
+
+Unknown Speaker  08:10
+I think, I think, okay, let's talk about this from the admin side. I think it would make a valuable conversation. Is that if you scheduled a monthly auto pay and the schedule showed it going all the way down. Included showing money coming out of the security deposit. And you say, Hey, Mr. Customer, I show that your last and final payment. I feel like it would create a lot of good conversations with a customer if you do the exact same thing online when they're setting up an auto pay.
+
+Matthias Miller  08:38
+So you would show date. I mean payment, amount, security used, security deposit, or security deposit used in the New Balance. And the last row would be if it's maybe it's five or it's probably less than five or seven times. It's like 300 304, 93 with $2,783 coming out of security deposit, which takes your balance down to zero.
+
+Unknown Speaker  09:00
+So with the are you thinking the amount is just the is the amount they're actually paying the security department? Sure. I mean, I think used, Yeah,
+
+Matthias Miller  09:14
+nobody's going to be upset if you charge them less than their own payment
+
+Unknown Speaker  09:18
+exactly, which is why I think you just build it in, and it's, it's a little bit of complexity. It's not terrible. I don't think is it actually, that's probably a question for Nick, but I don't think it's awful.
+
+Unknown Speaker  09:35
+Seems sane enough. I in a
+
+Unknown Speaker  09:39
+if you ask me if I'm the customer on the other side, and I said, Look, I want to put this thing on auto pay. Okay. Well, what do you want? So you say, I want on the first a month and just run it. And so you Okay, so that means, and you explain to the customer, you know, you're going to have this payment con on this date and this date and this date and this. Date, and this date and the final payment comes out of your security deposit. On this date, you okay with that? And they say, Well, can you send me a schedule? So you print the thing out. You send them a schedule. He said, you like it? Yep, go done. It just makes for good conversation. Like, literally, you can put it on, on brainless mode. Does?
+
+Matthias Miller  10:15
+Does this? Do you EPO on a security deposit? I You think,
+
+Unknown Speaker  10:33
+in Okay, in a perfect world, the customer would say, but okay, when the balance gets to this, when, if the if it gets to this point, then stop auto pay and run an EPO number of this in a perfect world that should be another auto pay RG line that specifically identifies it as an EPO, I don't think you can on an auto pay. You can't run it down and run an EPO that would not make logical sense, because then, then at some point like that introduces a whole nother conversation. If the customer says, Well, I want to run, I want to run, auto pay down to this point, and then, I mean, the other option is we put in another row in that, in that schedule of RG that shows the EPO number as well. And then you literally can send to the customer and say, EPO, EPO. Okay, right there. Stop it, right there. And then run, run the EPO line item. I
+
+Matthias Miller  11:33
+don't understand why a customer wouldn't do an EPO at the point that EPO drops at or below security deposit amount.
+
+Unknown Speaker  11:41
+They would like that. Do I want to tell them that?
+
+Unknown Speaker  11:44
+Well, incentives, well, I get it. No. There's no
+
+Unknown Speaker  11:51
+RTO company that wants to tell them that, like that requires some logic from the customer to really request that, right? Which, I mean, we could give them that we could incentivize them by adding the EPO number in the scheduler in the schedule
+
+Matthias Miller  12:07
+column, I mean, but if you're going to do that, then really your preview automatic payments should show every month of rent until your security deposit drops to zero and when we start Pulling out of your security deposit. Or, except what rent, company like, why wouldn't you want to collect rent and then just write a check for the security deposit you've got more money on hand? Like,
+
+Unknown Speaker  12:34
+okay, let's rate for simplicity. The simplicity side, this says we can, we can run auto pay down to zero, including pulling the last final payments out of the security box. That makes 100% sense. And I think that's where we should stop
+
+Matthias Miller  12:51
+final payment, or payments whatever. Well, I mean, we'll just run deposit now. We'll run to the end of the contract with auto pay, pulling out of security deposit.
+
+Unknown Speaker  13:02
+Yeah, I mean, so we would, we're going to run that contract balance down to the point that it equals
+
+Unknown Speaker  13:08
+security deposit. If your security deposit is several months, what do you do? Like it's three months
+
+Matthias Miller  13:16
+schedule, you say? So then March, April 1 $0 amount, 507 76 out of security deposit. May, 507 76 out of security deposit.
+
+Unknown Speaker  13:27
+So I do think, okay, ideally, you would run the balance down until you have a until the security deposit equals the contract balance, plus whatever amount it takes, less than a payment amount. So like your final payment, your final transaction to the customer would be a partial payment, and the security to cover deposit covers the rest, and then it
+
+Unknown Speaker  13:52
+closes the but isn't that an EPO if you're paying off rent
+
+Unknown Speaker  13:56
+on that, unless the customer,
+
+Unknown Speaker  13:58
+it's based off a contract balance, but
+
+Unknown Speaker  14:01
+so you're going to close it three months early.
+
+Unknown Speaker  14:05
+The potential exists. Yes, you would be closing it three months early because you have the you have the money there to do it. Now you're in another conundrum, because what if the customer says because now you really should tell the customer, hey, you've reached the point where the security deposit actually is a value enough to like that. Would you could actually
+
+Matthias Miller  14:27
+close your contractor earlier? See so many variables? Well, pretty good. Trying to make it good for the customer, trying to get make it good for the RTO company, or trying to make it good for their management company. Yeah. Management
+
+Matthias Miller  14:47
+Company. I mean, realistically though, you can't use the security deposit until you incur rent, so you can't close the contract early. They haven't rented,
+
+Unknown Speaker  14:55
+okay? So then you would start pulling from
+
+Unknown Speaker  14:59
+at. At the point
+
+Matthias Miller  15:03
+when you incur an invoice, if, if there's enough money, if security deposit exceeds the rental balance, you would start paying auto paying invoices off of the rental balance, off of the security deposit. I mean security deposit. Mm, but you can't close the contract until they've rented it, because otherwise you need to do an EPO. They have to rent it. They have to, I'm repeating myself,
+
+Unknown Speaker  15:35
+okay, the easy option is to actually let them pay all the way to zero, and we give them security deposit back. That's the easy option. I don't like the easy yes, because ideally what you would you would be able to say, Okay, we've reached the point where it makes sense now to pull from security deposit. And like each month, like, each month that it's pulling now, it comes out of the security deposit, and we end up everything at zero. Security Deposit, zero contract balance at zero, right? But at some like, at some point you have to look at the balance of the contract. You have to look at the security deposit and say, you know, we're going to pull a partial payment from the customer at this point, and the rest of these we're going rest of these we're going to, over the next couple of months, we're
+
+Unknown Speaker  16:25
+going to pull from
+
+Unknown Speaker  16:29
+security deposit, right? We wouldn't that makes, that makes more that makes more sense to me than trying to close early, right?
+
+Matthias Miller  16:36
+I think would that be part of the auto payment like, okay, so then, then you would show it on the auto pay schedule. This is the auto payment you are going to pay this many months.
+
+Unknown Speaker  16:45
+Good. Can you would you want to set it on auto pay road to use security deposit at the end, or do you not want to give the option? Do
+
+Unknown Speaker  17:04
+so you're saying where with, where with, so as a, as a, when you're setting up in the RG line, you would have an option to check, use security deposit at end of contract, or not, or not, use
+
+Unknown Speaker  17:18
+it essentially, yes. I mean, yeah, yeah,
+
+Unknown Speaker  17:22
+with the auto check, yes, sure, sure, okay, that
+
+Unknown Speaker  17:30
+I don't care. Well, we can also just say we always do that.
+
+Unknown Speaker  17:35
+We want to make it intentional, to actually say we do not want to use security deposit and incur work for the for the management team to actually go write the money back to the customer. So we want to, we want to make it defaulted to the point where it's like the customer has to specifically say, Yes, please do not use my security deposit to finalize this contract. I don't know why they would want to do that, but there's going to be some, some person that's going to
+
+Matthias Miller  18:00
+want, okay, so then. But when they said auto pay online, they say note, this will use your security deposit to pay off the contract if you don't do want that, pick up a phone or customer support. 100% okay. So then here.
+
+Unknown Speaker  18:13
+So do we actually even want to field it in the RG, or do we just say you had you just have to set an end date on your auto pay.
+
+Unknown Speaker  18:21
+I do think there is this other setting that we potentially could add, and that is to say, you check a box that says, use my security deposit when it equals EPO.
+
+Unknown Speaker  18:35
+I thought that was exactly what you didn't want to do.
+
+Matthias Miller  18:38
+Well, I don't advertise it, but boy, would it be nice to let it just happen automatically? Is what you're saying.
+
+Unknown Speaker  18:43
+Like, no, no, no, see, but see, it's like, okay, how nice of an RTO company do you want to be? Because at that point you teach your customer service reps whether to use it or not. I almost kind of want to put it there you so what that, what I'm saying, what I'm saying in that Seth, is that you have to come up with fancy math to figure out, you know, if you check the box, use my security deposit when it reaches the EPO, you got to figure out, what the, what the small amount of payment and this, and you have to make all that math come out. I don't even know how you begin to do that, but do you
+
+Unknown Speaker  19:26
+want to pay us to do that? That might actually be a valid question for I don't. I don't know if we want to support that right away. I would.
+
+Unknown Speaker  19:33
+I would, let's punt it. I agree with that idea. Let's punt that down the road, because feature that is a beautiful feature for somebody to say, You know what? Well, what? Exactly this feature? Yes, I agree what you said. It's a
+
+
+Transcribed by https://otter.ai
