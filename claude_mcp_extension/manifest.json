@@ -1,0 +1,30 @@
+{
+  "manifest_version": "0.3",
+  "name": "codehaus-content-mcp",
+  "display_name": "Codehaus Content MCP Server",
+  "version": "1.0.0",
+  "description": "MCP server providing search and retrieval tools for codehaus-content repository including documentation and transcripts",
+  "author": {
+    "name": "Matthias Miller"
+  },
+  "server": {
+    "type": "binary",
+    "entry_point": "find_project_and_run.py",
+    "mcp_config": {
+      "command": "python3",
+      "args": ["${__dirname}/find_project_and_run.py"],
+      "env": {
+        "CODEHAUS_CONTENT_ROOT_DIR": "${user_config.codehaus_content_root_dir}"
+      }
+    }
+  },
+  "user_config": {
+    "codehaus_content_root_dir": {
+      "type": "string",
+      "title": "Codehaus Content Root Directory",
+      "description": "The root directory of the codehaus-content project",
+      "default": "/Users/matthiasmiller/Documents/GitHub/codehaus-content",
+      "required": true
+    }
+  }
+}
