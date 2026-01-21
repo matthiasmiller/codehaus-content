@@ -98,7 +98,7 @@ def _has_directory_changed_since_revision(content_type: str, revision: str) -> b
         return True
 
 
-def _tokenize(text: str) -> List[str]:
+def tokenize(text: str) -> List[str]:
     """Tokenize text for search indexing."""
     if not text:
         return []
@@ -182,7 +182,7 @@ def _process_file(
             'content_type': content_type
         }
     
-    tokens = _tokenize(content)
+    tokens = tokenize(content)
     documents.append(doc_data)
     tokenized_documents.append(tokens)
 
@@ -238,7 +238,7 @@ def _build_index(content_type: str) -> dict:
     }
 
 
-def _build_or_load_index(content_type: str) -> dict:
+def build_or_load_index(content_type: str) -> dict:
     """Build or load search index for a content type.
     
     Uses git revision tracking to determine if the index needs to be rebuilt.
@@ -348,7 +348,7 @@ def rebuild_index(content_type: Optional[str] = None) -> dict:
         if os.path.exists(index_file):
             os.remove(index_file)
         
-        index_data = _build_or_load_index(ct)
+        index_data = build_or_load_index(ct)
         results[ct] = len(index_data['documents'])
     
     return results

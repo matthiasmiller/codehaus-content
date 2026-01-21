@@ -143,13 +143,13 @@ def search(
     
     for ct in content_types_to_search:
         # Build or load index
-        index_data = content_index._build_or_load_index(ct)
+        index_data = content_index.build_or_load_index(ct)
         
         if not index_data['documents']:
             continue
         
         # Tokenize query
-        query_tokens = content_index._tokenize(query)
+        query_tokens = content_index.tokenize(query)
         
         if not query_tokens:
             continue
@@ -211,7 +211,7 @@ def list_documents(
     
     for ct in content_types_to_list:
         # Build or load index
-        index_data = content_index._build_or_load_index(ct)
+        index_data = content_index.build_or_load_index(ct)
         
         for doc_data in index_data['documents']:
             doc_title = doc_data['document_title']
@@ -271,7 +271,7 @@ def get_document(document_id: str, content_type: Optional[str] = None) -> Option
     content_types_to_search = [content_type] if content_type else get_content_types()
     
     for ct in content_types_to_search:
-        index_data = content_index._build_or_load_index(ct)
+        index_data = content_index.build_or_load_index(ct)
         
         for doc_data in index_data['documents']:
             if doc_data['document_id'] == document_id:
