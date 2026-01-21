@@ -8,12 +8,7 @@ from typing import List, Optional, Tuple
 from rank_bm25 import BM25Okapi
 
 from . import content_index
-from .content_util import (
-    get_content_types,
-    read_file_content,
-    DocumentInfo,
-    SearchResult
-)
+from . import content_util
 
 
 def _generate_snippet(content: str, query_tokens: List[str], max_words: int = 150) -> str:
@@ -61,7 +56,7 @@ def search(
     content_type: Optional[str] = None,
     query: str = "",
     top_k: int = 5
-) -> List[SearchResult]:
+) -> List[content_util.SearchResult]:
     """Find documents matching a query, ranked by relevance using BM25.
     
     Args:
@@ -75,7 +70,7 @@ def search(
     if not query or not query.strip():
         return []
     
-    content_types_to_search = [content_type] if content_type else get_content_types()
+    content_types_to_search = [content_type] if content_type else content_util.get_content_types()
     
     all_results = []
     
@@ -107,12 +102,12 @@ def search(
             # Read content from file if not in index (for cached indices)
             content = doc_info.get('content')
             if not content:
-                content = read_file_content(doc_info['file_path'])
+                content = content_util.read_file_content(doc_info['file_path'])
             
             # Generate snippet
             snippet = _generate_snippet(content, query_tokens, max_words=150)
             
-            all_results.append(SearchResult(
+            all_results.append(content_util.SearchResult(
                 document_id=doc_info['document_id'],
                 document_title=doc_info['document_title'],
                 file_path=doc_info['file_path'],
@@ -131,7 +126,7 @@ def list_documents(
     filter_name: Optional[str] = None,
     page: int = 1,
     page_size: int = 50
-) -> Tuple[List[DocumentInfo], int]:
+) -> Tuple[List[content_util.DocumentInfo], int]:
     """Return a list of all available documents.
     
     Args:
@@ -143,7 +138,7 @@ def list_documents(
     Returns:
         Tuple of (List of DocumentInfo objects, total count)
     """
-    content_types_to_list = [content_type] if content_type else get_content_types()
+    content_types_to_list = [content_type] if content_type else content_util.get_content_types()
     
     all_documents = []
     
@@ -161,7 +156,7 @@ def list_documents(
             # Read file to get word count
             content = doc_data.get('content', '')
             if not content:
-                content = read_file_content(doc_data['file_path'])
+                content = content_util.read_file_content(doc_data['file_path'])
             
             word_count = len(content.split())
             
@@ -169,7 +164,7 @@ def list_documents(
                 'relative_path': doc_data.get('relative_path'),
             }
             
-            all_documents.append(DocumentInfo(
+            all_documents.append(content_util.DocumentInfo(
                 document_id=doc_data['document_id'],
                 document_title=doc_title,
                 file_path=doc_data['file_path'],
@@ -196,7 +191,7 @@ def list_documents(
     return paginated_documents, total_count
 
 
-def get_document(document_id: str, content_type: Optional[str] = None) -> Optional[DocumentInfo]:
+def get_document(document_id: str, content_type: Optional[str] = None) -> Optional[content_util.DocumentInfo]:
     """Retrieve a specific document by ID.
     
     Args:
@@ -206,7 +201,7 @@ def get_document(document_id: str, content_type: Optional[str] = None) -> Option
     Returns:
         DocumentInfo object, or None if document not found
     """
-    content_types_to_search = [content_type] if content_type else get_content_types()
+    content_types_to_search = [content_type] if content_type else content_util.get_content_types()
     
     for ct in content_types_to_search:
         index_data = content_index.build_or_load_index(ct)
@@ -215,7 +210,7 @@ def get_document(document_id: str, content_type: Optional[str] = None) -> Option
             if doc_data['document_id'] == document_id:
                 content = doc_data.get('content', '')
                 if not content:
-                    content = read_file_content(doc_data['file_path'])
+                    content = content_util.read_file_content(doc_data['file_path'])
                 
                 word_count = len(content.split())
                 
@@ -223,7 +218,7 @@ def get_document(document_id: str, content_type: Optional[str] = None) -> Option
                     'relative_path': doc_data.get('relative_path'),
                 }
                 
-                return DocumentInfo(
+                return content_util.DocumentInfo(
                     document_id=doc_data['document_id'],
                     document_title=doc_data['document_title'],
                     file_path=doc_data['file_path'],

@@ -25,15 +25,8 @@ from typing import Optional
 
 from mcp.server.fastmcp import FastMCP
 
-from .content_util import (
-    get_content_types,
-)
-from .content_search import (
-    list_documents,
-    search,
-    get_document,
-    rebuild_index,
-)
+from . import content_util
+from . import content_search
 
 
 # Use FastMCP if available (newer SDK)
@@ -58,7 +51,7 @@ def content_search_tool(
         return {"error": "query parameter is required"}
     
     try:
-        results = search(content_type=content_type, query=query, top_k=top_k)
+        results = content_search.search(content_type=content_type, query=query, top_k=top_k)
         
         result_list = []
         for res in results:
@@ -95,7 +88,7 @@ def content_get_document_tool(
         return "Error: document_id parameter is required"
     
     try:
-        doc = get_document(document_id, content_type=content_type)
+        doc = content_search.get_document(document_id, content_type=content_type)
         
         if not doc:
             return f"Error: Document {document_id} not found"
@@ -136,7 +129,7 @@ def content_list_documents_tool(
         page_size: Number of documents per page. Defaults to 50.
     """
     try:
-        documents, total_count = list_documents(
+        documents, total_count = content_search.list_documents(
             content_type=content_type,
             filter_name=filter,
             page=page,
@@ -188,7 +181,7 @@ def content_rebuild_index_tool(content_type: Optional[str] = None) -> dict:
         content_type: Content type to rebuild ('docs', 'rtopro-help', 'otter', or None for all)
     """
     try:
-        results = rebuild_index(content_type=content_type)
+        results = content_search.rebuild_index(content_type=content_type)
         
         return {
             'content_types': list(results.keys()),
@@ -207,7 +200,7 @@ def content_rebuild_index_tool(content_type: Optional[str] = None) -> dict:
 def content_list_types_tool() -> dict:
     """List all available content types."""
     try:
-        types = get_content_types()
+        types = content_util.get_content_types()
         return {
             'content_types': types,
             'message': f'Available content types: {", ".join(types)}',
