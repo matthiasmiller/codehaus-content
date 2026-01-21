@@ -13,7 +13,7 @@ from pathlib import Path
 
 import html2text
 
-from . import content_util
+import content_util
 
 # Try to import the client - adjust path as needed
 import invwebservices
@@ -146,11 +146,11 @@ def update_client_proposals():
         # Clean the name for filesystem use
         clean_name = content_util.clean_filename(proposal_name)
         
-        # Determine folder name (using DocumentID-DocumentTitle format)
-        folder_name = f'{proposal_id}-{clean_name}'
+        # Determine folder name (using "DocumentTitle [DocumentID]" format)
+        folder_name = f'{clean_name} [{proposal_id}]'
         folder_path = os.path.join(proposals_dir, folder_name)
         
-        # Determine file name (using "basename [ID]" format like otter)
+        # Determine file name (using "DocumentTitle [DocumentID].md" format)
         file_name = f'{clean_name} [{proposal_id}].md'
         file_path = os.path.join(folder_path, file_name)
         
