@@ -213,12 +213,14 @@ def update_client_proposals():
         prop_meta = metadata['proposals'][proposal_id]
         
         # Check if proposal name changed and rename folder if needed
-        if prop_meta['current_folder_name'] and prop_meta['last_proposal_name'] != proposal_name:
+        if prop_meta['current_folder_name'] and prop_meta['current_folder_name'] != folder_name:
             old_folder_path = os.path.join(proposals_dir, prop_meta['current_folder_name'])
             if os.path.exists(old_folder_path) and not os.path.exists(folder_path):
                 print(f'Renaming proposal folder: {prop_meta["current_folder_name"]} -> {folder_name}')
                 os.rename(old_folder_path, folder_path)
-        
+            else:
+                print(f'Warning: Proposal folder already exists: {folder_name}')
+                
         # Update proposal metadata
         prop_meta['current_folder_name'] = folder_name
         prop_meta['last_proposal_name'] = proposal_name
@@ -241,7 +243,7 @@ def update_client_proposals():
         section_meta = prop_meta['sections'][section_id]
         
         # Check if section name changed and rename file if needed
-        if section_meta['current_file_name'] and section_meta['last_section_name'] != section_name:
+        if section_meta['current_file_name'] and section_meta['current_file_name'] != file_name:
             old_file_path = os.path.join(folder_path, section_meta['current_file_name'])
             if os.path.exists(old_file_path) and not os.path.exists(file_path):
                 print(f'Renaming section file: {section_meta["current_file_name"]} -> {file_name}')

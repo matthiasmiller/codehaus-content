@@ -102,6 +102,10 @@ def clean_filename(name: str) -> str:
     if len(cleaned) > max_length:
         cleaned = cleaned[:max_length]
     
+    # Brackets have special meaning to designate IDs.
+    cleaned = cleaned.replace('[', '(')
+    cleaned = cleaned.replace(']', ')')
+
     # Ensure it's not empty after cleaning
     if not cleaned:
         return 'unnamed'
