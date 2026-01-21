@@ -1,0 +1,127 @@
+27.2. Buyer Payment - Math Calculations in the Buyer Grade $ Field
+
+  
+
+
+Requirements
+
+Tim Reitz 04/29/2025: Moved to [[[IN11418](https://zch.apphosting.zone/Detail/Edit/2?RecordType=Incidents&NumberID=-11420&)]] - ZGW - Buyer Payment - Math Calculations in the Buyer Grade $ Field.
+
+  
+
+
+  
+
+
+The Phase 1 spec originally included a special feature on the Buyer Payment Detail Screen to allow the user to enter a mathematical formula into a "Buyer Grade $" field, to reduce the need for external calculations, but that feature has been removed in the interest of scope reduction. Users can still enter a number value in that field. The design spec for the mathematical field has been moved here as an optional add-on that could be implemented in the future if the need would arise. In the meantime, users will manually close out PO's
+
+  
+
+
+Estimated Cost: up to $500
+
+  
+
+
+Spec:
+
+  
+
+
+Buyer Payment Detail Screen |  Payment Details Section:
+
+  * Set / Update (button; to the right of "Buyer Grade $"; clicking this displays a prompt with the following:
+    * Buyer Grade $ (required; plain text field, displaying as a number; 2 decimals; for the user to enter a dollar amount or mathematical formula; with the following behaviors: 
+      * exact implementation TBD; 
+      * if a mathematical formula (using +, -, *, / as operators) is entered:
+        * calculations are performed using standard mathematical order of operations;
+        * when the calculations are done, the formula is moved to the "Buyer Grade $ Formula" field, and the resulting value is displayed in the "Buyer Grade $" field;
+      * acceptable entries are numbers, decimal point, and +, -, *, and /; commas, spaces, and $ are automatically removed, and errors are given for other characters)
+  * Buyer Grade $ Formula (no label; auto-set and read-only; displays the entered formula (if one exists) from the corresponding field on the Delivery Ticket record, in gray font) 
+
+
+
+  
+
+
+Delivery Ticket Record | Documentation section:
+
+  * Buyer Grade $ (number; 2 decimals; used for documenting the Buyer's assessed post-discount value for lumber + Other Line Items from the Grade Report; with the following behaviors/notes: 
+    * required if one or more attachments are included in the "Buyer Grade Report Files" embedded spreadsheet;
+    * note that this field does not support entering a formula (unlike the "Buyer Grade $" field on the Buyer Payment record); 
+    * this is normally automatically set from the "Buyer Grade $" field on a linked Buyer Payment record; 
+    * if a number is entered manually here, that number remains displayed here and the Formula is cleared;
+    * this value is used as the benchmark for knowing when the Buyer has paid in full, in situations where the "Total Buyer Payment $" ≠ "Buyer Invoice $") 
+  * Formula (auto-set and read-only; displays the entered formula if one was entered into the "Buyer Grade $" on the linked Buyer Payment record)
+
+
+
+  
+
+
+Development Specification
+
+Tim Reitz 01/04/2025: You can let me know once you determine the implementation details for the mathematical field, so I can add in the spec. 
+
+_DD: Tim Reitz 01/03/2025: Ellis said that there's a chance of the math feature costing up to $500. It might be a good bit less, but there's a chance. 
+
+_VA / _EM: Tim Reitz 01/07/2025: Client is fine with deferring this.
+
+  
+
+
+Tim Reitz 01/09/2025: Mockup clips: 
+
+Buyer Payment: 
+
+![](data:image/png;base64,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)
+
+Delivery Ticket: 
+
+![](data:image/png;base64,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)
+
+  
+
+
+Tim Reitz 01/09/2025: Old dev spec from the Delivery Ticket:
+
+[ ] USA: Code the "Buyer Grade $" mathematical field:
+
+[ ] Buyer Grade $ (editable macro; string; displays the "Buyer Grade $" as a string; if a formula is entered, stores the formula in the "Buyer Grade $ Formula" field and the results in the "Buyer Grade $ Numeric" hidden field) 
+
+  * Make the Formula field a readonly 
+  * EvalSimpleMathString( vString, vNumDecimals): 
+    * Simple left to right formula (without parentheses or any precedence).
+    * Discard commas and spaces and $
+    * Everything else should be numbers, decimal point, or +-/*
+    * Give error for any other text (Remove all others and show offending characters): "The following characters are not supported: "
+    * Give error if the first character is not a number or decimal "The formula cannot start with an operator." (we recognize this will give an error for an initial negative number)
+    * Replace each operator with | + operator
+    * Use a list substitute that does the math on this one item at a time
+    * Just return NA for any errors (including div/zero). People will quickly figure out that the formula was invalid.
+    * Rounds to the specified number of decimals for the hidden numeric field
+    * Write catalog unit tests. Target 6 hours for USA.
+    * Ellis will underwrite 50% of it.
+
+
+
+Assign vResult = NA;
+
+[ ] Buyer Grade $ Formula (plain text; auto-set and read-only; displays the formula entered into the "Buyer Grade $" editable macro) 
+
+[ ] Buyer Grade $ Numeric (hidden numeric field; 2 decimals; displays the results of the formula entered into the "Buyer Grade $ Formula" field)
+
+_DD: Several options:
+
+  * Only support +-. probably 100-200.
+  * [X] Support +-*/ with operator precedence. Probably 100-200.
+
+
+  * Tim Reitz 12/17/2024: Client chooses this one. 
+
+
+  * Support +-*/ with left-to-right precedence. Probably 400-600.
+
+
+
+_PRICING. Finishing pricing once confirmed.

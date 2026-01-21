@@ -1,0 +1,49 @@
+16.0.5.3. EITC School Detail Report
+
+This is a report of school financial information.
+
+  
+
+
+Accessed from: FaithBuilders Scholarship Services | EITC Accounting | EITC School Detail Report
+
+  
+
+
+Title: Accounting School Detail
+
+  
+
+
+Columns: 
+
+  * Name
+  * Beginning Balance
+  * Donations Received
+  * Admin Fee
+  * School Paperwork Fees
+  * School Check Amounts (Distributions)
+  * Ending Balance
+
+
+
+  
+
+
+Grouped by: N/A
+
+  
+
+
+Sorted by: School Name
+
+  
+
+
+Filters: 
+
+  * Start Date (blank = all) (defaults to the beginning of the current fiscal year)
+  * End Date (blank = all)
+  * Active (checkbox; defaults to checked)
+
+

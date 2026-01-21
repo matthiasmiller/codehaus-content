@@ -1,0 +1,25 @@
+5\. Workflow: Packaging
+
+  
+
+
+Requirements
+
+Once an order has been processed, it will be ready for packaging. We will also have a kiosk where the meat is packaged. The kiosk will:
+
+  * Prompt for the order number
+  * Select an item and mark it as packaged.
+
+
+
+  
+
+
+Development Specification
+
+Ellis Miller 06/10/2019: 
+
+  * CCI - 0
+  * Matthias - 0.5 day
+
+

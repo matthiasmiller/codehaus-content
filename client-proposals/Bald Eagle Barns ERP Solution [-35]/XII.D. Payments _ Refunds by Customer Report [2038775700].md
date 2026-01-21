@@ -1,0 +1,3 @@
+12.4. Payments / Refunds by Customer Report
+
+TODO: presumably the Payments / Refunds report, but for a selected customer...
