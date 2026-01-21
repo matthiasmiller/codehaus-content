@@ -215,82 +215,130 @@ def _generate_snippet(content: str, query_tokens: List[str], max_words: int = 15
     return snippet
 
 
+def _extract_doc_title(filename: str, content_type: str) -> str:
+    """Extract document title from filename.
+    
+    Args:
+        filename: The filename (without path)
+        content_type: Content type ('docs', 'rtopro-help', 'otter')
+        
+    Returns:
+        Document title string
+    """
+    if content_type == 'otter':
+        # Extract title from filename (remove timestamp and ID)
+        # Format: 2025-08-07-23-01-27 Lesson 1A [223PAFH4ESDDYSLT].txt
+        title_match = re.search(r'\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\s+(.+?)\s+\[', filename)
+        if title_match:
+            return title_match.group(1)
+        # Fallback: remove extension
+        return filename.rsplit('.', 1)[0] if '.' in filename else filename
+    else:
+        # For docs and rtopro-help: remove extension and replace separators
+        base_name = filename.rsplit('.', 1)[0] if '.' in filename else filename
+        return base_name.replace('_', ' ').replace('-', ' ')
+
+
+def _process_file(
+    file_path: str,
+    filename: str,
+    base_dir: str,
+    content_type: str,
+    documents: list,
+    tokenized_documents: list
+) -> None:
+    """Process a single file and add it to the index.
+    
+    Args:
+        file_path: Full path to the file
+        filename: Just the filename (without path)
+        base_dir: Base directory for relative path calculation
+        content_type: Content type ('docs', 'rtopro-help', 'otter')
+        documents: List to append document info to
+        tokenized_documents: List to append tokenized content to
+    """
+    content = _read_file_content(file_path)
+    if not content:
+        return
+    
+    # Extract document ID and title based on content type
+    if content_type == 'otter':
+        rel_path = os.path.relpath(file_path, base_dir)
+        doc_id = rel_path.replace('/', '_').replace('\\', '_').replace('.txt', '')
+        doc_title = _extract_doc_title(filename, content_type)
+        doc_data = {
+            'document_id': doc_id,
+            'document_title': doc_title,
+            'file_path': file_path,
+            'content': content,
+            'content_type': content_type,
+            'relative_path': rel_path
+        }
+    else:
+        # For docs and rtopro-help
+        extension = '.md'
+        if filename.endswith(extension):
+            doc_id = filename[:-len(extension)]
+        else:
+            doc_id = filename.rsplit('.', 1)[0] if '.' in filename else filename
+        doc_title = _extract_doc_title(filename, content_type)
+        doc_data = {
+            'document_id': doc_id,
+            'document_title': doc_title,
+            'file_path': file_path,
+            'content': content,
+            'content_type': content_type
+        }
+    
+    tokens = _tokenize(content)
+    documents.append(doc_data)
+    tokenized_documents.append(tokens)
+
+
 def _build_index(content_type: str) -> dict:
     """Build search index for a content type."""
     documents = []
     tokenized_documents = []
     
+    # Get base directory and file extension based on content type
     if content_type == 'docs':
         base_dir = _get_docs_dir()
-        if os.path.exists(base_dir):
-            for filename in os.listdir(base_dir):
-                if filename.endswith('.md'):
-                    file_path = os.path.join(base_dir, filename)
-                    content = _read_file_content(file_path)
-                    if content:
-                        doc_id = filename[:-3]  # Remove .md extension
-                        doc_title = doc_id.replace('_', ' ').replace('-', ' ')
-                        tokens = _tokenize(content)
-                        documents.append({
-                            'document_id': doc_id,
-                            'document_title': doc_title,
-                            'file_path': file_path,
-                            'content': content,
-                            'content_type': content_type
-                        })
-                        tokenized_documents.append(tokens)
-    
+        file_extension = '.md'
+        walk_subdirs = False
     elif content_type == 'rtopro-help':
         base_dir = _get_rtopro_help_dir()
-        if os.path.exists(base_dir):
-            for filename in os.listdir(base_dir):
-                if filename.endswith('.md'):
-                    file_path = os.path.join(base_dir, filename)
-                    content = _read_file_content(file_path)
-                    if content:
-                        doc_id = filename[:-3]  # Remove .md extension
-                        doc_title = doc_id.replace('_', ' ').replace('-', ' ')
-                        tokens = _tokenize(content)
-                        documents.append({
-                            'document_id': doc_id,
-                            'document_title': doc_title,
-                            'file_path': file_path,
-                            'content': content,
-                            'content_type': content_type
-                        })
-                        tokenized_documents.append(tokens)
-    
+        file_extension = '.md'
+        walk_subdirs = False
     elif content_type == 'otter':
         base_dir = _get_otter_dir()
-        if os.path.exists(base_dir):
-            # Walk through all subdirectories
-            for root, dirs, files in os.walk(base_dir):
-                for filename in files:
-                    if filename.endswith('.txt'):
-                        file_path = os.path.join(root, filename)
-                        content = _read_file_content(file_path)
-                        if content:
-                            # Create a document ID from the path
-                            rel_path = os.path.relpath(file_path, base_dir)
-                            doc_id = rel_path.replace('/', '_').replace('\\', '_').replace('.txt', '')
-                            # Extract title from filename (remove timestamp and ID)
-                            # Format: 2025-08-07-23-01-27 Lesson 1A [223PAFH4ESDDYSLT].txt
-                            title_match = re.search(r'\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\s+(.+?)\s+\[', filename)
-                            if title_match:
-                                doc_title = title_match.group(1)
-                            else:
-                                doc_title = filename[:-4]  # Remove .txt
-                            
-                            tokens = _tokenize(content)
-                            documents.append({
-                                'document_id': doc_id,
-                                'document_title': doc_title,
-                                'file_path': file_path,
-                                'content': content,
-                                'content_type': content_type,
-                                'relative_path': rel_path
-                            })
-                            tokenized_documents.append(tokens)
+        file_extension = '.txt'
+        walk_subdirs = True
+    else:
+        return {
+            'documents': documents,
+            'tokenized_documents': tokenized_documents
+        }
+    
+    if not os.path.exists(base_dir):
+        return {
+            'documents': documents,
+            'tokenized_documents': tokenized_documents
+        }
+    
+    # Process files
+    if walk_subdirs:
+        # Walk through all subdirectories (for otter)
+        for root, dirs, files in os.walk(base_dir):
+            for filename in files:
+                if filename.endswith(file_extension):
+                    file_path = os.path.join(root, filename)
+                    _process_file(file_path, filename, base_dir, content_type, documents, tokenized_documents)
+    else:
+        # Process files directly in base directory (for docs and rtopro-help)
+        for filename in os.listdir(base_dir):
+            if filename.endswith(file_extension):
+                file_path = os.path.join(base_dir, filename)
+                _process_file(file_path, filename, base_dir, content_type, documents, tokenized_documents)
     
     return {
         'documents': documents,
