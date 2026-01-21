@@ -8,6 +8,7 @@ This module provides functions to search and retrieve content from:
 import json
 import os
 import re
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional, Tuple
@@ -58,6 +59,78 @@ def _get_index_file(content_type: str):
     """Get the index file path for a content type."""
     index_dir = _get_index_dir()
     return os.path.join(index_dir, f'{content_type}_index.json')
+
+
+def _get_git_revision() -> Optional[str]:
+    """Get the current git revision (commit hash).
+    
+    Returns:
+        Commit hash string, or None if git is not available or not in a git repo
+    """
+    root = _get_project_root()
+    try:
+        result = subprocess.run(
+            ['git', 'rev-parse', 'HEAD'],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=5
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except (subprocess.TimeoutExpired, subprocess.SubprocessError, FileNotFoundError):
+        pass
+    return None
+
+
+def _has_directory_changed_since_revision(content_type: str, revision: str) -> bool:
+    """Check if any files in the content directory have changed since a git revision.
+    
+    Args:
+        content_type: Content type ('docs', 'rtopro-help', 'otter')
+        revision: Git commit hash to check against
+        
+    Returns:
+        True if there are changes, False if no changes (or if git check fails, returns True to be safe)
+    """
+    root = _get_project_root()
+    
+    # Get the directory path for this content type
+    if content_type == 'docs':
+        target_dir = _get_docs_dir()
+    elif content_type == 'rtopro-help':
+        target_dir = _get_rtopro_help_dir()
+    elif content_type == 'otter':
+        target_dir = _get_otter_dir()
+    else:
+        return True  # Unknown type, assume changed to be safe
+    
+    if not os.path.exists(target_dir):
+        return False
+    
+    # Get relative path from project root
+    rel_dir = os.path.relpath(target_dir, root)
+    
+    try:
+        # Check if there are any changes to files in this directory since the revision
+        # Use --name-only to avoid loading full file contents
+        result = subprocess.run(
+            ['git', 'diff', '--name-only', revision, 'HEAD', '--', rel_dir],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=10
+        )
+        if result.returncode == 0:
+            # If there's any output, files have changed
+            return bool(result.stdout.strip())
+        # If git command fails, assume changed to be safe
+        return True
+    except (subprocess.TimeoutExpired, subprocess.SubprocessError, FileNotFoundError):
+        # If git is not available or there's an error, assume changed to be safe
+        return True
 
 
 @dataclass
@@ -226,20 +299,78 @@ def _build_index(content_type: str) -> dict:
 
 
 def _build_or_load_index(content_type: str) -> dict:
-    """Build or load search index for a content type."""
-    index_file = _get_index_file(content_type)
+    """Build or load search index for a content type.
     
-    # Check if index exists and is recent enough
-    if os.path.exists(index_file):
-        # For now, always rebuild - could add timestamp checking later
+    Uses git revision tracking to determine if the index needs to be rebuilt.
+    The index is only rebuilt if files in the content directory have changed
+    since the git revision stored in the index.
+    """
+    index_file = _get_index_file(content_type)
+    current_revision = _get_git_revision()
+    
+    # Check if index exists and we can use git revision tracking
+    if os.path.exists(index_file) and current_revision:
+        try:
+            with open(index_file, 'r', encoding='utf-8') as f:
+                cached_index = json.load(f)
+            
+            # Check if we have a stored revision
+            stored_revision = cached_index.get('git_revision')
+            
+            if stored_revision:
+                # Check if current revision matches stored revision
+                if stored_revision == current_revision:
+                    # Same revision - no need to check for changes, index is up to date
+                    # Load from cache
+                    return {
+                        'documents': [
+                            {
+                                'document_id': doc['document_id'],
+                                'document_title': doc['document_title'],
+                                'file_path': doc['file_path'],
+                                'content_type': doc['content_type'],
+                                'content': None  # Will be loaded from file when needed
+                            }
+                            for doc in cached_index['documents']
+                        ],
+                        'tokenized_documents': cached_index['tokenized_documents']
+                    }
+                else:
+                    # Different revision, check if directory changed since stored revision
+                    if not _has_directory_changed_since_revision(content_type, stored_revision):
+                        # Directory hasn't changed, just update the revision in cache
+                        cached_index['git_revision'] = current_revision
+                        with open(index_file, 'w', encoding='utf-8') as f:
+                            json.dump(cached_index, f, indent=2, ensure_ascii=False)
+                        # Return cached data
+                        return {
+                            'documents': [
+                                {
+                                    'document_id': doc['document_id'],
+                                    'document_title': doc['document_title'],
+                                    'file_path': doc['file_path'],
+                                    'content_type': doc['content_type'],
+                                    'content': None
+                                }
+                                for doc in cached_index['documents']
+                            ],
+                            'tokenized_documents': cached_index['tokenized_documents']
+                        }
+                    # Directory has changed, need to rebuild
+        except (json.JSONDecodeError, KeyError, IOError):
+            # Index file is corrupted or invalid, rebuild
+            pass
+    elif os.path.exists(index_file) and not current_revision:
+        # Index exists but git is not available - can't verify, so rebuild to be safe
         pass
     
-    # Build index
+    # Build index (either doesn't exist, is out of date, or git unavailable)
     index_data = _build_index(content_type)
     
-    # Save index
+    # Save index with git revision
     # Only save documents metadata, not full content (to save space)
     index_to_save = {
+        'git_revision': current_revision,
         'documents': [
             {
                 'document_id': doc['document_id'],
