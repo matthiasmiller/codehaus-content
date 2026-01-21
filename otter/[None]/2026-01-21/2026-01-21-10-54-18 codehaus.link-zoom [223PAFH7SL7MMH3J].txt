@@ -1,0 +1,596 @@
+Matthias Miller  00:01
+Let me go. Here's 11 o'clock already. This thing this day is going to get away from us. Yes, it is. We broke
+
+Matthias Miller  00:16
+it because of changes we made for you for deposit records. But don't
+
+Unknown Speaker  00:22
+tell anybody. Only renames. I mean,
+
+Matthias Miller  00:27
+it's a long story. It shouldn't have broken. We're hard coding field names and we renamed the field, and you shouldn't hard code that one. You should wrap them in an expression so that we catch this. But
+
+Unknown Speaker  00:49
+that gives me a little bit
+
+Speaker 1  00:50
+yeah, like miserable would remain similar names I renamed this thing so your attachments don't work for all the misery that they put me through, so I can put them through something.
+
+Speaker 2  00:58
+Yay. That were you saying about being
+
+Matthias Miller  01:15
+an asshole? That was funny. First words, anyway, welcome. He was not expecting illustration, okay, cashing design, fill me in.
+
+Speaker 3  01:25
+So I am not having fun trying to make this at all a string table. Okay, I can get it to work for itemization, and I'm sure I can then for payments, but payments are just complicated in that we have to figure out the waterfall stuff with you need to have multiple, potentially multiple rows per payment row. Jonathan was wondering if we could switch to an array of structures, what that would what, I think what we'd have to do if we do that is you would need to switch to be an on Change button instead of field change,
+
+Matthias Miller  02:05
+you can't use an array of structure.
+
+Speaker 3  02:08
+I can't do a detailed variable. I mean, I'd have to reevaluate for every field. But why? We can't assign an array of structures anywhere except you could, I think you could. Well, I don't even know if you can and on changes for sure. Maybe not work.
+
+Matthias Miller  02:27
+Why couldn't you use an array of structures in the intermediate and then serialize it to
+
+Speaker 3  02:32
+just convert? Yeah. I mean, I can. I wonder if that's where I'll have to end up. But that was what I was thinking, is we could use an on Change button, and then if someone edits manually, you they have to click the flag first to let them edit. And then that then we could force them to hit the on change. Well, that save. But x 30s, I'm not sure if X 30s will get the order right, because the x 30 has to set that that that stuff needs to all happen at the end. And if we're doing RG stuff, I don't know if they do RGS first or second.
+
+Speaker 3  03:17
+I guess theoretically you could do some dumb if they do it, if they do RGS after other stuff, you could add a dummy RG and set the on Change button on the first row and ignore the rest.
+
+Matthias Miller  03:30
+You could maybe, if it gets triggered properly, it would have to Matt, I don't know,
+
+Unknown Speaker  03:38
+it feels a little dicey.
+
+Matthias Miller  03:39
+It feels very dicey. I would Okay. Let's break it down. Here's what I would do. I would break it down into series of problems to solve problem number one by whatever means necessary, preferably in a sane, manageable way that doesn't doesn't require massive amounts of indigestion and nausea come up with what the content should be, and if an array of structures is the best way to do that, then let's do an array of structures. At that point, let's figure out, let's defer how to get it into the fields or the RG at until that point, because I feel like if we do that first, we'll have a lot better information on how to make that decision. Sure. Is that saying? I think so.
+
+Speaker 3  04:27
+I think I had, I already have the itemization stuff coming through, so I figured, well, I'll just build that out, and then I'll add the payments in. I didn't think it would be that bad, but I wonder if, well, it's I need to figure. I think I just need to figure out, how do I get the payments into the rights, the right rows before I try to fit in the RG, and then, how do I take the payment and do the waterfall stuff correctly? Okay, and I think I mean, you could do a simple for the balance stuff. You could do a simple array of structures based on invoice and fee and a total and a balance or something. And you loop through your RG, potentially creating, you loop through the payments RG, which within there, loops through the itemization RG for the invoice, and potentially creates a row for each itemization row. And every time you create a row, you adjust the balance in your store, in your structure. Oh, for that fee, does that sound right?
+
+Matthias Miller  05:53
+Okay, so for payments,
+
+Speaker 3  06:00
+payment may be linked to one or more itemization row in the balances. So I think what you do is you loop through the payments. RG, when you're on a payment row, you go find all the itemization rows, and you potentially create a row. You do some sort of you look at what the balance is in your stored array of structures. I think you, I think you create an array of structures for the fees, for the itemization RG, and you add a balance in there, and you look, what's the balance for this, for the first fee for the invoice, oh, it's zero. What's the balance for the second fee? Oh, it's non zero. Use up as much as I can, adjust the balance, create that row, and then see, do I need to keep going or not with this that might have to, I don't know. Does that should be a while loop or something?
+
+Matthias Miller  06:53
+Okay, well, probably I
+
+Speaker 3  07:03
+I think I can get there. I think I need to. I think you're right that I need to stop thinking about how stuff in the RG yet, and for now, actually just get my rows
+
+Matthias Miller  07:13
+and even narrow the scope further. I mean, consider narrowing the scope of your problem even further, if you can start with a simple contract first and then expand then expand out. But start with what a simple contract first and then expand out, simple, simple payment, but potentially, I don't know if you need to. Is there any other way of thinking about this?
+
+Matthias Miller  07:52
+There is another way
+
+Matthias Miller  08:00
+iterate over invoices. For each invoice, grab the payment ID and the amount and an unpaid balance and a a blank unpaid item. Okay, for that invoice and for the itemization in that invoice.
+
+Matthias Miller  08:35
+Go through. Wait. Do you have, do you have the rounded tax value for itemization at this point?
+
+Speaker 3  08:46
+I think I will. I mean, okay, the values that are in their G's right now are not but when we're applying itemization, we're going to do that is what I think.
+
+Matthias Miller  08:57
+By the time we get here we will,
+
+Speaker 3  08:59
+yeah, I think what we do is, when we create the itemization rows, we figure out all the taxes to beat out.
+
+Matthias Miller  09:07
+Okay, so, yeah, it is we have to and so. So my thought would be, go look at the invoice. Go find maybe you don't have to forget the unpaid thing for the invoice. What are all the payments, payment IDs and amounts that tie out to this and then iterate over the itemization rows for that invoice, grab the earliest payment and then create an entry like basically eat away this itemization row And this one, send it off as a pair. And
+
+Speaker 3  09:47
+how are you doing that are you doing? Is this a while loop? You Yes, you still need a while loop.
+
+Unknown Speaker  09:54
+Okay, so the difference, the difference.
+
+Matthias Miller  10:00
+Says you're looking at at it from an okay. You grab the itemization from the invoice. You grab all the payments, they're both in order, and then you just use split itemization rows and or invoices. Ultimately, if your first row, if your first payment, is for more than the fee, you split it in half so that at the end you end up with, ideally, an equal number of I
+
+Speaker 3  10:30
+don't know how to describe it, equal number of row. What do you mean? An equal number of rows here?
+
+Matthias Miller  10:39
+Let me. Let me. Try this. Dwayne says not to look at him.
+
+Speaker 3  10:45
+I can't. So that's yeah, maybe that helps. That helps
+
+Speaker 4  10:49
+you were you were asking questions out loud when you looked at me, look at me. Okay.
+
+Matthias Miller  10:53
+So here we have itemization. You have rent for for 300 late B, 20, dwf for four. And then here you have payments. You have a $6, one, six, number one, or a payment, A is six and B is 20, and Earth, or, I don't know, 3053, or four. And this 114's or whatever is that come out, right? We have 324, okay. So then the way you go about it is, you look at the first you have two stacks, basically, or two lists. You look at the first one. Well, payments is too big, so let's go, go ahead and split payment into a $4 and a $2 Okay, so now and we pop off this pair. This pair is now done, all right? And, and then here again, we have rent. And this one, you choose the lesser of the two numbers, and so you split rent into $2.02 98 and you and then here's that pair. And now the lesser of this one is 298 and 304, so we have 298 we split this one in half, and now these match up. And now we have this late fee, 20 versus six. We split late fee into two, six and 14. That gives us this magically, because if they paid the full amount, the whole thing ties out. Now you have a series of pairs of this itemization and this payment. So basically you have two lists on either side, and you split one side or the other in in a part, so that you have equal payments amounts. And then you can start putting itemization and payment spit itemization and payment pairs out, but you it. But to do this, you go, go start on a per invoice basis, get all the itemization and all the payments, and that's the list that you operate from. You're always working, if you think of it as a linked list or a stack or whatever, you're always starting at the top, looking at the top two items. You only work with those and then either pop it off the list. Well, you can always pop it off the list, and sometimes you put a balance back on the head of the list.
+
+Unknown Speaker  13:21
+Yeah, I see, okay,
+
+Speaker 3  13:28
+trying to think what the is the easiest way to work with this, still with an array of structures,
+
+Matthias Miller  13:36
+I don't think you need to. I think, I think it's a key and a value on both sides. The key on the itemization side is, I mean, it's, it's a, it's a fee type, fee type. And what about forgiveness?
+
+Speaker 3  13:51
+You just the you just net. The itemization rose, right? We ever have a negative invoice for a fee?
+
+Matthias Miller  14:08
+Theoretic? I mean, maybe there's the theoretical world in which,
+
+Matthias Miller  14:17
+if you do a refund, how do those play in we need to a refund
+
+Speaker 3  14:32
+that won't show up in the payment surgery, right? That's just in the atomization energy
+
+Matthias Miller  14:36
+well as they paid it, what
+
+Unknown Speaker  14:48
+happens if they've paid it? Do we need to create a negative refund row,
+
+Matthias Miller  14:58
+presumably, and I. Know if we tied out to bill or what we exactly do or check. We had it, we had a we had a mechanism that we thought was, I
+
+Unknown Speaker  15:12
+think we're tying them out to checks,
+
+Unknown Speaker  15:15
+the checks.
+
+Unknown Speaker  15:21
+Yeah, we are so they need to show up.
+
+Matthias Miller  15:27
+They would show up in as a negative payment.
+
+Speaker 3  15:32
+So does that whole matching stuff still work? I think you just do a don't you do a sums. Like, you essentially sum string table on the itemization if you have or is that right for this purpose, for these purposes or not? Like, how does it work? If you're
+
+Matthias Miller  16:00
+well, let's try this. Let's do, let's say this one here late fees actually minus 20. No, it's, it's actually 20. And then
+
+Unknown Speaker  16:11
+which they pay?
+
+Speaker 3  16:14
+Would they ever pay the late fee? And then it gets forgiven?
+
+Matthias Miller  16:17
+I think we need to account for it, yeah, or we might refund. They might we they might pay the processing fee and dispute it, and then we have to refund it
+
+Matthias Miller  16:38
+when the waterfall is, but the No, the refund would always, well, the refunds would always be at the end of the waterfall, Right? That was pot of gold, a lot of unicorns.
+
+Speaker 2  17:03
+Hey, would they be though?
+
+Speaker 3  17:09
+I mean, maybe we need to make so they are right now, we're, aren't we sorting? We're going by fee type. But maybe we say, is it adjustment type and then fee type,
+
+Matthias Miller  17:22
+okay, so if you forgive a fee, basically what we're saying is, for our reporting purposes, if you forgive or refund, okay, refund, I'm less sure about for forgiveness. I think it's fine to say we're rejiggering your previous payment as if you're paying a different fee. That's saying to me, is that right? Queen, sorry if you if somebody pays, if somebody pays an invoice and we forgive contract invoice, contract invoice, and we forgive a fee that they already paid for. Let's say they have a late fee and a processing fee, and the processing fee comes at the end in the waterfall, and we forgive the late fee. That the payment for the late fee would automatically. We would, for reporting purposes, we would say, Well, you didn't actually pay the late fee because you couldn't have because we forgave it, but you did pay $20 or $4 or whatever it was out of the processing fee which came right after that, is that fine for reporting purposes, if you're looking at a breakdown of a payment, this is only reporting, not accounting. So if, if you're going to
+
+Unknown Speaker  18:37
+forgive a late fee, why does the extra rental?
+
+Matthias Miller  18:44
+Well, late fee comes after rentals so they already paid the rent. The only way you can forgive of paid late fee is if
+
+Unknown Speaker  18:57
+paid rent. Rent was 100
+
+Speaker 5  19:00
+late fee was 10 and processing fee was 10, yep, so 120
+
+Matthias Miller  19:06
+but they paid 110 and you forgave the the late fee, okay? And so just treat it like they paid the processing fee. Yeah, yeah, okay. I mean so, so I think for forgiveness something in the question, I don't think so. Okay for forgiveness, you can, you can do a sum. Let's think through refunds. The issue with refunds is
+
+Speaker 3  19:29
+that refunds refund so forgiveness won't show up in the payments unless, I mean, we then have a refund with it somehow, because we forgave and need the balances to come out, right? I mean forgiveness,
+
+Matthias Miller  19:42
+but then you wouldn't actually refund. I mean the refund of the payment, yes, exactly, if they overpaid, in this case, if they paid 120 then they have a refund for for that much money. I mean, yeah, yeah. And so the main thing is, what happens if, in. This case, they would have overpaid. Okay, so here let's do this very simply, rent. Let's do the example late and processing. Rent was 210 and 10, and then they paid. Payment is 220 so now we're going to we're going to say, well, obviously we paid rent for 200 and we we paid, but we forgave late fee. So late fee is actually down to we're going to sum it down to zero. So now we have an overpayment. So now we have payment. This one, it didn't pay any late fee. This one, they paid $10 and then we have money left over on a payment.
+
+Unknown Speaker  20:47
+Okay, how do we?
+
+Matthias Miller  20:49
+And then you should have is a refund here of minus 10.
+
+Unknown Speaker  20:55
+And so then refunds also just net out, no, but we need to report them, right? Or do they not need to be in the balances?
+
+Matthias Miller  21:10
+RG, refund is just in some ways, this is really obnoxious. I don't know if I believe in this, but there's a world in which a refund should work back up the tree, except in the cases of overpayment.
+
+Matthias Miller  21:41
+A if you have it work up the fee, then basically what you would do first is come up with, well, we're refunding a specific
+
+Speaker 3  21:58
+Okay, refund your, I think you're just gonna say that you just have a refund on a payment. I mean, how we modeled it on the payment record that is
+
+Matthias Miller  22:09
+refunded towards an original payment?
+
+Speaker 3  22:11
+Yes, and so we would just, does that mean we need to double store it? Do we have to store both on the payment record and on the contract, the invoice payments. RG,
+
+Speaker 3  22:32
+wait, the balances. RG, doesn't need to track refunds. It just needs to know that my the amount I have is less than it was, right?
+
+Matthias Miller  22:42
+Okay, here's what I would say, save for refunds. I'm not sure about the storage question. We'll get to that. But if you're literally refunding a payment, if it's tied to a payment, then yes, I would say the correct thing to do, for the sakes sake of reporting, or at least a good enough thing to do, is to do the sum for each payment, you would do the sum of that payment, less any refunds when you're doing your waterfall,
+
+Speaker 3  23:08
+okay, so you would literally just go look, no, where the where are we storing the refund restore on the payment record.
+
+Matthias Miller  23:17
+We need it well, we need it
+
+Speaker 3  23:19
+here, because we need to know which contracts that affects,
+
+Unknown Speaker  23:27
+yeah, aren't they?
+
+Speaker 3  23:30
+Yeah, but I'm not sure we should be storing refunds on the payment record, or should at least contract refunds? Well, yeah, that's what I'm wondering. But at the same time, well, no, it's not ridiculous to we just need to know how to itemize it out, though, which re like someone paid $500 we're going to refund them $50 for whatever reason.
+
+Unknown Speaker  23:58
+I think it's fair
+
+Speaker 3  24:01
+to store $50 a $50 refund row on the payment record. But then when we come back to the contract, we might need to split it out like, say they paid $20 on their last invoice, and most of it was on the first one, and we're going to refund. I mean, say there's, there might be scenarios where you want to refund across two invoices, right for the same payment, and so I think we need to store it. It's sort of the same idea as on the payment. We have a payment total, like a payment record, and then that can get split out multiple ways. I think it's the same way with a refund, the sum of all refunds linked to this payment record across contracts must equal the sum of refunds on the RG on the
+
+Speaker 2  24:46
+payment Right, right, right.
+
+Speaker 3  24:49
+So then Jonathan's gonna need to figure out how we apply. I don't know. We'll get to figure out some way to say where, where refunds are going. Right?
+
+Matthias Miller  25:02
+You want to make this really complicated.
+
+Unknown Speaker  25:07
+This is awful,
+
+Matthias Miller  25:11
+but the complicated version would be, hmm,
+
+Matthias Miller  25:24
+you start climbing your way back up the waterfall.
+
+Matthias Miller  25:31
+But I don't think we need to again. We're only doing this for reporting. Most times. If you issue a refund, you're going to be making an adjustment to what was invoiced as well, or forgiving something, or I don't know, like, I just don't think it. I
+
+Speaker 6  26:03
+What it's outside of this conversation,
+
+Matthias Miller  26:08
+it's such a narrow scope. It's like, what happens when you refund some what happens if people make two payments and you refund part of the first one?
+
+Unknown Speaker  26:19
+See, I don't think from a balanced perspective, we care,
+
+Unknown Speaker  26:23
+right? No, no,
+
+Speaker 3  26:28
+not really, because this RG is balances. Let's make the balance work and that's it. I think maybe I'm missing something.
+
+Matthias Miller  26:38
+So the real reason to tie it out to invoices. We're not tying it out to invoices. The refund
+
+Speaker 3  26:48
+or we're never need to tie we need to tie a refund out to invoices, because payments are tied out to invoices, right? But we need to know which which invoice got changed, like, which invoice does the balance
+
+Matthias Miller  27:04
+change on the refund? Reason we're looking at payments. Okay, here's the argument, though, to not collapse the refund. Because technically your balance, your balance, if you want a historical balance, your balance before the refund is different. Is different, your balance actually went up.
+
+Unknown Speaker  27:22
+So it's if we want a balance as of that we need to be a lot more nitpicky right
+
+Matthias Miller  27:34
+now. The other thing to say is, just impose a rule that you can two rules. One, you can't refund if you make more than one payment, you always have to refund from the from the latest payment earlier.
+
+Matthias Miller  27:57
+If you have two payments applied to an invoice, yes, you have to start by refunding the second payment. And only once the second payment is fully refunded can you get ready to flip you
+
+Unknown Speaker  28:12
+off, only when
+
+Matthias Miller  28:13
+you getting close to that with some of these calculations, yeah, exactly. Only when you refund the second payment can you refund the first payment. I payment? Dwayne's nodding his head, that solves this whole issue. Okay, then you can just do that.
+
+Unknown Speaker  28:30
+I mean, that still doesn't solve the ads of okay,
+
+Matthias Miller  28:32
+yes, it does. Well, no, no, it doesn't go ahead.
+
+Speaker 7  28:36
+Only issue with that is you had a credit card payment and a check payment,
+
+Unknown Speaker  28:43
+and somebody calls
+
+Speaker 4  28:45
+up and says, I don't know who look whoever used my credit card that was incorrect.
+
+Speaker 8  28:49
+That guy needs to be able to be refunded without refunding. This guy trying
+
+Matthias Miller  29:02
+to think whether, for accounting
+
+Speaker 8  29:03
+purposes, that would be the only scenario I know where you would want to refund a payment, his
+
+Matthias Miller  29:10
+historic right, historic payment, or ACH would be
+
+Speaker 5  29:15
+potentially another one, but payments would be the one that has the potential to be, I don't know, accidentally put on the wrong account, and somebody calls up and says, Hey, that doesn't belong.
+
+Speaker 3  29:28
+Okay, what happens, though, if, like, you have two payments for the same invoice and someone goes to explore pay and issues their refund for the wrong one?
+
+Speaker 8  29:41
+Well, preferably we don't go to the Explore page to issue the credit. Does it happen? We should be doing that from the interactively, okay,
+
+Unknown Speaker  29:50
+and then that just called the
+
+Speaker 4  29:52
+key word being, should be, people are going to do dumb stuff like that. We should probably think it through. But I mean, ideally we want to do that from.
+
+Unknown Speaker  30:02
+I mean, I agree, yeah.
+
+Matthias Miller  30:08
+Okay, so here's how I would do it okay, if you wanted to handle it right, I'm still not convinced that it's actually worth handling it right. Maybe you should solve that problem first. But if you wanted to do it right, you would do the same splitting logic on refunds and payments. So this one then becomes a one and three, then this one becomes sorry one in
+
+Speaker 3  30:29
+Aren't you going the wrong way, though? Don't you want to sorry in the top
+
+Matthias Miller  30:37
+right? A is 6b. Is was 304, yeah. C was 20.
+
+Speaker 3  30:44
+Wasn't even that was 14, it was 14. It was 14. Okay, so then here, well, was it? Yeah, I think maybe I'm not sure.
+
+Matthias Miller  30:52
+Well, you're only, you're only splitting based on on item and refunds. So a, a, you a, you break into five, right. You are right, five and one, and you do this. And then B is like 294 sorry, 10 and 294 and then this one's like c4, and 10. And so you do this first, and then you put these refunds in at whatever date they happened, which these should be, actually negatives, well, actually, then you ignore the refunds for the first pass, and then you come back through. So first thing you do is you split apart invoices into so that you have pieces for the refund. Then you do your full itemization. And
+
+Matthias Miller  31:56
+then for each refund, just look at your breakdown and create a reversal as of the refund date.
+
+Speaker 3  32:02
+So if someone pays $6 to fee and we're and we refund it, refund it, then we're gonna itemize as a $5 payment and a $1 payment and then a $1 refund. That's weird.
+
+Matthias Miller  32:17
+If they refund $1 off that
+
+Speaker 3  32:21
+payment, shouldn't it say that they paid $6 for this and then they refunded
+
+Speaker 3  32:32
+one, not they paid five, paid one, refunded one,
+
+Matthias Miller  32:38
+well for the waterfall Matthias, you could you can merge them back together again if you want to, but that's the sake of the waterfall. This is what you want to end up reversing, except you have to do this throughout the but
+
+Speaker 3  32:57
+it depends on how payments, because if you refund, refund one,
+
+Speaker 3  33:07
+that's not true. I mean, I don't think we can, I don't think we can do balance as of for fees. Okay, that sounds right. Otherwise we have to start, otherwise we're away from the idea that a payment is just for an invoice, right? Because now it's become locked to a fee. Because if you really want to say what happened as of a date, you say, I paid $6 to this fee. And then my next payment, I paid $100 to rent. And then, oh shoot, we're going to refund $2 of the $6 fee. Well, then now we need to adjust that second payment to cover, which isn't really, I think so. I think what I'm saying is that we don't do as of sure, because that gets us away from the whole idea that our data model is that a payment is for an invoice, not for itemization. Okay?
+
+Matthias Miller  34:22
+And there is no effective date in this. RG, there's just a, well, there's no effective date in this. RG, anyway, is there
+
+Speaker 3  34:29
+right now, what I have is the pay is invoice date or due date, and payment date just for so that we could, so we could do that sort of thing, right?
+
+Matthias Miller  34:51
+No, that's fine. Is a current snapshot into balances. Fine, good, yeah,
+
+Speaker 3  34:57
+because I don't. Maybe. Be I don't think I missed anything, but I don't I'm not sure how you can have the how you could do well, I'm losing my train of thought. I
+
+Matthias Miller  35:20
+The the I want to prove my part my my point. Part of me says that, really, what I proposed was actually not correct. Really, it's, it's payments. Actually don't matter. In terms of refunds, it's the it's the order in which it happened. Yeah, really, if you want to do this, could be answer. Really could have is it refund of A minus 10?
+
+Speaker 3  35:59
+Yes, and I think so it's all date based. It's all date based. Well, date and, I mean, probably date and time, just to make sure, but,
+
+Matthias Miller  36:09
+but even on date, it's all date based. So then really, what you want to, I mean, it really could be date based. So really, if you genuinely wanted to handle it right, first you go through your payments, and you, anytime there's a refund, you make sure there's an equal amount. You collapse, no, I mean, you make sure that there's sandwich refunds, so that if there's a refund, that right before that there's a there's an increment for that amount, if there's a subsequent refund, whatever, so that you can quickly infer reverse the waterfall or something. I don't know, whatever, but we're saying, as of date doesn't matter, so there's no point. The pragmatic side, what don't
+
+Speaker 3  36:51
+you literally just put it in order. You put your date, you put your payments and your refunds all together in one order, just based on when it happened. And then you compare that with your list of atomization, which I think gets us back to my idea of a structure where you have to keep track of balance, hang on and then. And then what you do is you reverse, if you hit a refund, then you'd need to go negative, and then you do the exact same thing, but you're going back up. Like you said, I think it's simpler.
+
+Matthias Miller  37:29
+No, if you hit a, if you hit a, if you hit a negative, generally, negatives refunds are going to be out in a lot. Well, actually, no, they're not. Here's what I would do if you hit a negative, you can you go forward instead of back? Because if you go negative, you need to know, well, rent went back this much and make sure it doesn't go back more than but if you say it goes forward, most cases, this refund is going to be sitting past where the itemization is right, if it's not, if you have a refund, why Wouldn't you merge it into
+
+Matthias Miller  38:17
+effectively say this row is like, why would you have it, if you have a refund, why wouldn't you effectively eat the Next you know, equivalent off the next payment and just
+
+Speaker 3  38:50
+what does the balances are? Do you need to do? I'm shifting gears because I'm getting confused here, but I'm the fact that we're both so confused over this, it's probably something's wrong, okay?
+
+Matthias Miller  39:03
+The purpose of the balances RG is to look at balances by current balance by period, right?
+
+Speaker 3  39:19
+So what? What we need for reporting purposes. We need an invoice balance. What? What have we paid on this invoice? What have we not? And we probably want, and we want be balances as well. And I think it just needs to be current like
+
+Matthias Miller  39:40
+this is useless. Why can't we just do talk about simplicity? Why can't we just say we have $500 we need to allocate net of all payments and refunds? Okay? Well, this got paid. This got paid. This got paid. This got paid. This got paid.
+
+Unknown Speaker  39:56
+This is unpaid. So we don't
+
+Speaker 3  39:58
+link the. The road to the payment
+
+Unknown Speaker  40:02
+we just say
+
+Speaker 3  40:05
+to because our good we're saying our events are G was nice for reporting, but it was more granular than we actually
+
+Matthias Miller  40:14
+needed it to be what we write. We thought that good team
+
+Unknown Speaker  40:20
+our normal meeting the 315 that's taking something in here.
+
+Matthias Miller  40:26
+I mean, I was going to, but we don't have to. I don't know what you want. I mean, it's up to you what you want to do. I'm in favor of scrapping tomorrow, scrapping tomorrow. We can completely scrap tomorrow. Yeah, that's fine,
+
+Unknown Speaker  40:36
+unless Seth thinks that there's, there's a
+
+Unknown Speaker  40:38
+great value to grab your team together.
+
+Speaker 3  40:40
+What's your thoughts? It's not a huge deal. I mean, it's nice. What happens, but skipping a week is just fine.
+
+Matthias Miller  40:47
+I'm out next on the 29th by the way. I actually I could probably join the 29th from home, but I'm gonna get out of the office. Okay, the thing we lose is on a payment, being able to say we think this payment paid for X, Y and
+
+Speaker 3  41:01
+Z, right? But that was the whole point of switching to away from the events. RG is that we're saying wasn't the assumption that payment does not is not itemized out, right? The payment is for the invoice, so we're not even going to try to say this is what it paid Exactly. So I think I was getting, I was getting too granular with SRG, because I wanted to make it like the events or G it's there's places, it's similar, but it is going to be just a balance SRG, right?
+
+Matthias Miller  41:41
+And then it's just, and so down to
+
+Speaker 3  41:44
+and then you don't even add rows for when you incur stuff. It's just a sum of the two RGS, essentially on a per invoice basis, right? You
+
+Unknown Speaker  42:06
+maybe that's not quite right.
+
+Unknown Speaker  42:11
+No, I think you still want.
+
+Speaker 3  42:18
+No, you still want the rows for what when the subtotal increases and then when it decreases with the payment.
+
+Matthias Miller  42:30
+So you're thinking you have increment in payment rows, effectively, for each type.
+
+Unknown Speaker  42:42
+For probably, I
+
+Speaker 3  43:03
+do we need to know anything more than what my invoice fee balance is?
+
+Matthias Miller  43:25
+And we just say no, and if it ever needs to be yes, we answer the question, then
+
+Speaker 2  43:30
+that's what I'm wondering. I don't because at that point
+
+Speaker 3  43:36
+what you do, you do something like what you're saying here to divvy it out. Well, not even because you sum all the payment rows for the invoice say, how much have we received? And you just go say, Okay, this was covered. This was covered. This was covered. This was not exactly and you just store that in the RG, and if they're covered, then you just store $0 values, yeah. And we say, boom, this, this invoice itemization rose at zero. Yeah, and we don't like to payments, right? So I think we're we were currently working hard to get ourselves back into the same tangle we were in earlier, while having solved it for the sales tax, because we're cashing stuff elsewhere, oh, boy, sales tax. Do we need that for balance,
+
+Matthias Miller  44:30
+for cash on a cash basis, but if, but if we, if this is truly current, what? Yeah, well, then
+
+Speaker 3  44:45
+we then doesn't sales tax liability, just calculate off the current, no,
+
+Matthias Miller  44:53
+yeah, yeah, balance. It's basically calculate liability, balance or off the off the invoice. Amount. Well, I
+
+Unknown Speaker  45:01
+think it can calculate it off the balance, either way,
+
+Unknown Speaker  45:07
+no, if it's,
+
+Matthias Miller  45:12
+well, no, it's based off of the balance, or No, I mean, it's, it's based off the total or the other or the amount paid, the amount, invoice or amount paid. You're right. Your balance is RG needs to have a amount paid, or it's a invoiced, invoiced amount paid, amount, yes, yes, and balance macro, yes, obviously you need your tax taxability breakdown, but Right?
+
+Speaker 3  45:42
+Invoice, taxable, invoice non taxable, paid, taxable, paid non taxable or paid. Doesn't have to differ between taxable and non tax, does it? I mean, one invoice row is not going to have both one itemization. It's just no it's taxable, yeah, invoice amount, paid amount, invoice subtotal, invoice tax and paid amount,
+
+Speaker 2  46:16
+right? I
+
+Unknown Speaker  46:25
+and then a balance, which is total minus paid amount,
+
+Speaker 3  46:36
+which this is making me wonder why we even have the balance as our G don't we literally just stuff it into columns in the itemization. RG,
+
+Matthias Miller  46:48
+I think we said it was so that we don't have a bunch of caching columns all mixed, yeah, Sarah, mixed in but,
+
+Speaker 3  46:59
+but all of that's already there. The only thing that's not there is paid amount balance,
+
+Unknown Speaker  47:05
+right? Yeah,
+
+Matthias Miller  47:12
+well, the tax, the other, the other issue is that the tax, so the tax would be inferred from the invoice, right? So you would do a tax look at for the invoice.
+
+Unknown Speaker  47:25
+You'd have to hop out there,
+
+Matthias Miller  47:30
+but that's not that bad, and that's just for sales tax, yeah. And then you would have the you record whether it's taxable, and the item is no the invoice would would record that taxability. You would have the invoice amount, paid amount. So basically, what you're saying is this whole cashing macro is basically a go fill in the paid amount exactly, save energy.
+
+Speaker 3  47:58
+That's it. And then we have a balance that calculates from there. And then invoice balance sums all itemization rows for that. Invoice sums the balance.
+
+Matthias Miller  48:08
+Well it should always, it has to, for rounding purposes and whatever like, it must paid. Amount must match payments by invoice, like all this stuff has to match, right? I mean, invoice balance could just as well sum the payments are G but yeah,
+
+Speaker 3  48:27
+I mean, sure it could sum the invoices, the total itemization and the total payments, same diff,
+
+Speaker 2  48:35
+same diff. It's, yeah, you happy? I think so
+
+Unknown Speaker  48:44
+sad that we spent so much time, huh?
+
+Unknown Speaker  48:47
+Glad you care.
+
+Unknown Speaker  48:50
+Well, the eyes glazed over 20 minutes ago.
+
+Matthias Miller  48:55
+Listen, this is why we I mean, think of all the lessons we've learned in zfp. So kudos to you for seeing the complexity having this conversation and,
+
+Speaker 3  49:08
+well, I was just stuck. I couldn't push ahead, which told me something's probably wrong.
+
+Matthias Miller  49:13
+Yeah, exactly. We saved, we saved a day or two of work right there. Yeah.
+
+Speaker 3  49:19
+I mean, we already spent some, but this will help a lot, and I'll save a fair bit.
+
+Speaker 2  49:25
+Good, okay, I think that's good. I like this way better. Yeah, okay, all right. Talk later. Yep. Thank you. Bye.
+
+
+Transcribed by https://otter.ai
