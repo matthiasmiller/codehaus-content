@@ -124,12 +124,8 @@ def get_cache_dir(subdirectory: str = 'codehaus_mcp') -> str:
 
 def _read_file_content(file_path: str) -> str:
     """Read file content with proper error handling."""
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read()
-    except (IOError, OSError) as e:
-        print(f'Error reading file {file_path}: {e}')
-        return ''
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return f.read()
 
 
 def _generate_snippet(content: str, query_tokens: List[str], max_words: int = 150) -> str:
@@ -349,15 +345,3 @@ def get_document(document_id: str, content_type: Optional[str] = None) -> Option
                 )
     
     return None
-
-
-def rebuild_index(content_type: Optional[str] = None) -> dict:
-    """Force rebuild of search index.
-    
-    Args:
-        content_type: Content type to rebuild ('docs', 'rtopro-help', 'otter', or None for all)
-        
-    Returns:
-        dict with counts of documents indexed
-    """
-    return content_index.rebuild_index(content_type)
