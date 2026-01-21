@@ -9,71 +9,29 @@ This follows the same pattern as update_database_rag in infinite-stairway-design
 
 import json
 import os
-import re
 from pathlib import Path
 
 import html2text
+
+from . import content_util
 
 # Try to import the client - adjust path as needed
 import invwebservices
 from _conf import ZCH_ARGS
 
 
-def _get_project_root():
-    """Get the project root directory."""
-    this_dir = os.path.dirname(os.path.abspath(__file__))
-    return this_dir
-
-
 def _get_client_proposals_dir():
     """Get the client-proposals directory path."""
-    root = _get_project_root()
+    root = content_util.get_project_root()
     proposals_dir = os.path.join(root, 'client-proposals')
     os.makedirs(proposals_dir, exist_ok=True)
     return proposals_dir
 
 
-def _get_cache_dir():
-    """Get the cache directory path."""
-    root = _get_project_root()
-    cache_dir = os.path.join(root, '.cache', 'client-proposals')
-    os.makedirs(cache_dir, exist_ok=True)
-    return cache_dir
-
-
 def _get_metadata_file_path():
     """Get the metadata file path."""
-    cache_dir = _get_cache_dir()
+    cache_dir = content_util.get_cache_dir('client-proposals')
     return os.path.join(cache_dir, 'proposals_metadata.json')
-
-
-def _clean_filename(name):
-    """Clean a name for use in filesystem paths.
-    
-    Removes or replaces invalid characters, limits length, and handles edge cases.
-    """
-    if not name:
-        return 'unnamed'
-    
-    # Replace invalid filesystem characters with underscores
-    invalid_chars = '<>:"/\\|?*'
-    cleaned = name
-    for char in invalid_chars:
-        cleaned = cleaned.replace(char, '_')
-    
-    # Remove leading/trailing dots and spaces (Windows issue)
-    cleaned = cleaned.strip('. ')
-    
-    # Limit length to avoid filesystem issues
-    max_length = 200
-    if len(cleaned) > max_length:
-        cleaned = cleaned[:max_length]
-    
-    # Ensure it's not empty after cleaning
-    if not cleaned:
-        return 'unnamed'
-    
-    return cleaned
 
 
 def _html_to_markdown(html_content):
@@ -186,7 +144,7 @@ def update_client_proposals():
             continue
         
         # Clean the name for filesystem use
-        clean_name = _clean_filename(proposal_name)
+        clean_name = content_util.clean_filename(proposal_name)
         
         # Determine folder name (using DocumentID-DocumentTitle format)
         folder_name = f'{proposal_id}-{clean_name}'

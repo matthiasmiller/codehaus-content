@@ -14,10 +14,7 @@ from . import content_util
 
 def _get_index_dir():
     """Get the index directory path."""
-    root = content_util._get_project_root()
-    index_dir = os.path.join(root, '.cache', 'codehaus_mcp')
-    os.makedirs(index_dir, exist_ok=True)
-    return index_dir
+    return content_util.get_cache_dir('codehaus_mcp')
 
 
 def _get_index_file(content_type: str):
@@ -32,7 +29,7 @@ def _get_git_revision() -> Optional[str]:
     Returns:
         Commit hash string, or None if git is not available or not in a git repo
     """
-    root = content_util._get_project_root()
+    root = content_util.get_project_root()
     try:
         result = subprocess.run(
             ['git', 'rev-parse', 'HEAD'],
@@ -59,7 +56,7 @@ def _has_directory_changed_since_revision(content_type: str, revision: str) -> b
     Returns:
         True if there are changes, False if no changes (or if git check fails, returns True to be safe)
     """
-    root = content_util._get_project_root()
+    root = content_util.get_project_root()
     
     # Get the directory path for this content type
     if content_type == 'docs':
