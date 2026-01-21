@@ -5,6 +5,8 @@ Downloads proposal data from the source system and stores it in a structured
 filesystem format with metadata tracking for rename detection.
 
 This follows the same pattern as update_database_rag in infinite-stairway-designer.
+
+Migrated from /Users/matthiasmiller/Documents/GitHub/infinite-stairway-designer/isd_mcp/chat_util.py
 """
 
 import json
@@ -81,33 +83,67 @@ def _save_metadata(metadata_file, metadata):
         json.dump(metadata, f, indent=2, ensure_ascii=False)
 
 
+def _get_max_content_version_from_metadata(metadata):
+    """Get the maximum content version from metadata across all proposals and sections.
+    
+    Args:
+        metadata: Metadata dict with structure:
+            {proposals: {ProposalID: {sections: {SectionID: {last_contents_version: ...}}}}}
+    
+    Returns:
+        Maximum content version (int or None if no versions found)
+    """
+    max_version = None
+    
+    if 'proposals' not in metadata:
+        return None
+    
+    for proposal_id, prop_meta in metadata['proposals'].items():
+        if 'sections' not in prop_meta:
+            continue
+        for section_id, section_meta in prop_meta['sections'].items():
+            version = section_meta.get('last_contents_version')
+            if version is not None:
+                if max_version is None or version > max_version:
+                    max_version = version
+    
+    return max_version
+
+
 def update_client_proposals():
     """Download and process client proposals from the source system.
     
-    Downloads proposal data from the source system and stores it
+    Downloads proposal and section data from the source system and stores it
     in a structured filesystem format with metadata tracking for rename detection.
     
     Data Source:
         Fetches data from report: User/Personal/Matthias.Miller/Blueprint_Designer/Service_Export_Proposals.r20
     
     Input Fields (from JSON response):
-        id: Unique identifier for the proposal
-        name: Display name of the proposal (may change over time)
-        html: HTML content of the proposal
+        DocumentID: Unique identifier for the proposal
+        DocumentName: Display name of the proposal (may change over time)
+        SectionID: Unique identifier for the section
+        SectionName: Display name of the section (may change over time)
+        SectionOrder: Sorting order for sections within a proposal
+        ContentsVersion: Version number for content changes
+        ContentsChanged: Boolean indicating if content has changed
+        ContentsHTMLIfChanged: HTML content (only present if ContentsChanged is True)
     
     Output Structure:
-        client-proposals/{ProposalID}-{CleanProposalTitle}/{CleanProposalName} [{ProposalID}].md
+        client-proposals/{CleanProposalTitle} [{ProposalID}]/{CleanSectionTitle} [{SectionID}].md
         
         Where:
-        - Each proposal gets its own folder named {ProposalID}-{CleanProposalTitle}
-        - The proposal content is saved as {CleanProposalName} [{ProposalID}].md inside the folder
+        - Each proposal gets its own folder named {CleanProposalTitle} [{ProposalID}]
+        - Each section is saved as {CleanSectionTitle} [{SectionID}].md inside the folder
         - Uses the same "basename [ID]" format as otter files
         - Folder and file names are cleaned for filesystem compatibility
     
     Processing Logic:
-        - Rename the folder if the proposal name changes (tracks via metadata)
+        - Rename the folder if the DocumentName changes (tracks via metadata)
+        - Rename the file if the SectionName changes (tracks via metadata)
+        - Save content if ContentsChanged is True OR if file doesn't exist yet
         - Convert HTML to markdown before saving
-        - Save metadata for tracking renames
+        - Save metadata for tracking renames and content versions
     """
     if not invwebservices or not ZCH_ARGS:
         print("Error: Client connection not available. Please set up invwebservices and ZCH_ARGS.")
@@ -120,11 +156,17 @@ def update_client_proposals():
     if 'proposals' not in metadata:
         metadata['proposals'] = {}
     
-    print('Fetching client proposals...')
+    # Get max content version from metadata for incremental update
+    last_content_version = _get_max_content_version_from_metadata(metadata)
+    
+    print(f'Fetching client proposals (last version: {last_content_version})...')
     client = invwebservices.Client(**ZCH_ARGS)
     response = client.get(
         'Report',
-        'User/Personal/Matthias.Miller/Blueprint_Designer/Service_Export_Proposals.r20'
+        'User/Personal/Matthias.Miller/RAG/2026-01-16_First_Version.r20',
+        {
+            'Prompt.vLastContentVersion': last_content_version
+        }
     )
     response_content = response.content
     
@@ -132,70 +174,98 @@ def update_client_proposals():
         print('Error: No data in response')
         return
     
-    proposals = response_content['data']
+    rows = response_content['data']
     
-    for proposal in proposals:
-        proposal_id = str(proposal.get('id', ''))
-        proposal_name = proposal.get('name', '')
-        proposal_html = proposal.get('html', '')
+    for row in rows:
+        proposal_id = str(row.get('DocumentID', ''))
+        proposal_name = row.get('DocumentName', '')
+        section_id = str(row.get('SectionID', ''))
+        section_name = row.get('SectionName', '')
+        section_order = row.get('SectionOrder')
+        contents_version = row.get('ContentsVersion')
+        contents_changed = row.get('ContentsChanged', False)
+        contents_html_if_changed = row.get('ContentsHTMLIfChanged', '')
         
-        if not proposal_id:
-            print(f'Warning: Skipping proposal with no ID: {proposal_name}')
+        if not proposal_id or not section_id:
+            print(f'Warning: Skipping row with missing ID: Proposal={proposal_id}, Section={section_id}')
             continue
         
-        # Clean the name for filesystem use
-        clean_name = content_util.clean_filename(proposal_name)
+        # Clean names for filesystem use
+        clean_proposal_name = content_util.clean_filename(proposal_name)
+        clean_section_name = content_util.clean_filename(section_name)
         
         # Determine folder name (using "DocumentTitle [DocumentID]" format)
-        folder_name = f'{clean_name} [{proposal_id}]'
+        folder_name = f'{clean_proposal_name} [{proposal_id}]'
         folder_path = os.path.join(proposals_dir, folder_name)
         
-        # Determine file name (using "DocumentTitle [DocumentID].md" format)
-        file_name = f'{clean_name} [{proposal_id}].md'
+        # Determine file name (using "SectionTitle [SectionID].md" format)
+        file_name = f'{clean_section_name} [{section_id}].md'
         file_path = os.path.join(folder_path, file_name)
         
         # Get or create proposal metadata
         if proposal_id not in metadata['proposals']:
             metadata['proposals'][proposal_id] = {
                 'current_folder_name': None,
-                'current_file_name': None,
-                'last_proposal_name': None
+                'last_proposal_name': None,
+                'sections': {}
             }
         
-        proposal_meta = metadata['proposals'][proposal_id]
+        prop_meta = metadata['proposals'][proposal_id]
         
         # Check if proposal name changed and rename folder if needed
-        if proposal_meta['current_folder_name'] and proposal_meta['last_proposal_name'] != proposal_name:
-            old_folder_path = os.path.join(proposals_dir, proposal_meta['current_folder_name'])
+        if prop_meta['current_folder_name'] and prop_meta['last_proposal_name'] != proposal_name:
+            old_folder_path = os.path.join(proposals_dir, prop_meta['current_folder_name'])
             if os.path.exists(old_folder_path) and not os.path.exists(folder_path):
-                print(f'Renaming proposal folder: {proposal_meta["current_folder_name"]} -> {folder_name}')
+                print(f'Renaming proposal folder: {prop_meta["current_folder_name"]} -> {folder_name}')
                 os.rename(old_folder_path, folder_path)
         
-        # Check if file name changed and rename file if needed
-        if proposal_meta['current_file_name'] and proposal_meta['current_file_name'] != file_name:
-            old_file_path = os.path.join(folder_path, proposal_meta['current_file_name'])
-            if os.path.exists(old_file_path) and not os.path.exists(file_path):
-                print(f'Renaming proposal file: {proposal_meta["current_file_name"]} -> {file_name}')
-                os.rename(old_file_path, file_path)
-        
         # Update proposal metadata
-        proposal_meta['current_folder_name'] = folder_name
-        proposal_meta['current_file_name'] = file_name
-        proposal_meta['last_proposal_name'] = proposal_name
+        prop_meta['current_folder_name'] = folder_name
+        prop_meta['last_proposal_name'] = proposal_name
         
-        # Create proposal folder
+        # Ensure folder exists
         os.makedirs(folder_path, exist_ok=True)
         
-        # Convert HTML to markdown and save
-        markdown_content = _html_to_markdown(proposal_html)
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(markdown_content)
-        print(f'Saved proposal: {folder_name}/{file_name}')
+        # Get or create section metadata
+        if 'sections' not in prop_meta:
+            prop_meta['sections'] = {}
+            
+        if section_id not in prop_meta['sections']:
+            prop_meta['sections'][section_id] = {
+                'current_file_name': None,
+                'last_section_name': None,
+                'last_contents_version': None,
+                'section_order': None
+            }
+        
+        section_meta = prop_meta['sections'][section_id]
+        
+        # Check if section name changed and rename file if needed
+        if section_meta['current_file_name'] and section_meta['last_section_name'] != section_name:
+            old_file_path = os.path.join(folder_path, section_meta['current_file_name'])
+            if os.path.exists(old_file_path) and not os.path.exists(file_path):
+                print(f'Renaming section file: {section_meta["current_file_name"]} -> {file_name}')
+                os.rename(old_file_path, file_path)
+        
+        # Update section metadata
+        section_meta['current_file_name'] = file_name
+        section_meta['last_section_name'] = section_name
+        section_meta['last_contents_version'] = contents_version
+        if section_order is not None:
+            section_meta['section_order'] = section_order
+        
+        # Save content if changed or missing
+        if contents_changed or not os.path.exists(file_path):
+            markdown_content = _html_to_markdown(contents_html_if_changed)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(markdown_content)
+            print(f'Saved section: {folder_name}/{file_name}')
     
     # Save updated metadata
     _save_metadata(metadata_file, metadata)
     print(f'Updated metadata: {metadata_file}')
-    print(f'Updated {len(proposals)} proposals in {proposals_dir}')
+    print(f'Finished processing proposals in {proposals_dir}')
+
 
 
 if __name__ == '__main__':
