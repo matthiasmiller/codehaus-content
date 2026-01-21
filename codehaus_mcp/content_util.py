@@ -34,19 +34,19 @@ def get_project_root():
 
 def _get_docs_dir():
     """Get the docs directory path."""
-    root = _get_project_root()
+    root = get_project_root()
     return os.path.join(root, 'infinite-stairway-designer', 'docs')
 
 
 def _get_rtopro_help_dir():
     """Get the rtopro-help directory path."""
-    root = _get_project_root()
+    root = get_project_root()
     return os.path.join(root, 'rtopro-help')
 
 
 def _get_otter_dir():
     """Get the otter directory path."""
-    root = _get_project_root()
+    root = get_project_root()
     return os.path.join(root, 'otter')
 
 
