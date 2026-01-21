@@ -13,7 +13,7 @@ from typing import List, Optional, Tuple
 
 def get_content_types():
     """Get list of available content types."""
-    return ['docs', 'rtopro-help', 'otter']
+    return ['docs', 'rtopro-help', 'otter', 'client-proposals']
 
 
 def get_project_root():
@@ -44,6 +44,12 @@ def _get_otter_dir():
     """Get the otter directory path."""
     root = get_project_root()
     return os.path.join(root, 'otter')
+
+
+def _get_client_proposals_dir():
+    """Get the client-proposals directory path."""
+    root = get_project_root()
+    return os.path.join(root, 'client-proposals')
 
 
 @dataclass

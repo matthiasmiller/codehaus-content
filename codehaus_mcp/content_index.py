@@ -109,7 +109,7 @@ def _extract_doc_title(filename: str, content_type: str) -> str:
     
     Args:
         filename: The filename (without path)
-        content_type: Content type ('docs', 'rtopro-help', 'otter')
+        content_type: Content type ('docs', 'rtopro-help', 'otter', 'client-proposals')
         
     Returns:
         Document title string
@@ -121,6 +121,12 @@ def _extract_doc_title(filename: str, content_type: str) -> str:
         if title_match:
             return title_match.group(1)
         # Fallback: remove extension
+        return filename.rsplit('.', 1)[0] if '.' in filename else filename
+    elif content_type == 'client-proposals':
+        # Format: Section Name [SectionID].md
+        title_match = re.search(r'(.+?)\s+\[', filename)
+        if title_match:
+            return title_match.group(1)
         return filename.rsplit('.', 1)[0] if '.' in filename else filename
     else:
         # For docs and rtopro-help: remove extension and replace separators
@@ -142,7 +148,7 @@ def _process_file(
         file_path: Full path to the file
         filename: Just the filename (without path)
         base_dir: Base directory for relative path calculation
-        content_type: Content type ('docs', 'rtopro-help', 'otter')
+        content_type: Content type ('docs', 'rtopro-help', 'otter', 'client-proposals')
         documents: List to append document info to
         tokenized_documents: List to append tokenized content to
     """
@@ -151,13 +157,32 @@ def _process_file(
         return
     
     # Extract document ID and title based on content type
+    rel_path = os.path.relpath(file_path, base_dir)
     if content_type == 'otter':
-        rel_path = os.path.relpath(file_path, base_dir)
         doc_id = rel_path.replace('/', '_').replace('\\', '_').replace('.txt', '')
         doc_title = _extract_doc_title(filename, content_type)
         doc_data = {
             'document_id': doc_id,
             'document_title': doc_title,
+            'file_path': file_path,
+            'content': content,
+            'content_type': content_type,
+            'relative_path': rel_path
+        }
+    elif content_type == 'client-proposals':
+        # For client proposals, use the folder name and filename
+        # Proposal Name [ID]/Section Name [ID].md
+        doc_id = rel_path.replace('/', '_').replace('\\', '_').replace('.md', '')
+        doc_title = _extract_doc_title(filename, content_type)
+        
+        # Also extract proposal name from parent folder
+        parent_folder = os.path.basename(os.path.dirname(file_path))
+        proposal_match = re.search(r'(.+?)\s+\[', parent_folder)
+        proposal_name = proposal_match.group(1) if proposal_match else parent_folder
+        
+        doc_data = {
+            'document_id': doc_id,
+            'document_title': f"{proposal_name} - {doc_title}",
             'file_path': file_path,
             'content': content,
             'content_type': content_type,
@@ -201,6 +226,10 @@ def _build_index(content_type: str) -> dict:
     elif content_type == 'otter':
         base_dir = content_util._get_otter_dir()
         file_extension = '.txt'
+        walk_subdirs = True
+    elif content_type == 'client-proposals':
+        base_dir = content_util._get_client_proposals_dir()
+        file_extension = '.md'
         walk_subdirs = True
     else:
         return {
