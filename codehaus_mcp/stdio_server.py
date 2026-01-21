@@ -27,6 +27,8 @@ from mcp.server.fastmcp import FastMCP
 
 from .content_util import (
     get_content_types,
+)
+from .content_search import (
     list_documents,
     search,
     get_document,

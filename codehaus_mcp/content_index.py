@@ -146,7 +146,7 @@ def _process_file(
         documents: List to append document info to
         tokenized_documents: List to append tokenized content to
     """
-    content = content_util._read_file_content(file_path)
+    content = content_util.read_file_content(file_path)
     if not content:
         return
     
