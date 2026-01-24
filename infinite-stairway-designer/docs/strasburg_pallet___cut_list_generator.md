@@ -192,12 +192,12 @@ Sections and Fields:
   * Assembly Value (Stored) (number; 2 decimals; hidden & read-only)
   * Total BF Without Kerf (number; 7 decimals; auto-calculated; read-only)
   * Total BF With Actual Kerf (number; 7 decimals; auto-calculated; read-only)
-  * Total BF With Optimal Kerf (number; 7 decimals; auto-calculated; read-only)
   * Outside Dimensions (SF) (number; 4 decimals; auto-calculated; read-only)
 * Assembly section:
   * Stock Item (checkbox)
   * Sample Pallet (checkbox)
   * Assembled As (drop list of Items)
+  * View Assembled As Item (report link)
   * Sold As (View Items) (report link)
   * Assembly Method (drop list of Assembly Methods)
   * Number of Fastener Types (number; 0 decimals; auto-calculated; read-only)
@@ -219,7 +219,6 @@ Sections and Fields:
     * Length (In) (number; 4 decimals; required)
     * Raw Material (drop list of Raw Materials)
     * Sizer (drop list of Cut List Subtypes)
-    * Optimal Cant Sizes (text; auto-calculated; read-only)
     * Cant Description (text; auto-calculated; read-only)
     * Cant Size (drop list of Cant Sizes)
     * Cant Dimensions (text; auto-calculated; hidden & read-only)
@@ -259,10 +258,6 @@ Sections and Fields:
     * BF Without Kerf (number; 7 decimals; auto-calculated; read-only)
     * Import ID (number; 0 decimals; hidden & read-only)
     * Sizer Species (Non-Cant) (Depr) (text; hidden & read-only)
-    * Optimal Cant Sizes Pipe List (text; auto-calculated; hidden & read-only)
-    * Optimal Cant Size (drop list of Cant Sizes; auto-calculated; hidden & read-only)
-    * Optimal Kerf % (percentage; 0 decimals; auto-calculated; hidden & read-only)
-    * BF With Optimal Kerf (number; 7 decimals; auto-calculated; hidden & read-only)
     * Actual Kerf % (percentage; 0 decimals; auto-calculated; hidden & read-only)
     * BF With Actual Kerf (number; 7 decimals; auto-calculated; hidden & read-only)
   * Flag in Cut List Generator (checkbox)
@@ -308,7 +303,9 @@ Sections and Fields:
   * Type (drop list of Raw Material Types; required)
   * Active (checkbox)
   * Sort Order (number; 0 decimals)
-  * Expected Keyword (drop list of Raw Material Keywords)
+* Expected Keywords section:
+  * Keywords; embedded spreadsheet of:
+    * Keyword (drop list of Raw Material Keywords)
 * Dimensions section:
   * Lumber Thickness (In) (number; 4 decimals; required)
   * Lumber Width (In) (number; 4 decimals; required)
@@ -332,13 +329,6 @@ Sections and Fields:
   * Cant Dimensions (string; read-only)
   * Cant Thickness (In) (number; 4 decimals; required)
   * Cant Width (In) (number; 4 decimals; required)
-* Lumber section:
-  * Lumber; embedded spreadsheet of:
-    * Thickness (In) (number; 4 decimals; required)
-    * Width (In) (number; 4 decimals; required)
-    * Qty / Cant (number; 0 decimals; required)
-    * Dimensions (text; auto-calculated; read-only)
-    * Kerf % (number; 2 decimals; auto-calculated; read-only)
 
 ### Cut List Subtype Record
 
