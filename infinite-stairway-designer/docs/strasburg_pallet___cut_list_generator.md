@@ -318,7 +318,7 @@ Sections and Fields:
   * Unit Cost (number; 4 decimals)
   * Standard Dimensions (Actual); embedded spreadsheet of:
     * Dimension (drop list of Item Dimensions; required)
-    * Amount (rounds up for pricing) (number; 2 decimals; required)
+    * Amount (Actual Dimension; Rounds Up for Pricing) (number; 2 decimals; required)
 * Fasteners section:
   * Fastener Category (drop list of Fastener Category Names)
   * Fastener Score (number; 0 decimals; sometimes required)
