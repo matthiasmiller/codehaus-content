@@ -305,6 +305,7 @@ Sections and Fields:
   * Sort Order (number; 0 decimals)
   * Nominal Thickness (In) (number; 4 decimals; sometimes required)
   * Nominal Width (In) (number; 4 decimals; sometimes required)
+  * Uses Nominal Dimensions (checkbox; auto-calculated; hidden & read-only)
 * Expected Keywords section:
   * Keywords; embedded spreadsheet of:
     * Keyword (drop list of Raw Material Keywords)
