@@ -310,7 +310,6 @@ Sections and Fields:
     * Keyword (drop list of Raw Material Keywords)
 * Dimensions section:
   * Actual Thickness (In) (number; 4 decimals; required)
-  * Lumber Thickness (In) (number; 4 decimals; required)
   * Actual Width (In) (number; 4 decimals; required)
   * Actual Length (In) (number; 4 decimals; required)
 * Cost section:
