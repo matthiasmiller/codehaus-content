@@ -1,0 +1,113 @@
+Unknown Speaker  00:44
+Matthias, all
+
+Unknown Speaker  00:47
+right, let me just rip through this so that you got a basic understanding,
+
+Unknown Speaker  00:51
+and
+
+Unknown Speaker  00:54
+so we're like we talked last time, we're getting all the dates on the record, doing one date at a time.
+
+Unknown Speaker  01:03
+We have item to category for quick lookups Sure, then we're getting the contacts categories and QuickBooks Accounts and lump summing them.
+
+Unknown Speaker  01:17
+We're sorting transactions in the following order, labor expense, and then Payroll Expense, other line items, like notes, and then the liability, and then the bank will be all the way at the
+
+Unknown Speaker  01:30
+bottom net. Do you want to say Miss item? Sort?
+
+Unknown Speaker  01:35
+I do.
+
+Unknown Speaker  01:46
+Um,
+
+Unknown Speaker  01:48
+we cash the wages to expense, RG,
+
+Unknown Speaker  01:53
+and then we build a
+
+Unknown Speaker  02:08
+so we Should tables keyed off two items is not it
+
+Unknown Speaker  02:22
+did debates decide they don't want
+
+Unknown Speaker  02:26
+line at individual items for each employee.
+
+Unknown Speaker  02:30
+They do for weight, although they do for wages, or they do okay, but not for some,
+
+Unknown Speaker  02:37
+not for like taxes and stuff
+
+Unknown Speaker  02:42
+makes sense.
+
+Unknown Speaker  02:44
+So for labor expense, we look at the contact loop over the RG. I created a look string table, adjust items to some that does the rounding magic. This might be something we want to standardize. We do it a lot. Take a string table. We do what's the new sum and how many decimals?
+
+Unknown Speaker  03:02
+And it does a sum string table, so it is somewhat destructive. I mean, it's not if you have the same item twice,
+
+Unknown Speaker  03:11
+theoretically you might want to preserve it so we could rewrite it to support it. But
+
+Unknown Speaker  03:17
+not usually.
+
+Unknown Speaker  03:19
+Yeah,
+
+Unknown Speaker  03:21
+hang on. Hang on.
+
+Unknown Speaker  03:29
+Okay,
+
+Unknown Speaker  03:31
+anyway, you can review that. I think we should write unit tests.
+
+Unknown Speaker  03:37
+Yeah, right. Unit tests for multiple keys, Type value,
+
+Unknown Speaker  03:46
+keys, multiple key, multiple identical keys, multiple keys with the same value, rounding issues, blank slash, na items, blank string table, etc. So if there's a blank string table, it'll produce a new string table with a blank key and the sum,
+
+Unknown Speaker  04:08
+you can argue, whatever.
+
+Unknown Speaker  04:14
+So
+
+Unknown Speaker  04:21
+not quite a blank string table. Is that not just a blank string? Yeah, like just a blank string. So if you say just a blank string to a new sum,
+
+Unknown Speaker  04:32
+oh, then you get
+
+Unknown Speaker  04:35
+tab in the new sum.
+
+Unknown Speaker  04:39
+Some so what? So the new sum
+
+Unknown Speaker  04:43
+for the new summary, you just doing a string type of column to list and summing it.
+
+Unknown Speaker  04:49
+We are
+
+Unknown Speaker  04:51
+prorating it.
+
+Unknown Speaker  04:53
+Take the value divided by current sum times the new sum. So basically, prorate the string table so that the.
+
+
+Transcribed by https://otter.ai
