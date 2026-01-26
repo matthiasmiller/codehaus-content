@@ -312,7 +312,6 @@ Sections and Fields:
   * Actual Thickness (In) (number; 4 decimals; required)
   * Lumber Thickness (In) (number; 4 decimals; required)
   * Actual Width (In) (number; 4 decimals; required)
-  * Lumber Width (In) (number; 4 decimals; required)
   * Actual Length (In) (number; 4 decimals; required)
 * Cost section:
   * Cost Unit of Measure (drop list of Units Of Measure)
