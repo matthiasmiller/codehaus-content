@@ -316,7 +316,7 @@ Sections and Fields:
   * Cost Unit of Measure (drop list of Units Of Measure)
   * Setup Cost (number; 2 decimals)
   * Unit Cost (number; 4 decimals)
-  * Standard Dimensions; embedded spreadsheet of:
+  * Standard Dimensions (Actual); embedded spreadsheet of:
     * Dimension (drop list of Item Dimensions; required)
     * Amount (rounds up for pricing) (number; 2 decimals; required)
 * Fasteners section:
