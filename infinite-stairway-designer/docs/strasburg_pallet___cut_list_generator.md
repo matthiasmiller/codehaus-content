@@ -315,12 +315,12 @@ Sections and Fields:
   * Actual Length (In) (number; 4 decimals; required)
 * Cost section:
   * Cost Unit of Measure (drop list of Units Of Measure)
+  * Nominal vs Actual BF (text; auto-calculated; read-only)
   * Setup Cost (number; 2 decimals)
   * Unit Cost (number; 4 decimals)
   * Standard Dimensions (Actual); embedded spreadsheet of:
     * Dimension (drop list of Item Dimensions; required)
     * Amount (Actual Dimension; Rounds Up for Pricing) (number; 2 decimals; required)
-  * Nominal vs Actual BF (text; auto-calculated; read-only)
 * Fasteners section:
   * Fastener Category (drop list of Fastener Category Names)
   * Fastener Score (number; 0 decimals; sometimes required)
