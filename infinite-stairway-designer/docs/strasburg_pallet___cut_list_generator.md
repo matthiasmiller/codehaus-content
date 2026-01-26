@@ -303,8 +303,8 @@ Sections and Fields:
   * Type (drop list of Raw Material Types; required)
   * Active (checkbox)
   * Sort Order (number; 0 decimals)
-  * Nominal Thickness (In) (number; 4 decimals; required)
-  * Nominal Width (In) (number; 4 decimals; required)
+  * Nominal Thickness (In) (number; 4 decimals; sometimes required)
+  * Nominal Width (In) (number; 4 decimals; sometimes required)
 * Expected Keywords section:
   * Keywords; embedded spreadsheet of:
     * Keyword (drop list of Raw Material Keywords)
