@@ -230,7 +230,7 @@ Sections and Fields:
     * Cant Qty (number; 0 decimals; auto-calculated; read-only)
     * Cant Override Waste % (number; 0 decimals)
     * Cant Additional Count (number; 0 decimals)
-    * Sizer Misc Prep (text)
+    * Sizer Misc Prep (text; sometimes required)
     * Raw Material Info (Sawing) (text)
     * Enable Sawing Multiplier (checkbox)
     * Saw 1 (drop list of Cut List Subtypes)
