@@ -1,0 +1,269 @@
+Speaker 1  02:28
+Hey, hey, that looks like you have a guest. I do, yep, nice, yeah.
+
+Unknown Speaker  02:37
+I was just trying to think through how to stay on top of this project,
+
+Matthias Miller  02:45
+the zch or the zrt, ERT.
+
+Speaker 2  02:49
+Okay, I thought I was talking to dads on this morning, and then thought, bounce some ideas off of you. But what I've been feeling well last week, I was just going hammer down, which was a lot of fun, but it feels like it's hard because we're trying to switch the switch from event surgery to invoices, which takes a bunch of work that's largely relying on me, yep, and then Trying to keep enough work on the other guy's plates. So between, between that and trying to stay on top of client proposal, it's just about or I feel like I'm just barely staying on top of it. So I was just trying to figure out what, what are the ways to keep it moving one I one thing I was only wondering, should I be Should I have a rhythm of spending 20 minutes in the client proposal every morning or something, and sort of as about a first thing where I update anything that's happened in the last day, like move stuff down to complete it, If necessary, and write up jobs, because the you all still, there's a bunch of jobs from you all that I haven't gotten written up yet. Okay, I'm
+
+Matthias Miller  04:11
+going to take a giant swing at a crazy idea. Okay, okay, so you've talked, you guys have talked about the different development models. There's the Tim and Bangladesh model. There's the enterprise model, for lack of a better term. And is there a third,
+
+Unknown Speaker  04:34
+I mean, what we're doing
+
+Matthias Miller  04:36
+sort of, well, yeah, it's, it's kind of the Agile enterprise, I guess, for lack of a better term,
+
+Unknown Speaker  04:43
+yeah, that sounds right,
+
+Matthias Miller  04:48
+like a cis style or whatever. What if? What if the problem? Is that there's not close enough linking between proposals in client scope, like, what if? What if, there would be a way to say, I
+
+Matthias Miller  05:23
+yeah, it it feels to me like the proposal is a mix of, well, it is. This is beyond feeling. It is objectively, a mix of, this is how it works. Now. This is how it's supposed to work. These are the priorities. And the worst part is that it's duplicated between client scope and here from a development standpoint. So a very simplistic thing would be, what if
+
+Matthias Miller  06:08
+you could spend 20 minutes a day in here. That could certainly be an option, but it doesn't, still doesn't feel like you
+
+Matthias Miller  06:23
+i That still doesn't feel to me like it has the same level of,
+
+Matthias Miller  06:33
+no, we're going to have this, this whole problem, through through summer, right? We keep going as we do right now, one thing that we could do, if we still have read only incidents coming in which is going to break when we switch to zca, move client proposal, but you could then put a product Change ID in, and we could infer status. And you could even say you could even lock down proposal sections, if it's depth, you know, and if there's a product Change link to it, and then we know that, and then you could have reporting to say it's, it's almost like we actually, we're adding a field for this. There's a final checkbox that Jasper added to client proposals. Okay, why wouldn't we have a why wouldn't we expand that slightly I don't know the full context, but what if that would be something like InDesign ready for development and complete, and then you could have a report to search for things that are Ready for development that don't have a product change, and you would validate against it containing to Do, underscore, if it's ready for development or complete. Yeah. So
+
+Speaker 2  08:32
+we'd have to get more granular in how we spec stuff out. I think, well, we have to add more rows yet than we are right now.
+
+Matthias Miller  08:40
+Well, which is an argument to do the proposal section migration Right?
+
+Speaker 2  08:46
+Which, I mean that'll be happening. It's just time out. I don't think we can. I'd be surprised if we can push it faster than this cycle. Have it by but I don't know for sure.
+
+Matthias Miller  09:17
+Did you have thoughts on how to approach it
+
+Unknown Speaker  09:20
+on your idea of using product changes and stuff more Yeah.
+
+Matthias Miller  09:27
+I mean, well, or even more general, sorry, there's another idea on product changes, which was, literally, is there a world in which the client proposal should basically live in product changes? But I think that's
+
+Unknown Speaker  09:41
+it just means Dwayne can't edit.
+
+Matthias Miller  09:44
+And then we, yeah, we come up with a read only sync back into, I would just create a read only sync a one off to sync it into proposal section records that mirror the. A mirror client scope, and he can't edit correct.
+
+Speaker 2  10:11
+So then what does that look like? Then, if we do that, see that, the thing is, then we'll have a whole bunch of, like, there's often small, nitsticky, little things to just pick off, like, rename jobs and stuff, right? You really don't want in the proposal. So it's not a, it's not really a true one to one, no, because I think proposal, well, what I love for it to end up by the end, I want it to basically just, I mean, it's an overview of what the system is and does, like it gives you the records and how they work together and the key reports, And that's sort of how the whole hierarchy starts. For Yes, for the, I mean, in CLS, but it doesn't, there ends up being a lot more noise than that, right? And part of that's also because of, I've been choosing intentionally to break a lot of these proposal sections into smaller jobs, because it's it felt, it feels like we've been able to make better progress when I do that than when we leave them as a big one like, do this here, that there, that there, right?
+
+Unknown Speaker  11:30
+I think you're right. That's partially
+
+Speaker 2  11:33
+too because we've got two fairly young guys on the team. So yeah, that's part of it, and I think it's been working pretty well, but it is a it's higher maintenance, right? Then also, what I'm finding is that it pretty consistently will have something or numerous times we'll have something half coded, and then as part of our because we're being doing Agile development, will then design changes, then we have to undo that and change course and stuff. And then I usually update client proposal. But not I don't know if I've all I don't think I've always gotten it done. Always done it. It's just hard to remember where, where, what's detailed, which I think would push towards some of what you're saying with. Well, maybe it does need to. We do need a more of a straight sink across.
+
+Matthias Miller  12:31
+Well, the way, the way we handle it in the investor tools side is that as part of every job that's completed, you have to go through the documentation, stage right. Okay, here's I have another idea. If we switch to proposal sections, then we can have a client proposal by timeline, and we can make the client proposal editable by some mechanism so that you could, you could have, you could have a this is, this is truth. This is summer, this is, you know, and then this is near term, that's reasonable, or spring, and then near term. And then this is, well, it's near term, slash needs design, I think, and you could also have a queue then for these are pending, pending development. So basically you have, you have in development, near term design spring, and then this is what's done. And if we make the client proposal link editable, you could just drop it into a different client proposal and throw it, throw it in there after you delegate it.
+
+Speaker 2  13:55
+Oh, I see. So we might actually do you're you're suggesting we use different client proposals to keep track of what's been coded versus what? Well, I don't know if you think two or three, but is that what you're saying between coding and design? Yeah. I mean, I think that could make sense. Wait and this project is unique. I wonder how often we'll have this going forward.
+
+Matthias Miller  14:27
+We have that with weberland, though, because there you have, we're rolling out accounting, and it seems like there's a world not exactly like this, but there's a world in which there's an overarching system, but there's subsets of proposals that apply tie into that, and it's always been a hassle to to manage them. And so if you have, like, a a universe of some kind, or an organization, or is it, I
+
+Speaker 2  14:55
+mean, is it just based on, well, it's not three, I'll see quite i.
+
+Matthias Miller  15:00
+I think you could do it based on the organization, and you would have a way to view proposals based on either organization or a specific subset of that in the same way. I mean, it's the same outer catalog, inner catalog type of idea.
+
+Speaker 2  15:14
+I mean, it's essentially what investor tools does with what's an example they have some companies that have multiple subscriptions, right? So do they actually? Those are actually pretty split apart. Though, those
+
+Matthias Miller  15:29
+are split apart. It's, but it's, it's more like, I don't know, development subsystems, whatever.
+
+Speaker 2  15:37
+Yeah, I like that, because we're feeling part of what we're feeling is the pain of two separate systems with which when, when we're doing design and then development as completely separate items, works great, like it's really not a problem, but when you're doing them at once, it gets to be a jumbled, messy, messy mess,
+
+Matthias Miller  16:02
+Yep, yeah. Does this solve your problem? Okay, here's what I like as a side note. It allows, it allows us to shove things out of our purview. And realistically, right? Can we table something blue sky or spring? We could do that right
+
+Unknown Speaker  16:22
+with without us adding a bunch of noise too.
+
+Unknown Speaker  16:26
+Yeah. I mean, then go ahead.
+
+Speaker 2  16:30
+Do we? Do you do like three different records where you've got your finished client proposal, which we keep working stuff into as we get it done, yep. But then you also have your, um, your design, which I don't know how we because I think you want one for, ready for dev, ready for development, then you also need one for, probably need one for design. And I don't know where you want to put all the blue sky
+
+Matthias Miller  16:58
+stuff, but I kind of wonder if we, if we want a, something along the lines of a four short, near term design, long term design, ready for dev. Slash development, slash in development. So complete,
+
+Unknown Speaker  17:15
+not quite a status, but sort of a status.
+
+Matthias Miller  17:17
+It is sort of a status.
+
+Speaker 2  17:20
+And then you don't need, then you don't have to even link it to separate proposals, though, do you do? You just choose which ones you want to look at.
+
+Matthias Miller  17:32
+Oh, you could filter by status, yeah, and then you would just replace the checkbox that Jasper added with a status, probably, and then your dashboard filters by status, which would be useful anyway, great. You could do a priority in status. Maybe that's too much.
+
+Speaker 2  17:58
+I think for now, status would probably buy us what we need, but it does rely on all like we need to migrate to billing. We need to get this whole new record structure in place Correct.
+
+Unknown Speaker  18:18
+Okay, so that's the So, that's good big picture.
+
+Matthias Miller  18:22
+Yeah, that's a big picture. Short term. If you're literally thinking Band Aid solutions, I feel like I'm drowning. I think the answer is, go through the January and February sections. Go through the January section and make sure everything's handled in there. Yeah, like Go, go find an hour or two and admit to yourself that zch might have to bump be bumped a little bit to make it happen. And then potentially dig into February and see if there's anything there. And I think most of what's outside of that can once, once you have your sounds to me like sales tax and well, sales tax is going to require a bunch more,
+
+Matthias Miller  19:20
+a bunch more focus from you as well. I see a bunch, at least some more
+
+Speaker 2  19:26
+some I need to change my filing reports to or my not my, well, okay, filing reports that basically don't exist. It's the I have the logic to create liabilities that's now outdated. I need to update that to look at new rec to use the new record structure. Jasper at it. But we have that record structure in place. I have my, well, my things were looking at the old events or G but I think it's, I think that switch is just gonna take me a couple hours. Okay, that's I most of the work I've done there is not wasted. I don't think.
+
+Matthias Miller  20:00
+Yeah, it's just some obnoxious switching things over, yeah,
+
+Speaker 2  20:06
+switching things over. And is there anything I need to do the handling for cash versus accrual?
+
+Matthias Miller  20:16
+Well, I think something that I would take away from this as well is, let's avoid I kind of feel, I don't want to just completely be dismissive, but I kind of feel like we hit a perfect storm. Yeah, so big, big. When Dwayne showed up, go ahead. No, keep going. You're right, and I think, so. I think there needs to be good communicate, better communication between you and me. I think maybe you should be looped in on scheduling conversations. Dwayne is is locked in for March, the first Tuesday and Wednesday in March. I'm just gonna be quiet. Yeah. Nice. Brush your fingers. Cohort. His sidekick might be coming too, so we need to keep Seth in the loop with your trips out here so that he can adjust his schedule accordingly to delegate after
+
+Unknown Speaker  21:27
+we Yeah, I think you're
+
+Matthias Miller  21:28
+right. There you go, nice.
+
+Speaker 2  21:35
+I think you're right that if we wouldn't have had, if we wouldn't have the big rework right now, it wouldn't have been that bad. They think that's a lot of what's really adding time. I mean, that it took away any margin I had more than
+
+Matthias Miller  21:56
+Yeah, yeah. Well, it's not just it's time, it's not just time, but it's also it is time, but it's also focused. It takes a lot of it's taken a lot of your brain power.
+
+Unknown Speaker  22:06
+Yeah, exactly.
+
+Matthias Miller  22:10
+So lesson learned. Then if we schedule it on a thread that you're part of, you'll know, and you'll just generally know the week after that, you need to leave space to delegate, because there's likely, if all things go well, a whole bunch of stuff coming through there. But the upside then is that if you can get past that week, the next four weeks, four or five weeks, should hopefully be relatively smooth sailing, because we're hoping. My thought is, I don't know if this is true or not. I don't know how effective this is, but my thought is that we'll do a I mean, I wonder if we don't do every six weeks until go live, uh huh,
+
+Unknown Speaker  22:56
+rather than trying to do calls.
+
+Matthias Miller  22:59
+Yeah, he was, I was, I'm always pushing for more and but he was just flabbergasted. We came back Wednesday night and knocked out two more things off the list. He was just flabbergasted with what we got done. So, yeah,
+
+Speaker 2  23:15
+that's awesome. Yeah. Okay, I think this helps give some clarity on how to move forward. I do think it means for now I'm going to have to spec out a whole bunch from the client proposal and do some cleanup.
+
+Matthias Miller  23:40
+I think that's the painful Band Aid short term solution. I think you have to do that. I don't think there's a way we can get a nice, elegant solution until then. I'm sorry, yeah,
+
+Speaker 2  23:47
+no, that's fine, kind of what I was expecting.
+
+Matthias Miller  23:52
+And I also think if you can, if you can shoot off a quick email to get approval in the statuses, if you need that, I think it's, I mean, you can, you can have Jasper rework the status is before we start using them. That'd be awesome. Before we even with that, Ellis didn't mind if I spend some time on the specking stuff, and so I'm trying not to overload CRT and zpa this month with invoices. So if I don't, I don't mind if, if you could punt some of that stuff to me, if you're like, Hey, okay, if you want me to take the status and then update those, those back to handle them, I don't mind doing that.
+
+Speaker 2  24:31
+But maybe actually, because, I mean, I just don't have, I have more, more than I can do. So yeah,
+
+Matthias Miller  24:39
+that's fine. It's just part of the Ellis. Ellis was happy helping me, with me, helping with I could even spec out the migration, because he was very happy to have my, my help in doing that and well, it make a huge difference. Yeah, yeah, good. Let me do that. I'll take that on your plate. Happy to do it
+
+Speaker 2  25:02
+sounds good. I mean, should I still email Mies on now, just letting him know that this is going to be coming,
+
+Matthias Miller  25:09
+or should we wait until you get well? You could give him a heads up? I don't care. That's up to you. It'll be I'm hoping to get it done today or tomorrow. So thank you.
+
+Speaker 2  25:19
+I'll just wait until I hear from you about that, and then.
+
+Matthias Miller  25:24
+And then, I think, I think my specs are approximately how the level I've specked out for aronos. So, yeah, I think they should be good. But I think some see gaps, okay, I
+
+Speaker 2  25:38
+skimmed over them. And I mean, I'm pretty sure that a run or nick or anyone like that could do it. I mean, they might come back with some questions, but it's cheaper to start and have them ask questions where they need it than specking everything.
+
+Matthias Miller  25:52
+Yep. Okay, so that was, that's the DRT stuff. What kind of what other questions there was? I thought there was like, was there anything else in your message?
+
+Matthias Miller  26:08
+I will do the, I'll do the migration and status sphere. You know, that's it. Yeah, okay. Well, good news as well is VHS is rolling along marvelously without your involvement, thanks to
+
+Speaker 2  26:26
+your little brother. So I'm glad I'm not touching that.
+
+Matthias Miller  26:31
+Yeah, well, we would save you for the other stuff we've got. Oh, good times. Good times.
+
+Speaker 2  26:38
+It is fun. Well, and then there's also, like, if I have time, then there's a couple more zfp jobs. I can spec up for Sean and Jess or knockout.
+
+Matthias Miller  26:47
+I also have Go ahead. I spent
+
+Speaker 2  26:50
+like 45 minutes last, end of last week, I needed some chill work, and so I speced out a bunch of zfp jobs. So there's now, like, five or six jobs in the queue that they can grab and knock out February, but it's fun to have a little bit of a pipeline of things like that. But yeah, stuff just disappears.
+
+Matthias Miller  27:13
+It's hard to stay in front of him. I can't, I can't imagine trying to keep, I mean, there's enough design on ZP. I can't imagine trying to keep it alone, like keeping busy? Yeah, it would be, it'd be a nightmare.
+
+Speaker 2  27:25
+Yeah, exactly. I guess I'm not getting what I what I dished out exactly, exactly, because I remember when I was the year in Bangladesh and that, well, I don't, I don't remember the year I was here as much, but the year in Bangladesh, I remember the, I don't even remember who was my team lead, but I just the, yeah, I just was knocking out job after job was just like all sorts of little stuff, and just plow through it exactly.
+
+Matthias Miller  27:58
+Well, it's kind of nice. I have, I have the best at both worlds, because I'm not. I'm not paying your payroll, so I don't actually, literally have to keep you busy. I can just send stuff off and, like,
+
+Unknown Speaker  28:10
+not worry about it, literally keeping me busy. So good. Okay.
+
+Unknown Speaker  28:19
+Well, I think that gives me what I need Okay, to keep touching base.
+
+Unknown Speaker  28:23
+But yeah, I like it.
+
+Speaker 2  28:27
+Yeah, so you'll spec the status stuff in and all that.
+
+Matthias Miller  28:30
+Yeah, I'll spec out. I'll get, I'll get the stuff. I think, I think the migration is as simple as a database level, export and import. They can test on a test system, or maybe even export it and then add the catalog.
+
+Speaker 2  28:42
+Okay, I always think that's, I mean, that's roughly what I was thinking. I wasn't sure. Dad wasn't quite sure if database export, import was the best option or not. He just didn't really know. But if you think it
+
+Matthias Miller  28:52
+is, then it's probably good. My instinct is yes, because everything
+
+Unknown Speaker  28:56
+that Yeah, sounds good.
+
+Matthias Miller  29:00
+All right, I can look at the details, but
+
+Speaker 2  29:02
+I started specking it out, and that's, that's the route I was going, but I'll happy to leave it.
+
+Speaker 1  29:08
+Okay, sounds good. Okay, I'll grab it. Thank you. Yep. Thank you. Bye.
+
+
+Transcribed by https://otter.ai
