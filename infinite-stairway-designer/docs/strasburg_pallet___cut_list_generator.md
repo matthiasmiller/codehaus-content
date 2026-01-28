@@ -253,7 +253,7 @@ Sections and Fields:
     * Saw 4 Misc Prep (text)
     * Saw 4 Unit Qty (number; 0 decimals)
     * Saw 5 (drop list of Cut List Subtypes)
-    * Saw 5 Misc Prep (text; required)
+    * Saw 5 Misc Prep (text)
     * Saw 5 Unit Qty (number; 0 decimals)
     * BF Without Kerf (number; 7 decimals; auto-calculated; read-only)
     * Import ID (number; 0 decimals; hidden & read-only)
