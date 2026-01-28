@@ -123,11 +123,9 @@ This is a non-editable simple list.
 
 It includes the following items:
 
-* Board Feet With Kerf
-* Board Feet Without Kerf
+* Board Feet
 * Each
 * Outside Dimensions (SF)
-* Linear Feet
 
 This list is universal for all users.
 
