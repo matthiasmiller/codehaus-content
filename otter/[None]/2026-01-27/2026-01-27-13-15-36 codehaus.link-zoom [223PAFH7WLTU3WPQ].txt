@@ -1,0 +1,104 @@
+Unknown Speaker  00:15
+See long time. No, see
+
+Matthias Miller  00:17
+long time. No, see you want to share your screen?
+
+Unknown Speaker  00:21
+Yep, where's my which screen was I using? Not that this guy.
+
+Speaker 1  00:33
+So, I mean, I essentially, you're trying to keep track of whether we've paid for buildings or not. I'm assuming, well, if the manufacturers paid for it, or the RTO company or whatever, right?
+
+Matthias Miller  00:50
+Yeah, so there's, there's three things. Here's the color you're missing. Premiums and commissions are not stored on the asset. They're just calculated based off of bills and invoices.
+
+Speaker 1  01:09
+Okay, what are we had? We've been trying to store them on the asset already. We and remember that, I
+
+Matthias Miller  01:17
+don't remember where that's at. We, that's what, that's where the that's what the plan was. But I don't, I don't know, like, purchase amount will be premium. Yeah, you would hit override, maybe. And then you would specify the premium owed,
+
+Speaker 1  01:41
+I think is coming paid? Is already coming from? Yeah, it's coming in,
+
+Matthias Miller  01:46
+but we're not counting accounting for invoices such as premium refunds. The obnoxious thing is that we need to support optimization types on both sides, because we we build you for that, or we invoice you. The manufacturer might say, we invoice you for this, but we shouldn't have or we invoice you too much. Can you send money back, or whatever? Or here's your money back, or, I don't know, any type of things. So for that reason, there's always a more sense primary place where it lives, but it has to be supported on the other side, right?
+
+Speaker 1  02:27
+Okay, and then that's why you're talking about your asset itemization is normally invoiced, or is normally billed, right? So when you find out you if it's normally invoiced, and you're on an invoice, then it's it should be positive, correct, right, yep, okay, okay,
+
+Matthias Miller  02:53
+persuading me not to put a calculated premium and commission On the asset, but I think he's probably right. I anyway, so that's why, that's the way it is. So that is, that is good.
+
+Unknown Speaker  03:09
+How do assets change? We have to date them. Purchase financials.
+
+Matthias Miller  03:16
+You need to remove the you can't override the. I mean, the amount owed doesn't make sense. Instance, premium mode doesn't make sense. There's nothing for commissions currently.
+
+Speaker 1  03:29
+Right value. Renaming this amount help by seller, seller. This is for when is what is amount held by seller.
+
+Matthias Miller  03:41
+Okay, so the asset value is the value of the building. Okay, let's say, let's run through the real life scenario. Is the seller, the dealer, manufacturer? Okay, they're selling the building to us, right? It's that's into the customer. Actually, it really doesn't matter. So it's the same person, but if the customer pays them a deposit, like if they collect the first month rent or whatever, then we need to note that, because we're only going to get invoice from the manufacturer for, okay, let's say, let's say that it's $8,000 building. The customer puts $2,000 down. It gets paid to the manufacturer. They pay that straight to the dealer's manufacturer, and then see we're going to pay them for $6,000 but for the accounting purposes, it's an $8,000 asset
+
+Unknown Speaker  04:34
+sitting on our books. That's dumb, but that makes sense.
+
+Matthias Miller  04:41
+Well, it's but it's true. I'm sorry.
+
+Speaker 1  04:44
+Yes, life is complicated. Life, it's complicated. So this is, this is just a field.
+
+Matthias Miller  04:53
+It is just a field, and it's subtracted when I mean the purchase amount, then you. It is what we say becomes asset value instead of purchase amount, right? Or we rename that to add well. Or you, you do that, you keep it in, you add a migration. But ultimately, whatever, it doesn't matter.
+
+Speaker 1  05:16
+Yeah, not a big deal, but it should, because that changes to macro, yeah, because it's the value minus k, okay, that makes sense. Premium paid and then expenses paid. What is that disappearing?
+
+Matthias Miller  05:39
+We should have expenses paid. I think, okay, asset, expense do we? I think, right.
+
+Speaker 1  05:53
+And then this needs to change. Doesn't think he started on this. Out some of it's not done yet. So, oh, it was waiting on RG rework. So cash collected.
+
+Matthias Miller  06:15
+So I think have we put been putting in the sale price?
+
+Unknown Speaker  06:21
+I'm not sure. I don't think we've really
+
+Matthias Miller  06:23
+worked very much. We haven't so in reselling buyback, I think we're getting a sale price based earliest sale date there. Okay, so we have invoice date and invoice amount Go ahead.
+
+Unknown Speaker  06:46
+Well, you should only ever have
+
+Matthias Miller  06:47
+one invoice for resell and buy back.
+
+Speaker 1  06:54
+Okay? Because then if it's another one, then it's different asset, or you just create a second asset if you're doing things again, as in, yes, if you buy it, if, if they do it, if they buy it back, and then you sell it again for them, correct?
+
+Matthias Miller  07:14
+So technically, this isn't an asset. It's an asset for a holding terms, or whatever you want to call it ownership period, yeah, but it's so rare that you really won't Yeah, anyway. And we expect to wonder what we don't expect more than one sale invoice.
+
+Unknown Speaker  07:38
+Okay, I
+
+Speaker 1  07:45
+think that makes sense. How does this change? How we do refunds, then for bills, because I was going to put that in the type on the bill itemization, but now we probably don't want to, well,
+
+Matthias Miller  07:56
+okay, here's what I would love. Could you have, okay, I think I like it. But what if we had a different type called charge or refund? Okay? And so if you're on a charge, then it shows the list for that, the ones that okay. If you're on an invoice and you put charge that he shows, shows the primarily invoice line items. You put in refund, it shows the primarily Bill items and the list switches. Oh, gotcha.
+
+Speaker 1  08:41
+I think that's sane. What do you do for ones that aren't linked to assets? Then do we have, but we need to support rows that aren't linked to assets?
+
+Matthias Miller  08:56
+Yes, we do. I just have, sorry I was I got somebody else jumping on. Now, shoot me a list signal, what else we got? And then we'll do that. Okay? That gives me four thanks. Autumn, thanks. You.
+
+
+Transcribed by https://otter.ai
