@@ -1,0 +1,479 @@
+Speaker 1  00:36
+Good morning. Well office got to hear recording in progress because I had settings, wrong things, right. I had, I had, well, I told them this morning about the lovely wind change we have on our front deck, and I played a recording of some similar wind chimes just, just so they could experience it. And then I forgot to change my sound settings. I my sound settings. Michelle's parents gave us some beautiful, like, I don't know, three, four foot long wind chimes for Christmas. Corinthian Bell wind chimes that are just lovely, that's that's been fun, good way to make use of Kansas wind,
+
+Matthias Miller  01:27
+yeah, exactly. Don't let it go to waste. For real. Exactly.
+
+Speaker 1  01:34
+Okay, let's see. Okay, forgiveness for taxable fees. I'm maybe my brain was just too tired yesterday, but it was just not making sense to me. So I think what we had decided, what we had decided earlier, is that you don't forgive tax. You're forgiving by definition, you're forgiving a taxable the taxable subtotal, but not the tax right? How do we reflect that in our itemization? RG,
+
+Matthias Miller  02:12
+you would have, I mean, okay, my, my instinct is, is you would forgiveness row is basically reversal for the same amount of or whatever amounts being forgiven, same amount as a fee, and you either infer taxability or you just validate that they all match. Like that, if you have a taxable fee and taxable forgiveness, that they all need to be taxable or not
+
+Speaker 1  02:39
+taxable, sure. So then are you going to say the forgiveness row has a tax amount? No, no.
+
+Matthias Miller  02:50
+I mean, the fee amount doesn't, does it?
+
+Speaker 1  02:55
+Yeah, it does. Well, well, oh, you infer it on your Yeah, we're we do that whole thing of where we go to we say, what's my invoice subtotal, taxable subtotal, multiply that by our tax rate, and then go spread that out across our fees. Well, with the rounding error on the biggest one,
+
+Matthias Miller  03:19
+do we? What if you in your cash? Why do you need the forgiveness row at all? Why not just amend the just compress the is that going to create trouble for reporting?
+
+Speaker 1  03:41
+My concern is it's the rows are going to look weird, like a user is going to see it's like, what? So you have an incurred row for an $8 fee, taxable $8 fee, and then you forgive half of it. And what we I mean, I think what you're saying then is that you show a subtotal of still, subtotal of eight, but then the tax amount is just No, no.
+
+Matthias Miller  04:08
+I meant in your caching. RG, your administration. RG, would I don't have a caching? RG, right. We got rid of that, yeah. Then you have to, don't you?
+
+Unknown Speaker  04:30
+I think so it just doesn't feel right.
+
+Matthias Miller  04:34
+I think, I think what you're the correct way to do this, if you want the best possible accuracy is that forgiveness row is $8 plus tax on $8 you forgive $2 so you take tax on $6 minus the tax on eight um, $8 tax on $8 minus tax on $6 and that's the 10. Tax that you assigned on that forgiveness row. If you have a subsequent forgiveness row of $3 you take the tax that's now $5 forgiven, $3 left, you take the tax on $8 minus the tax on $3 and that's the well minus the tax on
+
+Matthias Miller  05:24
+you do this the tax difference to get the accurate tax on your subtotal. Basically,
+
+Matthias Miller  05:40
+it's horribly complicated. It's awful
+
+Speaker 1  05:45
+because my current logic was so easy, but it's because it didn't have to deal with forgiveness.
+
+Matthias Miller  05:54
+Is there a world in which are we
+
+Matthias Miller  06:02
+sure we don't want to store forgiveness on the row itself?
+
+Unknown Speaker  06:09
+I wonder if we want to is,
+
+Speaker 1  06:16
+isn't that? Isn't it sort of a relic of the event surgery to store it as a separate line item.
+
+Matthias Miller  06:24
+What it doesn't give you is it doesn't tell you when forgiveness happened, but, but we do say, but you are amending the invoice, right? And there is some trail, and then you'll check notes if you want to figure out what happened. That dramatically simplifies it, so then you have an originally better just do that. Can you see any flaw with that? I can't. Can you
+
+Speaker 1  06:53
+not other than we don't have the easy trail to say, oh, there's a forgiveness row,
+
+Matthias Miller  07:00
+yeah, but you can check whether there's a forgiveness value, right? Exactly, so you don't have a date. Now, this is where we talked about having a forgive, forgiveness, audit log, which the note kind of is that, but if we want something separate, it's I dislike. I generally dislike it because it's so easy for it to get out of sync. Somebody goes in and edit CRG and removes forgiveness. And then what
+
+Speaker 1  07:38
+I mean isn't this what activity history is for.
+
+Matthias Miller  07:46
+All right, next,
+
+Speaker 1  07:51
+I feel successful, okay, at that point we don't even have adjustment type on in the atomization RG, which I love, because right now, wait, no, do we? Where does bad debt go?
+
+Matthias Miller  08:09
+Bad Debts a payment type, isn't it, right?
+
+Speaker 1  08:13
+I mean, I think right now, all I had was incurred and forgiven. So I think it just goes away.
+
+Matthias Miller  08:23
+What about refunds or payment or Yeah, okay, so here's where it's going to bite us. Somebody wants to write off something for any reason besides forgiveness, hypothetical scenario, I don't care. I'm just saying that is the only scenario in which we could change our mind that I can see.
+
+Speaker 1  08:46
+I mean, at that point, can we let them put in a negative subtotal if they really, really want to, yeah,
+
+Matthias Miller  08:55
+or have a forgiveness reason, or, I don't know what, like a Oh, right,
+
+Speaker 1  09:00
+or so on these, whatever we will Nuke, the types gonna go subtotal, cash price, that stuff all stays the same. Should we have in is it in here that you add a forgiveness amount and adjusted subtotal? Or how do you because I think we want to keep the original sub right.
+
+Matthias Miller  09:22
+I think subtotal should be something more like
+
+Unknown Speaker  09:29
+invoice, to help total,
+
+Matthias Miller  09:32
+original invoice amount or something.
+
+Speaker 1  09:36
+It's long, but, well, it's not fully true because it doesn't include tags
+
+Matthias Miller  09:42
+originally invoice, sub subtotal or original subtotal forgiveness. Amount that better and then just the subtotal.
+
+Unknown Speaker  09:56
+Yeah, there we go. Mm. Yeah, I think I like that.
+
+Matthias Miller  10:08
+It's kind of, I would put it to the left of taxable, for sure. It's kind of mutually exclusive with cash price, because you can't forgive rent, right, right? Do?
+
+Speaker 1  10:23
+I mean, I would say, just put it right after subtotal, or where subtle. I think you just go original subtotal, forgiveness, amount, subtotal, and 99% of the times are really the same. And people are gonna say, Why do you have it like that? And we'll say, Well, life is weird.
+
+Matthias Miller  10:40
+Life. Why are you looking here? That's what we're gonna ask him. Going to ask him, exactly like, looking buying a car and being like, why is there ways? Why is there the Letter L on the oil cap? I don't know. Go ahead.
+
+Speaker 1  10:56
+So then, what does that look like for reporting? Well, I guess right now we don't have any reporting on invoices and stuff. We can decide that when we get there, yeah, it's gonna be, it's not going to be easy to say, well, it will just model what we have here.
+
+Matthias Miller  11:10
+There's any number of ways you can report it. You can show the original value crossed out with this, with the new subtotal. Yeah, I mean, I don't know. Yeah, we have options. It's not worse. You can do repeat the list, I don't know. Yeah, good. Glad to be I like
+
+Speaker 1  11:28
+this a lot better, because then stuff makes sense again with this model. Otherwise it was just getting to be a mess, because then itemizing out the tax gets really nasty, and then itemizing out the paid amounts was going to get really, really nasty too, like it was just going to be bad. This just works wonderful. I appreciate it. Okay, so that's that. Is there anything else with CRT?
+
+Unknown Speaker  12:03
+Oh, we were getting a whole wrangle with contract balance stuff.
+
+Matthias Miller  12:10
+Yeah, I was disagreeing with you. And, yeah, we're probably talking about each other, but probably So, okay, what was the whole let's, let's start. Go ahead,
+
+Unknown Speaker  12:21
+yeah, start at the beginning.
+
+Matthias Miller  12:26
+You said, do we need to support contract balance with tax, current calc or lifetime rental, CRA tax or balance and unpaid fees? Um,
+
+Matthias Miller  12:43
+how long auto pay should keep running?
+
+Speaker 1  12:46
+Yeah, because right now we we run it, we try to run the balance down to zero,
+
+Matthias Miller  12:52
+right? I said
+
+Speaker 1  12:55
+clearly, not thinking about, I'm trying to get coffee at first, I took my Yeti over with water and was going to fill it with coffee. Then I took my muck over and started water. Now I'm going to put coffee in it.
+
+Matthias Miller  13:10
+I'm going to tell Dwayne that the stuff is taking a toll. I
+
+Unknown Speaker  13:23
+Hmm, okay,
+
+Speaker 1  13:32
+okay, so, so you were saying, You were thinking that auto pay should just be looking at a subtotal or just saying, Well,
+
+Matthias Miller  13:45
+okay, if you, I mean, tell me. Tell me how I'm wrong. I probably am, but if I pay $500 then just go figure out what, what's the rent payment going to be, or what's, what's the rent payment going to be out of that, or the monthly payment out of that? Payment out of that? Turn that to a non taxable value and say, Well, how often do you have to do I have to pay there, to pay that to get there.
+
+Speaker 1  14:11
+It doesn't include any sort of fees or anything like, if there's a redelivery fee or right?
+
+Matthias Miller  14:20
+But if a fee pops up, then aren't we going to just post an auto pay and they're going to start running behind and have to make an additional payment for their fee, and then we'll, I mean, won't, won't the calculations of how long to run auto pay just update based off of that. And should we fundamentally say, look, auto pay is going to run for this amount until the end of your contract and if you incur additional fees.
+
+Speaker 1  14:49
+But what about yours for when you save this amount? Are you including tax or not? Well, because if you have jurisdiction changes and stuff in there, well then something is going. Be a little bit off. Then the
+
+Matthias Miller  15:01
+warning you then you might have to make an additional payment of $3 to catch up tax. I mean,
+
+Speaker 1  15:08
+so you're back to saying we're not gonna what they're what they signed up to pay, includes tax. We're making that payment every time.
+
+Matthias Miller  15:16
+What I'm saying is, when you set up auto pay, you could legitimately say, I want to pay $500 including tax, or I want to pay $500 plus tax, either way, we translate that to a subtotal amount and to calculate how long auto pay runs. It doesn't matter about tax. We just look at current tax rate. We just look at how much subtotal is being paid, the non taxable, remaining contract balance, whatever that is, divided by the auto pay amount and the frequency, and if the tax rate changes, it just means that your subtotal generally goes down and your auto pay life extends longer. And the only caveat is when you do when you do, when you do including tax, then the warning is if your jurisdiction changes, or you incur, well, either way, if you incur fees, but either way, if you, if you incur fees, this might extend if you include tax in your tax rate changes, you may you may be charged an additional payment to cover Those tax changes, and you may incur late fees. And Dwayne may have an opinion. I think the question for Dwayne is, is there a world in which we want to say that, look, you're authorizing like if, literally, you have a fixed budget of $500 then you're actually going to budget 400 and I don't know 480 or whatever. I don't know, and and it might jump over. And if that's if you have a strict budget and you're scared about jurisdiction changes, then you're going to drop it down below, down to 450 and just deal with it. I don't know, but it's a Dwayne question. But I think functionally is a Dwayne question. Functionally, it doesn't matter.
+
+Speaker 1  17:16
+So functionally, you're saying we do, we do not calculate balance with tax at any point, right?
+
+Matthias Miller  17:23
+It seems to me like what makes the most sense is what, what is the subtotal of this auto pay? You can get to that subtotal two ways.
+
+Unknown Speaker  17:31
+I think that makes sense.
+
+Matthias Miller  17:39
+Feel free to I mean, you have a different perspective?
+
+Speaker 1  17:43
+Mesh, no, I think it makes sense. Look again where it's reference balance with tax,
+
+Unknown Speaker  17:53
+yeah, so auto pay amount was also do something. Smart with, well, that's just the next auto pay amount.
+
+Speaker 1  18:11
+I think this just needs to use no Well, we can figure that out. That was to say that if, if Auto payment was graded in the remaining balance, just use the remaining balance for next auto pay amount. I need to check with Jonathan to figure out how he's deciding what amount to log.
+
+Speaker 1  18:40
+So those are all auto pay related. Mint status is just a placeholder thing that he's using the whiskey for now. And then we used it in a bunch of places, but we can just change those two without balance, I think, without tax, okay? I mean, I think that's fair. I'll plan to go forward with that.
+
+Speaker 1  19:12
+Okay, I think that gives me what I need for zrt. Zfp we open a company. So they had wanted that ability for the manual adjustment in the RG, or to manually adjust the incentive pool. And so what I did is just added a column here, and then I saw that the only thing that we don't have in this RG for calculating the actual incentive pool, or I guess it's the employee the employee incentive pool maybe, is the labor intensive buildings. And so I thought we should probably freeze that in this RG as well. Well. And then I started looking at that. And then I was seeing that, well, we don't even actually freeze the incentive 4% that's just pulling from here. So how much is this? How much are we wanting to fully freeze it? Or not? I feel like if we're going to do labor intensive buildings, we should also freeze the percentage.
+
+Matthias Miller  20:26
+Well, the reason we're not doing the percentage is because we are assuming that you're going to add a new RG row and it's not going to change. I feel like, is that a safe assumption? I
+
+Speaker 1  20:41
+guess we can always go through activity history someone think sees it's wrong and cares.
+
+Matthias Miller  20:47
+I Okay, but wouldn't the correct solution, if you do this, the correct solution then would be remove effective date and freeze the value, right?
+
+Unknown Speaker  21:00
+Oh, you're saying, change this away from an RG,
+
+Matthias Miller  21:08
+yeah, we have a company. Well, do we? Do you have a company? No, yeah, exactly. Change it from an from an RG to regular fields, yeah.
+
+Unknown Speaker  21:18
+And then freeze it every time. And
+
+Matthias Miller  21:20
+then freeze it every time. I'm not opposed to that. I'm also not opposed to slapping a label on it and say warning when changing this, this will affect historical like Be sure to assign an effective date, because it will affect the nice thing about having an effective date is you can say, okay, in January, we're going to start with this new compensation plan to leave
+
+Speaker 1  21:42
+it as is. As is, just add a label or something. Yeah,
+
+Matthias Miller  21:45
+that's fine labor to the buildings. Does seem like the kind of thing that does get readjusted, right? That could get readjusted,
+
+Speaker 1  21:55
+which go ahead, yeah, I'm not quite sure what to do with that. Because right now, okay, what I'm not liking is that we have, you have the pool, which we're now always calculating based on the, well, if it's before they finalize payroll, we just use the calculated incentive pool, yep, if they finalize payroll, then we use this. I'm starting to wonder how much I'm wondering if we should, as they're working on payroll, we should add rows right away. But finalizing payroll is then what freezes the like the production amount, the labor intensive amount, stuff like that. Just to make it easier to report off of maybe not, I would think you're right now they can't do a manual pool adjustment without adding the road increases the value.
+
+Matthias Miller  22:58
+Yes, I agree you should. The Time Card X 30 should presumably create this row, and then you should have a finalized check box.
+
+Speaker 1  23:04
+Yes, that that because we have a good we have a finalized X 30 that right now, just adds the rows. What we change it to, I think you're right, is it change it to finalize check box on the RG row, and that freezes both the production and the I and the labor intensive, okay, yes, labor intensive amount and and
+
+Matthias Miller  23:27
+then anywhere where we check to see is it frozen? Instead of checking whether we have a row, we check whether the check is checked.
+
+Speaker 1  23:33
+And we don't even really check if it's frozen, right now, we're just saying, Well, really, what we're doing is we're just saying, Do I have a value in the RG row, in the for, in that, like that frozen field? Do I have a value there? If not, then just use AutoCAD. So I guess we sort of are, but I can, we have almost duplicated macros, right? And so if, if we can, yeah, this will make it much better.
+
+Matthias Miller  23:58
+But what's the point of finalizing? In that case
+
+Unknown Speaker  24:03
+it, I mean, it does freeze
+
+Matthias Miller  24:05
+the production amount. So you could have a, okay, so the finalized checkbox could have an unchanged that copies that amount in Yes, and you would also have a so for each of these. And for labor intensive you would also have a calculated amount and a frozen amount, right?
+
+Speaker 1  24:26
+I think you have a column for both. And I think what you do is you leave the the frozen amounts blank until you hit finalize,
+
+Matthias Miller  24:41
+what is payroll verification?
+
+Unknown Speaker  24:45
+I think that's part of that whole process.
+
+Matthias Miller  24:49
+Like, why wouldn't that be super reuse it? Why wouldn't that be part of the lockdown process?
+
+Unknown Speaker  24:59
+I mean, I think it. It probably is
+
+Speaker 1  25:09
+time card payroll is verified. I'm guessing we show big warning. Oh, and we don't automatically update stuff anymore on the time card, right?
+
+Matthias Miller  25:18
+Exactly. So I think, I think I love that there's a warning, and there's a warning, tax, debit date. We don't actually set that anywhere. Use it. Do we? I doubt it. There's so many vestigial organs. Let's make a well, let's, let's go see ones, tax, debit date. That's on the field detail screen, let's go to insight and check activity history.
+
+Speaker 1  25:57
+Is it company or hey, it's never been set.
+
+Matthias Miller  26:03
+Okay, let's nuke it. We don't need it, and I love it. Okay, so now this is what i The other thing I was gonna ask you, but now we can move, move payroll verified, over to the other RG, and we can make this full width.
+
+Speaker 1  26:17
+Well, I yeah, I already started on that in dev. I moved. What I had done is I moved. I moved payroll report types down here and verification right beside it.
+
+Matthias Miller  26:27
+Nice. Okay, fine.
+
+Unknown Speaker  26:31
+Do you i Yeah, do you
+
+Matthias Miller  26:34
+want to combine the RGS? Aren't they fundamentally the same thing? I mean, I think so. I it makes sense to me, because it does. It makes sense to me. I think fundamentally verifying payroll is finalizing payroll, which means we should, we should stop it. Where do we set payroll verified is that also in that X 30,
+
+Unknown Speaker  26:53
+it's in the x I think, yeah, I'm pretty sure.
+
+Matthias Miller  27:02
+Payroll verified Yeah, it should, it should move into that. RG, that's what should happen.
+
+Unknown Speaker  27:06
+It's and it just literally becomes one to finalize payroll. Yeah, I don't know why it was two.
+
+Matthias Miller  27:18
+And then you're, yeah, I love it. That's way cleaner, yeah,
+
+Unknown Speaker  27:24
+okay, I like it. Let me add some notes. Well, if client scope will load
+
+Matthias Miller  27:33
+Details, details,
+
+Speaker 1  27:35
+combine payroll verification, um, into the incentive. What should we call the RG?
+
+Matthias Miller  27:54
+What is it called right now?
+
+Unknown Speaker  27:59
+Matthias incentive pool, company, incentive pool sort of week
+
+Matthias Miller  28:06
+I don't mind. I don't hate it. Do you hate it? No.
+
+Speaker 1  28:13
+Ash values create a row as part of creating time cards
+
+Speaker 1  28:26
+don't cash values In the RG in the freeze payroll, okay,
+
+Matthias Miller  28:41
+obviously, replace Na, obviously,
+
+Speaker 1  28:48
+right, yep, like you're saying, if it's set, then don't, right, yeah, and
+
+Matthias Miller  28:56
+then you could change editability on those fields. If it's been verified that the fields are not editable,
+
+Speaker 1  29:02
+sure, don't allow editing. So you could edit before, but not after.
+
+Matthias Miller  29:12
+That makes sense if you need to check it great,
+
+Unknown Speaker  29:16
+and then the blood's on your own head.
+
+Unknown Speaker  29:18
+Yep, exactly.
+
+Speaker 1  29:21
+Well, it would seem fair to also lock down start of week.
+
+Matthias Miller  29:26
+Sort of week should always be, yes, and it should always be, always be, I'm assuming we have something make sure it is the start of the week. But I
+
+Speaker 1  29:39
+assume it's an unchange. What I did.
+
+Matthias Miller  29:46
+Why would you ever want to ever edit the week?
+
+Speaker 1  29:50
+I don't think you should. I mean, I think it's that screen or something, yeah, something like that. I.
+
+Speaker 1  30:03
+I How would you so we have, like, right now, I have incentive production, actual and frozen incentive production. What should we,
+
+Unknown Speaker  30:15
+in some ways, you almost, or should this just be
+
+Speaker 1  30:22
+like, I find those, I think those words are terms are kind of confusing. What if you had a I wonder if this should be incentive production, and this is calculated incentive production or something. And so this always shows the calculated value this one, yeah, shows, shows the value from here, if, if the field's not set. So I think you have a macro that's incentive production
+
+Matthias Miller  30:55
+first, and then you have what is production, and it doesn't replace n a get the stored value. Else the see stored value is always bank. Go ahead,
+
+Speaker 1  31:09
+you're saying, Would you, but would you show the actual like the calculated value in the RG, yeah, but it wouldn't be editable. It isn't right now, this is the calculated value. This would say, you're saying, stay the same.
+
+Matthias Miller  31:25
+I would say, why do we need to I guess you might want to show the calculated value.
+
+Speaker 1  31:30
+I think it's nice. Sure you can say, hey, this is it's different from the calculated value. So how do you okay, sorry, run me through your proposal again. What I was suggesting is that we don't show the stored field and then this column. We just call it incentive production, and it would show the value from well, it would do a replacement. I would use the stored field, if it's set, if the storage fields not set, it would use the calculated value.
+
+Matthias Miller  32:13
+The problem that I have with that is that there's no visibility if you do an override halfway through payroll, there's not good visibility into that or that. It's being auto calculated. It's fair. I would be fine with an editable macro checkbox. Well, I don't know that's weird, too. I
+
+Matthias Miller  32:45
+I think it's, it's okay, here's, this is obtuse and verbose, but clear is to have a calculate, a a calculated value, a store, a stored value and an effective value. Sure.
+
+Speaker 1  33:01
+I mean that, yeah, then you just have three columns. You just have three columns. You do the same thing for labor intensive. Yes, sorry, okay, which ones? It's a wide thing. Who cares? I mean, it's it's verbose in the extreme, but it's fine.
+
+Matthias Miller  33:23
+What, what I like about it is, does give visibility throughout the process that which one you're using? If there's a different way to give that visibility, I'm open to it.
+
+Unknown Speaker  33:32
+Well, I don't think there is. I think you're probably right.
+
+Matthias Miller  33:36
+And then your adjustment so you have your your production,
+
+Unknown Speaker  33:40
+you incentive subtotal, yep, and then you do your labor intensive buildings. And then you do your manual adjustment.
+
+Matthias Miller  33:54
+But your subtitle shouldn't, doesn't need to be editable,
+
+Speaker 1  34:00
+does it? Right now they allow you can edit that, which then edits the frozen production, okay, I don't know if we need that long term. Probably don't as much if we have the manual pool adjustment, right?
+
+Matthias Miller  34:19
+It seems to me like the whole point of the pool adjustment is not to edit that because you have your production out and then you say, you override it by this amount. I would just quietly, I'm feeling very, very ornery today, but I would just quietly remove editability and see if anybody complains. I don't think anyone will. Yeah, exactly. We're going to end up with a drop dead simple. RG here,
+
+Speaker 1  34:44
+with tons of columns, but yes, incentive production would be calculated frozen, effective.
+
+Matthias Miller  34:56
+Same also, are you. You do labor intensive, I'll sorry, argue that having it editable is confusing, because it's not clear whether it should. It would actually make more sense. It would change the adjustment amount that then change the
+
+Speaker 1  35:12
+Yeah, production amount didn't exist until recently, right? So I think it'll Yeah. I think this is going to help a lot. I like it. I think that gives me what I need, and I like it way better, and it makes our reporting simpler.
+
+Matthias Miller  35:32
+Yep, exactly. Did you see my note about getting rid of write offs?
+
+Speaker 1  35:40
+Yeah, that was one of the things I read and immediately forgot about, because my brain's fine.
+
+Matthias Miller  35:45
+That's fine. We don't have to talk about it now either, if you're a brain sold. But the very short answer is, I think we could reasonably get rid of write offs, and if we really had to, if we wanted to not touch accounting, we would have a hidden write off checkbox that would use a different event type and and then just literally accounting impact would stay the same, but we wouldn't have to have move it out to separate row. That would simplify our bad debt calculations and stuff too, right? Yeah, just anywhere we have to take into account write offs balance we have duplicate balance information for it between us at subtotal and right and accounting impact. That gets much, much simpler. Yeah.
+
+Speaker 1  36:31
+I mean, I think something great to do. I wonder if you just put that in your long term maintainability, whatever that incident is.
+
+Matthias Miller  36:39
+Well, it is that if I could, if I knew I could, in some sense this is, this is bending the rules a little bit like I said, I'm feeling ornery today, but you can either document, or you could get rid of the field so you don't have to document, right?
+
+Speaker 1  36:59
+So, I mean, I think it's completely fair to do as part of the paying down technical debt. Yep, like, it's not a ridiculous amount of work either.
+
+Matthias Miller  37:08
+No, it's not. It's really not that. And you could, you could verify the test system. Well, actually, if you have the checkbox, then you can have two versions of accounting impact that you could, you could verify in a test system. Yeah, one that once the old way and once the new way. And you the one ignores those, those rows. The other one respects them. It comes right off. Yep. In fact, if you added the field this week, no, you can't, because balance totals, I didn't say anything. Okay, good. See, cch
+
+Unknown Speaker  37:43
+migration, yes,
+
+Matthias Miller  37:47
+you're thinking about that to Jasper,
+
+Unknown Speaker  37:50
+I think so, yeah, do you think that sounds saying?
+
+Matthias Miller  37:55
+I think it's saying. I mean, it's a good way for you to learn imports and Exactly, yeah, and all that internal system. So, yeah, I think it'd be great.
+
+Unknown Speaker  38:06
+We are you gonna spike that out? Yeah,
+
+Matthias Miller  38:08
+I'm hoping to do today. I've got, I forgot BPA update last night, so they need some help.
+
+Speaker 1  38:13
+But sure, yeah, yep, okay, all right, sounds great. Just let me know and I'll or you could even assign it to him. I don't care whichever you want. Okay, sounds good. Okay, awesome. Life is much simpler now.
+
+Matthias Miller  38:30
+Good, yay, yay. With a simple life, Oh yeah, okay, thank you. Yep. Thanks.
+
+
+Transcribed by https://otter.ai
