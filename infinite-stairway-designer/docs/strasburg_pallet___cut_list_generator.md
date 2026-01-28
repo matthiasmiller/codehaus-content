@@ -306,7 +306,7 @@ Sections and Fields:
   * Uses Nominal Dimensions (checkbox; auto-calculated; hidden & read-only)
 * Expected Keywords section:
   * Keywords; embedded spreadsheet of:
-    * Keyword (drop list of Raw Material Keywords)
+    * Keyword (drop list of Sawing Keywords)
 * Dimensions section:
   * Actual Thickness (In) (number; 4 decimals; required)
   * Actual Width (In) (number; 4 decimals; required)
