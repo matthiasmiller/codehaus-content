@@ -1,6 +1,8 @@
 5.6. Data Restrictions
 
-TODO_ NM: Tim Reitz 07/22/2025: How should we spec this? Should it be specced on individual record specs, or here? 
+Tim Reitz 07/22/2025: How should we spec this? Should it be specced on individual record specs, or here? 
+
+TODO_NM (review): Tim Reitz 01/30/2026: If there is any restricted data, we can leave this. Otherwise, we can delete this section. 
 
   
 

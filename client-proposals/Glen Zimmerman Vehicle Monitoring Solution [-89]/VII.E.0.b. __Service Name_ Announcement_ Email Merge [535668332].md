@@ -5,7 +5,7 @@
 
 Requirements
 
-*. 
+TODO_T/J: Move to main spec section. *. 
 
   
 
@@ -17,7 +17,9 @@ Overview: This is an email merge that is sent to selected recipients, from an An
 
 From: __
 
-TODO_GZ / TODO_VA:
+_GZ:
+
+TODO_T/J: Tim Reitz 01/23/2026: From "announcements@"
 
   
 
@@ -29,17 +31,27 @@ To: <the "Email" for each row in the "Recipients" embedded spreadsheet on the An
 
 CC: N/A
 
+_GZ:
+
+TODO_T/J: Tim Reitz 01/23/2026: CC not needed.
+
   
 
 
 BCC:
 
-TODO_VA: Tim Reitz 01/20/2026: Set this based on the others
+_GZ:
+
+TODO_T/J: Tim Reitz 01/23/2026: BCC not needed (we're already tracking this in Silverloom)
 
   
 
 
 Reply To: N/A
+
+_GZ:
+
+TODO_T/J: Tim Reitz 01/23/2026: Reply To not needed - let's have "announcements@ be an inbox that Master Administrators have access to. 
 
   
 

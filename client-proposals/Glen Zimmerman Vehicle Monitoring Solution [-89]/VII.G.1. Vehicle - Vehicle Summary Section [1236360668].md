@@ -8,7 +8,7 @@
   
 
 
-  * VIN (required; plain text field that accepts numbers and letters; with the following details / behaviors:
+  * VIN (required; plain text field that accepts numbers and letters; with the following details / behaviors:
     * unique identifier for the record; 
     * any letters entered in lower case are automatically capitalized;  
     * editability:
@@ -103,7 +103,9 @@ _VA: Tim Reitz 12/10/2025: Could you take up to 60 minutes to research VIN deco
 
 Tim Reitz 01/14/2026: Sent Jonathan an email today (subject: "Research for Vehicle Tracking IDD - VIN Decoder API").
 
-TODO_JB (research): Tim Reitz 01/16/2026: See the email I sent on this (subject in the line above). 
+DONE_JB (research): Tim Reitz 01/16/2026: See the email I sent on this (subject in the line above).
+
+TODO_VA: Jonathan Bergen 01/21/2026: Responded in email. We'll use the NHSTA api. It's free and very easy.
 
   
 

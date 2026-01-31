@@ -5,6 +5,24 @@
 
 Requirements
 
+TODO_VA / TODO_JB: Tim Reitz 01/15/2026:
+
+  * Use "sync point" keyword for any actions that kick off the sync
+  * Use "data synced with Traccar" keyword for all fields that get synced + use purple font
+
+
+
+  
+
+
+TODO_VA: Tim Reitz 01/15/2026: Jonathan is thinking we could run the sync from Traccar every 5 min.
+
+  
+
+
+  
+
+
 _VA: Tim Reitz 11/07/2025: Per conversation with Jonathan yesterday, let's set up some realistic scenarios in the Traccar server, map them out, and let Jonathan know so that he can do an API pull to see how they come out. 
 
 Tim Reitz 11/17/2025: Initial outline here: [https://docs.google.com/spreadsheets/d/1bpeWh2j2MO5nVWChdcagYduhD2adVJ4S3S2q9I5_SwQ/edit?gid=353828958#gid=353828958](https://docs.google.com/spreadsheets/d/1bpeWh2j2MO5nVWChdcagYduhD2adVJ4S3S2q9I5_SwQ/edit?gid=353828958#gid=353828958). 
@@ -55,7 +73,9 @@ TODO_VA: Tim Reitz 11/06/2025: It doesn't seem like there's a great way to do t
   
 
 
-TODO_GZ: Tim Reitz 01/17/2026: Do you want us to do research on how to do branding, etc.? 
+_GZ: Tim Reitz 01/17/2026: Do you want us to do research on how to do branding, etc.? 
+
+TODO_VA: Tim Reitz 01/23/2026: Per Glen, he would welcome having us do research on this if we have capacity. 
 
   
 
@@ -109,7 +129,9 @@ Link: [https://www.traccar.org/](https://www.traccar.org/)
 
 Jonathan Bergen 07/25/2025: 
 
-[ ] How often can we ping traccar?
+[X] How often can we ping traccar?
+
+Jonathan Bergen 01/21/2026: There's a websocket we would want to use.
 
 [X] Are notifications initiated by traccar?
 

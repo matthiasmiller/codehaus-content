@@ -87,6 +87,7 @@ Other Notes: 
   * Unless otherwise noted, all fields default to blank and all checkboxes default to not checked. 
   * Contact records may have certain custom sections and fields, visible depending on their Contact Type (see corresponding sections in this proposal).
   * Heading color: This record type uses the standard Silverloom blue color for section headings.
+  * Note that when the spec refers to an "individual Contact" or an "organization Contact", the software looks at the "Is Organization" checkbox rather than the "Contact Type" field.
 
 
 
@@ -100,6 +101,4 @@ Mockup:[https://docs.google.com/spreadsheets/d/1bpeWh2j2MO5nVWChdcagYduhD2adVJ4S
   
 
 
-_NM: Tim Reitz 01/17/2026: For invidividual vs. organization, should we specify throughout the spec that the code should be looking at the "Is Organization" checkbox, rather than the "Contact Type" when we're distinguishing between the two?
-
-TODO_VA: Tim Reitz 01/20/2026: Nic thinks that using "individual" and "organization" (lower case) should be sufficient. And include a note here in the main spec to make it clear.
+Tim Reitz 01/21/2026: As mentioned in "Other Notes" above: Note that when the spec refers to an "individual Contact" or an "organization Contact", the software looks at the "Is Organization" checkbox rather than the "Contact Type" field. Trying to use lower case "individual" and "organization" is these situations to help make that clear.

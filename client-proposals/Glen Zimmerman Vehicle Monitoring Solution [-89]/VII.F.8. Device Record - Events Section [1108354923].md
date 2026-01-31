@@ -26,17 +26,14 @@ Requirements
       * First by: Event Date (latest at the top);
       * Second by: Event Time (latest at the top);
     * Buttons to add/remove rows: N/A (rows are automatically added, and not removed)
-    * Shows __ rows without scrolling
-
-
-
-TODO_GZ: Tim Reitz 09/12/2025: Any idea how many Events will be happening on a daily / weekly basis?
-
-  * Row Visibility:
+    * Shows 10 rows without scrolling
+    * Row Visibility:
 
 
 
 TODO_GZ: Tim Reitz 01/14/2026: Is it fine for all providers to see all events for each others' clients? Or should only uplines be able to see Events? 
+
+Tim Reitz 01/23/2026: See email: "Visibility for Events in Silverloom". 
 
 TODO_: Tim Reitz 01/14/2026: If we need to restrict it to uplines, this row visibility spec would be needed. 
 
@@ -49,8 +46,7 @@ TODO_: Tim Reitz 01/14/2026: If we need to restrict it to uplines, this row vis
 
 
 
-  
-
+TODO_VA: Tim Reitz 01/23/2026: Let's also include a link to an "Traccar Events by Device" report, to be able to have a full screen view. 
 
   
 
@@ -63,7 +59,9 @@ However, I'm not sure if Traccar logs the VIN with the Event -- we need to look 
 
 Does Traccar log the VIN for Events / Notifications?
 
-TODO_JB (research):  Tim Reitz 01/16/2026: Same question as early regarding logging VINs. The client also would like to have a notification of some sort when an OBD logs a different VIN that the linked "Primary Vehicle" VIN for that Device in Silverloom. But I realized that I'm not specifically seeing VIN details in Traccar, so I'd like some deeper digging on that.
+DONE_JB (research):  Tim Reitz 01/16/2026: Same question as early regarding logging VINs. The client also would like to have a notification of some sort when an OBD logs a different VIN that the linked "Primary Vehicle" VIN for that Device in Silverloom. But I realized that I'm not specifically seeing VIN details in Traccar, so I'd like some deeper digging on that.
+
+TODO_VA: Jonathan Bergen 01/21/2026: I think that it can be logged, but the devices have to be configured to include the VIN.
 
   
 

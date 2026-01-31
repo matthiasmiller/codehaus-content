@@ -79,7 +79,7 @@ Other Notes:
 
 
 
-TODO_VA / TODO_GZ: Tim Reitz 08/26/2025: Do we want to do this?
+TODO_VA / TODO_GZ: Tim Reitz 08/26/2025: Do we want to do this? [or can Group Admins see all Groups?] 
 
   
 

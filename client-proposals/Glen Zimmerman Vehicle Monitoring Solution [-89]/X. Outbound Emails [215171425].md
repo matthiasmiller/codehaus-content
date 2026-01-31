@@ -31,11 +31,30 @@ Tim Reitz 09/04/2025: Per the client today,
 
 TODO_VA: Tim Reitz 01/13/2026: Follow up on notes here as needed. 
 
-TODO_GZ: Tim Reitz 01/13/2026: We're going to need the email addresses at some point in coding. 
+_GZ: Tim Reitz 01/13/2026: We're going to need the email addresses at some point in coding. 
+
+Tim Reitz 01/22/2026: at the least, spec out the first part of the address for organization-level From, CC, BCC. Examples: 
+
+  * no-reply@
+  * support@
+  * accounts@
+  * billing@ / subscriptions@
+  * admin@
+  * etc
+
+
+
+_GZ: Tim Reitz 01/22/2026: Let's go through the specced emails and specify the From / CC / BCC
+
+Tim Reitz 01/23/2026: Went through today. 
 
   
 
 
-TODO_VA: Tim Reitz 12/11/2025:  Let's see about BCC'ing an email address so that the service can have a copy of everything that was sent.
+_VA: Tim Reitz 12/11/2025:  Let's see about BCC'ing an email address so that the service can have a copy of everything that was sent.
 
-TODO_GZ: Tim Reitz 01/13/2026: We'll need this email address from Glen by some point in coding.
+_GZ: Tim Reitz 01/13/2026: We'll need this email address from Glen by some point in coding.
+
+TODO_VA: Tim Reitz 01/23/2026: Per Glen today, this would be nice to have a central place to go to for history of emails that were sent. Let's use "historybcc@" for this. 
+
+TODO_VA: Tim Reitz 01/23/2026: Let's include keywords in the emails for easy searching - include "Account #" / "Account Group #" / etc.

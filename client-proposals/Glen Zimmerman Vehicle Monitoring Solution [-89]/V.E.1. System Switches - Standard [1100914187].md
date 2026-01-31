@@ -18,4 +18,4 @@ The Solution includes the following standard System Switches:
   
 
 
-TODO_: Tim Reitz 09/17/2025: Add in items from the Snippet for System Switches, once we have specced out the SMTP / email items there.
+TODO_VA: Tim Reitz 09/17/2025: Add in items from the Snippet for System Switches, once we have specced out the SMTP / email items there.

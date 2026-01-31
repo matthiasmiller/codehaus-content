@@ -1,13 +1,98 @@
 10.2.3. "Account Reseller Transfer Complete" Email Merge
 
-TODO_VA: Tim Reitz 12/03/2025: This email is sent to the Account Managers when the "Account Reseller" is changed (first save after the "Reseller Transfer Complete" checkbox is checked). 
+Overview: This is an email merge that is sent automatically to Account Managers the a reseller transfer has been completed for their Account.
 
-[ ] Your Account # __ has been transferred from Reseller A to Reseller B  
+  
 
-[ ] Include new reseller's contact information 
 
-[ ] Please contact new reseller if you have any questions 
+Sent Via: The "Send "Account Reseller Transfer Complete" Email" triggered automatic process (see corresponding spec)
 
-[ ] Reply to: new reseller's email address 
+  
 
-Tim Reitz 12/03/2025: Calling this "Account Reseller Transfer Complete" email notification
+
+From: 
+
+_GZ: Tim Reitz 01/22/2026: "automation@" or "no-reply@" or ??
+
+TODO_VA: Tim Reitz 01/23/2026: From "automation@"
+
+  
+
+
+To: <the "Traccar Login Email" for each Account Manager on the transferred Account>
+
+  * 
+
+
+  
+
+
+CC: 
+
+_GZ: Tim Reitz 01/22/2026: Needed here?
+
+TODO_VA: Tim Reitz 01/23/2026: CC the new reseller
+
+  
+
+
+BCC:
+
+_GZ: Tim Reitz 01/22/2026: Needed here?
+
+TODO_VA: Tim Reitz 01/23/2026: Yes to BCC
+
+  
+
+
+Reply To: <the "Account Reseller Email" for the new reseller>
+
+  
+
+
+Subject: "Account Reseller Transfer Complete"
+
+  
+
+
+Attachments: N/A
+
+  
+
+
+Body:
+
+  
+
+
+Hello <FirstName>,
+
+  
+
+
+Your <Service Name> account #<Account #> has been transferred to a new Account Reseller, from <Prior Reseller "Short Display Name">  to <New Reseller "Short Display Name">.
+
+  
+
+
+Your new reseller's contact information is as follows:
+
+Phone: <Account Reseller Phone>
+
+Email: <Account Reseller Email>
+
+Address: <Account Reseller Address>
+
+  
+
+
+Please reply this email to contact your new Account Reseller if you have any questions.
+
+  
+
+
+Other Notes:
+
+  * N/A
+
+

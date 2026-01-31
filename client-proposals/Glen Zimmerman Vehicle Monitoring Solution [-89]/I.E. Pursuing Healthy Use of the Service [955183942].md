@@ -63,6 +63,8 @@ _GZ: Tim Reitz 10/27/2025: Thoughts on this? 
 
 TODO_VA: Tim Reitz 10/30/2025: Glen was on board with this. Let's put together an initial list of sample resources to share with the program. 
 
+Tim Reitz 01/28/2026: Here's an initial list: [https://docs.google.com/document/d/1xrUeJ64hBFsdLc7LgT_f5MdYPYYaO_C2sduH1ccENcs/edit?tab=t.0](https://docs.google.com/document/d/1xrUeJ64hBFsdLc7LgT_f5MdYPYYaO_C2sduH1ccENcs/edit?tab=t.0). 
+
 [ ] Requirement for counseling / coaching (at least for certain situations) (for Group Admins & Resellers, in the area of __) 
 
 TODO_GZ : Tim Reitz 10/27/2025: Thoughts on this? 
@@ -75,7 +77,7 @@ _GZ: Tim Reitz 10/27/2025: To whom should this request go? Could this request e
 
 _VA: Tim Reitz 10/30/2025: A lot of times it would be the Group Admin, but there might be times when it would need to be someone outside of that (probably a designee / advocate from the Church Affiliation - could have an optional "End User Advocate" field on the Church Affiliation). When a user requests help, the email would go to the Master Administrator / Group Admin / Advocate. 
 
-TODO_VA: Tim Reitz 12/31/2025: We need to spec out what the Account Advocate / End User Advocate feature would look like. Presumably something like: 
+_VA: Tim Reitz 12/31/2025: We need to spec out what the Account Advocate / End User Advocate feature would look like. Presumably something like: 
 
 [ ] A role checkbox on the Contact record: "Is __ Advocate" 
 
@@ -104,11 +106,11 @@ Tim Reitz 01/19/2026: But how would we know if alerts are being ignored? We pro
 
 _GZ: Tim Reitz 10/27/2025: What would this look like?
 
-TODO_VA: Tim Reitz 10/30/2025: From discussion with the client today: 
+Tim Reitz 10/30/2025: From discussion with the client today: 
 
 [ ] Periodic (weekly?) email to the end users with a summary of driving activity, highlighting positive and negative items & trends
 
-Tim Reitz 01/19/2026: How would we track these things? We probably need to spec out alerts a bit more. 
+TODO_VA: Tim Reitz 01/19/2026: How would we track these things? We probably need to spec out alerts a bit more. 
 
 [ ] "Good work, you've made progress!" 
 
@@ -123,6 +125,43 @@ Tim Reitz 01/19/2026: How would we track these things? We probably need to spec
 [ ] Could even include things like MPG, etc. 
 
 [ ] Future item: Setting goals for scores, with the system sending acknowledgment when they meet that goal. 
+
+  
+
+
+TODO_VA: Tim Reitz 01/28/2026: Email Mark: 
+
+  
+
+
+Hi Mark, 
+
+  
+
+
+I hope this finds you doing well! It feels like it has been a long time since we connected (I think since Montana, when you dropped Aldine and me off at the airport after the men's retreat in 2024). I would love to connect again sometime, if the Lord permits! 
+
+  
+
+
+I'm writing today with a question related to a work project. I do software design for CodeCrafters (owned by Ellis Miller, who used to be with DNI), and we're working on a project that has potential to be a powerful tool, either for legalism/control/behavior modification/strain in relationships or for healthy boundaries/positive accountability & conversations/heart change. 
+
+  
+
+
+I've talked with our client about some of the concerns, and they are on board with us putting together a list of resources that could be shared with users of the software to help promote healthier use. 
+
+  
+
+
+Knowing what I do about your work and your heart for people to live in healing, and your familiarity with the conservative community, I'm wondering what resources you would recommend -- counseling centers, courses, books, etc. 
+
+  
+
+
+Thanks! 
+
+Tim 
 
   
 

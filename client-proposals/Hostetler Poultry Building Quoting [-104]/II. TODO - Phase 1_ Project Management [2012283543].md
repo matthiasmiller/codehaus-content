@@ -47,7 +47,7 @@ The Resource is the crew that's doing that phase.
   
 
 
-Contact Type [[PC0188069]]
+Contact Type
 
   * Customer
   * Integrator
@@ -63,14 +63,6 @@ Contact Type [[PC0188069]]
 
 
   
-
-
-Silverloom Settings
-
-  * JobPack Operations
-    * Description (string)
-    * Job Milestone (list of Job Milestones)
-
 
 
   
@@ -108,12 +100,12 @@ JobPack Order
   
 
 
-Job Milestones [[PC0188051]]
+Job Milestones
 
   * Name
   * Active (checkbox)
   * JobPack Milestone (checkbox)
-  * JobPack Operation (list of JobPackOperations; visible & required if JobPack Milestone is checked; list should be user-editable [CanAddToList:InImport]) [[PC0188967]] TODO_MM: Is the spec for JobPack Operations in Silverloom Settings outdated? If so, do we match JobPack Operation here to the Name string in the Operations RG on the JobPack Order record? If not, shouldn't JobPack Operations here just be a macro that looks it up from Silverloom Settings?
+  * JobPack Operation (list of JobPackOperations; visible and required if JobPack Milestone is checked; list should be user-editable [CanAddToList:InImport]; error if multiple active job pack milestones are linked to the operation)
 
 
 
@@ -156,7 +148,7 @@ Job Task Template
   
 
 
-Department [[PC0188985]]
+Department
 
   * Name
   * Active (Checkbox; default to checked)
@@ -186,7 +178,7 @@ Crew
   * Silverloom ID (autonumber; read-only)
   * Name (read-only; pulls from JobPack)
   * Willing to Travel (checkbox)
-  * JobPack Workplace No (number; not editable interactively; error on change if there is another crew with the same workplace number) [[PC0188968]]
+  * JobPack Workplace No (number; not editable interactively; error on change if there is another crew with the same workplace number)
 
 
 
@@ -226,7 +218,7 @@ Job Details
   * Crew (read-only macro; list of Crews; finds the crew record that matches the JobPack Workplace for the linked JockPack Order No)
   * Location (string)
   * Integrator (list of Integrators)
-  * Notes (memo button) [[PC0189007]]
+  * Notes (memo button)
 
 
 
@@ -246,13 +238,15 @@ Milestones
       * Committed Date
       * Farmer Training Date
       * Packer Install Date
-    * Needs Approval (checkbox; read-only & automatic; is checked when any linked task are marked as Needs Approval) [[PC0188969]]
+    * Needs Approval (checkbox; read-only and auto-calculated; is checked when any linked task are marked as Needs Approval)
     * Scheduled For (date; editable in import for JobPack milestones, always editable for non-JobPack Milestones)
-      * When modified via import, checks Needs Approval on any linked tasks that have "Flag When Overdue from Schedule Changes" checked are newly (not previously) overdue. 
-    * Scheduled End Date (read-only date; only visible for JobPack milestones) [[PC0188969]]
+      * When modified via import, checks Needs Approval on any linked tasks that have "Flag When Overdue from Schedule Changes" checked are newly (not previously) overdue.
+    * Scheduled End Date (read-only date; only visible for JobPack milestones)
     * Completed On (date; editable in import for JobPack milestones, always editable for non-JobPack Milestones)
-    * TODO_NM: For linking, I expect we just want to go from Milestone -> JobPack Operation -> Looking it up on the JobPack Order
 
+
+
+  
 
 
   
@@ -278,7 +272,7 @@ Documents
 
 Tasks
 
-  * TODO_NM: How do we add tasks from template? OnInit?
+  * TODO_NM: How do we add tasks from template? On Init?
 
 
 
@@ -294,12 +288,12 @@ Niccolas Miller 01/20/2026: Perhaps the same x30 as we use for updating tasks fr
     * Columns:
       * Task (string)
       * Assignee (blank; list of Project Managers) 
-      * Department (list of active departments; non-editable interactively for template rows) [[PC0188969]]
+      * Department (list of active departments; non-editable interactively for template rows)
       * Milestone (list of active job milestone records; non-editable interactively for template rows)
-      * Days +/- (number; non-editable interactively for template rows; when modified, sets Needs Approval for the related milestone according to the Set Milestone Needs Approval shared OnChange; this is needed when updating the task template)
-      * Due Date (date; auto-calculated from Milestone date +/- days)
+      * Days +/- (number; non-editable interactively for template rows; when changed, checks Needs Approval if Flag When Overdue from Schedule Changes is checked and the task is newly overdue)
+      * Due Date (date; auto-calculated; readonly; Completed date if present or Scheduled date for linked Milestone + "Days +/-")
       * Flag When Overdue from Schedule Changes (checkbox; non-editable interactively for template rows)
-      * Needs Schedule Change Approval (checkbox; automatically set when updating from JobPack; editable non-interactively; editable interactively by admin or by Department member) [[PC0188969]] 
+      * Needs Schedule Change Approval (checkbox; automatically set when updating from JobPack; editable non-interactively; editable interactively by admin or by Department member)
       * Template Task ID (number; hidden; non-editable interactively)
       * Completed (editable boolean macro; unchecked if Completed Date is blank; checked if it is not blank; sets Completed Date to the current date when checked)
       * Completed Date (date)
@@ -326,13 +320,6 @@ Niccolas Miller 01/20/2026: Perhaps the same x30 as we use for updating tasks fr
 
 Imports
 
-TODO_NM: Review these specs & sign off on them please
-
-  
-
-
-Niccolas Miller 01/20/2026: Approved. [[PC0188974]]
-
   * Std Service JobPack Resources.x30list (An x30list is a bit redundant, except it makes it easier to update in the future if we need additional things to happen with this.
     * Std Service JobPack Resources.x30 - Match on column names:
       * jobpack_resource_no - JobPackWorkplace - JobPack ID (match records on this ID)
@@ -348,10 +335,8 @@ Niccolas Miller 01/20/2026: Approved. [[PC0188974]]
   
 
 
-Niccolas Miller 01/20/2026: Written up, TODO_NM in design [[PC0188977]]
-
   * Std Service JobPack.x30list
-    * Std Service JobPack - Import JobPack Orders (with both non-RG and RG changes). Match on column names". Match RG rows on op_no. Match on the first one, and delete unmatched rows.
+    * Std Service JobPack - Import JobPack Orders (with both non-RG and RG changes). Match on column names. Match RG rows on op_no. Match on the first one, and delete unmatched rows.
 
 
 
@@ -376,7 +361,7 @@ op_pwplace_no| Operations → JobPack Workplace ID
 
   * Std Service JobPack - Sync Job Milestones
     * r20/x30 pair
-      * Run on JobPack Orders with a Repeat for List of active milestones that link to JobPack
+      * Run on JobPack Orders repeating through the operations RG, subsetting rows that have an active milestones that link to the operation name.
       * Columns
         * JobPack Order No
         * Milestone Name
@@ -399,7 +384,7 @@ op_pwplace_no| Operations → JobPack Workplace ID
   
 
 
-  * Std Task Template - Update Existing Jobs.x30 [[PC0188848]]
+  * Std Task Template - Update Existing Jobs.x30
     * Ask Prompts:
       * Task Template ID (hidden)
       * Maximum Days Past Due (default to 14)
@@ -409,15 +394,17 @@ op_pwplace_no| Operations → JobPack Workplace ID
         * Task
         * Milestone
         * Number of Days +/-
+        * Flag When Overdue from Schedule Changes
+        * Needs Schedule Change Approval (set to true if Due Date < Today)
 
 
 
   
 
 
-  * S3 Support [PC0189008]]
+  * S3 Support
     * Add a UserProfileAltWSGIHost field a la ZFP
-    * Add a macro called S3WSGIUrl that evaluates to blank in the S3 base catalog.
+    * Add a macro called S3AltWSGIUrl that evaluates to blank in the S3 base catalog. 
     * Change ZFP to evalute it to WSGIUrl( '')
     * Move ZFP's overrides of WSGI_AttachmentUrl, WSGI_DeleteAttachmentUrl, and WSGI_AddAttachmentUrl to the base folder. Keep the new Assign vURL format.
     * Change the last line to check if the S3AltWSGIUrl is blank, and return the URL as-is. Otherwise, do the replace that had been in ZFP
@@ -430,7 +417,11 @@ op_pwplace_no| Operations → JobPack Workplace ID
 
 Reports
 
-  * Jobs Dashboard (report of Jobs) [[PC0188068]]
+  * Jobs Dashboard (report of Jobs)
+    * Prompts
+      * Integrator (list of Integrator Contacts)
+      * Project Manager (drop-list of Project Manager contacts)
+      * Search Notes (plain text)
     * Columns
       * Integrator
       * Job Name
@@ -451,21 +442,21 @@ Reports
   
 
 
-  * Tasks [[PC0188070]]
-    * Menu:
+  * Tasks
+    * Menu
       * My Open Tasks (defaults Assignee to the current user's linked contact record)
       * All Open Tasks (defaults Status to "Past Due" and "Upcoming")
       * Search Tasks
     * Prompts
       * Assignee (list of project managers; blank = all)
       * Customer (list of customers; blank = all)
-      * Departments (multi-select list of departments; blank = all) [[PC0188973]]r
+      * Departments (multi-select list of departments; blank = all)
       * Milestone (list of milestones)
       * Status (multi-select; use list)
         * Past Due
         * Upcoming
         * Complete
-      * Date (list)
+      * Date (list; will filter tasks by due date)
         * Today
         * This Week - based on Saturday
         * Now Thru Next Week - based on next Saturday
@@ -475,28 +466,37 @@ Reports
         * Anytime
         * Other (specific date)
       * Date (if Other)
-      * TODO: Consider: Text search - TODO_NM: Yes, both Notes and the tasks
-    * Columns
-      * Assignee
-      * Customer
-      * Department
-      * Milestone
-      * Task
-      * Due Date (red text if past due)
-        * NOTE: The due date should be red if it's < the completion date (if completed) or < today if it's not completed
-      * Completed
-      * Completion Date
-    * Sort by:
-      * Due Date
-    * Group by:
-      * Schedule Changes Needing Approval (group at top if linked milestone is marked Needs Approval; all others are grouped below)
+      * Search (plain text; searches Tasks by name)
 
 
 
   
 
 
-  * Notifications [[PC0189010]]
+  
+
+
+  * Columns
+    * Assignee
+    * Customer
+    * Department
+    * Milestone
+    * Task
+    * Due Date (red text if past due)
+      * NOTE: The due date should be red if it's < the completion date (if completed) or < today if it's not completed
+    * Completed
+    * Completion Date
+  * Sort by:
+    * Due Date
+  * Group by:
+    * Schedule Changes Needing Approval (group at top if linked milestone is marked Needs Approval; all others are grouped below as Approved Tasks)
+
+
+
+  
+
+
+  * Notifications
     * Report Alert
       * All tasks needing schedule approval linked to the current user as a project manager, or linked to the current user's department. Does NOT disappear until everything is resolved, either via JobPack or via approval.
       * Columns

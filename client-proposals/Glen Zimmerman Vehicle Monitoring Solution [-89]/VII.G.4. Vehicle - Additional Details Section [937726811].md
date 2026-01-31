@@ -13,7 +13,12 @@
 
 _VA: Tim Reitz 10/09/2025: Suggested by the client today. Based on data reported from the device(s) from Traccar. Past 365 days. 
 
-TODO_JB (research): The client has interest in displaying miles driven in the past 365 days on the Vehicle record in Silverloom. I'm wondering if there's an easy way to field this in Silverloom (or if it's something to defer for a Phase 2 or optional future item).
+DONE_JB (research): The client has interest in displaying miles driven in the past 365 days on the Vehicle record in Silverloom. I'm wondering if there's an easy way to field this in Silverloom (or if it's something to defer for a Phase 2 or optional future item).
+
+TODO_VA: Jonathan Bergen 01/21/2026: This should be fun and easy. We can make a macro to display this on the vehicle record. The macro will use an index to find an event from 365 days ago (or the latest after that) and compare its mileage to the most recent event's mileage. 
+
+  
+
 
   * Vehicle Photos (embedded spreadsheet with the following; to be used to store photos for quick identification of the vehicle, or for storing a photo of the vehicle information sticker; possibly could eventually be used in alerts, reports, etc.: 
     * Columns: 
@@ -104,7 +109,13 @@ TODO_VA: Tim Reitz 01/20/2026: Per Ellis, Josh thought this could be $2,000-3,0
 
 [ ] Let's add an optional add-on for thumbnails for S2 linking. 
 
-TODO_: Tim Reitz 12/10/2025: Depending on complexity, note as a possible future / optional add-on (and remove S3-related spec). 
+TODO_GZ: Tim Reitz 01/21/2026: FYI about this. 
+
+Tim Reitz 01/23/2026: Sent email & question - see "Notes about vehicle pictures in Silverloom". 
+
+TODO_VA: Tim Reitz 12/10/2025: Depending on complexity, note as a possible future / optional add-on (and remove S3-related spec). 
+
+Tim Reitz 01/23/2026: We could do the memo + thumbnail function like we do for ZSB. That would work for now, but we would want to change before there are lots of vehicles / photos in the database. It would be somewhat costly to migrate the images over to the new approach. 
 
   
 

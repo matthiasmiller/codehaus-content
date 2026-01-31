@@ -5,6 +5,22 @@
 
 Requirements
 
+TODO_IDD: Add the Snippet for records/details screens & start speccing it out based on these HLD notes.
+
+  
+
+
+  
+
+
+TODO_IDD: Tim Reitz 12/03/2025: What would be the unique ID for this record?
+
+  
+
+
+  
+
+
 This is the core scheduling record that ties a job to a specific crew, date range, and the crew members, trucks, and trailers assigned for each day.
 
   
@@ -61,6 +77,14 @@ Includes the following conditionally-visible fields, based on "Event Type": 
 
 
 
+_HLD: Tim Reitz 12/03/2025: I'm thinking this RG belongs on the Calendar Event / "Job" record, since it's event/phase-specific. Then maybe a virtual RG on the Proposal record that show all?  
+
+Matthias Miller 12/03/2025: Don't care. I updated downtime as an amount of time shown on the RG. 
+
+Matthias Miller 12/03/2025: This means you can't reschedule anything that has downtime attached.
+
+TODO_IDD: Tim Reitz 12/04/2025: Work on this.
+
   
 
 
@@ -81,6 +105,11 @@ Includes the following conditionally-visible fields, based on "Event Type": 
   
 
 
+\------------------
+
+  
+
+
 Development Specification
 
 Mockups: 
@@ -90,29 +119,3 @@ Mockups: 
   * Other: [https://docs.google.com/spreadsheets/d/17EkeRk4ZweyAWVPRgcPgdjPlGqZpSTkrt-jl4uNLh90/edit?gid=976591927#gid=976591927](https://docs.google.com/spreadsheets/d/17EkeRk4ZweyAWVPRgcPgdjPlGqZpSTkrt-jl4uNLh90/edit?gid=976591927#gid=976591927)
 
 
-
-  
-
-
-  
-
-
-  
-
-
-TODO_IDD: Tim Reitz 12/03/2025: What would be the unique ID for this record?
-
-  
-
-
-  * Job Downtime
-
-
-
-_HLD: Tim Reitz 12/03/2025: I'm thinking this RG belongs on the Calendar Event / "Job" record, since it's event/phase-specific. Then maybe a virtual RG on the Proposal record that show all?  
-
-Matthias Miller 12/03/2025: Don't care. I updated downtime as an amount of time shown on the RG. 
-
-Matthias Miller 12/03/2025: This means you can't reschedule anything that has downtime attached.
-
-TODO_IDD: Tim Reitz 12/04/2025: Work on this.

@@ -5,7 +5,13 @@ Overview: This is an email merge that is sent automatically to Account Managers 
   
 
 
-From: __ TODO_VA: Tim Reitz 01/15/2026: Probably add a System Switch or a Silverloom Settings for the send from email address - like we recently did for ZLP? Or ZGW? Or ??
+From:
+
+TODO_VA: Tim Reitz 01/23/2026: From "automation@" 
+
+ TODO_VA: Tim Reitz 01/15/2026: Probably add a System Switch or a Silverloom Settings for the send from email address - like we recently did for ZLP? Or ZGW? Or ??
+
+Tim Reitz 01/22/2026: Modeling this after XFB. 
 
   
 
@@ -17,12 +23,20 @@ To: <Primary Email address(es) for each "Account Manager" on the current "Accou
 
 CC: N/A
 
+_GZ:
+
+TODO_VA: Tim Reitz 01/23/2026: CC the reseller. 
+
   
 
 
-BCC: __ TODO_NM: Tim Reitz 01/16/2026: Thoughts on including a System Switch for the BCC email? 
+BCC: __ 
 
-TODO_: Tim Reitz 01/16/2026: Set this based on the others
+TODO_VA: Tim Reitz 01/23/2026: Yes to BCC. 
+
+_NM: Tim Reitz 01/16/2026: Thoughts on including a System Switch for the BCC email? [if the client wants to BCC everything] 
+
+TODO_VA: Tim Reitz 01/22/2026: Let's do it in Silverloom Settings. 
 
   
 
@@ -73,7 +87,7 @@ Additional Comments: <contents of the "Device Transfer Comments" field for the t
   
 
 
-Please contact your Account Reseller with any questions.
+Please reply to this email to __ your Account Reseller with any questions.
 
   
 

@@ -1,5 +1,10 @@
 5.2. User Groups
 
+  
+
+
+Requirements
+
 *Done. 
 
   
@@ -68,3 +73,10 @@ Other Notes:
       * Restricted Data Policy: N/A
 
 
+
+  
+
+
+Development Specification
+
+TODO_NM (review): Tim Reitz 01/22/2026: Let's make sure that restricted user groups is the way to go (these users will need to be able to view and edit a lot of things, but not the Standard folder, report settings, etc.).

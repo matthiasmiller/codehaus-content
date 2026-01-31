@@ -21,8 +21,8 @@
         * "New Reseller Approval": if the "Requested By" user is the "New Reseller" (individual) or a "Reseller Rep" for the "New Reseller" (organization): sets to checked;
         * "New Reseller Approval User":  if the "Requested By" user is the "New Reseller" (individual) or a "Reseller Rep" for the "New Reseller" (organization): sets to the "Requested By" user;
         * "New Reseller Approval Date": if the "Requested By" user is the "New Reseller" (individual) or a "Reseller Rep" for the "New Reseller" (organization): sets to the current date; 
-      * sends the "New Account Reseller Transfer Request" email - see corresponding spec)
     * Other Notes:
       * This automatic process can be run by any user (not limited to the users who can edit a specific Account record).
+      * on the first Save after this automatic process runs and adds a new row, the "Send "New Account Reseller Transfer Request" Email" triggered automatic process runs - see corresponding spec)
 
 

@@ -5,6 +5,11 @@
 
 Requirements
 
+TODO_IDD: Add the Snippet for records/details screens & spec it out. Or, copy in the spec of one of the Configuration records from Phase 1 and make changes as needed. The latter option might be the fastest. 
+
+  
+
+
 This defines your Prep and Paving work crews (including their calendar color) so jobs can be assigned to the right team with minimal setup.
 
   

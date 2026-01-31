@@ -1,5 +1,7 @@
 11.3. "Lost Device Online" Report Alert
 
+TODO_T/J
+
 Tim Reitz 09/18/2025: Have an alert if the device comes online with this status.
 
 _GZ: Tim Reitz 09/24/2025: What kind of alert should this be? Email or in-app?  

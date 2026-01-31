@@ -30,19 +30,19 @@ Standard Permissions:|
 Edit the Contact Type Lookup Record| [X] | [ ] | [ ] | [X]   
 Edit User Groups and Profiles| [X] | [ ] | [ ] | [X]   
   
-| [ ] | [ ] | [ ] | [ ]   
-Custom Permissions (in a "<System Name>-Specific" group):|   
+|   
+|   
+|   
+|   
+  
+Custom Permissions (in a "<System Name>-Specific" grouping):|   
 |   
 |   
 |   
   
 Full Access| [X] | [ ] | [ ] | [X]   
 Edit General Inventory Devices| [X] | [ ] | [ ] | [X]   
-View Advanced Menu| [X] | [X] | [X] | [X]   
-  
-| [ ] | [ ] | [ ] | [ ]   
-  
-| [ ] | [ ] | [ ] | [ ]   
+View Traccar Sync Records| [X] | [ ] | [ ] | [X]   
   
 |   
 |   
@@ -63,6 +63,13 @@ Other Notes: 
 
 
 Development Specification
+
+Niccolas Miller 01/30/2026: Draft estimate:
+
+Simple permissions: 2 hours
+
+  
+
 
 Tim Reitz 07/23/2025: None included in the HLD.
 

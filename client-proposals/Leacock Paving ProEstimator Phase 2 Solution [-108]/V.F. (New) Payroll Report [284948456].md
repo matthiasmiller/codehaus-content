@@ -1,9 +1,16 @@
 5.6. (New) Payroll Report
 
+TODO_IDD: Add the Snippet for non-editable reports & start speccing it out based on these HLD notes.
+
+Tim Reitz 01/21/2026: I wonder if we have anything like this as a standard report, or a report in ZFP that we could copy or borrow ideas from. Let's ask Nic / Seth / Ellis. 
+
   
 
 
-Requirements
+TODO_IDD: Add setting for payroll start date (must be a Sunday). Pay Period could be "Current", "Previous", or "By Date" and then prompt for the date if needed and show the period containing that date. Use the payroll start date to determine which pay period (biweekly) it falls into.
+
+  
+
 
 The Payroll report will be used to input payroll information into QuickBooks. 
 
@@ -38,6 +45,4 @@ Columns:
   
 
 
-Development Specification
-
-TODO_IDD: Add setting for payroll start date (must be a Sunday). Pay Period could be "Current", "Previous", or "By Date" and then prompt for the date if needed and show the period containing that date. Use the payroll start date to determine which pay period (biweekly) it falls into.
+\-------------------------

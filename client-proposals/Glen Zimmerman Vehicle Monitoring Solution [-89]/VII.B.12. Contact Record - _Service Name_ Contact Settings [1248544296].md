@@ -5,7 +5,7 @@
   
 
 
-  * <Service Name> Contact Details section (custom section):
+  * <Service Name> Contact Details section (custom section):
 
 
 
@@ -28,7 +28,7 @@
       * otherwise (if "Is Master Administrator" not checked): editable for users with the "Full Access" Permission, to manually give the Contact / user the role of Group Admin; 
     * when manually set to checked / not checked, the hidden "Is Group Admin (Stored)" field is set accordingly - see corresponding spec; 
     * includes the following validation(s): 
-      * error on the field if set to not checked and if the Contact is included on the "Account Group Admins" embedded spreadsheet for one or more active Account Group records: "Remove this Contact from the Account Group Admins table on the linked Group(s) before unchecking this box.") 
+      * error on the field if set to not checked and if the Contact is included on the "Group Admins" embedded spreadsheet for one or more active Account Group records: "Remove this Contact from the Group Admins table on the linked active Group(s) before unchecking this box.") 
   * Is Group Admin (Stored) (custom; hidden field; checkbox; with the following details / behaviors: 
     * is set based on the "Is Group Admin" macro - see corresponding spec; 
     * on the first Save after this is set to checked or unchecked, the "Set User Group Based on User Role" triggered background process runs - see corresponding spec) 
@@ -73,7 +73,7 @@
   
 
 
-  * Is Account Manager (custom; visible if "Is Organization" is not checked; read-only macro; checkbox; displays as checked if the Contact is included on the "Account Members" embedded spreadsheet on one or more Account records, with the "Account Manager" checkbox checked) 
+  * Is Account Manager (custom; visible if "Is Organization" is not checked; read-only macro; checkbox; displays as checked if the Contact is included on the "Account Members" embedded spreadsheet, with the "Account Manager" checkbox checked, on one or more Account records) 
   * For <#> Account(s) (custom; visible if "Is Account Manager" is checked; with the following details / behaviors: 
     * link; opens the Account directly if there is only one, otherwise opens the "Accounts by Account Manager" report, filtered to this Account Manager; 
     * "<#>" displays the number of Accounts for which the Contact is included on the "Account Managers" embedded spreadsheet)
@@ -83,9 +83,20 @@
   
 
 
-  * Is Driver (custom; visible if "Is Organization" is not checked; checkbox; read-only macro; displays as checked if the Contact is included on the "Account Members" embedded spreadsheet on one or more Account records, with the "Driver" checkbox checked) 
+  * Is Driver (custom; visible if "Is Organization" is not checked; checkbox; read-only macro; displays as checked if the Contact is included on the "Account Members" embedded spreadsheet, with the "Driver" checkbox checked, on one or more Account records) 
   * For <#> Device(s) (custom; visible if "Is Driver" is checked; with the following details / behaviors: 
     * link; opens the Device directly if there is only one, otherwise opens the "Devices by Primary Driver" report, filtered to this Driver; 
-    * "<#>" displays the number of Devices for which the Contact is set as the "Primary Driver")
+    * "<#>" displays the number of Devices for which the Contact is set as the "Primary Driver") 
+
+
+
+  
+
+
+  
+
+
+  * Other Notes: 
+    * Note that an individual Contact may have none, one, multiple, or all of these checkboxes checked.
 
 

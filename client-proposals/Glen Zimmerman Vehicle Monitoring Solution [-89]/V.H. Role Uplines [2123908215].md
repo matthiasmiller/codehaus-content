@@ -10,12 +10,12 @@ Requirements
   
 
 
-Due to the complexity of "uplines" and "downlines" in roles, the following pre-determined uplines and downlines are defined and hard-coded in the system: 
+Due to the complexity of "uplines" and "downlines" in roles, the following pre-determined upline roles are defined and hard-coded in the system: 
 
   
 
 
-  * "All Provider Roles": Includes Contacts/users with the following roles: 
+  * "All Provider Roles": Includes Contacts/users that meet the following criteria: 
     * All users with the "Full Access" Permission (i.e. "Master Administrators" & CodeCrafters Support users) 
     * All "Group Admin" users
     * All "Account Reseller" & "Reseller Rep" users
@@ -25,7 +25,7 @@ Due to the complexity of "uplines" and "downlines" in roles, the following pre-d
   
 
 
-  * "Upline Provider Roles": Includes Contacts/users with the following, to be evaluated in relation to a specific Contact/user/Account/Device: 
+  * "Upline Provider Roles": Includes Contacts/users that meet the following criteria, to be evaluated in relation to a specific Contact/user/Account/Device: 
     * All users with the "Full Access" Permission 
     * "Group Admin" users for the linked "Account Group" and "Upline Groups" for Accounts on which the Contact is included as an "Account Member" (Account Manager or Driver. 
     * "Account Reseller" & "Account Rep" users for Accounts on which the Contact is included as an "Account Member" (Account Manager or Driver).

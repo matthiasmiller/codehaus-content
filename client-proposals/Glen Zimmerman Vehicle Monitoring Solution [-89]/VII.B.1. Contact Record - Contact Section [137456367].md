@@ -5,6 +5,11 @@
 
 Requirements
 
+*. 
+
+  
+
+
   * Contact section (standard; note that one or more fields in this section have special restrictions): 
 
 
@@ -17,50 +22,10 @@ Requirements
     * includes the following custom validations:
       * validate against deactivating the Contact if "Is Master Administrator" is checked - error on the field: "Contact is a Master Administrator and cannot be deactivated."; 
       * validate against deactivating the Contact if included on the "Group Admins" embedded spreadsheet for any active Account Groups - error on the field: "Contact is a Group Admin for one or more active Groups and cannot be deactivated.";
-
-
-
-TODO_VA: Tim Reitz 01/19/2026: Add this validation to the checkbox
-
-TODO_VA: Tim Reitz 01/19/2026: Note that we need this validation for a few reasons: 
-
-\- Fine to deactivate an "Is Group Admin" contact, but not if linked to a Group
-
-\- A Master Administrator could drop that role, but keep the Group Admin role
-
-  * validate against deactivating the Contact if set as the "Account Reseller" for any active Accounts - error on the field: "Contact is an Account Reseller for one or more active Accounts and cannot be deactivated."; 
-
-
-
-TODO_VA: Tim Reitz 01/19/2026: Add this validation to the checkbox 
-
-TODO_VA: Tim Reitz 01/19/2026: Note that we need this validation for a few reasons: 
-
-\- Fine to deactivate an "Is Account Reseller" contact, but not if linked to an Account 
-
-\- A Master Administrator could drop that role, but keep the Reseller role for one or more Accounts 
-
-  * give a warning if the Contact is a "Reseller Rep" for any "Account Resellers" (i.e. if the "Is Reseller Rep" checkbox is checked) - warning on Save: "Contact is a Reseller Rep. Confirm that it is safe to deactivate."; 
-  * validate against deactivating the Contact if the "Is Account Manager" checkbox is checked - error on the field: "Contact is an Account Manager for one or more active active Accounts and cannot be deactivated."; 
-
-
-
-TODO_VA: Tim Reitz 01/19/2026: Make sure the checkbox is based on the updated spec for the "Account Members" RG 
-
-  * validate against deactivating the Contact if the "Is Driver" checkbox is checked - error on Save: "Contact is a Driver on one or more active Accounts and cannot be deactivated.; 
-
-
-
-TODO_VA: Tim Reitz 01/19/2026: Make sure the checkbox is based on the updated spec for the "Account Members" RG 
-
-TODO_VA: Tim Reitz 01/19/2026: Make sure that the Driver must be removed from the "Primary Driver" field on Devices to be removed from the Account Members RG. 
-
-  * __)
-
-
-
-TODO_: Any more? 
-
+      * validate against deactivating the Contact if set as the "Account Reseller" for any active Accounts - error on the field: "Contact is an Account Reseller for one or more active Accounts and cannot be deactivated."; 
+      * give a warning if the Contact is a "Reseller Rep" for any "Account Resellers" (i.e. if the "Is Reseller Rep" checkbox is checked) - warning on Save: "Contact is a Reseller Rep. Confirm that it is safe to deactivate."; 
+      * validate against deactivating the Contact if the "Is Account Manager" checkbox is checked - error on the field: "Contact is an Account Manager for one or more active active Accounts and cannot be deactivated."; 
+      * validate against deactivating the Contact if the "Is Driver" checkbox is checked - error on Save: "Contact is a Driver on one or more active Accounts and cannot be deactivated.")
   * This contact is inactive as of [   ] (standard; visible if "Active Contact" is not checked; on-screen message in gray font + editable date field; date toggles with "Active Contact" checkbox, defaulting to the current date when the checkbox is unchecked) 
 
 
@@ -86,8 +51,15 @@ TODO_: Any more? 
 
 
 
-  
+TODO_NM: Tim Reitz 01/30/2026: What happens to the following when the Contact's name is changed?: 
 
+\- Name on the "Provider Traccar Logins" RG 
+
+\- Name on the "Account Members" RG 
+
+\- Names on the Traccar User sync record 
+
+These matter because they get synced to Traccar (specifically the sync record), so I just wanted to make sure we're accounting for how to handle name changes when they happen (which probably won't be very frequently, so let's try to go simple for Phase 1 if special handling is needed). 
 
   * Display Name (standard; visible if the Contact is an individual; macro; with the following details / behaviors: 
     * custom behavior: read-only;
@@ -127,31 +99,12 @@ TODO_: Any more? 
 
 
   * Date of Birth (standard field; visible if the Contact is an individual; date field; with the following: 
-    * custom behavior: required if any of the "Role" checkboxes are checked - error on Save: ""Date of Birth" is required because this Contact has been assigned a Provider and/or End User role.") 
-
-
-
-TODO_VA: Tim Reitz 01/19/2026: Need to rethink this validation -- the Account Manager & Driver checkboxes are now macros that display as checked based on the Account records, so we might need to add validation there if this is blank. 
-
-[ ] Warning on Save here whenever blank
-
-[ ] Validation warning on the Account when a Contact w/out a DOB is added to the RG
-
-[ ] Report of "Account Managers and Drivers Lacking DOB" 
-
-[ ] Report alert for this report? 
-
+    * custom behavior: warning on Save if visible and blank: "Date of Birth is blank.";
+    * custom behavior: required if any of the "Role" checkboxes are checked - error on Save: "Date of Birth is required because this Contact is a provider and/or end user.") 
   * Age (custom; visible if the Contact is an individual; read-only macro; number; 1 decimal place; displays the age of the Contact, based on the "Date of Birth" and the current date, rounded down to the nearest 1 decimal place; note that this is rounded down so that "19.96" is rounded to "19.9" instead of "20.0") 
   * Gender (standard field; visible if the Contact is an individual; drop list of blank / Female / Male; with the following: 
-    * custom behavior: required if any of the "Role" checkboxes are checked - error on Save: ""Gender" is required because this Contact has been assigned a Provider and/or End User role.") 
-
-
-
-TODO_VA: Tim Reitz 01/19/2026: Same as Date of Birth. 
-
-  
-
-
+    * custom behavior: warning on Save if visible and blank: "Gender is blank.";
+    * custom behavior: required if any of the "Role" checkboxes are checked - error on Save: "Gender is required because this Contact is a provider and/or end user.") 
   * New Contact for Household Member (custom; visible if the Contact is an individual; link; opens a new Contact record, with "Last Name" and any/all Addresses defaulted based on the Contact from which the link was clicked)
 
 

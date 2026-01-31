@@ -20,6 +20,8 @@ TODO_VA: Tim Reitz 10/31/2025: Probably move away from "Master". Maybe use "Mai
 
 TODO_GZ : Tim Reitz 09/12/2025: What reports do you have in mind for the Silverloom side of things? (this would be an ongoing conversation)
 
+TODO_GZ: Tim Reitz 01/23/2026: Fine for the more in-depth, or at least the graph-based, reporting to happen as "Phase 1.2" or Phase 2? 
+
 TODO_VA: Tim Reitz 10/09/2025: 
 
 [ ] Master Administrators: 

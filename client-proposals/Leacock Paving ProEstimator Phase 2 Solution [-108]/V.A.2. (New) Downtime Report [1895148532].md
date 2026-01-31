@@ -5,6 +5,11 @@
 
 Requirements
 
+TODO_IDD: Add the Snippet for non-editable reports & start speccing it out based on these HLD notes.
+
+  
+
+
 This is a report of downtime, based on Calendar Event records, with various filters.
 
   
@@ -43,6 +48,11 @@ This is a report of downtime, based on Calendar Event records, with various filt
 
 
 Additional details to be determined in the In-Depth Design.
+
+  
+
+
+\-----------------------
 
   
 

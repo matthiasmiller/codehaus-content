@@ -89,7 +89,7 @@ Requirements
 
 TODO_JB: Tim Reitz 01/13/2026: "Reseller" and "Assigned Reseller" would have bearing on editability in Traccar (if we allow users to edit Devices interactively in Traccar...). 
 
-Tim Reitz 01/16/2026: I'm inclined to not allow most users to edit Devices interactively in Traccar. Maybe just "Full Access" Silverloom users. 
+TODO_VA: Tim Reitz 01/16/2026: I'm inclined to not allow most users to edit Devices interactively in Traccar. Maybe just "Full Access" Silverloom users. 
 
   
 

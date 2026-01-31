@@ -1,27 +1,112 @@
 10.2.1. "New Account Reseller Transfer Request" Email Merge
 
-  * on the first Save after this button is clicked and the row is added, the "New Account Reseller Transfer Request" email is sent - see corresponding spec) 
+Overview: This is an email merge that is sent automatically when a Reseller transfer is requested for an Account record. This is sent to the Account Reseller who needs to approve the transfer request, and all Master Administrators.
+
+  
 
 
+Sent Via: the "Send "New Account Reseller Transfer Request" Email" triggered automatic process (see corresponding spec) 
 
-_GZ: Tim Reitz 11/04/2025: How should the Prior & New Reseller be notified? Probably an email (since resellers can be businesses). 
+  
 
-Tim Reitz 11/05/2025: Let's just plan on an email rather than an in-app alert, since the Reseller can be a business. 
 
-And what should this notification look like? 
+From: __
 
-TODO_VA: Tim Reitz 11/06/2025: This email would include: 
+_GZ: Tim Reitz 01/22/2026: "automation@" or "no-reply@" or ??
 
-[ ] A reseller transfer has been requested for the following Account: __ 
+TODO_VA: Tim Reitz 01/23/2026: "automation@"
 
-[ ] Needing your approval 
+  
 
-[ ] Close out subscription and any other applicable details 
 
-[ ] Who initiated the request 
+To: __
 
-[ ] Reason / Comments 
+TODO_VA: Tim Reitz 01/23/2026: to the Account Reseller who needs to approve the transfer request
 
-[ ] Link to the Account 
+TODO_VA: Tim Reitz 01/22/2026: which email address? ("Primary", or one from the Traccar Login RG on the Contact record?)
 
-Tim Reitz 12/03/2025: Calling this "New Account Reseller Transfer Request"
+TODO_VA: Tim Reitz 01/22/2026: Also, sometimes Prior and sometimes New
+
+  
+
+
+CC: 
+
+_GZ: Tim Reitz 01/22/2026: Needed here?
+
+TODO_VA: Tim Reitz 01/23/2026: CC all Master Administrators
+
+  
+
+
+BCC: __
+
+_GZ: Tim Reitz 01/22/2026: Needed here?
+
+TODO_VA: Tim Reitz 01/23/2026: Yes to BCC. 
+
+  
+
+
+Reply To: 
+
+_GZ: Tim Reitz 01/22/2026: Needed here?
+
+TODO_VA: Tim Reitz 01/23/2026: Reply To the requesting Reseller
+
+  
+
+
+Subject: "New Account Reseller Transfer Request"
+
+  
+
+
+Attachments: N/A
+
+  
+
+
+Body:
+
+  
+
+
+A reseller transfer has been requested for the following account, and is needing your approval: <Account #, link to record>.
+
+  
+
+
+Prior Reseller: <displays the "Prior Reseller" for the corresponding row of the "Account Reseller History" non-embedded spreadsheet>
+
+  
+
+
+New Reseller: <displays the "New Reseller" for the corresponding row of the "Account Reseller History" non-embedded spreadsheet>
+
+  
+
+
+Requested by: <displays the "Requested By" for the corresponding row of the "Account Reseller History" non-embedded spreadsheet>
+
+  
+
+
+Reason / Comments: <displays the "Reason / Comments" for the corresponding row of the "Account Reseller History" non-embedded spreadsheet>
+
+  
+
+
+If you are the current reseller, please close out the subscription and resolve any other details before approving the request.
+
+  
+
+
+  
+
+
+Other Notes:
+
+  * N/A
+
+

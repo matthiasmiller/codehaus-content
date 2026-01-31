@@ -55,7 +55,7 @@
   * Primary Driver History Child Screen (contains the following: 
     * Primary Driver History (non-embedded spreadsheet with the following: 
       * Columns: 
-        * Primary Driver (auto-set and read-only; list field of "Display Name" items for all individual Contact records; automatically sets from the "Primary Driver" macro on the main screen - see corresponding spec) 
+        * Primary Driver (auto-set and read-only; list field of "Display Name" items for all individual Contacts; automatically sets from the "Primary Driver" macro on the main screen - see corresponding spec) 
         * Start Date (auto-set and read-only; date; automatically sets to the current date when the row is added via the "Primary Driver" macro) 
         * End Date (auto-set and read-only; date; required if the row is not the top row; is always blank for the top row unless "Primary Driver" is set to blank, and automatically sets to the current date when "Primary Driver" is changed - see corresponding spec) 
         * Primary Driver Change Comments (button; opens a lightbox screen with an auto-set and read-only memo field; automatically set from the "Primary Driver Change Comments" editable macro - see corresponding spec; the contents here are included in the "Primary Driver Change" Email - see corresponding spec) 

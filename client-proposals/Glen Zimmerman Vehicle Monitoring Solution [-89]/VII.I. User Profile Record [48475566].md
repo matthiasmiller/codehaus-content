@@ -17,9 +17,11 @@ _EM: Tim Reitz 12/10/2025: Thoughts on setting it up for providers and support 
 
 Tim Reitz 12/11/2025: Talk to Jonathan about our capabilities here, then Ellis will talk with Josh. 
 
-TODO_JB (research): Tim Reitz 01/16/2026: For users who have access to both Silverloom and Traccar, it would seem handy to have the same UN + PW for both. 
+DONE_JB (research): Tim Reitz 01/16/2026: For users who have access to both Silverloom and Traccar, it would seem handy to have the same UN + PW for both. 
 
 Username seems easy, as Traccar uses the email address, and Silverloom has the capability to use it too. 
+
+TODO_VA: Jonathan Bergen 01/21/2026: I don't think we should do this. It's not a great idea from a security position, and it would likely be a lot of trouble to try to sync them.
 
 Password could be managed manually by the user, but do you have any thoughts on how we could sync over the password from the Silverloom User Profile to the corresponding user's Traccar account? There would be the challenge of this getting out of sync — the user could always hit the Reset Password link in Traccar and get mismatching passwords (presumably until the next time the sync runs and updates Traccar to match Silverloom again). If this isn't simple, I think we'd defer it, so it's not worth a lot of time at this point. 
 
@@ -51,9 +53,11 @@ TODO_VA: Tim Reitz 01/15/2026: Defer as a possible future item. Would be a lot 
 
 We could consider adding an x30 that runs as another user, but let's defer that for now. 
 
-TODO_GZ: Tim Reitz 01/15/2026: We don't currently allow for partial permissions for setting up or editing User Profiles / logins. So for now requests will need to go through Master Administrators. 
+_GZ: Tim Reitz 01/15/2026: [FYI] We don't currently allow for partial permissions for setting up or editing User Profiles / logins. So for now requests will need to go through Master Administrators. 
 
-TODO_GZ: Tim Reitz 01/15/2026: We could give various approaches for a Primary Reseller Rep or Primary Group Admin to request a new user: 
+Tim Reitz 01/23/2026: See email: "Notes about setting up and managing users". 
+
+TODO_GZ: Tim Reitz 01/15/2026: [FYI, as a possible future item] We could give various approaches for a Primary Reseller Rep or Primary Group Admin to request a new user: 
 
   * MailTo draft with lines for the necessary fields
   * Request submission -- prompts for the necessary fields, sends a notification to the Master Administrators, who can open a report to view the request and click a button to set up the User Profile. 
@@ -84,15 +88,20 @@ Tim Reitz 01/15/2026: Not relevant anymore because end users are not in Silverlo
 
 _GZ: Tim Reitz 12/10/2025: Do you want them to be able to help clients of others with their logins?
 
-TODO_VA: Tim Reitz 12/11/2025: Limited. Only the Reseller for the Account should be able to change the email address for logging into Traccar. 
+Tim Reitz 12/11/2025: Limited. Only the Reseller for the Account should be able to change the email address for logging into Traccar. 
 
-TODO_VA: Tim Reitz 12/11/2025: I'm wondering if the Traccar login details ("Traccar User Record") need to live on the Account record (maybe on the RG), so that a Contact can have login access to multiple Traccar accounts under different Resellers. 
+  
+
+
+Tim Reitz 12/11/2025: I'm wondering if the Traccar login details ("Traccar User Record") need to live on the Account record (maybe on the RG), so that a Contact can have login access to multiple Traccar accounts under different Resellers. 
+
+Tim Reitz 01/21/2026: Yes, doing this for Group Admins and Resellers / Reseller Reps. Keeping the details for end users on the Account Members RG. 
 
 [ ] Note from 10/31/25: Per Ellis, Josh was not scared about adding record-level restrictions to the User Profile records. This would allow us to restrict the User Profile records so that users don't change the URL to see other records.
 
 _EM: Tim Reitz 12/10/2025: Maybe this record level restriction would even be a standard feature to add?
 
-TODO_VA: Tim Reitz 01/20/2026: If not needed for Phase 1, Elis isn't inclined to add it now.
+_VA: Tim Reitz 01/20/2026: If not needed for Phase 1, Elis isn't inclined to add it now.
 
   
 

@@ -12,9 +12,11 @@ Requirements
 
 Overview: This is a custom record type, used to track Vehicles that are / have been tracked by Devices. These records are created automatically when a Device reports data from a vehicle VIN that is not present in the Solution, and may also be created manually. 
 
-TODO_JB (research): Tim Reitz 01/16/2026: I'm wondering if Traccar logs the VIN for vehicles connected to the OBDs (on-board devices). I'm guessing this would be on an "Event" record or "Position" record or something like that. 
+DONE_JB (research): Tim Reitz 01/16/2026: I'm wondering if Traccar logs the VIN for vehicles connected to the OBDs (on-board devices). I'm guessing this would be on an "Event" record or "Position" record or something like that. 
 
 We've kinda been banking on it, since we're planning to auto-create Vehicle records in Silverloom via the sync when a new VIN is logged in Traccar. But I realized that I'm not specifically seeing VIN details in Traccar, so I'd like some deeper digging on that. 
+
+TODO_VA: Jonathan Bergen 01/21/2026: Yes, the devices should be able to be configured to send the VIN along with the events.
 
   
 

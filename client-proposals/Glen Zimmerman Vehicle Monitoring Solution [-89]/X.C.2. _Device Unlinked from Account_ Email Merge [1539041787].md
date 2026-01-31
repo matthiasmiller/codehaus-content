@@ -5,7 +5,9 @@ Overview: This is an email merge that is sent automatically to Account Managers 
   
 
 
-From: __ TODO_VA
+From: __ 
+
+TODO_VA: Tim Reitz 01/23/2026: From "automation@" 
 
   
 
@@ -21,10 +23,14 @@ TODO_VA: Tim Reitz 10/08/2025: Since this is a trigger, we can specify "old val
 
 CC: N/A
 
+TODO_VA: Tim Reitz 01/23/2026: CC the reseller. 
+
   
 
 
-BCC: TODO_: Tim Reitz 01/16/2026: Set this based on the others
+BCC: 
+
+TODO_VA: Tim Reitz 01/23/2026: Yes to BCC. 
 
   
 
@@ -75,7 +81,7 @@ Additional Comments: <contents of the "Device Transfer Comments" field for the t
   
 
 
-Please contact your Account Reseller with any questions.
+Please reply to this email to __ your Account Reseller with any questions.
 
   
 

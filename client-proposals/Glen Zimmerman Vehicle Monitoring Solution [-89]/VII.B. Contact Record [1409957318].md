@@ -15,7 +15,7 @@ Overview: The Solution uses the standard Silverloom Contacts module, utilizing
   
 
 
-The Solution can track individuals and organizations/businesses separately, and has the ability to link an individual contact to an organization contact. 
+The Solution can track individuals and organizations/businesses separately, and has the ability to link an individual Contact to an organization Contact. 
 
   
 
@@ -88,7 +88,7 @@ Other Notes:
     * "Executive Notes" section & memo
   * The following individual standard field(s) are hidden (custom) in this Solution: 
     * "Override Name" checkbox in the "Contact" section; 
-    * "Organization" embedded spreadsheet in the "Contact" section (for linking individual Contacts to organizations)
+    * "Organization" embedded spreadsheet in the "Contact" section (for linking individual Contacts to organization Contacts)
 
 
 

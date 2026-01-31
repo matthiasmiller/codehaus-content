@@ -10,7 +10,11 @@ Overview: This email merge runs to send a login link to a Portal user upon reque
   
 
 
-From: __ TODO_: Tim Reitz 01/16/2026: Set based on the others.
+From: __ 
+
+_GZ:
+
+TODO_VA: Tim Reitz 01/23/2026: From "portal@" 
 
   
 
@@ -22,15 +26,27 @@ To: <the email address entered in the "Email Address" field on the "Enter Email 
 
 CC: N/A
 
+_GZ: like Reseller, or Account Manager(s)?
+
+TODO_VA: Tim Reitz 01/23/2026: CC not needed. 
+
   
 
 
-BCC: __ TODO_: Tim Reitz 01/16/2026: Set based on the others.
+BCC: __ 
+
+_GZ:
+
+TODO_VA: Tim Reitz 01/23/2026: BCC not needed. 
 
   
 
 
-Reply To: N/A
+Reply To: N/A 
+
+_GZ: Reseller?
+
+TODO_VA: Tim Reitz 01/23/2026: Reply To the Reseller. 
 
   
 
@@ -56,6 +72,11 @@ Please use the secure login link below to access your account.
 
 
 <Login link>
+
+  
+
+
+Please reply to this email to __ 
 
   
 

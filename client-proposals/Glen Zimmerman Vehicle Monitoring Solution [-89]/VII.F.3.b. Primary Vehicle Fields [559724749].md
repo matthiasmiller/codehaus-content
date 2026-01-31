@@ -5,8 +5,8 @@
     * required if "Device Status" ≠ "Decommissioned" or "Lost";
     * drop list of "Vehicle Description" values for all Vehicle records;
     * displays:
-      * if there is no row in the "Primary Vehicle History" non-embedded spreadsheet or if there is at least one row and "End Date" for the top row is blank: displays blank;
-      * if there is at least one row in the "Primary Vehicle History" non-embedded spreadsheet and "End Date" for the top row is not blank: displays the value in the "Primary Vehicle" field for the top row;
+      * if there is no row in the "Primary Vehicle History" non-embedded spreadsheet or if there is at least one row and "End Date" for the top row is blank: displays blank;
+      * if there is at least one row in the "Primary Vehicle History" non-embedded spreadsheet and "End Date" for the top row is not blank: displays the value in the "Primary Vehicle" field for the top row;
     * when set to either blank or non-blank, the following field(s) are affected on change:
       * the following is set on the top existing row of the "Primary Vehicle History" non-embedded spreadsheet: 
         * "End Date": if blank, sets to the current date; 
@@ -20,7 +20,9 @@
 
 
 
-TODO_JB (research): Tim Reitz 01/16/2026: Is there anything on the Traccar Device to link a VIN / Vehicle? If not, we'd just be doing the linking in Silverloom. 
+Done_JB (research): Tim Reitz 01/16/2026: Is there anything on the Traccar Device to link a VIN / Vehicle? If not, we'd just be doing the linking in Silverloom.
+
+TODO_VA: Jonathan Bergen 01/21/2026: No, and I think we should rely on the link in Silverloom. If we want to have the vehicle info tied to it in Traccar, we could use the "name" field or add an "attribute" to the device to store this. [https://www.traccar.org/api-reference/#tag/Devices/paths/~1devices~1%7Bid%7D/put](https://www.traccar.org/api-reference/#tag/Devices/paths/~1devices~1%7Bid%7D/put)
 
   * on the first Save after this is set to either blank or non-blank, the following things happen:
     * the "Send "Primary Vehicle Change" Email" triggered automatic process runs, to send the "Primary Vehicle Change" Email Merge - see corresponding specs;

@@ -5,7 +5,9 @@ Overview: This is an email merge that is sent automatically when a new "Primary 
   
 
 
-From: __ TODO_VA
+From: __ 
+
+TODO_VA: Tim Reitz 01/23/2026: From "automation@" 
 
   
 
@@ -21,10 +23,14 @@ To: 
 
 CC: N/A
 
+TODO_VA: Tim Reitz 01/23/2026: CC the reseller. 
+
   
 
 
-BCC: TODO_: Tim Reitz 01/16/2026: Set this based on the others
+BCC: 
+
+TODO_VA: Tim Reitz 01/23/2026: Yes to BCC. 
 
   
 

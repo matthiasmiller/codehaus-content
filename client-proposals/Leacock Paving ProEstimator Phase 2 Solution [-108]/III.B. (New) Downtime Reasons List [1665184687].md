@@ -1,9 +1,14 @@
 3.2. (New) Downtime Reasons List
 
+TODO_IDD: editable or non-editable?
+
   
 
 
-Requirements
+TODO_IDD: Add the list Snippet & spec it out. 
+
+  
+
 
 This provides a standard set of reasons for unproductive time on a job site, so when foremen log downtime, the data is consistent and reportable.
 
@@ -18,10 +23,3 @@ This provides a standard set of reasons for unproductive time on a job site, so 
 
 
 More details TBD in the In-Depth Design.
-
-  
-
-
-Development Specification
-
-TODO_IDD: editable or non-editable?

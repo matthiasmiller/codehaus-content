@@ -12,7 +12,9 @@ Overview: This is the standard Silverloom Contacts report, which may include c
 
 Note that this report is only accessible to users with the "Full Access" Permission (to help protect the integrity of client data usage). 
 
-TODO_NM: Tim Reitz 01/17/2026: How do we restrict this? Just based on the "Administrators" menu being hidden for others? Or something stronger? 
+_NM: Tim Reitz 01/17/2026: How do we restrict this? Just based on the "Administrators" menu being hidden for others? Or something stronger? 
+
+TODO_VA: Tim Reitz 01/22/2026: Just putting it on the admin menu. Note that if admins share the link, other users could see it. 
 
   
 

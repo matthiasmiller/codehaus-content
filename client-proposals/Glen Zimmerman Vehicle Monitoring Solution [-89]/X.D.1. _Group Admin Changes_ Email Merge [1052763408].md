@@ -5,12 +5,16 @@ Overview: This email is sent to users affected by changes to the "Account Group 
   
 
 
-From: <the email address specified in the ""From" email address for notifications:" System Switch>
+From: 
+
+TODO_VA: Tim Reitz 01/23/2026: From "automation@" 
 
   
 
 
 To: <the primary email address on Contact records selected in the "Recipients" prompt of the "__" user-initiated automatic process - see corresponding spec> 
+
+TODO_VA
 
   
 
@@ -29,7 +33,9 @@ TODO_VA: Tim Reitz 10/27/2025: Make sure the email doesn't get sent to CCI full
   
 
 
-BCC: TODO_: Tim Reitz 01/16/2026: Set this based on the others
+BCC: 
+
+TODO_VA: Tim Reitz 01/23/2026: Yes to BCC. 
 
   
 

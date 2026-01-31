@@ -41,7 +41,9 @@ My <Service Name> Account Details Screen: Upon clicking the one-time login link,
 
 
 
-TODO_GZ: Tim Reitz 01/16/2026: would you like a button for technical help? (other than the reseller)
+_GZ: Tim Reitz 01/16/2026: would you like a button for technical help? (other than the reseller)
+
+TODO_VA: Tim Reitz 01/23/2026: Yes, Glen thinks this would be helpful. Probably goes to a "support@" email address that goes to multiple people (probably Master Administrators). 
 
   
 

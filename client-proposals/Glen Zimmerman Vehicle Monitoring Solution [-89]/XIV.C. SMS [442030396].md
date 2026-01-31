@@ -7,7 +7,14 @@ Requirements
 
 TODO_VA: Tim Reitz 01/17/2026: We need to look at this. Will we simply rely on Traccar to send the SMS messages? 
 
-TODO_GZ: Tim Reitz 01/17/2026: What are the text messages that you want to send? 
+  
+
+
+_GZ: Tim Reitz 01/17/2026: What are the text messages that you want to send? 
+
+TODO_VA: Tim Reitz 01/23/2026: Discussed with Glen today. He said that until we know for sure that Traccar can send all the texts that they way, let's hold off on adding things to Silverloom. He'd prefer to not duplicate things.
+
+Probably hold off on this until Phase 2 or beyond. 
 
   
 

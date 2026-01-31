@@ -62,17 +62,15 @@ Other Notes: 
   * Heading color (custom): This record type uses a light green color for section headings.
   * Main workflows / channels for obtaining OBD Devices:
     * Standard: The main office orders a batch, enters them into Silverloom (not synced to Traccar yet), and keeps them in "General Inventory". When a Reseller or Group Admin requests some devices, the main office selects the devices, set the "Assigned Reseller" in Silverloom, and ship them off.
-      * This is done via the "New Device" option on the "Administrators" menu, and the "__" on the "Providers" menu.
-
-
-
-TODO_VA: Tim Reitz 01/17/2026: I'm thinking a basic report of Device records with "Assigned Reseller" = the current user
-
-  * Reseller-Initiated: A Reseller or Group Admin purchases devices on their own and enters them into Silverloom, at which point "Assigned Reseller" is required. These remain as reseller inventory until linked with an Account.
-    * This is done via the "New Device" option on the "Providers" menu.
-  * Group Admin-Facilitated: A Group Admin has their own inventory (with "Assigned Reseller" set to themselves) and provides a device to a person, who takes it to a Reseller. In this case, the Group Admin should change the "Account Reseller" at hand-off to the person, to allow the Reseller to edit / set it up, and for traceability .
-    * This is done via the "New Device" option on the "Providers" menu.
-  * End User-Initiated (rarely happens): A person buys their own device and brings it to a Reseller or Group Admin for setup. The goal would be to avoid this approach, but if it happens, it would function like the "Reseller-initiated" or "Group Admin-Facilitated" approaches.
+      * Main office can add Devices via the "New Device" option on the "Administrators" menu.
+        * Optional add-on / future feature: Main office can batch-add Devices via the "New Devices Batch Entry" new records report (see corresponding spec)
+      * Main office can assign Devices to a Reseller individually by opening the Device record or in a batch via the "Assign Devices to Reseller" report (see corresponding spec)
+      * Resellers can select from their assigned Devices via the "Available Devices" report (see corresponding spec)
+    * Reseller-Initiated: A Reseller or Group Admin purchases devices on their own and enters them into Silverloom, at which point "Assigned Reseller" is required. These remain as reseller inventory until linked with an Account.
+      * This is done via the "New Device" options on the "Providers" menu and on the "Administrators" menu.
+    * Group Admin-Facilitated: A Group Admin has their own inventory (with "Assigned Reseller" set to themselves) and provides a device to a person, who takes it to a Reseller. In this case, the Group Admin should change the "Account Reseller" at hand-off to the person, to allow the Reseller to edit / set it up, and for traceability .
+      * This is done via the "New Device" options on the "Providers" menu and on the "Administrators" menu.
+    * End User-Initiated (rarely happens): A person buys their own device and brings it to a Reseller or Group Admin for setup. The goal would be to avoid this approach, but if it happens, it would function like the "Reseller-initiated" or "Group Admin-Facilitated" approaches.
 
 
 

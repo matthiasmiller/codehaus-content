@@ -5,7 +5,7 @@
 
 Requirements
 
-TODO_VA: Tim Reitz 01/20/2026: Idea from Jisan today for estimating progress: Have a "Complexity" rating / weighting for each row (drop list of 1-10), and calculate from that + number of RG rows with a weighting + "Done" checkbox. We could calculate a total project complete percentage.
+*Done.
 
   
 
@@ -47,3 +47,8 @@ Mockups Spreadsheet: [https://docs.google.com/spreadsheets/d/1bpeWh2j2MO5nVWChd
 
 
 Tim Reitz 08/19/2025: Symbol: ≠
+
+  
+
+
+TODO_JB: Tim Reitz 01/21/2026: Reminder to please turn off dark mode while editing the proposal, if that's the cause of the font color changing :)

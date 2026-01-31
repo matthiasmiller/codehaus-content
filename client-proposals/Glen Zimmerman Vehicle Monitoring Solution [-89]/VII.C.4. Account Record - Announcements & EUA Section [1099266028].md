@@ -12,8 +12,6 @@ Requirements
   
 
 
-TODO_T/J
-
   * Announcements for Account (read-only "virtual" embedded spreadsheet with the following, displaying details from Announcement records; used to track notices that have been prepared for sending to the Primary Account Manager via direct mail or email, based on the __:
     * Columns: 
       * Prepared Date (auto-set and read-only; date; sets based on the "Prepared Date" prompt on the "Export Addresses / Document Announcement" child screen on the "Document Account Announcements" report - see corresponding spec) 
@@ -72,39 +70,38 @@ Tim Reitz 01/06/2026: I think this RG becomes a read-only virtual RG of Announce
         * warning on the field if changed from a saved non-blank value: "Use caution when editing this name."; 
         * when set to a non-blank value, the following field(s) are affected; 
           * "Agreed To By User": sets to the "User ID" of the user who set this field)
-      * Agreed To By User (plain text field; with the following details / behaviors: 
-
-
-
-TODO_NM: Tim Reitz 01/17/2026: Correct for this to be a string, or a list? (we'd be setting to either a User ID or an email address). 
-
-  * auto-set and read-only interactively; 
-  * editable via import; 
-  * automatically sets based on the user who set the "Agreed To Name": 
-    * if set from the End User Portal, sets to the email address; 
-    * if set manually here by an "Upline Provider Role" user, sets to the "User ID" of the user who set it)
-
-
-  * Automatically sorted by:
-    * First by: "Effective Date" (latest at the top)
-    * Second by: "Account Member" (alphabetical)
-  * Buttons to add/remove rows:
-    * Add: N/A (rows are only added automatically - see notes below);
-    * Delete: N/A (rows are only deleted automatic process - see notes below; certain fields can be edited / cleared if needed)
-  * Shows 5 rows without scrolling
-  * Other Notes: 
-    * End users must agree to the <Service Name> End User Agreement. This is done at various points in time: 
-      * When an end user (Account Manager or Driver) becomes an Account Member on an Account. 
-      * When an existing Account Member becomes the "Primary Account Manager". 
-      * Annually on the Renewal Date for the Account (only the "Primary Account Manager" for the Account). 
-      * Note that if a new EUA is uploaded to the software, end users do not need to agree to it immediately (they can wait until their next renewal).
-    * Rows are added automatically:
-      * On the first Save after a new row is added to the "Account Members" embedded spreadsheet - see corresponding spec. 
-      * On the first Save after the "Primary Account Manager" is changed on the "Account Members" embedded spreadsheet - see corresponding spec. 
-      * Annually at the renewal date, via the "Prepare Annual Renewals" automatic process - see corresponding spec. 
-    * Rows with "Agreed To Date" = blank are removed automatically: 
-      * On the first Save after the corresponding Contact row is removed from the "Account Members" embedded spreadsheet - see corresponding spec. 
-      * On the first Save after an Account is deactivated (specifically, after "Stored Account Status" is set to "Closed") - see corresponding spec)
+      * Agreed To By User (read-only macro; displays the following: 
+        * if "Agreed To By Silverloom User ID" is not blank: displays that; 
+        * otherwise, if "Agreed To By Portal User Email" is not blank: displays that; 
+        * otherwise (if both are blank): displays blank) 
+      * Agreed To By Silverloom User ID (plain text field; with the following details / behaviors:
+        * auto-set and read-only interactively; 
+        * editable via import; 
+        * automatically sets to the "User ID" of the Silverloom user who manually set the "Agreed To Name" (when manually set))  
+      * Agreed To By Portal User Email (plain text field; with the following details / behaviors:
+        * auto-set and read-only interactively; 
+        * editable via import; 
+        * automatically sets to the "Traccar Login Email" used to log into the Portal (when set by a user from the Portal))  
+    * Automatically sorted by:
+      * First by: "Effective Date" (latest at the top)
+      * Second by: "Account Member" (alphabetical)
+    * Buttons to add/remove rows:
+      * Add: N/A (rows are only added automatically - see notes below);
+      * Delete: N/A (rows are only deleted automatic process - see notes below; certain fields can be edited / cleared if needed)
+    * Shows 5 rows without scrolling
+    * Other Notes: 
+      * End users must agree to the <Service Name> End User Agreement. This is done at various points in time: 
+        * When an end user (Account Manager or Driver) becomes an Account Member on an Account. 
+        * When an existing Account Member becomes the "Primary Account Manager". 
+        * Annually on the Renewal Date for the Account (only the "Primary Account Manager" for the Account). 
+        * Note that if a new EUA is uploaded to the software, end users do not need to agree to it immediately (they can wait until their next renewal).
+      * Rows are added automatically:
+        * On the first Save after a new row is added to the "Account Members" embedded spreadsheet - see corresponding spec. 
+        * On the first Save after the "Primary Account Manager" is changed on the "Account Members" embedded spreadsheet - see corresponding spec. 
+        * Annually at the renewal date, via the "Prepare Annual Renewals" automatic process - see corresponding spec. 
+      * Rows with "Agreed To Date" = blank are removed automatically: 
+        * On the first Save after the corresponding Contact row is removed from the "Account Members" embedded spreadsheet - see corresponding spec. 
+        * On the first Save after an Account is deactivated (specifically, after "Stored Account Status" is set to "Closed") - see corresponding spec)
 
 
 
@@ -124,7 +121,7 @@ Workflows: 
   
 
 
-Announcements: 
+Announcements: TODO_T/J: Tim Reitz 01/29/2026: Update based on our new/current approach. 
 
   * Open the "Document Account Announcements" report from the menu.
   * Filter down the recipients as needed. 
@@ -133,8 +130,6 @@ Announcements: 
   * Click "Continue" to export the Excel file for the address list and to document the Announcement on all of the corresponding Account records.
 
 
-
-TODO_: Tim Reitz 12/11/2025: Update to account for emails.
 
   
 

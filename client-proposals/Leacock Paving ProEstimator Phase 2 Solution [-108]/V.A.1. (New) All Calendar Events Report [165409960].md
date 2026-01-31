@@ -5,6 +5,14 @@
 
 Requirements
 
+TODO_IDD: Add the Snippet for non-editable reports & start speccing it out based on these HLD notes.
+
+  
+
+
+  
+
+
 This is a report of all Calendar Events, with various filters. 
 
   
@@ -37,6 +45,11 @@ This is a report of all Calendar Events, with various filters. 
 
 
 Additional details to be determined in the In-Depth Design.
+
+  
+
+
+\---------------------
 
   
 

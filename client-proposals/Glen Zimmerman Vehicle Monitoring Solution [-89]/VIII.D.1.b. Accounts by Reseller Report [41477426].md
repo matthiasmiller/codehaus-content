@@ -20,7 +20,9 @@ TODO_VA: Tim Reitz 10/24/2025: For Reseller Reps, this would be set to the the 
 
 TODO_VA: Tim Reitz 10/24/2025: How to handle situations where the user is a Reseller and/or Rep for multiple resellers? Is it enough to Group By reseller (see below)? 
 
-TODO_GZ: Tim Reitz 01/17/2026: Do you envision this happening? If yes, would they be logging in with different logins for each Reseller? 
+_GZ: Tim Reitz 01/17/2026: Do you envision this happening? If yes, would they be logging in with different logins for each Reseller? 
+
+TODO_VA: Tim Reitz 01/23/2026: Per Glen today, it would be possible for a person to be assisting multiple Reseller orgs as tech support, etc. and in that case it would make sense to make him a Rep for those Reseller orgs. 
 
   * "For <#> Account(s)" link on the Account Reseller's Contact record
 
