@@ -157,6 +157,14 @@ This list is universal for all users, and all users can add to it via the "Advan
 
 The initial items for this list are to be set up during the initial migration.
 
+### Sawing Passes List
+
+This is a user-editable simple list.
+
+This list is universal for all users, and all users can add to it via the "Advanced | General | Lists" option.
+
+The initial items for this list are to be set up during the initial migration.
+
 ## Records
 
 ### Item Record
@@ -269,6 +277,8 @@ Sections and Fields:
     * Setup Cost (number; 2 decimals; auto-calculated; read-only)
     * Cost (Each) (number; 4 decimals; auto-calculated; read-only)
     * Cost (Total) (number; 4 decimals; auto-calculated; read-only)
+* Sawing Passes section:
+  * Sawing Passes (formatted text; auto-calculated; read-only)
 * Attachments section:
   * Attachments; embedded spreadsheet of:
     * Key (text; hidden & read-only)
@@ -316,6 +326,7 @@ Sections and Fields:
   * Nominal vs Actual BF (text; auto-calculated; read-only)
   * Setup Cost (number; 2 decimals)
   * Unit Cost (number; 4 decimals)
+  * $ / Nominal BF (number; 4 decimals; auto-calculated)
   * Standard Dimensions (Actual); embedded spreadsheet of:
     * Dimension (drop list of Item Dimensions; required)
     * Amount (Actual Dimension; Rounds Up for Pricing) (number; 2 decimals; required)
@@ -343,6 +354,10 @@ Sections and Fields:
   * Sort Order (number; 0 decimals)
   * Sizer Uses Cants (checkbox; auto-calculated; read-only)
   * Allow Write-In Quantities (checkbox)
+  * Required Keywords; embedded spreadsheet of:
+    * Keyword (drop list of Sawing Keywords; required)
+  * Required Materials; embedded spreadsheet of:
+    * Material (drop list of Raw Materials; required)
 * Pricing section:
   * Use Unit Pricing (checkbox)
   * Raw Material for Pricing (drop list of Raw Materials; required)
@@ -378,7 +393,7 @@ Sections and Fields:
   * Yield Width (In) (number; 4 decimals; required)
 * Rough-Cut Lumber section:
   * Cant Kerf % for Pricing (percentage; 2 decimals)
-  * Cants; embedded spreadsheet of:
+  * Sources; embedded spreadsheet of:
     * Cant Size (drop list of Cant Sizes; required)
     * Yield Qty (number; 0 decimals; required)
     * Actual Kerf % (number; 0 decimals; auto-calculated; read-only)
@@ -390,3 +405,12 @@ Sections and Fields:
     * Dimensions (text; auto-calculated; read-only)
     * Yield Qty (number; 0 decimals; required)
     * Actual Kerf % (number; 0 decimals; auto-calculated; read-only)
+
+### Sawing Pass Record
+
+Sections and Fields:
+
+* Sawing Pass section:
+  * Sawing Pass (string)
+  * Keywords; embedded spreadsheet of:
+    * Keyword (drop list of Sawing Keywords; required)

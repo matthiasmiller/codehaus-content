@@ -48,5 +48,8 @@ Sections and Fields:
     * Value (number; 9 decimals; required)
     * Mean (number; 9 decimals; required)
     * Std Dev (number; 9 decimals; required)
+* Lumber Lengths section:
+  * Lumber Lengths; embedded spreadsheet of:
+    * Lumber Length (In) (number; 0 decimals; required)
 * Settings section:
   * Name (string)
