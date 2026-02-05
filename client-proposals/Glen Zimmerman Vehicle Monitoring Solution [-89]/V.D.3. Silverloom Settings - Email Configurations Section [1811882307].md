@@ -1,27 +1,18 @@
 5.4.3. Silverloom Settings - Email Configurations Section
 
+  
+
+
+Requirements
+
   * Email Configurations (custom) section: 
-    * From Name (__
-    * From Email (__
-    * Signature Name (__
-    * Signature Title (__
-    * BCC Email (__
 
 
-
-TODO_VA: Tim Reitz 01/22/2026: Go with this generic approach (like we're doing for XFB) or include fielding for each email (like we do for ZET)?
-
-Tim Reitz 01/27/2026: I'm thinking it will be a combination. 
 
   
 
 
-TODO_NM (review): Tim Reitz 01/22/2026: FYI that I'm expecting there will be quite a few more emails coming here as we spec those out more. 
-
-  
-
-
-  * New Device Request Email Body (multi-line plain text field that supports expressions; with the following details / behaviors: 
+  * New Device Request Email Body (button; opens a child screen with a multi-line plain text field that supports expressions; with the following details / behaviors: 
     * technical notes: 
       * expressions are evaluated on Account records; 
       * plain text is used here to facilitate sending the email via the mailto feature; 
@@ -74,7 +65,10 @@ Thank you, 
   
 
 
-  * New User Request Email Body (multi-line plain text field that supports expressions; with the following details / behaviors: 
+  
+
+
+  * New User Request Email Body (button; opens a child screen with a multi-line plain text field that supports expressions; with the following details / behaviors: 
     * technical notes: 
       * expressions are evaluated on Account records; 
       * plain text is used here to facilitate sending the email via the mailto feature; 
@@ -123,3 +117,107 @@ If Primary Driver: Linked Device (Existing ID / New Device): 
 Thank you, 
 
 <"Short Display Name> of the requesting Contact>
+
+  
+
+
+  
+
+
+TODO_VA: Tim Reitz 02/05/2026: Spec out the rest: 
+
+  
+
+
+  * __ (button / child screen with the following:) 
+    * "Email addresses must be separated by comma (,)" (note at the top of the child screen)
+    * From (email field; initially set to "__@<service name>") 
+    * To (email field; __) 
+    * "__" (note in smaller font under the field)
+    * CC (email field; __) 
+    * BCC (email field; __) 
+    * Reply To (email field; __) 
+    * Body (memo; allows for expressions; __)
+
+
+
+  
+
+
+  
+
+
+  * __ (button / child screen with the following:) 
+    * "Email addresses must be separated by comma (,)" (note at the top of the child screen)
+    * From (email field; initially set to "__@<service name>") 
+    * To (email field; __) 
+    * "__" (note in smaller font under the field)
+    * CC (email field; __) 
+    * BCC (email field; __) 
+    * Reply To (email field; __) 
+    * Body (memo; allows for expressions; __)
+
+
+
+  
+
+
+  
+
+
+  * __ (button / child screen with the following:) 
+    * "Email addresses must be separated by comma (,)" (note at the top of the child screen)
+    * From (email field; initially set to "__@<service name>") 
+    * To (email field; __) 
+    * "__" (note in smaller font under the field)
+    * CC (email field; __) 
+    * BCC (email field; __) 
+    * Reply To (email field; __) 
+    * Body (memo; allows for expressions; __)
+
+
+
+  
+
+
+  
+
+
+  * __ (button / child screen with the following:) 
+    * "Email addresses must be separated by comma (,)" (note at the top of the child screen)
+    * From (email field; initially set to "__@<service name>") 
+    * To (email field; __) 
+    * "__" (note in smaller font under the field)
+    * CC (email field; __) 
+    * BCC (email field; __) 
+    * Reply To (email field; __) 
+    * Body (memo; allows for expressions; __)
+
+
+
+  
+
+
+Development Specification
+
+TODO_NM (review): Tim Reitz 01/22/2026: FYI that I'm expecting there will be quite a few more emails coming here as we spec those out more. 
+
+  
+
+
+Tim Reitz 02/05/2026: Template: 
+
+  
+
+
+  * __ (button / child screen with the following:) 
+    * "Email addresses must be separated by comma (,)" (note at the top of the child screen)
+    * From (email field; initially set to "__@<service name>") 
+    * To (email field; __) 
+    * "__" (note in smaller font under the field)
+    * CC (email field; __) 
+    * BCC (email field; __) 
+    * Reply To (email field; __) 
+    * Body (memo; allows for expressions; __)
+
+

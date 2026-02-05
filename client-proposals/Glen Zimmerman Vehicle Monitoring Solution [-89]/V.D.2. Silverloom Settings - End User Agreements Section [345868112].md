@@ -1,5 +1,10 @@
 5.4.2. Silverloom Settings - End User Agreements Section
 
+  
+
+
+Requirements
+
 *Done. 
 
   
@@ -23,3 +28,31 @@
         * Due to the Silverloom Settings page being visible only to users with the "Can Edit Silverloom Settings" Permission, other users cannot access previous versions of the EUA in Silverloom.)
 
 
+
+  
+
+
+Development Specification
+
+Niccolas Miller 02/02/2026: 
+
+[ ] Custom section.
+
+[ ] Embedded dated RG (disallow duplicates).
+
+[ ] Set upload/effective date to Today via OnInit.
+
+[ ] Validation against duplicate dates: use RGToArray.
+
+[ ] File should be a non-embedded memo.
+
+[ ] Validation: use ArchivedDocumentFilePaths( "Silverloom Settings") and check for duplicates.
+
+[ ] OnInit to default the memo.
+
+[ ] Warning on save for deleted rows: record validation, have an array of row IDs and look up an array of row IDs off the saved record. Warn if there are items in the old list that are not in the new list.
+
+  
+
+
+Bid: 4 hours

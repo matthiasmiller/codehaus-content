@@ -1,5 +1,10 @@
 5.4.1. Silverloom Settings - Standard Sections & Fields
 
+  
+
+
+Requirements
+
 *Done. 
 
   
@@ -25,3 +30,21 @@
     * "You must apply changes to update existing contacts. Overridden contact names will remain unchanged." (on-screen message in gray font)
 
 
+
+  
+
+
+Development Specification
+
+Niccolas Miller 02/02/2026:
+
+[ ] Display invoicing settings section.
+
+[ ] Display ContactNameFormat.
+
+[ ] Set ContactNameFormat to "FirstName MidleName LastName" (using shipped record). See Silverloom Contacts.txt for reference.
+
+  
+
+
+Bid: 2 hours

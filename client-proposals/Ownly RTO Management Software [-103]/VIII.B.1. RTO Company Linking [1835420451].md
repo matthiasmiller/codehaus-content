@@ -1,6 +1,8 @@
 8.2.1. RTO Company Linking
 
-Seth Miller 01/27/2026: TODO_Seth: spec and delegate.
+Seth Miller 01/27/2026: _Seth: spec and delegate.
+
+Niccolas Miller 02/03/2026: TODO_NM: [[PC0189380]]
 
   
 

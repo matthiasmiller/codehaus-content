@@ -1,5 +1,10 @@
 1.4. Design & Development Phases
 
+  
+
+
+Requirements
+
 *Done. 
 
   
@@ -133,3 +138,10 @@ Phase 3 / Future: Integration with insurance software: Long-term, integration co
 
 
 For example, driving data could be synced across from <Service Name> to the WMVAP Solution for all participating vehicles, incentivizing app usage by offering a teen driver / safe driver discount by installing the app.
+
+  
+
+
+Development Specification
+
+TODO_NM / TODO_VA: Tim Reitz 02/05/2026: We can refer to the Phase 1 main focus above to help us determine which items could be marked for future / optional add-ons.

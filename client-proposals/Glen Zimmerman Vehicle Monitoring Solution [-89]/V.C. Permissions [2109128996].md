@@ -64,9 +64,13 @@ Other Notes: 
 
 Development Specification
 
-Niccolas Miller 01/30/2026: Draft estimate:
+Niccolas Miller 01/30/2026: 
 
-Simple permissions: 2 hours
+[ ] Add simple permissions
+
+ 
+
+Bid: 2 hours
 
   
 

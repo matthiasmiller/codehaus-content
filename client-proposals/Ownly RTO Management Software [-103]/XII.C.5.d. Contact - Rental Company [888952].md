@@ -41,12 +41,14 @@ Fields:
 
 
   * Depreciation Schedules section (custom)
-    * RG
+    * Book Depreciation Settings (RG)
       * Columns
-        * Method (drop-list of Depreciation Methods; required)
+        * Method (drop-list of "Straight-Line" depreciation method [not MACRS]; required)
         * Useful Life (drop-list of Fixed Length, Contract Length; required; Contract Length is only available for Straight Line depreciation)
         * Length (Years) (only editable and required if Useful Life is "Fixed Length")
+        * Default (checkbox)
       * Buttons to add/remove rows: "✚" / "🞭"
+      * Sort: Default at the top
       * Validate that there is at least 1 Book depreciation method
 
 

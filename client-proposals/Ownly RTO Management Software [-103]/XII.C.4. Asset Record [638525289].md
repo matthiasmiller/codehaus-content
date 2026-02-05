@@ -126,6 +126,24 @@ Sections and Fields: 
   
 
 
+  * Depreciation Section (visible if the user has permission to View Full Asset Details)
+    * Start Date (read-only and auto-calculated as earliest contract start date unless Override Depreciation Start Date is checked; then, editable and required; error on save if not after the earliest contract start date)
+    * Override Depreciation Start Date (checkbox)
+    * Book Schedule (editable if there are no past depreciation dates; displays "<Method> \- <Type> \- <Term Year>", sets underlying fields)
+      * Method (hidden; list of Depreciation Methods; set by Book Schedule)
+      * Type (hidden; list of Depreciation Useful Lives; set by Book Schedule)
+      * Term Year (number; set by Book Schedule)
+    * Useful Life (Years) (if Type is "Contract Length"; auto-calculated and read-only, contract term / 12 for the contract with the earliest start date; if Type is "Fixed Length"; editable; drop-list of Available Terms [in years] from the Rental Company)
+    * Virtual RG of depreciation rows with a date that is less than or equal to the current date
+      * Columns:
+        * Book Depreciation Date
+        * Depreciation $ (number; two decimals)
+
+
+
+  
+
+
   * Notes section 
     * "This record must be saved before creating a linked note." (label, visible for new unsaved records)
     * New Note (opens a new note record; populates the Type + Linked Record, visible if the record has been saved)
