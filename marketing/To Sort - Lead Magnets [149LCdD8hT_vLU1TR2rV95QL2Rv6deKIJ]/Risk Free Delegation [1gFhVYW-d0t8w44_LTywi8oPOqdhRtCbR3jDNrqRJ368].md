@@ -151,4 +151,4 @@ Here’s what you can expect in those 30 minutes:
 * We’ll determine what needs to change to make the ideal outcome become a reality.  
 * We will decide together whether systematizing your processes is a good fit, and what the right toolset is for you.
 
-To schedule your call, send an email to [m@codehaus.com](mailto:m@codehaus.com) or call (719) 888-2424 for an available time slot.
+To schedule your call, simply visit [www.codehaus.com](http://www.codehaus.com) and schedule an available time slot.
