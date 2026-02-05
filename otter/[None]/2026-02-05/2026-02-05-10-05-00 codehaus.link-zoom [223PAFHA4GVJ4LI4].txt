@@ -1,0 +1,1184 @@
+Unknown Speaker  00:13
+Jonathan,
+
+Unknown Speaker  00:15
+good morning. All
+
+Unknown Speaker  00:20
+right,
+
+Unknown Speaker  00:32
+right? Can you see my Excel? Yes, I can.
+
+Unknown Speaker  00:38
+So
+
+Unknown Speaker  00:42
+it seems like a lot of this has to do with point of sale stuff, which we don't worry about for now, right?
+
+Unknown Speaker  00:51
+Well, let's
+
+Unknown Speaker  00:56
+just go through it. Are we doing
+
+Unknown Speaker  01:00
+so we're not doing receipt printing. I don't think I haven't heard anything about that.
+
+Unknown Speaker  01:06
+We are generating receipts, but not printing if you're handling right, correct
+
+Unknown Speaker  01:17
+purchase approved by the host.
+
+Unknown Speaker  01:24
+I just think all of this is not
+
+Unknown Speaker  01:30
+applicable,
+
+Unknown Speaker  01:32
+like this stuff here, you highly recommend it. Well, it doesn't even pass if you don't include software type. So already doing all this,
+
+Unknown Speaker  01:41
+obviously change your endpoints
+
+Unknown Speaker  01:44
+production.
+
+Unknown Speaker  01:47
+This is only for card. You can't do an auth with Ach,
+
+Unknown Speaker  01:53
+all the stuff I just learned by getting responses and then with SDK.
+
+Unknown Speaker  02:02
+Can we? Can we can go through that basic page more more slowly go through it. But so we're recording our responses and saving exchange IDs. Correct,
+
+Unknown Speaker  02:12
+yeah,
+
+Unknown Speaker  02:13
+timeout on our system to 80 seconds. I'm
+
+Unknown Speaker  02:17
+assuming that's in the Python side. Correct,
+
+Unknown Speaker  02:22
+yeah. Would be this is just like if, if we get a 429, from them, then we try again after 80 seconds.
+
+Unknown Speaker  02:35
+But does this?
+
+Unknown Speaker  02:40
+But
+
+Unknown Speaker  02:42
+so for auto pay, he said,
+
+Unknown Speaker  02:45
+stick to no more than 10 per second.
+
+Unknown Speaker  02:48
+Obviously, that's handled in the Python or will be. But, I mean, that's easy to do. Don't
+
+Unknown Speaker  02:55
+really know what seconds would mean.
+
+Unknown Speaker  03:00
+Like, Wouldn't our pages time out well before
+
+Unknown Speaker  03:04
+then let me this seems to me
+
+Unknown Speaker  03:09
+that timeout on whiskey connections,
+
+Unknown Speaker  03:17
+Josh,
+
+Unknown Speaker  03:19
+we
+
+Unknown Speaker  03:21
+are reviewing clearance degradation.
+
+Unknown Speaker  03:25
+Do you get
+
+Unknown Speaker  03:28
+to
+
+Unknown Speaker  03:29
+know what the slash whiskey is for
+
+Unknown Speaker  03:34
+lengthy
+
+Unknown Speaker  03:37
+but
+
+Unknown Speaker  03:42
+it seems to me like we need to confirm that the whiskey doesn't time out
+
+Unknown Speaker  03:46
+in less than 80 seconds. I think it's probably, I don't know what it actually is at this point. Oh, I see this has to do with,
+
+Unknown Speaker  03:56
+like, environment settings or something. Well, I would
+
+Unknown Speaker  04:00
+seem sane to me, like that makes sense. And also, I mean Python, it looks like Python default, defaults to not having a timeout, so it'll just hang indefinitely until the connection gets dropped
+
+Unknown Speaker  04:15
+on all Card Not Present transaction setting a zip code. We're doing that. Yeah, yeah, we have to, but
+
+Unknown Speaker  04:22
+yeah, we have that methods.
+
+Unknown Speaker  04:25
+Great, yeah, voids refunds. So that's what I'm working right now. I just got voids working.
+
+Unknown Speaker  04:33
+It's kind of weird.
+
+Unknown Speaker  04:36
+Let me change my share so that it's just your stuff, sure. Well, actually, I don't think I have a saved void response, but they give you a they if you void, they return a another transaction to you. It has a different transaction ID. It's a very small one, just because it's a void type,
+
+Unknown Speaker  04:58
+the only thing that it shares.
+
+Unknown Speaker  05:00
+With the original transaction is the authorization code, which is like TAs, 5712,
+
+Unknown Speaker  05:06
+or something like that.
+
+Unknown Speaker  05:10
+And then if you query on the original transaction that you voided, it has a setting voided equals true. So what I'm doing is I've just I try to void, and if the response is a success, then all I do is I go and run a little X 30 to set the original transaction as voided. I'm not recording anything from the like void voided, or from the void type transaction that they returned to us. There's nothing interesting in there. Does that sound right?
+
+Unknown Speaker  05:45
+What happens if your x 30 fails? Do we have any kind of fallback
+
+Unknown Speaker  05:51
+to on that?
+
+Unknown Speaker  06:05
+We
+
+Unknown Speaker  06:14
+what would you do? You want something for that? What
+
+Unknown Speaker  06:19
+do you think it should be? Well,
+
+Unknown Speaker  06:22
+I mean, we're gonna things are gonna end up sideways. It's somewhere along the line, if we don't,
+
+Unknown Speaker  06:30
+market is paid or is voided. Do
+
+Unknown Speaker  06:34
+you
+
+Unknown Speaker  06:42
+want to have some kind some kind of back
+
+Unknown Speaker  06:48
+background thing to go and get all the transactions we have from clear and see if there's any discrepancies in our dB? Does he gets good? I mean, that's something that's much, you know, broader obviously catch all kinds of stuff. Potentially, it's something that I've assumed we're probably going to implement at some
+
+Unknown Speaker  07:08
+point. I think we should at least note it. That I don't know if we want to do all in most cases, but at least doing something like I'm getting ready to do something that's going to affect this transaction,
+
+Unknown Speaker  07:21
+I
+
+Unknown Speaker  07:26
+so that that could,
+
+Unknown Speaker  07:31
+it's almost like a
+
+Unknown Speaker  07:44
+so what, what I did right now is I just have a well, I'll show you what it is
+
+Unknown Speaker  07:53
+I go to my contract
+
+Unknown Speaker  07:58
+that'll break.
+
+Unknown Speaker  08:10
+Right now what I have is I have a child screen here, saying, watch out if you click it,
+
+Unknown Speaker  08:17
+it'll I already voided this one, so sure. But,
+
+Unknown Speaker  08:24
+and this is really simple, just because, you know, I can use HMAC to validate the link and then have the contribution there, so I don't have to do any, you know, those requests from JavaScript or anything. But what I could change it to be a fully background thing where you just check a box on the payment saying, hey, I want to avoid this
+
+Unknown Speaker  08:45
+warning on save. Watch out, you're avoiding this. And then I just build the external Wave API thing to
+
+Unknown Speaker  08:53
+run the void and that, that way, if it fails, well, we've got a if the x 30 fails, and we know, hey, something's wrong here, because we've got a transaction that wants to be voided, but it hasn't been yet, right?
+
+Unknown Speaker  09:09
+I think something like that
+
+Unknown Speaker  09:15
+could make sense. I'm not completely, I'm not, I'm like, 70% confident in that approach. Is
+
+Unknown Speaker  09:21
+there something else that you think would be a better, better way to go?
+
+Unknown Speaker  09:28
+Could we do? Well, where my mind goes next is refunds. Would we do the same thing on refunds? Yeah, I was about to ask about that.
+
+Unknown Speaker  09:35
+So Seth and I were talking about it a bit, and we were thinking that the granularity for refunds should be,
+
+Unknown Speaker  09:44
+should likely be. You could choose some sort of like reverse allocator thing you know, where just shows you all of the
+
+Unknown Speaker  09:52
+all of the contracts, but specifically invoices that this payment has been paid to. How much do you want to refund?
+
+Unknown Speaker  10:00
+Fund for each invoice, and then we run a refund to clear it for that amount, and then we go and update the contracts. Does that sound right to you? Should we? I mean, I don't think we go any more granular than that, because we're getting in a place where we don't model stuff. But
+
+Unknown Speaker  10:17
+do we need to go to to
+
+Unknown Speaker  10:19
+down to invoices? Do so well?
+
+Unknown Speaker  10:33
+Do you because don't invoices have to be paid well, rent has to be paid sequentially.
+
+Unknown Speaker  10:48
+That's the that's the main thing that we have to enforce.
+
+Unknown Speaker  10:54
+It's probably not that much more work to do down to invoice than by contract, because if you do, don't, if you show them by the invoice, then at that point, they've already set exactly how they want this to be applied, so you don't have to get fancy with it if you
+
+Unknown Speaker  11:13
+as opposed to what you would have to do if you allow them just to specify per contract.
+
+Unknown Speaker  11:20
+I've wondered, tell me what you think about this, and you might absolutely hate it, and might be tons of work, but I've had this thought in which we would have almost like an edit payment screen, where you adjust the details down so everything would still go through the payment screen, and then it would show an overpayment, because it's an existing payment, it would show an overpayment, and you would have a button To hit to do the refund, and that would,
+
+Unknown Speaker  11:50
+yeah, that's maybe a good idea.
+
+Unknown Speaker  11:53
+And we could use that for changing the allocation of payments as well, right, right?
+
+Unknown Speaker  12:01
+And I think so one place where I see that being necessary. Seth and I have had very long, inconclusive,
+
+Unknown Speaker  12:09
+barely even certain enough to be called an argument yesterday, discussion, conversation, banging our heads against the wall around forgiveness and sales tax
+
+Unknown Speaker  12:21
+and
+
+Unknown Speaker  12:23
+what I like about that is that you could go to a payment, you go to the last payment, and I know it's wrong, and for CRA contracts, it creates a problem, but you could basically say, Look, I'm going to turn this into a security deposit. Turn this payment into a security deposit, go fix up invoices and stuff, and then come back and reapply the payment.
+
+Unknown Speaker  12:51
+And you're thinking that this is relevant to the Edit Payment How?
+
+Unknown Speaker  12:58
+Well having, having, having the Edit payment
+
+Unknown Speaker  13:02
+functionality.
+
+Unknown Speaker  13:05
+If we don't have that yet,
+
+Unknown Speaker  13:07
+do we have an edit payment functionality?
+
+Unknown Speaker  13:11
+Okay, so this would the Edit payment would allow us to basically go in, move everything to a CRA, or, I mean, technically, should go to a CRA, and we might actually come up with the third thing that's like basically a temporary credit,
+
+Unknown Speaker  13:25
+but basically unassign it from invoices so that we can go modify the invoices, recalculate totals and reapply the payment I See and not deal with bizarre sales tax
+
+Unknown Speaker  13:39
+anxieties. I
+
+Unknown Speaker  13:43
+Yes, it seems to me like
+
+Unknown Speaker  13:48
+whether we need that short term, that long term, we're going to we're going to need that, and then that same mechanism could be used for handling refunds.
+
+Unknown Speaker  14:02
+And so that could make sense. I think if we have something like a temporary credit,
+
+Unknown Speaker  14:10
+this requires more argument by Seth and I, but I think what we would end up doing is we would reallocate the payment, have it have basically a portion of the payment going nowhere,
+
+Unknown Speaker  14:20
+and then, and then you would have the ability to refund that part that goes nowhere, and that's the piece that you could refund. I
+
+Unknown Speaker  14:32
+haven't thought through the details.
+
+Unknown Speaker  14:35
+My question with that is
+
+Unknown Speaker  14:40
+showing the Edit payment page, and you can do a refund.
+
+Unknown Speaker  14:48
+Do we show you
+
+Unknown Speaker  14:51
+all of your contracts?
+
+Unknown Speaker  14:54
+I assume that we show you all of your contracts, and you can do.
+
+Unknown Speaker  15:00
+You're editing your payment
+
+Unknown Speaker  15:03
+allocated to different stuff. You can refund parts all at the same time. Do we draw a line between that like
+
+Unknown Speaker  15:12
+I'm just wondering how far we need to go. You can only do it on
+
+Unknown Speaker  15:17
+at this point. You can only do it to you. Yeah,
+
+Unknown Speaker  15:32
+you can only edit on a payment.
+
+Unknown Speaker  15:35
+You can only edit
+
+Unknown Speaker  15:38
+contracts for which
+
+Unknown Speaker  15:43
+this payment
+
+Unknown Speaker  15:46
+is the most recently
+
+Unknown Speaker  15:50
+applied payment.
+
+Unknown Speaker  15:54
+Yeah, yeah, that makes sense. And
+
+Unknown Speaker  15:58
+then if we have a way to completely dissociate it from anything,
+
+Unknown Speaker  16:04
+I think there should maybe be a world I don't know. Maybe do I do? We might disagree.
+
+Unknown Speaker  16:11
+Maybe, maybe beyond that point, we
+
+Unknown Speaker  16:14
+just manually fix it up, maybe even some of the stuff, we manually fix it up in the short term, but in the grants
+
+Unknown Speaker  16:21
+that, that, to me, is the ideal solution, but I
+
+Unknown Speaker  16:24
+think we need to, I'm slightly mindful and cautious about scope
+
+Unknown Speaker  16:30
+of that, that the moment. Yeah,
+
+Unknown Speaker  16:36
+um,
+
+Unknown Speaker  16:47
+and you can continue to edit payments until there's been a more recent one for the contract, I would
+
+Unknown Speaker  16:54
+think so. Yeah, it's not just day of or
+
+Unknown Speaker  16:58
+anything. Well, that is true. We had talked about some day of
+
+Unknown Speaker  17:06
+Day of stuff, and this is all like MVP going live for Dwayne stuff.
+
+Unknown Speaker  17:13
+Yeah,
+
+Unknown Speaker  17:16
+not sure exactly what we need for. We got it off on a rabbit trail. I So bottom line, voiding good enough for Dwayne
+
+Unknown Speaker  17:30
+refunds.
+
+Unknown Speaker  17:34
+How are we doing that now?
+
+Unknown Speaker  17:38
+Right now, we don't have anything what I was but I was wondering about is how we interface that my, you know, the most simple
+
+Unknown Speaker  17:51
+version is just to show you all the rows of all the things that you paid with this one, how much you got a refund for each row. We run another transaction,
+
+Unknown Speaker  18:01
+those differences, you know, credit,
+
+Unknown Speaker  18:05
+but we might want to
+
+Unknown Speaker  18:09
+have that be part of a bigger edit screen, which is very similar to my allocation now. So maybe they want to use the same thing I
+
+Unknown Speaker  18:45
+do we have a sort order on contracts? We do, don't we?
+
+Unknown Speaker  18:51
+I'm
+
+Unknown Speaker  18:53
+not familiar with one, but I
+
+Unknown Speaker  18:57
+do.
+
+Unknown Speaker  19:00
+It would seem like there should be. It would make sense to have a deterministic order. We would deterministic order for
+
+Unknown Speaker  19:08
+payments. It
+
+Unknown Speaker  19:10
+would be kind of nice to have a a,
+
+Unknown Speaker  19:19
+no, it's simple.
+
+Unknown Speaker  19:21
+If, if you want MVP, you do a refund, ask for the refund amount. You sort all the invoices by due date, and then you have a secondary sort
+
+Unknown Speaker  19:31
+you buy contract start date, and the tertiary sort by, like, I don't know, Id or something, and you just roll back the payment,
+
+Unknown Speaker  19:44
+and then if that's not what they wanted, they could go in and edit it manually. That's the MVP version.
+
+Unknown Speaker  19:51
+And what's cool about that as an MVP is
+
+Unknown Speaker  19:56
+that can be a field, like a little temp field. You.
+
+Unknown Speaker  20:00
+On the payment record, similar to the void, where it's a checkbox and it goes in the background. It can be a temp field with how much I want to refund Save, and then the whiskey grabs that amount and peels back the payment
+
+Unknown Speaker  20:14
+by that much. Yep, I mean, that's, that's, you know, much quicker, because obviously it's just only back end stuff reading off the single field. That's very nice, right? And if that field value is this is what I want the new transaction total to be, then you've got automatic duplication detection, because you could, you could ping clear and say, Hey, where are we at on this transaction? What portion do I need to refund to get there? And, yeah, and if you can't record that for some reason,
+
+Unknown Speaker  20:43
+you've got some means by which to recover.
+
+Unknown Speaker  20:50
+Yeah, oh, I get that. One other thing. I'm not sure this is super relevant, but I thought it was nice, is
+
+Unknown Speaker  20:58
+I added a macro that
+
+Unknown Speaker  21:02
+you this is a very, very simple thing that you click. Can click it on a transaction or on a payment, I should say, and it just in the browser gives you clearance, full knowledge of that transaction. Just says JSON, which in Chrome, you know, you could just pretty printed right in the browser itself, which is pretty sweet. And I think I'm,
+
+Unknown Speaker  21:26
+I think I want to, I mean, it's obvious. It's like, you know, like, four lines of a Python route, you know, and stuff. And I think it'll be very useful. I mean, JSON is pretty easy to read. I think
+
+Unknown Speaker  21:40
+so. Do you think I should keep that for test system only?
+
+Unknown Speaker  21:47
+I don't know. It's probably not.
+
+Unknown Speaker  21:51
+I don't know the there should maybe be a two new permissions. The other thing would be, is there a
+
+Unknown Speaker  22:00
+if there's a dropped it simple Python way to
+
+Unknown Speaker  22:04
+convert it to a tabular format, even if it's like,
+
+Unknown Speaker  22:08
+like, kind of like a Jason path, like,
+
+Unknown Speaker  22:12
+you know, dollar, dot, you know, array, open, bracket, zero, bracket, dot, value, etc, or key and then equals value.
+
+Unknown Speaker  22:24
+Well, just keep it there for now. I think there's a world in which we could pretty print it, where we could do our own pretty printing, where it's key in value, and it's not super, that much better, but it's just It looks like a table, and you can figure out what it means. Yeah,
+
+Unknown Speaker  22:39
+yeah. I decided something that was really easy. I wanted it for debugging. And I'm like, wait a minute, this might be really useful, just to be able to click this and see exactly what clear it thinks about this. Transaction
+
+Unknown Speaker  22:50
+traceability is a huge thing. It's just marvelous.
+
+Unknown Speaker  22:55
+Okay,
+
+Unknown Speaker  22:58
+add my notes here. Look at me taking notes. Wow, yay.
+
+Unknown Speaker  23:04
+Here's the reason why I have otter and connected to my Zoom. Have you seen the stuff about, like, bolt book?
+
+Unknown Speaker  23:13
+Yeah,
+
+Unknown Speaker  23:16
+my some of these guys are doing comp sci at Sattler right now. So guys, I didn't go with, but you know, some of them are really into it, really into AI stuff. There's one kid who got an internship at Google last summer. Oh, wow, that's pretty cool. Yeah, he had Microsoft lined up, and he got in Google. So go him. But yeah, he was, he was telling us all about it.
+
+Unknown Speaker  23:43
+You should. I'll send you those. This is,
+
+Unknown Speaker  23:46
+this was this guy also posted this on x
+
+Unknown Speaker  23:50
+and got his here. Where are you here?
+
+Unknown Speaker  23:53
+Samuel woods. He's a great guy. He's He's super smart.
+
+Unknown Speaker  23:59
+I love how he thinks about AI, but anyways, he posted this, and then refuses to tell anybody whether it's actually a joke or is it
+
+Unknown Speaker  24:08
+Real. So
+
+Unknown Speaker  24:16
+anyway, everybody's up in arms about it. I
+
+Unknown Speaker  24:25
+I've experienced working in a hostile
+
+Unknown Speaker  24:29
+that's quite a thing to put on a resume.
+
+Unknown Speaker  24:32
+General,
+
+Unknown Speaker  24:34
+exactly.
+
+Unknown Speaker  24:37
+I recommend coding to voids, refunds via clear. I mean, we're not doing point of sale, but yes, we are doing voids, refunds, token imports. I assume we are doing that, but that's, I mean, that's not something that we can demonstrate that's very much set
+
+Unknown Speaker  24:53
+up from the previous processor. We might be able to just, literally, we might not need to use the legacy token feature, but.
+
+Unknown Speaker  25:00
+It, yeah, that's true, because if it's also transparent, then it'll be some sort of get a file and run an X 30 to put it all in our system. But, I mean, that's very much a setup task. Yep, I don't know how this leads to 404, by the way, but Oh, which is great. They have every single link in here. 404.
+
+Unknown Speaker  25:24
+That might be like, what does he even mean?
+
+Unknown Speaker  25:29
+I assume this has to do with like, if we're reselling
+
+Unknown Speaker  25:34
+merchant integration and we're like, because some of this stuff,
+
+Unknown Speaker  25:38
+right? So adjacent to this have to do with like, here's your process. You want to order all of your hardware equipment and send it to the merchant, and you then you need to do this and then send up the keys, right? So I think it's like, if you're selling your service to McDonald's, you sent the
+
+Unknown Speaker  25:57
+like, I don't know.
+
+Unknown Speaker  26:00
+I mean, we obviously need access to the keys directly, so we to put them in the whiskey config. So
+
+Unknown Speaker  26:12
+software type,
+
+Unknown Speaker  26:15
+Yes, yep. We have to do that endpoints, obviously, yes, already. One thing that's annoying is when you run an auth, the JSON object is a bit different than if you run a sale, and so
+
+Unknown Speaker  26:30
+ACH doesn't use auth, but the paths are also different there. So there are three different places where tokens can be when it comes back,
+
+Unknown Speaker  26:39
+yeah, but I was handling it all in the whiskey code, just kind of having one object that I designed that moved through it. But once we moved to wanting to be able to run, like the entire payment and just right at the end actually talk to clear it for auto pay, then I had to change it. So now I just do that. Then the x 30 stupid path actually Well, that
+
+Unknown Speaker  27:02
+makes sense.
+
+Unknown Speaker  27:04
+Duplicates, yeah, that's found these already. You just make sure to pay a different amount each time, then you're good
+
+Unknown Speaker  27:13
+for receipts. A sample receipts we got that only to prove signature. I don't understand the what's the
+
+Unknown Speaker  27:31
+last one?
+
+Unknown Speaker  27:37
+I think this, what's EMB is that, like, I
+
+Unknown Speaker  27:42
+don't of like three letter things that I've
+
+Unknown Speaker  27:46
+well for this clear stuff, error pay MasterCard and Visa, global
+
+Unknown Speaker  27:51
+standard for credit and debit card payments, it uses embedded microchips instead of magnetic strips. So chip cards TMV is chip got it, so it's only chip related.
+
+Unknown Speaker  28:03
+So interesting, yeah. Okay, cool.
+
+Unknown Speaker  28:08
+Next. Good. Thank you. Thanks for doing that. Okay, so all Hello fields would be applicable through mobile gateway. So mobile meaning it's a new card or new payment method, whether or not we're tokenizing it. Their API routes have mobile in them, and those are the ones that are authenticated with the with the Jot JavaScript web token,
+
+Unknown Speaker  28:32
+and to do with the whole SDK and stuff. What's one thing is the token that they give us
+
+Unknown Speaker  28:40
+that comes with a job is different than the token that they actually store. And so that first token, it tripped me up for a bit when I didn't realize that that first token, that's what you run the first payment for. And then if you say, create token equals true, then they in the in the sale response,
+
+Unknown Speaker  28:59
+a
+
+Unknown Speaker  29:00
+give you the actual token, and then that's what you got to
+
+Unknown Speaker  29:05
+store
+
+Unknown Speaker  29:08
+to the DB post batch. I don't
+
+Unknown Speaker  29:17
+know what that means.
+
+Unknown Speaker  29:20
+I would assume they automatically do a daily batch, but I don't know. Yeah, the case
+
+Unknown Speaker  29:29
+for ACH
+
+Unknown Speaker  29:31
+that went surprisingly quickly to daily or
+
+Unknown Speaker  29:37
+as often as you want, an external web API, just a non level thing that runs once and
+
+Unknown Speaker  29:44
+goes and gets all you can. It's really cool. You can
+
+Unknown Speaker  29:48
+create ACH transactions that have a status change since this date time, and so added something values from when it last was kicked off. Um.
+
+Unknown Speaker  30:00
+In the Python, I sign it, I clear it. They give you 25 things per
+
+Unknown Speaker  30:07
+they give you like pages. And then there's like a next thing. And so I had a cool little iteration that keeps on getting next, next next, until you're done, get all the transactions, run the x 30 and then
+
+Unknown Speaker  30:19
+at the date time when we first started this whole thing, and then you can use that date time the next time you
+
+Unknown Speaker  30:25
+ask, awesome. Yeah, that worked pretty well. They also have web hooks.
+
+Unknown Speaker  30:29
+I decided not to worry about that just yet, but it's I have that noted as something we could do if we want to a web hook. Sure. Ach, yep. As changes,
+
+Unknown Speaker  30:42
+yeah. Zip Code, sure, yep, we have that. That was sale with safe card. Yep, we have that.
+
+Unknown Speaker  30:49
+Us, yes. This
+
+Unknown Speaker  30:53
+is,
+
+Unknown Speaker  30:55
+well, I guess it's a $0 sale, sure.
+
+Unknown Speaker  30:58
+Sale, decline, yeah, we've got that, oh,
+
+Unknown Speaker  31:08
+oh, I see it's a link.
+
+Unknown Speaker  31:12
+And then they just give us an exchange ID. There's no transaction ID then, and I just have a strange group that I plop the error into. I
+
+Unknown Speaker  31:23
+or with cash. Just,
+
+Unknown Speaker  31:26
+we're not doing that. I don't think
+
+Unknown Speaker  31:29
+we need to. So once we do that, though, we're going to need to show notice to people that it's
+
+Unknown Speaker  31:35
+going to be subject to.
+
+Unknown Speaker  31:38
+But what is this? It's, it's a credit card surcharge. Favorite Mexican restaurant and place makes awesome breakfast breakfast burritos, but they've assigned the drive through window that says you pay 4% more for card, not cash. It's technically illegal,
+
+Unknown Speaker  31:54
+not anymore, like there's, there's limits.
+
+Unknown Speaker  31:59
+It depends on this. It depends on the state. You can't charge more than what your credit card 4% is really high. I
+
+Unknown Speaker  32:07
+probably dispute that
+
+Unknown Speaker  32:10
+you can't do more than your
+
+Unknown Speaker  32:13
+than what your credit card fees actually are. I believe that makes sense, because I know we our favorite Mexican restaurant has a sign like that, and my wife is always like, that's illegal,
+
+Unknown Speaker  32:26
+yeah, I'm not sure in the legality. I believe it's been opening up to people doing that, but I don't know exactly what the status is. So this has to do with sales token. Yes, definitely that do that.
+
+Unknown Speaker  32:40
+This is their specific hardware,
+
+Unknown Speaker  32:45
+which doesn't matter.
+
+Unknown Speaker  32:47
+Transaction, yep, doing that as sending,
+
+Unknown Speaker  32:54
+okay,
+
+Unknown Speaker  32:55
+sure. Merchant legacy token. If we have legacy tokens, mercant, I conscious,
+
+Unknown Speaker  33:06
+yep, match, refund. What's this?
+
+Unknown Speaker  33:10
+Close batch to batch total? I
+
+Unknown Speaker  33:23
+i don't know i I'm assuming it's some kind of tie out from a refund to the original transaction or something along those lines. But I have no idea
+
+Unknown Speaker  33:39
+that
+
+Unknown Speaker  33:41
+we're not coding, yeah, did you receive a success? Yes,
+
+Unknown Speaker  33:45
+we have indeed received a successful post.
+
+Unknown Speaker  33:50
+Worries, okay? Ach, wow. This is like,
+
+Unknown Speaker  33:55
+Okay. Check status for success. Check status, especially for what is this? More than you thought, less than you thought more basic. This is more basic. This is, like, when I think of credit card authorization, I think of like,
+
+Unknown Speaker  34:08
+oh, I don't know. Like,
+
+Unknown Speaker  34:12
+tell us all about your, your, I don't know, yeah, I kind of, are you hanging out the weekend or something? I don't know. Like,
+
+Unknown Speaker  34:20
+yeah, yeah. This is just like, does everything work?
+
+Unknown Speaker  34:26
+Credit, ACH account, so that's do three funds, sure,
+
+Unknown Speaker  34:31
+yeah, obviously that's already working. Run, get, check status. I can't figure out what HPP is.
+
+Unknown Speaker  34:41
+I found out, but I just didn't, oh yes, hosted payment page. That's what it is
+
+Unknown Speaker  34:46
+actually important for,
+
+Unknown Speaker  34:49
+hosted by a payment processor outside your website.
+
+Unknown Speaker  34:56
+This is like I'm going to, I.
+
+Unknown Speaker  35:00
+For collecting customer payment. Okay, in the Customer Portal,
+
+Unknown Speaker  35:04
+if you can't run it, you should tell them why.
+
+Unknown Speaker  35:07
+I think, is that what it
+
+Unknown Speaker  35:11
+is, probably
+
+Unknown Speaker  35:13
+run get. But the weird thing is, like,
+
+Unknown Speaker  35:18
+I mean, they would, if you're running a payment that's a post, and the response will tell you why the error,
+
+Unknown Speaker  35:29
+like, I guess if the auto pay would fail, but even then, it would just be the response, the error response from the post.
+
+Unknown Speaker  35:38
+But if you have an ACH that is pending and then eventually fails,
+
+Unknown Speaker  35:43
+sure, but that that has to do with our background daily task, I right.
+
+Unknown Speaker  35:49
+But if we let people pay online by Ach, presumably, then we'll have a pending payment of this amount applied to your account. Yeah, okay, yeah, that makes sense.
+
+Unknown Speaker  35:58
+Yeah. And this, I just added this. I don't know what it means, but I just added it, and I think everything's working
+
+Unknown Speaker  36:06
+standard. Oh my goodness. Okay, so this, this guy, this good old guy, yeah,
+
+Unknown Speaker  36:14
+so I from my research that I
+
+Unknown Speaker  36:19
+thought about this existence of this as of this project, but I think pretty much all of our stuff is going to be web, which clears faster.
+
+Unknown Speaker  36:31
+But potentially, if we are importing all these auto pay authorizations,
+
+Unknown Speaker  36:38
+a
+
+Unknown Speaker  36:39
+new system, maybe we just say they're PPD, that they are authorized on paper, even though, like, do you think Dwayne has
+
+Unknown Speaker  36:48
+record of the authorization?
+
+Unknown Speaker  36:51
+I mean, for everything
+
+Unknown Speaker  36:54
+unequivocally. No.
+
+Unknown Speaker  36:57
+Do we just say all of
+
+Unknown Speaker  37:00
+the all of the old ones are PPD, and then all the new ones. I mean, they, I think they're actually web, the new ones, at least, so we can run web with these.
+
+Unknown Speaker  37:12
+Okay, so, so for PPD, you need a paper authorization,
+
+Unknown Speaker  37:17
+or web, and web, it's an online authorization of some kind. Yeah, if you have, if somebody calls up a customer service rep, is that technically
+
+Unknown Speaker  37:28
+PPD?
+
+Unknown Speaker  37:30
+Hold on, we are googling. Okay,
+
+Unknown Speaker  37:34
+he does have Dwayne does have paper authorization for existing ACH customers,
+
+Unknown Speaker  37:39
+just for what it's worth.
+
+Unknown Speaker  37:53
+All of service rep, it is neither PPD or web, but rather tell telephone initiated entry transaction. Oh,
+
+Unknown Speaker  38:02
+that's what the one time ACH debit Ed is service
+
+Unknown Speaker  38:08
+representative acting on a previously signed mission
+
+Unknown Speaker  38:14
+is. Oh, if a service representative uses their computer to enter your information to the same online portal that you would use yourself.
+
+Unknown Speaker  38:23
+Systems may technically process as web, including us,
+
+Unknown Speaker  38:28
+although tell is more accurate.
+
+Unknown Speaker  38:32
+Well, I mean,
+
+Unknown Speaker  38:35
+that's what people would be using. So Web, basically, if you do it through the customer portal or through the payment portal,
+
+Unknown Speaker  38:42
+technically, you could say, well, we don't know what it is in the payment portal. Really, if you're entering it off a piece of paper, it's PPD, you're taking a phone call. It's tell if
+
+Unknown Speaker  38:53
+it's a customer portal, it's it could be we, you could legitimately just say, hey, it's web, we don't know. Yeah, it would always be web for the customer portal, because they're the ones entering it.
+
+Unknown Speaker  39:05
+Do we need to
+
+Unknown Speaker  39:09
+but PPD if it's previously signed, AKA a written contract, so do
+
+Unknown Speaker  39:15
+they set up auto pay as part of their rental contract? I'm
+
+Unknown Speaker  39:21
+going to get something here. I would guess it's later if they want to start doing auto pay by ACH probably say, okay, fill out this form. Tell us. Tell us when to debit it. And, you know, has all the details, and then they put it in.
+
+Unknown Speaker  39:35
+So we should probably store this on the payment record and we set it on in it,
+
+Unknown Speaker  39:45
+generally, it'll be web for all imported payment methods,
+
+Unknown Speaker  39:53
+PPD,
+
+Unknown Speaker  39:55
+are all if or for all imported auto pay schedule.
+
+Unknown Speaker  40:00
+Rules.
+
+Unknown Speaker  40:02
+I'm wondering where we where we feel this, because I don't think it's on the I don't
+
+Unknown Speaker  40:09
+think it's on the payment method, because you could
+
+Unknown Speaker  40:15
+ever run multiple ways.
+
+Unknown Speaker  40:17
+Maybe it's we store this on the auto pay schedule.
+
+Unknown Speaker  40:22
+Is it's either PPD or web. It would be PPD if we are importing this from an existing system.
+
+Unknown Speaker  40:30
+If they're
+
+Unknown Speaker  40:33
+in person, some, I don't know, somehow, but if they, if they're in their customer portal, and they're like, Oh yes, I want auto pay. Let me set up auto pay. That's definitely web. And when we run the auto pay, we stamp that onto the payment record. So we know how to how we how to run it.
+
+Unknown Speaker  40:51
+We've not thought through complex auto pay stuff with,
+
+Unknown Speaker  40:59
+okay, so the scenarios are
+
+Unknown Speaker  41:05
+here. Let's do this.
+
+Unknown Speaker  41:10
+We have scenarios. We
+
+Unknown Speaker  41:12
+hear your screen because it sounds like you're writing some awesome notes. Sure, it was just kind of like a
+
+Unknown Speaker  41:23
+we
+
+Unknown Speaker  41:26
+was good. Take it to signal, and I'll just throw it here in this note here.
+
+Unknown Speaker  41:31
+So we have, we have customer portal, which would always be the
+
+Unknown Speaker  41:39
+web.
+
+Unknown Speaker  41:41
+We have
+
+Unknown Speaker  41:43
+payment,
+
+Unknown Speaker  41:45
+payment portal,
+
+Unknown Speaker  41:47
+which, by the way, I'm calling it the internal portal, internal I like it,
+
+Unknown Speaker  41:55
+which we needed to figure out whether they want to differentiate. Do we need to differentiate? Do we need to confirm documentation?
+
+Unknown Speaker  42:07
+Auto pay?
+
+Unknown Speaker  42:12
+It'd be three.
+
+Unknown Speaker  42:15
+Well, this would be internal auto pay. I
+
+Unknown Speaker  42:23
+Oh, right, yeah, customer portal or auto pay, or customer portal
+
+Unknown Speaker  42:28
+when
+
+Unknown Speaker  42:30
+single payment,
+
+Unknown Speaker  42:33
+Customer Portal, auto pay is also web,
+
+Unknown Speaker  42:42
+internal portal. I mean, is this? Is it? What other way would we internal auto pay internal portal?
+
+Unknown Speaker  42:54
+So maybe we don't need to worry about tel because in there in clearance, they said, Use PPD for your test system, but you also need to be handling Web. They didn't say anything about tell. Tell was just what Google AI
+
+Unknown Speaker  43:09
+review told me about. Maybe we don't need to worry about tell.
+
+Unknown Speaker  43:19
+You need paper documents for using PPD,
+
+Unknown Speaker  43:25
+Ach, okay, well, I think this then becomes the answer. And the real question is,
+
+Unknown Speaker  43:34
+we need to know
+
+Unknown Speaker  43:37
+it's been written and signed, and you do need technically for
+
+Unknown Speaker  43:48
+good Wayne, do you want any
+
+Unknown Speaker  43:52
+validation?
+
+Unknown Speaker  43:55
+We have written and
+
+Unknown Speaker  43:59
+signed consent for
+
+Unknown Speaker  44:03
+internal portal slash a What about?
+
+Unknown Speaker  44:15
+Tell,
+
+Unknown Speaker  44:28
+we go audio
+
+Unknown Speaker  44:35
+recordings and written confirmations.
+
+Unknown Speaker  44:45
+You need to either record the call or provide written evidence prior must record the phone conversation where it gives authorization, so if you do a recording,
+
+Unknown Speaker  44:58
+okay, I think simplistically.
+
+Unknown Speaker  45:00
+Be
+
+Unknown Speaker  45:01
+anything from the customer portal can use web. It does mean on the auto pay that we need to know who set it up, and only the customer portal should be able to set web, and it should be PBD for internal stuff.
+
+Unknown Speaker  45:18
+And how do you get that? Do you have to sign them a document or send them a document to sign? Yes.
+
+Unknown Speaker  45:30
+I mean, you could. We could get really clever and like, integrate with DACA, whatever Zoho signature stuff,
+
+Unknown Speaker  45:39
+and generate that automatically from the auto pay schedule, aren't we are already doing that for the contract signatures.
+
+Unknown Speaker  45:49
+It's not. It will be. It's not yet, but, yeah,
+
+Unknown Speaker  45:56
+okay, that'd be really cool. But it would be cool, I think, for now, though,
+
+Unknown Speaker  46:03
+we just track
+
+Unknown Speaker  46:07
+on payments, whether it was initiated. And
+
+Unknown Speaker  46:12
+I don't know how you want to do this, in some ways it would
+
+Unknown Speaker  46:17
+be, yeah,
+
+Unknown Speaker  46:20
+I'm probably too tired to think this through right away. Do you want? I think it probably makes sense to when you have an hh payment type that you have to specify its subtype. It's a PPD or web both on the payment record and on auto pay.
+
+Unknown Speaker  46:32
+Yeah, just speed that in. I mean, for now, it'll just be PPD because that's all they support for the test system.
+
+Unknown Speaker  46:39
+But
+
+Unknown Speaker  46:42
+go live, then, yeah, we'll need to, well, what I would, I would, I would start storing tell everywhere, and then just when you're submitting it to the test system, and I'm sorry, support Web everywhere. And when you go to the and
+
+Unknown Speaker  46:53
+when you're using the test system in the whiskey, don't get the change.
+
+Unknown Speaker  47:01
+It always to PPD,
+
+Unknown Speaker  47:03
+yeah. Hope there's not like any
+
+Unknown Speaker  47:07
+thing I need to do differently for web, because it'd be really sad. But I doubt it. Can't imagine. It seems to me more like a raising my hand and say that, yeah, yeah. Just the idea that you record phone calls, imagine like being the one that has to go and listen to recordings to verify they gave me imagination. It's like the most bad thing you could do, if I were a if I had two, if I were a government official, with my hands in the RTO industry, I would go audit these small companies and put them all out of business. Like,
+
+Unknown Speaker  47:42
+seriously, it's
+
+Unknown Speaker  47:45
+anyway.
+
+Unknown Speaker  47:47
+Well, let's say if I were that and I had, well, I would assume at that point that I would probably have some ill motives for being in politics to that degree. Then again, politicians, whatever, for me to be there, some things would probably have to go sideways.
+
+Unknown Speaker  48:04
+Anyway, it's a mess. It's a big mess. Audits would be terrible good. I like it. Thanks for then I will
+
+Unknown Speaker  48:16
+add the voiding mechanism that just use a checkbox, and I'll do just a straight number field for refunds for now, okay, I like it. Plans to probably have a broad edit payment for new payments, for refunds for reallocation.
+
+Unknown Speaker  48:35
+When one page rule, the Miller will find them.
+
+Unknown Speaker  48:40
+I like it,
+
+Unknown Speaker  48:42
+awesome. Thanks for Yep.
+
+Unknown Speaker  48:44
+Thanks for that. Bye.
+
+
+Transcribed by https://otter.ai
