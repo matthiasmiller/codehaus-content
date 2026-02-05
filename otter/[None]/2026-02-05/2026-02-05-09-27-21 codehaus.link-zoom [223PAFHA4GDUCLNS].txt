@@ -1,0 +1,287 @@
+Speaker 1  00:21
+Hey, so here, I thought everything was going to be fine and dandy, and it was while I was just fucking records, but as soon as I got to imports, it just it Feels really messy and complicated now that we have milestones on a couple different records, I had started specking the job the update existing jobs from task template X 30 again, and I looked at it with Seth, and it just it doesn't quite seem right. So I wanted to go over it with you and see if we can find a compromise between what their data structure is and what actually works well, or even if, even if I'm understanding everything correctly, because I'm not, like I said my message, I'm not convinced that We should actually have any milestones on the job. I mean, it makes sense that you don't need to have three different walk through dates, or, yeah, whatever it is. But to me, it would make sense to say that you could, you could display a walk through date on the job, you could list different walk through dates for different or I guess walk through date is maybe one that you would want different ones but farmer training, whatever it is, but then You only have tasks linked to one. Record building record, if you want to have three different farmer training dates, fine and dandy. If you want to just have one on one, building, fine and dandy. But I guess that that makes it a little messy for our task template. I think either the either the task template needs to change, or we need To change how milestones are and tasks are linked so
+
+Matthias Miller  02:43
+Okay, so
+
+Matthias Miller  02:52
+would it make your life easier to split the task template in Two and have one for buildings and one for the
+
+Unknown Speaker  03:06
+Yes, absolutely,
+
+Matthias Miller  03:10
+well, I mean, let's, is that all it takes?
+
+Speaker 1  03:18
+I think so can't okay the one, one caveat is that the committed date, Tyler said that that can be either for a job or for a building. Can we just say that that is building, and if you want to have the same committed date for all buildings on a job, or if there's only one building, we're not going to support, we're not going to support having a milestone for two different record types.
+
+Matthias Miller  03:54
+Yeah, I think, I think we, yeah, it's, I would agree. I would agree.
+
+Matthias Miller  04:17
+And I think the workaround would be I I
+
+Matthias Miller  04:32
+don't, I don't feel like I understand their use case enough. But if it's, if it's, do you have an example of the tasks for a committed date or not?
+
+Speaker 1  04:42
+Um, let me go look. I do have the file, so I should be able to really easily, job, manage me, to date, tasks, check for special items, color doors, etc. At. A down payment all these guys.
+
+Speaker 1  05:26
+Like some of these are clearly barn specific or building specific.
+
+Matthias Miller  05:40
+They're not thinking about this in barn versus building at all, and they need to. And so anything coming from, anything linked to Job pack, by definition, is building specific. And if they want something job specific, they could add it and they need to go back and update these tasks, and we don't need to support both, because that's just weird.
+
+Speaker 1  06:09
+Anything, yeah, anything linked to Job pack is building specific, which means that all, all milestones are building level.
+
+Matthias Miller  06:20
+Which Which ones, which ones did he say were? Were buildings? He said,
+
+Speaker 1  06:32
+Well, he said, everything, well, the only two that were exclusively job were farmer training and packer install.
+
+Matthias Miller  06:42
+Does that? Is there anything in Job pack for that?
+
+Speaker 1  06:52
+Maybe not. I'm seeing Packer install on farmer training under the committed date.
+
+Matthias Miller  06:58
+That's that's just weird. I don't know where, I mean, that's a that's a task. I mean, yeah,
+
+Speaker 1  07:05
+those shouldn't, those shouldn't even be, oh, this is so much better. So the job ends up being paradigm job ID and like customer and some sort of that sort of info, but anything related mouse to the task is actually on the building.
+
+Matthias Miller  07:33
+But I still think I could be wrong. I still think we need,
+
+Matthias Miller  07:50
+don't we still need? Do we still need job tasks? What was it? Yeah, do
+
+Unknown Speaker  08:05
+not working too well. Isn't being slow or being okay? No, I didn't hear about that, but yeah, okay. I'm back, sorry.
+
+Matthias Miller  08:15
+What was that? I think we still need, don't, don't we? We still need,
+
+Matthias Miller  08:32
+we need, we need something for jobs, don't we,
+
+Speaker 1  08:40
+for milestones or I mean, what makes sense to me for jobs is that all of whoops hate when it jumps around. That kind of makes sense, but it's really annoying. All of this, the job section, job details, documents, all of those make sense for me on a job, but to me that's that's all that we need on the job. Milestones are nuked. Those are just on buildings. Job just becomes something to link different buildings to and to store, like location, that sort of thing, documents.
+
+Matthias Miller  09:17
+So how do you handle situations in which
+
+Matthias Miller  09:31
+Okay, here's where I'm confused though. Well, okay, let's go down to the to the job milestones that he had, that we had farmer training, hacker, installer.
+
+Matthias Miller  10:00
+A theoretically committed date, no except we said that's building. Farmer, packer, farmer, we Packer installed makes sense. If it's not required on a building, the building doesn't have a packer you just take it off. Farmer training. It's a little weird but manageable,
+
+Matthias Miller  10:29
+committed date.
+
+Speaker 1  10:35
+That was another confusing piece, if it's spread across the two
+
+Matthias Miller  10:40
+it seems to me like we should have a similar type of needs override on the schedule, like the job does have a committed date, I believe. And if there's ever a change in which the a building's committed date exceeds the jobs committed date. That's a problem,
+
+Speaker 1  11:08
+okay, but wouldn't the jobs committed date just be the greatest building committed date?
+
+Matthias Miller  11:16
+Well, my point is, when you sign the contract, when you sign the contract for all the buildings, if the committed date is coming in from job pack, yeah, then,
+
+Speaker 1  11:31
+well, but isn't Wouldn't that? Then just be as simple as you don't have a milestone, you just have a field under job details for committed date. It's an editable Date field, and you get, you get a report alert, or whatever, screaming at you, if you valid, like that, if some something screaming at you, if you're if any of your building committed dates exceed the jobs committed
+
+Matthias Miller  11:57
+date or one of the schedule override, I don't know if we could tie it into the schedule override work, but that would, that would be, I think that would be a good that's probably a but
+
+Matthias Miller  12:19
+don't we have a Could we do that on the on the per like on the on the milestone, when we update the milestone for the committed date on the building, if it bumps past the jobs committed date, we would trigger an approval flag,
+
+Speaker 1  12:40
+an approval flag for the job, for the building, the building, okay, we're already sure.
+
+Matthias Miller  12:48
+We already have that kind of mechanism for overdue tasks. But when you but if you move the committed date on a building, pass the jobs committed date, like, that's a red flag, yeah,
+
+Speaker 1  13:02
+it's approval. So it's currently just for tasks, should needs approval.
+
+Matthias Miller  13:08
+Oh, that's on tasks. That's on
+
+Speaker 1  13:11
+tasks, what if, what if we have a building milestone needs approval. Like, what if needs approval for I feel like we would have two different ones, because right now, milestone needs approval. Just means that we only want it for committed date, right? I feel like that should be a like we could, we could spec out a different field on the building, just in the, I don't know if it's in the above the milestones, RG or below the milestones, or G or something that says committed date needs approval, right past the job.
+
+Matthias Miller  13:56
+Yeah. Yeah. Man, some of this stuff, I feel like we're making I think it's the right thing to do, but it also feels like we're making decisions, like even Tyler's not the right guy to make the decision, really, yeah, yeah. I think that's, let's, can you put that in a section somewhere, and let's table it, and let's not commit to development on it, sure, because I'm almost Yeah,
+
+Speaker 1  14:31
+so I should just tell BD, stop dev until you get more details.
+
+Matthias Miller  14:36
+No, I just, you know this particular piece on the committed date changes,
+
+Speaker 1  14:41
+okay, but, but you're fine if we remove milestones from jobs and all that.
+
+Matthias Miller  14:54
+Well, doesn't it? Thank
+
+Matthias Miller  15:23
+Yes, I think so. I just feel like it's so dramatically simplifies. I
+
+Matthias Miller  15:56
+be only with buildings and not with jobs. The Packer installed. The Packer install is
+
+Unknown Speaker  16:11
+currently a task,
+
+Matthias Miller  16:15
+not a milestone, only task on a milestone.
+
+Matthias Miller  16:32
+Packer installed the This leaves the was the farmer. Walk through the only one that's left.
+
+Speaker 1  16:41
+I It was no it was committed date, and that's a separate design. Is farmer training, Packer installed at our tasks. Walk through. Is building specific, according to Tyler.
+
+Matthias Miller  17:01
+Okay, most of the tasks based on committed date are clearly building related. There are two exceptions, the sorry, the packer install in the sorry, What did you say? Again? Farmer training, armor training, yeah,
+
+Speaker 1  17:44
+I guess there are some other items, like wire probably wouldn't change, although it could pay a different way for a different building, but
+
+Matthias Miller  18:01
+site visit, confirm site plan, confirm down payment. See some of these early tasks, I would argue, do make sense to be job related? Which ones like this, first five, anything less than 100 you know, less than more than 100 days from committed story,
+
+Unknown Speaker  18:33
+special items surely isn't job related.
+
+Matthias Miller  18:36
+Or do you think so? Wouldn't have it would have to be. I mean, I mean, I don't know how they how they run it, but those are, those are clearly job related. In my mind, okay,
+
+Unknown Speaker  18:53
+they don't do payment installments for different buildings.
+
+Matthias Miller  18:58
+I don't believe so I think it's, I mean, it's a single contract For multiple buildings, gotcha.
+
+Matthias Miller  19:20
+The other option would be eight.
+
+Matthias Miller  19:44
+How terrible would it be to have a checkbox in the task? Basically, just say I only need one of this task, like just pick a building i.
+
+Speaker 1  20:02
+I kind of like that, because you'd probably for most of these, you would need to do it on the first building anyway, right? I
+
+Matthias Miller  20:44
+Okay, how does?
+
+Matthias Miller  20:58
+How do milestones work? In that case, is it still based off
+
+Unknown Speaker  21:05
+of building? It could be a little bit interesting, if you're
+
+Speaker 1  21:17
+what I would be worried about is, No, it wouldn't actually be okay. I think you just have to add a setting to say that a a milestone is for the first building, and then your x 30 that goes through and adds milestones only adds that one to the first building for the job. If there's if there's already another building, it doesn't do
+
+Unknown Speaker  21:46
+it if there's already another building with that milestone. Does that sound reasonable, or is that? Is that getting
+
+Matthias Miller  21:57
+a little too It sounds good initially, but the more, the more, the more I walk down that path, the less happy I am with it. Yeah, is it? Is
+
+Speaker 1  22:19
+their data does their data structure feel wrong because it is wrong or because it's hard to hard to work with?
+
+Unknown Speaker  22:33
+Okay? Do
+
+Matthias Miller  22:42
+let's go real world. It makes sense to me that there are some tasks that are contract specific. It also makes sense to me that there's some tasks that are building specific. That's very logical, and it's logical that the task gets tied to the job or the building. Based on that, I think part of the challenges is that it looks deceptively similar. So it's like, well, we should just be able to hear stuff. And I would make an argument that I
+
+Matthias Miller  23:37
+the similarity is,
+
+Matthias Miller  24:11
+are we? Did we? Do we end? Well, the similarity may be somewhat, somewhat false, and maybe it's just not having having the right the right design. So I think we could make a rule that says any building related, any job related, the only milestone a job has is the committed date. Well, I'm not sure that. I don't know if that's completely true, but I think it possibly is. I don't know if not supporting milestones that's going to get us into trouble or not, it is very clear to me that I. It is very clear to me that job pack milestones only apply to buildings like that's what job pack is. If you wanted to simplify it, you could have an a repeat, a none level report for job records that would
+
+Matthias Miller  25:37
+well, I know, I don't know. I think, honestly, the simplest thing ends up being probably have a template for jobs. Okay, have a have a job versus building on the milestone. Have a template for jobs. Have a template for for buildings, and then have an X 30 list for the update, and have two cloned reports and two cloned X 30s. And the only cloning you have is for the x 30s
+
+Speaker 1  26:13
+office building on the milestone dot task template and building task template reports for tasks X 30 list was cloned. 30 is for Jobs Plus buildings. Okay, I mean, I think, I think that that approach where we split apart the template makes the x 30 is a lot easier. And also the clarification that that job pack milestones are only for buildings. Buildings isn't committed data, job, pack milestone,
+
+Matthias Miller  27:01
+though, yeah, then we have two committed dates, two milestones. One's a building committed date, gotcha?
+
+Speaker 1  27:09
+Okay, yes. Meditate. Milestone is split apart into building committed date, which is a job pack milestone and job committed date, job pack, and then we say, the job, well, I'll date that the job has a committed date? Who knows? Yeah, if that makes sense, let's see. So that's a little piece so committed date that now makes sense in days past to pack X 30 list. That makes sense because that's now just building level update existing jobs becomes next 30 list, the task report. It's due date into, oh, go ahead. No, this is
+
+Matthias Miller  28:26
+just no, the task report runs on the task record.
+
+Unknown Speaker  28:31
+Oh, duh. And then yeah,
+
+Matthias Miller  28:35
+due date calculation then says, What's the date for this milestone? And, I mean, looks at the milestone type, is it? Is it? I mean, is it a building? Obviously, there needs to be validation on the on the task, that the milestone type matches the building. And I would assume, in an ideal world, we would add validation that you can't change a milestone type after there are task records, if it's used by a task record or a template record or just a warning on save, when you create it that says warning you can't change this after you save. That's the real simple thing. But then, basically, if it's a if the job type, I mean basically, if the task type is a building, go on the building record and look in that milestone RG, for that milestone date, and then the other one go, look at the other place. Yeah.
+
+Speaker 1  29:46
+The record that's simple enough. Ask just runs on a test record. Do we want to group? I guess it's not terribly important. I remember how we had done it before, but probably just grouped by the linked job or something. So all the job and tasks, or job and building tasks, are the same grouping or something. We didn't even really have them grouped.
+
+Matthias Miller  30:15
+We didn't have them grouped. I think it's other sorting I would probably sort by due date plus job, which would be the job, if it's a job, one or the yeah buildings job, who has one, and then by building Yeah, and then maybe by title or description or something. I
+
+Speaker 1  30:39
+don't know. That's easy enough. The jobs dashboard. Should that be a I guess we could just make it a through dash or multi pane report, jobs on the left side, buildings on the right side, something that's
+
+Speaker 1  31:07
+going to kind of need to get split apart because all your your miles mostly moved to the to the buildings, report, buildings dashboard, whatever. I'm not
+
+Matthias Miller  31:19
+super familiar with what the jobs dashboard is right now, but
+
+Speaker 1  31:22
+right now it's basically, it's, it's, it's pretty simplistic. It's just,
+
+Speaker 1  31:33
+it's just the like, some of the information, like integrator and location and whatnot, and then bird, date, committed, date, etc, beats number of overdue tasks, that sort of deal, and almost all that. Like, I think it would make sense to have jobs in the left pane that has you, like, basic information of integrated location, job, committed date. Then your right pane is all the buildings for that job with the different dates, right?
+
+Matthias Miller  31:58
+I think that's something like that. Yeah, yeah, something like that would make sense. And if we needed to, we could expand the jobs thing to show a range of dates I don't know, like, let's, let's, yeah. On the reporting side, I'm much more cavalier about Yes. Figured out
+
+Unknown Speaker  32:18
+reporting is easy, data structures
+
+Matthias Miller  32:22
+that yeah, how do you feel about that? Good?
+
+Speaker 1  32:27
+I think I felt good about the last thing that I actually dug into. But I think now that I've thought through the imports, kind of got me thinking about data structure. I feel like I'm still taking baby steps in design, but I think this is a lot better.
+
+Matthias Miller  32:42
+Okay, well, it's, it's anything you can borrow from my 20 years of mistakes, by all means, 100% confident. This is, I'm not always 100% confident, but this feels, I do feel like I don't know, this is probably where Josh's design philosophy and my design philosophy do differ. Josh would be kind of like, just throw it on the building and then deal with it. I tend to be much more like, I don't know, to me, it's much more coherent with reality, that in reality, there are genuinely tasks that are job specific system that are building specific and so I do tend to lean in that direction. I agree. I agree. Yep, good.
+
+Unknown Speaker  33:30
+All right. Thank you, sir.
+
+Matthias Miller  33:32
+All right, thanks, Nick, let me know if you need anything else, I'll be in and out of meetings, but I might have a little bit of time around one year time if you need something else,
+
+Unknown Speaker  33:40
+sounds great. Thanks. Awesome. See you. Thanks. Sarah.
+
+
+Transcribed by https://otter.ai

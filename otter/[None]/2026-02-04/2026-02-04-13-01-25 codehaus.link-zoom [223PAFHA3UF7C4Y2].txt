@@ -1,0 +1,101 @@
+Unknown Speaker  00:13
+Hello, all
+
+Matthias Miller  00:22
+right, can I do for you? Yes.
+
+Speaker 1  00:26
+So I just, I wanted to run over the redesign quickly with you, because I think this would work, but I'm not convinced is the best way to do it, basically splitting buildings out and it'd be a very simple record, basically just store the custom DB level, probably link to the job record. I don't know if that would be I was a little confused by the job pack order number. Is that for the building, or is that for the for the overall job? Now, we had talked about it, but I can't remember what
+
+Matthias Miller  00:59
+the pretty sure it's, I'm pretty sure it's for the building.
+
+Speaker 1  01:04
+It's for the building. Okay, yeah, so that means, then that we don't have an ID from job pack for the job. Let me go what is a separate ID we see
+
+Matthias Miller  01:17
+if we can get on Their VPN without killing this connection here.
+
+Matthias Miller  01:33
+Services available? Why?
+
+Matthias Miller  03:08
+All right, well, it's not letting me notice that. Hey, let's check something. Yeah.
+
+Speaker 1  03:31
+So then, basically the building record would just be the basic record ID, linking, job pack details, like the name description those we filled in because those are linked to the building. If the job pack order number is and then milestones and task surgery, I don't love having those RGS duplicated on both the job and the the building, but some of the milestones and tasks are job specific, and some are specific.
+
+Speaker 1  04:14
+If we if we do go with that design, I mean, it's whatever. It's fairly simple to code, it's less maintainable, and everything needs to become an X 30 list instead of an x 30. And basically you've got duplicate RGS, except you have a type for job or building whatever linked record level. Okay, is
+
+Matthias Miller  04:36
+there a man I hate making this much design changes this late in the game. But anyway, yeah, what's an example of a building task with a with something? Well, I guess I mean bird date, walk through whatever it is. Yeah. I.
+
+Matthias Miller  05:03
+What if we would change from a tasks RG to separate task records? A task record could link to either the job or the building score, and then whatever we display on four. I
+
+Speaker 1  05:36
+also thought about this would be basically the same thing as your task record, but just allowing duplicates on the job and having a, I don't like that, though. I like the record better. Having a, having a, an optional building column for which building the task is linked to, and you've got all of your tasks in one central place Instead of spread across, right?
+
+Matthias Miller  06:20
+Well, I mean, you could conceivably keep the job record
+
+Matthias Miller  06:34
+and have all the tasks where all the buildings living on that record, yeah, and then detailed variables that would maybe filter virtual RG, if you want to, I guess, just run reporting or something.
+
+Matthias Miller  06:57
+But I think I mean instinctively, I I would think, for quoting purposes, we're going to need a no soul judgment calls so hard to tell with, with there's so much that shifted. It's so hard to tell you.
+
+Matthias Miller  07:27
+But it's very possible that the job might shift into a contract record of some kind, in
+
+Speaker 1  07:38
+which case you'd really want everything across in the building, not the job, all the tests and such,
+
+Matthias Miller  07:46
+yeah, or
+
+Speaker 1  07:48
+except you do it well, except For some milestones
+
+Matthias Miller  08:01
+and the quote is going to be for different buildings, you wouldn't create the building until the point that you actually signed the contract commit to build, I don't think.
+
+Matthias Miller  08:18
+But there's a plenty of senses in which the task record ends up being, I feel like there's not enough good information as far as feature proofing. I think that the rule of thumb that I would use in this case is what most closely models reality, and what most closely models. Reality is that you have a job with multiple, multiple, multiple buildings, and if we need to, we'll create a dashboard view or something where you can pull up a job and related buildings or something and related tasks. Yeah. I don't know that's my thing.
+
+Speaker 1  09:06
+That makes sense, so I will just create a basic ask record that has a linked record type of job with building, yeah, like we do for notes and zrt and a record ID linked record ID
+
+Speaker 1  09:42
+all the other task fields we have anything, all tasks on jobs and buildings become, just because. I don't even know. I don't think it's necessary to have reported a report, yeah. I mean,
+
+Matthias Miller  10:07
+you can have a link to the report that filters down by Yeah, yeah.
+
+Speaker 1  10:18
+And see, is there anything else I need to think through. I mean, probably add milestone record. Add a record type the job you're building. Or maybe it should be chat boxes, support job and support building. Because I think you said committed date could be, is usually for a job, but it could be for either, like sometimes you would commit to a build two different dates for different buildings on the same job,
+
+Unknown Speaker  10:51
+boxes for sports building, whatever we call that, okay,
+
+Unknown Speaker  11:07
+be everything.
+
+Speaker 1  11:16
+Barring that, we'll still need details at some point about whatever the the job pack ideas for a job, and then paradigm job ideas still to be determined.
+
+Matthias Miller  11:30
+Yeah, I'm going to need to see if I can find Oh,
+
+Matthias Miller  11:57
+all based developer Tools, focus,
+
+Matthias Miller  12:19
+let's get it blocked.
+
+Matthias Miller  12:31
+Okay, I'll have to figure out how to get, let me, let me. I'll make a point today to try to get confirm those details. Where do we get the where is the the smart build ID and confirm the work? I 90% sure that the the job pack order number. Let me confirm that to job back order number is the work order ID, effectively, effectively the building link, yeah, okay. Sounds good, awesome. Thanks, Dick. Yeah.
+
+
+Transcribed by https://otter.ai
