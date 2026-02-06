@@ -1,0 +1,683 @@
+Matthias Miller  00:49
+Hello, as he hides subtly in the background, I was helping.
+
+Speaker 1  01:02
+I was telling Jasper how to start tracking time instead of specific jobs and stuff and so nice
+
+Unknown Speaker  01:10
+the internet, yeah. Oh, good.
+
+Speaker 1  01:13
+Okay, let me find my I have a task assigned to myself called talk with Matthias, and then I just put I close it randomly, and then I start stacking up questions again. It's like, I reopen it, just add a bunch more questions.
+
+Unknown Speaker  01:32
+That's great. Okay,
+
+Speaker 1  01:38
+okay, so this one you answered. We need to link them to all three. RGS, yeah, I
+
+Matthias Miller  01:45
+think it's going to be simplest. They might be redundant, but
+
+Speaker 1  01:47
+yeah, yeah. Doesn't hurt. Makes sense. Will we only incur invoices on active contracts? What? How do we know? Basically, what is the contract going to be marked as active before we incur the first invoice?
+
+Matthias Miller  02:06
+Well, the status is a little bit of a wild card, but the contract start date should be the definitive first first invoice. Okay, so, and to start a contract, you have to have a building, the asset has to be purchased. We'll need a trainer task or, I mean, we need a purchase date in there, and the start date has to be on or after the purchase date.
+
+Speaker 1  02:35
+So, so in my contract logic, can I just include any I mean, I'm trying to think how to keep this, how to keep from running the logic to say, Do I need to add an invoice on all facts
+
+Matthias Miller  02:52
+the what are statuses that we have? Though, that's that's a little bit of a question.
+
+Speaker 1  02:59
+Well, I think that could change. So, I mean, wouldn't it be fair to have a an index that's it's all, well, at first all contracts are going to be active, aren't they, essentially, or for the first while, we're going to essentially want to run the incur invoices on all contracts effectively. Then at some point that's going to start getting slow, right? So I should just leave for now.
+
+Matthias Miller  03:32
+Well, can you pull the list of statuses? I think it's pretty simple. He says, optimistically. I
+
+Matthias Miller  03:45
+We need to be billed. We need to be delivered, active, pending retrieval.
+
+Matthias Miller  03:57
+What I would do is have an index based on date for any contract that has a date specified and does not have a resolution.
+
+Unknown Speaker  04:12
+And then you would look right with this, you're saying a start date,
+
+Matthias Miller  04:16
+yes, with a start date and without a contract resolution, okay? And I would keep in mind that those dates might be in the future. Go ahead.
+
+Unknown Speaker  04:28
+Yes, that makes sense. They're
+
+Unknown Speaker  04:35
+gonna say, Oh, I
+
+Speaker 1  04:39
+was just gonna want to show you what, what we're doing with the contract, invoice stuff. So we're trying to make 1x 30 that works for all the different things. So I added a, what I called a mode. I don't know if that's the best turn, but with three options, this is what we would write. Nightly. This is when you're making a payment on a contract. You need to incur stuff in the future. Yep, then you require contract ID and amount, and this one is auto pay, and that one just goes and looks at the auto pay amount, says, Oh, do I need to incur anything yet? Right? So I like this. Jonathan had built out the first two parts of it, but he was just using s prompts without a list or anything, and I was just finding really confusing to work in. So I just added that it makes logic super clear. It's a little bit verbose, but it makes it way easier for anyone else to come in and work in so I agree that's what we're doing. And then what's awesome is that it can all happen from this one place, right? Like there's, yeah, we get rid of all the nasty duplication and stuff. Yeah, exactly. I'm happy with it. Good. I like it. I just wanted to filter the dates down, because what he had was working great, because he wasn't having to think about all contracts. He was just looking at either one contract or contracts with auto pay, and then I need to make it work for all the others. I was like, What do I filter it down to reporting some of these guys. I'm not sure how to do anymore. Okay, now that we're going to the different data model,
+
+Matthias Miller  06:29
+okay, you and I have an unresolved, long term argument that I think we need to resolve. We do the waterfall, don't? We have a waterfall on the itemization? Yes, yes, and we have to do that for tax purposes. Sales tax, yes, anyway, but we have it. So how is rent received? Not just look at the itemization. Look at that column,
+
+Speaker 1  06:54
+because if you make payments on different years, I don't know when the amount is applied. I just know that it's applied as of now.
+
+Matthias Miller  07:03
+Oh, you don't have a receipt date of the rent, no, and
+
+Speaker 1  07:08
+you could theoretically be partial. So, like, I know what's paid total, I just don't know last year versus this year, for sure, which payments a lot of the time it's going to be fine, because you can just say, oh, is, are there any payments from I mean, most of the time I'm assuming all payments are going to be within the same year, for the same period, that There will be exclusions
+
+Matthias Miller  07:41
+if we want to be really
+
+Matthias Miller  07:54
+and there is no way to solve this without going back, okay, the reason, the way we work around it with sales tax is we do just we cash deltas, yes. And so we could not suggest that we do, but we could have another RG that's basically payment plus itemization, or it could just be rent received. Is there a world, I think the answer is no. But is there a world in which there's a simple way to look at a payment, the invoices it was for and the waterfall for the for the specific payment,
+
+Unknown Speaker  08:56
+Not easily right now.
+
+Matthias Miller  09:00
+Okay, so the other alternative would be to, we could say rent, okay, there's two, okay. A simple alternative is, don't look at Rent received. Just look at revenue collected. Right?
+
+Unknown Speaker  09:22
+Exactly which would include damage waiver and late fees and any of that right?
+
+Matthias Miller  09:39
+The alternative, well, there really isn't an alternative between expanding the waterfall to have the type of breakdown that we're I mean, that's the most stained thing, isn't it,
+
+Unknown Speaker  09:55
+if we're trying to handle it, yes, I.
+
+Matthias Miller  10:00
+Revenue paid versus potential, okay, but now if, if the revenue paid, receive, rent received,
+
+Matthias Miller  10:20
+and if we're reporting okay for the for the rent,
+
+Matthias Miller  10:30
+how much work?
+
+Speaker 1  10:35
+I'm not sure. How much do we need? Rent received? How much do we need this report right now? Or maybe, well, I guess for sure, pursue it right now is to make sure we have our data model in place.
+
+Matthias Miller  10:55
+I don't think it's a data model problem, though.
+
+Speaker 1  10:58
+It's just a finessing our numbers so we can get the report if we need to.
+
+Matthias Miller  11:03
+It's, I mean, it's just, I think basically it's, you crawl into a hole again and write a complicated macro to populate the third RG or fourth, whatever this thing,
+
+Speaker 1  11:15
+it's going to be brutally complicated, though. Was my, I spent like two thirds of a day trying to build it, and then we decided, Oh, wait, we can just cash. Well, okay, what we said is that we don't need an as of date for balances. And what we're saying here is maybe we do right, which, if we do, it's going to be, it's going to take a fair bit of work, but it's some, I think it's something we tell Dwayne, do you when do you want to pay for this?
+
+Speaker 1  11:59
+Because does he have how much reporting like this does he have right now?
+
+Matthias Miller  12:05
+No, this is, this is a shiny, exactly shiny sales piece, which he's,
+
+Speaker 1  12:12
+which he's gonna want, but I don't think we need right now. Do we like aren't there more important things to get them from, to get so that they can get going with clearance in our new system. So
+
+Unknown Speaker  12:57
+exactly the same.
+
+Unknown Speaker  12:59
+It's also Looking at Rent Paid in a period.
+
+Speaker 1  13:37
+You still there? Hello,
+
+Unknown Speaker  13:50
+Hello, are you talking? Matthias, I can't hear you. Hello.
+
+Speaker 1  14:34
+About now, there we go. That's while I thought you were just pacing and thinking. And then after about three minutes of silence, I was like, I'm pretty sure you're trying to talk.
+
+Matthias Miller  14:47
+That's weird. I don't know what happened. Completely went.
+
+Speaker 1  14:52
+There it goes again. It's gone. I can't hear you. I.
+
+Matthias Miller  15:00
+There. There we go. Are you back again? I'm fidgeting with my AirPods. That's a dumb thing to do. Oh, that makes sense. That would do it. Okay, so, so at if, if you were to add a field to the payment payments row called dwf and rent amount, okay? And for each row, you would look at prior payments for this, for this invoice, sum them up and, and, I mean, we had some kind of catalog validation, and then you would sum them up and figure out, have they covered that portion, if not, figure out the difference.
+
+Unknown Speaker  15:48
+And then they see you have a
+
+Matthias Miller  15:50
+macro or a second field, I don't care which, where you say, Okay, did the invoice have dwf? And if so, take it back off, and now you have the rental portion of your payment. Do
+
+Unknown Speaker  16:03
+Why do you want dwf as well? Just because it's the first
+
+Matthias Miller  16:06
+part of the it's the first part of the payment. It's just way simpler to calculate it that way. You just break it down into two steps.
+
+Unknown Speaker  16:15
+Yeah, that's no that shouldn't be too bad.
+
+Matthias Miller  16:20
+I don't think it should be. I mean, because we, we legitimately don't. I just think, okay, in some future world where we want more than rent, Sure, let's go spend a day, hand wavy. I don't know, whatever days potentially, multiple days potentially. But for this,
+
+Speaker 1  16:40
+so trying to think, because this takes away the need to handle, well, no, you need to think through refunds and stuff.
+
+Matthias Miller  16:53
+Okay, here's another way to do this. You could also have, if you had a waterfall macro that says, give me the waterfall as of this date, and give me the waterfall as of the prior date, and then you, you effectively find the difference just looking at payment date, looking at payment date. Now it's not how much, yeah, super it's not super efficient, but
+
+Matthias Miller  17:31
+that would then give you the breakdown,
+
+Unknown Speaker  17:39
+and remember what exactly I do right now, I think I Create a string table
+
+Speaker 2  17:47
+with field change expression. I'm
+
+Speaker 1  18:04
+I repeat through the invoices, RG, get itemization and sum of payments and divvy it out.
+
+Matthias Miller  18:17
+Okay? I think, I think we're I don't think it's useful to think about at this.
+
+Speaker 1  18:26
+So just do the should we should I work on doing the rent Damage Waiver thing you said, or not my, my only concern is it trying to make sure it stays up to date. Do we need to just refresh it every time we refresh everything else?
+
+Matthias Miller  18:45
+I would think anytime you refresh anything else, I think that
+
+Unknown Speaker  18:49
+makes sense. My okay, this
+
+Matthias Miller  18:53
+is my instinct. My instinct is, if it's if you think it's two hours. Am I crazy to think it could be done in two hours?
+
+Unknown Speaker  19:06
+I don't think crazy. I think that's about as well as it can go.
+
+Matthias Miller  19:14
+So worst case scenario is half a day. We think hopefully, hopefully.
+
+Speaker 1  19:21
+I mean, we think I refresh, okay, all of these things so far, I've ended up being simpler than I expected. Okay, which is which I'm glad for, and as long as I can just rewrite it every single time that we decide to rewrite everything else, I think we're okay. It's one it's if you have to get selective on when you do stuff and what you update, it gets more dicey. It's easier just to rewrite it.
+
+Matthias Miller  19:54
+Yep, we'll have to get at some point, we may look at field change expressions on um. A full term, I mean, like worst cases, you know, five year weekly contracts or something, but, but let's not optimize for what we don't need to now. Yeah, I My instinct is it's not going to be as bad as my instinct is, getting rent isn't going to be bad using this approach, yeah, I understand. I think we have to engineer a plan of attack if We want detailed breakdowns.
+
+Unknown Speaker  20:32
+Yeah, in places cash. I
+
+Speaker 1  21:02
+i Okay. Bias proposed adding a dwf and rent amount field to be payment. Bro based on based on date plus what prior payments covered. Well, it's really just based on what prior payments had covered. Yep,
+
+Unknown Speaker  21:45
+macro is the field minus WF,
+
+Speaker 1  21:54
+and are you fine as hitting the invoices RG every time to get the Damage Waiver amount?
+
+Unknown Speaker  22:00
+Should we catch that?
+
+Matthias Miller  22:03
+Let's assume that it's fine, and if the report's slow, then we'll deal with it.
+
+Unknown Speaker  22:10
+Okay. So let me put an estimate on it three hours. Do?
+
+Speaker 1  22:20
+And then that will make so that we can do these guys, yeah, and then I will have Sean do the source data stuff we were talking about. So because if we can, would you work on that today? If we'd get it coded and get an update to the test system, or not necessarily,
+
+Matthias Miller  22:46
+probably would, yeah,
+
+Speaker 1  22:48
+well, we'll have, I'll try to, we'll try to get that done as soon as we can. And then,
+
+Matthias Miller  22:52
+okay, and then accounting impact,
+
+Speaker 1  22:57
+just all based on the old logic. And I didn't want I wasn't sure how to wrangle with it. That's fine. I have enough things to wrangle with right now, weird,
+
+Speaker 1  23:15
+but we are getting close. There's some stuff with auto pay too. I'm not I should see what are the questions I have. We talked about how to handle these NSF. How do we record NSF? Is that we used to add a negative NSF row to the events or G? Should we now add a negative, like a Payment row? That's NSF.
+
+Matthias Miller  23:51
+Technically,
+
+Unknown Speaker  24:00
+Oh goodness, um, hang on, um,
+
+Matthias Miller  24:36
+have checked something.
+
+Unknown Speaker  24:47
+Yes,
+
+Unknown Speaker  24:57
+hang on.
+
+Matthias Miller  25:24
+Does it make sense in my it all depends on whether the jail reflex events happening at the thing, generally in my review material, NSF event was never already in the books. Wooded checks might or might not be In the books. Yeah.
+
+Matthias Miller  25:54
+Because, okay, so we want them to both hit accounting, because most likely what happened is that the bank posted it to your account and then took the money back out. Okay,
+
+Unknown Speaker  26:19
+don't you? Well, go ahead.
+
+Matthias Miller  26:23
+I think your proposal makes the most sense. You could conceivably have have an NSF date on the original payment row, but I think it makes more sense to have a separate NSF payment type reverses the impact of the original payment.
+
+Speaker 1  26:41
+That seems pretty sane to me. Yeah. It would also allow us if we wanted to do as stuff as of a date, although, at that point is it actually, if you do a balance as of a date, this is theoretical future. Should we count a payment that was later had NSF on it. Well, yeah, what if someone, if someone made a partial payment, or made a payment to get caught up for EPO, and then ran EPO, and then there the EPO payment works and the other one doesn't. For some reason, they use different they used a check for the one and card for the other. So weird, but
+
+Matthias Miller  27:31
+fair, it
+
+Speaker 1  27:34
+gives a better paper trail. It does. That's the primary argument. Anyway.
+
+Matthias Miller  27:39
+Generally, it's just a bad thing to have destructive history here. And I think you can arguably make sense, like you gave me money. I took it in good faith. My understanding as of that day is that this is what your balance was. Well, then you didn't have money, and I'm sorry, like, yeah, she actually had a lower contract balances, data that day, yeah, yeah.
+
+Speaker 1  28:02
+And then sales invoices. How should they handle NSF? Because we need to be able to make payments the same sort of thing, I think so. And NSF is always all or nothing, right?
+
+Matthias Miller  28:21
+Yeah, on a payment, yes.
+
+Unknown Speaker  28:28
+So here we should just add a type. Also this RG should not be just editable. But anyway, we should add a type. I think
+
+Speaker 1  28:45
+of payment or NSF, or do you just add an NSF checkbox or something, and then the amounts negative, I don't know. Well,
+
+Matthias Miller  28:56
+don't we have a payment type check, NSF, etc? Payment, ID, payment. I wonder if the payment shouldn't have a, well,
+
+Speaker 1  29:13
+we have an NSF date on the payment. This guy fills in which this guy must not be linked to anything, but fills in an NSF date on here, which is then visible, and then we record reversal rows. We haven't thought it through for what it should look like for sales invoices, but like, we could do something, can't we do identical, pretty much the exact same thing? Yeah,
+
+Speaker 1  29:57
+I think I I'll. Go ahead with it and come up with something, and if you don't like it, we can always change it, but I think I'll model it the same as we do contract. Basically, I
+
+Matthias Miller  30:09
+think you're right. Checkbox could be we can always migrate away from a checkbox if you don't
+
+Speaker 1  30:16
+like it. Yeah, the argument to use an actual list would be that that's what we do on the contract, yep, because there we do, I forget what all our types are, contract, invoice,
+
+Unknown Speaker  30:32
+payment, list, contract.
+
+Speaker 1  30:39
+You have all of these which we need to now at NSF too, which that's a little different, because on the sales invoice, it'll just be payment in NSF, but it would help keep
+
+Matthias Miller  30:49
+it well. But I mean actually an invoice, because invoices, bad debt, refund, bad debt. Yeah. I mean that's refunds. Big. They could unless we have a different way to do that, through bills.
+
+Speaker 1  31:08
+Wait, weren't we going to use bills? I think we were. We need, okay? I think that's one of the other things we need to talk about at some point, because I don't think I have any.
+
+Unknown Speaker  31:22
+I Yeah,
+
+Speaker 1  31:26
+I'm gonna need design on this too at some point, how to support refunds. Oh, but Okay, the reason I was letting this float here is I needed to go look through what we were doing with all the other stuff on bills and invoices, because that might need to change. I think it largely
+
+Matthias Miller  31:55
+probably the biggest thing in my mind is you want cross reference linking. I where you may want to what if
+
+Matthias Miller  32:10
+it's just an arbitrary expense you and if you refund an arbitrary expense, you do want to wait for it to tie back to the original, and maybe you just do that manually for now. Um,
+
+Speaker 1  32:33
+all I feel like that's a whole nother rabbit hole to fall into. I don't know, auto pay, we talked about this, I think we need to ask Dwayne that we've having moved away from a taxable balance. Some of our logic on auto pay is a little just going to be a little whacked when you figure out you had talked about possibly for auto pay, authorizing a subtotal, a payment sub total every month. So think, yeah, I think the options are either that or I do the nasty logic To make balance work flexible balance work. I
+
+Unknown Speaker  34:11
+And that's
+
+Unknown Speaker  34:52
+is needed if the tax rate changes,
+
+Matthias Miller  34:59
+I mean. I think there is a compelling argument to be said that no phone or utility company is going to be like, Oh, hey, sorry, you can just accrue balance because tax went up. Like, yeah, no. I mean, it's like, putting up buddy. Like, tax change, give me the money. Yeah. I that's pending his his answer, yeah, okay,
+
+Speaker 1  35:26
+I'll let that sit until I hear more. And then you had also mentioned something about monthly versus weekly contracts as opposed to payments. That's not something we field at all. Right? Now I don't think that, right?
+
+Matthias Miller  35:46
+Well and pragmatically, it seems very odd that anybody in The RTO industry would do a four
+
+Matthias Miller  36:18
+I like pragmatically, I just don't see people renting sheds on a weekly basis. Should we not support it? I would defer it until spring. Somebody should put something in the proposal for that. Yeah, I'll do that. Okay, I just we certainly don't need it before March. Perfect. I don't think, good.
+
+Speaker 1  36:46
+Well, okay, yep, we are getting close with contract invoices, like I have sales tax linking the new liabilities, records and everything. So I'm pretty happy I went home again that hour and a half hour early on Friday, because I was just it was snowing a little bit. It's time to get home and sit and watch the snow. And then I whacked out the I whacked it out to switch to the new contract invoices and sales tax records. And I was very happy. It was fun. Yep, I think it says something about the complexity I've been working with if I go do sales tax stuff for
+
+Matthias Miller  37:24
+fun, that's, yeah, we're manipulating you into actually appreciating sales tax.
+
+Speaker 1  37:34
+Gary was at grandpa was at dad and mom's for lunch yesterday, and it was fun to hear like he was bringing up different things, like he heard what we're working on, he was bringing up different questions and stuff. Oh, yeah, we handle that. Yeah, we handle that. We handle that.
+
+Matthias Miller  37:51
+That's awesome. Yeah, that was, that's great. I was thinking about the summer walking. Was it the other the other last week I was walking like I never signed up to be an RTO expert. But, you know, I, I think I just immediately landed myself easily within the top 10% maybe it's the top 5% of quite probably understand RTO just like, yeah, it's insanity. I did not sign up for that.
+
+Speaker 1  38:19
+They do things a little weird. They if someone pays ahead, it goes straight to the cash price, like the extra money. Oh, which, I hope we don't have to handle that if we do then.
+
+Matthias Miller  38:34
+But I mean, that's effectively you would just think, go ahead. Well, that's really interesting.
+
+Speaker 1  38:42
+Is that something we should run past doing it does. Is that true? Rent down? Maybe it is. I don't know.
+
+Matthias Miller  38:51
+I don't know. I mean, no, it's not. I mean, if, but if kids, if it's defensible in Kansas. And I mean, but effectively, what you would say is, this goes to your security deposit for an EPO.
+
+Speaker 1  39:09
+No, or, I don't know if that's how they're thinking about it, but that would work as long as they actually do an EPO.
+
+Matthias Miller  39:20
+Well, what's the I think the, I think the question is, well, I mean, you would effectively do it at the end of the contract term, using your security deposit. I mean, whatever, automatically. So automatically there. I think the big question in this case is, contractually, what is happening and probably should reflect that for audit worthiness, but,
+
+Unknown Speaker  39:52
+yeah, yeah, okay,
+
+Matthias Miller  39:55
+what do you think of doing this proposal when you say that the amount. Is including tax or before tax,
+
+Speaker 1  40:04
+I don't want to support both. Maybe we need to, but that sounds that's that'll be way more complicated if we have to support both, or at least more complicated. Well, your
+
+Matthias Miller  40:18
+historical audit payments might then not be the amount of what you're putting, okay, right? I mean, okay, but it's the auto pay, yeah, it is complicated. It is more complicated, but you have the nominal amount, and then you have the actual auto pay amount, which is just the current tax rate based on current tax rate.
+
+Speaker 1  40:41
+Okay, so it's I run until so do we need to do that balance with tax calculation so we know how long to run?
+
+Matthias Miller  40:50
+Well, no, because then, then what you would do is, if they, if they pay $200 a month, you translate that, that into 198 No, because it doesn't
+
+Speaker 1  41:00
+come out right center too. I mean, probably it'll usually be, it'll end up working in almost every scenario, but
+
+Matthias Miller  41:11
+it's self correcting, isn't it? Probably, I
+
+Matthias Miller  41:28
+But wait, okay, if you end up with an impossible amount now,
+
+Matthias Miller  41:42
+then you just underpay or overpay, because the invoice determines that,
+
+Matthias Miller  41:57
+Right? Okay, here's the fundamental problem. The fundamental problem is that when you say anything but I'm paying the subtotal, you are now calculating tax on a payment basis instead of based on the invoice basis, right? Well,
+
+Speaker 1  42:20
+no, isn't this exactly the same as all the other like, we're not calculating what percent of it is taxed. You're just gonna always pay us this much. It's just that we need to know, we don't know how much tax is going to end up being, to know how long to make it run at the end, it'll work out fine. Our schedule might just be the
+
+Matthias Miller  42:41
+schedule may adapt and change. Okay, so you always make a payment of $200 or you say, I always make a payment of $200 plus tax, and we just assume the current tax rate, no,
+
+Speaker 1  42:51
+but $200 plus tax gets you into trouble, doesn't it? Because then we have to start figuring out tax per payment.
+
+Matthias Miller  43:02
+You look at the monthly payment amount, right?
+
+Speaker 1  43:08
+No, I think it's safer to not go without tax, but then we just have to say how long. Then we do have to get the balance with tax to work. You know roughly how long it's going to run. But I think if we're going to stay true to our data model, then we shouldn't allow them to specify an amount without tax.
+
+Matthias Miller  43:29
+Okay, I have a question, though, yes, what if you have a fixed amount, a calculated weekly amount, or a calculated monthly amount? What if? What if these preset in the in the Customer Portal? What if there's a drop list of amounts? Because it does make sense to say, I always want to pay my monthly amount. If my monthly amount goes up, it goes up. Or I want to do half, or I want to do, you know, I want to do halfway a month, or I want to do the weekly equivalent. That makes sense, and recalculating that makes sense. It's the this amount plus tax I understand that does not make sense, right? What
+
+Speaker 1  44:17
+do you think of that? I like that better. It'll take some work, but I think I like it better.
+
+Matthias Miller  44:25
+I think it's far superior. And then, and then the configuration in the Customer Portal, if we want configuration, is when somebody says they want to pay the monthly payment. Well, do you actually want to record that as a monthly payment, or do you want to record that as a fixed amount? And I'm not even sure why we give people that option, like they're making a monthly payment.
+
+Speaker 1  44:56
+No, I think that's right. I feel like I. It seems like, well, I don't know I was gonna say. It seems like you're gonna have to let people say, I want to pay X dollars every week. But maybe you don't, because a lot of Did you, yeah, exactly. It's gonna say, most accounts, when you sign up for auto pay, you don't say, I I'm going to pay $50.05 every two weeks. No, you're paying your auto pay amount, whatever it is.
+
+Matthias Miller  45:23
+Yeah, you should never, okay, basically, the payment portal is idiot proof, and an idiot proof version should never put you in a situation where you can set, set up an auto pay that gets you late fees, and you can't put them. You can't do that. You can't do an exact amount, you know, unless you have an arbitrary minimum tax rate thing, or if you're always paying this much above the tax rate, like, we just assume that if you pay 15% above your monthly payment, that you'll Well, tax isn't going to go up that much or whatever, but there's no genuine idiot proof way to do it. No. Okay, so do you have a list of these of the payment lists from the customer portal, payment list, or the payment frequencies?
+
+Unknown Speaker  46:22
+I The auto pay stuff. Yeah, this
+
+Matthias Miller  46:31
+the auto pay Details screen. You will have a list of options that replicates the customer portal. Replicates the customer portal in terms of a customer for that is based on monthly, bi monthly, weekly slash semi weekly payments, along with an option for an exact amount.
+
+Speaker 1  47:06
+So basically, our whole auto pay structure needs to change or not.
+
+Unknown Speaker  47:14
+Well now the
+
+Speaker 1  47:15
+amount is always a hard coded amount. It's the same amount every time, no matter what. So that you
+
+Matthias Miller  47:21
+change the proposal is, this is to change it from always being a hard coded amount to having a drop list and having it sometimes being an auto calculated amount, right? And then doing the complicated taxing, I'm sorry, tax balance, which basically looks, look at remaining things that need to be incurred and use a future tax rate, I think
+
+Speaker 1  47:45
+things that need to be incurred and CRA tax potentially, or is that handled? If you look at how does that work,
+
+Unknown Speaker  48:01
+do you well?
+
+Unknown Speaker  48:07
+Because we used to include that. Yeah, it was who
+
+Speaker 1  48:21
+else need to hit a little bit. No, else? Rental balance with tax, tax, CRA tax, the CRA tax, right? And upcoming fees. The upcoming fees is literally just, oh, that's, that's the my old one, which was different contract. Let's see what I'm doing.
+
+Speaker 1  48:51
+Total fees, balance due and total fees upcoming balance. So what this is missing right now is cra tax, and
+
+Unknown Speaker  49:10
+I need to get tax on it wasn't balance, wasn't handling
+
+Speaker 1  49:20
+our auto pay was off for contracts that had damage waiver. It was because we were looking at balance, and balance wasn't including Damage Waiver, I think, intentionally. So, right?
+
+Matthias Miller  49:37
+Probably, I mean,
+
+Speaker 1  49:54
+as we were using the lifetime rental balance and logged fees. And CRA tax, but not anything to do with damage waiver. That's just a that's a bug. Should contract balance include damage wafer, or is it that auto pay we need a special auto pay balance, which is contract balance with tax plus remaining damage waiver to be logged with tax, right?
+
+Matthias Miller  50:28
+Well, I think the answer is, it depends what rental balance is used for.
+
+Speaker 1  50:38
+Let me see I was calculating that always without tax, because for our discussion, we didn't think We needed it with tax ever
+
+Unknown Speaker  50:49
+this is the test.
+
+Matthias Miller  51:17
+But I think you're going to want a, I would propose, I think you're going to need a an auto pay balance, basically, because you're going to want to take out the balloon payment as an example, right?
+
+Speaker 1  51:30
+So we need all sorts of special stuff for auto pay balance, for some, at least
+
+Matthias Miller  51:35
+some, at least, yes, and it'd be, it'd be beautiful, absolutely beautiful, to have transparency in that, to say, well, I don't know, however we come up with it, if you want to, if you'd want to use an EPO style breakdown, I don't know if you want
+
+Unknown Speaker  51:47
+to, but easy enough to do, that's, it's how I've styled most of these macros.
+
+Matthias Miller  51:54
+I think it's tremendously valuable. Yeah.
+
+Speaker 1  51:59
+Mean and Okay, so I'm going to say this is not related contract invoices. Then, because, no, it's just surfacing problems in autobid balance.
+
+Speaker 1  52:20
+Include Damage Waiver correctly about future tax handles balloon payments. Was there anything else
+
+Matthias Miller  52:33
+Siri tax balloon payments are the biggest things I can think of. Oh yeah. I mean security deposit, obviously. And I mean, in this which in the CRA amount,
+
+Speaker 1  52:46
+hadn't we talked about the about including the seat, like showing rose for CRA and security deposit payments,
+
+Matthias Miller  53:00
+or not showing rose where for auto pay in the Yeah,
+
+Speaker 1  53:03
+auto pay preview like, I guess it wouldn't actually log in auto pay, or would it? Maybe we need to talk that through more.
+
+Matthias Miller  53:17
+Oh, where you would say, right, we had said that where there was this talk, okay, here's conflict of interest, where, on a security deposit, we would continue.
+
+Matthias Miller  53:45
+Paying using the security deposit to make monthly payments until the end of the contract,
+
+Matthias Miller  53:57
+right, but a CRA has to be converted at the end.
+
+Speaker 1  54:03
+Weren't we gonna were we gonna say the EPO has to happen? That has to happen, like you can't do that from auto pay.
+
+Matthias Miller  54:16
+I think that's correct. I'm not sure about we said we would auto pay balloon payments?
+
+Speaker 1  54:23
+I don't think we talked about it or I don't recall any discussion. Okay,
+
+Unknown Speaker  54:41
+all right, okay.
+
+Speaker 1  54:44
+So for now, well, how soon do we have to have auto pay ready? Is that part of their go live requirements? It's past the Yeah.
+
+Matthias Miller  54:53
+I mean, I think so.
+
+Speaker 1  54:57
+I'm just not, I don't think I fully. Believe in our whole auto pay stuff at this point. But What? What? Don't you What? What? There's just enough random bugs in it that it scares me. Okay, do
+
+Matthias Miller  55:11
+you believe in the design?
+
+Speaker 1  55:14
+I think so. Yeah, it's just that. I think it's not well now that we're starting to iron some of these things out. Yes, more. So I think we still have leftovers from when we thought it would allow logging to at once, listen how the RG works and stuff, and
+
+Unknown Speaker  55:32
+it's slow. It's really slow.
+
+Matthias Miller  55:40
+What makes it slow,
+
+Speaker 1  55:43
+repeating on dates and stuff, finding all possible dates, and what are my dates? And so is
+
+Matthias Miller  55:50
+it slow, even interactively, or is it just slow when you're running mass auto pay and
+
+Unknown Speaker  56:01
+remember where I've been, I've had stuff timeout on me
+
+Matthias Miller  56:06
+in the auto pay screen.
+
+Speaker 1  56:08
+Oh, when I'm evaluating stuff and expression evaluator, contract, auto, a
+
+Unknown Speaker  56:16
+was it? I
+
+Unknown Speaker  56:27
+yeah, like checking if I have an auto payment today,
+
+Matthias Miller  56:33
+okay, but because it's
+
+Unknown Speaker  56:36
+because of all of this logic here, I
+
+Unknown Speaker  56:50
+this stuff. There's just a lot going on. It's to handle the different frequencies and stuff so that we have probably,
+
+Matthias Miller  57:07
+yeah, I don't know you're not, you're not sharing your screen. I'm not sure if you're intending
+
+Unknown Speaker  57:11
+to or not. Oh, sorry, yes, I was intending to. Okay,
+
+Unknown Speaker  57:15
+it's this stuff
+
+Speaker 1  57:18
+auto payment dates, like has payment for date as a lot of stuff going on and a lot of like, getting a ton of dates and then figuring out if the dates apply To me or not.
+
+Unknown Speaker  57:37
+I feel like it yeah.
+
+Speaker 1  57:42
+So something that we need to try to refactor, if we can't make it faster.
+
+Unknown Speaker  57:52
+Calc recurring day of week,
+
+Matthias Miller  57:58
+here, month, weekday,
+
+Unknown Speaker  58:03
+it's yeah,
+
+Unknown Speaker  58:08
+like this stuff in here feels like there just has to be a better way to
+
+Unknown Speaker  58:18
+I don't know. I
+
+Speaker 1  58:25
+but I haven't. I've never had time to dig into it and figure out, really what's going on so well, that may be another thing,
+
+Matthias Miller  58:33
+if, if we okay, as long as we literally have the capacity to run auto pay, yeah, and the we can run it on all contracts in less than, say, two hours.
+
+Speaker 1  58:51
+I'm pretty sure that's like, well, I guess it depends how big things are.
+
+Matthias Miller  58:56
+You know, I mean, even for the nightly it might be better to have a cat. Cash RG of auto payment dates and amounts based on schedules. If that's meaningful or useful, that saves the nightly run. But the rest of it just not super I don't know like
+
+Speaker 1  59:23
+we need to do it at some point, but not now, probably, yeah, so for now, we need to figure out auto pay balance and list you talked about it. So amount is no longer amount is no longer always fixed,
+
+Unknown Speaker  59:44
+right? We're gonna
+
+Speaker 1  59:49
+have to think that through with the it's good. That's going to complicate the preview table and stuff, but it'll be fine. We'll figure it out.
+
+Matthias Miller  59:59
+Not. That. Excuse my simplicity. You have a fixed amount. Current one becomes a stored field. Was a fixed amount, you have a calculate so the other amount?
+
+Speaker 1  1:00:06
+No, it's not bad. I was thinking we're needing to handle different sets of amounts, like historical versus now, but no, it's always just looking forward. So we're fine. Just look at the balance. Got it? Good?
+
+Speaker 2  1:00:19
+Okay, good. Yep,
+
+Matthias Miller  1:00:24
+awesome, okay, thank you. Yep, you bet. Thanks.
+
+
+Transcribed by https://otter.ai

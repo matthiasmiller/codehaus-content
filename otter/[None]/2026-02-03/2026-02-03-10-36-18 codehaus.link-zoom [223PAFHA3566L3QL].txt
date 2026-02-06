@@ -1,0 +1,2945 @@
+Unknown Speaker  00:37
+Hello.
+
+Unknown Speaker  00:42
+Back, okay,
+
+Unknown Speaker  00:45
+you have ideas on that whole rent reporting. Does it sound right to
+
+Unknown Speaker  00:49
+Yeah, let's see what he says. I think it's, it's, I mean, fundamentally, what we're saying is we need to do if we want rent reporting.
+
+Unknown Speaker  00:57
+Well, let's, let's talk about forgiveness first, because that could theoretically have an impact here. I'm not sure how, but
+
+Unknown Speaker  01:07
+forgiveness, forgiveness isn't
+
+Unknown Speaker  01:09
+well if you've already paid.
+
+Unknown Speaker  01:15
+Do we allow you to forgive something you've already paid? I'm not
+
+Unknown Speaker  01:21
+no know
+
+Unknown Speaker  01:24
+you have to issue a refund or something. I don't know.
+
+Unknown Speaker  01:27
+Yeah,
+
+Unknown Speaker  01:31
+but then anyway, forgiveness, which,
+
+Unknown Speaker  01:36
+which does with our current model, if you have an invoice, and they make a payment and you want to go forgive a certain fee,
+
+Unknown Speaker  01:47
+I'll only let you
+
+Unknown Speaker  01:49
+forgive fees that are not paid, that are not marked as paid right now. Sure. So if they want to change that, they can in the future, but it's how we're doing it for now. Do
+
+Unknown Speaker  02:04
+Okay,
+
+Unknown Speaker  02:05
+I think
+
+Unknown Speaker  02:08
+refund. Okay, so, so forgiveness.
+
+Unknown Speaker  02:13
+Here is a way to think about it. I don't know if it's the right way. There's two general ways I can think about it. One is having a separate forgiveness, RG,
+
+Unknown Speaker  02:24
+and just tying it out. Well, there's three ways. One, separate forgiveness. RG, tying it up. Number two,
+
+Unknown Speaker  02:32
+in the itemization, have the idea of,
+
+Unknown Speaker  02:35
+you know, kind of like primary rows and adjustment rows and so
+
+Unknown Speaker  02:44
+similar to what we had in the old model.
+
+Unknown Speaker  02:48
+And then maybe you would either cash or calculate the forgiveness amounts from adjustment roads or
+
+Unknown Speaker  02:55
+something. Then you have to start always remembering what are my other rows in DRG and filtering them out or taking them into account
+
+Unknown Speaker  03:04
+correct, which maybe that's fine, but that's that's why I don't like that option as well.
+
+Unknown Speaker  03:11
+The other thing I thought about is that forgiveness is
+
+Unknown Speaker  03:15
+kind of like a payment
+
+Unknown Speaker  03:19
+in that,
+
+Unknown Speaker  03:22
+but the part that it's not is that
+
+Unknown Speaker  03:31
+forgiveness is tied to one fee.
+
+Unknown Speaker  03:36
+Yes,
+
+Unknown Speaker  03:37
+because what you're really saying is that you, you've,
+
+Unknown Speaker  03:48
+I think you just about have to,
+
+Unknown Speaker  03:50
+you want to know,
+
+Unknown Speaker  03:53
+right?
+
+Unknown Speaker  03:55
+And so
+
+Unknown Speaker  03:57
+it's a little obnoxious. I don't know where this is going to bite us in the future.
+
+Unknown Speaker  04:05
+It seems a little obnoxious, but it seems to me like the simplest option might be adding another forgive, just adding the forgiveness. RG,
+
+Unknown Speaker  04:14
+yeah, and it ties out to an itemization.
+
+Unknown Speaker  04:19
+Are there other things we're going to in the future, we're going to think, oh, we need to add energy for that too.
+
+Unknown Speaker  04:31
+Well, my fortune telling is kind of it's
+
+Unknown Speaker  04:35
+not working very well today.
+
+Unknown Speaker  04:39
+Or crystal ball gazing, I suppose.
+
+Unknown Speaker  04:44
+I mean, does it model reality to have it as a separate RG,
+
+Unknown Speaker  04:52
+in most cases, I think what would make a.
+
+Unknown Speaker  05:05
+You know what you would do in a typical world,
+
+Unknown Speaker  05:09
+I think,
+
+Unknown Speaker  05:13
+is you would issue a credit memo and
+
+Unknown Speaker  05:21
+it would have a separate date.
+
+Unknown Speaker  05:24
+Oh,
+
+Unknown Speaker  05:39
+this is a completely different concepts than most or what?
+
+Unknown Speaker  05:56
+What just
+
+Unknown Speaker  06:02
+gives them credit to spend, and then you say, Oh, we're going to spend it here.
+
+Unknown Speaker  06:07
+So then it's no longer forgiveness
+
+Unknown Speaker  06:10
+the credit memo. It's more generic,
+
+Unknown Speaker  06:14
+the credit memo with a date and an amount, and then it's a form of payment,
+
+Unknown Speaker  06:21
+right?
+
+Unknown Speaker  06:24
+And maybe it has a type or something that's forgiveness. Do we support other types, or is it always
+
+Unknown Speaker  06:30
+we could just do type for now? I mean, just forgiveness for now, but I think it's reasonable that we'll want some other kind of type in the future.
+
+Unknown Speaker  06:41
+So would that be fielded in its own RG, and then you
+
+Unknown Speaker  06:45
+use which credit memo to pay with?
+
+Unknown Speaker  06:49
+Then we don't have a way of tracking.
+
+Unknown Speaker  06:52
+Do we want to track which fee it's for?
+
+Unknown Speaker  06:58
+Not quite a credit memo? Is it
+
+Unknown Speaker  07:03
+okay? Entertain me for a minute. You unforgiveness, you create an itemization for a late fee with a negative amount,
+
+Unknown Speaker  07:16
+with an invoice date of today, and a period due date. I think the due date is probably wrong, but a due date with a historical due date that matches with the period,
+
+Unknown Speaker  07:32
+or you have some other kind of linking to say this is the thing that I'm crediting. I
+
+Unknown Speaker  07:41
+uh,
+
+Unknown Speaker  07:49
+what don't you like about now we're getting to the point that you've got an invoice talking to another invoice.
+
+Unknown Speaker  07:57
+That's what I don't like.
+
+Unknown Speaker  08:00
+Now when I calculate balances, I also need to look at
+
+Unknown Speaker  08:04
+so let's not their invoice. Just have it be standalone.
+
+Unknown Speaker  08:13
+Do they have why would they have to be tied? Do
+
+Unknown Speaker  08:26
+you're saying,
+
+Unknown Speaker  08:28
+why would the forgiveness have to be tied to an item?
+
+Unknown Speaker  08:32
+Yeah,
+
+Unknown Speaker  08:33
+obviously you can't forgive more than
+
+Unknown Speaker  08:38
+if we document it in the line item, or if
+
+Unknown Speaker  08:41
+there's a description or a forgiveness reason or something late fee on this date for this, this particular late fee,
+
+Unknown Speaker  08:49
+something along those lines, we would include that automatically in the text
+
+Unknown Speaker  08:54
+and but it's just, it's just a negative late fee.
+
+Unknown Speaker  08:58
+And the primary thing that we need to know is that you can never credit more than you've invoiced. And in fact, somebody wanted to, they could go forgive all the late fees for all we care, it posts, it just posts a credit to their account. I mean, theoretically, if somebody's within EPO distance
+
+Unknown Speaker  09:19
+and they really wanted to get savvy. They could ask her to be forgiven of all their late fees and have that balance applied to
+
+Unknown Speaker  09:28
+their EPO.
+
+Unknown Speaker  09:32
+I know it's horrible, but then at the event that that occurs, we would, I mean, it would hit accounting at that point. Yeah.
+
+Unknown Speaker  10:19
+Just not loving it.
+
+Unknown Speaker  10:27
+Not sure why.
+
+Unknown Speaker  10:38
+Okay, there's there's three,
+
+Unknown Speaker  10:42
+it's a 3d splice slicing that we're doing.
+
+Unknown Speaker  10:46
+We're looking at when things were invoiced, we're looking at when things were paid. And we're also slice slicing it by period.
+
+Unknown Speaker  10:57
+And so
+
+Unknown Speaker  11:04
+current model as a field breaks it down for the
+
+Unknown Speaker  11:09
+invoicing aspect,
+
+Unknown Speaker  11:12
+because your invoice looks different at two point different points in in time.
+
+Unknown Speaker  11:20
+Yeah.
+
+Unknown Speaker  11:33
+I mean, there's a very real sense in which
+
+Unknown Speaker  11:36
+a legitimate way is
+
+Unknown Speaker  11:46
+to think about this is
+
+Unknown Speaker  11:48
+also to think of it as an amendment to the invoice,
+
+Unknown Speaker  11:56
+which, which then goes back to,
+
+Unknown Speaker  11:59
+I think
+
+Unknown Speaker  12:02
+I could be wrong,
+
+Unknown Speaker  12:05
+but I think
+
+Unknown Speaker  12:07
+the question is, which? Well, there's two questions, what models the real world most closely? There's that.
+
+Unknown Speaker  12:16
+There's also the question,
+
+Unknown Speaker  12:18
+which idiosyncrasy Can we tolerate the best?
+
+Unknown Speaker  12:23
+Isn't
+
+Unknown Speaker  12:25
+part of the question, too. How we're doing sales tax, because your option of a credit memo is going to include tax. Then theoretically,
+
+Unknown Speaker  12:36
+if you have a $5 late fee with 7% tax, there's 35 cents. And so credit memo, then you're eating the tax difference and letting them use it somewhere else.
+
+Unknown Speaker  12:50
+Whereas,
+
+Unknown Speaker  12:52
+whereas I was taking the way, the way we were thinking about fees, about forgiveness of fees, is that you're forgiving a subtotal, not a tax amount, and so it just reduces your taxable subtotal.
+
+Unknown Speaker  13:05
+So there is a there is a fundamental difference there.
+
+Unknown Speaker  13:09
+When I would argue
+
+Unknown Speaker  13:11
+there is a very real sense in which you're saying we're issuing a correction to the invoice for this period. It's very different than an NSF
+
+Unknown Speaker  13:22
+saying we were wrong.
+
+Unknown Speaker  13:25
+Let's amend it now. We could also say,
+
+Unknown Speaker  13:31
+I just feel like it's very unlikely, it's so unlikely that forgiveness is going to handle. It going to happen in the same period.
+
+Unknown Speaker  13:38
+I mean, forgiveness theoretically could happen. It seems to me like somebody comes along and says, look, I can give you $300 if you could forgive my late fees. Okay, fine. Like, let's take your cash, forgive your late fees.
+
+Unknown Speaker  13:52
+In zfp, what we do is
+
+Unknown Speaker  13:54
+we just amend the original invoice
+
+Unknown Speaker  13:59
+and just post it as of that,
+
+Unknown Speaker  14:10
+NSF will end up being fairly similar to that. I forget if we said that separate invoice or whether that's an amendment to an existing one, but it's an amendment to an existing
+
+Unknown Speaker  14:21
+so we have that cons.
+
+Unknown Speaker  14:23
+What we're doing is we
+
+Unknown Speaker  14:26
+the process, it adds negative payment rows for where there were to zero those out, and then we add the fee to the first existing invoice that was paid. Okay, that's what
+
+Unknown Speaker  14:41
+we had originally decided it might be to change it Sure.
+
+Unknown Speaker  14:54
+Then the reason we had moved away from having.
+
+Unknown Speaker  15:00
+A forgiveness type
+
+Unknown Speaker  15:03
+line item, like a late fee with a type of forgiven
+
+Unknown Speaker  15:08
+was that calculating tax stuff got dicey.
+
+Unknown Speaker  15:13
+Yeah,
+
+Unknown Speaker  15:15
+because it for tax purposes, it really makes the most sense to say
+
+Unknown Speaker  15:22
+that
+
+Unknown Speaker  15:24
+my subtotal, my like, I really like our for the tax side of things. I really like our current design, where it's a you have your original subtotal, and then you have your forgiven amount, which from there you get your sub your taxable subtotal. Right?
+
+Unknown Speaker  15:41
+Is it just it? It works for the tax side of things,
+
+Unknown Speaker  15:48
+and that's why I was leaning towards, well, maybe we have a separate RG for forgiveness,
+
+Unknown Speaker  15:54
+and then you just update the forgiven amount,
+
+Unknown Speaker  15:58
+because that would give you
+
+Unknown Speaker  16:02
+the dates you need for the accounting side, because we can say, Oh, it was this,
+
+Unknown Speaker  16:07
+this fee for this amount. But then,
+
+Unknown Speaker  16:16
+then we're stepping away a bit from the idea of an invoice, amended invoice
+
+Unknown Speaker  16:23
+is now it's not, it's not with the other items, which is a little odd.
+
+Unknown Speaker  16:30
+It's going to make your what's the balance as of this date
+
+Unknown Speaker  16:34
+more challenging.
+
+Unknown Speaker  16:42
+Um, that's it.
+
+Unknown Speaker  16:47
+I mean, it adds one more RG yet,
+
+Unknown Speaker  16:51
+but it because, if
+
+Unknown Speaker  16:54
+you're wanting to do the balance as of this date, well, then use the original subtotal
+
+Unknown Speaker  16:59
+from the item from the invoice, and then you just add in forgiveness rows on the date you can now you can only, you can only forgive once. You can forgive more than once. It is up.
+
+Unknown Speaker  17:10
+So original subtotal stays the same.
+
+Unknown Speaker  17:14
+The forgiven amount changes, but you your balance as of would have to what I mean it just have to look at the forgiveness RG, okay.
+
+Unknown Speaker  17:24
+So for any given period, look at the invoice date, and at all the forgiveness dates, and you calculate the balances as of those dates, and recalculate the waterfall as of those dates
+
+Unknown Speaker  17:34
+for the balances. RG,
+
+Unknown Speaker  17:37
+I mean, we don't have the balances. RG, yet, but something like that. Yeah,
+
+Unknown Speaker  17:47
+I'm not
+
+Unknown Speaker  18:02
+having a very hard time saying it's blatantly wrong.
+
+Unknown Speaker  18:05
+It might be right if it feels like there's a I
+
+Unknown Speaker  18:24
+it's almost like
+
+Unknown Speaker  18:38
+it's almost like there's a third
+
+Unknown Speaker  18:47
+the third stage that comes before invoicing. This is not the right terminology, but it's almost like there's an order, an order concept,
+
+Unknown Speaker  18:57
+where it's a
+
+Unknown Speaker  19:06
+maybe this is actually right.
+
+Unknown Speaker  19:10
+What if the balances are? What if we had a
+
+Unknown Speaker  19:18
+source of truth
+
+Unknown Speaker  19:22
+that says for the period.
+
+Unknown Speaker  19:29
+I'm
+
+Unknown Speaker  19:30
+not sure if I want a snapshot as of today or a historical snapshot,
+
+Unknown Speaker  19:38
+but what if?
+
+Unknown Speaker  19:42
+What if you had itemization that was complete, that was a dated, historical balance by period, a period balance, RG,
+
+Unknown Speaker  19:49
+apart from
+
+Unknown Speaker  19:51
+any payment,
+
+Unknown Speaker  19:53
+it's just this is when we incurred the fees. On this date, we added delayed fee on this date, we forgave this much.
+
+Unknown Speaker  20:00
+Motion, and then there's a synchronization function of method, methodology of some kind, that pushes that to the invoice.
+
+Unknown Speaker  20:10
+So there's a separate source of truth, or you always keep it in sync. There's a separate source of truth, that is, that says what is the total that is owed?
+
+Unknown Speaker  20:27
+For this period.
+
+Unknown Speaker  20:34
+How does that deal with
+
+Unknown Speaker  20:37
+so that's only for the rental side, not for other fees and stuff as well. Correct, that's only rental.
+
+Unknown Speaker  20:50
+How does that help?
+
+Unknown Speaker  20:56
+In my head? It does, but I'm not sure.
+
+Unknown Speaker  21:00
+Don't ask me to be logical, and
+
+Unknown Speaker  21:10
+my thought is that
+
+Unknown Speaker  21:20
+I don't know. There's a world in which I thought it could. I'm not sure. I mean it might. I'm just not tracking.
+
+Unknown Speaker  21:40
+Would it help to
+
+Unknown Speaker  21:43
+bring Dwayne on and ask
+
+Unknown Speaker  21:46
+three minutes? Okay, so I'm wondering if just asking him how, how they think about forgiveness, might help, because he they live in that world. So to remember that our original RG just didn't like it sort of made sense, but sort of didn't for him, and when we switched to this design, it made a lot more sense, right? So hearing a bit from him might help. Okay, so the options we have are just straight up post forgiveness as of the date of the original invoice.
+
+Unknown Speaker  22:22
+So nothing special. We could have a separate which is what we have right now,
+
+Unknown Speaker  22:26
+right, right, yeah,
+
+Unknown Speaker  22:28
+well, yeah, yep, where it's just, it's just a lump sum, as of the same data as invoicing
+
+Unknown Speaker  22:35
+Well, as of right now, as of, as of the rework, historically, we had had it dated, but as of the rework, it's lump sum, correct, right, right. We have a separate forgiveness RG, we have credit memos. We have amend
+
+Unknown Speaker  22:51
+invoice itemization amendments.
+
+Unknown Speaker  22:56
+Those are kind of the
+
+Unknown Speaker  23:20
+you
+
+Unknown Speaker  24:05
+Sean got a random signal message from Emmy Lou
+
+Unknown Speaker  24:11
+Jonathan was congratulating him on
+
+Unknown Speaker  24:14
+on Having started dating.
+
+Unknown Speaker  24:19
+This is weird, is I've I've I've never before gotten spam messages on signal, but it's like, it's like a I saw your contact information on my phone but didn't save your name. Can I? Can you tell me who you are?
+
+Unknown Speaker  24:33
+That's a very specific thing, of like,
+
+Unknown Speaker  24:37
+it literally just type in numbers from Yeah. It's just straight up typing the phone number and trying it out.
+
+Unknown Speaker  24:47
+Credit memo is typically how this stuff gets handled, because it has posted its revenue as if the original date, okay.
+
+Unknown Speaker  24:57
+And so at that peak, at that point.
+
+Unknown Speaker  25:01
+You're losing money on tax. No, no your credit
+
+Unknown Speaker  25:07
+well, how you're but
+
+Unknown Speaker  25:09
+you just calculate tax in your credit memo, and it's negative income on your sales tax return. Who cares? I mean, the customer might, theoretically,
+
+Unknown Speaker  25:19
+I don't know, gain or lose a penny,
+
+Unknown Speaker  25:23
+but we don't care. I mean, it's they gain or lose a penny, every, every, every month, like, Yeah, whatever. There's not, from our standpoint, it's a discrete unit. So
+
+Unknown Speaker  25:35
+it doesn't,
+
+Unknown Speaker  25:38
+hi, Dwayne, hi.
+
+Unknown Speaker  25:40
+That was a fun morning.
+
+Unknown Speaker  25:45
+Apparently, do
+
+Unknown Speaker  25:47
+you want the story or just want to get to work? That's completely up to you. We're in the zone, but we're happy to give you an ear if you'd like in here and need a rant. Well, apparently you have to for for tankless water heaters, you're supposed to de scale them every so often. If you don't do that, they eventually stop working.
+
+Unknown Speaker  26:08
+Descaling them, apparently, is a process whereby you pump straight vinegar through the thing for an hour and and then it magically works again. So wow, that's what I've also,
+
+Unknown Speaker  26:24
+apparently, you need to change your shower cartridge periodically to avoid hot water back feeding.
+
+Unknown Speaker  26:30
+And so after I called up Moen they said, oh, sorry, previous owner, we just cover the the initial owner, it's going to be 80 bucks for new cartridge. I'm like, oh, that's fine. Don't worry about I can get it cheaper somewhere else. No sweat. They're like, Oh, well, we could do this one time exception and send you one for eight bucks. Okay, fine.
+
+Unknown Speaker  26:53
+All the things I didn't know and never wanted that you and I know didn't know and never really wanted to know, but it was
+
+Unknown Speaker  27:00
+forced upon us.
+
+Unknown Speaker  27:03
+That's my hot water saga. All right.
+
+Unknown Speaker  27:06
+Justin also said the reason he gets himself into hot water is it keeps him clean. So that's why.
+
+Unknown Speaker  27:12
+Who says that? GK, Chesterton
+
+Unknown Speaker  27:17
+in true Chesterton style.
+
+Unknown Speaker  27:22
+Okay? We are working through forgiveness. Oh, but hold on, one last funny little piece to this entire series, my 15 year old daughter, who is like a
+
+Unknown Speaker  27:36
+scaredy cat of the cold, but like routine is everything. Like you, you do not change the routine. If you shower every night, you do not change the routine and shower the next morning.
+
+Unknown Speaker  27:50
+So the water heater quit working last night. I'm like, you don't have hot water. She's like, so I'm going to take a shower. And I'm like,
+
+Unknown Speaker  28:00
+There's no hot water,
+
+Unknown Speaker  28:03
+so she went and took a freezing cold shower.
+
+Unknown Speaker  28:09
+Oh, and it just so she doesn't have to change her routine and potentially shower in the morning.
+
+Unknown Speaker  28:16
+That's hilarious. What happens
+
+Unknown Speaker  28:20
+not I am not taking a freezing cold shower. I don't care.
+
+Unknown Speaker  28:25
+Nope, what
+
+Unknown Speaker  28:27
+happens when an unstoppable force needs an immovable object? IE,
+
+Unknown Speaker  28:31
+yeah, Cold Shower versus breaking routine. That's hilarious.
+
+Unknown Speaker  28:36
+That's hilarious.
+
+Unknown Speaker  28:39
+All right, let's get to it. All right,
+
+Unknown Speaker  28:44
+forgiveness. Seth and I are having an argument on forget. How we want to handle forgiveness. We thought we had a simple solution, forgiveness? Are we? Are we talking forgiveness of fees? Fee, forgiveness? Okay, basically it would said in real life is also true in accounting, you can forgive, but
+
+Unknown Speaker  29:01
+you can't forget. And so, we we need dates.
+
+Unknown Speaker  29:06
+We need dates of forgiveness,
+
+Unknown Speaker  29:09
+okay,
+
+Unknown Speaker  29:11
+which messes with all kinds of stuff.
+
+Unknown Speaker  29:16
+Typically, the way you would handle this in an accounting system, which is kind of where it was. Well, in a typical accounting system, you would invoice it and and then three, three months later, and that would be posted as revenue. And presumably you would have closed the period at least. If you're closing, I mean closing just annually, then at least we need to handle over the end of the year. But if you're closing the books monthly, then, well, you need to handle it then too. And so you would issue a credit memo for the late fee.
+
+Unknown Speaker  29:50
+The the
+
+Unknown Speaker  29:52
+most obnoxious thing with that is, I don't know, you kind of lose the ability to tie these things together in some capacity.
+
+Unknown Speaker  30:00
+Uh, we can
+
+Unknown Speaker  30:01
+certainly handle the accounting. Okay, so there's a few ways that we can do this.
+
+Unknown Speaker  30:07
+Can we just write it off?
+
+Unknown Speaker  30:12
+Well, we can't, but we need a date as of which to write it off. So, so one of the so there's one Seth's preference at this point
+
+Unknown Speaker  30:21
+is to have a separate forgiveness RG, that we track forgiveness dates, so that we know what dates to write it off as, okay,
+
+Unknown Speaker  30:33
+and then maybe a total forgiveness amount, or a total forgiveness amount in the itemization. RG, basically the invoice line items that says, you know that we can see how much was forgiven
+
+Unknown Speaker  30:46
+total across all time. You're not convinced on this idea. I think it's fine. I'm ambivalent. There's like four different ways we could go about it. Do you? Is there a way? But, well, I didn't like your idea of issuing some memo, credit memo, or something, or that sounded that sounded like a nightmare.
+
+Unknown Speaker  31:07
+We could also
+
+Unknown Speaker  31:10
+put these amendments into the itemization RG as well.
+
+Unknown Speaker  31:19
+And really fundamentally, what we have is the forgiveness RG is a credit memo or G that ties back to the original invoice and line item. I mean itemization lines,
+
+Unknown Speaker  31:35
+okay? I mean and then it's just semantics of what you call it, if you can go with forgiveness or G, whatever, it doesn't matter as far as accounting, matter as far as accounting impact, I don't care. But we may, at some point
+
+Unknown Speaker  31:47
+want a way.
+
+Unknown Speaker  31:50
+We might want to change the forgiveness RG to be credits of some kind and and have a way to have it apply to, you
+
+Unknown Speaker  32:02
+know, additional line items.
+
+Unknown Speaker  32:05
+But technically, technically, fee forgiveness is a credit. It is a credit.
+
+Unknown Speaker  32:14
+I don't necessarily have a strong opinion how he handled under the hood. I just want it to be smooth for for both sides of the accounting line. In
+
+Unknown Speaker  32:24
+other words, I don't we. I want to make sure it's, it's it's easy and smooth for the for the person that's generating the forgiveness, they shouldn't have some convoluted way to do this. And simultaneously, on the other side. When it talks to accounting, it just needs to work.
+
+Unknown Speaker  32:45
+That is, that is the most, that is the most vaguest answer I can give
+
+Unknown Speaker  32:51
+the the let's be,
+
+Unknown Speaker  32:54
+let's, let's as closely model standards as possible.
+
+Unknown Speaker  32:59
+Makes me wish for a credit column in the itemization RG that calculates off of a credit. I'd be fine with the with changing, okay, genuinely, I would be fine with a separate forgiveness RG and just showing that forgiveness column in the in the RG. I think it's slightly more future proof to think of those as credits and have a credit column, but that might screw things up for reporting as well and just make it unnecessarily complicated at the reporting on the reporting side, we can always rename it later, when we need to. So
+
+Unknown Speaker  33:31
+I'm fine with that. I mean, what you're suggesting is exactly, I think it's exactly the design I'm wanting, just calling it credit instead of forgiveness. Correct. That's correct. And then we could, I mean, we could add a type, we could ship a type of forgiveness. So it's always forgiveness for now, and down the road, we could add more if we wanted to.
+
+Unknown Speaker  33:50
+Or we could just remember that that's what it is, and that's what we're changing it to,
+
+Unknown Speaker  33:57
+and and know that we'll have to rename it and add migration. I don't care.
+
+Unknown Speaker  34:02
+And then and handle accounting or reporting, and we don't have to think about reporting at this point.
+
+Unknown Speaker  34:11
+The advantage? Well, yeah, that's,
+
+Unknown Speaker  34:16
+that's,
+
+Unknown Speaker  34:19
+is the credit applied to the subtotal,
+
+Unknown Speaker  34:23
+right? Yeah, yes. So it reduces taxable Yes, which
+
+Unknown Speaker  34:31
+means for sales tax liability, you'll have to, yeah. I mean, we'll have to do what I'm doing right now. Yep,
+
+Unknown Speaker  34:40
+exactly.
+
+Unknown Speaker  34:41
+Okay, so that's fine. I don't care. I think Seth,
+
+Unknown Speaker  34:50
+I could be persuaded either way on that I do have a slight preference towards credit right away, but it also seems like a little bit of overkill, so I.
+
+Unknown Speaker  35:01
+Uh, the next question, how important is
+
+Unknown Speaker  35:07
+revenue collection reporting to you, Dwayne, before March,
+
+Unknown Speaker  35:15
+explain,
+
+Unknown Speaker  35:18
+sorry, rent collection, specifically,
+
+Unknown Speaker  35:21
+basically, the very short answer is that because of forgiveness and not forgiveness,
+
+Unknown Speaker  35:31
+refunds and NSF,
+
+Unknown Speaker  35:35
+Because of refunds and NSF
+
+Unknown Speaker  35:38
+rent,
+
+Unknown Speaker  35:41
+okay, but why is
+
+Unknown Speaker  35:44
+why? Why aren't these just calculated as of the date
+
+Unknown Speaker  35:48
+of the refund, or the NSF,
+
+Unknown Speaker  35:51
+with our past designed?
+
+Unknown Speaker  35:54
+Would you have a negative for NSF? Yeah.
+
+Unknown Speaker  35:59
+So you would, you would say on the 31st if you get, if you deposit a check on the 31st opposed to your bank, and you get an NSF the next month, then January is going to have $300
+
+Unknown Speaker  36:11
+higher revenue, and you're going to have to make up for that in February.
+
+Unknown Speaker  36:19
+Same with the chargeback. You you collected it, then you lost it,
+
+Unknown Speaker  36:28
+okay, you refunded it, you collected it.
+
+Unknown Speaker  36:32
+I think I can make that work.
+
+Unknown Speaker  36:38
+Okay, but good. Yeah.
+
+Unknown Speaker  36:43
+I mean, I think I can probably make it work. I'm not loving cashing how much rent was paid in the payments, RG,
+
+Unknown Speaker  36:52
+but it's a short term solution to keep from spending a lot of time to get the balances are to work on a balances, RG, and then Dwayne the very short answer on the balances. RG,
+
+Unknown Speaker  37:09
+Seth, is there a way that we could use
+
+Unknown Speaker  37:13
+accounting impact in some capacity for the balances? RG, I
+
+Unknown Speaker  37:21
+it.
+
+Unknown Speaker  37:23
+That's maybe a future conversation. So jumping around a little bit, Dwayne, the bottom line is that
+
+Unknown Speaker  37:31
+to be able to effectively say, okay, the real way to do,
+
+Unknown Speaker  37:39
+to do rent, collected reporting, ideally is to have an RG that says, as of this date,
+
+Unknown Speaker  37:48
+this much of this fee was incurred and this much of this fee was paid. Basically, is that right? Seth, how you would say it? I mean, I think essentially we go, we reverse engineer something similar to our old events. RG, right. We had started on that route and decided we could
+
+Unknown Speaker  38:06
+keep from doing that by
+
+Unknown Speaker  38:09
+hashing one or two fields, which
+
+Unknown Speaker  38:13
+is what we've been doing
+
+Unknown Speaker  38:17
+long term. I've got a feeling we're going to want enough reporting with as of dates and stuff. So as long as we're just going current, it's super easy. We can do all the reporting we need off of our current, our cheese. It's when we need to start going as of this date, what was I at? What
+
+Unknown Speaker  38:32
+was my balance at this date? That it gets nasty, and that's why, like, the revenue collection is hard, because we have to say, how much revenue had we collected? Did we collect last year? How should we collect this year?
+
+Unknown Speaker  38:48
+So what's the question? The question is,
+
+Unknown Speaker  38:52
+we can spend
+
+Unknown Speaker  38:57
+half a day to a day of somewhat, maybe even mostly, sadly, I don't know, throwaway work, okay, if we want to just,
+
+Unknown Speaker  39:08
+if we just want historical balances for rent, incurred and collected,
+
+Unknown Speaker  39:18
+we can do that in Half a day to a day. If we want
+
+Unknown Speaker  39:23
+everything, if we want all fees, that's going to be more like, well, it's somewhere between a day and a week, and we don't know exactly what it is. So let me make sure I'm understanding. So you're saying this would be spin a scenario for this. I want a dashboard that shows me
+
+Unknown Speaker  39:43
+stacked
+
+Unknown Speaker  39:44
+bars of rent collected, plus late fees collected, plus NSF collected, plus everything across time. Gotcha, this is dashboard stuff. Yeah, dashboard stuff. Yeah.
+
+Unknown Speaker  40:02
+So I what we're our thought is that we can get the rent collected
+
+Unknown Speaker  40:08
+reports, dashboards working like they had been with a stop gap solution. But it's not a long term if we're going to want reporting on other fee, other fees collected.
+
+Unknown Speaker  40:25
+So this, predominantly, the one that you're talking about is my fun little chart where we show
+
+Unknown Speaker  40:35
+what what would have been due at that point in time, and what we actually collected at that point in time,
+
+Unknown Speaker  40:42
+right?
+
+Unknown Speaker  40:44
+It's the it's the potential versus received revenue conversation,
+
+Unknown Speaker  40:55
+and the hang up is like, okay, circle, now that, now that I'm understanding what you're what what You're
+
+Unknown Speaker  41:04
+stalling on.
+
+Unknown Speaker  41:06
+You said something about throwaway work explain.
+
+Unknown Speaker  41:12
+We think there's a cheaper solution. I do Seth is probably less convinced.
+
+Unknown Speaker  41:17
+I'm the eternal optimist who doesn't have to deal with it practical implementation. Think that there's a short term solution in which on the payment row
+
+Unknown Speaker  41:27
+we would cash how much rent that payment paid for, which would give us not well, total revenue is actually
+
+Unknown Speaker  41:40
+pretty easy with more with more time,
+
+Unknown Speaker  41:45
+or is this like, do I need this like, in order to start to make the move before, before RTO programs offers? Or is this, or is this like, this is painful all the way up to the point of, you know, going to market,
+
+Unknown Speaker  42:00
+it's going to be painful either way. And the question ultimately is, do you want us to think about it now while we're thinking about what
+
+Unknown Speaker  42:09
+we're thinking about fees and stuff, or should we just kick the can down the road a few months and pick it up, then
+
+Unknown Speaker  42:16
+kick the can
+
+Unknown Speaker  42:19
+now? I mean, that's fun reporting,
+
+Unknown Speaker  42:25
+and Leanne's not going to be happy with me by saying this, because we actually what well,
+
+Unknown Speaker  42:36
+because we actually pay some people's bonuses off of this information.
+
+Unknown Speaker  42:42
+That's the only hang up.
+
+Unknown Speaker  42:46
+Is there?
+
+Unknown Speaker  42:49
+Okay? Is it? Is it just rent, or is it fees also, well, like if you took fees out of the question? In other words, if we were only tracking rent and damage waiver fee, or, yeah, let's just say rent and damage waiver fee. Does it get any easier? I think rent, just rent. I think Seth, tell me what your thoughts are. I think just rent is between half a day to a day.
+
+Unknown Speaker  43:11
+Yeah. But then we have to you had thought we could subtract Damage Waiver out, like store both and subtract out damage waiver. But now I have to get smart with saying, Am I the earliest? And then it once you handle in refunds and stuff, you have to get even smarter, saying, Well, maybe on the earliest, or was there a refund that took us back up? I
+
+Unknown Speaker  43:31
+don't understand. Okay, in my mind,
+
+Unknown Speaker  43:35
+the field, what am I missing? You said that you would store, rent and damage waiver, the total because of the damage waiver, and then rent, are the first two. And then you said that we could, and then you, from there, you subtract out the damage waiver, yep, but you're gonna need, I can't. Why can't you use accounting impact to define this? This seems pretty simple. You have all of that information over on the accounting side. You
+
+Unknown Speaker  44:04
+you would look at AR versus accounts receivable versus versus what you actually received,
+
+Unknown Speaker  44:13
+like a balance sheet
+
+Unknown Speaker  44:16
+change in AR across the month,
+
+Unknown Speaker  44:20
+versus revenue for the month, or something like that. You're gonna so you're gonna incur months of rent, which are going to go into AR, and at some point you're going to pay them, which means they come back out of AR and go into revenue.
+
+Unknown Speaker  44:38
+Just run it up, which this
+
+Unknown Speaker  44:40
+reminds me of another question. I thought it goes through Matthias, but how is accounting impact actually going to funnel the rent as of a certain date, like if you pay half your rent today and half of the a week from now? How does accounting impact know
+
+Unknown Speaker  44:57
+it just posts the payment to AR. It.
+
+Unknown Speaker  45:00
+Soon as the invoice, as soon as it's invoiced, it's it hits AR, and any payment you make goes against it. So does because we had special handling for the different fees. We were saying, some fees go to this account, some right somebody
+
+Unknown Speaker  45:15
+at the time of invoicing.
+
+Unknown Speaker  45:21
+And then when? What happens with payment? Then
+
+Unknown Speaker  45:24
+how do you know which account to pull out of? It doesn't. It doesn't matter. So, okay, when the invoice? When? When we invoice for the first okay, if, if you pay money for next month's invoice that goes into a customer deposit account on your on their balance sheet, and then on the first we'll take any money that you paid towards it, transfer it to well, we'll, we'll report revenue.
+
+Unknown Speaker  45:48
+So we'll, we'll credit, we'll credit revenue, and we'll debit AR. Debiting ar, ar is a and is an asset, and so debiting it will increase AR. So now AR goes up, we pull customer deposits in to lower it a little bit as payments come in, we just keep lowering, lowering, lowering, lowering, lowering, AR. And we really should never have payments for more than what this contract incurred in AR or posted to AR. And so genuinely, we don't care what they're paying from
+
+Unknown Speaker  46:22
+Okay,
+
+Unknown Speaker  46:28
+but, yeah, you could do a
+
+Unknown Speaker  46:33
+well. Duane, you can look at accounting, but I don't know how, you
+
+Unknown Speaker  46:37
+won't be able to tell what, how much rent was paid.
+
+Unknown Speaker  46:42
+You can look at total revenue,
+
+Unknown Speaker  46:45
+and we can give you very easy revenue versus total revenue versus revenue collected. The issue is, if you want something besides total revenue, if you want to leave out fees, you want to look at just rent. You want to look at certain fees, etc. Well, if we can get a simplistic way to measure this, because it really is a measuring
+
+Unknown Speaker  47:05
+like, it's not so much, it's not so much about which dollars it is. It's more about measuring what was, what was due and what was paid. And if, if you generate, if you if you said, where we're going to if you said we incurred $100
+
+Unknown Speaker  47:23
+of rent and we received 150
+
+Unknown Speaker  47:27
+well, then obviously,
+
+Unknown Speaker  47:29
+they exceeded their goal. If they only collected $99 of rent of the incurred amount, well then you know, they were underneath their goal. So if we can get something simplistic, and then we can kick, because that would allow us to kick the can down the road until Seth comes up with a bright idea one day, and you know, is jumping up and down.
+
+Unknown Speaker  47:51
+I mean, we can do that easily enough, as long as you're not trying to say how much of the $99 was collected last month, how much was collected this month? If it was split between the payments, that it gets nasty. No, it's, no, it doesn't. It's never about, like, it's always about, if we said, all customers in the database incur their months of rent, let's
+
+Unknown Speaker  48:15
+say $100,000
+
+Unknown Speaker  48:16
+is incurred. And we get to the end of the month and we said, oh, wow, we collected $150,000
+
+Unknown Speaker  48:24
+well, they exceeded the goal by whatever that percentage is.
+
+Unknown Speaker  48:29
+And there's, there's, there's, there's levels of of bonus based on on, you know, what they're because,
+
+Unknown Speaker  48:37
+really a pretty simplistic calculation
+
+Unknown Speaker  48:40
+at this point, because RTO Pro has a RTO like,
+
+Unknown Speaker  48:46
+they're doing it completely manual right now, RTO Pro has a potential revenue report that basically says, going into this time period, here's all the months, here's all the people that are going to incur red here's the dollar value. Well, then we just literally get to the end of the month, we pull the sales tax report and said, what did we actually get? Well, there's our number. That's how simplistic we're doing it. Now we can do that super easily. That's not a problem. So if we can reproduce something simple like that, then we can continue on, continue. That's easy.
+
+Unknown Speaker  49:17
+Yeah. We just, we can look at all invoices within a certain date range, how much we had on them, and then we can say how much was paid to those invoices within that date range or not paid to those invoices, how much was paid, and how much was paid during that timeframe? Yeah, yeah. No, I do think, I do think it's like, at some point we want to get to the point where we can say,
+
+Unknown Speaker  49:39
+here's all the months of rent. Here's all the rent that was incurred. Here was all the rent that was paid. Here was, here's all the rent, plus
+
+Unknown Speaker  49:48
+plus late fees. Like you, like we want to have a progressive stack in there so you can say, okay, you know it's, it's great to say that you, we incurred $100,000
+
+Unknown Speaker  49:58
+in rent, and we, you.
+
+Unknown Speaker  50:00
+And we received 150,000
+
+Unknown Speaker  50:01
+but maybe that was $50,000 worth of late fees. You know, it's like, it's it at some point, we want to differentiate that. But, I mean, for the for the time being, if we can get something simple to work, well, then we can keep going. Yeah, we can. I mean, we could create a report with a simple version for you right now. That's super easy, like, it's half an hour of work. If that this other getting it all broken down by fee and timeframe would is what would take a lot of time. It's something we can do. It's just going to take thought to figure out how to even, even so Seth, I mean, just, I'm gonna, I'm gonna,
+
+Unknown Speaker  50:33
+I'm gonna repeat my I'm gonna repeat something or somebody repeat something. Is that it's not about like, if I said I Inc, if I incurred this month of rent, or if I incurred this amount of rent, it still is, what did we receive in that that time frame? It's not about, it's not saying, Well, how much of that rent did we incur? Like, like, we're not trying to match it out to the the amounts that were actually incurred. It's literally, we incurred this much, we received this much. It still is that simple, yeah, but we don't where the problem is that right now, we're not applying a payment to itemization rows. It's to the invoice. Oh, that's why, right? Because we went, because we went to the invoice idea, yeah, so we can create a balances, RG, in the future, that would allow us to do that. But you're saying, I mean, it would also allow us to do much, even more in depth, saying this was incurred, how much of it was paid
+
+Unknown Speaker  51:31
+at what point in time.
+
+Unknown Speaker  51:34
+I don't and I mean, maybe if we know we don't need that part, we just need to say how much was incurred, how much was paid, we could come up with something. But no, I think they're with how we've modeled it. There they go, hand in hand.
+
+Unknown Speaker  51:46
+I see what you're saying. I see what you're saying. So, so, so how does that tie? Then out to, how does accounting impact work? Then for if we incur fees, and we want to pipe the revenue from those fees over into a different GL account.
+
+Unknown Speaker  52:02
+It's, it's just, it's the revenues recognized at the point of invoicing, not at the point of payment. Gotcha.
+
+Unknown Speaker  52:15
+And Pardon my ignorance if they if,
+
+Unknown Speaker  52:21
+if you write off, let's say you repo the building, and you had three invoices, or three months worth, or three invoices worth of rent and fees, etc, that were incurred, and you write that off,
+
+Unknown Speaker  52:35
+how does that? How does that transpire? Or how does that transact on the GL accounts in accounting, then we'll have a what we're currently planning to do. I think this is right. I don't know. Probably could be argued, we're planning to have a payment type of bad debt
+
+Unknown Speaker  52:51
+that's basically automatic. And then if you make a subsequent payment, so that it would it would continue to show
+
+Unknown Speaker  52:58
+a balance, continue to accept payments. And if you make a payment, it would reduce bad debt and increase,
+
+Unknown Speaker  53:08
+yeah, I mean,
+
+Unknown Speaker  53:10
+basically it will take it out of AR and post it to a bad debt expense or whatever you want when you collect it. Can you talk a little bit about how that works? Do you want a separate revenue account for recovered bad debt, or, I don't know, but
+
+Unknown Speaker  53:25
+again, Pardon my ignorance.
+
+Unknown Speaker  53:29
+So at the point of invoicing you're going to you're going to increase the revenue account for,
+
+Unknown Speaker  53:38
+let's say, late fees. Okay, yeah, and you post you simultaneously, it gets posted to accounts receivable because it's been invoiced. It's not been paid yet.
+
+Unknown Speaker  53:50
+At the point, at the point that, the point that you write that off, it writes out, out of, out of accounts receivable as bad so you just increase bad debt, is what's happening, decreases accounts receivable, increase bad debt, right? But the the amount that's in that in the revenue account stays the same,
+
+Unknown Speaker  54:09
+right? You still, you still had that revenue. It was just expensed out as bad
+
+Unknown Speaker  54:16
+debt. Well, unless you, unless you have a flag,
+
+Unknown Speaker  54:21
+well, maybe, I don't know. Maybe this is the question that needs to be answered unless you want to post bad debt to the
+
+Unknown Speaker  54:29
+specific account. But, I mean, why does that? What
+
+Unknown Speaker  54:33
+does that matter? Do you really want to know that? No, this is,
+
+Unknown Speaker  54:39
+this is me making sure that I'm educating myself well enough on accrual based accounting. Because
+
+Unknown Speaker  54:47
+the truth of the matter is I probably am not as I'm not. I'm not as well versed remotely as well as you are when it comes to accrual accounting. Sure, I think there is a.
+
+Unknown Speaker  55:00
+An argument that could be made
+
+Unknown Speaker  55:02
+to basically use the forgiveness RG for bad debt, and you would basically go back through and you'd reverse all the fees.
+
+Unknown Speaker  55:13
+But then, but then you need a way to,
+
+Unknown Speaker  55:16
+I don't know,
+
+Unknown Speaker  55:21
+when somebody pays,
+
+Unknown Speaker  55:23
+then you just, then you would, you would either,
+
+Unknown Speaker  55:28
+we argued about this fairly long when I was out there, didn't we on bad debt?
+
+Unknown Speaker  55:35
+I think Seth and I came up with the payment model. But I could be wrong. No, I I'm going to drop if that's fine.
+
+Unknown Speaker  55:44
+Did you need to? Did you need to talk about auto pay? We'll tell them what we want for auto pay.
+
+Unknown Speaker  55:50
+Simple. I want to go really, really simple. I would be a fan.
+
+Unknown Speaker  55:57
+We don't ever try to track. Part of me wants to say we never try to track back to to to amounts that are actually owed. It's like we'll set up you. You say you want to set up auto pay great. How much, and you always stomp in on a value.
+
+Unknown Speaker  56:14
+I'll let you all argue about it. Okay, do
+
+Unknown Speaker  56:31
+I'm okay. It depends what simple Do you want? Pick your simple you can have simple amount and and then have people call up. Let's finish it. Are we done with this bad debt conversation.
+
+Unknown Speaker  56:43
+Yeah, I have a slight not.
+
+Unknown Speaker  56:46
+I think our approach is the simple way to handle it.
+
+Unknown Speaker  56:54
+If, for some reason, somebody gets really finicky around the fact that I want to break down bad debt between the different types of fees, then we're going to have a have have trouble,
+
+Unknown Speaker  57:09
+and we may have to revisit it at that point. But it seems very unlikely to me, at this point, that somebody would actually have that kind of a response, but I don't know
+
+Unknown Speaker  57:22
+I'm I'm good with it as it is, but, Oh, somebody's gonna have some, we're gonna, we're gonna have plenty of people that are going to be like, like that, and we're just, this is where, this is where other software companies have kind of got into this. No, that's just the way we're going to do it. That's just the way we do it. Yeah,
+
+Unknown Speaker  57:39
+and I know that hacks some people off, but at some point you have to draw the line in the sand, like your your little anomaly of a way to do this is not worth trying to account for, right? That should be, you know what I want to I want to come up with another somebody email me someday and says, we want it to work this way, your anomaly of a way of your outlier, your process is an outlier to us. We are not going to into whatever. Okay, let's go to auto pay.
+
+Unknown Speaker  58:15
+Okay, you pick your simple we can have an amount, which is just the total amount that gets paid if tax rate changes, then we'll just incur late fees and somebody goes and cleans it up. Yeah,
+
+Unknown Speaker  58:29
+and most, most likely what I mean, because,
+
+Unknown Speaker  58:35
+as of right now, like our auto pay is so much more
+
+Unknown Speaker  58:41
+comprehensive than anything RTO Pro has. And while I do,
+
+Unknown Speaker  58:47
+I do almost want to say, like, Okay, I don't, what are we asking for? If we said we have two options, fixed amount or based on your payment, and it will and Hey, Mr. Customer, if you select based on your payment, then if sales tax increases, your payment automatically goes up. If sales tax decreases, which it never does, then it automatically goes
+
+Unknown Speaker  59:12
+down. Is it? Is it worth going to methods?
+
+Unknown Speaker  59:16
+Here's how I would do it
+
+Unknown Speaker  59:19
+if I needed to account for that. When you set up the auto pay, you have a type, it's it's monthly amount,
+
+Unknown Speaker  59:27
+bi monthly amount, weekly amount, and bi weekly amount, and that is always auto calculated based on current tax rate, current everything.
+
+Unknown Speaker  59:37
+And then you also have a an exact amount, and you choose exact amount, and there's 200 bucks. Everybody going through the portal, when they say, I want to make a monthly payment, we say, note, if your tax rates change, your monthly payment will change. It's the same thing you get with utilities. It's the same thing you get with a phone bill. Of course, they're going to charge you the tax you have to.
+
+Unknown Speaker  1:00:00
+Pay the tax. That's the auto pay. And if
+
+Unknown Speaker  1:00:03
+somebody wants to overwrite it, they can do it on the back end, on our end.
+
+Unknown Speaker  1:00:07
+Again, I think it's simple. You just know you have you
+
+Unknown Speaker  1:00:13
+select one of those options, we'll do math to figure out what your monthly payment is. That math can update based on what's left on the contract and current tax rate. To me, it's not that much additional complexity
+
+Unknown Speaker  1:00:34
+I'm pulling up at a camp.
+
+Unknown Speaker  1:00:37
+But if RTO pro doesn't have that, there's a fairly good argument to say we're only going to do exact amount now, and let's put this in for spring or fall, and let's pull a rabbit out of a hat. Have a cool thing to announce, and let's do that. Let's do that.
+
+Unknown Speaker  1:00:53
+Let's, let's, let's, let's go by exact amount for right now and then at a point the future. Hey, congratulations. We have new features on auto pay that allow you to set auto set the monthly amount, and when you do so, it will always stay in alignment with your
+
+Unknown Speaker  1:01:14
+with tax rate, etc.
+
+Unknown Speaker  1:01:17
+Okay, good. I
+
+Unknown Speaker  1:01:24
+All right now we're
+
+Unknown Speaker  1:01:27
+now we're caught up. Are we
+
+Unknown Speaker  1:01:31
+at the place where we can do import stuff yet? Or, Yep,
+
+Unknown Speaker  1:01:35
+let's see. Okay, we're 37 minutes in.
+
+Unknown Speaker  1:01:43
+Yeah,
+
+Unknown Speaker  1:01:45
+yeah, let's make a fair stab at some import stuff. I'm going to run real quick To the bathroom. Okay, I'm
+
+Unknown Speaker  1:02:00
+you
+
+Unknown Speaker  1:03:31
+okay, I have question, yep,
+
+Unknown Speaker  1:03:34
+does our new structure solve anything for security deposits? And the way that we originally imported security deposits into a
+
+Unknown Speaker  1:03:43
+contract. It does not solve the fact that we still need to
+
+Unknown Speaker  1:03:50
+lie about these non contractual security deposits, but a security deposit because we have to go in and out, and we have to be able to do payments against them and from them. That's right, that's what it was.
+
+Unknown Speaker  1:04:08
+The only thing, okay, riddle me this. Then,
+
+Unknown Speaker  1:04:11
+is there a way to exclude them from the, from from the from the contracts reporting,
+
+Unknown Speaker  1:04:19
+I don't understand, if you go to, if you, oh, these guys, the
+
+Unknown Speaker  1:04:26
+No, if you go to the to the main menu, to the to the contracts report, and you select cricket Valley, the first thing that comes up is 1000 deposits, customer deposits.
+
+Unknown Speaker  1:04:38
+Well, I'm going to assume that what I would do is, after all is said and done. If it's
+
+Unknown Speaker  1:04:47
+if it had a zero balance, we resolve it as a payout or something, sure.
+
+Unknown Speaker  1:04:53
+So,
+
+Unknown Speaker  1:04:55
+I mean, right now, no, because, well, I'm not sure exactly where we're.
+
+Unknown Speaker  1:05:00
+At with them. But
+
+Unknown Speaker  1:05:06
+calc invoice ID.
+
+Unknown Speaker  1:05:09
+We have the invoice date, we have the invoice ID,
+
+Unknown Speaker  1:05:13
+taxable subtotal, taxable total, tax amount. Okay, let's start by, I think we can start by invoice doing the i
+
+Unknown Speaker  1:05:22
+i
+
+Unknown Speaker  1:05:28
+start by doing the Why are my shortcuts not Working?
+
+Unknown Speaker  1:05:32
+Good? Gracious,
+
+Unknown Speaker  1:05:42
+sure.
+
+Unknown Speaker  1:05:56
+Oh, what did they change? Seriously?
+
+Unknown Speaker  1:06:24
+So we have
+
+Unknown Speaker  1:06:27
+invoice date
+
+Unknown Speaker  1:06:31
+accounting company. Why don't you like this? Why don't you like this? What is your problem? What is your problem?
+
+Unknown Speaker  1:06:45
+Yes, account, company, what don't you like?
+
+Unknown Speaker  1:06:58
+Oh, okay, don't need it anymore. They fix it. Thank you people,
+
+Unknown Speaker  1:07:04
+awesome. Okay, so
+
+Unknown Speaker  1:07:07
+we have here,
+
+Unknown Speaker  1:07:10
+history, the trans date,
+
+Unknown Speaker  1:07:13
+trans date,
+
+Unknown Speaker  1:07:16
+source, data, history,
+
+Unknown Speaker  1:07:19
+this is still Really my D ID.
+
+Unknown Speaker  1:07:23
+We need
+
+Unknown Speaker  1:07:42
+the we need
+
+Unknown Speaker  1:07:46
+the account. We need the contract.
+
+Unknown Speaker  1:07:50
+Let's go back into these primary
+
+Unknown Speaker  1:07:56
+go into contract,
+
+Unknown Speaker  1:08:01
+source, data
+
+Unknown Speaker  1:08:04
+contract.
+
+Unknown Speaker  1:08:17
+Let's go
+
+Unknown Speaker  1:08:28
+this would be
+
+Unknown Speaker  1:08:41
+her.
+
+Unknown Speaker  1:08:45
+Oh, Joshy boy, what did you break? What did you break?
+
+Unknown Speaker  1:08:50
+What did you break?
+
+Unknown Speaker  1:08:54
+By a
+
+Unknown Speaker  1:09:00
+it attracts by I'm going
+
+Unknown Speaker  1:09:21
+to call Mark real quick one second.
+
+Unknown Speaker  1:11:56
+I'm back.
+
+Unknown Speaker  1:11:58
+Welcome back.
+
+Unknown Speaker  1:12:01
+Somebody broke something, somewhere, somehow.
+
+Unknown Speaker  1:12:14
+My fave,
+
+Unknown Speaker  1:12:17
+there's a contract ID.
+
+Unknown Speaker  1:12:20
+There's this source ID now we need
+
+Unknown Speaker  1:12:29
+the taxable subtotal.
+
+Unknown Speaker  1:12:36
+What? Why would we have a taxable subtotal?
+
+Unknown Speaker  1:12:41
+That is just stupid.
+
+Unknown Speaker  1:12:44
+Only wimps have taxable subtotals.
+
+Unknown Speaker  1:12:58
+Okay, well, I guess this isn't that bad. I
+
+Unknown Speaker  1:14:00
+The amount, GRP, other, amount other. GRP.
+
+Unknown Speaker  1:15:05
+That gives the taxable subtotal, and we Want the non taxable subtotal and
+
+Unknown Speaker  1:15:27
+decimals gather
+
+Unknown Speaker  1:16:01
+Yeah,
+
+Unknown Speaker  1:16:04
+tax amount,
+
+Unknown Speaker  1:16:41
+Little, find Balanced.
+
+Unknown Speaker  1:16:56
+Due Date,
+
+Unknown Speaker  1:17:12
+At eight and
+
+Unknown Speaker  1:17:23
+Oh, my fave now I love taxi tax stuff in here, okay, um.
+
+Unknown Speaker  1:24:22
+All right,
+
+Unknown Speaker  1:24:25
+Mark cracks me up.
+
+Unknown Speaker  1:24:27
+You're having an issue with a phone menu report, and
+
+Unknown Speaker  1:24:33
+Nick's in the office there at insight. And so
+
+Unknown Speaker  1:24:38
+I called Mark and said I was having the same issue. I thought he was, and it turns out it wasn't. But anyway, he sends me an email back that says
+
+Unknown Speaker  1:24:49
+the individual did not have accounting privileges in order to get the report. So we updated, and that said, Well, duh, I should have thought of that. He sends back to me. He says.
+
+Unknown Speaker  1:25:00
+Look smarter when Nick is in the office.
+
+Unknown Speaker  1:25:04
+That's hilarious.
+
+Unknown Speaker  1:25:06
+That was one of the one
+
+Unknown Speaker  1:25:10
+of the things that
+
+Unknown Speaker  1:25:12
+Arlen Miller liked about having
+
+Unknown Speaker  1:25:15
+an assistant is that I got to
+
+Unknown Speaker  1:25:19
+linguistics was not or communication, written communication was not highest on his list of natural skill sets.
+
+Unknown Speaker  1:25:27
+And so
+
+Unknown Speaker  1:25:29
+anyway,
+
+Unknown Speaker  1:25:31
+the role of making other people look smart, that's
+
+Unknown Speaker  1:25:36
+anyway, there you go. But I may have, I may have passed off expressions to Aaron in times past that come from either you or Seth.
+
+Unknown Speaker  1:25:49
+And then sheepishly grinned and said, Well, was it actually me after
+
+Unknown Speaker  1:25:56
+that's funny.
+
+Unknown Speaker  1:26:02
+Okay?
+
+Unknown Speaker  1:26:04
+V combs. How many any contracts produce?
+
+Unknown Speaker  1:26:11
+I think we need our contract.
+
+Unknown Speaker  1:26:14
+Oh, Lord, have mercy. This is not fun. Can
+
+Unknown Speaker  1:26:22
+we just get payments if a contract doesn't exist for
+
+Unknown Speaker  1:26:26
+it to what now we have
+
+Unknown Speaker  1:26:30
+payments that a contract doesn't exist for. Well, I mean, we're not importing everything and so,
+
+Unknown Speaker  1:26:37
+oh, you're because it's payments for contracts prior to what we imported.
+
+Unknown Speaker  1:26:44
+Well, I mean, presumably, but we don't really know for sure. For sure,
+
+Unknown Speaker  1:26:54
+can you cross reference?
+
+Unknown Speaker  1:26:58
+How does that work to a contract? Well, I guess you'd be cross referencing to source data, which is kind of odd. If you look at a contract
+
+Unknown Speaker  1:27:11
+and you say,
+
+Unknown Speaker  1:27:14
+Okay, let's
+
+Unknown Speaker  1:27:17
+new global macro
+
+Unknown Speaker  1:27:19
+contracts, RP, source, data, contracts, import, subset, so,
+
+Unknown Speaker  1:27:44
+yes, they're system wide.
+
+Unknown Speaker  1:27:48
+What I What do you think I asked you silly? Yeah,
+
+Unknown Speaker  1:27:54
+what you don't like, what you don't like.
+
+Unknown Speaker  1:27:57
+Okay, so then here in the subset, this will be fun. It is the primary one that's fine. Here we look for
+
+Unknown Speaker  1:28:06
+RP, source data, contracts, field, low contract field,
+
+Unknown Speaker  1:28:15
+RP, source Data, silver loom,
+
+Unknown Speaker  1:28:19
+ID and D,
+
+Unknown Speaker  1:28:26
+no contract, RP, source,
+
+Unknown Speaker  1:29:15
+like there's another RG import, which is docs, love,
+
+Unknown Speaker  1:29:25
+Well that I don't know how much that helped.
+
+Unknown Speaker  1:29:41
+Oh,
+
+Unknown Speaker  1:29:51
+which of this didn't run i?
+
+Unknown Speaker  1:30:00
+Probably do
+
+Unknown Speaker  1:30:07
+accounting for it on the incurred side as well,
+
+Unknown Speaker  1:30:13
+if
+
+Unknown Speaker  1:30:16
+incident or zero,
+
+Unknown Speaker  1:30:46
+what I am writing, really sloppy today, what in the world?
+
+Unknown Speaker  1:30:54
+Come on, write a complete expression, dummy.
+
+Unknown Speaker  1:30:58
+Okay. I mean, here's
+
+Unknown Speaker  1:31:04
+we think this guy should be in here somewhere.
+
+Unknown Speaker  1:31:08
+No, because we didn't import it. I'm looking at the wrong thing. Okay, fine.
+
+Unknown Speaker  1:31:13
+RP, source, data,
+
+Unknown Speaker  1:31:17
+Contra,
+
+Unknown Speaker  1:31:23
+contracts by store and contract ID index find we have the store and contract
+
+Unknown Speaker  1:31:31
+This guy.
+
+Unknown Speaker  1:31:36
+RP,
+
+Unknown Speaker  1:32:01
+and we'll just see like that.
+
+Unknown Speaker  1:32:08
+Okay, fine. Be picky.
+
+Unknown Speaker  1:32:11
+Actually going to tell me. Tell
+
+Unknown Speaker  1:32:17
+me what you want, what you really really want,
+
+Unknown Speaker  1:32:20
+whatever we really want. Okay, there's a $0 one, $0 one.
+
+Unknown Speaker  1:32:26
+I'm assuming $0 ones. We can just exclude
+
+Unknown Speaker  1:32:32
+$0 what transactions,
+
+Unknown Speaker  1:32:36
+most likely they were probably due dates. No, the total is Whoa, whoa, whoa, whoa, whoa, whoa,
+
+Unknown Speaker  1:33:04
+well, I mean, these are security deposit stuff.
+
+Unknown Speaker  1:33:09
+We wouldn't have it where it's coming back out of the security
+
+Unknown Speaker  1:33:13
+deposit. Would we have an invoice for that?
+
+Unknown Speaker  1:33:19
+Only if it's positive.
+
+Unknown Speaker  1:33:31
+So this would then be a
+
+Unknown Speaker  1:34:10
+history of
+
+Unknown Speaker  1:34:50
+so then.
+
+Unknown Speaker  1:35:51
+Wait for it,
+
+Unknown Speaker  1:35:55
+okay, well,
+
+Unknown Speaker  1:35:57
+and it's not, isn't it? Oh, wow, can't
+
+Unknown Speaker  1:36:18
+that's looking better.
+
+Unknown Speaker  1:36:22
+We should maybe
+
+Unknown Speaker  1:36:24
+the taxable subtotal needs a wait
+
+Unknown Speaker  1:36:38
+a minute.
+
+Unknown Speaker  1:36:55
+We have 825, 5.03 times,
+
+Unknown Speaker  1:37:01
+window, 625, 65
+
+Unknown Speaker  1:37:03
+ah, what in the world are you doing?
+
+Unknown Speaker  1:37:40
+It so much fun instructing Claude
+
+Unknown Speaker  1:37:44
+How to Write a Proper expression.
+
+Unknown Speaker  1:38:19
+What happened?
+
+Unknown Speaker  1:38:21
+Comet has been using four and a half gigs of memory. And between that and everything else, it dumped it dumped you,
+
+Unknown Speaker  1:38:30
+dumped me. So I'm gonna have
+
+Unknown Speaker  1:38:37
+to, let's resume this, and let's see if we can
+
+Unknown Speaker  1:38:41
+close some other tabs.
+
+Unknown Speaker  1:38:52
+Truly common. I said, well, that dropped it down by
+
+Unknown Speaker  1:39:04
+so that's 515-935-1594
+
+Unknown Speaker  1:39:09
+so I would expect this to be, oh, I know what it is.
+
+Unknown Speaker  1:39:16
+We also need
+
+Unknown Speaker  1:39:21
+amount GRP
+
+Unknown Speaker  1:39:24
+another.
+
+Unknown Speaker  1:39:41
+So we have,
+
+Unknown Speaker  1:39:54
+here we have.
+
+Unknown Speaker  1:40:02
+Don't tell me you're getting ready to
+
+Unknown Speaker  1:40:07
+croak on me again. There's
+
+Unknown Speaker  1:40:11
+a ridiculous amount of apps that use a gig of memory each it's just completely unnecessary. I
+
+Unknown Speaker  1:40:27
+I
+
+Unknown Speaker  1:40:33
+think let's just do this.
+
+Unknown Speaker  1:40:43
+So taxes, 4061, one,
+
+Unknown Speaker  1:41:00
+A,
+
+Unknown Speaker  1:41:03
+4060,
+
+Unknown Speaker  1:41:11
+so these three for this to amount in other.
+
+Unknown Speaker  1:41:16
+Okay, so we do this
+
+Unknown Speaker  1:41:20
+plus
+
+Unknown Speaker  1:41:23
+this
+
+Unknown Speaker  1:41:29
+725,
+
+Unknown Speaker  1:41:37
+comes out to 4060
+
+Unknown Speaker  1:41:40
+and the reported is 4061,
+
+Unknown Speaker  1:41:53
+I think
+
+Unknown Speaker  1:42:20
+so you can Remove Duplicates,
+
+Unknown Speaker  1:42:23
+not in reverse.
+
+Unknown Speaker  1:42:26
+Sort by
+
+Unknown Speaker  1:43:01
+I don't know if I like this or not, but It might be the best
+
+Unknown Speaker  1:43:06
+option. So then let's do
+
+Unknown Speaker  1:43:54
+it, okay? Ah, no, I want to do it the other way,
+
+Unknown Speaker  1:43:58
+I promise you. I
+
+Unknown Speaker  1:44:21
+Ooh, this is going to be fun.
+
+Unknown Speaker  1:44:36
+First let's do let's
+
+Unknown Speaker  1:44:41
+get Excel up and make our lives a little easier.
+
+Unknown Speaker  1:44:57
+Okay, so if we take 982,
+
+Unknown Speaker  1:45:02
+210
+
+Unknown Speaker  1:45:03
+times,
+
+Unknown Speaker  1:45:13
+20 to 87
+
+Unknown Speaker  1:45:20
+to 87
+
+Unknown Speaker  1:45:23
+we have 5578
+
+Unknown Speaker  1:45:27
+23 we add that Up, 1136, 20 which is right?
+
+Unknown Speaker  1:45:33
+We get this.
+
+Unknown Speaker  1:45:41
+8862 862, we do this.
+
+Unknown Speaker  1:45:54
+Okay, so that's too high.
+
+Unknown Speaker  1:45:57
+So what subtotal are we using?
+
+Unknown Speaker  1:46:00
+Taxable subtotal, 7587
+
+Unknown Speaker  1:46:07
+non taxable subtotal,
+
+Unknown Speaker  1:46:17
+982,
+
+Unknown Speaker  1:46:23
+9210, that
+
+Unknown Speaker  1:46:27
+doesn't make sense.
+
+Unknown Speaker  1:46:37
+Why wouldn't these 278?
+
+Unknown Speaker  1:46:41
+23, those those two are the right ones. So it should be calculating base off of,
+
+Unknown Speaker  1:46:49
+okay, so we have a bug
+
+Unknown Speaker  1:46:53
+possible, sort abs,
+
+Unknown Speaker  1:47:02
+amount in GRP,
+
+Unknown Speaker  1:47:06
+I'll snap.
+
+Unknown Speaker  1:47:12
+You have you start with all three, start with all the twos, amount, GRP, amount and other, GRP and other, and then you Do all the ones. Okay, fine.
+
+Unknown Speaker  1:47:36
+Okay,
+
+Unknown Speaker  1:47:38
+you are calculating.
+
+Unknown Speaker  1:47:55
+Well, almost let's see what decimals do.
+
+Unknown Speaker  1:48:08
+Right, we're calculating up to a five cent discrepancy on taxes. As a side note,
+
+Unknown Speaker  1:48:13
+five cent discrepancy on our taxes.
+
+Unknown Speaker  1:48:27
+This is
+
+Unknown Speaker  1:48:29
+point zero, positive or negative or both.
+
+Unknown Speaker  1:48:36
+I'm not sure
+
+Unknown Speaker  1:48:38
+we can just hard code it. Oh, there's a refund on here.
+
+Unknown Speaker  1:48:43
+That's why
+
+Unknown Speaker  1:48:56
+that would be the five cent difference.
+
+Unknown Speaker  1:49:11
+Let me handle the refund.
+
+Unknown Speaker  1:49:14
+We have no idea what the refund is for. Do we?
+
+Unknown Speaker  1:49:20
+No, I
+
+Unknown Speaker  1:49:22
+don't think he ever tracked reasons on refunds.
+
+Unknown Speaker  1:49:26
+Okay, is this refund? The amount that was refunded of this?
+
+Unknown Speaker  1:49:36
+So there's a refund on a payment history record? Is that what I'm understanding? Yeah,
+
+Unknown Speaker  1:49:42
+I presume I'm, I presume what he's, what he did is, if you went and selected a row and said refund of it, then he's applying it to that history record.
+
+Unknown Speaker  1:49:55
+So in this case, what was refunded
+
+Unknown Speaker  1:49:58
+$1
+
+Unknown Speaker  1:50:00
+From what
+
+Unknown Speaker  1:50:02
+good question,
+
+Unknown Speaker  1:50:13
+you may look it up and see if it gives us any more
+
+Unknown Speaker  1:50:18
+information. I mean, I know it won't, but we'll just, we'll have to figure out at some point what these refunds get
+
+Unknown Speaker  1:50:24
+applied to.
+
+Unknown Speaker  1:50:29
+Oh, that gets well, why wouldn't we just No, never mind.
+
+Unknown Speaker  1:50:34
+Hang on.
+
+Unknown Speaker  1:50:36
+Let's see how the math is mapping. 41
+
+Unknown Speaker  1:50:41
+4103 88 it doesn't say what the refund was for.
+
+Unknown Speaker  1:50:46
+I'm still confused though.
+
+Unknown Speaker  1:50:49
+3930 780-787-4637,
+
+Unknown Speaker  1:50:52
+25954,
+
+Unknown Speaker  1:50:54
+gives us a total of 4103 88
+
+Unknown Speaker  1:50:59
+but the tax, but the tax.
+
+Unknown Speaker  1:51:03
+If I do 4103 8840
+
+Unknown Speaker  1:51:09
+40,
+
+Unknown Speaker  1:51:11
+which company
+
+Unknown Speaker  1:51:14
+store, two.
+
+Unknown Speaker  1:51:19
+And if I do this, we said, 270 701. We're coming up with
+
+Unknown Speaker  1:51:26
+277
+
+Unknown Speaker  1:51:33
+No, he said, 259 54
+
+Unknown Speaker  1:51:36
+Wait a minute.
+
+Unknown Speaker  1:51:39
+How is the tax discrepancy showing up because I'm not seeing a difference, contract, invoice, tax, amount, 259 5438
+
+Unknown Speaker  1:51:54
+that's because,
+
+Unknown Speaker  1:51:57
+Hang on,
+
+Unknown Speaker  1:52:01
+250 now I'm putting the tax in here.
+
+Unknown Speaker  1:52:05
+So that would be 259 49
+
+Unknown Speaker  1:52:08
+I'm coming up with 259 49 I'm coming up with less tax,
+
+Unknown Speaker  1:52:13
+if I would add this dollar on here,
+
+Unknown Speaker  1:52:17
+which would be one?
+
+Unknown Speaker  1:52:27
+259,
+
+Unknown Speaker  1:52:29
+56 which gets us close, but it's still not quite there. You
+
+Unknown Speaker  1:52:35
+want to know what's even scarier? What
+
+Unknown Speaker  1:52:42
+I Okay, here, I'm gonna change your screenshot.
+
+Unknown Speaker  1:52:46
+I don't know. This may or may not help. I don't know.
+
+Unknown Speaker  1:52:52
+Capture, capture, where is the Matthias?
+
+Unknown Speaker  1:53:25
+Why is it not?
+
+Unknown Speaker  1:53:34
+There we go.
+
+Unknown Speaker  1:53:37
+Okay, so here,
+
+Unknown Speaker  1:53:41
+wow, this guy paid a giant amount into deposit, turned around and paid another giant amount into deposit.
+
+Unknown Speaker  1:53:48
+Somebody screwed up the 4103 88
+
+Unknown Speaker  1:53:55
+I don't understand the dollar refund. What
+
+Unknown Speaker  1:53:59
+if the refund is not just that. Maybe that's just a yes or a
+
+Unknown Speaker  1:54:03
+no, oh,
+
+Unknown Speaker  1:54:05
+oh, maybe that's not a refund. Amount is there's a flag that says refund. We evaluate, can we go evaluate all source data history field for that, for Yeah, but see what it is. If it is a yes or a no, then that that, then that might be interesting. I,
+
+Unknown Speaker  1:54:44
+did specify it's zero or one. So, yeah, it is. So it's a it's a Boolean, it's a billion, it's a billion, a chicken bullion,
+
+Unknown Speaker  1:54:55
+bullion, I don't know what Boolean cube i.
+
+Unknown Speaker  1:55:00
+Uh,
+
+Unknown Speaker  1:55:01
+I did show you that image, right? Yep, you did. But, I mean, I don't understand why the math isn't mapping.
+
+Unknown Speaker  1:55:10
+It's off by five cents. But do we care? We I mean beings that
+
+Unknown Speaker  1:55:17
+do we care?
+
+Unknown Speaker  1:55:20
+Do we care? Unless you, unless you said we just hard code it,
+
+Unknown Speaker  1:55:27
+yeah, I mean, we'll just dump it in. I mean, we'll make it work, yeah, just stomp it in.
+
+Unknown Speaker  1:55:33
+Bottom line is, we're getting close.
+
+Unknown Speaker  1:55:36
+He doesn't, I don't really know. Unless you have a better way to do this,
+
+Unknown Speaker  1:55:42
+I'm just looking at all permutations of what might be taxable and non taxable, and using that to figure out what the taxable subtotal is. But maybe that's going to get us in trouble. Well,
+
+Unknown Speaker  1:55:55
+if it has no tax, obviously it's non taxable. And if it had tax, and it's taxable?
+
+Unknown Speaker  1:56:03
+No, I mean which fee, what part of the fee? Oh, oh.
+
+Unknown Speaker  1:56:12
+Like, basically, what we're saying is,
+
+Unknown Speaker  1:56:15
+which of these line items do we need to put into the non taxable category to get the correct tax, get the closest to the tax amount that he calculated, gotcha. And we're getting within, you know, mostly within a penny,
+
+Unknown Speaker  1:56:30
+and then a few within five cents. And who knows what in the world is going on with those
+
+Unknown Speaker  1:56:40
+with what,
+
+Unknown Speaker  1:56:42
+with these five cents, I mean, like these $3,800 ones are doing funky things with packs, yeah, but it's, it's, it's straight ins and straights out the next with the next five cent ones straight in, straight out,
+
+Unknown Speaker  1:56:55
+sure.
+
+Unknown Speaker  1:56:57
+So do we
+
+Unknown Speaker  1:57:01
+need to do we need to do anything special with refunds?
+
+Unknown Speaker  1:57:07
+I want to say, no.
+
+Unknown Speaker  1:57:10
+Maybe refund means, was it refunded
+
+Unknown Speaker  1:57:13
+because we have negative amounts,
+
+Unknown Speaker  1:57:17
+right?
+
+Unknown Speaker  1:57:19
+Okay? Do
+
+Unknown Speaker  1:57:24
+boom, all right,
+
+Unknown Speaker  1:57:29
+Siri cash to six out
+
+Unknown Speaker  1:57:36
+of seven.
+
+Unknown Speaker  1:57:38
+What don't you like about
+
+Unknown Speaker  1:58:07
+um,
+
+Unknown Speaker  1:58:14
+well, non contract security deposits should never have
+
+Unknown Speaker  1:58:19
+CRA cash do sell security deposit,
+
+Unknown Speaker  1:58:28
+because it's always
+
+Unknown Speaker  1:58:30
+going to be
+
+Unknown Speaker  1:58:38
+an RTO contract.
+
+Unknown Speaker  1:58:41
+So we could just do this, though, if We really felt
+
+Unknown Speaker  1:58:45
+like the situation demanded it,
+
+Unknown Speaker  1:59:18
+Which this guy's actually in here somewhere.
+
+Unknown Speaker  1:59:22
+Okay, fine, Seth. You in you?
+
+Unknown Speaker  1:59:53
+So then.
+
+Unknown Speaker  2:00:08
+These are all just bogus stuff.
+
+Unknown Speaker  2:00:12
+You even have a state,
+
+Unknown Speaker  2:00:17
+no,
+
+Unknown Speaker  2:00:18
+great. So,
+
+Unknown Speaker  2:00:25
+do you know anything about account 4047 in more space.
+
+Unknown Speaker  2:00:30
+What's the problem
+
+Unknown Speaker  2:00:36
+account
+
+Unknown Speaker  2:00:37
+4047
+
+Unknown Speaker  2:00:40
+Yeah,
+
+Unknown Speaker  2:00:41
+in more space.
+
+Unknown Speaker  2:00:47
+I mean, somebody goofed something up. Everything goes straight in and straight back out,
+
+Unknown Speaker  2:00:58
+and the account was closed. Customer's name is R with no address, no, nothing, no, nothing, nothing, nothing. We don't have a state, so we can't create a contract, so we don't have a place to put the
+
+Unknown Speaker  2:01:09
+security deposit.
+
+Unknown Speaker  2:01:11
+I can add a state to it, if you would like.
+
+Unknown Speaker  2:01:16
+Think that would
+
+Unknown Speaker  2:01:19
+do it. Was technically under the state of North Carolina,
+
+Unknown Speaker  2:01:25
+if I added NC to it to the data. Then the next time it comes around, it will, it'll map, or it'll stay mapped. Yeah, yep.
+
+Unknown Speaker  2:01:37
+And see.
+
+Unknown Speaker  2:01:40
+And then there's two more cricket value ones like that. There's
+
+Unknown Speaker  2:01:44
+Hold on. Okay, so that one's, that one's dot Ganga,
+
+Unknown Speaker  2:01:52
+3691
+
+Unknown Speaker  2:01:58
+test account.
+
+Unknown Speaker  2:02:00
+You just throw a state in there. We can take care of whatever's happening.
+
+Unknown Speaker  2:02:10
+Okay? So contracts, primary invoices. So now we need and
+
+Unknown Speaker  2:02:18
+what is the next 116?
+
+Unknown Speaker  2:02:21
+95 sorry, 1675
+
+Unknown Speaker  2:02:27
+test again.
+
+Unknown Speaker  2:02:37
+Okay, another one. That's it all right.
+
+Unknown Speaker  2:02:41
+Okay, so this is
+
+Unknown Speaker  2:02:44
+invoices
+
+Unknown Speaker  2:02:47
+we are now in our resource data. This guy messaging me too.
+
+Unknown Speaker  2:02:52
+Oh, good.
+
+Unknown Speaker  2:03:01
+Favorites.
+
+Unknown Speaker  2:03:05
+Contracts,
+
+Unknown Speaker  2:03:08
+report unmatched lines, warn
+
+Unknown Speaker  2:03:13
+should not exist. Okay, so format flat file by column label automatically, Import.
+
+Unknown Speaker  2:03:28
+Match on contract, ID, auto, number,
+
+Unknown Speaker  2:03:36
+header lines.
+
+Unknown Speaker  2:03:43
+Oh, Joshy boy.
+
+Unknown Speaker  2:03:46
+What's the Joshy boy up to now? He's given us incredible power, which is very dangerous.
+
+Unknown Speaker  2:03:56
+We now. We now have expression controlled wholesale discount percentages
+
+Unknown Speaker  2:04:05
+with great power comes great responsibility. I should, I should. I should show you this one, just for kicks and giggles.
+
+Unknown Speaker  2:04:16
+Because good old, good old, uh,
+
+Unknown Speaker  2:04:24
+little Claude. Help me rework this one? Here you go for fun and giggles.
+
+Unknown Speaker  2:04:38
+You should put B prefixes on there. Put who the prefixes on your signs
+
+Unknown Speaker  2:04:47
+instead of is
+
+Unknown Speaker  2:04:49
+V like v b is just it prevents.
+
+Unknown Speaker  2:04:56
+It prevents you.
+
+Unknown Speaker  2:05:00
+BREAKING when, if somebody would ever add a macro by that
+
+Unknown Speaker  2:05:06
+you should also use.
+
+Unknown Speaker  2:05:09
+If so building site prep type is a list field you should use. You
+
+Unknown Speaker  2:05:15
+should just do equals this or that, so that you have validation. When the list should the list items ever get renamed?
+
+Unknown Speaker  2:05:25
+Hold on, nice.
+
+Unknown Speaker  2:05:28
+Stop it.
+
+Unknown Speaker  2:05:32
+Oh, come on. No. This is why we did the signs for okay, you're saying what now?
+
+Unknown Speaker  2:05:37
+Oh, you're saying it instead of doing the in you should use, so building or doing or statements, yeah, equals this or equals that, because that'll make sure that you don't
+
+Unknown Speaker  2:05:54
+accidentally like,
+
+Unknown Speaker  2:05:56
+if it gets renamed because it's a list field comparing against string, It'll, it'll validate that it's a valid List option.
+
+Unknown Speaker  2:06:04
+Got it do?
+
+Unknown Speaker  2:06:25
+So we got a repeating group
+
+Unknown Speaker  2:06:28
+contract,
+
+Unknown Speaker  2:06:31
+so we have a name the row match, contract, invoice, RP, source. Don't really my D.
+
+Unknown Speaker  2:06:39
+Let's do
+
+Unknown Speaker  2:06:56
+match rows. Update multiple match rows. We're going to skip unmatched rows, delete unmatched lines, create new row.
+
+Unknown Speaker  2:07:09
+Light match expression, string,
+
+Unknown Speaker  2:07:18
+okay, how you like me now? How do
+
+Unknown Speaker  2:07:21
+you like me? Now? Something happened?
+
+Unknown Speaker  2:07:27
+Something invoice due date,
+
+Unknown Speaker  2:07:30
+unrecognized column.
+
+Unknown Speaker  2:07:34
+What are you called? Then
+
+Unknown Speaker  2:07:41
+use the invoice date,
+
+Unknown Speaker  2:07:44
+invoice due date,
+
+Unknown Speaker  2:07:48
+days until due
+
+Unknown Speaker  2:08:04
+the invoice, payment amount.
+
+Unknown Speaker  2:08:20
+New rows cannot be added to this. RG,
+
+Unknown Speaker  2:08:29
+right, because I need to do a
+
+Unknown Speaker  2:08:42
+what? Why? Let me see
+
+Unknown Speaker  2:08:47
+pet G, yeah, is this with the new layer adhesion? That's a hand stop,
+
+Unknown Speaker  2:08:53
+which I'll be marking tonight, because it's stupidly good. The
+
+Unknown Speaker  2:08:58
+pet G is a lot stronger. It's stupidly strong,
+
+Unknown Speaker  2:09:04
+and a sibling is amazing, nice.
+
+Unknown Speaker  2:09:07
+So why? Why not? Print is petty, more expensive,
+
+Unknown Speaker  2:09:15
+not very much.
+
+Unknown Speaker  2:09:18
+2% more versus what's the other skill? It takes a lot. Oh, I just print slower, yeah, and it's gotta be a lot hotter and it's harder to print, do you know? But you don't swap the nozzle. It can print with the same
+
+Unknown Speaker  2:09:32
+a nozzle.
+
+Unknown Speaker  2:09:34
+Oh,
+
+Unknown Speaker  2:09:35
+that's incredible. Beers
+
+Unknown Speaker  2:09:39
+kinda did.
+
+Unknown Speaker  2:09:41
+Sleep.
+
+Unknown Speaker  2:09:43
+I'm running his though. I'm starting his right now so it can run overnight. And that's
+
+Unknown Speaker  2:09:49
+a whole lot of pet G I.
+
+Unknown Speaker  2:10:01
+We need to get new heads so we can print other stuff too, because,
+
+Unknown Speaker  2:10:06
+because we want to print carbon fiber, because it sounds like fun, why it's just
+
+Unknown Speaker  2:10:15
+not good enough
+
+Unknown Speaker  2:10:19
+yet.
+
+Unknown Speaker  2:11:25
+Well,
+
+Unknown Speaker  2:11:35
+what failed?
+
+Unknown Speaker  2:11:38
+I mean, we're getting
+
+Unknown Speaker  2:11:43
+Yes, let's do this validation,
+
+Unknown Speaker  2:11:46
+mailing new errors.
+
+Unknown Speaker  2:13:03
+What do you mean? What runs? As long as it runs. I'm lost. Do you want to say? How long do you want to
+
+Unknown Speaker  2:13:14
+do you want to give an end date for how long auto pay is going to run?
+
+Unknown Speaker  2:13:22
+Giving an end date or or showing them the breakdown
+
+Unknown Speaker  2:13:30
+both. I
+
+Unknown Speaker  2:13:32
+mean, like showing them when it's gonna like, if you just let it run, here's when it's gonna stop. I
+
+Unknown Speaker  2:13:39
+mean, I think that's valuable. What am I missing? Okay,
+
+Unknown Speaker  2:13:47
+sure, I
+
+Unknown Speaker  2:14:17
+all right now a bunch of
+
+Unknown Speaker  2:14:45
+we will have rent.
+
+Unknown Speaker  2:14:49
+You will have.
+
+Unknown Speaker  2:15:08
+Image waiver, rent,
+
+Unknown Speaker  2:15:16
+late fee. I'm
+
+Unknown Speaker  2:16:11
+Yeah,
+
+Unknown Speaker  2:16:16
+I love you, Claude. I
+
+Unknown Speaker  2:17:19
+So You're saying it's better to do this. This is a this is a different one
+
+Unknown Speaker  2:17:26
+versus doing the in statement. If
+
+Unknown Speaker  2:17:32
+you're assigning it to a variable, you need to do a validated list drink
+
+Unknown Speaker  2:17:38
+for
+
+Unknown Speaker  2:17:41
+you need to either do, see, I'm
+
+Unknown Speaker  2:17:45
+learning all kinds of fun things today,
+
+Unknown Speaker  2:17:51
+that or, I mean, you can also do an end,
+
+Unknown Speaker  2:17:54
+but you would have to do
+
+Unknown Speaker  2:18:06
+something like that. Yeah, that's not quite right, but you get the idea.
+
+Unknown Speaker  2:18:15
+So every So you're saying you can't assign it to a variable. What was the validated listing? String,
+
+Unknown Speaker  2:18:25
+validated listing. Just make sure that nobody renames it and then it breaks if someone does. I mean that it loudly breaks, instead of quietly breaks if
+
+Unknown Speaker  2:18:33
+somebody does, otherwise, you're saying, put it in, put it in
+
+Unknown Speaker  2:18:37
+the or statement like call it every single time it will if you compare a field to a list field to a string, it'll make sure that's it'll check that. But if you assign it to the variable, it loses memory that it's a list value, and it won't check you. So you need to either compare field versus that or use a validated listing. So
+
+Unknown Speaker  2:19:14
+that you stinker. You.
+
+Unknown Speaker  2:20:23
+There's all these little nuances that I just don't know.
+
+Unknown Speaker  2:20:27
+Yeah, it is weird that it's not better at that. But
+
+Unknown Speaker  2:20:40
+okay, now we have the
+
+Unknown Speaker  2:20:49
+let's bring you over here. So now we have the invoice ID.
+
+Unknown Speaker  2:20:55
+We have the item. We have the subtotal. I
+
+Unknown Speaker  2:22:13
+Yes,
+
+Unknown Speaker  2:24:15
+would have just red and white,
+
+Unknown Speaker  2:24:17
+and then you'd have each of these.
+
+Unknown Speaker  2:24:23
+Which gives us, 1-234-571-2345,
+
+Unknown Speaker  2:24:31
+sorry. 1234,
+
+Unknown Speaker  2:24:34
+okay, and then we do.
+
+Unknown Speaker  2:25:46
+A I
+
+Unknown Speaker  2:26:13
+Bob,
+
+Unknown Speaker  2:27:02
+me so this is v sub total,
+
+Unknown Speaker  2:29:27
+I'll sustain it later. I.
+
+Unknown Speaker  2:30:37
+A substitute,
+
+Unknown Speaker  2:30:51
+so then, how am I supposed to sort if I can't reference the Current Value to sort?
+
+Unknown Speaker  2:30:56
+There's Dumb and then there's Dumb.
+
+Unknown Speaker  2:32:37
+Into that so
+
+Unknown Speaker  2:32:51
+Okay, well, we'll do like this. You.
+
+Unknown Speaker  2:35:40
+Yeah, I think
+
+Unknown Speaker  2:35:47
+And then I
+
+Unknown Speaker  2:36:08
+So then, now,
+
+Unknown Speaker  2:38:05
+then The taxable subtotal then becomes
+
+Unknown Speaker  2:38:46
+F.
+
+Unknown Speaker  2:40:11
+Now I don't need to set that, do I? I
+
+Unknown Speaker  2:40:20
+don't think so.
+
+Unknown Speaker  2:40:27
+Okay, Will It Blend? That's the question.
+
+Unknown Speaker  2:44:58
+All right, I'm going to take.
+
+Unknown Speaker  2:45:00
+Quick break while this thing cranks,
+
+Unknown Speaker  2:45:03
+it's cranking cranky, cranky, cranky, cranky. You.
+
+Unknown Speaker  2:46:18
+I think
+
+Unknown Speaker  2:46:40
+I
+
+Unknown Speaker  2:47:02
+well this is like
+
+Unknown Speaker  2:47:05
+about getting punished.
+
+Unknown Speaker  2:47:10
+Who's getting punished? Silver limb
+
+Unknown Speaker  2:47:13
+four,
+
+Unknown Speaker  2:47:15
+just, I don't know all the stuff we're throwing at it,
+
+Unknown Speaker  2:47:21
+making it work.
+
+Unknown Speaker  2:47:23
+See,
+
+Unknown Speaker  2:47:26
+input must have contract inv, RP, source, I did. It's in there.
+
+Unknown Speaker  2:47:32
+Oh, it's like Ragu. It's in there. I
+
+Unknown Speaker  2:47:43
+Okay, so this is actually
+
+Unknown Speaker  2:47:47
+Okay, Fine. How about a
+
+Unknown Speaker  2:48:16
+not required, silly. I
+
+Unknown Speaker  2:48:49
+All right,
+
+Unknown Speaker  2:48:52
+do we have one that we think We'd
+
+Unknown Speaker  2:48:56
+like to import?
+
+Unknown Speaker  2:48:59
+Should we just pick one. I
+
+Unknown Speaker  2:49:39
+There we go.
+
+Unknown Speaker  2:49:42
+See seem to like it.
+
+Unknown Speaker  2:49:54
+Okie dokie.
+
+Unknown Speaker  2:50:02
+Should probably sort by
+
+Unknown Speaker  2:50:48
+what else are you not going to like about me?
+
+Unknown Speaker  2:50:57
+Well, I mean, besides that, it looks pretty Good.
+
+Unknown Speaker  2:51:18
+Although, quite frankly, I
+
+Unknown Speaker  2:51:26
+EWF, rent.
+
+Unknown Speaker  2:51:40
+Here's a right, but we get there event O,
+
+Unknown Speaker  2:51:55
+invoice, itemization.
+
+Unknown Speaker  2:51:58
+That's the atomization.
+
+Unknown Speaker  2:52:22
+I don't have to import them in the other order.
+
+Unknown Speaker  2:52:59
+Session retardals,
+
+Unknown Speaker  2:53:16
+let's get it.
+
+Unknown Speaker  2:53:23
+15, invoice total,
+
+Unknown Speaker  2:53:27
+188, 76,
+
+Unknown Speaker  2:53:30
+what do we screw up?
+
+Unknown Speaker  2:53:38
+Invoice total? Well, obviously that doesn't work.
+
+Unknown Speaker  2:53:51
+Here we have,
+
+Unknown Speaker  2:53:57
+we have a late fee and a security deposit. Well, that's fun. Let's go take a
+
+Unknown Speaker  2:54:14
+look. 151 65,
+
+Unknown Speaker  2:54:16
+170
+
+Unknown Speaker  2:54:18
+Don't
+
+Unknown Speaker  2:54:24
+you lie. You're all lies.
+
+Unknown Speaker  2:54:56
+Can't remember where he was running us.
+
+Unknown Speaker  2:55:05
+Well, not that one, but
+
+Unknown Speaker  2:55:14
+$35 is non taxable.
+
+Unknown Speaker  2:55:20
+Security deposit. We're throwing security deposit in
+
+Unknown Speaker  2:55:26
+there. 7044,
+
+Unknown Speaker  2:55:30
+wait. Is this the old
+
+Unknown Speaker  2:55:49
+make sure we're not completely bonkers again,
+
+Unknown Speaker  2:55:55
+total minus amount, minus other, minus European. Okay, so we go into here,
+
+Unknown Speaker  2:56:01
+621, 626,
+
+Unknown Speaker  2:56:03
+55,
+
+Unknown Speaker  2:56:06
+six. Do you mind if I drop off? I'm being I'm just over here listening to you talk and continues to work. I mean, there is better music to listen to
+
+Unknown Speaker  2:56:18
+than me talking out loud to you. Yep,
+
+Unknown Speaker  2:56:21
+if you need something, you know where to find me. I know where to find you. Later.
+
+
+Transcribed by https://otter.ai

@@ -1,4 +1,4 @@
-24.5. Devices: Label Stickers for Devices
+24.6. Devices: Label Stickers for Devices
 
 TODO_: Tim Reitz 09/18/2025: Future feature: Label stickers for Devices
 

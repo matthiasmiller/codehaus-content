@@ -28,7 +28,7 @@ Requirements
       * error on the field if set to a number than is less than the current number of uncanceled rows in the "GemWood Purchase Orders" embedded spreadsheet: "This cannot be set to <#> because it is less than the number of GW POs". Cancel a GW PO if needed."; 
       * once the PO reaches the set number of linked Delivery Ticket records, a warning displays on linked Delivery Tickets - see corresponding spec; 
       * note that a future enhancement could be an alert when the set number of loads is approaching and/or passed)
-    * Remaining Loads (visible if "Close Type" = "Load-Based"; read-only macros; displays the value of <"Target # Loads"> \- <the number of linked non-Canceled Delivery Tickets>)
+    * Remaining Loads (visible if "Close Type" = "Load-Based"; read-only macro; displays the value of <"Target # Loads"> \- <the number of linked non-Canceled Delivery Tickets>)
     * Closed (editable if the "Canceled" checkbox is not checked; checkbox + date, which toggle; date defaults to the current date when the checkbox is checked; note that the Purchase Order can be marked as "Closed" even if there are open Delivery Tickets linked to it) 
     * Replaced By (visible if the current PO is selected in the "This PO Replaces" field on another Purchase Order record; read-only macro; displays the PO # for the corresponding Purchase Order; link to open the corresponding record)
     * Canceled (with the following details / behaviors: 

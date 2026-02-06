@@ -12,7 +12,7 @@ Requirements
     * Initiated: Weekly; Mondays at 7:00 AM
       * Note that this might be changed, based on the scheduler's preference 
     * Should Wait On: N/A
-    * Commands: TBD
+    * Commands: email "Standard/Std Jobs Awaiting Scheduling Weekly Email Merge.r20"
     * Prompts: 
       * TBD
     * Action(s): 

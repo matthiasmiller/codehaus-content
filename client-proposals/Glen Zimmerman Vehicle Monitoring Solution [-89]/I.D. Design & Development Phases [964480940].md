@@ -1,5 +1,15 @@
 1.4. Design & Development Phases
 
+  
+
+
+Requirements
+
+*Done. 
+
+  
+
+
 The full Solution is anticipated to be deployed in multiple phases, as described below. 
 
   
@@ -17,6 +27,9 @@ This phase lays the groundwork for use and further expansion with the following 
 
 A. <Service Name> Silverloom software : A web application on the Silverloom Business Suite, by CodeCrafters, that serves as the "back-end" database for providers (Resellers, Group Admins, and Master Administrators). This stores & tracks information for accounts, account groups, contacts (account managers, drivers, etc.), devices, vehicles, and various data points from Traccar.
 
+  
+
+
 Core functionality for the Silverloom software include the following:
 
   * Database to store and manage data for the following:
@@ -32,20 +45,37 @@ Core functionality for the Silverloom software include the following:
     * Welcome emails for new Account members, with instructions for accessing Traccar and the Portal
     * Notifications about changes to Account Groups and Accounts
     * etc.
-  * Notifications for users and accountability partners about vehicle health and driving events, including high-risk activity. 
 
 
-
-TODO_: Tim Reitz 11/14/2025: This actually would be done directly from Traccar, I think
-
-In Phase 1, only provider users have direct access into this software.
 
   
 
 
-B. Traccar: The service and interface is provided by Tananaev Solutions. The <Service Name> Silverloom software integrates with Traccar via API. A Traccar server connects with devices installed on vehicles or on mobile devices, then data tracked by Devices is sent directly to and stored in the Traccar server, and then is passed on to the <Service Name> Silverloom software as needed.
+In Phase 1, only provider users have direct access into the Silverloom software.
+
+  
+
+
+B. Traccar: The software service and interface is provided by Tananaev Solutions, with the <Service Name> Silverloom software integrating with the Traccar software via API. A Traccar server connects with devices installed on vehicles or with apps installed on mobile devices. Data tracked by the devices is sent directly to and stored in the Traccar server, and then is passed on to the <Service Name> Silverloom software as needed. 
+
+  
+
+
+Additional functionality of the Traccar software includes: 
+
+  * Notifications for users and accountability partners about vehicle health and driving events, including high-risk activity. These notifications can be sent in a variety of ways, including email (some configuration may be required) and SMS text messages (configuration and setup of an additional service such as Twilio is required). 
+  * Extensive reporting on tracked data. 
+  * Various permissions. 
+
+
+
+  
+
 
 Users (both providers and end users) can also install the Traccar Manager mobile app or access the Traccar Web Interface to view Traccar-specific data.
+
+  
+
 
 In Phase 1, all users (both providers and end users) have access to Traccar via the Traccar Web Interface and the Traccar mobile apps. This access is based on a "Traccar Login Email" and permission controls specified in Silverloom.
 
@@ -55,7 +85,22 @@ In Phase 1, all users (both providers and end users) have access to Traccar via 
   
 
 
-C. <Service Name> End User Portal: This is a special software tool built & supported by CodeCrafters, to link Silverloom and Traccar, and to end users (account managers and drivers) a portal to view their account details from Silverloom. End users can log in via one-time links, view details, agree to the <Service Name> End User Agreement, and contact their service providers with various requests via email.
+C. <Service Name> End User Portal: This is a special software tool built & supported by CodeCrafters, to link Silverloom and Traccar, and to provide end users (account managers and drivers) with a portal to view their account details from Silverloom. 
+
+  
+
+
+Functionality includes: 
+
+  * Login via one-time links 
+  * View account details
+  * View and agree to the <Service Name> End User Agreement 
+  * Contact service providers (Resellers, Group Admins, Advocates) with various requests via email 
+
+
+
+  
+
 
 In Phase 1, the Portal is mainly used only by end users (as providers have access to Silverloom directly).
 
@@ -65,7 +110,7 @@ In Phase 1, the Portal is mainly used only by end users (as providers have acces
   
 
 
-Phase 2: Additional Features & Enhancements: 
+Phase 2: Additional Features & Enhancements: Phase 2 is anticipated to include features such as: 
 
   * Subscription Management feature: 
     * Subscription activation/deactivation/pausing 
@@ -93,3 +138,10 @@ Phase 3 / Future: Integration with insurance software: Long-term, integration co
 
 
 For example, driving data could be synced across from <Service Name> to the WMVAP Solution for all participating vehicles, incentivizing app usage by offering a teen driver / safe driver discount by installing the app.
+
+  
+
+
+Development Specification
+
+TODO_NM / TODO_VA: Tim Reitz 02/05/2026: We can refer to the Phase 1 main focus above to help us determine which items could be marked for future / optional add-ons.

@@ -1,4 +1,4 @@
-24\. Possible Future Features
+24\. Possible Future Features / Optional Add-Ons
 
 Resellers Supporting Accounts for other Resellers: 
 

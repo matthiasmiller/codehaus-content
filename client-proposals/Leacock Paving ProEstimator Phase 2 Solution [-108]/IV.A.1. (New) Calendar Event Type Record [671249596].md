@@ -5,6 +5,11 @@
 
 Requirements
 
+TODO_IDD: Add the Snippet for records/details screens & spec it out. Or, copy in the spec of one of the Configuration records from Phase 1 and make changes as needed. The latter option might be the fastest. 
+
+  
+
+
 This is a "Silverloom-supplied" record. This defines the types of events that can appear on the scheduling calendar (jobs, employee time off, or other items) and sets the display color for each so you can see at a glance what's on the board.
 
   

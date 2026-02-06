@@ -1,4 +1,4 @@
-24.7. Devices: Improvements for Managing SIM Cards
+24.8. Devices: Improvements for Managing SIM Cards
 
   
 

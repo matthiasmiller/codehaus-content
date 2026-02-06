@@ -1,0 +1,1 @@
+**Christopher Witmer** is the content marketer for *Multiply Your Strengths*. Blogging since he was thirteen, Chris brings to the team an array of experience and talent, combined with the eagerness to learn and fresh perspective of a young adult. He lives in Los Angeles, California.  

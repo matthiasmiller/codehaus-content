@@ -18,7 +18,7 @@ Sections and Fields: 
     * Load Request (number; no decimals)
     * "..." (Select Load Request choice report; used to select linked Load Request; see corresponding spec)
     * Date (created date; uneditable)
-    * PO ID (plain text; GW PO #) TODO_NM: This seems to be GW PO ID. Rename, pending Josh's approval.
+    * GW PO ID (plain text; GW PO #) 
     * Visible # (number; no decimals; number to be written on the pack)
     * Member (drop-list of active member contacts; required)
     * Thickness (drop-list of Lumber Thicknesses; required)
