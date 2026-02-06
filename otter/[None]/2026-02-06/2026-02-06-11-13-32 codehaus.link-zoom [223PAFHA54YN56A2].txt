@@ -1,0 +1,173 @@
+Matthias Miller  00:18
+Me. Hello, All right, so here's the proposal. We have invoices and invoice amendments, okay? And in some contexts they work the same. Some contexts are slightly different. Main thing with invoice amendments is that they have to tie back to an original invoice, and they have two a few special line items that can be used do. And the in the line item, it is,
+
+Matthias Miller  01:20
+okay, so one of them that can be used is like fee adjustments, such as for forgiveness, and then the other one is sales tax adjustment. And sales tax adjustment would just be to you need to change jurisdiction. You don't actually change jurisdiction on the original invoice. Jurisdiction on the original invoice. You create an invoice adjustment with a negative amount for the old jurisdiction and new amount for the new jurisdiction. Okay? And then that basically becomes a credit that you can use to pay for. Well either, either it becomes money that you have, that you owe, or it becomes a credit that you can apply to. You apply payment, you apply credits, good.
+
+Speaker 1  02:17
+So your invoice amendment, if it's a sales tax adjustment, if you're changing jurisdiction, do you create two amendments?
+
+Matthias Miller  02:24
+Single amendment with two line items, okay. Do you have one line item with the negative and one line item with the positive, so that the net amount of the invoice adjustment is, you know, I don't know, five cents your invoice ID, then, well, right, right. Then your invoice adjustment could have an idea of like original invoice number, plus like amendment number or something like that, for calculating balances the period, you would have an entry date as of today, but your due date would match the original invoice. And so when you calculate balances, you would have to include that in your search.
+
+Unknown Speaker  03:11
+Which we can do that just off of I would we link it off of invoice ID,
+
+Speaker 1  03:17
+yeah, and then just force it to be the same. Okay, data model. How does it work? Is this another RG, is this a type of row in the invoice?
+
+Matthias Miller  03:37
+RG, I think it's a type of row in the invoice. RG, because 95% of the time it works the same as an invoice, yeah, that makes sense. And then you also have itemization types that are unique to adjustments, like you can't you, I mean, you can't have negative you can't have negative fees, yeah, and you can't have sales tax adjustments on regular invoices.
+
+Speaker 1  04:05
+So okay, so our invoice RG has a new type column invoice or amendment, right? Something like that. And then our itemization RG, we go back to using a type which we had temporarily a move away from, with a type of incurred for all invoice items, yep, and then a type of sales tax adjustment And a type of forgiveness, yep, huh. And then I Okay, how does the jurisdiction stuff work on an amendment? What juris do we need to store jurisdiction on the
+
+Speaker 1  04:54
+right? Now we're storing the jurisdiction on the invoice right. Right? That's why I
+
+Unknown Speaker  05:01
+wondered if we need to have two amendments. Well, it's a little weird, but
+
+Matthias Miller  05:08
+I'm not opposed to, okay, how would that work? You would effectively have, what would the itemization be?
+
+Speaker 1  05:17
+Though, were you thinking that you have a row for each for each jersey, like, were you thinking a sales tax amendment, an invoice amendment? That's the sales tax adjustment. Does that have two rows for each fee on the original invoice, or is that a net taxable subtotal, where it's just a type of,
+
+Matthias Miller  05:52
+okay, that is a good point. I was originally thinking you would have an itemization, but that really screws with jurisdiction.
+
+Speaker 1  06:13
+Is there could? Is there a world in which you have an amendment, I mean, this would that have to be two amendments every time, but a sales tax adjustment amendment that doesn't have link itemization rows, it's just a taxable subtotal. Or is that too confusing. Okay, this might be really confusing,
+
+Matthias Miller  06:45
+but what if you would have two types of amendments? I'm not sure if I like this, but that's what I was suggesting. Okay, so you have a subtotal amendment, basically, or a fee amendment, itemization amendment and a tax amendment. So a tax amendment then would specify the new jurisdiction right and the amount would be equal to the taxable difference. So
+
+Unknown Speaker  07:25
+so if I owed the amount, you're saying tax amount?
+
+Matthias Miller  07:33
+Yeah, let's, let's pick an example. So you have a you had invoice in Reno County, in the county outside of city limits at 6% and $100 invoice. So you have you owe six bucks. Ah, they're actually in city limits. It's gonna be 8% okay? So then we the you have a new tax amendment row with the hutch jurisdiction and rate 8% and to calculate. And then you stomp in the amount, whatever amount you need. I mean, basically the amendment
+
+Speaker 1  08:07
+would be plus $2 it uses the same subtotal subtotal, yes, same subtotal. Well, the tax amount is literally then, I mean, it's just calculated off the subtotal in the new rate, correct. And then we just need to know that when we when we go and run tax we just need to know that if an invoice has a tax amendment that you use the new venue, yeah, right.
+
+Matthias Miller  08:41
+And then itemization amendments are, I mean, those are, then have itemization line items. So you actually only have, you have two itemization types, ones, you know, an invoicing item, and one's a forgiveness and then, yeah. And then, if you like,
+
+Speaker 1  09:02
+we call it instead. We have to use the term incurred. I think we just use invoiced, sure, but yeah,
+
+Matthias Miller  09:10
+invoice and forgiven, yeah, I think that's pretty clear. All right, let's see if Dwayne wants to. Are you happy? Is there any ways can you put more holes into it?
+
+Unknown Speaker  09:29
+And to think it'll require more thought, although not having
+
+Speaker 1  09:37
+adjustments and itemization for tax makes sense, because we don't calculate tax on a well, oh shoot, oh no, but this supports, then what we're saying where a tax adjustment is like, if the invoice has already been paid, it does. Doesn't affect tax balance or anything like that. I mean, it affects what we owe we need to file correctly based on that. It doesn't affect the customer in any way.
+
+Matthias Miller  10:12
+Well. I mean, technically, they may technically, there is, there is a little bit of nuance. I hate this, but if the tax goes up, well, if the tax goes down, we either have to apply the credit or refund the customer or send it to the state. That's the bottom line.
+
+Speaker 1  10:35
+Yeah. I mean, it's just, yeah, exactly. I think you just send it to the state. But what I think, if you want to go rejigger things, which fine, well, let's just do that.
+
+Matthias Miller  10:47
+Just don't report the jurisdiction kind of weird, or report a jurisdiction change at the new rate, I don't know. Like, it seems like it can be finagled, and if the customer underpaid, then, well, we have write offs for reason. You can call it a bad debt write off, or we can have other write off types.
+
+Speaker 1  11:05
+Yeah, so does tax do? Payments potentially get applied to bad debt. I'm sorry, to tax, they do. Payments get applied to tax amendments or not.
+
+Matthias Miller  11:23
+Yeah, but they both types of amendments,
+
+Speaker 1  11:28
+both types of amendments. So this will have negative payment rose then,
+
+Matthias Miller  11:33
+well, if we're issuing
+
+Unknown Speaker  11:35
+my refunds, if it's a forgiveness, if your row
+
+Matthias Miller  11:43
+if your rows of forgiveness, then you'll pay for the forgiveness, and you'll pay for the new invoice, and you'll your actual payment will be for the net amount. Oh, yes, it is a negative payment, correct?
+
+Speaker 1  11:52
+Yeah, because you're linking it to the amendment right, which. So it's a little odd, but I think it makes sense.
+
+Matthias Miller  12:04
+It is a little odd, but I also would argue that it's correct.
+
+Speaker 1  12:08
+It does reflect reality. What I like about having these little like calling them amendments, is that it makes it clear that it's a that I mean it reflects reality, because we're not. You can't go in and edit an invoice. You invoice them, you send them their invoice. You can't go in and say, Oh, bit of white out and some ink, and here we go. This is your invoice, right?
+
+Matthias Miller  12:33
+No, I mean, yeah, exactly. It's a clear snapshot of time, like this is what we said we owed, and here's where we're at now, sorry, dude.
+
+Speaker 1  12:42
+And so that would also mean we probably don't want to, but you could, I could forgive a paid fee, and then you next time they go into pay, they just, they pay the, quote, unquote, pay the forgiveness and pay the Yep,
+
+Matthias Miller  13:03
+whatever, Yeah, yeah, I like it takes solution. For instance, I I
+
+Speaker 1  13:35
+think he does want to hear it. I think he should, yeah, if I'm pretty confident, like I like this
+
+Matthias Miller  13:45
+good I was hoping you would I have a lot of fun with it. Now I get to take this transcript and go feed it back and say, Hey, you want to go update this document, and now we have a 24 page detail of how we got here and what we're doing,
+
+Speaker 1  14:02
+oh, man. See, that's the kind of thing AI is just so powerful with it's beautiful. Because, I mean, I still get a little leery when people like companies that are fully just coding with AI, yeah, because I'm not sure how you're going to maintain that long term,
+
+Matthias Miller  14:19
+I came across somebody who was I frequently tell it like, stop duplicating code. You're like, Don't repeat yourself. And what was the other one? And dead programs tell no lies. Like, that's the two rules it violates constantly, which is just dumb. Like, maybe at some point they'll get there. I don't know, but I think so. I think I mean, it theoretically should be as simple as a pass, a consistent code review pass, after you make any coding changes, go do this. I came across somebody who was talking about a 40,000 line file that they wrote. No, I just handled it. Just fine. I'm like, Okay. I'm glad you think so.
+
+Speaker 1  15:01
+I mean, if you're not used to working enterprise software, then probably,
+
+Matthias Miller  15:08
+yeah, well, and I think quality and all this other kinds of stuff, but, oh, but the other fun thing with AI is I've been working on a new code House website. I'm getting very, very close, but I fed a bunch of PDFs into it. Yeah, you told me about that HTML, and it's a branded and it brands according to the website, and it generates a PDF. It's like 30 minutes. Gets me way more than, I mean, gets on poor par with the great graphic designer. Yeah, top notch out of the world. No, does it look clean? Professional? Yes, good enough. Me, 100% fully automated, yeah, check, check,
+
+Speaker 1  15:51
+check, check, check. I was telling my professional graphics designer, how's it deeper than a professional graphics designer? I slowly catch it cheaper than a professional graphics designer.
+
+Matthias Miller  16:05
+Super, cheaper, cheaper. Oh, I'm sorry. Wow, they're having a hard time. Yeah, substantially cost me a buck, maybe two. That's rough. I know it is. I was telling my friends this morning over breakfast about my plans for my plans for my AI content generation scheme. Okay, which means I should be there's some industry publications who require you to well, straight up, don't allow ai ai assisted content. So that could be a problem. Some need you to detail it. But I think I could be able to very consistently generate high quality, long form posts every week, basically based off my conversations and
+
+Speaker 1  16:50
+Yeah, it's just glorious, yeah.
+
+Matthias Miller  17:00
+Well, I think, I think we're going to drop off. We'll hold off until Monday. Let's find the time to circle up.
+
+Speaker 1  17:15
+But I do like this a lot better. I think it makes a lot more sense. I agree. Are there ways are we going to get into it and still have? How would we still have trouble with rounding and stuff? Because we don't now. We don't have to worry about payments being rejiggered, because it is a separate thing. If payments are there, then fine.
+
+Matthias Miller  17:36
+You can go back. You can forgive a fee six months ago.
+
+Speaker 1  17:39
+Yeah. We probably, we should probably have a setting or something to say whether we allow that.
+
+Matthias Miller  17:48
+I think in most cases we should allow it, but maybe for the
+
+Speaker 1  17:53
+you know, or the I'm Superman, to do anything I want. Exactly, yeah,
+
+Matthias Miller  18:04
+good. I just can't think of any. It just seems there. The one oddity, if I have to be philosophically correct, is that when you prepay an invoice, we legitimately would have a right to amend the invoice prior to invoicing date with a new tax jurisdiction. Consider that this is rent to own. It's the intersection of rent to own and rate in jurisdiction changes. And I think most likely what should happen, we run auto pay, we make we may consider, well, I mean, that all depends. You could do an amendment with the current rate,
+
+Speaker 1  18:40
+but it depends if we're saying you're paying the Well, no, no, I think that's fair. Before you make your monthly payment, we're going to make sure our rates are right. It might save you a little bit. It might cost you a little bit. 99% of time it's not going to do anything.
+
+Matthias Miller  18:57
+It might incur leafy but that's also contingent on how often people refresh their rates, and if you choose not to refresh your rates, that often, that's on you. And by the way, you could say that we're going to refresh your rates every quarter. If we find that we've been undercharging you, we may backfill you up to three three periods, which is just obnoxious. But you could say that, I mean, that's on them. That's not our problem. No, that's not our problem. So there's a slight philosophical thing in that case where, theoretically, you could keep the money floating around until then, but
+
+Speaker 1  19:30
+it's not. Yeah, see, this feels a little bit like switching from events to contract invoices, where, like, we could almost make it work, but just not quite and it's just was a little muddy and unclear, and this feels like sort of like that, that it's like, oh yeah, this is a this makes sense. Anyway, I like it. Let's hopefully doing this too. Awesome. Thanks, sir. Thank you. You.
+
+
+Transcribed by https://otter.ai
